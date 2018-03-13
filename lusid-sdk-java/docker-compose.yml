@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+
+  lusid-sdk-java-test:
+    build: .
+    container_name: lusid-sdk-java-test
+    image: finbourne/lusid-sdk-java-test
+    environment:
+          - FBN_LUSID_API_URL
+    volumes:
+      - .:/usr/src

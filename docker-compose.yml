@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+
+  lusid-sdk-java-gen:
+    container_name: lusid-sdk-java-gen
+    build: .
+    image: finbourne/lusid-sdk-java-gen
+    volumes:
+      - .:/usr/src
