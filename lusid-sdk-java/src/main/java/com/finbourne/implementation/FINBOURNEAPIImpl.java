@@ -257,6 +257,10 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         @HTTP(path = "v1/api/groups/portfolios/{scope}/{code}", method = "DELETE", hasBody = true)
         Observable<Response<ResponseBody>> deletePortfolioGroup(@Path("scope") String scope, @Path("code") String code);
 
+        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI getPortfolioGroupCommands" })
+        @GET("v1/api/groups/portfolios/{scope}/{code}/commands")
+        Observable<Response<ResponseBody>> getPortfolioGroupCommands(@Path("scope") String scope, @Path("code") String code, @Query("fromAsAt") DateTime fromAsAt, @Query("toAsAt") DateTime toAsAt);
+
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI getPortfolioGroupExpansion" })
         @GET("v1/api/groups/portfolios/{scope}/{code}/expansion")
         Observable<Response<ResponseBody>> getPortfolioGroupExpansion(@Path("scope") String scope, @Path("code") String code, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt);
@@ -3091,6 +3095,171 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
     private ServiceResponse<Object> deletePortfolioGroupDelegate(Response<ResponseBody> response) throws RestException, IOException, IllegalArgumentException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
                 .register(200, new TypeToken<DeletedEntityResponse>() { }.getType())
+                .register(404, new TypeToken<ErrorResponse>() { }.getType())
+                .register(500, new TypeToken<ErrorResponse>() { }.getType())
+                .build(response);
+    }
+
+    /**
+     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     *
+     * @param scope The scope of the portfolio group
+     * @param code The portfolio group id
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws RestException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    public Object getPortfolioGroupCommands(String scope, String code) {
+        return getPortfolioGroupCommandsWithServiceResponseAsync(scope, code).toBlocking().single().body();
+    }
+
+    /**
+     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     *
+     * @param scope The scope of the portfolio group
+     * @param code The portfolio group id
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<Object> getPortfolioGroupCommandsAsync(String scope, String code, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getPortfolioGroupCommandsWithServiceResponseAsync(scope, code), serviceCallback);
+    }
+
+    /**
+     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     *
+     * @param scope The scope of the portfolio group
+     * @param code The portfolio group id
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<Object> getPortfolioGroupCommandsAsync(String scope, String code) {
+        return getPortfolioGroupCommandsWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<Object>, Object>() {
+            @Override
+            public Object call(ServiceResponse<Object> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     *
+     * @param scope The scope of the portfolio group
+     * @param code The portfolio group id
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<ServiceResponse<Object>> getPortfolioGroupCommandsWithServiceResponseAsync(String scope, String code) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        if (code == null) {
+            throw new IllegalArgumentException("Parameter code is required and cannot be null.");
+        }
+        final DateTime fromAsAt = null;
+        final DateTime toAsAt = null;
+        return service.getPortfolioGroupCommands(scope, code, fromAsAt, toAsAt)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
+                @Override
+                public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<Object> clientResponse = getPortfolioGroupCommandsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     *
+     * @param scope The scope of the portfolio group
+     * @param code The portfolio group id
+     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
+     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws RestException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    public Object getPortfolioGroupCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt) {
+        return getPortfolioGroupCommandsWithServiceResponseAsync(scope, code, fromAsAt, toAsAt).toBlocking().single().body();
+    }
+
+    /**
+     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     *
+     * @param scope The scope of the portfolio group
+     * @param code The portfolio group id
+     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
+     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<Object> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getPortfolioGroupCommandsWithServiceResponseAsync(scope, code, fromAsAt, toAsAt), serviceCallback);
+    }
+
+    /**
+     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     *
+     * @param scope The scope of the portfolio group
+     * @param code The portfolio group id
+     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
+     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<Object> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt) {
+        return getPortfolioGroupCommandsWithServiceResponseAsync(scope, code, fromAsAt, toAsAt).map(new Func1<ServiceResponse<Object>, Object>() {
+            @Override
+            public Object call(ServiceResponse<Object> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     *
+     * @param scope The scope of the portfolio group
+     * @param code The portfolio group id
+     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
+     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<ServiceResponse<Object>> getPortfolioGroupCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        if (code == null) {
+            throw new IllegalArgumentException("Parameter code is required and cannot be null.");
+        }
+        return service.getPortfolioGroupCommands(scope, code, fromAsAt, toAsAt)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
+                @Override
+                public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<Object> clientResponse = getPortfolioGroupCommandsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<Object> getPortfolioGroupCommandsDelegate(Response<ResponseBody> response) throws RestException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<ResourceListProcessedCommandDto>() { }.getType())
+                .register(400, new TypeToken<ErrorResponse>() { }.getType())
                 .register(404, new TypeToken<ErrorResponse>() { }.getType())
                 .register(500, new TypeToken<ErrorResponse>() { }.getType())
                 .build(response);
