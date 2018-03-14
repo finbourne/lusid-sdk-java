@@ -10,15 +10,13 @@
     </properties>
 
     <build>
+        <defaultGoal>install</defaultGoal>
         <resources>
             <resource>
-                <!--<directory>/src/main/resources</directory>-->
-
                 <directory>src/main/resources</directory>
                 <includes>
                     <include>**/*.*</include>
                 </includes>
-
             </resource>
         </resources>
         <plugins>        
@@ -37,6 +35,9 @@
                     <version>5.1.0</version>
                 </dependency>
             </dependencies>
+            <configuration>
+                <includes>**/*Tests.java</includes>
+            </configuration>
         </plugin>
         </plugins>
     </build>
