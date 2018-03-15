@@ -5864,6 +5864,7 @@ public interface FINBOURNEAPI {
      *
      * @param scope the String value
      * @param includeDefault the Boolean value
+     * @param includeSystem the Boolean value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -5872,13 +5873,14 @@ public interface FINBOURNEAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object list(String scope, Boolean includeDefault, List<String> sortBy, Integer start, Integer limit);
+    Object list(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @param includeDefault the Boolean value
+     * @param includeSystem the Boolean value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -5886,33 +5888,35 @@ public interface FINBOURNEAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> listAsync(String scope, Boolean includeDefault, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> listAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @param includeDefault the Boolean value
+     * @param includeSystem the Boolean value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> listAsync(String scope, Boolean includeDefault, List<String> sortBy, Integer start, Integer limit);
+    Observable<Object> listAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @param includeDefault the Boolean value
+     * @param includeSystem the Boolean value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> listWithServiceResponseAsync(String scope, Boolean includeDefault, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<Object>> listWithServiceResponseAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Gets a property data format.

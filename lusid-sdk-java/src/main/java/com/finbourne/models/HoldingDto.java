@@ -42,16 +42,34 @@ public class HoldingDto {
     private List<PropertyDto> properties;
 
     /**
+     * Position type indicator of the holding.
+     */
+    @JsonProperty(value = "holdingType", required = true)
+    private String holdingType;
+
+    /**
      * Total number of units in the holding.
      */
     @JsonProperty(value = "units", required = true)
     private double units;
 
     /**
+     * Total number of settled units in the holding.
+     */
+    @JsonProperty(value = "settledUnits", required = true)
+    private double settledUnits;
+
+    /**
      * Total cost of the holding.
      */
     @JsonProperty(value = "cost", required = true)
     private double cost;
+
+    /**
+     * Transaction behind a commitment-type holding.
+     */
+    @JsonProperty(value = "transaction")
+    private TradeDto transaction;
 
     /**
      * Get the securityUid value.
@@ -94,6 +112,26 @@ public class HoldingDto {
     }
 
     /**
+     * Get the holdingType value.
+     *
+     * @return the holdingType value
+     */
+    public String holdingType() {
+        return this.holdingType;
+    }
+
+    /**
+     * Set the holdingType value.
+     *
+     * @param holdingType the holdingType value to set
+     * @return the HoldingDto object itself.
+     */
+    public HoldingDto withHoldingType(String holdingType) {
+        this.holdingType = holdingType;
+        return this;
+    }
+
+    /**
      * Get the units value.
      *
      * @return the units value
@@ -114,6 +152,26 @@ public class HoldingDto {
     }
 
     /**
+     * Get the settledUnits value.
+     *
+     * @return the settledUnits value
+     */
+    public double settledUnits() {
+        return this.settledUnits;
+    }
+
+    /**
+     * Set the settledUnits value.
+     *
+     * @param settledUnits the settledUnits value to set
+     * @return the HoldingDto object itself.
+     */
+    public HoldingDto withSettledUnits(double settledUnits) {
+        this.settledUnits = settledUnits;
+        return this;
+    }
+
+    /**
      * Get the cost value.
      *
      * @return the cost value
@@ -130,6 +188,26 @@ public class HoldingDto {
      */
     public HoldingDto withCost(double cost) {
         this.cost = cost;
+        return this;
+    }
+
+    /**
+     * Get the transaction value.
+     *
+     * @return the transaction value
+     */
+    public TradeDto transaction() {
+        return this.transaction;
+    }
+
+    /**
+     * Set the transaction value.
+     *
+     * @param transaction the transaction value to set
+     * @return the HoldingDto object itself.
+     */
+    public HoldingDto withTransaction(TradeDto transaction) {
+        this.transaction = transaction;
         return this;
     }
 

@@ -459,7 +459,7 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI list" })
         @GET("v1/api/propertyformats/{scope}")
-        Observable<Response<ResponseBody>> list(@Path("scope") String scope, @Query("includeDefault") Boolean includeDefault, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
+        Observable<Response<ResponseBody>> list(@Path("scope") String scope, @Query("includeDefault") Boolean includeDefault, @Query("includeSystem") Boolean includeSystem, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI getPropertyDataFormat" })
         @GET("v1/api/propertyformats/{scope}/{name}")
@@ -10733,11 +10733,12 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         final Boolean includeDefault = null;
+        final Boolean includeSystem = null;
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.list(scope, includeDefault, sortByConverted, start, limit)
+        return service.list(scope, includeDefault, includeSystem, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -10756,6 +10757,7 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      *
      * @param scope the String value
      * @param includeDefault the Boolean value
+     * @param includeSystem the Boolean value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10764,8 +10766,8 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object list(String scope, Boolean includeDefault, List<String> sortBy, Integer start, Integer limit) {
-        return listWithServiceResponseAsync(scope, includeDefault, sortBy, start, limit).toBlocking().single().body();
+    public Object list(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit) {
+        return listWithServiceResponseAsync(scope, includeDefault, includeSystem, sortBy, start, limit).toBlocking().single().body();
     }
 
     /**
@@ -10773,6 +10775,7 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      *
      * @param scope the String value
      * @param includeDefault the Boolean value
+     * @param includeSystem the Boolean value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10780,8 +10783,8 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> listAsync(String scope, Boolean includeDefault, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(listWithServiceResponseAsync(scope, includeDefault, sortBy, start, limit), serviceCallback);
+    public ServiceFuture<Object> listAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(listWithServiceResponseAsync(scope, includeDefault, includeSystem, sortBy, start, limit), serviceCallback);
     }
 
     /**
@@ -10789,14 +10792,15 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      *
      * @param scope the String value
      * @param includeDefault the Boolean value
+     * @param includeSystem the Boolean value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> listAsync(String scope, Boolean includeDefault, List<String> sortBy, Integer start, Integer limit) {
-        return listWithServiceResponseAsync(scope, includeDefault, sortBy, start, limit).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> listAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit) {
+        return listWithServiceResponseAsync(scope, includeDefault, includeSystem, sortBy, start, limit).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -10809,19 +10813,20 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      *
      * @param scope the String value
      * @param includeDefault the Boolean value
+     * @param includeSystem the Boolean value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> listWithServiceResponseAsync(String scope, Boolean includeDefault, List<String> sortBy, Integer start, Integer limit) {
+    public Observable<ServiceResponse<Object>> listWithServiceResponseAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         Validator.validate(sortBy);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.list(scope, includeDefault, sortByConverted, start, limit)
+        return service.list(scope, includeDefault, includeSystem, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
