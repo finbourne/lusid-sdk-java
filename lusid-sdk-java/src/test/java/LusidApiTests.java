@@ -61,9 +61,9 @@ public class LusidApiTests {
 
             final String tokenUrl = this.getEnvironmentOverride("FBN_TOKEN_URL", (String)config.get("tokenUrl"));
             final String username = this.getEnvironmentOverride("FBN_USERNAME", (String)config.get("username"));
-            final String password = this.getEnvironmentOverride("FBN_PASSWORD", URLEncoder.encode((String)config.get("password"), StandardCharsets.UTF_8.toString()));
-            final String clientId = this.getEnvironmentOverride("FBN_CLIENT_ID", URLEncoder.encode((String)config.get("clientId"), StandardCharsets.UTF_8.toString()));
-            final String clientSecret = this.getEnvironmentOverride("FBN_CLIENT_SECRET", URLEncoder.encode((String)config.get("clientSecret"), StandardCharsets.UTF_8.toString()));
+            final String password = URLEncoder.encode(this.getEnvironmentOverride("FBN_PASSWORD", (String)config.get("password")), StandardCharsets.UTF_8.toString());
+            final String clientId = URLEncoder.encode(this.getEnvironmentOverride("FBN_CLIENT_ID", (String)config.get("clientId")), StandardCharsets.UTF_8.toString());
+            final String clientSecret = URLEncoder.encode(this.getEnvironmentOverride("FBN_CLIENT_SECRET", (String)config.get("clientSecret")), StandardCharsets.UTF_8.toString());
 
             this.apiUrl = this.getEnvironmentOverride("FBN_LUSID_API_URL", (String)config.get("apiUrl"));
 
