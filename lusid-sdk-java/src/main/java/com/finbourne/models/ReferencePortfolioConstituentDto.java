@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class ReferencePortfolioConstituentDto {
     /**
-     * Identifier for this constituent.
+     * The id property.
      */
     @JsonProperty(value = "id")
     private String id;

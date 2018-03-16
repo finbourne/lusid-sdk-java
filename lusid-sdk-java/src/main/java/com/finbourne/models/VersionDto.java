@@ -30,20 +30,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class VersionDto {
     /**
-     * The time at which this version became valid. Only applies when a single
-     * entity is being interacted with.
+     * The effectiveFrom property.
      */
     @JsonProperty(value = "effectiveFrom")
     private DateTime effectiveFrom;
 
     /**
-     * The time at which this version was durably persisted.
+     * The asAtDate property.
      */
     @JsonProperty(value = "asAtDate")
     private DateTime asAtDate;
 
     /**
-     * The name of the person or system which created this version.
+     * The updatedBy property.
      */
     @JsonProperty(value = "updatedBy")
     private String updatedBy;

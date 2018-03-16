@@ -30,14 +30,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class UpdatePortfolioRequest {
     /**
-     * Portfolio name.
+     * The name property.
      */
     @JsonProperty(value = "name", required = true)
     private String name;
 
     /**
-     * The original creation date, defaults to today if not specified when
-     * creating a portfolio.
+     * The created property.
      */
     @JsonProperty(value = "created")
     private DateTime created;

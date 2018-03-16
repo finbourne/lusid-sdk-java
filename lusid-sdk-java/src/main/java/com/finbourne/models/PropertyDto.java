@@ -30,9 +30,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class PropertyDto {
     /**
-     * The property key made up of the PropertyDomain, scope and name delimited
-     * with a '/'
-     * e.g. trade/myscope/myproperty.
+     * The key property.
      */
     @JsonProperty(value = "key", required = true)
     private String key;

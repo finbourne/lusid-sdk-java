@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class CreateDerivedPortfolioRequest {
     /**
-     * Portfolio name.
+     * The name property.
      */
     @JsonProperty(value = "name", required = true)
     private String name;
@@ -48,8 +48,7 @@ public class CreateDerivedPortfolioRequest {
     private ResourceId parentPortfolio;
 
     /**
-     * The original creation date, defaults to today if not specified when
-     * creating a portfolio.
+     * The created property.
      */
     @JsonProperty(value = "created")
     private DateTime created;

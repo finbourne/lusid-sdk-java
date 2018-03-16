@@ -31,55 +31,56 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class TradeDto {
     /**
-     * The tradeId property.
+     * Unique trade identifier.
      */
     @JsonProperty(value = "tradeId", required = true)
     private String tradeId;
 
     /**
+     * LUSID transaction type code - Buy, Sell, StockIn, StockOut, etc.
      * Possible values include: 'Buy', 'Sell', 'StockIn', 'StockOut'.
      */
     @JsonProperty(value = "type", required = true)
     private String type;
 
     /**
-     * The securityUid property.
+     * Unique security identifier.
      */
     @JsonProperty(value = "securityUid", required = true)
     private String securityUid;
 
     /**
-     * The tradeDate property.
+     * Trade date.
      */
     @JsonProperty(value = "tradeDate", required = true)
     private DateTime tradeDate;
 
     /**
-     * The settlementDate property.
+     * Settlement date.
      */
     @JsonProperty(value = "settlementDate", required = true)
     private DateTime settlementDate;
 
     /**
-     * The units property.
+     * Quantity of trade in units of the security.
      */
     @JsonProperty(value = "units", required = true)
     private double units;
 
     /**
-     * The tradePrice property.
+     * Execution price for the trade.
      */
     @JsonProperty(value = "tradePrice", required = true)
     private double tradePrice;
 
     /**
-     * The totalConsideration property.
+     * Total value of the trade.
      */
     @JsonProperty(value = "totalConsideration", required = true)
     private double totalConsideration;
 
     /**
-     * This is the ISO three letter code representing the currency.
+     * Settlement currency.
      */
     @JsonProperty(value = "settlementCurrency", required = true)
     private String settlementCurrency;
@@ -91,13 +92,14 @@ public class TradeDto {
     private List<PropertyDto> properties;
 
     /**
-     * The counterpartyId property.
+     * Counterparty identifier.
      */
     @JsonProperty(value = "counterpartyId")
     private String counterpartyId;
 
     /**
-     * Possible values include: 'System', 'Client'.
+     * Where this trade came from, either Client or System. Possible values
+     * include: 'System', 'Client'.
      */
     @JsonProperty(value = "source", required = true)
     private String source;
