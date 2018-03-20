@@ -394,21 +394,21 @@ public class LusidApiTests {
         Thread.sleep(500);
 
         //  list trades
-        Object allTrades = client.getTrades(scope, portfolioId, null, null, asAtBatch1, null, 0, 0, null);
+        Object allTrades = client.getTrades(scope, portfolioId, null, null, asAtBatch1, null, 0, Integer.MAX_VALUE, null, null);
         VersionedResourceListTradeDto trades = assertResponseIsNotError(VersionedResourceListTradeDto.class, allTrades);
 
         assertEquals(3, trades.values().size(), String.format("asAt %s", asAtBatch1));
         System.out.println("trades at " + asAtBatch1);
         printTrades.accept(trades.values());
 
-        allTrades = client.getTrades(scope, portfolioId, null, null, asAtBatch2, null, 0, 0, null);
+        allTrades = client.getTrades(scope, portfolioId, null, null, asAtBatch2, null, 0, Integer.MAX_VALUE, null, null);
         trades = assertResponseIsNotError(VersionedResourceListTradeDto.class, allTrades);
 
         assertEquals(4, trades.values().size(), String.format("asAt %s", asAtBatch2));
         System.out.println("trades at " + asAtBatch2);
         printTrades.accept(trades.values());
 
-        allTrades = client.getTrades(scope, portfolioId, null, null, asAtBatch3, null, 0, 0, null);
+        allTrades = client.getTrades(scope, portfolioId, null, null, asAtBatch3, null, 0, Integer.MAX_VALUE, null, null);
         trades = assertResponseIsNotError(VersionedResourceListTradeDto.class, allTrades);
 
         assertEquals(5, trades.values().size(), String.format("asAt %s", asAtBatch3));
@@ -416,7 +416,7 @@ public class LusidApiTests {
         printTrades.accept(trades.values());
 
         //  latest trades
-        allTrades = client.getTrades(scope, portfolioId, null, null, null, null, 0, 0, null);
+        allTrades = client.getTrades(scope, portfolioId, null, null, null, null, 0, Integer.MAX_VALUE, null, null);
         trades = assertResponseIsNotError(VersionedResourceListTradeDto.class, allTrades);
 
         assertEquals(5, trades.values().size());
