@@ -49,6 +49,12 @@ public class VersionedResourceListTradeDto {
     private String href;
 
     /**
+     * The total number of records returned in the set.
+     */
+    @JsonProperty(value = "count")
+    private Integer count;
+
+    /**
      * The _links property.
      */
     @JsonProperty(value = "_links")
@@ -111,6 +117,26 @@ public class VersionedResourceListTradeDto {
      */
     public VersionedResourceListTradeDto withHref(String href) {
         this.href = href;
+        return this;
+    }
+
+    /**
+     * Get the count value.
+     *
+     * @return the count value
+     */
+    public Integer count() {
+        return this.count;
+    }
+
+    /**
+     * Set the count value.
+     *
+     * @param count the count value to set
+     * @return the VersionedResourceListTradeDto object itself.
+     */
+    public VersionedResourceListTradeDto withCount(Integer count) {
+        this.count = count;
         return this;
     }
 

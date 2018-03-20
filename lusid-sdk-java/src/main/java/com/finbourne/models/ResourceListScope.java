@@ -43,6 +43,12 @@ public class ResourceListScope {
     private String href;
 
     /**
+     * The total number of records returned in the set.
+     */
+    @JsonProperty(value = "count")
+    private Integer count;
+
+    /**
      * The _links property.
      */
     @JsonProperty(value = "_links")
@@ -85,6 +91,26 @@ public class ResourceListScope {
      */
     public ResourceListScope withHref(String href) {
         this.href = href;
+        return this;
+    }
+
+    /**
+     * Get the count value.
+     *
+     * @return the count value
+     */
+    public Integer count() {
+        return this.count;
+    }
+
+    /**
+     * Set the count value.
+     *
+     * @param count the count value to set
+     * @return the ResourceListScope object itself.
+     */
+    public ResourceListScope withCount(Integer count) {
+        this.count = count;
         return this;
     }
 

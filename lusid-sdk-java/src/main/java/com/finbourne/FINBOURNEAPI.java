@@ -662,12 +662,13 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object listAnalyticStores(DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Object listAnalyticStores(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * List all analytic stores in client.
@@ -676,11 +677,12 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> listAnalyticStoresAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> listAnalyticStoresAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback);
 
     /**
      * List all analytic stores in client.
@@ -689,10 +691,11 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> listAnalyticStoresAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<Object> listAnalyticStoresAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * List all analytic stores in client.
@@ -701,10 +704,11 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> listAnalyticStoresWithServiceResponseAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<Object>> listAnalyticStoresWithServiceResponseAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Create a new analytic store for the given scope for the given date.
@@ -1255,12 +1259,13 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object listPortfolioGroups(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Object listPortfolioGroups(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * List all groups in a specified scope.
@@ -1270,11 +1275,12 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> listPortfolioGroupsAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> listPortfolioGroupsAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback);
 
     /**
      * List all groups in a specified scope.
@@ -1284,10 +1290,11 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> listPortfolioGroupsAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<Object> listPortfolioGroupsAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * List all groups in a specified scope.
@@ -1297,10 +1304,11 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> listPortfolioGroupsWithServiceResponseAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<Object>> listPortfolioGroupsWithServiceResponseAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Create a new group.
@@ -1564,12 +1572,13 @@ public interface FINBOURNEAPI {
      * @param code The portfolio group id
      * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter A filter expression to apply to the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object getPortfolioGroupCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt);
+    Object getPortfolioGroupCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
 
     /**
      * Gets all commands that modified the portfolio groups(s) with the specified id.
@@ -1578,11 +1587,12 @@ public interface FINBOURNEAPI {
      * @param code The portfolio group id
      * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter A filter expression to apply to the result set
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Gets all commands that modified the portfolio groups(s) with the specified id.
@@ -1591,10 +1601,11 @@ public interface FINBOURNEAPI {
      * @param code The portfolio group id
      * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter A filter expression to apply to the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt);
+    Observable<Object> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
 
     /**
      * Gets all commands that modified the portfolio groups(s) with the specified id.
@@ -1603,10 +1614,11 @@ public interface FINBOURNEAPI {
      * @param code The portfolio group id
      * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter A filter expression to apply to the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> getPortfolioGroupCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt);
+    Observable<ServiceResponse<Object>> getPortfolioGroupCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
 
     /**
      * Get a full expansion of an existing group.
@@ -2633,13 +2645,13 @@ public interface FINBOURNEAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
-     * @param propertyFilter the List&lt;String&gt; value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object listPortfolios(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter);
+    Object listPortfolios(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Get all portfolios.
@@ -2651,12 +2663,12 @@ public interface FINBOURNEAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
-     * @param propertyFilter the List&lt;String&gt; value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> listPortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> listPortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Get all portfolios.
@@ -2668,11 +2680,11 @@ public interface FINBOURNEAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
-     * @param propertyFilter the List&lt;String&gt; value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> listPortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter);
+    Observable<Object> listPortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Get all portfolios.
@@ -2684,11 +2696,11 @@ public interface FINBOURNEAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
-     * @param propertyFilter the List&lt;String&gt; value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> listPortfoliosWithServiceResponseAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter);
+    Observable<ServiceResponse<Object>> listPortfoliosWithServiceResponseAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Create portfolio.
@@ -3115,12 +3127,13 @@ public interface FINBOURNEAPI {
      * @param code The portfolio id
      * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter Command filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object getCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt);
+    Object getCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
 
     /**
      * Gets all commands that modified the portfolio(s) with the specified id.
@@ -3129,11 +3142,12 @@ public interface FINBOURNEAPI {
      * @param code The portfolio id
      * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter Command filter
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> getCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> getCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Gets all commands that modified the portfolio(s) with the specified id.
@@ -3142,10 +3156,11 @@ public interface FINBOURNEAPI {
      * @param code The portfolio id
      * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter Command filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> getCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt);
+    Observable<Object> getCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
 
     /**
      * Gets all commands that modified the portfolio(s) with the specified id.
@@ -3154,10 +3169,11 @@ public interface FINBOURNEAPI {
      * @param code The portfolio id
      * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter Command filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> getCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt);
+    Observable<ServiceResponse<Object>> getCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
 
     /**
      * Get portfolio details.
@@ -3540,12 +3556,13 @@ public interface FINBOURNEAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
+     * @param filter A filter on the results
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object getAggregateHoldings(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Object getAggregateHoldings(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Get holdings.
@@ -3559,11 +3576,12 @@ public interface FINBOURNEAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
+     * @param filter A filter on the results
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> getAggregateHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> getAggregateHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Get holdings.
@@ -3577,10 +3595,11 @@ public interface FINBOURNEAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
+     * @param filter A filter on the results
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> getAggregateHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<Object> getAggregateHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Get holdings.
@@ -3594,10 +3613,11 @@ public interface FINBOURNEAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
+     * @param filter A filter on the results
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> getAggregateHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<Object>> getAggregateHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Adjust holdings.
@@ -4182,12 +4202,13 @@ public interface FINBOURNEAPI {
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
      * @param propertyFilter the List&lt;String&gt; value
+     * @param filter Trade filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object getTrades(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter);
+    Object getTrades(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter);
 
     /**
      * Get trades.
@@ -4201,11 +4222,12 @@ public interface FINBOURNEAPI {
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
      * @param propertyFilter the List&lt;String&gt; value
+     * @param filter Trade filter
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Get trades.
@@ -4219,10 +4241,11 @@ public interface FINBOURNEAPI {
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
      * @param propertyFilter the List&lt;String&gt; value
+     * @param filter Trade filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter);
+    Observable<Object> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter);
 
     /**
      * Get trades.
@@ -4236,10 +4259,11 @@ public interface FINBOURNEAPI {
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
      * @param propertyFilter the List&lt;String&gt; value
+     * @param filter Trade filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> getTradesWithServiceResponseAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter);
+    Observable<ServiceResponse<Object>> getTradesWithServiceResponseAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter);
 
     /**
      * Add/updates trades in a portfolio.
@@ -4921,77 +4945,93 @@ public interface FINBOURNEAPI {
     Observable<ServiceResponse<Object>> portfoliosSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
-     * Search property definitions.
+     * Search properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object proxySearch();
+    Object propertiesSearch();
 
     /**
-     * Search property definitions.
+     * Search properties.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> proxySearchAsync(final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> propertiesSearchAsync(final ServiceCallback<Object> serviceCallback);
 
     /**
-     * Search property definitions.
+     * Search properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> proxySearchAsync();
+    Observable<Object> propertiesSearchAsync();
 
     /**
-     * Search property definitions.
+     * Search properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> proxySearchWithServiceResponseAsync();
+    Observable<ServiceResponse<Object>> propertiesSearchWithServiceResponseAsync();
     /**
-     * Search property definitions.
+     * Search properties.
      *
      * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object proxySearch(Object request);
+    Object propertiesSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
-     * Search property definitions.
+     * Search properties.
      *
      * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> proxySearchAsync(Object request, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> propertiesSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback);
 
     /**
-     * Search property definitions.
+     * Search properties.
      *
      * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> proxySearchAsync(Object request);
+    Observable<Object> propertiesSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
-     * Search property definitions.
+     * Search properties.
      *
      * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> proxySearchWithServiceResponseAsync(Object request);
+    Observable<ServiceResponse<Object>> propertiesSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets the available property-definition domains.
@@ -5188,12 +5228,13 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object getMultiplePropertyDefinitions(List<String> keys, List<String> sortBy, Integer start, Integer limit);
+    Object getMultiplePropertyDefinitions(List<String> keys, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets multiple property definitions.
@@ -5202,11 +5243,12 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> getMultiplePropertyDefinitionsAsync(List<String> keys, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> getMultiplePropertyDefinitionsAsync(List<String> keys, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Gets multiple property definitions.
@@ -5215,10 +5257,11 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> getMultiplePropertyDefinitionsAsync(List<String> keys, List<String> sortBy, Integer start, Integer limit);
+    Observable<Object> getMultiplePropertyDefinitionsAsync(List<String> keys, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets multiple property definitions.
@@ -5227,10 +5270,11 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> getMultiplePropertyDefinitionsWithServiceResponseAsync(List<String> keys, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<Object>> getMultiplePropertyDefinitionsWithServiceResponseAsync(List<String> keys, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets all available property definitions.
@@ -5277,12 +5321,13 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object getAllPropertyKeysInDomain(String domain, List<String> sortBy, Integer start, Integer limit);
+    Object getAllPropertyKeysInDomain(String domain, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets all available property definitions.
@@ -5291,11 +5336,12 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> getAllPropertyKeysInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> getAllPropertyKeysInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Gets all available property definitions.
@@ -5304,10 +5350,11 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> getAllPropertyKeysInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit);
+    Observable<Object> getAllPropertyKeysInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets all available property definitions.
@@ -5316,10 +5363,11 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> getAllPropertyKeysInDomainWithServiceResponseAsync(String domain, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<Object>> getAllPropertyKeysInDomainWithServiceResponseAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets the available property-definition scopes for the specified domain.
@@ -5366,12 +5414,13 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object getPropertyDefinitionScopesInDomain(String domain, List<String> sortBy, Integer start, Integer limit);
+    Object getPropertyDefinitionScopesInDomain(String domain, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets the available property-definition scopes for the specified domain.
@@ -5380,11 +5429,12 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> getPropertyDefinitionScopesInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> getPropertyDefinitionScopesInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Gets the available property-definition scopes for the specified domain.
@@ -5393,10 +5443,11 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> getPropertyDefinitionScopesInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit);
+    Observable<Object> getPropertyDefinitionScopesInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets the available property-definition scopes for the specified domain.
@@ -5405,10 +5456,11 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> getPropertyDefinitionScopesInDomainWithServiceResponseAsync(String domain, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<Object>> getPropertyDefinitionScopesInDomainWithServiceResponseAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets all properties in a scope.
@@ -5460,12 +5512,13 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object getAllFromScope(String domain, String scope, List<String> sortBy, Integer start, Integer limit);
+    Object getAllFromScope(String domain, String scope, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets all properties in a scope.
@@ -5475,11 +5528,12 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> getAllFromScopeAsync(String domain, String scope, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> getAllFromScopeAsync(String domain, String scope, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Gets all properties in a scope.
@@ -5489,10 +5543,11 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> getAllFromScopeAsync(String domain, String scope, List<String> sortBy, Integer start, Integer limit);
+    Observable<Object> getAllFromScopeAsync(String domain, String scope, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets all properties in a scope.
@@ -5502,10 +5557,11 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> getAllFromScopeWithServiceResponseAsync(String domain, String scope, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<Object>> getAllFromScopeWithServiceResponseAsync(String domain, String scope, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets a property definition.
@@ -5868,12 +5924,13 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object list(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit);
+    Object list(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Lists all property data formats in the specified scope.
@@ -5884,11 +5941,12 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> listAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> listAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Lists all property data formats in the specified scope.
@@ -5899,10 +5957,11 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> listAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit);
+    Observable<Object> listAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Lists all property data formats in the specified scope.
@@ -5913,10 +5972,11 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> listWithServiceResponseAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<Object>> listWithServiceResponseAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets a property data format.
@@ -6101,12 +6161,13 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object listReferencePortfolios(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Object listReferencePortfolios(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Get all reference portfolios in a scope.
@@ -6117,11 +6178,12 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> listReferencePortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> listReferencePortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Get all reference portfolios in a scope.
@@ -6132,10 +6194,11 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> listReferencePortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<Object> listReferencePortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Get all reference portfolios in a scope.
@@ -6146,10 +6209,11 @@ public interface FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> listReferencePortfoliosWithServiceResponseAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<Object>> listReferencePortfoliosWithServiceResponseAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Create a new reference portfolio.

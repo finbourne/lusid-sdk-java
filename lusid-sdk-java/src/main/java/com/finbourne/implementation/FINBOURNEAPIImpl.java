@@ -211,7 +211,7 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI listAnalyticStores" })
         @GET("v1/api/analytics")
-        Observable<Response<ResponseBody>> listAnalyticStores(@Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
+        Observable<Response<ResponseBody>> listAnalyticStores(@Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI createAnalyticStore" })
         @POST("v1/api/analytics")
@@ -243,7 +243,7 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI listPortfolioGroups" })
         @GET("v1/api/groups/portfolios/{scope}")
-        Observable<Response<ResponseBody>> listPortfolioGroups(@Path("scope") String scope, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
+        Observable<Response<ResponseBody>> listPortfolioGroups(@Path("scope") String scope, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI createPortfolioGroup" })
         @POST("v1/api/groups/portfolios/{scope}")
@@ -259,7 +259,7 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI getPortfolioGroupCommands" })
         @GET("v1/api/groups/portfolios/{scope}/{code}/commands")
-        Observable<Response<ResponseBody>> getPortfolioGroupCommands(@Path("scope") String scope, @Path("code") String code, @Query("fromAsAt") DateTime fromAsAt, @Query("toAsAt") DateTime toAsAt);
+        Observable<Response<ResponseBody>> getPortfolioGroupCommands(@Path("scope") String scope, @Path("code") String code, @Query("fromAsAt") DateTime fromAsAt, @Query("toAsAt") DateTime toAsAt, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI getPortfolioGroupExpansion" })
         @GET("v1/api/groups/portfolios/{scope}/{code}/expansion")
@@ -323,7 +323,7 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI listPortfolios" })
         @GET("v1/api/portfolios/{scope}")
-        Observable<Response<ResponseBody>> listPortfolios(@Path("scope") String scope, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("propertyFilter") String propertyFilter);
+        Observable<Response<ResponseBody>> listPortfolios(@Path("scope") String scope, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI createPortfolio" })
         @POST("v1/api/portfolios/{scope}")
@@ -343,7 +343,7 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI getCommands" })
         @GET("v1/api/portfolios/{scope}/{code}/commands")
-        Observable<Response<ResponseBody>> getCommands(@Path("scope") String scope, @Path("code") String code, @Query("fromAsAt") DateTime fromAsAt, @Query("toAsAt") DateTime toAsAt);
+        Observable<Response<ResponseBody>> getCommands(@Path("scope") String scope, @Path("code") String code, @Query("fromAsAt") DateTime fromAsAt, @Query("toAsAt") DateTime toAsAt, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI getDetails" })
         @GET("v1/api/portfolios/{scope}/{code}/details")
@@ -359,7 +359,7 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI getAggregateHoldings" })
         @GET("v1/api/portfolios/{scope}/{code}/holdings")
-        Observable<Response<ResponseBody>> getAggregateHoldings(@Path("scope") String scope, @Path("code") String code, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
+        Observable<Response<ResponseBody>> getAggregateHoldings(@Path("scope") String scope, @Path("code") String code, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI adjustHoldings" })
         @POST("v1/api/portfolios/{scope}/{code}/holdings/{effectiveAt}")
@@ -383,7 +383,7 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI getTrades" })
         @GET("v1/api/portfolios/{scope}/{code}/trades")
-        Observable<Response<ResponseBody>> getTrades(@Path("scope") String scope, @Path("code") String code, @Query("fromTradeDate") DateTime fromTradeDate, @Query("toTradeDate") DateTime toTradeDate, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("propertyFilter") String propertyFilter);
+        Observable<Response<ResponseBody>> getTrades(@Path("scope") String scope, @Path("code") String code, @Query("fromTradeDate") DateTime fromTradeDate, @Query("toTradeDate") DateTime toTradeDate, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("propertyFilter") String propertyFilter, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI upsertTrades" })
         @POST("v1/api/portfolios/{scope}/{code}/trades")
@@ -413,9 +413,9 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         @POST("v1/api/portfolios/search")
         Observable<Response<ResponseBody>> portfoliosSearch(@Body Object request, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
 
-        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI proxySearch" })
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI propertiesSearch" })
         @POST("v1/api/properties/search")
-        Observable<Response<ResponseBody>> proxySearch(@Body Object request);
+        Observable<Response<ResponseBody>> propertiesSearch(@Body Object request, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI getPropertyDefinitionDomains" })
         @GET("v1/api/propertydefinitions")
@@ -427,19 +427,19 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI getMultiplePropertyDefinitions" })
         @GET("v1/api/propertydefinitions/_keys")
-        Observable<Response<ResponseBody>> getMultiplePropertyDefinitions(@Query("keys") String keys, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
+        Observable<Response<ResponseBody>> getMultiplePropertyDefinitions(@Query("keys") String keys, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI getAllPropertyKeysInDomain" })
         @GET("v1/api/propertydefinitions/{domain}")
-        Observable<Response<ResponseBody>> getAllPropertyKeysInDomain(@Path("domain") String domain, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
+        Observable<Response<ResponseBody>> getAllPropertyKeysInDomain(@Path("domain") String domain, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI getPropertyDefinitionScopesInDomain" })
         @GET("v1/api/propertydefinitions/{domain}/_scopes")
-        Observable<Response<ResponseBody>> getPropertyDefinitionScopesInDomain(@Path("domain") String domain, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
+        Observable<Response<ResponseBody>> getPropertyDefinitionScopesInDomain(@Path("domain") String domain, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI getAllFromScope" })
         @GET("v1/api/propertydefinitions/{domain}/{scope}")
-        Observable<Response<ResponseBody>> getAllFromScope(@Path("domain") String domain, @Path("scope") String scope, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
+        Observable<Response<ResponseBody>> getAllFromScope(@Path("domain") String domain, @Path("scope") String scope, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI getPropertyDefinition" })
         @GET("v1/api/propertydefinitions/{domain}/{scope}/{name}")
@@ -459,7 +459,7 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI list" })
         @GET("v1/api/propertyformats/{scope}")
-        Observable<Response<ResponseBody>> list(@Path("scope") String scope, @Query("includeDefault") Boolean includeDefault, @Query("includeSystem") Boolean includeSystem, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
+        Observable<Response<ResponseBody>> list(@Path("scope") String scope, @Query("includeDefault") Boolean includeDefault, @Query("includeSystem") Boolean includeSystem, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI getPropertyDataFormat" })
         @GET("v1/api/propertyformats/{scope}/{name}")
@@ -471,7 +471,7 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI listReferencePortfolios" })
         @GET("v1/api/reference/{scope}")
-        Observable<Response<ResponseBody>> listReferencePortfolios(@Path("scope") String scope, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
+        Observable<Response<ResponseBody>> listReferencePortfolios(@Path("scope") String scope, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI createReferencePortfolio" })
         @POST("v1/api/reference/{scope}")
@@ -1572,8 +1572,9 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
+        final String filter = null;
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.listAnalyticStores(asAt, sortByConverted, start, limit)
+        return service.listAnalyticStores(asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -1594,13 +1595,14 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object listAnalyticStores(DateTime asAt, List<String> sortBy, Integer start, Integer limit) {
-        return listAnalyticStoresWithServiceResponseAsync(asAt, sortBy, start, limit).toBlocking().single().body();
+    public Object listAnalyticStores(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return listAnalyticStoresWithServiceResponseAsync(asAt, sortBy, start, limit, filter).toBlocking().single().body();
     }
 
     /**
@@ -1610,12 +1612,13 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> listAnalyticStoresAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(listAnalyticStoresWithServiceResponseAsync(asAt, sortBy, start, limit), serviceCallback);
+    public ServiceFuture<Object> listAnalyticStoresAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(listAnalyticStoresWithServiceResponseAsync(asAt, sortBy, start, limit, filter), serviceCallback);
     }
 
     /**
@@ -1625,11 +1628,12 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> listAnalyticStoresAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit) {
-        return listAnalyticStoresWithServiceResponseAsync(asAt, sortBy, start, limit).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> listAnalyticStoresAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return listAnalyticStoresWithServiceResponseAsync(asAt, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -1644,13 +1648,14 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> listAnalyticStoresWithServiceResponseAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit) {
+    public Observable<ServiceResponse<Object>> listAnalyticStoresWithServiceResponseAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
         Validator.validate(sortBy);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.listAnalyticStores(asAt, sortByConverted, start, limit)
+        return service.listAnalyticStores(asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -2604,8 +2609,9 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
+        final String filter = null;
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.listPortfolioGroups(scope, asAt, sortByConverted, start, limit)
+        return service.listPortfolioGroups(scope, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -2627,13 +2633,14 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object listPortfolioGroups(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit) {
-        return listPortfolioGroupsWithServiceResponseAsync(scope, asAt, sortBy, start, limit).toBlocking().single().body();
+    public Object listPortfolioGroups(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return listPortfolioGroupsWithServiceResponseAsync(scope, asAt, sortBy, start, limit, filter).toBlocking().single().body();
     }
 
     /**
@@ -2644,12 +2651,13 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> listPortfolioGroupsAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(listPortfolioGroupsWithServiceResponseAsync(scope, asAt, sortBy, start, limit), serviceCallback);
+    public ServiceFuture<Object> listPortfolioGroupsAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(listPortfolioGroupsWithServiceResponseAsync(scope, asAt, sortBy, start, limit, filter), serviceCallback);
     }
 
     /**
@@ -2660,11 +2668,12 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> listPortfolioGroupsAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit) {
-        return listPortfolioGroupsWithServiceResponseAsync(scope, asAt, sortBy, start, limit).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> listPortfolioGroupsAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return listPortfolioGroupsWithServiceResponseAsync(scope, asAt, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -2680,16 +2689,17 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> listPortfolioGroupsWithServiceResponseAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit) {
+    public Observable<ServiceResponse<Object>> listPortfolioGroupsWithServiceResponseAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         Validator.validate(sortBy);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.listPortfolioGroups(scope, asAt, sortByConverted, start, limit)
+        return service.listPortfolioGroups(scope, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -3161,7 +3171,8 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         }
         final DateTime fromAsAt = null;
         final DateTime toAsAt = null;
-        return service.getPortfolioGroupCommands(scope, code, fromAsAt, toAsAt)
+        final String filter = null;
+        return service.getPortfolioGroupCommands(scope, code, fromAsAt, toAsAt, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -3182,13 +3193,14 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param code The portfolio group id
      * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter A filter expression to apply to the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getPortfolioGroupCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt) {
-        return getPortfolioGroupCommandsWithServiceResponseAsync(scope, code, fromAsAt, toAsAt).toBlocking().single().body();
+    public Object getPortfolioGroupCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter) {
+        return getPortfolioGroupCommandsWithServiceResponseAsync(scope, code, fromAsAt, toAsAt, filter).toBlocking().single().body();
     }
 
     /**
@@ -3198,12 +3210,13 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param code The portfolio group id
      * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter A filter expression to apply to the result set
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getPortfolioGroupCommandsWithServiceResponseAsync(scope, code, fromAsAt, toAsAt), serviceCallback);
+    public ServiceFuture<Object> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getPortfolioGroupCommandsWithServiceResponseAsync(scope, code, fromAsAt, toAsAt, filter), serviceCallback);
     }
 
     /**
@@ -3213,11 +3226,12 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param code The portfolio group id
      * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter A filter expression to apply to the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt) {
-        return getPortfolioGroupCommandsWithServiceResponseAsync(scope, code, fromAsAt, toAsAt).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter) {
+        return getPortfolioGroupCommandsWithServiceResponseAsync(scope, code, fromAsAt, toAsAt, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -3232,17 +3246,18 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param code The portfolio group id
      * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter A filter expression to apply to the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getPortfolioGroupCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt) {
+    public Observable<ServiceResponse<Object>> getPortfolioGroupCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         if (code == null) {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
-        return service.getPortfolioGroupCommands(scope, code, fromAsAt, toAsAt)
+        return service.getPortfolioGroupCommands(scope, code, fromAsAt, toAsAt, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -5085,9 +5100,9 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
-        final List<String> propertyFilter = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String propertyFilterConverted = this.serializerAdapter().serializeList(propertyFilter, CollectionFormat.MULTI);
-        return service.listPortfolios(scope, effectiveAt, asAt, sortByConverted, start, limit, propertyFilterConverted)
+        final String filter = null;
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
+        return service.listPortfolios(scope, effectiveAt, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -5111,14 +5126,14 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
-     * @param propertyFilter the List&lt;String&gt; value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object listPortfolios(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter) {
-        return listPortfoliosWithServiceResponseAsync(scope, effectiveAt, asAt, sortBy, start, limit, propertyFilter).toBlocking().single().body();
+    public Object listPortfolios(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return listPortfoliosWithServiceResponseAsync(scope, effectiveAt, asAt, sortBy, start, limit, filter).toBlocking().single().body();
     }
 
     /**
@@ -5131,13 +5146,13 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
-     * @param propertyFilter the List&lt;String&gt; value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> listPortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(listPortfoliosWithServiceResponseAsync(scope, effectiveAt, asAt, sortBy, start, limit, propertyFilter), serviceCallback);
+    public ServiceFuture<Object> listPortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(listPortfoliosWithServiceResponseAsync(scope, effectiveAt, asAt, sortBy, start, limit, filter), serviceCallback);
     }
 
     /**
@@ -5150,12 +5165,12 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
-     * @param propertyFilter the List&lt;String&gt; value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> listPortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter) {
-        return listPortfoliosWithServiceResponseAsync(scope, effectiveAt, asAt, sortBy, start, limit, propertyFilter).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> listPortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return listPortfoliosWithServiceResponseAsync(scope, effectiveAt, asAt, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -5173,18 +5188,17 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
-     * @param propertyFilter the List&lt;String&gt; value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> listPortfoliosWithServiceResponseAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter) {
+    public Observable<ServiceResponse<Object>> listPortfoliosWithServiceResponseAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         Validator.validate(sortBy);
-        Validator.validate(propertyFilter);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String propertyFilterConverted = this.serializerAdapter().serializeList(propertyFilter, CollectionFormat.MULTI);
-        return service.listPortfolios(scope, effectiveAt, asAt, sortByConverted, start, limit, propertyFilterConverted)
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
+        return service.listPortfolios(scope, effectiveAt, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -5930,7 +5944,8 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         }
         final DateTime fromAsAt = null;
         final DateTime toAsAt = null;
-        return service.getCommands(scope, code, fromAsAt, toAsAt)
+        final String filter = null;
+        return service.getCommands(scope, code, fromAsAt, toAsAt, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -5951,13 +5966,14 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param code The portfolio id
      * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter Command filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt) {
-        return getCommandsWithServiceResponseAsync(scope, code, fromAsAt, toAsAt).toBlocking().single().body();
+    public Object getCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter) {
+        return getCommandsWithServiceResponseAsync(scope, code, fromAsAt, toAsAt, filter).toBlocking().single().body();
     }
 
     /**
@@ -5967,12 +5983,13 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param code The portfolio id
      * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter Command filter
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getCommandsWithServiceResponseAsync(scope, code, fromAsAt, toAsAt), serviceCallback);
+    public ServiceFuture<Object> getCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getCommandsWithServiceResponseAsync(scope, code, fromAsAt, toAsAt, filter), serviceCallback);
     }
 
     /**
@@ -5982,11 +5999,12 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param code The portfolio id
      * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter Command filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt) {
-        return getCommandsWithServiceResponseAsync(scope, code, fromAsAt, toAsAt).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter) {
+        return getCommandsWithServiceResponseAsync(scope, code, fromAsAt, toAsAt, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -6001,17 +6019,18 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param code The portfolio id
      * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter Command filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt) {
+    public Observable<ServiceResponse<Object>> getCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         if (code == null) {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
-        return service.getCommands(scope, code, fromAsAt, toAsAt)
+        return service.getCommands(scope, code, fromAsAt, toAsAt, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -6645,8 +6664,9 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
+        final String filter = null;
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getAggregateHoldings(scope, code, effectiveAt, asAt, sortByConverted, start, limit)
+        return service.getAggregateHoldings(scope, code, effectiveAt, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -6672,13 +6692,14 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
+     * @param filter A filter on the results
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getAggregateHoldings(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit) {
-        return getAggregateHoldingsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit).toBlocking().single().body();
+    public Object getAggregateHoldings(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getAggregateHoldingsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, filter).toBlocking().single().body();
     }
 
     /**
@@ -6693,12 +6714,13 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
+     * @param filter A filter on the results
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getAggregateHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getAggregateHoldingsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit), serviceCallback);
+    public ServiceFuture<Object> getAggregateHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getAggregateHoldingsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, filter), serviceCallback);
     }
 
     /**
@@ -6713,11 +6735,12 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
+     * @param filter A filter on the results
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getAggregateHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit) {
-        return getAggregateHoldingsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getAggregateHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getAggregateHoldingsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -6737,10 +6760,11 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
+     * @param filter A filter on the results
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getAggregateHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit) {
+    public Observable<ServiceResponse<Object>> getAggregateHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -6749,7 +6773,7 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         }
         Validator.validate(sortBy);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getAggregateHoldings(scope, code, effectiveAt, asAt, sortByConverted, start, limit)
+        return service.getAggregateHoldings(scope, code, effectiveAt, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -7741,8 +7765,9 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         final Integer start = null;
         final Integer limit = null;
         final List<String> propertyFilter = null;
+        final String filter = null;
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String propertyFilterConverted = this.serializerAdapter().serializeList(propertyFilter, CollectionFormat.MULTI);
-        return service.getTrades(scope, code, fromTradeDate, toTradeDate, asAt, sortByConverted, start, limit, propertyFilterConverted)
+        return service.getTrades(scope, code, fromTradeDate, toTradeDate, asAt, sortByConverted, start, limit, propertyFilterConverted, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -7768,13 +7793,14 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
      * @param propertyFilter the List&lt;String&gt; value
+     * @param filter Trade filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getTrades(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter) {
-        return getTradesWithServiceResponseAsync(scope, code, fromTradeDate, toTradeDate, asAt, sortBy, start, limit, propertyFilter).toBlocking().single().body();
+    public Object getTrades(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter) {
+        return getTradesWithServiceResponseAsync(scope, code, fromTradeDate, toTradeDate, asAt, sortBy, start, limit, propertyFilter, filter).toBlocking().single().body();
     }
 
     /**
@@ -7789,12 +7815,13 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
      * @param propertyFilter the List&lt;String&gt; value
+     * @param filter Trade filter
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getTradesWithServiceResponseAsync(scope, code, fromTradeDate, toTradeDate, asAt, sortBy, start, limit, propertyFilter), serviceCallback);
+    public ServiceFuture<Object> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getTradesWithServiceResponseAsync(scope, code, fromTradeDate, toTradeDate, asAt, sortBy, start, limit, propertyFilter, filter), serviceCallback);
     }
 
     /**
@@ -7809,11 +7836,12 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
      * @param propertyFilter the List&lt;String&gt; value
+     * @param filter Trade filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter) {
-        return getTradesWithServiceResponseAsync(scope, code, fromTradeDate, toTradeDate, asAt, sortBy, start, limit, propertyFilter).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter) {
+        return getTradesWithServiceResponseAsync(scope, code, fromTradeDate, toTradeDate, asAt, sortBy, start, limit, propertyFilter, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -7833,10 +7861,11 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
      * @param propertyFilter the List&lt;String&gt; value
+     * @param filter Trade filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getTradesWithServiceResponseAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter) {
+    public Observable<ServiceResponse<Object>> getTradesWithServiceResponseAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -7846,7 +7875,7 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         Validator.validate(sortBy);
         Validator.validate(propertyFilter);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String propertyFilterConverted = this.serializerAdapter().serializeList(propertyFilter, CollectionFormat.MULTI);
-        return service.getTrades(scope, code, fromTradeDate, toTradeDate, asAt, sortByConverted, start, limit, propertyFilterConverted)
+        return service.getTrades(scope, code, fromTradeDate, toTradeDate, asAt, sortByConverted, start, limit, propertyFilterConverted, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -9059,36 +9088,36 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
     }
 
     /**
-     * Search property definitions.
+     * Search properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object proxySearch() {
-        return proxySearchWithServiceResponseAsync().toBlocking().single().body();
+    public Object propertiesSearch() {
+        return propertiesSearchWithServiceResponseAsync().toBlocking().single().body();
     }
 
     /**
-     * Search property definitions.
+     * Search properties.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> proxySearchAsync(final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(proxySearchWithServiceResponseAsync(), serviceCallback);
+    public ServiceFuture<Object> propertiesSearchAsync(final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(propertiesSearchWithServiceResponseAsync(), serviceCallback);
     }
 
     /**
-     * Search property definitions.
+     * Search properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> proxySearchAsync() {
-        return proxySearchWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> propertiesSearchAsync() {
+        return propertiesSearchWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -9097,19 +9126,24 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
     }
 
     /**
-     * Search property definitions.
+     * Search properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> proxySearchWithServiceResponseAsync() {
+    public Observable<ServiceResponse<Object>> propertiesSearchWithServiceResponseAsync() {
         final Object request = null;
-        return service.proxySearch(request)
+        final List<String> sortBy = null;
+        final Integer start = null;
+        final Integer limit = null;
+        final String filter = null;
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
+        return service.propertiesSearch(request, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<Object> clientResponse = proxySearchDelegate(response);
+                        ServiceResponse<Object> clientResponse = propertiesSearchDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -9119,39 +9153,51 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
     }
 
     /**
-     * Search property definitions.
+     * Search properties.
      *
      * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object proxySearch(Object request) {
-        return proxySearchWithServiceResponseAsync(request).toBlocking().single().body();
+    public Object propertiesSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return propertiesSearchWithServiceResponseAsync(request, sortBy, start, limit, filter).toBlocking().single().body();
     }
 
     /**
-     * Search property definitions.
+     * Search properties.
      *
      * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> proxySearchAsync(Object request, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(proxySearchWithServiceResponseAsync(request), serviceCallback);
+    public ServiceFuture<Object> propertiesSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(propertiesSearchWithServiceResponseAsync(request, sortBy, start, limit, filter), serviceCallback);
     }
 
     /**
-     * Search property definitions.
+     * Search properties.
      *
      * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> proxySearchAsync(Object request) {
-        return proxySearchWithServiceResponseAsync(request).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> propertiesSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return propertiesSearchWithServiceResponseAsync(request, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -9160,19 +9206,25 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
     }
 
     /**
-     * Search property definitions.
+     * Search properties.
      *
      * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> proxySearchWithServiceResponseAsync(Object request) {
-        return service.proxySearch(request)
+    public Observable<ServiceResponse<Object>> propertiesSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
+        Validator.validate(sortBy);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
+        return service.propertiesSearch(request, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<Object> clientResponse = proxySearchDelegate(response);
+                        ServiceResponse<Object> clientResponse = propertiesSearchDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -9181,9 +9233,9 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
             });
     }
 
-    private ServiceResponse<Object> proxySearchDelegate(Response<ResponseBody> response) throws RestException, IOException {
+    private ServiceResponse<Object> propertiesSearchDelegate(Response<ResponseBody> response) throws RestException, IOException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<String>() { }.getType())
+                .register(200, new TypeToken<ResourceListPropertyDefinitionDto>() { }.getType())
                 .register(400, new TypeToken<ErrorResponse>() { }.getType())
                 .register(500, new TypeToken<ErrorResponse>() { }.getType())
                 .build(response);
@@ -9516,8 +9568,9 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
+        final String filter = null;
         String keysConverted = this.serializerAdapter().serializeList(keys, CollectionFormat.MULTI);String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getMultiplePropertyDefinitions(keysConverted, sortByConverted, start, limit)
+        return service.getMultiplePropertyDefinitions(keysConverted, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -9538,13 +9591,14 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getMultiplePropertyDefinitions(List<String> keys, List<String> sortBy, Integer start, Integer limit) {
-        return getMultiplePropertyDefinitionsWithServiceResponseAsync(keys, sortBy, start, limit).toBlocking().single().body();
+    public Object getMultiplePropertyDefinitions(List<String> keys, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getMultiplePropertyDefinitionsWithServiceResponseAsync(keys, sortBy, start, limit, filter).toBlocking().single().body();
     }
 
     /**
@@ -9554,12 +9608,13 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getMultiplePropertyDefinitionsAsync(List<String> keys, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getMultiplePropertyDefinitionsWithServiceResponseAsync(keys, sortBy, start, limit), serviceCallback);
+    public ServiceFuture<Object> getMultiplePropertyDefinitionsAsync(List<String> keys, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getMultiplePropertyDefinitionsWithServiceResponseAsync(keys, sortBy, start, limit, filter), serviceCallback);
     }
 
     /**
@@ -9569,11 +9624,12 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getMultiplePropertyDefinitionsAsync(List<String> keys, List<String> sortBy, Integer start, Integer limit) {
-        return getMultiplePropertyDefinitionsWithServiceResponseAsync(keys, sortBy, start, limit).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getMultiplePropertyDefinitionsAsync(List<String> keys, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getMultiplePropertyDefinitionsWithServiceResponseAsync(keys, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -9588,14 +9644,15 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getMultiplePropertyDefinitionsWithServiceResponseAsync(List<String> keys, List<String> sortBy, Integer start, Integer limit) {
+    public Observable<ServiceResponse<Object>> getMultiplePropertyDefinitionsWithServiceResponseAsync(List<String> keys, List<String> sortBy, Integer start, Integer limit, String filter) {
         Validator.validate(keys);
         Validator.validate(sortBy);
         String keysConverted = this.serializerAdapter().serializeList(keys, CollectionFormat.MULTI);String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getMultiplePropertyDefinitions(keysConverted, sortByConverted, start, limit)
+        return service.getMultiplePropertyDefinitions(keysConverted, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -9673,8 +9730,9 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
+        final String filter = null;
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getAllPropertyKeysInDomain(domain, sortByConverted, start, limit)
+        return service.getAllPropertyKeysInDomain(domain, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -9695,13 +9753,14 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getAllPropertyKeysInDomain(String domain, List<String> sortBy, Integer start, Integer limit) {
-        return getAllPropertyKeysInDomainWithServiceResponseAsync(domain, sortBy, start, limit).toBlocking().single().body();
+    public Object getAllPropertyKeysInDomain(String domain, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getAllPropertyKeysInDomainWithServiceResponseAsync(domain, sortBy, start, limit, filter).toBlocking().single().body();
     }
 
     /**
@@ -9711,12 +9770,13 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getAllPropertyKeysInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getAllPropertyKeysInDomainWithServiceResponseAsync(domain, sortBy, start, limit), serviceCallback);
+    public ServiceFuture<Object> getAllPropertyKeysInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getAllPropertyKeysInDomainWithServiceResponseAsync(domain, sortBy, start, limit, filter), serviceCallback);
     }
 
     /**
@@ -9726,11 +9786,12 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getAllPropertyKeysInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit) {
-        return getAllPropertyKeysInDomainWithServiceResponseAsync(domain, sortBy, start, limit).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getAllPropertyKeysInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getAllPropertyKeysInDomainWithServiceResponseAsync(domain, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -9745,16 +9806,17 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getAllPropertyKeysInDomainWithServiceResponseAsync(String domain, List<String> sortBy, Integer start, Integer limit) {
+    public Observable<ServiceResponse<Object>> getAllPropertyKeysInDomainWithServiceResponseAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter) {
         if (domain == null) {
             throw new IllegalArgumentException("Parameter domain is required and cannot be null.");
         }
         Validator.validate(sortBy);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getAllPropertyKeysInDomain(domain, sortByConverted, start, limit)
+        return service.getAllPropertyKeysInDomain(domain, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -9832,8 +9894,9 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
+        final String filter = null;
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getPropertyDefinitionScopesInDomain(domain, sortByConverted, start, limit)
+        return service.getPropertyDefinitionScopesInDomain(domain, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -9854,13 +9917,14 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getPropertyDefinitionScopesInDomain(String domain, List<String> sortBy, Integer start, Integer limit) {
-        return getPropertyDefinitionScopesInDomainWithServiceResponseAsync(domain, sortBy, start, limit).toBlocking().single().body();
+    public Object getPropertyDefinitionScopesInDomain(String domain, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getPropertyDefinitionScopesInDomainWithServiceResponseAsync(domain, sortBy, start, limit, filter).toBlocking().single().body();
     }
 
     /**
@@ -9870,12 +9934,13 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getPropertyDefinitionScopesInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getPropertyDefinitionScopesInDomainWithServiceResponseAsync(domain, sortBy, start, limit), serviceCallback);
+    public ServiceFuture<Object> getPropertyDefinitionScopesInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getPropertyDefinitionScopesInDomainWithServiceResponseAsync(domain, sortBy, start, limit, filter), serviceCallback);
     }
 
     /**
@@ -9885,11 +9950,12 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getPropertyDefinitionScopesInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit) {
-        return getPropertyDefinitionScopesInDomainWithServiceResponseAsync(domain, sortBy, start, limit).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getPropertyDefinitionScopesInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getPropertyDefinitionScopesInDomainWithServiceResponseAsync(domain, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -9904,16 +9970,17 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getPropertyDefinitionScopesInDomainWithServiceResponseAsync(String domain, List<String> sortBy, Integer start, Integer limit) {
+    public Observable<ServiceResponse<Object>> getPropertyDefinitionScopesInDomainWithServiceResponseAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter) {
         if (domain == null) {
             throw new IllegalArgumentException("Parameter domain is required and cannot be null.");
         }
         Validator.validate(sortBy);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getPropertyDefinitionScopesInDomain(domain, sortByConverted, start, limit)
+        return service.getPropertyDefinitionScopesInDomain(domain, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -9998,8 +10065,9 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
+        final String filter = null;
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getAllFromScope(domain, scope, sortByConverted, start, limit)
+        return service.getAllFromScope(domain, scope, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -10021,13 +10089,14 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getAllFromScope(String domain, String scope, List<String> sortBy, Integer start, Integer limit) {
-        return getAllFromScopeWithServiceResponseAsync(domain, scope, sortBy, start, limit).toBlocking().single().body();
+    public Object getAllFromScope(String domain, String scope, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getAllFromScopeWithServiceResponseAsync(domain, scope, sortBy, start, limit, filter).toBlocking().single().body();
     }
 
     /**
@@ -10038,12 +10107,13 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getAllFromScopeAsync(String domain, String scope, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getAllFromScopeWithServiceResponseAsync(domain, scope, sortBy, start, limit), serviceCallback);
+    public ServiceFuture<Object> getAllFromScopeAsync(String domain, String scope, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getAllFromScopeWithServiceResponseAsync(domain, scope, sortBy, start, limit, filter), serviceCallback);
     }
 
     /**
@@ -10054,11 +10124,12 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getAllFromScopeAsync(String domain, String scope, List<String> sortBy, Integer start, Integer limit) {
-        return getAllFromScopeWithServiceResponseAsync(domain, scope, sortBy, start, limit).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getAllFromScopeAsync(String domain, String scope, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getAllFromScopeWithServiceResponseAsync(domain, scope, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -10074,10 +10145,11 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getAllFromScopeWithServiceResponseAsync(String domain, String scope, List<String> sortBy, Integer start, Integer limit) {
+    public Observable<ServiceResponse<Object>> getAllFromScopeWithServiceResponseAsync(String domain, String scope, List<String> sortBy, Integer start, Integer limit, String filter) {
         if (domain == null) {
             throw new IllegalArgumentException("Parameter domain is required and cannot be null.");
         }
@@ -10086,7 +10158,7 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         }
         Validator.validate(sortBy);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getAllFromScope(domain, scope, sortByConverted, start, limit)
+        return service.getAllFromScope(domain, scope, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -10737,8 +10809,9 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
+        final String filter = null;
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.list(scope, includeDefault, includeSystem, sortByConverted, start, limit)
+        return service.list(scope, includeDefault, includeSystem, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -10761,13 +10834,14 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object list(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit) {
-        return listWithServiceResponseAsync(scope, includeDefault, includeSystem, sortBy, start, limit).toBlocking().single().body();
+    public Object list(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return listWithServiceResponseAsync(scope, includeDefault, includeSystem, sortBy, start, limit, filter).toBlocking().single().body();
     }
 
     /**
@@ -10779,12 +10853,13 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> listAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(listWithServiceResponseAsync(scope, includeDefault, includeSystem, sortBy, start, limit), serviceCallback);
+    public ServiceFuture<Object> listAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(listWithServiceResponseAsync(scope, includeDefault, includeSystem, sortBy, start, limit, filter), serviceCallback);
     }
 
     /**
@@ -10796,11 +10871,12 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> listAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit) {
-        return listWithServiceResponseAsync(scope, includeDefault, includeSystem, sortBy, start, limit).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> listAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return listWithServiceResponseAsync(scope, includeDefault, includeSystem, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -10817,16 +10893,17 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> listWithServiceResponseAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit) {
+    public Observable<ServiceResponse<Object>> listWithServiceResponseAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         Validator.validate(sortBy);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.list(scope, includeDefault, includeSystem, sortByConverted, start, limit)
+        return service.list(scope, includeDefault, includeSystem, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -11155,8 +11232,9 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
+        final String filter = null;
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.listReferencePortfolios(scope, effectiveAt, asAt, sortByConverted, start, limit)
+        return service.listReferencePortfolios(scope, effectiveAt, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -11179,13 +11257,14 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object listReferencePortfolios(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit) {
-        return listReferencePortfoliosWithServiceResponseAsync(scope, effectiveAt, asAt, sortBy, start, limit).toBlocking().single().body();
+    public Object listReferencePortfolios(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return listReferencePortfoliosWithServiceResponseAsync(scope, effectiveAt, asAt, sortBy, start, limit, filter).toBlocking().single().body();
     }
 
     /**
@@ -11197,12 +11276,13 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> listReferencePortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(listReferencePortfoliosWithServiceResponseAsync(scope, effectiveAt, asAt, sortBy, start, limit), serviceCallback);
+    public ServiceFuture<Object> listReferencePortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(listReferencePortfoliosWithServiceResponseAsync(scope, effectiveAt, asAt, sortBy, start, limit, filter), serviceCallback);
     }
 
     /**
@@ -11214,11 +11294,12 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> listReferencePortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit) {
-        return listReferencePortfoliosWithServiceResponseAsync(scope, effectiveAt, asAt, sortBy, start, limit).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> listReferencePortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return listReferencePortfoliosWithServiceResponseAsync(scope, effectiveAt, asAt, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -11235,10 +11316,11 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> listReferencePortfoliosWithServiceResponseAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit) {
+    public Observable<ServiceResponse<Object>> listReferencePortfoliosWithServiceResponseAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -11247,7 +11329,7 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         }
         Validator.validate(sortBy);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.listReferencePortfolios(scope, effectiveAt, asAt, sortByConverted, start, limit)
+        return service.listReferencePortfolios(scope, effectiveAt, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
