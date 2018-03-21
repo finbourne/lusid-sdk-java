@@ -38,8 +38,16 @@
  For any securities that are not recognised by LUSID (eg OTCs) a client can upload a client defined security. Securitised portfolios and funds can be modelled as client defined securities.
  ## Security Prices (Analytics)
  Security prices are stored in LUSID's Analytics Store
+ | Field|Type|Description |
+ | ---|---|--- |
+ | Id|SecurityUid|Unique security identifier |
+ | Value|Decimal|Value of the analytic, eg price |
  ## Security Data
  Security data can be uploaded to the system using the [Classifications](#tag/Classification) endpoint.
+ | Field|Type|Description |
+ | ---|---|--- |
+ | Uid|SecurityUid|Unique security identifier |
+ | EffectiveFrom|DateTimeOffset|Date from which this classification is effective |
  ## Portfolio
  A portfolio is a container for trades and/or holdings.  Meta data and classifications of portfolios can be attached via properties.
  ## Derived Portfolio
@@ -66,15 +74,16 @@
  | NettingSet|String|  |
  ## Holding
  A holding represents a position in a security or cash on a given date.
+ | Field|Type|Description |
+ | ---|---|--- |
+ | SecurityUid|SecurityUid|Unique security identifier |
+ | HoldingType|String|Type of holding, eg Position, Balance, CashCommitment, Receivable, ForwardFX |
+ | Units|Decimal|Quantity of holding |
+ | SettledUnits|Decimal|Settled quantity of holding |
+ | Cost|Decimal|Book cost of holding in trade currency |
+ | Transaction|TradeDto|If this is commitment-type holding, the transaction behind it |
  ## Property
  Properties are key-value pairs that can be applied to any entity within a domain (where a domain is `trade`, `portfolio`, `security` etc).  Properties must be defined before use with a `PropertyDefinition` and can then subsequently be added to entities.
- # Examples
- ## Authentication
- ## Create Portfolio
- ## Add Trades
- ## Add Holdings
- ## Update Trade/Holding
- ## Aggregation
  # Error Codes
  ## 100
  ### Personalisations not found.\n\nThe personalisation(s) identified by the pattern provided could not be found, either because it does not exist or it has been deleted. Please check the pattern your provided.

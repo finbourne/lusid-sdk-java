@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class HoldingDto {
     /**
-     * The securityUid property.
+     * Unique security identifier.
      */
     @JsonProperty(value = "securityUid", required = true)
     private String securityUid;
@@ -42,31 +42,32 @@ public class HoldingDto {
     private List<PropertyDto> properties;
 
     /**
-     * The holdingType property.
+     * Type of holding, eg Position, Balance, CashCommitment, Receivable,
+     * ForwardFX.
      */
     @JsonProperty(value = "holdingType", required = true)
     private String holdingType;
 
     /**
-     * The units property.
+     * Quantity of holding.
      */
     @JsonProperty(value = "units", required = true)
     private double units;
 
     /**
-     * The settledUnits property.
+     * Settled quantity of holding.
      */
     @JsonProperty(value = "settledUnits", required = true)
     private double settledUnits;
 
     /**
-     * The cost property.
+     * Book cost of holding in trade currency.
      */
     @JsonProperty(value = "cost", required = true)
     private double cost;
 
     /**
-     * The transaction property.
+     * If this is commitment-type holding, the transaction behind it.
      */
     @JsonProperty(value = "transaction")
     private TradeDto transaction;

@@ -31,13 +31,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SecurityClassificationDto {
     /**
-     * The uid property.
+     * Unique security identifier.
      */
     @JsonProperty(value = "uid")
     private String uid;
 
     /**
-     * The effectiveFrom property.
+     * Date from which this classification is effective.
      */
     @JsonProperty(value = "effectiveFrom")
     private DateTime effectiveFrom;

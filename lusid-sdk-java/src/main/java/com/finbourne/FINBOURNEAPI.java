@@ -2594,6 +2594,95 @@ public interface FINBOURNEAPI {
     Observable<ServiceResponse<Object>> deletePersonalisationWithServiceResponseAsync(String scope, String key, String group);
 
     /**
+     * List scopes that contain portfolios.
+     * Lists all scopes that have previously been used.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws RestException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    Object listScopes();
+
+    /**
+     * List scopes that contain portfolios.
+     * Lists all scopes that have previously been used.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<Object> listScopesAsync(final ServiceCallback<Object> serviceCallback);
+
+    /**
+     * List scopes that contain portfolios.
+     * Lists all scopes that have previously been used.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    Observable<Object> listScopesAsync();
+
+    /**
+     * List scopes that contain portfolios.
+     * Lists all scopes that have previously been used.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    Observable<ServiceResponse<Object>> listScopesWithServiceResponseAsync();
+    /**
+     * List scopes that contain portfolios.
+     * Lists all scopes that have previously been used.
+     *
+     * @param sortBy How to order the returned scopes
+     * @param start The starting index for the returned scopes
+     * @param limit The final index for the returned scopes
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws RestException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    Object listScopes(List<String> sortBy, Integer start, Integer limit);
+
+    /**
+     * List scopes that contain portfolios.
+     * Lists all scopes that have previously been used.
+     *
+     * @param sortBy How to order the returned scopes
+     * @param start The starting index for the returned scopes
+     * @param limit The final index for the returned scopes
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<Object> listScopesAsync(List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback);
+
+    /**
+     * List scopes that contain portfolios.
+     * Lists all scopes that have previously been used.
+     *
+     * @param sortBy How to order the returned scopes
+     * @param start The starting index for the returned scopes
+     * @param limit The final index for the returned scopes
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    Observable<Object> listScopesAsync(List<String> sortBy, Integer start, Integer limit);
+
+    /**
+     * List scopes that contain portfolios.
+     * Lists all scopes that have previously been used.
+     *
+     * @param sortBy How to order the returned scopes
+     * @param start The starting index for the returned scopes
+     * @param limit The final index for the returned scopes
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    Observable<ServiceResponse<Object>> listScopesWithServiceResponseAsync(List<String> sortBy, Integer start, Integer limit);
+
+    /**
      * Get all portfolios.
      * Get all portfolios in a scope.
      *

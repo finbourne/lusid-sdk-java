@@ -30,6 +30,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SchemaDto {
     /**
+     * Possible values include: 'PropertyKey', 'FieldSchema',
+     * 'Personalisation', 'Security', 'Property', 'Login',
+     * 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode',
+     * 'Portfolio', 'PortfolioSearchResult', 'PortfolioDetails',
+     * 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore',
+     * 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent',
+     * 'Trade', 'PortfolioHolding', 'ErrorDetail', 'ErrorResponse',
+     * 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio',
+     * 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio',
+     * 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition',
+     * 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat',
+     * 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest',
+     * 'Aggregation', 'NestedAggregation', 'ResultDataSchema',
+     * 'Classification', 'SecurityClassification', 'WebLogMessage',
+     * 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent',
+     * 'CreateResults', 'Results', 'TryAddClientSecurities',
+     * 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes',
+     * 'ExpandedGroup'.
+     */
+    @JsonProperty(value = "entity")
+    private String entity;
+
+    /**
      * The href property.
      */
     @JsonProperty(value = "href")
@@ -40,6 +63,26 @@ public class SchemaDto {
      */
     @JsonProperty(value = "values")
     private List<KeyValuePairStringFieldSchema> values;
+
+    /**
+     * Get the entity value.
+     *
+     * @return the entity value
+     */
+    public String entity() {
+        return this.entity;
+    }
+
+    /**
+     * Set the entity value.
+     *
+     * @param entity the entity value to set
+     * @return the SchemaDto object itself.
+     */
+    public SchemaDto withEntity(String entity) {
+        this.entity = entity;
+        return this;
+    }
 
     /**
      * Get the href value.

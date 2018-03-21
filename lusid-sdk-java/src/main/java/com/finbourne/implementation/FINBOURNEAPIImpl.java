@@ -321,6 +321,10 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
         @HTTP(path = "v1/api/personalisations", method = "DELETE", hasBody = true)
         Observable<Response<ResponseBody>> deletePersonalisation(@Query("key") String key, @Query("scope") String scope, @Query("group") String group);
 
+        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI listScopes" })
+        @GET("v1/api/portfolios")
+        Observable<Response<ResponseBody>> listScopes(@Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
+
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.FINBOURNEAPI listPortfolios" })
         @GET("v1/api/portfolios/{scope}")
         Observable<Response<ResponseBody>> listPortfolios(@Path("scope") String scope, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
@@ -5035,6 +5039,158 @@ public class FINBOURNEAPIImpl extends ServiceClient implements FINBOURNEAPI {
                 .register(200, new TypeToken<DeletedEntityResponse>() { }.getType())
                 .register(400, new TypeToken<ErrorResponse>() { }.getType())
                 .register(404, new TypeToken<ErrorResponse>() { }.getType())
+                .register(500, new TypeToken<ErrorResponse>() { }.getType())
+                .build(response);
+    }
+
+    /**
+     * List scopes that contain portfolios.
+     * Lists all scopes that have previously been used.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws RestException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    public Object listScopes() {
+        return listScopesWithServiceResponseAsync().toBlocking().single().body();
+    }
+
+    /**
+     * List scopes that contain portfolios.
+     * Lists all scopes that have previously been used.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<Object> listScopesAsync(final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(listScopesWithServiceResponseAsync(), serviceCallback);
+    }
+
+    /**
+     * List scopes that contain portfolios.
+     * Lists all scopes that have previously been used.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<Object> listScopesAsync() {
+        return listScopesWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
+            @Override
+            public Object call(ServiceResponse<Object> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * List scopes that contain portfolios.
+     * Lists all scopes that have previously been used.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<ServiceResponse<Object>> listScopesWithServiceResponseAsync() {
+        final List<String> sortBy = null;
+        final Integer start = null;
+        final Integer limit = null;
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
+        return service.listScopes(sortByConverted, start, limit)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
+                @Override
+                public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<Object> clientResponse = listScopesDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * List scopes that contain portfolios.
+     * Lists all scopes that have previously been used.
+     *
+     * @param sortBy How to order the returned scopes
+     * @param start The starting index for the returned scopes
+     * @param limit The final index for the returned scopes
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws RestException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    public Object listScopes(List<String> sortBy, Integer start, Integer limit) {
+        return listScopesWithServiceResponseAsync(sortBy, start, limit).toBlocking().single().body();
+    }
+
+    /**
+     * List scopes that contain portfolios.
+     * Lists all scopes that have previously been used.
+     *
+     * @param sortBy How to order the returned scopes
+     * @param start The starting index for the returned scopes
+     * @param limit The final index for the returned scopes
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<Object> listScopesAsync(List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(listScopesWithServiceResponseAsync(sortBy, start, limit), serviceCallback);
+    }
+
+    /**
+     * List scopes that contain portfolios.
+     * Lists all scopes that have previously been used.
+     *
+     * @param sortBy How to order the returned scopes
+     * @param start The starting index for the returned scopes
+     * @param limit The final index for the returned scopes
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<Object> listScopesAsync(List<String> sortBy, Integer start, Integer limit) {
+        return listScopesWithServiceResponseAsync(sortBy, start, limit).map(new Func1<ServiceResponse<Object>, Object>() {
+            @Override
+            public Object call(ServiceResponse<Object> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * List scopes that contain portfolios.
+     * Lists all scopes that have previously been used.
+     *
+     * @param sortBy How to order the returned scopes
+     * @param start The starting index for the returned scopes
+     * @param limit The final index for the returned scopes
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<ServiceResponse<Object>> listScopesWithServiceResponseAsync(List<String> sortBy, Integer start, Integer limit) {
+        Validator.validate(sortBy);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
+        return service.listScopes(sortByConverted, start, limit)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
+                @Override
+                public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<Object> clientResponse = listScopesDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<Object> listScopesDelegate(Response<ResponseBody> response) throws RestException, IOException {
+        return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<ResourceListScope>() { }.getType())
+                .register(400, new TypeToken<ErrorResponse>() { }.getType())
                 .register(500, new TypeToken<ErrorResponse>() { }.getType())
                 .build(response);
     }

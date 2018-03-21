@@ -29,13 +29,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SecurityAnalyticDataDto {
     /**
-     * The id property.
+     * Unique security identifier.
      */
     @JsonProperty(value = "id")
     private String id;
 
     /**
-     * The value property.
+     * Value of the analytic, eg price.
      */
     @JsonProperty(value = "value")
     private Double value;
