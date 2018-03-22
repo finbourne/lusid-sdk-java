@@ -1,6 +1,6 @@
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.finbourne.FINBOURNEAPI;
-import com.finbourne.implementation.FINBOURNEAPIImpl;
+import com.finbourne.LUSIDAPI;
+import com.finbourne.implementation.LUSIDAPIImpl;
 import com.finbourne.models.*;
 import com.microsoft.rest.RestClient;
 import com.microsoft.rest.ServiceResponseBuilder;
@@ -122,7 +122,7 @@ public class LusidApiTests {
                 .withSerializerAdapter(new JacksonAdapter())
                 .build();
 
-        final FINBOURNEAPI    client = new FINBOURNEAPIImpl(restClient);
+        final LUSIDAPI client = new LUSIDAPIImpl(restClient);
 
         final String scope = "finbourne";
         final String uuid = UUID.randomUUID().toString();
@@ -148,7 +148,7 @@ public class LusidApiTests {
                 .withSerializerAdapter(new JacksonAdapter())
                 .build();
 
-        final FINBOURNEAPI    client = new FINBOURNEAPIImpl(restClient);
+        final LUSIDAPI    client = new LUSIDAPIImpl(restClient);
 
         final String uuid = UUID.randomUUID().toString();
         final String scope = "finbourne";
@@ -207,7 +207,7 @@ public class LusidApiTests {
                 .withSerializerAdapter(new JacksonAdapter())
                 .build();
 
-        final FINBOURNEAPI    client = new FINBOURNEAPIImpl(restClient);
+        final LUSIDAPI    client = new LUSIDAPIImpl(restClient);
 
         final String uuid = UUID.randomUUID().toString();
         final String scope = "finbourne";
@@ -289,7 +289,7 @@ public class LusidApiTests {
                 .withSerializerAdapter(new JacksonAdapter())
                 .build();
 
-        final FINBOURNEAPI    client = new FINBOURNEAPIImpl(restClient);
+        final LUSIDAPI    client = new LUSIDAPIImpl(restClient);
 
         final String scope = "finbourne";
         final String uuid = UUID.randomUUID().toString();
@@ -434,12 +434,12 @@ public class LusidApiTests {
                 .withSerializerAdapter(new JacksonAdapter())
                 .build();
 
-        final FINBOURNEAPI    client = new FINBOURNEAPIImpl(restClient);
+        final LUSIDAPI    client = new LUSIDAPIImpl(restClient);
 
         final List<String> isins = new ArrayList<>(Arrays.asList("IT0004966401", "FR0010192997"));
 
         //  lookup securties
-        final Object lookupResult = client.lookupFromCodes("Isin", isins, null);
+        final Object lookupResult = client.lookupFromCodes("Isin", isins, null, null);
         final TryLookupSecuritiesFromCodesDto fbnIds = assertResponseIsNotError(TryLookupSecuritiesFromCodesDto.class, lookupResult);
 
         assertTrue(fbnIds.values().size() > 0);
