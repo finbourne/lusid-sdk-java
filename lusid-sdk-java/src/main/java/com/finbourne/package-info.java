@@ -19,15 +19,19 @@
 // IN THE SOFTWARE.
 
 /**
- * This package contains the classes for FINBOURNEAPI.
- * # Immutable Events
- A core tenet of the LUSID platform is the concept of an immutable data store.  This gives the ability to consistently reproduce the state of the system for any given point in bi-temporal space.  In order to achieve this LUSID has implemented an append only event store for all data types.  New events, including historical amendments, are added to the end of the event stream and then played back in order to construct the state.  Given that all the events from T0 are required in order to reconstruct the state, there can be significant computational complexity and cost involved.  FINBOURNE have employed a number of techniques and optimisations in order to produce consistent performance characteristics e.g. using snapshots which has resulted in a highly performance and scalable platform.
- # Scope
- All entities within LUSID live within a logical partitioning of data know as a scope.  Any given entity can only live within one scope and is addressable with a unique identifier.
- For example, prices for equities from different vendors may be uploaded into different scopes such as `client/vendor1` and `client/vendor2`.  A portfolio may then be valued using either of the price sources by referencing the appropriate scope.
- It should be noted that scopes are not hierarchical and 2 different scopes which may contain the same path elements do not have any relationship.
+ * This package contains the classes for LUSIDAPI.
+ * # Introduction
+ This page documents the [LUSID API](https://api.finbourne.com/swagger), which allows authorised clients to query and update their data within the LUSID platform.
+ SDKs to interact with the LUSID API are available in the following languages :
+ * [Python](https://github.com/finbourne/lusid-sdk-python)
+ * [Java](https://github.com/finbourne/lusid-sdk-java)
+ # Immutable Events
+ A core tenet of the LUSID platform is the concept of an immutable data store.  This gives the ability to consistently reproduce the state of the system for any given point in bi-temporal space.  In order to achieve this LUSID has implemented an append only event store for all data types.  New events, including historical amendments, are added to the end of the event stream and then 'played back' in order to construct the state.  Given that all the events from T0 are required in order to reconstruct the state, there can be significant computational complexity and cost involved.  FINBOURNE have employed a number of techniques and optimisations in order to produce consistent performance characteristics e.g. using snapshots which has resulted in a highly performance and scalable platform.
  # Data Model
  This section describes the data model that LUSID exposes via the APIs.
+ ## Scope
+ All entities in LUSID live within a logical partitioning of data known as a scope.  The unique code which identifies an entity is namespaced within the scope, allowing two entities with the same code in different scopes to be individually addressable.
+ For example, prices for equities from different vendors may be uploaded into different scopes such as `client/vendor1` and `client/vendor2`.  A portfolio may then be valued using either of the price sources by referencing the appropriate scope.
  ## Schema
  A detailed description of the entities used by the API and parameters for endpoints which take a JSON document can be retrieved via the `schema` endpoint.
  ## Securities
@@ -85,129 +89,69 @@
  ## Property
  Properties are key-value pairs that can be applied to any entity within a domain (where a domain is `trade`, `portfolio`, `security` etc).  Properties must be defined before use with a `PropertyDefinition` and can then subsequently be added to entities.
  # Error Codes
- ## 100
- ### Personalisations not found.\n\nThe personalisation(s) identified by the pattern provided could not be found, either because it does not exist or it has been deleted. Please check the pattern your provided.
- ## 101
- NonRecursivePersonalisation
- ## 102
- VersionNotFound
- ## 104
- SecurityByCodeNotFound
- ## 104
- SecurityByCodeNotFound
- ## 105
- PropertyNotFound
- ## 106
- PortfolioRecursionDepth
- ## 108
- GroupNotFound
- ## 109
- PortfolioNotFound
- ## 110
- PropertySchemaNotFound
- ## 112
- PortfolioWithIdAlreadyExists
- ## 113
- OrphanedPortfolio
- ## 119
- MissingBaseClaims
- ## 121
- PropertyNotDefined
- ## 122
- CannotDeleteSystemProperty
- ## 123
- CannotModifyImmutablePropertyField
- ## 124
- PropertyAlreadyExists
- ## 125
- InvalidPropertyLifeTime
- ## 127
- CannotModifyDefaultPropertyFormat
- ## 128
- GroupAlreadyExists
- ## 129
- NoSuchPropertyDataFormat
- ## 132
- ValidationError
- ## 133
- LoopDetectedInGroupHierarchy
- ## 135
- SubGroupAlreadyExists
- ## 138
- PriceSourceNotFound
- ## 139
- AnalyticStoreNotFound
- ## 141
- AnalyticStoreAlreadyExists
- ## 143
- ClientSecurityAlreadyExists
- ## 144
- DuplicateInParameterSet
- ## 147
- ResultsNotFound
- ## 148
- OrderFieldNotInResultSet
- ## 149
- OperationFailed
- ## 150
- ElasticSearchError
- ## 151
- InvalidParameterValue
- ## 152
- ServerConfigurationError
- ## 153
- CommandProcessingFailure
- ## 154
- EntityStateConstructionFailure
- ## 155
- EntityTimelineDoesNotExist
- ## 156
- EventPublishFailure
- ## 157
- InvalidRequestFailure
- ## 158
- EventPublishUnknown
- ## 159
- EventQueryFailure
- ## 160
- BlobDidNotExistFailure
- ## 162
- SubSystemRequestFailure
- ## 163
- SubSystemConfigurationFailure
- ## 165
- FailedToDelete
- ## 166
- UpsertClientSecurityFailure
- ## 167
- IllegalAsAtInterval
- ## 168
- IllegalBitemporalQuery
- ## 169
- InvalidAlternateId
- ## 170
- CannotAddSourcePortfolioPropertyExplicitly
- ## 171
- EntityAlreadyExistsInGroup
- ## 173
- EntityWithIdAlreadyExists
- ## 174
- PortfolioDetailsDoNotExist
- ## 176
- PortfolioWithNameAlreadyExists
- ## 177
- InvalidTrades
- ## 178
- ReferencePortfolioNotFound
- ## 179
- DuplicateIdFailure
- ## 180
- CommandRetrievalFailure
- ## 181
- DataFilterApplicationFailure
- ## 182
- SearchFailed
- ## -1
- Unknown error.
+ | Code|Name|Description |
+ | ---|---|--- |
+ | <a name="100">100</a>|Personalisations not found|The personalisation(s) identified by the pattern provided could not be found, either because it does not exist or it has been deleted. Please check the pattern your provided. |
+ | <a name="101">101</a>|NonRecursivePersonalisation|  |
+ | <a name="102">102</a>|VersionNotFound|  |
+ | <a name="104">104</a>|SecurityByCodeNotFound|  |
+ | <a name="104">104</a>|SecurityByCodeNotFound|  |
+ | <a name="105">105</a>|PropertyNotFound|  |
+ | <a name="106">106</a>|PortfolioRecursionDepth|  |
+ | <a name="108">108</a>|GroupNotFound|  |
+ | <a name="109">109</a>|PortfolioNotFound|  |
+ | <a name="110">110</a>|PropertySchemaNotFound|  |
+ | <a name="112">112</a>|PortfolioWithIdAlreadyExists|  |
+ | <a name="113">113</a>|OrphanedPortfolio|  |
+ | <a name="119">119</a>|MissingBaseClaims|  |
+ | <a name="121">121</a>|PropertyNotDefined|  |
+ | <a name="122">122</a>|CannotDeleteSystemProperty|  |
+ | <a name="123">123</a>|CannotModifyImmutablePropertyField|  |
+ | <a name="124">124</a>|PropertyAlreadyExists|  |
+ | <a name="125">125</a>|InvalidPropertyLifeTime|  |
+ | <a name="127">127</a>|CannotModifyDefaultPropertyFormat|  |
+ | <a name="128">128</a>|GroupAlreadyExists|  |
+ | <a name="129">129</a>|NoSuchPropertyDataFormat|  |
+ | <a name="132">132</a>|ValidationError|  |
+ | <a name="133">133</a>|LoopDetectedInGroupHierarchy|  |
+ | <a name="135">135</a>|SubGroupAlreadyExists|  |
+ | <a name="138">138</a>|PriceSourceNotFound|  |
+ | <a name="139">139</a>|AnalyticStoreNotFound|  |
+ | <a name="141">141</a>|AnalyticStoreAlreadyExists|  |
+ | <a name="143">143</a>|ClientSecurityAlreadyExists|  |
+ | <a name="144">144</a>|DuplicateInParameterSet|  |
+ | <a name="147">147</a>|ResultsNotFound|  |
+ | <a name="148">148</a>|OrderFieldNotInResultSet|  |
+ | <a name="149">149</a>|OperationFailed|  |
+ | <a name="150">150</a>|ElasticSearchError|  |
+ | <a name="151">151</a>|InvalidParameterValue|  |
+ | <a name="152">152</a>|ServerConfigurationError|  |
+ | <a name="153">153</a>|CommandProcessingFailure|  |
+ | <a name="154">154</a>|EntityStateConstructionFailure|  |
+ | <a name="155">155</a>|EntityTimelineDoesNotExist|  |
+ | <a name="156">156</a>|EventPublishFailure|  |
+ | <a name="157">157</a>|InvalidRequestFailure|  |
+ | <a name="158">158</a>|EventPublishUnknown|  |
+ | <a name="159">159</a>|EventQueryFailure|  |
+ | <a name="160">160</a>|BlobDidNotExistFailure|  |
+ | <a name="162">162</a>|SubSystemRequestFailure|  |
+ | <a name="163">163</a>|SubSystemConfigurationFailure|  |
+ | <a name="165">165</a>|FailedToDelete|  |
+ | <a name="166">166</a>|UpsertClientSecurityFailure|  |
+ | <a name="167">167</a>|IllegalAsAtInterval|  |
+ | <a name="168">168</a>|IllegalBitemporalQuery|  |
+ | <a name="169">169</a>|InvalidAlternateId|  |
+ | <a name="170">170</a>|CannotAddSourcePortfolioPropertyExplicitly|  |
+ | <a name="171">171</a>|EntityAlreadyExistsInGroup|  |
+ | <a name="173">173</a>|EntityWithIdAlreadyExists|  |
+ | <a name="174">174</a>|PortfolioDetailsDoNotExist|  |
+ | <a name="176">176</a>|PortfolioWithNameAlreadyExists|  |
+ | <a name="177">177</a>|InvalidTrades|  |
+ | <a name="178">178</a>|ReferencePortfolioNotFound|  |
+ | <a name="179">179</a>|DuplicateIdFailure|  |
+ | <a name="180">180</a>|CommandRetrievalFailure|  |
+ | <a name="181">181</a>|DataFilterApplicationFailure|  |
+ | <a name="182">182</a>|SearchFailed|  |
+ | <a name="-1">-1</a>|Unknown error|  |.
  */
 package com.finbourne;
