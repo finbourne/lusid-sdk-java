@@ -36,18 +36,18 @@ public class SchemaDto {
      * 'Portfolio', 'PortfolioSearchResult', 'PortfolioDetails',
      * 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore',
      * 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent',
-     * 'Trade', 'PortfolioHolding', 'ErrorDetail', 'ErrorResponse',
-     * 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio',
-     * 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio',
-     * 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition',
-     * 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat',
-     * 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest',
-     * 'Aggregation', 'NestedAggregation', 'ResultDataSchema',
-     * 'Classification', 'SecurityClassification', 'WebLogMessage',
-     * 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent',
-     * 'CreateResults', 'Results', 'TryAddClientSecurities',
-     * 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes',
-     * 'ExpandedGroup'.
+     * 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail',
+     * 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand',
+     * 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity',
+     * 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat',
+     * 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup',
+     * 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition',
+     * 'SecurityAnalytic', 'AggregationRequest', 'Aggregation',
+     * 'NestedAggregation', 'ResultDataSchema', 'Classification',
+     * 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation',
+     * 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults',
+     * 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities',
+     * 'TryLookupSecuritiesFromCodes', 'ExpandedGroup'.
      */
     @JsonProperty(value = "entity")
     private String entity;
