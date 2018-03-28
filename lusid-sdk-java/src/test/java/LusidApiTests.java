@@ -439,7 +439,7 @@ public class LusidApiTests {
         final List<String> isins = new ArrayList<>(Arrays.asList("IT0004966401", "FR0010192997"));
 
         //  lookup securties
-        final Object lookupResult = client.lookupFromCodes("Isin", isins, null, null);
+        final Object lookupResult = client.lookupSecuritiesFromCodes("Isin", isins, null, null);
         final TryLookupSecuritiesFromCodesDto fbnIds = assertResponseIsNotError(TryLookupSecuritiesFromCodesDto.class, lookupResult);
 
         assertTrue(fbnIds.values().size() > 0);
