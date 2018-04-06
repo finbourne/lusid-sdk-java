@@ -67,6 +67,12 @@ public class HoldingDto {
     private double cost;
 
     /**
+     * Book cost of holding in portfolio currency.
+     */
+    @JsonProperty(value = "costPortfolioCcy", required = true)
+    private double costPortfolioCcy;
+
+    /**
      * If this is commitment-type holding, the transaction behind it.
      */
     @JsonProperty(value = "transaction")
@@ -189,6 +195,26 @@ public class HoldingDto {
      */
     public HoldingDto withCost(double cost) {
         this.cost = cost;
+        return this;
+    }
+
+    /**
+     * Get the costPortfolioCcy value.
+     *
+     * @return the costPortfolioCcy value
+     */
+    public double costPortfolioCcy() {
+        return this.costPortfolioCcy;
+    }
+
+    /**
+     * Set the costPortfolioCcy value.
+     *
+     * @param costPortfolioCcy the costPortfolioCcy value to set
+     * @return the HoldingDto object itself.
+     */
+    public HoldingDto withCostPortfolioCcy(double costPortfolioCcy) {
+        this.costPortfolioCcy = costPortfolioCcy;
         return this;
     }
 

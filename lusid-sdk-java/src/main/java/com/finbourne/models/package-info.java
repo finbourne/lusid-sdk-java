@@ -62,14 +62,16 @@
  | Field|Type|Description |
  | ---|---|--- |
  | TradeId|String|Unique trade identifier |
- | Type|TransactionType|LUSID transaction type code - Buy, Sell, StockIn, StockOut, etc |
+ | Type|String|LUSID transaction type code - Buy, Sell, StockIn, StockOut, etc |
  | SecurityUid|SecurityUid|Unique security identifier |
  | TradeDate|DateTimeOffset|Trade date |
  | SettlementDate|DateTimeOffset|Settlement date |
  | Units|Decimal|Quantity of trade in units of the security |
  | TradePrice|Decimal|Execution price for the trade |
  | TotalConsideration|Decimal|Total value of the trade |
+ | ExchangeRate|Nullable`1|Rate between trade and settle currency |
  | SettlementCurrency|String|Settlement currency |
+ | TradeCurrency|String|Trade currency |
  | CounterpartyId|String|Counterparty identifier |
  | Source|TradeSource|Where this trade came from, either Client or System |
  | DividendState|DividendState|  |
@@ -85,6 +87,7 @@
  | Units|Decimal|Quantity of holding |
  | SettledUnits|Decimal|Settled quantity of holding |
  | Cost|Decimal|Book cost of holding in trade currency |
+ | CostPortfolioCcy|Decimal|Book cost of holding in portfolio currency |
  | Transaction|TradeDto|If this is commitment-type holding, the transaction behind it |
  ## Property
  Properties are key-value pairs that can be applied to any entity within a domain (where a domain is `trade`, `portfolio`, `security` etc).  Properties must be defined before use with a `PropertyDefinition` and can then subsequently be added to entities.

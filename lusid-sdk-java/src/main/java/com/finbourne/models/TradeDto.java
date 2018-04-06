@@ -38,7 +38,6 @@ public class TradeDto {
 
     /**
      * LUSID transaction type code - Buy, Sell, StockIn, StockOut, etc.
-     * Possible values include: 'Buy', 'Sell', 'StockIn', 'StockOut'.
      */
     @JsonProperty(value = "type", required = true)
     private String type;
@@ -80,10 +79,22 @@ public class TradeDto {
     private double totalConsideration;
 
     /**
+     * Rate between trade and settle currency.
+     */
+    @JsonProperty(value = "exchangeRate")
+    private Double exchangeRate;
+
+    /**
      * Settlement currency.
      */
     @JsonProperty(value = "settlementCurrency", required = true)
     private String settlementCurrency;
+
+    /**
+     * Trade currency.
+     */
+    @JsonProperty(value = "tradeCurrency")
+    private String tradeCurrency;
 
     /**
      * The properties property.
@@ -289,6 +300,26 @@ public class TradeDto {
     }
 
     /**
+     * Get the exchangeRate value.
+     *
+     * @return the exchangeRate value
+     */
+    public Double exchangeRate() {
+        return this.exchangeRate;
+    }
+
+    /**
+     * Set the exchangeRate value.
+     *
+     * @param exchangeRate the exchangeRate value to set
+     * @return the TradeDto object itself.
+     */
+    public TradeDto withExchangeRate(Double exchangeRate) {
+        this.exchangeRate = exchangeRate;
+        return this;
+    }
+
+    /**
      * Get the settlementCurrency value.
      *
      * @return the settlementCurrency value
@@ -305,6 +336,26 @@ public class TradeDto {
      */
     public TradeDto withSettlementCurrency(String settlementCurrency) {
         this.settlementCurrency = settlementCurrency;
+        return this;
+    }
+
+    /**
+     * Get the tradeCurrency value.
+     *
+     * @return the tradeCurrency value
+     */
+    public String tradeCurrency() {
+        return this.tradeCurrency;
+    }
+
+    /**
+     * Set the tradeCurrency value.
+     *
+     * @param tradeCurrency the tradeCurrency value to set
+     * @return the TradeDto object itself.
+     */
+    public TradeDto withTradeCurrency(String tradeCurrency) {
+        this.tradeCurrency = tradeCurrency;
         return this;
     }
 

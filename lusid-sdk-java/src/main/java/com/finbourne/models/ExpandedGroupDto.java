@@ -57,7 +57,7 @@ public class ExpandedGroupDto {
      * The values property.
      */
     @JsonProperty(value = "values")
-    private List<PortfolioDto> values;
+    private List<CompletePortfolioDto> values;
 
     /**
      * The subGroups property.
@@ -162,7 +162,7 @@ public class ExpandedGroupDto {
      *
      * @return the values value
      */
-    public List<PortfolioDto> values() {
+    public List<CompletePortfolioDto> values() {
         return this.values;
     }
 
@@ -172,7 +172,7 @@ public class ExpandedGroupDto {
      * @param values the values value to set
      * @return the ExpandedGroupDto object itself.
      */
-    public ExpandedGroupDto withValues(List<PortfolioDto> values) {
+    public ExpandedGroupDto withValues(List<CompletePortfolioDto> values) {
         this.values = values;
         return this;
     }
