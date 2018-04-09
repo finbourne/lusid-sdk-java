@@ -521,13 +521,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @GET("v1/api/schema/types")
         Observable<Response<ResponseBody>> getValueTypes(@Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
 
-        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI tryAddClientSecurity" })
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI batchAddClientSecurities" })
         @POST("v1/api/securities")
-        Observable<Response<ResponseBody>> tryAddClientSecurity(@Body List<CreateClientSecurityRequest> definitions);
+        Observable<Response<ResponseBody>> batchAddClientSecurities(@Body List<CreateClientSecurityRequest> definitions);
 
-        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI tryDeleteClientSecurity" })
+        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI batchDeleteClientSecurities" })
         @HTTP(path = "v1/api/securities", method = "DELETE", hasBody = true)
-        Observable<Response<ResponseBody>> tryDeleteClientSecurity(@Query("uids") String uids);
+        Observable<Response<ResponseBody>> batchDeleteClientSecurities(@Query("uids") String uids);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getSecurity" })
         @GET("v1/api/securities/{uid}")
@@ -13257,8 +13257,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object tryAddClientSecurity() {
-        return tryAddClientSecurityWithServiceResponseAsync().toBlocking().single().body();
+    public Object batchAddClientSecurities() {
+        return batchAddClientSecuritiesWithServiceResponseAsync().toBlocking().single().body();
     }
 
     /**
@@ -13268,8 +13268,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> tryAddClientSecurityAsync(final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(tryAddClientSecurityWithServiceResponseAsync(), serviceCallback);
+    public ServiceFuture<Object> batchAddClientSecuritiesAsync(final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(batchAddClientSecuritiesWithServiceResponseAsync(), serviceCallback);
     }
 
     /**
@@ -13278,8 +13278,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> tryAddClientSecurityAsync() {
-        return tryAddClientSecurityWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> batchAddClientSecuritiesAsync() {
+        return batchAddClientSecuritiesWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -13293,14 +13293,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> tryAddClientSecurityWithServiceResponseAsync() {
+    public Observable<ServiceResponse<Object>> batchAddClientSecuritiesWithServiceResponseAsync() {
         final List<CreateClientSecurityRequest> definitions = null;
-        return service.tryAddClientSecurity(definitions)
+        return service.batchAddClientSecurities(definitions)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<Object> clientResponse = tryAddClientSecurityDelegate(response);
+                        ServiceResponse<Object> clientResponse = batchAddClientSecuritiesDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -13318,8 +13318,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object tryAddClientSecurity(List<CreateClientSecurityRequest> definitions) {
-        return tryAddClientSecurityWithServiceResponseAsync(definitions).toBlocking().single().body();
+    public Object batchAddClientSecurities(List<CreateClientSecurityRequest> definitions) {
+        return batchAddClientSecuritiesWithServiceResponseAsync(definitions).toBlocking().single().body();
     }
 
     /**
@@ -13330,8 +13330,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> tryAddClientSecurityAsync(List<CreateClientSecurityRequest> definitions, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(tryAddClientSecurityWithServiceResponseAsync(definitions), serviceCallback);
+    public ServiceFuture<Object> batchAddClientSecuritiesAsync(List<CreateClientSecurityRequest> definitions, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(batchAddClientSecuritiesWithServiceResponseAsync(definitions), serviceCallback);
     }
 
     /**
@@ -13341,8 +13341,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> tryAddClientSecurityAsync(List<CreateClientSecurityRequest> definitions) {
-        return tryAddClientSecurityWithServiceResponseAsync(definitions).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> batchAddClientSecuritiesAsync(List<CreateClientSecurityRequest> definitions) {
+        return batchAddClientSecuritiesWithServiceResponseAsync(definitions).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -13357,14 +13357,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> tryAddClientSecurityWithServiceResponseAsync(List<CreateClientSecurityRequest> definitions) {
+    public Observable<ServiceResponse<Object>> batchAddClientSecuritiesWithServiceResponseAsync(List<CreateClientSecurityRequest> definitions) {
         Validator.validate(definitions);
-        return service.tryAddClientSecurity(definitions)
+        return service.batchAddClientSecurities(definitions)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<Object> clientResponse = tryAddClientSecurityDelegate(response);
+                        ServiceResponse<Object> clientResponse = batchAddClientSecuritiesDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -13373,7 +13373,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<Object> tryAddClientSecurityDelegate(Response<ResponseBody> response) throws RestException, IOException {
+    private ServiceResponse<Object> batchAddClientSecuritiesDelegate(Response<ResponseBody> response) throws RestException, IOException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
                 .register(201, new TypeToken<TryAddClientSecuritiesDto>() { }.getType())
                 .register(400, new TypeToken<ErrorResponse>() { }.getType())
@@ -13389,8 +13389,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object tryDeleteClientSecurity() {
-        return tryDeleteClientSecurityWithServiceResponseAsync().toBlocking().single().body();
+    public Object batchDeleteClientSecurities() {
+        return batchDeleteClientSecuritiesWithServiceResponseAsync().toBlocking().single().body();
     }
 
     /**
@@ -13400,8 +13400,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> tryDeleteClientSecurityAsync(final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(tryDeleteClientSecurityWithServiceResponseAsync(), serviceCallback);
+    public ServiceFuture<Object> batchDeleteClientSecuritiesAsync(final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(batchDeleteClientSecuritiesWithServiceResponseAsync(), serviceCallback);
     }
 
     /**
@@ -13410,8 +13410,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> tryDeleteClientSecurityAsync() {
-        return tryDeleteClientSecurityWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> batchDeleteClientSecuritiesAsync() {
+        return batchDeleteClientSecuritiesWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -13425,15 +13425,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> tryDeleteClientSecurityWithServiceResponseAsync() {
+    public Observable<ServiceResponse<Object>> batchDeleteClientSecuritiesWithServiceResponseAsync() {
         final List<String> uids = null;
         String uidsConverted = this.serializerAdapter().serializeList(uids, CollectionFormat.MULTI);
-        return service.tryDeleteClientSecurity(uidsConverted)
+        return service.batchDeleteClientSecurities(uidsConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<Object> clientResponse = tryDeleteClientSecurityDelegate(response);
+                        ServiceResponse<Object> clientResponse = batchDeleteClientSecuritiesDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -13451,8 +13451,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object tryDeleteClientSecurity(List<String> uids) {
-        return tryDeleteClientSecurityWithServiceResponseAsync(uids).toBlocking().single().body();
+    public Object batchDeleteClientSecurities(List<String> uids) {
+        return batchDeleteClientSecuritiesWithServiceResponseAsync(uids).toBlocking().single().body();
     }
 
     /**
@@ -13463,8 +13463,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> tryDeleteClientSecurityAsync(List<String> uids, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(tryDeleteClientSecurityWithServiceResponseAsync(uids), serviceCallback);
+    public ServiceFuture<Object> batchDeleteClientSecuritiesAsync(List<String> uids, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(batchDeleteClientSecuritiesWithServiceResponseAsync(uids), serviceCallback);
     }
 
     /**
@@ -13474,8 +13474,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> tryDeleteClientSecurityAsync(List<String> uids) {
-        return tryDeleteClientSecurityWithServiceResponseAsync(uids).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> batchDeleteClientSecuritiesAsync(List<String> uids) {
+        return batchDeleteClientSecuritiesWithServiceResponseAsync(uids).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -13490,15 +13490,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> tryDeleteClientSecurityWithServiceResponseAsync(List<String> uids) {
+    public Observable<ServiceResponse<Object>> batchDeleteClientSecuritiesWithServiceResponseAsync(List<String> uids) {
         Validator.validate(uids);
         String uidsConverted = this.serializerAdapter().serializeList(uids, CollectionFormat.MULTI);
-        return service.tryDeleteClientSecurity(uidsConverted)
+        return service.batchDeleteClientSecurities(uidsConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<Object> clientResponse = tryDeleteClientSecurityDelegate(response);
+                        ServiceResponse<Object> clientResponse = batchDeleteClientSecuritiesDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -13507,7 +13507,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<Object> tryDeleteClientSecurityDelegate(Response<ResponseBody> response) throws RestException, IOException {
+    private ServiceResponse<Object> batchDeleteClientSecuritiesDelegate(Response<ResponseBody> response) throws RestException, IOException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
                 .register(200, new TypeToken<TryDeleteClientSecuritiesDto>() { }.getType())
                 .register(500, new TypeToken<ErrorResponse>() { }.getType())

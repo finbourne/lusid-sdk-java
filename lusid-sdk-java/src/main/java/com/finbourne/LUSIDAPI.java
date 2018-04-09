@@ -7281,7 +7281,7 @@ public interface LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object tryAddClientSecurity();
+    Object batchAddClientSecurities();
 
     /**
      * Attempt to create one or more client securities. Failed securities will be identified in the body of the response.
@@ -7290,7 +7290,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> tryAddClientSecurityAsync(final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> batchAddClientSecuritiesAsync(final ServiceCallback<Object> serviceCallback);
 
     /**
      * Attempt to create one or more client securities. Failed securities will be identified in the body of the response.
@@ -7298,7 +7298,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> tryAddClientSecurityAsync();
+    Observable<Object> batchAddClientSecuritiesAsync();
 
     /**
      * Attempt to create one or more client securities. Failed securities will be identified in the body of the response.
@@ -7306,7 +7306,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> tryAddClientSecurityWithServiceResponseAsync();
+    Observable<ServiceResponse<Object>> batchAddClientSecuritiesWithServiceResponseAsync();
     /**
      * Attempt to create one or more client securities. Failed securities will be identified in the body of the response.
      *
@@ -7316,7 +7316,7 @@ public interface LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object tryAddClientSecurity(List<CreateClientSecurityRequest> definitions);
+    Object batchAddClientSecurities(List<CreateClientSecurityRequest> definitions);
 
     /**
      * Attempt to create one or more client securities. Failed securities will be identified in the body of the response.
@@ -7326,7 +7326,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> tryAddClientSecurityAsync(List<CreateClientSecurityRequest> definitions, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> batchAddClientSecuritiesAsync(List<CreateClientSecurityRequest> definitions, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Attempt to create one or more client securities. Failed securities will be identified in the body of the response.
@@ -7335,7 +7335,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> tryAddClientSecurityAsync(List<CreateClientSecurityRequest> definitions);
+    Observable<Object> batchAddClientSecuritiesAsync(List<CreateClientSecurityRequest> definitions);
 
     /**
      * Attempt to create one or more client securities. Failed securities will be identified in the body of the response.
@@ -7344,7 +7344,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> tryAddClientSecurityWithServiceResponseAsync(List<CreateClientSecurityRequest> definitions);
+    Observable<ServiceResponse<Object>> batchAddClientSecuritiesWithServiceResponseAsync(List<CreateClientSecurityRequest> definitions);
 
     /**
      * Attempt to delete one or more client securities. Failed securities will be identified in the body of the response.
@@ -7354,7 +7354,7 @@ public interface LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object tryDeleteClientSecurity();
+    Object batchDeleteClientSecurities();
 
     /**
      * Attempt to delete one or more client securities. Failed securities will be identified in the body of the response.
@@ -7363,7 +7363,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> tryDeleteClientSecurityAsync(final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> batchDeleteClientSecuritiesAsync(final ServiceCallback<Object> serviceCallback);
 
     /**
      * Attempt to delete one or more client securities. Failed securities will be identified in the body of the response.
@@ -7371,7 +7371,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> tryDeleteClientSecurityAsync();
+    Observable<Object> batchDeleteClientSecuritiesAsync();
 
     /**
      * Attempt to delete one or more client securities. Failed securities will be identified in the body of the response.
@@ -7379,7 +7379,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> tryDeleteClientSecurityWithServiceResponseAsync();
+    Observable<ServiceResponse<Object>> batchDeleteClientSecuritiesWithServiceResponseAsync();
     /**
      * Attempt to delete one or more client securities. Failed securities will be identified in the body of the response.
      *
@@ -7389,7 +7389,7 @@ public interface LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object tryDeleteClientSecurity(List<String> uids);
+    Object batchDeleteClientSecurities(List<String> uids);
 
     /**
      * Attempt to delete one or more client securities. Failed securities will be identified in the body of the response.
@@ -7399,7 +7399,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> tryDeleteClientSecurityAsync(List<String> uids, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> batchDeleteClientSecuritiesAsync(List<String> uids, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Attempt to delete one or more client securities. Failed securities will be identified in the body of the response.
@@ -7408,7 +7408,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> tryDeleteClientSecurityAsync(List<String> uids);
+    Observable<Object> batchDeleteClientSecuritiesAsync(List<String> uids);
 
     /**
      * Attempt to delete one or more client securities. Failed securities will be identified in the body of the response.
@@ -7417,7 +7417,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> tryDeleteClientSecurityWithServiceResponseAsync(List<String> uids);
+    Observable<ServiceResponse<Object>> batchDeleteClientSecuritiesWithServiceResponseAsync(List<String> uids);
 
     /**
      * Get an individual security by the unique security uid.  Optionally, decorate each security with specific properties.
