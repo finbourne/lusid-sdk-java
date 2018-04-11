@@ -48,7 +48,7 @@ public class SchemaDto {
      * 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent',
      * 'CreateResults', 'Results', 'TryAddClientSecurities',
      * 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes',
-     * 'ExpandedGroup'.
+     * 'ExpandedGroup', 'CreateCorporateAction'.
      */
     @JsonProperty(value = "entity")
     private String entity;

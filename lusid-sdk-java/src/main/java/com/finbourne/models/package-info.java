@@ -23,8 +23,10 @@
  * # Introduction
  This page documents the [LUSID API](https://api.finbourne.com/swagger), which allows authorised clients to query and update their data within the LUSID platform.
  SDKs to interact with the LUSID API are available in the following languages :
- * [Python](https://github.com/finbourne/lusid-sdk-python)
+ * [C#](https://github.com/finbourne/lusid-sdk-csharp)
  * [Java](https://github.com/finbourne/lusid-sdk-java)
+ * [JavaScript](https://github.com/finbourne/lusid-sdk-js)
+ * [Python](https://github.com/finbourne/lusid-sdk-python)
  # Immutable Events
  A core tenet of the LUSID platform is the concept of an immutable data store.  This gives the ability to consistently reproduce the state of the system for any given point in bi-temporal space.  In order to achieve this LUSID has implemented an append only event store for all data types.  New events, including historical amendments, are added to the end of the event stream and then 'played back' in order to construct the state.  Given that all the events from T0 are required in order to reconstruct the state, there can be significant computational complexity and cost involved.  FINBOURNE have employed a number of techniques and optimisations in order to produce consistent performance characteristics e.g. using snapshots which has resulted in a highly performance and scalable platform.
  # Data Model
