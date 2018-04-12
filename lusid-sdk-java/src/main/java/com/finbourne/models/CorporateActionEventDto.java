@@ -31,31 +31,31 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class CorporateActionEventDto {
     /**
-     * Unique identifier for the corporate action source.
+     * The sourceId property.
      */
     @JsonProperty(value = "sourceId", required = true)
     private ResourceId sourceId;
 
     /**
-     * Unique identifier for the corporate action.
+     * The corporateActionId property.
      */
     @JsonProperty(value = "corporateActionId", required = true)
     private String corporateActionId;
 
     /**
-     * The announcement date of the corporate action.
+     * The announcementDate property.
      */
     @JsonProperty(value = "announcementDate")
     private DateTime announcementDate;
 
     /**
-     * The ex date of the corporate action.
+     * The exDate property.
      */
     @JsonProperty(value = "exDate")
     private DateTime exDate;
 
     /**
-     * The record date of the corporate action.
+     * The recordDate property.
      */
     @JsonProperty(value = "recordDate")
     private DateTime recordDate;
