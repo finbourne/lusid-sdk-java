@@ -3262,6 +3262,7 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<Object>> getPortfolioWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
 
     /**
+     * Update portfolio.
      *
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
@@ -3273,6 +3274,7 @@ public interface LUSIDAPI {
     Object updatePortfolio(String scope, String code);
 
     /**
+     * Update portfolio.
      *
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
@@ -3283,6 +3285,7 @@ public interface LUSIDAPI {
     ServiceFuture<Object> updatePortfolioAsync(String scope, String code, final ServiceCallback<Object> serviceCallback);
 
     /**
+     * Update portfolio.
      *
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
@@ -3292,6 +3295,7 @@ public interface LUSIDAPI {
     Observable<Object> updatePortfolioAsync(String scope, String code);
 
     /**
+     * Update portfolio.
      *
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
@@ -3300,6 +3304,7 @@ public interface LUSIDAPI {
      */
     Observable<ServiceResponse<Object>> updatePortfolioWithServiceResponseAsync(String scope, String code);
     /**
+     * Update portfolio.
      *
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
@@ -3313,6 +3318,7 @@ public interface LUSIDAPI {
     Object updatePortfolio(String scope, String code, UpdatePortfolioRequest request, DateTime effectiveAt);
 
     /**
+     * Update portfolio.
      *
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
@@ -3325,6 +3331,7 @@ public interface LUSIDAPI {
     ServiceFuture<Object> updatePortfolioAsync(String scope, String code, UpdatePortfolioRequest request, DateTime effectiveAt, final ServiceCallback<Object> serviceCallback);
 
     /**
+     * Update portfolio.
      *
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
@@ -3336,6 +3343,7 @@ public interface LUSIDAPI {
     Observable<Object> updatePortfolioAsync(String scope, String code, UpdatePortfolioRequest request, DateTime effectiveAt);
 
     /**
+     * Update portfolio.
      *
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
@@ -3444,7 +3452,8 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<Object>> deletePortfolioWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
 
     /**
-     * Gets all commands that modified the portfolio(s) with the specified id.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The portfolio id
@@ -3456,7 +3465,8 @@ public interface LUSIDAPI {
     Object getCommands(String scope, String code);
 
     /**
-     * Gets all commands that modified the portfolio(s) with the specified id.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The portfolio id
@@ -3467,7 +3477,8 @@ public interface LUSIDAPI {
     ServiceFuture<Object> getCommandsAsync(String scope, String code, final ServiceCallback<Object> serviceCallback);
 
     /**
-     * Gets all commands that modified the portfolio(s) with the specified id.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The portfolio id
@@ -3477,7 +3488,8 @@ public interface LUSIDAPI {
     Observable<Object> getCommandsAsync(String scope, String code);
 
     /**
-     * Gets all commands that modified the portfolio(s) with the specified id.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The portfolio id
@@ -3486,7 +3498,8 @@ public interface LUSIDAPI {
      */
     Observable<ServiceResponse<Object>> getCommandsWithServiceResponseAsync(String scope, String code);
     /**
-     * Gets all commands that modified the portfolio(s) with the specified id.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The portfolio id
@@ -3501,7 +3514,8 @@ public interface LUSIDAPI {
     Object getCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
 
     /**
-     * Gets all commands that modified the portfolio(s) with the specified id.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The portfolio id
@@ -3515,7 +3529,8 @@ public interface LUSIDAPI {
     ServiceFuture<Object> getCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter, final ServiceCallback<Object> serviceCallback);
 
     /**
-     * Gets all commands that modified the portfolio(s) with the specified id.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The portfolio id
@@ -3528,7 +3543,8 @@ public interface LUSIDAPI {
     Observable<Object> getCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
 
     /**
-     * Gets all commands that modified the portfolio(s) with the specified id.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The portfolio id
@@ -4215,7 +4231,7 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<Object>> getPropertiesWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter);
 
     /**
-     * Create properties.
+     * Update properties.
      * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
@@ -4228,7 +4244,7 @@ public interface LUSIDAPI {
     Object upsertPortfolioProperties(String scope, String code);
 
     /**
-     * Create properties.
+     * Update properties.
      * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
@@ -4240,7 +4256,7 @@ public interface LUSIDAPI {
     ServiceFuture<Object> upsertPortfolioPropertiesAsync(String scope, String code, final ServiceCallback<Object> serviceCallback);
 
     /**
-     * Create properties.
+     * Update properties.
      * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
@@ -4251,7 +4267,7 @@ public interface LUSIDAPI {
     Observable<Object> upsertPortfolioPropertiesAsync(String scope, String code);
 
     /**
-     * Create properties.
+     * Update properties.
      * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
@@ -4261,7 +4277,7 @@ public interface LUSIDAPI {
      */
     Observable<ServiceResponse<Object>> upsertPortfolioPropertiesWithServiceResponseAsync(String scope, String code);
     /**
-     * Create properties.
+     * Update properties.
      * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
@@ -4276,7 +4292,7 @@ public interface LUSIDAPI {
     Object upsertPortfolioProperties(String scope, String code, List<PropertyDto> properties, DateTime effectiveAt);
 
     /**
-     * Create properties.
+     * Update properties.
      * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
@@ -4290,7 +4306,7 @@ public interface LUSIDAPI {
     ServiceFuture<Object> upsertPortfolioPropertiesAsync(String scope, String code, List<PropertyDto> properties, DateTime effectiveAt, final ServiceCallback<Object> serviceCallback);
 
     /**
-     * Create properties.
+     * Update properties.
      * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
@@ -4303,7 +4319,7 @@ public interface LUSIDAPI {
     Observable<Object> upsertPortfolioPropertiesAsync(String scope, String code, List<PropertyDto> properties, DateTime effectiveAt);
 
     /**
-     * Create properties.
+     * Update properties.
      * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
@@ -4631,7 +4647,7 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<Object>> getTradesWithServiceResponseAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter);
 
     /**
-     * Add/updates trades in a portfolio.
+     * Add/update trades.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -4643,7 +4659,7 @@ public interface LUSIDAPI {
     Object upsertTrades(String scope, String code);
 
     /**
-     * Add/updates trades in a portfolio.
+     * Add/update trades.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -4654,7 +4670,7 @@ public interface LUSIDAPI {
     ServiceFuture<Object> upsertTradesAsync(String scope, String code, final ServiceCallback<Object> serviceCallback);
 
     /**
-     * Add/updates trades in a portfolio.
+     * Add/update trades.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -4664,7 +4680,7 @@ public interface LUSIDAPI {
     Observable<Object> upsertTradesAsync(String scope, String code);
 
     /**
-     * Add/updates trades in a portfolio.
+     * Add/update trades.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -4673,7 +4689,7 @@ public interface LUSIDAPI {
      */
     Observable<ServiceResponse<Object>> upsertTradesWithServiceResponseAsync(String scope, String code);
     /**
-     * Add/updates trades in a portfolio.
+     * Add/update trades.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -4686,7 +4702,7 @@ public interface LUSIDAPI {
     Object upsertTrades(String scope, String code, List<TradeDto> trades);
 
     /**
-     * Add/updates trades in a portfolio.
+     * Add/update trades.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -4698,7 +4714,7 @@ public interface LUSIDAPI {
     ServiceFuture<Object> upsertTradesAsync(String scope, String code, List<TradeDto> trades, final ServiceCallback<Object> serviceCallback);
 
     /**
-     * Add/updates trades in a portfolio.
+     * Add/update trades.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -4709,7 +4725,7 @@ public interface LUSIDAPI {
     Observable<Object> upsertTradesAsync(String scope, String code, List<TradeDto> trades);
 
     /**
-     * Add/updates trades in a portfolio.
+     * Add/update trades.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio

@@ -6214,6 +6214,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Update portfolio.
      *
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
@@ -6227,6 +6228,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Update portfolio.
      *
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
@@ -6239,6 +6241,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Update portfolio.
      *
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
@@ -6255,6 +6258,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Update portfolio.
      *
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
@@ -6285,6 +6289,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Update portfolio.
      *
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
@@ -6300,6 +6305,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Update portfolio.
      *
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
@@ -6314,6 +6320,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Update portfolio.
      *
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
@@ -6332,6 +6339,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Update portfolio.
      *
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
@@ -6540,7 +6548,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets all commands that modified the portfolio(s) with the specified id.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The portfolio id
@@ -6554,7 +6563,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets all commands that modified the portfolio(s) with the specified id.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The portfolio id
@@ -6567,7 +6577,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets all commands that modified the portfolio(s) with the specified id.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The portfolio id
@@ -6584,7 +6595,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets all commands that modified the portfolio(s) with the specified id.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The portfolio id
@@ -6616,7 +6628,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets all commands that modified the portfolio(s) with the specified id.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The portfolio id
@@ -6633,7 +6646,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets all commands that modified the portfolio(s) with the specified id.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The portfolio id
@@ -6649,7 +6663,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets all commands that modified the portfolio(s) with the specified id.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The portfolio id
@@ -6669,7 +6684,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets all commands that modified the portfolio(s) with the specified id.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The portfolio id
@@ -7841,7 +7857,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create properties.
+     * Update properties.
      * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
@@ -7856,7 +7872,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create properties.
+     * Update properties.
      * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
@@ -7870,7 +7886,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create properties.
+     * Update properties.
      * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
@@ -7888,7 +7904,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create properties.
+     * Update properties.
      * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
@@ -7920,7 +7936,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create properties.
+     * Update properties.
      * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
@@ -7937,7 +7953,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create properties.
+     * Update properties.
      * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
@@ -7953,7 +7969,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create properties.
+     * Update properties.
      * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
@@ -7973,7 +7989,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create properties.
+     * Update properties.
      * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
@@ -8555,7 +8571,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/updates trades in a portfolio.
+     * Add/update trades.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -8569,7 +8585,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/updates trades in a portfolio.
+     * Add/update trades.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -8582,7 +8598,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/updates trades in a portfolio.
+     * Add/update trades.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -8599,7 +8615,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/updates trades in a portfolio.
+     * Add/update trades.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -8629,7 +8645,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/updates trades in a portfolio.
+     * Add/update trades.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -8644,7 +8660,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/updates trades in a portfolio.
+     * Add/update trades.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -8658,7 +8674,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/updates trades in a portfolio.
+     * Add/update trades.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -8676,7 +8692,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/updates trades in a portfolio.
+     * Add/update trades.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
