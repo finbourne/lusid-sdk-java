@@ -54,6 +54,12 @@ public class CreatePortfolioRequest {
     private String baseCurrency;
 
     /**
+     * The corporateActionSourceId property.
+     */
+    @JsonProperty(value = "corporateActionSourceId")
+    private ResourceId corporateActionSourceId;
+
+    /**
      * Get the name value.
      *
      * @return the name value
@@ -130,6 +136,26 @@ public class CreatePortfolioRequest {
      */
     public CreatePortfolioRequest withBaseCurrency(String baseCurrency) {
         this.baseCurrency = baseCurrency;
+        return this;
+    }
+
+    /**
+     * Get the corporateActionSourceId value.
+     *
+     * @return the corporateActionSourceId value
+     */
+    public ResourceId corporateActionSourceId() {
+        return this.corporateActionSourceId;
+    }
+
+    /**
+     * Set the corporateActionSourceId value.
+     *
+     * @param corporateActionSourceId the corporateActionSourceId value to set
+     * @return the CreatePortfolioRequest object itself.
+     */
+    public CreatePortfolioRequest withCorporateActionSourceId(ResourceId corporateActionSourceId) {
+        this.corporateActionSourceId = corporateActionSourceId;
         return this;
     }
 
