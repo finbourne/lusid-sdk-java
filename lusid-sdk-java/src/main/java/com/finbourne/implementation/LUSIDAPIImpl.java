@@ -414,7 +414,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getTrades" })
         @GET("v1/api/portfolios/{scope}/{code}/trades")
-        Observable<Response<ResponseBody>> getTrades(@Path("scope") String scope, @Path("code") String code, @Query("fromTradeDate") DateTime fromTradeDate, @Query("toTradeDate") DateTime toTradeDate, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("propertyFilter") String propertyFilter, @Query("filter") String filter);
+        Observable<Response<ResponseBody>> getTrades(@Path("scope") String scope, @Path("code") String code, @Query("fromTradeDate") DateTime fromTradeDate, @Query("toTradeDate") DateTime toTradeDate, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("securityPropertyKeys") String securityPropertyKeys, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI upsertTrades" })
         @POST("v1/api/portfolios/{scope}/{code}/trades")
@@ -8780,10 +8780,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
-        final List<String> propertyFilter = null;
+        final List<String> securityPropertyKeys = null;
         final String filter = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String propertyFilterConverted = this.serializerAdapter().serializeList(propertyFilter, CollectionFormat.MULTI);
-        return service.getTrades(scope, code, fromTradeDate, toTradeDate, asAt, sortByConverted, start, limit, propertyFilterConverted, filter)
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String securityPropertyKeysConverted = this.serializerAdapter().serializeList(securityPropertyKeys, CollectionFormat.MULTI);
+        return service.getTrades(scope, code, fromTradeDate, toTradeDate, asAt, sortByConverted, start, limit, securityPropertyKeysConverted, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -8808,15 +8808,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
-     * @param propertyFilter the List&lt;String&gt; value
+     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
      * @param filter Trade filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getTrades(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter) {
-        return getTradesWithServiceResponseAsync(scope, code, fromTradeDate, toTradeDate, asAt, sortBy, start, limit, propertyFilter, filter).toBlocking().single().body();
+    public Object getTrades(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter) {
+        return getTradesWithServiceResponseAsync(scope, code, fromTradeDate, toTradeDate, asAt, sortBy, start, limit, securityPropertyKeys, filter).toBlocking().single().body();
     }
 
     /**
@@ -8830,14 +8830,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
-     * @param propertyFilter the List&lt;String&gt; value
+     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
      * @param filter Trade filter
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getTradesWithServiceResponseAsync(scope, code, fromTradeDate, toTradeDate, asAt, sortBy, start, limit, propertyFilter, filter), serviceCallback);
+    public ServiceFuture<Object> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getTradesWithServiceResponseAsync(scope, code, fromTradeDate, toTradeDate, asAt, sortBy, start, limit, securityPropertyKeys, filter), serviceCallback);
     }
 
     /**
@@ -8851,13 +8851,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
-     * @param propertyFilter the List&lt;String&gt; value
+     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
      * @param filter Trade filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter) {
-        return getTradesWithServiceResponseAsync(scope, code, fromTradeDate, toTradeDate, asAt, sortBy, start, limit, propertyFilter, filter).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter) {
+        return getTradesWithServiceResponseAsync(scope, code, fromTradeDate, toTradeDate, asAt, sortBy, start, limit, securityPropertyKeys, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -8876,12 +8876,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
-     * @param propertyFilter the List&lt;String&gt; value
+     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
      * @param filter Trade filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getTradesWithServiceResponseAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter) {
+    public Observable<ServiceResponse<Object>> getTradesWithServiceResponseAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -8889,9 +8889,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
         Validator.validate(sortBy);
-        Validator.validate(propertyFilter);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String propertyFilterConverted = this.serializerAdapter().serializeList(propertyFilter, CollectionFormat.MULTI);
-        return service.getTrades(scope, code, fromTradeDate, toTradeDate, asAt, sortByConverted, start, limit, propertyFilterConverted, filter)
+        Validator.validate(securityPropertyKeys);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String securityPropertyKeysConverted = this.serializerAdapter().serializeList(securityPropertyKeys, CollectionFormat.MULTI);
+        return service.getTrades(scope, code, fromTradeDate, toTradeDate, asAt, sortByConverted, start, limit, securityPropertyKeysConverted, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {

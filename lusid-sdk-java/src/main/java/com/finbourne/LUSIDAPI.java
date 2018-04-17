@@ -4764,14 +4764,14 @@ public interface LUSIDAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
-     * @param propertyFilter the List&lt;String&gt; value
+     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
      * @param filter Trade filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object getTrades(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter);
+    Object getTrades(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter);
 
     /**
      * Get trades.
@@ -4784,13 +4784,13 @@ public interface LUSIDAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
-     * @param propertyFilter the List&lt;String&gt; value
+     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
      * @param filter Trade filter
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Get trades.
@@ -4803,12 +4803,12 @@ public interface LUSIDAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
-     * @param propertyFilter the List&lt;String&gt; value
+     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
      * @param filter Trade filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter);
+    Observable<Object> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter);
 
     /**
      * Get trades.
@@ -4821,12 +4821,12 @@ public interface LUSIDAPI {
      * @param sortBy The columns to sort the returned data by
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
-     * @param propertyFilter the List&lt;String&gt; value
+     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
      * @param filter Trade filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> getTradesWithServiceResponseAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, String filter);
+    Observable<ServiceResponse<Object>> getTradesWithServiceResponseAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter);
 
     /**
      * Add/update trades.
