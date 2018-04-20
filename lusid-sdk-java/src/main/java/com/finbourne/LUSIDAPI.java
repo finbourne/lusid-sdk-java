@@ -40,7 +40,7 @@ import com.finbourne.models.ResourceId;
 import com.finbourne.models.SecurityAnalyticDataDto;
 import com.finbourne.models.SecurityClassificationDto;
 import com.finbourne.models.TradeDto;
-import com.finbourne.models.TransactionCodeMovementsDto;
+import com.finbourne.models.TxnMetaDataDto;
 import com.finbourne.models.UpdateGroupRequest;
 import com.finbourne.models.UpdatePortfolioRequest;
 import com.finbourne.models.UpdatePropertyDataFormatRequest;
@@ -1344,7 +1344,7 @@ public interface LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object addTransactionCode(TransactionCodeMovementsDto code);
+    Object addTransactionCode(TxnMetaDataDto code);
 
     /**
      * Adds a new transaction code movement to the list of existing codes.
@@ -1354,7 +1354,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> addTransactionCodeAsync(TransactionCodeMovementsDto code, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> addTransactionCodeAsync(TxnMetaDataDto code, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Adds a new transaction code movement to the list of existing codes.
@@ -1363,7 +1363,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> addTransactionCodeAsync(TransactionCodeMovementsDto code);
+    Observable<Object> addTransactionCodeAsync(TxnMetaDataDto code);
 
     /**
      * Adds a new transaction code movement to the list of existing codes.
@@ -1372,7 +1372,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> addTransactionCodeWithServiceResponseAsync(TransactionCodeMovementsDto code);
+    Observable<ServiceResponse<Object>> addTransactionCodeWithServiceResponseAsync(TxnMetaDataDto code);
 
     /**
      * Gets the list of persisted transaction codes.
@@ -1452,7 +1452,7 @@ public interface LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object uploadTransactionCodes(List<TransactionCodeMovementsDto> codes);
+    Object uploadTransactionCodes(List<TxnMetaDataDto> codes);
 
     /**
      * Uploads a list of transation codes to be used by the movements engine.
@@ -1462,7 +1462,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> uploadTransactionCodesAsync(List<TransactionCodeMovementsDto> codes, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> uploadTransactionCodesAsync(List<TxnMetaDataDto> codes, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Uploads a list of transation codes to be used by the movements engine.
@@ -1471,7 +1471,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> uploadTransactionCodesAsync(List<TransactionCodeMovementsDto> codes);
+    Observable<Object> uploadTransactionCodesAsync(List<TxnMetaDataDto> codes);
 
     /**
      * Uploads a list of transation codes to be used by the movements engine.
@@ -1480,7 +1480,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> uploadTransactionCodesWithServiceResponseAsync(List<TransactionCodeMovementsDto> codes);
+    Observable<ServiceResponse<Object>> uploadTransactionCodesWithServiceResponseAsync(List<TxnMetaDataDto> codes);
 
     /**
      *
@@ -5842,7 +5842,7 @@ public interface LUSIDAPI {
     /**
      * Gets all available property definitions.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -5853,7 +5853,7 @@ public interface LUSIDAPI {
     /**
      * Gets all available property definitions.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -5863,7 +5863,7 @@ public interface LUSIDAPI {
     /**
      * Gets all available property definitions.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
@@ -5872,7 +5872,7 @@ public interface LUSIDAPI {
     /**
      * Gets all available property definitions.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
@@ -5880,7 +5880,7 @@ public interface LUSIDAPI {
     /**
      * Gets all available property definitions.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -5895,7 +5895,7 @@ public interface LUSIDAPI {
     /**
      * Gets all available property definitions.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -5909,7 +5909,7 @@ public interface LUSIDAPI {
     /**
      * Gets all available property definitions.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -5922,7 +5922,7 @@ public interface LUSIDAPI {
     /**
      * Gets all available property definitions.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -5935,7 +5935,7 @@ public interface LUSIDAPI {
     /**
      * Gets the available property-definition scopes for the specified domain.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -5946,7 +5946,7 @@ public interface LUSIDAPI {
     /**
      * Gets the available property-definition scopes for the specified domain.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -5956,7 +5956,7 @@ public interface LUSIDAPI {
     /**
      * Gets the available property-definition scopes for the specified domain.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
@@ -5965,7 +5965,7 @@ public interface LUSIDAPI {
     /**
      * Gets the available property-definition scopes for the specified domain.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
@@ -5973,7 +5973,7 @@ public interface LUSIDAPI {
     /**
      * Gets the available property-definition scopes for the specified domain.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -5988,7 +5988,7 @@ public interface LUSIDAPI {
     /**
      * Gets the available property-definition scopes for the specified domain.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -6002,7 +6002,7 @@ public interface LUSIDAPI {
     /**
      * Gets the available property-definition scopes for the specified domain.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -6015,7 +6015,7 @@ public interface LUSIDAPI {
     /**
      * Gets the available property-definition scopes for the specified domain.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -6028,7 +6028,7 @@ public interface LUSIDAPI {
     /**
      * Gets all properties in a scope.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
@@ -6040,7 +6040,7 @@ public interface LUSIDAPI {
     /**
      * Gets all properties in a scope.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -6051,7 +6051,7 @@ public interface LUSIDAPI {
     /**
      * Gets all properties in a scope.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
@@ -6061,7 +6061,7 @@ public interface LUSIDAPI {
     /**
      * Gets all properties in a scope.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
@@ -6070,7 +6070,7 @@ public interface LUSIDAPI {
     /**
      * Gets all properties in a scope.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -6086,7 +6086,7 @@ public interface LUSIDAPI {
     /**
      * Gets all properties in a scope.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -6101,7 +6101,7 @@ public interface LUSIDAPI {
     /**
      * Gets all properties in a scope.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -6115,7 +6115,7 @@ public interface LUSIDAPI {
     /**
      * Gets all properties in a scope.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -6129,7 +6129,7 @@ public interface LUSIDAPI {
     /**
      * Gets a property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -6142,7 +6142,7 @@ public interface LUSIDAPI {
     /**
      * Gets a property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -6154,7 +6154,7 @@ public interface LUSIDAPI {
     /**
      * Gets a property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -6165,7 +6165,7 @@ public interface LUSIDAPI {
     /**
      * Gets a property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -6175,7 +6175,7 @@ public interface LUSIDAPI {
     /**
      * Gets a property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param asAt the DateTime value
@@ -6189,7 +6189,7 @@ public interface LUSIDAPI {
     /**
      * Gets a property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param asAt the DateTime value
@@ -6202,7 +6202,7 @@ public interface LUSIDAPI {
     /**
      * Gets a property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param asAt the DateTime value
@@ -6214,7 +6214,7 @@ public interface LUSIDAPI {
     /**
      * Gets a property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param asAt the DateTime value
@@ -6226,7 +6226,7 @@ public interface LUSIDAPI {
     /**
      * Updates the specified property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -6239,7 +6239,7 @@ public interface LUSIDAPI {
     /**
      * Updates the specified property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -6251,7 +6251,7 @@ public interface LUSIDAPI {
     /**
      * Updates the specified property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -6262,7 +6262,7 @@ public interface LUSIDAPI {
     /**
      * Updates the specified property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -6272,7 +6272,7 @@ public interface LUSIDAPI {
     /**
      * Updates the specified property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param definition the UpdatePropertyDefinitionRequest value
@@ -6286,7 +6286,7 @@ public interface LUSIDAPI {
     /**
      * Updates the specified property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param definition the UpdatePropertyDefinitionRequest value
@@ -6299,7 +6299,7 @@ public interface LUSIDAPI {
     /**
      * Updates the specified property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param definition the UpdatePropertyDefinitionRequest value
@@ -6311,7 +6311,7 @@ public interface LUSIDAPI {
     /**
      * Updates the specified property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param definition the UpdatePropertyDefinitionRequest value
@@ -6323,7 +6323,7 @@ public interface LUSIDAPI {
     /**
      * Deletes the property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -6336,7 +6336,7 @@ public interface LUSIDAPI {
     /**
      * Deletes the property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -6348,7 +6348,7 @@ public interface LUSIDAPI {
     /**
      * Deletes the property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -6359,7 +6359,7 @@ public interface LUSIDAPI {
     /**
      * Deletes the property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -7464,7 +7464,7 @@ public interface LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'TransactionCodeMovements'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -7475,7 +7475,7 @@ public interface LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'TransactionCodeMovements'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -7485,7 +7485,7 @@ public interface LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'TransactionCodeMovements'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
@@ -7494,7 +7494,7 @@ public interface LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'TransactionCodeMovements'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */

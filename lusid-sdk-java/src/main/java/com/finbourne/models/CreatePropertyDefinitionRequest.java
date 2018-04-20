@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CreatePropertyDefinitionRequest {
     /**
      * Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding',
-     * 'ReferenceHolding'.
+     * 'ReferenceHolding', 'TxnType'.
      */
     @JsonProperty(value = "domain")
     private String domain;

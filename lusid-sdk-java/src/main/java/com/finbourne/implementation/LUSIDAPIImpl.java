@@ -78,10 +78,10 @@ import com.finbourne.models.SecurityAnalyticDataDto;
 import com.finbourne.models.SecurityClassificationDto;
 import com.finbourne.models.SecurityDto;
 import com.finbourne.models.TradeDto;
-import com.finbourne.models.TransactionCodeMovementsDto;
 import com.finbourne.models.TryAddClientSecuritiesDto;
 import com.finbourne.models.TryDeleteClientSecuritiesDto;
 import com.finbourne.models.TryLookupSecuritiesFromCodesDto;
+import com.finbourne.models.TxnMetaDataDto;
 import com.finbourne.models.UpdateGroupRequest;
 import com.finbourne.models.UpdatePortfolioRequest;
 import com.finbourne.models.UpdatePropertyDataFormatRequest;
@@ -246,7 +246,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI addTransactionCode" })
         @POST("v1/api/configuration/addtransactioncode")
-        Observable<Response<ResponseBody>> addTransactionCode(@Body TransactionCodeMovementsDto code);
+        Observable<Response<ResponseBody>> addTransactionCode(@Body TxnMetaDataDto code);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getTransactionCodes" })
         @GET("v1/api/configuration/gettransactioncodes")
@@ -254,7 +254,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI uploadTransactionCodes" })
         @POST("v1/api/configuration/uploadtransactioncodes")
-        Observable<Response<ResponseBody>> uploadTransactionCodes(@Body List<TransactionCodeMovementsDto> codes);
+        Observable<Response<ResponseBody>> uploadTransactionCodes(@Body List<TxnMetaDataDto> codes);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getDownloadUrl" })
         @GET("v1/api/excel/download-token")
@@ -2769,7 +2769,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @return the observable to the Object object
      */
     public Observable<ServiceResponse<Object>> addTransactionCodeWithServiceResponseAsync() {
-        final TransactionCodeMovementsDto code = null;
+        final TxnMetaDataDto code = null;
         return service.addTransactionCode(code)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
@@ -2793,7 +2793,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object addTransactionCode(TransactionCodeMovementsDto code) {
+    public Object addTransactionCode(TxnMetaDataDto code) {
         return addTransactionCodeWithServiceResponseAsync(code).toBlocking().single().body();
     }
 
@@ -2805,7 +2805,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> addTransactionCodeAsync(TransactionCodeMovementsDto code, final ServiceCallback<Object> serviceCallback) {
+    public ServiceFuture<Object> addTransactionCodeAsync(TxnMetaDataDto code, final ServiceCallback<Object> serviceCallback) {
         return ServiceFuture.fromResponse(addTransactionCodeWithServiceResponseAsync(code), serviceCallback);
     }
 
@@ -2816,7 +2816,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> addTransactionCodeAsync(TransactionCodeMovementsDto code) {
+    public Observable<Object> addTransactionCodeAsync(TxnMetaDataDto code) {
         return addTransactionCodeWithServiceResponseAsync(code).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
@@ -2832,7 +2832,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> addTransactionCodeWithServiceResponseAsync(TransactionCodeMovementsDto code) {
+    public Observable<ServiceResponse<Object>> addTransactionCodeWithServiceResponseAsync(TxnMetaDataDto code) {
         Validator.validate(code);
         return service.addTransactionCode(code)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
@@ -2850,7 +2850,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     private ServiceResponse<Object> addTransactionCodeDelegate(Response<ResponseBody> response) throws RestException, IOException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
-                .register(201, new TypeToken<TransactionCodeMovementsDto>() { }.getType())
+                .register(201, new TypeToken<TxnMetaDataDto>() { }.getType())
                 .register(400, new TypeToken<ErrorResponse>() { }.getType())
                 .register(500, new TypeToken<ErrorResponse>() { }.getType())
                 .build(response);
@@ -2917,7 +2917,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     private ServiceResponse<Object> getTransactionCodesDelegate(Response<ResponseBody> response) throws RestException, IOException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<List<TransactionCodeMovementsDto>>() { }.getType())
+                .register(200, new TypeToken<List<TxnMetaDataDto>>() { }.getType())
                 .register(400, new TypeToken<ErrorResponse>() { }.getType())
                 .register(500, new TypeToken<ErrorResponse>() { }.getType())
                 .build(response);
@@ -2968,7 +2968,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @return the observable to the Object object
      */
     public Observable<ServiceResponse<Object>> uploadTransactionCodesWithServiceResponseAsync() {
-        final List<TransactionCodeMovementsDto> codes = null;
+        final List<TxnMetaDataDto> codes = null;
         return service.uploadTransactionCodes(codes)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
@@ -2992,7 +2992,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object uploadTransactionCodes(List<TransactionCodeMovementsDto> codes) {
+    public Object uploadTransactionCodes(List<TxnMetaDataDto> codes) {
         return uploadTransactionCodesWithServiceResponseAsync(codes).toBlocking().single().body();
     }
 
@@ -3004,7 +3004,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> uploadTransactionCodesAsync(List<TransactionCodeMovementsDto> codes, final ServiceCallback<Object> serviceCallback) {
+    public ServiceFuture<Object> uploadTransactionCodesAsync(List<TxnMetaDataDto> codes, final ServiceCallback<Object> serviceCallback) {
         return ServiceFuture.fromResponse(uploadTransactionCodesWithServiceResponseAsync(codes), serviceCallback);
     }
 
@@ -3015,7 +3015,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> uploadTransactionCodesAsync(List<TransactionCodeMovementsDto> codes) {
+    public Observable<Object> uploadTransactionCodesAsync(List<TxnMetaDataDto> codes) {
         return uploadTransactionCodesWithServiceResponseAsync(codes).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
@@ -3031,7 +3031,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> uploadTransactionCodesWithServiceResponseAsync(List<TransactionCodeMovementsDto> codes) {
+    public Observable<ServiceResponse<Object>> uploadTransactionCodesWithServiceResponseAsync(List<TxnMetaDataDto> codes) {
         Validator.validate(codes);
         return service.uploadTransactionCodes(codes)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
@@ -3049,7 +3049,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     private ServiceResponse<Object> uploadTransactionCodesDelegate(Response<ResponseBody> response) throws RestException, IOException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
-                .register(201, new TypeToken<List<TransactionCodeMovementsDto>>() { }.getType())
+                .register(201, new TypeToken<List<TxnMetaDataDto>>() { }.getType())
                 .register(400, new TypeToken<ErrorResponse>() { }.getType())
                 .register(500, new TypeToken<ErrorResponse>() { }.getType())
                 .build(response);
@@ -10694,7 +10694,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets all available property definitions.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -10707,7 +10707,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets all available property definitions.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -10719,7 +10719,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets all available property definitions.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
@@ -10735,7 +10735,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets all available property definitions.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
@@ -10765,7 +10765,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets all available property definitions.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10782,7 +10782,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets all available property definitions.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10798,7 +10798,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets all available property definitions.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10818,7 +10818,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets all available property definitions.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10858,7 +10858,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the available property-definition scopes for the specified domain.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -10871,7 +10871,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the available property-definition scopes for the specified domain.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -10883,7 +10883,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the available property-definition scopes for the specified domain.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
@@ -10899,7 +10899,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the available property-definition scopes for the specified domain.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
@@ -10929,7 +10929,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the available property-definition scopes for the specified domain.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10946,7 +10946,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the available property-definition scopes for the specified domain.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10962,7 +10962,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the available property-definition scopes for the specified domain.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10982,7 +10982,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the available property-definition scopes for the specified domain.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -11022,7 +11022,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets all properties in a scope.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
@@ -11036,7 +11036,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets all properties in a scope.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -11049,7 +11049,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets all properties in a scope.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
@@ -11066,7 +11066,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets all properties in a scope.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
@@ -11100,7 +11100,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets all properties in a scope.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -11118,7 +11118,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets all properties in a scope.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -11135,7 +11135,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets all properties in a scope.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -11156,7 +11156,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets all properties in a scope.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -11200,7 +11200,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets a property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -11215,7 +11215,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets a property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -11229,7 +11229,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets a property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -11247,7 +11247,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets a property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -11281,7 +11281,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets a property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param asAt the DateTime value
@@ -11297,7 +11297,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets a property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param asAt the DateTime value
@@ -11312,7 +11312,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets a property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param asAt the DateTime value
@@ -11331,7 +11331,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets a property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param asAt the DateTime value
@@ -11374,7 +11374,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Updates the specified property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -11389,7 +11389,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Updates the specified property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -11403,7 +11403,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Updates the specified property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -11421,7 +11421,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Updates the specified property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -11455,7 +11455,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Updates the specified property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param definition the UpdatePropertyDefinitionRequest value
@@ -11471,7 +11471,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Updates the specified property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param definition the UpdatePropertyDefinitionRequest value
@@ -11486,7 +11486,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Updates the specified property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param definition the UpdatePropertyDefinitionRequest value
@@ -11505,7 +11505,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Updates the specified property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param definition the UpdatePropertyDefinitionRequest value
@@ -11549,7 +11549,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Deletes the property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -11564,7 +11564,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Deletes the property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -11578,7 +11578,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Deletes the property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -11596,7 +11596,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Deletes the property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding'
+     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -13591,7 +13591,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'TransactionCodeMovements'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -13604,7 +13604,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'TransactionCodeMovements'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -13616,7 +13616,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'TransactionCodeMovements'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
@@ -13632,7 +13632,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'TransactionCodeMovements'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */

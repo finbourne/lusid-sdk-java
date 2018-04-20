@@ -22,48 +22,41 @@
 
 package com.finbourne.models;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The TransactionCodeMovementsDto model.
+ * The TxnTypeAliasDto model.
  */
-public class TransactionCodeMovementsDto {
+public class TxnTypeAliasDto {
     /**
-     * The transaction code.
+     * Transaction Code.
      */
-    @JsonProperty(value = "code", required = true)
-    private String code;
+    @JsonProperty(value = "type", required = true)
+    private String type;
 
     /**
-     * The transaction code description.
+     * Transaction Code description.
      */
     @JsonProperty(value = "description", required = true)
     private String description;
 
     /**
-     * Movement data for the transaction code.
-     */
-    @JsonProperty(value = "movements", required = true)
-    private List<MovementDataDto> movements;
-
-    /**
-     * Get the code value.
+     * Get the type value.
      *
-     * @return the code value
+     * @return the type value
      */
-    public String code() {
-        return this.code;
+    public String type() {
+        return this.type;
     }
 
     /**
-     * Set the code value.
+     * Set the type value.
      *
-     * @param code the code value to set
-     * @return the TransactionCodeMovementsDto object itself.
+     * @param type the type value to set
+     * @return the TxnTypeAliasDto object itself.
      */
-    public TransactionCodeMovementsDto withCode(String code) {
-        this.code = code;
+    public TxnTypeAliasDto withType(String type) {
+        this.type = type;
         return this;
     }
 
@@ -80,30 +73,10 @@ public class TransactionCodeMovementsDto {
      * Set the description value.
      *
      * @param description the description value to set
-     * @return the TransactionCodeMovementsDto object itself.
+     * @return the TxnTypeAliasDto object itself.
      */
-    public TransactionCodeMovementsDto withDescription(String description) {
+    public TxnTypeAliasDto withDescription(String description) {
         this.description = description;
-        return this;
-    }
-
-    /**
-     * Get the movements value.
-     *
-     * @return the movements value
-     */
-    public List<MovementDataDto> movements() {
-        return this.movements;
-    }
-
-    /**
-     * Set the movements value.
-     *
-     * @param movements the movements value to set
-     * @return the TransactionCodeMovementsDto object itself.
-     */
-    public TransactionCodeMovementsDto withMovements(List<MovementDataDto> movements) {
-        this.movements = movements;
         return this;
     }
 

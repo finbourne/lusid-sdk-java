@@ -22,12 +22,13 @@
 
 package com.finbourne.models;
 
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The MovementDataDto model.
+ * The TxnMovementMetaDataDto model.
  */
-public class MovementDataDto {
+public class TxnMovementMetaDataDto {
     /**
      * The movement types. Possible values include: 'Settlement', 'Traded',
      * 'ForwardFx', 'Commitment', 'Receivable', 'CashSettlement', 'Accrual'.
@@ -48,10 +49,16 @@ public class MovementDataDto {
     private int direction;
 
     /**
-     * The Flags.
+     * The properties property.
      */
-    @JsonProperty(value = "flags", required = true, access = JsonProperty.Access.WRITE_ONLY)
-    private String flags;
+    @JsonProperty(value = "properties", access = JsonProperty.Access.WRITE_ONLY)
+    private List<PropertyDto> properties;
+
+    /**
+     * The mappings property.
+     */
+    @JsonProperty(value = "mappings", access = JsonProperty.Access.WRITE_ONLY)
+    private List<TxnPropertyMappingDto> mappings;
 
     /**
      * Get the movementTypes value.
@@ -81,12 +88,21 @@ public class MovementDataDto {
     }
 
     /**
-     * Get the flags value.
+     * Get the properties value.
      *
-     * @return the flags value
+     * @return the properties value
      */
-    public String flags() {
-        return this.flags;
+    public List<PropertyDto> properties() {
+        return this.properties;
+    }
+
+    /**
+     * Get the mappings value.
+     *
+     * @return the mappings value
+     */
+    public List<TxnPropertyMappingDto> mappings() {
+        return this.mappings;
     }
 
 }
