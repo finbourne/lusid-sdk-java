@@ -33,31 +33,31 @@ public class TxnMovementMetaDataDto {
      * The movement types. Possible values include: 'Settlement', 'Traded',
      * 'ForwardFx', 'Commitment', 'Receivable', 'CashSettlement', 'Accrual'.
      */
-    @JsonProperty(value = "movementTypes", required = true, access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "movementTypes", required = true)
     private String movementTypes;
 
     /**
      * The Side. Possible values include: 'Side1', 'Side2', 'BondInt'.
      */
-    @JsonProperty(value = "side", required = true, access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "side", required = true)
     private String side;
 
     /**
      * The direction property.
      */
-    @JsonProperty(value = "direction", required = true, access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "direction", required = true)
     private int direction;
 
     /**
      * The properties property.
      */
-    @JsonProperty(value = "properties", access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "properties")
     private List<PropertyDto> properties;
 
     /**
      * The mappings property.
      */
-    @JsonProperty(value = "mappings", access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "mappings")
     private List<TxnPropertyMappingDto> mappings;
 
     /**
@@ -70,12 +70,34 @@ public class TxnMovementMetaDataDto {
     }
 
     /**
+     * Set the movementTypes value.
+     *
+     * @param movementTypes the movementTypes value to set
+     * @return the TxnMovementMetaDataDto object itself.
+     */
+    public TxnMovementMetaDataDto withMovementTypes(String movementTypes) {
+        this.movementTypes = movementTypes;
+        return this;
+    }
+
+    /**
      * Get the side value.
      *
      * @return the side value
      */
     public String side() {
         return this.side;
+    }
+
+    /**
+     * Set the side value.
+     *
+     * @param side the side value to set
+     * @return the TxnMovementMetaDataDto object itself.
+     */
+    public TxnMovementMetaDataDto withSide(String side) {
+        this.side = side;
+        return this;
     }
 
     /**
@@ -88,6 +110,17 @@ public class TxnMovementMetaDataDto {
     }
 
     /**
+     * Set the direction value.
+     *
+     * @param direction the direction value to set
+     * @return the TxnMovementMetaDataDto object itself.
+     */
+    public TxnMovementMetaDataDto withDirection(int direction) {
+        this.direction = direction;
+        return this;
+    }
+
+    /**
      * Get the properties value.
      *
      * @return the properties value
@@ -97,12 +130,34 @@ public class TxnMovementMetaDataDto {
     }
 
     /**
+     * Set the properties value.
+     *
+     * @param properties the properties value to set
+     * @return the TxnMovementMetaDataDto object itself.
+     */
+    public TxnMovementMetaDataDto withProperties(List<PropertyDto> properties) {
+        this.properties = properties;
+        return this;
+    }
+
+    /**
      * Get the mappings value.
      *
      * @return the mappings value
      */
     public List<TxnPropertyMappingDto> mappings() {
         return this.mappings;
+    }
+
+    /**
+     * Set the mappings value.
+     *
+     * @param mappings the mappings value to set
+     * @return the TxnMovementMetaDataDto object itself.
+     */
+    public TxnMovementMetaDataDto withMappings(List<TxnPropertyMappingDto> mappings) {
+        this.mappings = mappings;
+        return this;
     }
 
 }

@@ -31,19 +31,19 @@ public class TxnPropertyMappingDto {
     /**
      * The Side.
      */
-    @JsonProperty(value = "propertyKey", required = true, access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "propertyKey", required = true)
     private String propertyKey;
 
     /**
      * The Side.
      */
-    @JsonProperty(value = "mapFrom", access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "mapFrom")
     private String mapFrom;
 
     /**
      * The Side.
      */
-    @JsonProperty(value = "setTo", access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "setTo")
     private Object setTo;
 
     /**
@@ -56,6 +56,17 @@ public class TxnPropertyMappingDto {
     }
 
     /**
+     * Set the propertyKey value.
+     *
+     * @param propertyKey the propertyKey value to set
+     * @return the TxnPropertyMappingDto object itself.
+     */
+    public TxnPropertyMappingDto withPropertyKey(String propertyKey) {
+        this.propertyKey = propertyKey;
+        return this;
+    }
+
+    /**
      * Get the mapFrom value.
      *
      * @return the mapFrom value
@@ -65,12 +76,34 @@ public class TxnPropertyMappingDto {
     }
 
     /**
+     * Set the mapFrom value.
+     *
+     * @param mapFrom the mapFrom value to set
+     * @return the TxnPropertyMappingDto object itself.
+     */
+    public TxnPropertyMappingDto withMapFrom(String mapFrom) {
+        this.mapFrom = mapFrom;
+        return this;
+    }
+
+    /**
      * Get the setTo value.
      *
      * @return the setTo value
      */
     public Object setTo() {
         return this.setTo;
+    }
+
+    /**
+     * Set the setTo value.
+     *
+     * @param setTo the setTo value to set
+     * @return the TxnPropertyMappingDto object itself.
+     */
+    public TxnPropertyMappingDto withSetTo(Object setTo) {
+        this.setTo = setTo;
+        return this;
     }
 
 }
