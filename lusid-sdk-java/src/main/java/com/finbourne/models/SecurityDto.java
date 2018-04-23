@@ -22,7 +22,6 @@
 
 package com.finbourne.models;
 
-import java.util.Map;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -64,7 +63,7 @@ public class SecurityDto {
      * The properties property.
      */
     @JsonProperty(value = "properties")
-    private Map<String, Property> properties;
+    private List<PropertyDto> properties;
 
     /**
      * The _links property.
@@ -177,7 +176,7 @@ public class SecurityDto {
      *
      * @return the properties value
      */
-    public Map<String, Property> properties() {
+    public List<PropertyDto> properties() {
         return this.properties;
     }
 
@@ -187,7 +186,7 @@ public class SecurityDto {
      * @param properties the properties value to set
      * @return the SecurityDto object itself.
      */
-    public SecurityDto withProperties(Map<String, Property> properties) {
+    public SecurityDto withProperties(List<PropertyDto> properties) {
         this.properties = properties;
         return this;
     }
