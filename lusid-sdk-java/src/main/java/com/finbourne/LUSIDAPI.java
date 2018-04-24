@@ -1302,185 +1302,185 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<Object>> upsertClassificationWithServiceResponseAsync(List<SecurityClassificationDto> classifications);
 
     /**
-     * Adds a new transaction code movement to the list of existing codes.
+     * Adds a new transaction type movement to the list of existing types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object addTransactionCode();
+    Object addTransactionType();
 
     /**
-     * Adds a new transaction code movement to the list of existing codes.
+     * Adds a new transaction type movement to the list of existing types.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> addTransactionCodeAsync(final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> addTransactionTypeAsync(final ServiceCallback<Object> serviceCallback);
 
     /**
-     * Adds a new transaction code movement to the list of existing codes.
+     * Adds a new transaction type movement to the list of existing types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> addTransactionCodeAsync();
+    Observable<Object> addTransactionTypeAsync();
 
     /**
-     * Adds a new transaction code movement to the list of existing codes.
+     * Adds a new transaction type movement to the list of existing types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> addTransactionCodeWithServiceResponseAsync();
+    Observable<ServiceResponse<Object>> addTransactionTypeWithServiceResponseAsync();
     /**
-     * Adds a new transaction code movement to the list of existing codes.
+     * Adds a new transaction type movement to the list of existing types.
      *
-     * @param code transaction code to add
+     * @param type the TxnMetaDataDto value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object addTransactionCode(TxnMetaDataDto code);
+    Object addTransactionType(TxnMetaDataDto type);
 
     /**
-     * Adds a new transaction code movement to the list of existing codes.
+     * Adds a new transaction type movement to the list of existing types.
      *
-     * @param code transaction code to add
+     * @param type the TxnMetaDataDto value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> addTransactionCodeAsync(TxnMetaDataDto code, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> addTransactionTypeAsync(TxnMetaDataDto type, final ServiceCallback<Object> serviceCallback);
 
     /**
-     * Adds a new transaction code movement to the list of existing codes.
+     * Adds a new transaction type movement to the list of existing types.
      *
-     * @param code transaction code to add
+     * @param type the TxnMetaDataDto value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> addTransactionCodeAsync(TxnMetaDataDto code);
+    Observable<Object> addTransactionTypeAsync(TxnMetaDataDto type);
 
     /**
-     * Adds a new transaction code movement to the list of existing codes.
+     * Adds a new transaction type movement to the list of existing types.
      *
-     * @param code transaction code to add
+     * @param type the TxnMetaDataDto value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> addTransactionCodeWithServiceResponseAsync(TxnMetaDataDto code);
+    Observable<ServiceResponse<Object>> addTransactionTypeWithServiceResponseAsync(TxnMetaDataDto type);
 
     /**
-     * Gets the list of persisted transaction codes.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws RestException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the Object object if successful.
-     */
-    Object getTransactionCodes();
-
-    /**
-     * Gets the list of persisted transaction codes.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<Object> getTransactionCodesAsync(final ServiceCallback<Object> serviceCallback);
-
-    /**
-     * Gets the list of persisted transaction codes.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the Object object
-     */
-    Observable<Object> getTransactionCodesAsync();
-
-    /**
-     * Gets the list of persisted transaction codes.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the Object object
-     */
-    Observable<ServiceResponse<Object>> getTransactionCodesWithServiceResponseAsync();
-
-    /**
-     * Uploads a list of transation codes to be used by the movements engine.
+     * Gets the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object uploadTransactionCodes();
+    Object getTransactionTypes();
 
     /**
-     * Uploads a list of transation codes to be used by the movements engine.
+     * Gets the list of persisted transaction types.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> uploadTransactionCodesAsync(final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> getTransactionTypesAsync(final ServiceCallback<Object> serviceCallback);
 
     /**
-     * Uploads a list of transation codes to be used by the movements engine.
+     * Gets the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> uploadTransactionCodesAsync();
+    Observable<Object> getTransactionTypesAsync();
 
     /**
-     * Uploads a list of transation codes to be used by the movements engine.
+     * Gets the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> uploadTransactionCodesWithServiceResponseAsync();
+    Observable<ServiceResponse<Object>> getTransactionTypesWithServiceResponseAsync();
+
     /**
-     * Uploads a list of transation codes to be used by the movements engine.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
-     * @param codes Codes to be uploaded
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object uploadTransactionCodes(List<TxnMetaDataDto> codes);
+    Object uploadTransactionTypes();
 
     /**
-     * Uploads a list of transation codes to be used by the movements engine.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
-     * @param codes Codes to be uploaded
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> uploadTransactionCodesAsync(List<TxnMetaDataDto> codes, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> uploadTransactionTypesAsync(final ServiceCallback<Object> serviceCallback);
 
     /**
-     * Uploads a list of transation codes to be used by the movements engine.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
-     * @param codes Codes to be uploaded
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> uploadTransactionCodesAsync(List<TxnMetaDataDto> codes);
+    Observable<Object> uploadTransactionTypesAsync();
 
     /**
-     * Uploads a list of transation codes to be used by the movements engine.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
-     * @param codes Codes to be uploaded
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> uploadTransactionCodesWithServiceResponseAsync(List<TxnMetaDataDto> codes);
+    Observable<ServiceResponse<Object>> uploadTransactionTypesWithServiceResponseAsync();
+    /**
+     * Uploads a list of transaction types to be used by the movements engine.
+     *
+     * @param types the List&lt;TxnMetaDataDto&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws RestException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    Object uploadTransactionTypes(List<TxnMetaDataDto> types);
+
+    /**
+     * Uploads a list of transaction types to be used by the movements engine.
+     *
+     * @param types the List&lt;TxnMetaDataDto&gt; value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<Object> uploadTransactionTypesAsync(List<TxnMetaDataDto> types, final ServiceCallback<Object> serviceCallback);
+
+    /**
+     * Uploads a list of transaction types to be used by the movements engine.
+     *
+     * @param types the List&lt;TxnMetaDataDto&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    Observable<Object> uploadTransactionTypesAsync(List<TxnMetaDataDto> types);
+
+    /**
+     * Uploads a list of transaction types to be used by the movements engine.
+     *
+     * @param types the List&lt;TxnMetaDataDto&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    Observable<ServiceResponse<Object>> uploadTransactionTypesWithServiceResponseAsync(List<TxnMetaDataDto> types);
 
     /**
      *
@@ -4349,13 +4349,12 @@ public interface LUSIDAPI {
      * @param sortBy Property to sort the results by
      * @param start the Integer value
      * @param limit the Integer value
-     * @param propertyFilter Property to filter the results by
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object getProperties(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter);
+    Object getProperties(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Get properties.
@@ -4369,12 +4368,11 @@ public interface LUSIDAPI {
      * @param sortBy Property to sort the results by
      * @param start the Integer value
      * @param limit the Integer value
-     * @param propertyFilter Property to filter the results by
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> getPropertiesAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> getPropertiesAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Get properties.
@@ -4388,11 +4386,10 @@ public interface LUSIDAPI {
      * @param sortBy Property to sort the results by
      * @param start the Integer value
      * @param limit the Integer value
-     * @param propertyFilter Property to filter the results by
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> getPropertiesAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter);
+    Observable<Object> getPropertiesAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Get properties.
@@ -4406,11 +4403,10 @@ public interface LUSIDAPI {
      * @param sortBy Property to sort the results by
      * @param start the Integer value
      * @param limit the Integer value
-     * @param propertyFilter Property to filter the results by
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> getPropertiesWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter);
+    Observable<ServiceResponse<Object>> getPropertiesWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Update properties.

@@ -244,17 +244,17 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @POST("v1/api/classifications")
         Observable<Response<ResponseBody>> upsertClassification(@Body List<SecurityClassificationDto> classifications);
 
-        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI addTransactionCode" })
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI addTransactionType" })
         @POST("v1/api/configuration/addtransactioncode")
-        Observable<Response<ResponseBody>> addTransactionCode(@Body TxnMetaDataDto code);
+        Observable<Response<ResponseBody>> addTransactionType(@Body TxnMetaDataDto type);
 
-        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getTransactionCodes" })
+        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getTransactionTypes" })
         @GET("v1/api/configuration/gettransactioncodes")
-        Observable<Response<ResponseBody>> getTransactionCodes();
+        Observable<Response<ResponseBody>> getTransactionTypes();
 
-        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI uploadTransactionCodes" })
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI uploadTransactionTypes" })
         @POST("v1/api/configuration/uploadtransactioncodes")
-        Observable<Response<ResponseBody>> uploadTransactionCodes(@Body List<TxnMetaDataDto> codes);
+        Observable<Response<ResponseBody>> uploadTransactionTypes(@Body List<TxnMetaDataDto> types);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getDownloadUrl" })
         @GET("v1/api/excel/download-token")
@@ -398,7 +398,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getProperties" })
         @GET("v1/api/portfolios/{scope}/{code}/properties")
-        Observable<Response<ResponseBody>> getProperties(@Path("scope") String scope, @Path("code") String code, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("propertyFilter") String propertyFilter);
+        Observable<Response<ResponseBody>> getProperties(@Path("scope") String scope, @Path("code") String code, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI upsertPortfolioProperties" })
         @POST("v1/api/portfolios/{scope}/{code}/properties")
@@ -724,7 +724,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     private ServiceResponse<Object> listCorporateActionsDelegate(Response<ResponseBody> response) throws RestException, IOException, IllegalArgumentException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<CorporateActionEventDto>() { }.getType())
+                .register(200, new TypeToken<List<CorporateActionEventDto>>() { }.getType())
                 .register(404, new TypeToken<ErrorResponse>() { }.getType())
                 .register(500, new TypeToken<ErrorResponse>() { }.getType())
                 .build(response);
@@ -884,7 +884,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     private ServiceResponse<Object> upsertCorporateActionDelegate(Response<ResponseBody> response) throws RestException, IOException, IllegalArgumentException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
-                .register(201, new TypeToken<List<CorporateActionEventDto>>() { }.getType())
+                .register(200, new TypeToken<List<CorporateActionEventDto>>() { }.getType())
                 .register(400, new TypeToken<ErrorResponse>() { }.getType())
                 .register(500, new TypeToken<ErrorResponse>() { }.getType())
                 .build(response);
@@ -2725,36 +2725,36 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adds a new transaction code movement to the list of existing codes.
+     * Adds a new transaction type movement to the list of existing types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object addTransactionCode() {
-        return addTransactionCodeWithServiceResponseAsync().toBlocking().single().body();
+    public Object addTransactionType() {
+        return addTransactionTypeWithServiceResponseAsync().toBlocking().single().body();
     }
 
     /**
-     * Adds a new transaction code movement to the list of existing codes.
+     * Adds a new transaction type movement to the list of existing types.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> addTransactionCodeAsync(final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(addTransactionCodeWithServiceResponseAsync(), serviceCallback);
+    public ServiceFuture<Object> addTransactionTypeAsync(final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(addTransactionTypeWithServiceResponseAsync(), serviceCallback);
     }
 
     /**
-     * Adds a new transaction code movement to the list of existing codes.
+     * Adds a new transaction type movement to the list of existing types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> addTransactionCodeAsync() {
-        return addTransactionCodeWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> addTransactionTypeAsync() {
+        return addTransactionTypeWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -2763,19 +2763,19 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adds a new transaction code movement to the list of existing codes.
+     * Adds a new transaction type movement to the list of existing types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> addTransactionCodeWithServiceResponseAsync() {
-        final TxnMetaDataDto code = null;
-        return service.addTransactionCode(code)
+    public Observable<ServiceResponse<Object>> addTransactionTypeWithServiceResponseAsync() {
+        final TxnMetaDataDto type = null;
+        return service.addTransactionType(type)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<Object> clientResponse = addTransactionCodeDelegate(response);
+                        ServiceResponse<Object> clientResponse = addTransactionTypeDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -2785,39 +2785,39 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adds a new transaction code movement to the list of existing codes.
+     * Adds a new transaction type movement to the list of existing types.
      *
-     * @param code transaction code to add
+     * @param type the TxnMetaDataDto value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object addTransactionCode(TxnMetaDataDto code) {
-        return addTransactionCodeWithServiceResponseAsync(code).toBlocking().single().body();
+    public Object addTransactionType(TxnMetaDataDto type) {
+        return addTransactionTypeWithServiceResponseAsync(type).toBlocking().single().body();
     }
 
     /**
-     * Adds a new transaction code movement to the list of existing codes.
+     * Adds a new transaction type movement to the list of existing types.
      *
-     * @param code transaction code to add
+     * @param type the TxnMetaDataDto value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> addTransactionCodeAsync(TxnMetaDataDto code, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(addTransactionCodeWithServiceResponseAsync(code), serviceCallback);
+    public ServiceFuture<Object> addTransactionTypeAsync(TxnMetaDataDto type, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(addTransactionTypeWithServiceResponseAsync(type), serviceCallback);
     }
 
     /**
-     * Adds a new transaction code movement to the list of existing codes.
+     * Adds a new transaction type movement to the list of existing types.
      *
-     * @param code transaction code to add
+     * @param type the TxnMetaDataDto value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> addTransactionCodeAsync(TxnMetaDataDto code) {
-        return addTransactionCodeWithServiceResponseAsync(code).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> addTransactionTypeAsync(TxnMetaDataDto type) {
+        return addTransactionTypeWithServiceResponseAsync(type).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -2826,20 +2826,20 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adds a new transaction code movement to the list of existing codes.
+     * Adds a new transaction type movement to the list of existing types.
      *
-     * @param code transaction code to add
+     * @param type the TxnMetaDataDto value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> addTransactionCodeWithServiceResponseAsync(TxnMetaDataDto code) {
-        Validator.validate(code);
-        return service.addTransactionCode(code)
+    public Observable<ServiceResponse<Object>> addTransactionTypeWithServiceResponseAsync(TxnMetaDataDto type) {
+        Validator.validate(type);
+        return service.addTransactionType(type)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<Object> clientResponse = addTransactionCodeDelegate(response);
+                        ServiceResponse<Object> clientResponse = addTransactionTypeDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -2848,7 +2848,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<Object> addTransactionCodeDelegate(Response<ResponseBody> response) throws RestException, IOException {
+    private ServiceResponse<Object> addTransactionTypeDelegate(Response<ResponseBody> response) throws RestException, IOException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
                 .register(201, new TypeToken<TxnMetaDataDto>() { }.getType())
                 .register(400, new TypeToken<ErrorResponse>() { }.getType())
@@ -2857,36 +2857,36 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the list of persisted transaction codes.
+     * Gets the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getTransactionCodes() {
-        return getTransactionCodesWithServiceResponseAsync().toBlocking().single().body();
+    public Object getTransactionTypes() {
+        return getTransactionTypesWithServiceResponseAsync().toBlocking().single().body();
     }
 
     /**
-     * Gets the list of persisted transaction codes.
+     * Gets the list of persisted transaction types.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getTransactionCodesAsync(final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getTransactionCodesWithServiceResponseAsync(), serviceCallback);
+    public ServiceFuture<Object> getTransactionTypesAsync(final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getTransactionTypesWithServiceResponseAsync(), serviceCallback);
     }
 
     /**
-     * Gets the list of persisted transaction codes.
+     * Gets the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getTransactionCodesAsync() {
-        return getTransactionCodesWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getTransactionTypesAsync() {
+        return getTransactionTypesWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -2895,18 +2895,18 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the list of persisted transaction codes.
+     * Gets the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getTransactionCodesWithServiceResponseAsync() {
-        return service.getTransactionCodes()
+    public Observable<ServiceResponse<Object>> getTransactionTypesWithServiceResponseAsync() {
+        return service.getTransactionTypes()
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<Object> clientResponse = getTransactionCodesDelegate(response);
+                        ServiceResponse<Object> clientResponse = getTransactionTypesDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -2915,7 +2915,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<Object> getTransactionCodesDelegate(Response<ResponseBody> response) throws RestException, IOException {
+    private ServiceResponse<Object> getTransactionTypesDelegate(Response<ResponseBody> response) throws RestException, IOException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
                 .register(200, new TypeToken<List<TxnMetaDataDto>>() { }.getType())
                 .register(400, new TypeToken<ErrorResponse>() { }.getType())
@@ -2924,36 +2924,36 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Uploads a list of transation codes to be used by the movements engine.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object uploadTransactionCodes() {
-        return uploadTransactionCodesWithServiceResponseAsync().toBlocking().single().body();
+    public Object uploadTransactionTypes() {
+        return uploadTransactionTypesWithServiceResponseAsync().toBlocking().single().body();
     }
 
     /**
-     * Uploads a list of transation codes to be used by the movements engine.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> uploadTransactionCodesAsync(final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(uploadTransactionCodesWithServiceResponseAsync(), serviceCallback);
+    public ServiceFuture<Object> uploadTransactionTypesAsync(final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(uploadTransactionTypesWithServiceResponseAsync(), serviceCallback);
     }
 
     /**
-     * Uploads a list of transation codes to be used by the movements engine.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> uploadTransactionCodesAsync() {
-        return uploadTransactionCodesWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> uploadTransactionTypesAsync() {
+        return uploadTransactionTypesWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -2962,19 +2962,19 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Uploads a list of transation codes to be used by the movements engine.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> uploadTransactionCodesWithServiceResponseAsync() {
-        final List<TxnMetaDataDto> codes = null;
-        return service.uploadTransactionCodes(codes)
+    public Observable<ServiceResponse<Object>> uploadTransactionTypesWithServiceResponseAsync() {
+        final List<TxnMetaDataDto> types = null;
+        return service.uploadTransactionTypes(types)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<Object> clientResponse = uploadTransactionCodesDelegate(response);
+                        ServiceResponse<Object> clientResponse = uploadTransactionTypesDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -2984,39 +2984,39 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Uploads a list of transation codes to be used by the movements engine.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
-     * @param codes Codes to be uploaded
+     * @param types the List&lt;TxnMetaDataDto&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object uploadTransactionCodes(List<TxnMetaDataDto> codes) {
-        return uploadTransactionCodesWithServiceResponseAsync(codes).toBlocking().single().body();
+    public Object uploadTransactionTypes(List<TxnMetaDataDto> types) {
+        return uploadTransactionTypesWithServiceResponseAsync(types).toBlocking().single().body();
     }
 
     /**
-     * Uploads a list of transation codes to be used by the movements engine.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
-     * @param codes Codes to be uploaded
+     * @param types the List&lt;TxnMetaDataDto&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> uploadTransactionCodesAsync(List<TxnMetaDataDto> codes, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(uploadTransactionCodesWithServiceResponseAsync(codes), serviceCallback);
+    public ServiceFuture<Object> uploadTransactionTypesAsync(List<TxnMetaDataDto> types, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(uploadTransactionTypesWithServiceResponseAsync(types), serviceCallback);
     }
 
     /**
-     * Uploads a list of transation codes to be used by the movements engine.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
-     * @param codes Codes to be uploaded
+     * @param types the List&lt;TxnMetaDataDto&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> uploadTransactionCodesAsync(List<TxnMetaDataDto> codes) {
-        return uploadTransactionCodesWithServiceResponseAsync(codes).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> uploadTransactionTypesAsync(List<TxnMetaDataDto> types) {
+        return uploadTransactionTypesWithServiceResponseAsync(types).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -3025,20 +3025,20 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Uploads a list of transation codes to be used by the movements engine.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
-     * @param codes Codes to be uploaded
+     * @param types the List&lt;TxnMetaDataDto&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> uploadTransactionCodesWithServiceResponseAsync(List<TxnMetaDataDto> codes) {
-        Validator.validate(codes);
-        return service.uploadTransactionCodes(codes)
+    public Observable<ServiceResponse<Object>> uploadTransactionTypesWithServiceResponseAsync(List<TxnMetaDataDto> types) {
+        Validator.validate(types);
+        return service.uploadTransactionTypes(types)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<Object> clientResponse = uploadTransactionCodesDelegate(response);
+                        ServiceResponse<Object> clientResponse = uploadTransactionTypesDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -3047,7 +3047,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<Object> uploadTransactionCodesDelegate(Response<ResponseBody> response) throws RestException, IOException {
+    private ServiceResponse<Object> uploadTransactionTypesDelegate(Response<ResponseBody> response) throws RestException, IOException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
                 .register(201, new TypeToken<List<TxnMetaDataDto>>() { }.getType())
                 .register(400, new TypeToken<ErrorResponse>() { }.getType())
@@ -8067,9 +8067,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
-        final List<String> propertyFilter = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String propertyFilterConverted = this.serializerAdapter().serializeList(propertyFilter, CollectionFormat.MULTI);
-        return service.getProperties(scope, code, effectiveAt, asAt, sortByConverted, start, limit, propertyFilterConverted)
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
+        return service.getProperties(scope, code, effectiveAt, asAt, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -8095,14 +8094,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param sortBy Property to sort the results by
      * @param start the Integer value
      * @param limit the Integer value
-     * @param propertyFilter Property to filter the results by
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getProperties(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter) {
-        return getPropertiesWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, propertyFilter).toBlocking().single().body();
+    public Object getProperties(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit) {
+        return getPropertiesWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit).toBlocking().single().body();
     }
 
     /**
@@ -8117,13 +8115,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param sortBy Property to sort the results by
      * @param start the Integer value
      * @param limit the Integer value
-     * @param propertyFilter Property to filter the results by
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getPropertiesAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getPropertiesWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, propertyFilter), serviceCallback);
+    public ServiceFuture<Object> getPropertiesAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getPropertiesWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit), serviceCallback);
     }
 
     /**
@@ -8138,12 +8135,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param sortBy Property to sort the results by
      * @param start the Integer value
      * @param limit the Integer value
-     * @param propertyFilter Property to filter the results by
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getPropertiesAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter) {
-        return getPropertiesWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, propertyFilter).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getPropertiesAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit) {
+        return getPropertiesWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -8163,11 +8159,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param sortBy Property to sort the results by
      * @param start the Integer value
      * @param limit the Integer value
-     * @param propertyFilter Property to filter the results by
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getPropertiesWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> propertyFilter) {
+    public Observable<ServiceResponse<Object>> getPropertiesWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -8175,9 +8170,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
         Validator.validate(sortBy);
-        Validator.validate(propertyFilter);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String propertyFilterConverted = this.serializerAdapter().serializeList(propertyFilter, CollectionFormat.MULTI);
-        return service.getProperties(scope, code, effectiveAt, asAt, sortByConverted, start, limit, propertyFilterConverted)
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
+        return service.getProperties(scope, code, effectiveAt, asAt, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
