@@ -1,6 +1,6 @@
 <img align="right" src="https://content.finbourne.com/LUSIDDocHeader.png" alt="LUSID by FINBOURNE">
 
-# LUSID Java SDK
+# LUSID<sup>®</sup> Java SDK
 
 This repository enables the generation of a Java SDK from the FINBOURNE OpenAPI specification using the [autorest](https://github.com/Azure/autorest) tool.
 
