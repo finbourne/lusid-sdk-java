@@ -245,15 +245,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         Observable<Response<ResponseBody>> upsertClassification(@Body List<SecurityClassificationDto> classifications);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI addTransactionType" })
-        @POST("v1/api/configuration/addtransactioncode")
+        @POST("v1/api/configuration/transactiontype")
         Observable<Response<ResponseBody>> addTransactionType(@Body TxnMetaDataDto type);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getTransactionTypes" })
-        @GET("v1/api/configuration/gettransactioncodes")
+        @GET("v1/api/configuration/transactiontypes")
         Observable<Response<ResponseBody>> getTransactionTypes();
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI uploadTransactionTypes" })
-        @POST("v1/api/configuration/uploadtransactioncodes")
+        @POST("v1/api/configuration/transactiontypes")
         Observable<Response<ResponseBody>> uploadTransactionTypes(@Body List<TxnMetaDataDto> types);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getDownloadUrl" })

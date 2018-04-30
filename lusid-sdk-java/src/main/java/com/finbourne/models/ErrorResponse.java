@@ -64,7 +64,7 @@ public class ErrorResponse {
      * 'PortfolioDetailsDoNotExist', 'PortfolioWithNameAlreadyExists',
      * 'InvalidTrades', 'ReferencePortfolioNotFound', 'DuplicateIdFailure',
      * 'CommandRetrievalFailure', 'DataFilterApplicationFailure',
-     * 'SearchFailed', 'Unknown'.
+     * 'SearchFailed', 'MovementsEngineConfigurationKeyFailure', 'Unknown'.
      */
     @JsonProperty(value = "code", access = JsonProperty.Access.WRITE_ONLY)
     private String code;

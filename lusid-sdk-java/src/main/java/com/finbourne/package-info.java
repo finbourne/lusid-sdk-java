@@ -116,8 +116,8 @@
  | <a name="100">100</a>|Personalisations not found|The personalisation(s) identified by the pattern provided could not be found, either because it does not exist or it has been deleted. Please check the pattern your provided. |
  | <a name="101">101</a>|NonRecursivePersonalisation|  |
  | <a name="102">102</a>|VersionNotFound|  |
- | <a name="104">104</a>|SecurityByCodeNotFound|  |
- | <a name="104">104</a>|SecurityByCodeNotFound|  |
+ | <a name="104">104</a>|SecurityNotFound|  |
+ | <a name="104">104</a>|SecurityNotFound|  |
  | <a name="105">105</a>|PropertyNotFound|  |
  | <a name="106">106</a>|PortfolioRecursionDepth|  |
  | <a name="108">108</a>|GroupNotFound|  |
@@ -174,6 +174,7 @@
  | <a name="180">180</a>|CommandRetrievalFailure|  |
  | <a name="181">181</a>|DataFilterApplicationFailure|  |
  | <a name="182">182</a>|SearchFailed|  |
+ | <a name="183">183</a>|MovementsEngineConfigurationKeyFailure|  |
  | <a name="-1">-1</a>|Unknown error|  |.
  */
 package com.finbourne;
