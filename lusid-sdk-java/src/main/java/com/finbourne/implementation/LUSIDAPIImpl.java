@@ -424,7 +424,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI deleteTrades" })
         @HTTP(path = "v1/api/portfolios/{scope}/{code}/trades", method = "DELETE", hasBody = true)
-        Observable<Response<ResponseBody>> deleteTrades(@Path("scope") String scope, @Path("code") String code, @Query("cancelDate") DateTime cancelDate, @Query("id") String id);
+        Observable<Response<ResponseBody>> deleteTrades(@Path("scope") String scope, @Path("code") String code, @Query("id") String id);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI addTradeProperty" })
         @POST("v1/api/portfolios/{scope}/{code}/trades/{tradeId}/properties")
@@ -9081,14 +9081,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param cancelDate Date on which trades are deleted
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object deleteTrades(String scope, String code, DateTime cancelDate) {
-        return deleteTradesWithServiceResponseAsync(scope, code, cancelDate).toBlocking().single().body();
+    public Object deleteTrades(String scope, String code) {
+        return deleteTradesWithServiceResponseAsync(scope, code).toBlocking().single().body();
     }
 
     /**
@@ -9097,13 +9096,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param cancelDate Date on which trades are deleted
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> deleteTradesAsync(String scope, String code, DateTime cancelDate, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(deleteTradesWithServiceResponseAsync(scope, code, cancelDate), serviceCallback);
+    public ServiceFuture<Object> deleteTradesAsync(String scope, String code, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(deleteTradesWithServiceResponseAsync(scope, code), serviceCallback);
     }
 
     /**
@@ -9112,12 +9110,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param cancelDate Date on which trades are deleted
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> deleteTradesAsync(String scope, String code, DateTime cancelDate) {
-        return deleteTradesWithServiceResponseAsync(scope, code, cancelDate).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> deleteTradesAsync(String scope, String code) {
+        return deleteTradesWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -9131,23 +9128,19 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param cancelDate Date on which trades are deleted
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> deleteTradesWithServiceResponseAsync(String scope, String code, DateTime cancelDate) {
+    public Observable<ServiceResponse<Object>> deleteTradesWithServiceResponseAsync(String scope, String code) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         if (code == null) {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
-        if (cancelDate == null) {
-            throw new IllegalArgumentException("Parameter cancelDate is required and cannot be null.");
-        }
         final List<String> id = null;
         String idConverted = this.serializerAdapter().serializeList(id, CollectionFormat.MULTI);
-        return service.deleteTrades(scope, code, cancelDate, idConverted)
+        return service.deleteTrades(scope, code, idConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -9167,15 +9160,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param cancelDate Date on which trades are deleted
      * @param id Ids of trades to delete
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object deleteTrades(String scope, String code, DateTime cancelDate, List<String> id) {
-        return deleteTradesWithServiceResponseAsync(scope, code, cancelDate, id).toBlocking().single().body();
+    public Object deleteTrades(String scope, String code, List<String> id) {
+        return deleteTradesWithServiceResponseAsync(scope, code, id).toBlocking().single().body();
     }
 
     /**
@@ -9184,14 +9176,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param cancelDate Date on which trades are deleted
      * @param id Ids of trades to delete
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> deleteTradesAsync(String scope, String code, DateTime cancelDate, List<String> id, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(deleteTradesWithServiceResponseAsync(scope, code, cancelDate, id), serviceCallback);
+    public ServiceFuture<Object> deleteTradesAsync(String scope, String code, List<String> id, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(deleteTradesWithServiceResponseAsync(scope, code, id), serviceCallback);
     }
 
     /**
@@ -9200,13 +9191,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param cancelDate Date on which trades are deleted
      * @param id Ids of trades to delete
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> deleteTradesAsync(String scope, String code, DateTime cancelDate, List<String> id) {
-        return deleteTradesWithServiceResponseAsync(scope, code, cancelDate, id).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> deleteTradesAsync(String scope, String code, List<String> id) {
+        return deleteTradesWithServiceResponseAsync(scope, code, id).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -9220,24 +9210,20 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param cancelDate Date on which trades are deleted
      * @param id Ids of trades to delete
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> deleteTradesWithServiceResponseAsync(String scope, String code, DateTime cancelDate, List<String> id) {
+    public Observable<ServiceResponse<Object>> deleteTradesWithServiceResponseAsync(String scope, String code, List<String> id) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         if (code == null) {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
-        if (cancelDate == null) {
-            throw new IllegalArgumentException("Parameter cancelDate is required and cannot be null.");
-        }
         Validator.validate(id);
         String idConverted = this.serializerAdapter().serializeList(id, CollectionFormat.MULTI);
-        return service.deleteTrades(scope, code, cancelDate, idConverted)
+        return service.deleteTrades(scope, code, idConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {

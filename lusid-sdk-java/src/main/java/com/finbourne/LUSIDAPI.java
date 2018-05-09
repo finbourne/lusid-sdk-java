@@ -4920,13 +4920,12 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param cancelDate Date on which trades are deleted
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object deleteTrades(String scope, String code, DateTime cancelDate);
+    Object deleteTrades(String scope, String code);
 
     /**
      * Delete trades.
@@ -4934,12 +4933,11 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param cancelDate Date on which trades are deleted
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> deleteTradesAsync(String scope, String code, DateTime cancelDate, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> deleteTradesAsync(String scope, String code, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Delete trades.
@@ -4947,11 +4945,10 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param cancelDate Date on which trades are deleted
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> deleteTradesAsync(String scope, String code, DateTime cancelDate);
+    Observable<Object> deleteTradesAsync(String scope, String code);
 
     /**
      * Delete trades.
@@ -4959,25 +4956,23 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param cancelDate Date on which trades are deleted
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> deleteTradesWithServiceResponseAsync(String scope, String code, DateTime cancelDate);
+    Observable<ServiceResponse<Object>> deleteTradesWithServiceResponseAsync(String scope, String code);
     /**
      * Delete trades.
      * Delete one or more trades from a portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param cancelDate Date on which trades are deleted
      * @param id Ids of trades to delete
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object deleteTrades(String scope, String code, DateTime cancelDate, List<String> id);
+    Object deleteTrades(String scope, String code, List<String> id);
 
     /**
      * Delete trades.
@@ -4985,13 +4980,12 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param cancelDate Date on which trades are deleted
      * @param id Ids of trades to delete
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> deleteTradesAsync(String scope, String code, DateTime cancelDate, List<String> id, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> deleteTradesAsync(String scope, String code, List<String> id, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Delete trades.
@@ -4999,12 +4993,11 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param cancelDate Date on which trades are deleted
      * @param id Ids of trades to delete
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> deleteTradesAsync(String scope, String code, DateTime cancelDate, List<String> id);
+    Observable<Object> deleteTradesAsync(String scope, String code, List<String> id);
 
     /**
      * Delete trades.
@@ -5012,12 +5005,11 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param cancelDate Date on which trades are deleted
      * @param id Ids of trades to delete
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> deleteTradesWithServiceResponseAsync(String scope, String code, DateTime cancelDate, List<String> id);
+    Observable<ServiceResponse<Object>> deleteTradesWithServiceResponseAsync(String scope, String code, List<String> id);
 
     /**
      * Add/update trade properties.
