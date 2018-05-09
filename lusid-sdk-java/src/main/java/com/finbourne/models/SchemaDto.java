@@ -49,7 +49,8 @@ public class SchemaDto {
      * 'CreateResults', 'Results', 'TryAddClientSecurities',
      * 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes',
      * 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction',
-     * 'CorporateActionTransition'.
+     * 'CorporateActionTransition', 'ReconciliationRequest',
+     * 'ReconciliationBreak'.
      */
     @JsonProperty(value = "entity")
     private String entity;
