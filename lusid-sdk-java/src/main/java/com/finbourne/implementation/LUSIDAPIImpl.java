@@ -73,6 +73,7 @@ import com.finbourne.models.ResourceListPropertyKey;
 import com.finbourne.models.ResourceListReconciliationBreakDto;
 import com.finbourne.models.ResourceListReferencePortfolioConstituentDto;
 import com.finbourne.models.ResourceListScope;
+import com.finbourne.models.ResourceListTxnMetaDataDto;
 import com.finbourne.models.ResourceListUiDataType;
 import com.finbourne.models.ResultsDto;
 import com.finbourne.models.SchemaDto;
@@ -246,17 +247,17 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @POST("v1/api/classifications")
         Observable<Response<ResponseBody>> upsertClassification(@Body List<SecurityClassificationDto> classifications);
 
-        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI addTransactionType" })
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI addConfigurationTransactionType" })
         @POST("v1/api/configuration/transactiontype")
-        Observable<Response<ResponseBody>> addTransactionType(@Body TxnMetaDataDto type);
+        Observable<Response<ResponseBody>> addConfigurationTransactionType(@Body TxnMetaDataDto type);
 
-        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getTransactionTypes" })
+        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getConfigurationTransactionTypes" })
         @GET("v1/api/configuration/transactiontypes")
-        Observable<Response<ResponseBody>> getTransactionTypes();
+        Observable<Response<ResponseBody>> getConfigurationTransactionTypes();
 
-        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI uploadTransactionTypes" })
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI uploadConfigurationTransactionTypes" })
         @POST("v1/api/configuration/transactiontypes")
-        Observable<Response<ResponseBody>> uploadTransactionTypes(@Body List<TxnMetaDataDto> types);
+        Observable<Response<ResponseBody>> uploadConfigurationTransactionTypes(@Body List<TxnMetaDataDto> types);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getDownloadUrl" })
         @GET("v1/api/excel/download-token")
@@ -2738,8 +2739,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object addTransactionType() {
-        return addTransactionTypeWithServiceResponseAsync().toBlocking().single().body();
+    public Object addConfigurationTransactionType() {
+        return addConfigurationTransactionTypeWithServiceResponseAsync().toBlocking().single().body();
     }
 
     /**
@@ -2749,8 +2750,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> addTransactionTypeAsync(final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(addTransactionTypeWithServiceResponseAsync(), serviceCallback);
+    public ServiceFuture<Object> addConfigurationTransactionTypeAsync(final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(addConfigurationTransactionTypeWithServiceResponseAsync(), serviceCallback);
     }
 
     /**
@@ -2759,8 +2760,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> addTransactionTypeAsync() {
-        return addTransactionTypeWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> addConfigurationTransactionTypeAsync() {
+        return addConfigurationTransactionTypeWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -2774,14 +2775,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> addTransactionTypeWithServiceResponseAsync() {
+    public Observable<ServiceResponse<Object>> addConfigurationTransactionTypeWithServiceResponseAsync() {
         final TxnMetaDataDto type = null;
-        return service.addTransactionType(type)
+        return service.addConfigurationTransactionType(type)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<Object> clientResponse = addTransactionTypeDelegate(response);
+                        ServiceResponse<Object> clientResponse = addConfigurationTransactionTypeDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -2799,8 +2800,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object addTransactionType(TxnMetaDataDto type) {
-        return addTransactionTypeWithServiceResponseAsync(type).toBlocking().single().body();
+    public Object addConfigurationTransactionType(TxnMetaDataDto type) {
+        return addConfigurationTransactionTypeWithServiceResponseAsync(type).toBlocking().single().body();
     }
 
     /**
@@ -2811,8 +2812,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> addTransactionTypeAsync(TxnMetaDataDto type, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(addTransactionTypeWithServiceResponseAsync(type), serviceCallback);
+    public ServiceFuture<Object> addConfigurationTransactionTypeAsync(TxnMetaDataDto type, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(addConfigurationTransactionTypeWithServiceResponseAsync(type), serviceCallback);
     }
 
     /**
@@ -2822,8 +2823,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> addTransactionTypeAsync(TxnMetaDataDto type) {
-        return addTransactionTypeWithServiceResponseAsync(type).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> addConfigurationTransactionTypeAsync(TxnMetaDataDto type) {
+        return addConfigurationTransactionTypeWithServiceResponseAsync(type).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -2838,14 +2839,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> addTransactionTypeWithServiceResponseAsync(TxnMetaDataDto type) {
+    public Observable<ServiceResponse<Object>> addConfigurationTransactionTypeWithServiceResponseAsync(TxnMetaDataDto type) {
         Validator.validate(type);
-        return service.addTransactionType(type)
+        return service.addConfigurationTransactionType(type)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<Object> clientResponse = addTransactionTypeDelegate(response);
+                        ServiceResponse<Object> clientResponse = addConfigurationTransactionTypeDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -2854,7 +2855,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<Object> addTransactionTypeDelegate(Response<ResponseBody> response) throws RestException, IOException {
+    private ServiceResponse<Object> addConfigurationTransactionTypeDelegate(Response<ResponseBody> response) throws RestException, IOException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
                 .register(201, new TypeToken<TxnMetaDataDto>() { }.getType())
                 .register(400, new TypeToken<ErrorResponse>() { }.getType())
@@ -2870,8 +2871,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getTransactionTypes() {
-        return getTransactionTypesWithServiceResponseAsync().toBlocking().single().body();
+    public Object getConfigurationTransactionTypes() {
+        return getConfigurationTransactionTypesWithServiceResponseAsync().toBlocking().single().body();
     }
 
     /**
@@ -2881,8 +2882,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getTransactionTypesAsync(final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getTransactionTypesWithServiceResponseAsync(), serviceCallback);
+    public ServiceFuture<Object> getConfigurationTransactionTypesAsync(final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getConfigurationTransactionTypesWithServiceResponseAsync(), serviceCallback);
     }
 
     /**
@@ -2891,8 +2892,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getTransactionTypesAsync() {
-        return getTransactionTypesWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getConfigurationTransactionTypesAsync() {
+        return getConfigurationTransactionTypesWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -2906,13 +2907,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getTransactionTypesWithServiceResponseAsync() {
-        return service.getTransactionTypes()
+    public Observable<ServiceResponse<Object>> getConfigurationTransactionTypesWithServiceResponseAsync() {
+        return service.getConfigurationTransactionTypes()
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<Object> clientResponse = getTransactionTypesDelegate(response);
+                        ServiceResponse<Object> clientResponse = getConfigurationTransactionTypesDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -2921,9 +2922,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<Object> getTransactionTypesDelegate(Response<ResponseBody> response) throws RestException, IOException {
+    private ServiceResponse<Object> getConfigurationTransactionTypesDelegate(Response<ResponseBody> response) throws RestException, IOException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<List<TxnMetaDataDto>>() { }.getType())
+                .register(200, new TypeToken<ResourceListTxnMetaDataDto>() { }.getType())
                 .register(400, new TypeToken<ErrorResponse>() { }.getType())
                 .register(500, new TypeToken<ErrorResponse>() { }.getType())
                 .build(response);
@@ -2937,8 +2938,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object uploadTransactionTypes() {
-        return uploadTransactionTypesWithServiceResponseAsync().toBlocking().single().body();
+    public Object uploadConfigurationTransactionTypes() {
+        return uploadConfigurationTransactionTypesWithServiceResponseAsync().toBlocking().single().body();
     }
 
     /**
@@ -2948,8 +2949,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> uploadTransactionTypesAsync(final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(uploadTransactionTypesWithServiceResponseAsync(), serviceCallback);
+    public ServiceFuture<Object> uploadConfigurationTransactionTypesAsync(final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(uploadConfigurationTransactionTypesWithServiceResponseAsync(), serviceCallback);
     }
 
     /**
@@ -2958,8 +2959,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> uploadTransactionTypesAsync() {
-        return uploadTransactionTypesWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> uploadConfigurationTransactionTypesAsync() {
+        return uploadConfigurationTransactionTypesWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -2973,14 +2974,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> uploadTransactionTypesWithServiceResponseAsync() {
+    public Observable<ServiceResponse<Object>> uploadConfigurationTransactionTypesWithServiceResponseAsync() {
         final List<TxnMetaDataDto> types = null;
-        return service.uploadTransactionTypes(types)
+        return service.uploadConfigurationTransactionTypes(types)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<Object> clientResponse = uploadTransactionTypesDelegate(response);
+                        ServiceResponse<Object> clientResponse = uploadConfigurationTransactionTypesDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -2998,8 +2999,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object uploadTransactionTypes(List<TxnMetaDataDto> types) {
-        return uploadTransactionTypesWithServiceResponseAsync(types).toBlocking().single().body();
+    public Object uploadConfigurationTransactionTypes(List<TxnMetaDataDto> types) {
+        return uploadConfigurationTransactionTypesWithServiceResponseAsync(types).toBlocking().single().body();
     }
 
     /**
@@ -3010,8 +3011,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> uploadTransactionTypesAsync(List<TxnMetaDataDto> types, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(uploadTransactionTypesWithServiceResponseAsync(types), serviceCallback);
+    public ServiceFuture<Object> uploadConfigurationTransactionTypesAsync(List<TxnMetaDataDto> types, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(uploadConfigurationTransactionTypesWithServiceResponseAsync(types), serviceCallback);
     }
 
     /**
@@ -3021,8 +3022,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> uploadTransactionTypesAsync(List<TxnMetaDataDto> types) {
-        return uploadTransactionTypesWithServiceResponseAsync(types).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> uploadConfigurationTransactionTypesAsync(List<TxnMetaDataDto> types) {
+        return uploadConfigurationTransactionTypesWithServiceResponseAsync(types).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -3037,14 +3038,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> uploadTransactionTypesWithServiceResponseAsync(List<TxnMetaDataDto> types) {
+    public Observable<ServiceResponse<Object>> uploadConfigurationTransactionTypesWithServiceResponseAsync(List<TxnMetaDataDto> types) {
         Validator.validate(types);
-        return service.uploadTransactionTypes(types)
+        return service.uploadConfigurationTransactionTypes(types)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<Object> clientResponse = uploadTransactionTypesDelegate(response);
+                        ServiceResponse<Object> clientResponse = uploadConfigurationTransactionTypesDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -3053,9 +3054,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<Object> uploadTransactionTypesDelegate(Response<ResponseBody> response) throws RestException, IOException {
+    private ServiceResponse<Object> uploadConfigurationTransactionTypesDelegate(Response<ResponseBody> response) throws RestException, IOException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
-                .register(201, new TypeToken<List<TxnMetaDataDto>>() { }.getType())
+                .register(201, new TypeToken<ResourceListTxnMetaDataDto>() { }.getType())
                 .register(400, new TypeToken<ErrorResponse>() { }.getType())
                 .register(500, new TypeToken<ErrorResponse>() { }.getType())
                 .build(response);
@@ -13710,7 +13711,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -13723,7 +13724,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -13735,7 +13736,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
@@ -13751,7 +13752,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */

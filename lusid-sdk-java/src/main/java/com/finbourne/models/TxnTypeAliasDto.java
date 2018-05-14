@@ -29,13 +29,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class TxnTypeAliasDto {
     /**
-     * Transaction Code.
+     * The transaction type.
      */
     @JsonProperty(value = "type", required = true)
     private String type;
 
     /**
-     * Transaction Code description.
+     * Brief description of the transaction.
      */
     @JsonProperty(value = "description", required = true)
     private String description;

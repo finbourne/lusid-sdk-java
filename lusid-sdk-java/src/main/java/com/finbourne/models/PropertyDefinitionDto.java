@@ -44,7 +44,8 @@ public class PropertyDefinitionDto {
     /**
      * Possible values include: 'String', 'Int', 'Decimal', 'DateTime',
      * 'Boolean', 'Map', 'PropertyArray', 'Percentage', 'Currency',
-     * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds'.
+     * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases',
+     * 'ArrayofTxnMovements'.
      */
     @JsonProperty(value = "valueType")
     private String valueType;

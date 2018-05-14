@@ -30,13 +30,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class TxnMetaDataDto {
     /**
-     * Representative movements for transaction code.
+     * List of transaction codes that map to this specific transaction model.
      */
     @JsonProperty(value = "aliases", required = true)
     private List<TxnTypeAliasDto> aliases;
 
     /**
-     * Representative movements for transaction code.
+     * Movement data for the transaction code.
      */
     @JsonProperty(value = "movements", required = true)
     private List<TxnMovementMetaDataDto> movements;

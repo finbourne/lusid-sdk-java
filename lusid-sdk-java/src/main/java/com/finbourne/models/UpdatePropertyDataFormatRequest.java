@@ -50,7 +50,8 @@ public class UpdatePropertyDataFormatRequest {
     /**
      * Possible values include: 'String', 'Int', 'Decimal', 'DateTime',
      * 'Boolean', 'Map', 'PropertyArray', 'Percentage', 'Currency',
-     * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds'.
+     * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases',
+     * 'ArrayofTxnMovements'.
      */
     @JsonProperty(value = "valueType", required = true)
     private String valueType;

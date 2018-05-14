@@ -30,20 +30,20 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class TxnMovementMetaDataDto {
     /**
-     * The movement types. Possible values include: 'Settlement', 'Traded',
+     * The Movement Types. Possible values include: 'Settlement', 'Traded',
      * 'ForwardFx', 'Commitment', 'Receivable', 'CashSettlement', 'Accrual'.
      */
     @JsonProperty(value = "movementTypes", required = true)
     private String movementTypes;
 
     /**
-     * The Side. Possible values include: 'Side1', 'Side2', 'BondInt'.
+     * The Movement Side. Possible values include: 'Side1', 'Side2', 'BondInt'.
      */
     @JsonProperty(value = "side", required = true)
     private String side;
 
     /**
-     * The direction property.
+     * The Movement direction.
      */
     @JsonProperty(value = "direction", required = true)
     private int direction;
