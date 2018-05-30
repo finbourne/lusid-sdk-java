@@ -151,7 +151,7 @@ public class AggregationRequest {
     }
 
     /**
-     * Get the asAt value.
+     * Get the asAt date to use.
      *
      * @return the asAt value
      */
@@ -160,7 +160,7 @@ public class AggregationRequest {
     }
 
     /**
-     * Set the asAt value.
+     * Set the asAt date to use.
      *
      * @param asAt the asAt value to set
      * @return the AggregationRequest object itself.

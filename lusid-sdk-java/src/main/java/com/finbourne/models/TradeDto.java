@@ -140,7 +140,7 @@ public class TradeDto {
     private String nettingSet;
 
     /**
-     * Get the tradeId value.
+     * Get unique trade identifier.
      *
      * @return the tradeId value
      */
@@ -149,7 +149,7 @@ public class TradeDto {
     }
 
     /**
-     * Set the tradeId value.
+     * Set unique trade identifier.
      *
      * @param tradeId the tradeId value to set
      * @return the TradeDto object itself.
@@ -160,7 +160,7 @@ public class TradeDto {
     }
 
     /**
-     * Get the type value.
+     * Get lUSID transaction type code - Buy, Sell, StockIn, StockOut, etc.
      *
      * @return the type value
      */
@@ -169,7 +169,7 @@ public class TradeDto {
     }
 
     /**
-     * Set the type value.
+     * Set lUSID transaction type code - Buy, Sell, StockIn, StockOut, etc.
      *
      * @param type the type value to set
      * @return the TradeDto object itself.
@@ -180,7 +180,7 @@ public class TradeDto {
     }
 
     /**
-     * Get the securityUid value.
+     * Get unique security identifier.
      *
      * @return the securityUid value
      */
@@ -189,7 +189,7 @@ public class TradeDto {
     }
 
     /**
-     * Set the securityUid value.
+     * Set unique security identifier.
      *
      * @param securityUid the securityUid value to set
      * @return the TradeDto object itself.
@@ -200,7 +200,7 @@ public class TradeDto {
     }
 
     /**
-     * Get the tradeDate value.
+     * Get trade date.
      *
      * @return the tradeDate value
      */
@@ -209,7 +209,7 @@ public class TradeDto {
     }
 
     /**
-     * Set the tradeDate value.
+     * Set trade date.
      *
      * @param tradeDate the tradeDate value to set
      * @return the TradeDto object itself.
@@ -220,7 +220,7 @@ public class TradeDto {
     }
 
     /**
-     * Get the settlementDate value.
+     * Get settlement date.
      *
      * @return the settlementDate value
      */
@@ -229,7 +229,7 @@ public class TradeDto {
     }
 
     /**
-     * Set the settlementDate value.
+     * Set settlement date.
      *
      * @param settlementDate the settlementDate value to set
      * @return the TradeDto object itself.
@@ -240,7 +240,7 @@ public class TradeDto {
     }
 
     /**
-     * Get the units value.
+     * Get quantity of trade in units of the security.
      *
      * @return the units value
      */
@@ -249,7 +249,7 @@ public class TradeDto {
     }
 
     /**
-     * Set the units value.
+     * Set quantity of trade in units of the security.
      *
      * @param units the units value to set
      * @return the TradeDto object itself.
@@ -260,7 +260,7 @@ public class TradeDto {
     }
 
     /**
-     * Get the tradePrice value.
+     * Get execution price for the trade.
      *
      * @return the tradePrice value
      */
@@ -269,7 +269,7 @@ public class TradeDto {
     }
 
     /**
-     * Set the tradePrice value.
+     * Set execution price for the trade.
      *
      * @param tradePrice the tradePrice value to set
      * @return the TradeDto object itself.
@@ -280,7 +280,7 @@ public class TradeDto {
     }
 
     /**
-     * Get the totalConsideration value.
+     * Get total value of the trade.
      *
      * @return the totalConsideration value
      */
@@ -289,7 +289,7 @@ public class TradeDto {
     }
 
     /**
-     * Set the totalConsideration value.
+     * Set total value of the trade.
      *
      * @param totalConsideration the totalConsideration value to set
      * @return the TradeDto object itself.
@@ -300,7 +300,7 @@ public class TradeDto {
     }
 
     /**
-     * Get the exchangeRate value.
+     * Get rate between trade and settle currency.
      *
      * @return the exchangeRate value
      */
@@ -309,7 +309,7 @@ public class TradeDto {
     }
 
     /**
-     * Set the exchangeRate value.
+     * Set rate between trade and settle currency.
      *
      * @param exchangeRate the exchangeRate value to set
      * @return the TradeDto object itself.
@@ -320,7 +320,7 @@ public class TradeDto {
     }
 
     /**
-     * Get the settlementCurrency value.
+     * Get settlement currency.
      *
      * @return the settlementCurrency value
      */
@@ -329,7 +329,7 @@ public class TradeDto {
     }
 
     /**
-     * Set the settlementCurrency value.
+     * Set settlement currency.
      *
      * @param settlementCurrency the settlementCurrency value to set
      * @return the TradeDto object itself.
@@ -340,7 +340,7 @@ public class TradeDto {
     }
 
     /**
-     * Get the tradeCurrency value.
+     * Get trade currency.
      *
      * @return the tradeCurrency value
      */
@@ -349,7 +349,7 @@ public class TradeDto {
     }
 
     /**
-     * Set the tradeCurrency value.
+     * Set trade currency.
      *
      * @param tradeCurrency the tradeCurrency value to set
      * @return the TradeDto object itself.
@@ -380,7 +380,7 @@ public class TradeDto {
     }
 
     /**
-     * Get the counterpartyId value.
+     * Get counterparty identifier.
      *
      * @return the counterpartyId value
      */
@@ -389,7 +389,7 @@ public class TradeDto {
     }
 
     /**
-     * Set the counterpartyId value.
+     * Set counterparty identifier.
      *
      * @param counterpartyId the counterpartyId value to set
      * @return the TradeDto object itself.
@@ -400,7 +400,7 @@ public class TradeDto {
     }
 
     /**
-     * Get the source value.
+     * Get where this trade came from, either Client or System. Possible values include: 'System', 'Client'.
      *
      * @return the source value
      */
@@ -409,7 +409,7 @@ public class TradeDto {
     }
 
     /**
-     * Set the source value.
+     * Set where this trade came from, either Client or System. Possible values include: 'System', 'Client'.
      *
      * @param source the source value to set
      * @return the TradeDto object itself.
@@ -420,7 +420,7 @@ public class TradeDto {
     }
 
     /**
-     * Get the dividendState value.
+     * Get possible values include: 'Default', 'ExDividend', 'CumDividend'.
      *
      * @return the dividendState value
      */
@@ -429,7 +429,7 @@ public class TradeDto {
     }
 
     /**
-     * Set the dividendState value.
+     * Set possible values include: 'Default', 'ExDividend', 'CumDividend'.
      *
      * @param dividendState the dividendState value to set
      * @return the TradeDto object itself.
@@ -440,7 +440,7 @@ public class TradeDto {
     }
 
     /**
-     * Get the tradePriceType value.
+     * Get possible values include: 'Price', 'Yield', 'Spread'.
      *
      * @return the tradePriceType value
      */
@@ -449,7 +449,7 @@ public class TradeDto {
     }
 
     /**
-     * Set the tradePriceType value.
+     * Set possible values include: 'Price', 'Yield', 'Spread'.
      *
      * @param tradePriceType the tradePriceType value to set
      * @return the TradeDto object itself.
@@ -460,7 +460,7 @@ public class TradeDto {
     }
 
     /**
-     * Get the unitType value.
+     * Get possible values include: 'Nominal', 'Shares', 'FaceValue', 'Contracts'.
      *
      * @return the unitType value
      */
@@ -469,7 +469,7 @@ public class TradeDto {
     }
 
     /**
-     * Set the unitType value.
+     * Set possible values include: 'Nominal', 'Shares', 'FaceValue', 'Contracts'.
      *
      * @param unitType the unitType value to set
      * @return the TradeDto object itself.

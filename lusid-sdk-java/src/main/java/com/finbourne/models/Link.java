@@ -54,7 +54,7 @@ public class Link {
     private String method;
 
     /**
-     * Get the relation value.
+     * Get possible values include: 'Root', 'Properties', 'Trades', 'Details', 'Constituents'.
      *
      * @return the relation value
      */
@@ -63,7 +63,7 @@ public class Link {
     }
 
     /**
-     * Set the relation value.
+     * Set possible values include: 'Root', 'Properties', 'Trades', 'Details', 'Constituents'.
      *
      * @param relation the relation value to set
      * @return the Link object itself.
@@ -114,7 +114,7 @@ public class Link {
     }
 
     /**
-     * Get the method value.
+     * Get possible values include: 'POST', 'GET', 'PATCH', 'DELETE'.
      *
      * @return the method value
      */
@@ -123,7 +123,7 @@ public class Link {
     }
 
     /**
-     * Set the method value.
+     * Set possible values include: 'POST', 'GET', 'PATCH', 'DELETE'.
      *
      * @param method the method value to set
      * @return the Link object itself.

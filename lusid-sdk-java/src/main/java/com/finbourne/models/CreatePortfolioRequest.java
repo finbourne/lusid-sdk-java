@@ -60,6 +60,13 @@ public class CreatePortfolioRequest {
     private ResourceId corporateActionSourceId;
 
     /**
+     * Possible values include: 'Default', 'AverageCost', 'FirstInFirstOut',
+     * 'LastInFirstOut', 'HighestCostFirst', 'LowestCostFirst'.
+     */
+    @JsonProperty(value = "accountingMethod")
+    private String accountingMethod;
+
+    /**
      * Get the name value.
      *
      * @return the name value
@@ -156,6 +163,26 @@ public class CreatePortfolioRequest {
      */
     public CreatePortfolioRequest withCorporateActionSourceId(ResourceId corporateActionSourceId) {
         this.corporateActionSourceId = corporateActionSourceId;
+        return this;
+    }
+
+    /**
+     * Get possible values include: 'Default', 'AverageCost', 'FirstInFirstOut', 'LastInFirstOut', 'HighestCostFirst', 'LowestCostFirst'.
+     *
+     * @return the accountingMethod value
+     */
+    public String accountingMethod() {
+        return this.accountingMethod;
+    }
+
+    /**
+     * Set possible values include: 'Default', 'AverageCost', 'FirstInFirstOut', 'LastInFirstOut', 'HighestCostFirst', 'LowestCostFirst'.
+     *
+     * @param accountingMethod the accountingMethod value to set
+     * @return the CreatePortfolioRequest object itself.
+     */
+    public CreatePortfolioRequest withAccountingMethod(String accountingMethod) {
+        this.accountingMethod = accountingMethod;
         return this;
     }
 

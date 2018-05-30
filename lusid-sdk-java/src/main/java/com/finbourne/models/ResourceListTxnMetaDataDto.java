@@ -75,7 +75,8 @@ public class ResourceListTxnMetaDataDto {
     }
 
     /**
-     * Get the href value.
+     * Get the Uri that returns the same result as the original request,
+     but may include resolved as at time(s).
      *
      * @return the href value
      */
@@ -84,7 +85,8 @@ public class ResourceListTxnMetaDataDto {
     }
 
     /**
-     * Set the href value.
+     * Set the Uri that returns the same result as the original request,
+     but may include resolved as at time(s).
      *
      * @param href the href value to set
      * @return the ResourceListTxnMetaDataDto object itself.
@@ -95,7 +97,7 @@ public class ResourceListTxnMetaDataDto {
     }
 
     /**
-     * Get the count value.
+     * Get the total number of records returned in the set.
      *
      * @return the count value
      */
@@ -104,7 +106,7 @@ public class ResourceListTxnMetaDataDto {
     }
 
     /**
-     * Set the count value.
+     * Set the total number of records returned in the set.
      *
      * @param count the count value to set
      * @return the ResourceListTxnMetaDataDto object itself.

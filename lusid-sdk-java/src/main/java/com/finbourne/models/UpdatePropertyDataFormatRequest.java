@@ -63,7 +63,7 @@ public class UpdatePropertyDataFormatRequest {
     private List<Object> acceptableValues;
 
     /**
-     * Get the formatType value.
+     * Get possible values include: 'Basic', 'Limited', 'Currency'.
      *
      * @return the formatType value
      */
@@ -72,7 +72,7 @@ public class UpdatePropertyDataFormatRequest {
     }
 
     /**
-     * Set the formatType value.
+     * Set possible values include: 'Basic', 'Limited', 'Currency'.
      *
      * @param formatType the formatType value to set
      * @return the UpdatePropertyDataFormatRequest object itself.
@@ -123,7 +123,7 @@ public class UpdatePropertyDataFormatRequest {
     }
 
     /**
-     * Get the valueType value.
+     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
      *
      * @return the valueType value
      */
@@ -132,7 +132,7 @@ public class UpdatePropertyDataFormatRequest {
     }
 
     /**
-     * Set the valueType value.
+     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
      *
      * @param valueType the valueType value to set
      * @return the UpdatePropertyDataFormatRequest object itself.

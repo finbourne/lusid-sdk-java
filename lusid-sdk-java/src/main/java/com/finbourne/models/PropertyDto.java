@@ -88,7 +88,7 @@ public class PropertyDto {
     }
 
     /**
-     * Get the effectiveFrom value.
+     * Get date for which the property is effective from.
      *
      * @return the effectiveFrom value
      */
@@ -97,7 +97,7 @@ public class PropertyDto {
     }
 
     /**
-     * Set the effectiveFrom value.
+     * Set date for which the property is effective from.
      *
      * @param effectiveFrom the effectiveFrom value to set
      * @return the PropertyDto object itself.

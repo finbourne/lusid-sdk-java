@@ -95,7 +95,7 @@ public class PropertyDataFormatDto {
     }
 
     /**
-     * Get the formatType value.
+     * Get possible values include: 'Basic', 'Limited', 'Currency'.
      *
      * @return the formatType value
      */
@@ -104,7 +104,7 @@ public class PropertyDataFormatDto {
     }
 
     /**
-     * Set the formatType value.
+     * Set possible values include: 'Basic', 'Limited', 'Currency'.
      *
      * @param formatType the formatType value to set
      * @return the PropertyDataFormatDto object itself.
@@ -175,7 +175,7 @@ public class PropertyDataFormatDto {
     }
 
     /**
-     * Get the valueType value.
+     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
      *
      * @return the valueType value
      */
@@ -184,7 +184,7 @@ public class PropertyDataFormatDto {
     }
 
     /**
-     * Set the valueType value.
+     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
      *
      * @param valueType the valueType value to set
      * @return the PropertyDataFormatDto object itself.

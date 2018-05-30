@@ -61,7 +61,7 @@ public class AggregateSpec {
     }
 
     /**
-     * Get the op value.
+     * Get possible values include: 'Sum', 'Proportion'.
      *
      * @return the op value
      */
@@ -70,7 +70,7 @@ public class AggregateSpec {
     }
 
     /**
-     * Set the op value.
+     * Set possible values include: 'Sum', 'Proportion'.
      *
      * @param op the op value to set
      * @return the AggregateSpec object itself.

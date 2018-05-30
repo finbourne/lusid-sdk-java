@@ -54,7 +54,7 @@ public class CorporateActionTransitionDto {
     private double costFactor;
 
     /**
-     * Get the direction value.
+     * Get possible values include: 'In', 'Out'.
      *
      * @return the direction value
      */
@@ -63,7 +63,7 @@ public class CorporateActionTransitionDto {
     }
 
     /**
-     * Set the direction value.
+     * Set possible values include: 'In', 'Out'.
      *
      * @param direction the direction value to set
      * @return the CorporateActionTransitionDto object itself.

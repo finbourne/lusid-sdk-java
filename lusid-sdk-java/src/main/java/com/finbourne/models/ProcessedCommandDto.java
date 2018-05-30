@@ -94,7 +94,7 @@ public class ProcessedCommandDto {
     }
 
     /**
-     * Get the userId value.
+     * Get the user that issued the command.
      *
      * @return the userId value
      */
@@ -103,7 +103,7 @@ public class ProcessedCommandDto {
     }
 
     /**
-     * Set the userId value.
+     * Set the user that issued the command.
      *
      * @param userId the userId value to set
      * @return the ProcessedCommandDto object itself.
@@ -114,7 +114,8 @@ public class ProcessedCommandDto {
     }
 
     /**
-     * Get the processedTime value.
+     * Get the as at time of the events published by the processing of
+     this command.
      *
      * @return the processedTime value
      */
@@ -123,7 +124,8 @@ public class ProcessedCommandDto {
     }
 
     /**
-     * Set the processedTime value.
+     * Set the as at time of the events published by the processing of
+     this command.
      *
      * @param processedTime the processedTime value to set
      * @return the ProcessedCommandDto object itself.

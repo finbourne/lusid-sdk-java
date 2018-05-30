@@ -41,7 +41,7 @@ public class TxnTypeAliasDto {
     private String description;
 
     /**
-     * Get the type value.
+     * Get the transaction type.
      *
      * @return the type value
      */
@@ -50,7 +50,7 @@ public class TxnTypeAliasDto {
     }
 
     /**
-     * Set the type value.
+     * Set the transaction type.
      *
      * @param type the type value to set
      * @return the TxnTypeAliasDto object itself.
@@ -61,7 +61,7 @@ public class TxnTypeAliasDto {
     }
 
     /**
-     * Get the description value.
+     * Get brief description of the transaction.
      *
      * @return the description value
      */
@@ -70,7 +70,7 @@ public class TxnTypeAliasDto {
     }
 
     /**
-     * Set the description value.
+     * Set brief description of the transaction.
      *
      * @param description the description value to set
      * @return the TxnTypeAliasDto object itself.

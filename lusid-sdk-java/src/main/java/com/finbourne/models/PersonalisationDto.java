@@ -65,7 +65,7 @@ public class PersonalisationDto {
     private String href;
 
     /**
-     * Get the scope value.
+     * Get possible values include: 'User', 'Group', 'Default', 'All'.
      *
      * @return the scope value
      */
@@ -74,7 +74,7 @@ public class PersonalisationDto {
     }
 
     /**
-     * Set the scope value.
+     * Set possible values include: 'User', 'Group', 'Default', 'All'.
      *
      * @param scope the scope value to set
      * @return the PersonalisationDto object itself.

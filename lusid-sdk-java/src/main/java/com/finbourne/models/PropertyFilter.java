@@ -74,7 +74,7 @@ public class PropertyFilter {
     }
 
     /**
-     * Get the operator value.
+     * Get possible values include: 'Equals', 'NotEquals', 'GreaterThan', 'GreaterThanOrEqualTo', 'LessThan', 'LessThanOrEqualTo', 'In'.
      *
      * @return the operator value
      */
@@ -83,7 +83,7 @@ public class PropertyFilter {
     }
 
     /**
-     * Set the operator value.
+     * Set possible values include: 'Equals', 'NotEquals', 'GreaterThan', 'GreaterThanOrEqualTo', 'LessThan', 'LessThanOrEqualTo', 'In'.
      *
      * @param operator the operator value to set
      * @return the PropertyFilter object itself.
@@ -114,7 +114,7 @@ public class PropertyFilter {
     }
 
     /**
-     * Get the rightOperandType value.
+     * Get possible values include: 'Absolute', 'Property'.
      *
      * @return the rightOperandType value
      */
@@ -123,7 +123,7 @@ public class PropertyFilter {
     }
 
     /**
-     * Set the rightOperandType value.
+     * Set possible values include: 'Absolute', 'Property'.
      *
      * @param rightOperandType the rightOperandType value to set
      * @return the PropertyFilter object itself.

@@ -115,7 +115,7 @@ public class CreatePropertyDataFormatRequest {
     }
 
     /**
-     * Get the formatType value.
+     * Get possible values include: 'Basic', 'Limited', 'Currency'.
      *
      * @return the formatType value
      */
@@ -124,7 +124,7 @@ public class CreatePropertyDataFormatRequest {
     }
 
     /**
-     * Set the formatType value.
+     * Set possible values include: 'Basic', 'Limited', 'Currency'.
      *
      * @param formatType the formatType value to set
      * @return the CreatePropertyDataFormatRequest object itself.
@@ -175,7 +175,7 @@ public class CreatePropertyDataFormatRequest {
     }
 
     /**
-     * Get the valueType value.
+     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
      *
      * @return the valueType value
      */
@@ -184,7 +184,7 @@ public class CreatePropertyDataFormatRequest {
     }
 
     /**
-     * Set the valueType value.
+     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
      *
      * @param valueType the valueType value to set
      * @return the CreatePropertyDataFormatRequest object itself.

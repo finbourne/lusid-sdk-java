@@ -114,7 +114,7 @@ public class ReferencePortfolioConstituentDto {
     }
 
     /**
-     * Get the type value.
+     * Get possible values include: 'Shares', 'Weight', 'Nominal'.
      *
      * @return the type value
      */
@@ -123,7 +123,7 @@ public class ReferencePortfolioConstituentDto {
     }
 
     /**
-     * Set the type value.
+     * Set possible values include: 'Shares', 'Weight', 'Nominal'.
      *
      * @param type the type value to set
      * @return the ReferencePortfolioConstituentDto object itself.

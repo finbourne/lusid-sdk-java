@@ -100,7 +100,7 @@ public class PortfolioDetailsDto {
     }
 
     /**
-     * Get the version value.
+     * Get the version of the portfolio.
      *
      * @return the version value
      */
@@ -109,7 +109,7 @@ public class PortfolioDetailsDto {
     }
 
     /**
-     * Set the version value.
+     * Set the version of the portfolio.
      *
      * @param version the version value to set
      * @return the PortfolioDetailsDto object itself.

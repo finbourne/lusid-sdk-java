@@ -42,7 +42,7 @@ public class KeyValuePairCodeTypeString {
     private String value;
 
     /**
-     * Get the key value.
+     * Get possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'ClientInternal', 'Figi', 'Wertpapier'.
      *
      * @return the key value
      */

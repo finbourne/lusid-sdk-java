@@ -74,7 +74,7 @@ public class PortfolioDto {
     private List<Link> _links;
 
     /**
-     * Get the href value.
+     * Get link to retrieve the current entity.
      *
      * @return the href value
      */
@@ -83,7 +83,7 @@ public class PortfolioDto {
     }
 
     /**
-     * Set the href value.
+     * Set link to retrieve the current entity.
      *
      * @param href the href value to set
      * @return the PortfolioDto object itself.
@@ -94,7 +94,7 @@ public class PortfolioDto {
     }
 
     /**
-     * Get the id value.
+     * Get identifier for the portfolio.
      *
      * @return the id value
      */
@@ -103,7 +103,7 @@ public class PortfolioDto {
     }
 
     /**
-     * Set the id value.
+     * Set identifier for the portfolio.
      *
      * @param id the id value to set
      * @return the PortfolioDto object itself.
@@ -114,7 +114,7 @@ public class PortfolioDto {
     }
 
     /**
-     * Get the name value.
+     * Get name of the portfolio.
      *
      * @return the name value
      */
@@ -123,7 +123,7 @@ public class PortfolioDto {
     }
 
     /**
-     * Set the name value.
+     * Set name of the portfolio.
      *
      * @param name the name value to set
      * @return the PortfolioDto object itself.
@@ -134,7 +134,7 @@ public class PortfolioDto {
     }
 
     /**
-     * Get the created value.
+     * Get portfolio creation time in UTC.
      *
      * @return the created value
      */
@@ -143,7 +143,7 @@ public class PortfolioDto {
     }
 
     /**
-     * Set the created value.
+     * Set portfolio creation time in UTC.
      *
      * @param created the created value to set
      * @return the PortfolioDto object itself.
@@ -154,7 +154,7 @@ public class PortfolioDto {
     }
 
     /**
-     * Get the parentPortfolioId value.
+     * Get if this is a derived portfolio, the identifier of the portfolio from which it is derived.
      *
      * @return the parentPortfolioId value
      */
@@ -163,7 +163,7 @@ public class PortfolioDto {
     }
 
     /**
-     * Set the parentPortfolioId value.
+     * Set if this is a derived portfolio, the identifier of the portfolio from which it is derived.
      *
      * @param parentPortfolioId the parentPortfolioId value to set
      * @return the PortfolioDto object itself.
@@ -174,7 +174,7 @@ public class PortfolioDto {
     }
 
     /**
-     * Get the version value.
+     * Get the version of the portfolio.
      *
      * @return the version value
      */
@@ -183,7 +183,7 @@ public class PortfolioDto {
     }
 
     /**
-     * Set the version value.
+     * Set the version of the portfolio.
      *
      * @param version the version value to set
      * @return the PortfolioDto object itself.

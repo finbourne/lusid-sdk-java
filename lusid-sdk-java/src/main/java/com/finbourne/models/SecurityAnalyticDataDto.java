@@ -41,7 +41,7 @@ public class SecurityAnalyticDataDto {
     private Double value;
 
     /**
-     * Get the id value.
+     * Get unique security identifier.
      *
      * @return the id value
      */
@@ -50,7 +50,7 @@ public class SecurityAnalyticDataDto {
     }
 
     /**
-     * Set the id value.
+     * Set unique security identifier.
      *
      * @param id the id value to set
      * @return the SecurityAnalyticDataDto object itself.
@@ -61,7 +61,7 @@ public class SecurityAnalyticDataDto {
     }
 
     /**
-     * Get the value value.
+     * Get value of the analytic, eg price.
      *
      * @return the value value
      */
@@ -70,7 +70,7 @@ public class SecurityAnalyticDataDto {
     }
 
     /**
-     * Set the value value.
+     * Set value of the analytic, eg price.
      *
      * @param value the value value to set
      * @return the SecurityAnalyticDataDto object itself.

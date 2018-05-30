@@ -98,7 +98,7 @@ public class ErrorResponse {
     private String moreInfo;
 
     /**
-     * Get the status value.
+     * Get the status code that will be returned to the client.
      *
      * @return the status value
      */
@@ -107,7 +107,7 @@ public class ErrorResponse {
     }
 
     /**
-     * Get the code value.
+     * Get the Finbourne specific error-code that encapsulates the specific issue encountered. Possible values include: 'PersonalisationNotFound', 'NonRecursivePersonalisation', 'VersionNotFound', 'SecurityNotFound', 'SecurityByCodeNotFound', 'PropertyNotFound', 'PortfolioRecursionDepth', 'GroupNotFound', 'PortfolioNotFound', 'PropertySchemaNotFound', 'PortfolioWithIdAlreadyExists', 'OrphanedPortfolio', 'MissingBaseClaims', 'PropertyNotDefined', 'CannotDeleteSystemProperty', 'CannotModifyImmutablePropertyField', 'PropertyAlreadyExists', 'InvalidPropertyLifeTime', 'CannotModifyDefaultPropertyFormat', 'GroupAlreadyExists', 'NoSuchPropertyDataFormat', 'ValidationError', 'LoopDetectedInGroupHierarchy', 'SubGroupAlreadyExists', 'PriceSourceNotFound', 'AnalyticStoreNotFound', 'AnalyticStoreAlreadyExists', 'ClientSecurityAlreadyExists', 'DuplicateInParameterSet', 'ResultsNotFound', 'OrderFieldNotInResultSet', 'OperationFailed', 'ElasticSearchError', 'InvalidParameterValue', 'ServerConfigurationError', 'CommandProcessingFailure', 'EntityStateConstructionFailure', 'EntityTimelineDoesNotExist', 'EventPublishFailure', 'InvalidRequestFailure', 'EventPublishUnknown', 'EventQueryFailure', 'BlobDidNotExistFailure', 'SubSystemRequestFailure', 'SubSystemConfigurationFailure', 'FailedToDelete', 'UpsertClientSecurityFailure', 'IllegalAsAtInterval', 'IllegalBitemporalQuery', 'InvalidAlternateId', 'CannotAddSourcePortfolioPropertyExplicitly', 'EntityAlreadyExistsInGroup', 'EntityWithIdAlreadyExists', 'PortfolioDetailsDoNotExist', 'PortfolioWithNameAlreadyExists', 'InvalidTrades', 'ReferencePortfolioNotFound', 'DuplicateIdFailure', 'CommandRetrievalFailure', 'DataFilterApplicationFailure', 'SearchFailed', 'MovementsEngineConfigurationKeyFailure', 'Unknown'.
      *
      * @return the code value
      */
@@ -116,7 +116,7 @@ public class ErrorResponse {
     }
 
     /**
-     * Get the message value.
+     * Get the non-technical-user friendly message describing the error and how it might be remedied.
      *
      * @return the message value
      */
@@ -125,7 +125,7 @@ public class ErrorResponse {
     }
 
     /**
-     * Get the detailedMessage value.
+     * Get a technical error message that contains the details of the issue and how it might be fixed.
      *
      * @return the detailedMessage value
      */
@@ -134,7 +134,7 @@ public class ErrorResponse {
     }
 
     /**
-     * Get the items value.
+     * Get any action specific item specific sub errors (e.g. per-trade validation errors).
      *
      * @return the items value
      */
@@ -143,7 +143,7 @@ public class ErrorResponse {
     }
 
     /**
-     * Set the items value.
+     * Set any action specific item specific sub errors (e.g. per-trade validation errors).
      *
      * @param items the items value to set
      * @return the ErrorResponse object itself.
@@ -154,7 +154,7 @@ public class ErrorResponse {
     }
 
     /**
-     * Get the moreInfo value.
+     * Get a link to the endpoint that can provide the dev with more information about that class of error.
      *
      * @return the moreInfo value
      */

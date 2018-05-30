@@ -71,7 +71,7 @@ public class WebLogMessage {
     private String browser;
 
     /**
-     * Get the version value.
+     * Get the semantic version of the remote application submitting the log.
      *
      * @return the version value
      */
@@ -80,7 +80,7 @@ public class WebLogMessage {
     }
 
     /**
-     * Set the version value.
+     * Set the semantic version of the remote application submitting the log.
      *
      * @param version the version value to set
      * @return the WebLogMessage object itself.
@@ -91,7 +91,7 @@ public class WebLogMessage {
     }
 
     /**
-     * Get the url value.
+     * Get the url of the resource from which the message originated.
      *
      * @return the url value
      */
@@ -100,7 +100,7 @@ public class WebLogMessage {
     }
 
     /**
-     * Set the url value.
+     * Set the url of the resource from which the message originated.
      *
      * @param url the url value to set
      * @return the WebLogMessage object itself.
@@ -111,7 +111,7 @@ public class WebLogMessage {
     }
 
     /**
-     * Get the message value.
+     * Get the body of the message.
      *
      * @return the message value
      */
@@ -120,7 +120,7 @@ public class WebLogMessage {
     }
 
     /**
-     * Set the message value.
+     * Set the body of the message.
      *
      * @param message the message value to set
      * @return the WebLogMessage object itself.
@@ -131,7 +131,7 @@ public class WebLogMessage {
     }
 
     /**
-     * Get the context value.
+     * Get context as to the occurance of the message.
      *
      * @return the context value
      */
@@ -140,7 +140,7 @@ public class WebLogMessage {
     }
 
     /**
-     * Set the context value.
+     * Set context as to the occurance of the message.
      *
      * @param context the context value to set
      * @return the WebLogMessage object itself.
@@ -151,7 +151,7 @@ public class WebLogMessage {
     }
 
     /**
-     * Get the severity value.
+     * Get the severity of the message. Possible values include: 'Warn', 'Error'.
      *
      * @return the severity value
      */
@@ -160,7 +160,7 @@ public class WebLogMessage {
     }
 
     /**
-     * Set the severity value.
+     * Set the severity of the message. Possible values include: 'Warn', 'Error'.
      *
      * @param severity the severity value to set
      * @return the WebLogMessage object itself.
@@ -171,7 +171,7 @@ public class WebLogMessage {
     }
 
     /**
-     * Get the stacktrace value.
+     * Get any stacktrace that may be relavent.
      *
      * @return the stacktrace value
      */
@@ -180,7 +180,7 @@ public class WebLogMessage {
     }
 
     /**
-     * Set the stacktrace value.
+     * Set any stacktrace that may be relavent.
      *
      * @param stacktrace the stacktrace value to set
      * @return the WebLogMessage object itself.
@@ -191,7 +191,7 @@ public class WebLogMessage {
     }
 
     /**
-     * Get the browser value.
+     * Get any browser/user-agent/os related context.
      *
      * @return the browser value
      */
@@ -200,7 +200,7 @@ public class WebLogMessage {
     }
 
     /**
-     * Set the browser value.
+     * Set any browser/user-agent/os related context.
      *
      * @param browser the browser value to set
      * @return the WebLogMessage object itself.

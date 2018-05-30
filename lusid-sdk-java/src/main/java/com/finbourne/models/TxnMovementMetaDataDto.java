@@ -31,7 +31,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class TxnMovementMetaDataDto {
     /**
      * The Movement Types. Possible values include: 'Settlement', 'Traded',
-     * 'ForwardFx', 'Commitment', 'Receivable', 'CashSettlement', 'Accrual'.
+     * 'ForwardFx', 'Commitment', 'Receivable', 'CashSettlement', 'Accrual',
+     * 'UnsettledCashTypes'.
      */
     @JsonProperty(value = "movementTypes", required = true)
     private String movementTypes;
@@ -61,7 +62,7 @@ public class TxnMovementMetaDataDto {
     private List<TxnPropertyMappingDto> mappings;
 
     /**
-     * Get the movementTypes value.
+     * Get the Movement Types. Possible values include: 'Settlement', 'Traded', 'ForwardFx', 'Commitment', 'Receivable', 'CashSettlement', 'Accrual', 'UnsettledCashTypes'.
      *
      * @return the movementTypes value
      */
@@ -70,7 +71,7 @@ public class TxnMovementMetaDataDto {
     }
 
     /**
-     * Set the movementTypes value.
+     * Set the Movement Types. Possible values include: 'Settlement', 'Traded', 'ForwardFx', 'Commitment', 'Receivable', 'CashSettlement', 'Accrual', 'UnsettledCashTypes'.
      *
      * @param movementTypes the movementTypes value to set
      * @return the TxnMovementMetaDataDto object itself.
@@ -81,7 +82,7 @@ public class TxnMovementMetaDataDto {
     }
 
     /**
-     * Get the side value.
+     * Get the Movement Side. Possible values include: 'Side1', 'Side2', 'BondInt'.
      *
      * @return the side value
      */
@@ -90,7 +91,7 @@ public class TxnMovementMetaDataDto {
     }
 
     /**
-     * Set the side value.
+     * Set the Movement Side. Possible values include: 'Side1', 'Side2', 'BondInt'.
      *
      * @param side the side value to set
      * @return the TxnMovementMetaDataDto object itself.
@@ -101,7 +102,7 @@ public class TxnMovementMetaDataDto {
     }
 
     /**
-     * Get the direction value.
+     * Get the Movement direction.
      *
      * @return the direction value
      */
@@ -110,7 +111,7 @@ public class TxnMovementMetaDataDto {
     }
 
     /**
-     * Set the direction value.
+     * Set the Movement direction.
      *
      * @param direction the direction value to set
      * @return the TxnMovementMetaDataDto object itself.

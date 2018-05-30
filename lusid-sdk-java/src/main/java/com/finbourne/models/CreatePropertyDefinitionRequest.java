@@ -78,7 +78,7 @@ public class CreatePropertyDefinitionRequest {
     private String lifeTime;
 
     /**
-     * Get the domain value.
+     * Get possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'.
      *
      * @return the domain value
      */
@@ -87,7 +87,7 @@ public class CreatePropertyDefinitionRequest {
     }
 
     /**
-     * Set the domain value.
+     * Set possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'.
      *
      * @param domain the domain value to set
      * @return the CreatePropertyDefinitionRequest object itself.
@@ -218,7 +218,7 @@ public class CreatePropertyDefinitionRequest {
     }
 
     /**
-     * Get the lifeTime value.
+     * Get possible values include: 'Perpetual', 'TimeVariant'.
      *
      * @return the lifeTime value
      */
@@ -227,7 +227,7 @@ public class CreatePropertyDefinitionRequest {
     }
 
     /**
-     * Set the lifeTime value.
+     * Set possible values include: 'Perpetual', 'TimeVariant'.
      *
      * @param lifeTime the lifeTime value to set
      * @return the CreatePropertyDefinitionRequest object itself.

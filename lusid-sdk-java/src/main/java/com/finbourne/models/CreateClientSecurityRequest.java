@@ -167,7 +167,8 @@ public class CreateClientSecurityRequest {
     }
 
     /**
-     * Get the instrument value.
+     * Get there could be multiple underlying instrument definitions (same
+     instrument but different format), but for now store one.
      *
      * @return the instrument value
      */
@@ -176,7 +177,8 @@ public class CreateClientSecurityRequest {
     }
 
     /**
-     * Set the instrument value.
+     * Set there could be multiple underlying instrument definitions (same
+     instrument but different format), but for now store one.
      *
      * @param instrument the instrument value to set
      * @return the CreateClientSecurityRequest object itself.

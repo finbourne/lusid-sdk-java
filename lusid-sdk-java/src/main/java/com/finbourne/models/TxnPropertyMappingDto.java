@@ -47,7 +47,7 @@ public class TxnPropertyMappingDto {
     private Object setTo;
 
     /**
-     * Get the propertyKey value.
+     * Get the Side.
      *
      * @return the propertyKey value
      */
@@ -56,7 +56,7 @@ public class TxnPropertyMappingDto {
     }
 
     /**
-     * Set the propertyKey value.
+     * Set the Side.
      *
      * @param propertyKey the propertyKey value to set
      * @return the TxnPropertyMappingDto object itself.
@@ -67,7 +67,7 @@ public class TxnPropertyMappingDto {
     }
 
     /**
-     * Get the mapFrom value.
+     * Get the Side.
      *
      * @return the mapFrom value
      */
@@ -76,7 +76,7 @@ public class TxnPropertyMappingDto {
     }
 
     /**
-     * Set the mapFrom value.
+     * Set the Side.
      *
      * @param mapFrom the mapFrom value to set
      * @return the TxnPropertyMappingDto object itself.
@@ -87,7 +87,7 @@ public class TxnPropertyMappingDto {
     }
 
     /**
-     * Get the setTo value.
+     * Get the Side.
      *
      * @return the setTo value
      */
@@ -96,7 +96,7 @@ public class TxnPropertyMappingDto {
     }
 
     /**
-     * Set the setTo value.
+     * Set the Side.
      *
      * @param setTo the setTo value to set
      * @return the TxnPropertyMappingDto object itself.

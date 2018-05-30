@@ -127,7 +127,7 @@ public class PropertyDefinitionDto {
     }
 
     /**
-     * Get the valueType value.
+     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
      *
      * @return the valueType value
      */
@@ -136,7 +136,7 @@ public class PropertyDefinitionDto {
     }
 
     /**
-     * Set the valueType value.
+     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
      *
      * @param valueType the valueType value to set
      * @return the PropertyDefinitionDto object itself.
@@ -227,7 +227,7 @@ public class PropertyDefinitionDto {
     }
 
     /**
-     * Get the lifeTime value.
+     * Get possible values include: 'Perpetual', 'TimeVariant'.
      *
      * @return the lifeTime value
      */
@@ -236,7 +236,7 @@ public class PropertyDefinitionDto {
     }
 
     /**
-     * Set the lifeTime value.
+     * Set possible values include: 'Perpetual', 'TimeVariant'.
      *
      * @param lifeTime the lifeTime value to set
      * @return the PropertyDefinitionDto object itself.

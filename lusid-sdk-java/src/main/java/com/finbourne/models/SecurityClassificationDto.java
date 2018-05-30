@@ -49,7 +49,7 @@ public class SecurityClassificationDto {
     private List<PropertyDto> properties;
 
     /**
-     * Get the uid value.
+     * Get unique security identifier.
      *
      * @return the uid value
      */
@@ -58,7 +58,7 @@ public class SecurityClassificationDto {
     }
 
     /**
-     * Set the uid value.
+     * Set unique security identifier.
      *
      * @param uid the uid value to set
      * @return the SecurityClassificationDto object itself.
@@ -69,7 +69,7 @@ public class SecurityClassificationDto {
     }
 
     /**
-     * Get the effectiveFrom value.
+     * Get date from which this classification is effective.
      *
      * @return the effectiveFrom value
      */
@@ -78,7 +78,7 @@ public class SecurityClassificationDto {
     }
 
     /**
-     * Set the effectiveFrom value.
+     * Set date from which this classification is effective.
      *
      * @param effectiveFrom the effectiveFrom value to set
      * @return the SecurityClassificationDto object itself.

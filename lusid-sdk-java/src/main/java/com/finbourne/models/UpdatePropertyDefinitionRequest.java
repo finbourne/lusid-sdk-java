@@ -139,7 +139,7 @@ public class UpdatePropertyDefinitionRequest {
     }
 
     /**
-     * Get the lifeTime value.
+     * Get possible values include: 'Perpetual', 'TimeVariant'.
      *
      * @return the lifeTime value
      */
@@ -148,7 +148,7 @@ public class UpdatePropertyDefinitionRequest {
     }
 
     /**
-     * Set the lifeTime value.
+     * Set possible values include: 'Perpetual', 'TimeVariant'.
      *
      * @param lifeTime the lifeTime value to set
      * @return the UpdatePropertyDefinitionRequest object itself.

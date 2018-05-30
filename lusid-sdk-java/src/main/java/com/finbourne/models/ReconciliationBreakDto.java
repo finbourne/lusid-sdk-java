@@ -54,7 +54,7 @@ public class ReconciliationBreakDto {
     private Double costDifference;
 
     /**
-     * Get the securityUid value.
+     * Get unique security identifier.
      *
      * @return the securityUid value
      */
@@ -63,7 +63,7 @@ public class ReconciliationBreakDto {
     }
 
     /**
-     * Set the securityUid value.
+     * Set unique security identifier.
      *
      * @param securityUid the securityUid value to set
      * @return the ReconciliationBreakDto object itself.
@@ -94,7 +94,7 @@ public class ReconciliationBreakDto {
     }
 
     /**
-     * Get the unitsDifference value.
+     * Get difference in units.
      *
      * @return the unitsDifference value
      */
@@ -103,7 +103,7 @@ public class ReconciliationBreakDto {
     }
 
     /**
-     * Set the unitsDifference value.
+     * Set difference in units.
      *
      * @param unitsDifference the unitsDifference value to set
      * @return the ReconciliationBreakDto object itself.
@@ -114,7 +114,7 @@ public class ReconciliationBreakDto {
     }
 
     /**
-     * Get the costDifference value.
+     * Get difference in cost.
      *
      * @return the costDifference value
      */
@@ -123,7 +123,7 @@ public class ReconciliationBreakDto {
     }
 
     /**
-     * Set the costDifference value.
+     * Set difference in cost.
      *
      * @param costDifference the costDifference value to set
      * @return the ReconciliationBreakDto object itself.

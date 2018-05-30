@@ -79,7 +79,7 @@ public class HoldingDto {
     private TradeDto transaction;
 
     /**
-     * Get the securityUid value.
+     * Get unique security identifier.
      *
      * @return the securityUid value
      */
@@ -88,7 +88,7 @@ public class HoldingDto {
     }
 
     /**
-     * Set the securityUid value.
+     * Set unique security identifier.
      *
      * @param securityUid the securityUid value to set
      * @return the HoldingDto object itself.
@@ -119,7 +119,7 @@ public class HoldingDto {
     }
 
     /**
-     * Get the holdingType value.
+     * Get type of holding, eg Position, Balance, CashCommitment, Receivable, ForwardFX.
      *
      * @return the holdingType value
      */
@@ -128,7 +128,7 @@ public class HoldingDto {
     }
 
     /**
-     * Set the holdingType value.
+     * Set type of holding, eg Position, Balance, CashCommitment, Receivable, ForwardFX.
      *
      * @param holdingType the holdingType value to set
      * @return the HoldingDto object itself.
@@ -139,7 +139,7 @@ public class HoldingDto {
     }
 
     /**
-     * Get the units value.
+     * Get quantity of holding.
      *
      * @return the units value
      */
@@ -148,7 +148,7 @@ public class HoldingDto {
     }
 
     /**
-     * Set the units value.
+     * Set quantity of holding.
      *
      * @param units the units value to set
      * @return the HoldingDto object itself.
@@ -159,7 +159,7 @@ public class HoldingDto {
     }
 
     /**
-     * Get the settledUnits value.
+     * Get settled quantity of holding.
      *
      * @return the settledUnits value
      */
@@ -168,7 +168,7 @@ public class HoldingDto {
     }
 
     /**
-     * Set the settledUnits value.
+     * Set settled quantity of holding.
      *
      * @param settledUnits the settledUnits value to set
      * @return the HoldingDto object itself.
@@ -179,7 +179,7 @@ public class HoldingDto {
     }
 
     /**
-     * Get the cost value.
+     * Get book cost of holding in trade currency.
      *
      * @return the cost value
      */
@@ -188,7 +188,7 @@ public class HoldingDto {
     }
 
     /**
-     * Set the cost value.
+     * Set book cost of holding in trade currency.
      *
      * @param cost the cost value to set
      * @return the HoldingDto object itself.
@@ -199,7 +199,7 @@ public class HoldingDto {
     }
 
     /**
-     * Get the costPortfolioCcy value.
+     * Get book cost of holding in portfolio currency.
      *
      * @return the costPortfolioCcy value
      */
@@ -208,7 +208,7 @@ public class HoldingDto {
     }
 
     /**
-     * Set the costPortfolioCcy value.
+     * Set book cost of holding in portfolio currency.
      *
      * @param costPortfolioCcy the costPortfolioCcy value to set
      * @return the HoldingDto object itself.
@@ -219,7 +219,7 @@ public class HoldingDto {
     }
 
     /**
-     * Get the transaction value.
+     * Get if this is commitment-type holding, the transaction behind it.
      *
      * @return the transaction value
      */
@@ -228,7 +228,7 @@ public class HoldingDto {
     }
 
     /**
-     * Set the transaction value.
+     * Set if this is commitment-type holding, the transaction behind it.
      *
      * @param transaction the transaction value to set
      * @return the HoldingDto object itself.

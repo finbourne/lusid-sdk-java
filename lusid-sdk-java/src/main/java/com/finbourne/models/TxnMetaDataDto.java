@@ -48,7 +48,7 @@ public class TxnMetaDataDto {
     private List<PropertyDto> properties;
 
     /**
-     * Get the aliases value.
+     * Get list of transaction codes that map to this specific transaction model.
      *
      * @return the aliases value
      */
@@ -57,7 +57,7 @@ public class TxnMetaDataDto {
     }
 
     /**
-     * Set the aliases value.
+     * Set list of transaction codes that map to this specific transaction model.
      *
      * @param aliases the aliases value to set
      * @return the TxnMetaDataDto object itself.
@@ -68,7 +68,7 @@ public class TxnMetaDataDto {
     }
 
     /**
-     * Get the movements value.
+     * Get movement data for the transaction code.
      *
      * @return the movements value
      */
@@ -77,7 +77,7 @@ public class TxnMetaDataDto {
     }
 
     /**
-     * Set the movements value.
+     * Set movement data for the transaction code.
      *
      * @param movements the movements value to set
      * @return the TxnMetaDataDto object itself.
