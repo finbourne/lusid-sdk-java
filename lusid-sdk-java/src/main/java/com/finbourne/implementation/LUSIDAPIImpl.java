@@ -31,6 +31,7 @@ import com.finbourne.models.AddTradePropertyDto;
 import com.finbourne.models.AggregationRequest;
 import com.finbourne.models.AnalyticStoreDto;
 import com.finbourne.models.ClassificationsDto;
+import com.finbourne.models.ClearEntityCachesDto;
 import com.finbourne.models.CorporateActionEventDto;
 import com.finbourne.models.CreateAnalyticStoreRequest;
 import com.finbourne.models.CreateClientSecurityRequest;
@@ -191,6 +192,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * used by Retrofit to perform actually REST calls.
      */
     interface LUSIDAPIService {
+        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI clearEntityCaches" })
+        @GET("v1/api/_internal/clearentitycaches")
+        Observable<Response<ResponseBody>> clearEntityCaches();
+
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI listCorporateActions" })
         @GET("v1/api/actions/{scope}/{sourceId}")
         Observable<Response<ResponseBody>> listCorporateActions(@Path("scope") String scope, @Path("sourceId") String sourceId, @Query("effectiveDate") DateTime effectiveDate, @Query("asAt") DateTime asAt);
@@ -571,6 +576,73 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @POST("v1/api/securities/lookup/{codeType}")
         Observable<Response<ResponseBody>> lookupSecuritiesFromCodesBulk(@Path("codeType") String codeType, @Body List<String> codes, @Query("asAt") DateTime asAt, @Query("propertyKeys") String propertyKeys);
 
+    }
+
+    /**
+     * Clears the entity caches on the instance that serves this request only.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws RestException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    public Object clearEntityCaches() {
+        return clearEntityCachesWithServiceResponseAsync().toBlocking().single().body();
+    }
+
+    /**
+     * Clears the entity caches on the instance that serves this request only.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<Object> clearEntityCachesAsync(final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(clearEntityCachesWithServiceResponseAsync(), serviceCallback);
+    }
+
+    /**
+     * Clears the entity caches on the instance that serves this request only.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<Object> clearEntityCachesAsync() {
+        return clearEntityCachesWithServiceResponseAsync().map(new Func1<ServiceResponse<Object>, Object>() {
+            @Override
+            public Object call(ServiceResponse<Object> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Clears the entity caches on the instance that serves this request only.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<ServiceResponse<Object>> clearEntityCachesWithServiceResponseAsync() {
+        return service.clearEntityCaches()
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
+                @Override
+                public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<Object> clientResponse = clearEntityCachesDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<Object> clearEntityCachesDelegate(Response<ResponseBody> response) throws RestException, IOException {
+        return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<ClearEntityCachesDto>() { }.getType())
+                .register(400, new TypeToken<ErrorResponse>() { }.getType())
+                .register(500, new TypeToken<ErrorResponse>() { }.getType())
+                .build(response);
     }
 
     /**

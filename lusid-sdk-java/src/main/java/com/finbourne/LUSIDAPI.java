@@ -75,6 +75,41 @@ public interface LUSIDAPI {
     String DEFAULT_BASE_URL = "http://localhost";
 
     /**
+     * Clears the entity caches on the instance that serves this request only.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws RestException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    Object clearEntityCaches();
+
+    /**
+     * Clears the entity caches on the instance that serves this request only.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<Object> clearEntityCachesAsync(final ServiceCallback<Object> serviceCallback);
+
+    /**
+     * Clears the entity caches on the instance that serves this request only.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    Observable<Object> clearEntityCachesAsync();
+
+    /**
+     * Clears the entity caches on the instance that serves this request only.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    Observable<ServiceResponse<Object>> clearEntityCachesWithServiceResponseAsync();
+
+    /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
