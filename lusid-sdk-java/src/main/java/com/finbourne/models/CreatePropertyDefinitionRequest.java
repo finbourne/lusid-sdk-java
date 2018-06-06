@@ -78,6 +78,12 @@ public class CreatePropertyDefinitionRequest {
     private String lifeTime;
 
     /**
+     * Possible values include: 'Label', 'Metric'.
+     */
+    @JsonProperty(value = "type")
+    private String type;
+
+    /**
      * Get possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'.
      *
      * @return the domain value
@@ -234,6 +240,26 @@ public class CreatePropertyDefinitionRequest {
      */
     public CreatePropertyDefinitionRequest withLifeTime(String lifeTime) {
         this.lifeTime = lifeTime;
+        return this;
+    }
+
+    /**
+     * Get possible values include: 'Label', 'Metric'.
+     *
+     * @return the type value
+     */
+    public String type() {
+        return this.type;
+    }
+
+    /**
+     * Set possible values include: 'Label', 'Metric'.
+     *
+     * @param type the type value to set
+     * @return the CreatePropertyDefinitionRequest object itself.
+     */
+    public CreatePropertyDefinitionRequest withType(String type) {
+        this.type = type;
         return this;
     }
 

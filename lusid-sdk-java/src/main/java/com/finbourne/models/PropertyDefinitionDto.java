@@ -81,6 +81,12 @@ public class PropertyDefinitionDto {
     private String lifeTime;
 
     /**
+     * Possible values include: 'Label', 'Metric'.
+     */
+    @JsonProperty(value = "type")
+    private String type;
+
+    /**
      * The _links property.
      */
     @JsonProperty(value = "_links")
@@ -243,6 +249,26 @@ public class PropertyDefinitionDto {
      */
     public PropertyDefinitionDto withLifeTime(String lifeTime) {
         this.lifeTime = lifeTime;
+        return this;
+    }
+
+    /**
+     * Get possible values include: 'Label', 'Metric'.
+     *
+     * @return the type value
+     */
+    public String type() {
+        return this.type;
+    }
+
+    /**
+     * Set possible values include: 'Label', 'Metric'.
+     *
+     * @param type the type value to set
+     * @return the PropertyDefinitionDto object itself.
+     */
+    public PropertyDefinitionDto withType(String type) {
+        this.type = type;
         return this;
     }
 
