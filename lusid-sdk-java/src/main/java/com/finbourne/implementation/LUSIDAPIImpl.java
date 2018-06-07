@@ -466,11 +466,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getMultiplePropertyDefinitions" })
         @GET("v1/api/propertydefinitions/_keys")
-        Observable<Response<ResponseBody>> getMultiplePropertyDefinitions(@Query("keys") String keys, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
+        Observable<Response<ResponseBody>> getMultiplePropertyDefinitions(@Query("keys") String keys, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getAllPropertyKeysInDomain" })
         @GET("v1/api/propertydefinitions/{domain}")
-        Observable<Response<ResponseBody>> getAllPropertyKeysInDomain(@Path("domain") String domain, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
+        Observable<Response<ResponseBody>> getAllPropertyKeysInDomain(@Path("domain") String domain, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getPropertyDefinitionScopesInDomain" })
         @GET("v1/api/propertydefinitions/{domain}/_scopes")
@@ -478,7 +478,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getAllPropertyKeysInScope" })
         @GET("v1/api/propertydefinitions/{domain}/{scope}")
-        Observable<Response<ResponseBody>> getAllPropertyKeysInScope(@Path("domain") String domain, @Path("scope") String scope, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
+        Observable<Response<ResponseBody>> getAllPropertyKeysInScope(@Path("domain") String domain, @Path("scope") String scope, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getPropertyDefinition" })
         @GET("v1/api/propertydefinitions/{domain}/{scope}/{name}")
@@ -550,7 +550,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getPropertySchema" })
         @GET("v1/api/schema/properties")
-        Observable<Response<ResponseBody>> getPropertySchema(@Query("propertyKeys") String propertyKeys);
+        Observable<Response<ResponseBody>> getPropertySchema(@Query("propertyKeys") String propertyKeys, @Query("asAt") DateTime asAt);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getValueTypes" })
         @GET("v1/api/schema/types")
@@ -10640,12 +10640,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      */
     public Observable<ServiceResponse<Object>> getMultiplePropertyDefinitionsWithServiceResponseAsync() {
         final List<String> keys = null;
+        final DateTime asAt = null;
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
         final String filter = null;
         String keysConverted = this.serializerAdapter().serializeList(keys, CollectionFormat.MULTI);String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getMultiplePropertyDefinitions(keysConverted, sortByConverted, start, limit, filter)
+        return service.getMultiplePropertyDefinitions(keysConverted, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -10663,6 +10664,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Gets multiple property definitions.
      *
      * @param keys the List&lt;String&gt; value
+     * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10672,14 +10674,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getMultiplePropertyDefinitions(List<String> keys, List<String> sortBy, Integer start, Integer limit, String filter) {
-        return getMultiplePropertyDefinitionsWithServiceResponseAsync(keys, sortBy, start, limit, filter).toBlocking().single().body();
+    public Object getMultiplePropertyDefinitions(List<String> keys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getMultiplePropertyDefinitionsWithServiceResponseAsync(keys, asAt, sortBy, start, limit, filter).toBlocking().single().body();
     }
 
     /**
      * Gets multiple property definitions.
      *
      * @param keys the List&lt;String&gt; value
+     * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10688,14 +10691,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getMultiplePropertyDefinitionsAsync(List<String> keys, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getMultiplePropertyDefinitionsWithServiceResponseAsync(keys, sortBy, start, limit, filter), serviceCallback);
+    public ServiceFuture<Object> getMultiplePropertyDefinitionsAsync(List<String> keys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getMultiplePropertyDefinitionsWithServiceResponseAsync(keys, asAt, sortBy, start, limit, filter), serviceCallback);
     }
 
     /**
      * Gets multiple property definitions.
      *
      * @param keys the List&lt;String&gt; value
+     * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10703,8 +10707,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getMultiplePropertyDefinitionsAsync(List<String> keys, List<String> sortBy, Integer start, Integer limit, String filter) {
-        return getMultiplePropertyDefinitionsWithServiceResponseAsync(keys, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getMultiplePropertyDefinitionsAsync(List<String> keys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getMultiplePropertyDefinitionsWithServiceResponseAsync(keys, asAt, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -10716,6 +10720,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Gets multiple property definitions.
      *
      * @param keys the List&lt;String&gt; value
+     * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10723,11 +10728,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getMultiplePropertyDefinitionsWithServiceResponseAsync(List<String> keys, List<String> sortBy, Integer start, Integer limit, String filter) {
+    public Observable<ServiceResponse<Object>> getMultiplePropertyDefinitionsWithServiceResponseAsync(List<String> keys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
         Validator.validate(keys);
         Validator.validate(sortBy);
         String keysConverted = this.serializerAdapter().serializeList(keys, CollectionFormat.MULTI);String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getMultiplePropertyDefinitions(keysConverted, sortByConverted, start, limit, filter)
+        return service.getMultiplePropertyDefinitions(keysConverted, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -10802,12 +10807,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         if (domain == null) {
             throw new IllegalArgumentException("Parameter domain is required and cannot be null.");
         }
+        final DateTime asAt = null;
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
         final String filter = null;
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getAllPropertyKeysInDomain(domain, sortByConverted, start, limit, filter)
+        return service.getAllPropertyKeysInDomain(domain, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -10825,6 +10831,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Gets all available property definitions.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10834,14 +10841,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getAllPropertyKeysInDomain(String domain, List<String> sortBy, Integer start, Integer limit, String filter) {
-        return getAllPropertyKeysInDomainWithServiceResponseAsync(domain, sortBy, start, limit, filter).toBlocking().single().body();
+    public Object getAllPropertyKeysInDomain(String domain, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getAllPropertyKeysInDomainWithServiceResponseAsync(domain, asAt, sortBy, start, limit, filter).toBlocking().single().body();
     }
 
     /**
      * Gets all available property definitions.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10850,14 +10858,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getAllPropertyKeysInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getAllPropertyKeysInDomainWithServiceResponseAsync(domain, sortBy, start, limit, filter), serviceCallback);
+    public ServiceFuture<Object> getAllPropertyKeysInDomainAsync(String domain, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getAllPropertyKeysInDomainWithServiceResponseAsync(domain, asAt, sortBy, start, limit, filter), serviceCallback);
     }
 
     /**
      * Gets all available property definitions.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10865,8 +10874,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getAllPropertyKeysInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter) {
-        return getAllPropertyKeysInDomainWithServiceResponseAsync(domain, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getAllPropertyKeysInDomainAsync(String domain, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getAllPropertyKeysInDomainWithServiceResponseAsync(domain, asAt, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -10878,6 +10887,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Gets all available property definitions.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -10885,13 +10895,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getAllPropertyKeysInDomainWithServiceResponseAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter) {
+    public Observable<ServiceResponse<Object>> getAllPropertyKeysInDomainWithServiceResponseAsync(String domain, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
         if (domain == null) {
             throw new IllegalArgumentException("Parameter domain is required and cannot be null.");
         }
         Validator.validate(sortBy);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getAllPropertyKeysInDomain(domain, sortByConverted, start, limit, filter)
+        return service.getAllPropertyKeysInDomain(domain, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -11137,12 +11147,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
+        final DateTime asAt = null;
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
         final String filter = null;
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getAllPropertyKeysInScope(domain, scope, sortByConverted, start, limit, filter)
+        return service.getAllPropertyKeysInScope(domain, scope, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -11161,6 +11172,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
+     * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -11170,8 +11182,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getAllPropertyKeysInScope(String domain, String scope, List<String> sortBy, Integer start, Integer limit, String filter) {
-        return getAllPropertyKeysInScopeWithServiceResponseAsync(domain, scope, sortBy, start, limit, filter).toBlocking().single().body();
+    public Object getAllPropertyKeysInScope(String domain, String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getAllPropertyKeysInScopeWithServiceResponseAsync(domain, scope, asAt, sortBy, start, limit, filter).toBlocking().single().body();
     }
 
     /**
@@ -11179,6 +11191,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
+     * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -11187,8 +11200,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getAllPropertyKeysInScopeAsync(String domain, String scope, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getAllPropertyKeysInScopeWithServiceResponseAsync(domain, scope, sortBy, start, limit, filter), serviceCallback);
+    public ServiceFuture<Object> getAllPropertyKeysInScopeAsync(String domain, String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getAllPropertyKeysInScopeWithServiceResponseAsync(domain, scope, asAt, sortBy, start, limit, filter), serviceCallback);
     }
 
     /**
@@ -11196,6 +11209,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
+     * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -11203,8 +11217,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getAllPropertyKeysInScopeAsync(String domain, String scope, List<String> sortBy, Integer start, Integer limit, String filter) {
-        return getAllPropertyKeysInScopeWithServiceResponseAsync(domain, scope, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getAllPropertyKeysInScopeAsync(String domain, String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getAllPropertyKeysInScopeWithServiceResponseAsync(domain, scope, asAt, sortBy, start, limit, filter).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -11217,6 +11231,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
+     * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -11224,7 +11239,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getAllPropertyKeysInScopeWithServiceResponseAsync(String domain, String scope, List<String> sortBy, Integer start, Integer limit, String filter) {
+    public Observable<ServiceResponse<Object>> getAllPropertyKeysInScopeWithServiceResponseAsync(String domain, String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
         if (domain == null) {
             throw new IllegalArgumentException("Parameter domain is required and cannot be null.");
         }
@@ -11233,7 +11248,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         }
         Validator.validate(sortBy);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getAllPropertyKeysInScope(domain, scope, sortByConverted, start, limit, filter)
+        return service.getAllPropertyKeysInScope(domain, scope, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -13901,8 +13916,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      */
     public Observable<ServiceResponse<Object>> getPropertySchemaWithServiceResponseAsync() {
         final List<String> propertyKeys = null;
+        final DateTime asAt = null;
         String propertyKeysConverted = this.serializerAdapter().serializeList(propertyKeys, CollectionFormat.MULTI);
-        return service.getPropertySchema(propertyKeysConverted)
+        return service.getPropertySchema(propertyKeysConverted, asAt)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -13920,36 +13936,39 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get the schemas for the provided list of property keys.
      *
      * @param propertyKeys A comma delimited list of property keys in string format. e.g. "Portfolio/default/PropertyName,Portfolio/differentScope/MyProperty"
+     * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getPropertySchema(List<String> propertyKeys) {
-        return getPropertySchemaWithServiceResponseAsync(propertyKeys).toBlocking().single().body();
+    public Object getPropertySchema(List<String> propertyKeys, DateTime asAt) {
+        return getPropertySchemaWithServiceResponseAsync(propertyKeys, asAt).toBlocking().single().body();
     }
 
     /**
      * Get the schemas for the provided list of property keys.
      *
      * @param propertyKeys A comma delimited list of property keys in string format. e.g. "Portfolio/default/PropertyName,Portfolio/differentScope/MyProperty"
+     * @param asAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getPropertySchemaAsync(List<String> propertyKeys, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getPropertySchemaWithServiceResponseAsync(propertyKeys), serviceCallback);
+    public ServiceFuture<Object> getPropertySchemaAsync(List<String> propertyKeys, DateTime asAt, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getPropertySchemaWithServiceResponseAsync(propertyKeys, asAt), serviceCallback);
     }
 
     /**
      * Get the schemas for the provided list of property keys.
      *
      * @param propertyKeys A comma delimited list of property keys in string format. e.g. "Portfolio/default/PropertyName,Portfolio/differentScope/MyProperty"
+     * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getPropertySchemaAsync(List<String> propertyKeys) {
-        return getPropertySchemaWithServiceResponseAsync(propertyKeys).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getPropertySchemaAsync(List<String> propertyKeys, DateTime asAt) {
+        return getPropertySchemaWithServiceResponseAsync(propertyKeys, asAt).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -13961,13 +13980,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get the schemas for the provided list of property keys.
      *
      * @param propertyKeys A comma delimited list of property keys in string format. e.g. "Portfolio/default/PropertyName,Portfolio/differentScope/MyProperty"
+     * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getPropertySchemaWithServiceResponseAsync(List<String> propertyKeys) {
+    public Observable<ServiceResponse<Object>> getPropertySchemaWithServiceResponseAsync(List<String> propertyKeys, DateTime asAt) {
         Validator.validate(propertyKeys);
         String propertyKeysConverted = this.serializerAdapter().serializeList(propertyKeys, CollectionFormat.MULTI);
-        return service.getPropertySchema(propertyKeysConverted)
+        return service.getPropertySchema(propertyKeysConverted, asAt)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
