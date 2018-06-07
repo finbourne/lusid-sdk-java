@@ -41,6 +41,26 @@ public class TxnTypeAliasDto {
     private String description;
 
     /**
+     * Relates types of a similar class. E.g. Buy/Sell, StockIn/StockOut.
+     */
+    @JsonProperty(value = "txnClass", required = true)
+    private String txnClass;
+
+    /**
+     * Group is a set of codes related to a source, or sync.
+     */
+    @JsonProperty(value = "txnGroup", required = true)
+    private String txnGroup;
+
+    /**
+     * Transactions role within a class. E.g. Increase a long position.
+     * Possible values include: 'None', 'LongLonger', 'LongShorter',
+     * 'ShortShorter', 'Shorter', 'ShortLonger', 'Longer', 'AllRoles'.
+     */
+    @JsonProperty(value = "txnRoles", required = true)
+    private String txnRoles;
+
+    /**
      * Get the transaction type.
      *
      * @return the type value
@@ -77,6 +97,66 @@ public class TxnTypeAliasDto {
      */
     public TxnTypeAliasDto withDescription(String description) {
         this.description = description;
+        return this;
+    }
+
+    /**
+     * Get relates types of a similar class. E.g. Buy/Sell, StockIn/StockOut.
+     *
+     * @return the txnClass value
+     */
+    public String txnClass() {
+        return this.txnClass;
+    }
+
+    /**
+     * Set relates types of a similar class. E.g. Buy/Sell, StockIn/StockOut.
+     *
+     * @param txnClass the txnClass value to set
+     * @return the TxnTypeAliasDto object itself.
+     */
+    public TxnTypeAliasDto withTxnClass(String txnClass) {
+        this.txnClass = txnClass;
+        return this;
+    }
+
+    /**
+     * Get group is a set of codes related to a source, or sync.
+     *
+     * @return the txnGroup value
+     */
+    public String txnGroup() {
+        return this.txnGroup;
+    }
+
+    /**
+     * Set group is a set of codes related to a source, or sync.
+     *
+     * @param txnGroup the txnGroup value to set
+     * @return the TxnTypeAliasDto object itself.
+     */
+    public TxnTypeAliasDto withTxnGroup(String txnGroup) {
+        this.txnGroup = txnGroup;
+        return this;
+    }
+
+    /**
+     * Get transactions role within a class. E.g. Increase a long position. Possible values include: 'None', 'LongLonger', 'LongShorter', 'ShortShorter', 'Shorter', 'ShortLonger', 'Longer', 'AllRoles'.
+     *
+     * @return the txnRoles value
+     */
+    public String txnRoles() {
+        return this.txnRoles;
+    }
+
+    /**
+     * Set transactions role within a class. E.g. Increase a long position. Possible values include: 'None', 'LongLonger', 'LongShorter', 'ShortShorter', 'Shorter', 'ShortLonger', 'Longer', 'AllRoles'.
+     *
+     * @param txnRoles the txnRoles value to set
+     * @return the TxnTypeAliasDto object itself.
+     */
+    public TxnTypeAliasDto withTxnRoles(String txnRoles) {
+        this.txnRoles = txnRoles;
         return this;
     }
 
