@@ -55,7 +55,7 @@ public class TxnTypeAliasDto {
     /**
      * Transactions role within a class. E.g. Increase a long position.
      * Possible values include: 'None', 'LongLonger', 'LongShorter',
-     * 'ShortShorter', 'Shorter', 'ShortLonger', 'Longer', 'AllRoles'.
+     * 'ShortShorter', 'ShortLonger', 'Longer', 'Shorter', 'AllRoles'.
      */
     @JsonProperty(value = "txnRoles", required = true)
     private String txnRoles;
@@ -141,7 +141,7 @@ public class TxnTypeAliasDto {
     }
 
     /**
-     * Get transactions role within a class. E.g. Increase a long position. Possible values include: 'None', 'LongLonger', 'LongShorter', 'ShortShorter', 'Shorter', 'ShortLonger', 'Longer', 'AllRoles'.
+     * Get transactions role within a class. E.g. Increase a long position. Possible values include: 'None', 'LongLonger', 'LongShorter', 'ShortShorter', 'ShortLonger', 'Longer', 'Shorter', 'AllRoles'.
      *
      * @return the txnRoles value
      */
@@ -150,7 +150,7 @@ public class TxnTypeAliasDto {
     }
 
     /**
-     * Set transactions role within a class. E.g. Increase a long position. Possible values include: 'None', 'LongLonger', 'LongShorter', 'ShortShorter', 'Shorter', 'ShortLonger', 'Longer', 'AllRoles'.
+     * Set transactions role within a class. E.g. Increase a long position. Possible values include: 'None', 'LongLonger', 'LongShorter', 'ShortShorter', 'ShortLonger', 'Longer', 'Shorter', 'AllRoles'.
      *
      * @param txnRoles the txnRoles value to set
      * @return the TxnTypeAliasDto object itself.

@@ -37,15 +37,16 @@ public class ErrorResponse {
 
     /**
      * The Finbourne specific error-code that encapsulates the specific issue
-     * encountered. Possible values include: 'PersonalisationNotFound',
-     * 'NonRecursivePersonalisation', 'VersionNotFound', 'SecurityNotFound',
-     * 'SecurityByCodeNotFound', 'PropertyNotFound', 'PortfolioRecursionDepth',
-     * 'GroupNotFound', 'PortfolioNotFound', 'PropertySchemaNotFound',
-     * 'PortfolioWithIdAlreadyExists', 'OrphanedPortfolio',
-     * 'MissingBaseClaims', 'PropertyNotDefined', 'CannotDeleteSystemProperty',
-     * 'CannotModifyImmutablePropertyField', 'PropertyAlreadyExists',
-     * 'InvalidPropertyLifeTime', 'CannotModifyDefaultPropertyFormat',
-     * 'GroupAlreadyExists', 'NoSuchPropertyDataFormat', 'ValidationError',
+     * encountered. Possible values include: 'Unknown',
+     * 'PersonalisationNotFound', 'NonRecursivePersonalisation',
+     * 'VersionNotFound', 'SecurityNotFound', 'PropertyNotFound',
+     * 'PortfolioRecursionDepth', 'GroupNotFound', 'PortfolioNotFound',
+     * 'PropertySchemaNotFound', 'PortfolioWithIdAlreadyExists',
+     * 'OrphanedPortfolio', 'MissingBaseClaims', 'PropertyNotDefined',
+     * 'CannotDeleteSystemProperty', 'CannotModifyImmutablePropertyField',
+     * 'PropertyAlreadyExists', 'InvalidPropertyLifeTime',
+     * 'CannotModifyDefaultPropertyFormat', 'GroupAlreadyExists',
+     * 'NoSuchPropertyDataFormat', 'ValidationError',
      * 'LoopDetectedInGroupHierarchy', 'SubGroupAlreadyExists',
      * 'PriceSourceNotFound', 'AnalyticStoreNotFound',
      * 'AnalyticStoreAlreadyExists', 'ClientSecurityAlreadyExists',
@@ -63,8 +64,9 @@ public class ErrorResponse {
      * 'EntityAlreadyExistsInGroup', 'EntityWithIdAlreadyExists',
      * 'PortfolioDetailsDoNotExist', 'PortfolioWithNameAlreadyExists',
      * 'InvalidTrades', 'ReferencePortfolioNotFound', 'DuplicateIdFailure',
-     * 'CommandRetrievalFailure', 'DataFilterApplicationFailure',
-     * 'SearchFailed', 'MovementsEngineConfigurationKeyFailure', 'Unknown'.
+     * 'SecurityByCodeNotFound', 'CommandRetrievalFailure',
+     * 'DataFilterApplicationFailure', 'SearchFailed',
+     * 'MovementsEngineConfigurationKeyFailure'.
      */
     @JsonProperty(value = "code", access = JsonProperty.Access.WRITE_ONLY)
     private String code;
@@ -107,7 +109,7 @@ public class ErrorResponse {
     }
 
     /**
-     * Get the Finbourne specific error-code that encapsulates the specific issue encountered. Possible values include: 'PersonalisationNotFound', 'NonRecursivePersonalisation', 'VersionNotFound', 'SecurityNotFound', 'SecurityByCodeNotFound', 'PropertyNotFound', 'PortfolioRecursionDepth', 'GroupNotFound', 'PortfolioNotFound', 'PropertySchemaNotFound', 'PortfolioWithIdAlreadyExists', 'OrphanedPortfolio', 'MissingBaseClaims', 'PropertyNotDefined', 'CannotDeleteSystemProperty', 'CannotModifyImmutablePropertyField', 'PropertyAlreadyExists', 'InvalidPropertyLifeTime', 'CannotModifyDefaultPropertyFormat', 'GroupAlreadyExists', 'NoSuchPropertyDataFormat', 'ValidationError', 'LoopDetectedInGroupHierarchy', 'SubGroupAlreadyExists', 'PriceSourceNotFound', 'AnalyticStoreNotFound', 'AnalyticStoreAlreadyExists', 'ClientSecurityAlreadyExists', 'DuplicateInParameterSet', 'ResultsNotFound', 'OrderFieldNotInResultSet', 'OperationFailed', 'ElasticSearchError', 'InvalidParameterValue', 'ServerConfigurationError', 'CommandProcessingFailure', 'EntityStateConstructionFailure', 'EntityTimelineDoesNotExist', 'EventPublishFailure', 'InvalidRequestFailure', 'EventPublishUnknown', 'EventQueryFailure', 'BlobDidNotExistFailure', 'SubSystemRequestFailure', 'SubSystemConfigurationFailure', 'FailedToDelete', 'UpsertClientSecurityFailure', 'IllegalAsAtInterval', 'IllegalBitemporalQuery', 'InvalidAlternateId', 'CannotAddSourcePortfolioPropertyExplicitly', 'EntityAlreadyExistsInGroup', 'EntityWithIdAlreadyExists', 'PortfolioDetailsDoNotExist', 'PortfolioWithNameAlreadyExists', 'InvalidTrades', 'ReferencePortfolioNotFound', 'DuplicateIdFailure', 'CommandRetrievalFailure', 'DataFilterApplicationFailure', 'SearchFailed', 'MovementsEngineConfigurationKeyFailure', 'Unknown'.
+     * Get the Finbourne specific error-code that encapsulates the specific issue encountered. Possible values include: 'Unknown', 'PersonalisationNotFound', 'NonRecursivePersonalisation', 'VersionNotFound', 'SecurityNotFound', 'PropertyNotFound', 'PortfolioRecursionDepth', 'GroupNotFound', 'PortfolioNotFound', 'PropertySchemaNotFound', 'PortfolioWithIdAlreadyExists', 'OrphanedPortfolio', 'MissingBaseClaims', 'PropertyNotDefined', 'CannotDeleteSystemProperty', 'CannotModifyImmutablePropertyField', 'PropertyAlreadyExists', 'InvalidPropertyLifeTime', 'CannotModifyDefaultPropertyFormat', 'GroupAlreadyExists', 'NoSuchPropertyDataFormat', 'ValidationError', 'LoopDetectedInGroupHierarchy', 'SubGroupAlreadyExists', 'PriceSourceNotFound', 'AnalyticStoreNotFound', 'AnalyticStoreAlreadyExists', 'ClientSecurityAlreadyExists', 'DuplicateInParameterSet', 'ResultsNotFound', 'OrderFieldNotInResultSet', 'OperationFailed', 'ElasticSearchError', 'InvalidParameterValue', 'ServerConfigurationError', 'CommandProcessingFailure', 'EntityStateConstructionFailure', 'EntityTimelineDoesNotExist', 'EventPublishFailure', 'InvalidRequestFailure', 'EventPublishUnknown', 'EventQueryFailure', 'BlobDidNotExistFailure', 'SubSystemRequestFailure', 'SubSystemConfigurationFailure', 'FailedToDelete', 'UpsertClientSecurityFailure', 'IllegalAsAtInterval', 'IllegalBitemporalQuery', 'InvalidAlternateId', 'CannotAddSourcePortfolioPropertyExplicitly', 'EntityAlreadyExistsInGroup', 'EntityWithIdAlreadyExists', 'PortfolioDetailsDoNotExist', 'PortfolioWithNameAlreadyExists', 'InvalidTrades', 'ReferencePortfolioNotFound', 'DuplicateIdFailure', 'SecurityByCodeNotFound', 'CommandRetrievalFailure', 'DataFilterApplicationFailure', 'SearchFailed', 'MovementsEngineConfigurationKeyFailure'.
      *
      * @return the code value
      */
