@@ -40,6 +40,7 @@ import com.finbourne.models.CreateGroupRequest;
 import com.finbourne.models.CreatePortfolioRequest;
 import com.finbourne.models.CreatePropertyDataFormatRequest;
 import com.finbourne.models.CreatePropertyDefinitionRequest;
+import com.finbourne.models.CreatePropertyRequest;
 import com.finbourne.models.CreateResultsRequest;
 import com.finbourne.models.DeletedEntityResponse;
 import com.finbourne.models.ErrorResponse;
@@ -56,7 +57,6 @@ import com.finbourne.models.PortfolioDto;
 import com.finbourne.models.PortfolioPropertiesDto;
 import com.finbourne.models.PropertyDataFormatDto;
 import com.finbourne.models.PropertyDefinitionDto;
-import com.finbourne.models.PropertyDto;
 import com.finbourne.models.PropertySchemaDto;
 import com.finbourne.models.ReconciliationRequest;
 import com.finbourne.models.ReferencePortfolioConstituentDto;
@@ -81,7 +81,6 @@ import com.finbourne.models.SchemaDto;
 import com.finbourne.models.SecurityAnalyticDataDto;
 import com.finbourne.models.SecurityClassificationDto;
 import com.finbourne.models.SecurityDto;
-import com.finbourne.models.TradeDto;
 import com.finbourne.models.TryAddClientSecuritiesDto;
 import com.finbourne.models.TryDeleteClientSecuritiesDto;
 import com.finbourne.models.TryLookupSecuritiesFromCodesDto;
@@ -92,6 +91,7 @@ import com.finbourne.models.UpdatePropertyDataFormatRequest;
 import com.finbourne.models.UpdatePropertyDefinitionRequest;
 import com.finbourne.models.UpsertCorporateActionRequest;
 import com.finbourne.models.UpsertPersonalisationsResponse;
+import com.finbourne.models.UpsertPortfolioTradeRequest;
 import com.finbourne.models.UpsertPortfolioTradesDto;
 import com.finbourne.models.UpsertReferencePortfolioConstituentsDto;
 import com.finbourne.models.VersionedResourceListHoldingDto;
@@ -410,7 +410,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI upsertPortfolioProperties" })
         @POST("v1/api/portfolios/{scope}/{code}/properties")
-        Observable<Response<ResponseBody>> upsertPortfolioProperties(@Path("scope") String scope, @Path("code") String code, @Body List<PropertyDto> properties, @Query("effectiveAt") DateTime effectiveAt);
+        Observable<Response<ResponseBody>> upsertPortfolioProperties(@Path("scope") String scope, @Path("code") String code, @Body List<CreatePropertyRequest> properties, @Query("effectiveAt") DateTime effectiveAt);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI deletePortfolioProperty" })
         @HTTP(path = "v1/api/portfolios/{scope}/{code}/properties", method = "DELETE", hasBody = true)
@@ -426,7 +426,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI upsertTrades" })
         @POST("v1/api/portfolios/{scope}/{code}/trades")
-        Observable<Response<ResponseBody>> upsertTrades(@Path("scope") String scope, @Path("code") String code, @Body List<TradeDto> trades);
+        Observable<Response<ResponseBody>> upsertTrades(@Path("scope") String scope, @Path("code") String code, @Body List<UpsertPortfolioTradeRequest> trades);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI deleteTrades" })
         @HTTP(path = "v1/api/portfolios/{scope}/{code}/trades", method = "DELETE", hasBody = true)
@@ -434,7 +434,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI addTradeProperty" })
         @POST("v1/api/portfolios/{scope}/{code}/trades/{tradeId}/properties")
-        Observable<Response<ResponseBody>> addTradeProperty(@Path("scope") String scope, @Path("code") String code, @Path("tradeId") String tradeId, @Body List<PropertyDto> properties);
+        Observable<Response<ResponseBody>> addTradeProperty(@Path("scope") String scope, @Path("code") String code, @Path("tradeId") String tradeId, @Body List<CreatePropertyRequest> properties);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI deletePropertyFromTrade" })
         @HTTP(path = "v1/api/portfolios/{scope}/{code}/trades/{tradeId}/properties", method = "DELETE", hasBody = true)
@@ -8332,7 +8332,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         if (code == null) {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
-        final List<PropertyDto> properties = null;
+        final List<CreatePropertyRequest> properties = null;
         final DateTime effectiveAt = null;
         return service.upsertPortfolioProperties(scope, code, properties, effectiveAt)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
@@ -8354,14 +8354,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param properties the List&lt;PropertyDto&gt; value
+     * @param properties the List&lt;CreatePropertyRequest&gt; value
      * @param effectiveAt The effective date for the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object upsertPortfolioProperties(String scope, String code, List<PropertyDto> properties, DateTime effectiveAt) {
+    public Object upsertPortfolioProperties(String scope, String code, List<CreatePropertyRequest> properties, DateTime effectiveAt) {
         return upsertPortfolioPropertiesWithServiceResponseAsync(scope, code, properties, effectiveAt).toBlocking().single().body();
     }
 
@@ -8371,13 +8371,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param properties the List&lt;PropertyDto&gt; value
+     * @param properties the List&lt;CreatePropertyRequest&gt; value
      * @param effectiveAt The effective date for the change
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> upsertPortfolioPropertiesAsync(String scope, String code, List<PropertyDto> properties, DateTime effectiveAt, final ServiceCallback<Object> serviceCallback) {
+    public ServiceFuture<Object> upsertPortfolioPropertiesAsync(String scope, String code, List<CreatePropertyRequest> properties, DateTime effectiveAt, final ServiceCallback<Object> serviceCallback) {
         return ServiceFuture.fromResponse(upsertPortfolioPropertiesWithServiceResponseAsync(scope, code, properties, effectiveAt), serviceCallback);
     }
 
@@ -8387,12 +8387,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param properties the List&lt;PropertyDto&gt; value
+     * @param properties the List&lt;CreatePropertyRequest&gt; value
      * @param effectiveAt The effective date for the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> upsertPortfolioPropertiesAsync(String scope, String code, List<PropertyDto> properties, DateTime effectiveAt) {
+    public Observable<Object> upsertPortfolioPropertiesAsync(String scope, String code, List<CreatePropertyRequest> properties, DateTime effectiveAt) {
         return upsertPortfolioPropertiesWithServiceResponseAsync(scope, code, properties, effectiveAt).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
@@ -8407,12 +8407,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param properties the List&lt;PropertyDto&gt; value
+     * @param properties the List&lt;CreatePropertyRequest&gt; value
      * @param effectiveAt The effective date for the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> upsertPortfolioPropertiesWithServiceResponseAsync(String scope, String code, List<PropertyDto> properties, DateTime effectiveAt) {
+    public Observable<ServiceResponse<Object>> upsertPortfolioPropertiesWithServiceResponseAsync(String scope, String code, List<CreatePropertyRequest> properties, DateTime effectiveAt) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -9042,7 +9042,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         if (code == null) {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
-        final List<TradeDto> trades = null;
+        final List<UpsertPortfolioTradeRequest> trades = null;
         return service.upsertTrades(scope, code, trades)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
@@ -9068,7 +9068,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object upsertTrades(String scope, String code, List<TradeDto> trades) {
+    public Object upsertTrades(String scope, String code, List<UpsertPortfolioTradeRequest> trades) {
         return upsertTradesWithServiceResponseAsync(scope, code, trades).toBlocking().single().body();
     }
 
@@ -9082,7 +9082,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> upsertTradesAsync(String scope, String code, List<TradeDto> trades, final ServiceCallback<Object> serviceCallback) {
+    public ServiceFuture<Object> upsertTradesAsync(String scope, String code, List<UpsertPortfolioTradeRequest> trades, final ServiceCallback<Object> serviceCallback) {
         return ServiceFuture.fromResponse(upsertTradesWithServiceResponseAsync(scope, code, trades), serviceCallback);
     }
 
@@ -9095,7 +9095,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> upsertTradesAsync(String scope, String code, List<TradeDto> trades) {
+    public Observable<Object> upsertTradesAsync(String scope, String code, List<UpsertPortfolioTradeRequest> trades) {
         return upsertTradesWithServiceResponseAsync(scope, code, trades).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
@@ -9113,7 +9113,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> upsertTradesWithServiceResponseAsync(String scope, String code, List<TradeDto> trades) {
+    public Observable<ServiceResponse<Object>> upsertTradesWithServiceResponseAsync(String scope, String code, List<UpsertPortfolioTradeRequest> trades) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -9385,7 +9385,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         if (tradeId == null) {
             throw new IllegalArgumentException("Parameter tradeId is required and cannot be null.");
         }
-        final List<PropertyDto> properties = null;
+        final List<CreatePropertyRequest> properties = null;
         return service.addTradeProperty(scope, code, tradeId, properties)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
@@ -9413,7 +9413,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object addTradeProperty(String scope, String code, String tradeId, List<PropertyDto> properties) {
+    public Object addTradeProperty(String scope, String code, String tradeId, List<CreatePropertyRequest> properties) {
         return addTradePropertyWithServiceResponseAsync(scope, code, tradeId, properties).toBlocking().single().body();
     }
 
@@ -9429,7 +9429,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> addTradePropertyAsync(String scope, String code, String tradeId, List<PropertyDto> properties, final ServiceCallback<Object> serviceCallback) {
+    public ServiceFuture<Object> addTradePropertyAsync(String scope, String code, String tradeId, List<CreatePropertyRequest> properties, final ServiceCallback<Object> serviceCallback) {
         return ServiceFuture.fromResponse(addTradePropertyWithServiceResponseAsync(scope, code, tradeId, properties), serviceCallback);
     }
 
@@ -9444,7 +9444,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> addTradePropertyAsync(String scope, String code, String tradeId, List<PropertyDto> properties) {
+    public Observable<Object> addTradePropertyAsync(String scope, String code, String tradeId, List<CreatePropertyRequest> properties) {
         return addTradePropertyWithServiceResponseAsync(scope, code, tradeId, properties).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
@@ -9464,7 +9464,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> addTradePropertyWithServiceResponseAsync(String scope, String code, String tradeId, List<PropertyDto> properties) {
+    public Observable<ServiceResponse<Object>> addTradePropertyWithServiceResponseAsync(String scope, String code, String tradeId, List<CreatePropertyRequest> properties) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -13625,7 +13625,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'PropertyRequest', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -13638,7 +13638,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'PropertyRequest', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -13650,7 +13650,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'PropertyRequest', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
@@ -13666,7 +13666,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'PropertyRequest', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */

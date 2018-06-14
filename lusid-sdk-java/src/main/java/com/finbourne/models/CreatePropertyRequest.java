@@ -26,14 +26,20 @@ import org.joda.time.DateTime;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The PropertyDto model.
+ * The CreatePropertyRequest model.
  */
-public class PropertyDto {
+public class CreatePropertyRequest {
     /**
-     * The key property.
+     * The scope property.
      */
-    @JsonProperty(value = "key", required = true)
-    private String key;
+    @JsonProperty(value = "scope")
+    private String scope;
+
+    /**
+     * The name property.
+     */
+    @JsonProperty(value = "name")
+    private String name;
 
     /**
      * The value property.
@@ -48,22 +54,42 @@ public class PropertyDto {
     private DateTime effectiveFrom;
 
     /**
-     * Get the key value.
+     * Get the scope value.
      *
-     * @return the key value
+     * @return the scope value
      */
-    public String key() {
-        return this.key;
+    public String scope() {
+        return this.scope;
     }
 
     /**
-     * Set the key value.
+     * Set the scope value.
      *
-     * @param key the key value to set
-     * @return the PropertyDto object itself.
+     * @param scope the scope value to set
+     * @return the CreatePropertyRequest object itself.
      */
-    public PropertyDto withKey(String key) {
-        this.key = key;
+    public CreatePropertyRequest withScope(String scope) {
+        this.scope = scope;
+        return this;
+    }
+
+    /**
+     * Get the name value.
+     *
+     * @return the name value
+     */
+    public String name() {
+        return this.name;
+    }
+
+    /**
+     * Set the name value.
+     *
+     * @param name the name value to set
+     * @return the CreatePropertyRequest object itself.
+     */
+    public CreatePropertyRequest withName(String name) {
+        this.name = name;
         return this;
     }
 
@@ -80,9 +106,9 @@ public class PropertyDto {
      * Set the value value.
      *
      * @param value the value value to set
-     * @return the PropertyDto object itself.
+     * @return the CreatePropertyRequest object itself.
      */
-    public PropertyDto withValue(Object value) {
+    public CreatePropertyRequest withValue(Object value) {
         this.value = value;
         return this;
     }
@@ -100,9 +126,9 @@ public class PropertyDto {
      * Set date for which the property is effective from.
      *
      * @param effectiveFrom the effectiveFrom value to set
-     * @return the PropertyDto object itself.
+     * @return the CreatePropertyRequest object itself.
      */
-    public PropertyDto withEffectiveFrom(DateTime effectiveFrom) {
+    public CreatePropertyRequest withEffectiveFrom(DateTime effectiveFrom) {
         this.effectiveFrom = effectiveFrom;
         return this;
     }

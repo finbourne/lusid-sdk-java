@@ -186,8 +186,11 @@ public class LusidApiTests {
         assertEquals(request.code(), portfolio.id().code());
 
         final String propertyValue = "Active";
-        final PropertyDto    property = new PropertyDto().withKey(propertyKey).withValue(propertyValue);
-        final List<PropertyDto>  properties = new ArrayList<>(Arrays.asList(property));
+        final CreatePropertyRequest property = new CreatePropertyRequest()
+                .withScope(scope)
+                .withName(propertyName)
+                .withValue(propertyValue);
+        final List<CreatePropertyRequest> properties = new ArrayList<>(Arrays.asList(property));
 
         //  add the property
         final Object  upsertResult = client.upsertPortfolioProperties(scope, portfolio.id().code(), properties, effectiveDate);
@@ -214,6 +217,7 @@ public class LusidApiTests {
         final String propertyDomain = "Trade";
         final String propertyName = String.format("traderId-%s", uuid);
         final String propertyKey = String.format("%s/%s/%s", propertyDomain, scope, propertyName);
+        final String propertyValue = "A Trader";
         final DateTime effectiveDate = new DateTime(2018, 1, 1, 0, 0);
 
         final CreatePropertyDefinitionRequest    propertyDefinition = new CreatePropertyDefinitionRequest()
@@ -248,12 +252,13 @@ public class LusidApiTests {
         String portfolioId = portfolio.id().code();
 
         //  create the property
-        PropertyDto property = new PropertyDto()
-                .withKey(propertyKey)
-                .withValue("A Trader");
+        CreatePropertyRequest property = new CreatePropertyRequest()
+                .withScope(scope)
+                .withName(propertyName)
+                .withValue(propertyValue);
 
         //  create the trade
-        TradeDto trade = new TradeDto()
+        UpsertPortfolioTradeRequest trade = new UpsertPortfolioTradeRequest()
                 .withTradeId(UUID.randomUUID().toString())
                 .withType("Buy")
                 .withSecurityUid("FIGI_BBG001SMDKD5")
@@ -276,7 +281,7 @@ public class LusidApiTests {
 
         assertEquals(1, trades.values().size());
         assertEquals(trade.tradeId(), trades.values().get(0).tradeId());
-        assertEquals("A Trader", trades.values().get(0).properties().get(0).value());
+        assertEquals(propertyValue, trades.values().get(0).properties().get(0).value());
     }
 
     @Test
@@ -332,7 +337,7 @@ public class LusidApiTests {
             }
         }
 
-        Function<TradeSpec, TradeDto> buildTrade = t -> new TradeDto()
+        Function<TradeSpec, UpsertPortfolioTradeRequest> buildTrade = t -> new UpsertPortfolioTradeRequest()
                 .withTradeId(UUID.randomUUID().toString())
                 .withType("Buy")
                 .withSecurityUid(t.getId())
@@ -356,10 +361,10 @@ public class LusidApiTests {
                 ));
 
         //  build list of trades
-        final TradeDto[] newTrades = tradeSpecs.stream()
+        final UpsertPortfolioTradeRequest[] newTrades = tradeSpecs.stream()
                 .sorted(Comparator.comparing(ts -> ts.id))
                 .map(buildTrade)
-                .toArray(TradeDto[]::new);
+                .toArray(UpsertPortfolioTradeRequest[]::new);
 
         //  add initial batch of trades
         final Object  addTradesResult = client.upsertTrades(scope, portfolioId, Arrays.asList(newTrades));
