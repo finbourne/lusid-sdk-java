@@ -41,6 +41,12 @@ public class SecurityAnalyticDataDto {
     private Double value;
 
     /**
+     * Underlying unit of the analytic, eg currency, EPS etc.
+     */
+    @JsonProperty(value = "denomination")
+    private String denomination;
+
+    /**
      * Get unique security identifier.
      *
      * @return the id value
@@ -77,6 +83,26 @@ public class SecurityAnalyticDataDto {
      */
     public SecurityAnalyticDataDto withValue(Double value) {
         this.value = value;
+        return this;
+    }
+
+    /**
+     * Get underlying unit of the analytic, eg currency, EPS etc.
+     *
+     * @return the denomination value
+     */
+    public String denomination() {
+        return this.denomination;
+    }
+
+    /**
+     * Set underlying unit of the analytic, eg currency, EPS etc.
+     *
+     * @param denomination the denomination value to set
+     * @return the SecurityAnalyticDataDto object itself.
+     */
+    public SecurityAnalyticDataDto withDenomination(String denomination) {
+        this.denomination = denomination;
         return this;
     }
 

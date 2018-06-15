@@ -48,6 +48,7 @@
  | ---|---|--- |
  | Id|string|Unique security identifier |
  | Value|decimal|Value of the analytic, eg price |
+ | Denomination|string|Underlying unit of the analytic, eg currency, EPS etc. |
  ## Security Data
  Security data can be uploaded to the system using the [Classifications](#tag/Classification) endpoint.
  | Field|Type|Description |
@@ -175,6 +176,8 @@
  | <a name="181">181</a>|DataFilterApplicationFailure|  |
  | <a name="182">182</a>|SearchFailed|  |
  | <a name="183">183</a>|MovementsEngineConfigurationKeyFailure|  |
+ | <a name="184">184</a>|FxRateSourceNotFound|  |
+ | <a name="185">185</a>|AccrualSourceNotFound|  |
  | <a name="-1">-1</a>|Unknown error|  |.
  */
 package com.finbourne;
