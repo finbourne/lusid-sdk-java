@@ -252,7 +252,7 @@ public class LusidApiTests {
         String portfolioId = portfolio.id().code();
 
         //  create the property
-        CreatePropertyRequest property = new CreatePropertyRequest()
+        CreatePerpetualPropertyRequest property = new CreatePerpetualPropertyRequest()
                 .withScope(scope)
                 .withName(propertyName)
                 .withValue(propertyValue);
