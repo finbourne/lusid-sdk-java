@@ -100,7 +100,7 @@ public class UpsertPortfolioTradeRequest {
      * The properties property.
      */
     @JsonProperty(value = "properties")
-    private List<CreatePropertyRequest> properties;
+    private List<CreatePerpetualPropertyRequest> properties;
 
     /**
      * Counterparty identifier.
@@ -364,7 +364,7 @@ public class UpsertPortfolioTradeRequest {
      *
      * @return the properties value
      */
-    public List<CreatePropertyRequest> properties() {
+    public List<CreatePerpetualPropertyRequest> properties() {
         return this.properties;
     }
 
@@ -374,7 +374,7 @@ public class UpsertPortfolioTradeRequest {
      * @param properties the properties value to set
      * @return the UpsertPortfolioTradeRequest object itself.
      */
-    public UpsertPortfolioTradeRequest withProperties(List<CreatePropertyRequest> properties) {
+    public UpsertPortfolioTradeRequest withProperties(List<CreatePerpetualPropertyRequest> properties) {
         this.properties = properties;
         return this;
     }

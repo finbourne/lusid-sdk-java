@@ -100,7 +100,7 @@ public class TradeDto {
      * The properties property.
      */
     @JsonProperty(value = "properties")
-    private List<PropertyDto> properties;
+    private List<PerpetualPropertyDto> properties;
 
     /**
      * Counterparty identifier.
@@ -364,7 +364,7 @@ public class TradeDto {
      *
      * @return the properties value
      */
-    public List<PropertyDto> properties() {
+    public List<PerpetualPropertyDto> properties() {
         return this.properties;
     }
 
@@ -374,7 +374,7 @@ public class TradeDto {
      * @param properties the properties value to set
      * @return the TradeDto object itself.
      */
-    public TradeDto withProperties(List<PropertyDto> properties) {
+    public TradeDto withProperties(List<PerpetualPropertyDto> properties) {
         this.properties = properties;
         return this;
     }

@@ -178,6 +178,9 @@
  | <a name="183">183</a>|MovementsEngineConfigurationKeyFailure|  |
  | <a name="184">184</a>|FxRateSourceNotFound|  |
  | <a name="185">185</a>|AccrualSourceNotFound|  |
+ | <a name="186">186</a>|EntitlementsFailure|  |
+ | <a name="187">187</a>|InvalidIdentityToken|  |
+ | <a name="188">188</a>|InvalidRequestHeaders|  |
  | <a name="-1">-1</a>|Unknown error|  |.
  */
 package com.finbourne.models;

@@ -23,6 +23,7 @@
 package com.finbourne.models;
 
 import org.joda.time.DateTime;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -65,6 +66,12 @@ public class CreatePortfolioRequest {
      */
     @JsonProperty(value = "accountingMethod")
     private String accountingMethod;
+
+    /**
+     * Portfolio properties to add to the portfolio.
+     */
+    @JsonProperty(value = "properties")
+    private List<CreatePropertyRequest> properties;
 
     /**
      * Get the name value.
@@ -183,6 +190,26 @@ public class CreatePortfolioRequest {
      */
     public CreatePortfolioRequest withAccountingMethod(String accountingMethod) {
         this.accountingMethod = accountingMethod;
+        return this;
+    }
+
+    /**
+     * Get portfolio properties to add to the portfolio.
+     *
+     * @return the properties value
+     */
+    public List<CreatePropertyRequest> properties() {
+        return this.properties;
+    }
+
+    /**
+     * Set portfolio properties to add to the portfolio.
+     *
+     * @param properties the properties value to set
+     * @return the CreatePortfolioRequest object itself.
+     */
+    public CreatePortfolioRequest withProperties(List<CreatePropertyRequest> properties) {
+        this.properties = properties;
         return this;
     }
 

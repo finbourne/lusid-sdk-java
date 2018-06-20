@@ -37,6 +37,7 @@ import com.finbourne.models.CreateAnalyticStoreRequest;
 import com.finbourne.models.CreateClientSecurityRequest;
 import com.finbourne.models.CreateDerivedPortfolioRequest;
 import com.finbourne.models.CreateGroupRequest;
+import com.finbourne.models.CreatePerpetualPropertyRequest;
 import com.finbourne.models.CreatePortfolioRequest;
 import com.finbourne.models.CreatePropertyDataFormatRequest;
 import com.finbourne.models.CreatePropertyDefinitionRequest;
@@ -84,6 +85,7 @@ import com.finbourne.models.SecurityDto;
 import com.finbourne.models.TryAddClientSecuritiesDto;
 import com.finbourne.models.TryDeleteClientSecuritiesDto;
 import com.finbourne.models.TryLookupSecuritiesFromCodesDto;
+import com.finbourne.models.TryUpsertCorporateActionsDto;
 import com.finbourne.models.TxnMetaDataDto;
 import com.finbourne.models.UpdateGroupRequest;
 import com.finbourne.models.UpdatePortfolioRequest;
@@ -196,14 +198,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @GET("v1/api/_internal/clearentitycaches")
         Observable<Response<ResponseBody>> clearEntityCaches();
 
-        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI listCorporateActions" })
-        @GET("v1/api/actions/{scope}/{sourceId}")
-        Observable<Response<ResponseBody>> listCorporateActions(@Path("scope") String scope, @Path("sourceId") String sourceId, @Query("effectiveDate") DateTime effectiveDate, @Query("asAt") DateTime asAt);
-
-        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI upsertCorporateAction" })
-        @POST("v1/api/actions/{scope}/{sourceId}")
-        Observable<Response<ResponseBody>> upsertCorporateAction(@Path("scope") String scope, @Path("sourceId") String sourceId, @Body UpsertCorporateActionRequest createRequest);
-
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getAggregationByGroup" })
         @POST("v1/api/aggregation/groups/{scope}/{groupCode}")
         Observable<Response<ResponseBody>> getAggregationByGroup(@Path("scope") String scope, @Path("groupCode") String groupCode, @Body AggregationRequest request);
@@ -263,6 +257,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI uploadConfigurationTransactionTypes" })
         @POST("v1/api/configuration/transactiontypes")
         Observable<Response<ResponseBody>> uploadConfigurationTransactionTypes(@Body List<TxnMetaDataDto> types);
+
+        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI listCorporateActions" })
+        @GET("v1/api/corporateactions/{scope}/{sourceId}")
+        Observable<Response<ResponseBody>> listCorporateActions(@Path("scope") String scope, @Path("sourceId") String sourceId, @Query("effectiveDate") DateTime effectiveDate, @Query("asAt") DateTime asAt);
+
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI batchUpsertCorporateActions" })
+        @POST("v1/api/corporateactions/{scope}/{sourceId}")
+        Observable<Response<ResponseBody>> batchUpsertCorporateActions(@Path("scope") String scope, @Path("sourceId") String sourceId, @Body List<UpsertCorporateActionRequest> actions);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getDownloadUrl" })
         @GET("v1/api/excel/download-token")
@@ -434,7 +436,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI addTradeProperty" })
         @POST("v1/api/portfolios/{scope}/{code}/trades/{tradeId}/properties")
-        Observable<Response<ResponseBody>> addTradeProperty(@Path("scope") String scope, @Path("code") String code, @Path("tradeId") String tradeId, @Body List<CreatePropertyRequest> properties);
+        Observable<Response<ResponseBody>> addTradeProperty(@Path("scope") String scope, @Path("code") String code, @Path("tradeId") String tradeId, @Body List<CreatePerpetualPropertyRequest> properties);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI deletePropertyFromTrade" })
         @HTTP(path = "v1/api/portfolios/{scope}/{code}/trades/{tradeId}/properties", method = "DELETE", hasBody = true)
@@ -636,330 +638,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     private ServiceResponse<Object> clearEntityCachesDelegate(Response<ResponseBody> response) throws RestException, IOException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
                 .register(200, new TypeToken<ClearEntityCachesDto>() { }.getType())
-                .register(400, new TypeToken<ErrorResponse>() { }.getType())
-                .register(500, new TypeToken<ErrorResponse>() { }.getType())
-                .build(response);
-    }
-
-    /**
-     * Gets a corporate action based on dates.
-     *
-     * @param scope Scope
-     * @param sourceId Corporate action source id
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws RestException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the Object object if successful.
-     */
-    public Object listCorporateActions(String scope, String sourceId) {
-        return listCorporateActionsWithServiceResponseAsync(scope, sourceId).toBlocking().single().body();
-    }
-
-    /**
-     * Gets a corporate action based on dates.
-     *
-     * @param scope Scope
-     * @param sourceId Corporate action source id
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    public ServiceFuture<Object> listCorporateActionsAsync(String scope, String sourceId, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(listCorporateActionsWithServiceResponseAsync(scope, sourceId), serviceCallback);
-    }
-
-    /**
-     * Gets a corporate action based on dates.
-     *
-     * @param scope Scope
-     * @param sourceId Corporate action source id
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the Object object
-     */
-    public Observable<Object> listCorporateActionsAsync(String scope, String sourceId) {
-        return listCorporateActionsWithServiceResponseAsync(scope, sourceId).map(new Func1<ServiceResponse<Object>, Object>() {
-            @Override
-            public Object call(ServiceResponse<Object> response) {
-                return response.body();
-            }
-        });
-    }
-
-    /**
-     * Gets a corporate action based on dates.
-     *
-     * @param scope Scope
-     * @param sourceId Corporate action source id
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the Object object
-     */
-    public Observable<ServiceResponse<Object>> listCorporateActionsWithServiceResponseAsync(String scope, String sourceId) {
-        if (scope == null) {
-            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
-        }
-        if (sourceId == null) {
-            throw new IllegalArgumentException("Parameter sourceId is required and cannot be null.");
-        }
-        final DateTime effectiveDate = null;
-        final DateTime asAt = null;
-        return service.listCorporateActions(scope, sourceId, effectiveDate, asAt)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
-                @Override
-                public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
-                    try {
-                        ServiceResponse<Object> clientResponse = listCorporateActionsDelegate(response);
-                        return Observable.just(clientResponse);
-                    } catch (Throwable t) {
-                        return Observable.error(t);
-                    }
-                }
-            });
-    }
-
-    /**
-     * Gets a corporate action based on dates.
-     *
-     * @param scope Scope
-     * @param sourceId Corporate action source id
-     * @param effectiveDate Effective Date
-     * @param asAt AsAt Date filter
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws RestException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the Object object if successful.
-     */
-    public Object listCorporateActions(String scope, String sourceId, DateTime effectiveDate, DateTime asAt) {
-        return listCorporateActionsWithServiceResponseAsync(scope, sourceId, effectiveDate, asAt).toBlocking().single().body();
-    }
-
-    /**
-     * Gets a corporate action based on dates.
-     *
-     * @param scope Scope
-     * @param sourceId Corporate action source id
-     * @param effectiveDate Effective Date
-     * @param asAt AsAt Date filter
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    public ServiceFuture<Object> listCorporateActionsAsync(String scope, String sourceId, DateTime effectiveDate, DateTime asAt, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(listCorporateActionsWithServiceResponseAsync(scope, sourceId, effectiveDate, asAt), serviceCallback);
-    }
-
-    /**
-     * Gets a corporate action based on dates.
-     *
-     * @param scope Scope
-     * @param sourceId Corporate action source id
-     * @param effectiveDate Effective Date
-     * @param asAt AsAt Date filter
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the Object object
-     */
-    public Observable<Object> listCorporateActionsAsync(String scope, String sourceId, DateTime effectiveDate, DateTime asAt) {
-        return listCorporateActionsWithServiceResponseAsync(scope, sourceId, effectiveDate, asAt).map(new Func1<ServiceResponse<Object>, Object>() {
-            @Override
-            public Object call(ServiceResponse<Object> response) {
-                return response.body();
-            }
-        });
-    }
-
-    /**
-     * Gets a corporate action based on dates.
-     *
-     * @param scope Scope
-     * @param sourceId Corporate action source id
-     * @param effectiveDate Effective Date
-     * @param asAt AsAt Date filter
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the Object object
-     */
-    public Observable<ServiceResponse<Object>> listCorporateActionsWithServiceResponseAsync(String scope, String sourceId, DateTime effectiveDate, DateTime asAt) {
-        if (scope == null) {
-            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
-        }
-        if (sourceId == null) {
-            throw new IllegalArgumentException("Parameter sourceId is required and cannot be null.");
-        }
-        return service.listCorporateActions(scope, sourceId, effectiveDate, asAt)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
-                @Override
-                public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
-                    try {
-                        ServiceResponse<Object> clientResponse = listCorporateActionsDelegate(response);
-                        return Observable.just(clientResponse);
-                    } catch (Throwable t) {
-                        return Observable.error(t);
-                    }
-                }
-            });
-    }
-
-    private ServiceResponse<Object> listCorporateActionsDelegate(Response<ResponseBody> response) throws RestException, IOException, IllegalArgumentException {
-        return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<List<CorporateActionEventDto>>() { }.getType())
-                .register(404, new TypeToken<ErrorResponse>() { }.getType())
-                .register(500, new TypeToken<ErrorResponse>() { }.getType())
-                .build(response);
-    }
-
-    /**
-     * Creates/updates a corporate action.
-     *
-     * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws RestException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the Object object if successful.
-     */
-    public Object upsertCorporateAction(String scope, String sourceId) {
-        return upsertCorporateActionWithServiceResponseAsync(scope, sourceId).toBlocking().single().body();
-    }
-
-    /**
-     * Creates/updates a corporate action.
-     *
-     * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    public ServiceFuture<Object> upsertCorporateActionAsync(String scope, String sourceId, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(upsertCorporateActionWithServiceResponseAsync(scope, sourceId), serviceCallback);
-    }
-
-    /**
-     * Creates/updates a corporate action.
-     *
-     * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the Object object
-     */
-    public Observable<Object> upsertCorporateActionAsync(String scope, String sourceId) {
-        return upsertCorporateActionWithServiceResponseAsync(scope, sourceId).map(new Func1<ServiceResponse<Object>, Object>() {
-            @Override
-            public Object call(ServiceResponse<Object> response) {
-                return response.body();
-            }
-        });
-    }
-
-    /**
-     * Creates/updates a corporate action.
-     *
-     * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the Object object
-     */
-    public Observable<ServiceResponse<Object>> upsertCorporateActionWithServiceResponseAsync(String scope, String sourceId) {
-        if (scope == null) {
-            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
-        }
-        if (sourceId == null) {
-            throw new IllegalArgumentException("Parameter sourceId is required and cannot be null.");
-        }
-        final UpsertCorporateActionRequest createRequest = null;
-        return service.upsertCorporateAction(scope, sourceId, createRequest)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
-                @Override
-                public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
-                    try {
-                        ServiceResponse<Object> clientResponse = upsertCorporateActionDelegate(response);
-                        return Observable.just(clientResponse);
-                    } catch (Throwable t) {
-                        return Observable.error(t);
-                    }
-                }
-            });
-    }
-
-    /**
-     * Creates/updates a corporate action.
-     *
-     * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
-     * @param createRequest The corporate action creation request object
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws RestException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the Object object if successful.
-     */
-    public Object upsertCorporateAction(String scope, String sourceId, UpsertCorporateActionRequest createRequest) {
-        return upsertCorporateActionWithServiceResponseAsync(scope, sourceId, createRequest).toBlocking().single().body();
-    }
-
-    /**
-     * Creates/updates a corporate action.
-     *
-     * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
-     * @param createRequest The corporate action creation request object
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    public ServiceFuture<Object> upsertCorporateActionAsync(String scope, String sourceId, UpsertCorporateActionRequest createRequest, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(upsertCorporateActionWithServiceResponseAsync(scope, sourceId, createRequest), serviceCallback);
-    }
-
-    /**
-     * Creates/updates a corporate action.
-     *
-     * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
-     * @param createRequest The corporate action creation request object
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the Object object
-     */
-    public Observable<Object> upsertCorporateActionAsync(String scope, String sourceId, UpsertCorporateActionRequest createRequest) {
-        return upsertCorporateActionWithServiceResponseAsync(scope, sourceId, createRequest).map(new Func1<ServiceResponse<Object>, Object>() {
-            @Override
-            public Object call(ServiceResponse<Object> response) {
-                return response.body();
-            }
-        });
-    }
-
-    /**
-     * Creates/updates a corporate action.
-     *
-     * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
-     * @param createRequest The corporate action creation request object
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the Object object
-     */
-    public Observable<ServiceResponse<Object>> upsertCorporateActionWithServiceResponseAsync(String scope, String sourceId, UpsertCorporateActionRequest createRequest) {
-        if (scope == null) {
-            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
-        }
-        if (sourceId == null) {
-            throw new IllegalArgumentException("Parameter sourceId is required and cannot be null.");
-        }
-        Validator.validate(createRequest);
-        return service.upsertCorporateAction(scope, sourceId, createRequest)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
-                @Override
-                public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
-                    try {
-                        ServiceResponse<Object> clientResponse = upsertCorporateActionDelegate(response);
-                        return Observable.just(clientResponse);
-                    } catch (Throwable t) {
-                        return Observable.error(t);
-                    }
-                }
-            });
-    }
-
-    private ServiceResponse<Object> upsertCorporateActionDelegate(Response<ResponseBody> response) throws RestException, IOException, IllegalArgumentException {
-        return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<List<CorporateActionEventDto>>() { }.getType())
                 .register(400, new TypeToken<ErrorResponse>() { }.getType())
                 .register(500, new TypeToken<ErrorResponse>() { }.getType())
                 .build(response);
@@ -3125,6 +2803,330 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     private ServiceResponse<Object> uploadConfigurationTransactionTypesDelegate(Response<ResponseBody> response) throws RestException, IOException {
         return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
                 .register(201, new TypeToken<ResourceListTxnMetaDataDto>() { }.getType())
+                .register(400, new TypeToken<ErrorResponse>() { }.getType())
+                .register(500, new TypeToken<ErrorResponse>() { }.getType())
+                .build(response);
+    }
+
+    /**
+     * Gets a corporate action based on dates.
+     *
+     * @param scope Scope
+     * @param sourceId Corporate action source id
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws RestException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    public Object listCorporateActions(String scope, String sourceId) {
+        return listCorporateActionsWithServiceResponseAsync(scope, sourceId).toBlocking().single().body();
+    }
+
+    /**
+     * Gets a corporate action based on dates.
+     *
+     * @param scope Scope
+     * @param sourceId Corporate action source id
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<Object> listCorporateActionsAsync(String scope, String sourceId, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(listCorporateActionsWithServiceResponseAsync(scope, sourceId), serviceCallback);
+    }
+
+    /**
+     * Gets a corporate action based on dates.
+     *
+     * @param scope Scope
+     * @param sourceId Corporate action source id
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<Object> listCorporateActionsAsync(String scope, String sourceId) {
+        return listCorporateActionsWithServiceResponseAsync(scope, sourceId).map(new Func1<ServiceResponse<Object>, Object>() {
+            @Override
+            public Object call(ServiceResponse<Object> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Gets a corporate action based on dates.
+     *
+     * @param scope Scope
+     * @param sourceId Corporate action source id
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<ServiceResponse<Object>> listCorporateActionsWithServiceResponseAsync(String scope, String sourceId) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        if (sourceId == null) {
+            throw new IllegalArgumentException("Parameter sourceId is required and cannot be null.");
+        }
+        final DateTime effectiveDate = null;
+        final DateTime asAt = null;
+        return service.listCorporateActions(scope, sourceId, effectiveDate, asAt)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
+                @Override
+                public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<Object> clientResponse = listCorporateActionsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Gets a corporate action based on dates.
+     *
+     * @param scope Scope
+     * @param sourceId Corporate action source id
+     * @param effectiveDate Effective Date
+     * @param asAt AsAt Date filter
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws RestException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    public Object listCorporateActions(String scope, String sourceId, DateTime effectiveDate, DateTime asAt) {
+        return listCorporateActionsWithServiceResponseAsync(scope, sourceId, effectiveDate, asAt).toBlocking().single().body();
+    }
+
+    /**
+     * Gets a corporate action based on dates.
+     *
+     * @param scope Scope
+     * @param sourceId Corporate action source id
+     * @param effectiveDate Effective Date
+     * @param asAt AsAt Date filter
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<Object> listCorporateActionsAsync(String scope, String sourceId, DateTime effectiveDate, DateTime asAt, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(listCorporateActionsWithServiceResponseAsync(scope, sourceId, effectiveDate, asAt), serviceCallback);
+    }
+
+    /**
+     * Gets a corporate action based on dates.
+     *
+     * @param scope Scope
+     * @param sourceId Corporate action source id
+     * @param effectiveDate Effective Date
+     * @param asAt AsAt Date filter
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<Object> listCorporateActionsAsync(String scope, String sourceId, DateTime effectiveDate, DateTime asAt) {
+        return listCorporateActionsWithServiceResponseAsync(scope, sourceId, effectiveDate, asAt).map(new Func1<ServiceResponse<Object>, Object>() {
+            @Override
+            public Object call(ServiceResponse<Object> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Gets a corporate action based on dates.
+     *
+     * @param scope Scope
+     * @param sourceId Corporate action source id
+     * @param effectiveDate Effective Date
+     * @param asAt AsAt Date filter
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<ServiceResponse<Object>> listCorporateActionsWithServiceResponseAsync(String scope, String sourceId, DateTime effectiveDate, DateTime asAt) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        if (sourceId == null) {
+            throw new IllegalArgumentException("Parameter sourceId is required and cannot be null.");
+        }
+        return service.listCorporateActions(scope, sourceId, effectiveDate, asAt)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
+                @Override
+                public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<Object> clientResponse = listCorporateActionsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<Object> listCorporateActionsDelegate(Response<ResponseBody> response) throws RestException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<List<CorporateActionEventDto>>() { }.getType())
+                .register(404, new TypeToken<ErrorResponse>() { }.getType())
+                .register(500, new TypeToken<ErrorResponse>() { }.getType())
+                .build(response);
+    }
+
+    /**
+     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
+     *
+     * @param scope The intended scope of the corporate action
+     * @param sourceId Source of the corporate action
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws RestException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    public Object batchUpsertCorporateActions(String scope, String sourceId) {
+        return batchUpsertCorporateActionsWithServiceResponseAsync(scope, sourceId).toBlocking().single().body();
+    }
+
+    /**
+     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
+     *
+     * @param scope The intended scope of the corporate action
+     * @param sourceId Source of the corporate action
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<Object> batchUpsertCorporateActionsAsync(String scope, String sourceId, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(batchUpsertCorporateActionsWithServiceResponseAsync(scope, sourceId), serviceCallback);
+    }
+
+    /**
+     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
+     *
+     * @param scope The intended scope of the corporate action
+     * @param sourceId Source of the corporate action
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<Object> batchUpsertCorporateActionsAsync(String scope, String sourceId) {
+        return batchUpsertCorporateActionsWithServiceResponseAsync(scope, sourceId).map(new Func1<ServiceResponse<Object>, Object>() {
+            @Override
+            public Object call(ServiceResponse<Object> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
+     *
+     * @param scope The intended scope of the corporate action
+     * @param sourceId Source of the corporate action
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<ServiceResponse<Object>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String sourceId) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        if (sourceId == null) {
+            throw new IllegalArgumentException("Parameter sourceId is required and cannot be null.");
+        }
+        final List<UpsertCorporateActionRequest> actions = null;
+        return service.batchUpsertCorporateActions(scope, sourceId, actions)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
+                @Override
+                public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<Object> clientResponse = batchUpsertCorporateActionsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
+     *
+     * @param scope The intended scope of the corporate action
+     * @param sourceId Source of the corporate action
+     * @param actions The corporate action creation request objects
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws RestException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    public Object batchUpsertCorporateActions(String scope, String sourceId, List<UpsertCorporateActionRequest> actions) {
+        return batchUpsertCorporateActionsWithServiceResponseAsync(scope, sourceId, actions).toBlocking().single().body();
+    }
+
+    /**
+     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
+     *
+     * @param scope The intended scope of the corporate action
+     * @param sourceId Source of the corporate action
+     * @param actions The corporate action creation request objects
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<Object> batchUpsertCorporateActionsAsync(String scope, String sourceId, List<UpsertCorporateActionRequest> actions, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(batchUpsertCorporateActionsWithServiceResponseAsync(scope, sourceId, actions), serviceCallback);
+    }
+
+    /**
+     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
+     *
+     * @param scope The intended scope of the corporate action
+     * @param sourceId Source of the corporate action
+     * @param actions The corporate action creation request objects
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<Object> batchUpsertCorporateActionsAsync(String scope, String sourceId, List<UpsertCorporateActionRequest> actions) {
+        return batchUpsertCorporateActionsWithServiceResponseAsync(scope, sourceId, actions).map(new Func1<ServiceResponse<Object>, Object>() {
+            @Override
+            public Object call(ServiceResponse<Object> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
+     *
+     * @param scope The intended scope of the corporate action
+     * @param sourceId Source of the corporate action
+     * @param actions The corporate action creation request objects
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<ServiceResponse<Object>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String sourceId, List<UpsertCorporateActionRequest> actions) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        if (sourceId == null) {
+            throw new IllegalArgumentException("Parameter sourceId is required and cannot be null.");
+        }
+        Validator.validate(actions);
+        return service.batchUpsertCorporateActions(scope, sourceId, actions)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
+                @Override
+                public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<Object> clientResponse = batchUpsertCorporateActionsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<Object> batchUpsertCorporateActionsDelegate(Response<ResponseBody> response) throws RestException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<Object, RestException>newInstance(this.serializerAdapter())
+                .register(201, new TypeToken<TryUpsertCorporateActionsDto>() { }.getType())
                 .register(400, new TypeToken<ErrorResponse>() { }.getType())
                 .register(500, new TypeToken<ErrorResponse>() { }.getType())
                 .build(response);
@@ -9385,7 +9387,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         if (tradeId == null) {
             throw new IllegalArgumentException("Parameter tradeId is required and cannot be null.");
         }
-        final List<CreatePropertyRequest> properties = null;
+        final List<CreatePerpetualPropertyRequest> properties = null;
         return service.addTradeProperty(scope, code, tradeId, properties)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
@@ -9413,7 +9415,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object addTradeProperty(String scope, String code, String tradeId, List<CreatePropertyRequest> properties) {
+    public Object addTradeProperty(String scope, String code, String tradeId, List<CreatePerpetualPropertyRequest> properties) {
         return addTradePropertyWithServiceResponseAsync(scope, code, tradeId, properties).toBlocking().single().body();
     }
 
@@ -9429,7 +9431,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> addTradePropertyAsync(String scope, String code, String tradeId, List<CreatePropertyRequest> properties, final ServiceCallback<Object> serviceCallback) {
+    public ServiceFuture<Object> addTradePropertyAsync(String scope, String code, String tradeId, List<CreatePerpetualPropertyRequest> properties, final ServiceCallback<Object> serviceCallback) {
         return ServiceFuture.fromResponse(addTradePropertyWithServiceResponseAsync(scope, code, tradeId, properties), serviceCallback);
     }
 
@@ -9444,7 +9446,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> addTradePropertyAsync(String scope, String code, String tradeId, List<CreatePropertyRequest> properties) {
+    public Observable<Object> addTradePropertyAsync(String scope, String code, String tradeId, List<CreatePerpetualPropertyRequest> properties) {
         return addTradePropertyWithServiceResponseAsync(scope, code, tradeId, properties).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
@@ -9464,7 +9466,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> addTradePropertyWithServiceResponseAsync(String scope, String code, String tradeId, List<CreatePropertyRequest> properties) {
+    public Observable<ServiceResponse<Object>> addTradePropertyWithServiceResponseAsync(String scope, String code, String tradeId, List<CreatePerpetualPropertyRequest> properties) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -13625,7 +13627,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'PropertyRequest', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -13638,7 +13640,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'PropertyRequest', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -13650,7 +13652,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'PropertyRequest', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
@@ -13666,7 +13668,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'PropertyRequest', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
