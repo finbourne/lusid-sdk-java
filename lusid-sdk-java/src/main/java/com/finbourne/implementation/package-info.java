@@ -54,7 +54,6 @@
  | Field|Type|Description |
  | ---|---|--- |
  | Uid|string|Unique security identifier |
- | EffectiveFrom|datetime|Date from which this classification is effective |
  ## Portfolios
  A portfolio is a container for trades and/or holdings.  Meta data and classifications of portfolios can be attached via properties.
  ## Derived Portfolios

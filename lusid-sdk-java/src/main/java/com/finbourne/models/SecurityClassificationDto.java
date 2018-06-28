@@ -22,7 +22,6 @@
 
 package com.finbourne.models;
 
-import org.joda.time.DateTime;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -37,16 +36,10 @@ public class SecurityClassificationDto {
     private String uid;
 
     /**
-     * Date from which this classification is effective.
-     */
-    @JsonProperty(value = "effectiveFrom")
-    private DateTime effectiveFrom;
-
-    /**
      * The properties property.
      */
     @JsonProperty(value = "properties")
-    private List<PropertyDto> properties;
+    private List<CreatePropertyRequest> properties;
 
     /**
      * Get unique security identifier.
@@ -69,31 +62,11 @@ public class SecurityClassificationDto {
     }
 
     /**
-     * Get date from which this classification is effective.
-     *
-     * @return the effectiveFrom value
-     */
-    public DateTime effectiveFrom() {
-        return this.effectiveFrom;
-    }
-
-    /**
-     * Set date from which this classification is effective.
-     *
-     * @param effectiveFrom the effectiveFrom value to set
-     * @return the SecurityClassificationDto object itself.
-     */
-    public SecurityClassificationDto withEffectiveFrom(DateTime effectiveFrom) {
-        this.effectiveFrom = effectiveFrom;
-        return this;
-    }
-
-    /**
      * Get the properties value.
      *
      * @return the properties value
      */
-    public List<PropertyDto> properties() {
+    public List<CreatePropertyRequest> properties() {
         return this.properties;
     }
 
@@ -103,7 +76,7 @@ public class SecurityClassificationDto {
      * @param properties the properties value to set
      * @return the SecurityClassificationDto object itself.
      */
-    public SecurityClassificationDto withProperties(List<PropertyDto> properties) {
+    public SecurityClassificationDto withProperties(List<CreatePropertyRequest> properties) {
         this.properties = properties;
         return this;
     }
