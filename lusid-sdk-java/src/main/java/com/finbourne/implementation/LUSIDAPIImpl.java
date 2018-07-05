@@ -215,12 +215,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         Observable<Response<ResponseBody>> getNestedAggregationByPortfolio(@Path("scope") String scope, @Path("portfolioCode") String portfolioCode, @Body AggregationRequest request);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getAggregationByResultSet" })
-        @POST("v1/api/aggregation/results/{scope}/{resultsKey}/{resultsDate}")
-        Observable<Response<ResponseBody>> getAggregationByResultSet(@Path("scope") String scope, @Path("resultsKey") String resultsKey, @Path("resultsDate") String resultsDate, @Body AggregationRequest request);
+        @POST("v1/api/aggregation/results/{scope}/{resultsKey}")
+        Observable<Response<ResponseBody>> getAggregationByResultSet(@Path("scope") String scope, @Path("resultsKey") String resultsKey, @Body AggregationRequest request);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getNestedAggregationByResultSet" })
-        @POST("v1/api/aggregation/results/nested/{scope}/{resultsKey}/{resultsDate}")
-        Observable<Response<ResponseBody>> getNestedAggregationByResultSet(@Path("scope") String scope, @Path("resultsKey") String resultsKey, @Path("resultsDate") DateTime resultsDate, @Body AggregationRequest request);
+        @POST("v1/api/aggregation/results/nested/{scope}/{resultsKey}")
+        Observable<Response<ResponseBody>> getNestedAggregationByResultSet(@Path("scope") String scope, @Path("resultsKey") String resultsKey, @Body AggregationRequest request);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI listAnalyticStores" })
         @GET("v1/api/analytics")
@@ -259,12 +259,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         Observable<Response<ResponseBody>> uploadConfigurationTransactionTypes(@Body List<TxnMetaDataDto> types);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI listCorporateActions" })
-        @GET("v1/api/corporateactions/{scope}/{sourceId}")
-        Observable<Response<ResponseBody>> listCorporateActions(@Path("scope") String scope, @Path("sourceId") String sourceId, @Query("effectiveDate") DateTime effectiveDate, @Query("asAt") DateTime asAt);
+        @GET("v1/api/corporateactions/{scope}/{corporateActionSourceCode}")
+        Observable<Response<ResponseBody>> listCorporateActions(@Path("scope") String scope, @Path("corporateActionSourceCode") String corporateActionSourceCode, @Query("effectiveDate") DateTime effectiveDate, @Query("asAt") DateTime asAt);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI batchUpsertCorporateActions" })
-        @POST("v1/api/corporateactions/{scope}/{sourceId}")
-        Observable<Response<ResponseBody>> batchUpsertCorporateActions(@Path("scope") String scope, @Path("sourceId") String sourceId, @Body List<UpsertCorporateActionRequest> actions);
+        @POST("v1/api/corporateactions/{scope}/{corporateActionSourceCode}")
+        Observable<Response<ResponseBody>> batchUpsertCorporateActions(@Path("scope") String scope, @Path("corporateActionSourceCode") String corporateActionSourceCode, @Body List<UpsertCorporateActionRequest> actions);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getDownloadUrl" })
         @GET("v1/api/excel/download-token")
@@ -1288,14 +1288,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getAggregationByResultSet(String scope, String resultsKey, String resultsDate) {
-        return getAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, resultsDate).toBlocking().single().body();
+    public Object getAggregationByResultSet(String scope, String resultsKey) {
+        return getAggregationByResultSetWithServiceResponseAsync(scope, resultsKey).toBlocking().single().body();
     }
 
     /**
@@ -1303,13 +1302,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getAggregationByResultSetAsync(String scope, String resultsKey, String resultsDate, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, resultsDate), serviceCallback);
+    public ServiceFuture<Object> getAggregationByResultSetAsync(String scope, String resultsKey, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getAggregationByResultSetWithServiceResponseAsync(scope, resultsKey), serviceCallback);
     }
 
     /**
@@ -1317,12 +1315,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getAggregationByResultSetAsync(String scope, String resultsKey, String resultsDate) {
-        return getAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, resultsDate).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getAggregationByResultSetAsync(String scope, String resultsKey) {
+        return getAggregationByResultSetWithServiceResponseAsync(scope, resultsKey).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -1335,22 +1332,18 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey, String resultsDate) {
+    public Observable<ServiceResponse<Object>> getAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         if (resultsKey == null) {
             throw new IllegalArgumentException("Parameter resultsKey is required and cannot be null.");
         }
-        if (resultsDate == null) {
-            throw new IllegalArgumentException("Parameter resultsDate is required and cannot be null.");
-        }
         final AggregationRequest request = null;
-        return service.getAggregationByResultSet(scope, resultsKey, resultsDate, request)
+        return service.getAggregationByResultSet(scope, resultsKey, request)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -1369,15 +1362,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the String value
      * @param request the AggregationRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getAggregationByResultSet(String scope, String resultsKey, String resultsDate, AggregationRequest request) {
-        return getAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, resultsDate, request).toBlocking().single().body();
+    public Object getAggregationByResultSet(String scope, String resultsKey, AggregationRequest request) {
+        return getAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, request).toBlocking().single().body();
     }
 
     /**
@@ -1385,14 +1377,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the String value
      * @param request the AggregationRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getAggregationByResultSetAsync(String scope, String resultsKey, String resultsDate, AggregationRequest request, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, resultsDate, request), serviceCallback);
+    public ServiceFuture<Object> getAggregationByResultSetAsync(String scope, String resultsKey, AggregationRequest request, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, request), serviceCallback);
     }
 
     /**
@@ -1400,13 +1391,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the String value
      * @param request the AggregationRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getAggregationByResultSetAsync(String scope, String resultsKey, String resultsDate, AggregationRequest request) {
-        return getAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, resultsDate, request).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getAggregationByResultSetAsync(String scope, String resultsKey, AggregationRequest request) {
+        return getAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, request).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -1419,23 +1409,19 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the String value
      * @param request the AggregationRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey, String resultsDate, AggregationRequest request) {
+    public Observable<ServiceResponse<Object>> getAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey, AggregationRequest request) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         if (resultsKey == null) {
             throw new IllegalArgumentException("Parameter resultsKey is required and cannot be null.");
         }
-        if (resultsDate == null) {
-            throw new IllegalArgumentException("Parameter resultsDate is required and cannot be null.");
-        }
         Validator.validate(request);
-        return service.getAggregationByResultSet(scope, resultsKey, resultsDate, request)
+        return service.getAggregationByResultSet(scope, resultsKey, request)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -1462,14 +1448,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getNestedAggregationByResultSet(String scope, String resultsKey, DateTime resultsDate) {
-        return getNestedAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, resultsDate).toBlocking().single().body();
+    public Object getNestedAggregationByResultSet(String scope, String resultsKey) {
+        return getNestedAggregationByResultSetWithServiceResponseAsync(scope, resultsKey).toBlocking().single().body();
     }
 
     /**
@@ -1477,13 +1462,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getNestedAggregationByResultSetAsync(String scope, String resultsKey, DateTime resultsDate, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getNestedAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, resultsDate), serviceCallback);
+    public ServiceFuture<Object> getNestedAggregationByResultSetAsync(String scope, String resultsKey, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getNestedAggregationByResultSetWithServiceResponseAsync(scope, resultsKey), serviceCallback);
     }
 
     /**
@@ -1491,12 +1475,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getNestedAggregationByResultSetAsync(String scope, String resultsKey, DateTime resultsDate) {
-        return getNestedAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, resultsDate).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getNestedAggregationByResultSetAsync(String scope, String resultsKey) {
+        return getNestedAggregationByResultSetWithServiceResponseAsync(scope, resultsKey).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -1509,22 +1492,18 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getNestedAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey, DateTime resultsDate) {
+    public Observable<ServiceResponse<Object>> getNestedAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         if (resultsKey == null) {
             throw new IllegalArgumentException("Parameter resultsKey is required and cannot be null.");
         }
-        if (resultsDate == null) {
-            throw new IllegalArgumentException("Parameter resultsDate is required and cannot be null.");
-        }
         final AggregationRequest request = null;
-        return service.getNestedAggregationByResultSet(scope, resultsKey, resultsDate, request)
+        return service.getNestedAggregationByResultSet(scope, resultsKey, request)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -1543,15 +1522,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the DateTime value
      * @param request the AggregationRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object getNestedAggregationByResultSet(String scope, String resultsKey, DateTime resultsDate, AggregationRequest request) {
-        return getNestedAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, resultsDate, request).toBlocking().single().body();
+    public Object getNestedAggregationByResultSet(String scope, String resultsKey, AggregationRequest request) {
+        return getNestedAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, request).toBlocking().single().body();
     }
 
     /**
@@ -1559,14 +1537,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the DateTime value
      * @param request the AggregationRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> getNestedAggregationByResultSetAsync(String scope, String resultsKey, DateTime resultsDate, AggregationRequest request, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(getNestedAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, resultsDate, request), serviceCallback);
+    public ServiceFuture<Object> getNestedAggregationByResultSetAsync(String scope, String resultsKey, AggregationRequest request, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(getNestedAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, request), serviceCallback);
     }
 
     /**
@@ -1574,13 +1551,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the DateTime value
      * @param request the AggregationRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> getNestedAggregationByResultSetAsync(String scope, String resultsKey, DateTime resultsDate, AggregationRequest request) {
-        return getNestedAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, resultsDate, request).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> getNestedAggregationByResultSetAsync(String scope, String resultsKey, AggregationRequest request) {
+        return getNestedAggregationByResultSetWithServiceResponseAsync(scope, resultsKey, request).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -1593,23 +1569,19 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the DateTime value
      * @param request the AggregationRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> getNestedAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey, DateTime resultsDate, AggregationRequest request) {
+    public Observable<ServiceResponse<Object>> getNestedAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey, AggregationRequest request) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         if (resultsKey == null) {
             throw new IllegalArgumentException("Parameter resultsKey is required and cannot be null.");
         }
-        if (resultsDate == null) {
-            throw new IllegalArgumentException("Parameter resultsDate is required and cannot be null.");
-        }
         Validator.validate(request);
-        return service.getNestedAggregationByResultSet(scope, resultsKey, resultsDate, request)
+        return service.getNestedAggregationByResultSet(scope, resultsKey, request)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -2812,39 +2784,39 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param sourceId Corporate action source id
+     * @param corporateActionSourceCode Corporate action source id
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object listCorporateActions(String scope, String sourceId) {
-        return listCorporateActionsWithServiceResponseAsync(scope, sourceId).toBlocking().single().body();
+    public Object listCorporateActions(String scope, String corporateActionSourceCode) {
+        return listCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode).toBlocking().single().body();
     }
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param sourceId Corporate action source id
+     * @param corporateActionSourceCode Corporate action source id
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> listCorporateActionsAsync(String scope, String sourceId, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(listCorporateActionsWithServiceResponseAsync(scope, sourceId), serviceCallback);
+    public ServiceFuture<Object> listCorporateActionsAsync(String scope, String corporateActionSourceCode, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(listCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode), serviceCallback);
     }
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param sourceId Corporate action source id
+     * @param corporateActionSourceCode Corporate action source id
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> listCorporateActionsAsync(String scope, String sourceId) {
-        return listCorporateActionsWithServiceResponseAsync(scope, sourceId).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> listCorporateActionsAsync(String scope, String corporateActionSourceCode) {
+        return listCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -2856,20 +2828,20 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param sourceId Corporate action source id
+     * @param corporateActionSourceCode Corporate action source id
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> listCorporateActionsWithServiceResponseAsync(String scope, String sourceId) {
+    public Observable<ServiceResponse<Object>> listCorporateActionsWithServiceResponseAsync(String scope, String corporateActionSourceCode) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
-        if (sourceId == null) {
-            throw new IllegalArgumentException("Parameter sourceId is required and cannot be null.");
+        if (corporateActionSourceCode == null) {
+            throw new IllegalArgumentException("Parameter corporateActionSourceCode is required and cannot be null.");
         }
         final DateTime effectiveDate = null;
         final DateTime asAt = null;
-        return service.listCorporateActions(scope, sourceId, effectiveDate, asAt)
+        return service.listCorporateActions(scope, corporateActionSourceCode, effectiveDate, asAt)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -2887,7 +2859,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param sourceId Corporate action source id
+     * @param corporateActionSourceCode Corporate action source id
      * @param effectiveDate Effective Date
      * @param asAt AsAt Date filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -2895,37 +2867,37 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object listCorporateActions(String scope, String sourceId, DateTime effectiveDate, DateTime asAt) {
-        return listCorporateActionsWithServiceResponseAsync(scope, sourceId, effectiveDate, asAt).toBlocking().single().body();
+    public Object listCorporateActions(String scope, String corporateActionSourceCode, DateTime effectiveDate, DateTime asAt) {
+        return listCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode, effectiveDate, asAt).toBlocking().single().body();
     }
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param sourceId Corporate action source id
+     * @param corporateActionSourceCode Corporate action source id
      * @param effectiveDate Effective Date
      * @param asAt AsAt Date filter
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> listCorporateActionsAsync(String scope, String sourceId, DateTime effectiveDate, DateTime asAt, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(listCorporateActionsWithServiceResponseAsync(scope, sourceId, effectiveDate, asAt), serviceCallback);
+    public ServiceFuture<Object> listCorporateActionsAsync(String scope, String corporateActionSourceCode, DateTime effectiveDate, DateTime asAt, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(listCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode, effectiveDate, asAt), serviceCallback);
     }
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param sourceId Corporate action source id
+     * @param corporateActionSourceCode Corporate action source id
      * @param effectiveDate Effective Date
      * @param asAt AsAt Date filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> listCorporateActionsAsync(String scope, String sourceId, DateTime effectiveDate, DateTime asAt) {
-        return listCorporateActionsWithServiceResponseAsync(scope, sourceId, effectiveDate, asAt).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> listCorporateActionsAsync(String scope, String corporateActionSourceCode, DateTime effectiveDate, DateTime asAt) {
+        return listCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode, effectiveDate, asAt).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -2937,20 +2909,20 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param sourceId Corporate action source id
+     * @param corporateActionSourceCode Corporate action source id
      * @param effectiveDate Effective Date
      * @param asAt AsAt Date filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> listCorporateActionsWithServiceResponseAsync(String scope, String sourceId, DateTime effectiveDate, DateTime asAt) {
+    public Observable<ServiceResponse<Object>> listCorporateActionsWithServiceResponseAsync(String scope, String corporateActionSourceCode, DateTime effectiveDate, DateTime asAt) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
-        if (sourceId == null) {
-            throw new IllegalArgumentException("Parameter sourceId is required and cannot be null.");
+        if (corporateActionSourceCode == null) {
+            throw new IllegalArgumentException("Parameter corporateActionSourceCode is required and cannot be null.");
         }
-        return service.listCorporateActions(scope, sourceId, effectiveDate, asAt)
+        return service.listCorporateActions(scope, corporateActionSourceCode, effectiveDate, asAt)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -2976,39 +2948,39 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
+     * @param corporateActionSourceCode Source of the corporate action
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object batchUpsertCorporateActions(String scope, String sourceId) {
-        return batchUpsertCorporateActionsWithServiceResponseAsync(scope, sourceId).toBlocking().single().body();
+    public Object batchUpsertCorporateActions(String scope, String corporateActionSourceCode) {
+        return batchUpsertCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode).toBlocking().single().body();
     }
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
+     * @param corporateActionSourceCode Source of the corporate action
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> batchUpsertCorporateActionsAsync(String scope, String sourceId, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(batchUpsertCorporateActionsWithServiceResponseAsync(scope, sourceId), serviceCallback);
+    public ServiceFuture<Object> batchUpsertCorporateActionsAsync(String scope, String corporateActionSourceCode, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(batchUpsertCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode), serviceCallback);
     }
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
+     * @param corporateActionSourceCode Source of the corporate action
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> batchUpsertCorporateActionsAsync(String scope, String sourceId) {
-        return batchUpsertCorporateActionsWithServiceResponseAsync(scope, sourceId).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> batchUpsertCorporateActionsAsync(String scope, String corporateActionSourceCode) {
+        return batchUpsertCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -3020,19 +2992,19 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
+     * @param corporateActionSourceCode Source of the corporate action
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String sourceId) {
+    public Observable<ServiceResponse<Object>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String corporateActionSourceCode) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
-        if (sourceId == null) {
-            throw new IllegalArgumentException("Parameter sourceId is required and cannot be null.");
+        if (corporateActionSourceCode == null) {
+            throw new IllegalArgumentException("Parameter corporateActionSourceCode is required and cannot be null.");
         }
         final List<UpsertCorporateActionRequest> actions = null;
-        return service.batchUpsertCorporateActions(scope, sourceId, actions)
+        return service.batchUpsertCorporateActions(scope, corporateActionSourceCode, actions)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
@@ -3050,42 +3022,42 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
-     * @param actions The corporate action creation request objects
+     * @param corporateActionSourceCode Source of the corporate action
+     * @param actions The corporate actions to create
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    public Object batchUpsertCorporateActions(String scope, String sourceId, List<UpsertCorporateActionRequest> actions) {
-        return batchUpsertCorporateActionsWithServiceResponseAsync(scope, sourceId, actions).toBlocking().single().body();
+    public Object batchUpsertCorporateActions(String scope, String corporateActionSourceCode, List<UpsertCorporateActionRequest> actions) {
+        return batchUpsertCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode, actions).toBlocking().single().body();
     }
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
-     * @param actions The corporate action creation request objects
+     * @param corporateActionSourceCode Source of the corporate action
+     * @param actions The corporate actions to create
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Object> batchUpsertCorporateActionsAsync(String scope, String sourceId, List<UpsertCorporateActionRequest> actions, final ServiceCallback<Object> serviceCallback) {
-        return ServiceFuture.fromResponse(batchUpsertCorporateActionsWithServiceResponseAsync(scope, sourceId, actions), serviceCallback);
+    public ServiceFuture<Object> batchUpsertCorporateActionsAsync(String scope, String corporateActionSourceCode, List<UpsertCorporateActionRequest> actions, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(batchUpsertCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode, actions), serviceCallback);
     }
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
-     * @param actions The corporate action creation request objects
+     * @param corporateActionSourceCode Source of the corporate action
+     * @param actions The corporate actions to create
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<Object> batchUpsertCorporateActionsAsync(String scope, String sourceId, List<UpsertCorporateActionRequest> actions) {
-        return batchUpsertCorporateActionsWithServiceResponseAsync(scope, sourceId, actions).map(new Func1<ServiceResponse<Object>, Object>() {
+    public Observable<Object> batchUpsertCorporateActionsAsync(String scope, String corporateActionSourceCode, List<UpsertCorporateActionRequest> actions) {
+        return batchUpsertCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode, actions).map(new Func1<ServiceResponse<Object>, Object>() {
             @Override
             public Object call(ServiceResponse<Object> response) {
                 return response.body();
@@ -3097,20 +3069,20 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
-     * @param actions The corporate action creation request objects
+     * @param corporateActionSourceCode Source of the corporate action
+     * @param actions The corporate actions to create
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    public Observable<ServiceResponse<Object>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String sourceId, List<UpsertCorporateActionRequest> actions) {
+    public Observable<ServiceResponse<Object>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String corporateActionSourceCode, List<UpsertCorporateActionRequest> actions) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
-        if (sourceId == null) {
-            throw new IllegalArgumentException("Parameter sourceId is required and cannot be null.");
+        if (corporateActionSourceCode == null) {
+            throw new IllegalArgumentException("Parameter corporateActionSourceCode is required and cannot be null.");
         }
         Validator.validate(actions);
-        return service.batchUpsertCorporateActions(scope, sourceId, actions)
+        return service.batchUpsertCorporateActions(scope, corporateActionSourceCode, actions)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
                 @Override
                 public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {

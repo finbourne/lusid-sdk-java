@@ -471,194 +471,178 @@ public interface LUSIDAPI {
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object getAggregationByResultSet(String scope, String resultsKey, String resultsDate);
+    Object getAggregationByResultSet(String scope, String resultsKey);
 
     /**
      * Aggregate data from a result set.
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> getAggregationByResultSetAsync(String scope, String resultsKey, String resultsDate, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> getAggregationByResultSetAsync(String scope, String resultsKey, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Aggregate data from a result set.
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> getAggregationByResultSetAsync(String scope, String resultsKey, String resultsDate);
+    Observable<Object> getAggregationByResultSetAsync(String scope, String resultsKey);
 
     /**
      * Aggregate data from a result set.
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> getAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey, String resultsDate);
+    Observable<ServiceResponse<Object>> getAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey);
     /**
      * Aggregate data from a result set.
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the String value
      * @param request the AggregationRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object getAggregationByResultSet(String scope, String resultsKey, String resultsDate, AggregationRequest request);
+    Object getAggregationByResultSet(String scope, String resultsKey, AggregationRequest request);
 
     /**
      * Aggregate data from a result set.
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the String value
      * @param request the AggregationRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> getAggregationByResultSetAsync(String scope, String resultsKey, String resultsDate, AggregationRequest request, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> getAggregationByResultSetAsync(String scope, String resultsKey, AggregationRequest request, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Aggregate data from a result set.
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the String value
      * @param request the AggregationRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> getAggregationByResultSetAsync(String scope, String resultsKey, String resultsDate, AggregationRequest request);
+    Observable<Object> getAggregationByResultSetAsync(String scope, String resultsKey, AggregationRequest request);
 
     /**
      * Aggregate data from a result set.
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the String value
      * @param request the AggregationRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> getAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey, String resultsDate, AggregationRequest request);
+    Observable<ServiceResponse<Object>> getAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey, AggregationRequest request);
 
     /**
      * Aggregate data from a result set into a nested structure.
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object getNestedAggregationByResultSet(String scope, String resultsKey, DateTime resultsDate);
+    Object getNestedAggregationByResultSet(String scope, String resultsKey);
 
     /**
      * Aggregate data from a result set into a nested structure.
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> getNestedAggregationByResultSetAsync(String scope, String resultsKey, DateTime resultsDate, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> getNestedAggregationByResultSetAsync(String scope, String resultsKey, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Aggregate data from a result set into a nested structure.
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> getNestedAggregationByResultSetAsync(String scope, String resultsKey, DateTime resultsDate);
+    Observable<Object> getNestedAggregationByResultSetAsync(String scope, String resultsKey);
 
     /**
      * Aggregate data from a result set into a nested structure.
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> getNestedAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey, DateTime resultsDate);
+    Observable<ServiceResponse<Object>> getNestedAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey);
     /**
      * Aggregate data from a result set into a nested structure.
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the DateTime value
      * @param request the AggregationRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object getNestedAggregationByResultSet(String scope, String resultsKey, DateTime resultsDate, AggregationRequest request);
+    Object getNestedAggregationByResultSet(String scope, String resultsKey, AggregationRequest request);
 
     /**
      * Aggregate data from a result set into a nested structure.
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the DateTime value
      * @param request the AggregationRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> getNestedAggregationByResultSetAsync(String scope, String resultsKey, DateTime resultsDate, AggregationRequest request, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> getNestedAggregationByResultSetAsync(String scope, String resultsKey, AggregationRequest request, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Aggregate data from a result set into a nested structure.
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the DateTime value
      * @param request the AggregationRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> getNestedAggregationByResultSetAsync(String scope, String resultsKey, DateTime resultsDate, AggregationRequest request);
+    Observable<Object> getNestedAggregationByResultSetAsync(String scope, String resultsKey, AggregationRequest request);
 
     /**
      * Aggregate data from a result set into a nested structure.
      *
      * @param scope the String value
      * @param resultsKey the String value
-     * @param resultsDate the DateTime value
      * @param request the AggregationRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> getNestedAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey, DateTime resultsDate, AggregationRequest request);
+    Observable<ServiceResponse<Object>> getNestedAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey, AggregationRequest request);
 
     /**
      * List all analytic stores in client.
@@ -1341,49 +1325,49 @@ public interface LUSIDAPI {
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param sourceId Corporate action source id
+     * @param corporateActionSourceCode Corporate action source id
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object listCorporateActions(String scope, String sourceId);
+    Object listCorporateActions(String scope, String corporateActionSourceCode);
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param sourceId Corporate action source id
+     * @param corporateActionSourceCode Corporate action source id
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> listCorporateActionsAsync(String scope, String sourceId, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> listCorporateActionsAsync(String scope, String corporateActionSourceCode, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param sourceId Corporate action source id
+     * @param corporateActionSourceCode Corporate action source id
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> listCorporateActionsAsync(String scope, String sourceId);
+    Observable<Object> listCorporateActionsAsync(String scope, String corporateActionSourceCode);
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param sourceId Corporate action source id
+     * @param corporateActionSourceCode Corporate action source id
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> listCorporateActionsWithServiceResponseAsync(String scope, String sourceId);
+    Observable<ServiceResponse<Object>> listCorporateActionsWithServiceResponseAsync(String scope, String corporateActionSourceCode);
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param sourceId Corporate action source id
+     * @param corporateActionSourceCode Corporate action source id
      * @param effectiveDate Effective Date
      * @param asAt AsAt Date filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -1391,133 +1375,133 @@ public interface LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object listCorporateActions(String scope, String sourceId, DateTime effectiveDate, DateTime asAt);
+    Object listCorporateActions(String scope, String corporateActionSourceCode, DateTime effectiveDate, DateTime asAt);
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param sourceId Corporate action source id
+     * @param corporateActionSourceCode Corporate action source id
      * @param effectiveDate Effective Date
      * @param asAt AsAt Date filter
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> listCorporateActionsAsync(String scope, String sourceId, DateTime effectiveDate, DateTime asAt, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> listCorporateActionsAsync(String scope, String corporateActionSourceCode, DateTime effectiveDate, DateTime asAt, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param sourceId Corporate action source id
+     * @param corporateActionSourceCode Corporate action source id
      * @param effectiveDate Effective Date
      * @param asAt AsAt Date filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> listCorporateActionsAsync(String scope, String sourceId, DateTime effectiveDate, DateTime asAt);
+    Observable<Object> listCorporateActionsAsync(String scope, String corporateActionSourceCode, DateTime effectiveDate, DateTime asAt);
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param sourceId Corporate action source id
+     * @param corporateActionSourceCode Corporate action source id
      * @param effectiveDate Effective Date
      * @param asAt AsAt Date filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> listCorporateActionsWithServiceResponseAsync(String scope, String sourceId, DateTime effectiveDate, DateTime asAt);
+    Observable<ServiceResponse<Object>> listCorporateActionsWithServiceResponseAsync(String scope, String corporateActionSourceCode, DateTime effectiveDate, DateTime asAt);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
+     * @param corporateActionSourceCode Source of the corporate action
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object batchUpsertCorporateActions(String scope, String sourceId);
+    Object batchUpsertCorporateActions(String scope, String corporateActionSourceCode);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
+     * @param corporateActionSourceCode Source of the corporate action
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> batchUpsertCorporateActionsAsync(String scope, String sourceId, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> batchUpsertCorporateActionsAsync(String scope, String corporateActionSourceCode, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
+     * @param corporateActionSourceCode Source of the corporate action
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> batchUpsertCorporateActionsAsync(String scope, String sourceId);
+    Observable<Object> batchUpsertCorporateActionsAsync(String scope, String corporateActionSourceCode);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
+     * @param corporateActionSourceCode Source of the corporate action
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String sourceId);
+    Observable<ServiceResponse<Object>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String corporateActionSourceCode);
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
-     * @param actions The corporate action creation request objects
+     * @param corporateActionSourceCode Source of the corporate action
+     * @param actions The corporate actions to create
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws RestException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Object object if successful.
      */
-    Object batchUpsertCorporateActions(String scope, String sourceId, List<UpsertCorporateActionRequest> actions);
+    Object batchUpsertCorporateActions(String scope, String corporateActionSourceCode, List<UpsertCorporateActionRequest> actions);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
-     * @param actions The corporate action creation request objects
+     * @param corporateActionSourceCode Source of the corporate action
+     * @param actions The corporate actions to create
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<Object> batchUpsertCorporateActionsAsync(String scope, String sourceId, List<UpsertCorporateActionRequest> actions, final ServiceCallback<Object> serviceCallback);
+    ServiceFuture<Object> batchUpsertCorporateActionsAsync(String scope, String corporateActionSourceCode, List<UpsertCorporateActionRequest> actions, final ServiceCallback<Object> serviceCallback);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
-     * @param actions The corporate action creation request objects
+     * @param corporateActionSourceCode Source of the corporate action
+     * @param actions The corporate actions to create
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<Object> batchUpsertCorporateActionsAsync(String scope, String sourceId, List<UpsertCorporateActionRequest> actions);
+    Observable<Object> batchUpsertCorporateActionsAsync(String scope, String corporateActionSourceCode, List<UpsertCorporateActionRequest> actions);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param sourceId Source of the corporate action
-     * @param actions The corporate action creation request objects
+     * @param corporateActionSourceCode Source of the corporate action
+     * @param actions The corporate actions to create
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Object object
      */
-    Observable<ServiceResponse<Object>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String sourceId, List<UpsertCorporateActionRequest> actions);
+    Observable<ServiceResponse<Object>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String corporateActionSourceCode, List<UpsertCorporateActionRequest> actions);
 
     /**
      *

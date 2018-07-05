@@ -57,7 +57,7 @@ public class HoldingAdjustmentDto {
      * The properties property.
      */
     @JsonProperty(value = "properties")
-    private List<PropertyDto> properties;
+    private List<CreatePropertyRequest> properties;
 
     /**
      * The _links property.
@@ -150,7 +150,7 @@ public class HoldingAdjustmentDto {
      *
      * @return the properties value
      */
-    public List<PropertyDto> properties() {
+    public List<CreatePropertyRequest> properties() {
         return this.properties;
     }
 
@@ -160,7 +160,7 @@ public class HoldingAdjustmentDto {
      * @param properties the properties value to set
      * @return the HoldingAdjustmentDto object itself.
      */
-    public HoldingAdjustmentDto withProperties(List<PropertyDto> properties) {
+    public HoldingAdjustmentDto withProperties(List<CreatePropertyRequest> properties) {
         this.properties = properties;
         return this;
     }
