@@ -142,6 +142,15 @@
  | CostFactor|decimal|  |
  ## Property
  Properties are key-value pairs that can be applied to any entity within a domain (where a domain is `trade`, `portfolio`, `security` etc).  Properties must be defined before use with a `PropertyDefinition` and can then subsequently be added to entities.
+ # Schemas
+ The following headers are returned on all responses from LUSID
+ | Name | Purpose |
+ | --- | --- |
+ | lusid-meta-duration | Duration of the request |
+ | lusid-meta-success | Whether or not LUSID considered the request to be successful |
+ | lusid-meta-requestId | The unique identifier for the request |
+ | lusid-schema-url | Url of the schema for the data being returned |
+ | lusid-property-schema-url | Url of the schema for any properties |
  # Error Codes
  | Code|Name|Description |
  | ---|---|--- |
@@ -179,7 +188,6 @@
  | <a name="149">149</a>|OperationFailed|  |
  | <a name="150">150</a>|ElasticSearchError|  |
  | <a name="151">151</a>|InvalidParameterValue|  |
- | <a name="152">152</a>|ServerConfigurationError|  |
  | <a name="153">153</a>|CommandProcessingFailure|  |
  | <a name="154">154</a>|EntityStateConstructionFailure|  |
  | <a name="155">155</a>|EntityTimelineDoesNotExist|  |
@@ -213,6 +221,7 @@
  | <a name="187">187</a>|InvalidIdentityToken|  |
  | <a name="188">188</a>|InvalidRequestHeaders|  |
  | <a name="189">189</a>|PriceNotFound|  |
+ | <a name="-10">-10</a>|ServerConfigurationError|  |
  | <a name="-1">-1</a>|Unknown error|  |.
  */
 package com.finbourne;
