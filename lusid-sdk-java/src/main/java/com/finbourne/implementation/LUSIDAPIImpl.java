@@ -259,7 +259,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI listCorporateActions" })
         @GET("v1/api/corporateactions/{scope}/{corporateActionSourceCode}")
-        Observable<Response<ResponseBody>> listCorporateActions(@Path("scope") String scope, @Path("corporateActionSourceCode") String corporateActionSourceCode, @Query("effectiveDate") DateTime effectiveDate, @Query("asAt") DateTime asAt);
+        Observable<Response<ResponseBody>> listCorporateActions(@Path("scope") String scope, @Path("corporateActionSourceCode") String corporateActionSourceCode, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI batchUpsertCorporateActions" })
         @POST("v1/api/corporateactions/{scope}/{corporateActionSourceCode}")
@@ -2819,9 +2819,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         if (corporateActionSourceCode == null) {
             throw new IllegalArgumentException("Parameter corporateActionSourceCode is required and cannot be null.");
         }
-        final DateTime effectiveDate = null;
+        final DateTime effectiveAt = null;
         final DateTime asAt = null;
-        return service.listCorporateActions(scope, corporateActionSourceCode, effectiveDate, asAt)
+        return service.listCorporateActions(scope, corporateActionSourceCode, effectiveAt, asAt)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<List<CorporateActionEventDto>>>>() {
                 @Override
                 public Observable<ServiceResponse<List<CorporateActionEventDto>>> call(Response<ResponseBody> response) {
@@ -2840,15 +2840,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope Scope
      * @param corporateActionSourceCode Corporate action source id
-     * @param effectiveDate Effective Date
+     * @param effectiveAt Effective Date
      * @param asAt AsAt Date filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the List&lt;CorporateActionEventDto&gt; object if successful.
      */
-    public List<CorporateActionEventDto> listCorporateActions(String scope, String corporateActionSourceCode, DateTime effectiveDate, DateTime asAt) {
-        return listCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode, effectiveDate, asAt).toBlocking().single().body();
+    public List<CorporateActionEventDto> listCorporateActions(String scope, String corporateActionSourceCode, DateTime effectiveAt, DateTime asAt) {
+        return listCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode, effectiveAt, asAt).toBlocking().single().body();
     }
 
     /**
@@ -2856,14 +2856,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope Scope
      * @param corporateActionSourceCode Corporate action source id
-     * @param effectiveDate Effective Date
+     * @param effectiveAt Effective Date
      * @param asAt AsAt Date filter
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<List<CorporateActionEventDto>> listCorporateActionsAsync(String scope, String corporateActionSourceCode, DateTime effectiveDate, DateTime asAt, final ServiceCallback<List<CorporateActionEventDto>> serviceCallback) {
-        return ServiceFuture.fromResponse(listCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode, effectiveDate, asAt), serviceCallback);
+    public ServiceFuture<List<CorporateActionEventDto>> listCorporateActionsAsync(String scope, String corporateActionSourceCode, DateTime effectiveAt, DateTime asAt, final ServiceCallback<List<CorporateActionEventDto>> serviceCallback) {
+        return ServiceFuture.fromResponse(listCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode, effectiveAt, asAt), serviceCallback);
     }
 
     /**
@@ -2871,13 +2871,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope Scope
      * @param corporateActionSourceCode Corporate action source id
-     * @param effectiveDate Effective Date
+     * @param effectiveAt Effective Date
      * @param asAt AsAt Date filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the List&lt;CorporateActionEventDto&gt; object
      */
-    public Observable<List<CorporateActionEventDto>> listCorporateActionsAsync(String scope, String corporateActionSourceCode, DateTime effectiveDate, DateTime asAt) {
-        return listCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode, effectiveDate, asAt).map(new Func1<ServiceResponse<List<CorporateActionEventDto>>, List<CorporateActionEventDto>>() {
+    public Observable<List<CorporateActionEventDto>> listCorporateActionsAsync(String scope, String corporateActionSourceCode, DateTime effectiveAt, DateTime asAt) {
+        return listCorporateActionsWithServiceResponseAsync(scope, corporateActionSourceCode, effectiveAt, asAt).map(new Func1<ServiceResponse<List<CorporateActionEventDto>>, List<CorporateActionEventDto>>() {
             @Override
             public List<CorporateActionEventDto> call(ServiceResponse<List<CorporateActionEventDto>> response) {
                 return response.body();
@@ -2890,19 +2890,19 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope Scope
      * @param corporateActionSourceCode Corporate action source id
-     * @param effectiveDate Effective Date
+     * @param effectiveAt Effective Date
      * @param asAt AsAt Date filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the List&lt;CorporateActionEventDto&gt; object
      */
-    public Observable<ServiceResponse<List<CorporateActionEventDto>>> listCorporateActionsWithServiceResponseAsync(String scope, String corporateActionSourceCode, DateTime effectiveDate, DateTime asAt) {
+    public Observable<ServiceResponse<List<CorporateActionEventDto>>> listCorporateActionsWithServiceResponseAsync(String scope, String corporateActionSourceCode, DateTime effectiveAt, DateTime asAt) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         if (corporateActionSourceCode == null) {
             throw new IllegalArgumentException("Parameter corporateActionSourceCode is required and cannot be null.");
         }
-        return service.listCorporateActions(scope, corporateActionSourceCode, effectiveDate, asAt)
+        return service.listCorporateActions(scope, corporateActionSourceCode, effectiveAt, asAt)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<List<CorporateActionEventDto>>>>() {
                 @Override
                 public Observable<ServiceResponse<List<CorporateActionEventDto>>> call(Response<ResponseBody> response) {

@@ -1412,51 +1412,51 @@ public interface LUSIDAPI {
      *
      * @param scope Scope
      * @param corporateActionSourceCode Corporate action source id
-     * @param effectiveDate Effective Date
+     * @param effectiveAt Effective Date
      * @param asAt AsAt Date filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the List&lt;CorporateActionEventDto&gt; object if successful.
      */
-    List<CorporateActionEventDto> listCorporateActions(String scope, String corporateActionSourceCode, DateTime effectiveDate, DateTime asAt);
+    List<CorporateActionEventDto> listCorporateActions(String scope, String corporateActionSourceCode, DateTime effectiveAt, DateTime asAt);
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
      * @param corporateActionSourceCode Corporate action source id
-     * @param effectiveDate Effective Date
+     * @param effectiveAt Effective Date
      * @param asAt AsAt Date filter
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<List<CorporateActionEventDto>> listCorporateActionsAsync(String scope, String corporateActionSourceCode, DateTime effectiveDate, DateTime asAt, final ServiceCallback<List<CorporateActionEventDto>> serviceCallback);
+    ServiceFuture<List<CorporateActionEventDto>> listCorporateActionsAsync(String scope, String corporateActionSourceCode, DateTime effectiveAt, DateTime asAt, final ServiceCallback<List<CorporateActionEventDto>> serviceCallback);
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
      * @param corporateActionSourceCode Corporate action source id
-     * @param effectiveDate Effective Date
+     * @param effectiveAt Effective Date
      * @param asAt AsAt Date filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the List&lt;CorporateActionEventDto&gt; object
      */
-    Observable<List<CorporateActionEventDto>> listCorporateActionsAsync(String scope, String corporateActionSourceCode, DateTime effectiveDate, DateTime asAt);
+    Observable<List<CorporateActionEventDto>> listCorporateActionsAsync(String scope, String corporateActionSourceCode, DateTime effectiveAt, DateTime asAt);
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
      * @param corporateActionSourceCode Corporate action source id
-     * @param effectiveDate Effective Date
+     * @param effectiveAt Effective Date
      * @param asAt AsAt Date filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the List&lt;CorporateActionEventDto&gt; object
      */
-    Observable<ServiceResponse<List<CorporateActionEventDto>>> listCorporateActionsWithServiceResponseAsync(String scope, String corporateActionSourceCode, DateTime effectiveDate, DateTime asAt);
+    Observable<ServiceResponse<List<CorporateActionEventDto>>> listCorporateActionsWithServiceResponseAsync(String scope, String corporateActionSourceCode, DateTime effectiveAt, DateTime asAt);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
