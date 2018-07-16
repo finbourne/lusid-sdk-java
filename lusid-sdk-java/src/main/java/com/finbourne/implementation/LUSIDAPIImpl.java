@@ -29,6 +29,7 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import com.finbourne.models.AddTradePropertyDto;
 import com.finbourne.models.AggregationRequest;
+import com.finbourne.models.AnalyticsStorageRequest;
 import com.finbourne.models.AnalyticStoreDto;
 import com.finbourne.models.ClassificationsDto;
 import com.finbourne.models.ClearEntityCachesDto;
@@ -240,6 +241,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI insertAnalytics" })
         @POST("v1/api/analytics/{scope}/{year}/{month}/{day}/prices")
         Observable<Response<ResponseBody>> insertAnalytics(@Path("scope") String scope, @Path("year") int year, @Path("month") int month, @Path("day") int day, @Body List<SecurityAnalyticDataDto> data);
+
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI upsertAnalytics" })
+        @POST("v1/api/analytics2/{scope}")
+        Observable<Response<ResponseBody>> upsertAnalytics(@Path("scope") String scope, @Body AnalyticsStorageRequest request);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI upsertClassification" })
         @POST("v1/api/classifications")
@@ -2297,6 +2302,151 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     private ServiceResponse<AnalyticStoreDto> insertAnalyticsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
         return this.restClient().responseBuilderFactory().<AnalyticStoreDto, ErrorResponseException>newInstance(this.serializerAdapter())
                 .register(200, new TypeToken<AnalyticStoreDto>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
+     * Upsert Analytics.
+     *
+     * @param scope Scope of the analytic
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    public Object upsertAnalytics(String scope) {
+        return upsertAnalyticsWithServiceResponseAsync(scope).toBlocking().single().body();
+    }
+
+    /**
+     * Upsert Analytics.
+     *
+     * @param scope Scope of the analytic
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<Object> upsertAnalyticsAsync(String scope, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(upsertAnalyticsWithServiceResponseAsync(scope), serviceCallback);
+    }
+
+    /**
+     * Upsert Analytics.
+     *
+     * @param scope Scope of the analytic
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<Object> upsertAnalyticsAsync(String scope) {
+        return upsertAnalyticsWithServiceResponseAsync(scope).map(new Func1<ServiceResponse<Object>, Object>() {
+            @Override
+            public Object call(ServiceResponse<Object> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Upsert Analytics.
+     *
+     * @param scope Scope of the analytic
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<ServiceResponse<Object>> upsertAnalyticsWithServiceResponseAsync(String scope) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        final AnalyticsStorageRequest request = null;
+        return service.upsertAnalytics(scope, request)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
+                @Override
+                public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<Object> clientResponse = upsertAnalyticsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Upsert Analytics.
+     *
+     * @param scope Scope of the analytic
+     * @param request A valid and fully populated analytic store creation request
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    public Object upsertAnalytics(String scope, AnalyticsStorageRequest request) {
+        return upsertAnalyticsWithServiceResponseAsync(scope, request).toBlocking().single().body();
+    }
+
+    /**
+     * Upsert Analytics.
+     *
+     * @param scope Scope of the analytic
+     * @param request A valid and fully populated analytic store creation request
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<Object> upsertAnalyticsAsync(String scope, AnalyticsStorageRequest request, final ServiceCallback<Object> serviceCallback) {
+        return ServiceFuture.fromResponse(upsertAnalyticsWithServiceResponseAsync(scope, request), serviceCallback);
+    }
+
+    /**
+     * Upsert Analytics.
+     *
+     * @param scope Scope of the analytic
+     * @param request A valid and fully populated analytic store creation request
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<Object> upsertAnalyticsAsync(String scope, AnalyticsStorageRequest request) {
+        return upsertAnalyticsWithServiceResponseAsync(scope, request).map(new Func1<ServiceResponse<Object>, Object>() {
+            @Override
+            public Object call(ServiceResponse<Object> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Upsert Analytics.
+     *
+     * @param scope Scope of the analytic
+     * @param request A valid and fully populated analytic store creation request
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    public Observable<ServiceResponse<Object>> upsertAnalyticsWithServiceResponseAsync(String scope, AnalyticsStorageRequest request) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        Validator.validate(request);
+        return service.upsertAnalytics(scope, request)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Object>>>() {
+                @Override
+                public Observable<ServiceResponse<Object>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<Object> clientResponse = upsertAnalyticsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<Object> upsertAnalyticsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<Object, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<Object>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }

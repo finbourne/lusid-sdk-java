@@ -24,6 +24,7 @@ package com.finbourne;
 
 import com.finbourne.models.AddTradePropertyDto;
 import com.finbourne.models.AggregationRequest;
+import com.finbourne.models.AnalyticsStorageRequest;
 import com.finbourne.models.AnalyticStoreDto;
 import com.finbourne.models.ClassificationsDto;
 import com.finbourne.models.ClearEntityCachesDto;
@@ -1110,6 +1111,87 @@ public interface LUSIDAPI {
      * @return the observable to the AnalyticStoreDto object
      */
     Observable<ServiceResponse<AnalyticStoreDto>> insertAnalyticsWithServiceResponseAsync(String scope, int year, int month, int day, List<SecurityAnalyticDataDto> data);
+
+    /**
+     * Upsert Analytics.
+     *
+     * @param scope Scope of the analytic
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    Object upsertAnalytics(String scope);
+
+    /**
+     * Upsert Analytics.
+     *
+     * @param scope Scope of the analytic
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<Object> upsertAnalyticsAsync(String scope, final ServiceCallback<Object> serviceCallback);
+
+    /**
+     * Upsert Analytics.
+     *
+     * @param scope Scope of the analytic
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    Observable<Object> upsertAnalyticsAsync(String scope);
+
+    /**
+     * Upsert Analytics.
+     *
+     * @param scope Scope of the analytic
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    Observable<ServiceResponse<Object>> upsertAnalyticsWithServiceResponseAsync(String scope);
+    /**
+     * Upsert Analytics.
+     *
+     * @param scope Scope of the analytic
+     * @param request A valid and fully populated analytic store creation request
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Object object if successful.
+     */
+    Object upsertAnalytics(String scope, AnalyticsStorageRequest request);
+
+    /**
+     * Upsert Analytics.
+     *
+     * @param scope Scope of the analytic
+     * @param request A valid and fully populated analytic store creation request
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<Object> upsertAnalyticsAsync(String scope, AnalyticsStorageRequest request, final ServiceCallback<Object> serviceCallback);
+
+    /**
+     * Upsert Analytics.
+     *
+     * @param scope Scope of the analytic
+     * @param request A valid and fully populated analytic store creation request
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    Observable<Object> upsertAnalyticsAsync(String scope, AnalyticsStorageRequest request);
+
+    /**
+     * Upsert Analytics.
+     *
+     * @param scope Scope of the analytic
+     * @param request A valid and fully populated analytic store creation request
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Object object
+     */
+    Observable<ServiceResponse<Object>> upsertAnalyticsWithServiceResponseAsync(String scope, AnalyticsStorageRequest request);
 
     /**
      * Update classification data.
