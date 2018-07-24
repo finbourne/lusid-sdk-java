@@ -68,6 +68,12 @@ public class CreatePortfolioRequest {
     private String accountingMethod;
 
     /**
+     * The subHoldingKeys property.
+     */
+    @JsonProperty(value = "subHoldingKeys")
+    private List<String> subHoldingKeys;
+
+    /**
      * Portfolio properties to add to the portfolio.
      */
     @JsonProperty(value = "properties")
@@ -190,6 +196,26 @@ public class CreatePortfolioRequest {
      */
     public CreatePortfolioRequest withAccountingMethod(String accountingMethod) {
         this.accountingMethod = accountingMethod;
+        return this;
+    }
+
+    /**
+     * Get the subHoldingKeys value.
+     *
+     * @return the subHoldingKeys value
+     */
+    public List<String> subHoldingKeys() {
+        return this.subHoldingKeys;
+    }
+
+    /**
+     * Set the subHoldingKeys value.
+     *
+     * @param subHoldingKeys the subHoldingKeys value to set
+     * @return the CreatePortfolioRequest object itself.
+     */
+    public CreatePortfolioRequest withSubHoldingKeys(List<String> subHoldingKeys) {
+        this.subHoldingKeys = subHoldingKeys;
         return this;
     }
 

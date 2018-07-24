@@ -49,7 +49,7 @@ public class UpdatePropertyDataFormatRequest {
 
     /**
      * Possible values include: 'String', 'Int', 'Decimal', 'DateTime',
-     * 'Boolean', 'Map', 'PropertyArray', 'Percentage', 'Currency',
+     * 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'Currency',
      * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases',
      * 'ArrayofTxnMovements'.
      */
@@ -123,7 +123,7 @@ public class UpdatePropertyDataFormatRequest {
     }
 
     /**
-     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
+     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
      *
      * @return the valueType value
      */
@@ -132,7 +132,7 @@ public class UpdatePropertyDataFormatRequest {
     }
 
     /**
-     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
+     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
      *
      * @param valueType the valueType value to set
      * @return the UpdatePropertyDataFormatRequest object itself.

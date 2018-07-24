@@ -30,23 +30,21 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class ErrorResponse {
     /**
-     * The status code that will be returned to the client.
+     * The status property.
      */
     @JsonProperty(value = "status", access = JsonProperty.Access.WRITE_ONLY)
     private Integer status;
 
     /**
-     * The Finbourne specific error-code that encapsulates the specific issue
-     * encountered. Possible values include: 'Unknown',
-     * 'PersonalisationNotFound', 'NonRecursivePersonalisation',
-     * 'VersionNotFound', 'SecurityNotFound', 'PropertyNotFound',
-     * 'PortfolioRecursionDepth', 'GroupNotFound', 'PortfolioNotFound',
-     * 'PropertySchemaNotFound', 'PortfolioWithIdAlreadyExists',
-     * 'OrphanedPortfolio', 'MissingBaseClaims', 'PropertyNotDefined',
-     * 'CannotDeleteSystemProperty', 'CannotModifyImmutablePropertyField',
-     * 'PropertyAlreadyExists', 'InvalidPropertyLifeTime',
-     * 'CannotModifyDefaultPropertyFormat', 'GroupAlreadyExists',
-     * 'NoSuchPropertyDataFormat', 'ValidationError',
+     * Possible values include: 'Unknown', 'PersonalisationNotFound',
+     * 'NonRecursivePersonalisation', 'VersionNotFound', 'SecurityNotFound',
+     * 'PropertyNotFound', 'PortfolioRecursionDepth', 'GroupNotFound',
+     * 'PortfolioNotFound', 'PropertySchemaNotFound',
+     * 'PortfolioWithIdAlreadyExists', 'OrphanedPortfolio',
+     * 'MissingBaseClaims', 'PropertyNotDefined', 'CannotDeleteSystemProperty',
+     * 'CannotModifyImmutablePropertyField', 'PropertyAlreadyExists',
+     * 'InvalidPropertyLifeTime', 'CannotModifyDefaultPropertyFormat',
+     * 'GroupAlreadyExists', 'NoSuchPropertyDataFormat', 'ValidationError',
      * 'LoopDetectedInGroupHierarchy', 'SubGroupAlreadyExists',
      * 'PriceSourceNotFound', 'AnalyticStoreNotFound',
      * 'AnalyticStoreAlreadyExists', 'ClientSecurityAlreadyExists',
@@ -73,35 +71,31 @@ public class ErrorResponse {
     private String code;
 
     /**
-     * The non-technical-user friendly message describing the error and how it
-     * might be remedied.
+     * The message property.
      */
     @JsonProperty(value = "message", access = JsonProperty.Access.WRITE_ONLY)
     private String message;
 
     /**
-     * A technical error message that contains the details of the issue and how
-     * it might be fixed.
+     * The detailedMessage property.
      */
     @JsonProperty(value = "detailedMessage", access = JsonProperty.Access.WRITE_ONLY)
     private String detailedMessage;
 
     /**
-     * Any action specific item specific sub errors (e.g. per-trade validation
-     * errors).
+     * The items property.
      */
     @JsonProperty(value = "items")
-    private List<ErrorDetail> items;
+    private List<ErrorDetailBase> items;
 
     /**
-     * A link to the endpoint that can provide the dev with more information
-     * about that class of error.
+     * The moreInfo property.
      */
     @JsonProperty(value = "moreInfo", access = JsonProperty.Access.WRITE_ONLY)
     private String moreInfo;
 
     /**
-     * Get the status code that will be returned to the client.
+     * Get the status value.
      *
      * @return the status value
      */
@@ -110,7 +104,7 @@ public class ErrorResponse {
     }
 
     /**
-     * Get the Finbourne specific error-code that encapsulates the specific issue encountered. Possible values include: 'Unknown', 'PersonalisationNotFound', 'NonRecursivePersonalisation', 'VersionNotFound', 'SecurityNotFound', 'PropertyNotFound', 'PortfolioRecursionDepth', 'GroupNotFound', 'PortfolioNotFound', 'PropertySchemaNotFound', 'PortfolioWithIdAlreadyExists', 'OrphanedPortfolio', 'MissingBaseClaims', 'PropertyNotDefined', 'CannotDeleteSystemProperty', 'CannotModifyImmutablePropertyField', 'PropertyAlreadyExists', 'InvalidPropertyLifeTime', 'CannotModifyDefaultPropertyFormat', 'GroupAlreadyExists', 'NoSuchPropertyDataFormat', 'ValidationError', 'LoopDetectedInGroupHierarchy', 'SubGroupAlreadyExists', 'PriceSourceNotFound', 'AnalyticStoreNotFound', 'AnalyticStoreAlreadyExists', 'ClientSecurityAlreadyExists', 'DuplicateInParameterSet', 'ResultsNotFound', 'OrderFieldNotInResultSet', 'OperationFailed', 'ElasticSearchError', 'InvalidParameterValue', 'CommandProcessingFailure', 'EntityStateConstructionFailure', 'EntityTimelineDoesNotExist', 'EventPublishFailure', 'InvalidRequestFailure', 'EventPublishUnknown', 'EventQueryFailure', 'BlobDidNotExistFailure', 'SubSystemRequestFailure', 'SubSystemConfigurationFailure', 'FailedToDelete', 'UpsertClientSecurityFailure', 'IllegalAsAtInterval', 'IllegalBitemporalQuery', 'InvalidAlternateId', 'CannotAddSourcePortfolioPropertyExplicitly', 'EntityAlreadyExistsInGroup', 'EntityWithIdAlreadyExists', 'PortfolioDetailsDoNotExist', 'PortfolioWithNameAlreadyExists', 'InvalidTrades', 'ReferencePortfolioNotFound', 'DuplicateIdFailure', 'SecurityByCodeNotFound', 'CommandRetrievalFailure', 'DataFilterApplicationFailure', 'SearchFailed', 'MovementsEngineConfigurationKeyFailure', 'FxRateSourceNotFound', 'AccrualSourceNotFound', 'EntitlementsFailure', 'InvalidIdentityToken', 'InvalidRequestHeaders', 'PriceNotFound', 'ServerConfigurationError'.
+     * Get possible values include: 'Unknown', 'PersonalisationNotFound', 'NonRecursivePersonalisation', 'VersionNotFound', 'SecurityNotFound', 'PropertyNotFound', 'PortfolioRecursionDepth', 'GroupNotFound', 'PortfolioNotFound', 'PropertySchemaNotFound', 'PortfolioWithIdAlreadyExists', 'OrphanedPortfolio', 'MissingBaseClaims', 'PropertyNotDefined', 'CannotDeleteSystemProperty', 'CannotModifyImmutablePropertyField', 'PropertyAlreadyExists', 'InvalidPropertyLifeTime', 'CannotModifyDefaultPropertyFormat', 'GroupAlreadyExists', 'NoSuchPropertyDataFormat', 'ValidationError', 'LoopDetectedInGroupHierarchy', 'SubGroupAlreadyExists', 'PriceSourceNotFound', 'AnalyticStoreNotFound', 'AnalyticStoreAlreadyExists', 'ClientSecurityAlreadyExists', 'DuplicateInParameterSet', 'ResultsNotFound', 'OrderFieldNotInResultSet', 'OperationFailed', 'ElasticSearchError', 'InvalidParameterValue', 'CommandProcessingFailure', 'EntityStateConstructionFailure', 'EntityTimelineDoesNotExist', 'EventPublishFailure', 'InvalidRequestFailure', 'EventPublishUnknown', 'EventQueryFailure', 'BlobDidNotExistFailure', 'SubSystemRequestFailure', 'SubSystemConfigurationFailure', 'FailedToDelete', 'UpsertClientSecurityFailure', 'IllegalAsAtInterval', 'IllegalBitemporalQuery', 'InvalidAlternateId', 'CannotAddSourcePortfolioPropertyExplicitly', 'EntityAlreadyExistsInGroup', 'EntityWithIdAlreadyExists', 'PortfolioDetailsDoNotExist', 'PortfolioWithNameAlreadyExists', 'InvalidTrades', 'ReferencePortfolioNotFound', 'DuplicateIdFailure', 'SecurityByCodeNotFound', 'CommandRetrievalFailure', 'DataFilterApplicationFailure', 'SearchFailed', 'MovementsEngineConfigurationKeyFailure', 'FxRateSourceNotFound', 'AccrualSourceNotFound', 'EntitlementsFailure', 'InvalidIdentityToken', 'InvalidRequestHeaders', 'PriceNotFound', 'ServerConfigurationError'.
      *
      * @return the code value
      */
@@ -119,7 +113,7 @@ public class ErrorResponse {
     }
 
     /**
-     * Get the non-technical-user friendly message describing the error and how it might be remedied.
+     * Get the message value.
      *
      * @return the message value
      */
@@ -128,7 +122,7 @@ public class ErrorResponse {
     }
 
     /**
-     * Get a technical error message that contains the details of the issue and how it might be fixed.
+     * Get the detailedMessage value.
      *
      * @return the detailedMessage value
      */
@@ -137,27 +131,27 @@ public class ErrorResponse {
     }
 
     /**
-     * Get any action specific item specific sub errors (e.g. per-trade validation errors).
+     * Get the items value.
      *
      * @return the items value
      */
-    public List<ErrorDetail> items() {
+    public List<ErrorDetailBase> items() {
         return this.items;
     }
 
     /**
-     * Set any action specific item specific sub errors (e.g. per-trade validation errors).
+     * Set the items value.
      *
      * @param items the items value to set
      * @return the ErrorResponse object itself.
      */
-    public ErrorResponse withItems(List<ErrorDetail> items) {
+    public ErrorResponse withItems(List<ErrorDetailBase> items) {
         this.items = items;
         return this;
     }
 
     /**
-     * Get a link to the endpoint that can provide the dev with more information about that class of error.
+     * Get the moreInfo value.
      *
      * @return the moreInfo value
      */
