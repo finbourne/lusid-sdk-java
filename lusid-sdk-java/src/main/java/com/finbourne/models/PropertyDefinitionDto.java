@@ -43,9 +43,9 @@ public class PropertyDefinitionDto {
 
     /**
      * Possible values include: 'String', 'Int', 'Decimal', 'DateTime',
-     * 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'Currency',
+     * 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage',
      * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases',
-     * 'ArrayofTxnMovements'.
+     * 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'UnitCreation'.
      */
     @JsonProperty(value = "valueType")
     private String valueType;
@@ -85,6 +85,13 @@ public class PropertyDefinitionDto {
      */
     @JsonProperty(value = "type")
     private String type;
+
+    /**
+     * Possible values include: 'NoUnits', 'Basic', 'Iso4217Currency',
+     * 'TimeSpan'.
+     */
+    @JsonProperty(value = "unitSchema")
+    private String unitSchema;
 
     /**
      * The _links property.
@@ -133,7 +140,7 @@ public class PropertyDefinitionDto {
     }
 
     /**
-     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
+     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'UnitCreation'.
      *
      * @return the valueType value
      */
@@ -142,7 +149,7 @@ public class PropertyDefinitionDto {
     }
 
     /**
-     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
+     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'UnitCreation'.
      *
      * @param valueType the valueType value to set
      * @return the PropertyDefinitionDto object itself.
@@ -269,6 +276,26 @@ public class PropertyDefinitionDto {
      */
     public PropertyDefinitionDto withType(String type) {
         this.type = type;
+        return this;
+    }
+
+    /**
+     * Get possible values include: 'NoUnits', 'Basic', 'Iso4217Currency', 'TimeSpan'.
+     *
+     * @return the unitSchema value
+     */
+    public String unitSchema() {
+        return this.unitSchema;
+    }
+
+    /**
+     * Set possible values include: 'NoUnits', 'Basic', 'Iso4217Currency', 'TimeSpan'.
+     *
+     * @param unitSchema the unitSchema value to set
+     * @return the PropertyDefinitionDto object itself.
+     */
+    public PropertyDefinitionDto withUnitSchema(String unitSchema) {
+        this.unitSchema = unitSchema;
         return this;
     }
 

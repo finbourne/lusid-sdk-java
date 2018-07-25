@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class UpdatePropertyDataFormatRequest {
     /**
-     * Possible values include: 'Basic', 'Limited', 'Currency'.
+     * Possible values include: 'Open', 'Closed'.
      */
     @JsonProperty(value = "formatType", required = true)
     private String formatType;
@@ -48,10 +48,16 @@ public class UpdatePropertyDataFormatRequest {
     private String displayName;
 
     /**
+     * The description property.
+     */
+    @JsonProperty(value = "description", required = true)
+    private String description;
+
+    /**
      * Possible values include: 'String', 'Int', 'Decimal', 'DateTime',
-     * 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'Currency',
+     * 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage',
      * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases',
-     * 'ArrayofTxnMovements'.
+     * 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'UnitCreation'.
      */
     @JsonProperty(value = "valueType", required = true)
     private String valueType;
@@ -63,7 +69,20 @@ public class UpdatePropertyDataFormatRequest {
     private List<Object> acceptableValues;
 
     /**
-     * Get possible values include: 'Basic', 'Limited', 'Currency'.
+     * Possible values include: 'NoUnits', 'Basic', 'Iso4217Currency',
+     * 'TimeSpan'.
+     */
+    @JsonProperty(value = "unitSchema", access = JsonProperty.Access.WRITE_ONLY)
+    private String unitSchema;
+
+    /**
+     * The acceptableUnits property.
+     */
+    @JsonProperty(value = "acceptableUnits", access = JsonProperty.Access.WRITE_ONLY)
+    private List<CreateUnitDefinition> acceptableUnits;
+
+    /**
+     * Get possible values include: 'Open', 'Closed'.
      *
      * @return the formatType value
      */
@@ -72,7 +91,7 @@ public class UpdatePropertyDataFormatRequest {
     }
 
     /**
-     * Set possible values include: 'Basic', 'Limited', 'Currency'.
+     * Set possible values include: 'Open', 'Closed'.
      *
      * @param formatType the formatType value to set
      * @return the UpdatePropertyDataFormatRequest object itself.
@@ -123,7 +142,27 @@ public class UpdatePropertyDataFormatRequest {
     }
 
     /**
-     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
+     * Get the description value.
+     *
+     * @return the description value
+     */
+    public String description() {
+        return this.description;
+    }
+
+    /**
+     * Set the description value.
+     *
+     * @param description the description value to set
+     * @return the UpdatePropertyDataFormatRequest object itself.
+     */
+    public UpdatePropertyDataFormatRequest withDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'UnitCreation'.
      *
      * @return the valueType value
      */
@@ -132,7 +171,7 @@ public class UpdatePropertyDataFormatRequest {
     }
 
     /**
-     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
+     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'UnitCreation'.
      *
      * @param valueType the valueType value to set
      * @return the UpdatePropertyDataFormatRequest object itself.
@@ -160,6 +199,24 @@ public class UpdatePropertyDataFormatRequest {
     public UpdatePropertyDataFormatRequest withAcceptableValues(List<Object> acceptableValues) {
         this.acceptableValues = acceptableValues;
         return this;
+    }
+
+    /**
+     * Get possible values include: 'NoUnits', 'Basic', 'Iso4217Currency', 'TimeSpan'.
+     *
+     * @return the unitSchema value
+     */
+    public String unitSchema() {
+        return this.unitSchema;
+    }
+
+    /**
+     * Get the acceptableUnits value.
+     *
+     * @return the acceptableUnits value
+     */
+    public List<CreateUnitDefinition> acceptableUnits() {
+        return this.acceptableUnits;
     }
 
 }

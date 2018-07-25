@@ -25,75 +25,68 @@ package com.finbourne.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * This is intended to be the external facing unitemporal property
- * specification data type.
+ * The IUnitDefinitionDto model.
  */
-public class PerpetualPropertyDto {
+public class IUnitDefinitionDto {
     /**
-     * The key property.
+     * Possible values include: 'NoUnits', 'Basic', 'Iso4217Currency',
+     * 'TimeSpan'.
      */
-    @JsonProperty(value = "key", required = true)
-    private String key;
+    @JsonProperty(value = "schema", access = JsonProperty.Access.WRITE_ONLY)
+    private String schema;
 
     /**
-     * The value property.
+     * The code property.
      */
-    @JsonProperty(value = "value", required = true)
-    private Object value;
+    @JsonProperty(value = "code", access = JsonProperty.Access.WRITE_ONLY)
+    private String code;
 
     /**
-     * The unit property.
+     * The displayName property.
      */
-    @JsonProperty(value = "unit", access = JsonProperty.Access.WRITE_ONLY)
-    private String unit;
+    @JsonProperty(value = "displayName", access = JsonProperty.Access.WRITE_ONLY)
+    private String displayName;
 
     /**
-     * Get the key value.
+     * The description property.
+     */
+    @JsonProperty(value = "description", access = JsonProperty.Access.WRITE_ONLY)
+    private String description;
+
+    /**
+     * Get possible values include: 'NoUnits', 'Basic', 'Iso4217Currency', 'TimeSpan'.
      *
-     * @return the key value
+     * @return the schema value
      */
-    public String key() {
-        return this.key;
+    public String schema() {
+        return this.schema;
     }
 
     /**
-     * Set the key value.
+     * Get the code value.
      *
-     * @param key the key value to set
-     * @return the PerpetualPropertyDto object itself.
+     * @return the code value
      */
-    public PerpetualPropertyDto withKey(String key) {
-        this.key = key;
-        return this;
+    public String code() {
+        return this.code;
     }
 
     /**
-     * Get the value value.
+     * Get the displayName value.
      *
-     * @return the value value
+     * @return the displayName value
      */
-    public Object value() {
-        return this.value;
+    public String displayName() {
+        return this.displayName;
     }
 
     /**
-     * Set the value value.
+     * Get the description value.
      *
-     * @param value the value value to set
-     * @return the PerpetualPropertyDto object itself.
+     * @return the description value
      */
-    public PerpetualPropertyDto withValue(Object value) {
-        this.value = value;
-        return this;
-    }
-
-    /**
-     * Get the unit value.
-     *
-     * @return the unit value
-     */
-    public String unit() {
-        return this.unit;
+    public String description() {
+        return this.description;
     }
 
 }

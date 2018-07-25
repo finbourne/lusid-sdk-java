@@ -171,8 +171,8 @@
  | <a name="100">100</a>|Personalisations not found|The personalisation(s) identified by the pattern provided could not be found, either because it does not exist or it has been deleted. Please check the pattern your provided. |
  | <a name="101">101</a>|NonRecursivePersonalisation|  |
  | <a name="102">102</a>|VersionNotFound|  |
- | <a name="104">104</a>|SecurityNotFound|  |
- | <a name="104">104</a>|SecurityNotFound|  |
+ | <a name="104">104</a>|SecurityByCodeNotFound|  |
+ | <a name="104">104</a>|SecurityByCodeNotFound|  |
  | <a name="105">105</a>|PropertyNotFound|  |
  | <a name="106">106</a>|PortfolioRecursionDepth|  |
  | <a name="108">108</a>|GroupNotFound|  |
@@ -235,6 +235,16 @@
  | <a name="187">187</a>|InvalidIdentityToken|  |
  | <a name="188">188</a>|InvalidRequestHeaders|  |
  | <a name="189">189</a>|PriceNotFound|  |
+ | <a name="200">200</a>|InvalidUnitForDataType|  |
+ | <a name="201">201</a>|InvalidTypeForDataType|  |
+ | <a name="202">202</a>|InvalidValueForDataType|  |
+ | <a name="203">203</a>|UnitNotDefinedForDataType|  |
+ | <a name="204">204</a>|UnitsNotSupportedOnDataType|  |
+ | <a name="205">205</a>|CannotSpecifyUnitsOnDataType|  |
+ | <a name="206">206</a>|UnitSchemaInconsistentWithDataType|  |
+ | <a name="207">207</a>|UnitDefinitionNotSpecified|  |
+ | <a name="208">208</a>|DuplicateUnitDefinitionsSpecified|  |
+ | <a name="209">209</a>|InvalidUnitsDefinition|  |
  | <a name="-10">-10</a>|ServerConfigurationError|  |
  | <a name="-1">-1</a>|Unknown error|  |.
  */

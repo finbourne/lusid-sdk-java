@@ -42,6 +42,12 @@ public class PropertyDto {
     private Object value;
 
     /**
+     * The unit property.
+     */
+    @JsonProperty(value = "unit")
+    private String unit;
+
+    /**
      * Date for which the property is effective from.
      */
     @JsonProperty(value = "effectiveFrom")
@@ -84,6 +90,26 @@ public class PropertyDto {
      */
     public PropertyDto withValue(Object value) {
         this.value = value;
+        return this;
+    }
+
+    /**
+     * Get the unit value.
+     *
+     * @return the unit value
+     */
+    public String unit() {
+        return this.unit;
+    }
+
+    /**
+     * Set the unit value.
+     *
+     * @param unit the unit value to set
+     * @return the PropertyDto object itself.
+     */
+    public PropertyDto withUnit(String unit) {
+        this.unit = unit;
         return this;
     }
 

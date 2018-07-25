@@ -47,6 +47,12 @@ public class CreatePerpetualPropertyRequest {
     private Object value;
 
     /**
+     * The unit property.
+     */
+    @JsonProperty(value = "unit", access = JsonProperty.Access.WRITE_ONLY)
+    private String unit;
+
+    /**
      * Get the scope value.
      *
      * @return the scope value
@@ -104,6 +110,15 @@ public class CreatePerpetualPropertyRequest {
     public CreatePerpetualPropertyRequest withValue(Object value) {
         this.value = value;
         return this;
+    }
+
+    /**
+     * Get the unit value.
+     *
+     * @return the unit value
+     */
+    public String unit() {
+        return this.unit;
     }
 
 }

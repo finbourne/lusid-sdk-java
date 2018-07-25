@@ -49,6 +49,7 @@ import com.finbourne.models.ErrorResponseException;
 import com.finbourne.models.ExpandedGroupDto;
 import com.finbourne.models.GroupDto;
 import com.finbourne.models.HoldingAdjustmentDto;
+import com.finbourne.models.IUnitDefinitionDto;
 import com.finbourne.models.ListAggregationResponse;
 import com.finbourne.models.LoginResponse;
 import com.finbourne.models.NestedAggregationResponse;
@@ -404,7 +405,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getAggregateHoldings" })
         @GET("v1/api/portfolios/{scope}/{code}/holdings")
-        Observable<Response<ResponseBody>> getAggregateHoldings(@Path("scope") String scope, @Path("code") String code, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
+        Observable<Response<ResponseBody>> getAggregateHoldings(@Path("scope") String scope, @Path("code") String code, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter, @Query("securityPropertyKeys") String securityPropertyKeys);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI adjustHoldings" })
         @POST("v1/api/portfolios/{scope}/{code}/holdings/{effectiveAt}")
@@ -509,6 +510,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI updatePropertyDataFormat" })
         @PUT("v1/api/propertyformats/{scope}/{name}")
         Observable<Response<ResponseBody>> updatePropertyDataFormat(@Path("scope") String scope, @Path("name") String name, @Body UpdatePropertyDataFormatRequest request);
+
+        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getUnitsFromPropertyDataFormat" })
+        @GET("v1/api/propertyformats/{scope}/{name}/units/{units}")
+        Observable<Response<ResponseBody>> getUnitsFromPropertyDataFormat(@Path("scope") String scope, @Path("name") String name, @Path("units") String units);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI performReconciliation" })
         @POST("v1/api/recon")
@@ -7808,8 +7813,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final Integer start = null;
         final Integer limit = null;
         final String filter = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getAggregateHoldings(scope, code, effectiveAt, asAt, sortByConverted, start, limit, filter)
+        final List<String> securityPropertyKeys = null;
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String securityPropertyKeysConverted = this.serializerAdapter().serializeList(securityPropertyKeys, CollectionFormat.MULTI);
+        return service.getAggregateHoldings(scope, code, effectiveAt, asAt, sortByConverted, start, limit, filter, securityPropertyKeysConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<VersionedResourceListHoldingDto>>>() {
                 @Override
                 public Observable<ServiceResponse<VersionedResourceListHoldingDto>> call(Response<ResponseBody> response) {
@@ -7836,13 +7842,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
      * @param filter A filter on the results
+     * @param securityPropertyKeys Keys for the security properties to be decorated onto the holdings
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the VersionedResourceListHoldingDto object if successful.
      */
-    public VersionedResourceListHoldingDto getAggregateHoldings(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
-        return getAggregateHoldingsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, filter).toBlocking().single().body();
+    public VersionedResourceListHoldingDto getAggregateHoldings(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> securityPropertyKeys) {
+        return getAggregateHoldingsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, filter, securityPropertyKeys).toBlocking().single().body();
     }
 
     /**
@@ -7858,12 +7865,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
      * @param filter A filter on the results
+     * @param securityPropertyKeys Keys for the security properties to be decorated onto the holdings
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<VersionedResourceListHoldingDto> getAggregateHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<VersionedResourceListHoldingDto> serviceCallback) {
-        return ServiceFuture.fromResponse(getAggregateHoldingsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, filter), serviceCallback);
+    public ServiceFuture<VersionedResourceListHoldingDto> getAggregateHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> securityPropertyKeys, final ServiceCallback<VersionedResourceListHoldingDto> serviceCallback) {
+        return ServiceFuture.fromResponse(getAggregateHoldingsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, filter, securityPropertyKeys), serviceCallback);
     }
 
     /**
@@ -7879,11 +7887,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
      * @param filter A filter on the results
+     * @param securityPropertyKeys Keys for the security properties to be decorated onto the holdings
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the VersionedResourceListHoldingDto object
      */
-    public Observable<VersionedResourceListHoldingDto> getAggregateHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
-        return getAggregateHoldingsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, filter).map(new Func1<ServiceResponse<VersionedResourceListHoldingDto>, VersionedResourceListHoldingDto>() {
+    public Observable<VersionedResourceListHoldingDto> getAggregateHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> securityPropertyKeys) {
+        return getAggregateHoldingsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, filter, securityPropertyKeys).map(new Func1<ServiceResponse<VersionedResourceListHoldingDto>, VersionedResourceListHoldingDto>() {
             @Override
             public VersionedResourceListHoldingDto call(ServiceResponse<VersionedResourceListHoldingDto> response) {
                 return response.body();
@@ -7904,10 +7913,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param start How many items to skip from the returned set
      * @param limit How many items to return from the set
      * @param filter A filter on the results
+     * @param securityPropertyKeys Keys for the security properties to be decorated onto the holdings
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the VersionedResourceListHoldingDto object
      */
-    public Observable<ServiceResponse<VersionedResourceListHoldingDto>> getAggregateHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+    public Observable<ServiceResponse<VersionedResourceListHoldingDto>> getAggregateHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> securityPropertyKeys) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -7915,8 +7925,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
         Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
-        return service.getAggregateHoldings(scope, code, effectiveAt, asAt, sortByConverted, start, limit, filter)
+        Validator.validate(securityPropertyKeys);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String securityPropertyKeysConverted = this.serializerAdapter().serializeList(securityPropertyKeys, CollectionFormat.MULTI);
+        return service.getAggregateHoldings(scope, code, effectiveAt, asAt, sortByConverted, start, limit, filter, securityPropertyKeysConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<VersionedResourceListHoldingDto>>>() {
                 @Override
                 public Observable<ServiceResponse<VersionedResourceListHoldingDto>> call(Response<ResponseBody> response) {
@@ -12087,6 +12098,95 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Return the definitions for the specified list of units.
+     *
+     * @param scope the String value
+     * @param name the String value
+     * @param units the List&lt;String&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the IUnitDefinitionDto object if successful.
+     */
+    public IUnitDefinitionDto getUnitsFromPropertyDataFormat(String scope, String name, List<String> units) {
+        return getUnitsFromPropertyDataFormatWithServiceResponseAsync(scope, name, units).toBlocking().single().body();
+    }
+
+    /**
+     * Return the definitions for the specified list of units.
+     *
+     * @param scope the String value
+     * @param name the String value
+     * @param units the List&lt;String&gt; value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<IUnitDefinitionDto> getUnitsFromPropertyDataFormatAsync(String scope, String name, List<String> units, final ServiceCallback<IUnitDefinitionDto> serviceCallback) {
+        return ServiceFuture.fromResponse(getUnitsFromPropertyDataFormatWithServiceResponseAsync(scope, name, units), serviceCallback);
+    }
+
+    /**
+     * Return the definitions for the specified list of units.
+     *
+     * @param scope the String value
+     * @param name the String value
+     * @param units the List&lt;String&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the IUnitDefinitionDto object
+     */
+    public Observable<IUnitDefinitionDto> getUnitsFromPropertyDataFormatAsync(String scope, String name, List<String> units) {
+        return getUnitsFromPropertyDataFormatWithServiceResponseAsync(scope, name, units).map(new Func1<ServiceResponse<IUnitDefinitionDto>, IUnitDefinitionDto>() {
+            @Override
+            public IUnitDefinitionDto call(ServiceResponse<IUnitDefinitionDto> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Return the definitions for the specified list of units.
+     *
+     * @param scope the String value
+     * @param name the String value
+     * @param units the List&lt;String&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the IUnitDefinitionDto object
+     */
+    public Observable<ServiceResponse<IUnitDefinitionDto>> getUnitsFromPropertyDataFormatWithServiceResponseAsync(String scope, String name, List<String> units) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        if (name == null) {
+            throw new IllegalArgumentException("Parameter name is required and cannot be null.");
+        }
+        if (units == null) {
+            throw new IllegalArgumentException("Parameter units is required and cannot be null.");
+        }
+        Validator.validate(units);
+        String unitsConverted = this.serializerAdapter().serializeList(units, CollectionFormat.MULTI);
+        return service.getUnitsFromPropertyDataFormat(scope, name, unitsConverted)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<IUnitDefinitionDto>>>() {
+                @Override
+                public Observable<ServiceResponse<IUnitDefinitionDto>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<IUnitDefinitionDto> clientResponse = getUnitsFromPropertyDataFormatDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<IUnitDefinitionDto> getUnitsFromPropertyDataFormatDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<IUnitDefinitionDto, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<IUnitDefinitionDto>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
      * Perform a reconciliation between two portfolios.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -13607,7 +13707,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'TimeSpanUnit', 'BasicUnit'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -13620,7 +13720,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'TimeSpanUnit', 'BasicUnit'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -13632,7 +13732,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'TimeSpanUnit', 'BasicUnit'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the SchemaDto object
      */
@@ -13648,7 +13748,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'TimeSpanUnit', 'BasicUnit'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the SchemaDto object
      */

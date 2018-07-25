@@ -36,7 +36,7 @@ public class PropertyDataFormatDto {
     private String href;
 
     /**
-     * Possible values include: 'Basic', 'Limited', 'Currency'.
+     * Possible values include: 'Open', 'Closed'.
      */
     @JsonProperty(value = "formatType")
     private String formatType;
@@ -60,10 +60,16 @@ public class PropertyDataFormatDto {
     private String displayName;
 
     /**
+     * The description property.
+     */
+    @JsonProperty(value = "description")
+    private String description;
+
+    /**
      * Possible values include: 'String', 'Int', 'Decimal', 'DateTime',
-     * 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'Currency',
+     * 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage',
      * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases',
-     * 'ArrayofTxnMovements'.
+     * 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'UnitCreation'.
      */
     @JsonProperty(value = "valueType")
     private String valueType;
@@ -73,6 +79,19 @@ public class PropertyDataFormatDto {
      */
     @JsonProperty(value = "acceptableValues")
     private List<Object> acceptableValues;
+
+    /**
+     * Possible values include: 'NoUnits', 'Basic', 'Iso4217Currency',
+     * 'TimeSpan'.
+     */
+    @JsonProperty(value = "unitSchema")
+    private String unitSchema;
+
+    /**
+     * The acceptableUnits property.
+     */
+    @JsonProperty(value = "acceptableUnits")
+    private List<IUnitDefinitionDto> acceptableUnits;
 
     /**
      * Get the href value.
@@ -95,7 +114,7 @@ public class PropertyDataFormatDto {
     }
 
     /**
-     * Get possible values include: 'Basic', 'Limited', 'Currency'.
+     * Get possible values include: 'Open', 'Closed'.
      *
      * @return the formatType value
      */
@@ -104,7 +123,7 @@ public class PropertyDataFormatDto {
     }
 
     /**
-     * Set possible values include: 'Basic', 'Limited', 'Currency'.
+     * Set possible values include: 'Open', 'Closed'.
      *
      * @param formatType the formatType value to set
      * @return the PropertyDataFormatDto object itself.
@@ -175,7 +194,27 @@ public class PropertyDataFormatDto {
     }
 
     /**
-     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
+     * Get the description value.
+     *
+     * @return the description value
+     */
+    public String description() {
+        return this.description;
+    }
+
+    /**
+     * Set the description value.
+     *
+     * @param description the description value to set
+     * @return the PropertyDataFormatDto object itself.
+     */
+    public PropertyDataFormatDto withDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
+    /**
+     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'UnitCreation'.
      *
      * @return the valueType value
      */
@@ -184,7 +223,7 @@ public class PropertyDataFormatDto {
     }
 
     /**
-     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'Currency', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements'.
+     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'UnitCreation'.
      *
      * @param valueType the valueType value to set
      * @return the PropertyDataFormatDto object itself.
@@ -211,6 +250,46 @@ public class PropertyDataFormatDto {
      */
     public PropertyDataFormatDto withAcceptableValues(List<Object> acceptableValues) {
         this.acceptableValues = acceptableValues;
+        return this;
+    }
+
+    /**
+     * Get possible values include: 'NoUnits', 'Basic', 'Iso4217Currency', 'TimeSpan'.
+     *
+     * @return the unitSchema value
+     */
+    public String unitSchema() {
+        return this.unitSchema;
+    }
+
+    /**
+     * Set possible values include: 'NoUnits', 'Basic', 'Iso4217Currency', 'TimeSpan'.
+     *
+     * @param unitSchema the unitSchema value to set
+     * @return the PropertyDataFormatDto object itself.
+     */
+    public PropertyDataFormatDto withUnitSchema(String unitSchema) {
+        this.unitSchema = unitSchema;
+        return this;
+    }
+
+    /**
+     * Get the acceptableUnits value.
+     *
+     * @return the acceptableUnits value
+     */
+    public List<IUnitDefinitionDto> acceptableUnits() {
+        return this.acceptableUnits;
+    }
+
+    /**
+     * Set the acceptableUnits value.
+     *
+     * @param acceptableUnits the acceptableUnits value to set
+     * @return the PropertyDataFormatDto object itself.
+     */
+    public PropertyDataFormatDto withAcceptableUnits(List<IUnitDefinitionDto> acceptableUnits) {
+        this.acceptableUnits = acceptableUnits;
         return this;
     }
 

@@ -54,6 +54,12 @@ public class CreatePropertyRequest {
     private DateTime effectiveFrom;
 
     /**
+     * The unit property.
+     */
+    @JsonProperty(value = "unit", access = JsonProperty.Access.WRITE_ONLY)
+    private String unit;
+
+    /**
      * Get the scope value.
      *
      * @return the scope value
@@ -131,6 +137,15 @@ public class CreatePropertyRequest {
     public CreatePropertyRequest withEffectiveFrom(DateTime effectiveFrom) {
         this.effectiveFrom = effectiveFrom;
         return this;
+    }
+
+    /**
+     * Get the unit value.
+     *
+     * @return the unit value
+     */
+    public String unit() {
+        return this.unit;
     }
 
 }
