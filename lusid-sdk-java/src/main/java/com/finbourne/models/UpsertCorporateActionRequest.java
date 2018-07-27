@@ -55,6 +55,12 @@ public class UpsertCorporateActionRequest {
     private DateTime recordDate;
 
     /**
+     * The paymentDate property.
+     */
+    @JsonProperty(value = "paymentDate", required = true)
+    private DateTime paymentDate;
+
+    /**
      * The transitions property.
      */
     @JsonProperty(value = "transitions", required = true)
@@ -137,6 +143,26 @@ public class UpsertCorporateActionRequest {
      */
     public UpsertCorporateActionRequest withRecordDate(DateTime recordDate) {
         this.recordDate = recordDate;
+        return this;
+    }
+
+    /**
+     * Get the paymentDate value.
+     *
+     * @return the paymentDate value
+     */
+    public DateTime paymentDate() {
+        return this.paymentDate;
+    }
+
+    /**
+     * Set the paymentDate value.
+     *
+     * @param paymentDate the paymentDate value to set
+     * @return the UpsertCorporateActionRequest object itself.
+     */
+    public UpsertCorporateActionRequest withPaymentDate(DateTime paymentDate) {
+        this.paymentDate = paymentDate;
         return this;
     }
 

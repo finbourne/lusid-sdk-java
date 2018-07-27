@@ -147,13 +147,10 @@
  | AnnouncementDate|datetime|  |
  | ExDate|datetime|  |
  | RecordDate|datetime|  |
+ | PaymentDate|datetime|  |
  *Transition*
  | Field|Type|Description |
  | ---|---|--- |
- | Direction|string|  |
- | SecurityUid|string|  |
- | UnitsFactor|decimal|  |
- | CostFactor|decimal|  |
  ## Property
  Properties are key-value pairs that can be applied to any entity within a domain (where a domain is `trade`, `portfolio`, `security` etc).  Properties must be defined before use with a `PropertyDefinition` and can then subsequently be added to entities.
  # Schemas

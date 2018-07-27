@@ -22,114 +22,63 @@
 
 package com.finbourne.models;
 
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * A 'transition' within a corporate action, representing a single incoming or
- * outgoing component.
+ * A 'transition' within a corporate action, representing a set of output
+ * movements paired to a single input position.
  */
 public class CorporateActionTransitionDto {
     /**
-     * Possible values include: 'In', 'Out'.
+     * The inputTransition property.
      */
-    @JsonProperty(value = "direction", required = true)
-    private String direction;
+    @JsonProperty(value = "inputTransition")
+    private CorporateActionTransitionComponentDto inputTransition;
 
     /**
-     * The securityUid property.
+     * The outputTransitions property.
      */
-    @JsonProperty(value = "securityUid", required = true)
-    private String securityUid;
+    @JsonProperty(value = "outputTransitions")
+    private List<CorporateActionTransitionComponentDto> outputTransitions;
 
     /**
-     * The unitsFactor property.
-     */
-    @JsonProperty(value = "unitsFactor", required = true)
-    private double unitsFactor;
-
-    /**
-     * The costFactor property.
-     */
-    @JsonProperty(value = "costFactor", required = true)
-    private double costFactor;
-
-    /**
-     * Get possible values include: 'In', 'Out'.
+     * Get the inputTransition value.
      *
-     * @return the direction value
+     * @return the inputTransition value
      */
-    public String direction() {
-        return this.direction;
+    public CorporateActionTransitionComponentDto inputTransition() {
+        return this.inputTransition;
     }
 
     /**
-     * Set possible values include: 'In', 'Out'.
+     * Set the inputTransition value.
      *
-     * @param direction the direction value to set
+     * @param inputTransition the inputTransition value to set
      * @return the CorporateActionTransitionDto object itself.
      */
-    public CorporateActionTransitionDto withDirection(String direction) {
-        this.direction = direction;
+    public CorporateActionTransitionDto withInputTransition(CorporateActionTransitionComponentDto inputTransition) {
+        this.inputTransition = inputTransition;
         return this;
     }
 
     /**
-     * Get the securityUid value.
+     * Get the outputTransitions value.
      *
-     * @return the securityUid value
+     * @return the outputTransitions value
      */
-    public String securityUid() {
-        return this.securityUid;
+    public List<CorporateActionTransitionComponentDto> outputTransitions() {
+        return this.outputTransitions;
     }
 
     /**
-     * Set the securityUid value.
+     * Set the outputTransitions value.
      *
-     * @param securityUid the securityUid value to set
+     * @param outputTransitions the outputTransitions value to set
      * @return the CorporateActionTransitionDto object itself.
      */
-    public CorporateActionTransitionDto withSecurityUid(String securityUid) {
-        this.securityUid = securityUid;
-        return this;
-    }
-
-    /**
-     * Get the unitsFactor value.
-     *
-     * @return the unitsFactor value
-     */
-    public double unitsFactor() {
-        return this.unitsFactor;
-    }
-
-    /**
-     * Set the unitsFactor value.
-     *
-     * @param unitsFactor the unitsFactor value to set
-     * @return the CorporateActionTransitionDto object itself.
-     */
-    public CorporateActionTransitionDto withUnitsFactor(double unitsFactor) {
-        this.unitsFactor = unitsFactor;
-        return this;
-    }
-
-    /**
-     * Get the costFactor value.
-     *
-     * @return the costFactor value
-     */
-    public double costFactor() {
-        return this.costFactor;
-    }
-
-    /**
-     * Set the costFactor value.
-     *
-     * @param costFactor the costFactor value to set
-     * @return the CorporateActionTransitionDto object itself.
-     */
-    public CorporateActionTransitionDto withCostFactor(double costFactor) {
-        this.costFactor = costFactor;
+    public CorporateActionTransitionDto withOutputTransitions(List<CorporateActionTransitionComponentDto> outputTransitions) {
+        this.outputTransitions = outputTransitions;
         return this;
     }
 

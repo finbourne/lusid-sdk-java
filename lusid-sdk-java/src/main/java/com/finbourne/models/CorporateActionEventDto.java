@@ -61,6 +61,12 @@ public class CorporateActionEventDto {
     private DateTime recordDate;
 
     /**
+     * The paymentDate property.
+     */
+    @JsonProperty(value = "paymentDate")
+    private DateTime paymentDate;
+
+    /**
      * The transitions property.
      */
     @JsonProperty(value = "transitions")
@@ -163,6 +169,26 @@ public class CorporateActionEventDto {
      */
     public CorporateActionEventDto withRecordDate(DateTime recordDate) {
         this.recordDate = recordDate;
+        return this;
+    }
+
+    /**
+     * Get the paymentDate value.
+     *
+     * @return the paymentDate value
+     */
+    public DateTime paymentDate() {
+        return this.paymentDate;
+    }
+
+    /**
+     * Set the paymentDate value.
+     *
+     * @param paymentDate the paymentDate value to set
+     * @return the CorporateActionEventDto object itself.
+     */
+    public CorporateActionEventDto withPaymentDate(DateTime paymentDate) {
+        this.paymentDate = paymentDate;
         return this;
     }
 

@@ -36,10 +36,10 @@ public class ErrorResponse {
     private Integer status;
 
     /**
-     * Possible values include: 'Unknown', 'PersonalisationNotFound',
-     * 'NonRecursivePersonalisation', 'VersionNotFound', 'SecurityNotFound',
-     * 'PropertyNotFound', 'PortfolioRecursionDepth', 'GroupNotFound',
-     * 'PortfolioNotFound', 'PropertySchemaNotFound',
+     * Possible values include: 'PersonalisationNotFound',
+     * 'NonRecursivePersonalisation', 'VersionNotFound',
+     * 'SecurityByCodeNotFound', 'PropertyNotFound', 'PortfolioRecursionDepth',
+     * 'GroupNotFound', 'PortfolioNotFound', 'PropertySchemaNotFound',
      * 'PortfolioWithIdAlreadyExists', 'OrphanedPortfolio',
      * 'MissingBaseClaims', 'PropertyNotDefined', 'CannotDeleteSystemProperty',
      * 'CannotModifyImmutablePropertyField', 'PropertyAlreadyExists',
@@ -61,16 +61,16 @@ public class ErrorResponse {
      * 'EntityAlreadyExistsInGroup', 'EntityWithIdAlreadyExists',
      * 'PortfolioDetailsDoNotExist', 'PortfolioWithNameAlreadyExists',
      * 'InvalidTrades', 'ReferencePortfolioNotFound', 'DuplicateIdFailure',
-     * 'SecurityByCodeNotFound', 'CommandRetrievalFailure',
-     * 'DataFilterApplicationFailure', 'SearchFailed',
-     * 'MovementsEngineConfigurationKeyFailure', 'FxRateSourceNotFound',
-     * 'AccrualSourceNotFound', 'EntitlementsFailure', 'InvalidIdentityToken',
-     * 'InvalidRequestHeaders', 'PriceNotFound', 'ServerConfigurationError',
+     * 'CommandRetrievalFailure', 'DataFilterApplicationFailure',
+     * 'SearchFailed', 'MovementsEngineConfigurationKeyFailure',
+     * 'FxRateSourceNotFound', 'AccrualSourceNotFound', 'EntitlementsFailure',
+     * 'InvalidIdentityToken', 'InvalidRequestHeaders', 'PriceNotFound',
      * 'InvalidUnitForDataType', 'InvalidTypeForDataType',
      * 'InvalidValueForDataType', 'UnitNotDefinedForDataType',
      * 'UnitsNotSupportedOnDataType', 'CannotSpecifyUnitsOnDataType',
      * 'UnitSchemaInconsistentWithDataType', 'UnitDefinitionNotSpecified',
-     * 'DuplicateUnitDefinitionsSpecified', 'InvalidUnitsDefinition'.
+     * 'DuplicateUnitDefinitionsSpecified', 'InvalidUnitsDefinition',
+     * 'ServerConfigurationError', 'Unknown', 'SecurityNotFound'.
      */
     @JsonProperty(value = "code", access = JsonProperty.Access.WRITE_ONLY)
     private String code;
@@ -109,7 +109,7 @@ public class ErrorResponse {
     }
 
     /**
-     * Get possible values include: 'Unknown', 'PersonalisationNotFound', 'NonRecursivePersonalisation', 'VersionNotFound', 'SecurityNotFound', 'PropertyNotFound', 'PortfolioRecursionDepth', 'GroupNotFound', 'PortfolioNotFound', 'PropertySchemaNotFound', 'PortfolioWithIdAlreadyExists', 'OrphanedPortfolio', 'MissingBaseClaims', 'PropertyNotDefined', 'CannotDeleteSystemProperty', 'CannotModifyImmutablePropertyField', 'PropertyAlreadyExists', 'InvalidPropertyLifeTime', 'CannotModifyDefaultPropertyFormat', 'GroupAlreadyExists', 'NoSuchPropertyDataFormat', 'ValidationError', 'LoopDetectedInGroupHierarchy', 'SubGroupAlreadyExists', 'PriceSourceNotFound', 'AnalyticStoreNotFound', 'AnalyticStoreAlreadyExists', 'ClientSecurityAlreadyExists', 'DuplicateInParameterSet', 'ResultsNotFound', 'OrderFieldNotInResultSet', 'OperationFailed', 'ElasticSearchError', 'InvalidParameterValue', 'CommandProcessingFailure', 'EntityStateConstructionFailure', 'EntityTimelineDoesNotExist', 'EventPublishFailure', 'InvalidRequestFailure', 'EventPublishUnknown', 'EventQueryFailure', 'BlobDidNotExistFailure', 'SubSystemRequestFailure', 'SubSystemConfigurationFailure', 'FailedToDelete', 'UpsertClientSecurityFailure', 'IllegalAsAtInterval', 'IllegalBitemporalQuery', 'InvalidAlternateId', 'CannotAddSourcePortfolioPropertyExplicitly', 'EntityAlreadyExistsInGroup', 'EntityWithIdAlreadyExists', 'PortfolioDetailsDoNotExist', 'PortfolioWithNameAlreadyExists', 'InvalidTrades', 'ReferencePortfolioNotFound', 'DuplicateIdFailure', 'SecurityByCodeNotFound', 'CommandRetrievalFailure', 'DataFilterApplicationFailure', 'SearchFailed', 'MovementsEngineConfigurationKeyFailure', 'FxRateSourceNotFound', 'AccrualSourceNotFound', 'EntitlementsFailure', 'InvalidIdentityToken', 'InvalidRequestHeaders', 'PriceNotFound', 'ServerConfigurationError', 'InvalidUnitForDataType', 'InvalidTypeForDataType', 'InvalidValueForDataType', 'UnitNotDefinedForDataType', 'UnitsNotSupportedOnDataType', 'CannotSpecifyUnitsOnDataType', 'UnitSchemaInconsistentWithDataType', 'UnitDefinitionNotSpecified', 'DuplicateUnitDefinitionsSpecified', 'InvalidUnitsDefinition'.
+     * Get possible values include: 'PersonalisationNotFound', 'NonRecursivePersonalisation', 'VersionNotFound', 'SecurityByCodeNotFound', 'PropertyNotFound', 'PortfolioRecursionDepth', 'GroupNotFound', 'PortfolioNotFound', 'PropertySchemaNotFound', 'PortfolioWithIdAlreadyExists', 'OrphanedPortfolio', 'MissingBaseClaims', 'PropertyNotDefined', 'CannotDeleteSystemProperty', 'CannotModifyImmutablePropertyField', 'PropertyAlreadyExists', 'InvalidPropertyLifeTime', 'CannotModifyDefaultPropertyFormat', 'GroupAlreadyExists', 'NoSuchPropertyDataFormat', 'ValidationError', 'LoopDetectedInGroupHierarchy', 'SubGroupAlreadyExists', 'PriceSourceNotFound', 'AnalyticStoreNotFound', 'AnalyticStoreAlreadyExists', 'ClientSecurityAlreadyExists', 'DuplicateInParameterSet', 'ResultsNotFound', 'OrderFieldNotInResultSet', 'OperationFailed', 'ElasticSearchError', 'InvalidParameterValue', 'CommandProcessingFailure', 'EntityStateConstructionFailure', 'EntityTimelineDoesNotExist', 'EventPublishFailure', 'InvalidRequestFailure', 'EventPublishUnknown', 'EventQueryFailure', 'BlobDidNotExistFailure', 'SubSystemRequestFailure', 'SubSystemConfigurationFailure', 'FailedToDelete', 'UpsertClientSecurityFailure', 'IllegalAsAtInterval', 'IllegalBitemporalQuery', 'InvalidAlternateId', 'CannotAddSourcePortfolioPropertyExplicitly', 'EntityAlreadyExistsInGroup', 'EntityWithIdAlreadyExists', 'PortfolioDetailsDoNotExist', 'PortfolioWithNameAlreadyExists', 'InvalidTrades', 'ReferencePortfolioNotFound', 'DuplicateIdFailure', 'CommandRetrievalFailure', 'DataFilterApplicationFailure', 'SearchFailed', 'MovementsEngineConfigurationKeyFailure', 'FxRateSourceNotFound', 'AccrualSourceNotFound', 'EntitlementsFailure', 'InvalidIdentityToken', 'InvalidRequestHeaders', 'PriceNotFound', 'InvalidUnitForDataType', 'InvalidTypeForDataType', 'InvalidValueForDataType', 'UnitNotDefinedForDataType', 'UnitsNotSupportedOnDataType', 'CannotSpecifyUnitsOnDataType', 'UnitSchemaInconsistentWithDataType', 'UnitDefinitionNotSpecified', 'DuplicateUnitDefinitionsSpecified', 'InvalidUnitsDefinition', 'ServerConfigurationError', 'Unknown', 'SecurityNotFound'.
      *
      * @return the code value
      */

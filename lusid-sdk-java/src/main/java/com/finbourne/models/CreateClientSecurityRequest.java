@@ -48,12 +48,6 @@ public class CreateClientSecurityRequest {
     private List<PropertyDto> properties;
 
     /**
-     * The aliases property.
-     */
-    @JsonProperty(value = "aliases")
-    private List<KeyValuePairCodeTypeString> aliases;
-
-    /**
      * The lookThroughPortfolioId property.
      */
     @JsonProperty(value = "lookThroughPortfolioId")
@@ -123,26 +117,6 @@ public class CreateClientSecurityRequest {
      */
     public CreateClientSecurityRequest withProperties(List<PropertyDto> properties) {
         this.properties = properties;
-        return this;
-    }
-
-    /**
-     * Get the aliases value.
-     *
-     * @return the aliases value
-     */
-    public List<KeyValuePairCodeTypeString> aliases() {
-        return this.aliases;
-    }
-
-    /**
-     * Set the aliases value.
-     *
-     * @param aliases the aliases value to set
-     * @return the CreateClientSecurityRequest object itself.
-     */
-    public CreateClientSecurityRequest withAliases(List<KeyValuePairCodeTypeString> aliases) {
-        this.aliases = aliases;
         return this;
     }
 
