@@ -29,8 +29,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class IUnitDefinitionDto {
     /**
-     * Possible values include: 'NoUnits', 'Basic', 'Iso4217Currency',
-     * 'TimeSpan'.
+     * Possible values include: 'NoUnits', 'Basic', 'Iso4217Currency'.
      */
     @JsonProperty(value = "schema", access = JsonProperty.Access.WRITE_ONLY)
     private String schema;
@@ -54,7 +53,7 @@ public class IUnitDefinitionDto {
     private String description;
 
     /**
-     * Get possible values include: 'NoUnits', 'Basic', 'Iso4217Currency', 'TimeSpan'.
+     * Get possible values include: 'NoUnits', 'Basic', 'Iso4217Currency'.
      *
      * @return the schema value
      */

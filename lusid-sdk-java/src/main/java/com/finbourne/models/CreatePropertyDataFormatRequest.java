@@ -81,8 +81,7 @@ public class CreatePropertyDataFormatRequest {
     private List<Object> acceptableValues;
 
     /**
-     * Possible values include: 'NoUnits', 'Basic', 'Iso4217Currency',
-     * 'TimeSpan'.
+     * Possible values include: 'NoUnits', 'Basic', 'Iso4217Currency'.
      */
     @JsonProperty(value = "unitSchema", access = JsonProperty.Access.WRITE_ONLY)
     private String unitSchema;
@@ -254,7 +253,7 @@ public class CreatePropertyDataFormatRequest {
     }
 
     /**
-     * Get possible values include: 'NoUnits', 'Basic', 'Iso4217Currency', 'TimeSpan'.
+     * Get possible values include: 'NoUnits', 'Basic', 'Iso4217Currency'.
      *
      * @return the unitSchema value
      */

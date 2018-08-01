@@ -87,8 +87,7 @@ public class PropertyDefinitionDto {
     private String type;
 
     /**
-     * Possible values include: 'NoUnits', 'Basic', 'Iso4217Currency',
-     * 'TimeSpan'.
+     * Possible values include: 'NoUnits', 'Basic', 'Iso4217Currency'.
      */
     @JsonProperty(value = "unitSchema")
     private String unitSchema;
@@ -280,7 +279,7 @@ public class PropertyDefinitionDto {
     }
 
     /**
-     * Get possible values include: 'NoUnits', 'Basic', 'Iso4217Currency', 'TimeSpan'.
+     * Get possible values include: 'NoUnits', 'Basic', 'Iso4217Currency'.
      *
      * @return the unitSchema value
      */
@@ -289,7 +288,7 @@ public class PropertyDefinitionDto {
     }
 
     /**
-     * Set possible values include: 'NoUnits', 'Basic', 'Iso4217Currency', 'TimeSpan'.
+     * Set possible values include: 'NoUnits', 'Basic', 'Iso4217Currency'.
      *
      * @param unitSchema the unitSchema value to set
      * @return the PropertyDefinitionDto object itself.

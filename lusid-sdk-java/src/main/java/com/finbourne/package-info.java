@@ -242,6 +242,7 @@
  | <a name="207">207</a>|UnitDefinitionNotSpecified|  |
  | <a name="208">208</a>|DuplicateUnitDefinitionsSpecified|  |
  | <a name="209">209</a>|InvalidUnitsDefinition|  |
+ | <a name="210">210</a>|InvalidSecurityIdentifierUnit|  |
  | <a name="-10">-10</a>|ServerConfigurationError|  |
  | <a name="-1">-1</a>|Unknown error|  |.
  */
