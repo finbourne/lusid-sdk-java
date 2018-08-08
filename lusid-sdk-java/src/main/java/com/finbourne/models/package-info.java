@@ -232,6 +232,8 @@
  | <a name="187">187</a>|InvalidIdentityToken|  |
  | <a name="188">188</a>|InvalidRequestHeaders|  |
  | <a name="189">189</a>|PriceNotFound|  |
+ | <a name="190">190</a>|InvalidSubHoldingKeysProvided|  |
+ | <a name="191">191</a>|DuplicateSubHoldingKeysProvided|  |
  | <a name="200">200</a>|InvalidUnitForDataType|  |
  | <a name="201">201</a>|InvalidTypeForDataType|  |
  | <a name="202">202</a>|InvalidValueForDataType|  |
