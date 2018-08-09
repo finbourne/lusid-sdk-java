@@ -2,11 +2,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.finbourne.LUSIDAPI;
 import com.finbourne.implementation.LUSIDAPIImpl;
 import com.finbourne.models.*;
-import com.microsoft.rest.RestClient;
-import com.microsoft.rest.ServiceResponseBuilder;
-import com.microsoft.rest.credentials.TokenCredentials;
-import com.microsoft.rest.serializer.JacksonAdapter;
-import okhttp3.*;
+import okhttp3.OkHttpClient;
+import okhttp3.Protocol;
+import okhttp3.Request;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -23,20 +21,21 @@ import org.junit.jupiter.api.TestInstance.Lifecycle;
 import retrofit2.Retrofit;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestInstance(Lifecycle.PER_CLASS)
 public class LusidApiTests {
 
-    private LUSIDAPI    client;
+    private LUSIDAPI        client;
+    private List<String>    securityIds;
 
     public String getEnvironmentOverride(String env, String defaultValue)
     {
@@ -107,23 +106,33 @@ public class LusidApiTests {
                     });
             this.client = new LUSIDAPIImpl(apiUrl, clientBuilder, restBuilder);
         }
+
+        List<String> ids = Arrays.asList("BBG000C6K6G9", "BBG000C04D57", "BBG000FV67Q4", "BBG000BF0KW3", "BBG000BF4KL1");
+        TryLookupSecuritiesFromCodesDto idsResult = this.client.lookupSecuritiesFromCodesBulk("Figi", ids, null, null);
+
+        this.securityIds = idsResult.values().stream()
+                .flatMap(r -> r.values()
+                        .stream()
+                        .map(s -> s.uid())
+                )
+                .collect(Collectors.toList());
     }
 
-    private <T> T assertResponseIsNotError(Class<T> clazz, Object response) {
-
-        if (response instanceof ErrorResponse) {
-            ErrorResponse error = (ErrorResponse)response;
-            fail(error.detailedMessage());
-            return null;
-        }
-        else if (response.getClass().isAssignableFrom(clazz)) {
-            return (T)response;
-        }
-        else {
-            fail("unknown response: " + response.getClass().getName());
-            return null;
-        }
-    }
+//    private <T> T assertResponseIsNotError(Class<T> clazz, Object response) {
+//
+//        if (response instanceof ErrorResponse) {
+//            ErrorResponse error = (ErrorResponse)response;
+//            fail(error.detailedMessage());
+//            return null;
+//        }
+//        else if (response.getClass().isAssignableFrom(clazz)) {
+//            return (T)response;
+//        }
+//        else {
+//            fail("unknown response: " + response.getClass().getName());
+//            return null;
+//        }
+//    }
 
     @Test
     public void create_portfolio() {
@@ -136,8 +145,7 @@ public class LusidApiTests {
                 .withCode(String.format("Id-%s", uuid))
                 .withBaseCurrency("GBP");
 
-        final Object  result = this.client.createPortfolio(scope, request);
-        final PortfolioDto  portfolio = assertResponseIsNotError(PortfolioDto.class, result);
+        final PortfolioDto  portfolio = this.client.createPortfolio(scope, request);
 
         assertEquals(request.code(), portfolio.id().code());
     }
@@ -161,8 +169,7 @@ public class LusidApiTests {
                 .withDataFormatId(new ResourceId().withScope("default").withCode("string"));;
 
         //  create property definition
-        final Object    propertyResult = this.client.createPropertyDefinition(propertyDefinition);
-        final PropertyDefinitionDto propertyResponse = assertResponseIsNotError(PropertyDefinitionDto.class, propertyResult);
+        final PropertyDefinitionDto    propertyResponse = this.client.createPropertyDefinition(propertyDefinition);
 
         assertEquals(propertyKey, propertyResponse.key());
 
@@ -175,8 +182,7 @@ public class LusidApiTests {
                 .withCreated(effectiveDate);
 
         //  create portfolio
-        final Object  result = this.client.createPortfolio(scope, request);
-        final PortfolioDto    portfolio = assertResponseIsNotError(PortfolioDto.class, result);
+        final PortfolioDto  portfolio = this.client.createPortfolio(scope, request);
 
         assertEquals(request.code(), portfolio.id().code());
 
@@ -188,8 +194,7 @@ public class LusidApiTests {
         final List<CreatePropertyRequest> properties = new ArrayList<>(Arrays.asList(property));
 
         //  add the property
-        final Object  upsertResult = this.client.upsertPortfolioProperties(scope, portfolio.id().code(), properties, effectiveDate);
-        final PortfolioPropertiesDto  propertiesResult = assertResponseIsNotError(PortfolioPropertiesDto.class, upsertResult);
+        final PortfolioPropertiesDto  propertiesResult = this.client.upsertPortfolioProperties(scope, portfolio.id().code(), properties, effectiveDate);
 
         assertEquals(request.code(), propertiesResult.originPortfolioId().code());
         assertEquals(propertyValue, propertiesResult.properties().get(0).value());
@@ -217,8 +222,7 @@ public class LusidApiTests {
                 .withDataFormatId(new ResourceId().withScope("default").withCode("string"));
 
         //  create property definition
-        final Object propertyResult = this.client.createPropertyDefinition(propertyDefinition);
-        final PropertyDefinitionDto propertyResponse = assertResponseIsNotError(PropertyDefinitionDto.class, propertyResult);
+        final PropertyDefinitionDto propertyResponse = this.client.createPropertyDefinition(propertyDefinition);
 
         assertEquals(propertyResponse.key(), propertyKey);
 
@@ -230,8 +234,7 @@ public class LusidApiTests {
                 .withCreated(effectiveDate);
 
         //  create portfolio
-        final Object result = this.client.createPortfolio(scope, request);
-        final PortfolioDto portfolio = assertResponseIsNotError(PortfolioDto.class, result);
+        final PortfolioDto portfolio = this.client.createPortfolio(scope, request);
 
         assertEquals(portfolio.id().code(), originalPortfolioId);
 
@@ -247,7 +250,7 @@ public class LusidApiTests {
         UpsertPortfolioTradeRequest trade = new UpsertPortfolioTradeRequest()
                 .withTradeId(UUID.randomUUID().toString())
                 .withType("Buy")
-                .withSecurityUid("FIGI_BBG001SMDKD5")
+                .withSecurityUid(this.securityIds.get(0))
                 .withSettlementCurrency("GBP")
                 .withTradeDate(effectiveDate)
                 .withSettlementDate(effectiveDate)
@@ -258,12 +261,10 @@ public class LusidApiTests {
                 .withProperties(new ArrayList<>(Arrays.asList(property)));
 
         //  add the trade
-        final Object upsertResult = this.client.upsertTrades(scope, portfolioId, new ArrayList<>(Arrays.asList(trade)));
-        final UpsertPortfolioTradesDto tradesResult = assertResponseIsNotError(UpsertPortfolioTradesDto.class, upsertResult);
+        this.client.upsertTrades(scope, portfolioId, new ArrayList<>(Arrays.asList(trade)));
 
         //  get the trade
-        final Object getTradesResult = this.client.getTrades(scope, portfolioId);
-        final VersionedResourceListTradeDto trades = assertResponseIsNotError(VersionedResourceListTradeDto.class, getTradesResult);
+        final VersionedResourceListTradeDto trades = this.client.getTrades(scope, portfolioId);
 
         assertEquals(1, trades.values().size());
         assertEquals(trade.tradeId(), trades.values().get(0).tradeId());
@@ -283,8 +284,7 @@ public class LusidApiTests {
                 .withBaseCurrency("GBP")
                 .withCreated(effectiveDate);
 
-        final Object  result = client.createPortfolio(scope, request);
-        final PortfolioDto  portfolio = assertResponseIsNotError(PortfolioDto.class, result);
+        final PortfolioDto  portfolio = client.createPortfolio(scope, request);
 
         final String portfolioId = portfolio.id().code();
         assertNotNull(portfolioId);
@@ -332,9 +332,9 @@ public class LusidApiTests {
                         String.format("%s\t%s\t%f\t%f\t%f", t.securityUid(), t.tradeDate(), t.units(), t.tradePrice(), t.totalConsideration())));
 
         final List<TradeSpec>   tradeSpecs = new ArrayList<>(Arrays.asList(
-                new TradeSpec("FIGI_BBG001S7Z574", 101.0, new DateTime(2018, 1, 1, 0, 0)),
-                new TradeSpec("FIGI_BBG001SRKHW2", 102.0, new DateTime(2018, 1, 2, 0, 0)),
-                new TradeSpec("FIGI_BBG000005547", 103.0, new DateTime(2018, 1, 3, 0, 0))
+                new TradeSpec(this.securityIds.get(0), 101.0, new DateTime(2018, 1, 1, 0, 0)),
+                new TradeSpec(this.securityIds.get(1), 102.0, new DateTime(2018, 1, 2, 0, 0)),
+                new TradeSpec(this.securityIds.get(2), 103.0, new DateTime(2018, 1, 3, 0, 0))
                 ));
 
         //  build list of trades
@@ -344,8 +344,7 @@ public class LusidApiTests {
                 .toArray(UpsertPortfolioTradeRequest[]::new);
 
         //  add initial batch of trades
-        final Object  addTradesResult = this.client.upsertTrades(scope, portfolioId, Arrays.asList(newTrades));
-        UpsertPortfolioTradesDto initialResult = assertResponseIsNotError(UpsertPortfolioTradesDto.class, addTradesResult);
+        final UpsertPortfolioTradesDto  initialResult = this.client.upsertTrades(scope, portfolioId, Arrays.asList(newTrades));
 
         /*
 
@@ -360,46 +359,40 @@ public class LusidApiTests {
         Thread.sleep(500);
 
         //  add another trade for 2018-1-8
-        TradeSpec   newTrade = new TradeSpec("FIGI_BBG001S61MW8", 104.0, new DateTime(2018, 1, 8, 0, 0));
-        Object laterTradeResult = this.client.upsertTrades(scope, portfolioId, Arrays.asList(buildTrade.apply(newTrade)));
-        UpsertPortfolioTradesDto addedResult = assertResponseIsNotError(UpsertPortfolioTradesDto.class, laterTradeResult);
+        TradeSpec   newTrade = new TradeSpec(this.securityIds.get(3), 104.0, new DateTime(2018, 1, 8, 0, 0));
+        UpsertPortfolioTradesDto addedResult = this.client.upsertTrades(scope, portfolioId, Arrays.asList(buildTrade.apply(newTrade)));
 
         DateTime    asAtBatch2 = addedResult.version().asAtDate().plusMillis(1);
         Thread.sleep(500);
 
         //  add back-dated trade
-        TradeSpec   backDatedTrade = new TradeSpec("FIGI_BBG001S6M3Z4", 105.0, new DateTime(2018, 1, 5, 0, 0));
-        Object backDatedTradeResult = this.client.upsertTrades(scope, portfolioId, Arrays.asList(buildTrade.apply(backDatedTrade)));
-        UpsertPortfolioTradesDto backDatedResult = assertResponseIsNotError(UpsertPortfolioTradesDto.class, backDatedTradeResult);
+        TradeSpec   backDatedTrade = new TradeSpec(this.securityIds.get(4), 105.0, new DateTime(2018, 1, 5, 0, 0));
+        UpsertPortfolioTradesDto backDatedResult = this.client.upsertTrades(scope, portfolioId, Arrays.asList(buildTrade.apply(backDatedTrade)));
 
         DateTime    asAtBatch3 = backDatedResult.version().asAtDate().plusMillis(1);
         Thread.sleep(500);
 
         //  list trades
-        Object allTrades = this.client.getTrades(scope, portfolioId, null, null, asAtBatch1, null, 0, Integer.MAX_VALUE, null, null);
-        VersionedResourceListTradeDto trades = assertResponseIsNotError(VersionedResourceListTradeDto.class, allTrades);
+        VersionedResourceListTradeDto trades = this.client.getTrades(scope, portfolioId, null, null, asAtBatch1, null, 0, Integer.MAX_VALUE, null, null);
 
         assertEquals(3, trades.values().size(), String.format("asAt %s", asAtBatch1));
         System.out.println("trades at " + asAtBatch1);
         printTrades.accept(trades.values());
 
-        allTrades = this.client.getTrades(scope, portfolioId, null, null, asAtBatch2, null, 0, Integer.MAX_VALUE, null, null);
-        trades = assertResponseIsNotError(VersionedResourceListTradeDto.class, allTrades);
+        trades = this.client.getTrades(scope, portfolioId, null, null, asAtBatch2, null, 0, Integer.MAX_VALUE, null, null);
 
         assertEquals(4, trades.values().size(), String.format("asAt %s", asAtBatch2));
         System.out.println("trades at " + asAtBatch2);
         printTrades.accept(trades.values());
 
-        allTrades = this.client.getTrades(scope, portfolioId, null, null, asAtBatch3, null, 0, Integer.MAX_VALUE, null, null);
-        trades = assertResponseIsNotError(VersionedResourceListTradeDto.class, allTrades);
+        trades = this.client.getTrades(scope, portfolioId, null, null, asAtBatch3, null, 0, Integer.MAX_VALUE, null, null);
 
         assertEquals(5, trades.values().size(), String.format("asAt %s", asAtBatch3));
         System.out.println("trades at " + asAtBatch3);
         printTrades.accept(trades.values());
 
         //  latest trades
-        allTrades = this.client.getTrades(scope, portfolioId, null, null, null, null, 0, Integer.MAX_VALUE, null, null);
-        trades = assertResponseIsNotError(VersionedResourceListTradeDto.class, allTrades);
+        trades = this.client.getTrades(scope, portfolioId, null, null, null, null, 0, Integer.MAX_VALUE, null, null);
 
         assertEquals(5, trades.values().size());
         System.out.println("trades at " + DateTime.now());
@@ -411,9 +404,8 @@ public class LusidApiTests {
     {
         final List<String> isins = new ArrayList<>(Arrays.asList("IT0004966401", "FR0010192997"));
 
-        //  lookup securties
-        final Object lookupResult = this.client.lookupSecuritiesFromCodes("Isin", isins, null, null);
-        final TryLookupSecuritiesFromCodesDto fbnIds = assertResponseIsNotError(TryLookupSecuritiesFromCodesDto.class, lookupResult);
+        //  lookup securities
+        final TryLookupSecuritiesFromCodesDto fbnIds = this.client.lookupSecuritiesFromCodesBulk("Isin", isins, null, null);
 
         assertTrue(fbnIds.values().size() > 0);
     }
