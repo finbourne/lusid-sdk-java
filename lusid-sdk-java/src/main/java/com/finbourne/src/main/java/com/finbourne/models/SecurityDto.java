@@ -67,6 +67,12 @@ public class SecurityDto {
     private List<PropertyDto> properties;
 
     /**
+     * The marketIdentifierCode property.
+     */
+    @JsonProperty(value = "marketIdentifierCode")
+    private String marketIdentifierCode;
+
+    /**
      * The _links property.
      */
     @JsonProperty(value = "_links")
@@ -189,6 +195,26 @@ public class SecurityDto {
      */
     public SecurityDto withProperties(List<PropertyDto> properties) {
         this.properties = properties;
+        return this;
+    }
+
+    /**
+     * Get the marketIdentifierCode value.
+     *
+     * @return the marketIdentifierCode value
+     */
+    public String marketIdentifierCode() {
+        return this.marketIdentifierCode;
+    }
+
+    /**
+     * Set the marketIdentifierCode value.
+     *
+     * @param marketIdentifierCode the marketIdentifierCode value to set
+     * @return the SecurityDto object itself.
+     */
+    public SecurityDto withMarketIdentifierCode(String marketIdentifierCode) {
+        this.marketIdentifierCode = marketIdentifierCode;
         return this;
     }
 
