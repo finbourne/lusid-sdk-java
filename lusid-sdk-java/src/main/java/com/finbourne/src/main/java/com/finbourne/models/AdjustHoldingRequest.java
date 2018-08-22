@@ -44,6 +44,12 @@ public class AdjustHoldingRequest {
     private List<CreatePerpetualPropertyRequest> subHoldingKeys;
 
     /**
+     * Arbitrary properties to store with the holding.
+     */
+    @JsonProperty(value = "properties")
+    private List<CreatePerpetualPropertyRequest> properties;
+
+    /**
      * 1 or more quantity amounts.
      */
     @JsonProperty(value = "taxLots", required = true)
@@ -86,6 +92,26 @@ public class AdjustHoldingRequest {
      */
     public AdjustHoldingRequest withSubHoldingKeys(List<CreatePerpetualPropertyRequest> subHoldingKeys) {
         this.subHoldingKeys = subHoldingKeys;
+        return this;
+    }
+
+    /**
+     * Get arbitrary properties to store with the holding.
+     *
+     * @return the properties value
+     */
+    public List<CreatePerpetualPropertyRequest> properties() {
+        return this.properties;
+    }
+
+    /**
+     * Set arbitrary properties to store with the holding.
+     *
+     * @param properties the properties value to set
+     * @return the AdjustHoldingRequest object itself.
+     */
+    public AdjustHoldingRequest withProperties(List<CreatePerpetualPropertyRequest> properties) {
+        this.properties = properties;
         return this;
     }
 
