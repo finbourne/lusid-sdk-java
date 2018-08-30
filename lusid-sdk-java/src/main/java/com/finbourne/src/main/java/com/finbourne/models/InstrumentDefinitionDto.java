@@ -32,7 +32,7 @@ public class InstrumentDefinitionDto {
     /**
      * The content property.
      */
-    @JsonProperty(value = "content", access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "content")
     private String content;
 
     /**
@@ -42,6 +42,17 @@ public class InstrumentDefinitionDto {
      */
     public String content() {
         return this.content;
+    }
+
+    /**
+     * Set the content value.
+     *
+     * @param content the content value to set
+     * @return the InstrumentDefinitionDto object itself.
+     */
+    public InstrumentDefinitionDto withContent(String content) {
+        this.content = content;
+        return this;
     }
 
 }
