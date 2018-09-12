@@ -264,7 +264,7 @@ public class LusidApiTests {
         this.client.upsertTrades(scope, portfolioId, new ArrayList<>(Arrays.asList(trade)));
 
         //  get the trade
-        final VersionedResourceListTradeDto trades = this.client.getTrades(scope, portfolioId);
+        final VersionedResourceListOfTradeDto trades = this.client.getTrades(scope, portfolioId);
 
         assertEquals(1, trades.values().size());
         assertEquals(trade.tradeId(), trades.values().get(0).tradeId());
@@ -373,7 +373,7 @@ public class LusidApiTests {
         Thread.sleep(500);
 
         //  list trades
-        VersionedResourceListTradeDto trades = this.client.getTrades(scope, portfolioId, null, null, asAtBatch1, null, 0, Integer.MAX_VALUE, null, null);
+        VersionedResourceListOfTradeDto trades = this.client.getTrades(scope, portfolioId, null, null, asAtBatch1, null, 0, Integer.MAX_VALUE, null, null);
 
         assertEquals(3, trades.values().size(), String.format("asAt %s", asAtBatch1));
         System.out.println("trades at " + asAtBatch1);

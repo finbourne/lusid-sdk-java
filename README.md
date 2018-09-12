@@ -35,7 +35,7 @@ The following are the settings for this using this API with AutoRest.
 ``` yaml
 input-file: lusid.json
 add-credentials: true
-output-folder: ./lusid-sdk-java/src/main/java/com/finbourne
+output-folder: ./lusid-sdk-java
 namespace: com.finbourne
 license-header: "Copyright © 2018 FINBOURNE TECHNOLOGY LTD
 
