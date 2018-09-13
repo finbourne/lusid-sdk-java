@@ -254,9 +254,9 @@ public class LusidApiTests {
                 .withSettlementCurrency("GBP")
                 .withTradeDate(effectiveDate)
                 .withSettlementDate(effectiveDate)
-                .withUnits(100)
+                .withUnits(100.0)
                 .withTradePrice(12.3)
-                .withTotalConsideration(1230)
+                .withTotalConsideration(1230.0)
                 .withSource("Client")
                 .withProperties(new ArrayList<>(Arrays.asList(property)));
 
