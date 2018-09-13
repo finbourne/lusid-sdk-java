@@ -50,6 +50,8 @@ import com.finbourne.models.DeletedEntityResponse;
 import com.finbourne.models.ErrorResponseException;
 import com.finbourne.models.ExpandedGroupDto;
 import com.finbourne.models.GroupDto;
+import com.finbourne.models.HoldingsAdjustmentDto;
+import com.finbourne.models.HoldingsAdjustmentHeaderDto;
 import com.finbourne.models.IUnitDefinitionDto;
 import com.finbourne.models.ListAggregationResponse;
 import com.finbourne.models.LoginResponse;
@@ -424,6 +426,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI adjustHoldings" })
         @PATCH("v1/api/portfolios/{scope}/{code}/holdings/{effectiveAt}")
         Observable<Response<ResponseBody>> adjustHoldings(@Path("scope") String scope, @Path("code") String code, @Path("effectiveAt") DateTime effectiveAt, @Body List<AdjustHoldingRequest> holdingAdjustments);
+
+        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI listHoldingsAdjustments" })
+        @GET("v1/api/portfolios/{scope}/{code}/holdingsadjustments")
+        Observable<Response<ResponseBody>> listHoldingsAdjustments(@Path("scope") String scope, @Path("code") String code, @Query("fromEffectiveAt") DateTime fromEffectiveAt, @Query("toEffectiveAt") DateTime toEffectiveAt, @Query("asAtTime") DateTime asAtTime);
+
+        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getHoldingsAdjustment" })
+        @GET("v1/api/portfolios/{scope}/{code}/holdingsadjustments/{effectiveAt}")
+        Observable<Response<ResponseBody>> getHoldingsAdjustment(@Path("scope") String scope, @Path("code") String code, @Path("effectiveAt") DateTime effectiveAt, @Query("asAtTime") DateTime asAtTime);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getProperties" })
         @GET("v1/api/portfolios/{scope}/{code}/properties")
@@ -8489,6 +8499,372 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Gets holdings adjustments in an interval of effective time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
+     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the HoldingsAdjustmentHeaderDto object if successful.
+     */
+    public HoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt) {
+        return listHoldingsAdjustmentsWithServiceResponseAsync(scope, code, fromEffectiveAt, toEffectiveAt).toBlocking().single().body();
+    }
+
+    /**
+     * Gets holdings adjustments in an interval of effective time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
+     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, final ServiceCallback<HoldingsAdjustmentHeaderDto> serviceCallback) {
+        return ServiceFuture.fromResponse(listHoldingsAdjustmentsWithServiceResponseAsync(scope, code, fromEffectiveAt, toEffectiveAt), serviceCallback);
+    }
+
+    /**
+     * Gets holdings adjustments in an interval of effective time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
+     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     */
+    public Observable<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt) {
+        return listHoldingsAdjustmentsWithServiceResponseAsync(scope, code, fromEffectiveAt, toEffectiveAt).map(new Func1<ServiceResponse<HoldingsAdjustmentHeaderDto>, HoldingsAdjustmentHeaderDto>() {
+            @Override
+            public HoldingsAdjustmentHeaderDto call(ServiceResponse<HoldingsAdjustmentHeaderDto> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Gets holdings adjustments in an interval of effective time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
+     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     */
+    public Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        if (code == null) {
+            throw new IllegalArgumentException("Parameter code is required and cannot be null.");
+        }
+        if (fromEffectiveAt == null) {
+            throw new IllegalArgumentException("Parameter fromEffectiveAt is required and cannot be null.");
+        }
+        if (toEffectiveAt == null) {
+            throw new IllegalArgumentException("Parameter toEffectiveAt is required and cannot be null.");
+        }
+        final DateTime asAtTime = null;
+        return service.listHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>>>() {
+                @Override
+                public Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<HoldingsAdjustmentHeaderDto> clientResponse = listHoldingsAdjustmentsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Gets holdings adjustments in an interval of effective time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
+     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
+     * @param asAtTime The as-at time for which the result is valid.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the HoldingsAdjustmentHeaderDto object if successful.
+     */
+    public HoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime) {
+        return listHoldingsAdjustmentsWithServiceResponseAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime).toBlocking().single().body();
+    }
+
+    /**
+     * Gets holdings adjustments in an interval of effective time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
+     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
+     * @param asAtTime The as-at time for which the result is valid.
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime, final ServiceCallback<HoldingsAdjustmentHeaderDto> serviceCallback) {
+        return ServiceFuture.fromResponse(listHoldingsAdjustmentsWithServiceResponseAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime), serviceCallback);
+    }
+
+    /**
+     * Gets holdings adjustments in an interval of effective time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
+     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
+     * @param asAtTime The as-at time for which the result is valid.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     */
+    public Observable<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime) {
+        return listHoldingsAdjustmentsWithServiceResponseAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime).map(new Func1<ServiceResponse<HoldingsAdjustmentHeaderDto>, HoldingsAdjustmentHeaderDto>() {
+            @Override
+            public HoldingsAdjustmentHeaderDto call(ServiceResponse<HoldingsAdjustmentHeaderDto> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Gets holdings adjustments in an interval of effective time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
+     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
+     * @param asAtTime The as-at time for which the result is valid.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     */
+    public Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        if (code == null) {
+            throw new IllegalArgumentException("Parameter code is required and cannot be null.");
+        }
+        if (fromEffectiveAt == null) {
+            throw new IllegalArgumentException("Parameter fromEffectiveAt is required and cannot be null.");
+        }
+        if (toEffectiveAt == null) {
+            throw new IllegalArgumentException("Parameter toEffectiveAt is required and cannot be null.");
+        }
+        return service.listHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>>>() {
+                @Override
+                public Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<HoldingsAdjustmentHeaderDto> clientResponse = listHoldingsAdjustmentsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<HoldingsAdjustmentHeaderDto, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<HoldingsAdjustmentHeaderDto>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
+     * Get a holdings adjustment for a single portfolio at a specific effective time.
+     If no adjustment exists at this effective time, not found is returned.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective time of the holdings adjustment.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the HoldingsAdjustmentDto object if successful.
+     */
+    public HoldingsAdjustmentDto getHoldingsAdjustment(String scope, String code, DateTime effectiveAt) {
+        return getHoldingsAdjustmentWithServiceResponseAsync(scope, code, effectiveAt).toBlocking().single().body();
+    }
+
+    /**
+     * Get a holdings adjustment for a single portfolio at a specific effective time.
+     If no adjustment exists at this effective time, not found is returned.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective time of the holdings adjustment.
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<HoldingsAdjustmentDto> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<HoldingsAdjustmentDto> serviceCallback) {
+        return ServiceFuture.fromResponse(getHoldingsAdjustmentWithServiceResponseAsync(scope, code, effectiveAt), serviceCallback);
+    }
+
+    /**
+     * Get a holdings adjustment for a single portfolio at a specific effective time.
+     If no adjustment exists at this effective time, not found is returned.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective time of the holdings adjustment.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the HoldingsAdjustmentDto object
+     */
+    public Observable<HoldingsAdjustmentDto> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt) {
+        return getHoldingsAdjustmentWithServiceResponseAsync(scope, code, effectiveAt).map(new Func1<ServiceResponse<HoldingsAdjustmentDto>, HoldingsAdjustmentDto>() {
+            @Override
+            public HoldingsAdjustmentDto call(ServiceResponse<HoldingsAdjustmentDto> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Get a holdings adjustment for a single portfolio at a specific effective time.
+     If no adjustment exists at this effective time, not found is returned.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective time of the holdings adjustment.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the HoldingsAdjustmentDto object
+     */
+    public Observable<ServiceResponse<HoldingsAdjustmentDto>> getHoldingsAdjustmentWithServiceResponseAsync(String scope, String code, DateTime effectiveAt) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        if (code == null) {
+            throw new IllegalArgumentException("Parameter code is required and cannot be null.");
+        }
+        if (effectiveAt == null) {
+            throw new IllegalArgumentException("Parameter effectiveAt is required and cannot be null.");
+        }
+        final DateTime asAtTime = null;
+        return service.getHoldingsAdjustment(scope, code, effectiveAt, asAtTime)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<HoldingsAdjustmentDto>>>() {
+                @Override
+                public Observable<ServiceResponse<HoldingsAdjustmentDto>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<HoldingsAdjustmentDto> clientResponse = getHoldingsAdjustmentDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Get a holdings adjustment for a single portfolio at a specific effective time.
+     If no adjustment exists at this effective time, not found is returned.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective time of the holdings adjustment.
+     * @param asAtTime The as-at time for which the result is valid.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the HoldingsAdjustmentDto object if successful.
+     */
+    public HoldingsAdjustmentDto getHoldingsAdjustment(String scope, String code, DateTime effectiveAt, DateTime asAtTime) {
+        return getHoldingsAdjustmentWithServiceResponseAsync(scope, code, effectiveAt, asAtTime).toBlocking().single().body();
+    }
+
+    /**
+     * Get a holdings adjustment for a single portfolio at a specific effective time.
+     If no adjustment exists at this effective time, not found is returned.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective time of the holdings adjustment.
+     * @param asAtTime The as-at time for which the result is valid.
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<HoldingsAdjustmentDto> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt, DateTime asAtTime, final ServiceCallback<HoldingsAdjustmentDto> serviceCallback) {
+        return ServiceFuture.fromResponse(getHoldingsAdjustmentWithServiceResponseAsync(scope, code, effectiveAt, asAtTime), serviceCallback);
+    }
+
+    /**
+     * Get a holdings adjustment for a single portfolio at a specific effective time.
+     If no adjustment exists at this effective time, not found is returned.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective time of the holdings adjustment.
+     * @param asAtTime The as-at time for which the result is valid.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the HoldingsAdjustmentDto object
+     */
+    public Observable<HoldingsAdjustmentDto> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt, DateTime asAtTime) {
+        return getHoldingsAdjustmentWithServiceResponseAsync(scope, code, effectiveAt, asAtTime).map(new Func1<ServiceResponse<HoldingsAdjustmentDto>, HoldingsAdjustmentDto>() {
+            @Override
+            public HoldingsAdjustmentDto call(ServiceResponse<HoldingsAdjustmentDto> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Get a holdings adjustment for a single portfolio at a specific effective time.
+     If no adjustment exists at this effective time, not found is returned.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective time of the holdings adjustment.
+     * @param asAtTime The as-at time for which the result is valid.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the HoldingsAdjustmentDto object
+     */
+    public Observable<ServiceResponse<HoldingsAdjustmentDto>> getHoldingsAdjustmentWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAtTime) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        if (code == null) {
+            throw new IllegalArgumentException("Parameter code is required and cannot be null.");
+        }
+        if (effectiveAt == null) {
+            throw new IllegalArgumentException("Parameter effectiveAt is required and cannot be null.");
+        }
+        return service.getHoldingsAdjustment(scope, code, effectiveAt, asAtTime)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<HoldingsAdjustmentDto>>>() {
+                @Override
+                public Observable<ServiceResponse<HoldingsAdjustmentDto>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<HoldingsAdjustmentDto> clientResponse = getHoldingsAdjustmentDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<HoldingsAdjustmentDto> getHoldingsAdjustmentDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<HoldingsAdjustmentDto, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<HoldingsAdjustmentDto>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
      * Get properties.
      * Get properties attached to the portfolio.  If the asAt is not specified then
      the latest system time is used.
@@ -14066,7 +14442,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -14079,7 +14455,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -14091,7 +14467,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the SchemaDto object
      */
@@ -14107,7 +14483,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the SchemaDto object
      */
