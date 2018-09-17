@@ -45,38 +45,38 @@ public class TradeDto {
     /**
      * Unique security identifier.
      */
-    @JsonProperty(value = "securityUid", required = true)
+    @JsonProperty(value = "securityUid")
     private String securityUid;
 
     /**
      * Trade date.
      */
-    @JsonProperty(value = "tradeDate", required = true)
+    @JsonProperty(value = "tradeDate")
     private DateTime tradeDate;
 
     /**
      * Settlement date.
      */
-    @JsonProperty(value = "settlementDate", required = true)
+    @JsonProperty(value = "settlementDate")
     private DateTime settlementDate;
 
     /**
      * Quantity of trade in units of the security.
      */
-    @JsonProperty(value = "units", required = true)
-    private double units;
+    @JsonProperty(value = "units")
+    private Double units;
 
     /**
      * Execution price for the trade.
      */
-    @JsonProperty(value = "tradePrice", required = true)
-    private double tradePrice;
+    @JsonProperty(value = "tradePrice")
+    private Double tradePrice;
 
     /**
      * Total value of the trade.
      */
-    @JsonProperty(value = "totalConsideration", required = true)
-    private double totalConsideration;
+    @JsonProperty(value = "totalConsideration")
+    private Double totalConsideration;
 
     /**
      * Rate between trade and settle currency.
@@ -112,7 +112,7 @@ public class TradeDto {
      * Where this trade came from, either Client or System. Possible values
      * include: 'System', 'Client'.
      */
-    @JsonProperty(value = "source", required = true)
+    @JsonProperty(value = "source")
     private String source;
 
     /**
@@ -244,7 +244,7 @@ public class TradeDto {
      *
      * @return the units value
      */
-    public double units() {
+    public Double units() {
         return this.units;
     }
 
@@ -254,7 +254,7 @@ public class TradeDto {
      * @param units the units value to set
      * @return the TradeDto object itself.
      */
-    public TradeDto withUnits(double units) {
+    public TradeDto withUnits(Double units) {
         this.units = units;
         return this;
     }
@@ -264,7 +264,7 @@ public class TradeDto {
      *
      * @return the tradePrice value
      */
-    public double tradePrice() {
+    public Double tradePrice() {
         return this.tradePrice;
     }
 
@@ -274,7 +274,7 @@ public class TradeDto {
      * @param tradePrice the tradePrice value to set
      * @return the TradeDto object itself.
      */
-    public TradeDto withTradePrice(double tradePrice) {
+    public TradeDto withTradePrice(Double tradePrice) {
         this.tradePrice = tradePrice;
         return this;
     }
@@ -284,7 +284,7 @@ public class TradeDto {
      *
      * @return the totalConsideration value
      */
-    public double totalConsideration() {
+    public Double totalConsideration() {
         return this.totalConsideration;
     }
 
@@ -294,7 +294,7 @@ public class TradeDto {
      * @param totalConsideration the totalConsideration value to set
      * @return the TradeDto object itself.
      */
-    public TradeDto withTotalConsideration(double totalConsideration) {
+    public TradeDto withTotalConsideration(Double totalConsideration) {
         this.totalConsideration = totalConsideration;
         return this;
     }

@@ -32,8 +32,8 @@ public class TargetTaxLotDto {
     /**
      * Quantity of holding.
      */
-    @JsonProperty(value = "units", required = true)
-    private double units;
+    @JsonProperty(value = "units")
+    private Double units;
 
     /**
      * Book cost of holding in trade currency.
@@ -70,7 +70,7 @@ public class TargetTaxLotDto {
      *
      * @return the units value
      */
-    public double units() {
+    public Double units() {
         return this.units;
     }
 
@@ -80,7 +80,7 @@ public class TargetTaxLotDto {
      * @param units the units value to set
      * @return the TargetTaxLotDto object itself.
      */
-    public TargetTaxLotDto withUnits(double units) {
+    public TargetTaxLotDto withUnits(Double units) {
         this.units = units;
         return this;
     }

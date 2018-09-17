@@ -32,7 +32,7 @@ public class HoldingDto {
     /**
      * Unique security identifier.
      */
-    @JsonProperty(value = "securityUid", required = true)
+    @JsonProperty(value = "securityUid")
     private String securityUid;
 
     /**
@@ -51,26 +51,26 @@ public class HoldingDto {
     /**
      * Quantity of holding.
      */
-    @JsonProperty(value = "units", required = true)
-    private double units;
+    @JsonProperty(value = "units")
+    private Double units;
 
     /**
      * Settled quantity of holding.
      */
-    @JsonProperty(value = "settledUnits", required = true)
-    private double settledUnits;
+    @JsonProperty(value = "settledUnits")
+    private Double settledUnits;
 
     /**
      * Book cost of holding in trade currency.
      */
-    @JsonProperty(value = "cost", required = true)
-    private double cost;
+    @JsonProperty(value = "cost")
+    private Double cost;
 
     /**
      * Book cost of holding in portfolio currency.
      */
-    @JsonProperty(value = "costPortfolioCcy", required = true)
-    private double costPortfolioCcy;
+    @JsonProperty(value = "costPortfolioCcy")
+    private Double costPortfolioCcy;
 
     /**
      * If this is commitment-type holding, the transaction behind it.
@@ -143,7 +143,7 @@ public class HoldingDto {
      *
      * @return the units value
      */
-    public double units() {
+    public Double units() {
         return this.units;
     }
 
@@ -153,7 +153,7 @@ public class HoldingDto {
      * @param units the units value to set
      * @return the HoldingDto object itself.
      */
-    public HoldingDto withUnits(double units) {
+    public HoldingDto withUnits(Double units) {
         this.units = units;
         return this;
     }
@@ -163,7 +163,7 @@ public class HoldingDto {
      *
      * @return the settledUnits value
      */
-    public double settledUnits() {
+    public Double settledUnits() {
         return this.settledUnits;
     }
 
@@ -173,7 +173,7 @@ public class HoldingDto {
      * @param settledUnits the settledUnits value to set
      * @return the HoldingDto object itself.
      */
-    public HoldingDto withSettledUnits(double settledUnits) {
+    public HoldingDto withSettledUnits(Double settledUnits) {
         this.settledUnits = settledUnits;
         return this;
     }
@@ -183,7 +183,7 @@ public class HoldingDto {
      *
      * @return the cost value
      */
-    public double cost() {
+    public Double cost() {
         return this.cost;
     }
 
@@ -193,7 +193,7 @@ public class HoldingDto {
      * @param cost the cost value to set
      * @return the HoldingDto object itself.
      */
-    public HoldingDto withCost(double cost) {
+    public HoldingDto withCost(Double cost) {
         this.cost = cost;
         return this;
     }
@@ -203,7 +203,7 @@ public class HoldingDto {
      *
      * @return the costPortfolioCcy value
      */
-    public double costPortfolioCcy() {
+    public Double costPortfolioCcy() {
         return this.costPortfolioCcy;
     }
 
@@ -213,7 +213,7 @@ public class HoldingDto {
      * @param costPortfolioCcy the costPortfolioCcy value to set
      * @return the HoldingDto object itself.
      */
-    public HoldingDto withCostPortfolioCcy(double costPortfolioCcy) {
+    public HoldingDto withCostPortfolioCcy(Double costPortfolioCcy) {
         this.costPortfolioCcy = costPortfolioCcy;
         return this;
     }

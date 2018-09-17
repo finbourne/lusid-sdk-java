@@ -39,25 +39,25 @@ public class UpsertCorporateActionRequest {
     /**
      * The announcementDate property.
      */
-    @JsonProperty(value = "announcementDate", required = true)
+    @JsonProperty(value = "announcementDate")
     private DateTime announcementDate;
 
     /**
      * The exDate property.
      */
-    @JsonProperty(value = "exDate", required = true)
+    @JsonProperty(value = "exDate")
     private DateTime exDate;
 
     /**
      * The recordDate property.
      */
-    @JsonProperty(value = "recordDate", required = true)
+    @JsonProperty(value = "recordDate")
     private DateTime recordDate;
 
     /**
      * The paymentDate property.
      */
-    @JsonProperty(value = "paymentDate", required = true)
+    @JsonProperty(value = "paymentDate")
     private DateTime paymentDate;
 
     /**

@@ -32,15 +32,15 @@ public class ClearEntityCachesDto {
      * The total number of items cleared from all instances of the caches on
      * this machine instance.
      */
-    @JsonProperty(value = "numberOfItemsCleared", required = true)
-    private long numberOfItemsCleared;
+    @JsonProperty(value = "numberOfItemsCleared")
+    private Long numberOfItemsCleared;
 
     /**
      * Get the total number of items cleared from all instances of the caches on this machine instance.
      *
      * @return the numberOfItemsCleared value
      */
-    public long numberOfItemsCleared() {
+    public Long numberOfItemsCleared() {
         return this.numberOfItemsCleared;
     }
 
@@ -50,7 +50,7 @@ public class ClearEntityCachesDto {
      * @param numberOfItemsCleared the numberOfItemsCleared value to set
      * @return the ClearEntityCachesDto object itself.
      */
-    public ClearEntityCachesDto withNumberOfItemsCleared(long numberOfItemsCleared) {
+    public ClearEntityCachesDto withNumberOfItemsCleared(Long numberOfItemsCleared) {
         this.numberOfItemsCleared = numberOfItemsCleared;
         return this;
     }

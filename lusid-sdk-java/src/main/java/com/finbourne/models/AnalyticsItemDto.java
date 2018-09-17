@@ -39,13 +39,13 @@ public class AnalyticsItemDto {
     /**
      * The securityUid property.
      */
-    @JsonProperty(value = "securityUid", required = true)
+    @JsonProperty(value = "securityUid")
     private String securityUid;
 
     /**
      * The analyticDate property.
      */
-    @JsonProperty(value = "analyticDate", required = true)
+    @JsonProperty(value = "analyticDate")
     private DateTime analyticDate;
 
     /**

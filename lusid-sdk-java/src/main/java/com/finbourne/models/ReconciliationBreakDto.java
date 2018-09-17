@@ -32,7 +32,7 @@ public class ReconciliationBreakDto {
     /**
      * Unique security identifier.
      */
-    @JsonProperty(value = "securityUid", required = true)
+    @JsonProperty(value = "securityUid")
     private String securityUid;
 
     /**

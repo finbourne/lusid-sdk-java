@@ -2981,52 +2981,44 @@ public interface LUSIDAPI {
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the ResourceListOfPersonalisationDto object if successful.
      */
-    ResourceListOfPersonalisationDto getPersonalisations(boolean recursive, boolean wildcards);
+    ResourceListOfPersonalisationDto getPersonalisations();
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPersonalisationDto> getPersonalisationsAsync(boolean recursive, boolean wildcards, final ServiceCallback<ResourceListOfPersonalisationDto> serviceCallback);
+    ServiceFuture<ResourceListOfPersonalisationDto> getPersonalisationsAsync(final ServiceCallback<ResourceListOfPersonalisationDto> serviceCallback);
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPersonalisationDto object
      */
-    Observable<ResourceListOfPersonalisationDto> getPersonalisationsAsync(boolean recursive, boolean wildcards);
+    Observable<ResourceListOfPersonalisationDto> getPersonalisationsAsync();
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPersonalisationDto object
      */
-    Observable<ServiceResponse<ResourceListOfPersonalisationDto>> getPersonalisationsWithServiceResponseAsync(boolean recursive, boolean wildcards);
+    Observable<ServiceResponse<ResourceListOfPersonalisationDto>> getPersonalisationsWithServiceResponseAsync();
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param pattern The search pattern or specific key
      * @param scope The scope level to request for. Possible values include: 'User', 'Group', 'Default', 'All'
+     * @param recursive Whether to recurse into dereference recursive settings
+     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -3035,15 +3027,15 @@ public interface LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the ResourceListOfPersonalisationDto object if successful.
      */
-    ResourceListOfPersonalisationDto getPersonalisations(boolean recursive, boolean wildcards, String pattern, String scope, List<String> sortBy, Integer start, Integer limit);
+    ResourceListOfPersonalisationDto getPersonalisations(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param pattern The search pattern or specific key
      * @param scope The scope level to request for. Possible values include: 'User', 'Group', 'Default', 'All'
+     * @param recursive Whether to recurse into dereference recursive settings
+     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -3051,37 +3043,37 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPersonalisationDto> getPersonalisationsAsync(boolean recursive, boolean wildcards, String pattern, String scope, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ResourceListOfPersonalisationDto> serviceCallback);
+    ServiceFuture<ResourceListOfPersonalisationDto> getPersonalisationsAsync(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ResourceListOfPersonalisationDto> serviceCallback);
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param pattern The search pattern or specific key
      * @param scope The scope level to request for. Possible values include: 'User', 'Group', 'Default', 'All'
+     * @param recursive Whether to recurse into dereference recursive settings
+     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPersonalisationDto object
      */
-    Observable<ResourceListOfPersonalisationDto> getPersonalisationsAsync(boolean recursive, boolean wildcards, String pattern, String scope, List<String> sortBy, Integer start, Integer limit);
+    Observable<ResourceListOfPersonalisationDto> getPersonalisationsAsync(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param pattern The search pattern or specific key
      * @param scope The scope level to request for. Possible values include: 'User', 'Group', 'Default', 'All'
+     * @param recursive Whether to recurse into dereference recursive settings
+     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPersonalisationDto object
      */
-    Observable<ServiceResponse<ResourceListOfPersonalisationDto>> getPersonalisationsWithServiceResponseAsync(boolean recursive, boolean wildcards, String pattern, String scope, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<ResourceListOfPersonalisationDto>> getPersonalisationsWithServiceResponseAsync(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Upsert one or more personalisations.
@@ -3159,87 +3151,83 @@ public interface LUSIDAPI {
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the DeletedEntityResponse object if successful.
      */
-    DeletedEntityResponse deletePersonalisation(String scope);
+    DeletedEntityResponse deletePersonalisation();
 
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<DeletedEntityResponse> deletePersonalisationAsync(String scope, final ServiceCallback<DeletedEntityResponse> serviceCallback);
+    ServiceFuture<DeletedEntityResponse> deletePersonalisationAsync(final ServiceCallback<DeletedEntityResponse> serviceCallback);
 
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
-    Observable<DeletedEntityResponse> deletePersonalisationAsync(String scope);
+    Observable<DeletedEntityResponse> deletePersonalisationAsync();
 
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
-    Observable<ServiceResponse<DeletedEntityResponse>> deletePersonalisationWithServiceResponseAsync(String scope);
+    Observable<ServiceResponse<DeletedEntityResponse>> deletePersonalisationWithServiceResponseAsync();
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param key The key of the setting to be deleted
+     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param group If deleting a setting at group level, specify the group here
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the DeletedEntityResponse object if successful.
      */
-    DeletedEntityResponse deletePersonalisation(String scope, String key, String group);
+    DeletedEntityResponse deletePersonalisation(String key, String scope, String group);
 
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param key The key of the setting to be deleted
+     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param group If deleting a setting at group level, specify the group here
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<DeletedEntityResponse> deletePersonalisationAsync(String scope, String key, String group, final ServiceCallback<DeletedEntityResponse> serviceCallback);
+    ServiceFuture<DeletedEntityResponse> deletePersonalisationAsync(String key, String scope, String group, final ServiceCallback<DeletedEntityResponse> serviceCallback);
 
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param key The key of the setting to be deleted
+     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param group If deleting a setting at group level, specify the group here
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
-    Observable<DeletedEntityResponse> deletePersonalisationAsync(String scope, String key, String group);
+    Observable<DeletedEntityResponse> deletePersonalisationAsync(String key, String scope, String group);
 
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param key The key of the setting to be deleted
+     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param group If deleting a setting at group level, specify the group here
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
-    Observable<ServiceResponse<DeletedEntityResponse>> deletePersonalisationWithServiceResponseAsync(String scope, String key, String group);
+    Observable<ServiceResponse<DeletedEntityResponse>> deletePersonalisationWithServiceResponseAsync(String key, String scope, String group);
 
     /**
      * List scopes that contain portfolios.
@@ -4642,51 +4630,43 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the HoldingsAdjustmentHeaderDto object if successful.
      */
-    HoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt);
+    HoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code);
 
     /**
      * Gets holdings adjustments in an interval of effective time.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, final ServiceCallback<HoldingsAdjustmentHeaderDto> serviceCallback);
+    ServiceFuture<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, final ServiceCallback<HoldingsAdjustmentHeaderDto> serviceCallback);
 
     /**
      * Gets holdings adjustments in an interval of effective time.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the HoldingsAdjustmentHeaderDto object
      */
-    Observable<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt);
+    Observable<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code);
 
     /**
      * Gets holdings adjustments in an interval of effective time.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the HoldingsAdjustmentHeaderDto object
      */
-    Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt);
+    Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code);
     /**
      * Gets holdings adjustments in an interval of effective time.
      *
@@ -7260,44 +7240,40 @@ public interface LUSIDAPI {
      * Get all reference portfolios in a scope.
      *
      * @param scope the String value
-     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the ResourceListOfPortfolioDto object if successful.
      */
-    ResourceListOfPortfolioDto listReferencePortfolios(String scope, DateTime effectiveAt);
+    ResourceListOfPortfolioDto listReferencePortfolios(String scope);
 
     /**
      * Get all reference portfolios in a scope.
      *
      * @param scope the String value
-     * @param effectiveAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPortfolioDto> listReferencePortfoliosAsync(String scope, DateTime effectiveAt, final ServiceCallback<ResourceListOfPortfolioDto> serviceCallback);
+    ServiceFuture<ResourceListOfPortfolioDto> listReferencePortfoliosAsync(String scope, final ServiceCallback<ResourceListOfPortfolioDto> serviceCallback);
 
     /**
      * Get all reference portfolios in a scope.
      *
      * @param scope the String value
-     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioDto object
      */
-    Observable<ResourceListOfPortfolioDto> listReferencePortfoliosAsync(String scope, DateTime effectiveAt);
+    Observable<ResourceListOfPortfolioDto> listReferencePortfoliosAsync(String scope);
 
     /**
      * Get all reference portfolios in a scope.
      *
      * @param scope the String value
-     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioDto object
      */
-    Observable<ServiceResponse<ResourceListOfPortfolioDto>> listReferencePortfoliosWithServiceResponseAsync(String scope, DateTime effectiveAt);
+    Observable<ServiceResponse<ResourceListOfPortfolioDto>> listReferencePortfoliosWithServiceResponseAsync(String scope);
     /**
      * Get all reference portfolios in a scope.
      *
@@ -7447,47 +7423,43 @@ public interface LUSIDAPI {
      *
      * @param scope the String value
      * @param code the String value
-     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the ResourceListOfReferencePortfolioConstituentDto object if successful.
      */
-    ResourceListOfReferencePortfolioConstituentDto getReferencePortfolio(String scope, String code, DateTime effectiveAt);
+    ResourceListOfReferencePortfolioConstituentDto getReferencePortfolio(String scope, String code);
 
     /**
      * Get a reference portfolio by name (as opposed to id).
      *
      * @param scope the String value
      * @param code the String value
-     * @param effectiveAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<ResourceListOfReferencePortfolioConstituentDto> serviceCallback);
+    ServiceFuture<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioAsync(String scope, String code, final ServiceCallback<ResourceListOfReferencePortfolioConstituentDto> serviceCallback);
 
     /**
      * Get a reference portfolio by name (as opposed to id).
      *
      * @param scope the String value
      * @param code the String value
-     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituentDto object
      */
-    Observable<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioAsync(String scope, String code, DateTime effectiveAt);
+    Observable<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioAsync(String scope, String code);
 
     /**
      * Get a reference portfolio by name (as opposed to id).
      *
      * @param scope the String value
      * @param code the String value
-     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituentDto object
      */
-    Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituentDto>> getReferencePortfolioWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
+    Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituentDto>> getReferencePortfolioWithServiceResponseAsync(String scope, String code);
     /**
      * Get a reference portfolio by name (as opposed to id).
      *
@@ -8045,7 +8017,6 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<ResultsDto>> upsertResultsWithServiceResponseAsync(String scope, String key, DateTime dateParameter, CreateResultsRequest request);
 
     /**
-     * Gets the schema for a given entity.
      *
      * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader'
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8056,7 +8027,6 @@ public interface LUSIDAPI {
     SchemaDto getEntitySchema(String entity);
 
     /**
-     * Gets the schema for a given entity.
      *
      * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -8066,7 +8036,6 @@ public interface LUSIDAPI {
     ServiceFuture<SchemaDto> getEntitySchemaAsync(String entity, final ServiceCallback<SchemaDto> serviceCallback);
 
     /**
-     * Gets the schema for a given entity.
      *
      * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader'
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8075,7 +8044,6 @@ public interface LUSIDAPI {
     Observable<SchemaDto> getEntitySchemaAsync(String entity);
 
     /**
-     * Gets the schema for a given entity.
      *
      * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader'
      * @throws IllegalArgumentException thrown if parameters fail the validation

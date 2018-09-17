@@ -31,20 +31,20 @@ public class CorporateActionTransitionComponentDto {
     /**
      * The securityUid property.
      */
-    @JsonProperty(value = "securityUid", required = true)
+    @JsonProperty(value = "securityUid")
     private String securityUid;
 
     /**
      * The unitsFactor property.
      */
-    @JsonProperty(value = "unitsFactor", required = true)
-    private double unitsFactor;
+    @JsonProperty(value = "unitsFactor")
+    private Double unitsFactor;
 
     /**
      * The costFactor property.
      */
-    @JsonProperty(value = "costFactor", required = true)
-    private double costFactor;
+    @JsonProperty(value = "costFactor")
+    private Double costFactor;
 
     /**
      * Get the securityUid value.
@@ -71,7 +71,7 @@ public class CorporateActionTransitionComponentDto {
      *
      * @return the unitsFactor value
      */
-    public double unitsFactor() {
+    public Double unitsFactor() {
         return this.unitsFactor;
     }
 
@@ -81,7 +81,7 @@ public class CorporateActionTransitionComponentDto {
      * @param unitsFactor the unitsFactor value to set
      * @return the CorporateActionTransitionComponentDto object itself.
      */
-    public CorporateActionTransitionComponentDto withUnitsFactor(double unitsFactor) {
+    public CorporateActionTransitionComponentDto withUnitsFactor(Double unitsFactor) {
         this.unitsFactor = unitsFactor;
         return this;
     }
@@ -91,7 +91,7 @@ public class CorporateActionTransitionComponentDto {
      *
      * @return the costFactor value
      */
-    public double costFactor() {
+    public Double costFactor() {
         return this.costFactor;
     }
 
@@ -101,7 +101,7 @@ public class CorporateActionTransitionComponentDto {
      * @param costFactor the costFactor value to set
      * @return the CorporateActionTransitionComponentDto object itself.
      */
-    public CorporateActionTransitionComponentDto withCostFactor(double costFactor) {
+    public CorporateActionTransitionComponentDto withCostFactor(Double costFactor) {
         this.costFactor = costFactor;
         return this;
     }

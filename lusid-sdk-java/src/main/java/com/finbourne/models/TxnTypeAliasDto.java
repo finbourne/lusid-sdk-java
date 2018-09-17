@@ -57,7 +57,7 @@ public class TxnTypeAliasDto {
      * Possible values include: 'None', 'LongLonger', 'LongShorter',
      * 'ShortShorter', 'ShortLonger', 'Longer', 'Shorter', 'AllRoles'.
      */
-    @JsonProperty(value = "txnRoles", required = true)
+    @JsonProperty(value = "txnRoles")
     private String txnRoles;
 
     /**

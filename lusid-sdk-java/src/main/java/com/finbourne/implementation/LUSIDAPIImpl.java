@@ -361,7 +361,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getPersonalisations" })
         @GET("v1/api/personalisations")
-        Observable<Response<ResponseBody>> getPersonalisations(@Query("pattern") String pattern, @Query("scope") String scope, @Query("recursive") boolean recursive, @Query("wildcards") boolean wildcards, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
+        Observable<Response<ResponseBody>> getPersonalisations(@Query("pattern") String pattern, @Query("scope") String scope, @Query("recursive") Boolean recursive, @Query("wildcards") Boolean wildcards, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI upsertPersonalisations" })
         @POST("v1/api/personalisations")
@@ -5689,40 +5689,34 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the ResourceListOfPersonalisationDto object if successful.
      */
-    public ResourceListOfPersonalisationDto getPersonalisations(boolean recursive, boolean wildcards) {
-        return getPersonalisationsWithServiceResponseAsync(recursive, wildcards).toBlocking().single().body();
+    public ResourceListOfPersonalisationDto getPersonalisations() {
+        return getPersonalisationsWithServiceResponseAsync().toBlocking().single().body();
     }
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<ResourceListOfPersonalisationDto> getPersonalisationsAsync(boolean recursive, boolean wildcards, final ServiceCallback<ResourceListOfPersonalisationDto> serviceCallback) {
-        return ServiceFuture.fromResponse(getPersonalisationsWithServiceResponseAsync(recursive, wildcards), serviceCallback);
+    public ServiceFuture<ResourceListOfPersonalisationDto> getPersonalisationsAsync(final ServiceCallback<ResourceListOfPersonalisationDto> serviceCallback) {
+        return ServiceFuture.fromResponse(getPersonalisationsWithServiceResponseAsync(), serviceCallback);
     }
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPersonalisationDto object
      */
-    public Observable<ResourceListOfPersonalisationDto> getPersonalisationsAsync(boolean recursive, boolean wildcards) {
-        return getPersonalisationsWithServiceResponseAsync(recursive, wildcards).map(new Func1<ServiceResponse<ResourceListOfPersonalisationDto>, ResourceListOfPersonalisationDto>() {
+    public Observable<ResourceListOfPersonalisationDto> getPersonalisationsAsync() {
+        return getPersonalisationsWithServiceResponseAsync().map(new Func1<ServiceResponse<ResourceListOfPersonalisationDto>, ResourceListOfPersonalisationDto>() {
             @Override
             public ResourceListOfPersonalisationDto call(ServiceResponse<ResourceListOfPersonalisationDto> response) {
                 return response.body();
@@ -5733,14 +5727,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPersonalisationDto object
      */
-    public Observable<ServiceResponse<ResourceListOfPersonalisationDto>> getPersonalisationsWithServiceResponseAsync(boolean recursive, boolean wildcards) {
+    public Observable<ServiceResponse<ResourceListOfPersonalisationDto>> getPersonalisationsWithServiceResponseAsync() {
         final String pattern = null;
         final String scope = null;
+        final Boolean recursive = null;
+        final Boolean wildcards = null;
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
@@ -5762,10 +5756,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param pattern The search pattern or specific key
      * @param scope The scope level to request for. Possible values include: 'User', 'Group', 'Default', 'All'
+     * @param recursive Whether to recurse into dereference recursive settings
+     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -5774,17 +5768,17 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the ResourceListOfPersonalisationDto object if successful.
      */
-    public ResourceListOfPersonalisationDto getPersonalisations(boolean recursive, boolean wildcards, String pattern, String scope, List<String> sortBy, Integer start, Integer limit) {
-        return getPersonalisationsWithServiceResponseAsync(recursive, wildcards, pattern, scope, sortBy, start, limit).toBlocking().single().body();
+    public ResourceListOfPersonalisationDto getPersonalisations(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit) {
+        return getPersonalisationsWithServiceResponseAsync(pattern, scope, recursive, wildcards, sortBy, start, limit).toBlocking().single().body();
     }
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param pattern The search pattern or specific key
      * @param scope The scope level to request for. Possible values include: 'User', 'Group', 'Default', 'All'
+     * @param recursive Whether to recurse into dereference recursive settings
+     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -5792,25 +5786,25 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<ResourceListOfPersonalisationDto> getPersonalisationsAsync(boolean recursive, boolean wildcards, String pattern, String scope, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ResourceListOfPersonalisationDto> serviceCallback) {
-        return ServiceFuture.fromResponse(getPersonalisationsWithServiceResponseAsync(recursive, wildcards, pattern, scope, sortBy, start, limit), serviceCallback);
+    public ServiceFuture<ResourceListOfPersonalisationDto> getPersonalisationsAsync(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ResourceListOfPersonalisationDto> serviceCallback) {
+        return ServiceFuture.fromResponse(getPersonalisationsWithServiceResponseAsync(pattern, scope, recursive, wildcards, sortBy, start, limit), serviceCallback);
     }
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param pattern The search pattern or specific key
      * @param scope The scope level to request for. Possible values include: 'User', 'Group', 'Default', 'All'
+     * @param recursive Whether to recurse into dereference recursive settings
+     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPersonalisationDto object
      */
-    public Observable<ResourceListOfPersonalisationDto> getPersonalisationsAsync(boolean recursive, boolean wildcards, String pattern, String scope, List<String> sortBy, Integer start, Integer limit) {
-        return getPersonalisationsWithServiceResponseAsync(recursive, wildcards, pattern, scope, sortBy, start, limit).map(new Func1<ServiceResponse<ResourceListOfPersonalisationDto>, ResourceListOfPersonalisationDto>() {
+    public Observable<ResourceListOfPersonalisationDto> getPersonalisationsAsync(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit) {
+        return getPersonalisationsWithServiceResponseAsync(pattern, scope, recursive, wildcards, sortBy, start, limit).map(new Func1<ServiceResponse<ResourceListOfPersonalisationDto>, ResourceListOfPersonalisationDto>() {
             @Override
             public ResourceListOfPersonalisationDto call(ServiceResponse<ResourceListOfPersonalisationDto> response) {
                 return response.body();
@@ -5821,17 +5815,17 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param pattern The search pattern or specific key
      * @param scope The scope level to request for. Possible values include: 'User', 'Group', 'Default', 'All'
+     * @param recursive Whether to recurse into dereference recursive settings
+     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPersonalisationDto object
      */
-    public Observable<ServiceResponse<ResourceListOfPersonalisationDto>> getPersonalisationsWithServiceResponseAsync(boolean recursive, boolean wildcards, String pattern, String scope, List<String> sortBy, Integer start, Integer limit) {
+    public Observable<ServiceResponse<ResourceListOfPersonalisationDto>> getPersonalisationsWithServiceResponseAsync(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit) {
         Validator.validate(sortBy);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getPersonalisations(pattern, scope, recursive, wildcards, sortByConverted, start, limit)
@@ -5989,37 +5983,34 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the DeletedEntityResponse object if successful.
      */
-    public DeletedEntityResponse deletePersonalisation(String scope) {
-        return deletePersonalisationWithServiceResponseAsync(scope).toBlocking().single().body();
+    public DeletedEntityResponse deletePersonalisation() {
+        return deletePersonalisationWithServiceResponseAsync().toBlocking().single().body();
     }
 
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<DeletedEntityResponse> deletePersonalisationAsync(String scope, final ServiceCallback<DeletedEntityResponse> serviceCallback) {
-        return ServiceFuture.fromResponse(deletePersonalisationWithServiceResponseAsync(scope), serviceCallback);
+    public ServiceFuture<DeletedEntityResponse> deletePersonalisationAsync(final ServiceCallback<DeletedEntityResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(deletePersonalisationWithServiceResponseAsync(), serviceCallback);
     }
 
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
-    public Observable<DeletedEntityResponse> deletePersonalisationAsync(String scope) {
-        return deletePersonalisationWithServiceResponseAsync(scope).map(new Func1<ServiceResponse<DeletedEntityResponse>, DeletedEntityResponse>() {
+    public Observable<DeletedEntityResponse> deletePersonalisationAsync() {
+        return deletePersonalisationWithServiceResponseAsync().map(new Func1<ServiceResponse<DeletedEntityResponse>, DeletedEntityResponse>() {
             @Override
             public DeletedEntityResponse call(ServiceResponse<DeletedEntityResponse> response) {
                 return response.body();
@@ -6030,15 +6021,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
-    public Observable<ServiceResponse<DeletedEntityResponse>> deletePersonalisationWithServiceResponseAsync(String scope) {
-        if (scope == null) {
-            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
-        }
+    public Observable<ServiceResponse<DeletedEntityResponse>> deletePersonalisationWithServiceResponseAsync() {
         final String key = null;
+        final String scope = null;
         final String group = null;
         return service.deletePersonalisation(key, scope, group)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<DeletedEntityResponse>>>() {
@@ -6057,43 +6045,43 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param key The key of the setting to be deleted
+     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param group If deleting a setting at group level, specify the group here
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the DeletedEntityResponse object if successful.
      */
-    public DeletedEntityResponse deletePersonalisation(String scope, String key, String group) {
-        return deletePersonalisationWithServiceResponseAsync(scope, key, group).toBlocking().single().body();
+    public DeletedEntityResponse deletePersonalisation(String key, String scope, String group) {
+        return deletePersonalisationWithServiceResponseAsync(key, scope, group).toBlocking().single().body();
     }
 
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param key The key of the setting to be deleted
+     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param group If deleting a setting at group level, specify the group here
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<DeletedEntityResponse> deletePersonalisationAsync(String scope, String key, String group, final ServiceCallback<DeletedEntityResponse> serviceCallback) {
-        return ServiceFuture.fromResponse(deletePersonalisationWithServiceResponseAsync(scope, key, group), serviceCallback);
+    public ServiceFuture<DeletedEntityResponse> deletePersonalisationAsync(String key, String scope, String group, final ServiceCallback<DeletedEntityResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(deletePersonalisationWithServiceResponseAsync(key, scope, group), serviceCallback);
     }
 
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param key The key of the setting to be deleted
+     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param group If deleting a setting at group level, specify the group here
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
-    public Observable<DeletedEntityResponse> deletePersonalisationAsync(String scope, String key, String group) {
-        return deletePersonalisationWithServiceResponseAsync(scope, key, group).map(new Func1<ServiceResponse<DeletedEntityResponse>, DeletedEntityResponse>() {
+    public Observable<DeletedEntityResponse> deletePersonalisationAsync(String key, String scope, String group) {
+        return deletePersonalisationWithServiceResponseAsync(key, scope, group).map(new Func1<ServiceResponse<DeletedEntityResponse>, DeletedEntityResponse>() {
             @Override
             public DeletedEntityResponse call(ServiceResponse<DeletedEntityResponse> response) {
                 return response.body();
@@ -6104,16 +6092,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param key The key of the setting to be deleted
+     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
      * @param group If deleting a setting at group level, specify the group here
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
-    public Observable<ServiceResponse<DeletedEntityResponse>> deletePersonalisationWithServiceResponseAsync(String scope, String key, String group) {
-        if (scope == null) {
-            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
-        }
+    public Observable<ServiceResponse<DeletedEntityResponse>> deletePersonalisationWithServiceResponseAsync(String key, String scope, String group) {
         return service.deletePersonalisation(key, scope, group)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<DeletedEntityResponse>>>() {
                 @Override
@@ -6128,7 +6113,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<DeletedEntityResponse> deletePersonalisationDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+    private ServiceResponse<DeletedEntityResponse> deletePersonalisationDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
         return this.restClient().responseBuilderFactory().<DeletedEntityResponse, ErrorResponseException>newInstance(this.serializerAdapter())
                 .register(200, new TypeToken<DeletedEntityResponse>() { }.getType())
                 .registerError(ErrorResponseException.class)
@@ -8503,15 +8488,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the HoldingsAdjustmentHeaderDto object if successful.
      */
-    public HoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt) {
-        return listHoldingsAdjustmentsWithServiceResponseAsync(scope, code, fromEffectiveAt, toEffectiveAt).toBlocking().single().body();
+    public HoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code) {
+        return listHoldingsAdjustmentsWithServiceResponseAsync(scope, code).toBlocking().single().body();
     }
 
     /**
@@ -8519,14 +8502,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, final ServiceCallback<HoldingsAdjustmentHeaderDto> serviceCallback) {
-        return ServiceFuture.fromResponse(listHoldingsAdjustmentsWithServiceResponseAsync(scope, code, fromEffectiveAt, toEffectiveAt), serviceCallback);
+    public ServiceFuture<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, final ServiceCallback<HoldingsAdjustmentHeaderDto> serviceCallback) {
+        return ServiceFuture.fromResponse(listHoldingsAdjustmentsWithServiceResponseAsync(scope, code), serviceCallback);
     }
 
     /**
@@ -8534,13 +8515,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the HoldingsAdjustmentHeaderDto object
      */
-    public Observable<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt) {
-        return listHoldingsAdjustmentsWithServiceResponseAsync(scope, code, fromEffectiveAt, toEffectiveAt).map(new Func1<ServiceResponse<HoldingsAdjustmentHeaderDto>, HoldingsAdjustmentHeaderDto>() {
+    public Observable<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code) {
+        return listHoldingsAdjustmentsWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<HoldingsAdjustmentHeaderDto>, HoldingsAdjustmentHeaderDto>() {
             @Override
             public HoldingsAdjustmentHeaderDto call(ServiceResponse<HoldingsAdjustmentHeaderDto> response) {
                 return response.body();
@@ -8553,24 +8532,18 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the HoldingsAdjustmentHeaderDto object
      */
-    public Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt) {
+    public Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         if (code == null) {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
-        if (fromEffectiveAt == null) {
-            throw new IllegalArgumentException("Parameter fromEffectiveAt is required and cannot be null.");
-        }
-        if (toEffectiveAt == null) {
-            throw new IllegalArgumentException("Parameter toEffectiveAt is required and cannot be null.");
-        }
+        final DateTime fromEffectiveAt = null;
+        final DateTime toEffectiveAt = null;
         final DateTime asAtTime = null;
         return service.listHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>>>() {
@@ -8656,12 +8629,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         }
         if (code == null) {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
-        }
-        if (fromEffectiveAt == null) {
-            throw new IllegalArgumentException("Parameter fromEffectiveAt is required and cannot be null.");
-        }
-        if (toEffectiveAt == null) {
-            throw new IllegalArgumentException("Parameter toEffectiveAt is required and cannot be null.");
         }
         return service.listHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>>>() {
@@ -13056,39 +13023,36 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get all reference portfolios in a scope.
      *
      * @param scope the String value
-     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the ResourceListOfPortfolioDto object if successful.
      */
-    public ResourceListOfPortfolioDto listReferencePortfolios(String scope, DateTime effectiveAt) {
-        return listReferencePortfoliosWithServiceResponseAsync(scope, effectiveAt).toBlocking().single().body();
+    public ResourceListOfPortfolioDto listReferencePortfolios(String scope) {
+        return listReferencePortfoliosWithServiceResponseAsync(scope).toBlocking().single().body();
     }
 
     /**
      * Get all reference portfolios in a scope.
      *
      * @param scope the String value
-     * @param effectiveAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<ResourceListOfPortfolioDto> listReferencePortfoliosAsync(String scope, DateTime effectiveAt, final ServiceCallback<ResourceListOfPortfolioDto> serviceCallback) {
-        return ServiceFuture.fromResponse(listReferencePortfoliosWithServiceResponseAsync(scope, effectiveAt), serviceCallback);
+    public ServiceFuture<ResourceListOfPortfolioDto> listReferencePortfoliosAsync(String scope, final ServiceCallback<ResourceListOfPortfolioDto> serviceCallback) {
+        return ServiceFuture.fromResponse(listReferencePortfoliosWithServiceResponseAsync(scope), serviceCallback);
     }
 
     /**
      * Get all reference portfolios in a scope.
      *
      * @param scope the String value
-     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioDto object
      */
-    public Observable<ResourceListOfPortfolioDto> listReferencePortfoliosAsync(String scope, DateTime effectiveAt) {
-        return listReferencePortfoliosWithServiceResponseAsync(scope, effectiveAt).map(new Func1<ServiceResponse<ResourceListOfPortfolioDto>, ResourceListOfPortfolioDto>() {
+    public Observable<ResourceListOfPortfolioDto> listReferencePortfoliosAsync(String scope) {
+        return listReferencePortfoliosWithServiceResponseAsync(scope).map(new Func1<ServiceResponse<ResourceListOfPortfolioDto>, ResourceListOfPortfolioDto>() {
             @Override
             public ResourceListOfPortfolioDto call(ServiceResponse<ResourceListOfPortfolioDto> response) {
                 return response.body();
@@ -13100,17 +13064,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get all reference portfolios in a scope.
      *
      * @param scope the String value
-     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioDto object
      */
-    public Observable<ServiceResponse<ResourceListOfPortfolioDto>> listReferencePortfoliosWithServiceResponseAsync(String scope, DateTime effectiveAt) {
+    public Observable<ServiceResponse<ResourceListOfPortfolioDto>> listReferencePortfoliosWithServiceResponseAsync(String scope) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
-        if (effectiveAt == null) {
-            throw new IllegalArgumentException("Parameter effectiveAt is required and cannot be null.");
-        }
+        final DateTime effectiveAt = null;
         final DateTime asAt = null;
         final List<String> sortBy = null;
         final Integer start = null;
@@ -13206,9 +13167,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     public Observable<ServiceResponse<ResourceListOfPortfolioDto>> listReferencePortfoliosWithServiceResponseAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
-        }
-        if (effectiveAt == null) {
-            throw new IllegalArgumentException("Parameter effectiveAt is required and cannot be null.");
         }
         Validator.validate(sortBy);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
@@ -13383,14 +13341,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param code the String value
-     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the ResourceListOfReferencePortfolioConstituentDto object if successful.
      */
-    public ResourceListOfReferencePortfolioConstituentDto getReferencePortfolio(String scope, String code, DateTime effectiveAt) {
-        return getReferencePortfolioWithServiceResponseAsync(scope, code, effectiveAt).toBlocking().single().body();
+    public ResourceListOfReferencePortfolioConstituentDto getReferencePortfolio(String scope, String code) {
+        return getReferencePortfolioWithServiceResponseAsync(scope, code).toBlocking().single().body();
     }
 
     /**
@@ -13398,13 +13355,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param code the String value
-     * @param effectiveAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<ResourceListOfReferencePortfolioConstituentDto> serviceCallback) {
-        return ServiceFuture.fromResponse(getReferencePortfolioWithServiceResponseAsync(scope, code, effectiveAt), serviceCallback);
+    public ServiceFuture<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioAsync(String scope, String code, final ServiceCallback<ResourceListOfReferencePortfolioConstituentDto> serviceCallback) {
+        return ServiceFuture.fromResponse(getReferencePortfolioWithServiceResponseAsync(scope, code), serviceCallback);
     }
 
     /**
@@ -13412,12 +13368,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param code the String value
-     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituentDto object
      */
-    public Observable<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioAsync(String scope, String code, DateTime effectiveAt) {
-        return getReferencePortfolioWithServiceResponseAsync(scope, code, effectiveAt).map(new Func1<ServiceResponse<ResourceListOfReferencePortfolioConstituentDto>, ResourceListOfReferencePortfolioConstituentDto>() {
+    public Observable<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioAsync(String scope, String code) {
+        return getReferencePortfolioWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<ResourceListOfReferencePortfolioConstituentDto>, ResourceListOfReferencePortfolioConstituentDto>() {
             @Override
             public ResourceListOfReferencePortfolioConstituentDto call(ServiceResponse<ResourceListOfReferencePortfolioConstituentDto> response) {
                 return response.body();
@@ -13430,20 +13385,17 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope the String value
      * @param code the String value
-     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituentDto object
      */
-    public Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituentDto>> getReferencePortfolioWithServiceResponseAsync(String scope, String code, DateTime effectiveAt) {
+    public Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituentDto>> getReferencePortfolioWithServiceResponseAsync(String scope, String code) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         if (code == null) {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
-        if (effectiveAt == null) {
-            throw new IllegalArgumentException("Parameter effectiveAt is required and cannot be null.");
-        }
+        final DateTime effectiveAt = null;
         final DateTime asAt = null;
         return service.getReferencePortfolio(scope, code, effectiveAt, asAt)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituentDto>>>() {
@@ -13525,9 +13477,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         }
         if (code == null) {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
-        }
-        if (effectiveAt == null) {
-            throw new IllegalArgumentException("Parameter effectiveAt is required and cannot be null.");
         }
         return service.getReferencePortfolio(scope, code, effectiveAt, asAt)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituentDto>>>() {
@@ -14440,7 +14389,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the schema for a given entity.
      *
      * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader'
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -14453,7 +14401,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the schema for a given entity.
      *
      * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -14465,7 +14412,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the schema for a given entity.
      *
      * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader'
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -14481,7 +14427,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the schema for a given entity.
      *
      * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader'
      * @throws IllegalArgumentException thrown if parameters fail the validation

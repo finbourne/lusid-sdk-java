@@ -34,20 +34,20 @@ public class TxnMovementMetaDataDto {
      * 'ForwardFx', 'Commitment', 'Receivable', 'CashSettlement', 'Accrual',
      * 'UnsettledCashTypes'.
      */
-    @JsonProperty(value = "movementTypes", required = true)
+    @JsonProperty(value = "movementTypes")
     private String movementTypes;
 
     /**
      * The Movement Side. Possible values include: 'Side1', 'Side2', 'BondInt'.
      */
-    @JsonProperty(value = "side", required = true)
+    @JsonProperty(value = "side")
     private String side;
 
     /**
      * The Movement direction.
      */
-    @JsonProperty(value = "direction", required = true)
-    private int direction;
+    @JsonProperty(value = "direction")
+    private Integer direction;
 
     /**
      * The properties property.
@@ -106,7 +106,7 @@ public class TxnMovementMetaDataDto {
      *
      * @return the direction value
      */
-    public int direction() {
+    public Integer direction() {
         return this.direction;
     }
 
@@ -116,7 +116,7 @@ public class TxnMovementMetaDataDto {
      * @param direction the direction value to set
      * @return the TxnMovementMetaDataDto object itself.
      */
-    public TxnMovementMetaDataDto withDirection(int direction) {
+    public TxnMovementMetaDataDto withDirection(Integer direction) {
         this.direction = direction;
         return this;
     }
