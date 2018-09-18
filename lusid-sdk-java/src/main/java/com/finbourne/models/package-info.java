@@ -175,6 +175,7 @@
  | <a name="108">108</a>|GroupNotFound|  |
  | <a name="109">109</a>|PortfolioNotFound|  |
  | <a name="110">110</a>|PropertySchemaNotFound|  |
+ | <a name="111">111</a>|PortfolioAncestryNotFound|  |
  | <a name="112">112</a>|PortfolioWithIdAlreadyExists|  |
  | <a name="113">113</a>|OrphanedPortfolio|  |
  | <a name="119">119</a>|MissingBaseClaims|  |
