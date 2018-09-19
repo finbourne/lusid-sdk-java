@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class Link {
     /**
      * Possible values include: 'Root', 'Properties', 'Trades', 'Details',
-     * 'Constituents', 'HoldingsAdjustment'.
+     * 'Constituents', 'HoldingsAdjustment', 'Commands'.
      */
     @JsonProperty(value = "relation", required = true)
     private String relation;
@@ -54,7 +54,7 @@ public class Link {
     private String method;
 
     /**
-     * Get possible values include: 'Root', 'Properties', 'Trades', 'Details', 'Constituents', 'HoldingsAdjustment'.
+     * Get possible values include: 'Root', 'Properties', 'Trades', 'Details', 'Constituents', 'HoldingsAdjustment', 'Commands'.
      *
      * @return the relation value
      */
@@ -63,7 +63,7 @@ public class Link {
     }
 
     /**
-     * Set possible values include: 'Root', 'Properties', 'Trades', 'Details', 'Constituents', 'HoldingsAdjustment'.
+     * Set possible values include: 'Root', 'Properties', 'Trades', 'Details', 'Constituents', 'HoldingsAdjustment', 'Commands'.
      *
      * @param relation the relation value to set
      * @return the Link object itself.

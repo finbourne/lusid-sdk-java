@@ -23,6 +23,7 @@
 package com.finbourne.models;
 
 import org.joda.time.DateTime;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -42,16 +43,16 @@ public class VersionDto {
     private DateTime asAtDate;
 
     /**
-     * The updatedBy property.
-     */
-    @JsonProperty(value = "updatedBy")
-    private String updatedBy;
-
-    /**
      * The href property.
      */
     @JsonProperty(value = "href")
     private String href;
+
+    /**
+     * The _links property.
+     */
+    @JsonProperty(value = "_links")
+    private List<Link> _links;
 
     /**
      * Get the effectiveFrom value.
@@ -94,26 +95,6 @@ public class VersionDto {
     }
 
     /**
-     * Get the updatedBy value.
-     *
-     * @return the updatedBy value
-     */
-    public String updatedBy() {
-        return this.updatedBy;
-    }
-
-    /**
-     * Set the updatedBy value.
-     *
-     * @param updatedBy the updatedBy value to set
-     * @return the VersionDto object itself.
-     */
-    public VersionDto withUpdatedBy(String updatedBy) {
-        this.updatedBy = updatedBy;
-        return this;
-    }
-
-    /**
      * Get the href value.
      *
      * @return the href value
@@ -130,6 +111,26 @@ public class VersionDto {
      */
     public VersionDto withHref(String href) {
         this.href = href;
+        return this;
+    }
+
+    /**
+     * Get the _links value.
+     *
+     * @return the _links value
+     */
+    public List<Link> _links() {
+        return this._links;
+    }
+
+    /**
+     * Set the _links value.
+     *
+     * @param _links the _links value to set
+     * @return the VersionDto object itself.
+     */
+    public VersionDto with_links(List<Link> _links) {
+        this._links = _links;
         return this;
     }
 
