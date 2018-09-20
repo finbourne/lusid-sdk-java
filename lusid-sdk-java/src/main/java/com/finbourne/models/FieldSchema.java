@@ -51,7 +51,8 @@ public class FieldSchema {
      * Possible values include: 'String', 'Int', 'Decimal', 'DateTime',
      * 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage',
      * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases',
-     * 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'UnitCreation'.
+     * 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray',
+     * 'CurrencyAndAmount', 'TradePrice'.
      */
     @JsonProperty(value = "type")
     private String type;
@@ -135,7 +136,7 @@ public class FieldSchema {
     }
 
     /**
-     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'UnitCreation'.
+     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice'.
      *
      * @return the type value
      */
@@ -144,7 +145,7 @@ public class FieldSchema {
     }
 
     /**
-     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'UnitCreation'.
+     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice'.
      *
      * @param type the type value to set
      * @return the FieldSchema object itself.

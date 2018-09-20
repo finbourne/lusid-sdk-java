@@ -57,7 +57,8 @@ public class UpdatePropertyDataFormatRequest {
      * Possible values include: 'String', 'Int', 'Decimal', 'DateTime',
      * 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage',
      * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases',
-     * 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'UnitCreation'.
+     * 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray',
+     * 'CurrencyAndAmount', 'TradePrice'.
      */
     @JsonProperty(value = "valueType", required = true)
     private String valueType;
@@ -161,7 +162,7 @@ public class UpdatePropertyDataFormatRequest {
     }
 
     /**
-     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'UnitCreation'.
+     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice'.
      *
      * @return the valueType value
      */
@@ -170,7 +171,7 @@ public class UpdatePropertyDataFormatRequest {
     }
 
     /**
-     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'UnitCreation'.
+     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice'.
      *
      * @param valueType the valueType value to set
      * @return the UpdatePropertyDataFormatRequest object itself.

@@ -87,6 +87,7 @@ import com.finbourne.models.SchemaDto;
 import com.finbourne.models.SecurityAnalyticDataDto;
 import com.finbourne.models.SecurityClassificationDto;
 import com.finbourne.models.SecurityDto;
+import com.finbourne.models.TransactionQueryParameters;
 import com.finbourne.models.TryAddClientSecuritiesDto;
 import com.finbourne.models.TryDeleteClientSecuritiesDto;
 import com.finbourne.models.TryLookupSecuritiesFromCodesDto;
@@ -102,6 +103,7 @@ import com.finbourne.models.UpsertPortfolioTradeRequest;
 import com.finbourne.models.UpsertPortfolioTradesDto;
 import com.finbourne.models.UpsertReferencePortfolioConstituentsDto;
 import com.finbourne.models.VersionedResourceListOfHoldingDto;
+import com.finbourne.models.VersionedResourceListOfOutputTransactionDto;
 import com.finbourne.models.VersionedResourceListOfTradeDto;
 import com.finbourne.models.WebLogMessage;
 import com.google.common.reflect.TypeToken;
@@ -470,6 +472,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI deletePropertyFromTrade" })
         @HTTP(path = "v1/api/portfolios/{scope}/{code}/trades/{tradeId}/properties", method = "DELETE", hasBody = true)
         Observable<Response<ResponseBody>> deletePropertyFromTrade(@Path("scope") String scope, @Path("code") String code, @Path("tradeId") String tradeId, @Query("property") String property);
+
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI buildTransactions" })
+        @POST("v1/api/portfolios/{scope}/{code}/transactions/$build")
+        Observable<Response<ResponseBody>> buildTransactions(@Path("scope") String scope, @Path("code") String code, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("securityPropertyKeys") String securityPropertyKeys, @Query("filter") String filter, @Body TransactionQueryParameters parameters);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI createDerivedPortfolio" })
         @POST("v1/api/portfolios/{scope}/derived")
@@ -10424,6 +10430,199 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the VersionedResourceListOfOutputTransactionDto object if successful.
+     */
+    public VersionedResourceListOfOutputTransactionDto buildTransactions(String scope, String code) {
+        return buildTransactionsWithServiceResponseAsync(scope, code).toBlocking().single().body();
+    }
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<VersionedResourceListOfOutputTransactionDto> buildTransactionsAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfOutputTransactionDto> serviceCallback) {
+        return ServiceFuture.fromResponse(buildTransactionsWithServiceResponseAsync(scope, code), serviceCallback);
+    }
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the VersionedResourceListOfOutputTransactionDto object
+     */
+    public Observable<VersionedResourceListOfOutputTransactionDto> buildTransactionsAsync(String scope, String code) {
+        return buildTransactionsWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<VersionedResourceListOfOutputTransactionDto>, VersionedResourceListOfOutputTransactionDto>() {
+            @Override
+            public VersionedResourceListOfOutputTransactionDto call(ServiceResponse<VersionedResourceListOfOutputTransactionDto> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the VersionedResourceListOfOutputTransactionDto object
+     */
+    public Observable<ServiceResponse<VersionedResourceListOfOutputTransactionDto>> buildTransactionsWithServiceResponseAsync(String scope, String code) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        if (code == null) {
+            throw new IllegalArgumentException("Parameter code is required and cannot be null.");
+        }
+        final DateTime asAt = null;
+        final List<String> sortBy = null;
+        final Integer start = null;
+        final Integer limit = null;
+        final List<String> securityPropertyKeys = null;
+        final String filter = null;
+        final TransactionQueryParameters parameters = null;
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String securityPropertyKeysConverted = this.serializerAdapter().serializeList(securityPropertyKeys, CollectionFormat.MULTI);
+        return service.buildTransactions(scope, code, asAt, sortByConverted, start, limit, securityPropertyKeysConverted, filter, parameters)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<VersionedResourceListOfOutputTransactionDto>>>() {
+                @Override
+                public Observable<ServiceResponse<VersionedResourceListOfOutputTransactionDto>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<VersionedResourceListOfOutputTransactionDto> clientResponse = buildTransactionsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param asAt the DateTime value
+     * @param sortBy The columns to sort the returned data by
+     * @param start How many items to skip from the returned set
+     * @param limit How many items to return from the set
+     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
+     * @param filter Trade filter
+     * @param parameters Core query parameters
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the VersionedResourceListOfOutputTransactionDto object if successful.
+     */
+    public VersionedResourceListOfOutputTransactionDto buildTransactions(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter, TransactionQueryParameters parameters) {
+        return buildTransactionsWithServiceResponseAsync(scope, code, asAt, sortBy, start, limit, securityPropertyKeys, filter, parameters).toBlocking().single().body();
+    }
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param asAt the DateTime value
+     * @param sortBy The columns to sort the returned data by
+     * @param start How many items to skip from the returned set
+     * @param limit How many items to return from the set
+     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
+     * @param filter Trade filter
+     * @param parameters Core query parameters
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<VersionedResourceListOfOutputTransactionDto> buildTransactionsAsync(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter, TransactionQueryParameters parameters, final ServiceCallback<VersionedResourceListOfOutputTransactionDto> serviceCallback) {
+        return ServiceFuture.fromResponse(buildTransactionsWithServiceResponseAsync(scope, code, asAt, sortBy, start, limit, securityPropertyKeys, filter, parameters), serviceCallback);
+    }
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param asAt the DateTime value
+     * @param sortBy The columns to sort the returned data by
+     * @param start How many items to skip from the returned set
+     * @param limit How many items to return from the set
+     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
+     * @param filter Trade filter
+     * @param parameters Core query parameters
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the VersionedResourceListOfOutputTransactionDto object
+     */
+    public Observable<VersionedResourceListOfOutputTransactionDto> buildTransactionsAsync(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter, TransactionQueryParameters parameters) {
+        return buildTransactionsWithServiceResponseAsync(scope, code, asAt, sortBy, start, limit, securityPropertyKeys, filter, parameters).map(new Func1<ServiceResponse<VersionedResourceListOfOutputTransactionDto>, VersionedResourceListOfOutputTransactionDto>() {
+            @Override
+            public VersionedResourceListOfOutputTransactionDto call(ServiceResponse<VersionedResourceListOfOutputTransactionDto> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param asAt the DateTime value
+     * @param sortBy The columns to sort the returned data by
+     * @param start How many items to skip from the returned set
+     * @param limit How many items to return from the set
+     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
+     * @param filter Trade filter
+     * @param parameters Core query parameters
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the VersionedResourceListOfOutputTransactionDto object
+     */
+    public Observable<ServiceResponse<VersionedResourceListOfOutputTransactionDto>> buildTransactionsWithServiceResponseAsync(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter, TransactionQueryParameters parameters) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        if (code == null) {
+            throw new IllegalArgumentException("Parameter code is required and cannot be null.");
+        }
+        Validator.validate(sortBy);
+        Validator.validate(securityPropertyKeys);
+        Validator.validate(parameters);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String securityPropertyKeysConverted = this.serializerAdapter().serializeList(securityPropertyKeys, CollectionFormat.MULTI);
+        return service.buildTransactions(scope, code, asAt, sortByConverted, start, limit, securityPropertyKeysConverted, filter, parameters)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<VersionedResourceListOfOutputTransactionDto>>>() {
+                @Override
+                public Observable<ServiceResponse<VersionedResourceListOfOutputTransactionDto>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<VersionedResourceListOfOutputTransactionDto> clientResponse = buildTransactionsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<VersionedResourceListOfOutputTransactionDto> buildTransactionsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<VersionedResourceListOfOutputTransactionDto, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<VersionedResourceListOfOutputTransactionDto>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
      * Create derived portfolio.
      * Creates a portfolio that derives from an existing portfolio.
      *
@@ -14390,7 +14589,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader', 'OutputTransaction', 'RealisedGainLoss'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -14402,7 +14601,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader', 'OutputTransaction', 'RealisedGainLoss'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -14413,7 +14612,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader', 'OutputTransaction', 'RealisedGainLoss'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the SchemaDto object
      */
@@ -14428,7 +14627,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader'
+     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader', 'OutputTransaction', 'RealisedGainLoss'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the SchemaDto object
      */
