@@ -51,7 +51,6 @@ import com.finbourne.models.ErrorResponseException;
 import com.finbourne.models.ExpandedGroupDto;
 import com.finbourne.models.GroupDto;
 import com.finbourne.models.HoldingsAdjustmentDto;
-import com.finbourne.models.HoldingsAdjustmentHeaderDto;
 import com.finbourne.models.IUnitDefinitionDto;
 import com.finbourne.models.ListAggregationResponse;
 import com.finbourne.models.LoginResponse;
@@ -69,6 +68,7 @@ import com.finbourne.models.ReferencePortfolioConstituentDto;
 import com.finbourne.models.ResourceId;
 import com.finbourne.models.ResourceListOfAnalyticStoreKeyDto;
 import com.finbourne.models.ResourceListOfGroupDto;
+import com.finbourne.models.ResourceListOfHoldingsAdjustmentHeaderDto;
 import com.finbourne.models.ResourceListOfPersonalisationDto;
 import com.finbourne.models.ResourceListOfPortfolioDto;
 import com.finbourne.models.ResourceListOfPortfolioSearchResult;
@@ -8497,9 +8497,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the HoldingsAdjustmentHeaderDto object if successful.
+     * @return the ResourceListOfHoldingsAdjustmentHeaderDto object if successful.
      */
-    public HoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code) {
+    public ResourceListOfHoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code) {
         return listHoldingsAdjustmentsWithServiceResponseAsync(scope, code).toBlocking().single().body();
     }
 
@@ -8512,7 +8512,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, final ServiceCallback<HoldingsAdjustmentHeaderDto> serviceCallback) {
+    public ServiceFuture<ResourceListOfHoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, final ServiceCallback<ResourceListOfHoldingsAdjustmentHeaderDto> serviceCallback) {
         return ServiceFuture.fromResponse(listHoldingsAdjustmentsWithServiceResponseAsync(scope, code), serviceCallback);
     }
 
@@ -8522,12 +8522,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     * @return the observable to the ResourceListOfHoldingsAdjustmentHeaderDto object
      */
-    public Observable<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code) {
-        return listHoldingsAdjustmentsWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<HoldingsAdjustmentHeaderDto>, HoldingsAdjustmentHeaderDto>() {
+    public Observable<ResourceListOfHoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code) {
+        return listHoldingsAdjustmentsWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto>, ResourceListOfHoldingsAdjustmentHeaderDto>() {
             @Override
-            public HoldingsAdjustmentHeaderDto call(ServiceResponse<HoldingsAdjustmentHeaderDto> response) {
+            public ResourceListOfHoldingsAdjustmentHeaderDto call(ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto> response) {
                 return response.body();
             }
         });
@@ -8539,9 +8539,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     * @return the observable to the ResourceListOfHoldingsAdjustmentHeaderDto object
      */
-    public Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code) {
+    public Observable<ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -8552,11 +8552,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final DateTime toEffectiveAt = null;
         final DateTime asAtTime = null;
         return service.listHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto>>>() {
                 @Override
-                public Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<HoldingsAdjustmentHeaderDto> clientResponse = listHoldingsAdjustmentsDelegate(response);
+                        ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto> clientResponse = listHoldingsAdjustmentsDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -8576,9 +8576,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the HoldingsAdjustmentHeaderDto object if successful.
+     * @return the ResourceListOfHoldingsAdjustmentHeaderDto object if successful.
      */
-    public HoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime) {
+    public ResourceListOfHoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime) {
         return listHoldingsAdjustmentsWithServiceResponseAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime).toBlocking().single().body();
     }
 
@@ -8594,7 +8594,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime, final ServiceCallback<HoldingsAdjustmentHeaderDto> serviceCallback) {
+    public ServiceFuture<ResourceListOfHoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime, final ServiceCallback<ResourceListOfHoldingsAdjustmentHeaderDto> serviceCallback) {
         return ServiceFuture.fromResponse(listHoldingsAdjustmentsWithServiceResponseAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime), serviceCallback);
     }
 
@@ -8607,12 +8607,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
      * @param asAtTime The as-at time for which the result is valid.
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     * @return the observable to the ResourceListOfHoldingsAdjustmentHeaderDto object
      */
-    public Observable<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime) {
-        return listHoldingsAdjustmentsWithServiceResponseAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime).map(new Func1<ServiceResponse<HoldingsAdjustmentHeaderDto>, HoldingsAdjustmentHeaderDto>() {
+    public Observable<ResourceListOfHoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime) {
+        return listHoldingsAdjustmentsWithServiceResponseAsync(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime).map(new Func1<ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto>, ResourceListOfHoldingsAdjustmentHeaderDto>() {
             @Override
-            public HoldingsAdjustmentHeaderDto call(ServiceResponse<HoldingsAdjustmentHeaderDto> response) {
+            public ResourceListOfHoldingsAdjustmentHeaderDto call(ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto> response) {
                 return response.body();
             }
         });
@@ -8627,9 +8627,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
      * @param asAtTime The as-at time for which the result is valid.
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     * @return the observable to the ResourceListOfHoldingsAdjustmentHeaderDto object
      */
-    public Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime) {
+    public Observable<ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -8637,11 +8637,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
         return service.listHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto>>>() {
                 @Override
-                public Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<HoldingsAdjustmentHeaderDto> clientResponse = listHoldingsAdjustmentsDelegate(response);
+                        ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto> clientResponse = listHoldingsAdjustmentsDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -8650,9 +8650,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
-        return this.restClient().responseBuilderFactory().<HoldingsAdjustmentHeaderDto, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<HoldingsAdjustmentHeaderDto>() { }.getType())
+    private ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<ResourceListOfHoldingsAdjustmentHeaderDto, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<ResourceListOfHoldingsAdjustmentHeaderDto>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }

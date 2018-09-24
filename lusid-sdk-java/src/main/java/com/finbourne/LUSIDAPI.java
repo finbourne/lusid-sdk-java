@@ -46,7 +46,6 @@ import com.finbourne.models.ErrorResponseException;
 import com.finbourne.models.ExpandedGroupDto;
 import com.finbourne.models.GroupDto;
 import com.finbourne.models.HoldingsAdjustmentDto;
-import com.finbourne.models.HoldingsAdjustmentHeaderDto;
 import com.finbourne.models.IUnitDefinitionDto;
 import com.finbourne.models.ListAggregationResponse;
 import com.finbourne.models.LoginResponse;
@@ -64,6 +63,7 @@ import com.finbourne.models.ReferencePortfolioConstituentDto;
 import com.finbourne.models.ResourceId;
 import com.finbourne.models.ResourceListOfAnalyticStoreKeyDto;
 import com.finbourne.models.ResourceListOfGroupDto;
+import com.finbourne.models.ResourceListOfHoldingsAdjustmentHeaderDto;
 import com.finbourne.models.ResourceListOfPersonalisationDto;
 import com.finbourne.models.ResourceListOfPortfolioDto;
 import com.finbourne.models.ResourceListOfPortfolioSearchResult;
@@ -4635,9 +4635,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the HoldingsAdjustmentHeaderDto object if successful.
+     * @return the ResourceListOfHoldingsAdjustmentHeaderDto object if successful.
      */
-    HoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code);
+    ResourceListOfHoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code);
 
     /**
      * Gets holdings adjustments in an interval of effective time.
@@ -4648,7 +4648,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, final ServiceCallback<HoldingsAdjustmentHeaderDto> serviceCallback);
+    ServiceFuture<ResourceListOfHoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, final ServiceCallback<ResourceListOfHoldingsAdjustmentHeaderDto> serviceCallback);
 
     /**
      * Gets holdings adjustments in an interval of effective time.
@@ -4656,9 +4656,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     * @return the observable to the ResourceListOfHoldingsAdjustmentHeaderDto object
      */
-    Observable<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code);
+    Observable<ResourceListOfHoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code);
 
     /**
      * Gets holdings adjustments in an interval of effective time.
@@ -4666,9 +4666,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     * @return the observable to the ResourceListOfHoldingsAdjustmentHeaderDto object
      */
-    Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code);
     /**
      * Gets holdings adjustments in an interval of effective time.
      *
@@ -4680,9 +4680,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the HoldingsAdjustmentHeaderDto object if successful.
+     * @return the ResourceListOfHoldingsAdjustmentHeaderDto object if successful.
      */
-    HoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
+    ResourceListOfHoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
 
     /**
      * Gets holdings adjustments in an interval of effective time.
@@ -4696,7 +4696,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime, final ServiceCallback<HoldingsAdjustmentHeaderDto> serviceCallback);
+    ServiceFuture<ResourceListOfHoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime, final ServiceCallback<ResourceListOfHoldingsAdjustmentHeaderDto> serviceCallback);
 
     /**
      * Gets holdings adjustments in an interval of effective time.
@@ -4707,9 +4707,9 @@ public interface LUSIDAPI {
      * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
      * @param asAtTime The as-at time for which the result is valid.
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     * @return the observable to the ResourceListOfHoldingsAdjustmentHeaderDto object
      */
-    Observable<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
+    Observable<ResourceListOfHoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
 
     /**
      * Gets holdings adjustments in an interval of effective time.
@@ -4720,9 +4720,9 @@ public interface LUSIDAPI {
      * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
      * @param asAtTime The as-at time for which the result is valid.
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     * @return the observable to the ResourceListOfHoldingsAdjustmentHeaderDto object
      */
-    Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
+    Observable<ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
 
     /**
      * Get a holdings adjustment for a single portfolio at a specific effective time.
