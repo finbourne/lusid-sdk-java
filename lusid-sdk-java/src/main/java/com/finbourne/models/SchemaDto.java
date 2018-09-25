@@ -30,35 +30,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class SchemaDto {
     /**
-     * Possible values include: 'PropertyKey', 'FieldSchema',
-     * 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest',
-     * 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login',
-     * 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode',
-     * 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult',
-     * 'PortfolioDetails', 'PortfolioProperties', 'Version',
-     * 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey',
-     * 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade',
-     * 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding',
-     * 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition',
-     * 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore',
-     * 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup',
-     * 'CreatePropertyDataFormat', 'CreatePropertyDefinition',
-     * 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat',
-     * 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest',
-     * 'Aggregation', 'NestedAggregation', 'ResultDataSchema',
-     * 'Classification', 'SecurityClassification', 'WebLogMessage',
-     * 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent',
-     * 'CreateResults', 'Results', 'TryAddClientSecurities',
-     * 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes',
-     * 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction',
-     * 'CorporateActionTransition', 'ReconciliationRequest',
-     * 'ReconciliationBreak', 'TransactionConfigurationData',
-     * 'TransactionConfigurationMovementData',
-     * 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions',
-     * 'Iso4217CurrencyUnit', 'BasicUnit',
-     * 'CorporateActionTransitionComponent', 'TargetTaxlot',
-     * 'AdjustHoldingRequest', 'HoldingsAdjustment',
-     * 'HoldingsAdjustmentHeader', 'OutputTransaction', 'RealisedGainLoss'.
+     * The entity property.
      */
     @JsonProperty(value = "entity")
     private String entity;
@@ -76,7 +48,13 @@ public class SchemaDto {
     private List<KeyValuePairOfStringToFieldSchema> values;
 
     /**
-     * Get possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader', 'OutputTransaction', 'RealisedGainLoss'.
+     * The links property.
+     */
+    @JsonProperty(value = "links")
+    private List<Link> links;
+
+    /**
+     * Get the entity value.
      *
      * @return the entity value
      */
@@ -85,7 +63,7 @@ public class SchemaDto {
     }
 
     /**
-     * Set possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader', 'OutputTransaction', 'RealisedGainLoss'.
+     * Set the entity value.
      *
      * @param entity the entity value to set
      * @return the SchemaDto object itself.
@@ -132,6 +110,26 @@ public class SchemaDto {
      */
     public SchemaDto withValues(List<KeyValuePairOfStringToFieldSchema> values) {
         this.values = values;
+        return this;
+    }
+
+    /**
+     * Get the links value.
+     *
+     * @return the links value
+     */
+    public List<Link> links() {
+        return this.links;
+    }
+
+    /**
+     * Set the links value.
+     *
+     * @param links the links value to set
+     * @return the SchemaDto object itself.
+     */
+    public SchemaDto withLinks(List<Link> links) {
+        this.links = links;
         return this;
     }
 

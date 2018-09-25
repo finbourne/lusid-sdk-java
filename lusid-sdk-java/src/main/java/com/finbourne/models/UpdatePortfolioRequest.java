@@ -30,10 +30,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class UpdatePortfolioRequest {
     /**
-     * The name property.
+     * The displayName property.
      */
-    @JsonProperty(value = "name", required = true)
-    private String name;
+    @JsonProperty(value = "displayName", required = true)
+    private String displayName;
+
+    /**
+     * The description property.
+     */
+    @JsonProperty(value = "description")
+    private String description;
 
     /**
      * The created property.
@@ -42,22 +48,42 @@ public class UpdatePortfolioRequest {
     private DateTime created;
 
     /**
-     * Get the name value.
+     * Get the displayName value.
      *
-     * @return the name value
+     * @return the displayName value
      */
-    public String name() {
-        return this.name;
+    public String displayName() {
+        return this.displayName;
     }
 
     /**
-     * Set the name value.
+     * Set the displayName value.
      *
-     * @param name the name value to set
+     * @param displayName the displayName value to set
      * @return the UpdatePortfolioRequest object itself.
      */
-    public UpdatePortfolioRequest withName(String name) {
-        this.name = name;
+    public UpdatePortfolioRequest withDisplayName(String displayName) {
+        this.displayName = displayName;
+        return this;
+    }
+
+    /**
+     * Get the description value.
+     *
+     * @return the description value
+     */
+    public String description() {
+        return this.description;
+    }
+
+    /**
+     * Set the description value.
+     *
+     * @param description the description value to set
+     * @return the UpdatePortfolioRequest object itself.
+     */
+    public UpdatePortfolioRequest withDescription(String description) {
+        this.description = description;
         return this;
     }
 

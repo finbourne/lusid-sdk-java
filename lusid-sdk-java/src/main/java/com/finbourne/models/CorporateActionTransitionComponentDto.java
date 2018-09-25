@@ -29,10 +29,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class CorporateActionTransitionComponentDto {
     /**
-     * The securityUid property.
+     * The instrumentUid property.
      */
-    @JsonProperty(value = "securityUid")
-    private String securityUid;
+    @JsonProperty(value = "instrumentUid")
+    private String instrumentUid;
 
     /**
      * The unitsFactor property.
@@ -47,22 +47,22 @@ public class CorporateActionTransitionComponentDto {
     private Double costFactor;
 
     /**
-     * Get the securityUid value.
+     * Get the instrumentUid value.
      *
-     * @return the securityUid value
+     * @return the instrumentUid value
      */
-    public String securityUid() {
-        return this.securityUid;
+    public String instrumentUid() {
+        return this.instrumentUid;
     }
 
     /**
-     * Set the securityUid value.
+     * Set the instrumentUid value.
      *
-     * @param securityUid the securityUid value to set
+     * @param instrumentUid the instrumentUid value to set
      * @return the CorporateActionTransitionComponentDto object itself.
      */
-    public CorporateActionTransitionComponentDto withSecurityUid(String securityUid) {
-        this.securityUid = securityUid;
+    public CorporateActionTransitionComponentDto withInstrumentUid(String instrumentUid) {
+        this.instrumentUid = instrumentUid;
         return this;
     }
 

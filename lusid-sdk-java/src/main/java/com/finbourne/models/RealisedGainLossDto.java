@@ -30,13 +30,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class RealisedGainLossDto {
     /**
-     * Unique security identifier.
+     * Unique instrument identifier.
      */
-    @JsonProperty(value = "securityUid", access = JsonProperty.Access.WRITE_ONLY)
-    private String securityUid;
+    @JsonProperty(value = "instrumentUid", access = JsonProperty.Access.WRITE_ONLY)
+    private String instrumentUid;
 
     /**
-     * Quantity against which gain has ben made in units of the security.
+     * Quantity against which gain has been made in units of the instrument.
      */
     @JsonProperty(value = "units", access = JsonProperty.Access.WRITE_ONLY)
     private Double units;
@@ -54,7 +54,7 @@ public class RealisedGainLossDto {
     private DateTime purchaseSettlementDate;
 
     /**
-     * Price the security was purchased at.
+     * Price the instrument was purchased at.
      */
     @JsonProperty(value = "purchasePrice", access = JsonProperty.Access.WRITE_ONLY)
     private Double purchasePrice;
@@ -96,16 +96,16 @@ public class RealisedGainLossDto {
     private CurrencyAndAmount realisedCurrency;
 
     /**
-     * Get unique security identifier.
+     * Get unique instrument identifier.
      *
-     * @return the securityUid value
+     * @return the instrumentUid value
      */
-    public String securityUid() {
-        return this.securityUid;
+    public String instrumentUid() {
+        return this.instrumentUid;
     }
 
     /**
-     * Get quantity against which gain has ben made in units of the security.
+     * Get quantity against which gain has been made in units of the instrument.
      *
      * @return the units value
      */
@@ -132,7 +132,7 @@ public class RealisedGainLossDto {
     }
 
     /**
-     * Get price the security was purchased at.
+     * Get price the instrument was purchased at.
      *
      * @return the purchasePrice value
      */

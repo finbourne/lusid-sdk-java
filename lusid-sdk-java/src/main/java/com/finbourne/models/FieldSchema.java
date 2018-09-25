@@ -50,9 +50,10 @@ public class FieldSchema {
     /**
      * Possible values include: 'String', 'Int', 'Decimal', 'DateTime',
      * 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage',
-     * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases',
-     * 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray',
-     * 'CurrencyAndAmount', 'TradePrice'.
+     * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds',
+     * 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements',
+     * 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice',
+     * 'UnitCreation', 'Currency', 'UserId'.
      */
     @JsonProperty(value = "type")
     private String type;
@@ -136,7 +137,7 @@ public class FieldSchema {
     }
 
     /**
-     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice'.
+     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId'.
      *
      * @return the type value
      */
@@ -145,7 +146,7 @@ public class FieldSchema {
     }
 
     /**
-     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice'.
+     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId'.
      *
      * @param type the type value to set
      * @return the FieldSchema object itself.

@@ -22,6 +22,7 @@
 
 package com.finbourne.models;
 
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -33,6 +34,18 @@ public class UpsertReferencePortfolioConstituentsDto {
      */
     @JsonProperty(value = "href")
     private String href;
+
+    /**
+     * The version property.
+     */
+    @JsonProperty(value = "version")
+    private VersionDto version;
+
+    /**
+     * The links property.
+     */
+    @JsonProperty(value = "links")
+    private List<Link> links;
 
     /**
      * Get the href value.
@@ -51,6 +64,46 @@ public class UpsertReferencePortfolioConstituentsDto {
      */
     public UpsertReferencePortfolioConstituentsDto withHref(String href) {
         this.href = href;
+        return this;
+    }
+
+    /**
+     * Get the version value.
+     *
+     * @return the version value
+     */
+    public VersionDto version() {
+        return this.version;
+    }
+
+    /**
+     * Set the version value.
+     *
+     * @param version the version value to set
+     * @return the UpsertReferencePortfolioConstituentsDto object itself.
+     */
+    public UpsertReferencePortfolioConstituentsDto withVersion(VersionDto version) {
+        this.version = version;
+        return this;
+    }
+
+    /**
+     * Get the links value.
+     *
+     * @return the links value
+     */
+    public List<Link> links() {
+        return this.links;
+    }
+
+    /**
+     * Set the links value.
+     *
+     * @param links the links value to set
+     * @return the UpsertReferencePortfolioConstituentsDto object itself.
+     */
+    public UpsertReferencePortfolioConstituentsDto withLinks(List<Link> links) {
+        this.links = links;
         return this;
     }
 

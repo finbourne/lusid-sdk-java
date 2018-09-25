@@ -42,10 +42,10 @@ public class CreatePropertyDefinitionRequest {
     private String scope;
 
     /**
-     * The name property.
+     * The code property.
      */
-    @JsonProperty(value = "name")
-    private String name;
+    @JsonProperty(value = "code")
+    private String code;
 
     /**
      * The valueRequired property.
@@ -60,16 +60,10 @@ public class CreatePropertyDefinitionRequest {
     private String displayName;
 
     /**
-     * The dataFormatId property.
+     * The dataTypeId property.
      */
-    @JsonProperty(value = "dataFormatId")
-    private ResourceId dataFormatId;
-
-    /**
-     * The sort property.
-     */
-    @JsonProperty(value = "sort")
-    private String sort;
+    @JsonProperty(value = "dataTypeId")
+    private ResourceId dataTypeId;
 
     /**
      * Possible values include: 'Perpetual', 'TimeVariant'.
@@ -124,22 +118,22 @@ public class CreatePropertyDefinitionRequest {
     }
 
     /**
-     * Get the name value.
+     * Get the code value.
      *
-     * @return the name value
+     * @return the code value
      */
-    public String name() {
-        return this.name;
+    public String code() {
+        return this.code;
     }
 
     /**
-     * Set the name value.
+     * Set the code value.
      *
-     * @param name the name value to set
+     * @param code the code value to set
      * @return the CreatePropertyDefinitionRequest object itself.
      */
-    public CreatePropertyDefinitionRequest withName(String name) {
-        this.name = name;
+    public CreatePropertyDefinitionRequest withCode(String code) {
+        this.code = code;
         return this;
     }
 
@@ -184,42 +178,22 @@ public class CreatePropertyDefinitionRequest {
     }
 
     /**
-     * Get the dataFormatId value.
+     * Get the dataTypeId value.
      *
-     * @return the dataFormatId value
+     * @return the dataTypeId value
      */
-    public ResourceId dataFormatId() {
-        return this.dataFormatId;
+    public ResourceId dataTypeId() {
+        return this.dataTypeId;
     }
 
     /**
-     * Set the dataFormatId value.
+     * Set the dataTypeId value.
      *
-     * @param dataFormatId the dataFormatId value to set
+     * @param dataTypeId the dataTypeId value to set
      * @return the CreatePropertyDefinitionRequest object itself.
      */
-    public CreatePropertyDefinitionRequest withDataFormatId(ResourceId dataFormatId) {
-        this.dataFormatId = dataFormatId;
-        return this;
-    }
-
-    /**
-     * Get the sort value.
-     *
-     * @return the sort value
-     */
-    public String sort() {
-        return this.sort;
-    }
-
-    /**
-     * Set the sort value.
-     *
-     * @param sort the sort value to set
-     * @return the CreatePropertyDefinitionRequest object itself.
-     */
-    public CreatePropertyDefinitionRequest withSort(String sort) {
-        this.sort = sort;
+    public CreatePropertyDefinitionRequest withDataTypeId(ResourceId dataTypeId) {
+        this.dataTypeId = dataTypeId;
         return this;
     }
 

@@ -23,7 +23,6 @@
 package com.finbourne.models;
 
 import org.joda.time.DateTime;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -33,26 +32,20 @@ public class VersionDto {
     /**
      * The effectiveFrom property.
      */
-    @JsonProperty(value = "effectiveFrom")
+    @JsonProperty(value = "effectiveFrom", access = JsonProperty.Access.WRITE_ONLY)
     private DateTime effectiveFrom;
 
     /**
      * The asAtDate property.
      */
-    @JsonProperty(value = "asAtDate")
+    @JsonProperty(value = "asAtDate", access = JsonProperty.Access.WRITE_ONLY)
     private DateTime asAtDate;
 
     /**
      * The href property.
      */
-    @JsonProperty(value = "href")
+    @JsonProperty(value = "href", access = JsonProperty.Access.WRITE_ONLY)
     private String href;
-
-    /**
-     * The _links property.
-     */
-    @JsonProperty(value = "_links")
-    private List<Link> _links;
 
     /**
      * Get the effectiveFrom value.
@@ -61,17 +54,6 @@ public class VersionDto {
      */
     public DateTime effectiveFrom() {
         return this.effectiveFrom;
-    }
-
-    /**
-     * Set the effectiveFrom value.
-     *
-     * @param effectiveFrom the effectiveFrom value to set
-     * @return the VersionDto object itself.
-     */
-    public VersionDto withEffectiveFrom(DateTime effectiveFrom) {
-        this.effectiveFrom = effectiveFrom;
-        return this;
     }
 
     /**
@@ -84,54 +66,12 @@ public class VersionDto {
     }
 
     /**
-     * Set the asAtDate value.
-     *
-     * @param asAtDate the asAtDate value to set
-     * @return the VersionDto object itself.
-     */
-    public VersionDto withAsAtDate(DateTime asAtDate) {
-        this.asAtDate = asAtDate;
-        return this;
-    }
-
-    /**
      * Get the href value.
      *
      * @return the href value
      */
     public String href() {
         return this.href;
-    }
-
-    /**
-     * Set the href value.
-     *
-     * @param href the href value to set
-     * @return the VersionDto object itself.
-     */
-    public VersionDto withHref(String href) {
-        this.href = href;
-        return this;
-    }
-
-    /**
-     * Get the _links value.
-     *
-     * @return the _links value
-     */
-    public List<Link> _links() {
-        return this._links;
-    }
-
-    /**
-     * Set the _links value.
-     *
-     * @param _links the _links value to set
-     * @return the VersionDto object itself.
-     */
-    public VersionDto with_links(List<Link> _links) {
-        this._links = _links;
-        return this;
     }
 
 }

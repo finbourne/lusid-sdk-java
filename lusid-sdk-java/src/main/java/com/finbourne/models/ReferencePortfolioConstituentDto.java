@@ -30,10 +30,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class ReferencePortfolioConstituentDto {
     /**
-     * The id property.
+     * The instrumentUid property.
      */
-    @JsonProperty(value = "id")
-    private String id;
+    @JsonProperty(value = "instrumentUid")
+    private String instrumentUid;
 
     /**
      * The properties property.
@@ -42,10 +42,10 @@ public class ReferencePortfolioConstituentDto {
     private List<PropertyDto> properties;
 
     /**
-     * The quantity property.
+     * The weight property.
      */
-    @JsonProperty(value = "quantity")
-    private Double quantity;
+    @JsonProperty(value = "weight")
+    private Double weight;
 
     /**
      * Possible values include: 'Shares', 'Weight', 'Nominal'.
@@ -54,22 +54,22 @@ public class ReferencePortfolioConstituentDto {
     private String type;
 
     /**
-     * Get the id value.
+     * Get the instrumentUid value.
      *
-     * @return the id value
+     * @return the instrumentUid value
      */
-    public String id() {
-        return this.id;
+    public String instrumentUid() {
+        return this.instrumentUid;
     }
 
     /**
-     * Set the id value.
+     * Set the instrumentUid value.
      *
-     * @param id the id value to set
+     * @param instrumentUid the instrumentUid value to set
      * @return the ReferencePortfolioConstituentDto object itself.
      */
-    public ReferencePortfolioConstituentDto withId(String id) {
-        this.id = id;
+    public ReferencePortfolioConstituentDto withInstrumentUid(String instrumentUid) {
+        this.instrumentUid = instrumentUid;
         return this;
     }
 
@@ -94,22 +94,22 @@ public class ReferencePortfolioConstituentDto {
     }
 
     /**
-     * Get the quantity value.
+     * Get the weight value.
      *
-     * @return the quantity value
+     * @return the weight value
      */
-    public Double quantity() {
-        return this.quantity;
+    public Double weight() {
+        return this.weight;
     }
 
     /**
-     * Set the quantity value.
+     * Set the weight value.
      *
-     * @param quantity the quantity value to set
+     * @param weight the weight value to set
      * @return the ReferencePortfolioConstituentDto object itself.
      */
-    public ReferencePortfolioConstituentDto withQuantity(Double quantity) {
-        this.quantity = quantity;
+    public ReferencePortfolioConstituentDto withWeight(Double weight) {
+        this.weight = weight;
         return this;
     }
 

@@ -30,18 +30,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class CreatePropertyRequest {
     /**
-     * The scope property.
-     */
-    @JsonProperty(value = "scope")
-    private String scope;
-
-    /**
-     * The name property.
-     */
-    @JsonProperty(value = "name")
-    private String name;
-
-    /**
      * The value property.
      */
     @JsonProperty(value = "value", required = true)
@@ -56,48 +44,8 @@ public class CreatePropertyRequest {
     /**
      * The unit property.
      */
-    @JsonProperty(value = "unit", access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "unit")
     private String unit;
-
-    /**
-     * Get the scope value.
-     *
-     * @return the scope value
-     */
-    public String scope() {
-        return this.scope;
-    }
-
-    /**
-     * Set the scope value.
-     *
-     * @param scope the scope value to set
-     * @return the CreatePropertyRequest object itself.
-     */
-    public CreatePropertyRequest withScope(String scope) {
-        this.scope = scope;
-        return this;
-    }
-
-    /**
-     * Get the name value.
-     *
-     * @return the name value
-     */
-    public String name() {
-        return this.name;
-    }
-
-    /**
-     * Set the name value.
-     *
-     * @param name the name value to set
-     * @return the CreatePropertyRequest object itself.
-     */
-    public CreatePropertyRequest withName(String name) {
-        this.name = name;
-        return this;
-    }
 
     /**
      * Get the value value.
@@ -146,6 +94,17 @@ public class CreatePropertyRequest {
      */
     public String unit() {
         return this.unit;
+    }
+
+    /**
+     * Set the unit value.
+     *
+     * @param unit the unit value to set
+     * @return the CreatePropertyRequest object itself.
+     */
+    public CreatePropertyRequest withUnit(String unit) {
+        this.unit = unit;
+        return this;
     }
 
 }

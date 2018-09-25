@@ -30,10 +30,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class ReconciliationBreakDto {
     /**
-     * Unique security identifier.
+     * Unique instrument identifier.
      */
-    @JsonProperty(value = "securityUid")
-    private String securityUid;
+    @JsonProperty(value = "instrumentUid")
+    private String instrumentUid;
 
     /**
      * The properties property.
@@ -54,22 +54,22 @@ public class ReconciliationBreakDto {
     private Double costDifference;
 
     /**
-     * Get unique security identifier.
+     * Get unique instrument identifier.
      *
-     * @return the securityUid value
+     * @return the instrumentUid value
      */
-    public String securityUid() {
-        return this.securityUid;
+    public String instrumentUid() {
+        return this.instrumentUid;
     }
 
     /**
-     * Set unique security identifier.
+     * Set unique instrument identifier.
      *
-     * @param securityUid the securityUid value to set
+     * @param instrumentUid the instrumentUid value to set
      * @return the ReconciliationBreakDto object itself.
      */
-    public ReconciliationBreakDto withSecurityUid(String securityUid) {
-        this.securityUid = securityUid;
+    public ReconciliationBreakDto withInstrumentUid(String instrumentUid) {
+        this.instrumentUid = instrumentUid;
         return this;
     }
 

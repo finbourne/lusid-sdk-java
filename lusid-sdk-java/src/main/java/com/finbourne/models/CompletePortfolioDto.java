@@ -33,38 +33,51 @@ public class CompletePortfolioDto {
     /**
      * The id property.
      */
-    @JsonProperty(value = "id")
+    @JsonProperty(value = "id", access = JsonProperty.Access.WRITE_ONLY)
     private ResourceId id;
 
     /**
      * The href property.
      */
-    @JsonProperty(value = "href")
+    @JsonProperty(value = "href", access = JsonProperty.Access.WRITE_ONLY)
     private String href;
 
     /**
      * The description property.
      */
-    @JsonProperty(value = "description")
+    @JsonProperty(value = "description", access = JsonProperty.Access.WRITE_ONLY)
     private String description;
 
     /**
-     * The name property.
+     * The displayName property.
      */
-    @JsonProperty(value = "name")
-    private String name;
+    @JsonProperty(value = "displayName", access = JsonProperty.Access.WRITE_ONLY)
+    private String displayName;
 
     /**
      * The created property.
      */
-    @JsonProperty(value = "created")
+    @JsonProperty(value = "created", access = JsonProperty.Access.WRITE_ONLY)
     private DateTime created;
 
     /**
      * The parentPortfolioId property.
      */
-    @JsonProperty(value = "parentPortfolioId")
+    @JsonProperty(value = "parentPortfolioId", access = JsonProperty.Access.WRITE_ONLY)
     private ResourceId parentPortfolioId;
+
+    /**
+     * The isDerived property.
+     */
+    @JsonProperty(value = "isDerived", access = JsonProperty.Access.WRITE_ONLY)
+    private Boolean isDerived;
+
+    /**
+     * Possible values include: 'Transaction', 'Reference',
+     * 'DerivedTransaction'.
+     */
+    @JsonProperty(value = "type", access = JsonProperty.Access.WRITE_ONLY)
+    private String type;
 
     /**
      * The version property.
@@ -85,10 +98,10 @@ public class CompletePortfolioDto {
     private String baseCurrency;
 
     /**
-     * The _links property.
+     * The links property.
      */
-    @JsonProperty(value = "_links")
-    private List<Link> _links;
+    @JsonProperty(value = "links")
+    private List<Link> links;
 
     /**
      * Get the id value.
@@ -97,17 +110,6 @@ public class CompletePortfolioDto {
      */
     public ResourceId id() {
         return this.id;
-    }
-
-    /**
-     * Set the id value.
-     *
-     * @param id the id value to set
-     * @return the CompletePortfolioDto object itself.
-     */
-    public CompletePortfolioDto withId(ResourceId id) {
-        this.id = id;
-        return this;
     }
 
     /**
@@ -120,17 +122,6 @@ public class CompletePortfolioDto {
     }
 
     /**
-     * Set the href value.
-     *
-     * @param href the href value to set
-     * @return the CompletePortfolioDto object itself.
-     */
-    public CompletePortfolioDto withHref(String href) {
-        this.href = href;
-        return this;
-    }
-
-    /**
      * Get the description value.
      *
      * @return the description value
@@ -140,34 +131,12 @@ public class CompletePortfolioDto {
     }
 
     /**
-     * Set the description value.
+     * Get the displayName value.
      *
-     * @param description the description value to set
-     * @return the CompletePortfolioDto object itself.
+     * @return the displayName value
      */
-    public CompletePortfolioDto withDescription(String description) {
-        this.description = description;
-        return this;
-    }
-
-    /**
-     * Get the name value.
-     *
-     * @return the name value
-     */
-    public String name() {
-        return this.name;
-    }
-
-    /**
-     * Set the name value.
-     *
-     * @param name the name value to set
-     * @return the CompletePortfolioDto object itself.
-     */
-    public CompletePortfolioDto withName(String name) {
-        this.name = name;
-        return this;
+    public String displayName() {
+        return this.displayName;
     }
 
     /**
@@ -180,17 +149,6 @@ public class CompletePortfolioDto {
     }
 
     /**
-     * Set the created value.
-     *
-     * @param created the created value to set
-     * @return the CompletePortfolioDto object itself.
-     */
-    public CompletePortfolioDto withCreated(DateTime created) {
-        this.created = created;
-        return this;
-    }
-
-    /**
      * Get the parentPortfolioId value.
      *
      * @return the parentPortfolioId value
@@ -200,14 +158,21 @@ public class CompletePortfolioDto {
     }
 
     /**
-     * Set the parentPortfolioId value.
+     * Get the isDerived value.
      *
-     * @param parentPortfolioId the parentPortfolioId value to set
-     * @return the CompletePortfolioDto object itself.
+     * @return the isDerived value
      */
-    public CompletePortfolioDto withParentPortfolioId(ResourceId parentPortfolioId) {
-        this.parentPortfolioId = parentPortfolioId;
-        return this;
+    public Boolean isDerived() {
+        return this.isDerived;
+    }
+
+    /**
+     * Get possible values include: 'Transaction', 'Reference', 'DerivedTransaction'.
+     *
+     * @return the type value
+     */
+    public String type() {
+        return this.type;
     }
 
     /**
@@ -271,22 +236,22 @@ public class CompletePortfolioDto {
     }
 
     /**
-     * Get the _links value.
+     * Get the links value.
      *
-     * @return the _links value
+     * @return the links value
      */
-    public List<Link> _links() {
-        return this._links;
+    public List<Link> links() {
+        return this.links;
     }
 
     /**
-     * Set the _links value.
+     * Set the links value.
      *
-     * @param _links the _links value to set
+     * @param links the links value to set
      * @return the CompletePortfolioDto object itself.
      */
-    public CompletePortfolioDto with_links(List<Link> _links) {
-        this._links = _links;
+    public CompletePortfolioDto withLinks(List<Link> links) {
+        this.links = links;
         return this;
     }
 

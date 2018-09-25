@@ -50,7 +50,7 @@ public class CreateUnitDefinition {
     /**
      * The details property.
      */
-    @JsonProperty(value = "details", access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "details")
     private Map<String, String> details;
 
     /**
@@ -120,6 +120,17 @@ public class CreateUnitDefinition {
      */
     public Map<String, String> details() {
         return this.details;
+    }
+
+    /**
+     * Set the details value.
+     *
+     * @param details the details value to set
+     * @return the CreateUnitDefinition object itself.
+     */
+    public CreateUnitDefinition withDetails(Map<String, String> details) {
+        this.details = details;
+        return this;
     }
 
 }

@@ -55,6 +55,12 @@ public class ListAggregationResponse {
     private ResultDataSchema dataSchema;
 
     /**
+     * The links property.
+     */
+    @JsonProperty(value = "links")
+    private List<Link> links;
+
+    /**
      * Get the href value.
      *
      * @return the href value
@@ -131,6 +137,26 @@ public class ListAggregationResponse {
      */
     public ListAggregationResponse withDataSchema(ResultDataSchema dataSchema) {
         this.dataSchema = dataSchema;
+        return this;
+    }
+
+    /**
+     * Get the links value.
+     *
+     * @return the links value
+     */
+    public List<Link> links() {
+        return this.links;
+    }
+
+    /**
+     * Set the links value.
+     *
+     * @param links the links value to set
+     * @return the ListAggregationResponse object itself.
+     */
+    public ListAggregationResponse withLinks(List<Link> links) {
+        this.links = links;
         return this;
     }
 

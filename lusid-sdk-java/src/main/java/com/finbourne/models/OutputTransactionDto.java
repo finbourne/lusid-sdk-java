@@ -49,10 +49,10 @@ public class OutputTransactionDto {
     private String description;
 
     /**
-     * Unique security identifier.
+     * Unique instrument identifier.
      */
-    @JsonProperty(value = "securityUid", access = JsonProperty.Access.WRITE_ONLY)
-    private String securityUid;
+    @JsonProperty(value = "instrumentUid", access = JsonProperty.Access.WRITE_ONLY)
+    private String instrumentUid;
 
     /**
      * Trade date.
@@ -67,7 +67,7 @@ public class OutputTransactionDto {
     private DateTime settlementDate;
 
     /**
-     * Quantity of trade in units of the security.
+     * Quantity of trade in units of the instrument.
      */
     @JsonProperty(value = "units", access = JsonProperty.Access.WRITE_ONLY)
     private Double units;
@@ -76,7 +76,7 @@ public class OutputTransactionDto {
      * Execution price for the trade.
      */
     @JsonProperty(value = "tradePrice", access = JsonProperty.Access.WRITE_ONLY)
-    private TradePrice tradePrice;
+    private TransactionPrice tradePrice;
 
     /**
      * Total value of the trade.
@@ -115,8 +115,8 @@ public class OutputTransactionDto {
     private String counterpartyId;
 
     /**
-     * Where this trade came from, either Client or System. Possible values
-     * include: 'System', 'Client'.
+     * Where this transaction came from, either Client or System. Possible
+     * values include: 'System', 'Client'.
      */
     @JsonProperty(value = "source", access = JsonProperty.Access.WRITE_ONLY)
     private String source;
@@ -180,12 +180,12 @@ public class OutputTransactionDto {
     }
 
     /**
-     * Get unique security identifier.
+     * Get unique instrument identifier.
      *
-     * @return the securityUid value
+     * @return the instrumentUid value
      */
-    public String securityUid() {
-        return this.securityUid;
+    public String instrumentUid() {
+        return this.instrumentUid;
     }
 
     /**
@@ -207,7 +207,7 @@ public class OutputTransactionDto {
     }
 
     /**
-     * Get quantity of trade in units of the security.
+     * Get quantity of trade in units of the instrument.
      *
      * @return the units value
      */
@@ -220,7 +220,7 @@ public class OutputTransactionDto {
      *
      * @return the tradePrice value
      */
-    public TradePrice tradePrice() {
+    public TransactionPrice tradePrice() {
         return this.tradePrice;
     }
 
@@ -279,7 +279,7 @@ public class OutputTransactionDto {
     }
 
     /**
-     * Get where this trade came from, either Client or System. Possible values include: 'System', 'Client'.
+     * Get where this transaction came from, either Client or System. Possible values include: 'System', 'Client'.
      *
      * @return the source value
      */

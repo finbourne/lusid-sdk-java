@@ -31,10 +31,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class UpsertCorporateActionRequest {
     /**
-     * The corporateActionId property.
+     * The corporateActionCode property.
      */
-    @JsonProperty(value = "corporateActionId", required = true)
-    private String corporateActionId;
+    @JsonProperty(value = "corporateActionCode", required = true)
+    private String corporateActionCode;
 
     /**
      * The announcementDate property.
@@ -67,22 +67,22 @@ public class UpsertCorporateActionRequest {
     private List<CorporateActionTransitionDto> transitions;
 
     /**
-     * Get the corporateActionId value.
+     * Get the corporateActionCode value.
      *
-     * @return the corporateActionId value
+     * @return the corporateActionCode value
      */
-    public String corporateActionId() {
-        return this.corporateActionId;
+    public String corporateActionCode() {
+        return this.corporateActionCode;
     }
 
     /**
-     * Set the corporateActionId value.
+     * Set the corporateActionCode value.
      *
-     * @param corporateActionId the corporateActionId value to set
+     * @param corporateActionCode the corporateActionCode value to set
      * @return the UpsertCorporateActionRequest object itself.
      */
-    public UpsertCorporateActionRequest withCorporateActionId(String corporateActionId) {
-        this.corporateActionId = corporateActionId;
+    public UpsertCorporateActionRequest withCorporateActionCode(String corporateActionCode) {
+        this.corporateActionCode = corporateActionCode;
         return this;
     }
 

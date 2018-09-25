@@ -48,10 +48,10 @@ public class CreateGroupRequest {
     private List<ResourceId> subGroups;
 
     /**
-     * The name property.
+     * The displayName property.
      */
-    @JsonProperty(value = "name", required = true)
-    private String name;
+    @JsonProperty(value = "displayName", required = true)
+    private String displayName;
 
     /**
      * The description property.
@@ -120,22 +120,22 @@ public class CreateGroupRequest {
     }
 
     /**
-     * Get the name value.
+     * Get the displayName value.
      *
-     * @return the name value
+     * @return the displayName value
      */
-    public String name() {
-        return this.name;
+    public String displayName() {
+        return this.displayName;
     }
 
     /**
-     * Set the name value.
+     * Set the displayName value.
      *
-     * @param name the name value to set
+     * @param displayName the displayName value to set
      * @return the CreateGroupRequest object itself.
      */
-    public CreateGroupRequest withName(String name) {
-        this.name = name;
+    public CreateGroupRequest withDisplayName(String displayName) {
+        this.displayName = displayName;
         return this;
     }
 

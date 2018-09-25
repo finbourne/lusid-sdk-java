@@ -23,6 +23,7 @@
 package com.finbourne.models;
 
 import org.joda.time.DateTime;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -36,10 +37,22 @@ public class DeletedEntityResponse {
     private String href;
 
     /**
+     * The effectiveFrom property.
+     */
+    @JsonProperty(value = "effectiveFrom")
+    private DateTime effectiveFrom;
+
+    /**
      * The asAt property.
      */
     @JsonProperty(value = "asAt")
     private DateTime asAt;
+
+    /**
+     * The links property.
+     */
+    @JsonProperty(value = "links")
+    private List<Link> links;
 
     /**
      * Get the href value.
@@ -62,6 +75,26 @@ public class DeletedEntityResponse {
     }
 
     /**
+     * Get the effectiveFrom value.
+     *
+     * @return the effectiveFrom value
+     */
+    public DateTime effectiveFrom() {
+        return this.effectiveFrom;
+    }
+
+    /**
+     * Set the effectiveFrom value.
+     *
+     * @param effectiveFrom the effectiveFrom value to set
+     * @return the DeletedEntityResponse object itself.
+     */
+    public DeletedEntityResponse withEffectiveFrom(DateTime effectiveFrom) {
+        this.effectiveFrom = effectiveFrom;
+        return this;
+    }
+
+    /**
      * Get the asAt value.
      *
      * @return the asAt value
@@ -78,6 +111,26 @@ public class DeletedEntityResponse {
      */
     public DeletedEntityResponse withAsAt(DateTime asAt) {
         this.asAt = asAt;
+        return this;
+    }
+
+    /**
+     * Get the links value.
+     *
+     * @return the links value
+     */
+    public List<Link> links() {
+        return this.links;
+    }
+
+    /**
+     * Set the links value.
+     *
+     * @param links the links value to set
+     * @return the DeletedEntityResponse object itself.
+     */
+    public DeletedEntityResponse withLinks(List<Link> links) {
+        this.links = links;
         return this;
     }
 

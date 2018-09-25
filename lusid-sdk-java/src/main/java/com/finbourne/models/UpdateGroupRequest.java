@@ -29,10 +29,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class UpdateGroupRequest {
     /**
-     * The name property.
+     * The displayName property.
      */
-    @JsonProperty(value = "name", required = true)
-    private String name;
+    @JsonProperty(value = "displayName", required = true)
+    private String displayName;
 
     /**
      * The description property.
@@ -41,22 +41,22 @@ public class UpdateGroupRequest {
     private String description;
 
     /**
-     * Get the name value.
+     * Get the displayName value.
      *
-     * @return the name value
+     * @return the displayName value
      */
-    public String name() {
-        return this.name;
+    public String displayName() {
+        return this.displayName;
     }
 
     /**
-     * Set the name value.
+     * Set the displayName value.
      *
-     * @param name the name value to set
+     * @param displayName the displayName value to set
      * @return the UpdateGroupRequest object itself.
      */
-    public UpdateGroupRequest withName(String name) {
-        this.name = name;
+    public UpdateGroupRequest withDisplayName(String displayName) {
+        this.displayName = displayName;
         return this;
     }
 

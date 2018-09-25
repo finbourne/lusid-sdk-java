@@ -57,6 +57,12 @@ public class HoldingsAdjustmentDto {
     private List<AdjustHoldingRequest> adjustments;
 
     /**
+     * The links property.
+     */
+    @JsonProperty(value = "links")
+    private List<Link> links;
+
+    /**
      * Get there can be at most one holdings adjustment for a portfolio at a
      specific effective time so this uniquely identifies the adjustment.
      *
@@ -135,6 +141,26 @@ public class HoldingsAdjustmentDto {
      */
     public HoldingsAdjustmentDto withAdjustments(List<AdjustHoldingRequest> adjustments) {
         this.adjustments = adjustments;
+        return this;
+    }
+
+    /**
+     * Get the links value.
+     *
+     * @return the links value
+     */
+    public List<Link> links() {
+        return this.links;
+    }
+
+    /**
+     * Set the links value.
+     *
+     * @param links the links value to set
+     * @return the HoldingsAdjustmentDto object itself.
+     */
+    public HoldingsAdjustmentDto withLinks(List<Link> links) {
+        this.links = links;
         return this;
     }
 

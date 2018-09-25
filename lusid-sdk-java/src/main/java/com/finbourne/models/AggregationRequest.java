@@ -31,16 +31,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class AggregationRequest {
     /**
-     * The recipeScope property.
+     * The recipeId property.
      */
-    @JsonProperty(value = "recipeScope")
-    private String recipeScope;
-
-    /**
-     * The recipeKey property.
-     */
-    @JsonProperty(value = "recipeKey")
-    private String recipeKey;
+    @JsonProperty(value = "recipeId", required = true)
+    private ResourceId recipeId;
 
     /**
      * The loadReferencePortfolio property.
@@ -63,7 +57,7 @@ public class AggregationRequest {
     /**
      * The metrics property.
      */
-    @JsonProperty(value = "metrics")
+    @JsonProperty(value = "metrics", required = true)
     private List<AggregateSpec> metrics;
 
     /**
@@ -91,42 +85,22 @@ public class AggregationRequest {
     private String sort;
 
     /**
-     * Get the recipeScope value.
+     * Get the recipeId value.
      *
-     * @return the recipeScope value
+     * @return the recipeId value
      */
-    public String recipeScope() {
-        return this.recipeScope;
+    public ResourceId recipeId() {
+        return this.recipeId;
     }
 
     /**
-     * Set the recipeScope value.
+     * Set the recipeId value.
      *
-     * @param recipeScope the recipeScope value to set
+     * @param recipeId the recipeId value to set
      * @return the AggregationRequest object itself.
      */
-    public AggregationRequest withRecipeScope(String recipeScope) {
-        this.recipeScope = recipeScope;
-        return this;
-    }
-
-    /**
-     * Get the recipeKey value.
-     *
-     * @return the recipeKey value
-     */
-    public String recipeKey() {
-        return this.recipeKey;
-    }
-
-    /**
-     * Set the recipeKey value.
-     *
-     * @param recipeKey the recipeKey value to set
-     * @return the AggregationRequest object itself.
-     */
-    public AggregationRequest withRecipeKey(String recipeKey) {
-        this.recipeKey = recipeKey;
+    public AggregationRequest withRecipeId(ResourceId recipeId) {
+        this.recipeId = recipeId;
         return this;
     }
 

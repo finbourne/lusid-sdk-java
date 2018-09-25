@@ -108,12 +108,11 @@ public class LusidApiTests {
         }
 
         List<String> ids = Arrays.asList("BBG000C6K6G9", "BBG000C04D57", "BBG000FV67Q4", "BBG000BF0KW3", "BBG000BF4KL1");
-        TryLookupSecuritiesFromCodesDto idsResult = this.client.lookupSecuritiesFromCodesBulk("Figi", ids, null, null);
+        TryLookupInstrumentsFromCodesDto idsResult = this.client.lookupInstrumentsFromCodes("Figi", ids, null, null);
 
-        this.securityIds = idsResult.values().stream()
-                .flatMap(r -> r.values()
-                        .stream()
-                        .map(s -> s.uid())
+        this.securityIds = idsResult.values().values().stream()
+                .flatMap(r -> r.stream()
+                        .map(i -> i.uid())
                 )
                 .collect(Collectors.toList());
     }
@@ -140,8 +139,8 @@ public class LusidApiTests {
         final String scope = "finbourne";
         final String uuid = UUID.randomUUID().toString();
 
-        final CreatePortfolioRequest  request = new CreatePortfolioRequest()
-                .withName(String.format("Portfolio-%s", uuid))
+        final CreateTransactionPortfolioRequest  request = new CreateTransactionPortfolioRequest()
+                .withDisplayName(String.format("Portfolio-%s", uuid))
                 .withCode(String.format("Id-%s", uuid))
                 .withBaseCurrency("GBP");
 
@@ -156,27 +155,23 @@ public class LusidApiTests {
         final String uuid = UUID.randomUUID().toString();
         final String scope = "finbourne";
         final String propertyName = String.format("und-style-%s", uuid);
-        final String propertyKey = String.format("Portfolio/%s/%s", scope, propertyName);
 
         final CreatePropertyDefinitionRequest    propertyDefinition = new CreatePropertyDefinitionRequest()
                 .withDomain("Portfolio")
                 .withScope(scope)
-                .withName(propertyName)
+                .withCode(propertyName)
                 .withValueRequired(false)
                 .withDisplayName("Fund Style")
                 .withLifeTime("Perpetual")
-                .withSort("sort")
-                .withDataFormatId(new ResourceId().withScope("default").withCode("string"));;
+                .withDataTypeId(new ResourceId().withScope("default").withCode("string"));;
 
         //  create property definition
-        final PropertyDefinitionDto    propertyResponse = this.client.createPropertyDefinition(propertyDefinition);
-
-        assertEquals(propertyKey, propertyResponse.key());
+        final PropertyDefinitionDto    propertyDefinitionDto = this.client.createPropertyDefinition(propertyDefinition);
 
         final DateTime effectiveDate = new DateTime(2018, 1, 1, 0, 0);
 
-        final CreatePortfolioRequest  request = new CreatePortfolioRequest()
-                .withName(String.format("Portfolio-%s", uuid))
+        final CreateTransactionPortfolioRequest  request = new CreateTransactionPortfolioRequest()
+                .withDisplayName(String.format("Portfolio-%s", uuid))
                 .withCode(String.format("Id-%s", uuid))
                 .withBaseCurrency("GBP")
                 .withCreated(effectiveDate);
@@ -187,11 +182,8 @@ public class LusidApiTests {
         assertEquals(request.code(), portfolio.id().code());
 
         final String propertyValue = "Active";
-        final CreatePropertyRequest property = new CreatePropertyRequest()
-                .withScope(scope)
-                .withName(propertyName)
-                .withValue(propertyValue);
-        final List<CreatePropertyRequest> properties = new ArrayList<>(Arrays.asList(property));
+        final CreatePropertyRequest property = new CreatePropertyRequest().withValue(propertyValue);
+        final Map<String, CreatePropertyRequest> properties = Map.of(propertyDefinitionDto.key(), property);
 
         //  add the property
         final PortfolioPropertiesDto  propertiesResult = this.client.upsertPortfolioProperties(scope, portfolio.id().code(), properties, effectiveDate);
@@ -205,30 +197,25 @@ public class LusidApiTests {
 
         final String uuid = UUID.randomUUID().toString();
         final String scope = "finbourne";
-        final String propertyDomain = "Trade";
         final String propertyName = String.format("traderId-%s", uuid);
-        final String propertyKey = String.format("%s/%s/%s", propertyDomain, scope, propertyName);
         final String propertyValue = "A Trader";
         final DateTime effectiveDate = new DateTime(2018, 1, 1, 0, 0);
 
         final CreatePropertyDefinitionRequest    propertyDefinition = new CreatePropertyDefinitionRequest()
                 .withDomain("Trade")
                 .withScope(scope)
-                .withName(propertyName)
+                .withCode(propertyName)
                 .withValueRequired(false)
                 .withDisplayName("Trader Id")
                 .withLifeTime("Perpetual")
-                .withSort("sort")
-                .withDataFormatId(new ResourceId().withScope("default").withCode("string"));
+                .withDataTypeId(new ResourceId().withScope("default").withCode("string"));
 
         //  create property definition
-        final PropertyDefinitionDto propertyResponse = this.client.createPropertyDefinition(propertyDefinition);
-
-        assertEquals(propertyResponse.key(), propertyKey);
+        final PropertyDefinitionDto propertyDefinitionDto = this.client.createPropertyDefinition(propertyDefinition);
 
         final String originalPortfolioId = String.format("Id-%s", uuid);
-        final CreatePortfolioRequest request = new CreatePortfolioRequest()
-                .withName(String.format("Portfolio-%s", uuid))
+        final CreateTransactionPortfolioRequest request = new CreateTransactionPortfolioRequest()
+                .withDisplayName(String.format("Portfolio-%s", uuid))
                 .withCode(originalPortfolioId)
                 .withBaseCurrency("GBP")
                 .withCreated(effectiveDate);
@@ -241,34 +228,31 @@ public class LusidApiTests {
         String portfolioId = portfolio.id().code();
 
         //  create the property
-        CreatePerpetualPropertyRequest property = new CreatePerpetualPropertyRequest()
-                .withScope(scope)
-                .withName(propertyName)
-                .withValue(propertyValue);
+        CreatePerpetualPropertyRequest property = new CreatePerpetualPropertyRequest().withValue(propertyValue);
 
         //  create the trade
-        UpsertPortfolioTradeRequest trade = new UpsertPortfolioTradeRequest()
-                .withTradeId(UUID.randomUUID().toString())
+        TransactionRequest transaction = new TransactionRequest()
+                .withTransactionId(UUID.randomUUID().toString())
                 .withType("Buy")
-                .withSecurityUid(this.securityIds.get(0))
+                .withInstrumentUid(this.securityIds.get(0))
                 .withSettlementCurrency("GBP")
-                .withTradeDate(effectiveDate)
+                .withTransactionDate(effectiveDate)
                 .withSettlementDate(effectiveDate)
                 .withUnits(100.0)
-                .withTradePrice(12.3)
+                .withTransactionPrice(12.3)
                 .withTotalConsideration(1230.0)
                 .withSource("Client")
-                .withProperties(new ArrayList<>(Arrays.asList(property)));
+                .withProperties(Map.of(propertyDefinitionDto.key(), property));
 
         //  add the trade
-        this.client.upsertTrades(scope, portfolioId, new ArrayList<>(Arrays.asList(trade)));
+        this.client.upsertTransactions(scope, portfolioId, new ArrayList<>(Arrays.asList(transaction)));
 
         //  get the trade
-        final VersionedResourceListOfTradeDto trades = this.client.getTrades(scope, portfolioId);
+        final VersionedResourceListOfTransactionDto transactions = this.client.getTransactions(scope, portfolioId);
 
-        assertEquals(1, trades.values().size());
-        assertEquals(trade.tradeId(), trades.values().get(0).tradeId());
-        assertEquals(propertyValue, trades.values().get(0).properties().get(0).value());
+        assertEquals(1, transactions.values().size());
+        assertEquals(transaction.transactionId(), transactions.values().get(0).transactionId());
+        assertEquals(propertyValue, transactions.values().get(0).properties().get(0).value());
     }
 
     @Test
@@ -278,8 +262,8 @@ public class LusidApiTests {
         final String uuid = UUID.randomUUID().toString();
         final DateTime effectiveDate = new DateTime(2018, 1, 1, 0, 0);
 
-        final CreatePortfolioRequest  request = new CreatePortfolioRequest()
-                .withName(String.format("Portfolio-%s", uuid))
+        final CreateTransactionPortfolioRequest  request = new CreateTransactionPortfolioRequest()
+                .withDisplayName(String.format("Portfolio-%s", uuid))
                 .withCode(String.format("Id-%s", uuid))
                 .withBaseCurrency("GBP")
                 .withCreated(effectiveDate);
@@ -289,13 +273,13 @@ public class LusidApiTests {
         final String portfolioId = portfolio.id().code();
         assertNotNull(portfolioId);
 
-        class TradeSpec
+        class TransactionSpec
         {
             private String id;
             private Double price;
             private DateTime tradeDate;
 
-            TradeSpec(String id, Double price, DateTime tradeDate) {
+            TransactionSpec(String id, Double price, DateTime tradeDate) {
                 this.id = id;
                 this.price = price;
                 this.tradeDate = tradeDate;
@@ -314,37 +298,36 @@ public class LusidApiTests {
             }
         }
 
-        Function<TradeSpec, UpsertPortfolioTradeRequest> buildTrade = t -> new UpsertPortfolioTradeRequest()
-                .withTradeId(UUID.randomUUID().toString())
+        Function<TransactionSpec, TransactionRequest> buildTransaction = t -> new TransactionRequest()
+                .withTransactionId(UUID.randomUUID().toString())
                 .withType("Buy")
-                .withSecurityUid(t.getId())
+                .withInstrumentUid(t.getId())
                 .withSettlementCurrency("GBP")
-                .withTradeDate(t.getTradeDate())
+                .withTransactionDate(t.getTradeDate())
                 .withSettlementDate(t.getTradeDate())
                 .withUnits(100.0)
-                .withTradePrice(t.getPrice())
+                .withTransactionPrice(t.getPrice())
                 .withTotalConsideration(100.0 * t.getPrice())
                 .withSource("Client");
 
-        ;
-        Consumer<List<TradeDto>>    printTrades = trades -> trades.forEach(t ->
+        Consumer<List<TransactionDto>>    printTransactions = transactions -> transactions.forEach(t ->
                 System.out.println(
-                        String.format("%s\t%s\t%f\t%f\t%f", t.securityUid(), t.tradeDate(), t.units(), t.tradePrice(), t.totalConsideration())));
+                        String.format("%s\t%s\t%f\t%f\t%f", t.instrumentUid(), t.transactionDate(), t.units(), t.transactionPrice(), t.totalConsideration())));
 
-        final List<TradeSpec>   tradeSpecs = new ArrayList<>(Arrays.asList(
-                new TradeSpec(this.securityIds.get(0), 101.0, new DateTime(2018, 1, 1, 0, 0)),
-                new TradeSpec(this.securityIds.get(1), 102.0, new DateTime(2018, 1, 2, 0, 0)),
-                new TradeSpec(this.securityIds.get(2), 103.0, new DateTime(2018, 1, 3, 0, 0))
-                ));
+        final List<TransactionSpec> transactionSpecs = new ArrayList<>(Arrays.asList(
+                new TransactionSpec(this.securityIds.get(0), 101.0, new DateTime(2018, 1, 1, 0, 0)),
+                new TransactionSpec(this.securityIds.get(1), 102.0, new DateTime(2018, 1, 2, 0, 0)),
+                new TransactionSpec(this.securityIds.get(2), 103.0, new DateTime(2018, 1, 3, 0, 0))
+        ));
 
-        //  build list of trades
-        final UpsertPortfolioTradeRequest[] newTrades = tradeSpecs.stream()
+        //  build list of transactions
+        final TransactionRequest[] newTransactions = transactionSpecs.stream()
                 .sorted(Comparator.comparing(ts -> ts.id))
-                .map(buildTrade)
-                .toArray(UpsertPortfolioTradeRequest[]::new);
+                .map(buildTransaction)
+                .toArray(TransactionRequest[]::new);
 
-        //  add initial batch of trades
-        final UpsertPortfolioTradesDto  initialResult = this.client.upsertTrades(scope, portfolioId, Arrays.asList(newTrades));
+        //  add initial batch of transactions
+        final UpsertPortfolioTransactionsDto  initialResult = this.client.upsertTransactions(scope, portfolioId, Arrays.asList(newTransactions));
 
         /*
 
@@ -359,44 +342,44 @@ public class LusidApiTests {
         Thread.sleep(500);
 
         //  add another trade for 2018-1-8
-        TradeSpec   newTrade = new TradeSpec(this.securityIds.get(3), 104.0, new DateTime(2018, 1, 8, 0, 0));
-        UpsertPortfolioTradesDto addedResult = this.client.upsertTrades(scope, portfolioId, Arrays.asList(buildTrade.apply(newTrade)));
+        TransactionSpec newTrade = new TransactionSpec(this.securityIds.get(3), 104.0, new DateTime(2018, 1, 8, 0, 0));
+        UpsertPortfolioTransactionsDto addedResult = this.client.upsertTransactions(scope, portfolioId, Arrays.asList(buildTransaction.apply(newTrade)));
 
         DateTime    asAtBatch2 = addedResult.version().asAtDate().plusMillis(1);
         Thread.sleep(500);
 
         //  add back-dated trade
-        TradeSpec   backDatedTrade = new TradeSpec(this.securityIds.get(4), 105.0, new DateTime(2018, 1, 5, 0, 0));
-        UpsertPortfolioTradesDto backDatedResult = this.client.upsertTrades(scope, portfolioId, Arrays.asList(buildTrade.apply(backDatedTrade)));
+        TransactionSpec backDatedTrade = new TransactionSpec(this.securityIds.get(4), 105.0, new DateTime(2018, 1, 5, 0, 0));
+        UpsertPortfolioTransactionsDto backDatedResult = this.client.upsertTransactions(scope, portfolioId, Arrays.asList(buildTransaction.apply(backDatedTrade)));
 
         DateTime    asAtBatch3 = backDatedResult.version().asAtDate().plusMillis(1);
         Thread.sleep(500);
 
-        //  list trades
-        VersionedResourceListOfTradeDto trades = this.client.getTrades(scope, portfolioId, null, null, asAtBatch1, null, 0, Integer.MAX_VALUE, null, null);
+        //  list transactions
+        VersionedResourceListOfTransactionDto transactions = this.client.getTransactions(scope, portfolioId, null, null, asAtBatch1, null, 0, Integer.MAX_VALUE, null, null);
 
-        assertEquals(3, trades.values().size(), String.format("asAt %s", asAtBatch1));
-        System.out.println("trades at " + asAtBatch1);
-        printTrades.accept(trades.values());
+        assertEquals(3, transactions.values().size(), String.format("asAt %s", asAtBatch1));
+        System.out.println("transactions at " + asAtBatch1);
+        printTransactions.accept(transactions.values());
 
-        trades = this.client.getTrades(scope, portfolioId, null, null, asAtBatch2, null, 0, Integer.MAX_VALUE, null, null);
+        transactions = this.client.getTransactions(scope, portfolioId, null, null, asAtBatch2, null, 0, Integer.MAX_VALUE, null, null);
 
-        assertEquals(4, trades.values().size(), String.format("asAt %s", asAtBatch2));
-        System.out.println("trades at " + asAtBatch2);
-        printTrades.accept(trades.values());
+        assertEquals(4, transactions.values().size(), String.format("asAt %s", asAtBatch2));
+        System.out.println("transactions at " + asAtBatch2);
+        printTransactions.accept(transactions.values());
 
-        trades = this.client.getTrades(scope, portfolioId, null, null, asAtBatch3, null, 0, Integer.MAX_VALUE, null, null);
+        transactions = this.client.getTransactions(scope, portfolioId, null, null, asAtBatch3, null, 0, Integer.MAX_VALUE, null, null);
 
-        assertEquals(5, trades.values().size(), String.format("asAt %s", asAtBatch3));
-        System.out.println("trades at " + asAtBatch3);
-        printTrades.accept(trades.values());
+        assertEquals(5, transactions.values().size(), String.format("asAt %s", asAtBatch3));
+        System.out.println("transactions at " + asAtBatch3);
+        printTransactions.accept(transactions.values());
 
-        //  latest trades
-        trades = this.client.getTrades(scope, portfolioId, null, null, null, null, 0, Integer.MAX_VALUE, null, null);
+        //  latest transactions
+        transactions = this.client.getTransactions(scope, portfolioId, null, null, null, null, 0, Integer.MAX_VALUE, null, null);
 
-        assertEquals(5, trades.values().size());
-        System.out.println("trades at " + DateTime.now());
-        printTrades.accept(trades.values());
+        assertEquals(5, transactions.values().size());
+        System.out.println("transactions at " + DateTime.now());
+        printTransactions.accept(transactions.values());
     }
 
     @Test
@@ -405,7 +388,7 @@ public class LusidApiTests {
         final List<String> isins = new ArrayList<>(Arrays.asList("IT0004966401", "FR0010192997"));
 
         //  lookup securities
-        final TryLookupSecuritiesFromCodesDto fbnIds = this.client.lookupSecuritiesFromCodesBulk("Isin", isins, null, null);
+        final TryLookupInstrumentsFromCodesDto fbnIds = this.client.lookupInstrumentsFromCodes("Isin", isins, null, null);
 
         assertTrue(fbnIds.values().size() > 0);
     }

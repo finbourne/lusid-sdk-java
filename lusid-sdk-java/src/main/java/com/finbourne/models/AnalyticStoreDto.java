@@ -22,6 +22,7 @@
 
 package com.finbourne.models;
 
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -39,6 +40,12 @@ public class AnalyticStoreDto {
      */
     @JsonProperty(value = "href")
     private String href;
+
+    /**
+     * The links property.
+     */
+    @JsonProperty(value = "links")
+    private List<Link> links;
 
     /**
      * Get the key value.
@@ -77,6 +84,26 @@ public class AnalyticStoreDto {
      */
     public AnalyticStoreDto withHref(String href) {
         this.href = href;
+        return this;
+    }
+
+    /**
+     * Get the links value.
+     *
+     * @return the links value
+     */
+    public List<Link> links() {
+        return this.links;
+    }
+
+    /**
+     * Set the links value.
+     *
+     * @param links the links value to set
+     * @return the AnalyticStoreDto object itself.
+     */
+    public AnalyticStoreDto withLinks(List<Link> links) {
+        this.links = links;
         return this;
     }
 

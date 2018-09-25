@@ -22,90 +22,88 @@
 
 package com.finbourne;
 
-import com.finbourne.models.AddTradePropertyDto;
+import com.finbourne.models.AddTransactionPropertyDto;
 import com.finbourne.models.AdjustHoldingRequest;
 import com.finbourne.models.AdjustHoldingsDto;
 import com.finbourne.models.AggregationRequest;
-import com.finbourne.models.AnalyticsStorageRequest;
 import com.finbourne.models.AnalyticStoreDto;
-import com.finbourne.models.ClassificationsDto;
-import com.finbourne.models.ClearEntityCachesDto;
 import com.finbourne.models.CorporateActionEventDto;
 import com.finbourne.models.CreateAnalyticStoreRequest;
-import com.finbourne.models.CreateClientSecurityRequest;
-import com.finbourne.models.CreateDerivedPortfolioRequest;
+import com.finbourne.models.CreateClientInstrumentRequest;
+import com.finbourne.models.CreateDataTypeRequest;
+import com.finbourne.models.CreateDerivedTransactionPortfolioRequest;
 import com.finbourne.models.CreateGroupRequest;
 import com.finbourne.models.CreatePerpetualPropertyRequest;
-import com.finbourne.models.CreatePortfolioRequest;
-import com.finbourne.models.CreatePropertyDataFormatRequest;
 import com.finbourne.models.CreatePropertyDefinitionRequest;
 import com.finbourne.models.CreatePropertyRequest;
+import com.finbourne.models.CreateReferencePortfolioRequest;
 import com.finbourne.models.CreateResultsRequest;
+import com.finbourne.models.CreateTransactionPortfolioRequest;
+import com.finbourne.models.DataTypeDto;
 import com.finbourne.models.DeletedEntityResponse;
 import com.finbourne.models.ErrorResponseException;
 import com.finbourne.models.ExpandedGroupDto;
-import com.finbourne.models.GroupDto;
 import com.finbourne.models.HoldingsAdjustmentDto;
+import com.finbourne.models.HoldingsAdjustmentHeaderDto;
+import com.finbourne.models.InstrumentAnalyticDataDto;
+import com.finbourne.models.InstrumentDto;
+import com.finbourne.models.InstrumentPropertyDto;
 import com.finbourne.models.IUnitDefinitionDto;
 import com.finbourne.models.ListAggregationResponse;
-import com.finbourne.models.LoginResponse;
-import com.finbourne.models.NestedAggregationResponse;
 import com.finbourne.models.PersonalisationDto;
 import com.finbourne.models.PortfolioDetailsDto;
 import com.finbourne.models.PortfolioDetailsRequest;
 import com.finbourne.models.PortfolioDto;
+import com.finbourne.models.PortfolioGroupDto;
 import com.finbourne.models.PortfolioPropertiesDto;
-import com.finbourne.models.PropertyDataFormatDto;
 import com.finbourne.models.PropertyDefinitionDto;
 import com.finbourne.models.PropertySchemaDto;
 import com.finbourne.models.ReconciliationRequest;
-import com.finbourne.models.ReferencePortfolioConstituentDto;
+import com.finbourne.models.ReferencePortfolioConstituentRequest;
 import com.finbourne.models.ResourceId;
 import com.finbourne.models.ResourceListOfAnalyticStoreKeyDto;
-import com.finbourne.models.ResourceListOfGroupDto;
-import com.finbourne.models.ResourceListOfHoldingsAdjustmentHeaderDto;
+import com.finbourne.models.ResourceListOfDataTypeDto;
 import com.finbourne.models.ResourceListOfPersonalisationDto;
 import com.finbourne.models.ResourceListOfPortfolioDto;
+import com.finbourne.models.ResourceListOfPortfolioGroupDto;
 import com.finbourne.models.ResourceListOfPortfolioSearchResult;
 import com.finbourne.models.ResourceListOfProcessedCommandDto;
-import com.finbourne.models.ResourceListOfPropertyDataFormatDto;
 import com.finbourne.models.ResourceListOfPropertyDefinitionDto;
-import com.finbourne.models.ResourceListOfPropertyDomain;
-import com.finbourne.models.ResourceListOfPropertyKey;
 import com.finbourne.models.ResourceListOfReconciliationBreakDto;
 import com.finbourne.models.ResourceListOfReferencePortfolioConstituentDto;
 import com.finbourne.models.ResourceListOfScope;
-import com.finbourne.models.ResourceListOfTxnMetaDataDto;
-import com.finbourne.models.ResourceListOfUiDataType;
+import com.finbourne.models.ResourceListOfString;
+import com.finbourne.models.ResourceListOfTransactionMetaDataDto;
+import com.finbourne.models.ResourceListOfValueType;
 import com.finbourne.models.ResultsDto;
 import com.finbourne.models.SchemaDto;
-import com.finbourne.models.SecurityAnalyticDataDto;
-import com.finbourne.models.SecurityClassificationDto;
-import com.finbourne.models.SecurityDto;
+import com.finbourne.models.TransactionMetaDataDto;
+import com.finbourne.models.TransactionMetaDataRequest;
 import com.finbourne.models.TransactionQueryParameters;
-import com.finbourne.models.TryAddClientSecuritiesDto;
-import com.finbourne.models.TryDeleteClientSecuritiesDto;
-import com.finbourne.models.TryLookupSecuritiesFromCodesDto;
+import com.finbourne.models.TransactionRequest;
+import com.finbourne.models.TryAddClientInstrumentsDto;
+import com.finbourne.models.TryDeleteClientInstrumentsDto;
+import com.finbourne.models.TryLookupInstrumentsFromCodesDto;
 import com.finbourne.models.TryUpsertCorporateActionsDto;
-import com.finbourne.models.TxnMetaDataDto;
+import com.finbourne.models.UpdateDataTypeRequest;
 import com.finbourne.models.UpdateGroupRequest;
 import com.finbourne.models.UpdatePortfolioRequest;
-import com.finbourne.models.UpdatePropertyDataFormatRequest;
 import com.finbourne.models.UpdatePropertyDefinitionRequest;
 import com.finbourne.models.UpsertCorporateActionRequest;
+import com.finbourne.models.UpsertInstrumentPropertiesDto;
 import com.finbourne.models.UpsertPersonalisationsResponse;
-import com.finbourne.models.UpsertPortfolioTradeRequest;
-import com.finbourne.models.UpsertPortfolioTradesDto;
+import com.finbourne.models.UpsertPortfolioTransactionsDto;
 import com.finbourne.models.UpsertReferencePortfolioConstituentsDto;
 import com.finbourne.models.VersionedResourceListOfHoldingDto;
 import com.finbourne.models.VersionedResourceListOfOutputTransactionDto;
-import com.finbourne.models.VersionedResourceListOfTradeDto;
-import com.finbourne.models.WebLogMessage;
+import com.finbourne.models.VersionedResourceListOfTransactionDto;
+import com.finbourne.models.VersionSummaryDto;
 import com.microsoft.rest.ServiceCallback;
 import com.microsoft.rest.ServiceFuture;
 import com.microsoft.rest.ServiceResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 import org.joda.time.DateTime;
 import rx.Observable;
 import com.microsoft.rest.RestClient;
@@ -125,575 +123,6 @@ public interface LUSIDAPI {
      * The default base URL.
      */
     String DEFAULT_BASE_URL = "http://localhost";
-
-    /**
-     * Clears the entity caches on the instance that serves this request only.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ClearEntityCachesDto object if successful.
-     */
-    ClearEntityCachesDto clearEntityCaches();
-
-    /**
-     * Clears the entity caches on the instance that serves this request only.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ClearEntityCachesDto> clearEntityCachesAsync(final ServiceCallback<ClearEntityCachesDto> serviceCallback);
-
-    /**
-     * Clears the entity caches on the instance that serves this request only.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ClearEntityCachesDto object
-     */
-    Observable<ClearEntityCachesDto> clearEntityCachesAsync();
-
-    /**
-     * Clears the entity caches on the instance that serves this request only.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ClearEntityCachesDto object
-     */
-    Observable<ServiceResponse<ClearEntityCachesDto>> clearEntityCachesWithServiceResponseAsync();
-
-    /**
-     * Aggregate data in a group hierarchy.
-     *
-     * @param scope the String value
-     * @param groupCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ListAggregationResponse object if successful.
-     */
-    ListAggregationResponse getAggregationByGroup(String scope, String groupCode);
-
-    /**
-     * Aggregate data in a group hierarchy.
-     *
-     * @param scope the String value
-     * @param groupCode the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ListAggregationResponse> getAggregationByGroupAsync(String scope, String groupCode, final ServiceCallback<ListAggregationResponse> serviceCallback);
-
-    /**
-     * Aggregate data in a group hierarchy.
-     *
-     * @param scope the String value
-     * @param groupCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ListAggregationResponse object
-     */
-    Observable<ListAggregationResponse> getAggregationByGroupAsync(String scope, String groupCode);
-
-    /**
-     * Aggregate data in a group hierarchy.
-     *
-     * @param scope the String value
-     * @param groupCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ListAggregationResponse object
-     */
-    Observable<ServiceResponse<ListAggregationResponse>> getAggregationByGroupWithServiceResponseAsync(String scope, String groupCode);
-    /**
-     * Aggregate data in a group hierarchy.
-     *
-     * @param scope the String value
-     * @param groupCode the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ListAggregationResponse object if successful.
-     */
-    ListAggregationResponse getAggregationByGroup(String scope, String groupCode, AggregationRequest request);
-
-    /**
-     * Aggregate data in a group hierarchy.
-     *
-     * @param scope the String value
-     * @param groupCode the String value
-     * @param request the AggregationRequest value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ListAggregationResponse> getAggregationByGroupAsync(String scope, String groupCode, AggregationRequest request, final ServiceCallback<ListAggregationResponse> serviceCallback);
-
-    /**
-     * Aggregate data in a group hierarchy.
-     *
-     * @param scope the String value
-     * @param groupCode the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ListAggregationResponse object
-     */
-    Observable<ListAggregationResponse> getAggregationByGroupAsync(String scope, String groupCode, AggregationRequest request);
-
-    /**
-     * Aggregate data in a group hierarchy.
-     *
-     * @param scope the String value
-     * @param groupCode the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ListAggregationResponse object
-     */
-    Observable<ServiceResponse<ListAggregationResponse>> getAggregationByGroupWithServiceResponseAsync(String scope, String groupCode, AggregationRequest request);
-
-    /**
-     * Aggregation request data in a group hierarchy into a data tree.
-     *
-     * @param scope the String value
-     * @param groupCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the NestedAggregationResponse object if successful.
-     */
-    NestedAggregationResponse getNestedAggregationByGroup(String scope, String groupCode);
-
-    /**
-     * Aggregation request data in a group hierarchy into a data tree.
-     *
-     * @param scope the String value
-     * @param groupCode the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<NestedAggregationResponse> getNestedAggregationByGroupAsync(String scope, String groupCode, final ServiceCallback<NestedAggregationResponse> serviceCallback);
-
-    /**
-     * Aggregation request data in a group hierarchy into a data tree.
-     *
-     * @param scope the String value
-     * @param groupCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the NestedAggregationResponse object
-     */
-    Observable<NestedAggregationResponse> getNestedAggregationByGroupAsync(String scope, String groupCode);
-
-    /**
-     * Aggregation request data in a group hierarchy into a data tree.
-     *
-     * @param scope the String value
-     * @param groupCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the NestedAggregationResponse object
-     */
-    Observable<ServiceResponse<NestedAggregationResponse>> getNestedAggregationByGroupWithServiceResponseAsync(String scope, String groupCode);
-    /**
-     * Aggregation request data in a group hierarchy into a data tree.
-     *
-     * @param scope the String value
-     * @param groupCode the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the NestedAggregationResponse object if successful.
-     */
-    NestedAggregationResponse getNestedAggregationByGroup(String scope, String groupCode, AggregationRequest request);
-
-    /**
-     * Aggregation request data in a group hierarchy into a data tree.
-     *
-     * @param scope the String value
-     * @param groupCode the String value
-     * @param request the AggregationRequest value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<NestedAggregationResponse> getNestedAggregationByGroupAsync(String scope, String groupCode, AggregationRequest request, final ServiceCallback<NestedAggregationResponse> serviceCallback);
-
-    /**
-     * Aggregation request data in a group hierarchy into a data tree.
-     *
-     * @param scope the String value
-     * @param groupCode the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the NestedAggregationResponse object
-     */
-    Observable<NestedAggregationResponse> getNestedAggregationByGroupAsync(String scope, String groupCode, AggregationRequest request);
-
-    /**
-     * Aggregation request data in a group hierarchy into a data tree.
-     *
-     * @param scope the String value
-     * @param groupCode the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the NestedAggregationResponse object
-     */
-    Observable<ServiceResponse<NestedAggregationResponse>> getNestedAggregationByGroupWithServiceResponseAsync(String scope, String groupCode, AggregationRequest request);
-
-    /**
-     * Aggregate data in a portfolio.
-     *
-     * @param scope the String value
-     * @param portfolioCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ListAggregationResponse object if successful.
-     */
-    ListAggregationResponse getAggregationByPortfolio(String scope, String portfolioCode);
-
-    /**
-     * Aggregate data in a portfolio.
-     *
-     * @param scope the String value
-     * @param portfolioCode the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ListAggregationResponse> getAggregationByPortfolioAsync(String scope, String portfolioCode, final ServiceCallback<ListAggregationResponse> serviceCallback);
-
-    /**
-     * Aggregate data in a portfolio.
-     *
-     * @param scope the String value
-     * @param portfolioCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ListAggregationResponse object
-     */
-    Observable<ListAggregationResponse> getAggregationByPortfolioAsync(String scope, String portfolioCode);
-
-    /**
-     * Aggregate data in a portfolio.
-     *
-     * @param scope the String value
-     * @param portfolioCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ListAggregationResponse object
-     */
-    Observable<ServiceResponse<ListAggregationResponse>> getAggregationByPortfolioWithServiceResponseAsync(String scope, String portfolioCode);
-    /**
-     * Aggregate data in a portfolio.
-     *
-     * @param scope the String value
-     * @param portfolioCode the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ListAggregationResponse object if successful.
-     */
-    ListAggregationResponse getAggregationByPortfolio(String scope, String portfolioCode, AggregationRequest request);
-
-    /**
-     * Aggregate data in a portfolio.
-     *
-     * @param scope the String value
-     * @param portfolioCode the String value
-     * @param request the AggregationRequest value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ListAggregationResponse> getAggregationByPortfolioAsync(String scope, String portfolioCode, AggregationRequest request, final ServiceCallback<ListAggregationResponse> serviceCallback);
-
-    /**
-     * Aggregate data in a portfolio.
-     *
-     * @param scope the String value
-     * @param portfolioCode the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ListAggregationResponse object
-     */
-    Observable<ListAggregationResponse> getAggregationByPortfolioAsync(String scope, String portfolioCode, AggregationRequest request);
-
-    /**
-     * Aggregate data in a portfolio.
-     *
-     * @param scope the String value
-     * @param portfolioCode the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ListAggregationResponse object
-     */
-    Observable<ServiceResponse<ListAggregationResponse>> getAggregationByPortfolioWithServiceResponseAsync(String scope, String portfolioCode, AggregationRequest request);
-
-    /**
-     * Aggregation request data in a portfolio into a data tree.
-     *
-     * @param scope the String value
-     * @param portfolioCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the NestedAggregationResponse object if successful.
-     */
-    NestedAggregationResponse getNestedAggregationByPortfolio(String scope, String portfolioCode);
-
-    /**
-     * Aggregation request data in a portfolio into a data tree.
-     *
-     * @param scope the String value
-     * @param portfolioCode the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<NestedAggregationResponse> getNestedAggregationByPortfolioAsync(String scope, String portfolioCode, final ServiceCallback<NestedAggregationResponse> serviceCallback);
-
-    /**
-     * Aggregation request data in a portfolio into a data tree.
-     *
-     * @param scope the String value
-     * @param portfolioCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the NestedAggregationResponse object
-     */
-    Observable<NestedAggregationResponse> getNestedAggregationByPortfolioAsync(String scope, String portfolioCode);
-
-    /**
-     * Aggregation request data in a portfolio into a data tree.
-     *
-     * @param scope the String value
-     * @param portfolioCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the NestedAggregationResponse object
-     */
-    Observable<ServiceResponse<NestedAggregationResponse>> getNestedAggregationByPortfolioWithServiceResponseAsync(String scope, String portfolioCode);
-    /**
-     * Aggregation request data in a portfolio into a data tree.
-     *
-     * @param scope the String value
-     * @param portfolioCode the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the NestedAggregationResponse object if successful.
-     */
-    NestedAggregationResponse getNestedAggregationByPortfolio(String scope, String portfolioCode, AggregationRequest request);
-
-    /**
-     * Aggregation request data in a portfolio into a data tree.
-     *
-     * @param scope the String value
-     * @param portfolioCode the String value
-     * @param request the AggregationRequest value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<NestedAggregationResponse> getNestedAggregationByPortfolioAsync(String scope, String portfolioCode, AggregationRequest request, final ServiceCallback<NestedAggregationResponse> serviceCallback);
-
-    /**
-     * Aggregation request data in a portfolio into a data tree.
-     *
-     * @param scope the String value
-     * @param portfolioCode the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the NestedAggregationResponse object
-     */
-    Observable<NestedAggregationResponse> getNestedAggregationByPortfolioAsync(String scope, String portfolioCode, AggregationRequest request);
-
-    /**
-     * Aggregation request data in a portfolio into a data tree.
-     *
-     * @param scope the String value
-     * @param portfolioCode the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the NestedAggregationResponse object
-     */
-    Observable<ServiceResponse<NestedAggregationResponse>> getNestedAggregationByPortfolioWithServiceResponseAsync(String scope, String portfolioCode, AggregationRequest request);
-
-    /**
-     * Aggregate data from a result set.
-     *
-     * @param scope the String value
-     * @param resultsKey the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ListAggregationResponse object if successful.
-     */
-    ListAggregationResponse getAggregationByResultSet(String scope, String resultsKey);
-
-    /**
-     * Aggregate data from a result set.
-     *
-     * @param scope the String value
-     * @param resultsKey the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ListAggregationResponse> getAggregationByResultSetAsync(String scope, String resultsKey, final ServiceCallback<ListAggregationResponse> serviceCallback);
-
-    /**
-     * Aggregate data from a result set.
-     *
-     * @param scope the String value
-     * @param resultsKey the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ListAggregationResponse object
-     */
-    Observable<ListAggregationResponse> getAggregationByResultSetAsync(String scope, String resultsKey);
-
-    /**
-     * Aggregate data from a result set.
-     *
-     * @param scope the String value
-     * @param resultsKey the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ListAggregationResponse object
-     */
-    Observable<ServiceResponse<ListAggregationResponse>> getAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey);
-    /**
-     * Aggregate data from a result set.
-     *
-     * @param scope the String value
-     * @param resultsKey the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ListAggregationResponse object if successful.
-     */
-    ListAggregationResponse getAggregationByResultSet(String scope, String resultsKey, AggregationRequest request);
-
-    /**
-     * Aggregate data from a result set.
-     *
-     * @param scope the String value
-     * @param resultsKey the String value
-     * @param request the AggregationRequest value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ListAggregationResponse> getAggregationByResultSetAsync(String scope, String resultsKey, AggregationRequest request, final ServiceCallback<ListAggregationResponse> serviceCallback);
-
-    /**
-     * Aggregate data from a result set.
-     *
-     * @param scope the String value
-     * @param resultsKey the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ListAggregationResponse object
-     */
-    Observable<ListAggregationResponse> getAggregationByResultSetAsync(String scope, String resultsKey, AggregationRequest request);
-
-    /**
-     * Aggregate data from a result set.
-     *
-     * @param scope the String value
-     * @param resultsKey the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ListAggregationResponse object
-     */
-    Observable<ServiceResponse<ListAggregationResponse>> getAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey, AggregationRequest request);
-
-    /**
-     * Aggregate data from a result set into a nested structure.
-     *
-     * @param scope the String value
-     * @param resultsKey the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the NestedAggregationResponse object if successful.
-     */
-    NestedAggregationResponse getNestedAggregationByResultSet(String scope, String resultsKey);
-
-    /**
-     * Aggregate data from a result set into a nested structure.
-     *
-     * @param scope the String value
-     * @param resultsKey the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<NestedAggregationResponse> getNestedAggregationByResultSetAsync(String scope, String resultsKey, final ServiceCallback<NestedAggregationResponse> serviceCallback);
-
-    /**
-     * Aggregate data from a result set into a nested structure.
-     *
-     * @param scope the String value
-     * @param resultsKey the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the NestedAggregationResponse object
-     */
-    Observable<NestedAggregationResponse> getNestedAggregationByResultSetAsync(String scope, String resultsKey);
-
-    /**
-     * Aggregate data from a result set into a nested structure.
-     *
-     * @param scope the String value
-     * @param resultsKey the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the NestedAggregationResponse object
-     */
-    Observable<ServiceResponse<NestedAggregationResponse>> getNestedAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey);
-    /**
-     * Aggregate data from a result set into a nested structure.
-     *
-     * @param scope the String value
-     * @param resultsKey the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the NestedAggregationResponse object if successful.
-     */
-    NestedAggregationResponse getNestedAggregationByResultSet(String scope, String resultsKey, AggregationRequest request);
-
-    /**
-     * Aggregate data from a result set into a nested structure.
-     *
-     * @param scope the String value
-     * @param resultsKey the String value
-     * @param request the AggregationRequest value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<NestedAggregationResponse> getNestedAggregationByResultSetAsync(String scope, String resultsKey, AggregationRequest request, final ServiceCallback<NestedAggregationResponse> serviceCallback);
-
-    /**
-     * Aggregate data from a result set into a nested structure.
-     *
-     * @param scope the String value
-     * @param resultsKey the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the NestedAggregationResponse object
-     */
-    Observable<NestedAggregationResponse> getNestedAggregationByResultSetAsync(String scope, String resultsKey, AggregationRequest request);
-
-    /**
-     * Aggregate data from a result set into a nested structure.
-     *
-     * @param scope the String value
-     * @param resultsKey the String value
-     * @param request the AggregationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the NestedAggregationResponse object
-     */
-    Observable<ServiceResponse<NestedAggregationResponse>> getNestedAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey, AggregationRequest request);
 
     /**
      * List all analytic stores in client.
@@ -1070,13 +499,13 @@ public interface LUSIDAPI {
      * @param year The year component of the date for the data in the scope
      * @param month The month component of the date for the data in the scope
      * @param day The day component of the date for the data in the scope
-     * @param data the List&lt;SecurityAnalyticDataDto&gt; value
+     * @param data the List&lt;InstrumentAnalyticDataDto&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the AnalyticStoreDto object if successful.
      */
-    AnalyticStoreDto insertAnalytics(String scope, int year, int month, int day, List<SecurityAnalyticDataDto> data);
+    AnalyticStoreDto insertAnalytics(String scope, int year, int month, int day, List<InstrumentAnalyticDataDto> data);
 
     /**
      * Insert analytics into an existing analytic store for the given scope and date.
@@ -1085,12 +514,12 @@ public interface LUSIDAPI {
      * @param year The year component of the date for the data in the scope
      * @param month The month component of the date for the data in the scope
      * @param day The day component of the date for the data in the scope
-     * @param data the List&lt;SecurityAnalyticDataDto&gt; value
+     * @param data the List&lt;InstrumentAnalyticDataDto&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<AnalyticStoreDto> insertAnalyticsAsync(String scope, int year, int month, int day, List<SecurityAnalyticDataDto> data, final ServiceCallback<AnalyticStoreDto> serviceCallback);
+    ServiceFuture<AnalyticStoreDto> insertAnalyticsAsync(String scope, int year, int month, int day, List<InstrumentAnalyticDataDto> data, final ServiceCallback<AnalyticStoreDto> serviceCallback);
 
     /**
      * Insert analytics into an existing analytic store for the given scope and date.
@@ -1099,11 +528,11 @@ public interface LUSIDAPI {
      * @param year The year component of the date for the data in the scope
      * @param month The month component of the date for the data in the scope
      * @param day The day component of the date for the data in the scope
-     * @param data the List&lt;SecurityAnalyticDataDto&gt; value
+     * @param data the List&lt;InstrumentAnalyticDataDto&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AnalyticStoreDto object
      */
-    Observable<AnalyticStoreDto> insertAnalyticsAsync(String scope, int year, int month, int day, List<SecurityAnalyticDataDto> data);
+    Observable<AnalyticStoreDto> insertAnalyticsAsync(String scope, int year, int month, int day, List<InstrumentAnalyticDataDto> data);
 
     /**
      * Insert analytics into an existing analytic store for the given scope and date.
@@ -1112,1497 +541,794 @@ public interface LUSIDAPI {
      * @param year The year component of the date for the data in the scope
      * @param month The month component of the date for the data in the scope
      * @param day The day component of the date for the data in the scope
-     * @param data the List&lt;SecurityAnalyticDataDto&gt; value
+     * @param data the List&lt;InstrumentAnalyticDataDto&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AnalyticStoreDto object
      */
-    Observable<ServiceResponse<AnalyticStoreDto>> insertAnalyticsWithServiceResponseAsync(String scope, int year, int month, int day, List<SecurityAnalyticDataDto> data);
-
-    /**
-     * Upsert Analytics.
-     *
-     * @param scope Scope of the analytic
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the Object object if successful.
-     */
-    Object upsertAnalytics(String scope);
-
-    /**
-     * Upsert Analytics.
-     *
-     * @param scope Scope of the analytic
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<Object> upsertAnalyticsAsync(String scope, final ServiceCallback<Object> serviceCallback);
-
-    /**
-     * Upsert Analytics.
-     *
-     * @param scope Scope of the analytic
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the Object object
-     */
-    Observable<Object> upsertAnalyticsAsync(String scope);
-
-    /**
-     * Upsert Analytics.
-     *
-     * @param scope Scope of the analytic
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the Object object
-     */
-    Observable<ServiceResponse<Object>> upsertAnalyticsWithServiceResponseAsync(String scope);
-    /**
-     * Upsert Analytics.
-     *
-     * @param scope Scope of the analytic
-     * @param request A valid and fully populated analytic store creation request
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the Object object if successful.
-     */
-    Object upsertAnalytics(String scope, AnalyticsStorageRequest request);
-
-    /**
-     * Upsert Analytics.
-     *
-     * @param scope Scope of the analytic
-     * @param request A valid and fully populated analytic store creation request
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<Object> upsertAnalyticsAsync(String scope, AnalyticsStorageRequest request, final ServiceCallback<Object> serviceCallback);
-
-    /**
-     * Upsert Analytics.
-     *
-     * @param scope Scope of the analytic
-     * @param request A valid and fully populated analytic store creation request
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the Object object
-     */
-    Observable<Object> upsertAnalyticsAsync(String scope, AnalyticsStorageRequest request);
-
-    /**
-     * Upsert Analytics.
-     *
-     * @param scope Scope of the analytic
-     * @param request A valid and fully populated analytic store creation request
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the Object object
-     */
-    Observable<ServiceResponse<Object>> upsertAnalyticsWithServiceResponseAsync(String scope, AnalyticsStorageRequest request);
-
-    /**
-     * Update classification data.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ClassificationsDto object if successful.
-     */
-    ClassificationsDto upsertClassification();
-
-    /**
-     * Update classification data.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ClassificationsDto> upsertClassificationAsync(final ServiceCallback<ClassificationsDto> serviceCallback);
-
-    /**
-     * Update classification data.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ClassificationsDto object
-     */
-    Observable<ClassificationsDto> upsertClassificationAsync();
-
-    /**
-     * Update classification data.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ClassificationsDto object
-     */
-    Observable<ServiceResponse<ClassificationsDto>> upsertClassificationWithServiceResponseAsync();
-    /**
-     * Update classification data.
-     *
-     * @param classifications the List&lt;SecurityClassificationDto&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ClassificationsDto object if successful.
-     */
-    ClassificationsDto upsertClassification(List<SecurityClassificationDto> classifications);
-
-    /**
-     * Update classification data.
-     *
-     * @param classifications the List&lt;SecurityClassificationDto&gt; value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ClassificationsDto> upsertClassificationAsync(List<SecurityClassificationDto> classifications, final ServiceCallback<ClassificationsDto> serviceCallback);
-
-    /**
-     * Update classification data.
-     *
-     * @param classifications the List&lt;SecurityClassificationDto&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ClassificationsDto object
-     */
-    Observable<ClassificationsDto> upsertClassificationAsync(List<SecurityClassificationDto> classifications);
-
-    /**
-     * Update classification data.
-     *
-     * @param classifications the List&lt;SecurityClassificationDto&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ClassificationsDto object
-     */
-    Observable<ServiceResponse<ClassificationsDto>> upsertClassificationWithServiceResponseAsync(List<SecurityClassificationDto> classifications);
-
-    /**
-     * Adds a new transaction type movement to the list of existing types.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TxnMetaDataDto object if successful.
-     */
-    TxnMetaDataDto addConfigurationTransactionType();
-
-    /**
-     * Adds a new transaction type movement to the list of existing types.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<TxnMetaDataDto> addConfigurationTransactionTypeAsync(final ServiceCallback<TxnMetaDataDto> serviceCallback);
-
-    /**
-     * Adds a new transaction type movement to the list of existing types.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TxnMetaDataDto object
-     */
-    Observable<TxnMetaDataDto> addConfigurationTransactionTypeAsync();
-
-    /**
-     * Adds a new transaction type movement to the list of existing types.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TxnMetaDataDto object
-     */
-    Observable<ServiceResponse<TxnMetaDataDto>> addConfigurationTransactionTypeWithServiceResponseAsync();
-    /**
-     * Adds a new transaction type movement to the list of existing types.
-     *
-     * @param type the TxnMetaDataDto value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TxnMetaDataDto object if successful.
-     */
-    TxnMetaDataDto addConfigurationTransactionType(TxnMetaDataDto type);
-
-    /**
-     * Adds a new transaction type movement to the list of existing types.
-     *
-     * @param type the TxnMetaDataDto value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<TxnMetaDataDto> addConfigurationTransactionTypeAsync(TxnMetaDataDto type, final ServiceCallback<TxnMetaDataDto> serviceCallback);
-
-    /**
-     * Adds a new transaction type movement to the list of existing types.
-     *
-     * @param type the TxnMetaDataDto value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TxnMetaDataDto object
-     */
-    Observable<TxnMetaDataDto> addConfigurationTransactionTypeAsync(TxnMetaDataDto type);
-
-    /**
-     * Adds a new transaction type movement to the list of existing types.
-     *
-     * @param type the TxnMetaDataDto value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TxnMetaDataDto object
-     */
-    Observable<ServiceResponse<TxnMetaDataDto>> addConfigurationTransactionTypeWithServiceResponseAsync(TxnMetaDataDto type);
-
-    /**
-     * Gets the list of persisted transaction types.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfTxnMetaDataDto object if successful.
-     */
-    ResourceListOfTxnMetaDataDto getConfigurationTransactionTypes();
-
-    /**
-     * Gets the list of persisted transaction types.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfTxnMetaDataDto> getConfigurationTransactionTypesAsync(final ServiceCallback<ResourceListOfTxnMetaDataDto> serviceCallback);
-
-    /**
-     * Gets the list of persisted transaction types.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTxnMetaDataDto object
-     */
-    Observable<ResourceListOfTxnMetaDataDto> getConfigurationTransactionTypesAsync();
-
-    /**
-     * Gets the list of persisted transaction types.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTxnMetaDataDto object
-     */
-    Observable<ServiceResponse<ResourceListOfTxnMetaDataDto>> getConfigurationTransactionTypesWithServiceResponseAsync();
-
-    /**
-     * Uploads a list of transaction types to be used by the movements engine.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfTxnMetaDataDto object if successful.
-     */
-    ResourceListOfTxnMetaDataDto uploadConfigurationTransactionTypes();
-
-    /**
-     * Uploads a list of transaction types to be used by the movements engine.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfTxnMetaDataDto> uploadConfigurationTransactionTypesAsync(final ServiceCallback<ResourceListOfTxnMetaDataDto> serviceCallback);
-
-    /**
-     * Uploads a list of transaction types to be used by the movements engine.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTxnMetaDataDto object
-     */
-    Observable<ResourceListOfTxnMetaDataDto> uploadConfigurationTransactionTypesAsync();
-
-    /**
-     * Uploads a list of transaction types to be used by the movements engine.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTxnMetaDataDto object
-     */
-    Observable<ServiceResponse<ResourceListOfTxnMetaDataDto>> uploadConfigurationTransactionTypesWithServiceResponseAsync();
-    /**
-     * Uploads a list of transaction types to be used by the movements engine.
-     *
-     * @param types the List&lt;TxnMetaDataDto&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfTxnMetaDataDto object if successful.
-     */
-    ResourceListOfTxnMetaDataDto uploadConfigurationTransactionTypes(List<TxnMetaDataDto> types);
-
-    /**
-     * Uploads a list of transaction types to be used by the movements engine.
-     *
-     * @param types the List&lt;TxnMetaDataDto&gt; value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfTxnMetaDataDto> uploadConfigurationTransactionTypesAsync(List<TxnMetaDataDto> types, final ServiceCallback<ResourceListOfTxnMetaDataDto> serviceCallback);
-
-    /**
-     * Uploads a list of transaction types to be used by the movements engine.
-     *
-     * @param types the List&lt;TxnMetaDataDto&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTxnMetaDataDto object
-     */
-    Observable<ResourceListOfTxnMetaDataDto> uploadConfigurationTransactionTypesAsync(List<TxnMetaDataDto> types);
-
-    /**
-     * Uploads a list of transaction types to be used by the movements engine.
-     *
-     * @param types the List&lt;TxnMetaDataDto&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTxnMetaDataDto object
-     */
-    Observable<ServiceResponse<ResourceListOfTxnMetaDataDto>> uploadConfigurationTransactionTypesWithServiceResponseAsync(List<TxnMetaDataDto> types);
+    Observable<ServiceResponse<AnalyticStoreDto>> insertAnalyticsWithServiceResponseAsync(String scope, int year, int month, int day, List<InstrumentAnalyticDataDto> data);
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param corporateActionSourceCode Corporate action source id
+     * @param code Corporate action source id
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the List&lt;CorporateActionEventDto&gt; object if successful.
      */
-    List<CorporateActionEventDto> listCorporateActions(String scope, String corporateActionSourceCode);
+    List<CorporateActionEventDto> getCorporateActions(String scope, String code);
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param corporateActionSourceCode Corporate action source id
+     * @param code Corporate action source id
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<List<CorporateActionEventDto>> listCorporateActionsAsync(String scope, String corporateActionSourceCode, final ServiceCallback<List<CorporateActionEventDto>> serviceCallback);
+    ServiceFuture<List<CorporateActionEventDto>> getCorporateActionsAsync(String scope, String code, final ServiceCallback<List<CorporateActionEventDto>> serviceCallback);
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param corporateActionSourceCode Corporate action source id
+     * @param code Corporate action source id
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the List&lt;CorporateActionEventDto&gt; object
      */
-    Observable<List<CorporateActionEventDto>> listCorporateActionsAsync(String scope, String corporateActionSourceCode);
+    Observable<List<CorporateActionEventDto>> getCorporateActionsAsync(String scope, String code);
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param corporateActionSourceCode Corporate action source id
+     * @param code Corporate action source id
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the List&lt;CorporateActionEventDto&gt; object
      */
-    Observable<ServiceResponse<List<CorporateActionEventDto>>> listCorporateActionsWithServiceResponseAsync(String scope, String corporateActionSourceCode);
+    Observable<ServiceResponse<List<CorporateActionEventDto>>> getCorporateActionsWithServiceResponseAsync(String scope, String code);
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param corporateActionSourceCode Corporate action source id
+     * @param code Corporate action source id
      * @param effectiveAt Effective Date
      * @param asAt AsAt Date filter
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the List&lt;CorporateActionEventDto&gt; object if successful.
      */
-    List<CorporateActionEventDto> listCorporateActions(String scope, String corporateActionSourceCode, DateTime effectiveAt, DateTime asAt);
+    List<CorporateActionEventDto> getCorporateActions(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param corporateActionSourceCode Corporate action source id
+     * @param code Corporate action source id
      * @param effectiveAt Effective Date
      * @param asAt AsAt Date filter
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<List<CorporateActionEventDto>> listCorporateActionsAsync(String scope, String corporateActionSourceCode, DateTime effectiveAt, DateTime asAt, final ServiceCallback<List<CorporateActionEventDto>> serviceCallback);
+    ServiceFuture<List<CorporateActionEventDto>> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<List<CorporateActionEventDto>> serviceCallback);
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param corporateActionSourceCode Corporate action source id
+     * @param code Corporate action source id
      * @param effectiveAt Effective Date
      * @param asAt AsAt Date filter
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the List&lt;CorporateActionEventDto&gt; object
      */
-    Observable<List<CorporateActionEventDto>> listCorporateActionsAsync(String scope, String corporateActionSourceCode, DateTime effectiveAt, DateTime asAt);
+    Observable<List<CorporateActionEventDto>> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets a corporate action based on dates.
      *
      * @param scope Scope
-     * @param corporateActionSourceCode Corporate action source id
+     * @param code Corporate action source id
      * @param effectiveAt Effective Date
      * @param asAt AsAt Date filter
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the List&lt;CorporateActionEventDto&gt; object
      */
-    Observable<ServiceResponse<List<CorporateActionEventDto>>> listCorporateActionsWithServiceResponseAsync(String scope, String corporateActionSourceCode, DateTime effectiveAt, DateTime asAt);
+    Observable<ServiceResponse<List<CorporateActionEventDto>>> getCorporateActionsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param corporateActionSourceCode Source of the corporate action
+     * @param code Source of the corporate action
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the TryUpsertCorporateActionsDto object if successful.
      */
-    TryUpsertCorporateActionsDto batchUpsertCorporateActions(String scope, String corporateActionSourceCode);
+    TryUpsertCorporateActionsDto batchUpsertCorporateActions(String scope, String code);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param corporateActionSourceCode Source of the corporate action
+     * @param code Source of the corporate action
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryUpsertCorporateActionsDto> batchUpsertCorporateActionsAsync(String scope, String corporateActionSourceCode, final ServiceCallback<TryUpsertCorporateActionsDto> serviceCallback);
+    ServiceFuture<TryUpsertCorporateActionsDto> batchUpsertCorporateActionsAsync(String scope, String code, final ServiceCallback<TryUpsertCorporateActionsDto> serviceCallback);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param corporateActionSourceCode Source of the corporate action
+     * @param code Source of the corporate action
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the TryUpsertCorporateActionsDto object
      */
-    Observable<TryUpsertCorporateActionsDto> batchUpsertCorporateActionsAsync(String scope, String corporateActionSourceCode);
+    Observable<TryUpsertCorporateActionsDto> batchUpsertCorporateActionsAsync(String scope, String code);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param corporateActionSourceCode Source of the corporate action
+     * @param code Source of the corporate action
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the TryUpsertCorporateActionsDto object
      */
-    Observable<ServiceResponse<TryUpsertCorporateActionsDto>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String corporateActionSourceCode);
+    Observable<ServiceResponse<TryUpsertCorporateActionsDto>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String code);
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param corporateActionSourceCode Source of the corporate action
+     * @param code Source of the corporate action
      * @param actions The corporate actions to create
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the TryUpsertCorporateActionsDto object if successful.
      */
-    TryUpsertCorporateActionsDto batchUpsertCorporateActions(String scope, String corporateActionSourceCode, List<UpsertCorporateActionRequest> actions);
+    TryUpsertCorporateActionsDto batchUpsertCorporateActions(String scope, String code, List<UpsertCorporateActionRequest> actions);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param corporateActionSourceCode Source of the corporate action
+     * @param code Source of the corporate action
      * @param actions The corporate actions to create
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryUpsertCorporateActionsDto> batchUpsertCorporateActionsAsync(String scope, String corporateActionSourceCode, List<UpsertCorporateActionRequest> actions, final ServiceCallback<TryUpsertCorporateActionsDto> serviceCallback);
+    ServiceFuture<TryUpsertCorporateActionsDto> batchUpsertCorporateActionsAsync(String scope, String code, List<UpsertCorporateActionRequest> actions, final ServiceCallback<TryUpsertCorporateActionsDto> serviceCallback);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
      * @param scope The intended scope of the corporate action
-     * @param corporateActionSourceCode Source of the corporate action
-     * @param actions The corporate actions to create
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryUpsertCorporateActionsDto object
-     */
-    Observable<TryUpsertCorporateActionsDto> batchUpsertCorporateActionsAsync(String scope, String corporateActionSourceCode, List<UpsertCorporateActionRequest> actions);
-
-    /**
-     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
-     *
-     * @param scope The intended scope of the corporate action
-     * @param corporateActionSourceCode Source of the corporate action
+     * @param code Source of the corporate action
      * @param actions The corporate actions to create
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the TryUpsertCorporateActionsDto object
      */
-    Observable<ServiceResponse<TryUpsertCorporateActionsDto>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String corporateActionSourceCode, List<UpsertCorporateActionRequest> actions);
+    Observable<TryUpsertCorporateActionsDto> batchUpsertCorporateActionsAsync(String scope, String code, List<UpsertCorporateActionRequest> actions);
 
     /**
+     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
+     *
+     * @param scope The intended scope of the corporate action
+     * @param code Source of the corporate action
+     * @param actions The corporate actions to create
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the TryUpsertCorporateActionsDto object
+     */
+    Observable<ServiceResponse<TryUpsertCorporateActionsDto>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String code, List<UpsertCorporateActionRequest> actions);
+
+    /**
+     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the String object if successful.
+     * @return the DataTypeDto object if successful.
      */
-    String getDownloadUrl();
+    DataTypeDto createDataType();
 
     /**
+     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<String> getDownloadUrlAsync(final ServiceCallback<String> serviceCallback);
+    ServiceFuture<DataTypeDto> createDataTypeAsync(final ServiceCallback<DataTypeDto> serviceCallback);
 
     /**
+     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
+     * @return the observable to the DataTypeDto object
      */
-    Observable<String> getDownloadUrlAsync();
+    Observable<DataTypeDto> createDataTypeAsync();
 
     /**
+     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
+     * @return the observable to the DataTypeDto object
      */
-    Observable<ServiceResponse<String>> getDownloadUrlWithServiceResponseAsync();
+    Observable<ServiceResponse<DataTypeDto>> createDataTypeWithServiceResponseAsync();
     /**
+     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
-     * @param version the String value
+     * @param request The definition of the new format
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the String object if successful.
+     * @return the DataTypeDto object if successful.
      */
-    String getDownloadUrl(String version);
+    DataTypeDto createDataType(CreateDataTypeRequest request);
 
     /**
+     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
-     * @param version the String value
+     * @param request The definition of the new format
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<String> getDownloadUrlAsync(String version, final ServiceCallback<String> serviceCallback);
+    ServiceFuture<DataTypeDto> createDataTypeAsync(CreateDataTypeRequest request, final ServiceCallback<DataTypeDto> serviceCallback);
 
     /**
+     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
-     * @param version the String value
+     * @param request The definition of the new format
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
+     * @return the observable to the DataTypeDto object
      */
-    Observable<String> getDownloadUrlAsync(String version);
+    Observable<DataTypeDto> createDataTypeAsync(CreateDataTypeRequest request);
 
     /**
+     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
-     * @param version the String value
+     * @param request The definition of the new format
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
+     * @return the observable to the DataTypeDto object
      */
-    Observable<ServiceResponse<String>> getDownloadUrlWithServiceResponseAsync(String version);
+    Observable<ServiceResponse<DataTypeDto>> createDataTypeWithServiceResponseAsync(CreateDataTypeRequest request);
 
     /**
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the String object if successful.
-     */
-    String getLatestVersion();
-
-    /**
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<String> getLatestVersionAsync(final ServiceCallback<String> serviceCallback);
-
-    /**
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
-     */
-    Observable<String> getLatestVersionAsync();
-
-    /**
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
-     */
-    Observable<ServiceResponse<String>> getLatestVersionWithServiceResponseAsync();
-
-    /**
-     * List all groups in a specified scope.
+     * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfGroupDto object if successful.
+     * @return the ResourceListOfDataTypeDto object if successful.
      */
-    ResourceListOfGroupDto listPortfolioGroups(String scope);
+    ResourceListOfDataTypeDto listDataTypes(String scope);
 
     /**
-     * List all groups in a specified scope.
+     * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfGroupDto> listPortfolioGroupsAsync(String scope, final ServiceCallback<ResourceListOfGroupDto> serviceCallback);
+    ServiceFuture<ResourceListOfDataTypeDto> listDataTypesAsync(String scope, final ServiceCallback<ResourceListOfDataTypeDto> serviceCallback);
 
     /**
-     * List all groups in a specified scope.
+     * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfGroupDto object
+     * @return the observable to the ResourceListOfDataTypeDto object
      */
-    Observable<ResourceListOfGroupDto> listPortfolioGroupsAsync(String scope);
+    Observable<ResourceListOfDataTypeDto> listDataTypesAsync(String scope);
 
     /**
-     * List all groups in a specified scope.
+     * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfGroupDto object
+     * @return the observable to the ResourceListOfDataTypeDto object
      */
-    Observable<ServiceResponse<ResourceListOfGroupDto>> listPortfolioGroupsWithServiceResponseAsync(String scope);
+    Observable<ServiceResponse<ResourceListOfDataTypeDto>> listDataTypesWithServiceResponseAsync(String scope);
     /**
-     * List all groups in a specified scope.
+     * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
-     * @param asAt the DateTime value
+     * @param includeDefault the Boolean value
+     * @param includeSystem the Boolean value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
-     * @param filter A filter expression to apply to the result set
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfGroupDto object if successful.
+     * @return the ResourceListOfDataTypeDto object if successful.
      */
-    ResourceListOfGroupDto listPortfolioGroups(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    ResourceListOfDataTypeDto listDataTypes(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
-     * List all groups in a specified scope.
+     * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
-     * @param asAt the DateTime value
+     * @param includeDefault the Boolean value
+     * @param includeSystem the Boolean value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
-     * @param filter A filter expression to apply to the result set
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfGroupDto> listPortfolioGroupsAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfGroupDto> serviceCallback);
+    ServiceFuture<ResourceListOfDataTypeDto> listDataTypesAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfDataTypeDto> serviceCallback);
 
     /**
-     * List all groups in a specified scope.
+     * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
-     * @param asAt the DateTime value
+     * @param includeDefault the Boolean value
+     * @param includeSystem the Boolean value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
-     * @param filter A filter expression to apply to the result set
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfGroupDto object
+     * @return the observable to the ResourceListOfDataTypeDto object
      */
-    Observable<ResourceListOfGroupDto> listPortfolioGroupsAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ResourceListOfDataTypeDto> listDataTypesAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
-     * List all groups in a specified scope.
+     * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
-     * @param asAt the DateTime value
+     * @param includeDefault the Boolean value
+     * @param includeSystem the Boolean value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
-     * @param filter A filter expression to apply to the result set
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfGroupDto object
+     * @return the observable to the ResourceListOfDataTypeDto object
      */
-    Observable<ServiceResponse<ResourceListOfGroupDto>> listPortfolioGroupsWithServiceResponseAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ServiceResponse<ResourceListOfDataTypeDto>> listDataTypesWithServiceResponseAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
-     * Create a new group.
+     * Gets a property data format.
      *
      * @param scope the String value
+     * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the GroupDto object if successful.
+     * @return the DataTypeDto object if successful.
      */
-    GroupDto createPortfolioGroup(String scope);
+    DataTypeDto getDataType(String scope, String name);
 
     /**
-     * Create a new group.
+     * Gets a property data format.
      *
      * @param scope the String value
+     * @param name the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<GroupDto> createPortfolioGroupAsync(String scope, final ServiceCallback<GroupDto> serviceCallback);
+    ServiceFuture<DataTypeDto> getDataTypeAsync(String scope, String name, final ServiceCallback<DataTypeDto> serviceCallback);
 
     /**
-     * Create a new group.
+     * Gets a property data format.
      *
      * @param scope the String value
+     * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
+     * @return the observable to the DataTypeDto object
      */
-    Observable<GroupDto> createPortfolioGroupAsync(String scope);
+    Observable<DataTypeDto> getDataTypeAsync(String scope, String name);
 
     /**
-     * Create a new group.
+     * Gets a property data format.
      *
      * @param scope the String value
+     * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
+     * @return the observable to the DataTypeDto object
      */
-    Observable<ServiceResponse<GroupDto>> createPortfolioGroupWithServiceResponseAsync(String scope);
+    Observable<ServiceResponse<DataTypeDto>> getDataTypeWithServiceResponseAsync(String scope, String name);
+
     /**
-     * Create a new group.
+     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
-     * @param scope the String value
-     * @param request the CreateGroupRequest value
+     * @param scope The scope of the format being updated
+     * @param name The name of the format to update
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the GroupDto object if successful.
+     * @return the DataTypeDto object if successful.
      */
-    GroupDto createPortfolioGroup(String scope, CreateGroupRequest request);
+    DataTypeDto updateDataType(String scope, String name);
 
     /**
-     * Create a new group.
+     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
-     * @param scope the String value
-     * @param request the CreateGroupRequest value
+     * @param scope The scope of the format being updated
+     * @param name The name of the format to update
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<GroupDto> createPortfolioGroupAsync(String scope, CreateGroupRequest request, final ServiceCallback<GroupDto> serviceCallback);
+    ServiceFuture<DataTypeDto> updateDataTypeAsync(String scope, String name, final ServiceCallback<DataTypeDto> serviceCallback);
 
     /**
-     * Create a new group.
+     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
-     * @param scope the String value
-     * @param request the CreateGroupRequest value
+     * @param scope The scope of the format being updated
+     * @param name The name of the format to update
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
+     * @return the observable to the DataTypeDto object
      */
-    Observable<GroupDto> createPortfolioGroupAsync(String scope, CreateGroupRequest request);
+    Observable<DataTypeDto> updateDataTypeAsync(String scope, String name);
 
     /**
-     * Create a new group.
+     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
-     * @param scope the String value
-     * @param request the CreateGroupRequest value
+     * @param scope The scope of the format being updated
+     * @param name The name of the format to update
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
+     * @return the observable to the DataTypeDto object
      */
-    Observable<ServiceResponse<GroupDto>> createPortfolioGroupWithServiceResponseAsync(String scope, CreateGroupRequest request);
-
+    Observable<ServiceResponse<DataTypeDto>> updateDataTypeWithServiceResponseAsync(String scope, String name);
     /**
-     * Get an existing group.
+     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
-     * @param scope the String value
-     * @param code the String value
+     * @param scope The scope of the format being updated
+     * @param name The name of the format to update
+     * @param request The new definition of the format
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the GroupDto object if successful.
+     * @return the DataTypeDto object if successful.
      */
-    GroupDto getPortfolioGroup(String scope, String code);
+    DataTypeDto updateDataType(String scope, String name, UpdateDataTypeRequest request);
 
     /**
-     * Get an existing group.
+     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
-     * @param scope the String value
-     * @param code the String value
+     * @param scope The scope of the format being updated
+     * @param name The name of the format to update
+     * @param request The new definition of the format
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<GroupDto> getPortfolioGroupAsync(String scope, String code, final ServiceCallback<GroupDto> serviceCallback);
+    ServiceFuture<DataTypeDto> updateDataTypeAsync(String scope, String name, UpdateDataTypeRequest request, final ServiceCallback<DataTypeDto> serviceCallback);
 
     /**
-     * Get an existing group.
+     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
-     * @param scope the String value
-     * @param code the String value
+     * @param scope The scope of the format being updated
+     * @param name The name of the format to update
+     * @param request The new definition of the format
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
+     * @return the observable to the DataTypeDto object
      */
-    Observable<GroupDto> getPortfolioGroupAsync(String scope, String code);
+    Observable<DataTypeDto> updateDataTypeAsync(String scope, String name, UpdateDataTypeRequest request);
 
     /**
-     * Get an existing group.
+     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
-     * @param scope the String value
-     * @param code the String value
+     * @param scope The scope of the format being updated
+     * @param name The name of the format to update
+     * @param request The new definition of the format
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
+     * @return the observable to the DataTypeDto object
      */
-    Observable<ServiceResponse<GroupDto>> getPortfolioGroupWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<DataTypeDto>> updateDataTypeWithServiceResponseAsync(String scope, String name, UpdateDataTypeRequest request);
+
     /**
-     * Get an existing group.
+     * Return the definitions for the specified list of units.
      *
      * @param scope the String value
-     * @param code the String value
-     * @param asAt the DateTime value
+     * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the GroupDto object if successful.
+     * @return the IUnitDefinitionDto object if successful.
      */
-    GroupDto getPortfolioGroup(String scope, String code, DateTime asAt);
+    IUnitDefinitionDto getUnitsFromDataType(String scope, String name);
 
     /**
-     * Get an existing group.
+     * Return the definitions for the specified list of units.
      *
      * @param scope the String value
-     * @param code the String value
-     * @param asAt the DateTime value
+     * @param name the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<GroupDto> getPortfolioGroupAsync(String scope, String code, DateTime asAt, final ServiceCallback<GroupDto> serviceCallback);
+    ServiceFuture<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String name, final ServiceCallback<IUnitDefinitionDto> serviceCallback);
 
     /**
-     * Get an existing group.
+     * Return the definitions for the specified list of units.
      *
      * @param scope the String value
-     * @param code the String value
-     * @param asAt the DateTime value
+     * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
+     * @return the observable to the IUnitDefinitionDto object
      */
-    Observable<GroupDto> getPortfolioGroupAsync(String scope, String code, DateTime asAt);
+    Observable<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String name);
 
     /**
-     * Get an existing group.
+     * Return the definitions for the specified list of units.
      *
      * @param scope the String value
-     * @param code the String value
-     * @param asAt the DateTime value
+     * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
+     * @return the observable to the IUnitDefinitionDto object
      */
-    Observable<ServiceResponse<GroupDto>> getPortfolioGroupWithServiceResponseAsync(String scope, String code, DateTime asAt);
-
+    Observable<ServiceResponse<IUnitDefinitionDto>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String name);
     /**
-     * Delete a group.
+     * Return the definitions for the specified list of units.
      *
      * @param scope the String value
-     * @param code the String value
+     * @param name the String value
+     * @param units the List&lt;String&gt; value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the IUnitDefinitionDto object if successful.
+     */
+    IUnitDefinitionDto getUnitsFromDataType(String scope, String name, List<String> units, String filter);
+
+    /**
+     * Return the definitions for the specified list of units.
+     *
+     * @param scope the String value
+     * @param name the String value
+     * @param units the List&lt;String&gt; value
+     * @param filter the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String name, List<String> units, String filter, final ServiceCallback<IUnitDefinitionDto> serviceCallback);
+
+    /**
+     * Return the definitions for the specified list of units.
+     *
+     * @param scope the String value
+     * @param name the String value
+     * @param units the List&lt;String&gt; value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the IUnitDefinitionDto object
+     */
+    Observable<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String name, List<String> units, String filter);
+
+    /**
+     * Return the definitions for the specified list of units.
+     *
+     * @param scope the String value
+     * @param name the String value
+     * @param units the List&lt;String&gt; value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the IUnitDefinitionDto object
+     */
+    Observable<ServiceResponse<IUnitDefinitionDto>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String name, List<String> units, String filter);
+
+    /**
+     * Create derived portfolio.
+     * Creates a portfolio that derives from an existing portfolio.
+     *
+     * @param scope The scope into which to create the new derived portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the PortfolioDto object if successful.
+     */
+    PortfolioDto createDerivedPortfolio(String scope);
+
+    /**
+     * Create derived portfolio.
+     * Creates a portfolio that derives from an existing portfolio.
+     *
+     * @param scope The scope into which to create the new derived portfolio
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<PortfolioDto> createDerivedPortfolioAsync(String scope, final ServiceCallback<PortfolioDto> serviceCallback);
+
+    /**
+     * Create derived portfolio.
+     * Creates a portfolio that derives from an existing portfolio.
+     *
+     * @param scope The scope into which to create the new derived portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioDto object
+     */
+    Observable<PortfolioDto> createDerivedPortfolioAsync(String scope);
+
+    /**
+     * Create derived portfolio.
+     * Creates a portfolio that derives from an existing portfolio.
+     *
+     * @param scope The scope into which to create the new derived portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioDto object
+     */
+    Observable<ServiceResponse<PortfolioDto>> createDerivedPortfolioWithServiceResponseAsync(String scope);
+    /**
+     * Create derived portfolio.
+     * Creates a portfolio that derives from an existing portfolio.
+     *
+     * @param scope The scope into which to create the new derived portfolio
+     * @param portfolio The root object of the new derived portfolio, containing a populated reference portfolio id and reference scope
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the PortfolioDto object if successful.
+     */
+    PortfolioDto createDerivedPortfolio(String scope, CreateDerivedTransactionPortfolioRequest portfolio);
+
+    /**
+     * Create derived portfolio.
+     * Creates a portfolio that derives from an existing portfolio.
+     *
+     * @param scope The scope into which to create the new derived portfolio
+     * @param portfolio The root object of the new derived portfolio, containing a populated reference portfolio id and reference scope
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<PortfolioDto> createDerivedPortfolioAsync(String scope, CreateDerivedTransactionPortfolioRequest portfolio, final ServiceCallback<PortfolioDto> serviceCallback);
+
+    /**
+     * Create derived portfolio.
+     * Creates a portfolio that derives from an existing portfolio.
+     *
+     * @param scope The scope into which to create the new derived portfolio
+     * @param portfolio The root object of the new derived portfolio, containing a populated reference portfolio id and reference scope
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioDto object
+     */
+    Observable<PortfolioDto> createDerivedPortfolioAsync(String scope, CreateDerivedTransactionPortfolioRequest portfolio);
+
+    /**
+     * Create derived portfolio.
+     * Creates a portfolio that derives from an existing portfolio.
+     *
+     * @param scope The scope into which to create the new derived portfolio
+     * @param portfolio The root object of the new derived portfolio, containing a populated reference portfolio id and reference scope
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioDto object
+     */
+    Observable<ServiceResponse<PortfolioDto>> createDerivedPortfolioWithServiceResponseAsync(String scope, CreateDerivedTransactionPortfolioRequest portfolio);
+
+    /**
+     * Delete portfolio details.
+     * Deletes the portfolio details for the given code.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the DeletedEntityResponse object if successful.
      */
-    DeletedEntityResponse deletePortfolioGroup(String scope, String code);
+    DeletedEntityResponse deleteDerivedPortfolioDetails(String scope, String code);
 
     /**
-     * Delete a group.
+     * Delete portfolio details.
+     * Deletes the portfolio details for the given code.
      *
-     * @param scope the String value
-     * @param code the String value
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<DeletedEntityResponse> deletePortfolioGroupAsync(String scope, String code, final ServiceCallback<DeletedEntityResponse> serviceCallback);
+    ServiceFuture<DeletedEntityResponse> deleteDerivedPortfolioDetailsAsync(String scope, String code, final ServiceCallback<DeletedEntityResponse> serviceCallback);
 
     /**
-     * Delete a group.
+     * Delete portfolio details.
+     * Deletes the portfolio details for the given code.
      *
-     * @param scope the String value
-     * @param code the String value
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
-    Observable<DeletedEntityResponse> deletePortfolioGroupAsync(String scope, String code);
+    Observable<DeletedEntityResponse> deleteDerivedPortfolioDetailsAsync(String scope, String code);
 
     /**
-     * Delete a group.
+     * Delete portfolio details.
+     * Deletes the portfolio details for the given code.
      *
-     * @param scope the String value
-     * @param code the String value
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
-    Observable<ServiceResponse<DeletedEntityResponse>> deletePortfolioGroupWithServiceResponseAsync(String scope, String code);
-
+    Observable<ServiceResponse<DeletedEntityResponse>> deleteDerivedPortfolioDetailsWithServiceResponseAsync(String scope, String code);
     /**
-     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     * Delete portfolio details.
+     * Deletes the portfolio details for the given code.
      *
-     * @param scope The scope of the portfolio group
-     * @param code The portfolio group id
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective date of the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfProcessedCommandDto object if successful.
+     * @return the DeletedEntityResponse object if successful.
      */
-    ResourceListOfProcessedCommandDto getPortfolioGroupCommands(String scope, String code);
+    DeletedEntityResponse deleteDerivedPortfolioDetails(String scope, String code, DateTime effectiveAt);
 
     /**
-     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     * Delete portfolio details.
+     * Deletes the portfolio details for the given code.
      *
-     * @param scope The scope of the portfolio group
-     * @param code The portfolio group id
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective date of the change
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfProcessedCommandDto> getPortfolioGroupCommandsAsync(String scope, String code, final ServiceCallback<ResourceListOfProcessedCommandDto> serviceCallback);
+    ServiceFuture<DeletedEntityResponse> deleteDerivedPortfolioDetailsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<DeletedEntityResponse> serviceCallback);
 
     /**
-     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     * Delete portfolio details.
+     * Deletes the portfolio details for the given code.
      *
-     * @param scope The scope of the portfolio group
-     * @param code The portfolio group id
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective date of the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfProcessedCommandDto object
+     * @return the observable to the DeletedEntityResponse object
      */
-    Observable<ResourceListOfProcessedCommandDto> getPortfolioGroupCommandsAsync(String scope, String code);
+    Observable<DeletedEntityResponse> deleteDerivedPortfolioDetailsAsync(String scope, String code, DateTime effectiveAt);
 
     /**
-     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     * Delete portfolio details.
+     * Deletes the portfolio details for the given code.
      *
-     * @param scope The scope of the portfolio group
-     * @param code The portfolio group id
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective date of the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfProcessedCommandDto object
+     * @return the observable to the DeletedEntityResponse object
      */
-    Observable<ServiceResponse<ResourceListOfProcessedCommandDto>> getPortfolioGroupCommandsWithServiceResponseAsync(String scope, String code);
-    /**
-     * Gets all commands that modified the portfolio groups(s) with the specified id.
-     *
-     * @param scope The scope of the portfolio group
-     * @param code The portfolio group id
-     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
-     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
-     * @param filter A filter expression to apply to the result set
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfProcessedCommandDto object if successful.
-     */
-    ResourceListOfProcessedCommandDto getPortfolioGroupCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
-
-    /**
-     * Gets all commands that modified the portfolio groups(s) with the specified id.
-     *
-     * @param scope The scope of the portfolio group
-     * @param code The portfolio group id
-     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
-     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
-     * @param filter A filter expression to apply to the result set
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfProcessedCommandDto> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter, final ServiceCallback<ResourceListOfProcessedCommandDto> serviceCallback);
-
-    /**
-     * Gets all commands that modified the portfolio groups(s) with the specified id.
-     *
-     * @param scope The scope of the portfolio group
-     * @param code The portfolio group id
-     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
-     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
-     * @param filter A filter expression to apply to the result set
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfProcessedCommandDto object
-     */
-    Observable<ResourceListOfProcessedCommandDto> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
-
-    /**
-     * Gets all commands that modified the portfolio groups(s) with the specified id.
-     *
-     * @param scope The scope of the portfolio group
-     * @param code The portfolio group id
-     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
-     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
-     * @param filter A filter expression to apply to the result set
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfProcessedCommandDto object
-     */
-    Observable<ServiceResponse<ResourceListOfProcessedCommandDto>> getPortfolioGroupCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
-
-    /**
-     * Get a full expansion of an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ExpandedGroupDto object if successful.
-     */
-    ExpandedGroupDto getPortfolioGroupExpansion(String scope, String code);
-
-    /**
-     * Get a full expansion of an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ExpandedGroupDto> getPortfolioGroupExpansionAsync(String scope, String code, final ServiceCallback<ExpandedGroupDto> serviceCallback);
-
-    /**
-     * Get a full expansion of an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ExpandedGroupDto object
-     */
-    Observable<ExpandedGroupDto> getPortfolioGroupExpansionAsync(String scope, String code);
-
-    /**
-     * Get a full expansion of an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ExpandedGroupDto object
-     */
-    Observable<ServiceResponse<ExpandedGroupDto>> getPortfolioGroupExpansionWithServiceResponseAsync(String scope, String code);
-    /**
-     * Get a full expansion of an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param propertyFilter the List&lt;String&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ExpandedGroupDto object if successful.
-     */
-    ExpandedGroupDto getPortfolioGroupExpansion(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
-
-    /**
-     * Get a full expansion of an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param propertyFilter the List&lt;String&gt; value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ExpandedGroupDto> getPortfolioGroupExpansionAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter, final ServiceCallback<ExpandedGroupDto> serviceCallback);
-
-    /**
-     * Get a full expansion of an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param propertyFilter the List&lt;String&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ExpandedGroupDto object
-     */
-    Observable<ExpandedGroupDto> getPortfolioGroupExpansionAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
-
-    /**
-     * Get a full expansion of an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param propertyFilter the List&lt;String&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ExpandedGroupDto object
-     */
-    Observable<ServiceResponse<ExpandedGroupDto>> getPortfolioGroupExpansionWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
-
-    /**
-     * Add a portfolio to an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the GroupDto object if successful.
-     */
-    GroupDto addPortfolioToGroup(String scope, String code);
-
-    /**
-     * Add a portfolio to an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<GroupDto> addPortfolioToGroupAsync(String scope, String code, final ServiceCallback<GroupDto> serviceCallback);
-
-    /**
-     * Add a portfolio to an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
-     */
-    Observable<GroupDto> addPortfolioToGroupAsync(String scope, String code);
-
-    /**
-     * Add a portfolio to an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
-     */
-    Observable<ServiceResponse<GroupDto>> addPortfolioToGroupWithServiceResponseAsync(String scope, String code);
-    /**
-     * Add a portfolio to an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param identifier the ResourceId value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the GroupDto object if successful.
-     */
-    GroupDto addPortfolioToGroup(String scope, String code, ResourceId identifier);
-
-    /**
-     * Add a portfolio to an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param identifier the ResourceId value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<GroupDto> addPortfolioToGroupAsync(String scope, String code, ResourceId identifier, final ServiceCallback<GroupDto> serviceCallback);
-
-    /**
-     * Add a portfolio to an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param identifier the ResourceId value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
-     */
-    Observable<GroupDto> addPortfolioToGroupAsync(String scope, String code, ResourceId identifier);
-
-    /**
-     * Add a portfolio to an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param identifier the ResourceId value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
-     */
-    Observable<ServiceResponse<GroupDto>> addPortfolioToGroupWithServiceResponseAsync(String scope, String code, ResourceId identifier);
-
-    /**
-     * Remove a portfolio that is currently present within an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param portfolioScope the String value
-     * @param portfolioCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the GroupDto object if successful.
-     */
-    GroupDto deletePortfolioFromGroup(String scope, String code, String portfolioScope, String portfolioCode);
-
-    /**
-     * Remove a portfolio that is currently present within an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param portfolioScope the String value
-     * @param portfolioCode the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<GroupDto> deletePortfolioFromGroupAsync(String scope, String code, String portfolioScope, String portfolioCode, final ServiceCallback<GroupDto> serviceCallback);
-
-    /**
-     * Remove a portfolio that is currently present within an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param portfolioScope the String value
-     * @param portfolioCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
-     */
-    Observable<GroupDto> deletePortfolioFromGroupAsync(String scope, String code, String portfolioScope, String portfolioCode);
-
-    /**
-     * Remove a portfolio that is currently present within an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param portfolioScope the String value
-     * @param portfolioCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
-     */
-    Observable<ServiceResponse<GroupDto>> deletePortfolioFromGroupWithServiceResponseAsync(String scope, String code, String portfolioScope, String portfolioCode);
-
-    /**
-     * Add a sub group to an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the GroupDto object if successful.
-     */
-    GroupDto addSubGroupToGroup(String scope, String code);
-
-    /**
-     * Add a sub group to an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<GroupDto> addSubGroupToGroupAsync(String scope, String code, final ServiceCallback<GroupDto> serviceCallback);
-
-    /**
-     * Add a sub group to an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
-     */
-    Observable<GroupDto> addSubGroupToGroupAsync(String scope, String code);
-
-    /**
-     * Add a sub group to an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
-     */
-    Observable<ServiceResponse<GroupDto>> addSubGroupToGroupWithServiceResponseAsync(String scope, String code);
-    /**
-     * Add a sub group to an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param identifier the ResourceId value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the GroupDto object if successful.
-     */
-    GroupDto addSubGroupToGroup(String scope, String code, ResourceId identifier);
-
-    /**
-     * Add a sub group to an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param identifier the ResourceId value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<GroupDto> addSubGroupToGroupAsync(String scope, String code, ResourceId identifier, final ServiceCallback<GroupDto> serviceCallback);
-
-    /**
-     * Add a sub group to an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param identifier the ResourceId value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
-     */
-    Observable<GroupDto> addSubGroupToGroupAsync(String scope, String code, ResourceId identifier);
-
-    /**
-     * Add a sub group to an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param identifier the ResourceId value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
-     */
-    Observable<ServiceResponse<GroupDto>> addSubGroupToGroupWithServiceResponseAsync(String scope, String code, ResourceId identifier);
-
-    /**
-     * Remove a subgroup that is currently present within an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param subgroupScope the String value
-     * @param subgroupCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the GroupDto object if successful.
-     */
-    GroupDto deleteSubGroupFromGroup(String scope, String code, String subgroupScope, String subgroupCode);
-
-    /**
-     * Remove a subgroup that is currently present within an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param subgroupScope the String value
-     * @param subgroupCode the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<GroupDto> deleteSubGroupFromGroupAsync(String scope, String code, String subgroupScope, String subgroupCode, final ServiceCallback<GroupDto> serviceCallback);
-
-    /**
-     * Remove a subgroup that is currently present within an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param subgroupScope the String value
-     * @param subgroupCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
-     */
-    Observable<GroupDto> deleteSubGroupFromGroupAsync(String scope, String code, String subgroupScope, String subgroupCode);
-
-    /**
-     * Remove a subgroup that is currently present within an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param subgroupScope the String value
-     * @param subgroupCode the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
-     */
-    Observable<ServiceResponse<GroupDto>> deleteSubGroupFromGroupWithServiceResponseAsync(String scope, String code, String subgroupScope, String subgroupCode);
-
-    /**
-     * Update an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the GroupDto object if successful.
-     */
-    GroupDto updatePortfolioGroup(String scope, String code);
-
-    /**
-     * Update an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<GroupDto> updatePortfolioGroupAsync(String scope, String code, final ServiceCallback<GroupDto> serviceCallback);
-
-    /**
-     * Update an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
-     */
-    Observable<GroupDto> updatePortfolioGroupAsync(String scope, String code);
-
-    /**
-     * Update an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
-     */
-    Observable<ServiceResponse<GroupDto>> updatePortfolioGroupWithServiceResponseAsync(String scope, String code);
-    /**
-     * Update an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param request the UpdateGroupRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the GroupDto object if successful.
-     */
-    GroupDto updatePortfolioGroup(String scope, String code, UpdateGroupRequest request);
-
-    /**
-     * Update an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param request the UpdateGroupRequest value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<GroupDto> updatePortfolioGroupAsync(String scope, String code, UpdateGroupRequest request, final ServiceCallback<GroupDto> serviceCallback);
-
-    /**
-     * Update an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param request the UpdateGroupRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
-     */
-    Observable<GroupDto> updatePortfolioGroupAsync(String scope, String code, UpdateGroupRequest request);
-
-    /**
-     * Update an existing group.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param request the UpdateGroupRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the GroupDto object
-     */
-    Observable<ServiceResponse<GroupDto>> updatePortfolioGroupWithServiceResponseAsync(String scope, String code, UpdateGroupRequest request);
+    Observable<ServiceResponse<DeletedEntityResponse>> deleteDerivedPortfolioDetailsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
 
     /**
      * Search portfolio groups.
@@ -2610,9 +1336,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfGroupDto object if successful.
+     * @return the ResourceListOfPortfolioGroupDto object if successful.
      */
-    ResourceListOfGroupDto portfolioGroupsSearch();
+    ResourceListOfPortfolioGroupDto portfolioGroupsSearch();
 
     /**
      * Search portfolio groups.
@@ -2621,23 +1347,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfGroupDto> portfolioGroupsSearchAsync(final ServiceCallback<ResourceListOfGroupDto> serviceCallback);
+    ServiceFuture<ResourceListOfPortfolioGroupDto> portfolioGroupsSearchAsync(final ServiceCallback<ResourceListOfPortfolioGroupDto> serviceCallback);
 
     /**
      * Search portfolio groups.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfGroupDto object
+     * @return the observable to the ResourceListOfPortfolioGroupDto object
      */
-    Observable<ResourceListOfGroupDto> portfolioGroupsSearchAsync();
+    Observable<ResourceListOfPortfolioGroupDto> portfolioGroupsSearchAsync();
 
     /**
      * Search portfolio groups.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfGroupDto object
+     * @return the observable to the ResourceListOfPortfolioGroupDto object
      */
-    Observable<ServiceResponse<ResourceListOfGroupDto>> portfolioGroupsSearchWithServiceResponseAsync();
+    Observable<ServiceResponse<ResourceListOfPortfolioGroupDto>> portfolioGroupsSearchWithServiceResponseAsync();
     /**
      * Search portfolio groups.
      *
@@ -2649,9 +1375,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfGroupDto object if successful.
+     * @return the ResourceListOfPortfolioGroupDto object if successful.
      */
-    ResourceListOfGroupDto portfolioGroupsSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+    ResourceListOfPortfolioGroupDto portfolioGroupsSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Search portfolio groups.
@@ -2665,7 +1391,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfGroupDto> portfolioGroupsSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfGroupDto> serviceCallback);
+    ServiceFuture<ResourceListOfPortfolioGroupDto> portfolioGroupsSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolioGroupDto> serviceCallback);
 
     /**
      * Search portfolio groups.
@@ -2676,9 +1402,9 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfGroupDto object
+     * @return the observable to the ResourceListOfPortfolioGroupDto object
      */
-    Observable<ResourceListOfGroupDto> portfolioGroupsSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ResourceListOfPortfolioGroupDto> portfolioGroupsSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Search portfolio groups.
@@ -2689,79 +1415,398 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfGroupDto object
+     * @return the observable to the ResourceListOfPortfolioGroupDto object
      */
-    Observable<ServiceResponse<ResourceListOfGroupDto>> portfolioGroupsSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ServiceResponse<ResourceListOfPortfolioGroupDto>> portfolioGroupsSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
-     * Simple heartbeat method for the api.
+     * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the String object if successful.
+     * @return the TryAddClientInstrumentsDto object if successful.
      */
-    String getHealth();
+    TryAddClientInstrumentsDto batchAddClientInstruments();
 
     /**
-     * Simple heartbeat method for the api.
+     * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<String> getHealthAsync(final ServiceCallback<String> serviceCallback);
+    ServiceFuture<TryAddClientInstrumentsDto> batchAddClientInstrumentsAsync(final ServiceCallback<TryAddClientInstrumentsDto> serviceCallback);
 
     /**
-     * Simple heartbeat method for the api.
+     * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
+     * @return the observable to the TryAddClientInstrumentsDto object
      */
-    Observable<String> getHealthAsync();
+    Observable<TryAddClientInstrumentsDto> batchAddClientInstrumentsAsync();
 
     /**
-     * Simple heartbeat method for the api.
+     * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
+     * @return the observable to the TryAddClientInstrumentsDto object
      */
-    Observable<ServiceResponse<String>> getHealthWithServiceResponseAsync();
+    Observable<ServiceResponse<TryAddClientInstrumentsDto>> batchAddClientInstrumentsWithServiceResponseAsync();
+    /**
+     * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
+     *
+     * @param definitions the List&lt;CreateClientInstrumentRequest&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the TryAddClientInstrumentsDto object if successful.
+     */
+    TryAddClientInstrumentsDto batchAddClientInstruments(List<CreateClientInstrumentRequest> definitions);
 
     /**
-     * Gets the login information.
+     * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
+     *
+     * @param definitions the List&lt;CreateClientInstrumentRequest&gt; value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<TryAddClientInstrumentsDto> batchAddClientInstrumentsAsync(List<CreateClientInstrumentRequest> definitions, final ServiceCallback<TryAddClientInstrumentsDto> serviceCallback);
+
+    /**
+     * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
+     *
+     * @param definitions the List&lt;CreateClientInstrumentRequest&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the TryAddClientInstrumentsDto object
+     */
+    Observable<TryAddClientInstrumentsDto> batchAddClientInstrumentsAsync(List<CreateClientInstrumentRequest> definitions);
+
+    /**
+     * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
+     *
+     * @param definitions the List&lt;CreateClientInstrumentRequest&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the TryAddClientInstrumentsDto object
+     */
+    Observable<ServiceResponse<TryAddClientInstrumentsDto>> batchAddClientInstrumentsWithServiceResponseAsync(List<CreateClientInstrumentRequest> definitions);
+
+    /**
+     * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the LoginResponse object if successful.
+     * @return the TryDeleteClientInstrumentsDto object if successful.
      */
-    LoginResponse getLoginInfo();
+    TryDeleteClientInstrumentsDto batchDeleteClientInstruments();
 
     /**
-     * Gets the login information.
+     * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<LoginResponse> getLoginInfoAsync(final ServiceCallback<LoginResponse> serviceCallback);
+    ServiceFuture<TryDeleteClientInstrumentsDto> batchDeleteClientInstrumentsAsync(final ServiceCallback<TryDeleteClientInstrumentsDto> serviceCallback);
 
     /**
-     * Gets the login information.
+     * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the LoginResponse object
+     * @return the observable to the TryDeleteClientInstrumentsDto object
      */
-    Observable<LoginResponse> getLoginInfoAsync();
+    Observable<TryDeleteClientInstrumentsDto> batchDeleteClientInstrumentsAsync();
 
     /**
-     * Gets the login information.
+     * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the LoginResponse object
+     * @return the observable to the TryDeleteClientInstrumentsDto object
      */
-    Observable<ServiceResponse<LoginResponse>> getLoginInfoWithServiceResponseAsync();
+    Observable<ServiceResponse<TryDeleteClientInstrumentsDto>> batchDeleteClientInstrumentsWithServiceResponseAsync();
+    /**
+     * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
+     *
+     * @param uids the List&lt;String&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the TryDeleteClientInstrumentsDto object if successful.
+     */
+    TryDeleteClientInstrumentsDto batchDeleteClientInstruments(List<String> uids);
+
+    /**
+     * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
+     *
+     * @param uids the List&lt;String&gt; value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<TryDeleteClientInstrumentsDto> batchDeleteClientInstrumentsAsync(List<String> uids, final ServiceCallback<TryDeleteClientInstrumentsDto> serviceCallback);
+
+    /**
+     * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
+     *
+     * @param uids the List&lt;String&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the TryDeleteClientInstrumentsDto object
+     */
+    Observable<TryDeleteClientInstrumentsDto> batchDeleteClientInstrumentsAsync(List<String> uids);
+
+    /**
+     * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
+     *
+     * @param uids the List&lt;String&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the TryDeleteClientInstrumentsDto object
+     */
+    Observable<ServiceResponse<TryDeleteClientInstrumentsDto>> batchDeleteClientInstrumentsWithServiceResponseAsync(List<String> uids);
+
+    /**
+     * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
+     *
+     * @param uid The uid of the requested instrument
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the InstrumentDto object if successful.
+     */
+    InstrumentDto getInstrument(String uid);
+
+    /**
+     * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
+     *
+     * @param uid The uid of the requested instrument
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<InstrumentDto> getInstrumentAsync(String uid, final ServiceCallback<InstrumentDto> serviceCallback);
+
+    /**
+     * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
+     *
+     * @param uid The uid of the requested instrument
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the InstrumentDto object
+     */
+    Observable<InstrumentDto> getInstrumentAsync(String uid);
+
+    /**
+     * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
+     *
+     * @param uid The uid of the requested instrument
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the InstrumentDto object
+     */
+    Observable<ServiceResponse<InstrumentDto>> getInstrumentWithServiceResponseAsync(String uid);
+    /**
+     * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
+     *
+     * @param uid The uid of the requested instrument
+     * @param asAt As at date
+     * @param instrumentPropertyKeys Keys of the properties to be retrieved
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the InstrumentDto object if successful.
+     */
+    InstrumentDto getInstrument(String uid, DateTime asAt, List<String> instrumentPropertyKeys);
+
+    /**
+     * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
+     *
+     * @param uid The uid of the requested instrument
+     * @param asAt As at date
+     * @param instrumentPropertyKeys Keys of the properties to be retrieved
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<InstrumentDto> getInstrumentAsync(String uid, DateTime asAt, List<String> instrumentPropertyKeys, final ServiceCallback<InstrumentDto> serviceCallback);
+
+    /**
+     * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
+     *
+     * @param uid The uid of the requested instrument
+     * @param asAt As at date
+     * @param instrumentPropertyKeys Keys of the properties to be retrieved
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the InstrumentDto object
+     */
+    Observable<InstrumentDto> getInstrumentAsync(String uid, DateTime asAt, List<String> instrumentPropertyKeys);
+
+    /**
+     * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
+     *
+     * @param uid The uid of the requested instrument
+     * @param asAt As at date
+     * @param instrumentPropertyKeys Keys of the properties to be retrieved
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the InstrumentDto object
+     */
+    Observable<ServiceResponse<InstrumentDto>> getInstrumentWithServiceResponseAsync(String uid, DateTime asAt, List<String> instrumentPropertyKeys);
+
+    /**
+     * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the TryLookupInstrumentsFromCodesDto object if successful.
+     */
+    TryLookupInstrumentsFromCodesDto lookupInstrumentsFromCodes();
+
+    /**
+     * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<TryLookupInstrumentsFromCodesDto> lookupInstrumentsFromCodesAsync(final ServiceCallback<TryLookupInstrumentsFromCodesDto> serviceCallback);
+
+    /**
+     * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the TryLookupInstrumentsFromCodesDto object
+     */
+    Observable<TryLookupInstrumentsFromCodesDto> lookupInstrumentsFromCodesAsync();
+
+    /**
+     * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the TryLookupInstrumentsFromCodesDto object
+     */
+    Observable<ServiceResponse<TryLookupInstrumentsFromCodesDto>> lookupInstrumentsFromCodesWithServiceResponseAsync();
+    /**
+     * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
+     *
+     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codes An array of codes
+     * @param asAt As at date
+     * @param instrumentPropertyKeys Keys of the properties to be retrieved
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the TryLookupInstrumentsFromCodesDto object if successful.
+     */
+    TryLookupInstrumentsFromCodesDto lookupInstrumentsFromCodes(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys);
+
+    /**
+     * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
+     *
+     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codes An array of codes
+     * @param asAt As at date
+     * @param instrumentPropertyKeys Keys of the properties to be retrieved
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<TryLookupInstrumentsFromCodesDto> lookupInstrumentsFromCodesAsync(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys, final ServiceCallback<TryLookupInstrumentsFromCodesDto> serviceCallback);
+
+    /**
+     * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
+     *
+     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codes An array of codes
+     * @param asAt As at date
+     * @param instrumentPropertyKeys Keys of the properties to be retrieved
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the TryLookupInstrumentsFromCodesDto object
+     */
+    Observable<TryLookupInstrumentsFromCodesDto> lookupInstrumentsFromCodesAsync(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys);
+
+    /**
+     * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
+     *
+     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codes An array of codes
+     * @param asAt As at date
+     * @param instrumentPropertyKeys Keys of the properties to be retrieved
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the TryLookupInstrumentsFromCodesDto object
+     */
+    Observable<ServiceResponse<TryLookupInstrumentsFromCodesDto>> lookupInstrumentsFromCodesWithServiceResponseAsync(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys);
+
+    /**
+     * Upsert instrument properties.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the UpsertInstrumentPropertiesDto object if successful.
+     */
+    UpsertInstrumentPropertiesDto batchUpsertClassifications();
+
+    /**
+     * Upsert instrument properties.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<UpsertInstrumentPropertiesDto> batchUpsertClassificationsAsync(final ServiceCallback<UpsertInstrumentPropertiesDto> serviceCallback);
+
+    /**
+     * Upsert instrument properties.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertInstrumentPropertiesDto object
+     */
+    Observable<UpsertInstrumentPropertiesDto> batchUpsertClassificationsAsync();
+
+    /**
+     * Upsert instrument properties.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertInstrumentPropertiesDto object
+     */
+    Observable<ServiceResponse<UpsertInstrumentPropertiesDto>> batchUpsertClassificationsWithServiceResponseAsync();
+    /**
+     * Upsert instrument properties.
+     *
+     * @param classifications the List&lt;InstrumentPropertyDto&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the UpsertInstrumentPropertiesDto object if successful.
+     */
+    UpsertInstrumentPropertiesDto batchUpsertClassifications(List<InstrumentPropertyDto> classifications);
+
+    /**
+     * Upsert instrument properties.
+     *
+     * @param classifications the List&lt;InstrumentPropertyDto&gt; value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<UpsertInstrumentPropertiesDto> batchUpsertClassificationsAsync(List<InstrumentPropertyDto> classifications, final ServiceCallback<UpsertInstrumentPropertiesDto> serviceCallback);
+
+    /**
+     * Upsert instrument properties.
+     *
+     * @param classifications the List&lt;InstrumentPropertyDto&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertInstrumentPropertiesDto object
+     */
+    Observable<UpsertInstrumentPropertiesDto> batchUpsertClassificationsAsync(List<InstrumentPropertyDto> classifications);
+
+    /**
+     * Upsert instrument properties.
+     *
+     * @param classifications the List&lt;InstrumentPropertyDto&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertInstrumentPropertiesDto object
+     */
+    Observable<ServiceResponse<UpsertInstrumentPropertiesDto>> batchUpsertClassificationsWithServiceResponseAsync(List<InstrumentPropertyDto> classifications);
 
     /**
      * Get the unique identifier for the SAML Identity Provider to be used by domain.
@@ -2803,182 +1848,112 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<String>> getSamlIdentityProviderIdWithServiceResponseAsync(String domain);
 
     /**
-     * Store a log message.
+     * Request an authorised url for an Excel client version.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the String object if successful.
      */
-    String storeWebLogs();
+    String getExcelDownloadUrl();
 
     /**
-     * Store a log message.
+     * Request an authorised url for an Excel client version.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<String> storeWebLogsAsync(final ServiceCallback<String> serviceCallback);
+    ServiceFuture<String> getExcelDownloadUrlAsync(final ServiceCallback<String> serviceCallback);
 
     /**
-     * Store a log message.
+     * Request an authorised url for an Excel client version.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the String object
      */
-    Observable<String> storeWebLogsAsync();
+    Observable<String> getExcelDownloadUrlAsync();
 
     /**
-     * Store a log message.
+     * Request an authorised url for an Excel client version.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the String object
      */
-    Observable<ServiceResponse<String>> storeWebLogsWithServiceResponseAsync();
+    Observable<ServiceResponse<String>> getExcelDownloadUrlWithServiceResponseAsync();
     /**
-     * Store a log message.
+     * Request an authorised url for an Excel client version.
      *
-     * @param message the WebLogMessage value
+     * @param version the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the String object if successful.
      */
-    String storeWebLogs(WebLogMessage message);
+    String getExcelDownloadUrl(String version);
 
     /**
-     * Store a log message.
+     * Request an authorised url for an Excel client version.
      *
-     * @param message the WebLogMessage value
+     * @param version the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<String> storeWebLogsAsync(WebLogMessage message, final ServiceCallback<String> serviceCallback);
+    ServiceFuture<String> getExcelDownloadUrlAsync(String version, final ServiceCallback<String> serviceCallback);
 
     /**
-     * Store a log message.
+     * Request an authorised url for an Excel client version.
      *
-     * @param message the WebLogMessage value
+     * @param version the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the String object
      */
-    Observable<String> storeWebLogsAsync(WebLogMessage message);
+    Observable<String> getExcelDownloadUrlAsync(String version);
 
     /**
-     * Store a log message.
+     * Request an authorised url for an Excel client version.
      *
-     * @param message the WebLogMessage value
+     * @param version the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the String object
      */
-    Observable<ServiceResponse<String>> storeWebLogsWithServiceResponseAsync(WebLogMessage message);
+    Observable<ServiceResponse<String>> getExcelDownloadUrlWithServiceResponseAsync(String version);
 
     /**
-     * Returns the current assembly version.
+     * Returns the current major application version.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the String object if successful.
+     * @return the VersionSummaryDto object if successful.
      */
-    String getBuildVersion();
+    VersionSummaryDto getLusidVersions();
 
     /**
-     * Returns the current assembly version.
+     * Returns the current major application version.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<String> getBuildVersionAsync(final ServiceCallback<String> serviceCallback);
+    ServiceFuture<VersionSummaryDto> getLusidVersionsAsync(final ServiceCallback<VersionSummaryDto> serviceCallback);
 
     /**
-     * Returns the current assembly version.
+     * Returns the current major application version.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
+     * @return the observable to the VersionSummaryDto object
      */
-    Observable<String> getBuildVersionAsync();
+    Observable<VersionSummaryDto> getLusidVersionsAsync();
 
     /**
-     * Returns the current assembly version.
+     * Returns the current major application version.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
+     * @return the observable to the VersionSummaryDto object
      */
-    Observable<ServiceResponse<String>> getBuildVersionWithServiceResponseAsync();
-
-    /**
-     * Returns the current assembly version.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the String object if successful.
-     */
-    String verifyConnectivity();
-
-    /**
-     * Returns the current assembly version.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<String> verifyConnectivityAsync(final ServiceCallback<String> serviceCallback);
-
-    /**
-     * Returns the current assembly version.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
-     */
-    Observable<String> verifyConnectivityAsync();
-
-    /**
-     * Returns the current assembly version.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
-     */
-    Observable<ServiceResponse<String>> verifyConnectivityWithServiceResponseAsync();
-
-    /**
-     * Returns the current assembly version.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the String object if successful.
-     */
-    String getVersion();
-
-    /**
-     * Returns the current assembly version.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<String> getVersionAsync(final ServiceCallback<String> serviceCallback);
-
-    /**
-     * Returns the current assembly version.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
-     */
-    Observable<String> getVersionAsync();
-
-    /**
-     * Returns the current assembly version.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
-     */
-    Observable<ServiceResponse<String>> getVersionWithServiceResponseAsync();
+    Observable<ServiceResponse<VersionSummaryDto>> getLusidVersionsWithServiceResponseAsync();
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
@@ -3232,6 +2207,992 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<DeletedEntityResponse>> deletePersonalisationWithServiceResponseAsync(String key, String scope, String group);
 
     /**
+     * List all groups in a specified scope.
+     *
+     * @param scope the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfPortfolioGroupDto object if successful.
+     */
+    ResourceListOfPortfolioGroupDto listPortfolioGroups(String scope);
+
+    /**
+     * List all groups in a specified scope.
+     *
+     * @param scope the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ResourceListOfPortfolioGroupDto> listPortfolioGroupsAsync(String scope, final ServiceCallback<ResourceListOfPortfolioGroupDto> serviceCallback);
+
+    /**
+     * List all groups in a specified scope.
+     *
+     * @param scope the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioGroupDto object
+     */
+    Observable<ResourceListOfPortfolioGroupDto> listPortfolioGroupsAsync(String scope);
+
+    /**
+     * List all groups in a specified scope.
+     *
+     * @param scope the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioGroupDto object
+     */
+    Observable<ServiceResponse<ResourceListOfPortfolioGroupDto>> listPortfolioGroupsWithServiceResponseAsync(String scope);
+    /**
+     * List all groups in a specified scope.
+     *
+     * @param scope the String value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfPortfolioGroupDto object if successful.
+     */
+    ResourceListOfPortfolioGroupDto listPortfolioGroups(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * List all groups in a specified scope.
+     *
+     * @param scope the String value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ResourceListOfPortfolioGroupDto> listPortfolioGroupsAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolioGroupDto> serviceCallback);
+
+    /**
+     * List all groups in a specified scope.
+     *
+     * @param scope the String value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioGroupDto object
+     */
+    Observable<ResourceListOfPortfolioGroupDto> listPortfolioGroupsAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * List all groups in a specified scope.
+     *
+     * @param scope the String value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioGroupDto object
+     */
+    Observable<ServiceResponse<ResourceListOfPortfolioGroupDto>> listPortfolioGroupsWithServiceResponseAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Create a new group.
+     *
+     * @param scope the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the PortfolioGroupDto object if successful.
+     */
+    PortfolioGroupDto createPortfolioGroup(String scope);
+
+    /**
+     * Create a new group.
+     *
+     * @param scope the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<PortfolioGroupDto> createPortfolioGroupAsync(String scope, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+
+    /**
+     * Create a new group.
+     *
+     * @param scope the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<PortfolioGroupDto> createPortfolioGroupAsync(String scope);
+
+    /**
+     * Create a new group.
+     *
+     * @param scope the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<ServiceResponse<PortfolioGroupDto>> createPortfolioGroupWithServiceResponseAsync(String scope);
+    /**
+     * Create a new group.
+     *
+     * @param scope the String value
+     * @param request the CreateGroupRequest value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the PortfolioGroupDto object if successful.
+     */
+    PortfolioGroupDto createPortfolioGroup(String scope, CreateGroupRequest request);
+
+    /**
+     * Create a new group.
+     *
+     * @param scope the String value
+     * @param request the CreateGroupRequest value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<PortfolioGroupDto> createPortfolioGroupAsync(String scope, CreateGroupRequest request, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+
+    /**
+     * Create a new group.
+     *
+     * @param scope the String value
+     * @param request the CreateGroupRequest value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<PortfolioGroupDto> createPortfolioGroupAsync(String scope, CreateGroupRequest request);
+
+    /**
+     * Create a new group.
+     *
+     * @param scope the String value
+     * @param request the CreateGroupRequest value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<ServiceResponse<PortfolioGroupDto>> createPortfolioGroupWithServiceResponseAsync(String scope, CreateGroupRequest request);
+
+    /**
+     * Get an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the PortfolioGroupDto object if successful.
+     */
+    PortfolioGroupDto getPortfolioGroup(String scope, String code);
+
+    /**
+     * Get an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<PortfolioGroupDto> getPortfolioGroupAsync(String scope, String code, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+
+    /**
+     * Get an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<PortfolioGroupDto> getPortfolioGroupAsync(String scope, String code);
+
+    /**
+     * Get an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<ServiceResponse<PortfolioGroupDto>> getPortfolioGroupWithServiceResponseAsync(String scope, String code);
+    /**
+     * Get an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param asAt the DateTime value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the PortfolioGroupDto object if successful.
+     */
+    PortfolioGroupDto getPortfolioGroup(String scope, String code, DateTime asAt);
+
+    /**
+     * Get an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param asAt the DateTime value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<PortfolioGroupDto> getPortfolioGroupAsync(String scope, String code, DateTime asAt, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+
+    /**
+     * Get an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param asAt the DateTime value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<PortfolioGroupDto> getPortfolioGroupAsync(String scope, String code, DateTime asAt);
+
+    /**
+     * Get an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param asAt the DateTime value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<ServiceResponse<PortfolioGroupDto>> getPortfolioGroupWithServiceResponseAsync(String scope, String code, DateTime asAt);
+
+    /**
+     * Update an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the PortfolioGroupDto object if successful.
+     */
+    PortfolioGroupDto updatePortfolioGroup(String scope, String code);
+
+    /**
+     * Update an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<PortfolioGroupDto> updatePortfolioGroupAsync(String scope, String code, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+
+    /**
+     * Update an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<PortfolioGroupDto> updatePortfolioGroupAsync(String scope, String code);
+
+    /**
+     * Update an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<ServiceResponse<PortfolioGroupDto>> updatePortfolioGroupWithServiceResponseAsync(String scope, String code);
+    /**
+     * Update an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param request the UpdateGroupRequest value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the PortfolioGroupDto object if successful.
+     */
+    PortfolioGroupDto updatePortfolioGroup(String scope, String code, UpdateGroupRequest request);
+
+    /**
+     * Update an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param request the UpdateGroupRequest value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<PortfolioGroupDto> updatePortfolioGroupAsync(String scope, String code, UpdateGroupRequest request, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+
+    /**
+     * Update an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param request the UpdateGroupRequest value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<PortfolioGroupDto> updatePortfolioGroupAsync(String scope, String code, UpdateGroupRequest request);
+
+    /**
+     * Update an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param request the UpdateGroupRequest value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<ServiceResponse<PortfolioGroupDto>> updatePortfolioGroupWithServiceResponseAsync(String scope, String code, UpdateGroupRequest request);
+
+    /**
+     * Delete a group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the DeletedEntityResponse object if successful.
+     */
+    DeletedEntityResponse deletePortfolioGroup(String scope, String code);
+
+    /**
+     * Delete a group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<DeletedEntityResponse> deletePortfolioGroupAsync(String scope, String code, final ServiceCallback<DeletedEntityResponse> serviceCallback);
+
+    /**
+     * Delete a group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeletedEntityResponse object
+     */
+    Observable<DeletedEntityResponse> deletePortfolioGroupAsync(String scope, String code);
+
+    /**
+     * Delete a group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeletedEntityResponse object
+     */
+    Observable<ServiceResponse<DeletedEntityResponse>> deletePortfolioGroupWithServiceResponseAsync(String scope, String code);
+
+    /**
+     * Aggregate data in a group hierarchy.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ListAggregationResponse object if successful.
+     */
+    ListAggregationResponse getAggregationByGroup(String scope, String code);
+
+    /**
+     * Aggregate data in a group hierarchy.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ListAggregationResponse> getAggregationByGroupAsync(String scope, String code, final ServiceCallback<ListAggregationResponse> serviceCallback);
+
+    /**
+     * Aggregate data in a group hierarchy.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ListAggregationResponse object
+     */
+    Observable<ListAggregationResponse> getAggregationByGroupAsync(String scope, String code);
+
+    /**
+     * Aggregate data in a group hierarchy.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ListAggregationResponse object
+     */
+    Observable<ServiceResponse<ListAggregationResponse>> getAggregationByGroupWithServiceResponseAsync(String scope, String code);
+    /**
+     * Aggregate data in a group hierarchy.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param request the AggregationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ListAggregationResponse object if successful.
+     */
+    ListAggregationResponse getAggregationByGroup(String scope, String code, AggregationRequest request, List<String> sortBy, Integer start, Integer limit);
+
+    /**
+     * Aggregate data in a group hierarchy.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param request the AggregationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ListAggregationResponse> getAggregationByGroupAsync(String scope, String code, AggregationRequest request, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ListAggregationResponse> serviceCallback);
+
+    /**
+     * Aggregate data in a group hierarchy.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param request the AggregationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ListAggregationResponse object
+     */
+    Observable<ListAggregationResponse> getAggregationByGroupAsync(String scope, String code, AggregationRequest request, List<String> sortBy, Integer start, Integer limit);
+
+    /**
+     * Aggregate data in a group hierarchy.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param request the AggregationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ListAggregationResponse object
+     */
+    Observable<ServiceResponse<ListAggregationResponse>> getAggregationByGroupWithServiceResponseAsync(String scope, String code, AggregationRequest request, List<String> sortBy, Integer start, Integer limit);
+
+    /**
+     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     *
+     * @param scope The scope of the portfolio group
+     * @param code The portfolio group id
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfProcessedCommandDto object if successful.
+     */
+    ResourceListOfProcessedCommandDto getPortfolioGroupCommands(String scope, String code);
+
+    /**
+     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     *
+     * @param scope The scope of the portfolio group
+     * @param code The portfolio group id
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ResourceListOfProcessedCommandDto> getPortfolioGroupCommandsAsync(String scope, String code, final ServiceCallback<ResourceListOfProcessedCommandDto> serviceCallback);
+
+    /**
+     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     *
+     * @param scope The scope of the portfolio group
+     * @param code The portfolio group id
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfProcessedCommandDto object
+     */
+    Observable<ResourceListOfProcessedCommandDto> getPortfolioGroupCommandsAsync(String scope, String code);
+
+    /**
+     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     *
+     * @param scope The scope of the portfolio group
+     * @param code The portfolio group id
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfProcessedCommandDto object
+     */
+    Observable<ServiceResponse<ResourceListOfProcessedCommandDto>> getPortfolioGroupCommandsWithServiceResponseAsync(String scope, String code);
+    /**
+     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     *
+     * @param scope The scope of the portfolio group
+     * @param code The portfolio group id
+     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
+     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfProcessedCommandDto object if successful.
+     */
+    ResourceListOfProcessedCommandDto getPortfolioGroupCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     *
+     * @param scope The scope of the portfolio group
+     * @param code The portfolio group id
+     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
+     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ResourceListOfProcessedCommandDto> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfProcessedCommandDto> serviceCallback);
+
+    /**
+     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     *
+     * @param scope The scope of the portfolio group
+     * @param code The portfolio group id
+     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
+     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfProcessedCommandDto object
+     */
+    Observable<ResourceListOfProcessedCommandDto> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Gets all commands that modified the portfolio groups(s) with the specified id.
+     *
+     * @param scope The scope of the portfolio group
+     * @param code The portfolio group id
+     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
+     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfProcessedCommandDto object
+     */
+    Observable<ServiceResponse<ResourceListOfProcessedCommandDto>> getPortfolioGroupCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Get a full expansion of an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ExpandedGroupDto object if successful.
+     */
+    ExpandedGroupDto getPortfolioGroupExpansion(String scope, String code);
+
+    /**
+     * Get a full expansion of an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ExpandedGroupDto> getPortfolioGroupExpansionAsync(String scope, String code, final ServiceCallback<ExpandedGroupDto> serviceCallback);
+
+    /**
+     * Get a full expansion of an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ExpandedGroupDto object
+     */
+    Observable<ExpandedGroupDto> getPortfolioGroupExpansionAsync(String scope, String code);
+
+    /**
+     * Get a full expansion of an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ExpandedGroupDto object
+     */
+    Observable<ServiceResponse<ExpandedGroupDto>> getPortfolioGroupExpansionWithServiceResponseAsync(String scope, String code);
+    /**
+     * Get a full expansion of an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
+     * @param propertyFilter the List&lt;String&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ExpandedGroupDto object if successful.
+     */
+    ExpandedGroupDto getPortfolioGroupExpansion(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
+
+    /**
+     * Get a full expansion of an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
+     * @param propertyFilter the List&lt;String&gt; value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ExpandedGroupDto> getPortfolioGroupExpansionAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter, final ServiceCallback<ExpandedGroupDto> serviceCallback);
+
+    /**
+     * Get a full expansion of an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
+     * @param propertyFilter the List&lt;String&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ExpandedGroupDto object
+     */
+    Observable<ExpandedGroupDto> getPortfolioGroupExpansionAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
+
+    /**
+     * Get a full expansion of an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
+     * @param propertyFilter the List&lt;String&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ExpandedGroupDto object
+     */
+    Observable<ServiceResponse<ExpandedGroupDto>> getPortfolioGroupExpansionWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
+
+    /**
+     * Add a portfolio to an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the PortfolioGroupDto object if successful.
+     */
+    PortfolioGroupDto addPortfolioToGroup(String scope, String code);
+
+    /**
+     * Add a portfolio to an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<PortfolioGroupDto> addPortfolioToGroupAsync(String scope, String code, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+
+    /**
+     * Add a portfolio to an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<PortfolioGroupDto> addPortfolioToGroupAsync(String scope, String code);
+
+    /**
+     * Add a portfolio to an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<ServiceResponse<PortfolioGroupDto>> addPortfolioToGroupWithServiceResponseAsync(String scope, String code);
+    /**
+     * Add a portfolio to an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param identifier the ResourceId value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the PortfolioGroupDto object if successful.
+     */
+    PortfolioGroupDto addPortfolioToGroup(String scope, String code, ResourceId identifier);
+
+    /**
+     * Add a portfolio to an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param identifier the ResourceId value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<PortfolioGroupDto> addPortfolioToGroupAsync(String scope, String code, ResourceId identifier, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+
+    /**
+     * Add a portfolio to an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param identifier the ResourceId value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<PortfolioGroupDto> addPortfolioToGroupAsync(String scope, String code, ResourceId identifier);
+
+    /**
+     * Add a portfolio to an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param identifier the ResourceId value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<ServiceResponse<PortfolioGroupDto>> addPortfolioToGroupWithServiceResponseAsync(String scope, String code, ResourceId identifier);
+
+    /**
+     * Remove a portfolio that is currently present within an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param portfolioScope the String value
+     * @param portfolioCode the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the PortfolioGroupDto object if successful.
+     */
+    PortfolioGroupDto deletePortfolioFromGroup(String scope, String code, String portfolioScope, String portfolioCode);
+
+    /**
+     * Remove a portfolio that is currently present within an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param portfolioScope the String value
+     * @param portfolioCode the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<PortfolioGroupDto> deletePortfolioFromGroupAsync(String scope, String code, String portfolioScope, String portfolioCode, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+
+    /**
+     * Remove a portfolio that is currently present within an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param portfolioScope the String value
+     * @param portfolioCode the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<PortfolioGroupDto> deletePortfolioFromGroupAsync(String scope, String code, String portfolioScope, String portfolioCode);
+
+    /**
+     * Remove a portfolio that is currently present within an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param portfolioScope the String value
+     * @param portfolioCode the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<ServiceResponse<PortfolioGroupDto>> deletePortfolioFromGroupWithServiceResponseAsync(String scope, String code, String portfolioScope, String portfolioCode);
+
+    /**
+     * Add a sub group to an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the PortfolioGroupDto object if successful.
+     */
+    PortfolioGroupDto addSubGroupToGroup(String scope, String code);
+
+    /**
+     * Add a sub group to an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<PortfolioGroupDto> addSubGroupToGroupAsync(String scope, String code, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+
+    /**
+     * Add a sub group to an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<PortfolioGroupDto> addSubGroupToGroupAsync(String scope, String code);
+
+    /**
+     * Add a sub group to an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<ServiceResponse<PortfolioGroupDto>> addSubGroupToGroupWithServiceResponseAsync(String scope, String code);
+    /**
+     * Add a sub group to an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param identifier the ResourceId value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the PortfolioGroupDto object if successful.
+     */
+    PortfolioGroupDto addSubGroupToGroup(String scope, String code, ResourceId identifier);
+
+    /**
+     * Add a sub group to an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param identifier the ResourceId value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<PortfolioGroupDto> addSubGroupToGroupAsync(String scope, String code, ResourceId identifier, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+
+    /**
+     * Add a sub group to an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param identifier the ResourceId value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<PortfolioGroupDto> addSubGroupToGroupAsync(String scope, String code, ResourceId identifier);
+
+    /**
+     * Add a sub group to an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param identifier the ResourceId value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<ServiceResponse<PortfolioGroupDto>> addSubGroupToGroupWithServiceResponseAsync(String scope, String code, ResourceId identifier);
+
+    /**
+     * Remove a subgroup that is currently present within an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param subgroupScope the String value
+     * @param subgroupCode the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the PortfolioGroupDto object if successful.
+     */
+    PortfolioGroupDto deleteSubGroupFromGroup(String scope, String code, String subgroupScope, String subgroupCode);
+
+    /**
+     * Remove a subgroup that is currently present within an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param subgroupScope the String value
+     * @param subgroupCode the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<PortfolioGroupDto> deleteSubGroupFromGroupAsync(String scope, String code, String subgroupScope, String subgroupCode, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+
+    /**
+     * Remove a subgroup that is currently present within an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param subgroupScope the String value
+     * @param subgroupCode the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<PortfolioGroupDto> deleteSubGroupFromGroupAsync(String scope, String code, String subgroupScope, String subgroupCode);
+
+    /**
+     * Remove a subgroup that is currently present within an existing group.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param subgroupScope the String value
+     * @param subgroupCode the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioGroupDto object
+     */
+    Observable<ServiceResponse<PortfolioGroupDto>> deleteSubGroupFromGroupWithServiceResponseAsync(String scope, String code, String subgroupScope, String subgroupCode);
+
+    /**
      * List scopes that contain portfolios.
      * Lists all scopes that have previously been used.
      *
@@ -3276,12 +3237,13 @@ public interface LUSIDAPI {
      * @param sortBy How to order the returned scopes
      * @param start The starting index for the returned scopes
      * @param limit The final index for the returned scopes
+     * @param filter Filter to be applied to the list of scopes
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the ResourceListOfScope object if successful.
      */
-    ResourceListOfScope listPortfolioScopes(List<String> sortBy, Integer start, Integer limit);
+    ResourceListOfScope listPortfolioScopes(List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * List scopes that contain portfolios.
@@ -3290,11 +3252,12 @@ public interface LUSIDAPI {
      * @param sortBy How to order the returned scopes
      * @param start The starting index for the returned scopes
      * @param limit The final index for the returned scopes
+     * @param filter Filter to be applied to the list of scopes
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfScope> listPortfolioScopesAsync(List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ResourceListOfScope> serviceCallback);
+    ServiceFuture<ResourceListOfScope> listPortfolioScopesAsync(List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfScope> serviceCallback);
 
     /**
      * List scopes that contain portfolios.
@@ -3303,10 +3266,11 @@ public interface LUSIDAPI {
      * @param sortBy How to order the returned scopes
      * @param start The starting index for the returned scopes
      * @param limit The final index for the returned scopes
+     * @param filter Filter to be applied to the list of scopes
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfScope object
      */
-    Observable<ResourceListOfScope> listPortfolioScopesAsync(List<String> sortBy, Integer start, Integer limit);
+    Observable<ResourceListOfScope> listPortfolioScopesAsync(List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * List scopes that contain portfolios.
@@ -3315,10 +3279,11 @@ public interface LUSIDAPI {
      * @param sortBy How to order the returned scopes
      * @param start The starting index for the returned scopes
      * @param limit The final index for the returned scopes
+     * @param filter Filter to be applied to the list of scopes
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfScope object
      */
-    Observable<ServiceResponse<ResourceListOfScope>> listPortfolioScopesWithServiceResponseAsync(List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<ResourceListOfScope>> listPortfolioScopesWithServiceResponseAsync(List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Get all portfolios.
@@ -3430,95 +3395,6 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<ResourceListOfPortfolioDto>> listPortfoliosWithServiceResponseAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
-     * Create portfolio.
-     * Creates a new portfolio.
-     *
-     * @param scope The intended scope of the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDto object if successful.
-     */
-    PortfolioDto createPortfolio(String scope);
-
-    /**
-     * Create portfolio.
-     * Creates a new portfolio.
-     *
-     * @param scope The intended scope of the portfolio
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<PortfolioDto> createPortfolioAsync(String scope, final ServiceCallback<PortfolioDto> serviceCallback);
-
-    /**
-     * Create portfolio.
-     * Creates a new portfolio.
-     *
-     * @param scope The intended scope of the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
-     */
-    Observable<PortfolioDto> createPortfolioAsync(String scope);
-
-    /**
-     * Create portfolio.
-     * Creates a new portfolio.
-     *
-     * @param scope The intended scope of the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
-     */
-    Observable<ServiceResponse<PortfolioDto>> createPortfolioWithServiceResponseAsync(String scope);
-    /**
-     * Create portfolio.
-     * Creates a new portfolio.
-     *
-     * @param scope The intended scope of the portfolio
-     * @param createRequest The portfolio creation request object
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDto object if successful.
-     */
-    PortfolioDto createPortfolio(String scope, CreatePortfolioRequest createRequest);
-
-    /**
-     * Create portfolio.
-     * Creates a new portfolio.
-     *
-     * @param scope The intended scope of the portfolio
-     * @param createRequest The portfolio creation request object
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<PortfolioDto> createPortfolioAsync(String scope, CreatePortfolioRequest createRequest, final ServiceCallback<PortfolioDto> serviceCallback);
-
-    /**
-     * Create portfolio.
-     * Creates a new portfolio.
-     *
-     * @param scope The intended scope of the portfolio
-     * @param createRequest The portfolio creation request object
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
-     */
-    Observable<PortfolioDto> createPortfolioAsync(String scope, CreatePortfolioRequest createRequest);
-
-    /**
-     * Create portfolio.
-     * Creates a new portfolio.
-     *
-     * @param scope The intended scope of the portfolio
-     * @param createRequest The portfolio creation request object
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
-     */
-    Observable<ServiceResponse<PortfolioDto>> createPortfolioWithServiceResponseAsync(String scope, CreatePortfolioRequest createRequest);
-
-    /**
      * Get portfolio.
      * Gets a single portfolio by code.
      *
@@ -3572,13 +3448,12 @@ public interface LUSIDAPI {
      * @param code Code for the portfolio
      * @param effectiveAt Effective date
      * @param asAt The asAt date to use
-     * @param propertyFilter Optional property filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the PortfolioDto object if successful.
      */
-    PortfolioDto getPortfolio(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
+    PortfolioDto getPortfolio(String scope, String code, DateTime effectiveAt, DateTime asAt);
 
     /**
      * Get portfolio.
@@ -3588,12 +3463,11 @@ public interface LUSIDAPI {
      * @param code Code for the portfolio
      * @param effectiveAt Effective date
      * @param asAt The asAt date to use
-     * @param propertyFilter Optional property filter
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioDto> getPortfolioAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter, final ServiceCallback<PortfolioDto> serviceCallback);
+    ServiceFuture<PortfolioDto> getPortfolioAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, final ServiceCallback<PortfolioDto> serviceCallback);
 
     /**
      * Get portfolio.
@@ -3603,11 +3477,10 @@ public interface LUSIDAPI {
      * @param code Code for the portfolio
      * @param effectiveAt Effective date
      * @param asAt The asAt date to use
-     * @param propertyFilter Optional property filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioDto object
      */
-    Observable<PortfolioDto> getPortfolioAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
+    Observable<PortfolioDto> getPortfolioAsync(String scope, String code, DateTime effectiveAt, DateTime asAt);
 
     /**
      * Get portfolio.
@@ -3617,11 +3490,10 @@ public interface LUSIDAPI {
      * @param code Code for the portfolio
      * @param effectiveAt Effective date
      * @param asAt The asAt date to use
-     * @param propertyFilter Optional property filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioDto object
      */
-    Observable<ServiceResponse<PortfolioDto>> getPortfolioWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
+    Observable<ServiceResponse<PortfolioDto>> getPortfolioWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt);
 
     /**
      * Update portfolio.
@@ -3814,6 +3686,107 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<DeletedEntityResponse>> deletePortfolioWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
 
     /**
+     * Aggregate data in a portfolio.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ListAggregationResponse object if successful.
+     */
+    ListAggregationResponse getAggregationByPortfolio(String scope, String code);
+
+    /**
+     * Aggregate data in a portfolio.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ListAggregationResponse> getAggregationByPortfolioAsync(String scope, String code, final ServiceCallback<ListAggregationResponse> serviceCallback);
+
+    /**
+     * Aggregate data in a portfolio.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ListAggregationResponse object
+     */
+    Observable<ListAggregationResponse> getAggregationByPortfolioAsync(String scope, String code);
+
+    /**
+     * Aggregate data in a portfolio.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ListAggregationResponse object
+     */
+    Observable<ServiceResponse<ListAggregationResponse>> getAggregationByPortfolioWithServiceResponseAsync(String scope, String code);
+    /**
+     * Aggregate data in a portfolio.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param request the AggregationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ListAggregationResponse object if successful.
+     */
+    ListAggregationResponse getAggregationByPortfolio(String scope, String code, AggregationRequest request, List<String> sortBy, Integer start, Integer limit);
+
+    /**
+     * Aggregate data in a portfolio.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param request the AggregationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ListAggregationResponse> getAggregationByPortfolioAsync(String scope, String code, AggregationRequest request, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ListAggregationResponse> serviceCallback);
+
+    /**
+     * Aggregate data in a portfolio.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param request the AggregationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ListAggregationResponse object
+     */
+    Observable<ListAggregationResponse> getAggregationByPortfolioAsync(String scope, String code, AggregationRequest request, List<String> sortBy, Integer start, Integer limit);
+
+    /**
+     * Aggregate data in a portfolio.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param request the AggregationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ListAggregationResponse object
+     */
+    Observable<ServiceResponse<ListAggregationResponse>> getAggregationByPortfolioWithServiceResponseAsync(String scope, String code, AggregationRequest request, List<String> sortBy, Integer start, Integer limit);
+
+    /**
      * Get modifications.
      * Gets all commands that modified the portfolio.
      *
@@ -3824,7 +3797,7 @@ public interface LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the ResourceListOfProcessedCommandDto object if successful.
      */
-    ResourceListOfProcessedCommandDto getCommands(String scope, String code);
+    ResourceListOfProcessedCommandDto getPortfolioCommands(String scope, String code);
 
     /**
      * Get modifications.
@@ -3836,7 +3809,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfProcessedCommandDto> getCommandsAsync(String scope, String code, final ServiceCallback<ResourceListOfProcessedCommandDto> serviceCallback);
+    ServiceFuture<ResourceListOfProcessedCommandDto> getPortfolioCommandsAsync(String scope, String code, final ServiceCallback<ResourceListOfProcessedCommandDto> serviceCallback);
 
     /**
      * Get modifications.
@@ -3847,7 +3820,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfProcessedCommandDto object
      */
-    Observable<ResourceListOfProcessedCommandDto> getCommandsAsync(String scope, String code);
+    Observable<ResourceListOfProcessedCommandDto> getPortfolioCommandsAsync(String scope, String code);
 
     /**
      * Get modifications.
@@ -3858,7 +3831,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfProcessedCommandDto object
      */
-    Observable<ServiceResponse<ResourceListOfProcessedCommandDto>> getCommandsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<ResourceListOfProcessedCommandDto>> getPortfolioCommandsWithServiceResponseAsync(String scope, String code);
     /**
      * Get modifications.
      * Gets all commands that modified the portfolio.
@@ -3873,7 +3846,7 @@ public interface LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the ResourceListOfProcessedCommandDto object if successful.
      */
-    ResourceListOfProcessedCommandDto getCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
+    ResourceListOfProcessedCommandDto getPortfolioCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
 
     /**
      * Get modifications.
@@ -3888,21 +3861,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfProcessedCommandDto> getCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter, final ServiceCallback<ResourceListOfProcessedCommandDto> serviceCallback);
-
-    /**
-     * Get modifications.
-     * Gets all commands that modified the portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code The portfolio id
-     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
-     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
-     * @param filter Command filter
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfProcessedCommandDto object
-     */
-    Observable<ResourceListOfProcessedCommandDto> getCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
+    ServiceFuture<ResourceListOfProcessedCommandDto> getPortfolioCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter, final ServiceCallback<ResourceListOfProcessedCommandDto> serviceCallback);
 
     /**
      * Get modifications.
@@ -3916,918 +3875,21 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfProcessedCommandDto object
      */
-    Observable<ServiceResponse<ResourceListOfProcessedCommandDto>> getCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
+    Observable<ResourceListOfProcessedCommandDto> getPortfolioCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
 
     /**
-     * Get portfolio details.
-     * Gets the details for a portfolio.  For a derived portfolio this can be
-                 the details of another reference portfolio.
+     * Get modifications.
+     * Gets all commands that modified the portfolio.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The portfolio id
+     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
+     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param filter Command filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDetailsDto object if successful.
+     * @return the observable to the ResourceListOfProcessedCommandDto object
      */
-    PortfolioDetailsDto getDetails(String scope, String code);
-
-    /**
-     * Get portfolio details.
-     * Gets the details for a portfolio.  For a derived portfolio this can be
-                 the details of another reference portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<PortfolioDetailsDto> getDetailsAsync(String scope, String code, final ServiceCallback<PortfolioDetailsDto> serviceCallback);
-
-    /**
-     * Get portfolio details.
-     * Gets the details for a portfolio.  For a derived portfolio this can be
-                 the details of another reference portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDetailsDto object
-     */
-    Observable<PortfolioDetailsDto> getDetailsAsync(String scope, String code);
-
-    /**
-     * Get portfolio details.
-     * Gets the details for a portfolio.  For a derived portfolio this can be
-                 the details of another reference portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDetailsDto object
-     */
-    Observable<ServiceResponse<PortfolioDetailsDto>> getDetailsWithServiceResponseAsync(String scope, String code);
-    /**
-     * Get portfolio details.
-     * Gets the details for a portfolio.  For a derived portfolio this can be
-                 the details of another reference portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
-     * @param propertyFilter Optional property filter
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDetailsDto object if successful.
-     */
-    PortfolioDetailsDto getDetails(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
-
-    /**
-     * Get portfolio details.
-     * Gets the details for a portfolio.  For a derived portfolio this can be
-                 the details of another reference portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
-     * @param propertyFilter Optional property filter
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<PortfolioDetailsDto> getDetailsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter, final ServiceCallback<PortfolioDetailsDto> serviceCallback);
-
-    /**
-     * Get portfolio details.
-     * Gets the details for a portfolio.  For a derived portfolio this can be
-                 the details of another reference portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
-     * @param propertyFilter Optional property filter
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDetailsDto object
-     */
-    Observable<PortfolioDetailsDto> getDetailsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
-
-    /**
-     * Get portfolio details.
-     * Gets the details for a portfolio.  For a derived portfolio this can be
-                 the details of another reference portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
-     * @param propertyFilter Optional property filter
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDetailsDto object
-     */
-    Observable<ServiceResponse<PortfolioDetailsDto>> getDetailsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
-
-    /**
-     * Add/update portfolio details.
-     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
-     null values will remove any existing values.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDetailsDto object if successful.
-     */
-    PortfolioDetailsDto upsertPortfolioDetails(String scope, String code);
-
-    /**
-     * Add/update portfolio details.
-     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
-     null values will remove any existing values.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<PortfolioDetailsDto> upsertPortfolioDetailsAsync(String scope, String code, final ServiceCallback<PortfolioDetailsDto> serviceCallback);
-
-    /**
-     * Add/update portfolio details.
-     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
-     null values will remove any existing values.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDetailsDto object
-     */
-    Observable<PortfolioDetailsDto> upsertPortfolioDetailsAsync(String scope, String code);
-
-    /**
-     * Add/update portfolio details.
-     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
-     null values will remove any existing values.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDetailsDto object
-     */
-    Observable<ServiceResponse<PortfolioDetailsDto>> upsertPortfolioDetailsWithServiceResponseAsync(String scope, String code);
-    /**
-     * Add/update portfolio details.
-     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
-     null values will remove any existing values.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param details the PortfolioDetailsRequest value
-     * @param effectiveAt The effective date of the change
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDetailsDto object if successful.
-     */
-    PortfolioDetailsDto upsertPortfolioDetails(String scope, String code, PortfolioDetailsRequest details, DateTime effectiveAt);
-
-    /**
-     * Add/update portfolio details.
-     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
-     null values will remove any existing values.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param details the PortfolioDetailsRequest value
-     * @param effectiveAt The effective date of the change
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<PortfolioDetailsDto> upsertPortfolioDetailsAsync(String scope, String code, PortfolioDetailsRequest details, DateTime effectiveAt, final ServiceCallback<PortfolioDetailsDto> serviceCallback);
-
-    /**
-     * Add/update portfolio details.
-     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
-     null values will remove any existing values.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param details the PortfolioDetailsRequest value
-     * @param effectiveAt The effective date of the change
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDetailsDto object
-     */
-    Observable<PortfolioDetailsDto> upsertPortfolioDetailsAsync(String scope, String code, PortfolioDetailsRequest details, DateTime effectiveAt);
-
-    /**
-     * Add/update portfolio details.
-     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
-     null values will remove any existing values.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param details the PortfolioDetailsRequest value
-     * @param effectiveAt The effective date of the change
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDetailsDto object
-     */
-    Observable<ServiceResponse<PortfolioDetailsDto>> upsertPortfolioDetailsWithServiceResponseAsync(String scope, String code, PortfolioDetailsRequest details, DateTime effectiveAt);
-
-    /**
-     * Delete portfolio details.
-     * Deletes the portfolio details for the given code.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DeletedEntityResponse object if successful.
-     */
-    DeletedEntityResponse deletePortfolioDetails(String scope, String code);
-
-    /**
-     * Delete portfolio details.
-     * Deletes the portfolio details for the given code.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<DeletedEntityResponse> deletePortfolioDetailsAsync(String scope, String code, final ServiceCallback<DeletedEntityResponse> serviceCallback);
-
-    /**
-     * Delete portfolio details.
-     * Deletes the portfolio details for the given code.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<DeletedEntityResponse> deletePortfolioDetailsAsync(String scope, String code);
-
-    /**
-     * Delete portfolio details.
-     * Deletes the portfolio details for the given code.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<ServiceResponse<DeletedEntityResponse>> deletePortfolioDetailsWithServiceResponseAsync(String scope, String code);
-    /**
-     * Delete portfolio details.
-     * Deletes the portfolio details for the given code.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective date of the change
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DeletedEntityResponse object if successful.
-     */
-    DeletedEntityResponse deletePortfolioDetails(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Delete portfolio details.
-     * Deletes the portfolio details for the given code.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective date of the change
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<DeletedEntityResponse> deletePortfolioDetailsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<DeletedEntityResponse> serviceCallback);
-
-    /**
-     * Delete portfolio details.
-     * Deletes the portfolio details for the given code.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective date of the change
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<DeletedEntityResponse> deletePortfolioDetailsAsync(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Delete portfolio details.
-     * Deletes the portfolio details for the given code.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective date of the change
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<ServiceResponse<DeletedEntityResponse>> deletePortfolioDetailsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Get holdings.
-     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
-     are supplied then values will be defaulted to the latest system time.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionedResourceListOfHoldingDto object if successful.
-     */
-    VersionedResourceListOfHoldingDto getAggregateHoldings(String scope, String code);
-
-    /**
-     * Get holdings.
-     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
-     are supplied then values will be defaulted to the latest system time.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<VersionedResourceListOfHoldingDto> getAggregateHoldingsAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfHoldingDto> serviceCallback);
-
-    /**
-     * Get holdings.
-     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
-     are supplied then values will be defaulted to the latest system time.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfHoldingDto object
-     */
-    Observable<VersionedResourceListOfHoldingDto> getAggregateHoldingsAsync(String scope, String code);
-
-    /**
-     * Get holdings.
-     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
-     are supplied then values will be defaulted to the latest system time.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfHoldingDto object
-     */
-    Observable<ServiceResponse<VersionedResourceListOfHoldingDto>> getAggregateHoldingsWithServiceResponseAsync(String scope, String code);
-    /**
-     * Get holdings.
-     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
-     are supplied then values will be defaulted to the latest system time.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt As at date
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param filter A filter on the results
-     * @param securityPropertyKeys Keys for the security properties to be decorated onto the holdings
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionedResourceListOfHoldingDto object if successful.
-     */
-    VersionedResourceListOfHoldingDto getAggregateHoldings(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> securityPropertyKeys);
-
-    /**
-     * Get holdings.
-     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
-     are supplied then values will be defaulted to the latest system time.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt As at date
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param filter A filter on the results
-     * @param securityPropertyKeys Keys for the security properties to be decorated onto the holdings
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<VersionedResourceListOfHoldingDto> getAggregateHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> securityPropertyKeys, final ServiceCallback<VersionedResourceListOfHoldingDto> serviceCallback);
-
-    /**
-     * Get holdings.
-     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
-     are supplied then values will be defaulted to the latest system time.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt As at date
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param filter A filter on the results
-     * @param securityPropertyKeys Keys for the security properties to be decorated onto the holdings
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfHoldingDto object
-     */
-    Observable<VersionedResourceListOfHoldingDto> getAggregateHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> securityPropertyKeys);
-
-    /**
-     * Get holdings.
-     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
-     are supplied then values will be defaulted to the latest system time.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt As at date
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param filter A filter on the results
-     * @param securityPropertyKeys Keys for the security properties to be decorated onto the holdings
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfHoldingDto object
-     */
-    Observable<ServiceResponse<VersionedResourceListOfHoldingDto>> getAggregateHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> securityPropertyKeys);
-
-    /**
-     * Adjust holdings.
-     * Create trades in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AdjustHoldingsDto object if successful.
-     */
-    AdjustHoldingsDto adjustAllHoldings(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Adjust holdings.
-     * Create trades in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<AdjustHoldingsDto> adjustAllHoldingsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<AdjustHoldingsDto> serviceCallback);
-
-    /**
-     * Adjust holdings.
-     * Create trades in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AdjustHoldingsDto object
-     */
-    Observable<AdjustHoldingsDto> adjustAllHoldingsAsync(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Adjust holdings.
-     * Create trades in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AdjustHoldingsDto object
-     */
-    Observable<ServiceResponse<AdjustHoldingsDto>> adjustAllHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
-    /**
-     * Adjust holdings.
-     * Create trades in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AdjustHoldingsDto object if successful.
-     */
-    AdjustHoldingsDto adjustAllHoldings(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
-
-    /**
-     * Adjust holdings.
-     * Create trades in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<AdjustHoldingsDto> adjustAllHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments, final ServiceCallback<AdjustHoldingsDto> serviceCallback);
-
-    /**
-     * Adjust holdings.
-     * Create trades in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AdjustHoldingsDto object
-     */
-    Observable<AdjustHoldingsDto> adjustAllHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
-
-    /**
-     * Adjust holdings.
-     * Create trades in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AdjustHoldingsDto object
-     */
-    Observable<ServiceResponse<AdjustHoldingsDto>> adjustAllHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
-
-    /**
-     * Cancel adjust-holdings.
-     * Cancels a previous adjust holdings request.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DeletedEntityResponse object if successful.
-     */
-    DeletedEntityResponse cancelAdjustHoldings(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Cancel adjust-holdings.
-     * Cancels a previous adjust holdings request.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<DeletedEntityResponse> cancelAdjustHoldingsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<DeletedEntityResponse> serviceCallback);
-
-    /**
-     * Cancel adjust-holdings.
-     * Cancels a previous adjust holdings request.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<DeletedEntityResponse> cancelAdjustHoldingsAsync(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Cancel adjust-holdings.
-     * Cancels a previous adjust holdings request.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<ServiceResponse<DeletedEntityResponse>> cancelAdjustHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Adjust holdings.
-     * Create trades in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AdjustHoldingsDto object if successful.
-     */
-    AdjustHoldingsDto adjustHoldings(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Adjust holdings.
-     * Create trades in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<AdjustHoldingsDto> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<AdjustHoldingsDto> serviceCallback);
-
-    /**
-     * Adjust holdings.
-     * Create trades in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AdjustHoldingsDto object
-     */
-    Observable<AdjustHoldingsDto> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Adjust holdings.
-     * Create trades in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AdjustHoldingsDto object
-     */
-    Observable<ServiceResponse<AdjustHoldingsDto>> adjustHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
-    /**
-     * Adjust holdings.
-     * Create trades in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AdjustHoldingsDto object if successful.
-     */
-    AdjustHoldingsDto adjustHoldings(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
-
-    /**
-     * Adjust holdings.
-     * Create trades in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<AdjustHoldingsDto> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments, final ServiceCallback<AdjustHoldingsDto> serviceCallback);
-
-    /**
-     * Adjust holdings.
-     * Create trades in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AdjustHoldingsDto object
-     */
-    Observable<AdjustHoldingsDto> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
-
-    /**
-     * Adjust holdings.
-     * Create trades in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AdjustHoldingsDto object
-     */
-    Observable<ServiceResponse<AdjustHoldingsDto>> adjustHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
-
-    /**
-     * Gets holdings adjustments in an interval of effective time.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfHoldingsAdjustmentHeaderDto object if successful.
-     */
-    ResourceListOfHoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code);
-
-    /**
-     * Gets holdings adjustments in an interval of effective time.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfHoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, final ServiceCallback<ResourceListOfHoldingsAdjustmentHeaderDto> serviceCallback);
-
-    /**
-     * Gets holdings adjustments in an interval of effective time.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfHoldingsAdjustmentHeaderDto object
-     */
-    Observable<ResourceListOfHoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code);
-
-    /**
-     * Gets holdings adjustments in an interval of effective time.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfHoldingsAdjustmentHeaderDto object
-     */
-    Observable<ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code);
-    /**
-     * Gets holdings adjustments in an interval of effective time.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
-     * @param asAtTime The as-at time for which the result is valid.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfHoldingsAdjustmentHeaderDto object if successful.
-     */
-    ResourceListOfHoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
-
-    /**
-     * Gets holdings adjustments in an interval of effective time.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
-     * @param asAtTime The as-at time for which the result is valid.
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfHoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime, final ServiceCallback<ResourceListOfHoldingsAdjustmentHeaderDto> serviceCallback);
-
-    /**
-     * Gets holdings adjustments in an interval of effective time.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
-     * @param asAtTime The as-at time for which the result is valid.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfHoldingsAdjustmentHeaderDto object
-     */
-    Observable<ResourceListOfHoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
-
-    /**
-     * Gets holdings adjustments in an interval of effective time.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
-     * @param asAtTime The as-at time for which the result is valid.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfHoldingsAdjustmentHeaderDto object
-     */
-    Observable<ServiceResponse<ResourceListOfHoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
-
-    /**
-     * Get a holdings adjustment for a single portfolio at a specific effective time.
-     If no adjustment exists at this effective time, not found is returned.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective time of the holdings adjustment.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the HoldingsAdjustmentDto object if successful.
-     */
-    HoldingsAdjustmentDto getHoldingsAdjustment(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Get a holdings adjustment for a single portfolio at a specific effective time.
-     If no adjustment exists at this effective time, not found is returned.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective time of the holdings adjustment.
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<HoldingsAdjustmentDto> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<HoldingsAdjustmentDto> serviceCallback);
-
-    /**
-     * Get a holdings adjustment for a single portfolio at a specific effective time.
-     If no adjustment exists at this effective time, not found is returned.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective time of the holdings adjustment.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentDto object
-     */
-    Observable<HoldingsAdjustmentDto> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Get a holdings adjustment for a single portfolio at a specific effective time.
-     If no adjustment exists at this effective time, not found is returned.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective time of the holdings adjustment.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentDto object
-     */
-    Observable<ServiceResponse<HoldingsAdjustmentDto>> getHoldingsAdjustmentWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
-    /**
-     * Get a holdings adjustment for a single portfolio at a specific effective time.
-     If no adjustment exists at this effective time, not found is returned.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective time of the holdings adjustment.
-     * @param asAtTime The as-at time for which the result is valid.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the HoldingsAdjustmentDto object if successful.
-     */
-    HoldingsAdjustmentDto getHoldingsAdjustment(String scope, String code, DateTime effectiveAt, DateTime asAtTime);
-
-    /**
-     * Get a holdings adjustment for a single portfolio at a specific effective time.
-     If no adjustment exists at this effective time, not found is returned.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective time of the holdings adjustment.
-     * @param asAtTime The as-at time for which the result is valid.
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<HoldingsAdjustmentDto> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt, DateTime asAtTime, final ServiceCallback<HoldingsAdjustmentDto> serviceCallback);
-
-    /**
-     * Get a holdings adjustment for a single portfolio at a specific effective time.
-     If no adjustment exists at this effective time, not found is returned.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective time of the holdings adjustment.
-     * @param asAtTime The as-at time for which the result is valid.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentDto object
-     */
-    Observable<HoldingsAdjustmentDto> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt, DateTime asAtTime);
-
-    /**
-     * Get a holdings adjustment for a single portfolio at a specific effective time.
-     If no adjustment exists at this effective time, not found is returned.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective time of the holdings adjustment.
-     * @param asAtTime The as-at time for which the result is valid.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentDto object
-     */
-    Observable<ServiceResponse<HoldingsAdjustmentDto>> getHoldingsAdjustmentWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAtTime);
+    Observable<ServiceResponse<ResourceListOfProcessedCommandDto>> getPortfolioCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
 
     /**
      * Get properties.
@@ -4841,7 +3903,7 @@ public interface LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the PortfolioPropertiesDto object if successful.
      */
-    PortfolioPropertiesDto getProperties(String scope, String code);
+    PortfolioPropertiesDto getPortfolioProperties(String scope, String code);
 
     /**
      * Get properties.
@@ -4854,7 +3916,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioPropertiesDto> getPropertiesAsync(String scope, String code, final ServiceCallback<PortfolioPropertiesDto> serviceCallback);
+    ServiceFuture<PortfolioPropertiesDto> getPortfolioPropertiesAsync(String scope, String code, final ServiceCallback<PortfolioPropertiesDto> serviceCallback);
 
     /**
      * Get properties.
@@ -4866,7 +3928,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioPropertiesDto object
      */
-    Observable<PortfolioPropertiesDto> getPropertiesAsync(String scope, String code);
+    Observable<PortfolioPropertiesDto> getPortfolioPropertiesAsync(String scope, String code);
 
     /**
      * Get properties.
@@ -4878,7 +3940,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioPropertiesDto object
      */
-    Observable<ServiceResponse<PortfolioPropertiesDto>> getPropertiesWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<PortfolioPropertiesDto>> getPortfolioPropertiesWithServiceResponseAsync(String scope, String code);
     /**
      * Get properties.
      * Get properties attached to the portfolio.  If the asAt is not specified then
@@ -4896,7 +3958,7 @@ public interface LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the PortfolioPropertiesDto object if successful.
      */
-    PortfolioPropertiesDto getProperties(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    PortfolioPropertiesDto getPortfolioProperties(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Get properties.
@@ -4914,7 +3976,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioPropertiesDto> getPropertiesAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<PortfolioPropertiesDto> serviceCallback);
+    ServiceFuture<PortfolioPropertiesDto> getPortfolioPropertiesAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<PortfolioPropertiesDto> serviceCallback);
 
     /**
      * Get properties.
@@ -4931,7 +3993,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioPropertiesDto object
      */
-    Observable<PortfolioPropertiesDto> getPropertiesAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<PortfolioPropertiesDto> getPortfolioPropertiesAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Get properties.
@@ -4948,7 +4010,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioPropertiesDto object
      */
-    Observable<ServiceResponse<PortfolioPropertiesDto>> getPropertiesWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<PortfolioPropertiesDto>> getPortfolioPropertiesWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Update properties.
@@ -5002,14 +4064,14 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param properties the List&lt;CreatePropertyRequest&gt; value
+     * @param portfolioProperties the Map&lt;String, CreatePropertyRequest&gt; value
      * @param effectiveAt The effective date for the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the PortfolioPropertiesDto object if successful.
      */
-    PortfolioPropertiesDto upsertPortfolioProperties(String scope, String code, List<CreatePropertyRequest> properties, DateTime effectiveAt);
+    PortfolioPropertiesDto upsertPortfolioProperties(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt);
 
     /**
      * Update properties.
@@ -5017,13 +4079,13 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param properties the List&lt;CreatePropertyRequest&gt; value
+     * @param portfolioProperties the Map&lt;String, CreatePropertyRequest&gt; value
      * @param effectiveAt The effective date for the change
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioPropertiesDto> upsertPortfolioPropertiesAsync(String scope, String code, List<CreatePropertyRequest> properties, DateTime effectiveAt, final ServiceCallback<PortfolioPropertiesDto> serviceCallback);
+    ServiceFuture<PortfolioPropertiesDto> upsertPortfolioPropertiesAsync(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt, final ServiceCallback<PortfolioPropertiesDto> serviceCallback);
 
     /**
      * Update properties.
@@ -5031,130 +4093,29 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param properties the List&lt;CreatePropertyRequest&gt; value
-     * @param effectiveAt The effective date for the change
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioPropertiesDto object
-     */
-    Observable<PortfolioPropertiesDto> upsertPortfolioPropertiesAsync(String scope, String code, List<CreatePropertyRequest> properties, DateTime effectiveAt);
-
-    /**
-     * Update properties.
-     * Create one or more properties on a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param properties the List&lt;CreatePropertyRequest&gt; value
+     * @param portfolioProperties the Map&lt;String, CreatePropertyRequest&gt; value
      * @param effectiveAt The effective date for the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioPropertiesDto object
      */
-    Observable<ServiceResponse<PortfolioPropertiesDto>> upsertPortfolioPropertiesWithServiceResponseAsync(String scope, String code, List<CreatePropertyRequest> properties, DateTime effectiveAt);
+    Observable<PortfolioPropertiesDto> upsertPortfolioPropertiesAsync(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt);
 
     /**
-     * Delete property.
-     * Delete a property from a portfolio.
+     * Update properties.
+     * Create one or more properties on a portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
+     * @param portfolioProperties the Map&lt;String, CreatePropertyRequest&gt; value
+     * @param effectiveAt The effective date for the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DeletedEntityResponse object if successful.
+     * @return the observable to the PortfolioPropertiesDto object
      */
-    DeletedEntityResponse deletePortfolioProperty(String scope, String code);
+    Observable<ServiceResponse<PortfolioPropertiesDto>> upsertPortfolioPropertiesWithServiceResponseAsync(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt);
 
     /**
-     * Delete property.
-     * Delete a property from a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<DeletedEntityResponse> deletePortfolioPropertyAsync(String scope, String code, final ServiceCallback<DeletedEntityResponse> serviceCallback);
-
-    /**
-     * Delete property.
-     * Delete a property from a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<DeletedEntityResponse> deletePortfolioPropertyAsync(String scope, String code);
-
-    /**
-     * Delete property.
-     * Delete a property from a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<ServiceResponse<DeletedEntityResponse>> deletePortfolioPropertyWithServiceResponseAsync(String scope, String code);
-    /**
-     * Delete property.
-     * Delete a property from a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param property The key of the property to be deleted
-     * @param effectiveAt Effective date
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DeletedEntityResponse object if successful.
-     */
-    DeletedEntityResponse deletePortfolioProperty(String scope, String code, String property, DateTime effectiveAt);
-
-    /**
-     * Delete property.
-     * Delete a property from a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param property The key of the property to be deleted
-     * @param effectiveAt Effective date
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<DeletedEntityResponse> deletePortfolioPropertyAsync(String scope, String code, String property, DateTime effectiveAt, final ServiceCallback<DeletedEntityResponse> serviceCallback);
-
-    /**
-     * Delete property.
-     * Delete a property from a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param property The key of the property to be deleted
-     * @param effectiveAt Effective date
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<DeletedEntityResponse> deletePortfolioPropertyAsync(String scope, String code, String property, DateTime effectiveAt);
-
-    /**
-     * Delete property.
-     * Delete a property from a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param property The key of the property to be deleted
-     * @param effectiveAt Effective date
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<ServiceResponse<DeletedEntityResponse>> deletePortfolioPropertyWithServiceResponseAsync(String scope, String code, String property, DateTime effectiveAt);
-
-    /**
-     * Delete properties.
-     * Delete all properties from a portfolio.
+     * Delete one, many or all properties from a portfolio for a specified effective date.
+     * Specifying no properties will delete all properties.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -5166,8 +4127,8 @@ public interface LUSIDAPI {
     DeletedEntityResponse deletePortfolioProperties(String scope, String code);
 
     /**
-     * Delete properties.
-     * Delete all properties from a portfolio.
+     * Delete one, many or all properties from a portfolio for a specified effective date.
+     * Specifying no properties will delete all properties.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -5178,8 +4139,8 @@ public interface LUSIDAPI {
     ServiceFuture<DeletedEntityResponse> deletePortfolioPropertiesAsync(String scope, String code, final ServiceCallback<DeletedEntityResponse> serviceCallback);
 
     /**
-     * Delete properties.
-     * Delete all properties from a portfolio.
+     * Delete one, many or all properties from a portfolio for a specified effective date.
+     * Specifying no properties will delete all properties.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -5189,8 +4150,8 @@ public interface LUSIDAPI {
     Observable<DeletedEntityResponse> deletePortfolioPropertiesAsync(String scope, String code);
 
     /**
-     * Delete properties.
-     * Delete all properties from a portfolio.
+     * Delete one, many or all properties from a portfolio for a specified effective date.
+     * Specifying no properties will delete all properties.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -5199,770 +4160,59 @@ public interface LUSIDAPI {
      */
     Observable<ServiceResponse<DeletedEntityResponse>> deletePortfolioPropertiesWithServiceResponseAsync(String scope, String code);
     /**
-     * Delete properties.
-     * Delete all properties from a portfolio.
+     * Delete one, many or all properties from a portfolio for a specified effective date.
+     * Specifying no properties will delete all properties.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param effectiveAt The effective date for the change
+     * @param effectiveAt Effective date
+     * @param portfolioPropertyKeys The keys of the property to be deleted. None specified indicates the intent to delete all properties
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the DeletedEntityResponse object if successful.
      */
-    DeletedEntityResponse deletePortfolioProperties(String scope, String code, DateTime effectiveAt);
+    DeletedEntityResponse deletePortfolioProperties(String scope, String code, DateTime effectiveAt, List<String> portfolioPropertyKeys);
 
     /**
-     * Delete properties.
-     * Delete all properties from a portfolio.
+     * Delete one, many or all properties from a portfolio for a specified effective date.
+     * Specifying no properties will delete all properties.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param effectiveAt The effective date for the change
+     * @param effectiveAt Effective date
+     * @param portfolioPropertyKeys The keys of the property to be deleted. None specified indicates the intent to delete all properties
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<DeletedEntityResponse> deletePortfolioPropertiesAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<DeletedEntityResponse> serviceCallback);
+    ServiceFuture<DeletedEntityResponse> deletePortfolioPropertiesAsync(String scope, String code, DateTime effectiveAt, List<String> portfolioPropertyKeys, final ServiceCallback<DeletedEntityResponse> serviceCallback);
 
     /**
-     * Delete properties.
-     * Delete all properties from a portfolio.
+     * Delete one, many or all properties from a portfolio for a specified effective date.
+     * Specifying no properties will delete all properties.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param effectiveAt The effective date for the change
+     * @param effectiveAt Effective date
+     * @param portfolioPropertyKeys The keys of the property to be deleted. None specified indicates the intent to delete all properties
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
-    Observable<DeletedEntityResponse> deletePortfolioPropertiesAsync(String scope, String code, DateTime effectiveAt);
+    Observable<DeletedEntityResponse> deletePortfolioPropertiesAsync(String scope, String code, DateTime effectiveAt, List<String> portfolioPropertyKeys);
 
     /**
-     * Delete properties.
-     * Delete all properties from a portfolio.
+     * Delete one, many or all properties from a portfolio for a specified effective date.
+     * Specifying no properties will delete all properties.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param effectiveAt The effective date for the change
+     * @param effectiveAt Effective date
+     * @param portfolioPropertyKeys The keys of the property to be deleted. None specified indicates the intent to delete all properties
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
-    Observable<ServiceResponse<DeletedEntityResponse>> deletePortfolioPropertiesWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Get trades.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionedResourceListOfTradeDto object if successful.
-     */
-    VersionedResourceListOfTradeDto getTrades(String scope, String code);
-
-    /**
-     * Get trades.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<VersionedResourceListOfTradeDto> getTradesAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfTradeDto> serviceCallback);
-
-    /**
-     * Get trades.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfTradeDto object
-     */
-    Observable<VersionedResourceListOfTradeDto> getTradesAsync(String scope, String code);
-
-    /**
-     * Get trades.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfTradeDto object
-     */
-    Observable<ServiceResponse<VersionedResourceListOfTradeDto>> getTradesWithServiceResponseAsync(String scope, String code);
-    /**
-     * Get trades.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param fromTradeDate Exclude trades with a trade-date less than this date. If not supplied, no lower filter is applied
-     * @param toTradeDate Exclude trades with a trade-date greater than this date. If not supplied, no upper filter is applied
-     * @param asAt the DateTime value
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
-     * @param filter Trade filter
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionedResourceListOfTradeDto object if successful.
-     */
-    VersionedResourceListOfTradeDto getTrades(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter);
-
-    /**
-     * Get trades.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param fromTradeDate Exclude trades with a trade-date less than this date. If not supplied, no lower filter is applied
-     * @param toTradeDate Exclude trades with a trade-date greater than this date. If not supplied, no upper filter is applied
-     * @param asAt the DateTime value
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
-     * @param filter Trade filter
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<VersionedResourceListOfTradeDto> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter, final ServiceCallback<VersionedResourceListOfTradeDto> serviceCallback);
-
-    /**
-     * Get trades.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param fromTradeDate Exclude trades with a trade-date less than this date. If not supplied, no lower filter is applied
-     * @param toTradeDate Exclude trades with a trade-date greater than this date. If not supplied, no upper filter is applied
-     * @param asAt the DateTime value
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
-     * @param filter Trade filter
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfTradeDto object
-     */
-    Observable<VersionedResourceListOfTradeDto> getTradesAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter);
-
-    /**
-     * Get trades.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param fromTradeDate Exclude trades with a trade-date less than this date. If not supplied, no lower filter is applied
-     * @param toTradeDate Exclude trades with a trade-date greater than this date. If not supplied, no upper filter is applied
-     * @param asAt the DateTime value
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
-     * @param filter Trade filter
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfTradeDto object
-     */
-    Observable<ServiceResponse<VersionedResourceListOfTradeDto>> getTradesWithServiceResponseAsync(String scope, String code, DateTime fromTradeDate, DateTime toTradeDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter);
-
-    /**
-     * Add/update trades.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the UpsertPortfolioTradesDto object if successful.
-     */
-    UpsertPortfolioTradesDto upsertTrades(String scope, String code);
-
-    /**
-     * Add/update trades.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<UpsertPortfolioTradesDto> upsertTradesAsync(String scope, String code, final ServiceCallback<UpsertPortfolioTradesDto> serviceCallback);
-
-    /**
-     * Add/update trades.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPortfolioTradesDto object
-     */
-    Observable<UpsertPortfolioTradesDto> upsertTradesAsync(String scope, String code);
-
-    /**
-     * Add/update trades.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPortfolioTradesDto object
-     */
-    Observable<ServiceResponse<UpsertPortfolioTradesDto>> upsertTradesWithServiceResponseAsync(String scope, String code);
-    /**
-     * Add/update trades.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param trades The trades to be updated
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the UpsertPortfolioTradesDto object if successful.
-     */
-    UpsertPortfolioTradesDto upsertTrades(String scope, String code, List<UpsertPortfolioTradeRequest> trades);
-
-    /**
-     * Add/update trades.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param trades The trades to be updated
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<UpsertPortfolioTradesDto> upsertTradesAsync(String scope, String code, List<UpsertPortfolioTradeRequest> trades, final ServiceCallback<UpsertPortfolioTradesDto> serviceCallback);
-
-    /**
-     * Add/update trades.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param trades The trades to be updated
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPortfolioTradesDto object
-     */
-    Observable<UpsertPortfolioTradesDto> upsertTradesAsync(String scope, String code, List<UpsertPortfolioTradeRequest> trades);
-
-    /**
-     * Add/update trades.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param trades The trades to be updated
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPortfolioTradesDto object
-     */
-    Observable<ServiceResponse<UpsertPortfolioTradesDto>> upsertTradesWithServiceResponseAsync(String scope, String code, List<UpsertPortfolioTradeRequest> trades);
-
-    /**
-     * Delete trades.
-     * Delete one or more trades from a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DeletedEntityResponse object if successful.
-     */
-    DeletedEntityResponse deleteTrades(String scope, String code);
-
-    /**
-     * Delete trades.
-     * Delete one or more trades from a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<DeletedEntityResponse> deleteTradesAsync(String scope, String code, final ServiceCallback<DeletedEntityResponse> serviceCallback);
-
-    /**
-     * Delete trades.
-     * Delete one or more trades from a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<DeletedEntityResponse> deleteTradesAsync(String scope, String code);
-
-    /**
-     * Delete trades.
-     * Delete one or more trades from a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<ServiceResponse<DeletedEntityResponse>> deleteTradesWithServiceResponseAsync(String scope, String code);
-    /**
-     * Delete trades.
-     * Delete one or more trades from a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param id Ids of trades to delete
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DeletedEntityResponse object if successful.
-     */
-    DeletedEntityResponse deleteTrades(String scope, String code, List<String> id);
-
-    /**
-     * Delete trades.
-     * Delete one or more trades from a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param id Ids of trades to delete
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<DeletedEntityResponse> deleteTradesAsync(String scope, String code, List<String> id, final ServiceCallback<DeletedEntityResponse> serviceCallback);
-
-    /**
-     * Delete trades.
-     * Delete one or more trades from a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param id Ids of trades to delete
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<DeletedEntityResponse> deleteTradesAsync(String scope, String code, List<String> id);
-
-    /**
-     * Delete trades.
-     * Delete one or more trades from a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param id Ids of trades to delete
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<ServiceResponse<DeletedEntityResponse>> deleteTradesWithServiceResponseAsync(String scope, String code, List<String> id);
-
-    /**
-     * Add/update trade properties.
-     * Add one or more properties to a specific trade in a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param tradeId Id of trade to add properties to
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AddTradePropertyDto object if successful.
-     */
-    AddTradePropertyDto addTradeProperty(String scope, String code, String tradeId);
-
-    /**
-     * Add/update trade properties.
-     * Add one or more properties to a specific trade in a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param tradeId Id of trade to add properties to
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<AddTradePropertyDto> addTradePropertyAsync(String scope, String code, String tradeId, final ServiceCallback<AddTradePropertyDto> serviceCallback);
-
-    /**
-     * Add/update trade properties.
-     * Add one or more properties to a specific trade in a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param tradeId Id of trade to add properties to
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AddTradePropertyDto object
-     */
-    Observable<AddTradePropertyDto> addTradePropertyAsync(String scope, String code, String tradeId);
-
-    /**
-     * Add/update trade properties.
-     * Add one or more properties to a specific trade in a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param tradeId Id of trade to add properties to
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AddTradePropertyDto object
-     */
-    Observable<ServiceResponse<AddTradePropertyDto>> addTradePropertyWithServiceResponseAsync(String scope, String code, String tradeId);
-    /**
-     * Add/update trade properties.
-     * Add one or more properties to a specific trade in a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param tradeId Id of trade to add properties to
-     * @param properties Trade properties to add
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AddTradePropertyDto object if successful.
-     */
-    AddTradePropertyDto addTradeProperty(String scope, String code, String tradeId, List<CreatePerpetualPropertyRequest> properties);
-
-    /**
-     * Add/update trade properties.
-     * Add one or more properties to a specific trade in a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param tradeId Id of trade to add properties to
-     * @param properties Trade properties to add
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<AddTradePropertyDto> addTradePropertyAsync(String scope, String code, String tradeId, List<CreatePerpetualPropertyRequest> properties, final ServiceCallback<AddTradePropertyDto> serviceCallback);
-
-    /**
-     * Add/update trade properties.
-     * Add one or more properties to a specific trade in a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param tradeId Id of trade to add properties to
-     * @param properties Trade properties to add
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AddTradePropertyDto object
-     */
-    Observable<AddTradePropertyDto> addTradePropertyAsync(String scope, String code, String tradeId, List<CreatePerpetualPropertyRequest> properties);
-
-    /**
-     * Add/update trade properties.
-     * Add one or more properties to a specific trade in a portfolio.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param tradeId Id of trade to add properties to
-     * @param properties Trade properties to add
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AddTradePropertyDto object
-     */
-    Observable<ServiceResponse<AddTradePropertyDto>> addTradePropertyWithServiceResponseAsync(String scope, String code, String tradeId, List<CreatePerpetualPropertyRequest> properties);
-
-    /**
-     * Delete trade property.
-     * Delete a property from a specific trade.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param tradeId Id of the trade to delete the property from
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DeletedEntityResponse object if successful.
-     */
-    DeletedEntityResponse deletePropertyFromTrade(String scope, String code, String tradeId);
-
-    /**
-     * Delete trade property.
-     * Delete a property from a specific trade.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param tradeId Id of the trade to delete the property from
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<DeletedEntityResponse> deletePropertyFromTradeAsync(String scope, String code, String tradeId, final ServiceCallback<DeletedEntityResponse> serviceCallback);
-
-    /**
-     * Delete trade property.
-     * Delete a property from a specific trade.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param tradeId Id of the trade to delete the property from
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<DeletedEntityResponse> deletePropertyFromTradeAsync(String scope, String code, String tradeId);
-
-    /**
-     * Delete trade property.
-     * Delete a property from a specific trade.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param tradeId Id of the trade to delete the property from
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<ServiceResponse<DeletedEntityResponse>> deletePropertyFromTradeWithServiceResponseAsync(String scope, String code, String tradeId);
-    /**
-     * Delete trade property.
-     * Delete a property from a specific trade.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param tradeId Id of the trade to delete the property from
-     * @param property The key of the property to be deleted
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DeletedEntityResponse object if successful.
-     */
-    DeletedEntityResponse deletePropertyFromTrade(String scope, String code, String tradeId, String property);
-
-    /**
-     * Delete trade property.
-     * Delete a property from a specific trade.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param tradeId Id of the trade to delete the property from
-     * @param property The key of the property to be deleted
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<DeletedEntityResponse> deletePropertyFromTradeAsync(String scope, String code, String tradeId, String property, final ServiceCallback<DeletedEntityResponse> serviceCallback);
-
-    /**
-     * Delete trade property.
-     * Delete a property from a specific trade.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param tradeId Id of the trade to delete the property from
-     * @param property The key of the property to be deleted
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<DeletedEntityResponse> deletePropertyFromTradeAsync(String scope, String code, String tradeId, String property);
-
-    /**
-     * Delete trade property.
-     * Delete a property from a specific trade.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param tradeId Id of the trade to delete the property from
-     * @param property The key of the property to be deleted
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<ServiceResponse<DeletedEntityResponse>> deletePropertyFromTradeWithServiceResponseAsync(String scope, String code, String tradeId, String property);
-
-    /**
-     * Get transactions.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionedResourceListOfOutputTransactionDto object if successful.
-     */
-    VersionedResourceListOfOutputTransactionDto buildTransactions(String scope, String code);
-
-    /**
-     * Get transactions.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<VersionedResourceListOfOutputTransactionDto> buildTransactionsAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfOutputTransactionDto> serviceCallback);
-
-    /**
-     * Get transactions.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfOutputTransactionDto object
-     */
-    Observable<VersionedResourceListOfOutputTransactionDto> buildTransactionsAsync(String scope, String code);
-
-    /**
-     * Get transactions.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfOutputTransactionDto object
-     */
-    Observable<ServiceResponse<VersionedResourceListOfOutputTransactionDto>> buildTransactionsWithServiceResponseAsync(String scope, String code);
-    /**
-     * Get transactions.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param asAt the DateTime value
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
-     * @param filter Trade filter
-     * @param parameters Core query parameters
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionedResourceListOfOutputTransactionDto object if successful.
-     */
-    VersionedResourceListOfOutputTransactionDto buildTransactions(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter, TransactionQueryParameters parameters);
-
-    /**
-     * Get transactions.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param asAt the DateTime value
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
-     * @param filter Trade filter
-     * @param parameters Core query parameters
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<VersionedResourceListOfOutputTransactionDto> buildTransactionsAsync(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter, TransactionQueryParameters parameters, final ServiceCallback<VersionedResourceListOfOutputTransactionDto> serviceCallback);
-
-    /**
-     * Get transactions.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param asAt the DateTime value
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
-     * @param filter Trade filter
-     * @param parameters Core query parameters
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfOutputTransactionDto object
-     */
-    Observable<VersionedResourceListOfOutputTransactionDto> buildTransactionsAsync(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter, TransactionQueryParameters parameters);
-
-    /**
-     * Get transactions.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param asAt the DateTime value
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param securityPropertyKeys Keys for the security properties to be decorated onto the trades
-     * @param filter Trade filter
-     * @param parameters Core query parameters
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfOutputTransactionDto object
-     */
-    Observable<ServiceResponse<VersionedResourceListOfOutputTransactionDto>> buildTransactionsWithServiceResponseAsync(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> securityPropertyKeys, String filter, TransactionQueryParameters parameters);
-
-    /**
-     * Create derived portfolio.
-     * Creates a portfolio that derives from an existing portfolio.
-     *
-     * @param scope The scope into which to create the new derived portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDto object if successful.
-     */
-    PortfolioDto createDerivedPortfolio(String scope);
-
-    /**
-     * Create derived portfolio.
-     * Creates a portfolio that derives from an existing portfolio.
-     *
-     * @param scope The scope into which to create the new derived portfolio
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<PortfolioDto> createDerivedPortfolioAsync(String scope, final ServiceCallback<PortfolioDto> serviceCallback);
-
-    /**
-     * Create derived portfolio.
-     * Creates a portfolio that derives from an existing portfolio.
-     *
-     * @param scope The scope into which to create the new derived portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
-     */
-    Observable<PortfolioDto> createDerivedPortfolioAsync(String scope);
-
-    /**
-     * Create derived portfolio.
-     * Creates a portfolio that derives from an existing portfolio.
-     *
-     * @param scope The scope into which to create the new derived portfolio
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
-     */
-    Observable<ServiceResponse<PortfolioDto>> createDerivedPortfolioWithServiceResponseAsync(String scope);
-    /**
-     * Create derived portfolio.
-     * Creates a portfolio that derives from an existing portfolio.
-     *
-     * @param scope The scope into which to create the new derived portfolio
-     * @param portfolio The root object of the new derived portfolio, containing a populated reference portfolio id and reference scope
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDto object if successful.
-     */
-    PortfolioDto createDerivedPortfolio(String scope, CreateDerivedPortfolioRequest portfolio);
-
-    /**
-     * Create derived portfolio.
-     * Creates a portfolio that derives from an existing portfolio.
-     *
-     * @param scope The scope into which to create the new derived portfolio
-     * @param portfolio The root object of the new derived portfolio, containing a populated reference portfolio id and reference scope
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<PortfolioDto> createDerivedPortfolioAsync(String scope, CreateDerivedPortfolioRequest portfolio, final ServiceCallback<PortfolioDto> serviceCallback);
-
-    /**
-     * Create derived portfolio.
-     * Creates a portfolio that derives from an existing portfolio.
-     *
-     * @param scope The scope into which to create the new derived portfolio
-     * @param portfolio The root object of the new derived portfolio, containing a populated reference portfolio id and reference scope
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
-     */
-    Observable<PortfolioDto> createDerivedPortfolioAsync(String scope, CreateDerivedPortfolioRequest portfolio);
-
-    /**
-     * Create derived portfolio.
-     * Creates a portfolio that derives from an existing portfolio.
-     *
-     * @param scope The scope into which to create the new derived portfolio
-     * @param portfolio The root object of the new derived portfolio, containing a populated reference portfolio id and reference scope
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
-     */
-    Observable<ServiceResponse<PortfolioDto>> createDerivedPortfolioWithServiceResponseAsync(String scope, CreateDerivedPortfolioRequest portfolio);
+    Observable<ServiceResponse<DeletedEntityResponse>> deletePortfolioPropertiesWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<String> portfolioPropertyKeys);
 
     /**
      * Search portfolios.
@@ -6143,160 +4393,6 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<ResourceListOfPropertyDefinitionDto>> propertiesSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
-     * Gets the available property-definition domains.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPropertyDomain object if successful.
-     */
-    ResourceListOfPropertyDomain getPropertyDefinitionDomains();
-
-    /**
-     * Gets the available property-definition domains.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfPropertyDomain> getPropertyDefinitionDomainsAsync(final ServiceCallback<ResourceListOfPropertyDomain> serviceCallback);
-
-    /**
-     * Gets the available property-definition domains.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDomain object
-     */
-    Observable<ResourceListOfPropertyDomain> getPropertyDefinitionDomainsAsync();
-
-    /**
-     * Gets the available property-definition domains.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDomain object
-     */
-    Observable<ServiceResponse<ResourceListOfPropertyDomain>> getPropertyDefinitionDomainsWithServiceResponseAsync();
-    /**
-     * Gets the available property-definition domains.
-     *
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPropertyDomain object if successful.
-     */
-    ResourceListOfPropertyDomain getPropertyDefinitionDomains(List<String> sortBy, Integer start, Integer limit);
-
-    /**
-     * Gets the available property-definition domains.
-     *
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfPropertyDomain> getPropertyDefinitionDomainsAsync(List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ResourceListOfPropertyDomain> serviceCallback);
-
-    /**
-     * Gets the available property-definition domains.
-     *
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDomain object
-     */
-    Observable<ResourceListOfPropertyDomain> getPropertyDefinitionDomainsAsync(List<String> sortBy, Integer start, Integer limit);
-
-    /**
-     * Gets the available property-definition domains.
-     *
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDomain object
-     */
-    Observable<ServiceResponse<ResourceListOfPropertyDomain>> getPropertyDefinitionDomainsWithServiceResponseAsync(List<String> sortBy, Integer start, Integer limit);
-
-    /**
-     * Creates a new property definition.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PropertyDefinitionDto object if successful.
-     */
-    PropertyDefinitionDto createPropertyDefinition();
-
-    /**
-     * Creates a new property definition.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<PropertyDefinitionDto> createPropertyDefinitionAsync(final ServiceCallback<PropertyDefinitionDto> serviceCallback);
-
-    /**
-     * Creates a new property definition.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDefinitionDto object
-     */
-    Observable<PropertyDefinitionDto> createPropertyDefinitionAsync();
-
-    /**
-     * Creates a new property definition.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDefinitionDto object
-     */
-    Observable<ServiceResponse<PropertyDefinitionDto>> createPropertyDefinitionWithServiceResponseAsync();
-    /**
-     * Creates a new property definition.
-     *
-     * @param definition the CreatePropertyDefinitionRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PropertyDefinitionDto object if successful.
-     */
-    PropertyDefinitionDto createPropertyDefinition(CreatePropertyDefinitionRequest definition);
-
-    /**
-     * Creates a new property definition.
-     *
-     * @param definition the CreatePropertyDefinitionRequest value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<PropertyDefinitionDto> createPropertyDefinitionAsync(CreatePropertyDefinitionRequest definition, final ServiceCallback<PropertyDefinitionDto> serviceCallback);
-
-    /**
-     * Creates a new property definition.
-     *
-     * @param definition the CreatePropertyDefinitionRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDefinitionDto object
-     */
-    Observable<PropertyDefinitionDto> createPropertyDefinitionAsync(CreatePropertyDefinitionRequest definition);
-
-    /**
-     * Creates a new property definition.
-     *
-     * @param definition the CreatePropertyDefinitionRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDefinitionDto object
-     */
-    Observable<ServiceResponse<PropertyDefinitionDto>> createPropertyDefinitionWithServiceResponseAsync(CreatePropertyDefinitionRequest definition);
-
-    /**
      * Gets multiple property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -6390,299 +4486,77 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<ResourceListOfPropertyDefinitionDto>> getMultiplePropertyDefinitionsWithServiceResponseAsync(List<String> keys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
-     * Gets all available property definitions.
+     * Creates a new property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPropertyKey object if successful.
+     * @return the PropertyDefinitionDto object if successful.
      */
-    ResourceListOfPropertyKey getAllPropertyKeysInDomain(String domain);
+    PropertyDefinitionDto createPropertyDefinition();
 
     /**
-     * Gets all available property definitions.
+     * Creates a new property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPropertyKey> getAllPropertyKeysInDomainAsync(String domain, final ServiceCallback<ResourceListOfPropertyKey> serviceCallback);
+    ServiceFuture<PropertyDefinitionDto> createPropertyDefinitionAsync(final ServiceCallback<PropertyDefinitionDto> serviceCallback);
 
     /**
-     * Gets all available property definitions.
+     * Creates a new property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyKey object
+     * @return the observable to the PropertyDefinitionDto object
      */
-    Observable<ResourceListOfPropertyKey> getAllPropertyKeysInDomainAsync(String domain);
+    Observable<PropertyDefinitionDto> createPropertyDefinitionAsync();
 
     /**
-     * Gets all available property definitions.
+     * Creates a new property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyKey object
+     * @return the observable to the PropertyDefinitionDto object
      */
-    Observable<ServiceResponse<ResourceListOfPropertyKey>> getAllPropertyKeysInDomainWithServiceResponseAsync(String domain);
+    Observable<ServiceResponse<PropertyDefinitionDto>> createPropertyDefinitionWithServiceResponseAsync();
     /**
-     * Gets all available property definitions.
+     * Creates a new property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
+     * @param definition the CreatePropertyDefinitionRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPropertyKey object if successful.
+     * @return the PropertyDefinitionDto object if successful.
      */
-    ResourceListOfPropertyKey getAllPropertyKeysInDomain(String domain, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    PropertyDefinitionDto createPropertyDefinition(CreatePropertyDefinitionRequest definition);
 
     /**
-     * Gets all available property definitions.
+     * Creates a new property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
+     * @param definition the CreatePropertyDefinitionRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPropertyKey> getAllPropertyKeysInDomainAsync(String domain, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPropertyKey> serviceCallback);
+    ServiceFuture<PropertyDefinitionDto> createPropertyDefinitionAsync(CreatePropertyDefinitionRequest definition, final ServiceCallback<PropertyDefinitionDto> serviceCallback);
 
     /**
-     * Gets all available property definitions.
+     * Creates a new property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
+     * @param definition the CreatePropertyDefinitionRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyKey object
+     * @return the observable to the PropertyDefinitionDto object
      */
-    Observable<ResourceListOfPropertyKey> getAllPropertyKeysInDomainAsync(String domain, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<PropertyDefinitionDto> createPropertyDefinitionAsync(CreatePropertyDefinitionRequest definition);
 
     /**
-     * Gets all available property definitions.
+     * Creates a new property definition.
      *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
+     * @param definition the CreatePropertyDefinitionRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyKey object
+     * @return the observable to the PropertyDefinitionDto object
      */
-    Observable<ServiceResponse<ResourceListOfPropertyKey>> getAllPropertyKeysInDomainWithServiceResponseAsync(String domain, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Gets the available property-definition scopes for the specified domain.
-     *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfScope object if successful.
-     */
-    ResourceListOfScope getPropertyDefinitionScopesInDomain(String domain);
-
-    /**
-     * Gets the available property-definition scopes for the specified domain.
-     *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfScope> getPropertyDefinitionScopesInDomainAsync(String domain, final ServiceCallback<ResourceListOfScope> serviceCallback);
-
-    /**
-     * Gets the available property-definition scopes for the specified domain.
-     *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfScope object
-     */
-    Observable<ResourceListOfScope> getPropertyDefinitionScopesInDomainAsync(String domain);
-
-    /**
-     * Gets the available property-definition scopes for the specified domain.
-     *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfScope object
-     */
-    Observable<ServiceResponse<ResourceListOfScope>> getPropertyDefinitionScopesInDomainWithServiceResponseAsync(String domain);
-    /**
-     * Gets the available property-definition scopes for the specified domain.
-     *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfScope object if successful.
-     */
-    ResourceListOfScope getPropertyDefinitionScopesInDomain(String domain, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Gets the available property-definition scopes for the specified domain.
-     *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfScope> getPropertyDefinitionScopesInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfScope> serviceCallback);
-
-    /**
-     * Gets the available property-definition scopes for the specified domain.
-     *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfScope object
-     */
-    Observable<ResourceListOfScope> getPropertyDefinitionScopesInDomainAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Gets the available property-definition scopes for the specified domain.
-     *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfScope object
-     */
-    Observable<ServiceResponse<ResourceListOfScope>> getPropertyDefinitionScopesInDomainWithServiceResponseAsync(String domain, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Gets all properties in a scope.
-     *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param scope the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPropertyKey object if successful.
-     */
-    ResourceListOfPropertyKey getAllPropertyKeysInScope(String domain, String scope);
-
-    /**
-     * Gets all properties in a scope.
-     *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param scope the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfPropertyKey> getAllPropertyKeysInScopeAsync(String domain, String scope, final ServiceCallback<ResourceListOfPropertyKey> serviceCallback);
-
-    /**
-     * Gets all properties in a scope.
-     *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param scope the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyKey object
-     */
-    Observable<ResourceListOfPropertyKey> getAllPropertyKeysInScopeAsync(String domain, String scope);
-
-    /**
-     * Gets all properties in a scope.
-     *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param scope the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyKey object
-     */
-    Observable<ServiceResponse<ResourceListOfPropertyKey>> getAllPropertyKeysInScopeWithServiceResponseAsync(String domain, String scope);
-    /**
-     * Gets all properties in a scope.
-     *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param scope the String value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPropertyKey object if successful.
-     */
-    ResourceListOfPropertyKey getAllPropertyKeysInScope(String domain, String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Gets all properties in a scope.
-     *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param scope the String value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfPropertyKey> getAllPropertyKeysInScopeAsync(String domain, String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPropertyKey> serviceCallback);
-
-    /**
-     * Gets all properties in a scope.
-     *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param scope the String value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyKey object
-     */
-    Observable<ResourceListOfPropertyKey> getAllPropertyKeysInScopeAsync(String domain, String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Gets all properties in a scope.
-     *
-     * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
-     * @param scope the String value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyKey object
-     */
-    Observable<ServiceResponse<ResourceListOfPropertyKey>> getAllPropertyKeysInScopeWithServiceResponseAsync(String domain, String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ServiceResponse<PropertyDefinitionDto>> createPropertyDefinitionWithServiceResponseAsync(CreatePropertyDefinitionRequest definition);
 
     /**
      * Gets a property definition.
@@ -6926,359 +4800,6 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<DeletedEntityResponse>> deletePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name);
 
     /**
-     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PropertyDataFormatDto object if successful.
-     */
-    PropertyDataFormatDto createPropertyDataFormat();
-
-    /**
-     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<PropertyDataFormatDto> createPropertyDataFormatAsync(final ServiceCallback<PropertyDataFormatDto> serviceCallback);
-
-    /**
-     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDataFormatDto object
-     */
-    Observable<PropertyDataFormatDto> createPropertyDataFormatAsync();
-
-    /**
-     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDataFormatDto object
-     */
-    Observable<ServiceResponse<PropertyDataFormatDto>> createPropertyDataFormatWithServiceResponseAsync();
-    /**
-     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
-     *
-     * @param request The definition of the new format
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PropertyDataFormatDto object if successful.
-     */
-    PropertyDataFormatDto createPropertyDataFormat(CreatePropertyDataFormatRequest request);
-
-    /**
-     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
-     *
-     * @param request The definition of the new format
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<PropertyDataFormatDto> createPropertyDataFormatAsync(CreatePropertyDataFormatRequest request, final ServiceCallback<PropertyDataFormatDto> serviceCallback);
-
-    /**
-     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
-     *
-     * @param request The definition of the new format
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDataFormatDto object
-     */
-    Observable<PropertyDataFormatDto> createPropertyDataFormatAsync(CreatePropertyDataFormatRequest request);
-
-    /**
-     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
-     *
-     * @param request The definition of the new format
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDataFormatDto object
-     */
-    Observable<ServiceResponse<PropertyDataFormatDto>> createPropertyDataFormatWithServiceResponseAsync(CreatePropertyDataFormatRequest request);
-
-    /**
-     * Lists all property data formats in the specified scope.
-     *
-     * @param scope the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPropertyDataFormatDto object if successful.
-     */
-    ResourceListOfPropertyDataFormatDto listPropertyDataFormats(String scope);
-
-    /**
-     * Lists all property data formats in the specified scope.
-     *
-     * @param scope the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfPropertyDataFormatDto> listPropertyDataFormatsAsync(String scope, final ServiceCallback<ResourceListOfPropertyDataFormatDto> serviceCallback);
-
-    /**
-     * Lists all property data formats in the specified scope.
-     *
-     * @param scope the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDataFormatDto object
-     */
-    Observable<ResourceListOfPropertyDataFormatDto> listPropertyDataFormatsAsync(String scope);
-
-    /**
-     * Lists all property data formats in the specified scope.
-     *
-     * @param scope the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDataFormatDto object
-     */
-    Observable<ServiceResponse<ResourceListOfPropertyDataFormatDto>> listPropertyDataFormatsWithServiceResponseAsync(String scope);
-    /**
-     * Lists all property data formats in the specified scope.
-     *
-     * @param scope the String value
-     * @param includeDefault the Boolean value
-     * @param includeSystem the Boolean value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPropertyDataFormatDto object if successful.
-     */
-    ResourceListOfPropertyDataFormatDto listPropertyDataFormats(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Lists all property data formats in the specified scope.
-     *
-     * @param scope the String value
-     * @param includeDefault the Boolean value
-     * @param includeSystem the Boolean value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfPropertyDataFormatDto> listPropertyDataFormatsAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPropertyDataFormatDto> serviceCallback);
-
-    /**
-     * Lists all property data formats in the specified scope.
-     *
-     * @param scope the String value
-     * @param includeDefault the Boolean value
-     * @param includeSystem the Boolean value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDataFormatDto object
-     */
-    Observable<ResourceListOfPropertyDataFormatDto> listPropertyDataFormatsAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Lists all property data formats in the specified scope.
-     *
-     * @param scope the String value
-     * @param includeDefault the Boolean value
-     * @param includeSystem the Boolean value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDataFormatDto object
-     */
-    Observable<ServiceResponse<ResourceListOfPropertyDataFormatDto>> listPropertyDataFormatsWithServiceResponseAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Gets a property data format.
-     *
-     * @param scope the String value
-     * @param name the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PropertyDataFormatDto object if successful.
-     */
-    PropertyDataFormatDto getPropertyDataFormat(String scope, String name);
-
-    /**
-     * Gets a property data format.
-     *
-     * @param scope the String value
-     * @param name the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<PropertyDataFormatDto> getPropertyDataFormatAsync(String scope, String name, final ServiceCallback<PropertyDataFormatDto> serviceCallback);
-
-    /**
-     * Gets a property data format.
-     *
-     * @param scope the String value
-     * @param name the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDataFormatDto object
-     */
-    Observable<PropertyDataFormatDto> getPropertyDataFormatAsync(String scope, String name);
-
-    /**
-     * Gets a property data format.
-     *
-     * @param scope the String value
-     * @param name the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDataFormatDto object
-     */
-    Observable<ServiceResponse<PropertyDataFormatDto>> getPropertyDataFormatWithServiceResponseAsync(String scope, String name);
-
-    /**
-     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
-     *
-     * @param scope The scope of the format being updated
-     * @param name The name of the format to update
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PropertyDataFormatDto object if successful.
-     */
-    PropertyDataFormatDto updatePropertyDataFormat(String scope, String name);
-
-    /**
-     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
-     *
-     * @param scope The scope of the format being updated
-     * @param name The name of the format to update
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<PropertyDataFormatDto> updatePropertyDataFormatAsync(String scope, String name, final ServiceCallback<PropertyDataFormatDto> serviceCallback);
-
-    /**
-     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
-     *
-     * @param scope The scope of the format being updated
-     * @param name The name of the format to update
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDataFormatDto object
-     */
-    Observable<PropertyDataFormatDto> updatePropertyDataFormatAsync(String scope, String name);
-
-    /**
-     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
-     *
-     * @param scope The scope of the format being updated
-     * @param name The name of the format to update
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDataFormatDto object
-     */
-    Observable<ServiceResponse<PropertyDataFormatDto>> updatePropertyDataFormatWithServiceResponseAsync(String scope, String name);
-    /**
-     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
-     *
-     * @param scope The scope of the format being updated
-     * @param name The name of the format to update
-     * @param request The new definition of the format
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PropertyDataFormatDto object if successful.
-     */
-    PropertyDataFormatDto updatePropertyDataFormat(String scope, String name, UpdatePropertyDataFormatRequest request);
-
-    /**
-     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
-     *
-     * @param scope The scope of the format being updated
-     * @param name The name of the format to update
-     * @param request The new definition of the format
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<PropertyDataFormatDto> updatePropertyDataFormatAsync(String scope, String name, UpdatePropertyDataFormatRequest request, final ServiceCallback<PropertyDataFormatDto> serviceCallback);
-
-    /**
-     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
-     *
-     * @param scope The scope of the format being updated
-     * @param name The name of the format to update
-     * @param request The new definition of the format
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDataFormatDto object
-     */
-    Observable<PropertyDataFormatDto> updatePropertyDataFormatAsync(String scope, String name, UpdatePropertyDataFormatRequest request);
-
-    /**
-     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
-     *
-     * @param scope The scope of the format being updated
-     * @param name The name of the format to update
-     * @param request The new definition of the format
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDataFormatDto object
-     */
-    Observable<ServiceResponse<PropertyDataFormatDto>> updatePropertyDataFormatWithServiceResponseAsync(String scope, String name, UpdatePropertyDataFormatRequest request);
-
-    /**
-     * Return the definitions for the specified list of units.
-     *
-     * @param scope the String value
-     * @param name the String value
-     * @param units the List&lt;String&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the IUnitDefinitionDto object if successful.
-     */
-    IUnitDefinitionDto getUnitsFromPropertyDataFormat(String scope, String name, List<String> units);
-
-    /**
-     * Return the definitions for the specified list of units.
-     *
-     * @param scope the String value
-     * @param name the String value
-     * @param units the List&lt;String&gt; value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<IUnitDefinitionDto> getUnitsFromPropertyDataFormatAsync(String scope, String name, List<String> units, final ServiceCallback<IUnitDefinitionDto> serviceCallback);
-
-    /**
-     * Return the definitions for the specified list of units.
-     *
-     * @param scope the String value
-     * @param name the String value
-     * @param units the List&lt;String&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinitionDto object
-     */
-    Observable<IUnitDefinitionDto> getUnitsFromPropertyDataFormatAsync(String scope, String name, List<String> units);
-
-    /**
-     * Return the definitions for the specified list of units.
-     *
-     * @param scope the String value
-     * @param name the String value
-     * @param units the List&lt;String&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinitionDto object
-     */
-    Observable<ServiceResponse<IUnitDefinitionDto>> getUnitsFromPropertyDataFormatWithServiceResponseAsync(String scope, String name, List<String> units);
-
-    /**
      * Perform a reconciliation between two portfolios.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -7352,107 +4873,6 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<ResourceListOfReconciliationBreakDto>> performReconciliationWithServiceResponseAsync(ReconciliationRequest request);
 
     /**
-     * Get all reference portfolios in a scope.
-     *
-     * @param scope the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPortfolioDto object if successful.
-     */
-    ResourceListOfPortfolioDto listReferencePortfolios(String scope);
-
-    /**
-     * Get all reference portfolios in a scope.
-     *
-     * @param scope the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfPortfolioDto> listReferencePortfoliosAsync(String scope, final ServiceCallback<ResourceListOfPortfolioDto> serviceCallback);
-
-    /**
-     * Get all reference portfolios in a scope.
-     *
-     * @param scope the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioDto object
-     */
-    Observable<ResourceListOfPortfolioDto> listReferencePortfoliosAsync(String scope);
-
-    /**
-     * Get all reference portfolios in a scope.
-     *
-     * @param scope the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioDto object
-     */
-    Observable<ServiceResponse<ResourceListOfPortfolioDto>> listReferencePortfoliosWithServiceResponseAsync(String scope);
-    /**
-     * Get all reference portfolios in a scope.
-     *
-     * @param scope the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPortfolioDto object if successful.
-     */
-    ResourceListOfPortfolioDto listReferencePortfolios(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Get all reference portfolios in a scope.
-     *
-     * @param scope the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfPortfolioDto> listReferencePortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolioDto> serviceCallback);
-
-    /**
-     * Get all reference portfolios in a scope.
-     *
-     * @param scope the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioDto object
-     */
-    Observable<ResourceListOfPortfolioDto> listReferencePortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Get all reference portfolios in a scope.
-     *
-     * @param scope the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioDto object
-     */
-    Observable<ServiceResponse<ResourceListOfPortfolioDto>> listReferencePortfoliosWithServiceResponseAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
      * Create a new reference portfolio.
      *
      * @param scope The intended scope of the portfolio
@@ -7500,7 +4920,7 @@ public interface LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the PortfolioDto object if successful.
      */
-    PortfolioDto createReferencePortfolio(String scope, CreatePortfolioRequest referencePortfolio);
+    PortfolioDto createReferencePortfolio(String scope, CreateReferencePortfolioRequest referencePortfolio);
 
     /**
      * Create a new reference portfolio.
@@ -7511,17 +4931,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioDto> createReferencePortfolioAsync(String scope, CreatePortfolioRequest referencePortfolio, final ServiceCallback<PortfolioDto> serviceCallback);
-
-    /**
-     * Create a new reference portfolio.
-     *
-     * @param scope The intended scope of the portfolio
-     * @param referencePortfolio The portfolio creation request object
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
-     */
-    Observable<PortfolioDto> createReferencePortfolioAsync(String scope, CreatePortfolioRequest referencePortfolio);
+    ServiceFuture<PortfolioDto> createReferencePortfolioAsync(String scope, CreateReferencePortfolioRequest referencePortfolio, final ServiceCallback<PortfolioDto> serviceCallback);
 
     /**
      * Create a new reference portfolio.
@@ -7531,243 +4941,70 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioDto object
      */
-    Observable<ServiceResponse<PortfolioDto>> createReferencePortfolioWithServiceResponseAsync(String scope, CreatePortfolioRequest referencePortfolio);
+    Observable<PortfolioDto> createReferencePortfolioAsync(String scope, CreateReferencePortfolioRequest referencePortfolio);
 
     /**
-     * Get a reference portfolio by name (as opposed to id).
+     * Create a new reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
+     * @param scope The intended scope of the portfolio
+     * @param referencePortfolio The portfolio creation request object
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfReferencePortfolioConstituentDto object if successful.
+     * @return the observable to the PortfolioDto object
      */
-    ResourceListOfReferencePortfolioConstituentDto getReferencePortfolio(String scope, String code);
-
-    /**
-     * Get a reference portfolio by name (as opposed to id).
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioAsync(String scope, String code, final ServiceCallback<ResourceListOfReferencePortfolioConstituentDto> serviceCallback);
-
-    /**
-     * Get a reference portfolio by name (as opposed to id).
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReferencePortfolioConstituentDto object
-     */
-    Observable<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioAsync(String scope, String code);
-
-    /**
-     * Get a reference portfolio by name (as opposed to id).
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReferencePortfolioConstituentDto object
-     */
-    Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituentDto>> getReferencePortfolioWithServiceResponseAsync(String scope, String code);
-    /**
-     * Get a reference portfolio by name (as opposed to id).
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfReferencePortfolioConstituentDto object if successful.
-     */
-    ResourceListOfReferencePortfolioConstituentDto getReferencePortfolio(String scope, String code, DateTime effectiveAt, DateTime asAt);
-
-    /**
-     * Get a reference portfolio by name (as opposed to id).
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, final ServiceCallback<ResourceListOfReferencePortfolioConstituentDto> serviceCallback);
-
-    /**
-     * Get a reference portfolio by name (as opposed to id).
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReferencePortfolioConstituentDto object
-     */
-    Observable<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioAsync(String scope, String code, DateTime effectiveAt, DateTime asAt);
-
-    /**
-     * Get a reference portfolio by name (as opposed to id).
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReferencePortfolioConstituentDto object
-     */
-    Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituentDto>> getReferencePortfolioWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt);
-
-    /**
-     * Delete a specific portfolio.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DeletedEntityResponse object if successful.
-     */
-    DeletedEntityResponse deleteReferencePortfolio(String scope, String code);
-
-    /**
-     * Delete a specific portfolio.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<DeletedEntityResponse> deleteReferencePortfolioAsync(String scope, String code, final ServiceCallback<DeletedEntityResponse> serviceCallback);
-
-    /**
-     * Delete a specific portfolio.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<DeletedEntityResponse> deleteReferencePortfolioAsync(String scope, String code);
-
-    /**
-     * Delete a specific portfolio.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<ServiceResponse<DeletedEntityResponse>> deleteReferencePortfolioWithServiceResponseAsync(String scope, String code);
-    /**
-     * Delete a specific portfolio.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DeletedEntityResponse object if successful.
-     */
-    DeletedEntityResponse deleteReferencePortfolio(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Delete a specific portfolio.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<DeletedEntityResponse> deleteReferencePortfolioAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<DeletedEntityResponse> serviceCallback);
-
-    /**
-     * Delete a specific portfolio.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<DeletedEntityResponse> deleteReferencePortfolioAsync(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Delete a specific portfolio.
-     *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeletedEntityResponse object
-     */
-    Observable<ServiceResponse<DeletedEntityResponse>> deleteReferencePortfolioWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
+    Observable<ServiceResponse<PortfolioDto>> createReferencePortfolioWithServiceResponseAsync(String scope, CreateReferencePortfolioRequest referencePortfolio);
 
     /**
      * Get all the constituents in a reference portfolio.
      *
      * @param scope the String value
-     * @param effectiveAt the DateTime value
      * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the ResourceListOfReferencePortfolioConstituentDto object if successful.
      */
-    ResourceListOfReferencePortfolioConstituentDto getReferencePortfolioConstituents(String scope, DateTime effectiveAt, String code);
+    ResourceListOfReferencePortfolioConstituentDto getReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt);
 
     /**
      * Get all the constituents in a reference portfolio.
      *
      * @param scope the String value
-     * @param effectiveAt the DateTime value
      * @param code the String value
+     * @param effectiveAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioConstituentsAsync(String scope, DateTime effectiveAt, String code, final ServiceCallback<ResourceListOfReferencePortfolioConstituentDto> serviceCallback);
+    ServiceFuture<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<ResourceListOfReferencePortfolioConstituentDto> serviceCallback);
 
     /**
      * Get all the constituents in a reference portfolio.
      *
      * @param scope the String value
-     * @param effectiveAt the DateTime value
      * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituentDto object
      */
-    Observable<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioConstituentsAsync(String scope, DateTime effectiveAt, String code);
+    Observable<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt);
 
     /**
      * Get all the constituents in a reference portfolio.
      *
      * @param scope the String value
-     * @param effectiveAt the DateTime value
      * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituentDto object
      */
-    Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituentDto>> getReferencePortfolioConstituentsWithServiceResponseAsync(String scope, DateTime effectiveAt, String code);
+    Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituentDto>> getReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
     /**
      * Get all the constituents in a reference portfolio.
      *
      * @param scope the String value
-     * @param effectiveAt the DateTime value
      * @param code the String value
-     * @param referencePortfolioId the String value
+     * @param effectiveAt the DateTime value
      * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -7777,15 +5014,14 @@ public interface LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the ResourceListOfReferencePortfolioConstituentDto object if successful.
      */
-    ResourceListOfReferencePortfolioConstituentDto getReferencePortfolioConstituents(String scope, DateTime effectiveAt, String code, String referencePortfolioId, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    ResourceListOfReferencePortfolioConstituentDto getReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Get all the constituents in a reference portfolio.
      *
      * @param scope the String value
-     * @param effectiveAt the DateTime value
      * @param code the String value
-     * @param referencePortfolioId the String value
+     * @param effectiveAt the DateTime value
      * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -7794,15 +5030,14 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioConstituentsAsync(String scope, DateTime effectiveAt, String code, String referencePortfolioId, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ResourceListOfReferencePortfolioConstituentDto> serviceCallback);
+    ServiceFuture<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ResourceListOfReferencePortfolioConstituentDto> serviceCallback);
 
     /**
      * Get all the constituents in a reference portfolio.
      *
      * @param scope the String value
-     * @param effectiveAt the DateTime value
      * @param code the String value
-     * @param referencePortfolioId the String value
+     * @param effectiveAt the DateTime value
      * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -7810,15 +5045,14 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituentDto object
      */
-    Observable<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioConstituentsAsync(String scope, DateTime effectiveAt, String code, String referencePortfolioId, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Get all the constituents in a reference portfolio.
      *
      * @param scope the String value
-     * @param effectiveAt the DateTime value
      * @param code the String value
-     * @param referencePortfolioId the String value
+     * @param effectiveAt the DateTime value
      * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -7826,7 +5060,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituentDto object
      */
-    Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituentDto>> getReferencePortfolioConstituentsWithServiceResponseAsync(String scope, DateTime effectiveAt, String code, String referencePortfolioId, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituentDto>> getReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Add constituents to a specific reference portfolio.
@@ -7880,13 +5114,13 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param code the String value
      * @param effectiveAt the DateTime value
-     * @param constituents the List&lt;ReferencePortfolioConstituentDto&gt; value
+     * @param constituents the List&lt;ReferencePortfolioConstituentRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the UpsertReferencePortfolioConstituentsDto object if successful.
      */
-    UpsertReferencePortfolioConstituentsDto upsertReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentDto> constituents);
+    UpsertReferencePortfolioConstituentsDto upsertReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentRequest> constituents);
 
     /**
      * Add constituents to a specific reference portfolio.
@@ -7894,12 +5128,12 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param code the String value
      * @param effectiveAt the DateTime value
-     * @param constituents the List&lt;ReferencePortfolioConstituentDto&gt; value
+     * @param constituents the List&lt;ReferencePortfolioConstituentRequest&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<UpsertReferencePortfolioConstituentsDto> upsertReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentDto> constituents, final ServiceCallback<UpsertReferencePortfolioConstituentsDto> serviceCallback);
+    ServiceFuture<UpsertReferencePortfolioConstituentsDto> upsertReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentRequest> constituents, final ServiceCallback<UpsertReferencePortfolioConstituentsDto> serviceCallback);
 
     /**
      * Add constituents to a specific reference portfolio.
@@ -7907,11 +5141,11 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param code the String value
      * @param effectiveAt the DateTime value
-     * @param constituents the List&lt;ReferencePortfolioConstituentDto&gt; value
+     * @param constituents the List&lt;ReferencePortfolioConstituentRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsDto object
      */
-    Observable<UpsertReferencePortfolioConstituentsDto> upsertReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentDto> constituents);
+    Observable<UpsertReferencePortfolioConstituentsDto> upsertReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentRequest> constituents);
 
     /**
      * Add constituents to a specific reference portfolio.
@@ -7919,11 +5153,11 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param code the String value
      * @param effectiveAt the DateTime value
-     * @param constituents the List&lt;ReferencePortfolioConstituentDto&gt; value
+     * @param constituents the List&lt;ReferencePortfolioConstituentRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsDto object
      */
-    Observable<ServiceResponse<UpsertReferencePortfolioConstituentsDto>> upsertReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentDto> constituents);
+    Observable<ServiceResponse<UpsertReferencePortfolioConstituentsDto>> upsertReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentRequest> constituents);
 
     /**
      * Retrieve some previously stored results.
@@ -8132,8 +5366,145 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<ResultsDto>> upsertResultsWithServiceResponseAsync(String scope, String key, DateTime dateParameter, CreateResultsRequest request);
 
     /**
+     * Aggregate data from a result set.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader', 'OutputTransaction', 'RealisedGainLoss'
+     * @param scope the String value
+     * @param resultsKey the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ListAggregationResponse object if successful.
+     */
+    ListAggregationResponse getAggregationByResultSet(String scope, String resultsKey);
+
+    /**
+     * Aggregate data from a result set.
+     *
+     * @param scope the String value
+     * @param resultsKey the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ListAggregationResponse> getAggregationByResultSetAsync(String scope, String resultsKey, final ServiceCallback<ListAggregationResponse> serviceCallback);
+
+    /**
+     * Aggregate data from a result set.
+     *
+     * @param scope the String value
+     * @param resultsKey the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ListAggregationResponse object
+     */
+    Observable<ListAggregationResponse> getAggregationByResultSetAsync(String scope, String resultsKey);
+
+    /**
+     * Aggregate data from a result set.
+     *
+     * @param scope the String value
+     * @param resultsKey the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ListAggregationResponse object
+     */
+    Observable<ServiceResponse<ListAggregationResponse>> getAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey);
+    /**
+     * Aggregate data from a result set.
+     *
+     * @param scope the String value
+     * @param resultsKey the String value
+     * @param request the AggregationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ListAggregationResponse object if successful.
+     */
+    ListAggregationResponse getAggregationByResultSet(String scope, String resultsKey, AggregationRequest request, List<String> sortBy, Integer start, Integer limit);
+
+    /**
+     * Aggregate data from a result set.
+     *
+     * @param scope the String value
+     * @param resultsKey the String value
+     * @param request the AggregationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ListAggregationResponse> getAggregationByResultSetAsync(String scope, String resultsKey, AggregationRequest request, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ListAggregationResponse> serviceCallback);
+
+    /**
+     * Aggregate data from a result set.
+     *
+     * @param scope the String value
+     * @param resultsKey the String value
+     * @param request the AggregationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ListAggregationResponse object
+     */
+    Observable<ListAggregationResponse> getAggregationByResultSetAsync(String scope, String resultsKey, AggregationRequest request, List<String> sortBy, Integer start, Integer limit);
+
+    /**
+     * Aggregate data from a result set.
+     *
+     * @param scope the String value
+     * @param resultsKey the String value
+     * @param request the AggregationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ListAggregationResponse object
+     */
+    Observable<ServiceResponse<ListAggregationResponse>> getAggregationByResultSetWithServiceResponseAsync(String scope, String resultsKey, AggregationRequest request, List<String> sortBy, Integer start, Integer limit);
+
+    /**
+     * List all available entities.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfString object if successful.
+     */
+    ResourceListOfString listEntities();
+
+    /**
+     * List all available entities.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ResourceListOfString> listEntitiesAsync(final ServiceCallback<ResourceListOfString> serviceCallback);
+
+    /**
+     * List all available entities.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfString object
+     */
+    Observable<ResourceListOfString> listEntitiesAsync();
+
+    /**
+     * List all available entities.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfString object
+     */
+    Observable<ServiceResponse<ResourceListOfString>> listEntitiesWithServiceResponseAsync();
+
+    /**
+     * Gets the schema for a given entity.
+     *
+     * @param entity the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -8142,8 +5513,9 @@ public interface LUSIDAPI {
     SchemaDto getEntitySchema(String entity);
 
     /**
+     * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader', 'OutputTransaction', 'RealisedGainLoss'
+     * @param entity the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -8151,16 +5523,18 @@ public interface LUSIDAPI {
     ServiceFuture<SchemaDto> getEntitySchemaAsync(String entity, final ServiceCallback<SchemaDto> serviceCallback);
 
     /**
+     * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader', 'OutputTransaction', 'RealisedGainLoss'
+     * @param entity the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the SchemaDto object
      */
     Observable<SchemaDto> getEntitySchemaAsync(String entity);
 
     /**
+     * Gets the schema for a given entity.
      *
-     * @param entity Possible values include: 'PropertyKey', 'FieldSchema', 'Personalisation', 'Security', 'Property', 'CreatePropertyRequest', 'CreatePerpetualPropertyRequest', 'PerpetualProperty', 'Login', 'PropertyDefinition', 'PropertyDataFormat', 'AggregationResponseNode', 'Portfolio', 'CompletePortfolio', 'PortfolioSearchResult', 'PortfolioDetails', 'PortfolioProperties', 'Version', 'AddTradeProperty', 'AnalyticStore', 'AnalyticStoreKey', 'UpsertPortfolioTrades', 'Group', 'Constituent', 'Trade', 'UpsertPortfolioTradesRequest', 'PortfolioHolding', 'AdjustHolding', 'ErrorDetail', 'ErrorResponse', 'InstrumentDefinition', 'ProcessedCommand', 'CreatePortfolio', 'CreateAnalyticStore', 'CreateClientSecurity', 'CreateDerivedPortfolio', 'CreateGroup', 'CreatePropertyDataFormat', 'CreatePropertyDefinition', 'UpdatePortfolio', 'UpdateGroup', 'UpdatePropertyDataFormat', 'UpdatePropertyDefinition', 'SecurityAnalytic', 'AggregationRequest', 'Aggregation', 'NestedAggregation', 'ResultDataSchema', 'Classification', 'SecurityClassification', 'WebLogMessage', 'UpsertPersonalisation', 'CreatePortfolioDetails', 'UpsertConstituent', 'CreateResults', 'Results', 'TryAddClientSecurities', 'TryDeleteClientSecurities', 'TryLookupSecuritiesFromCodes', 'ExpandedGroup', 'CreateCorporateAction', 'CorporateAction', 'CorporateActionTransition', 'ReconciliationRequest', 'ReconciliationBreak', 'TransactionConfigurationData', 'TransactionConfigurationMovementData', 'TransactionConfigurationTypeAlias', 'TryUpsertCorporateActions', 'Iso4217CurrencyUnit', 'BasicUnit', 'CorporateActionTransitionComponent', 'TargetTaxlot', 'AdjustHoldingRequest', 'HoldingsAdjustment', 'HoldingsAdjustmentHeader', 'OutputTransaction', 'RealisedGainLoss'
+     * @param entity the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the SchemaDto object
      */
@@ -8249,9 +5623,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfUiDataType object if successful.
+     * @return the ResourceListOfValueType object if successful.
      */
-    ResourceListOfUiDataType getValueTypes();
+    ResourceListOfValueType getValueTypes();
 
     /**
      * Gets the available value types that could be returned in a schema.
@@ -8260,23 +5634,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfUiDataType> getValueTypesAsync(final ServiceCallback<ResourceListOfUiDataType> serviceCallback);
+    ServiceFuture<ResourceListOfValueType> getValueTypesAsync(final ServiceCallback<ResourceListOfValueType> serviceCallback);
 
     /**
      * Gets the available value types that could be returned in a schema.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfUiDataType object
+     * @return the observable to the ResourceListOfValueType object
      */
-    Observable<ResourceListOfUiDataType> getValueTypesAsync();
+    Observable<ResourceListOfValueType> getValueTypesAsync();
 
     /**
      * Gets the available value types that could be returned in a schema.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfUiDataType object
+     * @return the observable to the ResourceListOfValueType object
      */
-    Observable<ServiceResponse<ResourceListOfUiDataType>> getValueTypesWithServiceResponseAsync();
+    Observable<ServiceResponse<ResourceListOfValueType>> getValueTypesWithServiceResponseAsync();
     /**
      * Gets the available value types that could be returned in a schema.
      *
@@ -8286,9 +5660,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfUiDataType object if successful.
+     * @return the ResourceListOfValueType object if successful.
      */
-    ResourceListOfUiDataType getValueTypes(List<String> sortBy, Integer start, Integer limit);
+    ResourceListOfValueType getValueTypes(List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Gets the available value types that could be returned in a schema.
@@ -8300,18 +5674,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfUiDataType> getValueTypesAsync(List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ResourceListOfUiDataType> serviceCallback);
-
-    /**
-     * Gets the available value types that could be returned in a schema.
-     *
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfUiDataType object
-     */
-    Observable<ResourceListOfUiDataType> getValueTypesAsync(List<String> sortBy, Integer start, Integer limit);
+    ServiceFuture<ResourceListOfValueType> getValueTypesAsync(List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ResourceListOfValueType> serviceCallback);
 
     /**
      * Gets the available value types that could be returned in a schema.
@@ -8320,417 +5683,1725 @@ public interface LUSIDAPI {
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfUiDataType object
+     * @return the observable to the ResourceListOfValueType object
      */
-    Observable<ServiceResponse<ResourceListOfUiDataType>> getValueTypesWithServiceResponseAsync(List<String> sortBy, Integer start, Integer limit);
+    Observable<ResourceListOfValueType> getValueTypesAsync(List<String> sortBy, Integer start, Integer limit);
 
     /**
-     * Attempt to create one or more client securities. Failed securities will be identified in the body of the response.
+     * Gets the available value types that could be returned in a schema.
+     *
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfValueType object
+     */
+    Observable<ServiceResponse<ResourceListOfValueType>> getValueTypesWithServiceResponseAsync(List<String> sortBy, Integer start, Integer limit);
+
+    /**
+     * Gets the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryAddClientSecuritiesDto object if successful.
+     * @return the ResourceListOfTransactionMetaDataDto object if successful.
      */
-    TryAddClientSecuritiesDto batchAddClientSecurities();
+    ResourceListOfTransactionMetaDataDto listConfigurationTransactionTypes();
 
     /**
-     * Attempt to create one or more client securities. Failed securities will be identified in the body of the response.
+     * Gets the list of persisted transaction types.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryAddClientSecuritiesDto> batchAddClientSecuritiesAsync(final ServiceCallback<TryAddClientSecuritiesDto> serviceCallback);
+    ServiceFuture<ResourceListOfTransactionMetaDataDto> listConfigurationTransactionTypesAsync(final ServiceCallback<ResourceListOfTransactionMetaDataDto> serviceCallback);
 
     /**
-     * Attempt to create one or more client securities. Failed securities will be identified in the body of the response.
+     * Gets the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryAddClientSecuritiesDto object
+     * @return the observable to the ResourceListOfTransactionMetaDataDto object
      */
-    Observable<TryAddClientSecuritiesDto> batchAddClientSecuritiesAsync();
+    Observable<ResourceListOfTransactionMetaDataDto> listConfigurationTransactionTypesAsync();
 
     /**
-     * Attempt to create one or more client securities. Failed securities will be identified in the body of the response.
+     * Gets the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryAddClientSecuritiesDto object
+     * @return the observable to the ResourceListOfTransactionMetaDataDto object
      */
-    Observable<ServiceResponse<TryAddClientSecuritiesDto>> batchAddClientSecuritiesWithServiceResponseAsync();
-    /**
-     * Attempt to create one or more client securities. Failed securities will be identified in the body of the response.
-     *
-     * @param definitions the List&lt;CreateClientSecurityRequest&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryAddClientSecuritiesDto object if successful.
-     */
-    TryAddClientSecuritiesDto batchAddClientSecurities(List<CreateClientSecurityRequest> definitions);
+    Observable<ServiceResponse<ResourceListOfTransactionMetaDataDto>> listConfigurationTransactionTypesWithServiceResponseAsync();
 
     /**
-     * Attempt to create one or more client securities. Failed securities will be identified in the body of the response.
-     *
-     * @param definitions the List&lt;CreateClientSecurityRequest&gt; value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<TryAddClientSecuritiesDto> batchAddClientSecuritiesAsync(List<CreateClientSecurityRequest> definitions, final ServiceCallback<TryAddClientSecuritiesDto> serviceCallback);
-
-    /**
-     * Attempt to create one or more client securities. Failed securities will be identified in the body of the response.
-     *
-     * @param definitions the List&lt;CreateClientSecurityRequest&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryAddClientSecuritiesDto object
-     */
-    Observable<TryAddClientSecuritiesDto> batchAddClientSecuritiesAsync(List<CreateClientSecurityRequest> definitions);
-
-    /**
-     * Attempt to create one or more client securities. Failed securities will be identified in the body of the response.
-     *
-     * @param definitions the List&lt;CreateClientSecurityRequest&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryAddClientSecuritiesDto object
-     */
-    Observable<ServiceResponse<TryAddClientSecuritiesDto>> batchAddClientSecuritiesWithServiceResponseAsync(List<CreateClientSecurityRequest> definitions);
-
-    /**
-     * Attempt to delete one or more client securities. Failed securities will be identified in the body of the response.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryDeleteClientSecuritiesDto object if successful.
+     * @return the ResourceListOfTransactionMetaDataDto object if successful.
      */
-    TryDeleteClientSecuritiesDto batchDeleteClientSecurities();
+    ResourceListOfTransactionMetaDataDto setConfigurationTransactionTypes();
 
     /**
-     * Attempt to delete one or more client securities. Failed securities will be identified in the body of the response.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryDeleteClientSecuritiesDto> batchDeleteClientSecuritiesAsync(final ServiceCallback<TryDeleteClientSecuritiesDto> serviceCallback);
+    ServiceFuture<ResourceListOfTransactionMetaDataDto> setConfigurationTransactionTypesAsync(final ServiceCallback<ResourceListOfTransactionMetaDataDto> serviceCallback);
 
     /**
-     * Attempt to delete one or more client securities. Failed securities will be identified in the body of the response.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryDeleteClientSecuritiesDto object
+     * @return the observable to the ResourceListOfTransactionMetaDataDto object
      */
-    Observable<TryDeleteClientSecuritiesDto> batchDeleteClientSecuritiesAsync();
+    Observable<ResourceListOfTransactionMetaDataDto> setConfigurationTransactionTypesAsync();
 
     /**
-     * Attempt to delete one or more client securities. Failed securities will be identified in the body of the response.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryDeleteClientSecuritiesDto object
+     * @return the observable to the ResourceListOfTransactionMetaDataDto object
      */
-    Observable<ServiceResponse<TryDeleteClientSecuritiesDto>> batchDeleteClientSecuritiesWithServiceResponseAsync();
+    Observable<ServiceResponse<ResourceListOfTransactionMetaDataDto>> setConfigurationTransactionTypesWithServiceResponseAsync();
     /**
-     * Attempt to delete one or more client securities. Failed securities will be identified in the body of the response.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
-     * @param uids the List&lt;String&gt; value
+     * @param types the List&lt;TransactionMetaDataRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryDeleteClientSecuritiesDto object if successful.
+     * @return the ResourceListOfTransactionMetaDataDto object if successful.
      */
-    TryDeleteClientSecuritiesDto batchDeleteClientSecurities(List<String> uids);
+    ResourceListOfTransactionMetaDataDto setConfigurationTransactionTypes(List<TransactionMetaDataRequest> types);
 
     /**
-     * Attempt to delete one or more client securities. Failed securities will be identified in the body of the response.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
-     * @param uids the List&lt;String&gt; value
+     * @param types the List&lt;TransactionMetaDataRequest&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryDeleteClientSecuritiesDto> batchDeleteClientSecuritiesAsync(List<String> uids, final ServiceCallback<TryDeleteClientSecuritiesDto> serviceCallback);
+    ServiceFuture<ResourceListOfTransactionMetaDataDto> setConfigurationTransactionTypesAsync(List<TransactionMetaDataRequest> types, final ServiceCallback<ResourceListOfTransactionMetaDataDto> serviceCallback);
 
     /**
-     * Attempt to delete one or more client securities. Failed securities will be identified in the body of the response.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
-     * @param uids the List&lt;String&gt; value
+     * @param types the List&lt;TransactionMetaDataRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryDeleteClientSecuritiesDto object
+     * @return the observable to the ResourceListOfTransactionMetaDataDto object
      */
-    Observable<TryDeleteClientSecuritiesDto> batchDeleteClientSecuritiesAsync(List<String> uids);
+    Observable<ResourceListOfTransactionMetaDataDto> setConfigurationTransactionTypesAsync(List<TransactionMetaDataRequest> types);
 
     /**
-     * Attempt to delete one or more client securities. Failed securities will be identified in the body of the response.
+     * Uploads a list of transaction types to be used by the movements engine.
      *
-     * @param uids the List&lt;String&gt; value
+     * @param types the List&lt;TransactionMetaDataRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryDeleteClientSecuritiesDto object
+     * @return the observable to the ResourceListOfTransactionMetaDataDto object
      */
-    Observable<ServiceResponse<TryDeleteClientSecuritiesDto>> batchDeleteClientSecuritiesWithServiceResponseAsync(List<String> uids);
+    Observable<ServiceResponse<ResourceListOfTransactionMetaDataDto>> setConfigurationTransactionTypesWithServiceResponseAsync(List<TransactionMetaDataRequest> types);
 
     /**
-     * Get an individual security by the unique security uid.  Optionally, decorate each security with specific properties.
+     * Adds a new transaction type movement to the list of existing types.
      *
-     * @param uid The uid of the requested security
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the SecurityDto object if successful.
+     * @return the TransactionMetaDataDto object if successful.
      */
-    SecurityDto getSecurity(String uid);
+    TransactionMetaDataDto createConfigurationTransactionType();
 
     /**
-     * Get an individual security by the unique security uid.  Optionally, decorate each security with specific properties.
+     * Adds a new transaction type movement to the list of existing types.
      *
-     * @param uid The uid of the requested security
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<SecurityDto> getSecurityAsync(String uid, final ServiceCallback<SecurityDto> serviceCallback);
+    ServiceFuture<TransactionMetaDataDto> createConfigurationTransactionTypeAsync(final ServiceCallback<TransactionMetaDataDto> serviceCallback);
 
     /**
-     * Get an individual security by the unique security uid.  Optionally, decorate each security with specific properties.
+     * Adds a new transaction type movement to the list of existing types.
      *
-     * @param uid The uid of the requested security
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the SecurityDto object
+     * @return the observable to the TransactionMetaDataDto object
      */
-    Observable<SecurityDto> getSecurityAsync(String uid);
+    Observable<TransactionMetaDataDto> createConfigurationTransactionTypeAsync();
 
     /**
-     * Get an individual security by the unique security uid.  Optionally, decorate each security with specific properties.
+     * Adds a new transaction type movement to the list of existing types.
      *
-     * @param uid The uid of the requested security
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the SecurityDto object
+     * @return the observable to the TransactionMetaDataDto object
      */
-    Observable<ServiceResponse<SecurityDto>> getSecurityWithServiceResponseAsync(String uid);
+    Observable<ServiceResponse<TransactionMetaDataDto>> createConfigurationTransactionTypeWithServiceResponseAsync();
     /**
-     * Get an individual security by the unique security uid.  Optionally, decorate each security with specific properties.
+     * Adds a new transaction type movement to the list of existing types.
      *
-     * @param uid The uid of the requested security
-     * @param asAt As at date
-     * @param propertyKeys Keys of the properties to be retrieved
+     * @param type the TransactionMetaDataRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the SecurityDto object if successful.
+     * @return the TransactionMetaDataDto object if successful.
      */
-    SecurityDto getSecurity(String uid, DateTime asAt, List<String> propertyKeys);
+    TransactionMetaDataDto createConfigurationTransactionType(TransactionMetaDataRequest type);
 
     /**
-     * Get an individual security by the unique security uid.  Optionally, decorate each security with specific properties.
+     * Adds a new transaction type movement to the list of existing types.
      *
-     * @param uid The uid of the requested security
-     * @param asAt As at date
-     * @param propertyKeys Keys of the properties to be retrieved
+     * @param type the TransactionMetaDataRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<SecurityDto> getSecurityAsync(String uid, DateTime asAt, List<String> propertyKeys, final ServiceCallback<SecurityDto> serviceCallback);
+    ServiceFuture<TransactionMetaDataDto> createConfigurationTransactionTypeAsync(TransactionMetaDataRequest type, final ServiceCallback<TransactionMetaDataDto> serviceCallback);
 
     /**
-     * Get an individual security by the unique security uid.  Optionally, decorate each security with specific properties.
+     * Adds a new transaction type movement to the list of existing types.
      *
-     * @param uid The uid of the requested security
-     * @param asAt As at date
-     * @param propertyKeys Keys of the properties to be retrieved
+     * @param type the TransactionMetaDataRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the SecurityDto object
+     * @return the observable to the TransactionMetaDataDto object
      */
-    Observable<SecurityDto> getSecurityAsync(String uid, DateTime asAt, List<String> propertyKeys);
+    Observable<TransactionMetaDataDto> createConfigurationTransactionTypeAsync(TransactionMetaDataRequest type);
 
     /**
-     * Get an individual security by the unique security uid.  Optionally, decorate each security with specific properties.
+     * Adds a new transaction type movement to the list of existing types.
      *
-     * @param uid The uid of the requested security
-     * @param asAt As at date
-     * @param propertyKeys Keys of the properties to be retrieved
+     * @param type the TransactionMetaDataRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the SecurityDto object
+     * @return the observable to the TransactionMetaDataDto object
      */
-    Observable<ServiceResponse<SecurityDto>> getSecurityWithServiceResponseAsync(String uid, DateTime asAt, List<String> propertyKeys);
+    Observable<ServiceResponse<TransactionMetaDataDto>> createConfigurationTransactionTypeWithServiceResponseAsync(TransactionMetaDataRequest type);
 
     /**
-     * Lookup more than one security by supplying a collection of non-Finbourne codes.  Optionally, decorate each security with specific properties.
+     * Create portfolio.
+     * Creates a new portfolio.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param scope The intended scope of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryLookupSecuritiesFromCodesDto object if successful.
+     * @return the PortfolioDto object if successful.
      */
-    TryLookupSecuritiesFromCodesDto lookupSecuritiesFromCodes(String codeType);
+    PortfolioDto createPortfolio(String scope);
 
     /**
-     * Lookup more than one security by supplying a collection of non-Finbourne codes.  Optionally, decorate each security with specific properties.
+     * Create portfolio.
+     * Creates a new portfolio.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param scope The intended scope of the portfolio
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryLookupSecuritiesFromCodesDto> lookupSecuritiesFromCodesAsync(String codeType, final ServiceCallback<TryLookupSecuritiesFromCodesDto> serviceCallback);
+    ServiceFuture<PortfolioDto> createPortfolioAsync(String scope, final ServiceCallback<PortfolioDto> serviceCallback);
 
     /**
-     * Lookup more than one security by supplying a collection of non-Finbourne codes.  Optionally, decorate each security with specific properties.
+     * Create portfolio.
+     * Creates a new portfolio.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param scope The intended scope of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryLookupSecuritiesFromCodesDto object
+     * @return the observable to the PortfolioDto object
      */
-    Observable<TryLookupSecuritiesFromCodesDto> lookupSecuritiesFromCodesAsync(String codeType);
+    Observable<PortfolioDto> createPortfolioAsync(String scope);
 
     /**
-     * Lookup more than one security by supplying a collection of non-Finbourne codes.  Optionally, decorate each security with specific properties.
+     * Create portfolio.
+     * Creates a new portfolio.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param scope The intended scope of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryLookupSecuritiesFromCodesDto object
+     * @return the observable to the PortfolioDto object
      */
-    Observable<ServiceResponse<TryLookupSecuritiesFromCodesDto>> lookupSecuritiesFromCodesWithServiceResponseAsync(String codeType);
+    Observable<ServiceResponse<PortfolioDto>> createPortfolioWithServiceResponseAsync(String scope);
     /**
-     * Lookup more than one security by supplying a collection of non-Finbourne codes.  Optionally, decorate each security with specific properties.
+     * Create portfolio.
+     * Creates a new portfolio.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
-     * @param codes An array of codes
-     * @param asAt As at date
-     * @param propertyKeys Keys of the properties to be retrieved
+     * @param scope The intended scope of the portfolio
+     * @param createRequest The portfolio creation request object
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryLookupSecuritiesFromCodesDto object if successful.
+     * @return the PortfolioDto object if successful.
      */
-    TryLookupSecuritiesFromCodesDto lookupSecuritiesFromCodes(String codeType, List<String> codes, DateTime asAt, List<String> propertyKeys);
+    PortfolioDto createPortfolio(String scope, CreateTransactionPortfolioRequest createRequest);
 
     /**
-     * Lookup more than one security by supplying a collection of non-Finbourne codes.  Optionally, decorate each security with specific properties.
+     * Create portfolio.
+     * Creates a new portfolio.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
-     * @param codes An array of codes
-     * @param asAt As at date
-     * @param propertyKeys Keys of the properties to be retrieved
+     * @param scope The intended scope of the portfolio
+     * @param createRequest The portfolio creation request object
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryLookupSecuritiesFromCodesDto> lookupSecuritiesFromCodesAsync(String codeType, List<String> codes, DateTime asAt, List<String> propertyKeys, final ServiceCallback<TryLookupSecuritiesFromCodesDto> serviceCallback);
+    ServiceFuture<PortfolioDto> createPortfolioAsync(String scope, CreateTransactionPortfolioRequest createRequest, final ServiceCallback<PortfolioDto> serviceCallback);
 
     /**
-     * Lookup more than one security by supplying a collection of non-Finbourne codes.  Optionally, decorate each security with specific properties.
+     * Create portfolio.
+     * Creates a new portfolio.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
-     * @param codes An array of codes
-     * @param asAt As at date
-     * @param propertyKeys Keys of the properties to be retrieved
+     * @param scope The intended scope of the portfolio
+     * @param createRequest The portfolio creation request object
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryLookupSecuritiesFromCodesDto object
+     * @return the observable to the PortfolioDto object
      */
-    Observable<TryLookupSecuritiesFromCodesDto> lookupSecuritiesFromCodesAsync(String codeType, List<String> codes, DateTime asAt, List<String> propertyKeys);
+    Observable<PortfolioDto> createPortfolioAsync(String scope, CreateTransactionPortfolioRequest createRequest);
 
     /**
-     * Lookup more than one security by supplying a collection of non-Finbourne codes.  Optionally, decorate each security with specific properties.
+     * Create portfolio.
+     * Creates a new portfolio.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
-     * @param codes An array of codes
-     * @param asAt As at date
-     * @param propertyKeys Keys of the properties to be retrieved
+     * @param scope The intended scope of the portfolio
+     * @param createRequest The portfolio creation request object
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryLookupSecuritiesFromCodesDto object
+     * @return the observable to the PortfolioDto object
      */
-    Observable<ServiceResponse<TryLookupSecuritiesFromCodesDto>> lookupSecuritiesFromCodesWithServiceResponseAsync(String codeType, List<String> codes, DateTime asAt, List<String> propertyKeys);
+    Observable<ServiceResponse<PortfolioDto>> createPortfolioWithServiceResponseAsync(String scope, CreateTransactionPortfolioRequest createRequest);
 
     /**
-     * Lookup a large number of securities by supplying a collection of non-Finbourne codes.  Optionally, decorate each security with specific properties.
+     * Get portfolio details.
+     * Gets the details for a portfolio.  For a derived portfolio this can be
+                 the details of another reference portfolio.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryLookupSecuritiesFromCodesDto object if successful.
+     * @return the PortfolioDetailsDto object if successful.
      */
-    TryLookupSecuritiesFromCodesDto lookupSecuritiesFromCodesBulk(String codeType);
+    PortfolioDetailsDto getDetails(String scope, String code);
 
     /**
-     * Lookup a large number of securities by supplying a collection of non-Finbourne codes.  Optionally, decorate each security with specific properties.
+     * Get portfolio details.
+     * Gets the details for a portfolio.  For a derived portfolio this can be
+                 the details of another reference portfolio.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryLookupSecuritiesFromCodesDto> lookupSecuritiesFromCodesBulkAsync(String codeType, final ServiceCallback<TryLookupSecuritiesFromCodesDto> serviceCallback);
+    ServiceFuture<PortfolioDetailsDto> getDetailsAsync(String scope, String code, final ServiceCallback<PortfolioDetailsDto> serviceCallback);
 
     /**
-     * Lookup a large number of securities by supplying a collection of non-Finbourne codes.  Optionally, decorate each security with specific properties.
+     * Get portfolio details.
+     * Gets the details for a portfolio.  For a derived portfolio this can be
+                 the details of another reference portfolio.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryLookupSecuritiesFromCodesDto object
+     * @return the observable to the PortfolioDetailsDto object
      */
-    Observable<TryLookupSecuritiesFromCodesDto> lookupSecuritiesFromCodesBulkAsync(String codeType);
+    Observable<PortfolioDetailsDto> getDetailsAsync(String scope, String code);
 
     /**
-     * Lookup a large number of securities by supplying a collection of non-Finbourne codes.  Optionally, decorate each security with specific properties.
+     * Get portfolio details.
+     * Gets the details for a portfolio.  For a derived portfolio this can be
+                 the details of another reference portfolio.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryLookupSecuritiesFromCodesDto object
+     * @return the observable to the PortfolioDetailsDto object
      */
-    Observable<ServiceResponse<TryLookupSecuritiesFromCodesDto>> lookupSecuritiesFromCodesBulkWithServiceResponseAsync(String codeType);
+    Observable<ServiceResponse<PortfolioDetailsDto>> getDetailsWithServiceResponseAsync(String scope, String code);
     /**
-     * Lookup a large number of securities by supplying a collection of non-Finbourne codes.  Optionally, decorate each security with specific properties.
+     * Get portfolio details.
+     * Gets the details for a portfolio.  For a derived portfolio this can be
+                 the details of another reference portfolio.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
-     * @param codes An array of codes
-     * @param asAt As at date
-     * @param propertyKeys Keys of the properties to be retrieved
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param asAt The asAt date to use
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryLookupSecuritiesFromCodesDto object if successful.
+     * @return the PortfolioDetailsDto object if successful.
      */
-    TryLookupSecuritiesFromCodesDto lookupSecuritiesFromCodesBulk(String codeType, List<String> codes, DateTime asAt, List<String> propertyKeys);
+    PortfolioDetailsDto getDetails(String scope, String code, DateTime effectiveAt, DateTime asAt);
 
     /**
-     * Lookup a large number of securities by supplying a collection of non-Finbourne codes.  Optionally, decorate each security with specific properties.
+     * Get portfolio details.
+     * Gets the details for a portfolio.  For a derived portfolio this can be
+                 the details of another reference portfolio.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
-     * @param codes An array of codes
-     * @param asAt As at date
-     * @param propertyKeys Keys of the properties to be retrieved
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param asAt The asAt date to use
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryLookupSecuritiesFromCodesDto> lookupSecuritiesFromCodesBulkAsync(String codeType, List<String> codes, DateTime asAt, List<String> propertyKeys, final ServiceCallback<TryLookupSecuritiesFromCodesDto> serviceCallback);
+    ServiceFuture<PortfolioDetailsDto> getDetailsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, final ServiceCallback<PortfolioDetailsDto> serviceCallback);
 
     /**
-     * Lookup a large number of securities by supplying a collection of non-Finbourne codes.  Optionally, decorate each security with specific properties.
+     * Get portfolio details.
+     * Gets the details for a portfolio.  For a derived portfolio this can be
+                 the details of another reference portfolio.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
-     * @param codes An array of codes
-     * @param asAt As at date
-     * @param propertyKeys Keys of the properties to be retrieved
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param asAt The asAt date to use
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryLookupSecuritiesFromCodesDto object
+     * @return the observable to the PortfolioDetailsDto object
      */
-    Observable<TryLookupSecuritiesFromCodesDto> lookupSecuritiesFromCodesBulkAsync(String codeType, List<String> codes, DateTime asAt, List<String> propertyKeys);
+    Observable<PortfolioDetailsDto> getDetailsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt);
 
     /**
-     * Lookup a large number of securities by supplying a collection of non-Finbourne codes.  Optionally, decorate each security with specific properties.
+     * Get portfolio details.
+     * Gets the details for a portfolio.  For a derived portfolio this can be
+                 the details of another reference portfolio.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
-     * @param codes An array of codes
-     * @param asAt As at date
-     * @param propertyKeys Keys of the properties to be retrieved
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param asAt The asAt date to use
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryLookupSecuritiesFromCodesDto object
+     * @return the observable to the PortfolioDetailsDto object
      */
-    Observable<ServiceResponse<TryLookupSecuritiesFromCodesDto>> lookupSecuritiesFromCodesBulkWithServiceResponseAsync(String codeType, List<String> codes, DateTime asAt, List<String> propertyKeys);
+    Observable<ServiceResponse<PortfolioDetailsDto>> getDetailsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt);
+
+    /**
+     * Add/update portfolio details.
+     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
+     null values will remove any existing values.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the PortfolioDetailsDto object if successful.
+     */
+    PortfolioDetailsDto upsertPortfolioDetails(String scope, String code);
+
+    /**
+     * Add/update portfolio details.
+     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
+     null values will remove any existing values.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<PortfolioDetailsDto> upsertPortfolioDetailsAsync(String scope, String code, final ServiceCallback<PortfolioDetailsDto> serviceCallback);
+
+    /**
+     * Add/update portfolio details.
+     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
+     null values will remove any existing values.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioDetailsDto object
+     */
+    Observable<PortfolioDetailsDto> upsertPortfolioDetailsAsync(String scope, String code);
+
+    /**
+     * Add/update portfolio details.
+     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
+     null values will remove any existing values.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioDetailsDto object
+     */
+    Observable<ServiceResponse<PortfolioDetailsDto>> upsertPortfolioDetailsWithServiceResponseAsync(String scope, String code);
+    /**
+     * Add/update portfolio details.
+     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
+     null values will remove any existing values.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param details the PortfolioDetailsRequest value
+     * @param effectiveAt The effective date of the change
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the PortfolioDetailsDto object if successful.
+     */
+    PortfolioDetailsDto upsertPortfolioDetails(String scope, String code, PortfolioDetailsRequest details, DateTime effectiveAt);
+
+    /**
+     * Add/update portfolio details.
+     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
+     null values will remove any existing values.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param details the PortfolioDetailsRequest value
+     * @param effectiveAt The effective date of the change
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<PortfolioDetailsDto> upsertPortfolioDetailsAsync(String scope, String code, PortfolioDetailsRequest details, DateTime effectiveAt, final ServiceCallback<PortfolioDetailsDto> serviceCallback);
+
+    /**
+     * Add/update portfolio details.
+     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
+     null values will remove any existing values.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param details the PortfolioDetailsRequest value
+     * @param effectiveAt The effective date of the change
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioDetailsDto object
+     */
+    Observable<PortfolioDetailsDto> upsertPortfolioDetailsAsync(String scope, String code, PortfolioDetailsRequest details, DateTime effectiveAt);
+
+    /**
+     * Add/update portfolio details.
+     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
+     null values will remove any existing values.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param details the PortfolioDetailsRequest value
+     * @param effectiveAt The effective date of the change
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the PortfolioDetailsDto object
+     */
+    Observable<ServiceResponse<PortfolioDetailsDto>> upsertPortfolioDetailsWithServiceResponseAsync(String scope, String code, PortfolioDetailsRequest details, DateTime effectiveAt);
+
+    /**
+     * Get holdings.
+     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
+     are supplied then values will be defaulted to the latest system time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the VersionedResourceListOfHoldingDto object if successful.
+     */
+    VersionedResourceListOfHoldingDto getHoldings(String scope, String code);
+
+    /**
+     * Get holdings.
+     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
+     are supplied then values will be defaulted to the latest system time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<VersionedResourceListOfHoldingDto> getHoldingsAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfHoldingDto> serviceCallback);
+
+    /**
+     * Get holdings.
+     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
+     are supplied then values will be defaulted to the latest system time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the VersionedResourceListOfHoldingDto object
+     */
+    Observable<VersionedResourceListOfHoldingDto> getHoldingsAsync(String scope, String code);
+
+    /**
+     * Get holdings.
+     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
+     are supplied then values will be defaulted to the latest system time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the VersionedResourceListOfHoldingDto object
+     */
+    Observable<ServiceResponse<VersionedResourceListOfHoldingDto>> getHoldingsWithServiceResponseAsync(String scope, String code);
+    /**
+     * Get holdings.
+     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
+     are supplied then values will be defaulted to the latest system time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param asAt As at date
+     * @param sortBy The columns to sort the returned data by
+     * @param start How many items to skip from the returned set
+     * @param limit How many items to return from the set
+     * @param filter A filter on the results
+     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the holdings
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the VersionedResourceListOfHoldingDto object if successful.
+     */
+    VersionedResourceListOfHoldingDto getHoldings(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys);
+
+    /**
+     * Get holdings.
+     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
+     are supplied then values will be defaulted to the latest system time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param asAt As at date
+     * @param sortBy The columns to sort the returned data by
+     * @param start How many items to skip from the returned set
+     * @param limit How many items to return from the set
+     * @param filter A filter on the results
+     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the holdings
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<VersionedResourceListOfHoldingDto> getHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys, final ServiceCallback<VersionedResourceListOfHoldingDto> serviceCallback);
+
+    /**
+     * Get holdings.
+     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
+     are supplied then values will be defaulted to the latest system time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param asAt As at date
+     * @param sortBy The columns to sort the returned data by
+     * @param start How many items to skip from the returned set
+     * @param limit How many items to return from the set
+     * @param filter A filter on the results
+     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the holdings
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the VersionedResourceListOfHoldingDto object
+     */
+    Observable<VersionedResourceListOfHoldingDto> getHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys);
+
+    /**
+     * Get holdings.
+     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
+     are supplied then values will be defaulted to the latest system time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param asAt As at date
+     * @param sortBy The columns to sort the returned data by
+     * @param start How many items to skip from the returned set
+     * @param limit How many items to return from the set
+     * @param filter A filter on the results
+     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the holdings
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the VersionedResourceListOfHoldingDto object
+     */
+    Observable<ServiceResponse<VersionedResourceListOfHoldingDto>> getHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the AdjustHoldingsDto object if successful.
+     */
+    AdjustHoldingsDto setHoldings(String scope, String code, DateTime effectiveAt);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<AdjustHoldingsDto> setHoldingsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<AdjustHoldingsDto> serviceCallback);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the AdjustHoldingsDto object
+     */
+    Observable<AdjustHoldingsDto> setHoldingsAsync(String scope, String code, DateTime effectiveAt);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the AdjustHoldingsDto object
+     */
+    Observable<ServiceResponse<AdjustHoldingsDto>> setHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the AdjustHoldingsDto object if successful.
+     */
+    AdjustHoldingsDto setHoldings(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<AdjustHoldingsDto> setHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments, final ServiceCallback<AdjustHoldingsDto> serviceCallback);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the AdjustHoldingsDto object
+     */
+    Observable<AdjustHoldingsDto> setHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the AdjustHoldingsDto object
+     */
+    Observable<ServiceResponse<AdjustHoldingsDto>> setHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the AdjustHoldingsDto object if successful.
+     */
+    AdjustHoldingsDto adjustHoldings(String scope, String code, DateTime effectiveAt);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<AdjustHoldingsDto> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<AdjustHoldingsDto> serviceCallback);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the AdjustHoldingsDto object
+     */
+    Observable<AdjustHoldingsDto> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the AdjustHoldingsDto object
+     */
+    Observable<ServiceResponse<AdjustHoldingsDto>> adjustHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the AdjustHoldingsDto object if successful.
+     */
+    AdjustHoldingsDto adjustHoldings(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<AdjustHoldingsDto> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments, final ServiceCallback<AdjustHoldingsDto> serviceCallback);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the AdjustHoldingsDto object
+     */
+    Observable<AdjustHoldingsDto> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the AdjustHoldingsDto object
+     */
+    Observable<ServiceResponse<AdjustHoldingsDto>> adjustHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
+
+    /**
+     * Cancel adjust-holdings.
+     * Cancels a previous adjust holdings request.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the DeletedEntityResponse object if successful.
+     */
+    DeletedEntityResponse cancelAdjustHoldings(String scope, String code, DateTime effectiveAt);
+
+    /**
+     * Cancel adjust-holdings.
+     * Cancels a previous adjust holdings request.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<DeletedEntityResponse> cancelAdjustHoldingsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<DeletedEntityResponse> serviceCallback);
+
+    /**
+     * Cancel adjust-holdings.
+     * Cancels a previous adjust holdings request.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeletedEntityResponse object
+     */
+    Observable<DeletedEntityResponse> cancelAdjustHoldingsAsync(String scope, String code, DateTime effectiveAt);
+
+    /**
+     * Cancel adjust-holdings.
+     * Cancels a previous adjust holdings request.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeletedEntityResponse object
+     */
+    Observable<ServiceResponse<DeletedEntityResponse>> cancelAdjustHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
+
+    /**
+     * Gets holdings adjustments in an interval of effective time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the HoldingsAdjustmentHeaderDto object if successful.
+     */
+    HoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code);
+
+    /**
+     * Gets holdings adjustments in an interval of effective time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, final ServiceCallback<HoldingsAdjustmentHeaderDto> serviceCallback);
+
+    /**
+     * Gets holdings adjustments in an interval of effective time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     */
+    Observable<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code);
+
+    /**
+     * Gets holdings adjustments in an interval of effective time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     */
+    Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code);
+    /**
+     * Gets holdings adjustments in an interval of effective time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
+     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
+     * @param asAtTime The as-at time for which the result is valid.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the HoldingsAdjustmentHeaderDto object if successful.
+     */
+    HoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
+
+    /**
+     * Gets holdings adjustments in an interval of effective time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
+     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
+     * @param asAtTime The as-at time for which the result is valid.
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime, final ServiceCallback<HoldingsAdjustmentHeaderDto> serviceCallback);
+
+    /**
+     * Gets holdings adjustments in an interval of effective time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
+     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
+     * @param asAtTime The as-at time for which the result is valid.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     */
+    Observable<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
+
+    /**
+     * Gets holdings adjustments in an interval of effective time.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
+     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
+     * @param asAtTime The as-at time for which the result is valid.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     */
+    Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
+
+    /**
+     * Get a holdings adjustment for a single portfolio at a specific effective time.
+     If no adjustment exists at this effective time, not found is returned.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective time of the holdings adjustment.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the HoldingsAdjustmentDto object if successful.
+     */
+    HoldingsAdjustmentDto getHoldingsAdjustment(String scope, String code, DateTime effectiveAt);
+
+    /**
+     * Get a holdings adjustment for a single portfolio at a specific effective time.
+     If no adjustment exists at this effective time, not found is returned.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective time of the holdings adjustment.
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<HoldingsAdjustmentDto> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<HoldingsAdjustmentDto> serviceCallback);
+
+    /**
+     * Get a holdings adjustment for a single portfolio at a specific effective time.
+     If no adjustment exists at this effective time, not found is returned.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective time of the holdings adjustment.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the HoldingsAdjustmentDto object
+     */
+    Observable<HoldingsAdjustmentDto> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt);
+
+    /**
+     * Get a holdings adjustment for a single portfolio at a specific effective time.
+     If no adjustment exists at this effective time, not found is returned.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective time of the holdings adjustment.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the HoldingsAdjustmentDto object
+     */
+    Observable<ServiceResponse<HoldingsAdjustmentDto>> getHoldingsAdjustmentWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
+    /**
+     * Get a holdings adjustment for a single portfolio at a specific effective time.
+     If no adjustment exists at this effective time, not found is returned.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective time of the holdings adjustment.
+     * @param asAtTime The as-at time for which the result is valid.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the HoldingsAdjustmentDto object if successful.
+     */
+    HoldingsAdjustmentDto getHoldingsAdjustment(String scope, String code, DateTime effectiveAt, DateTime asAtTime);
+
+    /**
+     * Get a holdings adjustment for a single portfolio at a specific effective time.
+     If no adjustment exists at this effective time, not found is returned.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective time of the holdings adjustment.
+     * @param asAtTime The as-at time for which the result is valid.
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<HoldingsAdjustmentDto> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt, DateTime asAtTime, final ServiceCallback<HoldingsAdjustmentDto> serviceCallback);
+
+    /**
+     * Get a holdings adjustment for a single portfolio at a specific effective time.
+     If no adjustment exists at this effective time, not found is returned.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective time of the holdings adjustment.
+     * @param asAtTime The as-at time for which the result is valid.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the HoldingsAdjustmentDto object
+     */
+    Observable<HoldingsAdjustmentDto> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt, DateTime asAtTime);
+
+    /**
+     * Get a holdings adjustment for a single portfolio at a specific effective time.
+     If no adjustment exists at this effective time, not found is returned.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt The effective time of the holdings adjustment.
+     * @param asAtTime The as-at time for which the result is valid.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the HoldingsAdjustmentDto object
+     */
+    Observable<ServiceResponse<HoldingsAdjustmentDto>> getHoldingsAdjustmentWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAtTime);
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the VersionedResourceListOfTransactionDto object if successful.
+     */
+    VersionedResourceListOfTransactionDto getTransactions(String scope, String code);
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<VersionedResourceListOfTransactionDto> getTransactionsAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfTransactionDto> serviceCallback);
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the VersionedResourceListOfTransactionDto object
+     */
+    Observable<VersionedResourceListOfTransactionDto> getTransactionsAsync(String scope, String code);
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the VersionedResourceListOfTransactionDto object
+     */
+    Observable<ServiceResponse<VersionedResourceListOfTransactionDto>> getTransactionsWithServiceResponseAsync(String scope, String code);
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param fromTransactionDate Include transactions with a transaction date equal or later than this date. If not supplied, no lower filter is applied
+     * @param toTransactionDate Include transactions with a transaction date equal or before this date. If not supplied, no upper filter is applied
+     * @param asAt the DateTime value
+     * @param sortBy The columns to sort the returned data by
+     * @param start How many items to skip from the returned set
+     * @param limit How many items to return from the set
+     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the transactions
+     * @param filter Transaction filter
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the VersionedResourceListOfTransactionDto object if successful.
+     */
+    VersionedResourceListOfTransactionDto getTransactions(String scope, String code, DateTime fromTransactionDate, DateTime toTransactionDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter);
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param fromTransactionDate Include transactions with a transaction date equal or later than this date. If not supplied, no lower filter is applied
+     * @param toTransactionDate Include transactions with a transaction date equal or before this date. If not supplied, no upper filter is applied
+     * @param asAt the DateTime value
+     * @param sortBy The columns to sort the returned data by
+     * @param start How many items to skip from the returned set
+     * @param limit How many items to return from the set
+     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the transactions
+     * @param filter Transaction filter
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<VersionedResourceListOfTransactionDto> getTransactionsAsync(String scope, String code, DateTime fromTransactionDate, DateTime toTransactionDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter, final ServiceCallback<VersionedResourceListOfTransactionDto> serviceCallback);
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param fromTransactionDate Include transactions with a transaction date equal or later than this date. If not supplied, no lower filter is applied
+     * @param toTransactionDate Include transactions with a transaction date equal or before this date. If not supplied, no upper filter is applied
+     * @param asAt the DateTime value
+     * @param sortBy The columns to sort the returned data by
+     * @param start How many items to skip from the returned set
+     * @param limit How many items to return from the set
+     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the transactions
+     * @param filter Transaction filter
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the VersionedResourceListOfTransactionDto object
+     */
+    Observable<VersionedResourceListOfTransactionDto> getTransactionsAsync(String scope, String code, DateTime fromTransactionDate, DateTime toTransactionDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter);
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param fromTransactionDate Include transactions with a transaction date equal or later than this date. If not supplied, no lower filter is applied
+     * @param toTransactionDate Include transactions with a transaction date equal or before this date. If not supplied, no upper filter is applied
+     * @param asAt the DateTime value
+     * @param sortBy The columns to sort the returned data by
+     * @param start How many items to skip from the returned set
+     * @param limit How many items to return from the set
+     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the transactions
+     * @param filter Transaction filter
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the VersionedResourceListOfTransactionDto object
+     */
+    Observable<ServiceResponse<VersionedResourceListOfTransactionDto>> getTransactionsWithServiceResponseAsync(String scope, String code, DateTime fromTransactionDate, DateTime toTransactionDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter);
+
+    /**
+     * Upsert transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the UpsertPortfolioTransactionsDto object if successful.
+     */
+    UpsertPortfolioTransactionsDto upsertTransactions(String scope, String code);
+
+    /**
+     * Upsert transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<UpsertPortfolioTransactionsDto> upsertTransactionsAsync(String scope, String code, final ServiceCallback<UpsertPortfolioTransactionsDto> serviceCallback);
+
+    /**
+     * Upsert transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertPortfolioTransactionsDto object
+     */
+    Observable<UpsertPortfolioTransactionsDto> upsertTransactionsAsync(String scope, String code);
+
+    /**
+     * Upsert transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertPortfolioTransactionsDto object
+     */
+    Observable<ServiceResponse<UpsertPortfolioTransactionsDto>> upsertTransactionsWithServiceResponseAsync(String scope, String code);
+    /**
+     * Upsert transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactions The transactions to be updated
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the UpsertPortfolioTransactionsDto object if successful.
+     */
+    UpsertPortfolioTransactionsDto upsertTransactions(String scope, String code, List<TransactionRequest> transactions);
+
+    /**
+     * Upsert transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactions The transactions to be updated
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<UpsertPortfolioTransactionsDto> upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactions, final ServiceCallback<UpsertPortfolioTransactionsDto> serviceCallback);
+
+    /**
+     * Upsert transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactions The transactions to be updated
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertPortfolioTransactionsDto object
+     */
+    Observable<UpsertPortfolioTransactionsDto> upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactions);
+
+    /**
+     * Upsert transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactions The transactions to be updated
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertPortfolioTransactionsDto object
+     */
+    Observable<ServiceResponse<UpsertPortfolioTransactionsDto>> upsertTransactionsWithServiceResponseAsync(String scope, String code, List<TransactionRequest> transactions);
+
+    /**
+     * Delete transactions.
+     * Delete one or more transactions from a portfolio.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the DeletedEntityResponse object if successful.
+     */
+    DeletedEntityResponse deleteTransactions(String scope, String code);
+
+    /**
+     * Delete transactions.
+     * Delete one or more transactions from a portfolio.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<DeletedEntityResponse> deleteTransactionsAsync(String scope, String code, final ServiceCallback<DeletedEntityResponse> serviceCallback);
+
+    /**
+     * Delete transactions.
+     * Delete one or more transactions from a portfolio.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeletedEntityResponse object
+     */
+    Observable<DeletedEntityResponse> deleteTransactionsAsync(String scope, String code);
+
+    /**
+     * Delete transactions.
+     * Delete one or more transactions from a portfolio.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeletedEntityResponse object
+     */
+    Observable<ServiceResponse<DeletedEntityResponse>> deleteTransactionsWithServiceResponseAsync(String scope, String code);
+    /**
+     * Delete transactions.
+     * Delete one or more transactions from a portfolio.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param id Ids of transactions to delete
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the DeletedEntityResponse object if successful.
+     */
+    DeletedEntityResponse deleteTransactions(String scope, String code, List<String> id);
+
+    /**
+     * Delete transactions.
+     * Delete one or more transactions from a portfolio.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param id Ids of transactions to delete
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<DeletedEntityResponse> deleteTransactionsAsync(String scope, String code, List<String> id, final ServiceCallback<DeletedEntityResponse> serviceCallback);
+
+    /**
+     * Delete transactions.
+     * Delete one or more transactions from a portfolio.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param id Ids of transactions to delete
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeletedEntityResponse object
+     */
+    Observable<DeletedEntityResponse> deleteTransactionsAsync(String scope, String code, List<String> id);
+
+    /**
+     * Delete transactions.
+     * Delete one or more transactions from a portfolio.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param id Ids of transactions to delete
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeletedEntityResponse object
+     */
+    Observable<ServiceResponse<DeletedEntityResponse>> deleteTransactionsWithServiceResponseAsync(String scope, String code, List<String> id);
+
+    /**
+     * Add/update transaction properties.
+     * Add one or more properties to a specific transaction in a portfolio.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactionId Id of transaction to add properties to
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the AddTransactionPropertyDto object if successful.
+     */
+    AddTransactionPropertyDto addTransactionProperty(String scope, String code, String transactionId);
+
+    /**
+     * Add/update transaction properties.
+     * Add one or more properties to a specific transaction in a portfolio.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactionId Id of transaction to add properties to
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<AddTransactionPropertyDto> addTransactionPropertyAsync(String scope, String code, String transactionId, final ServiceCallback<AddTransactionPropertyDto> serviceCallback);
+
+    /**
+     * Add/update transaction properties.
+     * Add one or more properties to a specific transaction in a portfolio.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactionId Id of transaction to add properties to
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the AddTransactionPropertyDto object
+     */
+    Observable<AddTransactionPropertyDto> addTransactionPropertyAsync(String scope, String code, String transactionId);
+
+    /**
+     * Add/update transaction properties.
+     * Add one or more properties to a specific transaction in a portfolio.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactionId Id of transaction to add properties to
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the AddTransactionPropertyDto object
+     */
+    Observable<ServiceResponse<AddTransactionPropertyDto>> addTransactionPropertyWithServiceResponseAsync(String scope, String code, String transactionId);
+    /**
+     * Add/update transaction properties.
+     * Add one or more properties to a specific transaction in a portfolio.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactionId Id of transaction to add properties to
+     * @param transactionProperties Transaction properties to add
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the AddTransactionPropertyDto object if successful.
+     */
+    AddTransactionPropertyDto addTransactionProperty(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties);
+
+    /**
+     * Add/update transaction properties.
+     * Add one or more properties to a specific transaction in a portfolio.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactionId Id of transaction to add properties to
+     * @param transactionProperties Transaction properties to add
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<AddTransactionPropertyDto> addTransactionPropertyAsync(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties, final ServiceCallback<AddTransactionPropertyDto> serviceCallback);
+
+    /**
+     * Add/update transaction properties.
+     * Add one or more properties to a specific transaction in a portfolio.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactionId Id of transaction to add properties to
+     * @param transactionProperties Transaction properties to add
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the AddTransactionPropertyDto object
+     */
+    Observable<AddTransactionPropertyDto> addTransactionPropertyAsync(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties);
+
+    /**
+     * Add/update transaction properties.
+     * Add one or more properties to a specific transaction in a portfolio.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactionId Id of transaction to add properties to
+     * @param transactionProperties Transaction properties to add
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the AddTransactionPropertyDto object
+     */
+    Observable<ServiceResponse<AddTransactionPropertyDto>> addTransactionPropertyWithServiceResponseAsync(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties);
+
+    /**
+     * Delete transaction property.
+     * Delete a property from a specific transaction.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactionId Id of the transaction to delete the property from
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the DeletedEntityResponse object if successful.
+     */
+    DeletedEntityResponse deletePropertyFromTransaction(String scope, String code, String transactionId);
+
+    /**
+     * Delete transaction property.
+     * Delete a property from a specific transaction.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactionId Id of the transaction to delete the property from
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<DeletedEntityResponse> deletePropertyFromTransactionAsync(String scope, String code, String transactionId, final ServiceCallback<DeletedEntityResponse> serviceCallback);
+
+    /**
+     * Delete transaction property.
+     * Delete a property from a specific transaction.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactionId Id of the transaction to delete the property from
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeletedEntityResponse object
+     */
+    Observable<DeletedEntityResponse> deletePropertyFromTransactionAsync(String scope, String code, String transactionId);
+
+    /**
+     * Delete transaction property.
+     * Delete a property from a specific transaction.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactionId Id of the transaction to delete the property from
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeletedEntityResponse object
+     */
+    Observable<ServiceResponse<DeletedEntityResponse>> deletePropertyFromTransactionWithServiceResponseAsync(String scope, String code, String transactionId);
+    /**
+     * Delete transaction property.
+     * Delete a property from a specific transaction.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactionId Id of the transaction to delete the property from
+     * @param transactionPropertyKey The key of the property to be deleted
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the DeletedEntityResponse object if successful.
+     */
+    DeletedEntityResponse deletePropertyFromTransaction(String scope, String code, String transactionId, String transactionPropertyKey);
+
+    /**
+     * Delete transaction property.
+     * Delete a property from a specific transaction.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactionId Id of the transaction to delete the property from
+     * @param transactionPropertyKey The key of the property to be deleted
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<DeletedEntityResponse> deletePropertyFromTransactionAsync(String scope, String code, String transactionId, String transactionPropertyKey, final ServiceCallback<DeletedEntityResponse> serviceCallback);
+
+    /**
+     * Delete transaction property.
+     * Delete a property from a specific transaction.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactionId Id of the transaction to delete the property from
+     * @param transactionPropertyKey The key of the property to be deleted
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeletedEntityResponse object
+     */
+    Observable<DeletedEntityResponse> deletePropertyFromTransactionAsync(String scope, String code, String transactionId, String transactionPropertyKey);
+
+    /**
+     * Delete transaction property.
+     * Delete a property from a specific transaction.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param transactionId Id of the transaction to delete the property from
+     * @param transactionPropertyKey The key of the property to be deleted
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeletedEntityResponse object
+     */
+    Observable<ServiceResponse<DeletedEntityResponse>> deletePropertyFromTransactionWithServiceResponseAsync(String scope, String code, String transactionId, String transactionPropertyKey);
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the VersionedResourceListOfOutputTransactionDto object if successful.
+     */
+    VersionedResourceListOfOutputTransactionDto buildTransactions(String scope, String code);
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<VersionedResourceListOfOutputTransactionDto> buildTransactionsAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfOutputTransactionDto> serviceCallback);
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the VersionedResourceListOfOutputTransactionDto object
+     */
+    Observable<VersionedResourceListOfOutputTransactionDto> buildTransactionsAsync(String scope, String code);
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the VersionedResourceListOfOutputTransactionDto object
+     */
+    Observable<ServiceResponse<VersionedResourceListOfOutputTransactionDto>> buildTransactionsWithServiceResponseAsync(String scope, String code);
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param asAt the DateTime value
+     * @param sortBy The columns to sort the returned data by
+     * @param start How many items to skip from the returned set
+     * @param limit How many items to return from the set
+     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the trades
+     * @param filter Trade filter
+     * @param parameters Core query parameters
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the VersionedResourceListOfOutputTransactionDto object if successful.
+     */
+    VersionedResourceListOfOutputTransactionDto buildTransactions(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter, TransactionQueryParameters parameters);
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param asAt the DateTime value
+     * @param sortBy The columns to sort the returned data by
+     * @param start How many items to skip from the returned set
+     * @param limit How many items to return from the set
+     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the trades
+     * @param filter Trade filter
+     * @param parameters Core query parameters
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<VersionedResourceListOfOutputTransactionDto> buildTransactionsAsync(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter, TransactionQueryParameters parameters, final ServiceCallback<VersionedResourceListOfOutputTransactionDto> serviceCallback);
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param asAt the DateTime value
+     * @param sortBy The columns to sort the returned data by
+     * @param start How many items to skip from the returned set
+     * @param limit How many items to return from the set
+     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the trades
+     * @param filter Trade filter
+     * @param parameters Core query parameters
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the VersionedResourceListOfOutputTransactionDto object
+     */
+    Observable<VersionedResourceListOfOutputTransactionDto> buildTransactionsAsync(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter, TransactionQueryParameters parameters);
+
+    /**
+     * Get transactions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param asAt the DateTime value
+     * @param sortBy The columns to sort the returned data by
+     * @param start How many items to skip from the returned set
+     * @param limit How many items to return from the set
+     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the trades
+     * @param filter Trade filter
+     * @param parameters Core query parameters
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the VersionedResourceListOfOutputTransactionDto object
+     */
+    Observable<ServiceResponse<VersionedResourceListOfOutputTransactionDto>> buildTransactionsWithServiceResponseAsync(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter, TransactionQueryParameters parameters);
 
 }

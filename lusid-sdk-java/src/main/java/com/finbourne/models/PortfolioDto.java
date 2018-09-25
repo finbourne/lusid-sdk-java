@@ -33,45 +33,65 @@ public class PortfolioDto {
     /**
      * Link to retrieve the current entity.
      */
-    @JsonProperty(value = "href")
+    @JsonProperty(value = "href", access = JsonProperty.Access.WRITE_ONLY)
     private String href;
 
     /**
      * Identifier for the portfolio.
      */
-    @JsonProperty(value = "id")
+    @JsonProperty(value = "id", access = JsonProperty.Access.WRITE_ONLY)
     private ResourceId id;
 
     /**
-     * Name of the portfolio.
+     * The type of portfolio this is (e.g. Transaction Portfolio, Reference
+     * Portfolio). Possible values include: 'Transaction', 'Reference',
+     * 'DerivedTransaction'.
      */
-    @JsonProperty(value = "name")
-    private String name;
+    @JsonProperty(value = "type", access = JsonProperty.Access.WRITE_ONLY)
+    private String type;
+
+    /**
+     * Display name of the portfolio.
+     */
+    @JsonProperty(value = "displayName", access = JsonProperty.Access.WRITE_ONLY)
+    private String displayName;
+
+    /**
+     * Description of the portfolio.
+     */
+    @JsonProperty(value = "description", access = JsonProperty.Access.WRITE_ONLY)
+    private String description;
 
     /**
      * Portfolio creation time in UTC.
      */
-    @JsonProperty(value = "created")
+    @JsonProperty(value = "created", access = JsonProperty.Access.WRITE_ONLY)
     private DateTime created;
 
     /**
      * If this is a derived portfolio, the identifier of the portfolio from
      * which it is derived.
      */
-    @JsonProperty(value = "parentPortfolioId")
+    @JsonProperty(value = "parentPortfolioId", access = JsonProperty.Access.WRITE_ONLY)
     private ResourceId parentPortfolioId;
 
     /**
      * The version of the portfolio.
      */
-    @JsonProperty(value = "version")
+    @JsonProperty(value = "version", access = JsonProperty.Access.WRITE_ONLY)
     private VersionDto version;
 
     /**
-     * The _links property.
+     * The isDerived property.
      */
-    @JsonProperty(value = "_links")
-    private List<Link> _links;
+    @JsonProperty(value = "isDerived", access = JsonProperty.Access.WRITE_ONLY)
+    private Boolean isDerived;
+
+    /**
+     * The links property.
+     */
+    @JsonProperty(value = "links")
+    private List<Link> links;
 
     /**
      * Get link to retrieve the current entity.
@@ -80,17 +100,6 @@ public class PortfolioDto {
      */
     public String href() {
         return this.href;
-    }
-
-    /**
-     * Set link to retrieve the current entity.
-     *
-     * @param href the href value to set
-     * @return the PortfolioDto object itself.
-     */
-    public PortfolioDto withHref(String href) {
-        this.href = href;
-        return this;
     }
 
     /**
@@ -103,34 +112,30 @@ public class PortfolioDto {
     }
 
     /**
-     * Set identifier for the portfolio.
+     * Get the type of portfolio this is (e.g. Transaction Portfolio, Reference  Portfolio). Possible values include: 'Transaction', 'Reference', 'DerivedTransaction'.
      *
-     * @param id the id value to set
-     * @return the PortfolioDto object itself.
+     * @return the type value
      */
-    public PortfolioDto withId(ResourceId id) {
-        this.id = id;
-        return this;
+    public String type() {
+        return this.type;
     }
 
     /**
-     * Get name of the portfolio.
+     * Get display name of the portfolio.
      *
-     * @return the name value
+     * @return the displayName value
      */
-    public String name() {
-        return this.name;
+    public String displayName() {
+        return this.displayName;
     }
 
     /**
-     * Set name of the portfolio.
+     * Get description of the portfolio.
      *
-     * @param name the name value to set
-     * @return the PortfolioDto object itself.
+     * @return the description value
      */
-    public PortfolioDto withName(String name) {
-        this.name = name;
-        return this;
+    public String description() {
+        return this.description;
     }
 
     /**
@@ -143,34 +148,12 @@ public class PortfolioDto {
     }
 
     /**
-     * Set portfolio creation time in UTC.
-     *
-     * @param created the created value to set
-     * @return the PortfolioDto object itself.
-     */
-    public PortfolioDto withCreated(DateTime created) {
-        this.created = created;
-        return this;
-    }
-
-    /**
      * Get if this is a derived portfolio, the identifier of the portfolio from which it is derived.
      *
      * @return the parentPortfolioId value
      */
     public ResourceId parentPortfolioId() {
         return this.parentPortfolioId;
-    }
-
-    /**
-     * Set if this is a derived portfolio, the identifier of the portfolio from which it is derived.
-     *
-     * @param parentPortfolioId the parentPortfolioId value to set
-     * @return the PortfolioDto object itself.
-     */
-    public PortfolioDto withParentPortfolioId(ResourceId parentPortfolioId) {
-        this.parentPortfolioId = parentPortfolioId;
-        return this;
     }
 
     /**
@@ -183,33 +166,31 @@ public class PortfolioDto {
     }
 
     /**
-     * Set the version of the portfolio.
+     * Get the isDerived value.
      *
-     * @param version the version value to set
-     * @return the PortfolioDto object itself.
+     * @return the isDerived value
      */
-    public PortfolioDto withVersion(VersionDto version) {
-        this.version = version;
-        return this;
+    public Boolean isDerived() {
+        return this.isDerived;
     }
 
     /**
-     * Get the _links value.
+     * Get the links value.
      *
-     * @return the _links value
+     * @return the links value
      */
-    public List<Link> _links() {
-        return this._links;
+    public List<Link> links() {
+        return this.links;
     }
 
     /**
-     * Set the _links value.
+     * Set the links value.
      *
-     * @param _links the _links value to set
+     * @param links the links value to set
      * @return the PortfolioDto object itself.
      */
-    public PortfolioDto with_links(List<Link> _links) {
-        this._links = _links;
+    public PortfolioDto withLinks(List<Link> links) {
+        this.links = links;
         return this;
     }
 

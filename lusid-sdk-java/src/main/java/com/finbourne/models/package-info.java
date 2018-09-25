@@ -29,27 +29,27 @@
  * [Python](https://github.com/finbourne/lusid-sdk-python)
  # Data Model
  The LUSID API has a relatively lightweight but extremely powerful data model.   One of the goals of LUSID was not to enforce on clients a single rigid data model but rather to provide a flexible foundation onto which clients can streamline their data.   One of the primary tools to extend the data model is through using properties.  Properties can be associated with amongst others: -
- * Trades
- * Securities
+ * Transactions
+ * Instruments
  * Portfolios
  The LUSID data model is exposed through the LUSID APIs.  The APIs provide access to both business objects and the meta data used to configure the systems behaviours.   The key business entities are: -
  * **Portfolios**
- A portfolio is the primary container for trades and holdings.
+ A portfolio is the primary container for transactions and holdings.
  * **Derived Portfolios**
  Derived portfolios allow portfolios to be created based on other portfolios, by overriding or overlaying specific items
  * **Holdings**
- A holding is a position account for a security within a portfolio.  Holdings can only be adjusted via transactions.
- * **Trades**
- A Trade is a source of transactions used to manipulate holdings.
+ A holding is a position account for a instrument within a portfolio.  Holdings can only be adjusted via transactions.
+ * **Transactions**
+ A Transaction is a source of transactions used to manipulate holdings.
  * **Corporate Actions**
- A corporate action is a market event which occurs to a security, for example a stock split
- * **Securities**
- A security represents a currency, tradable instrument or OTC contract that is attached to a transaction and a holding.
+ A corporate action is a market event which occurs to a instrument, for example a stock split
+ * **Instruments**
+ A instrument represents a currency, tradable instrument or OTC contract that is attached to a transaction and a holding.
  * **Properties**
  Several entities allow additional user defined properties to be associated with them.   For example, a Portfolio manager may be associated with a portfolio
  Meta data includes: -
  * **Transaction Types**
- Trades are booked with a specific transaction type.  The types are client defined and are used to map the Trade to a series of movements which update the portfolio holdings.
+ Transactions are booked with a specific transaction type.  The types are client defined and are used to map the Transaction to a series of movements which update the portfolio holdings.
  * **Properties Types**
  Types of user defined properties used within the system.
  This section describes the data model that LUSID exposes via the APIs.
@@ -59,32 +59,32 @@
  LUSID Clients cannot access scopes of other clients.
  ## Schema
  A detailed description of the entities used by the API and parameters for endpoints which take a JSON document can be retrieved via the `schema` endpoint.
- ## Securities
- LUSID has its own security master implementation (LUSID CORE) which sources reference data from multiple data vendors.
- [OpenFIGI](https://openfigi.com/) and [PermID](https://permid.org/) are used as the security identifier when uploading trades, holdings, prices, etc.
- The API exposes a `securities/lookup` endpoint which can be used to lookup these identifiers given other market identifiers.
+ ## Instruments
+ LUSID has its own instrument master implementation (LUSID CORE) which sources reference data from multiple data vendors.
+ [OpenFIGI](https://openfigi.com/) and [PermID](https://permid.org/) are used as the instrument identifier when uploading transactions, holdings, prices, etc.
+ The API exposes a `instrument/lookup` endpoint which can be used to lookup these identifiers given other market identifiers.
  Cash can be referenced using the ISO currency code prefixed with "`CCY_`" e.g. `CCY_GBP`
- For any securities that are not recognised by LUSID (eg OTCs) a client can upload a client defined security. Securitised portfolios and funds can be modelled as client defined securities.
- ## Security Prices (Analytics)
- Security prices are stored in LUSID's Analytics Store
+ For any instrument that are not recognised by LUSID (eg OTCs) a client can upload a client defined instrument. Securitised portfolios and funds can be modelled as client defined instruments.
+ ## Instrument Prices (Analytics)
+ Instrument prices are stored in LUSID's Analytics Store
  | Field|Type|Description |
  | ---|---|--- |
- | Id|string|Unique security identifier |
+ | InstrumentUid|string|Unique instrument identifier |
  | Value|decimal|Value of the analytic, eg price |
  | Denomination|string|Underlying unit of the analytic, eg currency, EPS etc. |
- ## Security Data
- Security data can be uploaded to the system using the [Classifications](#tag/Classification) endpoint.
+ ## Instrument Data
+ Instrument data can be uploaded to the system using the [Instrument Properties](#tag/InstrumentProperties) endpoint.
  | Field|Type|Description |
  | ---|---|--- |
- | Uid|string|Unique security identifier |
+ | InstrumentUid|string|Unique instrument identifier |
  ## Portfolios
- Portfolios are the top-level entity containers within LUSID, containing trades, corporate actions and holdings.    The transactions build up the portfolio holdings on which valuations, analytics profit & loss and risk can be calculated.
+ Portfolios are the top-level entity containers within LUSID, containing transactions, corporate actions and holdings.    The transactions build up the portfolio holdings on which valuations, analytics profit & loss and risk can be calculated.
  Properties can be associated with Portfolios to add in additional model data.  Portfolio properties can be changed over time as well.  For example, to allow a Portfolio Manager to be linked with a Portfolio.
  Additionally, portfolios can be securitised and held by other portfolios, allowing LUSID to perform "drill-through" into underlying fund holdings
  ### Reference Portfolios
  Reference portfolios are portfolios that contain only holdings or weights, as opposed to transactions, and are designed to represent entities such as indices.
  ### Derived Portfolios
- LUSID also allows for a portfolio to be composed of another portfolio via derived portfolios.  A derived portfolio can contain its own trades and also inherits any trades from its parent portfolio.  Any changes made to the parent portfolio are automatically reflected in derived portfolio.
+ LUSID also allows for a portfolio to be composed of another portfolio via derived portfolios.  A derived portfolio can contain its own transactions and also inherits any transactions from its parent portfolio.  Any changes made to the parent portfolio are automatically reflected in derived portfolio.
  Derived portfolios in conjunction with scopes are a powerful construct.  For example, to do pre-trade what-if analysis, a derived portfolio could be created a new namespace linked to the underlying live (parent) portfolio.  Analysis can then be undertaken on the derived portfolio without affecting the live portfolio.
  ### Portfolio Groups
  Portfolio groups allow the construction of a hierarchy from portfolios and groups.  Portfolio operations on the group are executed on an aggregated set of portfolios in the hierarchy.
@@ -101,7 +101,7 @@
  ### Movements Engine
  The Movements engine sits on top of the immutable event store and is used to manage the relationship between input trading actions and their associated portfolio holdings.
  The movements engine reads in the following entity types:-
- * Posting Trades
+ * Posting Transactions
  * Applying Corporate Actions
  * Holding Adjustments
  These are converted to one or more movements and used by the movements engine to calculate holdings.  At the same time it also calculates running balances, and realised P&L.  The outputs from the movements engine are holdings and transactions.
@@ -109,41 +109,41 @@
  A transaction represents an economic activity against a Portfolio.
  | Field|Type|Description |
  | ---|---|--- |
- | TradeId|string|Unique trade identifier |
+ | TransactionId|string|Unique transaction identifier |
  | Type|string|LUSID transaction type code - Buy, Sell, StockIn, StockOut, etc |
- | SecurityUid|string|Unique security identifier |
- | TradeDate|datetime|Trade date |
+ | InstrumentUid|string|Unique instrument identifier |
+ | TransactionDate|datetime|Transaction date |
  | SettlementDate|datetime|Settlement date |
- | Units|decimal|Quantity of trade in units of the security |
- | TradePrice|decimal|Execution price for the trade |
- | TotalConsideration|decimal|Total value of the trade |
- | ExchangeRate|decimal|Rate between trade and settle currency |
- | SettlementCurrency|string|Settlement currency |
- | TradeCurrency|string|Trade currency |
+ | Units|decimal|Quantity of transaction in units of the instrument |
+ | TransactionPrice|decimal|Execution price for the transaction |
+ | TotalConsideration|decimal|Total value of the transaction |
+ | ExchangeRate|decimal|Rate between transaction and settle currency |
+ | SettlementCurrency|currency|Settlement currency |
+ | TransactionCurrency|currency|Transaction currency |
  | CounterpartyId|string|Counterparty identifier |
- | Source|string|Where this trade came from, either Client or System |
+ | Source|string|Where this transaction came from |
  | DividendState|string|  |
- | TradePriceType|string|  |
+ | TransactionPriceType|string|  |
  | UnitType|string|  |
  | NettingSet|string|  |
  ## Holdings
- A holding represents a position in a security or cash on a given date.
+ A holding represents a position in a instrument or cash on a given date.
  | Field|Type|Description |
  | ---|---|--- |
- | SecurityUid|string|Unique security identifier |
+ | InstrumentUid|string|Unique instrument identifier |
  | HoldingType|string|Type of holding, eg Position, Balance, CashCommitment, Receivable, ForwardFX |
  | Units|decimal|Quantity of holding |
  | SettledUnits|decimal|Settled quantity of holding |
- | Cost|decimal|Book cost of holding in trade currency |
+ | Cost|decimal|Book cost of holding in transaction currency |
  | CostPortfolioCcy|decimal|Book cost of holding in portfolio currency |
- | Transaction|TradeDto|If this is commitment-type holding, the transaction behind it |
+ | Transaction|TransactionDto|If this is commitment-type holding, the transaction behind it |
  ## Corporate Actions
- Corporate actions are represented within LUSID in terms of a set of security-specific 'transitions'.  These transitions are used to specify the participants of the corporate action, and the effect that the corporate action will have on holdings in those participants.
+ Corporate actions are represented within LUSID in terms of a set of instrument-specific 'transitions'.  These transitions are used to specify the participants of the corporate action, and the effect that the corporate action will have on holdings in those participants.
  *Corporate action*
  | Field|Type|Description |
  | ---|---|--- |
  | SourceId|id|  |
- | CorporateActionId|code|  |
+ | CorporateActionCode|code|  |
  | AnnouncementDate|datetime|  |
  | ExDate|datetime|  |
  | RecordDate|datetime|  |
@@ -168,8 +168,7 @@
  | <a name="100">100</a>|Personalisations not found|The personalisation(s) identified by the pattern provided could not be found, either because it does not exist or it has been deleted. Please check the pattern your provided. |
  | <a name="101">101</a>|NonRecursivePersonalisation|  |
  | <a name="102">102</a>|VersionNotFound|  |
- | <a name="104">104</a>|SecurityByCodeNotFound|  |
- | <a name="104">104</a>|SecurityByCodeNotFound|  |
+ | <a name="104">104</a>|InstrumentNotFound|  |
  | <a name="105">105</a>|PropertyNotFound|  |
  | <a name="106">106</a>|PortfolioRecursionDepth|  |
  | <a name="108">108</a>|GroupNotFound|  |
@@ -184,16 +183,16 @@
  | <a name="123">123</a>|CannotModifyImmutablePropertyField|  |
  | <a name="124">124</a>|PropertyAlreadyExists|  |
  | <a name="125">125</a>|InvalidPropertyLifeTime|  |
- | <a name="127">127</a>|CannotModifyDefaultPropertyFormat|  |
+ | <a name="127">127</a>|CannotModifyDefaultDataType|  |
  | <a name="128">128</a>|GroupAlreadyExists|  |
- | <a name="129">129</a>|NoSuchPropertyDataFormat|  |
+ | <a name="129">129</a>|NoSuchDataType|  |
  | <a name="132">132</a>|ValidationError|  |
  | <a name="133">133</a>|LoopDetectedInGroupHierarchy|  |
  | <a name="135">135</a>|SubGroupAlreadyExists|  |
  | <a name="138">138</a>|PriceSourceNotFound|  |
  | <a name="139">139</a>|AnalyticStoreNotFound|  |
  | <a name="141">141</a>|AnalyticStoreAlreadyExists|  |
- | <a name="143">143</a>|ClientSecurityAlreadyExists|  |
+ | <a name="143">143</a>|ClientInstrumentAlreadyExists|  |
  | <a name="144">144</a>|DuplicateInParameterSet|  |
  | <a name="147">147</a>|ResultsNotFound|  |
  | <a name="148">148</a>|OrderFieldNotInResultSet|  |
@@ -211,7 +210,7 @@
  | <a name="162">162</a>|SubSystemRequestFailure|  |
  | <a name="163">163</a>|SubSystemConfigurationFailure|  |
  | <a name="165">165</a>|FailedToDelete|  |
- | <a name="166">166</a>|UpsertClientSecurityFailure|  |
+ | <a name="166">166</a>|UpsertClientInstrumentFailure|  |
  | <a name="167">167</a>|IllegalAsAtInterval|  |
  | <a name="168">168</a>|IllegalBitemporalQuery|  |
  | <a name="169">169</a>|InvalidAlternateId|  |
@@ -220,7 +219,7 @@
  | <a name="173">173</a>|EntityWithIdAlreadyExists|  |
  | <a name="174">174</a>|PortfolioDetailsDoNotExist|  |
  | <a name="176">176</a>|PortfolioWithNameAlreadyExists|  |
- | <a name="177">177</a>|InvalidTrades|  |
+ | <a name="177">177</a>|InvalidTransactions|  |
  | <a name="178">178</a>|ReferencePortfolioNotFound|  |
  | <a name="179">179</a>|DuplicateIdFailure|  |
  | <a name="180">180</a>|CommandRetrievalFailure|  |
@@ -245,8 +244,13 @@
  | <a name="207">207</a>|UnitDefinitionNotSpecified|  |
  | <a name="208">208</a>|DuplicateUnitDefinitionsSpecified|  |
  | <a name="209">209</a>|InvalidUnitsDefinition|  |
- | <a name="210">210</a>|InvalidSecurityIdentifierUnit|  |
+ | <a name="210">210</a>|InvalidInstrumentIdentifierUnit|  |
  | <a name="211">211</a>|HoldingsAdjustmentDoesNotExist|  |
+ | <a name="212">212</a>|CouldNotBuildExcelUrl|  |
+ | <a name="213">213</a>|CouldNotGetExcelVersion|  |
+ | <a name="214">214</a>|InstrumentByCodeNotFound|  |
+ | <a name="215">215</a>|EntitySchemaDoesNotExist|  |
+ | <a name="216">216</a>|FeatureNotSupportedOnPortfolioType|  |
  | <a name="-10">-10</a>|ServerConfigurationError|  |
  | <a name="-1">-1</a>|Unknown error|  |.
  */

@@ -72,10 +72,10 @@ public class ExpandedGroupDto {
     private VersionDto version;
 
     /**
-     * The _links property.
+     * The links property.
      */
-    @JsonProperty(value = "_links")
-    private List<Link> _links;
+    @JsonProperty(value = "links")
+    private List<Link> links;
 
     /**
      * Get the href value.
@@ -218,22 +218,22 @@ public class ExpandedGroupDto {
     }
 
     /**
-     * Get the _links value.
+     * Get the links value.
      *
-     * @return the _links value
+     * @return the links value
      */
-    public List<Link> _links() {
-        return this._links;
+    public List<Link> links() {
+        return this.links;
     }
 
     /**
-     * Set the _links value.
+     * Set the links value.
      *
-     * @param _links the _links value to set
+     * @param links the links value to set
      * @return the ExpandedGroupDto object itself.
      */
-    public ExpandedGroupDto with_links(List<Link> _links) {
-        this._links = _links;
+    public ExpandedGroupDto withLinks(List<Link> links) {
+        this.links = links;
         return this;
     }
 

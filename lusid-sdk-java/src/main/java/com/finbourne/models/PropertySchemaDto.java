@@ -42,6 +42,12 @@ public class PropertySchemaDto {
     private List<KeyValuePairOfPropertyKeyToFieldSchema> values;
 
     /**
+     * The links property.
+     */
+    @JsonProperty(value = "links")
+    private List<Link> links;
+
+    /**
      * Get the href value.
      *
      * @return the href value
@@ -78,6 +84,26 @@ public class PropertySchemaDto {
      */
     public PropertySchemaDto withValues(List<KeyValuePairOfPropertyKeyToFieldSchema> values) {
         this.values = values;
+        return this;
+    }
+
+    /**
+     * Get the links value.
+     *
+     * @return the links value
+     */
+    public List<Link> links() {
+        return this.links;
+    }
+
+    /**
+     * Set the links value.
+     *
+     * @param links the links value to set
+     * @return the PropertySchemaDto object itself.
+     */
+    public PropertySchemaDto withLinks(List<Link> links) {
+        this.links = links;
         return this;
     }
 

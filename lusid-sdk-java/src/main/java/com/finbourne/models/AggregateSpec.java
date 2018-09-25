@@ -31,7 +31,7 @@ public class AggregateSpec {
     /**
      * The key property.
      */
-    @JsonProperty(value = "key")
+    @JsonProperty(value = "key", required = true)
     private String key;
 
     /**

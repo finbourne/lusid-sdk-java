@@ -22,6 +22,7 @@
 
 package com.finbourne.models;
 
+import java.util.Map;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -39,13 +40,19 @@ public class TryUpsertCorporateActionsDto {
      * The values property.
      */
     @JsonProperty(value = "values")
-    private List<CorporateActionEventDto> values;
+    private Map<String, CorporateActionEventDto> values;
 
     /**
      * The failed property.
      */
     @JsonProperty(value = "failed")
-    private List<ErrorDetail> failed;
+    private Map<String, ErrorDetail> failed;
+
+    /**
+     * The links property.
+     */
+    @JsonProperty(value = "links")
+    private List<Link> links;
 
     /**
      * Get the href value.
@@ -72,7 +79,7 @@ public class TryUpsertCorporateActionsDto {
      *
      * @return the values value
      */
-    public List<CorporateActionEventDto> values() {
+    public Map<String, CorporateActionEventDto> values() {
         return this.values;
     }
 
@@ -82,7 +89,7 @@ public class TryUpsertCorporateActionsDto {
      * @param values the values value to set
      * @return the TryUpsertCorporateActionsDto object itself.
      */
-    public TryUpsertCorporateActionsDto withValues(List<CorporateActionEventDto> values) {
+    public TryUpsertCorporateActionsDto withValues(Map<String, CorporateActionEventDto> values) {
         this.values = values;
         return this;
     }
@@ -92,7 +99,7 @@ public class TryUpsertCorporateActionsDto {
      *
      * @return the failed value
      */
-    public List<ErrorDetail> failed() {
+    public Map<String, ErrorDetail> failed() {
         return this.failed;
     }
 
@@ -102,8 +109,28 @@ public class TryUpsertCorporateActionsDto {
      * @param failed the failed value to set
      * @return the TryUpsertCorporateActionsDto object itself.
      */
-    public TryUpsertCorporateActionsDto withFailed(List<ErrorDetail> failed) {
+    public TryUpsertCorporateActionsDto withFailed(Map<String, ErrorDetail> failed) {
         this.failed = failed;
+        return this;
+    }
+
+    /**
+     * Get the links value.
+     *
+     * @return the links value
+     */
+    public List<Link> links() {
+        return this.links;
+    }
+
+    /**
+     * Set the links value.
+     *
+     * @param links the links value to set
+     * @return the TryUpsertCorporateActionsDto object itself.
+     */
+    public TryUpsertCorporateActionsDto withLinks(List<Link> links) {
+        this.links = links;
         return this;
     }
 

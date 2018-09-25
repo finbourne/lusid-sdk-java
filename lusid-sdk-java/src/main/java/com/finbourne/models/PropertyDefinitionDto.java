@@ -44,9 +44,10 @@ public class PropertyDefinitionDto {
     /**
      * Possible values include: 'String', 'Int', 'Decimal', 'DateTime',
      * 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage',
-     * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases',
-     * 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray',
-     * 'CurrencyAndAmount', 'TradePrice'.
+     * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds',
+     * 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements',
+     * 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice',
+     * 'UnitCreation', 'Currency', 'UserId'.
      */
     @JsonProperty(value = "valueType")
     private String valueType;
@@ -64,16 +65,10 @@ public class PropertyDefinitionDto {
     private String displayName;
 
     /**
-     * The dataFormatId property.
+     * The dataTypeId property.
      */
-    @JsonProperty(value = "dataFormatId")
-    private ResourceId dataFormatId;
-
-    /**
-     * The sort property.
-     */
-    @JsonProperty(value = "sort")
-    private String sort;
+    @JsonProperty(value = "dataTypeId")
+    private ResourceId dataTypeId;
 
     /**
      * Possible values include: 'Perpetual', 'TimeVariant'.
@@ -94,10 +89,10 @@ public class PropertyDefinitionDto {
     private String unitSchema;
 
     /**
-     * The _links property.
+     * The links property.
      */
-    @JsonProperty(value = "_links")
-    private List<Link> _links;
+    @JsonProperty(value = "links")
+    private List<Link> links;
 
     /**
      * Get the href value.
@@ -140,7 +135,7 @@ public class PropertyDefinitionDto {
     }
 
     /**
-     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice'.
+     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId'.
      *
      * @return the valueType value
      */
@@ -149,7 +144,7 @@ public class PropertyDefinitionDto {
     }
 
     /**
-     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTxnAliases', 'ArrayofTxnMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice'.
+     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId'.
      *
      * @param valueType the valueType value to set
      * @return the PropertyDefinitionDto object itself.
@@ -200,42 +195,22 @@ public class PropertyDefinitionDto {
     }
 
     /**
-     * Get the dataFormatId value.
+     * Get the dataTypeId value.
      *
-     * @return the dataFormatId value
+     * @return the dataTypeId value
      */
-    public ResourceId dataFormatId() {
-        return this.dataFormatId;
+    public ResourceId dataTypeId() {
+        return this.dataTypeId;
     }
 
     /**
-     * Set the dataFormatId value.
+     * Set the dataTypeId value.
      *
-     * @param dataFormatId the dataFormatId value to set
+     * @param dataTypeId the dataTypeId value to set
      * @return the PropertyDefinitionDto object itself.
      */
-    public PropertyDefinitionDto withDataFormatId(ResourceId dataFormatId) {
-        this.dataFormatId = dataFormatId;
-        return this;
-    }
-
-    /**
-     * Get the sort value.
-     *
-     * @return the sort value
-     */
-    public String sort() {
-        return this.sort;
-    }
-
-    /**
-     * Set the sort value.
-     *
-     * @param sort the sort value to set
-     * @return the PropertyDefinitionDto object itself.
-     */
-    public PropertyDefinitionDto withSort(String sort) {
-        this.sort = sort;
+    public PropertyDefinitionDto withDataTypeId(ResourceId dataTypeId) {
+        this.dataTypeId = dataTypeId;
         return this;
     }
 
@@ -300,22 +275,22 @@ public class PropertyDefinitionDto {
     }
 
     /**
-     * Get the _links value.
+     * Get the links value.
      *
-     * @return the _links value
+     * @return the links value
      */
-    public List<Link> _links() {
-        return this._links;
+    public List<Link> links() {
+        return this.links;
     }
 
     /**
-     * Set the _links value.
+     * Set the links value.
      *
-     * @param _links the _links value to set
+     * @param links the links value to set
      * @return the PropertyDefinitionDto object itself.
      */
-    public PropertyDefinitionDto with_links(List<Link> _links) {
-        this._links = _links;
+    public PropertyDefinitionDto withLinks(List<Link> links) {
+        this.links = links;
         return this;
     }
 
