@@ -36,7 +36,7 @@ public class ErrorResponse {
     private Integer status;
 
     /**
-     * Possible values include: 'Unknown', 'PersonalisationNotFound',
+     * Possible values include: 'PersonalisationNotFound',
      * 'NonRecursivePersonalisation', 'VersionNotFound', 'InstrumentNotFound',
      * 'PropertyNotFound', 'PortfolioRecursionDepth', 'GroupNotFound',
      * 'PortfolioNotFound', 'PropertySchemaNotFound',
@@ -67,15 +67,16 @@ public class ErrorResponse {
      * 'AccrualSourceNotFound', 'EntitlementsFailure', 'InvalidIdentityToken',
      * 'InvalidRequestHeaders', 'PriceNotFound',
      * 'InvalidSubHoldingKeysProvided', 'DuplicateSubHoldingKeysProvided',
-     * 'ServerConfigurationError', 'InvalidUnitForDataType',
-     * 'InvalidTypeForDataType', 'InvalidValueForDataType',
-     * 'UnitNotDefinedForDataType', 'UnitsNotSupportedOnDataType',
-     * 'CannotSpecifyUnitsOnDataType', 'UnitSchemaInconsistentWithDataType',
-     * 'UnitDefinitionNotSpecified', 'DuplicateUnitDefinitionsSpecified',
-     * 'InvalidUnitsDefinition', 'InvalidInstrumentIdentifierUnit',
-     * 'HoldingsAdjustmentDoesNotExist', 'CouldNotBuildExcelUrl',
-     * 'CouldNotGetExcelVersion', 'InstrumentByCodeNotFound',
-     * 'EntitySchemaDoesNotExist', 'FeatureNotSupportedOnPortfolioType'.
+     * 'InvalidUnitForDataType', 'InvalidTypeForDataType',
+     * 'InvalidValueForDataType', 'UnitNotDefinedForDataType',
+     * 'UnitsNotSupportedOnDataType', 'CannotSpecifyUnitsOnDataType',
+     * 'UnitSchemaInconsistentWithDataType', 'UnitDefinitionNotSpecified',
+     * 'DuplicateUnitDefinitionsSpecified', 'InvalidUnitsDefinition',
+     * 'InvalidInstrumentIdentifierUnit', 'HoldingsAdjustmentDoesNotExist',
+     * 'CouldNotBuildExcelUrl', 'CouldNotGetExcelVersion',
+     * 'InstrumentByCodeNotFound', 'EntitySchemaDoesNotExist',
+     * 'FeatureNotSupportedOnPortfolioType', 'ServerConfigurationError',
+     * 'Unknown'.
      */
     @JsonProperty(value = "code", access = JsonProperty.Access.WRITE_ONLY)
     private String code;
@@ -114,7 +115,7 @@ public class ErrorResponse {
     }
 
     /**
-     * Get possible values include: 'Unknown', 'PersonalisationNotFound', 'NonRecursivePersonalisation', 'VersionNotFound', 'InstrumentNotFound', 'PropertyNotFound', 'PortfolioRecursionDepth', 'GroupNotFound', 'PortfolioNotFound', 'PropertySchemaNotFound', 'PortfolioAncestryNotFound', 'PortfolioWithIdAlreadyExists', 'OrphanedPortfolio', 'MissingBaseClaims', 'PropertyNotDefined', 'CannotDeleteSystemProperty', 'CannotModifyImmutablePropertyField', 'PropertyAlreadyExists', 'InvalidPropertyLifeTime', 'CannotModifyDefaultDataType', 'GroupAlreadyExists', 'NoSuchDataType', 'ValidationError', 'LoopDetectedInGroupHierarchy', 'SubGroupAlreadyExists', 'PriceSourceNotFound', 'AnalyticStoreNotFound', 'AnalyticStoreAlreadyExists', 'ClientInstrumentAlreadyExists', 'DuplicateInParameterSet', 'ResultsNotFound', 'OrderFieldNotInResultSet', 'OperationFailed', 'ElasticSearchError', 'InvalidParameterValue', 'CommandProcessingFailure', 'EntityStateConstructionFailure', 'EntityTimelineDoesNotExist', 'EventPublishFailure', 'InvalidRequestFailure', 'EventPublishUnknown', 'EventQueryFailure', 'BlobDidNotExistFailure', 'SubSystemRequestFailure', 'SubSystemConfigurationFailure', 'FailedToDelete', 'UpsertClientInstrumentFailure', 'IllegalAsAtInterval', 'IllegalBitemporalQuery', 'InvalidAlternateId', 'CannotAddSourcePortfolioPropertyExplicitly', 'EntityAlreadyExistsInGroup', 'EntityWithIdAlreadyExists', 'PortfolioDetailsDoNotExist', 'PortfolioWithNameAlreadyExists', 'InvalidTransactions', 'ReferencePortfolioNotFound', 'DuplicateIdFailure', 'CommandRetrievalFailure', 'DataFilterApplicationFailure', 'SearchFailed', 'MovementsEngineConfigurationKeyFailure', 'FxRateSourceNotFound', 'AccrualSourceNotFound', 'EntitlementsFailure', 'InvalidIdentityToken', 'InvalidRequestHeaders', 'PriceNotFound', 'InvalidSubHoldingKeysProvided', 'DuplicateSubHoldingKeysProvided', 'ServerConfigurationError', 'InvalidUnitForDataType', 'InvalidTypeForDataType', 'InvalidValueForDataType', 'UnitNotDefinedForDataType', 'UnitsNotSupportedOnDataType', 'CannotSpecifyUnitsOnDataType', 'UnitSchemaInconsistentWithDataType', 'UnitDefinitionNotSpecified', 'DuplicateUnitDefinitionsSpecified', 'InvalidUnitsDefinition', 'InvalidInstrumentIdentifierUnit', 'HoldingsAdjustmentDoesNotExist', 'CouldNotBuildExcelUrl', 'CouldNotGetExcelVersion', 'InstrumentByCodeNotFound', 'EntitySchemaDoesNotExist', 'FeatureNotSupportedOnPortfolioType'.
+     * Get possible values include: 'PersonalisationNotFound', 'NonRecursivePersonalisation', 'VersionNotFound', 'InstrumentNotFound', 'PropertyNotFound', 'PortfolioRecursionDepth', 'GroupNotFound', 'PortfolioNotFound', 'PropertySchemaNotFound', 'PortfolioAncestryNotFound', 'PortfolioWithIdAlreadyExists', 'OrphanedPortfolio', 'MissingBaseClaims', 'PropertyNotDefined', 'CannotDeleteSystemProperty', 'CannotModifyImmutablePropertyField', 'PropertyAlreadyExists', 'InvalidPropertyLifeTime', 'CannotModifyDefaultDataType', 'GroupAlreadyExists', 'NoSuchDataType', 'ValidationError', 'LoopDetectedInGroupHierarchy', 'SubGroupAlreadyExists', 'PriceSourceNotFound', 'AnalyticStoreNotFound', 'AnalyticStoreAlreadyExists', 'ClientInstrumentAlreadyExists', 'DuplicateInParameterSet', 'ResultsNotFound', 'OrderFieldNotInResultSet', 'OperationFailed', 'ElasticSearchError', 'InvalidParameterValue', 'CommandProcessingFailure', 'EntityStateConstructionFailure', 'EntityTimelineDoesNotExist', 'EventPublishFailure', 'InvalidRequestFailure', 'EventPublishUnknown', 'EventQueryFailure', 'BlobDidNotExistFailure', 'SubSystemRequestFailure', 'SubSystemConfigurationFailure', 'FailedToDelete', 'UpsertClientInstrumentFailure', 'IllegalAsAtInterval', 'IllegalBitemporalQuery', 'InvalidAlternateId', 'CannotAddSourcePortfolioPropertyExplicitly', 'EntityAlreadyExistsInGroup', 'EntityWithIdAlreadyExists', 'PortfolioDetailsDoNotExist', 'PortfolioWithNameAlreadyExists', 'InvalidTransactions', 'ReferencePortfolioNotFound', 'DuplicateIdFailure', 'CommandRetrievalFailure', 'DataFilterApplicationFailure', 'SearchFailed', 'MovementsEngineConfigurationKeyFailure', 'FxRateSourceNotFound', 'AccrualSourceNotFound', 'EntitlementsFailure', 'InvalidIdentityToken', 'InvalidRequestHeaders', 'PriceNotFound', 'InvalidSubHoldingKeysProvided', 'DuplicateSubHoldingKeysProvided', 'InvalidUnitForDataType', 'InvalidTypeForDataType', 'InvalidValueForDataType', 'UnitNotDefinedForDataType', 'UnitsNotSupportedOnDataType', 'CannotSpecifyUnitsOnDataType', 'UnitSchemaInconsistentWithDataType', 'UnitDefinitionNotSpecified', 'DuplicateUnitDefinitionsSpecified', 'InvalidUnitsDefinition', 'InvalidInstrumentIdentifierUnit', 'HoldingsAdjustmentDoesNotExist', 'CouldNotBuildExcelUrl', 'CouldNotGetExcelVersion', 'InstrumentByCodeNotFound', 'EntitySchemaDoesNotExist', 'FeatureNotSupportedOnPortfolioType', 'ServerConfigurationError', 'Unknown'.
      *
      * @return the code value
      */

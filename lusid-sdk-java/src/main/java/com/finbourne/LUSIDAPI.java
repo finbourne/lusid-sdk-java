@@ -22,82 +22,83 @@
 
 package com.finbourne;
 
-import com.finbourne.models.AddTransactionPropertyDto;
+import com.finbourne.models.AddTransactionPropertyResponse;
+import com.finbourne.models.AdjustHolding;
 import com.finbourne.models.AdjustHoldingRequest;
-import com.finbourne.models.AdjustHoldingsDto;
 import com.finbourne.models.AggregationRequest;
-import com.finbourne.models.AnalyticStoreDto;
-import com.finbourne.models.CorporateActionEventDto;
+import com.finbourne.models.AnalyticStore;
+import com.finbourne.models.CorporateAction;
 import com.finbourne.models.CreateAnalyticStoreRequest;
 import com.finbourne.models.CreateClientInstrumentRequest;
+import com.finbourne.models.CreateCorporateAction;
 import com.finbourne.models.CreateDataTypeRequest;
 import com.finbourne.models.CreateDerivedTransactionPortfolioRequest;
-import com.finbourne.models.CreateGroupRequest;
 import com.finbourne.models.CreatePerpetualPropertyRequest;
+import com.finbourne.models.CreatePortfolioDetails;
+import com.finbourne.models.CreatePortfolioGroupRequest;
 import com.finbourne.models.CreatePropertyDefinitionRequest;
 import com.finbourne.models.CreatePropertyRequest;
 import com.finbourne.models.CreateReferencePortfolioRequest;
-import com.finbourne.models.CreateResultsRequest;
+import com.finbourne.models.CreateResults;
 import com.finbourne.models.CreateTransactionPortfolioRequest;
-import com.finbourne.models.DataTypeDto;
+import com.finbourne.models.DataType;
+import com.finbourne.models.DeleteClientInstrumentsResponse;
 import com.finbourne.models.DeletedEntityResponse;
 import com.finbourne.models.ErrorResponseException;
-import com.finbourne.models.ExpandedGroupDto;
-import com.finbourne.models.HoldingsAdjustmentDto;
-import com.finbourne.models.HoldingsAdjustmentHeaderDto;
-import com.finbourne.models.InstrumentAnalyticDataDto;
-import com.finbourne.models.InstrumentDto;
-import com.finbourne.models.InstrumentPropertyDto;
-import com.finbourne.models.IUnitDefinitionDto;
+import com.finbourne.models.ExpandedGroup;
+import com.finbourne.models.HoldingsAdjustment;
+import com.finbourne.models.Instrument;
+import com.finbourne.models.InstrumentAnalytic;
+import com.finbourne.models.InstrumentProperty;
+import com.finbourne.models.IUnitDefinition;
 import com.finbourne.models.ListAggregationResponse;
-import com.finbourne.models.PersonalisationDto;
-import com.finbourne.models.PortfolioDetailsDto;
-import com.finbourne.models.PortfolioDetailsRequest;
-import com.finbourne.models.PortfolioDto;
-import com.finbourne.models.PortfolioGroupDto;
-import com.finbourne.models.PortfolioPropertiesDto;
-import com.finbourne.models.PropertyDefinitionDto;
-import com.finbourne.models.PropertySchemaDto;
+import com.finbourne.models.LookupInstrumentsFromCodesResponse;
+import com.finbourne.models.NestedAggregationResponse;
+import com.finbourne.models.Personalisation;
+import com.finbourne.models.Portfolio;
+import com.finbourne.models.PortfolioDetails;
+import com.finbourne.models.PortfolioGroup;
+import com.finbourne.models.PortfolioProperties;
+import com.finbourne.models.PropertyDefinition;
+import com.finbourne.models.PropertySchema;
 import com.finbourne.models.ReconciliationRequest;
 import com.finbourne.models.ReferencePortfolioConstituentRequest;
 import com.finbourne.models.ResourceId;
-import com.finbourne.models.ResourceListOfAnalyticStoreKeyDto;
-import com.finbourne.models.ResourceListOfDataTypeDto;
-import com.finbourne.models.ResourceListOfPersonalisationDto;
-import com.finbourne.models.ResourceListOfPortfolioDto;
-import com.finbourne.models.ResourceListOfPortfolioGroupDto;
+import com.finbourne.models.ResourceListOfAnalyticStoreKey;
+import com.finbourne.models.ResourceListOfDataType;
+import com.finbourne.models.ResourceListOfHoldingsAdjustmentHeader;
+import com.finbourne.models.ResourceListOfPersonalisation;
+import com.finbourne.models.ResourceListOfPortfolio;
+import com.finbourne.models.ResourceListOfPortfolioGroup;
 import com.finbourne.models.ResourceListOfPortfolioSearchResult;
-import com.finbourne.models.ResourceListOfProcessedCommandDto;
-import com.finbourne.models.ResourceListOfPropertyDefinitionDto;
-import com.finbourne.models.ResourceListOfReconciliationBreakDto;
-import com.finbourne.models.ResourceListOfReferencePortfolioConstituentDto;
+import com.finbourne.models.ResourceListOfProcessedCommand;
+import com.finbourne.models.ResourceListOfPropertyDefinition;
+import com.finbourne.models.ResourceListOfReconciliationBreak;
+import com.finbourne.models.ResourceListOfReferencePortfolioConstituent;
 import com.finbourne.models.ResourceListOfScope;
 import com.finbourne.models.ResourceListOfString;
-import com.finbourne.models.ResourceListOfTransactionMetaDataDto;
+import com.finbourne.models.ResourceListOfTransactionMetaData;
 import com.finbourne.models.ResourceListOfValueType;
-import com.finbourne.models.ResultsDto;
-import com.finbourne.models.SchemaDto;
-import com.finbourne.models.TransactionMetaDataDto;
-import com.finbourne.models.TransactionMetaDataRequest;
+import com.finbourne.models.Results;
+import com.finbourne.models.Schema;
+import com.finbourne.models.TransactionConfigurationData;
+import com.finbourne.models.TransactionConfigurationDataRequest;
 import com.finbourne.models.TransactionQueryParameters;
 import com.finbourne.models.TransactionRequest;
-import com.finbourne.models.TryAddClientInstrumentsDto;
-import com.finbourne.models.TryDeleteClientInstrumentsDto;
-import com.finbourne.models.TryLookupInstrumentsFromCodesDto;
-import com.finbourne.models.TryUpsertCorporateActionsDto;
+import com.finbourne.models.TryAddClientInstruments;
 import com.finbourne.models.UpdateDataTypeRequest;
-import com.finbourne.models.UpdateGroupRequest;
+import com.finbourne.models.UpdatePortfolioGroupRequest;
 import com.finbourne.models.UpdatePortfolioRequest;
 import com.finbourne.models.UpdatePropertyDefinitionRequest;
-import com.finbourne.models.UpsertCorporateActionRequest;
-import com.finbourne.models.UpsertInstrumentPropertiesDto;
-import com.finbourne.models.UpsertPersonalisationsResponse;
-import com.finbourne.models.UpsertPortfolioTransactionsDto;
-import com.finbourne.models.UpsertReferencePortfolioConstituentsDto;
-import com.finbourne.models.VersionedResourceListOfHoldingDto;
-import com.finbourne.models.VersionedResourceListOfOutputTransactionDto;
-import com.finbourne.models.VersionedResourceListOfTransactionDto;
-import com.finbourne.models.VersionSummaryDto;
+import com.finbourne.models.UpsertCorporateActionsResponse;
+import com.finbourne.models.UpsertInstrumentPropertiesResponse;
+import com.finbourne.models.UpsertPersonalisationResponse;
+import com.finbourne.models.UpsertPortfolioTransactions;
+import com.finbourne.models.UpsertReferencePortfolioConstituentsResponse;
+import com.finbourne.models.VersionedResourceListOfHolding;
+import com.finbourne.models.VersionedResourceListOfOutputTransaction;
+import com.finbourne.models.VersionedResourceListOfTransaction;
+import com.finbourne.models.VersionSummary;
 import com.microsoft.rest.ServiceCallback;
 import com.microsoft.rest.ServiceFuture;
 import com.microsoft.rest.ServiceResponse;
@@ -130,9 +131,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfAnalyticStoreKeyDto object if successful.
+     * @return the ResourceListOfAnalyticStoreKey object if successful.
      */
-    ResourceListOfAnalyticStoreKeyDto listAnalyticStores();
+    ResourceListOfAnalyticStoreKey listAnalyticStores();
 
     /**
      * List all analytic stores in client.
@@ -141,23 +142,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfAnalyticStoreKeyDto> listAnalyticStoresAsync(final ServiceCallback<ResourceListOfAnalyticStoreKeyDto> serviceCallback);
+    ServiceFuture<ResourceListOfAnalyticStoreKey> listAnalyticStoresAsync(final ServiceCallback<ResourceListOfAnalyticStoreKey> serviceCallback);
 
     /**
      * List all analytic stores in client.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfAnalyticStoreKeyDto object
+     * @return the observable to the ResourceListOfAnalyticStoreKey object
      */
-    Observable<ResourceListOfAnalyticStoreKeyDto> listAnalyticStoresAsync();
+    Observable<ResourceListOfAnalyticStoreKey> listAnalyticStoresAsync();
 
     /**
      * List all analytic stores in client.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfAnalyticStoreKeyDto object
+     * @return the observable to the ResourceListOfAnalyticStoreKey object
      */
-    Observable<ServiceResponse<ResourceListOfAnalyticStoreKeyDto>> listAnalyticStoresWithServiceResponseAsync();
+    Observable<ServiceResponse<ResourceListOfAnalyticStoreKey>> listAnalyticStoresWithServiceResponseAsync();
     /**
      * List all analytic stores in client.
      *
@@ -169,9 +170,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfAnalyticStoreKeyDto object if successful.
+     * @return the ResourceListOfAnalyticStoreKey object if successful.
      */
-    ResourceListOfAnalyticStoreKeyDto listAnalyticStores(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    ResourceListOfAnalyticStoreKey listAnalyticStores(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * List all analytic stores in client.
@@ -185,7 +186,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfAnalyticStoreKeyDto> listAnalyticStoresAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfAnalyticStoreKeyDto> serviceCallback);
+    ServiceFuture<ResourceListOfAnalyticStoreKey> listAnalyticStoresAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfAnalyticStoreKey> serviceCallback);
 
     /**
      * List all analytic stores in client.
@@ -196,9 +197,9 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfAnalyticStoreKeyDto object
+     * @return the observable to the ResourceListOfAnalyticStoreKey object
      */
-    Observable<ResourceListOfAnalyticStoreKeyDto> listAnalyticStoresAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ResourceListOfAnalyticStoreKey> listAnalyticStoresAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * List all analytic stores in client.
@@ -209,9 +210,9 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfAnalyticStoreKeyDto object
+     * @return the observable to the ResourceListOfAnalyticStoreKey object
      */
-    Observable<ServiceResponse<ResourceListOfAnalyticStoreKeyDto>> listAnalyticStoresWithServiceResponseAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ServiceResponse<ResourceListOfAnalyticStoreKey>> listAnalyticStoresWithServiceResponseAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Create a new analytic store for the given scope for the given date.
@@ -219,9 +220,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AnalyticStoreDto object if successful.
+     * @return the AnalyticStore object if successful.
      */
-    AnalyticStoreDto createAnalyticStore();
+    AnalyticStore createAnalyticStore();
 
     /**
      * Create a new analytic store for the given scope for the given date.
@@ -230,23 +231,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<AnalyticStoreDto> createAnalyticStoreAsync(final ServiceCallback<AnalyticStoreDto> serviceCallback);
+    ServiceFuture<AnalyticStore> createAnalyticStoreAsync(final ServiceCallback<AnalyticStore> serviceCallback);
 
     /**
      * Create a new analytic store for the given scope for the given date.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AnalyticStoreDto object
+     * @return the observable to the AnalyticStore object
      */
-    Observable<AnalyticStoreDto> createAnalyticStoreAsync();
+    Observable<AnalyticStore> createAnalyticStoreAsync();
 
     /**
      * Create a new analytic store for the given scope for the given date.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AnalyticStoreDto object
+     * @return the observable to the AnalyticStore object
      */
-    Observable<ServiceResponse<AnalyticStoreDto>> createAnalyticStoreWithServiceResponseAsync();
+    Observable<ServiceResponse<AnalyticStore>> createAnalyticStoreWithServiceResponseAsync();
     /**
      * Create a new analytic store for the given scope for the given date.
      *
@@ -254,9 +255,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AnalyticStoreDto object if successful.
+     * @return the AnalyticStore object if successful.
      */
-    AnalyticStoreDto createAnalyticStore(CreateAnalyticStoreRequest request);
+    AnalyticStore createAnalyticStore(CreateAnalyticStoreRequest request);
 
     /**
      * Create a new analytic store for the given scope for the given date.
@@ -266,25 +267,25 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<AnalyticStoreDto> createAnalyticStoreAsync(CreateAnalyticStoreRequest request, final ServiceCallback<AnalyticStoreDto> serviceCallback);
+    ServiceFuture<AnalyticStore> createAnalyticStoreAsync(CreateAnalyticStoreRequest request, final ServiceCallback<AnalyticStore> serviceCallback);
 
     /**
      * Create a new analytic store for the given scope for the given date.
      *
      * @param request A valid and fully populated analytic store creation request
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AnalyticStoreDto object
+     * @return the observable to the AnalyticStore object
      */
-    Observable<AnalyticStoreDto> createAnalyticStoreAsync(CreateAnalyticStoreRequest request);
+    Observable<AnalyticStore> createAnalyticStoreAsync(CreateAnalyticStoreRequest request);
 
     /**
      * Create a new analytic store for the given scope for the given date.
      *
      * @param request A valid and fully populated analytic store creation request
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AnalyticStoreDto object
+     * @return the observable to the AnalyticStore object
      */
-    Observable<ServiceResponse<AnalyticStoreDto>> createAnalyticStoreWithServiceResponseAsync(CreateAnalyticStoreRequest request);
+    Observable<ServiceResponse<AnalyticStore>> createAnalyticStoreWithServiceResponseAsync(CreateAnalyticStoreRequest request);
 
     /**
      * Get an analytic store.
@@ -296,9 +297,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AnalyticStoreDto object if successful.
+     * @return the AnalyticStore object if successful.
      */
-    AnalyticStoreDto getAnalyticStore(String scope, int year, int month, int day);
+    AnalyticStore getAnalyticStore(String scope, int year, int month, int day);
 
     /**
      * Get an analytic store.
@@ -311,7 +312,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<AnalyticStoreDto> getAnalyticStoreAsync(String scope, int year, int month, int day, final ServiceCallback<AnalyticStoreDto> serviceCallback);
+    ServiceFuture<AnalyticStore> getAnalyticStoreAsync(String scope, int year, int month, int day, final ServiceCallback<AnalyticStore> serviceCallback);
 
     /**
      * Get an analytic store.
@@ -321,9 +322,9 @@ public interface LUSIDAPI {
      * @param month The month component of the date for the data in the scope
      * @param day The day component of the date for the data in the scope
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AnalyticStoreDto object
+     * @return the observable to the AnalyticStore object
      */
-    Observable<AnalyticStoreDto> getAnalyticStoreAsync(String scope, int year, int month, int day);
+    Observable<AnalyticStore> getAnalyticStoreAsync(String scope, int year, int month, int day);
 
     /**
      * Get an analytic store.
@@ -333,9 +334,9 @@ public interface LUSIDAPI {
      * @param month The month component of the date for the data in the scope
      * @param day The day component of the date for the data in the scope
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AnalyticStoreDto object
+     * @return the observable to the AnalyticStore object
      */
-    Observable<ServiceResponse<AnalyticStoreDto>> getAnalyticStoreWithServiceResponseAsync(String scope, int year, int month, int day);
+    Observable<ServiceResponse<AnalyticStore>> getAnalyticStoreWithServiceResponseAsync(String scope, int year, int month, int day);
     /**
      * Get an analytic store.
      *
@@ -347,9 +348,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AnalyticStoreDto object if successful.
+     * @return the AnalyticStore object if successful.
      */
-    AnalyticStoreDto getAnalyticStore(String scope, int year, int month, int day, DateTime asAt);
+    AnalyticStore getAnalyticStore(String scope, int year, int month, int day, DateTime asAt);
 
     /**
      * Get an analytic store.
@@ -363,7 +364,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<AnalyticStoreDto> getAnalyticStoreAsync(String scope, int year, int month, int day, DateTime asAt, final ServiceCallback<AnalyticStoreDto> serviceCallback);
+    ServiceFuture<AnalyticStore> getAnalyticStoreAsync(String scope, int year, int month, int day, DateTime asAt, final ServiceCallback<AnalyticStore> serviceCallback);
 
     /**
      * Get an analytic store.
@@ -374,9 +375,9 @@ public interface LUSIDAPI {
      * @param day The day component of the date for the data in the scope
      * @param asAt AsAt date
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AnalyticStoreDto object
+     * @return the observable to the AnalyticStore object
      */
-    Observable<AnalyticStoreDto> getAnalyticStoreAsync(String scope, int year, int month, int day, DateTime asAt);
+    Observable<AnalyticStore> getAnalyticStoreAsync(String scope, int year, int month, int day, DateTime asAt);
 
     /**
      * Get an analytic store.
@@ -387,9 +388,9 @@ public interface LUSIDAPI {
      * @param day The day component of the date for the data in the scope
      * @param asAt AsAt date
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AnalyticStoreDto object
+     * @return the observable to the AnalyticStore object
      */
-    Observable<ServiceResponse<AnalyticStoreDto>> getAnalyticStoreWithServiceResponseAsync(String scope, int year, int month, int day, DateTime asAt);
+    Observable<ServiceResponse<AnalyticStore>> getAnalyticStoreWithServiceResponseAsync(String scope, int year, int month, int day, DateTime asAt);
 
     /**
      * Create a new analytic store for the given scope for the given date.
@@ -452,9 +453,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AnalyticStoreDto object if successful.
+     * @return the AnalyticStore object if successful.
      */
-    AnalyticStoreDto insertAnalytics(String scope, int year, int month, int day);
+    AnalyticStore insertAnalytics(String scope, int year, int month, int day);
 
     /**
      * Insert analytics into an existing analytic store for the given scope and date.
@@ -467,7 +468,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<AnalyticStoreDto> insertAnalyticsAsync(String scope, int year, int month, int day, final ServiceCallback<AnalyticStoreDto> serviceCallback);
+    ServiceFuture<AnalyticStore> insertAnalyticsAsync(String scope, int year, int month, int day, final ServiceCallback<AnalyticStore> serviceCallback);
 
     /**
      * Insert analytics into an existing analytic store for the given scope and date.
@@ -477,9 +478,9 @@ public interface LUSIDAPI {
      * @param month The month component of the date for the data in the scope
      * @param day The day component of the date for the data in the scope
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AnalyticStoreDto object
+     * @return the observable to the AnalyticStore object
      */
-    Observable<AnalyticStoreDto> insertAnalyticsAsync(String scope, int year, int month, int day);
+    Observable<AnalyticStore> insertAnalyticsAsync(String scope, int year, int month, int day);
 
     /**
      * Insert analytics into an existing analytic store for the given scope and date.
@@ -489,9 +490,9 @@ public interface LUSIDAPI {
      * @param month The month component of the date for the data in the scope
      * @param day The day component of the date for the data in the scope
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AnalyticStoreDto object
+     * @return the observable to the AnalyticStore object
      */
-    Observable<ServiceResponse<AnalyticStoreDto>> insertAnalyticsWithServiceResponseAsync(String scope, int year, int month, int day);
+    Observable<ServiceResponse<AnalyticStore>> insertAnalyticsWithServiceResponseAsync(String scope, int year, int month, int day);
     /**
      * Insert analytics into an existing analytic store for the given scope and date.
      *
@@ -499,13 +500,13 @@ public interface LUSIDAPI {
      * @param year The year component of the date for the data in the scope
      * @param month The month component of the date for the data in the scope
      * @param day The day component of the date for the data in the scope
-     * @param data the List&lt;InstrumentAnalyticDataDto&gt; value
+     * @param data the List&lt;InstrumentAnalytic&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AnalyticStoreDto object if successful.
+     * @return the AnalyticStore object if successful.
      */
-    AnalyticStoreDto insertAnalytics(String scope, int year, int month, int day, List<InstrumentAnalyticDataDto> data);
+    AnalyticStore insertAnalytics(String scope, int year, int month, int day, List<InstrumentAnalytic> data);
 
     /**
      * Insert analytics into an existing analytic store for the given scope and date.
@@ -514,12 +515,12 @@ public interface LUSIDAPI {
      * @param year The year component of the date for the data in the scope
      * @param month The month component of the date for the data in the scope
      * @param day The day component of the date for the data in the scope
-     * @param data the List&lt;InstrumentAnalyticDataDto&gt; value
+     * @param data the List&lt;InstrumentAnalytic&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<AnalyticStoreDto> insertAnalyticsAsync(String scope, int year, int month, int day, List<InstrumentAnalyticDataDto> data, final ServiceCallback<AnalyticStoreDto> serviceCallback);
+    ServiceFuture<AnalyticStore> insertAnalyticsAsync(String scope, int year, int month, int day, List<InstrumentAnalytic> data, final ServiceCallback<AnalyticStore> serviceCallback);
 
     /**
      * Insert analytics into an existing analytic store for the given scope and date.
@@ -528,11 +529,11 @@ public interface LUSIDAPI {
      * @param year The year component of the date for the data in the scope
      * @param month The month component of the date for the data in the scope
      * @param day The day component of the date for the data in the scope
-     * @param data the List&lt;InstrumentAnalyticDataDto&gt; value
+     * @param data the List&lt;InstrumentAnalytic&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AnalyticStoreDto object
+     * @return the observable to the AnalyticStore object
      */
-    Observable<AnalyticStoreDto> insertAnalyticsAsync(String scope, int year, int month, int day, List<InstrumentAnalyticDataDto> data);
+    Observable<AnalyticStore> insertAnalyticsAsync(String scope, int year, int month, int day, List<InstrumentAnalytic> data);
 
     /**
      * Insert analytics into an existing analytic store for the given scope and date.
@@ -541,11 +542,11 @@ public interface LUSIDAPI {
      * @param year The year component of the date for the data in the scope
      * @param month The month component of the date for the data in the scope
      * @param day The day component of the date for the data in the scope
-     * @param data the List&lt;InstrumentAnalyticDataDto&gt; value
+     * @param data the List&lt;InstrumentAnalytic&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AnalyticStoreDto object
+     * @return the observable to the AnalyticStore object
      */
-    Observable<ServiceResponse<AnalyticStoreDto>> insertAnalyticsWithServiceResponseAsync(String scope, int year, int month, int day, List<InstrumentAnalyticDataDto> data);
+    Observable<ServiceResponse<AnalyticStore>> insertAnalyticsWithServiceResponseAsync(String scope, int year, int month, int day, List<InstrumentAnalytic> data);
 
     /**
      * Gets a corporate action based on dates.
@@ -555,9 +556,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the List&lt;CorporateActionEventDto&gt; object if successful.
+     * @return the List&lt;CorporateAction&gt; object if successful.
      */
-    List<CorporateActionEventDto> getCorporateActions(String scope, String code);
+    List<CorporateAction> getCorporateActions(String scope, String code);
 
     /**
      * Gets a corporate action based on dates.
@@ -568,7 +569,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<List<CorporateActionEventDto>> getCorporateActionsAsync(String scope, String code, final ServiceCallback<List<CorporateActionEventDto>> serviceCallback);
+    ServiceFuture<List<CorporateAction>> getCorporateActionsAsync(String scope, String code, final ServiceCallback<List<CorporateAction>> serviceCallback);
 
     /**
      * Gets a corporate action based on dates.
@@ -576,9 +577,9 @@ public interface LUSIDAPI {
      * @param scope Scope
      * @param code Corporate action source id
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the List&lt;CorporateActionEventDto&gt; object
+     * @return the observable to the List&lt;CorporateAction&gt; object
      */
-    Observable<List<CorporateActionEventDto>> getCorporateActionsAsync(String scope, String code);
+    Observable<List<CorporateAction>> getCorporateActionsAsync(String scope, String code);
 
     /**
      * Gets a corporate action based on dates.
@@ -586,9 +587,9 @@ public interface LUSIDAPI {
      * @param scope Scope
      * @param code Corporate action source id
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the List&lt;CorporateActionEventDto&gt; object
+     * @return the observable to the List&lt;CorporateAction&gt; object
      */
-    Observable<ServiceResponse<List<CorporateActionEventDto>>> getCorporateActionsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<List<CorporateAction>>> getCorporateActionsWithServiceResponseAsync(String scope, String code);
     /**
      * Gets a corporate action based on dates.
      *
@@ -603,9 +604,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the List&lt;CorporateActionEventDto&gt; object if successful.
+     * @return the List&lt;CorporateAction&gt; object if successful.
      */
-    List<CorporateActionEventDto> getCorporateActions(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    List<CorporateAction> getCorporateActions(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets a corporate action based on dates.
@@ -622,7 +623,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<List<CorporateActionEventDto>> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<List<CorporateActionEventDto>> serviceCallback);
+    ServiceFuture<List<CorporateAction>> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<List<CorporateAction>> serviceCallback);
 
     /**
      * Gets a corporate action based on dates.
@@ -636,9 +637,9 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the List&lt;CorporateActionEventDto&gt; object
+     * @return the observable to the List&lt;CorporateAction&gt; object
      */
-    Observable<List<CorporateActionEventDto>> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<List<CorporateAction>> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets a corporate action based on dates.
@@ -652,9 +653,9 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the List&lt;CorporateActionEventDto&gt; object
+     * @return the observable to the List&lt;CorporateAction&gt; object
      */
-    Observable<ServiceResponse<List<CorporateActionEventDto>>> getCorporateActionsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ServiceResponse<List<CorporateAction>>> getCorporateActionsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
@@ -664,9 +665,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryUpsertCorporateActionsDto object if successful.
+     * @return the UpsertCorporateActionsResponse object if successful.
      */
-    TryUpsertCorporateActionsDto batchUpsertCorporateActions(String scope, String code);
+    UpsertCorporateActionsResponse batchUpsertCorporateActions(String scope, String code);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
@@ -677,7 +678,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryUpsertCorporateActionsDto> batchUpsertCorporateActionsAsync(String scope, String code, final ServiceCallback<TryUpsertCorporateActionsDto> serviceCallback);
+    ServiceFuture<UpsertCorporateActionsResponse> batchUpsertCorporateActionsAsync(String scope, String code, final ServiceCallback<UpsertCorporateActionsResponse> serviceCallback);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
@@ -685,9 +686,9 @@ public interface LUSIDAPI {
      * @param scope The intended scope of the corporate action
      * @param code Source of the corporate action
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryUpsertCorporateActionsDto object
+     * @return the observable to the UpsertCorporateActionsResponse object
      */
-    Observable<TryUpsertCorporateActionsDto> batchUpsertCorporateActionsAsync(String scope, String code);
+    Observable<UpsertCorporateActionsResponse> batchUpsertCorporateActionsAsync(String scope, String code);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
@@ -695,9 +696,9 @@ public interface LUSIDAPI {
      * @param scope The intended scope of the corporate action
      * @param code Source of the corporate action
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryUpsertCorporateActionsDto object
+     * @return the observable to the UpsertCorporateActionsResponse object
      */
-    Observable<ServiceResponse<TryUpsertCorporateActionsDto>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<UpsertCorporateActionsResponse>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String code);
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
@@ -707,9 +708,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryUpsertCorporateActionsDto object if successful.
+     * @return the UpsertCorporateActionsResponse object if successful.
      */
-    TryUpsertCorporateActionsDto batchUpsertCorporateActions(String scope, String code, List<UpsertCorporateActionRequest> actions);
+    UpsertCorporateActionsResponse batchUpsertCorporateActions(String scope, String code, List<CreateCorporateAction> actions);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
@@ -721,7 +722,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryUpsertCorporateActionsDto> batchUpsertCorporateActionsAsync(String scope, String code, List<UpsertCorporateActionRequest> actions, final ServiceCallback<TryUpsertCorporateActionsDto> serviceCallback);
+    ServiceFuture<UpsertCorporateActionsResponse> batchUpsertCorporateActionsAsync(String scope, String code, List<CreateCorporateAction> actions, final ServiceCallback<UpsertCorporateActionsResponse> serviceCallback);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
@@ -730,9 +731,9 @@ public interface LUSIDAPI {
      * @param code Source of the corporate action
      * @param actions The corporate actions to create
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryUpsertCorporateActionsDto object
+     * @return the observable to the UpsertCorporateActionsResponse object
      */
-    Observable<TryUpsertCorporateActionsDto> batchUpsertCorporateActionsAsync(String scope, String code, List<UpsertCorporateActionRequest> actions);
+    Observable<UpsertCorporateActionsResponse> batchUpsertCorporateActionsAsync(String scope, String code, List<CreateCorporateAction> actions);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
@@ -741,9 +742,9 @@ public interface LUSIDAPI {
      * @param code Source of the corporate action
      * @param actions The corporate actions to create
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryUpsertCorporateActionsDto object
+     * @return the observable to the UpsertCorporateActionsResponse object
      */
-    Observable<ServiceResponse<TryUpsertCorporateActionsDto>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String code, List<UpsertCorporateActionRequest> actions);
+    Observable<ServiceResponse<UpsertCorporateActionsResponse>> batchUpsertCorporateActionsWithServiceResponseAsync(String scope, String code, List<CreateCorporateAction> actions);
 
     /**
      * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
@@ -751,9 +752,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DataTypeDto object if successful.
+     * @return the DataType object if successful.
      */
-    DataTypeDto createDataType();
+    DataType createDataType();
 
     /**
      * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
@@ -762,23 +763,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<DataTypeDto> createDataTypeAsync(final ServiceCallback<DataTypeDto> serviceCallback);
+    ServiceFuture<DataType> createDataTypeAsync(final ServiceCallback<DataType> serviceCallback);
 
     /**
      * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DataTypeDto object
+     * @return the observable to the DataType object
      */
-    Observable<DataTypeDto> createDataTypeAsync();
+    Observable<DataType> createDataTypeAsync();
 
     /**
      * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DataTypeDto object
+     * @return the observable to the DataType object
      */
-    Observable<ServiceResponse<DataTypeDto>> createDataTypeWithServiceResponseAsync();
+    Observable<ServiceResponse<DataType>> createDataTypeWithServiceResponseAsync();
     /**
      * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
@@ -786,9 +787,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DataTypeDto object if successful.
+     * @return the DataType object if successful.
      */
-    DataTypeDto createDataType(CreateDataTypeRequest request);
+    DataType createDataType(CreateDataTypeRequest request);
 
     /**
      * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
@@ -798,25 +799,25 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<DataTypeDto> createDataTypeAsync(CreateDataTypeRequest request, final ServiceCallback<DataTypeDto> serviceCallback);
+    ServiceFuture<DataType> createDataTypeAsync(CreateDataTypeRequest request, final ServiceCallback<DataType> serviceCallback);
 
     /**
      * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
      * @param request The definition of the new format
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DataTypeDto object
+     * @return the observable to the DataType object
      */
-    Observable<DataTypeDto> createDataTypeAsync(CreateDataTypeRequest request);
+    Observable<DataType> createDataTypeAsync(CreateDataTypeRequest request);
 
     /**
      * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
      * @param request The definition of the new format
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DataTypeDto object
+     * @return the observable to the DataType object
      */
-    Observable<ServiceResponse<DataTypeDto>> createDataTypeWithServiceResponseAsync(CreateDataTypeRequest request);
+    Observable<ServiceResponse<DataType>> createDataTypeWithServiceResponseAsync(CreateDataTypeRequest request);
 
     /**
      * Lists all property data formats in the specified scope.
@@ -825,9 +826,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfDataTypeDto object if successful.
+     * @return the ResourceListOfDataType object if successful.
      */
-    ResourceListOfDataTypeDto listDataTypes(String scope);
+    ResourceListOfDataType listDataTypes(String scope);
 
     /**
      * Lists all property data formats in the specified scope.
@@ -837,25 +838,25 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfDataTypeDto> listDataTypesAsync(String scope, final ServiceCallback<ResourceListOfDataTypeDto> serviceCallback);
+    ServiceFuture<ResourceListOfDataType> listDataTypesAsync(String scope, final ServiceCallback<ResourceListOfDataType> serviceCallback);
 
     /**
      * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfDataTypeDto object
+     * @return the observable to the ResourceListOfDataType object
      */
-    Observable<ResourceListOfDataTypeDto> listDataTypesAsync(String scope);
+    Observable<ResourceListOfDataType> listDataTypesAsync(String scope);
 
     /**
      * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfDataTypeDto object
+     * @return the observable to the ResourceListOfDataType object
      */
-    Observable<ServiceResponse<ResourceListOfDataTypeDto>> listDataTypesWithServiceResponseAsync(String scope);
+    Observable<ServiceResponse<ResourceListOfDataType>> listDataTypesWithServiceResponseAsync(String scope);
     /**
      * Lists all property data formats in the specified scope.
      *
@@ -869,9 +870,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfDataTypeDto object if successful.
+     * @return the ResourceListOfDataType object if successful.
      */
-    ResourceListOfDataTypeDto listDataTypes(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter);
+    ResourceListOfDataType listDataTypes(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Lists all property data formats in the specified scope.
@@ -887,7 +888,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfDataTypeDto> listDataTypesAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfDataTypeDto> serviceCallback);
+    ServiceFuture<ResourceListOfDataType> listDataTypesAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfDataType> serviceCallback);
 
     /**
      * Lists all property data formats in the specified scope.
@@ -900,9 +901,9 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfDataTypeDto object
+     * @return the observable to the ResourceListOfDataType object
      */
-    Observable<ResourceListOfDataTypeDto> listDataTypesAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ResourceListOfDataType> listDataTypesAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Lists all property data formats in the specified scope.
@@ -915,9 +916,9 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfDataTypeDto object
+     * @return the observable to the ResourceListOfDataType object
      */
-    Observable<ServiceResponse<ResourceListOfDataTypeDto>> listDataTypesWithServiceResponseAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ServiceResponse<ResourceListOfDataType>> listDataTypesWithServiceResponseAsync(String scope, Boolean includeDefault, Boolean includeSystem, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets a property data format.
@@ -927,9 +928,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DataTypeDto object if successful.
+     * @return the DataType object if successful.
      */
-    DataTypeDto getDataType(String scope, String name);
+    DataType getDataType(String scope, String name);
 
     /**
      * Gets a property data format.
@@ -940,7 +941,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<DataTypeDto> getDataTypeAsync(String scope, String name, final ServiceCallback<DataTypeDto> serviceCallback);
+    ServiceFuture<DataType> getDataTypeAsync(String scope, String name, final ServiceCallback<DataType> serviceCallback);
 
     /**
      * Gets a property data format.
@@ -948,9 +949,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DataTypeDto object
+     * @return the observable to the DataType object
      */
-    Observable<DataTypeDto> getDataTypeAsync(String scope, String name);
+    Observable<DataType> getDataTypeAsync(String scope, String name);
 
     /**
      * Gets a property data format.
@@ -958,9 +959,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DataTypeDto object
+     * @return the observable to the DataType object
      */
-    Observable<ServiceResponse<DataTypeDto>> getDataTypeWithServiceResponseAsync(String scope, String name);
+    Observable<ServiceResponse<DataType>> getDataTypeWithServiceResponseAsync(String scope, String name);
 
     /**
      * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
@@ -970,9 +971,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DataTypeDto object if successful.
+     * @return the DataType object if successful.
      */
-    DataTypeDto updateDataType(String scope, String name);
+    DataType updateDataType(String scope, String name);
 
     /**
      * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
@@ -983,7 +984,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<DataTypeDto> updateDataTypeAsync(String scope, String name, final ServiceCallback<DataTypeDto> serviceCallback);
+    ServiceFuture<DataType> updateDataTypeAsync(String scope, String name, final ServiceCallback<DataType> serviceCallback);
 
     /**
      * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
@@ -991,9 +992,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the format being updated
      * @param name The name of the format to update
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DataTypeDto object
+     * @return the observable to the DataType object
      */
-    Observable<DataTypeDto> updateDataTypeAsync(String scope, String name);
+    Observable<DataType> updateDataTypeAsync(String scope, String name);
 
     /**
      * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
@@ -1001,9 +1002,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the format being updated
      * @param name The name of the format to update
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DataTypeDto object
+     * @return the observable to the DataType object
      */
-    Observable<ServiceResponse<DataTypeDto>> updateDataTypeWithServiceResponseAsync(String scope, String name);
+    Observable<ServiceResponse<DataType>> updateDataTypeWithServiceResponseAsync(String scope, String name);
     /**
      * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
@@ -1013,9 +1014,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DataTypeDto object if successful.
+     * @return the DataType object if successful.
      */
-    DataTypeDto updateDataType(String scope, String name, UpdateDataTypeRequest request);
+    DataType updateDataType(String scope, String name, UpdateDataTypeRequest request);
 
     /**
      * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
@@ -1027,7 +1028,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<DataTypeDto> updateDataTypeAsync(String scope, String name, UpdateDataTypeRequest request, final ServiceCallback<DataTypeDto> serviceCallback);
+    ServiceFuture<DataType> updateDataTypeAsync(String scope, String name, UpdateDataTypeRequest request, final ServiceCallback<DataType> serviceCallback);
 
     /**
      * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
@@ -1036,9 +1037,9 @@ public interface LUSIDAPI {
      * @param name The name of the format to update
      * @param request The new definition of the format
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DataTypeDto object
+     * @return the observable to the DataType object
      */
-    Observable<DataTypeDto> updateDataTypeAsync(String scope, String name, UpdateDataTypeRequest request);
+    Observable<DataType> updateDataTypeAsync(String scope, String name, UpdateDataTypeRequest request);
 
     /**
      * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
@@ -1047,9 +1048,9 @@ public interface LUSIDAPI {
      * @param name The name of the format to update
      * @param request The new definition of the format
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DataTypeDto object
+     * @return the observable to the DataType object
      */
-    Observable<ServiceResponse<DataTypeDto>> updateDataTypeWithServiceResponseAsync(String scope, String name, UpdateDataTypeRequest request);
+    Observable<ServiceResponse<DataType>> updateDataTypeWithServiceResponseAsync(String scope, String name, UpdateDataTypeRequest request);
 
     /**
      * Return the definitions for the specified list of units.
@@ -1059,9 +1060,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the IUnitDefinitionDto object if successful.
+     * @return the IUnitDefinition object if successful.
      */
-    IUnitDefinitionDto getUnitsFromDataType(String scope, String name);
+    IUnitDefinition getUnitsFromDataType(String scope, String name);
 
     /**
      * Return the definitions for the specified list of units.
@@ -1072,7 +1073,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String name, final ServiceCallback<IUnitDefinitionDto> serviceCallback);
+    ServiceFuture<IUnitDefinition> getUnitsFromDataTypeAsync(String scope, String name, final ServiceCallback<IUnitDefinition> serviceCallback);
 
     /**
      * Return the definitions for the specified list of units.
@@ -1080,9 +1081,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinitionDto object
+     * @return the observable to the IUnitDefinition object
      */
-    Observable<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String name);
+    Observable<IUnitDefinition> getUnitsFromDataTypeAsync(String scope, String name);
 
     /**
      * Return the definitions for the specified list of units.
@@ -1090,9 +1091,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinitionDto object
+     * @return the observable to the IUnitDefinition object
      */
-    Observable<ServiceResponse<IUnitDefinitionDto>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String name);
+    Observable<ServiceResponse<IUnitDefinition>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String name);
     /**
      * Return the definitions for the specified list of units.
      *
@@ -1103,9 +1104,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the IUnitDefinitionDto object if successful.
+     * @return the IUnitDefinition object if successful.
      */
-    IUnitDefinitionDto getUnitsFromDataType(String scope, String name, List<String> units, String filter);
+    IUnitDefinition getUnitsFromDataType(String scope, String name, List<String> units, String filter);
 
     /**
      * Return the definitions for the specified list of units.
@@ -1118,7 +1119,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String name, List<String> units, String filter, final ServiceCallback<IUnitDefinitionDto> serviceCallback);
+    ServiceFuture<IUnitDefinition> getUnitsFromDataTypeAsync(String scope, String name, List<String> units, String filter, final ServiceCallback<IUnitDefinition> serviceCallback);
 
     /**
      * Return the definitions for the specified list of units.
@@ -1128,9 +1129,9 @@ public interface LUSIDAPI {
      * @param units the List&lt;String&gt; value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinitionDto object
+     * @return the observable to the IUnitDefinition object
      */
-    Observable<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String name, List<String> units, String filter);
+    Observable<IUnitDefinition> getUnitsFromDataTypeAsync(String scope, String name, List<String> units, String filter);
 
     /**
      * Return the definitions for the specified list of units.
@@ -1140,9 +1141,9 @@ public interface LUSIDAPI {
      * @param units the List&lt;String&gt; value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinitionDto object
+     * @return the observable to the IUnitDefinition object
      */
-    Observable<ServiceResponse<IUnitDefinitionDto>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String name, List<String> units, String filter);
+    Observable<ServiceResponse<IUnitDefinition>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String name, List<String> units, String filter);
 
     /**
      * Create derived portfolio.
@@ -1152,9 +1153,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDto object if successful.
+     * @return the Portfolio object if successful.
      */
-    PortfolioDto createDerivedPortfolio(String scope);
+    Portfolio createDerivedPortfolio(String scope);
 
     /**
      * Create derived portfolio.
@@ -1165,7 +1166,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioDto> createDerivedPortfolioAsync(String scope, final ServiceCallback<PortfolioDto> serviceCallback);
+    ServiceFuture<Portfolio> createDerivedPortfolioAsync(String scope, final ServiceCallback<Portfolio> serviceCallback);
 
     /**
      * Create derived portfolio.
@@ -1173,9 +1174,9 @@ public interface LUSIDAPI {
      *
      * @param scope The scope into which to create the new derived portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<PortfolioDto> createDerivedPortfolioAsync(String scope);
+    Observable<Portfolio> createDerivedPortfolioAsync(String scope);
 
     /**
      * Create derived portfolio.
@@ -1183,9 +1184,9 @@ public interface LUSIDAPI {
      *
      * @param scope The scope into which to create the new derived portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<ServiceResponse<PortfolioDto>> createDerivedPortfolioWithServiceResponseAsync(String scope);
+    Observable<ServiceResponse<Portfolio>> createDerivedPortfolioWithServiceResponseAsync(String scope);
     /**
      * Create derived portfolio.
      * Creates a portfolio that derives from an existing portfolio.
@@ -1195,9 +1196,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDto object if successful.
+     * @return the Portfolio object if successful.
      */
-    PortfolioDto createDerivedPortfolio(String scope, CreateDerivedTransactionPortfolioRequest portfolio);
+    Portfolio createDerivedPortfolio(String scope, CreateDerivedTransactionPortfolioRequest portfolio);
 
     /**
      * Create derived portfolio.
@@ -1209,7 +1210,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioDto> createDerivedPortfolioAsync(String scope, CreateDerivedTransactionPortfolioRequest portfolio, final ServiceCallback<PortfolioDto> serviceCallback);
+    ServiceFuture<Portfolio> createDerivedPortfolioAsync(String scope, CreateDerivedTransactionPortfolioRequest portfolio, final ServiceCallback<Portfolio> serviceCallback);
 
     /**
      * Create derived portfolio.
@@ -1218,9 +1219,9 @@ public interface LUSIDAPI {
      * @param scope The scope into which to create the new derived portfolio
      * @param portfolio The root object of the new derived portfolio, containing a populated reference portfolio id and reference scope
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<PortfolioDto> createDerivedPortfolioAsync(String scope, CreateDerivedTransactionPortfolioRequest portfolio);
+    Observable<Portfolio> createDerivedPortfolioAsync(String scope, CreateDerivedTransactionPortfolioRequest portfolio);
 
     /**
      * Create derived portfolio.
@@ -1229,9 +1230,9 @@ public interface LUSIDAPI {
      * @param scope The scope into which to create the new derived portfolio
      * @param portfolio The root object of the new derived portfolio, containing a populated reference portfolio id and reference scope
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<ServiceResponse<PortfolioDto>> createDerivedPortfolioWithServiceResponseAsync(String scope, CreateDerivedTransactionPortfolioRequest portfolio);
+    Observable<ServiceResponse<Portfolio>> createDerivedPortfolioWithServiceResponseAsync(String scope, CreateDerivedTransactionPortfolioRequest portfolio);
 
     /**
      * Delete portfolio details.
@@ -1336,9 +1337,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPortfolioGroupDto object if successful.
+     * @return the ResourceListOfPortfolioGroup object if successful.
      */
-    ResourceListOfPortfolioGroupDto portfolioGroupsSearch();
+    ResourceListOfPortfolioGroup portfolioGroupsSearch();
 
     /**
      * Search portfolio groups.
@@ -1347,23 +1348,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPortfolioGroupDto> portfolioGroupsSearchAsync(final ServiceCallback<ResourceListOfPortfolioGroupDto> serviceCallback);
+    ServiceFuture<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync(final ServiceCallback<ResourceListOfPortfolioGroup> serviceCallback);
 
     /**
      * Search portfolio groups.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioGroupDto object
+     * @return the observable to the ResourceListOfPortfolioGroup object
      */
-    Observable<ResourceListOfPortfolioGroupDto> portfolioGroupsSearchAsync();
+    Observable<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync();
 
     /**
      * Search portfolio groups.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioGroupDto object
+     * @return the observable to the ResourceListOfPortfolioGroup object
      */
-    Observable<ServiceResponse<ResourceListOfPortfolioGroupDto>> portfolioGroupsSearchWithServiceResponseAsync();
+    Observable<ServiceResponse<ResourceListOfPortfolioGroup>> portfolioGroupsSearchWithServiceResponseAsync();
     /**
      * Search portfolio groups.
      *
@@ -1375,9 +1376,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPortfolioGroupDto object if successful.
+     * @return the ResourceListOfPortfolioGroup object if successful.
      */
-    ResourceListOfPortfolioGroupDto portfolioGroupsSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+    ResourceListOfPortfolioGroup portfolioGroupsSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Search portfolio groups.
@@ -1391,20 +1392,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPortfolioGroupDto> portfolioGroupsSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolioGroupDto> serviceCallback);
-
-    /**
-     * Search portfolio groups.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioGroupDto object
-     */
-    Observable<ResourceListOfPortfolioGroupDto> portfolioGroupsSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+    ServiceFuture<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolioGroup> serviceCallback);
 
     /**
      * Search portfolio groups.
@@ -1415,9 +1403,22 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioGroupDto object
+     * @return the observable to the ResourceListOfPortfolioGroup object
      */
-    Observable<ServiceResponse<ResourceListOfPortfolioGroupDto>> portfolioGroupsSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Search portfolio groups.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioGroup object
+     */
+    Observable<ServiceResponse<ResourceListOfPortfolioGroup>> portfolioGroupsSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
@@ -1425,9 +1426,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryAddClientInstrumentsDto object if successful.
+     * @return the TryAddClientInstruments object if successful.
      */
-    TryAddClientInstrumentsDto batchAddClientInstruments();
+    TryAddClientInstruments batchAddClientInstruments();
 
     /**
      * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
@@ -1436,23 +1437,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryAddClientInstrumentsDto> batchAddClientInstrumentsAsync(final ServiceCallback<TryAddClientInstrumentsDto> serviceCallback);
+    ServiceFuture<TryAddClientInstruments> batchAddClientInstrumentsAsync(final ServiceCallback<TryAddClientInstruments> serviceCallback);
 
     /**
      * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryAddClientInstrumentsDto object
+     * @return the observable to the TryAddClientInstruments object
      */
-    Observable<TryAddClientInstrumentsDto> batchAddClientInstrumentsAsync();
+    Observable<TryAddClientInstruments> batchAddClientInstrumentsAsync();
 
     /**
      * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryAddClientInstrumentsDto object
+     * @return the observable to the TryAddClientInstruments object
      */
-    Observable<ServiceResponse<TryAddClientInstrumentsDto>> batchAddClientInstrumentsWithServiceResponseAsync();
+    Observable<ServiceResponse<TryAddClientInstruments>> batchAddClientInstrumentsWithServiceResponseAsync();
     /**
      * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
@@ -1460,9 +1461,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryAddClientInstrumentsDto object if successful.
+     * @return the TryAddClientInstruments object if successful.
      */
-    TryAddClientInstrumentsDto batchAddClientInstruments(List<CreateClientInstrumentRequest> definitions);
+    TryAddClientInstruments batchAddClientInstruments(List<CreateClientInstrumentRequest> definitions);
 
     /**
      * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
@@ -1472,25 +1473,25 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryAddClientInstrumentsDto> batchAddClientInstrumentsAsync(List<CreateClientInstrumentRequest> definitions, final ServiceCallback<TryAddClientInstrumentsDto> serviceCallback);
+    ServiceFuture<TryAddClientInstruments> batchAddClientInstrumentsAsync(List<CreateClientInstrumentRequest> definitions, final ServiceCallback<TryAddClientInstruments> serviceCallback);
 
     /**
      * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @param definitions the List&lt;CreateClientInstrumentRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryAddClientInstrumentsDto object
+     * @return the observable to the TryAddClientInstruments object
      */
-    Observable<TryAddClientInstrumentsDto> batchAddClientInstrumentsAsync(List<CreateClientInstrumentRequest> definitions);
+    Observable<TryAddClientInstruments> batchAddClientInstrumentsAsync(List<CreateClientInstrumentRequest> definitions);
 
     /**
      * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @param definitions the List&lt;CreateClientInstrumentRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryAddClientInstrumentsDto object
+     * @return the observable to the TryAddClientInstruments object
      */
-    Observable<ServiceResponse<TryAddClientInstrumentsDto>> batchAddClientInstrumentsWithServiceResponseAsync(List<CreateClientInstrumentRequest> definitions);
+    Observable<ServiceResponse<TryAddClientInstruments>> batchAddClientInstrumentsWithServiceResponseAsync(List<CreateClientInstrumentRequest> definitions);
 
     /**
      * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
@@ -1498,9 +1499,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryDeleteClientInstrumentsDto object if successful.
+     * @return the DeleteClientInstrumentsResponse object if successful.
      */
-    TryDeleteClientInstrumentsDto batchDeleteClientInstruments();
+    DeleteClientInstrumentsResponse batchDeleteClientInstruments();
 
     /**
      * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
@@ -1509,23 +1510,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryDeleteClientInstrumentsDto> batchDeleteClientInstrumentsAsync(final ServiceCallback<TryDeleteClientInstrumentsDto> serviceCallback);
+    ServiceFuture<DeleteClientInstrumentsResponse> batchDeleteClientInstrumentsAsync(final ServiceCallback<DeleteClientInstrumentsResponse> serviceCallback);
 
     /**
      * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryDeleteClientInstrumentsDto object
+     * @return the observable to the DeleteClientInstrumentsResponse object
      */
-    Observable<TryDeleteClientInstrumentsDto> batchDeleteClientInstrumentsAsync();
+    Observable<DeleteClientInstrumentsResponse> batchDeleteClientInstrumentsAsync();
 
     /**
      * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryDeleteClientInstrumentsDto object
+     * @return the observable to the DeleteClientInstrumentsResponse object
      */
-    Observable<ServiceResponse<TryDeleteClientInstrumentsDto>> batchDeleteClientInstrumentsWithServiceResponseAsync();
+    Observable<ServiceResponse<DeleteClientInstrumentsResponse>> batchDeleteClientInstrumentsWithServiceResponseAsync();
     /**
      * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
@@ -1533,9 +1534,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryDeleteClientInstrumentsDto object if successful.
+     * @return the DeleteClientInstrumentsResponse object if successful.
      */
-    TryDeleteClientInstrumentsDto batchDeleteClientInstruments(List<String> uids);
+    DeleteClientInstrumentsResponse batchDeleteClientInstruments(List<String> uids);
 
     /**
      * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
@@ -1545,25 +1546,25 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryDeleteClientInstrumentsDto> batchDeleteClientInstrumentsAsync(List<String> uids, final ServiceCallback<TryDeleteClientInstrumentsDto> serviceCallback);
+    ServiceFuture<DeleteClientInstrumentsResponse> batchDeleteClientInstrumentsAsync(List<String> uids, final ServiceCallback<DeleteClientInstrumentsResponse> serviceCallback);
 
     /**
      * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @param uids the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryDeleteClientInstrumentsDto object
+     * @return the observable to the DeleteClientInstrumentsResponse object
      */
-    Observable<TryDeleteClientInstrumentsDto> batchDeleteClientInstrumentsAsync(List<String> uids);
+    Observable<DeleteClientInstrumentsResponse> batchDeleteClientInstrumentsAsync(List<String> uids);
 
     /**
      * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @param uids the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryDeleteClientInstrumentsDto object
+     * @return the observable to the DeleteClientInstrumentsResponse object
      */
-    Observable<ServiceResponse<TryDeleteClientInstrumentsDto>> batchDeleteClientInstrumentsWithServiceResponseAsync(List<String> uids);
+    Observable<ServiceResponse<DeleteClientInstrumentsResponse>> batchDeleteClientInstrumentsWithServiceResponseAsync(List<String> uids);
 
     /**
      * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
@@ -1572,9 +1573,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the InstrumentDto object if successful.
+     * @return the Instrument object if successful.
      */
-    InstrumentDto getInstrument(String uid);
+    Instrument getInstrument(String uid);
 
     /**
      * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
@@ -1584,25 +1585,25 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<InstrumentDto> getInstrumentAsync(String uid, final ServiceCallback<InstrumentDto> serviceCallback);
+    ServiceFuture<Instrument> getInstrumentAsync(String uid, final ServiceCallback<Instrument> serviceCallback);
 
     /**
      * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
      *
      * @param uid The uid of the requested instrument
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the InstrumentDto object
+     * @return the observable to the Instrument object
      */
-    Observable<InstrumentDto> getInstrumentAsync(String uid);
+    Observable<Instrument> getInstrumentAsync(String uid);
 
     /**
      * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
      *
      * @param uid The uid of the requested instrument
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the InstrumentDto object
+     * @return the observable to the Instrument object
      */
-    Observable<ServiceResponse<InstrumentDto>> getInstrumentWithServiceResponseAsync(String uid);
+    Observable<ServiceResponse<Instrument>> getInstrumentWithServiceResponseAsync(String uid);
     /**
      * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
      *
@@ -1612,9 +1613,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the InstrumentDto object if successful.
+     * @return the Instrument object if successful.
      */
-    InstrumentDto getInstrument(String uid, DateTime asAt, List<String> instrumentPropertyKeys);
+    Instrument getInstrument(String uid, DateTime asAt, List<String> instrumentPropertyKeys);
 
     /**
      * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
@@ -1626,7 +1627,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<InstrumentDto> getInstrumentAsync(String uid, DateTime asAt, List<String> instrumentPropertyKeys, final ServiceCallback<InstrumentDto> serviceCallback);
+    ServiceFuture<Instrument> getInstrumentAsync(String uid, DateTime asAt, List<String> instrumentPropertyKeys, final ServiceCallback<Instrument> serviceCallback);
 
     /**
      * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
@@ -1635,9 +1636,9 @@ public interface LUSIDAPI {
      * @param asAt As at date
      * @param instrumentPropertyKeys Keys of the properties to be retrieved
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the InstrumentDto object
+     * @return the observable to the Instrument object
      */
-    Observable<InstrumentDto> getInstrumentAsync(String uid, DateTime asAt, List<String> instrumentPropertyKeys);
+    Observable<Instrument> getInstrumentAsync(String uid, DateTime asAt, List<String> instrumentPropertyKeys);
 
     /**
      * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
@@ -1646,9 +1647,9 @@ public interface LUSIDAPI {
      * @param asAt As at date
      * @param instrumentPropertyKeys Keys of the properties to be retrieved
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the InstrumentDto object
+     * @return the observable to the Instrument object
      */
-    Observable<ServiceResponse<InstrumentDto>> getInstrumentWithServiceResponseAsync(String uid, DateTime asAt, List<String> instrumentPropertyKeys);
+    Observable<ServiceResponse<Instrument>> getInstrumentWithServiceResponseAsync(String uid, DateTime asAt, List<String> instrumentPropertyKeys);
 
     /**
      * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
@@ -1656,9 +1657,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryLookupInstrumentsFromCodesDto object if successful.
+     * @return the LookupInstrumentsFromCodesResponse object if successful.
      */
-    TryLookupInstrumentsFromCodesDto lookupInstrumentsFromCodes();
+    LookupInstrumentsFromCodesResponse lookupInstrumentsFromCodes();
 
     /**
      * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
@@ -1667,23 +1668,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryLookupInstrumentsFromCodesDto> lookupInstrumentsFromCodesAsync(final ServiceCallback<TryLookupInstrumentsFromCodesDto> serviceCallback);
+    ServiceFuture<LookupInstrumentsFromCodesResponse> lookupInstrumentsFromCodesAsync(final ServiceCallback<LookupInstrumentsFromCodesResponse> serviceCallback);
 
     /**
      * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryLookupInstrumentsFromCodesDto object
+     * @return the observable to the LookupInstrumentsFromCodesResponse object
      */
-    Observable<TryLookupInstrumentsFromCodesDto> lookupInstrumentsFromCodesAsync();
+    Observable<LookupInstrumentsFromCodesResponse> lookupInstrumentsFromCodesAsync();
 
     /**
      * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryLookupInstrumentsFromCodesDto object
+     * @return the observable to the LookupInstrumentsFromCodesResponse object
      */
-    Observable<ServiceResponse<TryLookupInstrumentsFromCodesDto>> lookupInstrumentsFromCodesWithServiceResponseAsync();
+    Observable<ServiceResponse<LookupInstrumentsFromCodesResponse>> lookupInstrumentsFromCodesWithServiceResponseAsync();
     /**
      * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
      *
@@ -1694,9 +1695,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryLookupInstrumentsFromCodesDto object if successful.
+     * @return the LookupInstrumentsFromCodesResponse object if successful.
      */
-    TryLookupInstrumentsFromCodesDto lookupInstrumentsFromCodes(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys);
+    LookupInstrumentsFromCodesResponse lookupInstrumentsFromCodes(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys);
 
     /**
      * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
@@ -1709,7 +1710,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryLookupInstrumentsFromCodesDto> lookupInstrumentsFromCodesAsync(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys, final ServiceCallback<TryLookupInstrumentsFromCodesDto> serviceCallback);
+    ServiceFuture<LookupInstrumentsFromCodesResponse> lookupInstrumentsFromCodesAsync(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys, final ServiceCallback<LookupInstrumentsFromCodesResponse> serviceCallback);
 
     /**
      * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
@@ -1719,9 +1720,9 @@ public interface LUSIDAPI {
      * @param asAt As at date
      * @param instrumentPropertyKeys Keys of the properties to be retrieved
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryLookupInstrumentsFromCodesDto object
+     * @return the observable to the LookupInstrumentsFromCodesResponse object
      */
-    Observable<TryLookupInstrumentsFromCodesDto> lookupInstrumentsFromCodesAsync(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys);
+    Observable<LookupInstrumentsFromCodesResponse> lookupInstrumentsFromCodesAsync(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys);
 
     /**
      * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
@@ -1731,9 +1732,9 @@ public interface LUSIDAPI {
      * @param asAt As at date
      * @param instrumentPropertyKeys Keys of the properties to be retrieved
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryLookupInstrumentsFromCodesDto object
+     * @return the observable to the LookupInstrumentsFromCodesResponse object
      */
-    Observable<ServiceResponse<TryLookupInstrumentsFromCodesDto>> lookupInstrumentsFromCodesWithServiceResponseAsync(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys);
+    Observable<ServiceResponse<LookupInstrumentsFromCodesResponse>> lookupInstrumentsFromCodesWithServiceResponseAsync(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys);
 
     /**
      * Upsert instrument properties.
@@ -1741,9 +1742,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the UpsertInstrumentPropertiesDto object if successful.
+     * @return the UpsertInstrumentPropertiesResponse object if successful.
      */
-    UpsertInstrumentPropertiesDto batchUpsertClassifications();
+    UpsertInstrumentPropertiesResponse batchUpsertInstrumentProperties();
 
     /**
      * Upsert instrument properties.
@@ -1752,61 +1753,61 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<UpsertInstrumentPropertiesDto> batchUpsertClassificationsAsync(final ServiceCallback<UpsertInstrumentPropertiesDto> serviceCallback);
+    ServiceFuture<UpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesAsync(final ServiceCallback<UpsertInstrumentPropertiesResponse> serviceCallback);
 
     /**
      * Upsert instrument properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertInstrumentPropertiesDto object
+     * @return the observable to the UpsertInstrumentPropertiesResponse object
      */
-    Observable<UpsertInstrumentPropertiesDto> batchUpsertClassificationsAsync();
+    Observable<UpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesAsync();
 
     /**
      * Upsert instrument properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertInstrumentPropertiesDto object
+     * @return the observable to the UpsertInstrumentPropertiesResponse object
      */
-    Observable<ServiceResponse<UpsertInstrumentPropertiesDto>> batchUpsertClassificationsWithServiceResponseAsync();
+    Observable<ServiceResponse<UpsertInstrumentPropertiesResponse>> batchUpsertInstrumentPropertiesWithServiceResponseAsync();
     /**
      * Upsert instrument properties.
      *
-     * @param classifications the List&lt;InstrumentPropertyDto&gt; value
+     * @param classifications the List&lt;InstrumentProperty&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the UpsertInstrumentPropertiesDto object if successful.
+     * @return the UpsertInstrumentPropertiesResponse object if successful.
      */
-    UpsertInstrumentPropertiesDto batchUpsertClassifications(List<InstrumentPropertyDto> classifications);
+    UpsertInstrumentPropertiesResponse batchUpsertInstrumentProperties(List<InstrumentProperty> classifications);
 
     /**
      * Upsert instrument properties.
      *
-     * @param classifications the List&lt;InstrumentPropertyDto&gt; value
+     * @param classifications the List&lt;InstrumentProperty&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<UpsertInstrumentPropertiesDto> batchUpsertClassificationsAsync(List<InstrumentPropertyDto> classifications, final ServiceCallback<UpsertInstrumentPropertiesDto> serviceCallback);
+    ServiceFuture<UpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesAsync(List<InstrumentProperty> classifications, final ServiceCallback<UpsertInstrumentPropertiesResponse> serviceCallback);
 
     /**
      * Upsert instrument properties.
      *
-     * @param classifications the List&lt;InstrumentPropertyDto&gt; value
+     * @param classifications the List&lt;InstrumentProperty&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertInstrumentPropertiesDto object
+     * @return the observable to the UpsertInstrumentPropertiesResponse object
      */
-    Observable<UpsertInstrumentPropertiesDto> batchUpsertClassificationsAsync(List<InstrumentPropertyDto> classifications);
+    Observable<UpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesAsync(List<InstrumentProperty> classifications);
 
     /**
      * Upsert instrument properties.
      *
-     * @param classifications the List&lt;InstrumentPropertyDto&gt; value
+     * @param classifications the List&lt;InstrumentProperty&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertInstrumentPropertiesDto object
+     * @return the observable to the UpsertInstrumentPropertiesResponse object
      */
-    Observable<ServiceResponse<UpsertInstrumentPropertiesDto>> batchUpsertClassificationsWithServiceResponseAsync(List<InstrumentPropertyDto> classifications);
+    Observable<ServiceResponse<UpsertInstrumentPropertiesResponse>> batchUpsertInstrumentPropertiesWithServiceResponseAsync(List<InstrumentProperty> classifications);
 
     /**
      * Get the unique identifier for the SAML Identity Provider to be used by domain.
@@ -1926,9 +1927,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionSummaryDto object if successful.
+     * @return the VersionSummary object if successful.
      */
-    VersionSummaryDto getLusidVersions();
+    VersionSummary getLusidVersions();
 
     /**
      * Returns the current major application version.
@@ -1937,23 +1938,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<VersionSummaryDto> getLusidVersionsAsync(final ServiceCallback<VersionSummaryDto> serviceCallback);
+    ServiceFuture<VersionSummary> getLusidVersionsAsync(final ServiceCallback<VersionSummary> serviceCallback);
 
     /**
      * Returns the current major application version.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionSummaryDto object
+     * @return the observable to the VersionSummary object
      */
-    Observable<VersionSummaryDto> getLusidVersionsAsync();
+    Observable<VersionSummary> getLusidVersionsAsync();
 
     /**
      * Returns the current major application version.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionSummaryDto object
+     * @return the observable to the VersionSummary object
      */
-    Observable<ServiceResponse<VersionSummaryDto>> getLusidVersionsWithServiceResponseAsync();
+    Observable<ServiceResponse<VersionSummary>> getLusidVersionsWithServiceResponseAsync();
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
@@ -1961,9 +1962,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPersonalisationDto object if successful.
+     * @return the ResourceListOfPersonalisation object if successful.
      */
-    ResourceListOfPersonalisationDto getPersonalisations();
+    ResourceListOfPersonalisation getPersonalisations();
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
@@ -1972,23 +1973,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPersonalisationDto> getPersonalisationsAsync(final ServiceCallback<ResourceListOfPersonalisationDto> serviceCallback);
+    ServiceFuture<ResourceListOfPersonalisation> getPersonalisationsAsync(final ServiceCallback<ResourceListOfPersonalisation> serviceCallback);
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPersonalisationDto object
+     * @return the observable to the ResourceListOfPersonalisation object
      */
-    Observable<ResourceListOfPersonalisationDto> getPersonalisationsAsync();
+    Observable<ResourceListOfPersonalisation> getPersonalisationsAsync();
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPersonalisationDto object
+     * @return the observable to the ResourceListOfPersonalisation object
      */
-    Observable<ServiceResponse<ResourceListOfPersonalisationDto>> getPersonalisationsWithServiceResponseAsync();
+    Observable<ServiceResponse<ResourceListOfPersonalisation>> getPersonalisationsWithServiceResponseAsync();
     /**
      * Get a personalisation, recursing to get any referenced if required.
      *
@@ -2002,9 +2003,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPersonalisationDto object if successful.
+     * @return the ResourceListOfPersonalisation object if successful.
      */
-    ResourceListOfPersonalisationDto getPersonalisations(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit);
+    ResourceListOfPersonalisation getPersonalisations(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
@@ -2020,7 +2021,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPersonalisationDto> getPersonalisationsAsync(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ResourceListOfPersonalisationDto> serviceCallback);
+    ServiceFuture<ResourceListOfPersonalisation> getPersonalisationsAsync(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ResourceListOfPersonalisation> serviceCallback);
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
@@ -2033,9 +2034,9 @@ public interface LUSIDAPI {
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPersonalisationDto object
+     * @return the observable to the ResourceListOfPersonalisation object
      */
-    Observable<ResourceListOfPersonalisationDto> getPersonalisationsAsync(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit);
+    Observable<ResourceListOfPersonalisation> getPersonalisationsAsync(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Get a personalisation, recursing to get any referenced if required.
@@ -2048,9 +2049,9 @@ public interface LUSIDAPI {
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPersonalisationDto object
+     * @return the observable to the ResourceListOfPersonalisation object
      */
-    Observable<ServiceResponse<ResourceListOfPersonalisationDto>> getPersonalisationsWithServiceResponseAsync(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<ResourceListOfPersonalisation>> getPersonalisationsWithServiceResponseAsync(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Upsert one or more personalisations.
@@ -2058,9 +2059,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the UpsertPersonalisationsResponse object if successful.
+     * @return the UpsertPersonalisationResponse object if successful.
      */
-    UpsertPersonalisationsResponse upsertPersonalisations();
+    UpsertPersonalisationResponse upsertPersonalisations();
 
     /**
      * Upsert one or more personalisations.
@@ -2069,61 +2070,61 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<UpsertPersonalisationsResponse> upsertPersonalisationsAsync(final ServiceCallback<UpsertPersonalisationsResponse> serviceCallback);
+    ServiceFuture<UpsertPersonalisationResponse> upsertPersonalisationsAsync(final ServiceCallback<UpsertPersonalisationResponse> serviceCallback);
 
     /**
      * Upsert one or more personalisations.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPersonalisationsResponse object
+     * @return the observable to the UpsertPersonalisationResponse object
      */
-    Observable<UpsertPersonalisationsResponse> upsertPersonalisationsAsync();
+    Observable<UpsertPersonalisationResponse> upsertPersonalisationsAsync();
 
     /**
      * Upsert one or more personalisations.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPersonalisationsResponse object
+     * @return the observable to the UpsertPersonalisationResponse object
      */
-    Observable<ServiceResponse<UpsertPersonalisationsResponse>> upsertPersonalisationsWithServiceResponseAsync();
+    Observable<ServiceResponse<UpsertPersonalisationResponse>> upsertPersonalisationsWithServiceResponseAsync();
     /**
      * Upsert one or more personalisations.
      *
-     * @param personalisations the List&lt;PersonalisationDto&gt; value
+     * @param personalisations the List&lt;Personalisation&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the UpsertPersonalisationsResponse object if successful.
+     * @return the UpsertPersonalisationResponse object if successful.
      */
-    UpsertPersonalisationsResponse upsertPersonalisations(List<PersonalisationDto> personalisations);
+    UpsertPersonalisationResponse upsertPersonalisations(List<Personalisation> personalisations);
 
     /**
      * Upsert one or more personalisations.
      *
-     * @param personalisations the List&lt;PersonalisationDto&gt; value
+     * @param personalisations the List&lt;Personalisation&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<UpsertPersonalisationsResponse> upsertPersonalisationsAsync(List<PersonalisationDto> personalisations, final ServiceCallback<UpsertPersonalisationsResponse> serviceCallback);
+    ServiceFuture<UpsertPersonalisationResponse> upsertPersonalisationsAsync(List<Personalisation> personalisations, final ServiceCallback<UpsertPersonalisationResponse> serviceCallback);
 
     /**
      * Upsert one or more personalisations.
      *
-     * @param personalisations the List&lt;PersonalisationDto&gt; value
+     * @param personalisations the List&lt;Personalisation&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPersonalisationsResponse object
+     * @return the observable to the UpsertPersonalisationResponse object
      */
-    Observable<UpsertPersonalisationsResponse> upsertPersonalisationsAsync(List<PersonalisationDto> personalisations);
+    Observable<UpsertPersonalisationResponse> upsertPersonalisationsAsync(List<Personalisation> personalisations);
 
     /**
      * Upsert one or more personalisations.
      *
-     * @param personalisations the List&lt;PersonalisationDto&gt; value
+     * @param personalisations the List&lt;Personalisation&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPersonalisationsResponse object
+     * @return the observable to the UpsertPersonalisationResponse object
      */
-    Observable<ServiceResponse<UpsertPersonalisationsResponse>> upsertPersonalisationsWithServiceResponseAsync(List<PersonalisationDto> personalisations);
+    Observable<ServiceResponse<UpsertPersonalisationResponse>> upsertPersonalisationsWithServiceResponseAsync(List<Personalisation> personalisations);
 
     /**
      * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
@@ -2213,9 +2214,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPortfolioGroupDto object if successful.
+     * @return the ResourceListOfPortfolioGroup object if successful.
      */
-    ResourceListOfPortfolioGroupDto listPortfolioGroups(String scope);
+    ResourceListOfPortfolioGroup listPortfolioGroups(String scope);
 
     /**
      * List all groups in a specified scope.
@@ -2225,25 +2226,25 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPortfolioGroupDto> listPortfolioGroupsAsync(String scope, final ServiceCallback<ResourceListOfPortfolioGroupDto> serviceCallback);
+    ServiceFuture<ResourceListOfPortfolioGroup> listPortfolioGroupsAsync(String scope, final ServiceCallback<ResourceListOfPortfolioGroup> serviceCallback);
 
     /**
      * List all groups in a specified scope.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioGroupDto object
+     * @return the observable to the ResourceListOfPortfolioGroup object
      */
-    Observable<ResourceListOfPortfolioGroupDto> listPortfolioGroupsAsync(String scope);
+    Observable<ResourceListOfPortfolioGroup> listPortfolioGroupsAsync(String scope);
 
     /**
      * List all groups in a specified scope.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioGroupDto object
+     * @return the observable to the ResourceListOfPortfolioGroup object
      */
-    Observable<ServiceResponse<ResourceListOfPortfolioGroupDto>> listPortfolioGroupsWithServiceResponseAsync(String scope);
+    Observable<ServiceResponse<ResourceListOfPortfolioGroup>> listPortfolioGroupsWithServiceResponseAsync(String scope);
     /**
      * List all groups in a specified scope.
      *
@@ -2256,9 +2257,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPortfolioGroupDto object if successful.
+     * @return the ResourceListOfPortfolioGroup object if successful.
      */
-    ResourceListOfPortfolioGroupDto listPortfolioGroups(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    ResourceListOfPortfolioGroup listPortfolioGroups(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * List all groups in a specified scope.
@@ -2273,21 +2274,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPortfolioGroupDto> listPortfolioGroupsAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolioGroupDto> serviceCallback);
-
-    /**
-     * List all groups in a specified scope.
-     *
-     * @param scope the String value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter A filter expression to apply to the result set
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioGroupDto object
-     */
-    Observable<ResourceListOfPortfolioGroupDto> listPortfolioGroupsAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    ServiceFuture<ResourceListOfPortfolioGroup> listPortfolioGroupsAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolioGroup> serviceCallback);
 
     /**
      * List all groups in a specified scope.
@@ -2299,9 +2286,23 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter A filter expression to apply to the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioGroupDto object
+     * @return the observable to the ResourceListOfPortfolioGroup object
      */
-    Observable<ServiceResponse<ResourceListOfPortfolioGroupDto>> listPortfolioGroupsWithServiceResponseAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ResourceListOfPortfolioGroup> listPortfolioGroupsAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * List all groups in a specified scope.
+     *
+     * @param scope the String value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter A filter expression to apply to the result set
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioGroup object
+     */
+    Observable<ServiceResponse<ResourceListOfPortfolioGroup>> listPortfolioGroupsWithServiceResponseAsync(String scope, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Create a new group.
@@ -2310,9 +2311,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioGroupDto object if successful.
+     * @return the PortfolioGroup object if successful.
      */
-    PortfolioGroupDto createPortfolioGroup(String scope);
+    PortfolioGroup createPortfolioGroup(String scope);
 
     /**
      * Create a new group.
@@ -2322,67 +2323,67 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioGroupDto> createPortfolioGroupAsync(String scope, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+    ServiceFuture<PortfolioGroup> createPortfolioGroupAsync(String scope, final ServiceCallback<PortfolioGroup> serviceCallback);
 
     /**
      * Create a new group.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<PortfolioGroupDto> createPortfolioGroupAsync(String scope);
+    Observable<PortfolioGroup> createPortfolioGroupAsync(String scope);
 
     /**
      * Create a new group.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<ServiceResponse<PortfolioGroupDto>> createPortfolioGroupWithServiceResponseAsync(String scope);
+    Observable<ServiceResponse<PortfolioGroup>> createPortfolioGroupWithServiceResponseAsync(String scope);
     /**
      * Create a new group.
      *
      * @param scope the String value
-     * @param request the CreateGroupRequest value
+     * @param request the CreatePortfolioGroupRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioGroupDto object if successful.
+     * @return the PortfolioGroup object if successful.
      */
-    PortfolioGroupDto createPortfolioGroup(String scope, CreateGroupRequest request);
+    PortfolioGroup createPortfolioGroup(String scope, CreatePortfolioGroupRequest request);
 
     /**
      * Create a new group.
      *
      * @param scope the String value
-     * @param request the CreateGroupRequest value
+     * @param request the CreatePortfolioGroupRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioGroupDto> createPortfolioGroupAsync(String scope, CreateGroupRequest request, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+    ServiceFuture<PortfolioGroup> createPortfolioGroupAsync(String scope, CreatePortfolioGroupRequest request, final ServiceCallback<PortfolioGroup> serviceCallback);
 
     /**
      * Create a new group.
      *
      * @param scope the String value
-     * @param request the CreateGroupRequest value
+     * @param request the CreatePortfolioGroupRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<PortfolioGroupDto> createPortfolioGroupAsync(String scope, CreateGroupRequest request);
+    Observable<PortfolioGroup> createPortfolioGroupAsync(String scope, CreatePortfolioGroupRequest request);
 
     /**
      * Create a new group.
      *
      * @param scope the String value
-     * @param request the CreateGroupRequest value
+     * @param request the CreatePortfolioGroupRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<ServiceResponse<PortfolioGroupDto>> createPortfolioGroupWithServiceResponseAsync(String scope, CreateGroupRequest request);
+    Observable<ServiceResponse<PortfolioGroup>> createPortfolioGroupWithServiceResponseAsync(String scope, CreatePortfolioGroupRequest request);
 
     /**
      * Get an existing group.
@@ -2392,9 +2393,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioGroupDto object if successful.
+     * @return the PortfolioGroup object if successful.
      */
-    PortfolioGroupDto getPortfolioGroup(String scope, String code);
+    PortfolioGroup getPortfolioGroup(String scope, String code);
 
     /**
      * Get an existing group.
@@ -2405,7 +2406,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioGroupDto> getPortfolioGroupAsync(String scope, String code, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+    ServiceFuture<PortfolioGroup> getPortfolioGroupAsync(String scope, String code, final ServiceCallback<PortfolioGroup> serviceCallback);
 
     /**
      * Get an existing group.
@@ -2413,9 +2414,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<PortfolioGroupDto> getPortfolioGroupAsync(String scope, String code);
+    Observable<PortfolioGroup> getPortfolioGroupAsync(String scope, String code);
 
     /**
      * Get an existing group.
@@ -2423,9 +2424,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<ServiceResponse<PortfolioGroupDto>> getPortfolioGroupWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<PortfolioGroup>> getPortfolioGroupWithServiceResponseAsync(String scope, String code);
     /**
      * Get an existing group.
      *
@@ -2435,9 +2436,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioGroupDto object if successful.
+     * @return the PortfolioGroup object if successful.
      */
-    PortfolioGroupDto getPortfolioGroup(String scope, String code, DateTime asAt);
+    PortfolioGroup getPortfolioGroup(String scope, String code, DateTime asAt);
 
     /**
      * Get an existing group.
@@ -2449,7 +2450,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioGroupDto> getPortfolioGroupAsync(String scope, String code, DateTime asAt, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+    ServiceFuture<PortfolioGroup> getPortfolioGroupAsync(String scope, String code, DateTime asAt, final ServiceCallback<PortfolioGroup> serviceCallback);
 
     /**
      * Get an existing group.
@@ -2458,9 +2459,9 @@ public interface LUSIDAPI {
      * @param code the String value
      * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<PortfolioGroupDto> getPortfolioGroupAsync(String scope, String code, DateTime asAt);
+    Observable<PortfolioGroup> getPortfolioGroupAsync(String scope, String code, DateTime asAt);
 
     /**
      * Get an existing group.
@@ -2469,9 +2470,9 @@ public interface LUSIDAPI {
      * @param code the String value
      * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<ServiceResponse<PortfolioGroupDto>> getPortfolioGroupWithServiceResponseAsync(String scope, String code, DateTime asAt);
+    Observable<ServiceResponse<PortfolioGroup>> getPortfolioGroupWithServiceResponseAsync(String scope, String code, DateTime asAt);
 
     /**
      * Update an existing group.
@@ -2481,9 +2482,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioGroupDto object if successful.
+     * @return the PortfolioGroup object if successful.
      */
-    PortfolioGroupDto updatePortfolioGroup(String scope, String code);
+    PortfolioGroup updatePortfolioGroup(String scope, String code);
 
     /**
      * Update an existing group.
@@ -2494,7 +2495,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioGroupDto> updatePortfolioGroupAsync(String scope, String code, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+    ServiceFuture<PortfolioGroup> updatePortfolioGroupAsync(String scope, String code, final ServiceCallback<PortfolioGroup> serviceCallback);
 
     /**
      * Update an existing group.
@@ -2502,9 +2503,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<PortfolioGroupDto> updatePortfolioGroupAsync(String scope, String code);
+    Observable<PortfolioGroup> updatePortfolioGroupAsync(String scope, String code);
 
     /**
      * Update an existing group.
@@ -2512,55 +2513,55 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<ServiceResponse<PortfolioGroupDto>> updatePortfolioGroupWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<PortfolioGroup>> updatePortfolioGroupWithServiceResponseAsync(String scope, String code);
     /**
      * Update an existing group.
      *
      * @param scope the String value
      * @param code the String value
-     * @param request the UpdateGroupRequest value
+     * @param request the UpdatePortfolioGroupRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioGroupDto object if successful.
+     * @return the PortfolioGroup object if successful.
      */
-    PortfolioGroupDto updatePortfolioGroup(String scope, String code, UpdateGroupRequest request);
+    PortfolioGroup updatePortfolioGroup(String scope, String code, UpdatePortfolioGroupRequest request);
 
     /**
      * Update an existing group.
      *
      * @param scope the String value
      * @param code the String value
-     * @param request the UpdateGroupRequest value
+     * @param request the UpdatePortfolioGroupRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioGroupDto> updatePortfolioGroupAsync(String scope, String code, UpdateGroupRequest request, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+    ServiceFuture<PortfolioGroup> updatePortfolioGroupAsync(String scope, String code, UpdatePortfolioGroupRequest request, final ServiceCallback<PortfolioGroup> serviceCallback);
 
     /**
      * Update an existing group.
      *
      * @param scope the String value
      * @param code the String value
-     * @param request the UpdateGroupRequest value
+     * @param request the UpdatePortfolioGroupRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<PortfolioGroupDto> updatePortfolioGroupAsync(String scope, String code, UpdateGroupRequest request);
+    Observable<PortfolioGroup> updatePortfolioGroupAsync(String scope, String code, UpdatePortfolioGroupRequest request);
 
     /**
      * Update an existing group.
      *
      * @param scope the String value
      * @param code the String value
-     * @param request the UpdateGroupRequest value
+     * @param request the UpdatePortfolioGroupRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<ServiceResponse<PortfolioGroupDto>> updatePortfolioGroupWithServiceResponseAsync(String scope, String code, UpdateGroupRequest request);
+    Observable<ServiceResponse<PortfolioGroup>> updatePortfolioGroupWithServiceResponseAsync(String scope, String code, UpdatePortfolioGroupRequest request);
 
     /**
      * Delete a group.
@@ -2707,6 +2708,95 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<ListAggregationResponse>> getAggregationByGroupWithServiceResponseAsync(String scope, String code, AggregationRequest request, List<String> sortBy, Integer start, Integer limit);
 
     /**
+     * Obsolete - Aggregation request data in a group hierarchy into a data tree.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the NestedAggregationResponse object if successful.
+     */
+    NestedAggregationResponse getNestedAggregationByGroup(String scope, String code);
+
+    /**
+     * Obsolete - Aggregation request data in a group hierarchy into a data tree.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<NestedAggregationResponse> getNestedAggregationByGroupAsync(String scope, String code, final ServiceCallback<NestedAggregationResponse> serviceCallback);
+
+    /**
+     * Obsolete - Aggregation request data in a group hierarchy into a data tree.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the NestedAggregationResponse object
+     */
+    Observable<NestedAggregationResponse> getNestedAggregationByGroupAsync(String scope, String code);
+
+    /**
+     * Obsolete - Aggregation request data in a group hierarchy into a data tree.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the NestedAggregationResponse object
+     */
+    Observable<ServiceResponse<NestedAggregationResponse>> getNestedAggregationByGroupWithServiceResponseAsync(String scope, String code);
+    /**
+     * Obsolete - Aggregation request data in a group hierarchy into a data tree.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param request the AggregationRequest value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the NestedAggregationResponse object if successful.
+     */
+    NestedAggregationResponse getNestedAggregationByGroup(String scope, String code, AggregationRequest request);
+
+    /**
+     * Obsolete - Aggregation request data in a group hierarchy into a data tree.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param request the AggregationRequest value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<NestedAggregationResponse> getNestedAggregationByGroupAsync(String scope, String code, AggregationRequest request, final ServiceCallback<NestedAggregationResponse> serviceCallback);
+
+    /**
+     * Obsolete - Aggregation request data in a group hierarchy into a data tree.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param request the AggregationRequest value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the NestedAggregationResponse object
+     */
+    Observable<NestedAggregationResponse> getNestedAggregationByGroupAsync(String scope, String code, AggregationRequest request);
+
+    /**
+     * Obsolete - Aggregation request data in a group hierarchy into a data tree.
+     *
+     * @param scope the String value
+     * @param code the String value
+     * @param request the AggregationRequest value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the NestedAggregationResponse object
+     */
+    Observable<ServiceResponse<NestedAggregationResponse>> getNestedAggregationByGroupWithServiceResponseAsync(String scope, String code, AggregationRequest request);
+
+    /**
      * Gets all commands that modified the portfolio groups(s) with the specified id.
      *
      * @param scope The scope of the portfolio group
@@ -2714,9 +2804,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfProcessedCommandDto object if successful.
+     * @return the ResourceListOfProcessedCommand object if successful.
      */
-    ResourceListOfProcessedCommandDto getPortfolioGroupCommands(String scope, String code);
+    ResourceListOfProcessedCommand getPortfolioGroupCommands(String scope, String code);
 
     /**
      * Gets all commands that modified the portfolio groups(s) with the specified id.
@@ -2727,7 +2817,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfProcessedCommandDto> getPortfolioGroupCommandsAsync(String scope, String code, final ServiceCallback<ResourceListOfProcessedCommandDto> serviceCallback);
+    ServiceFuture<ResourceListOfProcessedCommand> getPortfolioGroupCommandsAsync(String scope, String code, final ServiceCallback<ResourceListOfProcessedCommand> serviceCallback);
 
     /**
      * Gets all commands that modified the portfolio groups(s) with the specified id.
@@ -2735,9 +2825,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio group
      * @param code The portfolio group id
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfProcessedCommandDto object
+     * @return the observable to the ResourceListOfProcessedCommand object
      */
-    Observable<ResourceListOfProcessedCommandDto> getPortfolioGroupCommandsAsync(String scope, String code);
+    Observable<ResourceListOfProcessedCommand> getPortfolioGroupCommandsAsync(String scope, String code);
 
     /**
      * Gets all commands that modified the portfolio groups(s) with the specified id.
@@ -2745,9 +2835,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio group
      * @param code The portfolio group id
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfProcessedCommandDto object
+     * @return the observable to the ResourceListOfProcessedCommand object
      */
-    Observable<ServiceResponse<ResourceListOfProcessedCommandDto>> getPortfolioGroupCommandsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<ResourceListOfProcessedCommand>> getPortfolioGroupCommandsWithServiceResponseAsync(String scope, String code);
     /**
      * Gets all commands that modified the portfolio groups(s) with the specified id.
      *
@@ -2762,9 +2852,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfProcessedCommandDto object if successful.
+     * @return the ResourceListOfProcessedCommand object if successful.
      */
-    ResourceListOfProcessedCommandDto getPortfolioGroupCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    ResourceListOfProcessedCommand getPortfolioGroupCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets all commands that modified the portfolio groups(s) with the specified id.
@@ -2781,7 +2871,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfProcessedCommandDto> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfProcessedCommandDto> serviceCallback);
+    ServiceFuture<ResourceListOfProcessedCommand> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfProcessedCommand> serviceCallback);
 
     /**
      * Gets all commands that modified the portfolio groups(s) with the specified id.
@@ -2795,9 +2885,9 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter A filter expression to apply to the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfProcessedCommandDto object
+     * @return the observable to the ResourceListOfProcessedCommand object
      */
-    Observable<ResourceListOfProcessedCommandDto> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ResourceListOfProcessedCommand> getPortfolioGroupCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets all commands that modified the portfolio groups(s) with the specified id.
@@ -2811,9 +2901,9 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter A filter expression to apply to the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfProcessedCommandDto object
+     * @return the observable to the ResourceListOfProcessedCommand object
      */
-    Observable<ServiceResponse<ResourceListOfProcessedCommandDto>> getPortfolioGroupCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ServiceResponse<ResourceListOfProcessedCommand>> getPortfolioGroupCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Get a full expansion of an existing group.
@@ -2823,9 +2913,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ExpandedGroupDto object if successful.
+     * @return the ExpandedGroup object if successful.
      */
-    ExpandedGroupDto getPortfolioGroupExpansion(String scope, String code);
+    ExpandedGroup getPortfolioGroupExpansion(String scope, String code);
 
     /**
      * Get a full expansion of an existing group.
@@ -2836,7 +2926,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ExpandedGroupDto> getPortfolioGroupExpansionAsync(String scope, String code, final ServiceCallback<ExpandedGroupDto> serviceCallback);
+    ServiceFuture<ExpandedGroup> getPortfolioGroupExpansionAsync(String scope, String code, final ServiceCallback<ExpandedGroup> serviceCallback);
 
     /**
      * Get a full expansion of an existing group.
@@ -2844,9 +2934,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ExpandedGroupDto object
+     * @return the observable to the ExpandedGroup object
      */
-    Observable<ExpandedGroupDto> getPortfolioGroupExpansionAsync(String scope, String code);
+    Observable<ExpandedGroup> getPortfolioGroupExpansionAsync(String scope, String code);
 
     /**
      * Get a full expansion of an existing group.
@@ -2854,9 +2944,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ExpandedGroupDto object
+     * @return the observable to the ExpandedGroup object
      */
-    Observable<ServiceResponse<ExpandedGroupDto>> getPortfolioGroupExpansionWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<ExpandedGroup>> getPortfolioGroupExpansionWithServiceResponseAsync(String scope, String code);
     /**
      * Get a full expansion of an existing group.
      *
@@ -2868,9 +2958,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ExpandedGroupDto object if successful.
+     * @return the ExpandedGroup object if successful.
      */
-    ExpandedGroupDto getPortfolioGroupExpansion(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
+    ExpandedGroup getPortfolioGroupExpansion(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
 
     /**
      * Get a full expansion of an existing group.
@@ -2884,7 +2974,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ExpandedGroupDto> getPortfolioGroupExpansionAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter, final ServiceCallback<ExpandedGroupDto> serviceCallback);
+    ServiceFuture<ExpandedGroup> getPortfolioGroupExpansionAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter, final ServiceCallback<ExpandedGroup> serviceCallback);
 
     /**
      * Get a full expansion of an existing group.
@@ -2895,9 +2985,9 @@ public interface LUSIDAPI {
      * @param asAt the DateTime value
      * @param propertyFilter the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ExpandedGroupDto object
+     * @return the observable to the ExpandedGroup object
      */
-    Observable<ExpandedGroupDto> getPortfolioGroupExpansionAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
+    Observable<ExpandedGroup> getPortfolioGroupExpansionAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
 
     /**
      * Get a full expansion of an existing group.
@@ -2908,9 +2998,9 @@ public interface LUSIDAPI {
      * @param asAt the DateTime value
      * @param propertyFilter the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ExpandedGroupDto object
+     * @return the observable to the ExpandedGroup object
      */
-    Observable<ServiceResponse<ExpandedGroupDto>> getPortfolioGroupExpansionWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
+    Observable<ServiceResponse<ExpandedGroup>> getPortfolioGroupExpansionWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> propertyFilter);
 
     /**
      * Add a portfolio to an existing group.
@@ -2920,9 +3010,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioGroupDto object if successful.
+     * @return the PortfolioGroup object if successful.
      */
-    PortfolioGroupDto addPortfolioToGroup(String scope, String code);
+    PortfolioGroup addPortfolioToGroup(String scope, String code);
 
     /**
      * Add a portfolio to an existing group.
@@ -2933,7 +3023,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioGroupDto> addPortfolioToGroupAsync(String scope, String code, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+    ServiceFuture<PortfolioGroup> addPortfolioToGroupAsync(String scope, String code, final ServiceCallback<PortfolioGroup> serviceCallback);
 
     /**
      * Add a portfolio to an existing group.
@@ -2941,9 +3031,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<PortfolioGroupDto> addPortfolioToGroupAsync(String scope, String code);
+    Observable<PortfolioGroup> addPortfolioToGroupAsync(String scope, String code);
 
     /**
      * Add a portfolio to an existing group.
@@ -2951,9 +3041,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<ServiceResponse<PortfolioGroupDto>> addPortfolioToGroupWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<PortfolioGroup>> addPortfolioToGroupWithServiceResponseAsync(String scope, String code);
     /**
      * Add a portfolio to an existing group.
      *
@@ -2963,9 +3053,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioGroupDto object if successful.
+     * @return the PortfolioGroup object if successful.
      */
-    PortfolioGroupDto addPortfolioToGroup(String scope, String code, ResourceId identifier);
+    PortfolioGroup addPortfolioToGroup(String scope, String code, ResourceId identifier);
 
     /**
      * Add a portfolio to an existing group.
@@ -2977,7 +3067,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioGroupDto> addPortfolioToGroupAsync(String scope, String code, ResourceId identifier, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+    ServiceFuture<PortfolioGroup> addPortfolioToGroupAsync(String scope, String code, ResourceId identifier, final ServiceCallback<PortfolioGroup> serviceCallback);
 
     /**
      * Add a portfolio to an existing group.
@@ -2986,9 +3076,9 @@ public interface LUSIDAPI {
      * @param code the String value
      * @param identifier the ResourceId value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<PortfolioGroupDto> addPortfolioToGroupAsync(String scope, String code, ResourceId identifier);
+    Observable<PortfolioGroup> addPortfolioToGroupAsync(String scope, String code, ResourceId identifier);
 
     /**
      * Add a portfolio to an existing group.
@@ -2997,9 +3087,9 @@ public interface LUSIDAPI {
      * @param code the String value
      * @param identifier the ResourceId value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<ServiceResponse<PortfolioGroupDto>> addPortfolioToGroupWithServiceResponseAsync(String scope, String code, ResourceId identifier);
+    Observable<ServiceResponse<PortfolioGroup>> addPortfolioToGroupWithServiceResponseAsync(String scope, String code, ResourceId identifier);
 
     /**
      * Remove a portfolio that is currently present within an existing group.
@@ -3011,9 +3101,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioGroupDto object if successful.
+     * @return the PortfolioGroup object if successful.
      */
-    PortfolioGroupDto deletePortfolioFromGroup(String scope, String code, String portfolioScope, String portfolioCode);
+    PortfolioGroup deletePortfolioFromGroup(String scope, String code, String portfolioScope, String portfolioCode);
 
     /**
      * Remove a portfolio that is currently present within an existing group.
@@ -3026,7 +3116,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioGroupDto> deletePortfolioFromGroupAsync(String scope, String code, String portfolioScope, String portfolioCode, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+    ServiceFuture<PortfolioGroup> deletePortfolioFromGroupAsync(String scope, String code, String portfolioScope, String portfolioCode, final ServiceCallback<PortfolioGroup> serviceCallback);
 
     /**
      * Remove a portfolio that is currently present within an existing group.
@@ -3036,9 +3126,9 @@ public interface LUSIDAPI {
      * @param portfolioScope the String value
      * @param portfolioCode the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<PortfolioGroupDto> deletePortfolioFromGroupAsync(String scope, String code, String portfolioScope, String portfolioCode);
+    Observable<PortfolioGroup> deletePortfolioFromGroupAsync(String scope, String code, String portfolioScope, String portfolioCode);
 
     /**
      * Remove a portfolio that is currently present within an existing group.
@@ -3048,9 +3138,9 @@ public interface LUSIDAPI {
      * @param portfolioScope the String value
      * @param portfolioCode the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<ServiceResponse<PortfolioGroupDto>> deletePortfolioFromGroupWithServiceResponseAsync(String scope, String code, String portfolioScope, String portfolioCode);
+    Observable<ServiceResponse<PortfolioGroup>> deletePortfolioFromGroupWithServiceResponseAsync(String scope, String code, String portfolioScope, String portfolioCode);
 
     /**
      * Add a sub group to an existing group.
@@ -3060,9 +3150,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioGroupDto object if successful.
+     * @return the PortfolioGroup object if successful.
      */
-    PortfolioGroupDto addSubGroupToGroup(String scope, String code);
+    PortfolioGroup addSubGroupToGroup(String scope, String code);
 
     /**
      * Add a sub group to an existing group.
@@ -3073,7 +3163,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioGroupDto> addSubGroupToGroupAsync(String scope, String code, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+    ServiceFuture<PortfolioGroup> addSubGroupToGroupAsync(String scope, String code, final ServiceCallback<PortfolioGroup> serviceCallback);
 
     /**
      * Add a sub group to an existing group.
@@ -3081,9 +3171,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<PortfolioGroupDto> addSubGroupToGroupAsync(String scope, String code);
+    Observable<PortfolioGroup> addSubGroupToGroupAsync(String scope, String code);
 
     /**
      * Add a sub group to an existing group.
@@ -3091,9 +3181,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<ServiceResponse<PortfolioGroupDto>> addSubGroupToGroupWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<PortfolioGroup>> addSubGroupToGroupWithServiceResponseAsync(String scope, String code);
     /**
      * Add a sub group to an existing group.
      *
@@ -3103,9 +3193,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioGroupDto object if successful.
+     * @return the PortfolioGroup object if successful.
      */
-    PortfolioGroupDto addSubGroupToGroup(String scope, String code, ResourceId identifier);
+    PortfolioGroup addSubGroupToGroup(String scope, String code, ResourceId identifier);
 
     /**
      * Add a sub group to an existing group.
@@ -3117,7 +3207,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioGroupDto> addSubGroupToGroupAsync(String scope, String code, ResourceId identifier, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+    ServiceFuture<PortfolioGroup> addSubGroupToGroupAsync(String scope, String code, ResourceId identifier, final ServiceCallback<PortfolioGroup> serviceCallback);
 
     /**
      * Add a sub group to an existing group.
@@ -3126,9 +3216,9 @@ public interface LUSIDAPI {
      * @param code the String value
      * @param identifier the ResourceId value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<PortfolioGroupDto> addSubGroupToGroupAsync(String scope, String code, ResourceId identifier);
+    Observable<PortfolioGroup> addSubGroupToGroupAsync(String scope, String code, ResourceId identifier);
 
     /**
      * Add a sub group to an existing group.
@@ -3137,9 +3227,9 @@ public interface LUSIDAPI {
      * @param code the String value
      * @param identifier the ResourceId value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<ServiceResponse<PortfolioGroupDto>> addSubGroupToGroupWithServiceResponseAsync(String scope, String code, ResourceId identifier);
+    Observable<ServiceResponse<PortfolioGroup>> addSubGroupToGroupWithServiceResponseAsync(String scope, String code, ResourceId identifier);
 
     /**
      * Remove a subgroup that is currently present within an existing group.
@@ -3151,9 +3241,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioGroupDto object if successful.
+     * @return the PortfolioGroup object if successful.
      */
-    PortfolioGroupDto deleteSubGroupFromGroup(String scope, String code, String subgroupScope, String subgroupCode);
+    PortfolioGroup deleteSubGroupFromGroup(String scope, String code, String subgroupScope, String subgroupCode);
 
     /**
      * Remove a subgroup that is currently present within an existing group.
@@ -3166,7 +3256,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioGroupDto> deleteSubGroupFromGroupAsync(String scope, String code, String subgroupScope, String subgroupCode, final ServiceCallback<PortfolioGroupDto> serviceCallback);
+    ServiceFuture<PortfolioGroup> deleteSubGroupFromGroupAsync(String scope, String code, String subgroupScope, String subgroupCode, final ServiceCallback<PortfolioGroup> serviceCallback);
 
     /**
      * Remove a subgroup that is currently present within an existing group.
@@ -3176,9 +3266,9 @@ public interface LUSIDAPI {
      * @param subgroupScope the String value
      * @param subgroupCode the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<PortfolioGroupDto> deleteSubGroupFromGroupAsync(String scope, String code, String subgroupScope, String subgroupCode);
+    Observable<PortfolioGroup> deleteSubGroupFromGroupAsync(String scope, String code, String subgroupScope, String subgroupCode);
 
     /**
      * Remove a subgroup that is currently present within an existing group.
@@ -3188,9 +3278,9 @@ public interface LUSIDAPI {
      * @param subgroupScope the String value
      * @param subgroupCode the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioGroupDto object
+     * @return the observable to the PortfolioGroup object
      */
-    Observable<ServiceResponse<PortfolioGroupDto>> deleteSubGroupFromGroupWithServiceResponseAsync(String scope, String code, String subgroupScope, String subgroupCode);
+    Observable<ServiceResponse<PortfolioGroup>> deleteSubGroupFromGroupWithServiceResponseAsync(String scope, String code, String subgroupScope, String subgroupCode);
 
     /**
      * List scopes that contain portfolios.
@@ -3293,9 +3383,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPortfolioDto object if successful.
+     * @return the ResourceListOfPortfolio object if successful.
      */
-    ResourceListOfPortfolioDto listPortfolios(String scope);
+    ResourceListOfPortfolio listPortfolios(String scope);
 
     /**
      * Get all portfolios.
@@ -3306,7 +3396,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPortfolioDto> listPortfoliosAsync(String scope, final ServiceCallback<ResourceListOfPortfolioDto> serviceCallback);
+    ServiceFuture<ResourceListOfPortfolio> listPortfoliosAsync(String scope, final ServiceCallback<ResourceListOfPortfolio> serviceCallback);
 
     /**
      * Get all portfolios.
@@ -3314,9 +3404,9 @@ public interface LUSIDAPI {
      *
      * @param scope The scope to get portfolios from
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioDto object
+     * @return the observable to the ResourceListOfPortfolio object
      */
-    Observable<ResourceListOfPortfolioDto> listPortfoliosAsync(String scope);
+    Observable<ResourceListOfPortfolio> listPortfoliosAsync(String scope);
 
     /**
      * Get all portfolios.
@@ -3324,9 +3414,9 @@ public interface LUSIDAPI {
      *
      * @param scope The scope to get portfolios from
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioDto object
+     * @return the observable to the ResourceListOfPortfolio object
      */
-    Observable<ServiceResponse<ResourceListOfPortfolioDto>> listPortfoliosWithServiceResponseAsync(String scope);
+    Observable<ServiceResponse<ResourceListOfPortfolio>> listPortfoliosWithServiceResponseAsync(String scope);
     /**
      * Get all portfolios.
      * Get all portfolios in a scope.
@@ -3341,9 +3431,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPortfolioDto object if successful.
+     * @return the ResourceListOfPortfolio object if successful.
      */
-    ResourceListOfPortfolioDto listPortfolios(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    ResourceListOfPortfolio listPortfolios(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Get all portfolios.
@@ -3360,7 +3450,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPortfolioDto> listPortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolioDto> serviceCallback);
+    ServiceFuture<ResourceListOfPortfolio> listPortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolio> serviceCallback);
 
     /**
      * Get all portfolios.
@@ -3374,9 +3464,9 @@ public interface LUSIDAPI {
      * @param limit How many items to return from the set
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioDto object
+     * @return the observable to the ResourceListOfPortfolio object
      */
-    Observable<ResourceListOfPortfolioDto> listPortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ResourceListOfPortfolio> listPortfoliosAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Get all portfolios.
@@ -3390,9 +3480,9 @@ public interface LUSIDAPI {
      * @param limit How many items to return from the set
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioDto object
+     * @return the observable to the ResourceListOfPortfolio object
      */
-    Observable<ServiceResponse<ResourceListOfPortfolioDto>> listPortfoliosWithServiceResponseAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ServiceResponse<ResourceListOfPortfolio>> listPortfoliosWithServiceResponseAsync(String scope, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Get portfolio.
@@ -3403,9 +3493,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDto object if successful.
+     * @return the Portfolio object if successful.
      */
-    PortfolioDto getPortfolio(String scope, String code);
+    Portfolio getPortfolio(String scope, String code);
 
     /**
      * Get portfolio.
@@ -3417,7 +3507,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioDto> getPortfolioAsync(String scope, String code, final ServiceCallback<PortfolioDto> serviceCallback);
+    ServiceFuture<Portfolio> getPortfolioAsync(String scope, String code, final ServiceCallback<Portfolio> serviceCallback);
 
     /**
      * Get portfolio.
@@ -3426,9 +3516,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<PortfolioDto> getPortfolioAsync(String scope, String code);
+    Observable<Portfolio> getPortfolioAsync(String scope, String code);
 
     /**
      * Get portfolio.
@@ -3437,9 +3527,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<ServiceResponse<PortfolioDto>> getPortfolioWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<Portfolio>> getPortfolioWithServiceResponseAsync(String scope, String code);
     /**
      * Get portfolio.
      * Gets a single portfolio by code.
@@ -3451,9 +3541,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDto object if successful.
+     * @return the Portfolio object if successful.
      */
-    PortfolioDto getPortfolio(String scope, String code, DateTime effectiveAt, DateTime asAt);
+    Portfolio getPortfolio(String scope, String code, DateTime effectiveAt, DateTime asAt);
 
     /**
      * Get portfolio.
@@ -3467,7 +3557,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioDto> getPortfolioAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, final ServiceCallback<PortfolioDto> serviceCallback);
+    ServiceFuture<Portfolio> getPortfolioAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, final ServiceCallback<Portfolio> serviceCallback);
 
     /**
      * Get portfolio.
@@ -3478,9 +3568,9 @@ public interface LUSIDAPI {
      * @param effectiveAt Effective date
      * @param asAt The asAt date to use
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<PortfolioDto> getPortfolioAsync(String scope, String code, DateTime effectiveAt, DateTime asAt);
+    Observable<Portfolio> getPortfolioAsync(String scope, String code, DateTime effectiveAt, DateTime asAt);
 
     /**
      * Get portfolio.
@@ -3491,9 +3581,9 @@ public interface LUSIDAPI {
      * @param effectiveAt Effective date
      * @param asAt The asAt date to use
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<ServiceResponse<PortfolioDto>> getPortfolioWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt);
+    Observable<ServiceResponse<Portfolio>> getPortfolioWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt);
 
     /**
      * Update portfolio.
@@ -3503,9 +3593,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDto object if successful.
+     * @return the Portfolio object if successful.
      */
-    PortfolioDto updatePortfolio(String scope, String code);
+    Portfolio updatePortfolio(String scope, String code);
 
     /**
      * Update portfolio.
@@ -3516,7 +3606,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioDto> updatePortfolioAsync(String scope, String code, final ServiceCallback<PortfolioDto> serviceCallback);
+    ServiceFuture<Portfolio> updatePortfolioAsync(String scope, String code, final ServiceCallback<Portfolio> serviceCallback);
 
     /**
      * Update portfolio.
@@ -3524,9 +3614,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<PortfolioDto> updatePortfolioAsync(String scope, String code);
+    Observable<Portfolio> updatePortfolioAsync(String scope, String code);
 
     /**
      * Update portfolio.
@@ -3534,9 +3624,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio to be updated
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<ServiceResponse<PortfolioDto>> updatePortfolioWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<Portfolio>> updatePortfolioWithServiceResponseAsync(String scope, String code);
     /**
      * Update portfolio.
      *
@@ -3547,9 +3637,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDto object if successful.
+     * @return the Portfolio object if successful.
      */
-    PortfolioDto updatePortfolio(String scope, String code, UpdatePortfolioRequest request, DateTime effectiveAt);
+    Portfolio updatePortfolio(String scope, String code, UpdatePortfolioRequest request, DateTime effectiveAt);
 
     /**
      * Update portfolio.
@@ -3562,7 +3652,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioDto> updatePortfolioAsync(String scope, String code, UpdatePortfolioRequest request, DateTime effectiveAt, final ServiceCallback<PortfolioDto> serviceCallback);
+    ServiceFuture<Portfolio> updatePortfolioAsync(String scope, String code, UpdatePortfolioRequest request, DateTime effectiveAt, final ServiceCallback<Portfolio> serviceCallback);
 
     /**
      * Update portfolio.
@@ -3572,9 +3662,9 @@ public interface LUSIDAPI {
      * @param request The update request
      * @param effectiveAt The effective date for the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<PortfolioDto> updatePortfolioAsync(String scope, String code, UpdatePortfolioRequest request, DateTime effectiveAt);
+    Observable<Portfolio> updatePortfolioAsync(String scope, String code, UpdatePortfolioRequest request, DateTime effectiveAt);
 
     /**
      * Update portfolio.
@@ -3584,9 +3674,9 @@ public interface LUSIDAPI {
      * @param request The update request
      * @param effectiveAt The effective date for the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<ServiceResponse<PortfolioDto>> updatePortfolioWithServiceResponseAsync(String scope, String code, UpdatePortfolioRequest request, DateTime effectiveAt);
+    Observable<ServiceResponse<Portfolio>> updatePortfolioWithServiceResponseAsync(String scope, String code, UpdatePortfolioRequest request, DateTime effectiveAt);
 
     /**
      * Delete portfolio.
@@ -3795,9 +3885,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfProcessedCommandDto object if successful.
+     * @return the ResourceListOfProcessedCommand object if successful.
      */
-    ResourceListOfProcessedCommandDto getPortfolioCommands(String scope, String code);
+    ResourceListOfProcessedCommand getPortfolioCommands(String scope, String code);
 
     /**
      * Get modifications.
@@ -3809,7 +3899,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfProcessedCommandDto> getPortfolioCommandsAsync(String scope, String code, final ServiceCallback<ResourceListOfProcessedCommandDto> serviceCallback);
+    ServiceFuture<ResourceListOfProcessedCommand> getPortfolioCommandsAsync(String scope, String code, final ServiceCallback<ResourceListOfProcessedCommand> serviceCallback);
 
     /**
      * Get modifications.
@@ -3818,9 +3908,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code The portfolio id
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfProcessedCommandDto object
+     * @return the observable to the ResourceListOfProcessedCommand object
      */
-    Observable<ResourceListOfProcessedCommandDto> getPortfolioCommandsAsync(String scope, String code);
+    Observable<ResourceListOfProcessedCommand> getPortfolioCommandsAsync(String scope, String code);
 
     /**
      * Get modifications.
@@ -3829,9 +3919,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code The portfolio id
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfProcessedCommandDto object
+     * @return the observable to the ResourceListOfProcessedCommand object
      */
-    Observable<ServiceResponse<ResourceListOfProcessedCommandDto>> getPortfolioCommandsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<ResourceListOfProcessedCommand>> getPortfolioCommandsWithServiceResponseAsync(String scope, String code);
     /**
      * Get modifications.
      * Gets all commands that modified the portfolio.
@@ -3844,9 +3934,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfProcessedCommandDto object if successful.
+     * @return the ResourceListOfProcessedCommand object if successful.
      */
-    ResourceListOfProcessedCommandDto getPortfolioCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
+    ResourceListOfProcessedCommand getPortfolioCommands(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
 
     /**
      * Get modifications.
@@ -3861,7 +3951,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfProcessedCommandDto> getPortfolioCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter, final ServiceCallback<ResourceListOfProcessedCommandDto> serviceCallback);
+    ServiceFuture<ResourceListOfProcessedCommand> getPortfolioCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter, final ServiceCallback<ResourceListOfProcessedCommand> serviceCallback);
 
     /**
      * Get modifications.
@@ -3873,9 +3963,9 @@ public interface LUSIDAPI {
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
      * @param filter Command filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfProcessedCommandDto object
+     * @return the observable to the ResourceListOfProcessedCommand object
      */
-    Observable<ResourceListOfProcessedCommandDto> getPortfolioCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
+    Observable<ResourceListOfProcessedCommand> getPortfolioCommandsAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
 
     /**
      * Get modifications.
@@ -3887,9 +3977,9 @@ public interface LUSIDAPI {
      * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
      * @param filter Command filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfProcessedCommandDto object
+     * @return the observable to the ResourceListOfProcessedCommand object
      */
-    Observable<ServiceResponse<ResourceListOfProcessedCommandDto>> getPortfolioCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
+    Observable<ServiceResponse<ResourceListOfProcessedCommand>> getPortfolioCommandsWithServiceResponseAsync(String scope, String code, DateTime fromAsAt, DateTime toAsAt, String filter);
 
     /**
      * Get properties.
@@ -3901,9 +3991,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioPropertiesDto object if successful.
+     * @return the PortfolioProperties object if successful.
      */
-    PortfolioPropertiesDto getPortfolioProperties(String scope, String code);
+    PortfolioProperties getPortfolioProperties(String scope, String code);
 
     /**
      * Get properties.
@@ -3916,7 +4006,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioPropertiesDto> getPortfolioPropertiesAsync(String scope, String code, final ServiceCallback<PortfolioPropertiesDto> serviceCallback);
+    ServiceFuture<PortfolioProperties> getPortfolioPropertiesAsync(String scope, String code, final ServiceCallback<PortfolioProperties> serviceCallback);
 
     /**
      * Get properties.
@@ -3926,9 +4016,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioPropertiesDto object
+     * @return the observable to the PortfolioProperties object
      */
-    Observable<PortfolioPropertiesDto> getPortfolioPropertiesAsync(String scope, String code);
+    Observable<PortfolioProperties> getPortfolioPropertiesAsync(String scope, String code);
 
     /**
      * Get properties.
@@ -3938,9 +4028,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioPropertiesDto object
+     * @return the observable to the PortfolioProperties object
      */
-    Observable<ServiceResponse<PortfolioPropertiesDto>> getPortfolioPropertiesWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<PortfolioProperties>> getPortfolioPropertiesWithServiceResponseAsync(String scope, String code);
     /**
      * Get properties.
      * Get properties attached to the portfolio.  If the asAt is not specified then
@@ -3956,9 +4046,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioPropertiesDto object if successful.
+     * @return the PortfolioProperties object if successful.
      */
-    PortfolioPropertiesDto getPortfolioProperties(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    PortfolioProperties getPortfolioProperties(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Get properties.
@@ -3976,7 +4066,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioPropertiesDto> getPortfolioPropertiesAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<PortfolioPropertiesDto> serviceCallback);
+    ServiceFuture<PortfolioProperties> getPortfolioPropertiesAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<PortfolioProperties> serviceCallback);
 
     /**
      * Get properties.
@@ -3991,9 +4081,9 @@ public interface LUSIDAPI {
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioPropertiesDto object
+     * @return the observable to the PortfolioProperties object
      */
-    Observable<PortfolioPropertiesDto> getPortfolioPropertiesAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<PortfolioProperties> getPortfolioPropertiesAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Get properties.
@@ -4008,9 +4098,9 @@ public interface LUSIDAPI {
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioPropertiesDto object
+     * @return the observable to the PortfolioProperties object
      */
-    Observable<ServiceResponse<PortfolioPropertiesDto>> getPortfolioPropertiesWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<PortfolioProperties>> getPortfolioPropertiesWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Update properties.
@@ -4021,9 +4111,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioPropertiesDto object if successful.
+     * @return the PortfolioProperties object if successful.
      */
-    PortfolioPropertiesDto upsertPortfolioProperties(String scope, String code);
+    PortfolioProperties upsertPortfolioProperties(String scope, String code);
 
     /**
      * Update properties.
@@ -4035,7 +4125,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioPropertiesDto> upsertPortfolioPropertiesAsync(String scope, String code, final ServiceCallback<PortfolioPropertiesDto> serviceCallback);
+    ServiceFuture<PortfolioProperties> upsertPortfolioPropertiesAsync(String scope, String code, final ServiceCallback<PortfolioProperties> serviceCallback);
 
     /**
      * Update properties.
@@ -4044,9 +4134,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioPropertiesDto object
+     * @return the observable to the PortfolioProperties object
      */
-    Observable<PortfolioPropertiesDto> upsertPortfolioPropertiesAsync(String scope, String code);
+    Observable<PortfolioProperties> upsertPortfolioPropertiesAsync(String scope, String code);
 
     /**
      * Update properties.
@@ -4055,9 +4145,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioPropertiesDto object
+     * @return the observable to the PortfolioProperties object
      */
-    Observable<ServiceResponse<PortfolioPropertiesDto>> upsertPortfolioPropertiesWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<PortfolioProperties>> upsertPortfolioPropertiesWithServiceResponseAsync(String scope, String code);
     /**
      * Update properties.
      * Create one or more properties on a portfolio.
@@ -4069,9 +4159,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioPropertiesDto object if successful.
+     * @return the PortfolioProperties object if successful.
      */
-    PortfolioPropertiesDto upsertPortfolioProperties(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt);
+    PortfolioProperties upsertPortfolioProperties(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt);
 
     /**
      * Update properties.
@@ -4085,7 +4175,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioPropertiesDto> upsertPortfolioPropertiesAsync(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt, final ServiceCallback<PortfolioPropertiesDto> serviceCallback);
+    ServiceFuture<PortfolioProperties> upsertPortfolioPropertiesAsync(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt, final ServiceCallback<PortfolioProperties> serviceCallback);
 
     /**
      * Update properties.
@@ -4096,9 +4186,9 @@ public interface LUSIDAPI {
      * @param portfolioProperties the Map&lt;String, CreatePropertyRequest&gt; value
      * @param effectiveAt The effective date for the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioPropertiesDto object
+     * @return the observable to the PortfolioProperties object
      */
-    Observable<PortfolioPropertiesDto> upsertPortfolioPropertiesAsync(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt);
+    Observable<PortfolioProperties> upsertPortfolioPropertiesAsync(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt);
 
     /**
      * Update properties.
@@ -4109,9 +4199,9 @@ public interface LUSIDAPI {
      * @param portfolioProperties the Map&lt;String, CreatePropertyRequest&gt; value
      * @param effectiveAt The effective date for the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioPropertiesDto object
+     * @return the observable to the PortfolioProperties object
      */
-    Observable<ServiceResponse<PortfolioPropertiesDto>> upsertPortfolioPropertiesWithServiceResponseAsync(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt);
+    Observable<ServiceResponse<PortfolioProperties>> upsertPortfolioPropertiesWithServiceResponseAsync(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt);
 
     /**
      * Delete one, many or all properties from a portfolio for a specified effective date.
@@ -4309,9 +4399,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPropertyDefinitionDto object if successful.
+     * @return the ResourceListOfPropertyDefinition object if successful.
      */
-    ResourceListOfPropertyDefinitionDto propertiesSearch();
+    ResourceListOfPropertyDefinition propertiesSearch();
 
     /**
      * Search properties.
@@ -4320,23 +4410,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPropertyDefinitionDto> propertiesSearchAsync(final ServiceCallback<ResourceListOfPropertyDefinitionDto> serviceCallback);
+    ServiceFuture<ResourceListOfPropertyDefinition> propertiesSearchAsync(final ServiceCallback<ResourceListOfPropertyDefinition> serviceCallback);
 
     /**
      * Search properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDefinitionDto object
+     * @return the observable to the ResourceListOfPropertyDefinition object
      */
-    Observable<ResourceListOfPropertyDefinitionDto> propertiesSearchAsync();
+    Observable<ResourceListOfPropertyDefinition> propertiesSearchAsync();
 
     /**
      * Search properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDefinitionDto object
+     * @return the observable to the ResourceListOfPropertyDefinition object
      */
-    Observable<ServiceResponse<ResourceListOfPropertyDefinitionDto>> propertiesSearchWithServiceResponseAsync();
+    Observable<ServiceResponse<ResourceListOfPropertyDefinition>> propertiesSearchWithServiceResponseAsync();
     /**
      * Search properties.
      *
@@ -4348,9 +4438,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPropertyDefinitionDto object if successful.
+     * @return the ResourceListOfPropertyDefinition object if successful.
      */
-    ResourceListOfPropertyDefinitionDto propertiesSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+    ResourceListOfPropertyDefinition propertiesSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Search properties.
@@ -4364,7 +4454,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPropertyDefinitionDto> propertiesSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPropertyDefinitionDto> serviceCallback);
+    ServiceFuture<ResourceListOfPropertyDefinition> propertiesSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPropertyDefinition> serviceCallback);
 
     /**
      * Search properties.
@@ -4375,9 +4465,9 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDefinitionDto object
+     * @return the observable to the ResourceListOfPropertyDefinition object
      */
-    Observable<ResourceListOfPropertyDefinitionDto> propertiesSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ResourceListOfPropertyDefinition> propertiesSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Search properties.
@@ -4388,9 +4478,9 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDefinitionDto object
+     * @return the observable to the ResourceListOfPropertyDefinition object
      */
-    Observable<ServiceResponse<ResourceListOfPropertyDefinitionDto>> propertiesSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ServiceResponse<ResourceListOfPropertyDefinition>> propertiesSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets multiple property definitions.
@@ -4398,9 +4488,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPropertyDefinitionDto object if successful.
+     * @return the ResourceListOfPropertyDefinition object if successful.
      */
-    ResourceListOfPropertyDefinitionDto getMultiplePropertyDefinitions();
+    ResourceListOfPropertyDefinition getMultiplePropertyDefinitions();
 
     /**
      * Gets multiple property definitions.
@@ -4409,23 +4499,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPropertyDefinitionDto> getMultiplePropertyDefinitionsAsync(final ServiceCallback<ResourceListOfPropertyDefinitionDto> serviceCallback);
+    ServiceFuture<ResourceListOfPropertyDefinition> getMultiplePropertyDefinitionsAsync(final ServiceCallback<ResourceListOfPropertyDefinition> serviceCallback);
 
     /**
      * Gets multiple property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDefinitionDto object
+     * @return the observable to the ResourceListOfPropertyDefinition object
      */
-    Observable<ResourceListOfPropertyDefinitionDto> getMultiplePropertyDefinitionsAsync();
+    Observable<ResourceListOfPropertyDefinition> getMultiplePropertyDefinitionsAsync();
 
     /**
      * Gets multiple property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDefinitionDto object
+     * @return the observable to the ResourceListOfPropertyDefinition object
      */
-    Observable<ServiceResponse<ResourceListOfPropertyDefinitionDto>> getMultiplePropertyDefinitionsWithServiceResponseAsync();
+    Observable<ServiceResponse<ResourceListOfPropertyDefinition>> getMultiplePropertyDefinitionsWithServiceResponseAsync();
     /**
      * Gets multiple property definitions.
      *
@@ -4438,9 +4528,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPropertyDefinitionDto object if successful.
+     * @return the ResourceListOfPropertyDefinition object if successful.
      */
-    ResourceListOfPropertyDefinitionDto getMultiplePropertyDefinitions(List<String> keys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    ResourceListOfPropertyDefinition getMultiplePropertyDefinitions(List<String> keys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets multiple property definitions.
@@ -4455,7 +4545,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfPropertyDefinitionDto> getMultiplePropertyDefinitionsAsync(List<String> keys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPropertyDefinitionDto> serviceCallback);
+    ServiceFuture<ResourceListOfPropertyDefinition> getMultiplePropertyDefinitionsAsync(List<String> keys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPropertyDefinition> serviceCallback);
 
     /**
      * Gets multiple property definitions.
@@ -4467,9 +4557,9 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDefinitionDto object
+     * @return the observable to the ResourceListOfPropertyDefinition object
      */
-    Observable<ResourceListOfPropertyDefinitionDto> getMultiplePropertyDefinitionsAsync(List<String> keys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ResourceListOfPropertyDefinition> getMultiplePropertyDefinitionsAsync(List<String> keys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets multiple property definitions.
@@ -4481,9 +4571,9 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDefinitionDto object
+     * @return the observable to the ResourceListOfPropertyDefinition object
      */
-    Observable<ServiceResponse<ResourceListOfPropertyDefinitionDto>> getMultiplePropertyDefinitionsWithServiceResponseAsync(List<String> keys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ServiceResponse<ResourceListOfPropertyDefinition>> getMultiplePropertyDefinitionsWithServiceResponseAsync(List<String> keys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Creates a new property definition.
@@ -4491,9 +4581,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PropertyDefinitionDto object if successful.
+     * @return the PropertyDefinition object if successful.
      */
-    PropertyDefinitionDto createPropertyDefinition();
+    PropertyDefinition createPropertyDefinition();
 
     /**
      * Creates a new property definition.
@@ -4502,23 +4592,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PropertyDefinitionDto> createPropertyDefinitionAsync(final ServiceCallback<PropertyDefinitionDto> serviceCallback);
+    ServiceFuture<PropertyDefinition> createPropertyDefinitionAsync(final ServiceCallback<PropertyDefinition> serviceCallback);
 
     /**
      * Creates a new property definition.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDefinitionDto object
+     * @return the observable to the PropertyDefinition object
      */
-    Observable<PropertyDefinitionDto> createPropertyDefinitionAsync();
+    Observable<PropertyDefinition> createPropertyDefinitionAsync();
 
     /**
      * Creates a new property definition.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDefinitionDto object
+     * @return the observable to the PropertyDefinition object
      */
-    Observable<ServiceResponse<PropertyDefinitionDto>> createPropertyDefinitionWithServiceResponseAsync();
+    Observable<ServiceResponse<PropertyDefinition>> createPropertyDefinitionWithServiceResponseAsync();
     /**
      * Creates a new property definition.
      *
@@ -4526,9 +4616,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PropertyDefinitionDto object if successful.
+     * @return the PropertyDefinition object if successful.
      */
-    PropertyDefinitionDto createPropertyDefinition(CreatePropertyDefinitionRequest definition);
+    PropertyDefinition createPropertyDefinition(CreatePropertyDefinitionRequest definition);
 
     /**
      * Creates a new property definition.
@@ -4538,25 +4628,25 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PropertyDefinitionDto> createPropertyDefinitionAsync(CreatePropertyDefinitionRequest definition, final ServiceCallback<PropertyDefinitionDto> serviceCallback);
+    ServiceFuture<PropertyDefinition> createPropertyDefinitionAsync(CreatePropertyDefinitionRequest definition, final ServiceCallback<PropertyDefinition> serviceCallback);
 
     /**
      * Creates a new property definition.
      *
      * @param definition the CreatePropertyDefinitionRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDefinitionDto object
+     * @return the observable to the PropertyDefinition object
      */
-    Observable<PropertyDefinitionDto> createPropertyDefinitionAsync(CreatePropertyDefinitionRequest definition);
+    Observable<PropertyDefinition> createPropertyDefinitionAsync(CreatePropertyDefinitionRequest definition);
 
     /**
      * Creates a new property definition.
      *
      * @param definition the CreatePropertyDefinitionRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDefinitionDto object
+     * @return the observable to the PropertyDefinition object
      */
-    Observable<ServiceResponse<PropertyDefinitionDto>> createPropertyDefinitionWithServiceResponseAsync(CreatePropertyDefinitionRequest definition);
+    Observable<ServiceResponse<PropertyDefinition>> createPropertyDefinitionWithServiceResponseAsync(CreatePropertyDefinitionRequest definition);
 
     /**
      * Gets a property definition.
@@ -4567,9 +4657,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PropertyDefinitionDto object if successful.
+     * @return the PropertyDefinition object if successful.
      */
-    PropertyDefinitionDto getPropertyDefinition(String domain, String scope, String name);
+    PropertyDefinition getPropertyDefinition(String domain, String scope, String name);
 
     /**
      * Gets a property definition.
@@ -4581,7 +4671,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PropertyDefinitionDto> getPropertyDefinitionAsync(String domain, String scope, String name, final ServiceCallback<PropertyDefinitionDto> serviceCallback);
+    ServiceFuture<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String name, final ServiceCallback<PropertyDefinition> serviceCallback);
 
     /**
      * Gets a property definition.
@@ -4590,9 +4680,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDefinitionDto object
+     * @return the observable to the PropertyDefinition object
      */
-    Observable<PropertyDefinitionDto> getPropertyDefinitionAsync(String domain, String scope, String name);
+    Observable<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String name);
 
     /**
      * Gets a property definition.
@@ -4601,9 +4691,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDefinitionDto object
+     * @return the observable to the PropertyDefinition object
      */
-    Observable<ServiceResponse<PropertyDefinitionDto>> getPropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name);
+    Observable<ServiceResponse<PropertyDefinition>> getPropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name);
     /**
      * Gets a property definition.
      *
@@ -4614,9 +4704,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PropertyDefinitionDto object if successful.
+     * @return the PropertyDefinition object if successful.
      */
-    PropertyDefinitionDto getPropertyDefinition(String domain, String scope, String name, DateTime asAt);
+    PropertyDefinition getPropertyDefinition(String domain, String scope, String name, DateTime asAt);
 
     /**
      * Gets a property definition.
@@ -4629,7 +4719,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PropertyDefinitionDto> getPropertyDefinitionAsync(String domain, String scope, String name, DateTime asAt, final ServiceCallback<PropertyDefinitionDto> serviceCallback);
+    ServiceFuture<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String name, DateTime asAt, final ServiceCallback<PropertyDefinition> serviceCallback);
 
     /**
      * Gets a property definition.
@@ -4639,9 +4729,9 @@ public interface LUSIDAPI {
      * @param name the String value
      * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDefinitionDto object
+     * @return the observable to the PropertyDefinition object
      */
-    Observable<PropertyDefinitionDto> getPropertyDefinitionAsync(String domain, String scope, String name, DateTime asAt);
+    Observable<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String name, DateTime asAt);
 
     /**
      * Gets a property definition.
@@ -4651,9 +4741,9 @@ public interface LUSIDAPI {
      * @param name the String value
      * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDefinitionDto object
+     * @return the observable to the PropertyDefinition object
      */
-    Observable<ServiceResponse<PropertyDefinitionDto>> getPropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name, DateTime asAt);
+    Observable<ServiceResponse<PropertyDefinition>> getPropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name, DateTime asAt);
 
     /**
      * Updates the specified property definition.
@@ -4664,9 +4754,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PropertyDefinitionDto object if successful.
+     * @return the PropertyDefinition object if successful.
      */
-    PropertyDefinitionDto updatePropertyDefinition(String domain, String scope, String name);
+    PropertyDefinition updatePropertyDefinition(String domain, String scope, String name);
 
     /**
      * Updates the specified property definition.
@@ -4678,7 +4768,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PropertyDefinitionDto> updatePropertyDefinitionAsync(String domain, String scope, String name, final ServiceCallback<PropertyDefinitionDto> serviceCallback);
+    ServiceFuture<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String name, final ServiceCallback<PropertyDefinition> serviceCallback);
 
     /**
      * Updates the specified property definition.
@@ -4687,9 +4777,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDefinitionDto object
+     * @return the observable to the PropertyDefinition object
      */
-    Observable<PropertyDefinitionDto> updatePropertyDefinitionAsync(String domain, String scope, String name);
+    Observable<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String name);
 
     /**
      * Updates the specified property definition.
@@ -4698,9 +4788,9 @@ public interface LUSIDAPI {
      * @param scope the String value
      * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDefinitionDto object
+     * @return the observable to the PropertyDefinition object
      */
-    Observable<ServiceResponse<PropertyDefinitionDto>> updatePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name);
+    Observable<ServiceResponse<PropertyDefinition>> updatePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name);
     /**
      * Updates the specified property definition.
      *
@@ -4711,9 +4801,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PropertyDefinitionDto object if successful.
+     * @return the PropertyDefinition object if successful.
      */
-    PropertyDefinitionDto updatePropertyDefinition(String domain, String scope, String name, UpdatePropertyDefinitionRequest definition);
+    PropertyDefinition updatePropertyDefinition(String domain, String scope, String name, UpdatePropertyDefinitionRequest definition);
 
     /**
      * Updates the specified property definition.
@@ -4726,7 +4816,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PropertyDefinitionDto> updatePropertyDefinitionAsync(String domain, String scope, String name, UpdatePropertyDefinitionRequest definition, final ServiceCallback<PropertyDefinitionDto> serviceCallback);
+    ServiceFuture<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String name, UpdatePropertyDefinitionRequest definition, final ServiceCallback<PropertyDefinition> serviceCallback);
 
     /**
      * Updates the specified property definition.
@@ -4736,9 +4826,9 @@ public interface LUSIDAPI {
      * @param name the String value
      * @param definition the UpdatePropertyDefinitionRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDefinitionDto object
+     * @return the observable to the PropertyDefinition object
      */
-    Observable<PropertyDefinitionDto> updatePropertyDefinitionAsync(String domain, String scope, String name, UpdatePropertyDefinitionRequest definition);
+    Observable<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String name, UpdatePropertyDefinitionRequest definition);
 
     /**
      * Updates the specified property definition.
@@ -4748,9 +4838,9 @@ public interface LUSIDAPI {
      * @param name the String value
      * @param definition the UpdatePropertyDefinitionRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertyDefinitionDto object
+     * @return the observable to the PropertyDefinition object
      */
-    Observable<ServiceResponse<PropertyDefinitionDto>> updatePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name, UpdatePropertyDefinitionRequest definition);
+    Observable<ServiceResponse<PropertyDefinition>> updatePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name, UpdatePropertyDefinitionRequest definition);
 
     /**
      * Deletes the property definition.
@@ -4805,9 +4895,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfReconciliationBreakDto object if successful.
+     * @return the ResourceListOfReconciliationBreak object if successful.
      */
-    ResourceListOfReconciliationBreakDto performReconciliation();
+    ResourceListOfReconciliationBreak performReconciliation();
 
     /**
      * Perform a reconciliation between two portfolios.
@@ -4816,23 +4906,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfReconciliationBreakDto> performReconciliationAsync(final ServiceCallback<ResourceListOfReconciliationBreakDto> serviceCallback);
+    ServiceFuture<ResourceListOfReconciliationBreak> performReconciliationAsync(final ServiceCallback<ResourceListOfReconciliationBreak> serviceCallback);
 
     /**
      * Perform a reconciliation between two portfolios.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReconciliationBreakDto object
+     * @return the observable to the ResourceListOfReconciliationBreak object
      */
-    Observable<ResourceListOfReconciliationBreakDto> performReconciliationAsync();
+    Observable<ResourceListOfReconciliationBreak> performReconciliationAsync();
 
     /**
      * Perform a reconciliation between two portfolios.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReconciliationBreakDto object
+     * @return the observable to the ResourceListOfReconciliationBreak object
      */
-    Observable<ServiceResponse<ResourceListOfReconciliationBreakDto>> performReconciliationWithServiceResponseAsync();
+    Observable<ServiceResponse<ResourceListOfReconciliationBreak>> performReconciliationWithServiceResponseAsync();
     /**
      * Perform a reconciliation between two portfolios.
      *
@@ -4840,9 +4930,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfReconciliationBreakDto object if successful.
+     * @return the ResourceListOfReconciliationBreak object if successful.
      */
-    ResourceListOfReconciliationBreakDto performReconciliation(ReconciliationRequest request);
+    ResourceListOfReconciliationBreak performReconciliation(ReconciliationRequest request);
 
     /**
      * Perform a reconciliation between two portfolios.
@@ -4852,25 +4942,25 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfReconciliationBreakDto> performReconciliationAsync(ReconciliationRequest request, final ServiceCallback<ResourceListOfReconciliationBreakDto> serviceCallback);
+    ServiceFuture<ResourceListOfReconciliationBreak> performReconciliationAsync(ReconciliationRequest request, final ServiceCallback<ResourceListOfReconciliationBreak> serviceCallback);
 
     /**
      * Perform a reconciliation between two portfolios.
      *
      * @param request the ReconciliationRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReconciliationBreakDto object
+     * @return the observable to the ResourceListOfReconciliationBreak object
      */
-    Observable<ResourceListOfReconciliationBreakDto> performReconciliationAsync(ReconciliationRequest request);
+    Observable<ResourceListOfReconciliationBreak> performReconciliationAsync(ReconciliationRequest request);
 
     /**
      * Perform a reconciliation between two portfolios.
      *
      * @param request the ReconciliationRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReconciliationBreakDto object
+     * @return the observable to the ResourceListOfReconciliationBreak object
      */
-    Observable<ServiceResponse<ResourceListOfReconciliationBreakDto>> performReconciliationWithServiceResponseAsync(ReconciliationRequest request);
+    Observable<ServiceResponse<ResourceListOfReconciliationBreak>> performReconciliationWithServiceResponseAsync(ReconciliationRequest request);
 
     /**
      * Create a new reference portfolio.
@@ -4879,9 +4969,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDto object if successful.
+     * @return the Portfolio object if successful.
      */
-    PortfolioDto createReferencePortfolio(String scope);
+    Portfolio createReferencePortfolio(String scope);
 
     /**
      * Create a new reference portfolio.
@@ -4891,25 +4981,25 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioDto> createReferencePortfolioAsync(String scope, final ServiceCallback<PortfolioDto> serviceCallback);
+    ServiceFuture<Portfolio> createReferencePortfolioAsync(String scope, final ServiceCallback<Portfolio> serviceCallback);
 
     /**
      * Create a new reference portfolio.
      *
      * @param scope The intended scope of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<PortfolioDto> createReferencePortfolioAsync(String scope);
+    Observable<Portfolio> createReferencePortfolioAsync(String scope);
 
     /**
      * Create a new reference portfolio.
      *
      * @param scope The intended scope of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<ServiceResponse<PortfolioDto>> createReferencePortfolioWithServiceResponseAsync(String scope);
+    Observable<ServiceResponse<Portfolio>> createReferencePortfolioWithServiceResponseAsync(String scope);
     /**
      * Create a new reference portfolio.
      *
@@ -4918,9 +5008,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDto object if successful.
+     * @return the Portfolio object if successful.
      */
-    PortfolioDto createReferencePortfolio(String scope, CreateReferencePortfolioRequest referencePortfolio);
+    Portfolio createReferencePortfolio(String scope, CreateReferencePortfolioRequest referencePortfolio);
 
     /**
      * Create a new reference portfolio.
@@ -4931,7 +5021,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioDto> createReferencePortfolioAsync(String scope, CreateReferencePortfolioRequest referencePortfolio, final ServiceCallback<PortfolioDto> serviceCallback);
+    ServiceFuture<Portfolio> createReferencePortfolioAsync(String scope, CreateReferencePortfolioRequest referencePortfolio, final ServiceCallback<Portfolio> serviceCallback);
 
     /**
      * Create a new reference portfolio.
@@ -4939,9 +5029,9 @@ public interface LUSIDAPI {
      * @param scope The intended scope of the portfolio
      * @param referencePortfolio The portfolio creation request object
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<PortfolioDto> createReferencePortfolioAsync(String scope, CreateReferencePortfolioRequest referencePortfolio);
+    Observable<Portfolio> createReferencePortfolioAsync(String scope, CreateReferencePortfolioRequest referencePortfolio);
 
     /**
      * Create a new reference portfolio.
@@ -4949,9 +5039,9 @@ public interface LUSIDAPI {
      * @param scope The intended scope of the portfolio
      * @param referencePortfolio The portfolio creation request object
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<ServiceResponse<PortfolioDto>> createReferencePortfolioWithServiceResponseAsync(String scope, CreateReferencePortfolioRequest referencePortfolio);
+    Observable<ServiceResponse<Portfolio>> createReferencePortfolioWithServiceResponseAsync(String scope, CreateReferencePortfolioRequest referencePortfolio);
 
     /**
      * Get all the constituents in a reference portfolio.
@@ -4962,9 +5052,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfReferencePortfolioConstituentDto object if successful.
+     * @return the ResourceListOfReferencePortfolioConstituent object if successful.
      */
-    ResourceListOfReferencePortfolioConstituentDto getReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt);
+    ResourceListOfReferencePortfolioConstituent getReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt);
 
     /**
      * Get all the constituents in a reference portfolio.
@@ -4976,7 +5066,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<ResourceListOfReferencePortfolioConstituentDto> serviceCallback);
+    ServiceFuture<ResourceListOfReferencePortfolioConstituent> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<ResourceListOfReferencePortfolioConstituent> serviceCallback);
 
     /**
      * Get all the constituents in a reference portfolio.
@@ -4985,9 +5075,9 @@ public interface LUSIDAPI {
      * @param code the String value
      * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReferencePortfolioConstituentDto object
+     * @return the observable to the ResourceListOfReferencePortfolioConstituent object
      */
-    Observable<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt);
+    Observable<ResourceListOfReferencePortfolioConstituent> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt);
 
     /**
      * Get all the constituents in a reference portfolio.
@@ -4996,9 +5086,9 @@ public interface LUSIDAPI {
      * @param code the String value
      * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReferencePortfolioConstituentDto object
+     * @return the observable to the ResourceListOfReferencePortfolioConstituent object
      */
-    Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituentDto>> getReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
+    Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituent>> getReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
     /**
      * Get all the constituents in a reference portfolio.
      *
@@ -5012,9 +5102,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfReferencePortfolioConstituentDto object if successful.
+     * @return the ResourceListOfReferencePortfolioConstituent object if successful.
      */
-    ResourceListOfReferencePortfolioConstituentDto getReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    ResourceListOfReferencePortfolioConstituent getReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Get all the constituents in a reference portfolio.
@@ -5030,7 +5120,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ResourceListOfReferencePortfolioConstituentDto> serviceCallback);
+    ServiceFuture<ResourceListOfReferencePortfolioConstituent> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ResourceListOfReferencePortfolioConstituent> serviceCallback);
 
     /**
      * Get all the constituents in a reference portfolio.
@@ -5043,9 +5133,9 @@ public interface LUSIDAPI {
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReferencePortfolioConstituentDto object
+     * @return the observable to the ResourceListOfReferencePortfolioConstituent object
      */
-    Observable<ResourceListOfReferencePortfolioConstituentDto> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<ResourceListOfReferencePortfolioConstituent> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Get all the constituents in a reference portfolio.
@@ -5058,9 +5148,9 @@ public interface LUSIDAPI {
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReferencePortfolioConstituentDto object
+     * @return the observable to the ResourceListOfReferencePortfolioConstituent object
      */
-    Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituentDto>> getReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituent>> getReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Add constituents to a specific reference portfolio.
@@ -5071,9 +5161,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the UpsertReferencePortfolioConstituentsDto object if successful.
+     * @return the UpsertReferencePortfolioConstituentsResponse object if successful.
      */
-    UpsertReferencePortfolioConstituentsDto upsertReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt);
+    UpsertReferencePortfolioConstituentsResponse upsertReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt);
 
     /**
      * Add constituents to a specific reference portfolio.
@@ -5085,7 +5175,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<UpsertReferencePortfolioConstituentsDto> upsertReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<UpsertReferencePortfolioConstituentsDto> serviceCallback);
+    ServiceFuture<UpsertReferencePortfolioConstituentsResponse> upsertReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<UpsertReferencePortfolioConstituentsResponse> serviceCallback);
 
     /**
      * Add constituents to a specific reference portfolio.
@@ -5094,9 +5184,9 @@ public interface LUSIDAPI {
      * @param code the String value
      * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertReferencePortfolioConstituentsDto object
+     * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
-    Observable<UpsertReferencePortfolioConstituentsDto> upsertReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt);
+    Observable<UpsertReferencePortfolioConstituentsResponse> upsertReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt);
 
     /**
      * Add constituents to a specific reference portfolio.
@@ -5105,9 +5195,9 @@ public interface LUSIDAPI {
      * @param code the String value
      * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertReferencePortfolioConstituentsDto object
+     * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
-    Observable<ServiceResponse<UpsertReferencePortfolioConstituentsDto>> upsertReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
+    Observable<ServiceResponse<UpsertReferencePortfolioConstituentsResponse>> upsertReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
     /**
      * Add constituents to a specific reference portfolio.
      *
@@ -5118,9 +5208,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the UpsertReferencePortfolioConstituentsDto object if successful.
+     * @return the UpsertReferencePortfolioConstituentsResponse object if successful.
      */
-    UpsertReferencePortfolioConstituentsDto upsertReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentRequest> constituents);
+    UpsertReferencePortfolioConstituentsResponse upsertReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentRequest> constituents);
 
     /**
      * Add constituents to a specific reference portfolio.
@@ -5133,7 +5223,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<UpsertReferencePortfolioConstituentsDto> upsertReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentRequest> constituents, final ServiceCallback<UpsertReferencePortfolioConstituentsDto> serviceCallback);
+    ServiceFuture<UpsertReferencePortfolioConstituentsResponse> upsertReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentRequest> constituents, final ServiceCallback<UpsertReferencePortfolioConstituentsResponse> serviceCallback);
 
     /**
      * Add constituents to a specific reference portfolio.
@@ -5143,9 +5233,9 @@ public interface LUSIDAPI {
      * @param effectiveAt the DateTime value
      * @param constituents the List&lt;ReferencePortfolioConstituentRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertReferencePortfolioConstituentsDto object
+     * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
-    Observable<UpsertReferencePortfolioConstituentsDto> upsertReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentRequest> constituents);
+    Observable<UpsertReferencePortfolioConstituentsResponse> upsertReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentRequest> constituents);
 
     /**
      * Add constituents to a specific reference portfolio.
@@ -5155,9 +5245,9 @@ public interface LUSIDAPI {
      * @param effectiveAt the DateTime value
      * @param constituents the List&lt;ReferencePortfolioConstituentRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertReferencePortfolioConstituentsDto object
+     * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
-    Observable<ServiceResponse<UpsertReferencePortfolioConstituentsDto>> upsertReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentRequest> constituents);
+    Observable<ServiceResponse<UpsertReferencePortfolioConstituentsResponse>> upsertReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentRequest> constituents);
 
     /**
      * Retrieve some previously stored results.
@@ -5168,9 +5258,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResultsDto object if successful.
+     * @return the Results object if successful.
      */
-    ResultsDto getResults(String scope, String key, DateTime dateParameter);
+    Results getResults(String scope, String key, DateTime dateParameter);
 
     /**
      * Retrieve some previously stored results.
@@ -5182,7 +5272,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResultsDto> getResultsAsync(String scope, String key, DateTime dateParameter, final ServiceCallback<ResultsDto> serviceCallback);
+    ServiceFuture<Results> getResultsAsync(String scope, String key, DateTime dateParameter, final ServiceCallback<Results> serviceCallback);
 
     /**
      * Retrieve some previously stored results.
@@ -5191,9 +5281,9 @@ public interface LUSIDAPI {
      * @param key The key that identifies the data
      * @param dateParameter The date for which the data was loaded
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResultsDto object
+     * @return the observable to the Results object
      */
-    Observable<ResultsDto> getResultsAsync(String scope, String key, DateTime dateParameter);
+    Observable<Results> getResultsAsync(String scope, String key, DateTime dateParameter);
 
     /**
      * Retrieve some previously stored results.
@@ -5202,9 +5292,9 @@ public interface LUSIDAPI {
      * @param key The key that identifies the data
      * @param dateParameter The date for which the data was loaded
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResultsDto object
+     * @return the observable to the Results object
      */
-    Observable<ServiceResponse<ResultsDto>> getResultsWithServiceResponseAsync(String scope, String key, DateTime dateParameter);
+    Observable<ServiceResponse<Results>> getResultsWithServiceResponseAsync(String scope, String key, DateTime dateParameter);
     /**
      * Retrieve some previously stored results.
      *
@@ -5218,9 +5308,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResultsDto object if successful.
+     * @return the Results object if successful.
      */
-    ResultsDto getResults(String scope, String key, DateTime dateParameter, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Results getResults(String scope, String key, DateTime dateParameter, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Retrieve some previously stored results.
@@ -5236,7 +5326,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResultsDto> getResultsAsync(String scope, String key, DateTime dateParameter, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ResultsDto> serviceCallback);
+    ServiceFuture<Results> getResultsAsync(String scope, String key, DateTime dateParameter, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<Results> serviceCallback);
 
     /**
      * Retrieve some previously stored results.
@@ -5249,9 +5339,9 @@ public interface LUSIDAPI {
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResultsDto object
+     * @return the observable to the Results object
      */
-    Observable<ResultsDto> getResultsAsync(String scope, String key, DateTime dateParameter, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<Results> getResultsAsync(String scope, String key, DateTime dateParameter, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Retrieve some previously stored results.
@@ -5264,9 +5354,9 @@ public interface LUSIDAPI {
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResultsDto object
+     * @return the observable to the Results object
      */
-    Observable<ServiceResponse<ResultsDto>> getResultsWithServiceResponseAsync(String scope, String key, DateTime dateParameter, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<Results>> getResultsWithServiceResponseAsync(String scope, String key, DateTime dateParameter, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Upsert precalculated results against a specified scope/key/date combination.
@@ -5277,9 +5367,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResultsDto object if successful.
+     * @return the Results object if successful.
      */
-    ResultsDto upsertResults(String scope, String key, DateTime dateParameter);
+    Results upsertResults(String scope, String key, DateTime dateParameter);
 
     /**
      * Upsert precalculated results against a specified scope/key/date combination.
@@ -5291,7 +5381,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResultsDto> upsertResultsAsync(String scope, String key, DateTime dateParameter, final ServiceCallback<ResultsDto> serviceCallback);
+    ServiceFuture<Results> upsertResultsAsync(String scope, String key, DateTime dateParameter, final ServiceCallback<Results> serviceCallback);
 
     /**
      * Upsert precalculated results against a specified scope/key/date combination.
@@ -5300,9 +5390,9 @@ public interface LUSIDAPI {
      * @param key The key that identifies the data
      * @param dateParameter The date for which the data is relevant
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResultsDto object
+     * @return the observable to the Results object
      */
-    Observable<ResultsDto> upsertResultsAsync(String scope, String key, DateTime dateParameter);
+    Observable<Results> upsertResultsAsync(String scope, String key, DateTime dateParameter);
 
     /**
      * Upsert precalculated results against a specified scope/key/date combination.
@@ -5311,9 +5401,9 @@ public interface LUSIDAPI {
      * @param key The key that identifies the data
      * @param dateParameter The date for which the data is relevant
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResultsDto object
+     * @return the observable to the Results object
      */
-    Observable<ServiceResponse<ResultsDto>> upsertResultsWithServiceResponseAsync(String scope, String key, DateTime dateParameter);
+    Observable<ServiceResponse<Results>> upsertResultsWithServiceResponseAsync(String scope, String key, DateTime dateParameter);
     /**
      * Upsert precalculated results against a specified scope/key/date combination.
      *
@@ -5324,9 +5414,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResultsDto object if successful.
+     * @return the Results object if successful.
      */
-    ResultsDto upsertResults(String scope, String key, DateTime dateParameter, CreateResultsRequest request);
+    Results upsertResults(String scope, String key, DateTime dateParameter, CreateResults request);
 
     /**
      * Upsert precalculated results against a specified scope/key/date combination.
@@ -5339,7 +5429,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResultsDto> upsertResultsAsync(String scope, String key, DateTime dateParameter, CreateResultsRequest request, final ServiceCallback<ResultsDto> serviceCallback);
+    ServiceFuture<Results> upsertResultsAsync(String scope, String key, DateTime dateParameter, CreateResults request, final ServiceCallback<Results> serviceCallback);
 
     /**
      * Upsert precalculated results against a specified scope/key/date combination.
@@ -5349,9 +5439,9 @@ public interface LUSIDAPI {
      * @param dateParameter The date for which the data is relevant
      * @param request The results to upload
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResultsDto object
+     * @return the observable to the Results object
      */
-    Observable<ResultsDto> upsertResultsAsync(String scope, String key, DateTime dateParameter, CreateResultsRequest request);
+    Observable<Results> upsertResultsAsync(String scope, String key, DateTime dateParameter, CreateResults request);
 
     /**
      * Upsert precalculated results against a specified scope/key/date combination.
@@ -5361,9 +5451,9 @@ public interface LUSIDAPI {
      * @param dateParameter The date for which the data is relevant
      * @param request The results to upload
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResultsDto object
+     * @return the observable to the Results object
      */
-    Observable<ServiceResponse<ResultsDto>> upsertResultsWithServiceResponseAsync(String scope, String key, DateTime dateParameter, CreateResultsRequest request);
+    Observable<ServiceResponse<Results>> upsertResultsWithServiceResponseAsync(String scope, String key, DateTime dateParameter, CreateResults request);
 
     /**
      * Aggregate data from a result set.
@@ -5508,9 +5598,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the SchemaDto object if successful.
+     * @return the Schema object if successful.
      */
-    SchemaDto getEntitySchema(String entity);
+    Schema getEntitySchema(String entity);
 
     /**
      * Gets the schema for a given entity.
@@ -5520,25 +5610,25 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<SchemaDto> getEntitySchemaAsync(String entity, final ServiceCallback<SchemaDto> serviceCallback);
+    ServiceFuture<Schema> getEntitySchemaAsync(String entity, final ServiceCallback<Schema> serviceCallback);
 
     /**
      * Gets the schema for a given entity.
      *
      * @param entity the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the SchemaDto object
+     * @return the observable to the Schema object
      */
-    Observable<SchemaDto> getEntitySchemaAsync(String entity);
+    Observable<Schema> getEntitySchemaAsync(String entity);
 
     /**
      * Gets the schema for a given entity.
      *
      * @param entity the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the SchemaDto object
+     * @return the observable to the Schema object
      */
-    Observable<ServiceResponse<SchemaDto>> getEntitySchemaWithServiceResponseAsync(String entity);
+    Observable<ServiceResponse<Schema>> getEntitySchemaWithServiceResponseAsync(String entity);
 
     /**
      * Get the schemas for the provided list of property keys.
@@ -5546,9 +5636,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PropertySchemaDto object if successful.
+     * @return the PropertySchema object if successful.
      */
-    PropertySchemaDto getPropertySchema();
+    PropertySchema getPropertySchema();
 
     /**
      * Get the schemas for the provided list of property keys.
@@ -5557,23 +5647,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PropertySchemaDto> getPropertySchemaAsync(final ServiceCallback<PropertySchemaDto> serviceCallback);
+    ServiceFuture<PropertySchema> getPropertySchemaAsync(final ServiceCallback<PropertySchema> serviceCallback);
 
     /**
      * Get the schemas for the provided list of property keys.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertySchemaDto object
+     * @return the observable to the PropertySchema object
      */
-    Observable<PropertySchemaDto> getPropertySchemaAsync();
+    Observable<PropertySchema> getPropertySchemaAsync();
 
     /**
      * Get the schemas for the provided list of property keys.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertySchemaDto object
+     * @return the observable to the PropertySchema object
      */
-    Observable<ServiceResponse<PropertySchemaDto>> getPropertySchemaWithServiceResponseAsync();
+    Observable<ServiceResponse<PropertySchema>> getPropertySchemaWithServiceResponseAsync();
     /**
      * Get the schemas for the provided list of property keys.
      *
@@ -5582,9 +5672,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PropertySchemaDto object if successful.
+     * @return the PropertySchema object if successful.
      */
-    PropertySchemaDto getPropertySchema(List<String> propertyKeys, DateTime asAt);
+    PropertySchema getPropertySchema(List<String> propertyKeys, DateTime asAt);
 
     /**
      * Get the schemas for the provided list of property keys.
@@ -5595,7 +5685,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PropertySchemaDto> getPropertySchemaAsync(List<String> propertyKeys, DateTime asAt, final ServiceCallback<PropertySchemaDto> serviceCallback);
+    ServiceFuture<PropertySchema> getPropertySchemaAsync(List<String> propertyKeys, DateTime asAt, final ServiceCallback<PropertySchema> serviceCallback);
 
     /**
      * Get the schemas for the provided list of property keys.
@@ -5603,9 +5693,9 @@ public interface LUSIDAPI {
      * @param propertyKeys A comma delimited list of property keys in string format. e.g. "Portfolio/default/PropertyName,Portfolio/differentScope/MyProperty"
      * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertySchemaDto object
+     * @return the observable to the PropertySchema object
      */
-    Observable<PropertySchemaDto> getPropertySchemaAsync(List<String> propertyKeys, DateTime asAt);
+    Observable<PropertySchema> getPropertySchemaAsync(List<String> propertyKeys, DateTime asAt);
 
     /**
      * Get the schemas for the provided list of property keys.
@@ -5613,9 +5703,9 @@ public interface LUSIDAPI {
      * @param propertyKeys A comma delimited list of property keys in string format. e.g. "Portfolio/default/PropertyName,Portfolio/differentScope/MyProperty"
      * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PropertySchemaDto object
+     * @return the observable to the PropertySchema object
      */
-    Observable<ServiceResponse<PropertySchemaDto>> getPropertySchemaWithServiceResponseAsync(List<String> propertyKeys, DateTime asAt);
+    Observable<ServiceResponse<PropertySchema>> getPropertySchemaWithServiceResponseAsync(List<String> propertyKeys, DateTime asAt);
 
     /**
      * Gets the available value types that could be returned in a schema.
@@ -5704,9 +5794,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfTransactionMetaDataDto object if successful.
+     * @return the ResourceListOfTransactionMetaData object if successful.
      */
-    ResourceListOfTransactionMetaDataDto listConfigurationTransactionTypes();
+    ResourceListOfTransactionMetaData listConfigurationTransactionTypes();
 
     /**
      * Gets the list of persisted transaction types.
@@ -5715,23 +5805,23 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfTransactionMetaDataDto> listConfigurationTransactionTypesAsync(final ServiceCallback<ResourceListOfTransactionMetaDataDto> serviceCallback);
+    ServiceFuture<ResourceListOfTransactionMetaData> listConfigurationTransactionTypesAsync(final ServiceCallback<ResourceListOfTransactionMetaData> serviceCallback);
 
     /**
      * Gets the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTransactionMetaDataDto object
+     * @return the observable to the ResourceListOfTransactionMetaData object
      */
-    Observable<ResourceListOfTransactionMetaDataDto> listConfigurationTransactionTypesAsync();
+    Observable<ResourceListOfTransactionMetaData> listConfigurationTransactionTypesAsync();
 
     /**
      * Gets the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTransactionMetaDataDto object
+     * @return the observable to the ResourceListOfTransactionMetaData object
      */
-    Observable<ServiceResponse<ResourceListOfTransactionMetaDataDto>> listConfigurationTransactionTypesWithServiceResponseAsync();
+    Observable<ServiceResponse<ResourceListOfTransactionMetaData>> listConfigurationTransactionTypesWithServiceResponseAsync();
 
     /**
      * Uploads a list of transaction types to be used by the movements engine.
@@ -5739,9 +5829,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfTransactionMetaDataDto object if successful.
+     * @return the ResourceListOfTransactionMetaData object if successful.
      */
-    ResourceListOfTransactionMetaDataDto setConfigurationTransactionTypes();
+    ResourceListOfTransactionMetaData setConfigurationTransactionTypes();
 
     /**
      * Uploads a list of transaction types to be used by the movements engine.
@@ -5750,61 +5840,61 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfTransactionMetaDataDto> setConfigurationTransactionTypesAsync(final ServiceCallback<ResourceListOfTransactionMetaDataDto> serviceCallback);
+    ServiceFuture<ResourceListOfTransactionMetaData> setConfigurationTransactionTypesAsync(final ServiceCallback<ResourceListOfTransactionMetaData> serviceCallback);
 
     /**
      * Uploads a list of transaction types to be used by the movements engine.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTransactionMetaDataDto object
+     * @return the observable to the ResourceListOfTransactionMetaData object
      */
-    Observable<ResourceListOfTransactionMetaDataDto> setConfigurationTransactionTypesAsync();
+    Observable<ResourceListOfTransactionMetaData> setConfigurationTransactionTypesAsync();
 
     /**
      * Uploads a list of transaction types to be used by the movements engine.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTransactionMetaDataDto object
+     * @return the observable to the ResourceListOfTransactionMetaData object
      */
-    Observable<ServiceResponse<ResourceListOfTransactionMetaDataDto>> setConfigurationTransactionTypesWithServiceResponseAsync();
+    Observable<ServiceResponse<ResourceListOfTransactionMetaData>> setConfigurationTransactionTypesWithServiceResponseAsync();
     /**
      * Uploads a list of transaction types to be used by the movements engine.
      *
-     * @param types the List&lt;TransactionMetaDataRequest&gt; value
+     * @param types the List&lt;TransactionConfigurationDataRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfTransactionMetaDataDto object if successful.
+     * @return the ResourceListOfTransactionMetaData object if successful.
      */
-    ResourceListOfTransactionMetaDataDto setConfigurationTransactionTypes(List<TransactionMetaDataRequest> types);
+    ResourceListOfTransactionMetaData setConfigurationTransactionTypes(List<TransactionConfigurationDataRequest> types);
 
     /**
      * Uploads a list of transaction types to be used by the movements engine.
      *
-     * @param types the List&lt;TransactionMetaDataRequest&gt; value
+     * @param types the List&lt;TransactionConfigurationDataRequest&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfTransactionMetaDataDto> setConfigurationTransactionTypesAsync(List<TransactionMetaDataRequest> types, final ServiceCallback<ResourceListOfTransactionMetaDataDto> serviceCallback);
+    ServiceFuture<ResourceListOfTransactionMetaData> setConfigurationTransactionTypesAsync(List<TransactionConfigurationDataRequest> types, final ServiceCallback<ResourceListOfTransactionMetaData> serviceCallback);
 
     /**
      * Uploads a list of transaction types to be used by the movements engine.
      *
-     * @param types the List&lt;TransactionMetaDataRequest&gt; value
+     * @param types the List&lt;TransactionConfigurationDataRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTransactionMetaDataDto object
+     * @return the observable to the ResourceListOfTransactionMetaData object
      */
-    Observable<ResourceListOfTransactionMetaDataDto> setConfigurationTransactionTypesAsync(List<TransactionMetaDataRequest> types);
+    Observable<ResourceListOfTransactionMetaData> setConfigurationTransactionTypesAsync(List<TransactionConfigurationDataRequest> types);
 
     /**
      * Uploads a list of transaction types to be used by the movements engine.
      *
-     * @param types the List&lt;TransactionMetaDataRequest&gt; value
+     * @param types the List&lt;TransactionConfigurationDataRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTransactionMetaDataDto object
+     * @return the observable to the ResourceListOfTransactionMetaData object
      */
-    Observable<ServiceResponse<ResourceListOfTransactionMetaDataDto>> setConfigurationTransactionTypesWithServiceResponseAsync(List<TransactionMetaDataRequest> types);
+    Observable<ServiceResponse<ResourceListOfTransactionMetaData>> setConfigurationTransactionTypesWithServiceResponseAsync(List<TransactionConfigurationDataRequest> types);
 
     /**
      * Adds a new transaction type movement to the list of existing types.
@@ -5812,9 +5902,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TransactionMetaDataDto object if successful.
+     * @return the TransactionConfigurationData object if successful.
      */
-    TransactionMetaDataDto createConfigurationTransactionType();
+    TransactionConfigurationData createConfigurationTransactionType();
 
     /**
      * Adds a new transaction type movement to the list of existing types.
@@ -5823,61 +5913,61 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TransactionMetaDataDto> createConfigurationTransactionTypeAsync(final ServiceCallback<TransactionMetaDataDto> serviceCallback);
+    ServiceFuture<TransactionConfigurationData> createConfigurationTransactionTypeAsync(final ServiceCallback<TransactionConfigurationData> serviceCallback);
 
     /**
      * Adds a new transaction type movement to the list of existing types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TransactionMetaDataDto object
+     * @return the observable to the TransactionConfigurationData object
      */
-    Observable<TransactionMetaDataDto> createConfigurationTransactionTypeAsync();
+    Observable<TransactionConfigurationData> createConfigurationTransactionTypeAsync();
 
     /**
      * Adds a new transaction type movement to the list of existing types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TransactionMetaDataDto object
+     * @return the observable to the TransactionConfigurationData object
      */
-    Observable<ServiceResponse<TransactionMetaDataDto>> createConfigurationTransactionTypeWithServiceResponseAsync();
+    Observable<ServiceResponse<TransactionConfigurationData>> createConfigurationTransactionTypeWithServiceResponseAsync();
     /**
      * Adds a new transaction type movement to the list of existing types.
      *
-     * @param type the TransactionMetaDataRequest value
+     * @param type the TransactionConfigurationDataRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TransactionMetaDataDto object if successful.
+     * @return the TransactionConfigurationData object if successful.
      */
-    TransactionMetaDataDto createConfigurationTransactionType(TransactionMetaDataRequest type);
+    TransactionConfigurationData createConfigurationTransactionType(TransactionConfigurationDataRequest type);
 
     /**
      * Adds a new transaction type movement to the list of existing types.
      *
-     * @param type the TransactionMetaDataRequest value
+     * @param type the TransactionConfigurationDataRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TransactionMetaDataDto> createConfigurationTransactionTypeAsync(TransactionMetaDataRequest type, final ServiceCallback<TransactionMetaDataDto> serviceCallback);
+    ServiceFuture<TransactionConfigurationData> createConfigurationTransactionTypeAsync(TransactionConfigurationDataRequest type, final ServiceCallback<TransactionConfigurationData> serviceCallback);
 
     /**
      * Adds a new transaction type movement to the list of existing types.
      *
-     * @param type the TransactionMetaDataRequest value
+     * @param type the TransactionConfigurationDataRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TransactionMetaDataDto object
+     * @return the observable to the TransactionConfigurationData object
      */
-    Observable<TransactionMetaDataDto> createConfigurationTransactionTypeAsync(TransactionMetaDataRequest type);
+    Observable<TransactionConfigurationData> createConfigurationTransactionTypeAsync(TransactionConfigurationDataRequest type);
 
     /**
      * Adds a new transaction type movement to the list of existing types.
      *
-     * @param type the TransactionMetaDataRequest value
+     * @param type the TransactionConfigurationDataRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TransactionMetaDataDto object
+     * @return the observable to the TransactionConfigurationData object
      */
-    Observable<ServiceResponse<TransactionMetaDataDto>> createConfigurationTransactionTypeWithServiceResponseAsync(TransactionMetaDataRequest type);
+    Observable<ServiceResponse<TransactionConfigurationData>> createConfigurationTransactionTypeWithServiceResponseAsync(TransactionConfigurationDataRequest type);
 
     /**
      * Create portfolio.
@@ -5887,9 +5977,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDto object if successful.
+     * @return the Portfolio object if successful.
      */
-    PortfolioDto createPortfolio(String scope);
+    Portfolio createPortfolio(String scope);
 
     /**
      * Create portfolio.
@@ -5900,7 +5990,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioDto> createPortfolioAsync(String scope, final ServiceCallback<PortfolioDto> serviceCallback);
+    ServiceFuture<Portfolio> createPortfolioAsync(String scope, final ServiceCallback<Portfolio> serviceCallback);
 
     /**
      * Create portfolio.
@@ -5908,9 +5998,9 @@ public interface LUSIDAPI {
      *
      * @param scope The intended scope of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<PortfolioDto> createPortfolioAsync(String scope);
+    Observable<Portfolio> createPortfolioAsync(String scope);
 
     /**
      * Create portfolio.
@@ -5918,9 +6008,9 @@ public interface LUSIDAPI {
      *
      * @param scope The intended scope of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<ServiceResponse<PortfolioDto>> createPortfolioWithServiceResponseAsync(String scope);
+    Observable<ServiceResponse<Portfolio>> createPortfolioWithServiceResponseAsync(String scope);
     /**
      * Create portfolio.
      * Creates a new portfolio.
@@ -5930,9 +6020,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDto object if successful.
+     * @return the Portfolio object if successful.
      */
-    PortfolioDto createPortfolio(String scope, CreateTransactionPortfolioRequest createRequest);
+    Portfolio createPortfolio(String scope, CreateTransactionPortfolioRequest createRequest);
 
     /**
      * Create portfolio.
@@ -5944,7 +6034,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioDto> createPortfolioAsync(String scope, CreateTransactionPortfolioRequest createRequest, final ServiceCallback<PortfolioDto> serviceCallback);
+    ServiceFuture<Portfolio> createPortfolioAsync(String scope, CreateTransactionPortfolioRequest createRequest, final ServiceCallback<Portfolio> serviceCallback);
 
     /**
      * Create portfolio.
@@ -5953,9 +6043,9 @@ public interface LUSIDAPI {
      * @param scope The intended scope of the portfolio
      * @param createRequest The portfolio creation request object
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<PortfolioDto> createPortfolioAsync(String scope, CreateTransactionPortfolioRequest createRequest);
+    Observable<Portfolio> createPortfolioAsync(String scope, CreateTransactionPortfolioRequest createRequest);
 
     /**
      * Create portfolio.
@@ -5964,9 +6054,9 @@ public interface LUSIDAPI {
      * @param scope The intended scope of the portfolio
      * @param createRequest The portfolio creation request object
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDto object
+     * @return the observable to the Portfolio object
      */
-    Observable<ServiceResponse<PortfolioDto>> createPortfolioWithServiceResponseAsync(String scope, CreateTransactionPortfolioRequest createRequest);
+    Observable<ServiceResponse<Portfolio>> createPortfolioWithServiceResponseAsync(String scope, CreateTransactionPortfolioRequest createRequest);
 
     /**
      * Get portfolio details.
@@ -5978,9 +6068,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDetailsDto object if successful.
+     * @return the PortfolioDetails object if successful.
      */
-    PortfolioDetailsDto getDetails(String scope, String code);
+    PortfolioDetails getDetails(String scope, String code);
 
     /**
      * Get portfolio details.
@@ -5993,7 +6083,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioDetailsDto> getDetailsAsync(String scope, String code, final ServiceCallback<PortfolioDetailsDto> serviceCallback);
+    ServiceFuture<PortfolioDetails> getDetailsAsync(String scope, String code, final ServiceCallback<PortfolioDetails> serviceCallback);
 
     /**
      * Get portfolio details.
@@ -6003,9 +6093,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDetailsDto object
+     * @return the observable to the PortfolioDetails object
      */
-    Observable<PortfolioDetailsDto> getDetailsAsync(String scope, String code);
+    Observable<PortfolioDetails> getDetailsAsync(String scope, String code);
 
     /**
      * Get portfolio details.
@@ -6015,9 +6105,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDetailsDto object
+     * @return the observable to the PortfolioDetails object
      */
-    Observable<ServiceResponse<PortfolioDetailsDto>> getDetailsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<PortfolioDetails>> getDetailsWithServiceResponseAsync(String scope, String code);
     /**
      * Get portfolio details.
      * Gets the details for a portfolio.  For a derived portfolio this can be
@@ -6030,9 +6120,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDetailsDto object if successful.
+     * @return the PortfolioDetails object if successful.
      */
-    PortfolioDetailsDto getDetails(String scope, String code, DateTime effectiveAt, DateTime asAt);
+    PortfolioDetails getDetails(String scope, String code, DateTime effectiveAt, DateTime asAt);
 
     /**
      * Get portfolio details.
@@ -6047,7 +6137,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioDetailsDto> getDetailsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, final ServiceCallback<PortfolioDetailsDto> serviceCallback);
+    ServiceFuture<PortfolioDetails> getDetailsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, final ServiceCallback<PortfolioDetails> serviceCallback);
 
     /**
      * Get portfolio details.
@@ -6059,9 +6149,9 @@ public interface LUSIDAPI {
      * @param effectiveAt Effective date
      * @param asAt The asAt date to use
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDetailsDto object
+     * @return the observable to the PortfolioDetails object
      */
-    Observable<PortfolioDetailsDto> getDetailsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt);
+    Observable<PortfolioDetails> getDetailsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt);
 
     /**
      * Get portfolio details.
@@ -6073,9 +6163,9 @@ public interface LUSIDAPI {
      * @param effectiveAt Effective date
      * @param asAt The asAt date to use
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDetailsDto object
+     * @return the observable to the PortfolioDetails object
      */
-    Observable<ServiceResponse<PortfolioDetailsDto>> getDetailsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt);
+    Observable<ServiceResponse<PortfolioDetails>> getDetailsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt);
 
     /**
      * Add/update portfolio details.
@@ -6087,9 +6177,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDetailsDto object if successful.
+     * @return the PortfolioDetails object if successful.
      */
-    PortfolioDetailsDto upsertPortfolioDetails(String scope, String code);
+    PortfolioDetails upsertPortfolioDetails(String scope, String code);
 
     /**
      * Add/update portfolio details.
@@ -6102,7 +6192,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioDetailsDto> upsertPortfolioDetailsAsync(String scope, String code, final ServiceCallback<PortfolioDetailsDto> serviceCallback);
+    ServiceFuture<PortfolioDetails> upsertPortfolioDetailsAsync(String scope, String code, final ServiceCallback<PortfolioDetails> serviceCallback);
 
     /**
      * Add/update portfolio details.
@@ -6112,9 +6202,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDetailsDto object
+     * @return the observable to the PortfolioDetails object
      */
-    Observable<PortfolioDetailsDto> upsertPortfolioDetailsAsync(String scope, String code);
+    Observable<PortfolioDetails> upsertPortfolioDetailsAsync(String scope, String code);
 
     /**
      * Add/update portfolio details.
@@ -6124,9 +6214,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDetailsDto object
+     * @return the observable to the PortfolioDetails object
      */
-    Observable<ServiceResponse<PortfolioDetailsDto>> upsertPortfolioDetailsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<PortfolioDetails>> upsertPortfolioDetailsWithServiceResponseAsync(String scope, String code);
     /**
      * Add/update portfolio details.
      * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
@@ -6134,14 +6224,14 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param details the PortfolioDetailsRequest value
+     * @param details the CreatePortfolioDetails value
      * @param effectiveAt The effective date of the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the PortfolioDetailsDto object if successful.
+     * @return the PortfolioDetails object if successful.
      */
-    PortfolioDetailsDto upsertPortfolioDetails(String scope, String code, PortfolioDetailsRequest details, DateTime effectiveAt);
+    PortfolioDetails upsertPortfolioDetails(String scope, String code, CreatePortfolioDetails details, DateTime effectiveAt);
 
     /**
      * Add/update portfolio details.
@@ -6150,13 +6240,13 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param details the PortfolioDetailsRequest value
+     * @param details the CreatePortfolioDetails value
      * @param effectiveAt The effective date of the change
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioDetailsDto> upsertPortfolioDetailsAsync(String scope, String code, PortfolioDetailsRequest details, DateTime effectiveAt, final ServiceCallback<PortfolioDetailsDto> serviceCallback);
+    ServiceFuture<PortfolioDetails> upsertPortfolioDetailsAsync(String scope, String code, CreatePortfolioDetails details, DateTime effectiveAt, final ServiceCallback<PortfolioDetails> serviceCallback);
 
     /**
      * Add/update portfolio details.
@@ -6165,12 +6255,12 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param details the PortfolioDetailsRequest value
+     * @param details the CreatePortfolioDetails value
      * @param effectiveAt The effective date of the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDetailsDto object
+     * @return the observable to the PortfolioDetails object
      */
-    Observable<PortfolioDetailsDto> upsertPortfolioDetailsAsync(String scope, String code, PortfolioDetailsRequest details, DateTime effectiveAt);
+    Observable<PortfolioDetails> upsertPortfolioDetailsAsync(String scope, String code, CreatePortfolioDetails details, DateTime effectiveAt);
 
     /**
      * Add/update portfolio details.
@@ -6179,12 +6269,12 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param details the PortfolioDetailsRequest value
+     * @param details the CreatePortfolioDetails value
      * @param effectiveAt The effective date of the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the PortfolioDetailsDto object
+     * @return the observable to the PortfolioDetails object
      */
-    Observable<ServiceResponse<PortfolioDetailsDto>> upsertPortfolioDetailsWithServiceResponseAsync(String scope, String code, PortfolioDetailsRequest details, DateTime effectiveAt);
+    Observable<ServiceResponse<PortfolioDetails>> upsertPortfolioDetailsWithServiceResponseAsync(String scope, String code, CreatePortfolioDetails details, DateTime effectiveAt);
 
     /**
      * Get holdings.
@@ -6196,9 +6286,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionedResourceListOfHoldingDto object if successful.
+     * @return the VersionedResourceListOfHolding object if successful.
      */
-    VersionedResourceListOfHoldingDto getHoldings(String scope, String code);
+    VersionedResourceListOfHolding getHoldings(String scope, String code);
 
     /**
      * Get holdings.
@@ -6211,7 +6301,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<VersionedResourceListOfHoldingDto> getHoldingsAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfHoldingDto> serviceCallback);
+    ServiceFuture<VersionedResourceListOfHolding> getHoldingsAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfHolding> serviceCallback);
 
     /**
      * Get holdings.
@@ -6221,9 +6311,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfHoldingDto object
+     * @return the observable to the VersionedResourceListOfHolding object
      */
-    Observable<VersionedResourceListOfHoldingDto> getHoldingsAsync(String scope, String code);
+    Observable<VersionedResourceListOfHolding> getHoldingsAsync(String scope, String code);
 
     /**
      * Get holdings.
@@ -6233,9 +6323,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfHoldingDto object
+     * @return the observable to the VersionedResourceListOfHolding object
      */
-    Observable<ServiceResponse<VersionedResourceListOfHoldingDto>> getHoldingsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<VersionedResourceListOfHolding>> getHoldingsWithServiceResponseAsync(String scope, String code);
     /**
      * Get holdings.
      * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
@@ -6253,9 +6343,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionedResourceListOfHoldingDto object if successful.
+     * @return the VersionedResourceListOfHolding object if successful.
      */
-    VersionedResourceListOfHoldingDto getHoldings(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys);
+    VersionedResourceListOfHolding getHoldings(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys);
 
     /**
      * Get holdings.
@@ -6275,7 +6365,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<VersionedResourceListOfHoldingDto> getHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys, final ServiceCallback<VersionedResourceListOfHoldingDto> serviceCallback);
+    ServiceFuture<VersionedResourceListOfHolding> getHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys, final ServiceCallback<VersionedResourceListOfHolding> serviceCallback);
 
     /**
      * Get holdings.
@@ -6292,9 +6382,9 @@ public interface LUSIDAPI {
      * @param filter A filter on the results
      * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the holdings
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfHoldingDto object
+     * @return the observable to the VersionedResourceListOfHolding object
      */
-    Observable<VersionedResourceListOfHoldingDto> getHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys);
+    Observable<VersionedResourceListOfHolding> getHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys);
 
     /**
      * Get holdings.
@@ -6311,9 +6401,9 @@ public interface LUSIDAPI {
      * @param filter A filter on the results
      * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the holdings
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfHoldingDto object
+     * @return the observable to the VersionedResourceListOfHolding object
      */
-    Observable<ServiceResponse<VersionedResourceListOfHoldingDto>> getHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys);
+    Observable<ServiceResponse<VersionedResourceListOfHolding>> getHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys);
 
     /**
      * Adjust holdings.
@@ -6325,9 +6415,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AdjustHoldingsDto object if successful.
+     * @return the AdjustHolding object if successful.
      */
-    AdjustHoldingsDto setHoldings(String scope, String code, DateTime effectiveAt);
+    AdjustHolding setHoldings(String scope, String code, DateTime effectiveAt);
 
     /**
      * Adjust holdings.
@@ -6340,7 +6430,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<AdjustHoldingsDto> setHoldingsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<AdjustHoldingsDto> serviceCallback);
+    ServiceFuture<AdjustHolding> setHoldingsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<AdjustHolding> serviceCallback);
 
     /**
      * Adjust holdings.
@@ -6350,9 +6440,9 @@ public interface LUSIDAPI {
      * @param code Code for the portfolio
      * @param effectiveAt Effective date
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AdjustHoldingsDto object
+     * @return the observable to the AdjustHolding object
      */
-    Observable<AdjustHoldingsDto> setHoldingsAsync(String scope, String code, DateTime effectiveAt);
+    Observable<AdjustHolding> setHoldingsAsync(String scope, String code, DateTime effectiveAt);
 
     /**
      * Adjust holdings.
@@ -6362,9 +6452,9 @@ public interface LUSIDAPI {
      * @param code Code for the portfolio
      * @param effectiveAt Effective date
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AdjustHoldingsDto object
+     * @return the observable to the AdjustHolding object
      */
-    Observable<ServiceResponse<AdjustHoldingsDto>> setHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
+    Observable<ServiceResponse<AdjustHolding>> setHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
     /**
      * Adjust holdings.
      * Create transactions in a specific portfolio to bring it to the specified holdings.
@@ -6376,114 +6466,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AdjustHoldingsDto object if successful.
+     * @return the AdjustHolding object if successful.
      */
-    AdjustHoldingsDto setHoldings(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
-
-    /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<AdjustHoldingsDto> setHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments, final ServiceCallback<AdjustHoldingsDto> serviceCallback);
-
-    /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AdjustHoldingsDto object
-     */
-    Observable<AdjustHoldingsDto> setHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
-
-    /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AdjustHoldingsDto object
-     */
-    Observable<ServiceResponse<AdjustHoldingsDto>> setHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
-
-    /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AdjustHoldingsDto object if successful.
-     */
-    AdjustHoldingsDto adjustHoldings(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<AdjustHoldingsDto> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<AdjustHoldingsDto> serviceCallback);
-
-    /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AdjustHoldingsDto object
-     */
-    Observable<AdjustHoldingsDto> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AdjustHoldingsDto object
-     */
-    Observable<ServiceResponse<AdjustHoldingsDto>> adjustHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
-    /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
-     *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AdjustHoldingsDto object if successful.
-     */
-    AdjustHoldingsDto adjustHoldings(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
+    AdjustHolding setHoldings(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
 
     /**
      * Adjust holdings.
@@ -6497,7 +6482,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<AdjustHoldingsDto> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments, final ServiceCallback<AdjustHoldingsDto> serviceCallback);
+    ServiceFuture<AdjustHolding> setHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments, final ServiceCallback<AdjustHolding> serviceCallback);
 
     /**
      * Adjust holdings.
@@ -6508,9 +6493,9 @@ public interface LUSIDAPI {
      * @param effectiveAt Effective date
      * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AdjustHoldingsDto object
+     * @return the observable to the AdjustHolding object
      */
-    Observable<AdjustHoldingsDto> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
+    Observable<AdjustHolding> setHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
 
     /**
      * Adjust holdings.
@@ -6521,9 +6506,114 @@ public interface LUSIDAPI {
      * @param effectiveAt Effective date
      * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AdjustHoldingsDto object
+     * @return the observable to the AdjustHolding object
      */
-    Observable<ServiceResponse<AdjustHoldingsDto>> adjustHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
+    Observable<ServiceResponse<AdjustHolding>> setHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the AdjustHolding object if successful.
+     */
+    AdjustHolding adjustHoldings(String scope, String code, DateTime effectiveAt);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<AdjustHolding> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<AdjustHolding> serviceCallback);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the AdjustHolding object
+     */
+    Observable<AdjustHolding> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the AdjustHolding object
+     */
+    Observable<ServiceResponse<AdjustHolding>> adjustHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the AdjustHolding object if successful.
+     */
+    AdjustHolding adjustHoldings(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<AdjustHolding> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments, final ServiceCallback<AdjustHolding> serviceCallback);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the AdjustHolding object
+     */
+    Observable<AdjustHolding> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
+
+    /**
+     * Adjust holdings.
+     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param effectiveAt Effective date
+     * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the AdjustHolding object
+     */
+    Observable<ServiceResponse<AdjustHolding>> adjustHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
 
     /**
      * Cancel adjust-holdings.
@@ -6584,9 +6674,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the HoldingsAdjustmentHeaderDto object if successful.
+     * @return the ResourceListOfHoldingsAdjustmentHeader object if successful.
      */
-    HoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code);
+    ResourceListOfHoldingsAdjustmentHeader listHoldingsAdjustments(String scope, String code);
 
     /**
      * Gets holdings adjustments in an interval of effective time.
@@ -6597,7 +6687,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, final ServiceCallback<HoldingsAdjustmentHeaderDto> serviceCallback);
+    ServiceFuture<ResourceListOfHoldingsAdjustmentHeader> listHoldingsAdjustmentsAsync(String scope, String code, final ServiceCallback<ResourceListOfHoldingsAdjustmentHeader> serviceCallback);
 
     /**
      * Gets holdings adjustments in an interval of effective time.
@@ -6605,9 +6695,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     * @return the observable to the ResourceListOfHoldingsAdjustmentHeader object
      */
-    Observable<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code);
+    Observable<ResourceListOfHoldingsAdjustmentHeader> listHoldingsAdjustmentsAsync(String scope, String code);
 
     /**
      * Gets holdings adjustments in an interval of effective time.
@@ -6615,9 +6705,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     * @return the observable to the ResourceListOfHoldingsAdjustmentHeader object
      */
-    Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<ResourceListOfHoldingsAdjustmentHeader>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code);
     /**
      * Gets holdings adjustments in an interval of effective time.
      *
@@ -6629,9 +6719,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the HoldingsAdjustmentHeaderDto object if successful.
+     * @return the ResourceListOfHoldingsAdjustmentHeader object if successful.
      */
-    HoldingsAdjustmentHeaderDto listHoldingsAdjustments(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
+    ResourceListOfHoldingsAdjustmentHeader listHoldingsAdjustments(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
 
     /**
      * Gets holdings adjustments in an interval of effective time.
@@ -6645,7 +6735,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime, final ServiceCallback<HoldingsAdjustmentHeaderDto> serviceCallback);
+    ServiceFuture<ResourceListOfHoldingsAdjustmentHeader> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime, final ServiceCallback<ResourceListOfHoldingsAdjustmentHeader> serviceCallback);
 
     /**
      * Gets holdings adjustments in an interval of effective time.
@@ -6656,9 +6746,9 @@ public interface LUSIDAPI {
      * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
      * @param asAtTime The as-at time for which the result is valid.
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     * @return the observable to the ResourceListOfHoldingsAdjustmentHeader object
      */
-    Observable<HoldingsAdjustmentHeaderDto> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
+    Observable<ResourceListOfHoldingsAdjustmentHeader> listHoldingsAdjustmentsAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
 
     /**
      * Gets holdings adjustments in an interval of effective time.
@@ -6669,9 +6759,9 @@ public interface LUSIDAPI {
      * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
      * @param asAtTime The as-at time for which the result is valid.
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentHeaderDto object
+     * @return the observable to the ResourceListOfHoldingsAdjustmentHeader object
      */
-    Observable<ServiceResponse<HoldingsAdjustmentHeaderDto>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
+    Observable<ServiceResponse<ResourceListOfHoldingsAdjustmentHeader>> listHoldingsAdjustmentsWithServiceResponseAsync(String scope, String code, DateTime fromEffectiveAt, DateTime toEffectiveAt, DateTime asAtTime);
 
     /**
      * Get a holdings adjustment for a single portfolio at a specific effective time.
@@ -6683,9 +6773,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the HoldingsAdjustmentDto object if successful.
+     * @return the HoldingsAdjustment object if successful.
      */
-    HoldingsAdjustmentDto getHoldingsAdjustment(String scope, String code, DateTime effectiveAt);
+    HoldingsAdjustment getHoldingsAdjustment(String scope, String code, DateTime effectiveAt);
 
     /**
      * Get a holdings adjustment for a single portfolio at a specific effective time.
@@ -6698,7 +6788,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<HoldingsAdjustmentDto> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<HoldingsAdjustmentDto> serviceCallback);
+    ServiceFuture<HoldingsAdjustment> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<HoldingsAdjustment> serviceCallback);
 
     /**
      * Get a holdings adjustment for a single portfolio at a specific effective time.
@@ -6708,9 +6798,9 @@ public interface LUSIDAPI {
      * @param code Code for the portfolio
      * @param effectiveAt The effective time of the holdings adjustment.
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentDto object
+     * @return the observable to the HoldingsAdjustment object
      */
-    Observable<HoldingsAdjustmentDto> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt);
+    Observable<HoldingsAdjustment> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt);
 
     /**
      * Get a holdings adjustment for a single portfolio at a specific effective time.
@@ -6720,9 +6810,9 @@ public interface LUSIDAPI {
      * @param code Code for the portfolio
      * @param effectiveAt The effective time of the holdings adjustment.
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentDto object
+     * @return the observable to the HoldingsAdjustment object
      */
-    Observable<ServiceResponse<HoldingsAdjustmentDto>> getHoldingsAdjustmentWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
+    Observable<ServiceResponse<HoldingsAdjustment>> getHoldingsAdjustmentWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
     /**
      * Get a holdings adjustment for a single portfolio at a specific effective time.
      If no adjustment exists at this effective time, not found is returned.
@@ -6734,9 +6824,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the HoldingsAdjustmentDto object if successful.
+     * @return the HoldingsAdjustment object if successful.
      */
-    HoldingsAdjustmentDto getHoldingsAdjustment(String scope, String code, DateTime effectiveAt, DateTime asAtTime);
+    HoldingsAdjustment getHoldingsAdjustment(String scope, String code, DateTime effectiveAt, DateTime asAtTime);
 
     /**
      * Get a holdings adjustment for a single portfolio at a specific effective time.
@@ -6750,7 +6840,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<HoldingsAdjustmentDto> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt, DateTime asAtTime, final ServiceCallback<HoldingsAdjustmentDto> serviceCallback);
+    ServiceFuture<HoldingsAdjustment> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt, DateTime asAtTime, final ServiceCallback<HoldingsAdjustment> serviceCallback);
 
     /**
      * Get a holdings adjustment for a single portfolio at a specific effective time.
@@ -6761,9 +6851,9 @@ public interface LUSIDAPI {
      * @param effectiveAt The effective time of the holdings adjustment.
      * @param asAtTime The as-at time for which the result is valid.
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentDto object
+     * @return the observable to the HoldingsAdjustment object
      */
-    Observable<HoldingsAdjustmentDto> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt, DateTime asAtTime);
+    Observable<HoldingsAdjustment> getHoldingsAdjustmentAsync(String scope, String code, DateTime effectiveAt, DateTime asAtTime);
 
     /**
      * Get a holdings adjustment for a single portfolio at a specific effective time.
@@ -6774,9 +6864,9 @@ public interface LUSIDAPI {
      * @param effectiveAt The effective time of the holdings adjustment.
      * @param asAtTime The as-at time for which the result is valid.
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the HoldingsAdjustmentDto object
+     * @return the observable to the HoldingsAdjustment object
      */
-    Observable<ServiceResponse<HoldingsAdjustmentDto>> getHoldingsAdjustmentWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAtTime);
+    Observable<ServiceResponse<HoldingsAdjustment>> getHoldingsAdjustmentWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAtTime);
 
     /**
      * Get transactions.
@@ -6786,9 +6876,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionedResourceListOfTransactionDto object if successful.
+     * @return the VersionedResourceListOfTransaction object if successful.
      */
-    VersionedResourceListOfTransactionDto getTransactions(String scope, String code);
+    VersionedResourceListOfTransaction getTransactions(String scope, String code);
 
     /**
      * Get transactions.
@@ -6799,7 +6889,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<VersionedResourceListOfTransactionDto> getTransactionsAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfTransactionDto> serviceCallback);
+    ServiceFuture<VersionedResourceListOfTransaction> getTransactionsAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfTransaction> serviceCallback);
 
     /**
      * Get transactions.
@@ -6807,9 +6897,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfTransactionDto object
+     * @return the observable to the VersionedResourceListOfTransaction object
      */
-    Observable<VersionedResourceListOfTransactionDto> getTransactionsAsync(String scope, String code);
+    Observable<VersionedResourceListOfTransaction> getTransactionsAsync(String scope, String code);
 
     /**
      * Get transactions.
@@ -6817,9 +6907,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfTransactionDto object
+     * @return the observable to the VersionedResourceListOfTransaction object
      */
-    Observable<ServiceResponse<VersionedResourceListOfTransactionDto>> getTransactionsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<VersionedResourceListOfTransaction>> getTransactionsWithServiceResponseAsync(String scope, String code);
     /**
      * Get transactions.
      *
@@ -6836,9 +6926,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionedResourceListOfTransactionDto object if successful.
+     * @return the VersionedResourceListOfTransaction object if successful.
      */
-    VersionedResourceListOfTransactionDto getTransactions(String scope, String code, DateTime fromTransactionDate, DateTime toTransactionDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter);
+    VersionedResourceListOfTransaction getTransactions(String scope, String code, DateTime fromTransactionDate, DateTime toTransactionDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter);
 
     /**
      * Get transactions.
@@ -6857,7 +6947,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<VersionedResourceListOfTransactionDto> getTransactionsAsync(String scope, String code, DateTime fromTransactionDate, DateTime toTransactionDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter, final ServiceCallback<VersionedResourceListOfTransactionDto> serviceCallback);
+    ServiceFuture<VersionedResourceListOfTransaction> getTransactionsAsync(String scope, String code, DateTime fromTransactionDate, DateTime toTransactionDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter, final ServiceCallback<VersionedResourceListOfTransaction> serviceCallback);
 
     /**
      * Get transactions.
@@ -6873,9 +6963,9 @@ public interface LUSIDAPI {
      * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the transactions
      * @param filter Transaction filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfTransactionDto object
+     * @return the observable to the VersionedResourceListOfTransaction object
      */
-    Observable<VersionedResourceListOfTransactionDto> getTransactionsAsync(String scope, String code, DateTime fromTransactionDate, DateTime toTransactionDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter);
+    Observable<VersionedResourceListOfTransaction> getTransactionsAsync(String scope, String code, DateTime fromTransactionDate, DateTime toTransactionDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter);
 
     /**
      * Get transactions.
@@ -6891,9 +6981,9 @@ public interface LUSIDAPI {
      * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the transactions
      * @param filter Transaction filter
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfTransactionDto object
+     * @return the observable to the VersionedResourceListOfTransaction object
      */
-    Observable<ServiceResponse<VersionedResourceListOfTransactionDto>> getTransactionsWithServiceResponseAsync(String scope, String code, DateTime fromTransactionDate, DateTime toTransactionDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter);
+    Observable<ServiceResponse<VersionedResourceListOfTransaction>> getTransactionsWithServiceResponseAsync(String scope, String code, DateTime fromTransactionDate, DateTime toTransactionDate, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter);
 
     /**
      * Upsert transactions.
@@ -6903,9 +6993,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the UpsertPortfolioTransactionsDto object if successful.
+     * @return the UpsertPortfolioTransactions object if successful.
      */
-    UpsertPortfolioTransactionsDto upsertTransactions(String scope, String code);
+    UpsertPortfolioTransactions upsertTransactions(String scope, String code);
 
     /**
      * Upsert transactions.
@@ -6916,7 +7006,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<UpsertPortfolioTransactionsDto> upsertTransactionsAsync(String scope, String code, final ServiceCallback<UpsertPortfolioTransactionsDto> serviceCallback);
+    ServiceFuture<UpsertPortfolioTransactions> upsertTransactionsAsync(String scope, String code, final ServiceCallback<UpsertPortfolioTransactions> serviceCallback);
 
     /**
      * Upsert transactions.
@@ -6924,9 +7014,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPortfolioTransactionsDto object
+     * @return the observable to the UpsertPortfolioTransactions object
      */
-    Observable<UpsertPortfolioTransactionsDto> upsertTransactionsAsync(String scope, String code);
+    Observable<UpsertPortfolioTransactions> upsertTransactionsAsync(String scope, String code);
 
     /**
      * Upsert transactions.
@@ -6934,9 +7024,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPortfolioTransactionsDto object
+     * @return the observable to the UpsertPortfolioTransactions object
      */
-    Observable<ServiceResponse<UpsertPortfolioTransactionsDto>> upsertTransactionsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<UpsertPortfolioTransactions>> upsertTransactionsWithServiceResponseAsync(String scope, String code);
     /**
      * Upsert transactions.
      *
@@ -6946,9 +7036,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the UpsertPortfolioTransactionsDto object if successful.
+     * @return the UpsertPortfolioTransactions object if successful.
      */
-    UpsertPortfolioTransactionsDto upsertTransactions(String scope, String code, List<TransactionRequest> transactions);
+    UpsertPortfolioTransactions upsertTransactions(String scope, String code, List<TransactionRequest> transactions);
 
     /**
      * Upsert transactions.
@@ -6960,7 +7050,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<UpsertPortfolioTransactionsDto> upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactions, final ServiceCallback<UpsertPortfolioTransactionsDto> serviceCallback);
+    ServiceFuture<UpsertPortfolioTransactions> upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactions, final ServiceCallback<UpsertPortfolioTransactions> serviceCallback);
 
     /**
      * Upsert transactions.
@@ -6969,9 +7059,9 @@ public interface LUSIDAPI {
      * @param code Code for the portfolio
      * @param transactions The transactions to be updated
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPortfolioTransactionsDto object
+     * @return the observable to the UpsertPortfolioTransactions object
      */
-    Observable<UpsertPortfolioTransactionsDto> upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactions);
+    Observable<UpsertPortfolioTransactions> upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactions);
 
     /**
      * Upsert transactions.
@@ -6980,9 +7070,9 @@ public interface LUSIDAPI {
      * @param code Code for the portfolio
      * @param transactions The transactions to be updated
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPortfolioTransactionsDto object
+     * @return the observable to the UpsertPortfolioTransactions object
      */
-    Observable<ServiceResponse<UpsertPortfolioTransactionsDto>> upsertTransactionsWithServiceResponseAsync(String scope, String code, List<TransactionRequest> transactions);
+    Observable<ServiceResponse<UpsertPortfolioTransactions>> upsertTransactionsWithServiceResponseAsync(String scope, String code, List<TransactionRequest> transactions);
 
     /**
      * Delete transactions.
@@ -7091,9 +7181,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AddTransactionPropertyDto object if successful.
+     * @return the AddTransactionPropertyResponse object if successful.
      */
-    AddTransactionPropertyDto addTransactionProperty(String scope, String code, String transactionId);
+    AddTransactionPropertyResponse addTransactionProperty(String scope, String code, String transactionId);
 
     /**
      * Add/update transaction properties.
@@ -7106,7 +7196,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<AddTransactionPropertyDto> addTransactionPropertyAsync(String scope, String code, String transactionId, final ServiceCallback<AddTransactionPropertyDto> serviceCallback);
+    ServiceFuture<AddTransactionPropertyResponse> addTransactionPropertyAsync(String scope, String code, String transactionId, final ServiceCallback<AddTransactionPropertyResponse> serviceCallback);
 
     /**
      * Add/update transaction properties.
@@ -7116,9 +7206,9 @@ public interface LUSIDAPI {
      * @param code Code for the portfolio
      * @param transactionId Id of transaction to add properties to
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AddTransactionPropertyDto object
+     * @return the observable to the AddTransactionPropertyResponse object
      */
-    Observable<AddTransactionPropertyDto> addTransactionPropertyAsync(String scope, String code, String transactionId);
+    Observable<AddTransactionPropertyResponse> addTransactionPropertyAsync(String scope, String code, String transactionId);
 
     /**
      * Add/update transaction properties.
@@ -7128,9 +7218,9 @@ public interface LUSIDAPI {
      * @param code Code for the portfolio
      * @param transactionId Id of transaction to add properties to
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AddTransactionPropertyDto object
+     * @return the observable to the AddTransactionPropertyResponse object
      */
-    Observable<ServiceResponse<AddTransactionPropertyDto>> addTransactionPropertyWithServiceResponseAsync(String scope, String code, String transactionId);
+    Observable<ServiceResponse<AddTransactionPropertyResponse>> addTransactionPropertyWithServiceResponseAsync(String scope, String code, String transactionId);
     /**
      * Add/update transaction properties.
      * Add one or more properties to a specific transaction in a portfolio.
@@ -7142,9 +7232,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the AddTransactionPropertyDto object if successful.
+     * @return the AddTransactionPropertyResponse object if successful.
      */
-    AddTransactionPropertyDto addTransactionProperty(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties);
+    AddTransactionPropertyResponse addTransactionProperty(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties);
 
     /**
      * Add/update transaction properties.
@@ -7158,7 +7248,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<AddTransactionPropertyDto> addTransactionPropertyAsync(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties, final ServiceCallback<AddTransactionPropertyDto> serviceCallback);
+    ServiceFuture<AddTransactionPropertyResponse> addTransactionPropertyAsync(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties, final ServiceCallback<AddTransactionPropertyResponse> serviceCallback);
 
     /**
      * Add/update transaction properties.
@@ -7169,9 +7259,9 @@ public interface LUSIDAPI {
      * @param transactionId Id of transaction to add properties to
      * @param transactionProperties Transaction properties to add
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AddTransactionPropertyDto object
+     * @return the observable to the AddTransactionPropertyResponse object
      */
-    Observable<AddTransactionPropertyDto> addTransactionPropertyAsync(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties);
+    Observable<AddTransactionPropertyResponse> addTransactionPropertyAsync(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties);
 
     /**
      * Add/update transaction properties.
@@ -7182,9 +7272,9 @@ public interface LUSIDAPI {
      * @param transactionId Id of transaction to add properties to
      * @param transactionProperties Transaction properties to add
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the AddTransactionPropertyDto object
+     * @return the observable to the AddTransactionPropertyResponse object
      */
-    Observable<ServiceResponse<AddTransactionPropertyDto>> addTransactionPropertyWithServiceResponseAsync(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties);
+    Observable<ServiceResponse<AddTransactionPropertyResponse>> addTransactionPropertyWithServiceResponseAsync(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties);
 
     /**
      * Delete transaction property.
@@ -7299,9 +7389,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionedResourceListOfOutputTransactionDto object if successful.
+     * @return the VersionedResourceListOfOutputTransaction object if successful.
      */
-    VersionedResourceListOfOutputTransactionDto buildTransactions(String scope, String code);
+    VersionedResourceListOfOutputTransaction buildTransactions(String scope, String code);
 
     /**
      * Get transactions.
@@ -7312,7 +7402,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<VersionedResourceListOfOutputTransactionDto> buildTransactionsAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfOutputTransactionDto> serviceCallback);
+    ServiceFuture<VersionedResourceListOfOutputTransaction> buildTransactionsAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfOutputTransaction> serviceCallback);
 
     /**
      * Get transactions.
@@ -7320,9 +7410,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfOutputTransactionDto object
+     * @return the observable to the VersionedResourceListOfOutputTransaction object
      */
-    Observable<VersionedResourceListOfOutputTransactionDto> buildTransactionsAsync(String scope, String code);
+    Observable<VersionedResourceListOfOutputTransaction> buildTransactionsAsync(String scope, String code);
 
     /**
      * Get transactions.
@@ -7330,9 +7420,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfOutputTransactionDto object
+     * @return the observable to the VersionedResourceListOfOutputTransaction object
      */
-    Observable<ServiceResponse<VersionedResourceListOfOutputTransactionDto>> buildTransactionsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<VersionedResourceListOfOutputTransaction>> buildTransactionsWithServiceResponseAsync(String scope, String code);
     /**
      * Get transactions.
      *
@@ -7348,9 +7438,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionedResourceListOfOutputTransactionDto object if successful.
+     * @return the VersionedResourceListOfOutputTransaction object if successful.
      */
-    VersionedResourceListOfOutputTransactionDto buildTransactions(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter, TransactionQueryParameters parameters);
+    VersionedResourceListOfOutputTransaction buildTransactions(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter, TransactionQueryParameters parameters);
 
     /**
      * Get transactions.
@@ -7368,7 +7458,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<VersionedResourceListOfOutputTransactionDto> buildTransactionsAsync(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter, TransactionQueryParameters parameters, final ServiceCallback<VersionedResourceListOfOutputTransactionDto> serviceCallback);
+    ServiceFuture<VersionedResourceListOfOutputTransaction> buildTransactionsAsync(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter, TransactionQueryParameters parameters, final ServiceCallback<VersionedResourceListOfOutputTransaction> serviceCallback);
 
     /**
      * Get transactions.
@@ -7383,9 +7473,9 @@ public interface LUSIDAPI {
      * @param filter Trade filter
      * @param parameters Core query parameters
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfOutputTransactionDto object
+     * @return the observable to the VersionedResourceListOfOutputTransaction object
      */
-    Observable<VersionedResourceListOfOutputTransactionDto> buildTransactionsAsync(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter, TransactionQueryParameters parameters);
+    Observable<VersionedResourceListOfOutputTransaction> buildTransactionsAsync(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter, TransactionQueryParameters parameters);
 
     /**
      * Get transactions.
@@ -7400,8 +7490,8 @@ public interface LUSIDAPI {
      * @param filter Trade filter
      * @param parameters Core query parameters
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfOutputTransactionDto object
+     * @return the observable to the VersionedResourceListOfOutputTransaction object
      */
-    Observable<ServiceResponse<VersionedResourceListOfOutputTransactionDto>> buildTransactionsWithServiceResponseAsync(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter, TransactionQueryParameters parameters);
+    Observable<ServiceResponse<VersionedResourceListOfOutputTransaction>> buildTransactionsWithServiceResponseAsync(String scope, String code, DateTime asAt, List<String> sortBy, Integer start, Integer limit, List<String> instrumentPropertyKeys, String filter, TransactionQueryParameters parameters);
 
 }

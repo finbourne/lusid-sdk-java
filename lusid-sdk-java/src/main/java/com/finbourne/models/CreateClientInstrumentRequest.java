@@ -58,7 +58,7 @@ public class CreateClientInstrumentRequest {
      * instrument but different format), but for now store one.
      */
     @JsonProperty(value = "instrument")
-    private InstrumentDefinitionDto instrument;
+    private InstrumentDefinition instrument;
 
     /**
      * Get the clientInstrumentId value.
@@ -146,7 +146,7 @@ public class CreateClientInstrumentRequest {
      *
      * @return the instrument value
      */
-    public InstrumentDefinitionDto instrument() {
+    public InstrumentDefinition instrument() {
         return this.instrument;
     }
 
@@ -157,7 +157,7 @@ public class CreateClientInstrumentRequest {
      * @param instrument the instrument value to set
      * @return the CreateClientInstrumentRequest object itself.
      */
-    public CreateClientInstrumentRequest withInstrument(InstrumentDefinitionDto instrument) {
+    public CreateClientInstrumentRequest withInstrument(InstrumentDefinition instrument) {
         this.instrument = instrument;
         return this;
     }

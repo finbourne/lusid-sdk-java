@@ -27,39 +27,59 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The PortfolioSearchResult model.
+ * The Portfolio model.
  */
-public class PortfolioSearchResult {
+public class Portfolio {
     /**
-     * The id property.
+     * Link to retrieve the current entity.
+     */
+    @JsonProperty(value = "href", access = JsonProperty.Access.WRITE_ONLY)
+    private String href;
+
+    /**
+     * Identifier for the portfolio.
      */
     @JsonProperty(value = "id", access = JsonProperty.Access.WRITE_ONLY)
     private ResourceId id;
 
     /**
-     * Possible values include: 'Transaction', 'Reference',
+     * The type of portfolio this is (e.g. Transaction Portfolio, Reference
+     * Portfolio). Possible values include: 'Transaction', 'Reference',
      * 'DerivedTransaction'.
      */
     @JsonProperty(value = "type", access = JsonProperty.Access.WRITE_ONLY)
     private String type;
 
     /**
-     * The href property.
+     * Display name of the portfolio.
      */
-    @JsonProperty(value = "href", access = JsonProperty.Access.WRITE_ONLY)
-    private String href;
+    @JsonProperty(value = "displayName", access = JsonProperty.Access.WRITE_ONLY)
+    private String displayName;
 
     /**
-     * The description property.
+     * Description of the portfolio.
      */
     @JsonProperty(value = "description", access = JsonProperty.Access.WRITE_ONLY)
     private String description;
 
     /**
-     * The displayName property.
+     * Portfolio creation time in UTC.
      */
-    @JsonProperty(value = "displayName", access = JsonProperty.Access.WRITE_ONLY)
-    private String displayName;
+    @JsonProperty(value = "created", access = JsonProperty.Access.WRITE_ONLY)
+    private DateTime created;
+
+    /**
+     * If this is a derived portfolio, the identifier of the portfolio from
+     * which it is derived.
+     */
+    @JsonProperty(value = "parentPortfolioId", access = JsonProperty.Access.WRITE_ONLY)
+    private ResourceId parentPortfolioId;
+
+    /**
+     * The version of the portfolio.
+     */
+    @JsonProperty(value = "version", access = JsonProperty.Access.WRITE_ONLY)
+    private Version version;
 
     /**
      * The isDerived property.
@@ -68,49 +88,13 @@ public class PortfolioSearchResult {
     private Boolean isDerived;
 
     /**
-     * The created property.
-     */
-    @JsonProperty(value = "created", access = JsonProperty.Access.WRITE_ONLY)
-    private DateTime created;
-
-    /**
-     * The parentPortfolioId property.
-     */
-    @JsonProperty(value = "parentPortfolioId", access = JsonProperty.Access.WRITE_ONLY)
-    private ResourceId parentPortfolioId;
-
-    /**
-     * The properties property.
-     */
-    @JsonProperty(value = "properties", access = JsonProperty.Access.WRITE_ONLY)
-    private List<Property> properties;
-
-    /**
      * The links property.
      */
     @JsonProperty(value = "links")
     private List<Link> links;
 
     /**
-     * Get the id value.
-     *
-     * @return the id value
-     */
-    public ResourceId id() {
-        return this.id;
-    }
-
-    /**
-     * Get possible values include: 'Transaction', 'Reference', 'DerivedTransaction'.
-     *
-     * @return the type value
-     */
-    public String type() {
-        return this.type;
-    }
-
-    /**
-     * Get the href value.
+     * Get link to retrieve the current entity.
      *
      * @return the href value
      */
@@ -119,7 +103,34 @@ public class PortfolioSearchResult {
     }
 
     /**
-     * Get the description value.
+     * Get identifier for the portfolio.
+     *
+     * @return the id value
+     */
+    public ResourceId id() {
+        return this.id;
+    }
+
+    /**
+     * Get the type of portfolio this is (e.g. Transaction Portfolio, Reference  Portfolio). Possible values include: 'Transaction', 'Reference', 'DerivedTransaction'.
+     *
+     * @return the type value
+     */
+    public String type() {
+        return this.type;
+    }
+
+    /**
+     * Get display name of the portfolio.
+     *
+     * @return the displayName value
+     */
+    public String displayName() {
+        return this.displayName;
+    }
+
+    /**
+     * Get description of the portfolio.
      *
      * @return the description value
      */
@@ -128,12 +139,30 @@ public class PortfolioSearchResult {
     }
 
     /**
-     * Get the displayName value.
+     * Get portfolio creation time in UTC.
      *
-     * @return the displayName value
+     * @return the created value
      */
-    public String displayName() {
-        return this.displayName;
+    public DateTime created() {
+        return this.created;
+    }
+
+    /**
+     * Get if this is a derived portfolio, the identifier of the portfolio from which it is derived.
+     *
+     * @return the parentPortfolioId value
+     */
+    public ResourceId parentPortfolioId() {
+        return this.parentPortfolioId;
+    }
+
+    /**
+     * Get the version of the portfolio.
+     *
+     * @return the version value
+     */
+    public Version version() {
+        return this.version;
     }
 
     /**
@@ -143,33 +172,6 @@ public class PortfolioSearchResult {
      */
     public Boolean isDerived() {
         return this.isDerived;
-    }
-
-    /**
-     * Get the created value.
-     *
-     * @return the created value
-     */
-    public DateTime created() {
-        return this.created;
-    }
-
-    /**
-     * Get the parentPortfolioId value.
-     *
-     * @return the parentPortfolioId value
-     */
-    public ResourceId parentPortfolioId() {
-        return this.parentPortfolioId;
-    }
-
-    /**
-     * Get the properties value.
-     *
-     * @return the properties value
-     */
-    public List<Property> properties() {
-        return this.properties;
     }
 
     /**
@@ -185,9 +187,9 @@ public class PortfolioSearchResult {
      * Set the links value.
      *
      * @param links the links value to set
-     * @return the PortfolioSearchResult object itself.
+     * @return the Portfolio object itself.
      */
-    public PortfolioSearchResult withLinks(List<Link> links) {
+    public Portfolio withLinks(List<Link> links) {
         this.links = links;
         return this;
     }

@@ -27,21 +27,14 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The PortfolioSearchResult model.
+ * The CompletePortfolio model.
  */
-public class PortfolioSearchResult {
+public class CompletePortfolio {
     /**
      * The id property.
      */
     @JsonProperty(value = "id", access = JsonProperty.Access.WRITE_ONLY)
     private ResourceId id;
-
-    /**
-     * Possible values include: 'Transaction', 'Reference',
-     * 'DerivedTransaction'.
-     */
-    @JsonProperty(value = "type", access = JsonProperty.Access.WRITE_ONLY)
-    private String type;
 
     /**
      * The href property.
@@ -62,12 +55,6 @@ public class PortfolioSearchResult {
     private String displayName;
 
     /**
-     * The isDerived property.
-     */
-    @JsonProperty(value = "isDerived", access = JsonProperty.Access.WRITE_ONLY)
-    private Boolean isDerived;
-
-    /**
      * The created property.
      */
     @JsonProperty(value = "created", access = JsonProperty.Access.WRITE_ONLY)
@@ -80,10 +67,35 @@ public class PortfolioSearchResult {
     private ResourceId parentPortfolioId;
 
     /**
+     * The isDerived property.
+     */
+    @JsonProperty(value = "isDerived", access = JsonProperty.Access.WRITE_ONLY)
+    private Boolean isDerived;
+
+    /**
+     * Possible values include: 'Transaction', 'Reference',
+     * 'DerivedTransaction'.
+     */
+    @JsonProperty(value = "type", access = JsonProperty.Access.WRITE_ONLY)
+    private String type;
+
+    /**
+     * The version property.
+     */
+    @JsonProperty(value = "version")
+    private Version version;
+
+    /**
      * The properties property.
      */
-    @JsonProperty(value = "properties", access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "properties")
     private List<Property> properties;
+
+    /**
+     * The baseCurrency property.
+     */
+    @JsonProperty(value = "baseCurrency")
+    private String baseCurrency;
 
     /**
      * The links property.
@@ -98,15 +110,6 @@ public class PortfolioSearchResult {
      */
     public ResourceId id() {
         return this.id;
-    }
-
-    /**
-     * Get possible values include: 'Transaction', 'Reference', 'DerivedTransaction'.
-     *
-     * @return the type value
-     */
-    public String type() {
-        return this.type;
     }
 
     /**
@@ -137,15 +140,6 @@ public class PortfolioSearchResult {
     }
 
     /**
-     * Get the isDerived value.
-     *
-     * @return the isDerived value
-     */
-    public Boolean isDerived() {
-        return this.isDerived;
-    }
-
-    /**
      * Get the created value.
      *
      * @return the created value
@@ -164,12 +158,81 @@ public class PortfolioSearchResult {
     }
 
     /**
+     * Get the isDerived value.
+     *
+     * @return the isDerived value
+     */
+    public Boolean isDerived() {
+        return this.isDerived;
+    }
+
+    /**
+     * Get possible values include: 'Transaction', 'Reference', 'DerivedTransaction'.
+     *
+     * @return the type value
+     */
+    public String type() {
+        return this.type;
+    }
+
+    /**
+     * Get the version value.
+     *
+     * @return the version value
+     */
+    public Version version() {
+        return this.version;
+    }
+
+    /**
+     * Set the version value.
+     *
+     * @param version the version value to set
+     * @return the CompletePortfolio object itself.
+     */
+    public CompletePortfolio withVersion(Version version) {
+        this.version = version;
+        return this;
+    }
+
+    /**
      * Get the properties value.
      *
      * @return the properties value
      */
     public List<Property> properties() {
         return this.properties;
+    }
+
+    /**
+     * Set the properties value.
+     *
+     * @param properties the properties value to set
+     * @return the CompletePortfolio object itself.
+     */
+    public CompletePortfolio withProperties(List<Property> properties) {
+        this.properties = properties;
+        return this;
+    }
+
+    /**
+     * Get the baseCurrency value.
+     *
+     * @return the baseCurrency value
+     */
+    public String baseCurrency() {
+        return this.baseCurrency;
+    }
+
+    /**
+     * Set the baseCurrency value.
+     *
+     * @param baseCurrency the baseCurrency value to set
+     * @return the CompletePortfolio object itself.
+     */
+    public CompletePortfolio withBaseCurrency(String baseCurrency) {
+        this.baseCurrency = baseCurrency;
+        return this;
     }
 
     /**
@@ -185,9 +248,9 @@ public class PortfolioSearchResult {
      * Set the links value.
      *
      * @param links the links value to set
-     * @return the PortfolioSearchResult object itself.
+     * @return the CompletePortfolio object itself.
      */
-    public PortfolioSearchResult withLinks(List<Link> links) {
+    public CompletePortfolio withLinks(List<Link> links) {
         this.links = links;
         return this;
     }

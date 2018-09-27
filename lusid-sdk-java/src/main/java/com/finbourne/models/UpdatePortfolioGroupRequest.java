@@ -22,13 +22,12 @@
 
 package com.finbourne.models;
 
-import org.joda.time.DateTime;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The CreateReferencePortfolioRequest model.
+ * The UpdatePortfolioGroupRequest model.
  */
-public class CreateReferencePortfolioRequest {
+public class UpdatePortfolioGroupRequest {
     /**
      * The displayName property.
      */
@@ -40,18 +39,6 @@ public class CreateReferencePortfolioRequest {
      */
     @JsonProperty(value = "description")
     private String description;
-
-    /**
-     * The code property.
-     */
-    @JsonProperty(value = "code", required = true)
-    private String code;
-
-    /**
-     * The created property.
-     */
-    @JsonProperty(value = "created")
-    private DateTime created;
 
     /**
      * Get the displayName value.
@@ -66,9 +53,9 @@ public class CreateReferencePortfolioRequest {
      * Set the displayName value.
      *
      * @param displayName the displayName value to set
-     * @return the CreateReferencePortfolioRequest object itself.
+     * @return the UpdatePortfolioGroupRequest object itself.
      */
-    public CreateReferencePortfolioRequest withDisplayName(String displayName) {
+    public UpdatePortfolioGroupRequest withDisplayName(String displayName) {
         this.displayName = displayName;
         return this;
     }
@@ -86,50 +73,10 @@ public class CreateReferencePortfolioRequest {
      * Set the description value.
      *
      * @param description the description value to set
-     * @return the CreateReferencePortfolioRequest object itself.
+     * @return the UpdatePortfolioGroupRequest object itself.
      */
-    public CreateReferencePortfolioRequest withDescription(String description) {
+    public UpdatePortfolioGroupRequest withDescription(String description) {
         this.description = description;
-        return this;
-    }
-
-    /**
-     * Get the code value.
-     *
-     * @return the code value
-     */
-    public String code() {
-        return this.code;
-    }
-
-    /**
-     * Set the code value.
-     *
-     * @param code the code value to set
-     * @return the CreateReferencePortfolioRequest object itself.
-     */
-    public CreateReferencePortfolioRequest withCode(String code) {
-        this.code = code;
-        return this;
-    }
-
-    /**
-     * Get the created value.
-     *
-     * @return the created value
-     */
-    public DateTime created() {
-        return this.created;
-    }
-
-    /**
-     * Set the created value.
-     *
-     * @param created the created value to set
-     * @return the CreateReferencePortfolioRequest object itself.
-     */
-    public CreateReferencePortfolioRequest withCreated(DateTime created) {
-        this.created = created;
         return this;
     }
 
