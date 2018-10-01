@@ -98,7 +98,7 @@ import com.finbourne.models.UpdatePropertyDefinitionRequest;
 import com.finbourne.models.UpsertCorporateActionsResponse;
 import com.finbourne.models.UpsertInstrumentPropertiesResponse;
 import com.finbourne.models.UpsertPersonalisationResponse;
-import com.finbourne.models.UpsertPortfolioTransactions;
+import com.finbourne.models.UpsertPortfolioTransactionsResponse;
 import com.finbourne.models.UpsertReferencePortfolioConstituentsResponse;
 import com.finbourne.models.VersionedResourceListOfHolding;
 import com.finbourne.models.VersionedResourceListOfOutputTransaction;
@@ -255,10 +255,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @HTTP(path = "api/derivedtransactionportfolios/{scope}/{code}/details", method = "DELETE", hasBody = true)
         Observable<Response<ResponseBody>> deleteDerivedPortfolioDetails(@Path("scope") String scope, @Path("code") String code, @Query("effectiveAt") DateTime effectiveAt);
 
-        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI portfolioGroupsSearch" })
-        @POST("api/groups/search")
-        Observable<Response<ResponseBody>> portfolioGroupsSearch(@Body Object request, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
-
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI batchAddClientInstruments" })
         @POST("api/instruments")
         Observable<Response<ResponseBody>> batchAddClientInstruments(@Body List<CreateClientInstrumentRequest> definitions);
@@ -395,14 +391,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @HTTP(path = "api/portfolios/{scope}/{code}/properties", method = "DELETE", hasBody = true)
         Observable<Response<ResponseBody>> deletePortfolioProperties(@Path("scope") String scope, @Path("code") String code, @Query("effectiveAt") DateTime effectiveAt, @Query("portfolioPropertyKeys") String portfolioPropertyKeys);
 
-        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI portfoliosSearch" })
-        @POST("api/portfolios/search")
-        Observable<Response<ResponseBody>> portfoliosSearch(@Body Object request, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
-
-        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI propertiesSearch" })
-        @POST("api/properties/search")
-        Observable<Response<ResponseBody>> propertiesSearch(@Body Object request, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
-
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getMultiplePropertyDefinitions" })
         @GET("api/propertydefinitions")
         Observable<Response<ResponseBody>> getMultiplePropertyDefinitions(@Query("keys") String keys, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
@@ -466,6 +454,18 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getValueTypes" })
         @GET("api/schemas/types")
         Observable<Response<ResponseBody>> getValueTypes(@Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit);
+
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI portfolioGroupsSearch" })
+        @POST("api/search/portfoliogroups")
+        Observable<Response<ResponseBody>> portfolioGroupsSearch(@Body Object request, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
+
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI portfoliosSearch" })
+        @POST("api/search/portfolios")
+        Observable<Response<ResponseBody>> portfoliosSearch(@Body Object request, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
+
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI propertiesSearch" })
+        @POST("api/search/propertydefinitions")
+        Observable<Response<ResponseBody>> propertiesSearch(@Body Object request, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI listConfigurationTransactionTypes" })
         @GET("api/systemconfiguration/transactiontypes")
@@ -591,7 +591,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final Integer start = null;
         final Integer limit = null;
         final String filter = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.listAnalyticStores(asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfAnalyticStoreKey>>>() {
                 @Override
@@ -672,7 +672,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      */
     public Observable<ServiceResponse<ResourceListOfAnalyticStoreKey>> listAnalyticStoresWithServiceResponseAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
         Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.listAnalyticStores(asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfAnalyticStoreKey>>>() {
                 @Override
@@ -1312,7 +1312,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final Integer start = null;
         final Integer limit = null;
         final String filter = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getCorporateActions(scope, code, effectiveAt, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<List<CorporateAction>>>>() {
                 @Override
@@ -1411,7 +1411,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
         Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getCorporateActions(scope, code, effectiveAt, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<List<CorporateAction>>>>() {
                 @Override
@@ -1781,7 +1781,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final Integer start = null;
         final Integer limit = null;
         final String filter = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.listDataTypes(scope, includeDefault, includeSystem, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfDataType>>>() {
                 @Override
@@ -1873,7 +1873,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.listDataTypes(scope, includeDefault, includeSystem, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfDataType>>>() {
                 @Override
@@ -2195,7 +2195,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         }
         final List<String> units = null;
         final String filter = null;
-        String unitsConverted = this.serializerAdapter().serializeList(units, CollectionFormat.CSV);
+        String unitsConverted = this.serializerAdapter().serializeList(units, CollectionFormat.MULTI);
         return service.getUnitsFromDataType(scope, name, unitsConverted, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<IUnitDefinition>>>() {
                 @Override
@@ -2278,7 +2278,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter name is required and cannot be null.");
         }
         Validator.validate(units);
-        String unitsConverted = this.serializerAdapter().serializeList(units, CollectionFormat.CSV);
+        String unitsConverted = this.serializerAdapter().serializeList(units, CollectionFormat.MULTI);
         return service.getUnitsFromDataType(scope, name, unitsConverted, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<IUnitDefinition>>>() {
                 @Override
@@ -2620,159 +2620,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolio groups.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPortfolioGroup object if successful.
-     */
-    public ResourceListOfPortfolioGroup portfolioGroupsSearch() {
-        return portfolioGroupsSearchWithServiceResponseAsync().toBlocking().single().body();
-    }
-
-    /**
-     * Search portfolio groups.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    public ServiceFuture<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync(final ServiceCallback<ResourceListOfPortfolioGroup> serviceCallback) {
-        return ServiceFuture.fromResponse(portfolioGroupsSearchWithServiceResponseAsync(), serviceCallback);
-    }
-
-    /**
-     * Search portfolio groups.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioGroup object
-     */
-    public Observable<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync() {
-        return portfolioGroupsSearchWithServiceResponseAsync().map(new Func1<ServiceResponse<ResourceListOfPortfolioGroup>, ResourceListOfPortfolioGroup>() {
-            @Override
-            public ResourceListOfPortfolioGroup call(ServiceResponse<ResourceListOfPortfolioGroup> response) {
-                return response.body();
-            }
-        });
-    }
-
-    /**
-     * Search portfolio groups.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioGroup object
-     */
-    public Observable<ServiceResponse<ResourceListOfPortfolioGroup>> portfolioGroupsSearchWithServiceResponseAsync() {
-        final Object request = null;
-        final List<String> sortBy = null;
-        final Integer start = null;
-        final Integer limit = null;
-        final String filter = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
-        return service.portfolioGroupsSearch(request, sortByConverted, start, limit, filter)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPortfolioGroup>>>() {
-                @Override
-                public Observable<ServiceResponse<ResourceListOfPortfolioGroup>> call(Response<ResponseBody> response) {
-                    try {
-                        ServiceResponse<ResourceListOfPortfolioGroup> clientResponse = portfolioGroupsSearchDelegate(response);
-                        return Observable.just(clientResponse);
-                    } catch (Throwable t) {
-                        return Observable.error(t);
-                    }
-                }
-            });
-    }
-
-    /**
-     * Search portfolio groups.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPortfolioGroup object if successful.
-     */
-    public ResourceListOfPortfolioGroup portfolioGroupsSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
-        return portfolioGroupsSearchWithServiceResponseAsync(request, sortBy, start, limit, filter).toBlocking().single().body();
-    }
-
-    /**
-     * Search portfolio groups.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    public ServiceFuture<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolioGroup> serviceCallback) {
-        return ServiceFuture.fromResponse(portfolioGroupsSearchWithServiceResponseAsync(request, sortBy, start, limit, filter), serviceCallback);
-    }
-
-    /**
-     * Search portfolio groups.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioGroup object
-     */
-    public Observable<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
-        return portfolioGroupsSearchWithServiceResponseAsync(request, sortBy, start, limit, filter).map(new Func1<ServiceResponse<ResourceListOfPortfolioGroup>, ResourceListOfPortfolioGroup>() {
-            @Override
-            public ResourceListOfPortfolioGroup call(ServiceResponse<ResourceListOfPortfolioGroup> response) {
-                return response.body();
-            }
-        });
-    }
-
-    /**
-     * Search portfolio groups.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioGroup object
-     */
-    public Observable<ServiceResponse<ResourceListOfPortfolioGroup>> portfolioGroupsSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
-        Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
-        return service.portfolioGroupsSearch(request, sortByConverted, start, limit, filter)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPortfolioGroup>>>() {
-                @Override
-                public Observable<ServiceResponse<ResourceListOfPortfolioGroup>> call(Response<ResponseBody> response) {
-                    try {
-                        ServiceResponse<ResourceListOfPortfolioGroup> clientResponse = portfolioGroupsSearchDelegate(response);
-                        return Observable.just(clientResponse);
-                    } catch (Throwable t) {
-                        return Observable.error(t);
-                    }
-                }
-            });
-    }
-
-    private ServiceResponse<ResourceListOfPortfolioGroup> portfolioGroupsSearchDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
-        return this.restClient().responseBuilderFactory().<ResourceListOfPortfolioGroup, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<ResourceListOfPortfolioGroup>() { }.getType())
-                .registerError(ErrorResponseException.class)
-                .build(response);
-    }
-
-    /**
      * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -2949,7 +2796,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      */
     public Observable<ServiceResponse<DeleteClientInstrumentsResponse>> batchDeleteClientInstrumentsWithServiceResponseAsync() {
         final List<String> uids = null;
-        String uidsConverted = this.serializerAdapter().serializeList(uids, CollectionFormat.CSV);
+        String uidsConverted = this.serializerAdapter().serializeList(uids, CollectionFormat.MULTI);
         return service.batchDeleteClientInstruments(uidsConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<DeleteClientInstrumentsResponse>>>() {
                 @Override
@@ -3014,7 +2861,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      */
     public Observable<ServiceResponse<DeleteClientInstrumentsResponse>> batchDeleteClientInstrumentsWithServiceResponseAsync(List<String> uids) {
         Validator.validate(uids);
-        String uidsConverted = this.serializerAdapter().serializeList(uids, CollectionFormat.CSV);
+        String uidsConverted = this.serializerAdapter().serializeList(uids, CollectionFormat.MULTI);
         return service.batchDeleteClientInstruments(uidsConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<DeleteClientInstrumentsResponse>>>() {
                 @Override
@@ -3090,7 +2937,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         }
         final DateTime asAt = null;
         final List<String> instrumentPropertyKeys = null;
-        String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.CSV);
+        String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
         return service.getInstrument(uid, asAt, instrumentPropertyKeysConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Instrument>>>() {
                 @Override
@@ -3166,7 +3013,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter uid is required and cannot be null.");
         }
         Validator.validate(instrumentPropertyKeys);
-        String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.CSV);
+        String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
         return service.getInstrument(uid, asAt, instrumentPropertyKeysConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Instrument>>>() {
                 @Override
@@ -3237,7 +3084,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final List<String> codes = null;
         final DateTime asAt = null;
         final List<String> instrumentPropertyKeys = null;
-        String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.CSV);
+        String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
         return service.lookupInstrumentsFromCodes(codeType, codes, asAt, instrumentPropertyKeysConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<LookupInstrumentsFromCodesResponse>>>() {
                 @Override
@@ -3315,7 +3162,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     public Observable<ServiceResponse<LookupInstrumentsFromCodesResponse>> lookupInstrumentsFromCodesWithServiceResponseAsync(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys) {
         Validator.validate(codes);
         Validator.validate(instrumentPropertyKeys);
-        String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.CSV);
+        String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
         return service.lookupInstrumentsFromCodes(codeType, codes, asAt, instrumentPropertyKeysConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<LookupInstrumentsFromCodesResponse>>>() {
                 @Override
@@ -3789,7 +3636,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getPersonalisations(pattern, scope, recursive, wildcards, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPersonalisation>>>() {
                 @Override
@@ -3878,7 +3725,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      */
     public Observable<ServiceResponse<ResourceListOfPersonalisation>> getPersonalisationsWithServiceResponseAsync(String pattern, String scope, Boolean recursive, Boolean wildcards, List<String> sortBy, Integer start, Integer limit) {
         Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getPersonalisations(pattern, scope, recursive, wildcards, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPersonalisation>>>() {
                 @Override
@@ -4228,7 +4075,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final Integer start = null;
         final Integer limit = null;
         final String filter = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.listPortfolioGroups(scope, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPortfolioGroup>>>() {
                 @Override
@@ -4316,7 +4163,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.listPortfolioGroups(scope, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPortfolioGroup>>>() {
                 @Override
@@ -4943,7 +4790,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getAggregationByGroup(scope, code, request, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ListAggregationResponse>>>() {
                 @Override
@@ -5035,7 +4882,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         }
         Validator.validate(request);
         Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getAggregationByGroup(scope, code, request, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ListAggregationResponse>>>() {
                 @Override
@@ -5464,7 +5311,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final DateTime effectiveAt = null;
         final DateTime asAt = null;
         final List<String> propertyFilter = null;
-        String propertyFilterConverted = this.serializerAdapter().serializeList(propertyFilter, CollectionFormat.CSV);
+        String propertyFilterConverted = this.serializerAdapter().serializeList(propertyFilter, CollectionFormat.MULTI);
         return service.getPortfolioGroupExpansion(scope, code, effectiveAt, asAt, propertyFilterConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ExpandedGroup>>>() {
                 @Override
@@ -5551,7 +5398,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
         Validator.validate(propertyFilter);
-        String propertyFilterConverted = this.serializerAdapter().serializeList(propertyFilter, CollectionFormat.CSV);
+        String propertyFilterConverted = this.serializerAdapter().serializeList(propertyFilter, CollectionFormat.MULTI);
         return service.getPortfolioGroupExpansion(scope, code, effectiveAt, asAt, propertyFilterConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ExpandedGroup>>>() {
                 @Override
@@ -6297,7 +6144,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final Integer start = null;
         final Integer limit = null;
         final String filter = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.listPortfolios(scope, effectiveAt, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPortfolio>>>() {
                 @Override
@@ -6393,7 +6240,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
         Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.listPortfolios(scope, effectiveAt, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPortfolio>>>() {
                 @Override
@@ -6979,7 +6826,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getAggregationByPortfolio(scope, code, request, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ListAggregationResponse>>>() {
                 @Override
@@ -7071,7 +6918,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         }
         Validator.validate(request);
         Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getAggregationByPortfolio(scope, code, request, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ListAggregationResponse>>>() {
                 @Override
@@ -7341,7 +7188,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getPortfolioProperties(scope, code, effectiveAt, asAt, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<PortfolioProperties>>>() {
                 @Override
@@ -7444,7 +7291,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
         Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getPortfolioProperties(scope, code, effectiveAt, asAt, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<PortfolioProperties>>>() {
                 @Override
@@ -7703,7 +7550,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         }
         final DateTime effectiveAt = null;
         final List<String> portfolioPropertyKeys = null;
-        String portfolioPropertyKeysConverted = this.serializerAdapter().serializeList(portfolioPropertyKeys, CollectionFormat.CSV);
+        String portfolioPropertyKeysConverted = this.serializerAdapter().serializeList(portfolioPropertyKeys, CollectionFormat.MULTI);
         return service.deletePortfolioProperties(scope, code, effectiveAt, portfolioPropertyKeysConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<DeletedEntityResponse>>>() {
                 @Override
@@ -7790,7 +7637,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
         Validator.validate(portfolioPropertyKeys);
-        String portfolioPropertyKeysConverted = this.serializerAdapter().serializeList(portfolioPropertyKeys, CollectionFormat.CSV);
+        String portfolioPropertyKeysConverted = this.serializerAdapter().serializeList(portfolioPropertyKeys, CollectionFormat.MULTI);
         return service.deletePortfolioProperties(scope, code, effectiveAt, portfolioPropertyKeysConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<DeletedEntityResponse>>>() {
                 @Override
@@ -7808,312 +7655,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     private ServiceResponse<DeletedEntityResponse> deletePortfolioPropertiesDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
         return this.restClient().responseBuilderFactory().<DeletedEntityResponse, ErrorResponseException>newInstance(this.serializerAdapter())
                 .register(200, new TypeToken<DeletedEntityResponse>() { }.getType())
-                .registerError(ErrorResponseException.class)
-                .build(response);
-    }
-
-    /**
-     * Search portfolios.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPortfolioSearchResult object if successful.
-     */
-    public ResourceListOfPortfolioSearchResult portfoliosSearch() {
-        return portfoliosSearchWithServiceResponseAsync().toBlocking().single().body();
-    }
-
-    /**
-     * Search portfolios.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    public ServiceFuture<ResourceListOfPortfolioSearchResult> portfoliosSearchAsync(final ServiceCallback<ResourceListOfPortfolioSearchResult> serviceCallback) {
-        return ServiceFuture.fromResponse(portfoliosSearchWithServiceResponseAsync(), serviceCallback);
-    }
-
-    /**
-     * Search portfolios.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioSearchResult object
-     */
-    public Observable<ResourceListOfPortfolioSearchResult> portfoliosSearchAsync() {
-        return portfoliosSearchWithServiceResponseAsync().map(new Func1<ServiceResponse<ResourceListOfPortfolioSearchResult>, ResourceListOfPortfolioSearchResult>() {
-            @Override
-            public ResourceListOfPortfolioSearchResult call(ServiceResponse<ResourceListOfPortfolioSearchResult> response) {
-                return response.body();
-            }
-        });
-    }
-
-    /**
-     * Search portfolios.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioSearchResult object
-     */
-    public Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>> portfoliosSearchWithServiceResponseAsync() {
-        final Object request = null;
-        final List<String> sortBy = null;
-        final Integer start = null;
-        final Integer limit = null;
-        final String filter = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
-        return service.portfoliosSearch(request, sortByConverted, start, limit, filter)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>>>() {
-                @Override
-                public Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>> call(Response<ResponseBody> response) {
-                    try {
-                        ServiceResponse<ResourceListOfPortfolioSearchResult> clientResponse = portfoliosSearchDelegate(response);
-                        return Observable.just(clientResponse);
-                    } catch (Throwable t) {
-                        return Observable.error(t);
-                    }
-                }
-            });
-    }
-
-    /**
-     * Search portfolios.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPortfolioSearchResult object if successful.
-     */
-    public ResourceListOfPortfolioSearchResult portfoliosSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
-        return portfoliosSearchWithServiceResponseAsync(request, sortBy, start, limit, filter).toBlocking().single().body();
-    }
-
-    /**
-     * Search portfolios.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    public ServiceFuture<ResourceListOfPortfolioSearchResult> portfoliosSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolioSearchResult> serviceCallback) {
-        return ServiceFuture.fromResponse(portfoliosSearchWithServiceResponseAsync(request, sortBy, start, limit, filter), serviceCallback);
-    }
-
-    /**
-     * Search portfolios.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioSearchResult object
-     */
-    public Observable<ResourceListOfPortfolioSearchResult> portfoliosSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
-        return portfoliosSearchWithServiceResponseAsync(request, sortBy, start, limit, filter).map(new Func1<ServiceResponse<ResourceListOfPortfolioSearchResult>, ResourceListOfPortfolioSearchResult>() {
-            @Override
-            public ResourceListOfPortfolioSearchResult call(ServiceResponse<ResourceListOfPortfolioSearchResult> response) {
-                return response.body();
-            }
-        });
-    }
-
-    /**
-     * Search portfolios.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioSearchResult object
-     */
-    public Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>> portfoliosSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
-        Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
-        return service.portfoliosSearch(request, sortByConverted, start, limit, filter)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>>>() {
-                @Override
-                public Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>> call(Response<ResponseBody> response) {
-                    try {
-                        ServiceResponse<ResourceListOfPortfolioSearchResult> clientResponse = portfoliosSearchDelegate(response);
-                        return Observable.just(clientResponse);
-                    } catch (Throwable t) {
-                        return Observable.error(t);
-                    }
-                }
-            });
-    }
-
-    private ServiceResponse<ResourceListOfPortfolioSearchResult> portfoliosSearchDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
-        return this.restClient().responseBuilderFactory().<ResourceListOfPortfolioSearchResult, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<ResourceListOfPortfolioSearchResult>() { }.getType())
-                .registerError(ErrorResponseException.class)
-                .build(response);
-    }
-
-    /**
-     * Search properties.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPropertyDefinition object if successful.
-     */
-    public ResourceListOfPropertyDefinition propertiesSearch() {
-        return propertiesSearchWithServiceResponseAsync().toBlocking().single().body();
-    }
-
-    /**
-     * Search properties.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    public ServiceFuture<ResourceListOfPropertyDefinition> propertiesSearchAsync(final ServiceCallback<ResourceListOfPropertyDefinition> serviceCallback) {
-        return ServiceFuture.fromResponse(propertiesSearchWithServiceResponseAsync(), serviceCallback);
-    }
-
-    /**
-     * Search properties.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDefinition object
-     */
-    public Observable<ResourceListOfPropertyDefinition> propertiesSearchAsync() {
-        return propertiesSearchWithServiceResponseAsync().map(new Func1<ServiceResponse<ResourceListOfPropertyDefinition>, ResourceListOfPropertyDefinition>() {
-            @Override
-            public ResourceListOfPropertyDefinition call(ServiceResponse<ResourceListOfPropertyDefinition> response) {
-                return response.body();
-            }
-        });
-    }
-
-    /**
-     * Search properties.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDefinition object
-     */
-    public Observable<ServiceResponse<ResourceListOfPropertyDefinition>> propertiesSearchWithServiceResponseAsync() {
-        final Object request = null;
-        final List<String> sortBy = null;
-        final Integer start = null;
-        final Integer limit = null;
-        final String filter = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
-        return service.propertiesSearch(request, sortByConverted, start, limit, filter)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPropertyDefinition>>>() {
-                @Override
-                public Observable<ServiceResponse<ResourceListOfPropertyDefinition>> call(Response<ResponseBody> response) {
-                    try {
-                        ServiceResponse<ResourceListOfPropertyDefinition> clientResponse = propertiesSearchDelegate(response);
-                        return Observable.just(clientResponse);
-                    } catch (Throwable t) {
-                        return Observable.error(t);
-                    }
-                }
-            });
-    }
-
-    /**
-     * Search properties.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPropertyDefinition object if successful.
-     */
-    public ResourceListOfPropertyDefinition propertiesSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
-        return propertiesSearchWithServiceResponseAsync(request, sortBy, start, limit, filter).toBlocking().single().body();
-    }
-
-    /**
-     * Search properties.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    public ServiceFuture<ResourceListOfPropertyDefinition> propertiesSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPropertyDefinition> serviceCallback) {
-        return ServiceFuture.fromResponse(propertiesSearchWithServiceResponseAsync(request, sortBy, start, limit, filter), serviceCallback);
-    }
-
-    /**
-     * Search properties.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDefinition object
-     */
-    public Observable<ResourceListOfPropertyDefinition> propertiesSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
-        return propertiesSearchWithServiceResponseAsync(request, sortBy, start, limit, filter).map(new Func1<ServiceResponse<ResourceListOfPropertyDefinition>, ResourceListOfPropertyDefinition>() {
-            @Override
-            public ResourceListOfPropertyDefinition call(ServiceResponse<ResourceListOfPropertyDefinition> response) {
-                return response.body();
-            }
-        });
-    }
-
-    /**
-     * Search properties.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDefinition object
-     */
-    public Observable<ServiceResponse<ResourceListOfPropertyDefinition>> propertiesSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
-        Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
-        return service.propertiesSearch(request, sortByConverted, start, limit, filter)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPropertyDefinition>>>() {
-                @Override
-                public Observable<ServiceResponse<ResourceListOfPropertyDefinition>> call(Response<ResponseBody> response) {
-                    try {
-                        ServiceResponse<ResourceListOfPropertyDefinition> clientResponse = propertiesSearchDelegate(response);
-                        return Observable.just(clientResponse);
-                    } catch (Throwable t) {
-                        return Observable.error(t);
-                    }
-                }
-            });
-    }
-
-    private ServiceResponse<ResourceListOfPropertyDefinition> propertiesSearchDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
-        return this.restClient().responseBuilderFactory().<ResourceListOfPropertyDefinition, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<ResourceListOfPropertyDefinition>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }
@@ -8169,7 +7710,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final Integer start = null;
         final Integer limit = null;
         final String filter = null;
-        String keysConverted = this.serializerAdapter().serializeList(keys, CollectionFormat.CSV);String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String keysConverted = this.serializerAdapter().serializeList(keys, CollectionFormat.MULTI);String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getMultiplePropertyDefinitions(keysConverted, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPropertyDefinition>>>() {
                 @Override
@@ -8255,7 +7796,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     public Observable<ServiceResponse<ResourceListOfPropertyDefinition>> getMultiplePropertyDefinitionsWithServiceResponseAsync(List<String> keys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
         Validator.validate(keys);
         Validator.validate(sortBy);
-        String keysConverted = this.serializerAdapter().serializeList(keys, CollectionFormat.CSV);String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String keysConverted = this.serializerAdapter().serializeList(keys, CollectionFormat.MULTI);String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getMultiplePropertyDefinitions(keysConverted, asAt, sortByConverted, start, limit, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPropertyDefinition>>>() {
                 @Override
@@ -9186,7 +8727,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituent>>>() {
                 @Override
@@ -9284,7 +8825,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter effectiveAt is required and cannot be null.");
         }
         Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituent>>>() {
                 @Override
@@ -9549,7 +9090,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getResults(scope, key, dateParameter, asAt, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Results>>>() {
                 @Override
@@ -9647,7 +9188,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter dateParameter is required and cannot be null.");
         }
         Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getResults(scope, key, dateParameter, asAt, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Results>>>() {
                 @Override
@@ -9905,7 +9446,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getAggregationByResultSet(scope, resultsKey, request, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ListAggregationResponse>>>() {
                 @Override
@@ -9997,7 +9538,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         }
         Validator.validate(request);
         Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getAggregationByResultSet(scope, resultsKey, request, sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ListAggregationResponse>>>() {
                 @Override
@@ -10205,7 +9746,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     public Observable<ServiceResponse<PropertySchema>> getPropertySchemaWithServiceResponseAsync() {
         final List<String> propertyKeys = null;
         final DateTime asAt = null;
-        String propertyKeysConverted = this.serializerAdapter().serializeList(propertyKeys, CollectionFormat.CSV);
+        String propertyKeysConverted = this.serializerAdapter().serializeList(propertyKeys, CollectionFormat.MULTI);
         return service.getPropertySchema(propertyKeysConverted, asAt)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<PropertySchema>>>() {
                 @Override
@@ -10274,7 +9815,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      */
     public Observable<ServiceResponse<PropertySchema>> getPropertySchemaWithServiceResponseAsync(List<String> propertyKeys, DateTime asAt) {
         Validator.validate(propertyKeys);
-        String propertyKeysConverted = this.serializerAdapter().serializeList(propertyKeys, CollectionFormat.CSV);
+        String propertyKeysConverted = this.serializerAdapter().serializeList(propertyKeys, CollectionFormat.MULTI);
         return service.getPropertySchema(propertyKeysConverted, asAt)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<PropertySchema>>>() {
                 @Override
@@ -10344,7 +9885,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final List<String> sortBy = null;
         final Integer start = null;
         final Integer limit = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getValueTypes(sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfValueType>>>() {
                 @Override
@@ -10417,7 +9958,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      */
     public Observable<ServiceResponse<ResourceListOfValueType>> getValueTypesWithServiceResponseAsync(List<String> sortBy, Integer start, Integer limit) {
         Validator.validate(sortBy);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getValueTypes(sortByConverted, start, limit)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfValueType>>>() {
                 @Override
@@ -10435,6 +9976,465 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     private ServiceResponse<ResourceListOfValueType> getValueTypesDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
         return this.restClient().responseBuilderFactory().<ResourceListOfValueType, ErrorResponseException>newInstance(this.serializerAdapter())
                 .register(200, new TypeToken<ResourceListOfValueType>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
+     * Search portfolio groups.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfPortfolioGroup object if successful.
+     */
+    public ResourceListOfPortfolioGroup portfolioGroupsSearch() {
+        return portfolioGroupsSearchWithServiceResponseAsync().toBlocking().single().body();
+    }
+
+    /**
+     * Search portfolio groups.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync(final ServiceCallback<ResourceListOfPortfolioGroup> serviceCallback) {
+        return ServiceFuture.fromResponse(portfolioGroupsSearchWithServiceResponseAsync(), serviceCallback);
+    }
+
+    /**
+     * Search portfolio groups.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioGroup object
+     */
+    public Observable<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync() {
+        return portfolioGroupsSearchWithServiceResponseAsync().map(new Func1<ServiceResponse<ResourceListOfPortfolioGroup>, ResourceListOfPortfolioGroup>() {
+            @Override
+            public ResourceListOfPortfolioGroup call(ServiceResponse<ResourceListOfPortfolioGroup> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Search portfolio groups.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioGroup object
+     */
+    public Observable<ServiceResponse<ResourceListOfPortfolioGroup>> portfolioGroupsSearchWithServiceResponseAsync() {
+        final Object request = null;
+        final List<String> sortBy = null;
+        final Integer start = null;
+        final Integer limit = null;
+        final String filter = null;
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
+        return service.portfolioGroupsSearch(request, sortByConverted, start, limit, filter)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPortfolioGroup>>>() {
+                @Override
+                public Observable<ServiceResponse<ResourceListOfPortfolioGroup>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<ResourceListOfPortfolioGroup> clientResponse = portfolioGroupsSearchDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Search portfolio groups.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfPortfolioGroup object if successful.
+     */
+    public ResourceListOfPortfolioGroup portfolioGroupsSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return portfolioGroupsSearchWithServiceResponseAsync(request, sortBy, start, limit, filter).toBlocking().single().body();
+    }
+
+    /**
+     * Search portfolio groups.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolioGroup> serviceCallback) {
+        return ServiceFuture.fromResponse(portfolioGroupsSearchWithServiceResponseAsync(request, sortBy, start, limit, filter), serviceCallback);
+    }
+
+    /**
+     * Search portfolio groups.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioGroup object
+     */
+    public Observable<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return portfolioGroupsSearchWithServiceResponseAsync(request, sortBy, start, limit, filter).map(new Func1<ServiceResponse<ResourceListOfPortfolioGroup>, ResourceListOfPortfolioGroup>() {
+            @Override
+            public ResourceListOfPortfolioGroup call(ServiceResponse<ResourceListOfPortfolioGroup> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Search portfolio groups.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioGroup object
+     */
+    public Observable<ServiceResponse<ResourceListOfPortfolioGroup>> portfolioGroupsSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
+        Validator.validate(sortBy);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
+        return service.portfolioGroupsSearch(request, sortByConverted, start, limit, filter)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPortfolioGroup>>>() {
+                @Override
+                public Observable<ServiceResponse<ResourceListOfPortfolioGroup>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<ResourceListOfPortfolioGroup> clientResponse = portfolioGroupsSearchDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<ResourceListOfPortfolioGroup> portfolioGroupsSearchDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
+        return this.restClient().responseBuilderFactory().<ResourceListOfPortfolioGroup, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<ResourceListOfPortfolioGroup>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
+     * Search portfolios.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfPortfolioSearchResult object if successful.
+     */
+    public ResourceListOfPortfolioSearchResult portfoliosSearch() {
+        return portfoliosSearchWithServiceResponseAsync().toBlocking().single().body();
+    }
+
+    /**
+     * Search portfolios.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<ResourceListOfPortfolioSearchResult> portfoliosSearchAsync(final ServiceCallback<ResourceListOfPortfolioSearchResult> serviceCallback) {
+        return ServiceFuture.fromResponse(portfoliosSearchWithServiceResponseAsync(), serviceCallback);
+    }
+
+    /**
+     * Search portfolios.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioSearchResult object
+     */
+    public Observable<ResourceListOfPortfolioSearchResult> portfoliosSearchAsync() {
+        return portfoliosSearchWithServiceResponseAsync().map(new Func1<ServiceResponse<ResourceListOfPortfolioSearchResult>, ResourceListOfPortfolioSearchResult>() {
+            @Override
+            public ResourceListOfPortfolioSearchResult call(ServiceResponse<ResourceListOfPortfolioSearchResult> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Search portfolios.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioSearchResult object
+     */
+    public Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>> portfoliosSearchWithServiceResponseAsync() {
+        final Object request = null;
+        final List<String> sortBy = null;
+        final Integer start = null;
+        final Integer limit = null;
+        final String filter = null;
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
+        return service.portfoliosSearch(request, sortByConverted, start, limit, filter)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>>>() {
+                @Override
+                public Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<ResourceListOfPortfolioSearchResult> clientResponse = portfoliosSearchDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Search portfolios.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfPortfolioSearchResult object if successful.
+     */
+    public ResourceListOfPortfolioSearchResult portfoliosSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return portfoliosSearchWithServiceResponseAsync(request, sortBy, start, limit, filter).toBlocking().single().body();
+    }
+
+    /**
+     * Search portfolios.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<ResourceListOfPortfolioSearchResult> portfoliosSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolioSearchResult> serviceCallback) {
+        return ServiceFuture.fromResponse(portfoliosSearchWithServiceResponseAsync(request, sortBy, start, limit, filter), serviceCallback);
+    }
+
+    /**
+     * Search portfolios.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioSearchResult object
+     */
+    public Observable<ResourceListOfPortfolioSearchResult> portfoliosSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return portfoliosSearchWithServiceResponseAsync(request, sortBy, start, limit, filter).map(new Func1<ServiceResponse<ResourceListOfPortfolioSearchResult>, ResourceListOfPortfolioSearchResult>() {
+            @Override
+            public ResourceListOfPortfolioSearchResult call(ServiceResponse<ResourceListOfPortfolioSearchResult> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Search portfolios.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioSearchResult object
+     */
+    public Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>> portfoliosSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
+        Validator.validate(sortBy);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
+        return service.portfoliosSearch(request, sortByConverted, start, limit, filter)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>>>() {
+                @Override
+                public Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<ResourceListOfPortfolioSearchResult> clientResponse = portfoliosSearchDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<ResourceListOfPortfolioSearchResult> portfoliosSearchDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
+        return this.restClient().responseBuilderFactory().<ResourceListOfPortfolioSearchResult, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<ResourceListOfPortfolioSearchResult>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
+     * Search properties.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfPropertyDefinition object if successful.
+     */
+    public ResourceListOfPropertyDefinition propertiesSearch() {
+        return propertiesSearchWithServiceResponseAsync().toBlocking().single().body();
+    }
+
+    /**
+     * Search properties.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<ResourceListOfPropertyDefinition> propertiesSearchAsync(final ServiceCallback<ResourceListOfPropertyDefinition> serviceCallback) {
+        return ServiceFuture.fromResponse(propertiesSearchWithServiceResponseAsync(), serviceCallback);
+    }
+
+    /**
+     * Search properties.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPropertyDefinition object
+     */
+    public Observable<ResourceListOfPropertyDefinition> propertiesSearchAsync() {
+        return propertiesSearchWithServiceResponseAsync().map(new Func1<ServiceResponse<ResourceListOfPropertyDefinition>, ResourceListOfPropertyDefinition>() {
+            @Override
+            public ResourceListOfPropertyDefinition call(ServiceResponse<ResourceListOfPropertyDefinition> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Search properties.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPropertyDefinition object
+     */
+    public Observable<ServiceResponse<ResourceListOfPropertyDefinition>> propertiesSearchWithServiceResponseAsync() {
+        final Object request = null;
+        final List<String> sortBy = null;
+        final Integer start = null;
+        final Integer limit = null;
+        final String filter = null;
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
+        return service.propertiesSearch(request, sortByConverted, start, limit, filter)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPropertyDefinition>>>() {
+                @Override
+                public Observable<ServiceResponse<ResourceListOfPropertyDefinition>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<ResourceListOfPropertyDefinition> clientResponse = propertiesSearchDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Search properties.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfPropertyDefinition object if successful.
+     */
+    public ResourceListOfPropertyDefinition propertiesSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return propertiesSearchWithServiceResponseAsync(request, sortBy, start, limit, filter).toBlocking().single().body();
+    }
+
+    /**
+     * Search properties.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<ResourceListOfPropertyDefinition> propertiesSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPropertyDefinition> serviceCallback) {
+        return ServiceFuture.fromResponse(propertiesSearchWithServiceResponseAsync(request, sortBy, start, limit, filter), serviceCallback);
+    }
+
+    /**
+     * Search properties.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPropertyDefinition object
+     */
+    public Observable<ResourceListOfPropertyDefinition> propertiesSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return propertiesSearchWithServiceResponseAsync(request, sortBy, start, limit, filter).map(new Func1<ServiceResponse<ResourceListOfPropertyDefinition>, ResourceListOfPropertyDefinition>() {
+            @Override
+            public ResourceListOfPropertyDefinition call(ServiceResponse<ResourceListOfPropertyDefinition> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Search properties.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPropertyDefinition object
+     */
+    public Observable<ServiceResponse<ResourceListOfPropertyDefinition>> propertiesSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter) {
+        Validator.validate(sortBy);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
+        return service.propertiesSearch(request, sortByConverted, start, limit, filter)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfPropertyDefinition>>>() {
+                @Override
+                public Observable<ServiceResponse<ResourceListOfPropertyDefinition>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<ResourceListOfPropertyDefinition> clientResponse = propertiesSearchDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<ResourceListOfPropertyDefinition> propertiesSearchDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
+        return this.restClient().responseBuilderFactory().<ResourceListOfPropertyDefinition, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<ResourceListOfPropertyDefinition>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }
@@ -12355,7 +12355,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final Integer limit = null;
         final List<String> instrumentPropertyKeys = null;
         final String filter = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
         return service.getTransactions(scope, code, fromTransactionDate, toTransactionDate, asAt, sortByConverted, start, limit, instrumentPropertyKeysConverted, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<VersionedResourceListOfTransaction>>>() {
                 @Override
@@ -12463,7 +12463,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         }
         Validator.validate(sortBy);
         Validator.validate(instrumentPropertyKeys);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
         return service.getTransactions(scope, code, fromTransactionDate, toTransactionDate, asAt, sortByConverted, start, limit, instrumentPropertyKeysConverted, filter)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<VersionedResourceListOfTransaction>>>() {
                 @Override
@@ -12493,9 +12493,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the UpsertPortfolioTransactions object if successful.
+     * @return the UpsertPortfolioTransactionsResponse object if successful.
      */
-    public UpsertPortfolioTransactions upsertTransactions(String scope, String code) {
+    public UpsertPortfolioTransactionsResponse upsertTransactions(String scope, String code) {
         return upsertTransactionsWithServiceResponseAsync(scope, code).toBlocking().single().body();
     }
 
@@ -12508,7 +12508,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<UpsertPortfolioTransactions> upsertTransactionsAsync(String scope, String code, final ServiceCallback<UpsertPortfolioTransactions> serviceCallback) {
+    public ServiceFuture<UpsertPortfolioTransactionsResponse> upsertTransactionsAsync(String scope, String code, final ServiceCallback<UpsertPortfolioTransactionsResponse> serviceCallback) {
         return ServiceFuture.fromResponse(upsertTransactionsWithServiceResponseAsync(scope, code), serviceCallback);
     }
 
@@ -12518,12 +12518,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPortfolioTransactions object
+     * @return the observable to the UpsertPortfolioTransactionsResponse object
      */
-    public Observable<UpsertPortfolioTransactions> upsertTransactionsAsync(String scope, String code) {
-        return upsertTransactionsWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<UpsertPortfolioTransactions>, UpsertPortfolioTransactions>() {
+    public Observable<UpsertPortfolioTransactionsResponse> upsertTransactionsAsync(String scope, String code) {
+        return upsertTransactionsWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<UpsertPortfolioTransactionsResponse>, UpsertPortfolioTransactionsResponse>() {
             @Override
-            public UpsertPortfolioTransactions call(ServiceResponse<UpsertPortfolioTransactions> response) {
+            public UpsertPortfolioTransactionsResponse call(ServiceResponse<UpsertPortfolioTransactionsResponse> response) {
                 return response.body();
             }
         });
@@ -12535,9 +12535,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPortfolioTransactions object
+     * @return the observable to the UpsertPortfolioTransactionsResponse object
      */
-    public Observable<ServiceResponse<UpsertPortfolioTransactions>> upsertTransactionsWithServiceResponseAsync(String scope, String code) {
+    public Observable<ServiceResponse<UpsertPortfolioTransactionsResponse>> upsertTransactionsWithServiceResponseAsync(String scope, String code) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -12546,11 +12546,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         }
         final List<TransactionRequest> transactions = null;
         return service.upsertTransactions(scope, code, transactions)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<UpsertPortfolioTransactions>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<UpsertPortfolioTransactionsResponse>>>() {
                 @Override
-                public Observable<ServiceResponse<UpsertPortfolioTransactions>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<UpsertPortfolioTransactionsResponse>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<UpsertPortfolioTransactions> clientResponse = upsertTransactionsDelegate(response);
+                        ServiceResponse<UpsertPortfolioTransactionsResponse> clientResponse = upsertTransactionsDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -12568,9 +12568,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the UpsertPortfolioTransactions object if successful.
+     * @return the UpsertPortfolioTransactionsResponse object if successful.
      */
-    public UpsertPortfolioTransactions upsertTransactions(String scope, String code, List<TransactionRequest> transactions) {
+    public UpsertPortfolioTransactionsResponse upsertTransactions(String scope, String code, List<TransactionRequest> transactions) {
         return upsertTransactionsWithServiceResponseAsync(scope, code, transactions).toBlocking().single().body();
     }
 
@@ -12584,7 +12584,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<UpsertPortfolioTransactions> upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactions, final ServiceCallback<UpsertPortfolioTransactions> serviceCallback) {
+    public ServiceFuture<UpsertPortfolioTransactionsResponse> upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactions, final ServiceCallback<UpsertPortfolioTransactionsResponse> serviceCallback) {
         return ServiceFuture.fromResponse(upsertTransactionsWithServiceResponseAsync(scope, code, transactions), serviceCallback);
     }
 
@@ -12595,12 +12595,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param code Code for the portfolio
      * @param transactions The transactions to be updated
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPortfolioTransactions object
+     * @return the observable to the UpsertPortfolioTransactionsResponse object
      */
-    public Observable<UpsertPortfolioTransactions> upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactions) {
-        return upsertTransactionsWithServiceResponseAsync(scope, code, transactions).map(new Func1<ServiceResponse<UpsertPortfolioTransactions>, UpsertPortfolioTransactions>() {
+    public Observable<UpsertPortfolioTransactionsResponse> upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactions) {
+        return upsertTransactionsWithServiceResponseAsync(scope, code, transactions).map(new Func1<ServiceResponse<UpsertPortfolioTransactionsResponse>, UpsertPortfolioTransactionsResponse>() {
             @Override
-            public UpsertPortfolioTransactions call(ServiceResponse<UpsertPortfolioTransactions> response) {
+            public UpsertPortfolioTransactionsResponse call(ServiceResponse<UpsertPortfolioTransactionsResponse> response) {
                 return response.body();
             }
         });
@@ -12613,9 +12613,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param code Code for the portfolio
      * @param transactions The transactions to be updated
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPortfolioTransactions object
+     * @return the observable to the UpsertPortfolioTransactionsResponse object
      */
-    public Observable<ServiceResponse<UpsertPortfolioTransactions>> upsertTransactionsWithServiceResponseAsync(String scope, String code, List<TransactionRequest> transactions) {
+    public Observable<ServiceResponse<UpsertPortfolioTransactionsResponse>> upsertTransactionsWithServiceResponseAsync(String scope, String code, List<TransactionRequest> transactions) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -12624,11 +12624,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         }
         Validator.validate(transactions);
         return service.upsertTransactions(scope, code, transactions)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<UpsertPortfolioTransactions>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<UpsertPortfolioTransactionsResponse>>>() {
                 @Override
-                public Observable<ServiceResponse<UpsertPortfolioTransactions>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<UpsertPortfolioTransactionsResponse>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<UpsertPortfolioTransactions> clientResponse = upsertTransactionsDelegate(response);
+                        ServiceResponse<UpsertPortfolioTransactionsResponse> clientResponse = upsertTransactionsDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -12637,9 +12637,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<UpsertPortfolioTransactions> upsertTransactionsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
-        return this.restClient().responseBuilderFactory().<UpsertPortfolioTransactions, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<UpsertPortfolioTransactions>() { }.getType())
+    private ServiceResponse<UpsertPortfolioTransactionsResponse> upsertTransactionsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<UpsertPortfolioTransactionsResponse, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<UpsertPortfolioTransactionsResponse>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }
@@ -12708,7 +12708,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
         final List<String> id = null;
-        String idConverted = this.serializerAdapter().serializeList(id, CollectionFormat.CSV);
+        String idConverted = this.serializerAdapter().serializeList(id, CollectionFormat.MULTI);
         return service.deleteTransactions(scope, code, idConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<DeletedEntityResponse>>>() {
                 @Override
@@ -12791,7 +12791,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
         Validator.validate(id);
-        String idConverted = this.serializerAdapter().serializeList(id, CollectionFormat.CSV);
+        String idConverted = this.serializerAdapter().serializeList(id, CollectionFormat.MULTI);
         return service.deleteTransactions(scope, code, idConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<DeletedEntityResponse>>>() {
                 @Override
@@ -13240,7 +13240,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final List<String> instrumentPropertyKeys = null;
         final String filter = null;
         final TransactionQueryParameters parameters = null;
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
         return service.buildTransactions(scope, code, asAt, sortByConverted, start, limit, instrumentPropertyKeysConverted, filter, parameters)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<VersionedResourceListOfOutputTransaction>>>() {
                 @Override
@@ -13345,7 +13345,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         Validator.validate(sortBy);
         Validator.validate(instrumentPropertyKeys);
         Validator.validate(parameters);
-        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.CSV);String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.CSV);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
         return service.buildTransactions(scope, code, asAt, sortByConverted, start, limit, instrumentPropertyKeysConverted, filter, parameters)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<VersionedResourceListOfOutputTransaction>>>() {
                 @Override

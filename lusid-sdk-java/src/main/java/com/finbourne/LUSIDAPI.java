@@ -93,7 +93,7 @@ import com.finbourne.models.UpdatePropertyDefinitionRequest;
 import com.finbourne.models.UpsertCorporateActionsResponse;
 import com.finbourne.models.UpsertInstrumentPropertiesResponse;
 import com.finbourne.models.UpsertPersonalisationResponse;
-import com.finbourne.models.UpsertPortfolioTransactions;
+import com.finbourne.models.UpsertPortfolioTransactionsResponse;
 import com.finbourne.models.UpsertReferencePortfolioConstituentsResponse;
 import com.finbourne.models.VersionedResourceListOfHolding;
 import com.finbourne.models.VersionedResourceListOfOutputTransaction;
@@ -1330,95 +1330,6 @@ public interface LUSIDAPI {
      * @return the observable to the DeletedEntityResponse object
      */
     Observable<ServiceResponse<DeletedEntityResponse>> deleteDerivedPortfolioDetailsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
-
-    /**
-     * Search portfolio groups.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPortfolioGroup object if successful.
-     */
-    ResourceListOfPortfolioGroup portfolioGroupsSearch();
-
-    /**
-     * Search portfolio groups.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync(final ServiceCallback<ResourceListOfPortfolioGroup> serviceCallback);
-
-    /**
-     * Search portfolio groups.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioGroup object
-     */
-    Observable<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync();
-
-    /**
-     * Search portfolio groups.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioGroup object
-     */
-    Observable<ServiceResponse<ResourceListOfPortfolioGroup>> portfolioGroupsSearchWithServiceResponseAsync();
-    /**
-     * Search portfolio groups.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPortfolioGroup object if successful.
-     */
-    ResourceListOfPortfolioGroup portfolioGroupsSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Search portfolio groups.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolioGroup> serviceCallback);
-
-    /**
-     * Search portfolio groups.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioGroup object
-     */
-    Observable<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Search portfolio groups.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioGroup object
-     */
-    Observable<ServiceResponse<ResourceListOfPortfolioGroup>> portfolioGroupsSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
@@ -4305,184 +4216,6 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<DeletedEntityResponse>> deletePortfolioPropertiesWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<String> portfolioPropertyKeys);
 
     /**
-     * Search portfolios.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPortfolioSearchResult object if successful.
-     */
-    ResourceListOfPortfolioSearchResult portfoliosSearch();
-
-    /**
-     * Search portfolios.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfPortfolioSearchResult> portfoliosSearchAsync(final ServiceCallback<ResourceListOfPortfolioSearchResult> serviceCallback);
-
-    /**
-     * Search portfolios.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioSearchResult object
-     */
-    Observable<ResourceListOfPortfolioSearchResult> portfoliosSearchAsync();
-
-    /**
-     * Search portfolios.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioSearchResult object
-     */
-    Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>> portfoliosSearchWithServiceResponseAsync();
-    /**
-     * Search portfolios.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPortfolioSearchResult object if successful.
-     */
-    ResourceListOfPortfolioSearchResult portfoliosSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Search portfolios.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfPortfolioSearchResult> portfoliosSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolioSearchResult> serviceCallback);
-
-    /**
-     * Search portfolios.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioSearchResult object
-     */
-    Observable<ResourceListOfPortfolioSearchResult> portfoliosSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Search portfolios.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPortfolioSearchResult object
-     */
-    Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>> portfoliosSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Search properties.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPropertyDefinition object if successful.
-     */
-    ResourceListOfPropertyDefinition propertiesSearch();
-
-    /**
-     * Search properties.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfPropertyDefinition> propertiesSearchAsync(final ServiceCallback<ResourceListOfPropertyDefinition> serviceCallback);
-
-    /**
-     * Search properties.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDefinition object
-     */
-    Observable<ResourceListOfPropertyDefinition> propertiesSearchAsync();
-
-    /**
-     * Search properties.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDefinition object
-     */
-    Observable<ServiceResponse<ResourceListOfPropertyDefinition>> propertiesSearchWithServiceResponseAsync();
-    /**
-     * Search properties.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfPropertyDefinition object if successful.
-     */
-    ResourceListOfPropertyDefinition propertiesSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Search properties.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfPropertyDefinition> propertiesSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPropertyDefinition> serviceCallback);
-
-    /**
-     * Search properties.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDefinition object
-     */
-    Observable<ResourceListOfPropertyDefinition> propertiesSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
-     * Search properties.
-     *
-     * @param request the Object value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
-     * @param filter the String value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfPropertyDefinition object
-     */
-    Observable<ServiceResponse<ResourceListOfPropertyDefinition>> propertiesSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
-
-    /**
      * Gets multiple property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -5789,6 +5522,273 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<ResourceListOfValueType>> getValueTypesWithServiceResponseAsync(List<String> sortBy, Integer start, Integer limit);
 
     /**
+     * Search portfolio groups.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfPortfolioGroup object if successful.
+     */
+    ResourceListOfPortfolioGroup portfolioGroupsSearch();
+
+    /**
+     * Search portfolio groups.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync(final ServiceCallback<ResourceListOfPortfolioGroup> serviceCallback);
+
+    /**
+     * Search portfolio groups.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioGroup object
+     */
+    Observable<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync();
+
+    /**
+     * Search portfolio groups.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioGroup object
+     */
+    Observable<ServiceResponse<ResourceListOfPortfolioGroup>> portfolioGroupsSearchWithServiceResponseAsync();
+    /**
+     * Search portfolio groups.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfPortfolioGroup object if successful.
+     */
+    ResourceListOfPortfolioGroup portfolioGroupsSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Search portfolio groups.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolioGroup> serviceCallback);
+
+    /**
+     * Search portfolio groups.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioGroup object
+     */
+    Observable<ResourceListOfPortfolioGroup> portfolioGroupsSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Search portfolio groups.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioGroup object
+     */
+    Observable<ServiceResponse<ResourceListOfPortfolioGroup>> portfolioGroupsSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Search portfolios.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfPortfolioSearchResult object if successful.
+     */
+    ResourceListOfPortfolioSearchResult portfoliosSearch();
+
+    /**
+     * Search portfolios.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ResourceListOfPortfolioSearchResult> portfoliosSearchAsync(final ServiceCallback<ResourceListOfPortfolioSearchResult> serviceCallback);
+
+    /**
+     * Search portfolios.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioSearchResult object
+     */
+    Observable<ResourceListOfPortfolioSearchResult> portfoliosSearchAsync();
+
+    /**
+     * Search portfolios.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioSearchResult object
+     */
+    Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>> portfoliosSearchWithServiceResponseAsync();
+    /**
+     * Search portfolios.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfPortfolioSearchResult object if successful.
+     */
+    ResourceListOfPortfolioSearchResult portfoliosSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Search portfolios.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ResourceListOfPortfolioSearchResult> portfoliosSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPortfolioSearchResult> serviceCallback);
+
+    /**
+     * Search portfolios.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioSearchResult object
+     */
+    Observable<ResourceListOfPortfolioSearchResult> portfoliosSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Search portfolios.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPortfolioSearchResult object
+     */
+    Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>> portfoliosSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Search properties.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfPropertyDefinition object if successful.
+     */
+    ResourceListOfPropertyDefinition propertiesSearch();
+
+    /**
+     * Search properties.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ResourceListOfPropertyDefinition> propertiesSearchAsync(final ServiceCallback<ResourceListOfPropertyDefinition> serviceCallback);
+
+    /**
+     * Search properties.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPropertyDefinition object
+     */
+    Observable<ResourceListOfPropertyDefinition> propertiesSearchAsync();
+
+    /**
+     * Search properties.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPropertyDefinition object
+     */
+    Observable<ServiceResponse<ResourceListOfPropertyDefinition>> propertiesSearchWithServiceResponseAsync();
+    /**
+     * Search properties.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfPropertyDefinition object if successful.
+     */
+    ResourceListOfPropertyDefinition propertiesSearch(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Search properties.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ResourceListOfPropertyDefinition> propertiesSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPropertyDefinition> serviceCallback);
+
+    /**
+     * Search properties.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPropertyDefinition object
+     */
+    Observable<ResourceListOfPropertyDefinition> propertiesSearchAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Search properties.
+     *
+     * @param request the Object value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfPropertyDefinition object
+     */
+    Observable<ServiceResponse<ResourceListOfPropertyDefinition>> propertiesSearchWithServiceResponseAsync(Object request, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
      * Gets the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -6993,9 +6993,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the UpsertPortfolioTransactions object if successful.
+     * @return the UpsertPortfolioTransactionsResponse object if successful.
      */
-    UpsertPortfolioTransactions upsertTransactions(String scope, String code);
+    UpsertPortfolioTransactionsResponse upsertTransactions(String scope, String code);
 
     /**
      * Upsert transactions.
@@ -7006,7 +7006,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<UpsertPortfolioTransactions> upsertTransactionsAsync(String scope, String code, final ServiceCallback<UpsertPortfolioTransactions> serviceCallback);
+    ServiceFuture<UpsertPortfolioTransactionsResponse> upsertTransactionsAsync(String scope, String code, final ServiceCallback<UpsertPortfolioTransactionsResponse> serviceCallback);
 
     /**
      * Upsert transactions.
@@ -7014,9 +7014,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPortfolioTransactions object
+     * @return the observable to the UpsertPortfolioTransactionsResponse object
      */
-    Observable<UpsertPortfolioTransactions> upsertTransactionsAsync(String scope, String code);
+    Observable<UpsertPortfolioTransactionsResponse> upsertTransactionsAsync(String scope, String code);
 
     /**
      * Upsert transactions.
@@ -7024,9 +7024,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPortfolioTransactions object
+     * @return the observable to the UpsertPortfolioTransactionsResponse object
      */
-    Observable<ServiceResponse<UpsertPortfolioTransactions>> upsertTransactionsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<UpsertPortfolioTransactionsResponse>> upsertTransactionsWithServiceResponseAsync(String scope, String code);
     /**
      * Upsert transactions.
      *
@@ -7036,9 +7036,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the UpsertPortfolioTransactions object if successful.
+     * @return the UpsertPortfolioTransactionsResponse object if successful.
      */
-    UpsertPortfolioTransactions upsertTransactions(String scope, String code, List<TransactionRequest> transactions);
+    UpsertPortfolioTransactionsResponse upsertTransactions(String scope, String code, List<TransactionRequest> transactions);
 
     /**
      * Upsert transactions.
@@ -7050,7 +7050,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<UpsertPortfolioTransactions> upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactions, final ServiceCallback<UpsertPortfolioTransactions> serviceCallback);
+    ServiceFuture<UpsertPortfolioTransactionsResponse> upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactions, final ServiceCallback<UpsertPortfolioTransactionsResponse> serviceCallback);
 
     /**
      * Upsert transactions.
@@ -7059,9 +7059,9 @@ public interface LUSIDAPI {
      * @param code Code for the portfolio
      * @param transactions The transactions to be updated
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPortfolioTransactions object
+     * @return the observable to the UpsertPortfolioTransactionsResponse object
      */
-    Observable<UpsertPortfolioTransactions> upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactions);
+    Observable<UpsertPortfolioTransactionsResponse> upsertTransactionsAsync(String scope, String code, List<TransactionRequest> transactions);
 
     /**
      * Upsert transactions.
@@ -7070,9 +7070,9 @@ public interface LUSIDAPI {
      * @param code Code for the portfolio
      * @param transactions The transactions to be updated
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the UpsertPortfolioTransactions object
+     * @return the observable to the UpsertPortfolioTransactionsResponse object
      */
-    Observable<ServiceResponse<UpsertPortfolioTransactions>> upsertTransactionsWithServiceResponseAsync(String scope, String code, List<TransactionRequest> transactions);
+    Observable<ServiceResponse<UpsertPortfolioTransactionsResponse>> upsertTransactionsWithServiceResponseAsync(String scope, String code, List<TransactionRequest> transactions);
 
     /**
      * Delete transactions.

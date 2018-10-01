@@ -69,26 +69,20 @@ public class Transaction {
     /**
      * Execution price for the transaction.
      */
-    @JsonProperty(value = "transactionPrice")
-    private Double transactionPrice;
+    @JsonProperty(value = "transactionPrice", required = true)
+    private TransactionPrice transactionPrice;
 
     /**
      * Total value of the transaction.
      */
-    @JsonProperty(value = "totalConsideration")
-    private Double totalConsideration;
+    @JsonProperty(value = "totalConsideration", required = true)
+    private CurrencyAndAmount totalConsideration;
 
     /**
      * Rate between transaction and settle currency.
      */
     @JsonProperty(value = "exchangeRate")
     private Double exchangeRate;
-
-    /**
-     * Settlement currency.
-     */
-    @JsonProperty(value = "settlementCurrency")
-    private String settlementCurrency;
 
     /**
      * Transaction currency.
@@ -114,24 +108,6 @@ public class Transaction {
      */
     @JsonProperty(value = "source")
     private String source;
-
-    /**
-     * Possible values include: 'Default', 'ExDividend', 'CumDividend'.
-     */
-    @JsonProperty(value = "dividendState")
-    private String dividendState;
-
-    /**
-     * Possible values include: 'Price', 'Yield', 'Spread'.
-     */
-    @JsonProperty(value = "transactionPriceType")
-    private String transactionPriceType;
-
-    /**
-     * Possible values include: 'Nominal', 'Shares', 'FaceValue', 'Contracts'.
-     */
-    @JsonProperty(value = "unitType")
-    private String unitType;
 
     /**
      * The nettingSet property.
@@ -264,7 +240,7 @@ public class Transaction {
      *
      * @return the transactionPrice value
      */
-    public Double transactionPrice() {
+    public TransactionPrice transactionPrice() {
         return this.transactionPrice;
     }
 
@@ -274,7 +250,7 @@ public class Transaction {
      * @param transactionPrice the transactionPrice value to set
      * @return the Transaction object itself.
      */
-    public Transaction withTransactionPrice(Double transactionPrice) {
+    public Transaction withTransactionPrice(TransactionPrice transactionPrice) {
         this.transactionPrice = transactionPrice;
         return this;
     }
@@ -284,7 +260,7 @@ public class Transaction {
      *
      * @return the totalConsideration value
      */
-    public Double totalConsideration() {
+    public CurrencyAndAmount totalConsideration() {
         return this.totalConsideration;
     }
 
@@ -294,7 +270,7 @@ public class Transaction {
      * @param totalConsideration the totalConsideration value to set
      * @return the Transaction object itself.
      */
-    public Transaction withTotalConsideration(Double totalConsideration) {
+    public Transaction withTotalConsideration(CurrencyAndAmount totalConsideration) {
         this.totalConsideration = totalConsideration;
         return this;
     }
@@ -316,26 +292,6 @@ public class Transaction {
      */
     public Transaction withExchangeRate(Double exchangeRate) {
         this.exchangeRate = exchangeRate;
-        return this;
-    }
-
-    /**
-     * Get settlement currency.
-     *
-     * @return the settlementCurrency value
-     */
-    public String settlementCurrency() {
-        return this.settlementCurrency;
-    }
-
-    /**
-     * Set settlement currency.
-     *
-     * @param settlementCurrency the settlementCurrency value to set
-     * @return the Transaction object itself.
-     */
-    public Transaction withSettlementCurrency(String settlementCurrency) {
-        this.settlementCurrency = settlementCurrency;
         return this;
     }
 
@@ -416,66 +372,6 @@ public class Transaction {
      */
     public Transaction withSource(String source) {
         this.source = source;
-        return this;
-    }
-
-    /**
-     * Get possible values include: 'Default', 'ExDividend', 'CumDividend'.
-     *
-     * @return the dividendState value
-     */
-    public String dividendState() {
-        return this.dividendState;
-    }
-
-    /**
-     * Set possible values include: 'Default', 'ExDividend', 'CumDividend'.
-     *
-     * @param dividendState the dividendState value to set
-     * @return the Transaction object itself.
-     */
-    public Transaction withDividendState(String dividendState) {
-        this.dividendState = dividendState;
-        return this;
-    }
-
-    /**
-     * Get possible values include: 'Price', 'Yield', 'Spread'.
-     *
-     * @return the transactionPriceType value
-     */
-    public String transactionPriceType() {
-        return this.transactionPriceType;
-    }
-
-    /**
-     * Set possible values include: 'Price', 'Yield', 'Spread'.
-     *
-     * @param transactionPriceType the transactionPriceType value to set
-     * @return the Transaction object itself.
-     */
-    public Transaction withTransactionPriceType(String transactionPriceType) {
-        this.transactionPriceType = transactionPriceType;
-        return this;
-    }
-
-    /**
-     * Get possible values include: 'Nominal', 'Shares', 'FaceValue', 'Contracts'.
-     *
-     * @return the unitType value
-     */
-    public String unitType() {
-        return this.unitType;
-    }
-
-    /**
-     * Set possible values include: 'Nominal', 'Shares', 'FaceValue', 'Contracts'.
-     *
-     * @param unitType the unitType value to set
-     * @return the Transaction object itself.
-     */
-    public Transaction withUnitType(String unitType) {
-        this.unitType = unitType;
         return this;
     }
 

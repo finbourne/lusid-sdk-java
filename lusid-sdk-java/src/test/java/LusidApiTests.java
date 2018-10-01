@@ -235,12 +235,11 @@ public class LusidApiTests {
                 .withTransactionId(UUID.randomUUID().toString())
                 .withType("Buy")
                 .withInstrumentUid(this.securityIds.get(0))
-                .withSettlementCurrency("GBP")
+                .withTotalConsideration(new CurrencyAndAmount().withCurrency("GBP").withAmount(1230.0))
                 .withTransactionDate(effectiveDate)
                 .withSettlementDate(effectiveDate)
                 .withUnits(100.0)
-                .withTransactionPrice(12.3)
-                .withTotalConsideration(1230.0)
+                .withTransactionPrice(new TransactionPrice().withPrice(12.3))
                 .withSource("Client")
                 .withProperties(Map.of(propertyDefinitionDto.key(), property));
 
@@ -302,17 +301,16 @@ public class LusidApiTests {
                 .withTransactionId(UUID.randomUUID().toString())
                 .withType("Buy")
                 .withInstrumentUid(t.getId())
-                .withSettlementCurrency("GBP")
                 .withTransactionDate(t.getTradeDate())
                 .withSettlementDate(t.getTradeDate())
                 .withUnits(100.0)
-                .withTransactionPrice(t.getPrice())
-                .withTotalConsideration(100.0 * t.getPrice())
+                .withTransactionPrice(new TransactionPrice().withPrice(t.getPrice()))
+                .withTotalConsideration(new CurrencyAndAmount().withAmount(100.0 * t.getPrice()).withCurrency("GBP"))
                 .withSource("Client");
 
         Consumer<List<Transaction>>    printTransactions = transactions -> transactions.forEach(t ->
                 System.out.println(
-                        String.format("%s\t%s\t%f\t%f\t%f", t.instrumentUid(), t.transactionDate(), t.units(), t.transactionPrice(), t.totalConsideration())));
+                        String.format("%s\t%s\t%f\t%f\t%f", t.instrumentUid(), t.transactionDate(), t.units(), t.transactionPrice().price(), t.totalConsideration().amount())));
 
         final List<TransactionSpec> transactionSpecs = new ArrayList<>(Arrays.asList(
                 new TransactionSpec(this.securityIds.get(0), 101.0, new DateTime(2018, 1, 1, 0, 0)),
@@ -327,7 +325,7 @@ public class LusidApiTests {
                 .toArray(TransactionRequest[]::new);
 
         //  add initial batch of transactions
-        final UpsertPortfolioTransactions  initialResult = this.client.upsertTransactions(scope, portfolioId, Arrays.asList(newTransactions));
+        final UpsertPortfolioTransactionsResponse  initialResult = this.client.upsertTransactions(scope, portfolioId, Arrays.asList(newTransactions));
 
         /*
 
@@ -343,14 +341,14 @@ public class LusidApiTests {
 
         //  add another trade for 2018-1-8
         TransactionSpec newTrade = new TransactionSpec(this.securityIds.get(3), 104.0, new DateTime(2018, 1, 8, 0, 0));
-        UpsertPortfolioTransactions addedResult = this.client.upsertTransactions(scope, portfolioId, Arrays.asList(buildTransaction.apply(newTrade)));
+        UpsertPortfolioTransactionsResponse addedResult = this.client.upsertTransactions(scope, portfolioId, Arrays.asList(buildTransaction.apply(newTrade)));
 
         DateTime    asAtBatch2 = addedResult.version().asAtDate().plusMillis(1);
         Thread.sleep(500);
 
         //  add back-dated trade
         TransactionSpec backDatedTrade = new TransactionSpec(this.securityIds.get(4), 105.0, new DateTime(2018, 1, 5, 0, 0));
-        UpsertPortfolioTransactions backDatedResult = this.client.upsertTransactions(scope, portfolioId, Arrays.asList(buildTransaction.apply(backDatedTrade)));
+        UpsertPortfolioTransactionsResponse backDatedResult = this.client.upsertTransactions(scope, portfolioId, Arrays.asList(buildTransaction.apply(backDatedTrade)));
 
         DateTime    asAtBatch3 = backDatedResult.version().asAtDate().plusMillis(1);
         Thread.sleep(500);

@@ -29,24 +29,35 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class TransactionPrice {
     /**
-     * The value property.
+     * The price property.
      */
-    @JsonProperty(value = "value", access = JsonProperty.Access.WRITE_ONLY)
-    private Double value;
+    @JsonProperty(value = "price")
+    private Double price;
 
     /**
      * Possible values include: 'Price', 'Yield', 'Spread'.
      */
-    @JsonProperty(value = "type", access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "type")
     private String type;
 
     /**
-     * Get the value value.
+     * Get the price value.
      *
-     * @return the value value
+     * @return the price value
      */
-    public Double value() {
-        return this.value;
+    public Double price() {
+        return this.price;
+    }
+
+    /**
+     * Set the price value.
+     *
+     * @param price the price value to set
+     * @return the TransactionPrice object itself.
+     */
+    public TransactionPrice withPrice(Double price) {
+        this.price = price;
+        return this;
     }
 
     /**
@@ -56,6 +67,17 @@ public class TransactionPrice {
      */
     public String type() {
         return this.type;
+    }
+
+    /**
+     * Set possible values include: 'Price', 'Yield', 'Spread'.
+     *
+     * @param type the type value to set
+     * @return the TransactionPrice object itself.
+     */
+    public TransactionPrice withType(String type) {
+        this.type = type;
+        return this;
     }
 
 }

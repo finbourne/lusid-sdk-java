@@ -31,10 +31,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class OutputTransaction {
     /**
-     * Unique trade identifier.
+     * Unique transaction identifier.
      */
-    @JsonProperty(value = "tradeId", required = true, access = JsonProperty.Access.WRITE_ONLY)
-    private String tradeId;
+    @JsonProperty(value = "transactionId", required = true, access = JsonProperty.Access.WRITE_ONLY)
+    private String transactionId;
 
     /**
      * LUSID transaction type code - Buy, Sell, StockIn, StockOut, etc.
@@ -55,10 +55,10 @@ public class OutputTransaction {
     private String instrumentUid;
 
     /**
-     * Trade date.
+     * Transaction date.
      */
-    @JsonProperty(value = "tradeDate", access = JsonProperty.Access.WRITE_ONLY)
-    private DateTime tradeDate;
+    @JsonProperty(value = "transactionDate", access = JsonProperty.Access.WRITE_ONLY)
+    private DateTime transactionDate;
 
     /**
      * Settlement date.
@@ -73,34 +73,34 @@ public class OutputTransaction {
     private Double units;
 
     /**
-     * Execution price for the trade.
+     * Execution price for the transaction.
      */
-    @JsonProperty(value = "tradePrice", access = JsonProperty.Access.WRITE_ONLY)
-    private TransactionPrice tradePrice;
+    @JsonProperty(value = "transactionPrice", required = true, access = JsonProperty.Access.WRITE_ONLY)
+    private TransactionPrice transactionPrice;
 
     /**
-     * Total value of the trade.
+     * Total value of the transaction in settlement currency.
      */
-    @JsonProperty(value = "totalConsideration", access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "totalConsideration", required = true, access = JsonProperty.Access.WRITE_ONLY)
     private CurrencyAndAmount totalConsideration;
 
     /**
-     * Rate between trade and settlement currency.
+     * Rate between transaction and settlement currency.
      */
     @JsonProperty(value = "exchangeRate", access = JsonProperty.Access.WRITE_ONLY)
     private Double exchangeRate;
 
     /**
-     * Rate between trade and portfolio currency.
+     * Rate between transaction and portfolio currency.
      */
-    @JsonProperty(value = "tradeToPortfolioRate", access = JsonProperty.Access.WRITE_ONLY)
-    private Double tradeToPortfolioRate;
+    @JsonProperty(value = "transactionToPortfolioRate", access = JsonProperty.Access.WRITE_ONLY)
+    private Double transactionToPortfolioRate;
 
     /**
-     * Trade currency.
+     * Transaction currency.
      */
-    @JsonProperty(value = "tradeCurrency", access = JsonProperty.Access.WRITE_ONLY)
-    private String tradeCurrency;
+    @JsonProperty(value = "transactionCurrency", access = JsonProperty.Access.WRITE_ONLY)
+    private String transactionCurrency;
 
     /**
      * The properties property.
@@ -153,12 +153,12 @@ public class OutputTransaction {
     private List<RealisedGainLoss> realisedGainLoss;
 
     /**
-     * Get unique trade identifier.
+     * Get unique transaction identifier.
      *
-     * @return the tradeId value
+     * @return the transactionId value
      */
-    public String tradeId() {
-        return this.tradeId;
+    public String transactionId() {
+        return this.transactionId;
     }
 
     /**
@@ -189,12 +189,12 @@ public class OutputTransaction {
     }
 
     /**
-     * Get trade date.
+     * Get transaction date.
      *
-     * @return the tradeDate value
+     * @return the transactionDate value
      */
-    public DateTime tradeDate() {
-        return this.tradeDate;
+    public DateTime transactionDate() {
+        return this.transactionDate;
     }
 
     /**
@@ -216,16 +216,16 @@ public class OutputTransaction {
     }
 
     /**
-     * Get execution price for the trade.
+     * Get execution price for the transaction.
      *
-     * @return the tradePrice value
+     * @return the transactionPrice value
      */
-    public TransactionPrice tradePrice() {
-        return this.tradePrice;
+    public TransactionPrice transactionPrice() {
+        return this.transactionPrice;
     }
 
     /**
-     * Get total value of the trade.
+     * Get total value of the transaction in settlement currency.
      *
      * @return the totalConsideration value
      */
@@ -234,7 +234,7 @@ public class OutputTransaction {
     }
 
     /**
-     * Get rate between trade and settlement currency.
+     * Get rate between transaction and settlement currency.
      *
      * @return the exchangeRate value
      */
@@ -243,21 +243,21 @@ public class OutputTransaction {
     }
 
     /**
-     * Get rate between trade and portfolio currency.
+     * Get rate between transaction and portfolio currency.
      *
-     * @return the tradeToPortfolioRate value
+     * @return the transactionToPortfolioRate value
      */
-    public Double tradeToPortfolioRate() {
-        return this.tradeToPortfolioRate;
+    public Double transactionToPortfolioRate() {
+        return this.transactionToPortfolioRate;
     }
 
     /**
-     * Get trade currency.
+     * Get transaction currency.
      *
-     * @return the tradeCurrency value
+     * @return the transactionCurrency value
      */
-    public String tradeCurrency() {
-        return this.tradeCurrency;
+    public String transactionCurrency() {
+        return this.transactionCurrency;
     }
 
     /**

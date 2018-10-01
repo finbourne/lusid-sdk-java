@@ -29,33 +29,55 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class CurrencyAndAmount {
     /**
-     * The value property.
+     * The amount property.
      */
-    @JsonProperty(value = "value", access = JsonProperty.Access.WRITE_ONLY)
-    private Double value;
+    @JsonProperty(value = "amount")
+    private Double amount;
 
     /**
-     * The unit property.
+     * The currency property.
      */
-    @JsonProperty(value = "unit", access = JsonProperty.Access.WRITE_ONLY)
-    private String unit;
+    @JsonProperty(value = "currency")
+    private String currency;
 
     /**
-     * Get the value value.
+     * Get the amount value.
      *
-     * @return the value value
+     * @return the amount value
      */
-    public Double value() {
-        return this.value;
+    public Double amount() {
+        return this.amount;
     }
 
     /**
-     * Get the unit value.
+     * Set the amount value.
      *
-     * @return the unit value
+     * @param amount the amount value to set
+     * @return the CurrencyAndAmount object itself.
      */
-    public String unit() {
-        return this.unit;
+    public CurrencyAndAmount withAmount(Double amount) {
+        this.amount = amount;
+        return this;
+    }
+
+    /**
+     * Get the currency value.
+     *
+     * @return the currency value
+     */
+    public String currency() {
+        return this.currency;
+    }
+
+    /**
+     * Set the currency value.
+     *
+     * @param currency the currency value to set
+     * @return the CurrencyAndAmount object itself.
+     */
+    public CurrencyAndAmount withCurrency(String currency) {
+        this.currency = currency;
+        return this;
     }
 
 }

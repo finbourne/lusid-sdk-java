@@ -26,9 +26,9 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The UpsertPortfolioTransactions model.
+ * The UpsertPortfolioTransactionsResponse model.
  */
-public class UpsertPortfolioTransactions {
+public class UpsertPortfolioTransactionsResponse {
     /**
      * The version property.
      */
@@ -60,9 +60,9 @@ public class UpsertPortfolioTransactions {
      * Set the version value.
      *
      * @param version the version value to set
-     * @return the UpsertPortfolioTransactions object itself.
+     * @return the UpsertPortfolioTransactionsResponse object itself.
      */
-    public UpsertPortfolioTransactions withVersion(Version version) {
+    public UpsertPortfolioTransactionsResponse withVersion(Version version) {
         this.version = version;
         return this;
     }
@@ -80,9 +80,9 @@ public class UpsertPortfolioTransactions {
      * Set the href value.
      *
      * @param href the href value to set
-     * @return the UpsertPortfolioTransactions object itself.
+     * @return the UpsertPortfolioTransactionsResponse object itself.
      */
-    public UpsertPortfolioTransactions withHref(String href) {
+    public UpsertPortfolioTransactionsResponse withHref(String href) {
         this.href = href;
         return this;
     }
@@ -100,9 +100,9 @@ public class UpsertPortfolioTransactions {
      * Set the links value.
      *
      * @param links the links value to set
-     * @return the UpsertPortfolioTransactions object itself.
+     * @return the UpsertPortfolioTransactionsResponse object itself.
      */
-    public UpsertPortfolioTransactions withLinks(List<Link> links) {
+    public UpsertPortfolioTransactionsResponse withLinks(List<Link> links) {
         this.links = links;
         return this;
     }
