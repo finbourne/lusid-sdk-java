@@ -58,7 +58,7 @@ public class CreateTransactionPortfolioRequest {
     /**
      * The baseCurrency property.
      */
-    @JsonProperty(value = "baseCurrency")
+    @JsonProperty(value = "baseCurrency", required = true)
     private String baseCurrency;
 
     /**

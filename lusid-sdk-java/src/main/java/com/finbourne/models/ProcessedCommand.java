@@ -44,7 +44,7 @@ public class ProcessedCommand {
      * The user that issued the command.
      */
     @JsonProperty(value = "userId")
-    private UserId userId;
+    private User userId;
 
     /**
      * The as at time of the events published by the processing of
@@ -98,7 +98,7 @@ public class ProcessedCommand {
      *
      * @return the userId value
      */
-    public UserId userId() {
+    public User userId() {
         return this.userId;
     }
 
@@ -108,7 +108,7 @@ public class ProcessedCommand {
      * @param userId the userId value to set
      * @return the ProcessedCommand object itself.
      */
-    public ProcessedCommand withUserId(UserId userId) {
+    public ProcessedCommand withUserId(User userId) {
         this.userId = userId;
         return this;
     }

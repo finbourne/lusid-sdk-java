@@ -22,7 +22,6 @@
 
 package com.finbourne.models;
 
-import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -42,20 +41,17 @@ public class CreateClientInstrumentRequest {
     private String name;
 
     /**
-     * The instrumentProperties property.
-     */
-    @JsonProperty(value = "instrumentProperties", required = true)
-    private Map<String, CreatePropertyRequest> instrumentProperties;
-
-    /**
      * The lookThroughPortfolioId property.
      */
     @JsonProperty(value = "lookThroughPortfolioId")
     private ResourceId lookThroughPortfolioId;
 
     /**
-     * There could be multiple underlying instrument definitions (same
-     * instrument but different format), but for now store one.
+     * Expanded instrument definition - in the case of OTC instruments
+     * this contains the definition of the non-exchange traded instrument.
+     * The format for this can be client-defined, but in order to transparently
+     * use
+     * vendor libraries it must conform to a format that LUSID understands.
      */
     @JsonProperty(value = "instrument")
     private InstrumentDefinition instrument;
@@ -101,26 +97,6 @@ public class CreateClientInstrumentRequest {
     }
 
     /**
-     * Get the instrumentProperties value.
-     *
-     * @return the instrumentProperties value
-     */
-    public Map<String, CreatePropertyRequest> instrumentProperties() {
-        return this.instrumentProperties;
-    }
-
-    /**
-     * Set the instrumentProperties value.
-     *
-     * @param instrumentProperties the instrumentProperties value to set
-     * @return the CreateClientInstrumentRequest object itself.
-     */
-    public CreateClientInstrumentRequest withInstrumentProperties(Map<String, CreatePropertyRequest> instrumentProperties) {
-        this.instrumentProperties = instrumentProperties;
-        return this;
-    }
-
-    /**
      * Get the lookThroughPortfolioId value.
      *
      * @return the lookThroughPortfolioId value
@@ -141,8 +117,10 @@ public class CreateClientInstrumentRequest {
     }
 
     /**
-     * Get there could be multiple underlying instrument definitions (same
-     instrument but different format), but for now store one.
+     * Get expanded instrument definition - in the case of OTC instruments
+     this contains the definition of the non-exchange traded instrument.
+     The format for this can be client-defined, but in order to transparently use
+     vendor libraries it must conform to a format that LUSID understands.
      *
      * @return the instrument value
      */
@@ -151,8 +129,10 @@ public class CreateClientInstrumentRequest {
     }
 
     /**
-     * Set there could be multiple underlying instrument definitions (same
-     instrument but different format), but for now store one.
+     * Set expanded instrument definition - in the case of OTC instruments
+     this contains the definition of the non-exchange traded instrument.
+     The format for this can be client-defined, but in order to transparently use
+     vendor libraries it must conform to a format that LUSID understands.
      *
      * @param instrument the instrument value to set
      * @return the CreateClientInstrumentRequest object itself.

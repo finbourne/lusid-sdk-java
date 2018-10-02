@@ -88,7 +88,7 @@ public class Transaction {
      * Transaction currency.
      */
     @JsonProperty(value = "transactionCurrency")
-    private NullableOfCurrency transactionCurrency;
+    private String transactionCurrency;
 
     /**
      * The properties property.
@@ -300,7 +300,7 @@ public class Transaction {
      *
      * @return the transactionCurrency value
      */
-    public NullableOfCurrency transactionCurrency() {
+    public String transactionCurrency() {
         return this.transactionCurrency;
     }
 
@@ -310,7 +310,7 @@ public class Transaction {
      * @param transactionCurrency the transactionCurrency value to set
      * @return the Transaction object itself.
      */
-    public Transaction withTransactionCurrency(NullableOfCurrency transactionCurrency) {
+    public Transaction withTransactionCurrency(String transactionCurrency) {
         this.transactionCurrency = transactionCurrency;
         return this;
     }

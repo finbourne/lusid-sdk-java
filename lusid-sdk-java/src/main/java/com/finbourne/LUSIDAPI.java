@@ -27,7 +27,6 @@ import com.finbourne.models.AdjustHolding;
 import com.finbourne.models.AdjustHoldingRequest;
 import com.finbourne.models.AggregationRequest;
 import com.finbourne.models.AnalyticStore;
-import com.finbourne.models.CorporateAction;
 import com.finbourne.models.CreateAnalyticStoreRequest;
 import com.finbourne.models.CreateClientInstrumentRequest;
 import com.finbourne.models.CreateCorporateAction;
@@ -65,6 +64,7 @@ import com.finbourne.models.ReconciliationRequest;
 import com.finbourne.models.ReferencePortfolioConstituentRequest;
 import com.finbourne.models.ResourceId;
 import com.finbourne.models.ResourceListOfAnalyticStoreKey;
+import com.finbourne.models.ResourceListOfCorporateActionEvent;
 import com.finbourne.models.ResourceListOfDataType;
 import com.finbourne.models.ResourceListOfHoldingsAdjustmentHeader;
 import com.finbourne.models.ResourceListOfPersonalisation;
@@ -556,9 +556,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the List&lt;CorporateAction&gt; object if successful.
+     * @return the ResourceListOfCorporateActionEvent object if successful.
      */
-    List<CorporateAction> getCorporateActions(String scope, String code);
+    ResourceListOfCorporateActionEvent getCorporateActions(String scope, String code);
 
     /**
      * Gets a corporate action based on dates.
@@ -569,7 +569,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<List<CorporateAction>> getCorporateActionsAsync(String scope, String code, final ServiceCallback<List<CorporateAction>> serviceCallback);
+    ServiceFuture<ResourceListOfCorporateActionEvent> getCorporateActionsAsync(String scope, String code, final ServiceCallback<ResourceListOfCorporateActionEvent> serviceCallback);
 
     /**
      * Gets a corporate action based on dates.
@@ -577,9 +577,9 @@ public interface LUSIDAPI {
      * @param scope Scope
      * @param code Corporate action source id
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the List&lt;CorporateAction&gt; object
+     * @return the observable to the ResourceListOfCorporateActionEvent object
      */
-    Observable<List<CorporateAction>> getCorporateActionsAsync(String scope, String code);
+    Observable<ResourceListOfCorporateActionEvent> getCorporateActionsAsync(String scope, String code);
 
     /**
      * Gets a corporate action based on dates.
@@ -587,9 +587,9 @@ public interface LUSIDAPI {
      * @param scope Scope
      * @param code Corporate action source id
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the List&lt;CorporateAction&gt; object
+     * @return the observable to the ResourceListOfCorporateActionEvent object
      */
-    Observable<ServiceResponse<List<CorporateAction>>> getCorporateActionsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<ResourceListOfCorporateActionEvent>> getCorporateActionsWithServiceResponseAsync(String scope, String code);
     /**
      * Gets a corporate action based on dates.
      *
@@ -604,9 +604,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the List&lt;CorporateAction&gt; object if successful.
+     * @return the ResourceListOfCorporateActionEvent object if successful.
      */
-    List<CorporateAction> getCorporateActions(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    ResourceListOfCorporateActionEvent getCorporateActions(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets a corporate action based on dates.
@@ -623,7 +623,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<List<CorporateAction>> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<List<CorporateAction>> serviceCallback);
+    ServiceFuture<ResourceListOfCorporateActionEvent> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfCorporateActionEvent> serviceCallback);
 
     /**
      * Gets a corporate action based on dates.
@@ -637,9 +637,9 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the List&lt;CorporateAction&gt; object
+     * @return the observable to the ResourceListOfCorporateActionEvent object
      */
-    Observable<List<CorporateAction>> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ResourceListOfCorporateActionEvent> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Gets a corporate action based on dates.
@@ -653,9 +653,9 @@ public interface LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the List&lt;CorporateAction&gt; object
+     * @return the observable to the ResourceListOfCorporateActionEvent object
      */
-    Observable<ServiceResponse<List<CorporateAction>>> getCorporateActionsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ServiceResponse<ResourceListOfCorporateActionEvent>> getCorporateActionsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.

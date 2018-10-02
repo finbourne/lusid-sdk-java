@@ -32,7 +32,6 @@ import com.finbourne.models.AdjustHolding;
 import com.finbourne.models.AdjustHoldingRequest;
 import com.finbourne.models.AggregationRequest;
 import com.finbourne.models.AnalyticStore;
-import com.finbourne.models.CorporateAction;
 import com.finbourne.models.CreateAnalyticStoreRequest;
 import com.finbourne.models.CreateClientInstrumentRequest;
 import com.finbourne.models.CreateCorporateAction;
@@ -70,6 +69,7 @@ import com.finbourne.models.ReconciliationRequest;
 import com.finbourne.models.ReferencePortfolioConstituentRequest;
 import com.finbourne.models.ResourceId;
 import com.finbourne.models.ResourceListOfAnalyticStoreKey;
+import com.finbourne.models.ResourceListOfCorporateActionEvent;
 import com.finbourne.models.ResourceListOfDataType;
 import com.finbourne.models.ResourceListOfHoldingsAdjustmentHeader;
 import com.finbourne.models.ResourceListOfPersonalisation;
@@ -1255,9 +1255,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the List&lt;CorporateAction&gt; object if successful.
+     * @return the ResourceListOfCorporateActionEvent object if successful.
      */
-    public List<CorporateAction> getCorporateActions(String scope, String code) {
+    public ResourceListOfCorporateActionEvent getCorporateActions(String scope, String code) {
         return getCorporateActionsWithServiceResponseAsync(scope, code).toBlocking().single().body();
     }
 
@@ -1270,7 +1270,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<List<CorporateAction>> getCorporateActionsAsync(String scope, String code, final ServiceCallback<List<CorporateAction>> serviceCallback) {
+    public ServiceFuture<ResourceListOfCorporateActionEvent> getCorporateActionsAsync(String scope, String code, final ServiceCallback<ResourceListOfCorporateActionEvent> serviceCallback) {
         return ServiceFuture.fromResponse(getCorporateActionsWithServiceResponseAsync(scope, code), serviceCallback);
     }
 
@@ -1280,12 +1280,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param scope Scope
      * @param code Corporate action source id
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the List&lt;CorporateAction&gt; object
+     * @return the observable to the ResourceListOfCorporateActionEvent object
      */
-    public Observable<List<CorporateAction>> getCorporateActionsAsync(String scope, String code) {
-        return getCorporateActionsWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<List<CorporateAction>>, List<CorporateAction>>() {
+    public Observable<ResourceListOfCorporateActionEvent> getCorporateActionsAsync(String scope, String code) {
+        return getCorporateActionsWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<ResourceListOfCorporateActionEvent>, ResourceListOfCorporateActionEvent>() {
             @Override
-            public List<CorporateAction> call(ServiceResponse<List<CorporateAction>> response) {
+            public ResourceListOfCorporateActionEvent call(ServiceResponse<ResourceListOfCorporateActionEvent> response) {
                 return response.body();
             }
         });
@@ -1297,9 +1297,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param scope Scope
      * @param code Corporate action source id
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the List&lt;CorporateAction&gt; object
+     * @return the observable to the ResourceListOfCorporateActionEvent object
      */
-    public Observable<ServiceResponse<List<CorporateAction>>> getCorporateActionsWithServiceResponseAsync(String scope, String code) {
+    public Observable<ServiceResponse<ResourceListOfCorporateActionEvent>> getCorporateActionsWithServiceResponseAsync(String scope, String code) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -1314,11 +1314,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final String filter = null;
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getCorporateActions(scope, code, effectiveAt, asAt, sortByConverted, start, limit, filter)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<List<CorporateAction>>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfCorporateActionEvent>>>() {
                 @Override
-                public Observable<ServiceResponse<List<CorporateAction>>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<ResourceListOfCorporateActionEvent>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<List<CorporateAction>> clientResponse = getCorporateActionsDelegate(response);
+                        ServiceResponse<ResourceListOfCorporateActionEvent> clientResponse = getCorporateActionsDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -1341,9 +1341,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the List&lt;CorporateAction&gt; object if successful.
+     * @return the ResourceListOfCorporateActionEvent object if successful.
      */
-    public List<CorporateAction> getCorporateActions(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+    public ResourceListOfCorporateActionEvent getCorporateActions(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
         return getCorporateActionsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, filter).toBlocking().single().body();
     }
 
@@ -1362,7 +1362,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<List<CorporateAction>> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<List<CorporateAction>> serviceCallback) {
+    public ServiceFuture<ResourceListOfCorporateActionEvent> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfCorporateActionEvent> serviceCallback) {
         return ServiceFuture.fromResponse(getCorporateActionsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, filter), serviceCallback);
     }
 
@@ -1378,12 +1378,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the List&lt;CorporateAction&gt; object
+     * @return the observable to the ResourceListOfCorporateActionEvent object
      */
-    public Observable<List<CorporateAction>> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
-        return getCorporateActionsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, filter).map(new Func1<ServiceResponse<List<CorporateAction>>, List<CorporateAction>>() {
+    public Observable<ResourceListOfCorporateActionEvent> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return getCorporateActionsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, filter).map(new Func1<ServiceResponse<ResourceListOfCorporateActionEvent>, ResourceListOfCorporateActionEvent>() {
             @Override
-            public List<CorporateAction> call(ServiceResponse<List<CorporateAction>> response) {
+            public ResourceListOfCorporateActionEvent call(ServiceResponse<ResourceListOfCorporateActionEvent> response) {
                 return response.body();
             }
         });
@@ -1401,9 +1401,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the List&lt;CorporateAction&gt; object
+     * @return the observable to the ResourceListOfCorporateActionEvent object
      */
-    public Observable<ServiceResponse<List<CorporateAction>>> getCorporateActionsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
+    public Observable<ServiceResponse<ResourceListOfCorporateActionEvent>> getCorporateActionsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -1413,11 +1413,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         Validator.validate(sortBy);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
         return service.getCorporateActions(scope, code, effectiveAt, asAt, sortByConverted, start, limit, filter)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<List<CorporateAction>>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfCorporateActionEvent>>>() {
                 @Override
-                public Observable<ServiceResponse<List<CorporateAction>>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<ResourceListOfCorporateActionEvent>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<List<CorporateAction>> clientResponse = getCorporateActionsDelegate(response);
+                        ServiceResponse<ResourceListOfCorporateActionEvent> clientResponse = getCorporateActionsDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -1426,9 +1426,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<List<CorporateAction>> getCorporateActionsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
-        return this.restClient().responseBuilderFactory().<List<CorporateAction>, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<List<CorporateAction>>() { }.getType())
+    private ServiceResponse<ResourceListOfCorporateActionEvent> getCorporateActionsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<ResourceListOfCorporateActionEvent, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<ResourceListOfCorporateActionEvent>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }

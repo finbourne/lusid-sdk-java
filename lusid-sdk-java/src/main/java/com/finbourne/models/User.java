@@ -25,22 +25,22 @@ package com.finbourne.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The NullableOfCurrency model.
+ * The User model.
  */
-public class NullableOfCurrency {
+public class User {
     /**
-     * The value property.
+     * The id property.
      */
-    @JsonProperty(value = "value", access = JsonProperty.Access.WRITE_ONLY)
-    private String value;
+    @JsonProperty(value = "id", access = JsonProperty.Access.WRITE_ONLY)
+    private String id;
 
     /**
-     * Get the value value.
+     * Get the id value.
      *
-     * @return the value value
+     * @return the id value
      */
-    public String value() {
-        return this.value;
+    public String id() {
+        return this.id;
     }
 
 }
