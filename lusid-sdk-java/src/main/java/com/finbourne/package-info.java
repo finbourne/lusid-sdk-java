@@ -115,16 +115,12 @@
  | TransactionDate|datetime|Transaction date |
  | SettlementDate|datetime|Settlement date |
  | Units|decimal|Quantity of transaction in units of the instrument |
- | TransactionPrice|decimal|Execution price for the transaction |
- | TotalConsideration|decimal|Total value of the transaction |
+ | TransactionPrice|tradeprice|Execution price for the transaction |
+ | TotalConsideration|currencyandamount|Total value of the transaction |
  | ExchangeRate|decimal|Rate between transaction and settle currency |
- | SettlementCurrency|currency|Settlement currency |
  | TransactionCurrency|currency|Transaction currency |
  | CounterpartyId|string|Counterparty identifier |
  | Source|string|Where this transaction came from |
- | DividendState|string|  |
- | TransactionPriceType|string|  |
- | UnitType|string|  |
  | NettingSet|string|  |
  ## Holdings
  A holding represents a position in a instrument or cash on a given date.
