@@ -33,19 +33,19 @@ public class OutputTransaction {
     /**
      * Unique transaction identifier.
      */
-    @JsonProperty(value = "transactionId", required = true, access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "transactionId", access = JsonProperty.Access.WRITE_ONLY)
     private String transactionId;
 
     /**
      * LUSID transaction type code - Buy, Sell, StockIn, StockOut, etc.
      */
-    @JsonProperty(value = "type", required = true, access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "type", access = JsonProperty.Access.WRITE_ONLY)
     private String type;
 
     /**
      * LUSID transaction description.
      */
-    @JsonProperty(value = "description", required = true, access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "description", access = JsonProperty.Access.WRITE_ONLY)
     private String description;
 
     /**
@@ -75,13 +75,13 @@ public class OutputTransaction {
     /**
      * Execution price for the transaction.
      */
-    @JsonProperty(value = "transactionPrice", required = true, access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "transactionPrice", access = JsonProperty.Access.WRITE_ONLY)
     private TransactionPrice transactionPrice;
 
     /**
      * Total value of the transaction in settlement currency.
      */
-    @JsonProperty(value = "totalConsideration", required = true, access = JsonProperty.Access.WRITE_ONLY)
+    @JsonProperty(value = "totalConsideration", access = JsonProperty.Access.WRITE_ONLY)
     private CurrencyAndAmount totalConsideration;
 
     /**

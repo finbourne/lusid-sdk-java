@@ -89,6 +89,25 @@ public class PropertyDefinition {
     private String unitSchema;
 
     /**
+     * Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding',
+     * 'ReferenceHolding', 'TxnType'.
+     */
+    @JsonProperty(value = "domain", access = JsonProperty.Access.WRITE_ONLY)
+    private String domain;
+
+    /**
+     * The scope property.
+     */
+    @JsonProperty(value = "scope", access = JsonProperty.Access.WRITE_ONLY)
+    private String scope;
+
+    /**
+     * The code property.
+     */
+    @JsonProperty(value = "code", access = JsonProperty.Access.WRITE_ONLY)
+    private String code;
+
+    /**
      * The links property.
      */
     @JsonProperty(value = "links")
@@ -272,6 +291,33 @@ public class PropertyDefinition {
     public PropertyDefinition withUnitSchema(String unitSchema) {
         this.unitSchema = unitSchema;
         return this;
+    }
+
+    /**
+     * Get possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'.
+     *
+     * @return the domain value
+     */
+    public String domain() {
+        return this.domain;
+    }
+
+    /**
+     * Get the scope value.
+     *
+     * @return the scope value
+     */
+    public String scope() {
+        return this.scope;
+    }
+
+    /**
+     * Get the code value.
+     *
+     * @return the code value
+     */
+    public String code() {
+        return this.code;
     }
 
     /**

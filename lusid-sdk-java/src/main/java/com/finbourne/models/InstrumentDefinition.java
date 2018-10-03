@@ -25,15 +25,43 @@ package com.finbourne.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * An opaque instrument definition.
- * Understood by some analytics library.
+ * Expanded instrument definition - in the case of OTC instruments
+ * this contains the definition of the non-exchange traded instrument.
+ * The format for this can be client-defined, but in order to transparently use
+ * vendor libraries it must conform to a format that LUSID understands.
  */
 public class InstrumentDefinition {
     /**
+     * The instrumentFormat property.
+     */
+    @JsonProperty(value = "instrumentFormat", required = true)
+    private String instrumentFormat;
+
+    /**
      * The content property.
      */
-    @JsonProperty(value = "content")
+    @JsonProperty(value = "content", required = true)
     private String content;
+
+    /**
+     * Get the instrumentFormat value.
+     *
+     * @return the instrumentFormat value
+     */
+    public String instrumentFormat() {
+        return this.instrumentFormat;
+    }
+
+    /**
+     * Set the instrumentFormat value.
+     *
+     * @param instrumentFormat the instrumentFormat value to set
+     * @return the InstrumentDefinition object itself.
+     */
+    public InstrumentDefinition withInstrumentFormat(String instrumentFormat) {
+        this.instrumentFormat = instrumentFormat;
+        return this;
+    }
 
     /**
      * Get the content value.
