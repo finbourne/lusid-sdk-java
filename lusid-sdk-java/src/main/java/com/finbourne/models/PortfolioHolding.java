@@ -32,7 +32,7 @@ public class PortfolioHolding {
     /**
      * Unique instrument identifier.
      */
-    @JsonProperty(value = "instrumentUid")
+    @JsonProperty(value = "instrumentUid", required = true)
     private String instrumentUid;
 
     /**
@@ -51,26 +51,26 @@ public class PortfolioHolding {
     /**
      * Quantity of holding.
      */
-    @JsonProperty(value = "units")
-    private Double units;
+    @JsonProperty(value = "units", required = true)
+    private double units;
 
     /**
      * Settled quantity of holding.
      */
-    @JsonProperty(value = "settledUnits")
-    private Double settledUnits;
+    @JsonProperty(value = "settledUnits", required = true)
+    private double settledUnits;
 
     /**
      * Book cost of holding in transaction currency.
      */
-    @JsonProperty(value = "cost")
-    private Double cost;
+    @JsonProperty(value = "cost", required = true)
+    private double cost;
 
     /**
      * Book cost of holding in portfolio currency.
      */
-    @JsonProperty(value = "costPortfolioCcy")
-    private Double costPortfolioCcy;
+    @JsonProperty(value = "costPortfolioCcy", required = true)
+    private double costPortfolioCcy;
 
     /**
      * If this is commitment-type holding, the transaction behind it.
@@ -143,7 +143,7 @@ public class PortfolioHolding {
      *
      * @return the units value
      */
-    public Double units() {
+    public double units() {
         return this.units;
     }
 
@@ -153,7 +153,7 @@ public class PortfolioHolding {
      * @param units the units value to set
      * @return the PortfolioHolding object itself.
      */
-    public PortfolioHolding withUnits(Double units) {
+    public PortfolioHolding withUnits(double units) {
         this.units = units;
         return this;
     }
@@ -163,7 +163,7 @@ public class PortfolioHolding {
      *
      * @return the settledUnits value
      */
-    public Double settledUnits() {
+    public double settledUnits() {
         return this.settledUnits;
     }
 
@@ -173,7 +173,7 @@ public class PortfolioHolding {
      * @param settledUnits the settledUnits value to set
      * @return the PortfolioHolding object itself.
      */
-    public PortfolioHolding withSettledUnits(Double settledUnits) {
+    public PortfolioHolding withSettledUnits(double settledUnits) {
         this.settledUnits = settledUnits;
         return this;
     }
@@ -183,7 +183,7 @@ public class PortfolioHolding {
      *
      * @return the cost value
      */
-    public Double cost() {
+    public double cost() {
         return this.cost;
     }
 
@@ -193,7 +193,7 @@ public class PortfolioHolding {
      * @param cost the cost value to set
      * @return the PortfolioHolding object itself.
      */
-    public PortfolioHolding withCost(Double cost) {
+    public PortfolioHolding withCost(double cost) {
         this.cost = cost;
         return this;
     }
@@ -203,7 +203,7 @@ public class PortfolioHolding {
      *
      * @return the costPortfolioCcy value
      */
-    public Double costPortfolioCcy() {
+    public double costPortfolioCcy() {
         return this.costPortfolioCcy;
     }
 
@@ -213,7 +213,7 @@ public class PortfolioHolding {
      * @param costPortfolioCcy the costPortfolioCcy value to set
      * @return the PortfolioHolding object itself.
      */
-    public PortfolioHolding withCostPortfolioCcy(Double costPortfolioCcy) {
+    public PortfolioHolding withCostPortfolioCcy(double costPortfolioCcy) {
         this.costPortfolioCcy = costPortfolioCcy;
         return this;
     }

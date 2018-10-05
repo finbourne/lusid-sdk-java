@@ -34,20 +34,20 @@ public class TransactionConfigurationMovementData {
      * 'ForwardFx', 'Commitment', 'Receivable', 'CashSettlement', 'Accrual',
      * 'UnsettledCashTypes'.
      */
-    @JsonProperty(value = "movementTypes")
+    @JsonProperty(value = "movementTypes", required = true)
     private String movementTypes;
 
     /**
      * The Movement Side. Possible values include: 'Side1', 'Side2', 'BondInt'.
      */
-    @JsonProperty(value = "side")
+    @JsonProperty(value = "side", required = true)
     private String side;
 
     /**
      * The Movement direction.
      */
-    @JsonProperty(value = "direction")
-    private Integer direction;
+    @JsonProperty(value = "direction", required = true)
+    private int direction;
 
     /**
      * The properties property.
@@ -106,7 +106,7 @@ public class TransactionConfigurationMovementData {
      *
      * @return the direction value
      */
-    public Integer direction() {
+    public int direction() {
         return this.direction;
     }
 
@@ -116,7 +116,7 @@ public class TransactionConfigurationMovementData {
      * @param direction the direction value to set
      * @return the TransactionConfigurationMovementData object itself.
      */
-    public TransactionConfigurationMovementData withDirection(Integer direction) {
+    public TransactionConfigurationMovementData withDirection(int direction) {
         this.direction = direction;
         return this;
     }

@@ -35,7 +35,7 @@ public class AdjustHoldingRequest {
     /**
      * Unique instrument identifier.
      */
-    @JsonProperty(value = "instrumentUid")
+    @JsonProperty(value = "instrumentUid", required = true)
     private String instrumentUid;
 
     /**

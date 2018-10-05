@@ -45,26 +45,26 @@ public class Transaction {
     /**
      * Unique instrument identifier.
      */
-    @JsonProperty(value = "instrumentUid")
+    @JsonProperty(value = "instrumentUid", required = true)
     private String instrumentUid;
 
     /**
      * Transaction date.
      */
-    @JsonProperty(value = "transactionDate")
+    @JsonProperty(value = "transactionDate", required = true)
     private DateTime transactionDate;
 
     /**
      * Settlement date.
      */
-    @JsonProperty(value = "settlementDate")
+    @JsonProperty(value = "settlementDate", required = true)
     private DateTime settlementDate;
 
     /**
      * Quantity of transaction in units of the instrument.
      */
-    @JsonProperty(value = "units")
-    private Double units;
+    @JsonProperty(value = "units", required = true)
+    private double units;
 
     /**
      * Execution price for the transaction.
@@ -106,7 +106,7 @@ public class Transaction {
      * Where this transaction came from. Possible values include: 'System',
      * 'Client'.
      */
-    @JsonProperty(value = "source")
+    @JsonProperty(value = "source", required = true)
     private String source;
 
     /**
@@ -220,7 +220,7 @@ public class Transaction {
      *
      * @return the units value
      */
-    public Double units() {
+    public double units() {
         return this.units;
     }
 
@@ -230,7 +230,7 @@ public class Transaction {
      * @param units the units value to set
      * @return the Transaction object itself.
      */
-    public Transaction withUnits(Double units) {
+    public Transaction withUnits(double units) {
         this.units = units;
         return this;
     }

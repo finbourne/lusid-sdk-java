@@ -39,25 +39,25 @@ public class CreateCorporateAction {
     /**
      * The announcementDate property.
      */
-    @JsonProperty(value = "announcementDate")
+    @JsonProperty(value = "announcementDate", required = true)
     private DateTime announcementDate;
 
     /**
      * The exDate property.
      */
-    @JsonProperty(value = "exDate")
+    @JsonProperty(value = "exDate", required = true)
     private DateTime exDate;
 
     /**
      * The recordDate property.
      */
-    @JsonProperty(value = "recordDate")
+    @JsonProperty(value = "recordDate", required = true)
     private DateTime recordDate;
 
     /**
      * The paymentDate property.
      */
-    @JsonProperty(value = "paymentDate")
+    @JsonProperty(value = "paymentDate", required = true)
     private DateTime paymentDate;
 
     /**

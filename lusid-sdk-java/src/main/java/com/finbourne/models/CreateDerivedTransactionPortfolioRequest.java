@@ -23,6 +23,7 @@
 package com.finbourne.models;
 
 import org.joda.time.DateTime;
+import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -58,6 +59,25 @@ public class CreateDerivedTransactionPortfolioRequest {
      */
     @JsonProperty(value = "created")
     private DateTime created;
+
+    /**
+     * The corporateActionSourceId property.
+     */
+    @JsonProperty(value = "corporateActionSourceId")
+    private ResourceId corporateActionSourceId;
+
+    /**
+     * Possible values include: 'Default', 'AverageCost', 'FirstInFirstOut',
+     * 'LastInFirstOut', 'HighestCostFirst', 'LowestCostFirst'.
+     */
+    @JsonProperty(value = "accountingMethod")
+    private String accountingMethod;
+
+    /**
+     * The subHoldingKeys property.
+     */
+    @JsonProperty(value = "subHoldingKeys")
+    private List<String> subHoldingKeys;
 
     /**
      * Get the displayName value.
@@ -156,6 +176,66 @@ public class CreateDerivedTransactionPortfolioRequest {
      */
     public CreateDerivedTransactionPortfolioRequest withCreated(DateTime created) {
         this.created = created;
+        return this;
+    }
+
+    /**
+     * Get the corporateActionSourceId value.
+     *
+     * @return the corporateActionSourceId value
+     */
+    public ResourceId corporateActionSourceId() {
+        return this.corporateActionSourceId;
+    }
+
+    /**
+     * Set the corporateActionSourceId value.
+     *
+     * @param corporateActionSourceId the corporateActionSourceId value to set
+     * @return the CreateDerivedTransactionPortfolioRequest object itself.
+     */
+    public CreateDerivedTransactionPortfolioRequest withCorporateActionSourceId(ResourceId corporateActionSourceId) {
+        this.corporateActionSourceId = corporateActionSourceId;
+        return this;
+    }
+
+    /**
+     * Get possible values include: 'Default', 'AverageCost', 'FirstInFirstOut', 'LastInFirstOut', 'HighestCostFirst', 'LowestCostFirst'.
+     *
+     * @return the accountingMethod value
+     */
+    public String accountingMethod() {
+        return this.accountingMethod;
+    }
+
+    /**
+     * Set possible values include: 'Default', 'AverageCost', 'FirstInFirstOut', 'LastInFirstOut', 'HighestCostFirst', 'LowestCostFirst'.
+     *
+     * @param accountingMethod the accountingMethod value to set
+     * @return the CreateDerivedTransactionPortfolioRequest object itself.
+     */
+    public CreateDerivedTransactionPortfolioRequest withAccountingMethod(String accountingMethod) {
+        this.accountingMethod = accountingMethod;
+        return this;
+    }
+
+    /**
+     * Get the subHoldingKeys value.
+     *
+     * @return the subHoldingKeys value
+     */
+    public List<String> subHoldingKeys() {
+        return this.subHoldingKeys;
+    }
+
+    /**
+     * Set the subHoldingKeys value.
+     *
+     * @param subHoldingKeys the subHoldingKeys value to set
+     * @return the CreateDerivedTransactionPortfolioRequest object itself.
+     */
+    public CreateDerivedTransactionPortfolioRequest withSubHoldingKeys(List<String> subHoldingKeys) {
+        this.subHoldingKeys = subHoldingKeys;
         return this;
     }
 

@@ -37,7 +37,7 @@ public class AggregateSpec {
     /**
      * Possible values include: 'Sum', 'Proportion'.
      */
-    @JsonProperty(value = "op")
+    @JsonProperty(value = "op", required = true)
     private String op;
 
     /**

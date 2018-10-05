@@ -57,7 +57,7 @@ public class TransactionConfigurationTypeAlias {
      * Possible values include: 'None', 'LongLonger', 'LongShorter',
      * 'ShortShorter', 'ShortLonger', 'Longer', 'Shorter', 'AllRoles'.
      */
-    @JsonProperty(value = "transactionRoles")
+    @JsonProperty(value = "transactionRoles", required = true)
     private String transactionRoles;
 
     /**

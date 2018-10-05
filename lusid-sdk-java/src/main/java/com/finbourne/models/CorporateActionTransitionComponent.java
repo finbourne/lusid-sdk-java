@@ -31,20 +31,20 @@ public class CorporateActionTransitionComponent {
     /**
      * The instrumentUid property.
      */
-    @JsonProperty(value = "instrumentUid")
+    @JsonProperty(value = "instrumentUid", required = true)
     private String instrumentUid;
 
     /**
      * The unitsFactor property.
      */
-    @JsonProperty(value = "unitsFactor")
-    private Double unitsFactor;
+    @JsonProperty(value = "unitsFactor", required = true)
+    private double unitsFactor;
 
     /**
      * The costFactor property.
      */
-    @JsonProperty(value = "costFactor")
-    private Double costFactor;
+    @JsonProperty(value = "costFactor", required = true)
+    private double costFactor;
 
     /**
      * Get the instrumentUid value.
@@ -71,7 +71,7 @@ public class CorporateActionTransitionComponent {
      *
      * @return the unitsFactor value
      */
-    public Double unitsFactor() {
+    public double unitsFactor() {
         return this.unitsFactor;
     }
 
@@ -81,7 +81,7 @@ public class CorporateActionTransitionComponent {
      * @param unitsFactor the unitsFactor value to set
      * @return the CorporateActionTransitionComponent object itself.
      */
-    public CorporateActionTransitionComponent withUnitsFactor(Double unitsFactor) {
+    public CorporateActionTransitionComponent withUnitsFactor(double unitsFactor) {
         this.unitsFactor = unitsFactor;
         return this;
     }
@@ -91,7 +91,7 @@ public class CorporateActionTransitionComponent {
      *
      * @return the costFactor value
      */
-    public Double costFactor() {
+    public double costFactor() {
         return this.costFactor;
     }
 
@@ -101,7 +101,7 @@ public class CorporateActionTransitionComponent {
      * @param costFactor the costFactor value to set
      * @return the CorporateActionTransitionComponent object itself.
      */
-    public CorporateActionTransitionComponent withCostFactor(Double costFactor) {
+    public CorporateActionTransitionComponent withCostFactor(double costFactor) {
         this.costFactor = costFactor;
         return this;
     }

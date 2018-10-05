@@ -51,7 +51,7 @@ public class AggregationRequest {
     /**
      * The effectiveAt property.
      */
-    @JsonProperty(value = "effectiveAt")
+    @JsonProperty(value = "effectiveAt", required = true)
     private DateTime effectiveAt;
 
     /**

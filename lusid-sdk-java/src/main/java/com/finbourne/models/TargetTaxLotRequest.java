@@ -32,8 +32,8 @@ public class TargetTaxLotRequest {
     /**
      * Quantity of holding.
      */
-    @JsonProperty(value = "units")
-    private Double units;
+    @JsonProperty(value = "units", required = true)
+    private double units;
 
     /**
      * Book cost of holding in transaction currency.
@@ -70,7 +70,7 @@ public class TargetTaxLotRequest {
      *
      * @return the units value
      */
-    public Double units() {
+    public double units() {
         return this.units;
     }
 
@@ -80,7 +80,7 @@ public class TargetTaxLotRequest {
      * @param units the units value to set
      * @return the TargetTaxLotRequest object itself.
      */
-    public TargetTaxLotRequest withUnits(Double units) {
+    public TargetTaxLotRequest withUnits(double units) {
         this.units = units;
         return this;
     }

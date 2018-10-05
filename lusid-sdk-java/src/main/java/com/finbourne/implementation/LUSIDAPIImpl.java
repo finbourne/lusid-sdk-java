@@ -12989,7 +12989,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     private ServiceResponse<AddTransactionPropertyResponse> addTransactionPropertyDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
         return this.restClient().responseBuilderFactory().<AddTransactionPropertyResponse, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(201, new TypeToken<AddTransactionPropertyResponse>() { }.getType())
+                .register(200, new TypeToken<AddTransactionPropertyResponse>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }
