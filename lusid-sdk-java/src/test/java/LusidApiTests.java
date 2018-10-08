@@ -117,22 +117,6 @@ public class LusidApiTests {
                 .collect(Collectors.toList());
     }
 
-//    private <T> T assertResponseIsNotError(Class<T> clazz, Object response) {
-//
-//        if (response instanceof ErrorResponse) {
-//            ErrorResponse error = (ErrorResponse)response;
-//            fail(error.detailedMessage());
-//            return null;
-//        }
-//        else if (response.getClass().isAssignableFrom(clazz)) {
-//            return (T)response;
-//        }
-//        else {
-//            fail("unknown response: " + response.getClass().getName());
-//            return null;
-//        }
-//    }
-
     @Test
     public void create_portfolio() {
 
@@ -182,8 +166,8 @@ public class LusidApiTests {
         assertEquals(request.code(), portfolio.id().code());
 
         final String propertyValue = "Active";
-        final CreatePropertyRequest property = new CreatePropertyRequest().withValue(propertyValue);
-        final Map<String, CreatePropertyRequest> properties = Map.of(propertyDefinitionDto.key(), property);
+        final PropertyValue property = new PropertyValue().withLabelValue(propertyValue);
+        final Map<String, PropertyValue> properties = Map.of(propertyDefinitionDto.key(), property);
 
         //  add the property
         final PortfolioProperties  propertiesResult = this.client.upsertPortfolioProperties(scope, portfolio.id().code(), properties, effectiveDate);
@@ -228,7 +212,7 @@ public class LusidApiTests {
         String portfolioId = portfolio.id().code();
 
         //  create the property
-        CreatePerpetualPropertyRequest property = new CreatePerpetualPropertyRequest().withValue(propertyValue);
+        PerpetualPropertyValue property = new PerpetualPropertyValue().withLabelValue(propertyValue);
 
         //  create the trade
         TransactionRequest transaction = new TransactionRequest()
