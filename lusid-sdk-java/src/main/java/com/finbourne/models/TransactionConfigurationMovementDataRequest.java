@@ -54,7 +54,7 @@ public class TransactionConfigurationMovementDataRequest {
      * The properties property.
      */
     @JsonProperty(value = "properties")
-    private Map<String, CreatePropertyRequest> properties;
+    private Map<String, PropertyValue> properties;
 
     /**
      * The mappings property.
@@ -127,7 +127,7 @@ public class TransactionConfigurationMovementDataRequest {
      *
      * @return the properties value
      */
-    public Map<String, CreatePropertyRequest> properties() {
+    public Map<String, PropertyValue> properties() {
         return this.properties;
     }
 
@@ -137,7 +137,7 @@ public class TransactionConfigurationMovementDataRequest {
      * @param properties the properties value to set
      * @return the TransactionConfigurationMovementDataRequest object itself.
      */
-    public TransactionConfigurationMovementDataRequest withProperties(Map<String, CreatePropertyRequest> properties) {
+    public TransactionConfigurationMovementDataRequest withProperties(Map<String, PropertyValue> properties) {
         this.properties = properties;
         return this;
     }

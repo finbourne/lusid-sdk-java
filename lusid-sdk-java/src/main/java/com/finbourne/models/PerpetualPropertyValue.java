@@ -25,58 +25,58 @@ package com.finbourne.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The CreateInstrumentPropertyRequest model.
+ * The PerpetualPropertyValue model.
  */
-public class CreateInstrumentPropertyRequest {
+public class PerpetualPropertyValue {
     /**
-     * The instrumentPropertyKey property.
+     * The labelValue property.
      */
-    @JsonProperty(value = "instrumentPropertyKey")
-    private String instrumentPropertyKey;
+    @JsonProperty(value = "labelValue")
+    private String labelValue;
 
     /**
-     * The property property.
+     * The metricValue property.
      */
-    @JsonProperty(value = "property")
-    private PropertyValue property;
+    @JsonProperty(value = "metricValue")
+    private MetricValue metricValue;
 
     /**
-     * Get the instrumentPropertyKey value.
+     * Get the labelValue value.
      *
-     * @return the instrumentPropertyKey value
+     * @return the labelValue value
      */
-    public String instrumentPropertyKey() {
-        return this.instrumentPropertyKey;
+    public String labelValue() {
+        return this.labelValue;
     }
 
     /**
-     * Set the instrumentPropertyKey value.
+     * Set the labelValue value.
      *
-     * @param instrumentPropertyKey the instrumentPropertyKey value to set
-     * @return the CreateInstrumentPropertyRequest object itself.
+     * @param labelValue the labelValue value to set
+     * @return the PerpetualPropertyValue object itself.
      */
-    public CreateInstrumentPropertyRequest withInstrumentPropertyKey(String instrumentPropertyKey) {
-        this.instrumentPropertyKey = instrumentPropertyKey;
+    public PerpetualPropertyValue withLabelValue(String labelValue) {
+        this.labelValue = labelValue;
         return this;
     }
 
     /**
-     * Get the property value.
+     * Get the metricValue value.
      *
-     * @return the property value
+     * @return the metricValue value
      */
-    public PropertyValue property() {
-        return this.property;
+    public MetricValue metricValue() {
+        return this.metricValue;
     }
 
     /**
-     * Set the property value.
+     * Set the metricValue value.
      *
-     * @param property the property value to set
-     * @return the CreateInstrumentPropertyRequest object itself.
+     * @param metricValue the metricValue value to set
+     * @return the PerpetualPropertyValue object itself.
      */
-    public CreateInstrumentPropertyRequest withProperty(PropertyValue property) {
-        this.property = property;
+    public PerpetualPropertyValue withMetricValue(MetricValue metricValue) {
+        this.metricValue = metricValue;
         return this;
     }
 

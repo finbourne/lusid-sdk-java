@@ -84,7 +84,7 @@ public class CreateTransactionPortfolioRequest {
      * Portfolio properties to add to the portfolio.
      */
     @JsonProperty(value = "properties")
-    private Map<String, CreatePropertyRequest> properties;
+    private Map<String, PropertyValue> properties;
 
     /**
      * Get the displayName value.
@@ -251,7 +251,7 @@ public class CreateTransactionPortfolioRequest {
      *
      * @return the properties value
      */
-    public Map<String, CreatePropertyRequest> properties() {
+    public Map<String, PropertyValue> properties() {
         return this.properties;
     }
 
@@ -261,7 +261,7 @@ public class CreateTransactionPortfolioRequest {
      * @param properties the properties value to set
      * @return the CreateTransactionPortfolioRequest object itself.
      */
-    public CreateTransactionPortfolioRequest withProperties(Map<String, CreatePropertyRequest> properties) {
+    public CreateTransactionPortfolioRequest withProperties(Map<String, PropertyValue> properties) {
         this.properties = properties;
         return this;
     }

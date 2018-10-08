@@ -22,16 +22,15 @@
 
 package com.finbourne.models;
 
-import java.util.Map;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * This request specifies target holdings. i.e. holding data that the
+ * This 'dto' contains target holdings. i.e. holding data that the
  * system should match. When processed by the movement
  * engine, it will create 'true-up' adjustments on the fly.
  */
-public class AdjustHoldingRequest {
+public class HoldingAdjustment {
     /**
      * Unique instrument identifier.
      */
@@ -42,19 +41,19 @@ public class AdjustHoldingRequest {
      * Key fields to uniquely index the sub holdings of a instrument.
      */
     @JsonProperty(value = "subHoldingKeys")
-    private Map<String, PerpetualPropertyValue> subHoldingKeys;
+    private List<PerpetualProperty> subHoldingKeys;
 
     /**
      * Arbitrary properties to store with the holding.
      */
     @JsonProperty(value = "properties")
-    private Map<String, PerpetualPropertyValue> properties;
+    private List<PerpetualProperty> properties;
 
     /**
      * 1 or more quantity amounts.
      */
     @JsonProperty(value = "taxLots", required = true)
-    private List<TargetTaxLotRequest> taxLots;
+    private List<TargetTaxLot> taxLots;
 
     /**
      * Get unique instrument identifier.
@@ -69,9 +68,9 @@ public class AdjustHoldingRequest {
      * Set unique instrument identifier.
      *
      * @param instrumentUid the instrumentUid value to set
-     * @return the AdjustHoldingRequest object itself.
+     * @return the HoldingAdjustment object itself.
      */
-    public AdjustHoldingRequest withInstrumentUid(String instrumentUid) {
+    public HoldingAdjustment withInstrumentUid(String instrumentUid) {
         this.instrumentUid = instrumentUid;
         return this;
     }
@@ -81,7 +80,7 @@ public class AdjustHoldingRequest {
      *
      * @return the subHoldingKeys value
      */
-    public Map<String, PerpetualPropertyValue> subHoldingKeys() {
+    public List<PerpetualProperty> subHoldingKeys() {
         return this.subHoldingKeys;
     }
 
@@ -89,9 +88,9 @@ public class AdjustHoldingRequest {
      * Set key fields to uniquely index the sub holdings of a instrument.
      *
      * @param subHoldingKeys the subHoldingKeys value to set
-     * @return the AdjustHoldingRequest object itself.
+     * @return the HoldingAdjustment object itself.
      */
-    public AdjustHoldingRequest withSubHoldingKeys(Map<String, PerpetualPropertyValue> subHoldingKeys) {
+    public HoldingAdjustment withSubHoldingKeys(List<PerpetualProperty> subHoldingKeys) {
         this.subHoldingKeys = subHoldingKeys;
         return this;
     }
@@ -101,7 +100,7 @@ public class AdjustHoldingRequest {
      *
      * @return the properties value
      */
-    public Map<String, PerpetualPropertyValue> properties() {
+    public List<PerpetualProperty> properties() {
         return this.properties;
     }
 
@@ -109,9 +108,9 @@ public class AdjustHoldingRequest {
      * Set arbitrary properties to store with the holding.
      *
      * @param properties the properties value to set
-     * @return the AdjustHoldingRequest object itself.
+     * @return the HoldingAdjustment object itself.
      */
-    public AdjustHoldingRequest withProperties(Map<String, PerpetualPropertyValue> properties) {
+    public HoldingAdjustment withProperties(List<PerpetualProperty> properties) {
         this.properties = properties;
         return this;
     }
@@ -121,7 +120,7 @@ public class AdjustHoldingRequest {
      *
      * @return the taxLots value
      */
-    public List<TargetTaxLotRequest> taxLots() {
+    public List<TargetTaxLot> taxLots() {
         return this.taxLots;
     }
 
@@ -129,9 +128,9 @@ public class AdjustHoldingRequest {
      * Set 1 or more quantity amounts.
      *
      * @param taxLots the taxLots value to set
-     * @return the AdjustHoldingRequest object itself.
+     * @return the HoldingAdjustment object itself.
      */
-    public AdjustHoldingRequest withTaxLots(List<TargetTaxLotRequest> taxLots) {
+    public HoldingAdjustment withTaxLots(List<TargetTaxLot> taxLots) {
         this.taxLots = taxLots;
         return this;
     }

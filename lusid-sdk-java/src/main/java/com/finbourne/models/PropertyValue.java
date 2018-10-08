@@ -26,14 +26,20 @@ import org.joda.time.DateTime;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The CreatePropertyRequest model.
+ * The PropertyValue model.
  */
-public class CreatePropertyRequest {
+public class PropertyValue {
     /**
-     * The value property.
+     * The labelValue property.
      */
-    @JsonProperty(value = "value", required = true)
-    private Object value;
+    @JsonProperty(value = "labelValue")
+    private String labelValue;
+
+    /**
+     * The metricValue property.
+     */
+    @JsonProperty(value = "metricValue")
+    private MetricValue metricValue;
 
     /**
      * Date for which the property is effective from.
@@ -42,28 +48,42 @@ public class CreatePropertyRequest {
     private DateTime effectiveFrom;
 
     /**
-     * The unit property.
-     */
-    @JsonProperty(value = "unit")
-    private String unit;
-
-    /**
-     * Get the value value.
+     * Get the labelValue value.
      *
-     * @return the value value
+     * @return the labelValue value
      */
-    public Object value() {
-        return this.value;
+    public String labelValue() {
+        return this.labelValue;
     }
 
     /**
-     * Set the value value.
+     * Set the labelValue value.
      *
-     * @param value the value value to set
-     * @return the CreatePropertyRequest object itself.
+     * @param labelValue the labelValue value to set
+     * @return the PropertyValue object itself.
      */
-    public CreatePropertyRequest withValue(Object value) {
-        this.value = value;
+    public PropertyValue withLabelValue(String labelValue) {
+        this.labelValue = labelValue;
+        return this;
+    }
+
+    /**
+     * Get the metricValue value.
+     *
+     * @return the metricValue value
+     */
+    public MetricValue metricValue() {
+        return this.metricValue;
+    }
+
+    /**
+     * Set the metricValue value.
+     *
+     * @param metricValue the metricValue value to set
+     * @return the PropertyValue object itself.
+     */
+    public PropertyValue withMetricValue(MetricValue metricValue) {
+        this.metricValue = metricValue;
         return this;
     }
 
@@ -80,30 +100,10 @@ public class CreatePropertyRequest {
      * Set date for which the property is effective from.
      *
      * @param effectiveFrom the effectiveFrom value to set
-     * @return the CreatePropertyRequest object itself.
+     * @return the PropertyValue object itself.
      */
-    public CreatePropertyRequest withEffectiveFrom(DateTime effectiveFrom) {
+    public PropertyValue withEffectiveFrom(DateTime effectiveFrom) {
         this.effectiveFrom = effectiveFrom;
-        return this;
-    }
-
-    /**
-     * Get the unit value.
-     *
-     * @return the unit value
-     */
-    public String unit() {
-        return this.unit;
-    }
-
-    /**
-     * Set the unit value.
-     *
-     * @param unit the unit value to set
-     * @return the CreatePropertyRequest object itself.
-     */
-    public CreatePropertyRequest withUnit(String unit) {
-        this.unit = unit;
         return this;
     }
 

@@ -65,7 +65,7 @@ public class DataType {
      * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds',
      * 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements',
      * 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice',
-     * 'UnitCreation', 'Currency', 'UserId'.
+     * 'UnitCreation', 'Currency', 'UserId', 'MetricValue'.
      */
     @JsonProperty(value = "valueType")
     private String valueType;
@@ -195,7 +195,7 @@ public class DataType {
     }
 
     /**
-     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId'.
+     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId', 'MetricValue'.
      *
      * @return the valueType value
      */
@@ -204,7 +204,7 @@ public class DataType {
     }
 
     /**
-     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId'.
+     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId', 'MetricValue'.
      *
      * @param valueType the valueType value to set
      * @return the DataType object itself.

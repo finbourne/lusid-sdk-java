@@ -94,7 +94,7 @@ public class TransactionRequest {
      * The properties property.
      */
     @JsonProperty(value = "properties")
-    private Map<String, CreatePerpetualPropertyRequest> properties;
+    private Map<String, PerpetualPropertyValue> properties;
 
     /**
      * Counterparty identifier.
@@ -320,7 +320,7 @@ public class TransactionRequest {
      *
      * @return the properties value
      */
-    public Map<String, CreatePerpetualPropertyRequest> properties() {
+    public Map<String, PerpetualPropertyValue> properties() {
         return this.properties;
     }
 
@@ -330,7 +330,7 @@ public class TransactionRequest {
      * @param properties the properties value to set
      * @return the TransactionRequest object itself.
      */
-    public TransactionRequest withProperties(Map<String, CreatePerpetualPropertyRequest> properties) {
+    public TransactionRequest withProperties(Map<String, PerpetualPropertyValue> properties) {
         this.properties = properties;
         return this;
     }

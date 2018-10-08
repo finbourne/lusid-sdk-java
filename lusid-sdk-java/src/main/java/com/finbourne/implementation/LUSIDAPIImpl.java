@@ -37,11 +37,9 @@ import com.finbourne.models.CreateClientInstrumentRequest;
 import com.finbourne.models.CreateCorporateAction;
 import com.finbourne.models.CreateDataTypeRequest;
 import com.finbourne.models.CreateDerivedTransactionPortfolioRequest;
-import com.finbourne.models.CreatePerpetualPropertyRequest;
 import com.finbourne.models.CreatePortfolioDetails;
 import com.finbourne.models.CreatePortfolioGroupRequest;
 import com.finbourne.models.CreatePropertyDefinitionRequest;
-import com.finbourne.models.CreatePropertyRequest;
 import com.finbourne.models.CreateReferencePortfolioRequest;
 import com.finbourne.models.CreateResults;
 import com.finbourne.models.CreateTransactionPortfolioRequest;
@@ -58,6 +56,7 @@ import com.finbourne.models.IUnitDefinition;
 import com.finbourne.models.ListAggregationResponse;
 import com.finbourne.models.LookupInstrumentsFromCodesResponse;
 import com.finbourne.models.NestedAggregationResponse;
+import com.finbourne.models.PerpetualPropertyValue;
 import com.finbourne.models.Personalisation;
 import com.finbourne.models.Portfolio;
 import com.finbourne.models.PortfolioDetails;
@@ -65,6 +64,7 @@ import com.finbourne.models.PortfolioGroup;
 import com.finbourne.models.PortfolioProperties;
 import com.finbourne.models.PropertyDefinition;
 import com.finbourne.models.PropertySchema;
+import com.finbourne.models.PropertyValue;
 import com.finbourne.models.ReconciliationRequest;
 import com.finbourne.models.ReferencePortfolioConstituentRequest;
 import com.finbourne.models.ResourceId;
@@ -385,7 +385,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI upsertPortfolioProperties" })
         @POST("api/portfolios/{scope}/{code}/properties")
-        Observable<Response<ResponseBody>> upsertPortfolioProperties(@Path("scope") String scope, @Path("code") String code, @Body Map<String, CreatePropertyRequest> portfolioProperties, @Query("effectiveAt") DateTime effectiveAt);
+        Observable<Response<ResponseBody>> upsertPortfolioProperties(@Path("scope") String scope, @Path("code") String code, @Body Map<String, PropertyValue> portfolioProperties, @Query("effectiveAt") DateTime effectiveAt);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI deletePortfolioProperties" })
         @HTTP(path = "api/portfolios/{scope}/{code}/properties", method = "DELETE", hasBody = true)
@@ -400,16 +400,16 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         Observable<Response<ResponseBody>> createPropertyDefinition(@Body CreatePropertyDefinitionRequest definition);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getPropertyDefinition" })
-        @GET("api/propertydefinitions/{domain}/{scope}/{name}")
-        Observable<Response<ResponseBody>> getPropertyDefinition(@Path("domain") String domain, @Path("scope") String scope, @Path("name") String name, @Query("asAt") DateTime asAt);
+        @GET("api/propertydefinitions/{domain}/{scope}/{code}")
+        Observable<Response<ResponseBody>> getPropertyDefinition(@Path("domain") String domain, @Path("scope") String scope, @Path("code") String code, @Query("asAt") DateTime asAt);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI updatePropertyDefinition" })
-        @PUT("api/propertydefinitions/{domain}/{scope}/{name}")
-        Observable<Response<ResponseBody>> updatePropertyDefinition(@Path("domain") String domain, @Path("scope") String scope, @Path("name") String name, @Body UpdatePropertyDefinitionRequest definition);
+        @PUT("api/propertydefinitions/{domain}/{scope}/{code}")
+        Observable<Response<ResponseBody>> updatePropertyDefinition(@Path("domain") String domain, @Path("scope") String scope, @Path("code") String code, @Body UpdatePropertyDefinitionRequest definition);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI deletePropertyDefinition" })
-        @HTTP(path = "api/propertydefinitions/{domain}/{scope}/{name}", method = "DELETE", hasBody = true)
-        Observable<Response<ResponseBody>> deletePropertyDefinition(@Path("domain") String domain, @Path("scope") String scope, @Path("name") String name);
+        @HTTP(path = "api/propertydefinitions/{domain}/{scope}/{code}", method = "DELETE", hasBody = true)
+        Observable<Response<ResponseBody>> deletePropertyDefinition(@Path("domain") String domain, @Path("scope") String scope, @Path("code") String code);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI performReconciliation" })
         @POST("api/recon")
@@ -529,7 +529,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI addTransactionProperty" })
         @POST("api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/properties")
-        Observable<Response<ResponseBody>> addTransactionProperty(@Path("scope") String scope, @Path("code") String code, @Path("transactionId") String transactionId, @Body Map<String, CreatePerpetualPropertyRequest> transactionProperties);
+        Observable<Response<ResponseBody>> addTransactionProperty(@Path("scope") String scope, @Path("code") String code, @Path("transactionId") String transactionId, @Body Map<String, PerpetualPropertyValue> transactionProperties);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI deletePropertyFromTransaction" })
         @HTTP(path = "api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/properties", method = "DELETE", hasBody = true)
@@ -7376,7 +7376,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         if (code == null) {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
-        final Map<String, CreatePropertyRequest> portfolioProperties = null;
+        final Map<String, PropertyValue> portfolioProperties = null;
         final DateTime effectiveAt = null;
         return service.upsertPortfolioProperties(scope, code, portfolioProperties, effectiveAt)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<PortfolioProperties>>>() {
@@ -7398,14 +7398,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param portfolioProperties the Map&lt;String, CreatePropertyRequest&gt; value
+     * @param portfolioProperties the Map&lt;String, PropertyValue&gt; value
      * @param effectiveAt The effective date for the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the PortfolioProperties object if successful.
      */
-    public PortfolioProperties upsertPortfolioProperties(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt) {
+    public PortfolioProperties upsertPortfolioProperties(String scope, String code, Map<String, PropertyValue> portfolioProperties, DateTime effectiveAt) {
         return upsertPortfolioPropertiesWithServiceResponseAsync(scope, code, portfolioProperties, effectiveAt).toBlocking().single().body();
     }
 
@@ -7415,13 +7415,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param portfolioProperties the Map&lt;String, CreatePropertyRequest&gt; value
+     * @param portfolioProperties the Map&lt;String, PropertyValue&gt; value
      * @param effectiveAt The effective date for the change
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<PortfolioProperties> upsertPortfolioPropertiesAsync(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt, final ServiceCallback<PortfolioProperties> serviceCallback) {
+    public ServiceFuture<PortfolioProperties> upsertPortfolioPropertiesAsync(String scope, String code, Map<String, PropertyValue> portfolioProperties, DateTime effectiveAt, final ServiceCallback<PortfolioProperties> serviceCallback) {
         return ServiceFuture.fromResponse(upsertPortfolioPropertiesWithServiceResponseAsync(scope, code, portfolioProperties, effectiveAt), serviceCallback);
     }
 
@@ -7431,12 +7431,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param portfolioProperties the Map&lt;String, CreatePropertyRequest&gt; value
+     * @param portfolioProperties the Map&lt;String, PropertyValue&gt; value
      * @param effectiveAt The effective date for the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioProperties object
      */
-    public Observable<PortfolioProperties> upsertPortfolioPropertiesAsync(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt) {
+    public Observable<PortfolioProperties> upsertPortfolioPropertiesAsync(String scope, String code, Map<String, PropertyValue> portfolioProperties, DateTime effectiveAt) {
         return upsertPortfolioPropertiesWithServiceResponseAsync(scope, code, portfolioProperties, effectiveAt).map(new Func1<ServiceResponse<PortfolioProperties>, PortfolioProperties>() {
             @Override
             public PortfolioProperties call(ServiceResponse<PortfolioProperties> response) {
@@ -7451,12 +7451,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param portfolioProperties the Map&lt;String, CreatePropertyRequest&gt; value
+     * @param portfolioProperties the Map&lt;String, PropertyValue&gt; value
      * @param effectiveAt The effective date for the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioProperties object
      */
-    public Observable<ServiceResponse<PortfolioProperties>> upsertPortfolioPropertiesWithServiceResponseAsync(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt) {
+    public Observable<ServiceResponse<PortfolioProperties>> upsertPortfolioPropertiesWithServiceResponseAsync(String scope, String code, Map<String, PropertyValue> portfolioProperties, DateTime effectiveAt) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -7954,14 +7954,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the PropertyDefinition object if successful.
      */
-    public PropertyDefinition getPropertyDefinition(String domain, String scope, String name) {
-        return getPropertyDefinitionWithServiceResponseAsync(domain, scope, name).toBlocking().single().body();
+    public PropertyDefinition getPropertyDefinition(String domain, String scope, String code) {
+        return getPropertyDefinitionWithServiceResponseAsync(domain, scope, code).toBlocking().single().body();
     }
 
     /**
@@ -7969,13 +7969,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String name, final ServiceCallback<PropertyDefinition> serviceCallback) {
-        return ServiceFuture.fromResponse(getPropertyDefinitionWithServiceResponseAsync(domain, scope, name), serviceCallback);
+    public ServiceFuture<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String code, final ServiceCallback<PropertyDefinition> serviceCallback) {
+        return ServiceFuture.fromResponse(getPropertyDefinitionWithServiceResponseAsync(domain, scope, code), serviceCallback);
     }
 
     /**
@@ -7983,12 +7983,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
      */
-    public Observable<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String name) {
-        return getPropertyDefinitionWithServiceResponseAsync(domain, scope, name).map(new Func1<ServiceResponse<PropertyDefinition>, PropertyDefinition>() {
+    public Observable<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String code) {
+        return getPropertyDefinitionWithServiceResponseAsync(domain, scope, code).map(new Func1<ServiceResponse<PropertyDefinition>, PropertyDefinition>() {
             @Override
             public PropertyDefinition call(ServiceResponse<PropertyDefinition> response) {
                 return response.body();
@@ -8001,22 +8001,22 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
      */
-    public Observable<ServiceResponse<PropertyDefinition>> getPropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name) {
+    public Observable<ServiceResponse<PropertyDefinition>> getPropertyDefinitionWithServiceResponseAsync(String domain, String scope, String code) {
         if (domain == null) {
             throw new IllegalArgumentException("Parameter domain is required and cannot be null.");
         }
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
-        if (name == null) {
-            throw new IllegalArgumentException("Parameter name is required and cannot be null.");
+        if (code == null) {
+            throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
         final DateTime asAt = null;
-        return service.getPropertyDefinition(domain, scope, name, asAt)
+        return service.getPropertyDefinition(domain, scope, code, asAt)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<PropertyDefinition>>>() {
                 @Override
                 public Observable<ServiceResponse<PropertyDefinition>> call(Response<ResponseBody> response) {
@@ -8035,15 +8035,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the PropertyDefinition object if successful.
      */
-    public PropertyDefinition getPropertyDefinition(String domain, String scope, String name, DateTime asAt) {
-        return getPropertyDefinitionWithServiceResponseAsync(domain, scope, name, asAt).toBlocking().single().body();
+    public PropertyDefinition getPropertyDefinition(String domain, String scope, String code, DateTime asAt) {
+        return getPropertyDefinitionWithServiceResponseAsync(domain, scope, code, asAt).toBlocking().single().body();
     }
 
     /**
@@ -8051,14 +8051,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param asAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String name, DateTime asAt, final ServiceCallback<PropertyDefinition> serviceCallback) {
-        return ServiceFuture.fromResponse(getPropertyDefinitionWithServiceResponseAsync(domain, scope, name, asAt), serviceCallback);
+    public ServiceFuture<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String code, DateTime asAt, final ServiceCallback<PropertyDefinition> serviceCallback) {
+        return ServiceFuture.fromResponse(getPropertyDefinitionWithServiceResponseAsync(domain, scope, code, asAt), serviceCallback);
     }
 
     /**
@@ -8066,13 +8066,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
      */
-    public Observable<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String name, DateTime asAt) {
-        return getPropertyDefinitionWithServiceResponseAsync(domain, scope, name, asAt).map(new Func1<ServiceResponse<PropertyDefinition>, PropertyDefinition>() {
+    public Observable<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String code, DateTime asAt) {
+        return getPropertyDefinitionWithServiceResponseAsync(domain, scope, code, asAt).map(new Func1<ServiceResponse<PropertyDefinition>, PropertyDefinition>() {
             @Override
             public PropertyDefinition call(ServiceResponse<PropertyDefinition> response) {
                 return response.body();
@@ -8085,22 +8085,22 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
      */
-    public Observable<ServiceResponse<PropertyDefinition>> getPropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name, DateTime asAt) {
+    public Observable<ServiceResponse<PropertyDefinition>> getPropertyDefinitionWithServiceResponseAsync(String domain, String scope, String code, DateTime asAt) {
         if (domain == null) {
             throw new IllegalArgumentException("Parameter domain is required and cannot be null.");
         }
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
-        if (name == null) {
-            throw new IllegalArgumentException("Parameter name is required and cannot be null.");
+        if (code == null) {
+            throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
-        return service.getPropertyDefinition(domain, scope, name, asAt)
+        return service.getPropertyDefinition(domain, scope, code, asAt)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<PropertyDefinition>>>() {
                 @Override
                 public Observable<ServiceResponse<PropertyDefinition>> call(Response<ResponseBody> response) {
@@ -8126,14 +8126,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the PropertyDefinition object if successful.
      */
-    public PropertyDefinition updatePropertyDefinition(String domain, String scope, String name) {
-        return updatePropertyDefinitionWithServiceResponseAsync(domain, scope, name).toBlocking().single().body();
+    public PropertyDefinition updatePropertyDefinition(String domain, String scope, String code) {
+        return updatePropertyDefinitionWithServiceResponseAsync(domain, scope, code).toBlocking().single().body();
     }
 
     /**
@@ -8141,13 +8141,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String name, final ServiceCallback<PropertyDefinition> serviceCallback) {
-        return ServiceFuture.fromResponse(updatePropertyDefinitionWithServiceResponseAsync(domain, scope, name), serviceCallback);
+    public ServiceFuture<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String code, final ServiceCallback<PropertyDefinition> serviceCallback) {
+        return ServiceFuture.fromResponse(updatePropertyDefinitionWithServiceResponseAsync(domain, scope, code), serviceCallback);
     }
 
     /**
@@ -8155,12 +8155,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
      */
-    public Observable<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String name) {
-        return updatePropertyDefinitionWithServiceResponseAsync(domain, scope, name).map(new Func1<ServiceResponse<PropertyDefinition>, PropertyDefinition>() {
+    public Observable<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String code) {
+        return updatePropertyDefinitionWithServiceResponseAsync(domain, scope, code).map(new Func1<ServiceResponse<PropertyDefinition>, PropertyDefinition>() {
             @Override
             public PropertyDefinition call(ServiceResponse<PropertyDefinition> response) {
                 return response.body();
@@ -8173,22 +8173,22 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
      */
-    public Observable<ServiceResponse<PropertyDefinition>> updatePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name) {
+    public Observable<ServiceResponse<PropertyDefinition>> updatePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String code) {
         if (domain == null) {
             throw new IllegalArgumentException("Parameter domain is required and cannot be null.");
         }
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
-        if (name == null) {
-            throw new IllegalArgumentException("Parameter name is required and cannot be null.");
+        if (code == null) {
+            throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
         final UpdatePropertyDefinitionRequest definition = null;
-        return service.updatePropertyDefinition(domain, scope, name, definition)
+        return service.updatePropertyDefinition(domain, scope, code, definition)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<PropertyDefinition>>>() {
                 @Override
                 public Observable<ServiceResponse<PropertyDefinition>> call(Response<ResponseBody> response) {
@@ -8207,15 +8207,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param definition the UpdatePropertyDefinitionRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the PropertyDefinition object if successful.
      */
-    public PropertyDefinition updatePropertyDefinition(String domain, String scope, String name, UpdatePropertyDefinitionRequest definition) {
-        return updatePropertyDefinitionWithServiceResponseAsync(domain, scope, name, definition).toBlocking().single().body();
+    public PropertyDefinition updatePropertyDefinition(String domain, String scope, String code, UpdatePropertyDefinitionRequest definition) {
+        return updatePropertyDefinitionWithServiceResponseAsync(domain, scope, code, definition).toBlocking().single().body();
     }
 
     /**
@@ -8223,14 +8223,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param definition the UpdatePropertyDefinitionRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String name, UpdatePropertyDefinitionRequest definition, final ServiceCallback<PropertyDefinition> serviceCallback) {
-        return ServiceFuture.fromResponse(updatePropertyDefinitionWithServiceResponseAsync(domain, scope, name, definition), serviceCallback);
+    public ServiceFuture<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String code, UpdatePropertyDefinitionRequest definition, final ServiceCallback<PropertyDefinition> serviceCallback) {
+        return ServiceFuture.fromResponse(updatePropertyDefinitionWithServiceResponseAsync(domain, scope, code, definition), serviceCallback);
     }
 
     /**
@@ -8238,13 +8238,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param definition the UpdatePropertyDefinitionRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
      */
-    public Observable<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String name, UpdatePropertyDefinitionRequest definition) {
-        return updatePropertyDefinitionWithServiceResponseAsync(domain, scope, name, definition).map(new Func1<ServiceResponse<PropertyDefinition>, PropertyDefinition>() {
+    public Observable<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String code, UpdatePropertyDefinitionRequest definition) {
+        return updatePropertyDefinitionWithServiceResponseAsync(domain, scope, code, definition).map(new Func1<ServiceResponse<PropertyDefinition>, PropertyDefinition>() {
             @Override
             public PropertyDefinition call(ServiceResponse<PropertyDefinition> response) {
                 return response.body();
@@ -8257,23 +8257,23 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param definition the UpdatePropertyDefinitionRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
      */
-    public Observable<ServiceResponse<PropertyDefinition>> updatePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name, UpdatePropertyDefinitionRequest definition) {
+    public Observable<ServiceResponse<PropertyDefinition>> updatePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String code, UpdatePropertyDefinitionRequest definition) {
         if (domain == null) {
             throw new IllegalArgumentException("Parameter domain is required and cannot be null.");
         }
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
-        if (name == null) {
-            throw new IllegalArgumentException("Parameter name is required and cannot be null.");
+        if (code == null) {
+            throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
         Validator.validate(definition);
-        return service.updatePropertyDefinition(domain, scope, name, definition)
+        return service.updatePropertyDefinition(domain, scope, code, definition)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<PropertyDefinition>>>() {
                 @Override
                 public Observable<ServiceResponse<PropertyDefinition>> call(Response<ResponseBody> response) {
@@ -8299,14 +8299,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the DeletedEntityResponse object if successful.
      */
-    public DeletedEntityResponse deletePropertyDefinition(String domain, String scope, String name) {
-        return deletePropertyDefinitionWithServiceResponseAsync(domain, scope, name).toBlocking().single().body();
+    public DeletedEntityResponse deletePropertyDefinition(String domain, String scope, String code) {
+        return deletePropertyDefinitionWithServiceResponseAsync(domain, scope, code).toBlocking().single().body();
     }
 
     /**
@@ -8314,13 +8314,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<DeletedEntityResponse> deletePropertyDefinitionAsync(String domain, String scope, String name, final ServiceCallback<DeletedEntityResponse> serviceCallback) {
-        return ServiceFuture.fromResponse(deletePropertyDefinitionWithServiceResponseAsync(domain, scope, name), serviceCallback);
+    public ServiceFuture<DeletedEntityResponse> deletePropertyDefinitionAsync(String domain, String scope, String code, final ServiceCallback<DeletedEntityResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(deletePropertyDefinitionWithServiceResponseAsync(domain, scope, code), serviceCallback);
     }
 
     /**
@@ -8328,12 +8328,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
-    public Observable<DeletedEntityResponse> deletePropertyDefinitionAsync(String domain, String scope, String name) {
-        return deletePropertyDefinitionWithServiceResponseAsync(domain, scope, name).map(new Func1<ServiceResponse<DeletedEntityResponse>, DeletedEntityResponse>() {
+    public Observable<DeletedEntityResponse> deletePropertyDefinitionAsync(String domain, String scope, String code) {
+        return deletePropertyDefinitionWithServiceResponseAsync(domain, scope, code).map(new Func1<ServiceResponse<DeletedEntityResponse>, DeletedEntityResponse>() {
             @Override
             public DeletedEntityResponse call(ServiceResponse<DeletedEntityResponse> response) {
                 return response.body();
@@ -8346,21 +8346,21 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
-    public Observable<ServiceResponse<DeletedEntityResponse>> deletePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name) {
+    public Observable<ServiceResponse<DeletedEntityResponse>> deletePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String code) {
         if (domain == null) {
             throw new IllegalArgumentException("Parameter domain is required and cannot be null.");
         }
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
-        if (name == null) {
-            throw new IllegalArgumentException("Parameter name is required and cannot be null.");
+        if (code == null) {
+            throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
-        return service.deletePropertyDefinition(domain, scope, name)
+        return service.deletePropertyDefinition(domain, scope, code)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<DeletedEntityResponse>>>() {
                 @Override
                 public Observable<ServiceResponse<DeletedEntityResponse>> call(Response<ResponseBody> response) {
@@ -12883,7 +12883,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         if (transactionId == null) {
             throw new IllegalArgumentException("Parameter transactionId is required and cannot be null.");
         }
-        final Map<String, CreatePerpetualPropertyRequest> transactionProperties = null;
+        final Map<String, PerpetualPropertyValue> transactionProperties = null;
         return service.addTransactionProperty(scope, code, transactionId, transactionProperties)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<AddTransactionPropertyResponse>>>() {
                 @Override
@@ -12911,7 +12911,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the AddTransactionPropertyResponse object if successful.
      */
-    public AddTransactionPropertyResponse addTransactionProperty(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties) {
+    public AddTransactionPropertyResponse addTransactionProperty(String scope, String code, String transactionId, Map<String, PerpetualPropertyValue> transactionProperties) {
         return addTransactionPropertyWithServiceResponseAsync(scope, code, transactionId, transactionProperties).toBlocking().single().body();
     }
 
@@ -12927,7 +12927,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<AddTransactionPropertyResponse> addTransactionPropertyAsync(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties, final ServiceCallback<AddTransactionPropertyResponse> serviceCallback) {
+    public ServiceFuture<AddTransactionPropertyResponse> addTransactionPropertyAsync(String scope, String code, String transactionId, Map<String, PerpetualPropertyValue> transactionProperties, final ServiceCallback<AddTransactionPropertyResponse> serviceCallback) {
         return ServiceFuture.fromResponse(addTransactionPropertyWithServiceResponseAsync(scope, code, transactionId, transactionProperties), serviceCallback);
     }
 
@@ -12942,7 +12942,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AddTransactionPropertyResponse object
      */
-    public Observable<AddTransactionPropertyResponse> addTransactionPropertyAsync(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties) {
+    public Observable<AddTransactionPropertyResponse> addTransactionPropertyAsync(String scope, String code, String transactionId, Map<String, PerpetualPropertyValue> transactionProperties) {
         return addTransactionPropertyWithServiceResponseAsync(scope, code, transactionId, transactionProperties).map(new Func1<ServiceResponse<AddTransactionPropertyResponse>, AddTransactionPropertyResponse>() {
             @Override
             public AddTransactionPropertyResponse call(ServiceResponse<AddTransactionPropertyResponse> response) {
@@ -12962,7 +12962,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AddTransactionPropertyResponse object
      */
-    public Observable<ServiceResponse<AddTransactionPropertyResponse>> addTransactionPropertyWithServiceResponseAsync(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties) {
+    public Observable<ServiceResponse<AddTransactionPropertyResponse>> addTransactionPropertyWithServiceResponseAsync(String scope, String code, String transactionId, Map<String, PerpetualPropertyValue> transactionProperties) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }

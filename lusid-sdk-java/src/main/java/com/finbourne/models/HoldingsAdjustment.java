@@ -54,7 +54,7 @@ public class HoldingsAdjustment {
      * The adjustments property.
      */
     @JsonProperty(value = "adjustments")
-    private List<AdjustHoldingRequest> adjustments;
+    private List<HoldingAdjustment> adjustments;
 
     /**
      * The links property.
@@ -129,7 +129,7 @@ public class HoldingsAdjustment {
      *
      * @return the adjustments value
      */
-    public List<AdjustHoldingRequest> adjustments() {
+    public List<HoldingAdjustment> adjustments() {
         return this.adjustments;
     }
 
@@ -139,7 +139,7 @@ public class HoldingsAdjustment {
      * @param adjustments the adjustments value to set
      * @return the HoldingsAdjustment object itself.
      */
-    public HoldingsAdjustment withAdjustments(List<AdjustHoldingRequest> adjustments) {
+    public HoldingsAdjustment withAdjustments(List<HoldingAdjustment> adjustments) {
         this.adjustments = adjustments;
         return this;
     }

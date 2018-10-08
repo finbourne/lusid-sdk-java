@@ -32,11 +32,9 @@ import com.finbourne.models.CreateClientInstrumentRequest;
 import com.finbourne.models.CreateCorporateAction;
 import com.finbourne.models.CreateDataTypeRequest;
 import com.finbourne.models.CreateDerivedTransactionPortfolioRequest;
-import com.finbourne.models.CreatePerpetualPropertyRequest;
 import com.finbourne.models.CreatePortfolioDetails;
 import com.finbourne.models.CreatePortfolioGroupRequest;
 import com.finbourne.models.CreatePropertyDefinitionRequest;
-import com.finbourne.models.CreatePropertyRequest;
 import com.finbourne.models.CreateReferencePortfolioRequest;
 import com.finbourne.models.CreateResults;
 import com.finbourne.models.CreateTransactionPortfolioRequest;
@@ -53,6 +51,7 @@ import com.finbourne.models.IUnitDefinition;
 import com.finbourne.models.ListAggregationResponse;
 import com.finbourne.models.LookupInstrumentsFromCodesResponse;
 import com.finbourne.models.NestedAggregationResponse;
+import com.finbourne.models.PerpetualPropertyValue;
 import com.finbourne.models.Personalisation;
 import com.finbourne.models.Portfolio;
 import com.finbourne.models.PortfolioDetails;
@@ -60,6 +59,7 @@ import com.finbourne.models.PortfolioGroup;
 import com.finbourne.models.PortfolioProperties;
 import com.finbourne.models.PropertyDefinition;
 import com.finbourne.models.PropertySchema;
+import com.finbourne.models.PropertyValue;
 import com.finbourne.models.ReconciliationRequest;
 import com.finbourne.models.ReferencePortfolioConstituentRequest;
 import com.finbourne.models.ResourceId;
@@ -4065,14 +4065,14 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param portfolioProperties the Map&lt;String, CreatePropertyRequest&gt; value
+     * @param portfolioProperties the Map&lt;String, PropertyValue&gt; value
      * @param effectiveAt The effective date for the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the PortfolioProperties object if successful.
      */
-    PortfolioProperties upsertPortfolioProperties(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt);
+    PortfolioProperties upsertPortfolioProperties(String scope, String code, Map<String, PropertyValue> portfolioProperties, DateTime effectiveAt);
 
     /**
      * Update properties.
@@ -4080,13 +4080,13 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param portfolioProperties the Map&lt;String, CreatePropertyRequest&gt; value
+     * @param portfolioProperties the Map&lt;String, PropertyValue&gt; value
      * @param effectiveAt The effective date for the change
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PortfolioProperties> upsertPortfolioPropertiesAsync(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt, final ServiceCallback<PortfolioProperties> serviceCallback);
+    ServiceFuture<PortfolioProperties> upsertPortfolioPropertiesAsync(String scope, String code, Map<String, PropertyValue> portfolioProperties, DateTime effectiveAt, final ServiceCallback<PortfolioProperties> serviceCallback);
 
     /**
      * Update properties.
@@ -4094,12 +4094,12 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param portfolioProperties the Map&lt;String, CreatePropertyRequest&gt; value
+     * @param portfolioProperties the Map&lt;String, PropertyValue&gt; value
      * @param effectiveAt The effective date for the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioProperties object
      */
-    Observable<PortfolioProperties> upsertPortfolioPropertiesAsync(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt);
+    Observable<PortfolioProperties> upsertPortfolioPropertiesAsync(String scope, String code, Map<String, PropertyValue> portfolioProperties, DateTime effectiveAt);
 
     /**
      * Update properties.
@@ -4107,12 +4107,12 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
-     * @param portfolioProperties the Map&lt;String, CreatePropertyRequest&gt; value
+     * @param portfolioProperties the Map&lt;String, PropertyValue&gt; value
      * @param effectiveAt The effective date for the change
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioProperties object
      */
-    Observable<ServiceResponse<PortfolioProperties>> upsertPortfolioPropertiesWithServiceResponseAsync(String scope, String code, Map<String, CreatePropertyRequest> portfolioProperties, DateTime effectiveAt);
+    Observable<ServiceResponse<PortfolioProperties>> upsertPortfolioPropertiesWithServiceResponseAsync(String scope, String code, Map<String, PropertyValue> portfolioProperties, DateTime effectiveAt);
 
     /**
      * Delete one, many or all properties from a portfolio for a specified effective date.
@@ -4386,241 +4386,241 @@ public interface LUSIDAPI {
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the PropertyDefinition object if successful.
      */
-    PropertyDefinition getPropertyDefinition(String domain, String scope, String name);
+    PropertyDefinition getPropertyDefinition(String domain, String scope, String code);
 
     /**
      * Gets a property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String name, final ServiceCallback<PropertyDefinition> serviceCallback);
+    ServiceFuture<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String code, final ServiceCallback<PropertyDefinition> serviceCallback);
 
     /**
      * Gets a property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
      */
-    Observable<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String name);
+    Observable<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String code);
 
     /**
      * Gets a property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
      */
-    Observable<ServiceResponse<PropertyDefinition>> getPropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name);
+    Observable<ServiceResponse<PropertyDefinition>> getPropertyDefinitionWithServiceResponseAsync(String domain, String scope, String code);
     /**
      * Gets a property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the PropertyDefinition object if successful.
      */
-    PropertyDefinition getPropertyDefinition(String domain, String scope, String name, DateTime asAt);
+    PropertyDefinition getPropertyDefinition(String domain, String scope, String code, DateTime asAt);
 
     /**
      * Gets a property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param asAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String name, DateTime asAt, final ServiceCallback<PropertyDefinition> serviceCallback);
+    ServiceFuture<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String code, DateTime asAt, final ServiceCallback<PropertyDefinition> serviceCallback);
 
     /**
      * Gets a property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
      */
-    Observable<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String name, DateTime asAt);
+    Observable<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String code, DateTime asAt);
 
     /**
      * Gets a property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
      */
-    Observable<ServiceResponse<PropertyDefinition>> getPropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name, DateTime asAt);
+    Observable<ServiceResponse<PropertyDefinition>> getPropertyDefinitionWithServiceResponseAsync(String domain, String scope, String code, DateTime asAt);
 
     /**
      * Updates the specified property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the PropertyDefinition object if successful.
      */
-    PropertyDefinition updatePropertyDefinition(String domain, String scope, String name);
+    PropertyDefinition updatePropertyDefinition(String domain, String scope, String code);
 
     /**
      * Updates the specified property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String name, final ServiceCallback<PropertyDefinition> serviceCallback);
+    ServiceFuture<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String code, final ServiceCallback<PropertyDefinition> serviceCallback);
 
     /**
      * Updates the specified property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
      */
-    Observable<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String name);
+    Observable<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String code);
 
     /**
      * Updates the specified property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
      */
-    Observable<ServiceResponse<PropertyDefinition>> updatePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name);
+    Observable<ServiceResponse<PropertyDefinition>> updatePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String code);
     /**
      * Updates the specified property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param definition the UpdatePropertyDefinitionRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the PropertyDefinition object if successful.
      */
-    PropertyDefinition updatePropertyDefinition(String domain, String scope, String name, UpdatePropertyDefinitionRequest definition);
+    PropertyDefinition updatePropertyDefinition(String domain, String scope, String code, UpdatePropertyDefinitionRequest definition);
 
     /**
      * Updates the specified property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param definition the UpdatePropertyDefinitionRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String name, UpdatePropertyDefinitionRequest definition, final ServiceCallback<PropertyDefinition> serviceCallback);
+    ServiceFuture<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String code, UpdatePropertyDefinitionRequest definition, final ServiceCallback<PropertyDefinition> serviceCallback);
 
     /**
      * Updates the specified property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param definition the UpdatePropertyDefinitionRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
      */
-    Observable<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String name, UpdatePropertyDefinitionRequest definition);
+    Observable<PropertyDefinition> updatePropertyDefinitionAsync(String domain, String scope, String code, UpdatePropertyDefinitionRequest definition);
 
     /**
      * Updates the specified property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param definition the UpdatePropertyDefinitionRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
      */
-    Observable<ServiceResponse<PropertyDefinition>> updatePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name, UpdatePropertyDefinitionRequest definition);
+    Observable<ServiceResponse<PropertyDefinition>> updatePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String code, UpdatePropertyDefinitionRequest definition);
 
     /**
      * Deletes the property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the DeletedEntityResponse object if successful.
      */
-    DeletedEntityResponse deletePropertyDefinition(String domain, String scope, String name);
+    DeletedEntityResponse deletePropertyDefinition(String domain, String scope, String code);
 
     /**
      * Deletes the property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<DeletedEntityResponse> deletePropertyDefinitionAsync(String domain, String scope, String name, final ServiceCallback<DeletedEntityResponse> serviceCallback);
+    ServiceFuture<DeletedEntityResponse> deletePropertyDefinitionAsync(String domain, String scope, String code, final ServiceCallback<DeletedEntityResponse> serviceCallback);
 
     /**
      * Deletes the property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
-    Observable<DeletedEntityResponse> deletePropertyDefinitionAsync(String domain, String scope, String name);
+    Observable<DeletedEntityResponse> deletePropertyDefinitionAsync(String domain, String scope, String code);
 
     /**
      * Deletes the property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
-     * @param name the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
-    Observable<ServiceResponse<DeletedEntityResponse>> deletePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String name);
+    Observable<ServiceResponse<DeletedEntityResponse>> deletePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String code);
 
     /**
      * Perform a reconciliation between two portfolios.
@@ -7234,7 +7234,7 @@ public interface LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the AddTransactionPropertyResponse object if successful.
      */
-    AddTransactionPropertyResponse addTransactionProperty(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties);
+    AddTransactionPropertyResponse addTransactionProperty(String scope, String code, String transactionId, Map<String, PerpetualPropertyValue> transactionProperties);
 
     /**
      * Add/update transaction properties.
@@ -7248,7 +7248,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<AddTransactionPropertyResponse> addTransactionPropertyAsync(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties, final ServiceCallback<AddTransactionPropertyResponse> serviceCallback);
+    ServiceFuture<AddTransactionPropertyResponse> addTransactionPropertyAsync(String scope, String code, String transactionId, Map<String, PerpetualPropertyValue> transactionProperties, final ServiceCallback<AddTransactionPropertyResponse> serviceCallback);
 
     /**
      * Add/update transaction properties.
@@ -7261,7 +7261,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AddTransactionPropertyResponse object
      */
-    Observable<AddTransactionPropertyResponse> addTransactionPropertyAsync(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties);
+    Observable<AddTransactionPropertyResponse> addTransactionPropertyAsync(String scope, String code, String transactionId, Map<String, PerpetualPropertyValue> transactionProperties);
 
     /**
      * Add/update transaction properties.
@@ -7274,7 +7274,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AddTransactionPropertyResponse object
      */
-    Observable<ServiceResponse<AddTransactionPropertyResponse>> addTransactionPropertyWithServiceResponseAsync(String scope, String code, String transactionId, Map<String, CreatePerpetualPropertyRequest> transactionProperties);
+    Observable<ServiceResponse<AddTransactionPropertyResponse>> addTransactionPropertyWithServiceResponseAsync(String scope, String code, String transactionId, Map<String, PerpetualPropertyValue> transactionProperties);
 
     /**
      * Delete transaction property.

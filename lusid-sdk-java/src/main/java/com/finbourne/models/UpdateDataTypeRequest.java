@@ -53,7 +53,7 @@ public class UpdateDataTypeRequest {
      * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds',
      * 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements',
      * 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice',
-     * 'UnitCreation', 'Currency', 'UserId'.
+     * 'UnitCreation', 'Currency', 'UserId', 'MetricValue'.
      */
     @JsonProperty(value = "valueType", required = true)
     private String valueType;
@@ -137,7 +137,7 @@ public class UpdateDataTypeRequest {
     }
 
     /**
-     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId'.
+     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId', 'MetricValue'.
      *
      * @return the valueType value
      */
@@ -146,7 +146,7 @@ public class UpdateDataTypeRequest {
     }
 
     /**
-     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId'.
+     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId', 'MetricValue'.
      *
      * @param valueType the valueType value to set
      * @return the UpdateDataTypeRequest object itself.

@@ -46,7 +46,7 @@ public class TransactionConfigurationDataRequest {
      * The properties property.
      */
     @JsonProperty(value = "properties", access = JsonProperty.Access.WRITE_ONLY)
-    private Map<String, CreatePropertyRequest> properties;
+    private Map<String, PropertyValue> properties;
 
     /**
      * Get list of transaction codes that map to this specific transaction model.
@@ -93,7 +93,7 @@ public class TransactionConfigurationDataRequest {
      *
      * @return the properties value
      */
-    public Map<String, CreatePropertyRequest> properties() {
+    public Map<String, PropertyValue> properties() {
         return this.properties;
     }
 

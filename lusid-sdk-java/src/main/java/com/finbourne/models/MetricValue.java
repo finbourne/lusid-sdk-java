@@ -25,14 +25,14 @@ package com.finbourne.models;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The CreatePerpetualPropertyRequest model.
+ * The MetricValue model.
  */
-public class CreatePerpetualPropertyRequest {
+public class MetricValue {
     /**
      * The value property.
      */
-    @JsonProperty(value = "value", required = true)
-    private Object value;
+    @JsonProperty(value = "value")
+    private Double value;
 
     /**
      * The unit property.
@@ -45,7 +45,7 @@ public class CreatePerpetualPropertyRequest {
      *
      * @return the value value
      */
-    public Object value() {
+    public Double value() {
         return this.value;
     }
 
@@ -53,9 +53,9 @@ public class CreatePerpetualPropertyRequest {
      * Set the value value.
      *
      * @param value the value value to set
-     * @return the CreatePerpetualPropertyRequest object itself.
+     * @return the MetricValue object itself.
      */
-    public CreatePerpetualPropertyRequest withValue(Object value) {
+    public MetricValue withValue(Double value) {
         this.value = value;
         return this;
     }
@@ -73,9 +73,9 @@ public class CreatePerpetualPropertyRequest {
      * Set the unit value.
      *
      * @param unit the unit value to set
-     * @return the CreatePerpetualPropertyRequest object itself.
+     * @return the MetricValue object itself.
      */
-    public CreatePerpetualPropertyRequest withUnit(String unit) {
+    public MetricValue withUnit(String unit) {
         this.unit = unit;
         return this;
     }
