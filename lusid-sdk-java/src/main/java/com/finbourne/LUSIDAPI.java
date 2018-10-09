@@ -6406,8 +6406,8 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<VersionedResourceListOfHolding>> getHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys);
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Set All Holdings.
+     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -6420,8 +6420,8 @@ public interface LUSIDAPI {
     AdjustHolding setHoldings(String scope, String code, DateTime effectiveAt);
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Set All Holdings.
+     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -6433,8 +6433,8 @@ public interface LUSIDAPI {
     ServiceFuture<AdjustHolding> setHoldingsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<AdjustHolding> serviceCallback);
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Set All Holdings.
+     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -6445,8 +6445,8 @@ public interface LUSIDAPI {
     Observable<AdjustHolding> setHoldingsAsync(String scope, String code, DateTime effectiveAt);
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Set All Holdings.
+     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -6456,8 +6456,8 @@ public interface LUSIDAPI {
      */
     Observable<ServiceResponse<AdjustHolding>> setHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Set All Holdings.
+     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -6471,8 +6471,8 @@ public interface LUSIDAPI {
     AdjustHolding setHoldings(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Set All Holdings.
+     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -6485,8 +6485,8 @@ public interface LUSIDAPI {
     ServiceFuture<AdjustHolding> setHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments, final ServiceCallback<AdjustHolding> serviceCallback);
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Set All Holdings.
+     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -6498,8 +6498,8 @@ public interface LUSIDAPI {
     Observable<AdjustHolding> setHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Set All Holdings.
+     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -6511,8 +6511,8 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<AdjustHolding>> setHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Adjust Selected Holdings.
+     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -6525,8 +6525,8 @@ public interface LUSIDAPI {
     AdjustHolding adjustHoldings(String scope, String code, DateTime effectiveAt);
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Adjust Selected Holdings.
+     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -6538,8 +6538,8 @@ public interface LUSIDAPI {
     ServiceFuture<AdjustHolding> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<AdjustHolding> serviceCallback);
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Adjust Selected Holdings.
+     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -6550,8 +6550,8 @@ public interface LUSIDAPI {
     Observable<AdjustHolding> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt);
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Adjust Selected Holdings.
+     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -6561,8 +6561,8 @@ public interface LUSIDAPI {
      */
     Observable<ServiceResponse<AdjustHolding>> adjustHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Adjust Selected Holdings.
+     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -6576,8 +6576,8 @@ public interface LUSIDAPI {
     AdjustHolding adjustHoldings(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Adjust Selected Holdings.
+     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -6590,8 +6590,8 @@ public interface LUSIDAPI {
     ServiceFuture<AdjustHolding> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments, final ServiceCallback<AdjustHolding> serviceCallback);
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Adjust Selected Holdings.
+     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -6603,8 +6603,8 @@ public interface LUSIDAPI {
     Observable<AdjustHolding> adjustHoldingsAsync(String scope, String code, DateTime effectiveAt, List<AdjustHoldingRequest> holdingAdjustments);
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Adjust Selected Holdings.
+     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio

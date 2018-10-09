@@ -11488,8 +11488,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Set All Holdings.
+     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -11504,8 +11504,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Set All Holdings.
+     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -11519,8 +11519,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Set All Holdings.
+     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -11538,8 +11538,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Set All Holdings.
+     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -11573,8 +11573,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Set All Holdings.
+     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -11590,8 +11590,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Set All Holdings.
+     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -11606,8 +11606,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Set All Holdings.
+     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -11626,8 +11626,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Set All Holdings.
+     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -11669,8 +11669,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Adjust Selected Holdings.
+     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -11685,8 +11685,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Adjust Selected Holdings.
+     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -11700,8 +11700,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Adjust Selected Holdings.
+     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -11719,8 +11719,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Adjust Selected Holdings.
+     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -11754,8 +11754,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Adjust Selected Holdings.
+     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -11771,8 +11771,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Adjust Selected Holdings.
+     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -11787,8 +11787,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Adjust Selected Holdings.
+     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
@@ -11807,8 +11807,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust holdings.
-     * Create transactions in a specific portfolio to bring it to the specified holdings.
+     * Adjust Selected Holdings.
+     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
      * @param scope The scope of the portfolio
      * @param code Code for the portfolio
