@@ -36,22 +36,52 @@ public class ReconciliationBreak {
     private String instrumentUid;
 
     /**
-     * The properties property.
+     * The subHoldingKeys property.
      */
-    @JsonProperty(value = "properties")
-    private List<Property> properties;
+    @JsonProperty(value = "subHoldingKeys", required = true)
+    private List<Property> subHoldingKeys;
+
+    /**
+     * Units from the left hand side.
+     */
+    @JsonProperty(value = "leftUnits", required = true)
+    private double leftUnits;
+
+    /**
+     * Units from the right hand side.
+     */
+    @JsonProperty(value = "rightUnits", required = true)
+    private double rightUnits;
 
     /**
      * Difference in units.
      */
-    @JsonProperty(value = "unitsDifference")
-    private Double unitsDifference;
+    @JsonProperty(value = "differenceUnits", required = true)
+    private double differenceUnits;
+
+    /**
+     * Cost from the left hand side.
+     */
+    @JsonProperty(value = "leftCost", required = true)
+    private CurrencyAndAmount leftCost;
+
+    /**
+     * Cost from the right hand side.
+     */
+    @JsonProperty(value = "rightCost", required = true)
+    private CurrencyAndAmount rightCost;
 
     /**
      * Difference in cost.
      */
-    @JsonProperty(value = "costDifference")
-    private Double costDifference;
+    @JsonProperty(value = "differenceCost", required = true)
+    private CurrencyAndAmount differenceCost;
+
+    /**
+     * Additional features relating to the security.
+     */
+    @JsonProperty(value = "instrumentProperties", required = true)
+    private List<Property> instrumentProperties;
 
     /**
      * Get unique instrument identifier.
@@ -74,62 +104,162 @@ public class ReconciliationBreak {
     }
 
     /**
-     * Get the properties value.
+     * Get the subHoldingKeys value.
      *
-     * @return the properties value
+     * @return the subHoldingKeys value
      */
-    public List<Property> properties() {
-        return this.properties;
+    public List<Property> subHoldingKeys() {
+        return this.subHoldingKeys;
     }
 
     /**
-     * Set the properties value.
+     * Set the subHoldingKeys value.
      *
-     * @param properties the properties value to set
+     * @param subHoldingKeys the subHoldingKeys value to set
      * @return the ReconciliationBreak object itself.
      */
-    public ReconciliationBreak withProperties(List<Property> properties) {
-        this.properties = properties;
+    public ReconciliationBreak withSubHoldingKeys(List<Property> subHoldingKeys) {
+        this.subHoldingKeys = subHoldingKeys;
+        return this;
+    }
+
+    /**
+     * Get units from the left hand side.
+     *
+     * @return the leftUnits value
+     */
+    public double leftUnits() {
+        return this.leftUnits;
+    }
+
+    /**
+     * Set units from the left hand side.
+     *
+     * @param leftUnits the leftUnits value to set
+     * @return the ReconciliationBreak object itself.
+     */
+    public ReconciliationBreak withLeftUnits(double leftUnits) {
+        this.leftUnits = leftUnits;
+        return this;
+    }
+
+    /**
+     * Get units from the right hand side.
+     *
+     * @return the rightUnits value
+     */
+    public double rightUnits() {
+        return this.rightUnits;
+    }
+
+    /**
+     * Set units from the right hand side.
+     *
+     * @param rightUnits the rightUnits value to set
+     * @return the ReconciliationBreak object itself.
+     */
+    public ReconciliationBreak withRightUnits(double rightUnits) {
+        this.rightUnits = rightUnits;
         return this;
     }
 
     /**
      * Get difference in units.
      *
-     * @return the unitsDifference value
+     * @return the differenceUnits value
      */
-    public Double unitsDifference() {
-        return this.unitsDifference;
+    public double differenceUnits() {
+        return this.differenceUnits;
     }
 
     /**
      * Set difference in units.
      *
-     * @param unitsDifference the unitsDifference value to set
+     * @param differenceUnits the differenceUnits value to set
      * @return the ReconciliationBreak object itself.
      */
-    public ReconciliationBreak withUnitsDifference(Double unitsDifference) {
-        this.unitsDifference = unitsDifference;
+    public ReconciliationBreak withDifferenceUnits(double differenceUnits) {
+        this.differenceUnits = differenceUnits;
+        return this;
+    }
+
+    /**
+     * Get cost from the left hand side.
+     *
+     * @return the leftCost value
+     */
+    public CurrencyAndAmount leftCost() {
+        return this.leftCost;
+    }
+
+    /**
+     * Set cost from the left hand side.
+     *
+     * @param leftCost the leftCost value to set
+     * @return the ReconciliationBreak object itself.
+     */
+    public ReconciliationBreak withLeftCost(CurrencyAndAmount leftCost) {
+        this.leftCost = leftCost;
+        return this;
+    }
+
+    /**
+     * Get cost from the right hand side.
+     *
+     * @return the rightCost value
+     */
+    public CurrencyAndAmount rightCost() {
+        return this.rightCost;
+    }
+
+    /**
+     * Set cost from the right hand side.
+     *
+     * @param rightCost the rightCost value to set
+     * @return the ReconciliationBreak object itself.
+     */
+    public ReconciliationBreak withRightCost(CurrencyAndAmount rightCost) {
+        this.rightCost = rightCost;
         return this;
     }
 
     /**
      * Get difference in cost.
      *
-     * @return the costDifference value
+     * @return the differenceCost value
      */
-    public Double costDifference() {
-        return this.costDifference;
+    public CurrencyAndAmount differenceCost() {
+        return this.differenceCost;
     }
 
     /**
      * Set difference in cost.
      *
-     * @param costDifference the costDifference value to set
+     * @param differenceCost the differenceCost value to set
      * @return the ReconciliationBreak object itself.
      */
-    public ReconciliationBreak withCostDifference(Double costDifference) {
-        this.costDifference = costDifference;
+    public ReconciliationBreak withDifferenceCost(CurrencyAndAmount differenceCost) {
+        this.differenceCost = differenceCost;
+        return this;
+    }
+
+    /**
+     * Get additional features relating to the security.
+     *
+     * @return the instrumentProperties value
+     */
+    public List<Property> instrumentProperties() {
+        return this.instrumentProperties;
+    }
+
+    /**
+     * Set additional features relating to the security.
+     *
+     * @param instrumentProperties the instrumentProperties value to set
+     * @return the ReconciliationBreak object itself.
+     */
+    public ReconciliationBreak withInstrumentProperties(List<Property> instrumentProperties) {
+        this.instrumentProperties = instrumentProperties;
         return this;
     }
 

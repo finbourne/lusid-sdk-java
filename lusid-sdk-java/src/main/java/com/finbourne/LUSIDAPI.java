@@ -57,10 +57,10 @@ import com.finbourne.models.Portfolio;
 import com.finbourne.models.PortfolioDetails;
 import com.finbourne.models.PortfolioGroup;
 import com.finbourne.models.PortfolioProperties;
+import com.finbourne.models.PortfoliosReconciliationRequest;
 import com.finbourne.models.PropertyDefinition;
 import com.finbourne.models.PropertySchema;
 import com.finbourne.models.PropertyValue;
-import com.finbourne.models.ReconciliationRequest;
 import com.finbourne.models.ReferencePortfolioConstituentRequest;
 import com.finbourne.models.ResourceId;
 import com.finbourne.models.ResourceListOfAnalyticStoreKey;
@@ -4216,6 +4216,95 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<DeletedEntityResponse>> deletePortfolioPropertiesWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<String> portfolioPropertyKeys);
 
     /**
+     * Perform a reconciliation between two portfolios.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfReconciliationBreak object if successful.
+     */
+    ResourceListOfReconciliationBreak reconcileHoldings();
+
+    /**
+     * Perform a reconciliation between two portfolios.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ResourceListOfReconciliationBreak> reconcileHoldingsAsync(final ServiceCallback<ResourceListOfReconciliationBreak> serviceCallback);
+
+    /**
+     * Perform a reconciliation between two portfolios.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfReconciliationBreak object
+     */
+    Observable<ResourceListOfReconciliationBreak> reconcileHoldingsAsync();
+
+    /**
+     * Perform a reconciliation between two portfolios.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfReconciliationBreak object
+     */
+    Observable<ServiceResponse<ResourceListOfReconciliationBreak>> reconcileHoldingsWithServiceResponseAsync();
+    /**
+     * Perform a reconciliation between two portfolios.
+     *
+     * @param request the PortfoliosReconciliationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfReconciliationBreak object if successful.
+     */
+    ResourceListOfReconciliationBreak reconcileHoldings(PortfoliosReconciliationRequest request, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Perform a reconciliation between two portfolios.
+     *
+     * @param request the PortfoliosReconciliationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ResourceListOfReconciliationBreak> reconcileHoldingsAsync(PortfoliosReconciliationRequest request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfReconciliationBreak> serviceCallback);
+
+    /**
+     * Perform a reconciliation between two portfolios.
+     *
+     * @param request the PortfoliosReconciliationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfReconciliationBreak object
+     */
+    Observable<ResourceListOfReconciliationBreak> reconcileHoldingsAsync(PortfoliosReconciliationRequest request, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Perform a reconciliation between two portfolios.
+     *
+     * @param request the PortfoliosReconciliationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfReconciliationBreak object
+     */
+    Observable<ServiceResponse<ResourceListOfReconciliationBreak>> reconcileHoldingsWithServiceResponseAsync(PortfoliosReconciliationRequest request, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
      * Gets multiple property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -4621,79 +4710,6 @@ public interface LUSIDAPI {
      * @return the observable to the DeletedEntityResponse object
      */
     Observable<ServiceResponse<DeletedEntityResponse>> deletePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String code);
-
-    /**
-     * Perform a reconciliation between two portfolios.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfReconciliationBreak object if successful.
-     */
-    ResourceListOfReconciliationBreak performReconciliation();
-
-    /**
-     * Perform a reconciliation between two portfolios.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfReconciliationBreak> performReconciliationAsync(final ServiceCallback<ResourceListOfReconciliationBreak> serviceCallback);
-
-    /**
-     * Perform a reconciliation between two portfolios.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReconciliationBreak object
-     */
-    Observable<ResourceListOfReconciliationBreak> performReconciliationAsync();
-
-    /**
-     * Perform a reconciliation between two portfolios.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReconciliationBreak object
-     */
-    Observable<ServiceResponse<ResourceListOfReconciliationBreak>> performReconciliationWithServiceResponseAsync();
-    /**
-     * Perform a reconciliation between two portfolios.
-     *
-     * @param request the ReconciliationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfReconciliationBreak object if successful.
-     */
-    ResourceListOfReconciliationBreak performReconciliation(ReconciliationRequest request);
-
-    /**
-     * Perform a reconciliation between two portfolios.
-     *
-     * @param request the ReconciliationRequest value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfReconciliationBreak> performReconciliationAsync(ReconciliationRequest request, final ServiceCallback<ResourceListOfReconciliationBreak> serviceCallback);
-
-    /**
-     * Perform a reconciliation between two portfolios.
-     *
-     * @param request the ReconciliationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReconciliationBreak object
-     */
-    Observable<ResourceListOfReconciliationBreak> performReconciliationAsync(ReconciliationRequest request);
-
-    /**
-     * Perform a reconciliation between two portfolios.
-     *
-     * @param request the ReconciliationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReconciliationBreak object
-     */
-    Observable<ServiceResponse<ResourceListOfReconciliationBreak>> performReconciliationWithServiceResponseAsync(ReconciliationRequest request);
 
     /**
      * Create a new reference portfolio.

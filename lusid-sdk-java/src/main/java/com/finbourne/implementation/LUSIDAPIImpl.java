@@ -62,10 +62,10 @@ import com.finbourne.models.Portfolio;
 import com.finbourne.models.PortfolioDetails;
 import com.finbourne.models.PortfolioGroup;
 import com.finbourne.models.PortfolioProperties;
+import com.finbourne.models.PortfoliosReconciliationRequest;
 import com.finbourne.models.PropertyDefinition;
 import com.finbourne.models.PropertySchema;
 import com.finbourne.models.PropertyValue;
-import com.finbourne.models.ReconciliationRequest;
 import com.finbourne.models.ReferencePortfolioConstituentRequest;
 import com.finbourne.models.ResourceId;
 import com.finbourne.models.ResourceListOfAnalyticStoreKey;
@@ -391,6 +391,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @HTTP(path = "api/portfolios/{scope}/{code}/properties", method = "DELETE", hasBody = true)
         Observable<Response<ResponseBody>> deletePortfolioProperties(@Path("scope") String scope, @Path("code") String code, @Query("effectiveAt") DateTime effectiveAt, @Query("portfolioPropertyKeys") String portfolioPropertyKeys);
 
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI reconcileHoldings" })
+        @POST("api/portfolios/$reconcileholdings")
+        Observable<Response<ResponseBody>> reconcileHoldings(@Body PortfoliosReconciliationRequest request, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
+
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getMultiplePropertyDefinitions" })
         @GET("api/propertydefinitions")
         Observable<Response<ResponseBody>> getMultiplePropertyDefinitions(@Query("keys") String keys, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter);
@@ -410,10 +414,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI deletePropertyDefinition" })
         @HTTP(path = "api/propertydefinitions/{domain}/{scope}/{code}", method = "DELETE", hasBody = true)
         Observable<Response<ResponseBody>> deletePropertyDefinition(@Path("domain") String domain, @Path("scope") String scope, @Path("code") String code);
-
-        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI performReconciliation" })
-        @POST("api/recon")
-        Observable<Response<ResponseBody>> performReconciliation(@Body ReconciliationRequest request);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI createReferencePortfolio" })
         @POST("api/referenceportfolios/{scope}")
@@ -7660,6 +7660,160 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Perform a reconciliation between two portfolios.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfReconciliationBreak object if successful.
+     */
+    public ResourceListOfReconciliationBreak reconcileHoldings() {
+        return reconcileHoldingsWithServiceResponseAsync().toBlocking().single().body();
+    }
+
+    /**
+     * Perform a reconciliation between two portfolios.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<ResourceListOfReconciliationBreak> reconcileHoldingsAsync(final ServiceCallback<ResourceListOfReconciliationBreak> serviceCallback) {
+        return ServiceFuture.fromResponse(reconcileHoldingsWithServiceResponseAsync(), serviceCallback);
+    }
+
+    /**
+     * Perform a reconciliation between two portfolios.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfReconciliationBreak object
+     */
+    public Observable<ResourceListOfReconciliationBreak> reconcileHoldingsAsync() {
+        return reconcileHoldingsWithServiceResponseAsync().map(new Func1<ServiceResponse<ResourceListOfReconciliationBreak>, ResourceListOfReconciliationBreak>() {
+            @Override
+            public ResourceListOfReconciliationBreak call(ServiceResponse<ResourceListOfReconciliationBreak> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Perform a reconciliation between two portfolios.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfReconciliationBreak object
+     */
+    public Observable<ServiceResponse<ResourceListOfReconciliationBreak>> reconcileHoldingsWithServiceResponseAsync() {
+        final PortfoliosReconciliationRequest request = null;
+        final List<String> sortBy = null;
+        final Integer start = null;
+        final Integer limit = null;
+        final String filter = null;
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
+        return service.reconcileHoldings(request, sortByConverted, start, limit, filter)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfReconciliationBreak>>>() {
+                @Override
+                public Observable<ServiceResponse<ResourceListOfReconciliationBreak>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<ResourceListOfReconciliationBreak> clientResponse = reconcileHoldingsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Perform a reconciliation between two portfolios.
+     *
+     * @param request the PortfoliosReconciliationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfReconciliationBreak object if successful.
+     */
+    public ResourceListOfReconciliationBreak reconcileHoldings(PortfoliosReconciliationRequest request, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return reconcileHoldingsWithServiceResponseAsync(request, sortBy, start, limit, filter).toBlocking().single().body();
+    }
+
+    /**
+     * Perform a reconciliation between two portfolios.
+     *
+     * @param request the PortfoliosReconciliationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<ResourceListOfReconciliationBreak> reconcileHoldingsAsync(PortfoliosReconciliationRequest request, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfReconciliationBreak> serviceCallback) {
+        return ServiceFuture.fromResponse(reconcileHoldingsWithServiceResponseAsync(request, sortBy, start, limit, filter), serviceCallback);
+    }
+
+    /**
+     * Perform a reconciliation between two portfolios.
+     *
+     * @param request the PortfoliosReconciliationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfReconciliationBreak object
+     */
+    public Observable<ResourceListOfReconciliationBreak> reconcileHoldingsAsync(PortfoliosReconciliationRequest request, List<String> sortBy, Integer start, Integer limit, String filter) {
+        return reconcileHoldingsWithServiceResponseAsync(request, sortBy, start, limit, filter).map(new Func1<ServiceResponse<ResourceListOfReconciliationBreak>, ResourceListOfReconciliationBreak>() {
+            @Override
+            public ResourceListOfReconciliationBreak call(ServiceResponse<ResourceListOfReconciliationBreak> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Perform a reconciliation between two portfolios.
+     *
+     * @param request the PortfoliosReconciliationRequest value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfReconciliationBreak object
+     */
+    public Observable<ServiceResponse<ResourceListOfReconciliationBreak>> reconcileHoldingsWithServiceResponseAsync(PortfoliosReconciliationRequest request, List<String> sortBy, Integer start, Integer limit, String filter) {
+        Validator.validate(request);
+        Validator.validate(sortBy);
+        String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);
+        return service.reconcileHoldings(request, sortByConverted, start, limit, filter)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfReconciliationBreak>>>() {
+                @Override
+                public Observable<ServiceResponse<ResourceListOfReconciliationBreak>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<ResourceListOfReconciliationBreak> clientResponse = reconcileHoldingsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<ResourceListOfReconciliationBreak> reconcileHoldingsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
+        return this.restClient().responseBuilderFactory().<ResourceListOfReconciliationBreak, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<ResourceListOfReconciliationBreak>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
      * Gets multiple property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8377,137 +8531,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     private ServiceResponse<DeletedEntityResponse> deletePropertyDefinitionDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
         return this.restClient().responseBuilderFactory().<DeletedEntityResponse, ErrorResponseException>newInstance(this.serializerAdapter())
                 .register(200, new TypeToken<DeletedEntityResponse>() { }.getType())
-                .registerError(ErrorResponseException.class)
-                .build(response);
-    }
-
-    /**
-     * Perform a reconciliation between two portfolios.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfReconciliationBreak object if successful.
-     */
-    public ResourceListOfReconciliationBreak performReconciliation() {
-        return performReconciliationWithServiceResponseAsync().toBlocking().single().body();
-    }
-
-    /**
-     * Perform a reconciliation between two portfolios.
-     *
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    public ServiceFuture<ResourceListOfReconciliationBreak> performReconciliationAsync(final ServiceCallback<ResourceListOfReconciliationBreak> serviceCallback) {
-        return ServiceFuture.fromResponse(performReconciliationWithServiceResponseAsync(), serviceCallback);
-    }
-
-    /**
-     * Perform a reconciliation between two portfolios.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReconciliationBreak object
-     */
-    public Observable<ResourceListOfReconciliationBreak> performReconciliationAsync() {
-        return performReconciliationWithServiceResponseAsync().map(new Func1<ServiceResponse<ResourceListOfReconciliationBreak>, ResourceListOfReconciliationBreak>() {
-            @Override
-            public ResourceListOfReconciliationBreak call(ServiceResponse<ResourceListOfReconciliationBreak> response) {
-                return response.body();
-            }
-        });
-    }
-
-    /**
-     * Perform a reconciliation between two portfolios.
-     *
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReconciliationBreak object
-     */
-    public Observable<ServiceResponse<ResourceListOfReconciliationBreak>> performReconciliationWithServiceResponseAsync() {
-        final ReconciliationRequest request = null;
-        return service.performReconciliation(request)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfReconciliationBreak>>>() {
-                @Override
-                public Observable<ServiceResponse<ResourceListOfReconciliationBreak>> call(Response<ResponseBody> response) {
-                    try {
-                        ServiceResponse<ResourceListOfReconciliationBreak> clientResponse = performReconciliationDelegate(response);
-                        return Observable.just(clientResponse);
-                    } catch (Throwable t) {
-                        return Observable.error(t);
-                    }
-                }
-            });
-    }
-
-    /**
-     * Perform a reconciliation between two portfolios.
-     *
-     * @param request the ReconciliationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfReconciliationBreak object if successful.
-     */
-    public ResourceListOfReconciliationBreak performReconciliation(ReconciliationRequest request) {
-        return performReconciliationWithServiceResponseAsync(request).toBlocking().single().body();
-    }
-
-    /**
-     * Perform a reconciliation between two portfolios.
-     *
-     * @param request the ReconciliationRequest value
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    public ServiceFuture<ResourceListOfReconciliationBreak> performReconciliationAsync(ReconciliationRequest request, final ServiceCallback<ResourceListOfReconciliationBreak> serviceCallback) {
-        return ServiceFuture.fromResponse(performReconciliationWithServiceResponseAsync(request), serviceCallback);
-    }
-
-    /**
-     * Perform a reconciliation between two portfolios.
-     *
-     * @param request the ReconciliationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReconciliationBreak object
-     */
-    public Observable<ResourceListOfReconciliationBreak> performReconciliationAsync(ReconciliationRequest request) {
-        return performReconciliationWithServiceResponseAsync(request).map(new Func1<ServiceResponse<ResourceListOfReconciliationBreak>, ResourceListOfReconciliationBreak>() {
-            @Override
-            public ResourceListOfReconciliationBreak call(ServiceResponse<ResourceListOfReconciliationBreak> response) {
-                return response.body();
-            }
-        });
-    }
-
-    /**
-     * Perform a reconciliation between two portfolios.
-     *
-     * @param request the ReconciliationRequest value
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReconciliationBreak object
-     */
-    public Observable<ServiceResponse<ResourceListOfReconciliationBreak>> performReconciliationWithServiceResponseAsync(ReconciliationRequest request) {
-        Validator.validate(request);
-        return service.performReconciliation(request)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfReconciliationBreak>>>() {
-                @Override
-                public Observable<ServiceResponse<ResourceListOfReconciliationBreak>> call(Response<ResponseBody> response) {
-                    try {
-                        ServiceResponse<ResourceListOfReconciliationBreak> clientResponse = performReconciliationDelegate(response);
-                        return Observable.just(clientResponse);
-                    } catch (Throwable t) {
-                        return Observable.error(t);
-                    }
-                }
-            });
-    }
-
-    private ServiceResponse<ResourceListOfReconciliationBreak> performReconciliationDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
-        return this.restClient().responseBuilderFactory().<ResourceListOfReconciliationBreak, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<ResourceListOfReconciliationBreak>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }
