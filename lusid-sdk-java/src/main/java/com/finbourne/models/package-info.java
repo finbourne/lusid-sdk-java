@@ -291,6 +291,8 @@
  | <a name="214">214</a>|InstrumentByCodeNotFound|  |
  | <a name="215">215</a>|EntitySchemaDoesNotExist|  |
  | <a name="216">216</a>|FeatureNotSupportedOnPortfolioType|  |
+ | <a name="217">217</a>|QuotePublishFailure|  |
+ | <a name="218">218</a>|QuoteQueryFailure|  |
  | <a name="-10">-10</a>|ServerConfigurationError|  |
  | <a name="-1">-1</a>|Unknown error|  |.
  */

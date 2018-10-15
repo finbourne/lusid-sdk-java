@@ -493,7 +493,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getHoldings" })
         @GET("api/transactionportfolios/{scope}/{code}/holdings")
-        Observable<Response<ResponseBody>> getHoldings(@Path("scope") String scope, @Path("code") String code, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter, @Query("instrumentPropertyKeys") String instrumentPropertyKeys);
+        Observable<Response<ResponseBody>> getHoldings(@Path("scope") String scope, @Path("code") String code, @Query("byTaxlots") Boolean byTaxlots, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("sortBy") String sortBy, @Query("start") Integer start, @Query("limit") Integer limit, @Query("filter") String filter, @Query("instrumentPropertyKeys") String instrumentPropertyKeys);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI setHoldings" })
         @PUT("api/transactionportfolios/{scope}/{code}/holdings/{effectiveAt}")
@@ -542,7 +542,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all analytic stores in client.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -554,7 +553,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all analytic stores in client.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -565,7 +563,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all analytic stores in client.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfAnalyticStoreKey object
@@ -580,7 +577,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all analytic stores in client.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfAnalyticStoreKey object
@@ -607,7 +603,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all analytic stores in client.
      *
      * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
@@ -624,7 +619,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all analytic stores in client.
      *
      * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
@@ -640,7 +634,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all analytic stores in client.
      *
      * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
@@ -660,7 +653,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all analytic stores in client.
      *
      * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
@@ -695,7 +687,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new analytic store for the given scope for the given date.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -707,7 +698,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new analytic store for the given scope for the given date.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -718,7 +708,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new analytic store for the given scope for the given date.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AnalyticStore object
@@ -733,7 +722,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new analytic store for the given scope for the given date.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AnalyticStore object
@@ -755,9 +743,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new analytic store for the given scope for the given date.
      *
-     * @param request A valid and fully populated analytic store creation request
+     * @param request the CreateAnalyticStoreRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -768,9 +755,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new analytic store for the given scope for the given date.
      *
-     * @param request A valid and fully populated analytic store creation request
+     * @param request the CreateAnalyticStoreRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -780,9 +766,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new analytic store for the given scope for the given date.
      *
-     * @param request A valid and fully populated analytic store creation request
+     * @param request the CreateAnalyticStoreRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AnalyticStore object
      */
@@ -796,9 +781,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new analytic store for the given scope for the given date.
      *
-     * @param request A valid and fully populated analytic store creation request
+     * @param request the CreateAnalyticStoreRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AnalyticStore object
      */
@@ -826,12 +810,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an analytic store.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -842,12 +825,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an analytic store.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -857,12 +839,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an analytic store.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AnalyticStore object
      */
@@ -876,12 +857,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an analytic store.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AnalyticStore object
      */
@@ -905,13 +885,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an analytic store.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
-     * @param asAt AsAt date
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
+     * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -922,13 +901,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an analytic store.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
-     * @param asAt AsAt date
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
+     * @param asAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -938,13 +916,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an analytic store.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
-     * @param asAt AsAt date
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
+     * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AnalyticStore object
      */
@@ -958,13 +935,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an analytic store.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
-     * @param asAt AsAt date
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
+     * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AnalyticStore object
      */
@@ -994,12 +970,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new analytic store for the given scope for the given date.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -1010,12 +985,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new analytic store for the given scope for the given date.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -1025,12 +999,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new analytic store for the given scope for the given date.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -1044,12 +1017,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new analytic store for the given scope for the given date.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -1079,12 +1051,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Insert analytics into an existing analytic store for the given scope and date.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -1095,12 +1066,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Insert analytics into an existing analytic store for the given scope and date.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -1110,12 +1080,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Insert analytics into an existing analytic store for the given scope and date.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AnalyticStore object
      */
@@ -1129,12 +1098,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Insert analytics into an existing analytic store for the given scope and date.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AnalyticStore object
      */
@@ -1158,12 +1126,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Insert analytics into an existing analytic store for the given scope and date.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
      * @param data the List&lt;InstrumentAnalytic&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -1175,12 +1142,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Insert analytics into an existing analytic store for the given scope and date.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
      * @param data the List&lt;InstrumentAnalytic&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -1191,12 +1157,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Insert analytics into an existing analytic store for the given scope and date.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
      * @param data the List&lt;InstrumentAnalytic&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AnalyticStore object
@@ -1211,12 +1176,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Insert analytics into an existing analytic store for the given scope and date.
      *
-     * @param scope The analytics data scope
-     * @param year The year component of the date for the data in the scope
-     * @param month The month component of the date for the data in the scope
-     * @param day The day component of the date for the data in the scope
+     * @param scope the String value
+     * @param year the int value
+     * @param month the int value
+     * @param day the int value
      * @param data the List&lt;InstrumentAnalytic&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AnalyticStore object
@@ -1248,10 +1212,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a corporate action based on dates.
      *
-     * @param scope Scope
-     * @param code Corporate action source id
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -1262,10 +1225,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a corporate action based on dates.
      *
-     * @param scope Scope
-     * @param code Corporate action source id
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -1275,10 +1237,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a corporate action based on dates.
      *
-     * @param scope Scope
-     * @param code Corporate action source id
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfCorporateActionEvent object
      */
@@ -1292,10 +1253,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a corporate action based on dates.
      *
-     * @param scope Scope
-     * @param code Corporate action source id
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfCorporateActionEvent object
      */
@@ -1328,12 +1288,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a corporate action based on dates.
      *
-     * @param scope Scope
-     * @param code Corporate action source id
-     * @param effectiveAt Effective Date
-     * @param asAt AsAt Date filter
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -1348,12 +1307,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a corporate action based on dates.
      *
-     * @param scope Scope
-     * @param code Corporate action source id
-     * @param effectiveAt Effective Date
-     * @param asAt AsAt Date filter
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -1367,12 +1325,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a corporate action based on dates.
      *
-     * @param scope Scope
-     * @param code Corporate action source id
-     * @param effectiveAt Effective Date
-     * @param asAt AsAt Date filter
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -1390,12 +1347,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a corporate action based on dates.
      *
-     * @param scope Scope
-     * @param code Corporate action source id
-     * @param effectiveAt Effective Date
-     * @param asAt AsAt Date filter
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -1434,10 +1390,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
-     * @param scope The intended scope of the corporate action
-     * @param code Source of the corporate action
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -1448,10 +1403,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
-     * @param scope The intended scope of the corporate action
-     * @param code Source of the corporate action
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -1461,10 +1415,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
-     * @param scope The intended scope of the corporate action
-     * @param code Source of the corporate action
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertCorporateActionsResponse object
      */
@@ -1478,10 +1431,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
-     * @param scope The intended scope of the corporate action
-     * @param code Source of the corporate action
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertCorporateActionsResponse object
      */
@@ -1508,11 +1460,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
-     * @param scope The intended scope of the corporate action
-     * @param code Source of the corporate action
-     * @param actions The corporate actions to create
+     * @param scope the String value
+     * @param code the String value
+     * @param actions the List&lt;CreateCorporateAction&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -1523,11 +1474,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
-     * @param scope The intended scope of the corporate action
-     * @param code Source of the corporate action
-     * @param actions The corporate actions to create
+     * @param scope the String value
+     * @param code the String value
+     * @param actions the List&lt;CreateCorporateAction&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -1537,11 +1487,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
-     * @param scope The intended scope of the corporate action
-     * @param code Source of the corporate action
-     * @param actions The corporate actions to create
+     * @param scope the String value
+     * @param code the String value
+     * @param actions the List&lt;CreateCorporateAction&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertCorporateActionsResponse object
      */
@@ -1555,11 +1504,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to create/update one or more corporate action. Failed actions will be identified in the body of the response.
      *
-     * @param scope The intended scope of the corporate action
-     * @param code Source of the corporate action
-     * @param actions The corporate actions to create
+     * @param scope the String value
+     * @param code the String value
+     * @param actions the List&lt;CreateCorporateAction&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertCorporateActionsResponse object
      */
@@ -1593,7 +1541,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -1605,7 +1552,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -1616,7 +1562,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DataType object
@@ -1631,7 +1576,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DataType object
@@ -1653,9 +1597,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
-     * @param request The definition of the new format
+     * @param request the CreateDataTypeRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -1666,9 +1609,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
-     * @param request The definition of the new format
+     * @param request the CreateDataTypeRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -1678,9 +1620,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
-     * @param request The definition of the new format
+     * @param request the CreateDataTypeRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DataType object
      */
@@ -1694,9 +1635,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new PropertyDataFormat. Note: Only non-default formats can be created.
      *
-     * @param request The definition of the new format
+     * @param request the CreateDataTypeRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DataType object
      */
@@ -1724,7 +1664,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -1737,7 +1676,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -1749,7 +1687,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -1765,7 +1702,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -1797,7 +1733,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @param includeDefault the Boolean value
@@ -1816,7 +1751,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @param includeDefault the Boolean value
@@ -1834,7 +1768,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @param includeDefault the Boolean value
@@ -1856,7 +1789,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lists all property data formats in the specified scope.
      *
      * @param scope the String value
      * @param includeDefault the Boolean value
@@ -1896,7 +1828,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a property data format.
      *
      * @param scope the String value
      * @param name the String value
@@ -1910,7 +1841,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a property data format.
      *
      * @param scope the String value
      * @param name the String value
@@ -1923,7 +1853,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a property data format.
      *
      * @param scope the String value
      * @param name the String value
@@ -1940,7 +1869,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a property data format.
      *
      * @param scope the String value
      * @param name the String value
@@ -1976,10 +1904,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
-     * @param scope The scope of the format being updated
-     * @param name The name of the format to update
+     * @param scope the String value
+     * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -1990,10 +1917,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
-     * @param scope The scope of the format being updated
-     * @param name The name of the format to update
+     * @param scope the String value
+     * @param name the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -2003,10 +1929,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
-     * @param scope The scope of the format being updated
-     * @param name The name of the format to update
+     * @param scope the String value
+     * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DataType object
      */
@@ -2020,10 +1945,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
-     * @param scope The scope of the format being updated
-     * @param name The name of the format to update
+     * @param scope the String value
+     * @param name the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DataType object
      */
@@ -2050,11 +1974,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
-     * @param scope The scope of the format being updated
-     * @param name The name of the format to update
-     * @param request The new definition of the format
+     * @param scope the String value
+     * @param name the String value
+     * @param request the UpdateDataTypeRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -2065,11 +1988,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
-     * @param scope The scope of the format being updated
-     * @param name The name of the format to update
-     * @param request The new definition of the format
+     * @param scope the String value
+     * @param name the String value
+     * @param request the UpdateDataTypeRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -2079,11 +2001,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
-     * @param scope The scope of the format being updated
-     * @param name The name of the format to update
-     * @param request The new definition of the format
+     * @param scope the String value
+     * @param name the String value
+     * @param request the UpdateDataTypeRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DataType object
      */
@@ -2097,11 +2018,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update a PropertyDataFormat. Note: Only non-default formats can be updated.
      *
-     * @param scope The scope of the format being updated
-     * @param name The name of the format to update
-     * @param request The new definition of the format
+     * @param scope the String value
+     * @param name the String value
+     * @param request the UpdateDataTypeRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DataType object
      */
@@ -2135,7 +2055,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Return the definitions for the specified list of units.
      *
      * @param scope the String value
      * @param name the String value
@@ -2149,7 +2068,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Return the definitions for the specified list of units.
      *
      * @param scope the String value
      * @param name the String value
@@ -2162,7 +2080,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Return the definitions for the specified list of units.
      *
      * @param scope the String value
      * @param name the String value
@@ -2179,7 +2096,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Return the definitions for the specified list of units.
      *
      * @param scope the String value
      * @param name the String value
@@ -2211,7 +2127,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Return the definitions for the specified list of units.
      *
      * @param scope the String value
      * @param name the String value
@@ -2227,7 +2142,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Return the definitions for the specified list of units.
      *
      * @param scope the String value
      * @param name the String value
@@ -2242,7 +2156,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Return the definitions for the specified list of units.
      *
      * @param scope the String value
      * @param name the String value
@@ -2261,7 +2174,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Return the definitions for the specified list of units.
      *
      * @param scope the String value
      * @param name the String value
@@ -2301,10 +2213,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create derived portfolio.
-     * Creates a portfolio that derives from an existing portfolio.
      *
-     * @param scope The scope into which to create the new derived portfolio
+     * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -2315,10 +2225,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create derived portfolio.
-     * Creates a portfolio that derives from an existing portfolio.
      *
-     * @param scope The scope into which to create the new derived portfolio
+     * @param scope the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -2328,10 +2236,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create derived portfolio.
-     * Creates a portfolio that derives from an existing portfolio.
      *
-     * @param scope The scope into which to create the new derived portfolio
+     * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -2345,10 +2251,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create derived portfolio.
-     * Creates a portfolio that derives from an existing portfolio.
      *
-     * @param scope The scope into which to create the new derived portfolio
+     * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -2372,11 +2276,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create derived portfolio.
-     * Creates a portfolio that derives from an existing portfolio.
      *
-     * @param scope The scope into which to create the new derived portfolio
-     * @param portfolio The root object of the new derived portfolio, containing a populated reference portfolio id and reference scope
+     * @param scope the String value
+     * @param portfolio the CreateDerivedTransactionPortfolioRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -2387,11 +2289,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create derived portfolio.
-     * Creates a portfolio that derives from an existing portfolio.
      *
-     * @param scope The scope into which to create the new derived portfolio
-     * @param portfolio The root object of the new derived portfolio, containing a populated reference portfolio id and reference scope
+     * @param scope the String value
+     * @param portfolio the CreateDerivedTransactionPortfolioRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -2401,11 +2301,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create derived portfolio.
-     * Creates a portfolio that derives from an existing portfolio.
      *
-     * @param scope The scope into which to create the new derived portfolio
-     * @param portfolio The root object of the new derived portfolio, containing a populated reference portfolio id and reference scope
+     * @param scope the String value
+     * @param portfolio the CreateDerivedTransactionPortfolioRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -2419,11 +2317,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create derived portfolio.
-     * Creates a portfolio that derives from an existing portfolio.
      *
-     * @param scope The scope into which to create the new derived portfolio
-     * @param portfolio The root object of the new derived portfolio, containing a populated reference portfolio id and reference scope
+     * @param scope the String value
+     * @param portfolio the CreateDerivedTransactionPortfolioRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -2454,11 +2350,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolio details.
-     * Deletes the portfolio details for the given code.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -2469,11 +2363,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolio details.
-     * Deletes the portfolio details for the given code.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -2483,11 +2375,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolio details.
-     * Deletes the portfolio details for the given code.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -2501,11 +2391,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolio details.
-     * Deletes the portfolio details for the given code.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -2532,12 +2420,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolio details.
-     * Deletes the portfolio details for the given code.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective date of the change
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -2548,12 +2434,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolio details.
-     * Deletes the portfolio details for the given code.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective date of the change
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -2563,12 +2447,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolio details.
-     * Deletes the portfolio details for the given code.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective date of the change
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -2582,12 +2464,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolio details.
-     * Deletes the portfolio details for the given code.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective date of the change
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -2620,7 +2500,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -2632,7 +2511,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -2643,7 +2521,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the TryAddClientInstruments object
@@ -2658,7 +2535,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the TryAddClientInstruments object
@@ -2680,7 +2556,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @param definitions the List&lt;CreateClientInstrumentRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -2693,7 +2568,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @param definitions the List&lt;CreateClientInstrumentRequest&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -2705,7 +2579,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @param definitions the List&lt;CreateClientInstrumentRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -2721,7 +2594,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to create one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @param definitions the List&lt;CreateClientInstrumentRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -2751,7 +2623,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -2763,7 +2634,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -2774,7 +2644,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeleteClientInstrumentsResponse object
@@ -2789,7 +2658,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeleteClientInstrumentsResponse object
@@ -2812,7 +2680,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @param uids the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -2825,7 +2692,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @param uids the List&lt;String&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -2837,7 +2703,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @param uids the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -2853,7 +2718,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Attempt to delete one or more client instruments. Failed instruments will be identified in the body of the response.
      *
      * @param uids the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -2884,9 +2748,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
      *
-     * @param uid The uid of the requested instrument
+     * @param uid the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -2897,9 +2760,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
      *
-     * @param uid The uid of the requested instrument
+     * @param uid the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -2909,9 +2771,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
      *
-     * @param uid The uid of the requested instrument
+     * @param uid the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Instrument object
      */
@@ -2925,9 +2786,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
      *
-     * @param uid The uid of the requested instrument
+     * @param uid the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Instrument object
      */
@@ -2953,11 +2813,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
      *
-     * @param uid The uid of the requested instrument
-     * @param asAt As at date
-     * @param instrumentPropertyKeys Keys of the properties to be retrieved
+     * @param uid the String value
+     * @param asAt the DateTime value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -2968,11 +2827,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
      *
-     * @param uid The uid of the requested instrument
-     * @param asAt As at date
-     * @param instrumentPropertyKeys Keys of the properties to be retrieved
+     * @param uid the String value
+     * @param asAt the DateTime value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -2982,11 +2840,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
      *
-     * @param uid The uid of the requested instrument
-     * @param asAt As at date
-     * @param instrumentPropertyKeys Keys of the properties to be retrieved
+     * @param uid the String value
+     * @param asAt the DateTime value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Instrument object
      */
@@ -3000,11 +2857,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an individual instrument by the unique instrument uid.  Optionally, decorate each instrument with specific properties.
      *
-     * @param uid The uid of the requested instrument
-     * @param asAt As at date
-     * @param instrumentPropertyKeys Keys of the properties to be retrieved
+     * @param uid the String value
+     * @param asAt the DateTime value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Instrument object
      */
@@ -3036,7 +2892,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -3048,7 +2903,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3059,7 +2913,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the LookupInstrumentsFromCodesResponse object
@@ -3074,7 +2927,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the LookupInstrumentsFromCodesResponse object
@@ -3100,12 +2952,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
-     * @param codes An array of codes
-     * @param asAt As at date
-     * @param instrumentPropertyKeys Keys of the properties to be retrieved
+     * @param codeType Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codes the List&lt;String&gt; value
+     * @param asAt the DateTime value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -3116,12 +2967,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
-     * @param codes An array of codes
-     * @param asAt As at date
-     * @param instrumentPropertyKeys Keys of the properties to be retrieved
+     * @param codeType Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codes the List&lt;String&gt; value
+     * @param asAt the DateTime value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -3131,12 +2981,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
-     * @param codes An array of codes
-     * @param asAt As at date
-     * @param instrumentPropertyKeys Keys of the properties to be retrieved
+     * @param codeType Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codes the List&lt;String&gt; value
+     * @param asAt the DateTime value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the LookupInstrumentsFromCodesResponse object
      */
@@ -3150,12 +2999,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lookup a large number of instruments by supplying a collection of non-Finbourne codes.  Optionally, decorate each instrument with specific properties.
      *
-     * @param codeType The type of identifier. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
-     * @param codes An array of codes
-     * @param asAt As at date
-     * @param instrumentPropertyKeys Keys of the properties to be retrieved
+     * @param codeType Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codes the List&lt;String&gt; value
+     * @param asAt the DateTime value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the LookupInstrumentsFromCodesResponse object
      */
@@ -3185,7 +3033,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert instrument properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -3197,7 +3044,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert instrument properties.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3208,7 +3054,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert instrument properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertInstrumentPropertiesResponse object
@@ -3223,7 +3068,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert instrument properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertInstrumentPropertiesResponse object
@@ -3245,7 +3089,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert instrument properties.
      *
      * @param classifications the List&lt;InstrumentProperty&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3258,7 +3101,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert instrument properties.
      *
      * @param classifications the List&lt;InstrumentProperty&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -3270,7 +3112,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert instrument properties.
      *
      * @param classifications the List&lt;InstrumentProperty&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3286,7 +3127,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert instrument properties.
      *
      * @param classifications the List&lt;InstrumentProperty&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3316,9 +3156,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get the unique identifier for the SAML Identity Provider to be used by domain.
      *
-     * @param domain The domain that the user will be logging in to.
+     * @param domain the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -3329,9 +3168,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get the unique identifier for the SAML Identity Provider to be used by domain.
      *
-     * @param domain The domain that the user will be logging in to.
+     * @param domain the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -3341,9 +3179,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get the unique identifier for the SAML Identity Provider to be used by domain.
      *
-     * @param domain The domain that the user will be logging in to.
+     * @param domain the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the String object
      */
@@ -3357,9 +3194,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get the unique identifier for the SAML Identity Provider to be used by domain.
      *
-     * @param domain The domain that the user will be logging in to.
+     * @param domain the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the String object
      */
@@ -3389,7 +3225,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Request an authorised url for an Excel client version.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -3401,7 +3236,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Request an authorised url for an Excel client version.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3412,7 +3246,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Request an authorised url for an Excel client version.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the String object
@@ -3427,7 +3260,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Request an authorised url for an Excel client version.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the String object
@@ -3449,7 +3281,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Request an authorised url for an Excel client version.
      *
      * @param version the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3462,7 +3293,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Request an authorised url for an Excel client version.
      *
      * @param version the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -3474,7 +3304,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Request an authorised url for an Excel client version.
      *
      * @param version the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3490,7 +3319,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Request an authorised url for an Excel client version.
      *
      * @param version the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3519,7 +3347,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Returns the current major application version.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -3531,7 +3358,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Returns the current major application version.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3542,7 +3368,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Returns the current major application version.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the VersionSummary object
@@ -3557,7 +3382,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Returns the current major application version.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the VersionSummary object
@@ -3585,7 +3409,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a personalisation, recursing to get any referenced if required.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -3597,7 +3420,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a personalisation, recursing to get any referenced if required.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3608,7 +3430,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a personalisation, recursing to get any referenced if required.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPersonalisation object
@@ -3623,7 +3444,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a personalisation, recursing to get any referenced if required.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPersonalisation object
@@ -3652,12 +3472,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param pattern The search pattern or specific key
-     * @param scope The scope level to request for. Possible values include: 'User', 'Group', 'Default', 'All'
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
+     * @param pattern the String value
+     * @param scope Possible values include: 'User', 'Group', 'Default', 'All'
+     * @param recursive the Boolean value
+     * @param wildcards the Boolean value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -3671,12 +3490,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param pattern The search pattern or specific key
-     * @param scope The scope level to request for. Possible values include: 'User', 'Group', 'Default', 'All'
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
+     * @param pattern the String value
+     * @param scope Possible values include: 'User', 'Group', 'Default', 'All'
+     * @param recursive the Boolean value
+     * @param wildcards the Boolean value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -3689,12 +3507,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param pattern The search pattern or specific key
-     * @param scope The scope level to request for. Possible values include: 'User', 'Group', 'Default', 'All'
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
+     * @param pattern the String value
+     * @param scope Possible values include: 'User', 'Group', 'Default', 'All'
+     * @param recursive the Boolean value
+     * @param wildcards the Boolean value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -3711,12 +3528,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a personalisation, recursing to get any referenced if required.
      *
-     * @param pattern The search pattern or specific key
-     * @param scope The scope level to request for. Possible values include: 'User', 'Group', 'Default', 'All'
-     * @param recursive Whether to recurse into dereference recursive settings
-     * @param wildcards Whether to apply wildcards to the provided pattern and pull back any matching
+     * @param pattern the String value
+     * @param scope Possible values include: 'User', 'Group', 'Default', 'All'
+     * @param recursive the Boolean value
+     * @param wildcards the Boolean value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
@@ -3748,7 +3564,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert one or more personalisations.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -3760,7 +3575,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert one or more personalisations.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3771,7 +3585,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert one or more personalisations.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPersonalisationResponse object
@@ -3786,7 +3599,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert one or more personalisations.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPersonalisationResponse object
@@ -3808,7 +3620,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert one or more personalisations.
      *
      * @param personalisations the List&lt;Personalisation&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3821,7 +3632,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert one or more personalisations.
      *
      * @param personalisations the List&lt;Personalisation&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -3833,7 +3643,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert one or more personalisations.
      *
      * @param personalisations the List&lt;Personalisation&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3849,7 +3658,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert one or more personalisations.
      *
      * @param personalisations the List&lt;Personalisation&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3879,7 +3687,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -3891,7 +3698,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3902,7 +3708,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
@@ -3917,7 +3722,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
@@ -3941,11 +3745,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param key The key of the setting to be deleted
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
-     * @param group If deleting a setting at group level, specify the group here
+     * @param key the String value
+     * @param scope Possible values include: 'User', 'Group', 'Default', 'All'
+     * @param group the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -3956,11 +3759,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param key The key of the setting to be deleted
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
-     * @param group If deleting a setting at group level, specify the group here
+     * @param key the String value
+     * @param scope Possible values include: 'User', 'Group', 'Default', 'All'
+     * @param group the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -3970,11 +3772,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param key The key of the setting to be deleted
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
-     * @param group If deleting a setting at group level, specify the group here
+     * @param key the String value
+     * @param scope Possible values include: 'User', 'Group', 'Default', 'All'
+     * @param group the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -3988,11 +3789,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely).
      *
-     * @param key The key of the setting to be deleted
-     * @param scope The scope to delete at (use ALL to purge the setting entirely). Possible values include: 'User', 'Group', 'Default', 'All'
-     * @param group If deleting a setting at group level, specify the group here
+     * @param key the String value
+     * @param scope Possible values include: 'User', 'Group', 'Default', 'All'
+     * @param group the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -4019,7 +3819,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all groups in a specified scope.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -4032,7 +3831,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all groups in a specified scope.
      *
      * @param scope the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -4044,7 +3842,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all groups in a specified scope.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -4060,7 +3857,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all groups in a specified scope.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -4091,14 +3887,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all groups in a specified scope.
      *
      * @param scope the String value
      * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
-     * @param filter A filter expression to apply to the result set
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -4109,14 +3904,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all groups in a specified scope.
      *
      * @param scope the String value
      * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
-     * @param filter A filter expression to apply to the result set
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -4126,14 +3920,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all groups in a specified scope.
      *
      * @param scope the String value
      * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
-     * @param filter A filter expression to apply to the result set
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioGroup object
      */
@@ -4147,14 +3940,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all groups in a specified scope.
      *
      * @param scope the String value
      * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
-     * @param filter A filter expression to apply to the result set
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioGroup object
      */
@@ -4186,7 +3978,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new group.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -4199,7 +3990,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new group.
      *
      * @param scope the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -4211,7 +4001,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new group.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -4227,7 +4016,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new group.
      *
      * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -4253,7 +4041,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new group.
      *
      * @param scope the String value
      * @param request the CreatePortfolioGroupRequest value
@@ -4267,7 +4054,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new group.
      *
      * @param scope the String value
      * @param request the CreatePortfolioGroupRequest value
@@ -4280,7 +4066,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new group.
      *
      * @param scope the String value
      * @param request the CreatePortfolioGroupRequest value
@@ -4297,7 +4082,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new group.
      *
      * @param scope the String value
      * @param request the CreatePortfolioGroupRequest value
@@ -4331,7 +4115,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4345,7 +4128,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4358,7 +4140,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4375,7 +4156,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4405,7 +4185,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4420,7 +4199,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4434,7 +4212,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4452,7 +4229,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4489,7 +4265,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4503,7 +4278,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4516,7 +4290,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4533,7 +4306,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4563,7 +4335,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4578,7 +4349,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4592,7 +4362,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4610,7 +4379,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4648,7 +4416,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete a group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4662,7 +4429,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete a group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4675,7 +4441,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete a group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4692,7 +4457,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete a group.
      *
      * @param scope the String value
      * @param code the String value
@@ -4728,7 +4492,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data in a group hierarchy.
      *
      * @param scope the String value
      * @param code the String value
@@ -4742,7 +4505,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data in a group hierarchy.
      *
      * @param scope the String value
      * @param code the String value
@@ -4755,7 +4517,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data in a group hierarchy.
      *
      * @param scope the String value
      * @param code the String value
@@ -4772,7 +4533,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data in a group hierarchy.
      *
      * @param scope the String value
      * @param code the String value
@@ -4806,7 +4566,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data in a group hierarchy.
      *
      * @param scope the String value
      * @param code the String value
@@ -4824,7 +4583,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data in a group hierarchy.
      *
      * @param scope the String value
      * @param code the String value
@@ -4841,7 +4599,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data in a group hierarchy.
      *
      * @param scope the String value
      * @param code the String value
@@ -4862,7 +4619,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data in a group hierarchy.
      *
      * @param scope the String value
      * @param code the String value
@@ -4905,7 +4661,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Obsolete - Aggregation request data in a group hierarchy into a data tree.
      *
      * @param scope the String value
      * @param code the String value
@@ -4919,7 +4674,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Obsolete - Aggregation request data in a group hierarchy into a data tree.
      *
      * @param scope the String value
      * @param code the String value
@@ -4932,7 +4686,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Obsolete - Aggregation request data in a group hierarchy into a data tree.
      *
      * @param scope the String value
      * @param code the String value
@@ -4949,7 +4702,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Obsolete - Aggregation request data in a group hierarchy into a data tree.
      *
      * @param scope the String value
      * @param code the String value
@@ -4979,7 +4731,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Obsolete - Aggregation request data in a group hierarchy into a data tree.
      *
      * @param scope the String value
      * @param code the String value
@@ -4994,7 +4745,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Obsolete - Aggregation request data in a group hierarchy into a data tree.
      *
      * @param scope the String value
      * @param code the String value
@@ -5008,7 +4758,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Obsolete - Aggregation request data in a group hierarchy into a data tree.
      *
      * @param scope the String value
      * @param code the String value
@@ -5026,7 +4775,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Obsolete - Aggregation request data in a group hierarchy into a data tree.
      *
      * @param scope the String value
      * @param code the String value
@@ -5064,10 +4812,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets all commands that modified the portfolio groups(s) with the specified id.
      *
-     * @param scope The scope of the portfolio group
-     * @param code The portfolio group id
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -5078,10 +4825,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets all commands that modified the portfolio groups(s) with the specified id.
      *
-     * @param scope The scope of the portfolio group
-     * @param code The portfolio group id
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -5091,10 +4837,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets all commands that modified the portfolio groups(s) with the specified id.
      *
-     * @param scope The scope of the portfolio group
-     * @param code The portfolio group id
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfProcessedCommand object
      */
@@ -5108,10 +4853,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets all commands that modified the portfolio groups(s) with the specified id.
      *
-     * @param scope The scope of the portfolio group
-     * @param code The portfolio group id
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfProcessedCommand object
      */
@@ -5144,16 +4888,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets all commands that modified the portfolio groups(s) with the specified id.
      *
-     * @param scope The scope of the portfolio group
-     * @param code The portfolio group id
-     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
-     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param scope the String value
+     * @param code the String value
+     * @param fromAsAt the DateTime value
+     * @param toAsAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
-     * @param filter A filter expression to apply to the result set
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -5164,16 +4907,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets all commands that modified the portfolio groups(s) with the specified id.
      *
-     * @param scope The scope of the portfolio group
-     * @param code The portfolio group id
-     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
-     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param scope the String value
+     * @param code the String value
+     * @param fromAsAt the DateTime value
+     * @param toAsAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
-     * @param filter A filter expression to apply to the result set
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -5183,16 +4925,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets all commands that modified the portfolio groups(s) with the specified id.
      *
-     * @param scope The scope of the portfolio group
-     * @param code The portfolio group id
-     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
-     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param scope the String value
+     * @param code the String value
+     * @param fromAsAt the DateTime value
+     * @param toAsAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
-     * @param filter A filter expression to apply to the result set
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfProcessedCommand object
      */
@@ -5206,16 +4947,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets all commands that modified the portfolio groups(s) with the specified id.
      *
-     * @param scope The scope of the portfolio group
-     * @param code The portfolio group id
-     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
-     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
+     * @param scope the String value
+     * @param code the String value
+     * @param fromAsAt the DateTime value
+     * @param toAsAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
-     * @param filter A filter expression to apply to the result set
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfProcessedCommand object
      */
@@ -5250,7 +4990,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a full expansion of an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5264,7 +5003,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a full expansion of an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5277,7 +5015,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a full expansion of an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5294,7 +5031,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a full expansion of an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5327,7 +5063,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a full expansion of an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5344,7 +5079,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a full expansion of an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5360,7 +5094,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a full expansion of an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5380,7 +5113,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a full expansion of an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5421,7 +5153,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add a portfolio to an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5435,7 +5166,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add a portfolio to an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5448,7 +5178,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add a portfolio to an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5465,7 +5194,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add a portfolio to an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5495,7 +5223,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add a portfolio to an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5510,7 +5237,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add a portfolio to an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5524,7 +5250,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add a portfolio to an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5542,7 +5267,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add a portfolio to an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5580,7 +5304,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Remove a portfolio that is currently present within an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5596,7 +5319,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Remove a portfolio that is currently present within an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5611,7 +5333,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Remove a portfolio that is currently present within an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5630,7 +5351,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Remove a portfolio that is currently present within an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5674,7 +5394,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add a sub group to an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5688,7 +5407,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add a sub group to an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5701,7 +5419,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add a sub group to an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5718,7 +5435,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add a sub group to an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5748,7 +5464,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add a sub group to an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5763,7 +5478,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add a sub group to an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5777,7 +5491,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add a sub group to an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5795,7 +5508,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add a sub group to an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5833,7 +5545,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Remove a subgroup that is currently present within an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5849,7 +5560,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Remove a subgroup that is currently present within an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5864,7 +5574,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Remove a subgroup that is currently present within an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5883,7 +5592,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Remove a subgroup that is currently present within an existing group.
      *
      * @param scope the String value
      * @param code the String value
@@ -5927,8 +5635,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List scopes that contain portfolios.
-     * Lists all scopes that have previously been used.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -5940,8 +5646,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List scopes that contain portfolios.
-     * Lists all scopes that have previously been used.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -5952,8 +5656,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List scopes that contain portfolios.
-     * Lists all scopes that have previously been used.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfScope object
@@ -5968,8 +5670,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List scopes that contain portfolios.
-     * Lists all scopes that have previously been used.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfScope object
@@ -5995,13 +5695,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List scopes that contain portfolios.
-     * Lists all scopes that have previously been used.
      *
-     * @param sortBy How to order the returned scopes
-     * @param start The starting index for the returned scopes
-     * @param limit The final index for the returned scopes
-     * @param filter Filter to be applied to the list of scopes
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -6012,13 +5710,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List scopes that contain portfolios.
-     * Lists all scopes that have previously been used.
      *
-     * @param sortBy How to order the returned scopes
-     * @param start The starting index for the returned scopes
-     * @param limit The final index for the returned scopes
-     * @param filter Filter to be applied to the list of scopes
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -6028,13 +5724,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List scopes that contain portfolios.
-     * Lists all scopes that have previously been used.
      *
-     * @param sortBy How to order the returned scopes
-     * @param start The starting index for the returned scopes
-     * @param limit The final index for the returned scopes
-     * @param filter Filter to be applied to the list of scopes
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfScope object
      */
@@ -6048,13 +5742,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List scopes that contain portfolios.
-     * Lists all scopes that have previously been used.
      *
-     * @param sortBy How to order the returned scopes
-     * @param start The starting index for the returned scopes
-     * @param limit The final index for the returned scopes
-     * @param filter Filter to be applied to the list of scopes
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfScope object
      */
@@ -6083,10 +5775,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get all portfolios.
-     * Get all portfolios in a scope.
      *
-     * @param scope The scope to get portfolios from
+     * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -6097,10 +5787,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get all portfolios.
-     * Get all portfolios in a scope.
      *
-     * @param scope The scope to get portfolios from
+     * @param scope the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -6110,10 +5798,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get all portfolios.
-     * Get all portfolios in a scope.
      *
-     * @param scope The scope to get portfolios from
+     * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolio object
      */
@@ -6127,10 +5813,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get all portfolios.
-     * Get all portfolios in a scope.
      *
-     * @param scope The scope to get portfolios from
+     * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolio object
      */
@@ -6160,15 +5844,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get all portfolios.
-     * Get all portfolios in a scope.
      *
-     * @param scope The scope to get portfolios from
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
+     * @param scope the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -6180,15 +5862,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get all portfolios.
-     * Get all portfolios in a scope.
      *
-     * @param scope The scope to get portfolios from
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
+     * @param scope the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
      * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -6199,15 +5879,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get all portfolios.
-     * Get all portfolios in a scope.
      *
-     * @param scope The scope to get portfolios from
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
+     * @param scope the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolio object
@@ -6222,15 +5900,13 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get all portfolios.
-     * Get all portfolios in a scope.
      *
-     * @param scope The scope to get portfolios from
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
+     * @param scope the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
      * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolio object
@@ -6263,11 +5939,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get portfolio.
-     * Gets a single portfolio by code.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -6278,11 +5952,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get portfolio.
-     * Gets a single portfolio by code.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -6292,11 +5964,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get portfolio.
-     * Gets a single portfolio by code.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -6310,11 +5980,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get portfolio.
-     * Gets a single portfolio by code.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -6342,13 +6010,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get portfolio.
-     * Gets a single portfolio by code.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -6359,13 +6025,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get portfolio.
-     * Gets a single portfolio by code.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -6375,13 +6039,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get portfolio.
-     * Gets a single portfolio by code.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -6395,13 +6057,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get portfolio.
-     * Gets a single portfolio by code.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -6434,10 +6094,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update portfolio.
      *
-     * @param scope The scope of the portfolio to be updated
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -6448,10 +6107,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update portfolio.
      *
-     * @param scope The scope of the portfolio to be updated
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -6461,10 +6119,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update portfolio.
      *
-     * @param scope The scope of the portfolio to be updated
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -6478,10 +6135,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update portfolio.
      *
-     * @param scope The scope of the portfolio to be updated
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -6509,12 +6165,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update portfolio.
      *
-     * @param scope The scope of the portfolio to be updated
-     * @param code Code for the portfolio
-     * @param request The update request
-     * @param effectiveAt The effective date for the change
+     * @param scope the String value
+     * @param code the String value
+     * @param request the UpdatePortfolioRequest value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -6525,12 +6180,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update portfolio.
      *
-     * @param scope The scope of the portfolio to be updated
-     * @param code Code for the portfolio
-     * @param request The update request
-     * @param effectiveAt The effective date for the change
+     * @param scope the String value
+     * @param code the String value
+     * @param request the UpdatePortfolioRequest value
+     * @param effectiveAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -6540,12 +6194,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update portfolio.
      *
-     * @param scope The scope of the portfolio to be updated
-     * @param code Code for the portfolio
-     * @param request The update request
-     * @param effectiveAt The effective date for the change
+     * @param scope the String value
+     * @param code the String value
+     * @param request the UpdatePortfolioRequest value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -6559,12 +6212,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update portfolio.
      *
-     * @param scope The scope of the portfolio to be updated
-     * @param code Code for the portfolio
-     * @param request The update request
-     * @param effectiveAt The effective date for the change
+     * @param scope the String value
+     * @param code the String value
+     * @param request the UpdatePortfolioRequest value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -6598,11 +6250,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolio.
-     * Deletes a portfolio from the given effectiveAt.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -6613,11 +6263,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolio.
-     * Deletes a portfolio from the given effectiveAt.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -6627,11 +6275,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolio.
-     * Deletes a portfolio from the given effectiveAt.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -6645,11 +6291,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolio.
-     * Deletes a portfolio from the given effectiveAt.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -6676,12 +6320,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolio.
-     * Deletes a portfolio from the given effectiveAt.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -6692,12 +6334,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolio.
-     * Deletes a portfolio from the given effectiveAt.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -6707,12 +6347,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolio.
-     * Deletes a portfolio from the given effectiveAt.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -6726,12 +6364,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolio.
-     * Deletes a portfolio from the given effectiveAt.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -6764,7 +6400,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data in a portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -6778,7 +6413,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data in a portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -6791,7 +6425,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data in a portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -6808,7 +6441,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data in a portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -6842,7 +6474,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data in a portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -6860,7 +6491,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data in a portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -6877,7 +6507,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data in a portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -6898,7 +6527,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data in a portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -6941,11 +6569,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get modifications.
-     * Gets all commands that modified the portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code The portfolio id
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -6956,11 +6582,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get modifications.
-     * Gets all commands that modified the portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code The portfolio id
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -6970,11 +6594,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get modifications.
-     * Gets all commands that modified the portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code The portfolio id
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfProcessedCommand object
      */
@@ -6988,11 +6610,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get modifications.
-     * Gets all commands that modified the portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code The portfolio id
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfProcessedCommand object
      */
@@ -7021,14 +6641,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get modifications.
-     * Gets all commands that modified the portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code The portfolio id
-     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
-     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
-     * @param filter Command filter
+     * @param scope the String value
+     * @param code the String value
+     * @param fromAsAt the DateTime value
+     * @param toAsAt the DateTime value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -7039,14 +6657,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get modifications.
-     * Gets all commands that modified the portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code The portfolio id
-     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
-     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
-     * @param filter Command filter
+     * @param scope the String value
+     * @param code the String value
+     * @param fromAsAt the DateTime value
+     * @param toAsAt the DateTime value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -7056,14 +6672,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get modifications.
-     * Gets all commands that modified the portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code The portfolio id
-     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
-     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
-     * @param filter Command filter
+     * @param scope the String value
+     * @param code the String value
+     * @param fromAsAt the DateTime value
+     * @param toAsAt the DateTime value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfProcessedCommand object
      */
@@ -7077,14 +6691,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get modifications.
-     * Gets all commands that modified the portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code The portfolio id
-     * @param fromAsAt Filters commands by those that were processed at or after this time. Null means there is no lower limit.
-     * @param toAsAt Filters commands by those that were processed at or before this time. Null means there is no upper limit (latest).
-     * @param filter Command filter
+     * @param scope the String value
+     * @param code the String value
+     * @param fromAsAt the DateTime value
+     * @param toAsAt the DateTime value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfProcessedCommand object
      */
@@ -7117,12 +6729,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get properties.
-     * Get properties attached to the portfolio.  If the asAt is not specified then
-     the latest system time is used.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -7133,12 +6742,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get properties.
-     * Get properties attached to the portfolio.  If the asAt is not specified then
-     the latest system time is used.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -7148,12 +6754,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get properties.
-     * Get properties attached to the portfolio.  If the asAt is not specified then
-     the latest system time is used.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioProperties object
      */
@@ -7167,12 +6770,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get properties.
-     * Get properties attached to the portfolio.  If the asAt is not specified then
-     the latest system time is used.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioProperties object
      */
@@ -7204,15 +6804,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get properties.
-     * Get properties attached to the portfolio.  If the asAt is not specified then
-     the latest system time is used.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
-     * @param sortBy Property to sort the results by
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -7225,15 +6822,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get properties.
-     * Get properties attached to the portfolio.  If the asAt is not specified then
-     the latest system time is used.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
-     * @param sortBy Property to sort the results by
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -7245,15 +6839,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get properties.
-     * Get properties attached to the portfolio.  If the asAt is not specified then
-     the latest system time is used.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
-     * @param sortBy Property to sort the results by
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -7269,15 +6860,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get properties.
-     * Get properties attached to the portfolio.  If the asAt is not specified then
-     the latest system time is used.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
-     * @param sortBy Property to sort the results by
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
      * @param limit the Integer value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -7314,11 +6902,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update properties.
-     * Create one or more properties on a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -7329,11 +6915,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update properties.
-     * Create one or more properties on a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -7343,11 +6927,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update properties.
-     * Create one or more properties on a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioProperties object
      */
@@ -7361,11 +6943,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update properties.
-     * Create one or more properties on a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioProperties object
      */
@@ -7393,13 +6973,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update properties.
-     * Create one or more properties on a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param portfolioProperties the Map&lt;String, PropertyValue&gt; value
-     * @param effectiveAt The effective date for the change
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -7410,13 +6988,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update properties.
-     * Create one or more properties on a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param portfolioProperties the Map&lt;String, PropertyValue&gt; value
-     * @param effectiveAt The effective date for the change
+     * @param effectiveAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -7426,13 +7002,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update properties.
-     * Create one or more properties on a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param portfolioProperties the Map&lt;String, PropertyValue&gt; value
-     * @param effectiveAt The effective date for the change
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioProperties object
      */
@@ -7446,13 +7020,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Update properties.
-     * Create one or more properties on a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param portfolioProperties the Map&lt;String, PropertyValue&gt; value
-     * @param effectiveAt The effective date for the change
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioProperties object
      */
@@ -7486,11 +7058,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete one, many or all properties from a portfolio for a specified effective date.
-     * Specifying no properties will delete all properties.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -7501,11 +7071,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete one, many or all properties from a portfolio for a specified effective date.
-     * Specifying no properties will delete all properties.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -7515,11 +7083,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete one, many or all properties from a portfolio for a specified effective date.
-     * Specifying no properties will delete all properties.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -7533,11 +7099,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete one, many or all properties from a portfolio for a specified effective date.
-     * Specifying no properties will delete all properties.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -7566,13 +7130,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete one, many or all properties from a portfolio for a specified effective date.
-     * Specifying no properties will delete all properties.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param portfolioPropertyKeys The keys of the property to be deleted. None specified indicates the intent to delete all properties
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param portfolioPropertyKeys the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -7583,13 +7145,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete one, many or all properties from a portfolio for a specified effective date.
-     * Specifying no properties will delete all properties.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param portfolioPropertyKeys The keys of the property to be deleted. None specified indicates the intent to delete all properties
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param portfolioPropertyKeys the List&lt;String&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -7599,13 +7159,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete one, many or all properties from a portfolio for a specified effective date.
-     * Specifying no properties will delete all properties.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param portfolioPropertyKeys The keys of the property to be deleted. None specified indicates the intent to delete all properties
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param portfolioPropertyKeys the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -7619,13 +7177,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete one, many or all properties from a portfolio for a specified effective date.
-     * Specifying no properties will delete all properties.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param portfolioPropertyKeys The keys of the property to be deleted. None specified indicates the intent to delete all properties
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param portfolioPropertyKeys the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -7660,7 +7216,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Perform a reconciliation between two portfolios.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -7672,7 +7227,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Perform a reconciliation between two portfolios.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -7683,7 +7237,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Perform a reconciliation between two portfolios.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReconciliationBreak object
@@ -7698,7 +7251,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Perform a reconciliation between two portfolios.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReconciliationBreak object
@@ -7725,7 +7277,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Perform a reconciliation between two portfolios.
      *
      * @param request the PortfoliosReconciliationRequest value
      * @param sortBy the List&lt;String&gt; value
@@ -7742,7 +7293,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Perform a reconciliation between two portfolios.
      *
      * @param request the PortfoliosReconciliationRequest value
      * @param sortBy the List&lt;String&gt; value
@@ -7758,7 +7308,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Perform a reconciliation between two portfolios.
      *
      * @param request the PortfoliosReconciliationRequest value
      * @param sortBy the List&lt;String&gt; value
@@ -7778,7 +7327,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Perform a reconciliation between two portfolios.
      *
      * @param request the PortfoliosReconciliationRequest value
      * @param sortBy the List&lt;String&gt; value
@@ -7814,7 +7362,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets multiple property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -7826,7 +7373,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets multiple property definitions.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -7837,7 +7383,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets multiple property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPropertyDefinition object
@@ -7852,7 +7397,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets multiple property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPropertyDefinition object
@@ -7880,7 +7424,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets multiple property definitions.
      *
      * @param keys the List&lt;String&gt; value
      * @param asAt the DateTime value
@@ -7898,7 +7441,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets multiple property definitions.
      *
      * @param keys the List&lt;String&gt; value
      * @param asAt the DateTime value
@@ -7915,7 +7457,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets multiple property definitions.
      *
      * @param keys the List&lt;String&gt; value
      * @param asAt the DateTime value
@@ -7936,7 +7477,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets multiple property definitions.
      *
      * @param keys the List&lt;String&gt; value
      * @param asAt the DateTime value
@@ -7973,7 +7513,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Creates a new property definition.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -7985,7 +7524,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Creates a new property definition.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -7996,7 +7534,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Creates a new property definition.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
@@ -8011,7 +7548,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Creates a new property definition.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
@@ -8033,7 +7569,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Creates a new property definition.
      *
      * @param definition the CreatePropertyDefinitionRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8046,7 +7581,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Creates a new property definition.
      *
      * @param definition the CreatePropertyDefinitionRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -8058,7 +7592,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Creates a new property definition.
      *
      * @param definition the CreatePropertyDefinitionRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8074,7 +7607,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Creates a new property definition.
      *
      * @param definition the CreatePropertyDefinitionRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8104,7 +7636,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8119,7 +7650,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8133,7 +7663,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8151,7 +7680,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8185,7 +7713,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8201,7 +7728,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8216,7 +7742,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8235,7 +7760,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets a property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8276,7 +7800,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Updates the specified property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8291,7 +7814,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Updates the specified property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8305,7 +7827,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Updates the specified property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8323,7 +7844,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Updates the specified property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8357,7 +7877,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Updates the specified property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8373,7 +7892,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Updates the specified property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8388,7 +7906,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Updates the specified property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8407,7 +7924,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Updates the specified property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8449,7 +7965,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Deletes the property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8464,7 +7979,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Deletes the property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8478,7 +7992,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Deletes the property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8496,7 +8009,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Deletes the property definition.
      *
      * @param domain Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
      * @param scope the String value
@@ -8536,9 +8048,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new reference portfolio.
      *
-     * @param scope The intended scope of the portfolio
+     * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -8549,9 +8060,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new reference portfolio.
      *
-     * @param scope The intended scope of the portfolio
+     * @param scope the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -8561,9 +8071,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new reference portfolio.
      *
-     * @param scope The intended scope of the portfolio
+     * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -8577,9 +8086,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new reference portfolio.
      *
-     * @param scope The intended scope of the portfolio
+     * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -8603,10 +8111,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new reference portfolio.
      *
-     * @param scope The intended scope of the portfolio
-     * @param referencePortfolio The portfolio creation request object
+     * @param scope the String value
+     * @param referencePortfolio the CreateReferencePortfolioRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -8617,10 +8124,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new reference portfolio.
      *
-     * @param scope The intended scope of the portfolio
-     * @param referencePortfolio The portfolio creation request object
+     * @param scope the String value
+     * @param referencePortfolio the CreateReferencePortfolioRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -8630,10 +8136,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new reference portfolio.
      *
-     * @param scope The intended scope of the portfolio
-     * @param referencePortfolio The portfolio creation request object
+     * @param scope the String value
+     * @param referencePortfolio the CreateReferencePortfolioRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -8647,10 +8152,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create a new reference portfolio.
      *
-     * @param scope The intended scope of the portfolio
-     * @param referencePortfolio The portfolio creation request object
+     * @param scope the String value
+     * @param referencePortfolio the CreateReferencePortfolioRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -8681,7 +8185,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get all the constituents in a reference portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -8696,7 +8199,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get all the constituents in a reference portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -8710,7 +8212,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get all the constituents in a reference portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -8728,7 +8229,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get all the constituents in a reference portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -8766,7 +8266,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get all the constituents in a reference portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -8785,7 +8284,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get all the constituents in a reference portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -8803,7 +8301,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get all the constituents in a reference portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -8825,7 +8322,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get all the constituents in a reference portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -8871,7 +8367,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add constituents to a specific reference portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -8886,7 +8381,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add constituents to a specific reference portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -8900,7 +8394,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add constituents to a specific reference portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -8918,7 +8411,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add constituents to a specific reference portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -8952,7 +8444,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add constituents to a specific reference portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -8968,7 +8459,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add constituents to a specific reference portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -8983,7 +8473,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add constituents to a specific reference portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -9002,7 +8491,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add constituents to a specific reference portfolio.
      *
      * @param scope the String value
      * @param code the String value
@@ -9044,11 +8532,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Retrieve some previously stored results.
      *
-     * @param scope The scope of the data
-     * @param key The key that identifies the data
-     * @param dateParameter The date for which the data was loaded
+     * @param scope the String value
+     * @param key the String value
+     * @param dateParameter the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -9059,11 +8546,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Retrieve some previously stored results.
      *
-     * @param scope The scope of the data
-     * @param key The key that identifies the data
-     * @param dateParameter The date for which the data was loaded
+     * @param scope the String value
+     * @param key the String value
+     * @param dateParameter the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -9073,11 +8559,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Retrieve some previously stored results.
      *
-     * @param scope The scope of the data
-     * @param key The key that identifies the data
-     * @param dateParameter The date for which the data was loaded
+     * @param scope the String value
+     * @param key the String value
+     * @param dateParameter the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Results object
      */
@@ -9091,11 +8576,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Retrieve some previously stored results.
      *
-     * @param scope The scope of the data
-     * @param key The key that identifies the data
-     * @param dateParameter The date for which the data was loaded
+     * @param scope the String value
+     * @param key the String value
+     * @param dateParameter the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Results object
      */
@@ -9129,11 +8613,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Retrieve some previously stored results.
      *
-     * @param scope The scope of the data
-     * @param key The key that identifies the data
-     * @param dateParameter The date for which the data was loaded
+     * @param scope the String value
+     * @param key the String value
+     * @param dateParameter the DateTime value
      * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -9148,11 +8631,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Retrieve some previously stored results.
      *
-     * @param scope The scope of the data
-     * @param key The key that identifies the data
-     * @param dateParameter The date for which the data was loaded
+     * @param scope the String value
+     * @param key the String value
+     * @param dateParameter the DateTime value
      * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -9166,11 +8648,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Retrieve some previously stored results.
      *
-     * @param scope The scope of the data
-     * @param key The key that identifies the data
-     * @param dateParameter The date for which the data was loaded
+     * @param scope the String value
+     * @param key the String value
+     * @param dateParameter the DateTime value
      * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -9188,11 +8669,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Retrieve some previously stored results.
      *
-     * @param scope The scope of the data
-     * @param key The key that identifies the data
-     * @param dateParameter The date for which the data was loaded
+     * @param scope the String value
+     * @param key the String value
+     * @param dateParameter the DateTime value
      * @param asAt the DateTime value
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -9234,11 +8714,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert precalculated results against a specified scope/key/date combination.
      *
-     * @param scope The scope of the data
-     * @param key The key that identifies the data
-     * @param dateParameter The date for which the data is relevant
+     * @param scope the String value
+     * @param key the String value
+     * @param dateParameter the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -9249,11 +8728,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert precalculated results against a specified scope/key/date combination.
      *
-     * @param scope The scope of the data
-     * @param key The key that identifies the data
-     * @param dateParameter The date for which the data is relevant
+     * @param scope the String value
+     * @param key the String value
+     * @param dateParameter the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -9263,11 +8741,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert precalculated results against a specified scope/key/date combination.
      *
-     * @param scope The scope of the data
-     * @param key The key that identifies the data
-     * @param dateParameter The date for which the data is relevant
+     * @param scope the String value
+     * @param key the String value
+     * @param dateParameter the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Results object
      */
@@ -9281,11 +8758,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert precalculated results against a specified scope/key/date combination.
      *
-     * @param scope The scope of the data
-     * @param key The key that identifies the data
-     * @param dateParameter The date for which the data is relevant
+     * @param scope the String value
+     * @param key the String value
+     * @param dateParameter the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Results object
      */
@@ -9315,12 +8791,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert precalculated results against a specified scope/key/date combination.
      *
-     * @param scope The scope of the data
-     * @param key The key that identifies the data
-     * @param dateParameter The date for which the data is relevant
-     * @param request The results to upload
+     * @param scope the String value
+     * @param key the String value
+     * @param dateParameter the DateTime value
+     * @param request the CreateResults value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -9331,12 +8806,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert precalculated results against a specified scope/key/date combination.
      *
-     * @param scope The scope of the data
-     * @param key The key that identifies the data
-     * @param dateParameter The date for which the data is relevant
-     * @param request The results to upload
+     * @param scope the String value
+     * @param key the String value
+     * @param dateParameter the DateTime value
+     * @param request the CreateResults value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -9346,12 +8820,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert precalculated results against a specified scope/key/date combination.
      *
-     * @param scope The scope of the data
-     * @param key The key that identifies the data
-     * @param dateParameter The date for which the data is relevant
-     * @param request The results to upload
+     * @param scope the String value
+     * @param key the String value
+     * @param dateParameter the DateTime value
+     * @param request the CreateResults value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Results object
      */
@@ -9365,12 +8838,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert precalculated results against a specified scope/key/date combination.
      *
-     * @param scope The scope of the data
-     * @param key The key that identifies the data
-     * @param dateParameter The date for which the data is relevant
-     * @param request The results to upload
+     * @param scope the String value
+     * @param key the String value
+     * @param dateParameter the DateTime value
+     * @param request the CreateResults value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Results object
      */
@@ -9407,7 +8879,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data from a result set.
      *
      * @param scope the String value
      * @param resultsKey the String value
@@ -9421,7 +8892,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data from a result set.
      *
      * @param scope the String value
      * @param resultsKey the String value
@@ -9434,7 +8904,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data from a result set.
      *
      * @param scope the String value
      * @param resultsKey the String value
@@ -9451,7 +8920,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data from a result set.
      *
      * @param scope the String value
      * @param resultsKey the String value
@@ -9485,7 +8953,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data from a result set.
      *
      * @param scope the String value
      * @param resultsKey the String value
@@ -9503,7 +8970,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data from a result set.
      *
      * @param scope the String value
      * @param resultsKey the String value
@@ -9520,7 +8986,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data from a result set.
      *
      * @param scope the String value
      * @param resultsKey the String value
@@ -9541,7 +9006,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Aggregate data from a result set.
      *
      * @param scope the String value
      * @param resultsKey the String value
@@ -9584,7 +9048,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all available entities.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -9596,7 +9059,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all available entities.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -9607,7 +9069,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all available entities.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfString object
@@ -9622,7 +9083,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * List all available entities.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfString object
@@ -9650,7 +9110,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the schema for a given entity.
      *
      * @param entity the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -9663,7 +9122,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the schema for a given entity.
      *
      * @param entity the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -9675,7 +9133,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the schema for a given entity.
      *
      * @param entity the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -9691,7 +9148,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the schema for a given entity.
      *
      * @param entity the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -9723,7 +9179,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get the schemas for the provided list of property keys.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -9735,7 +9190,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get the schemas for the provided list of property keys.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -9746,7 +9200,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get the schemas for the provided list of property keys.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertySchema object
@@ -9761,7 +9214,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get the schemas for the provided list of property keys.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertySchema object
@@ -9785,9 +9237,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get the schemas for the provided list of property keys.
      *
-     * @param propertyKeys A comma delimited list of property keys in string format. e.g. "Portfolio/default/PropertyName,Portfolio/differentScope/MyProperty"
+     * @param propertyKeys the List&lt;String&gt; value
      * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -9799,9 +9250,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get the schemas for the provided list of property keys.
      *
-     * @param propertyKeys A comma delimited list of property keys in string format. e.g. "Portfolio/default/PropertyName,Portfolio/differentScope/MyProperty"
+     * @param propertyKeys the List&lt;String&gt; value
      * @param asAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -9812,9 +9262,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get the schemas for the provided list of property keys.
      *
-     * @param propertyKeys A comma delimited list of property keys in string format. e.g. "Portfolio/default/PropertyName,Portfolio/differentScope/MyProperty"
+     * @param propertyKeys the List&lt;String&gt; value
      * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertySchema object
@@ -9829,9 +9278,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get the schemas for the provided list of property keys.
      *
-     * @param propertyKeys A comma delimited list of property keys in string format. e.g. "Portfolio/default/PropertyName,Portfolio/differentScope/MyProperty"
+     * @param propertyKeys the List&lt;String&gt; value
      * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertySchema object
@@ -9861,7 +9309,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the available value types that could be returned in a schema.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -9873,7 +9320,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the available value types that could be returned in a schema.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -9884,7 +9330,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the available value types that could be returned in a schema.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfValueType object
@@ -9899,7 +9344,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the available value types that could be returned in a schema.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfValueType object
@@ -9924,7 +9368,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the available value types that could be returned in a schema.
      *
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -9939,7 +9382,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the available value types that could be returned in a schema.
      *
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -9953,7 +9395,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the available value types that could be returned in a schema.
      *
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -9971,7 +9412,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the available value types that could be returned in a schema.
      *
      * @param sortBy the List&lt;String&gt; value
      * @param start the Integer value
@@ -10004,7 +9444,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolio groups.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -10016,7 +9455,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolio groups.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -10027,7 +9465,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolio groups.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioGroup object
@@ -10042,7 +9479,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolio groups.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioGroup object
@@ -10069,7 +9505,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolio groups.
      *
      * @param request the Object value
      * @param sortBy the List&lt;String&gt; value
@@ -10086,7 +9521,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolio groups.
      *
      * @param request the Object value
      * @param sortBy the List&lt;String&gt; value
@@ -10102,7 +9536,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolio groups.
      *
      * @param request the Object value
      * @param sortBy the List&lt;String&gt; value
@@ -10122,7 +9555,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolio groups.
      *
      * @param request the Object value
      * @param sortBy the List&lt;String&gt; value
@@ -10157,7 +9589,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolios.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -10169,7 +9600,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolios.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -10180,7 +9610,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolios.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioSearchResult object
@@ -10195,7 +9624,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolios.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioSearchResult object
@@ -10222,7 +9650,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolios.
      *
      * @param request the Object value
      * @param sortBy the List&lt;String&gt; value
@@ -10239,7 +9666,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolios.
      *
      * @param request the Object value
      * @param sortBy the List&lt;String&gt; value
@@ -10255,7 +9681,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolios.
      *
      * @param request the Object value
      * @param sortBy the List&lt;String&gt; value
@@ -10275,7 +9700,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search portfolios.
      *
      * @param request the Object value
      * @param sortBy the List&lt;String&gt; value
@@ -10310,7 +9734,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -10322,7 +9745,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search properties.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -10333,7 +9755,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPropertyDefinition object
@@ -10348,7 +9769,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search properties.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPropertyDefinition object
@@ -10375,7 +9795,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search properties.
      *
      * @param request the Object value
      * @param sortBy the List&lt;String&gt; value
@@ -10392,7 +9811,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search properties.
      *
      * @param request the Object value
      * @param sortBy the List&lt;String&gt; value
@@ -10408,7 +9826,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search properties.
      *
      * @param request the Object value
      * @param sortBy the List&lt;String&gt; value
@@ -10428,7 +9845,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Search properties.
      *
      * @param request the Object value
      * @param sortBy the List&lt;String&gt; value
@@ -10463,7 +9879,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -10475,7 +9890,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the list of persisted transaction types.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -10486,7 +9900,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfTransactionMetaData object
@@ -10501,7 +9914,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfTransactionMetaData object
@@ -10529,7 +9941,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Uploads a list of transaction types to be used by the movements engine.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -10541,7 +9952,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Uploads a list of transaction types to be used by the movements engine.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -10552,7 +9962,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Uploads a list of transaction types to be used by the movements engine.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfTransactionMetaData object
@@ -10567,7 +9976,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Uploads a list of transaction types to be used by the movements engine.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfTransactionMetaData object
@@ -10589,7 +9997,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Uploads a list of transaction types to be used by the movements engine.
      *
      * @param types the List&lt;TransactionConfigurationDataRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -10602,7 +10009,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Uploads a list of transaction types to be used by the movements engine.
      *
      * @param types the List&lt;TransactionConfigurationDataRequest&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -10614,7 +10020,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Uploads a list of transaction types to be used by the movements engine.
      *
      * @param types the List&lt;TransactionConfigurationDataRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -10630,7 +10035,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Uploads a list of transaction types to be used by the movements engine.
      *
      * @param types the List&lt;TransactionConfigurationDataRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -10660,7 +10064,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adds a new transaction type movement to the list of existing types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -10672,7 +10075,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adds a new transaction type movement to the list of existing types.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -10683,7 +10085,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adds a new transaction type movement to the list of existing types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the TransactionConfigurationData object
@@ -10698,7 +10099,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adds a new transaction type movement to the list of existing types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the TransactionConfigurationData object
@@ -10720,7 +10120,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adds a new transaction type movement to the list of existing types.
      *
      * @param type the TransactionConfigurationDataRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -10733,7 +10132,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adds a new transaction type movement to the list of existing types.
      *
      * @param type the TransactionConfigurationDataRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -10745,7 +10143,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adds a new transaction type movement to the list of existing types.
      *
      * @param type the TransactionConfigurationDataRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -10761,7 +10158,6 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adds a new transaction type movement to the list of existing types.
      *
      * @param type the TransactionConfigurationDataRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -10791,10 +10187,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create portfolio.
-     * Creates a new portfolio.
      *
-     * @param scope The intended scope of the portfolio
+     * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -10805,10 +10199,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create portfolio.
-     * Creates a new portfolio.
      *
-     * @param scope The intended scope of the portfolio
+     * @param scope the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -10818,10 +10210,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create portfolio.
-     * Creates a new portfolio.
      *
-     * @param scope The intended scope of the portfolio
+     * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -10835,10 +10225,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create portfolio.
-     * Creates a new portfolio.
      *
-     * @param scope The intended scope of the portfolio
+     * @param scope the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -10862,11 +10250,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create portfolio.
-     * Creates a new portfolio.
      *
-     * @param scope The intended scope of the portfolio
-     * @param createRequest The portfolio creation request object
+     * @param scope the String value
+     * @param createRequest the CreateTransactionPortfolioRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -10877,11 +10263,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create portfolio.
-     * Creates a new portfolio.
      *
-     * @param scope The intended scope of the portfolio
-     * @param createRequest The portfolio creation request object
+     * @param scope the String value
+     * @param createRequest the CreateTransactionPortfolioRequest value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -10891,11 +10275,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create portfolio.
-     * Creates a new portfolio.
      *
-     * @param scope The intended scope of the portfolio
-     * @param createRequest The portfolio creation request object
+     * @param scope the String value
+     * @param createRequest the CreateTransactionPortfolioRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -10909,11 +10291,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create portfolio.
-     * Creates a new portfolio.
      *
-     * @param scope The intended scope of the portfolio
-     * @param createRequest The portfolio creation request object
+     * @param scope the String value
+     * @param createRequest the CreateTransactionPortfolioRequest value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Portfolio object
      */
@@ -10944,12 +10324,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get portfolio details.
-     * Gets the details for a portfolio.  For a derived portfolio this can be
-                 the details of another reference portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -10960,12 +10337,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get portfolio details.
-     * Gets the details for a portfolio.  For a derived portfolio this can be
-                 the details of another reference portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -10975,12 +10349,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get portfolio details.
-     * Gets the details for a portfolio.  For a derived portfolio this can be
-                 the details of another reference portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioDetails object
      */
@@ -10994,12 +10365,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get portfolio details.
-     * Gets the details for a portfolio.  For a derived portfolio this can be
-                 the details of another reference portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioDetails object
      */
@@ -11027,14 +10395,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get portfolio details.
-     * Gets the details for a portfolio.  For a derived portfolio this can be
-                 the details of another reference portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -11045,14 +10410,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get portfolio details.
-     * Gets the details for a portfolio.  For a derived portfolio this can be
-                 the details of another reference portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -11062,14 +10424,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get portfolio details.
-     * Gets the details for a portfolio.  For a derived portfolio this can be
-                 the details of another reference portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioDetails object
      */
@@ -11083,14 +10442,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get portfolio details.
-     * Gets the details for a portfolio.  For a derived portfolio this can be
-                 the details of another reference portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt The asAt date to use
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioDetails object
      */
@@ -11123,12 +10479,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/update portfolio details.
-     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
-     null values will remove any existing values.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -11139,12 +10492,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/update portfolio details.
-     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
-     null values will remove any existing values.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -11154,12 +10504,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/update portfolio details.
-     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
-     null values will remove any existing values.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioDetails object
      */
@@ -11173,12 +10520,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/update portfolio details.
-     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
-     null values will remove any existing values.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioDetails object
      */
@@ -11206,14 +10550,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/update portfolio details.
-     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
-     null values will remove any existing values.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param details the CreatePortfolioDetails value
-     * @param effectiveAt The effective date of the change
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -11224,14 +10565,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/update portfolio details.
-     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
-     null values will remove any existing values.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param details the CreatePortfolioDetails value
-     * @param effectiveAt The effective date of the change
+     * @param effectiveAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -11241,14 +10579,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/update portfolio details.
-     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
-     null values will remove any existing values.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param details the CreatePortfolioDetails value
-     * @param effectiveAt The effective date of the change
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioDetails object
      */
@@ -11262,14 +10597,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/update portfolio details.
-     * Update the portfolio details for the given code or add if it doesn't already exist. Updates with
-     null values will remove any existing values.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param details the CreatePortfolioDetails value
-     * @param effectiveAt The effective date of the change
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PortfolioDetails object
      */
@@ -11303,12 +10635,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get holdings.
-     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
-     are supplied then values will be defaulted to the latest system time.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -11319,12 +10648,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get holdings.
-     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
-     are supplied then values will be defaulted to the latest system time.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -11334,12 +10660,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get holdings.
-     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
-     are supplied then values will be defaulted to the latest system time.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the VersionedResourceListOfHolding object
      */
@@ -11353,12 +10676,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get holdings.
-     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
-     are supplied then values will be defaulted to the latest system time.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the VersionedResourceListOfHolding object
      */
@@ -11369,6 +10689,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         if (code == null) {
             throw new IllegalArgumentException("Parameter code is required and cannot be null.");
         }
+        final Boolean byTaxlots = null;
         final DateTime effectiveAt = null;
         final DateTime asAt = null;
         final List<String> sortBy = null;
@@ -11377,7 +10698,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final String filter = null;
         final List<String> instrumentPropertyKeys = null;
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
-        return service.getHoldings(scope, code, effectiveAt, asAt, sortByConverted, start, limit, filter, instrumentPropertyKeysConverted)
+        return service.getHoldings(scope, code, byTaxlots, effectiveAt, asAt, sortByConverted, start, limit, filter, instrumentPropertyKeysConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<VersionedResourceListOfHolding>>>() {
                 @Override
                 public Observable<ServiceResponse<VersionedResourceListOfHolding>> call(Response<ResponseBody> response) {
@@ -11392,69 +10713,63 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get holdings.
-     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
-     are supplied then values will be defaulted to the latest system time.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt As at date
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param filter A filter on the results
-     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the holdings
+     * @param scope the String value
+     * @param code the String value
+     * @param byTaxlots the Boolean value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the VersionedResourceListOfHolding object if successful.
      */
-    public VersionedResourceListOfHolding getHoldings(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys) {
-        return getHoldingsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, filter, instrumentPropertyKeys).toBlocking().single().body();
+    public VersionedResourceListOfHolding getHoldings(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys) {
+        return getHoldingsWithServiceResponseAsync(scope, code, byTaxlots, effectiveAt, asAt, sortBy, start, limit, filter, instrumentPropertyKeys).toBlocking().single().body();
     }
 
     /**
-     * Get holdings.
-     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
-     are supplied then values will be defaulted to the latest system time.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt As at date
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param filter A filter on the results
-     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the holdings
+     * @param scope the String value
+     * @param code the String value
+     * @param byTaxlots the Boolean value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<VersionedResourceListOfHolding> getHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys, final ServiceCallback<VersionedResourceListOfHolding> serviceCallback) {
-        return ServiceFuture.fromResponse(getHoldingsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, filter, instrumentPropertyKeys), serviceCallback);
+    public ServiceFuture<VersionedResourceListOfHolding> getHoldingsAsync(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys, final ServiceCallback<VersionedResourceListOfHolding> serviceCallback) {
+        return ServiceFuture.fromResponse(getHoldingsWithServiceResponseAsync(scope, code, byTaxlots, effectiveAt, asAt, sortBy, start, limit, filter, instrumentPropertyKeys), serviceCallback);
     }
 
     /**
-     * Get holdings.
-     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
-     are supplied then values will be defaulted to the latest system time.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt As at date
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param filter A filter on the results
-     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the holdings
+     * @param scope the String value
+     * @param code the String value
+     * @param byTaxlots the Boolean value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the VersionedResourceListOfHolding object
      */
-    public Observable<VersionedResourceListOfHolding> getHoldingsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys) {
-        return getHoldingsWithServiceResponseAsync(scope, code, effectiveAt, asAt, sortBy, start, limit, filter, instrumentPropertyKeys).map(new Func1<ServiceResponse<VersionedResourceListOfHolding>, VersionedResourceListOfHolding>() {
+    public Observable<VersionedResourceListOfHolding> getHoldingsAsync(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys) {
+        return getHoldingsWithServiceResponseAsync(scope, code, byTaxlots, effectiveAt, asAt, sortBy, start, limit, filter, instrumentPropertyKeys).map(new Func1<ServiceResponse<VersionedResourceListOfHolding>, VersionedResourceListOfHolding>() {
             @Override
             public VersionedResourceListOfHolding call(ServiceResponse<VersionedResourceListOfHolding> response) {
                 return response.body();
@@ -11463,23 +10778,21 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get holdings.
-     * Get the aggregate holdings of a portfolio.  If no effectiveAt or asAt
-     are supplied then values will be defaulted to the latest system time.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
-     * @param asAt As at date
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param filter A filter on the results
-     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the holdings
+     * @param scope the String value
+     * @param code the String value
+     * @param byTaxlots the Boolean value
+     * @param effectiveAt the DateTime value
+     * @param asAt the DateTime value
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param filter the String value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the VersionedResourceListOfHolding object
      */
-    public Observable<ServiceResponse<VersionedResourceListOfHolding>> getHoldingsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys) {
+    public Observable<ServiceResponse<VersionedResourceListOfHolding>> getHoldingsWithServiceResponseAsync(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -11489,7 +10802,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         Validator.validate(sortBy);
         Validator.validate(instrumentPropertyKeys);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
-        return service.getHoldings(scope, code, effectiveAt, asAt, sortByConverted, start, limit, filter, instrumentPropertyKeysConverted)
+        return service.getHoldings(scope, code, byTaxlots, effectiveAt, asAt, sortByConverted, start, limit, filter, instrumentPropertyKeysConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<VersionedResourceListOfHolding>>>() {
                 @Override
                 public Observable<ServiceResponse<VersionedResourceListOfHolding>> call(Response<ResponseBody> response) {
@@ -11511,12 +10824,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Set All Holdings.
-     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -11527,12 +10838,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Set All Holdings.
-     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -11542,12 +10851,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Set All Holdings.
-     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AdjustHolding object
      */
@@ -11561,12 +10868,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Set All Holdings.
-     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AdjustHolding object
      */
@@ -11596,12 +10901,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Set All Holdings.
-     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -11613,12 +10916,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Set All Holdings.
-     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -11629,12 +10930,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Set All Holdings.
-     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AdjustHolding object
@@ -11649,12 +10948,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Set All Holdings.
-     * Create transactions in a specific portfolio to bring all holdings to the specified targets.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AdjustHolding object
@@ -11692,12 +10989,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust Selected Holdings.
-     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -11708,12 +11003,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust Selected Holdings.
-     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -11723,12 +11016,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust Selected Holdings.
-     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AdjustHolding object
      */
@@ -11742,12 +11033,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust Selected Holdings.
-     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AdjustHolding object
      */
@@ -11777,12 +11066,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust Selected Holdings.
-     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -11794,12 +11081,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust Selected Holdings.
-     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -11810,12 +11095,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust Selected Holdings.
-     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AdjustHolding object
@@ -11830,12 +11113,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Adjust Selected Holdings.
-     * Create transactions in a specific portfolio to bring the selected holdings up to the specified targets.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @param holdingAdjustments the List&lt;AdjustHoldingRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AdjustHolding object
@@ -11873,12 +11154,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Cancel adjust-holdings.
-     * Cancels a previous adjust holdings request.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -11889,12 +11168,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Cancel adjust-holdings.
-     * Cancels a previous adjust holdings request.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -11904,12 +11181,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Cancel adjust-holdings.
-     * Cancels a previous adjust holdings request.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -11923,12 +11198,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Cancel adjust-holdings.
-     * Cancels a previous adjust holdings request.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt Effective date
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -11964,10 +11237,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets holdings adjustments in an interval of effective time.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -11978,10 +11250,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets holdings adjustments in an interval of effective time.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -11991,10 +11262,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets holdings adjustments in an interval of effective time.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfHoldingsAdjustmentHeader object
      */
@@ -12008,10 +11278,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets holdings adjustments in an interval of effective time.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfHoldingsAdjustmentHeader object
      */
@@ -12040,13 +11309,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets holdings adjustments in an interval of effective time.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
-     * @param asAtTime The as-at time for which the result is valid.
+     * @param scope the String value
+     * @param code the String value
+     * @param fromEffectiveAt the DateTime value
+     * @param toEffectiveAt the DateTime value
+     * @param asAtTime the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -12057,13 +11325,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets holdings adjustments in an interval of effective time.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
-     * @param asAtTime The as-at time for which the result is valid.
+     * @param scope the String value
+     * @param code the String value
+     * @param fromEffectiveAt the DateTime value
+     * @param toEffectiveAt the DateTime value
+     * @param asAtTime the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -12073,13 +11340,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets holdings adjustments in an interval of effective time.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
-     * @param asAtTime The as-at time for which the result is valid.
+     * @param scope the String value
+     * @param code the String value
+     * @param fromEffectiveAt the DateTime value
+     * @param toEffectiveAt the DateTime value
+     * @param asAtTime the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfHoldingsAdjustmentHeader object
      */
@@ -12093,13 +11359,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Gets holdings adjustments in an interval of effective time.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param fromEffectiveAt Events between this time (inclusive) and the toEffectiveAt are returned.
-     * @param toEffectiveAt Events between this time (inclusive) and the fromEffectiveAt are returned.
-     * @param asAtTime The as-at time for which the result is valid.
+     * @param scope the String value
+     * @param code the String value
+     * @param fromEffectiveAt the DateTime value
+     * @param toEffectiveAt the DateTime value
+     * @param asAtTime the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfHoldingsAdjustmentHeader object
      */
@@ -12132,12 +11397,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a holdings adjustment for a single portfolio at a specific effective time.
-     If no adjustment exists at this effective time, not found is returned.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective time of the holdings adjustment.
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -12148,12 +11411,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a holdings adjustment for a single portfolio at a specific effective time.
-     If no adjustment exists at this effective time, not found is returned.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective time of the holdings adjustment.
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -12163,12 +11424,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a holdings adjustment for a single portfolio at a specific effective time.
-     If no adjustment exists at this effective time, not found is returned.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective time of the holdings adjustment.
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the HoldingsAdjustment object
      */
@@ -12182,12 +11441,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a holdings adjustment for a single portfolio at a specific effective time.
-     If no adjustment exists at this effective time, not found is returned.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective time of the holdings adjustment.
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the HoldingsAdjustment object
      */
@@ -12217,13 +11474,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a holdings adjustment for a single portfolio at a specific effective time.
-     If no adjustment exists at this effective time, not found is returned.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective time of the holdings adjustment.
-     * @param asAtTime The as-at time for which the result is valid.
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAtTime the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -12234,13 +11489,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a holdings adjustment for a single portfolio at a specific effective time.
-     If no adjustment exists at this effective time, not found is returned.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective time of the holdings adjustment.
-     * @param asAtTime The as-at time for which the result is valid.
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAtTime the DateTime value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -12250,13 +11503,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a holdings adjustment for a single portfolio at a specific effective time.
-     If no adjustment exists at this effective time, not found is returned.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective time of the holdings adjustment.
-     * @param asAtTime The as-at time for which the result is valid.
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAtTime the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the HoldingsAdjustment object
      */
@@ -12270,13 +11521,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get a holdings adjustment for a single portfolio at a specific effective time.
-     If no adjustment exists at this effective time, not found is returned.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param effectiveAt The effective time of the holdings adjustment.
-     * @param asAtTime The as-at time for which the result is valid.
+     * @param scope the String value
+     * @param code the String value
+     * @param effectiveAt the DateTime value
+     * @param asAtTime the DateTime value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the HoldingsAdjustment object
      */
@@ -12312,10 +11561,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -12326,10 +11574,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -12339,10 +11586,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the VersionedResourceListOfTransaction object
      */
@@ -12356,10 +11602,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the VersionedResourceListOfTransaction object
      */
@@ -12394,18 +11639,17 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param fromTransactionDate Include transactions with a transaction date equal or later than this date. If not supplied, no lower filter is applied
-     * @param toTransactionDate Include transactions with a transaction date equal or before this date. If not supplied, no upper filter is applied
+     * @param scope the String value
+     * @param code the String value
+     * @param fromTransactionDate the DateTime value
+     * @param toTransactionDate the DateTime value
      * @param asAt the DateTime value
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the transactions
-     * @param filter Transaction filter
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -12416,18 +11660,17 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param fromTransactionDate Include transactions with a transaction date equal or later than this date. If not supplied, no lower filter is applied
-     * @param toTransactionDate Include transactions with a transaction date equal or before this date. If not supplied, no upper filter is applied
+     * @param scope the String value
+     * @param code the String value
+     * @param fromTransactionDate the DateTime value
+     * @param toTransactionDate the DateTime value
      * @param asAt the DateTime value
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the transactions
-     * @param filter Transaction filter
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
+     * @param filter the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -12437,18 +11680,17 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param fromTransactionDate Include transactions with a transaction date equal or later than this date. If not supplied, no lower filter is applied
-     * @param toTransactionDate Include transactions with a transaction date equal or before this date. If not supplied, no upper filter is applied
+     * @param scope the String value
+     * @param code the String value
+     * @param fromTransactionDate the DateTime value
+     * @param toTransactionDate the DateTime value
      * @param asAt the DateTime value
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the transactions
-     * @param filter Transaction filter
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the VersionedResourceListOfTransaction object
      */
@@ -12462,18 +11704,17 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param fromTransactionDate Include transactions with a transaction date equal or later than this date. If not supplied, no lower filter is applied
-     * @param toTransactionDate Include transactions with a transaction date equal or before this date. If not supplied, no upper filter is applied
+     * @param scope the String value
+     * @param code the String value
+     * @param fromTransactionDate the DateTime value
+     * @param toTransactionDate the DateTime value
      * @param asAt the DateTime value
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the transactions
-     * @param filter Transaction filter
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
+     * @param filter the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the VersionedResourceListOfTransaction object
      */
@@ -12509,10 +11750,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -12523,10 +11763,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -12536,10 +11775,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPortfolioTransactionsResponse object
      */
@@ -12553,10 +11791,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPortfolioTransactionsResponse object
      */
@@ -12583,11 +11820,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactions The transactions to be updated
+     * @param scope the String value
+     * @param code the String value
+     * @param transactions the List&lt;TransactionRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -12598,11 +11834,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactions The transactions to be updated
+     * @param scope the String value
+     * @param code the String value
+     * @param transactions the List&lt;TransactionRequest&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -12612,11 +11847,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactions The transactions to be updated
+     * @param scope the String value
+     * @param code the String value
+     * @param transactions the List&lt;TransactionRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPortfolioTransactionsResponse object
      */
@@ -12630,11 +11864,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Upsert transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactions The transactions to be updated
+     * @param scope the String value
+     * @param code the String value
+     * @param transactions the List&lt;TransactionRequest&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPortfolioTransactionsResponse object
      */
@@ -12668,11 +11901,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete transactions.
-     * Delete one or more transactions from a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -12683,11 +11914,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete transactions.
-     * Delete one or more transactions from a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -12697,11 +11926,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete transactions.
-     * Delete one or more transactions from a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -12715,11 +11942,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete transactions.
-     * Delete one or more transactions from a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -12747,12 +11972,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete transactions.
-     * Delete one or more transactions from a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param id Ids of transactions to delete
+     * @param scope the String value
+     * @param code the String value
+     * @param id the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -12763,12 +11986,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete transactions.
-     * Delete one or more transactions from a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param id Ids of transactions to delete
+     * @param scope the String value
+     * @param code the String value
+     * @param id the List&lt;String&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -12778,12 +11999,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete transactions.
-     * Delete one or more transactions from a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param id Ids of transactions to delete
+     * @param scope the String value
+     * @param code the String value
+     * @param id the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -12797,12 +12016,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete transactions.
-     * Delete one or more transactions from a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param id Ids of transactions to delete
+     * @param scope the String value
+     * @param code the String value
+     * @param id the List&lt;String&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -12837,12 +12054,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/update transaction properties.
-     * Add one or more properties to a specific transaction in a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactionId Id of transaction to add properties to
+     * @param scope the String value
+     * @param code the String value
+     * @param transactionId the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -12853,12 +12068,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/update transaction properties.
-     * Add one or more properties to a specific transaction in a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactionId Id of transaction to add properties to
+     * @param scope the String value
+     * @param code the String value
+     * @param transactionId the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -12868,12 +12081,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/update transaction properties.
-     * Add one or more properties to a specific transaction in a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactionId Id of transaction to add properties to
+     * @param scope the String value
+     * @param code the String value
+     * @param transactionId the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AddTransactionPropertyResponse object
      */
@@ -12887,12 +12098,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/update transaction properties.
-     * Add one or more properties to a specific transaction in a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactionId Id of transaction to add properties to
+     * @param scope the String value
+     * @param code the String value
+     * @param transactionId the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AddTransactionPropertyResponse object
      */
@@ -12922,13 +12131,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/update transaction properties.
-     * Add one or more properties to a specific transaction in a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactionId Id of transaction to add properties to
-     * @param transactionProperties Transaction properties to add
+     * @param scope the String value
+     * @param code the String value
+     * @param transactionId the String value
+     * @param transactionProperties the Map&lt;String, PerpetualPropertyValue&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -12939,13 +12146,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/update transaction properties.
-     * Add one or more properties to a specific transaction in a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactionId Id of transaction to add properties to
-     * @param transactionProperties Transaction properties to add
+     * @param scope the String value
+     * @param code the String value
+     * @param transactionId the String value
+     * @param transactionProperties the Map&lt;String, PerpetualPropertyValue&gt; value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -12955,13 +12160,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/update transaction properties.
-     * Add one or more properties to a specific transaction in a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactionId Id of transaction to add properties to
-     * @param transactionProperties Transaction properties to add
+     * @param scope the String value
+     * @param code the String value
+     * @param transactionId the String value
+     * @param transactionProperties the Map&lt;String, PerpetualPropertyValue&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AddTransactionPropertyResponse object
      */
@@ -12975,13 +12178,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Add/update transaction properties.
-     * Add one or more properties to a specific transaction in a portfolio.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactionId Id of transaction to add properties to
-     * @param transactionProperties Transaction properties to add
+     * @param scope the String value
+     * @param code the String value
+     * @param transactionId the String value
+     * @param transactionProperties the Map&lt;String, PerpetualPropertyValue&gt; value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the AddTransactionPropertyResponse object
      */
@@ -13018,12 +12219,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete transaction property.
-     * Delete a property from a specific transaction.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactionId Id of the transaction to delete the property from
+     * @param scope the String value
+     * @param code the String value
+     * @param transactionId the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -13034,12 +12233,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete transaction property.
-     * Delete a property from a specific transaction.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactionId Id of the transaction to delete the property from
+     * @param scope the String value
+     * @param code the String value
+     * @param transactionId the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -13049,12 +12246,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete transaction property.
-     * Delete a property from a specific transaction.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactionId Id of the transaction to delete the property from
+     * @param scope the String value
+     * @param code the String value
+     * @param transactionId the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -13068,12 +12263,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete transaction property.
-     * Delete a property from a specific transaction.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactionId Id of the transaction to delete the property from
+     * @param scope the String value
+     * @param code the String value
+     * @param transactionId the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -13103,13 +12296,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete transaction property.
-     * Delete a property from a specific transaction.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactionId Id of the transaction to delete the property from
-     * @param transactionPropertyKey The key of the property to be deleted
+     * @param scope the String value
+     * @param code the String value
+     * @param transactionId the String value
+     * @param transactionPropertyKey the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -13120,13 +12311,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete transaction property.
-     * Delete a property from a specific transaction.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactionId Id of the transaction to delete the property from
-     * @param transactionPropertyKey The key of the property to be deleted
+     * @param scope the String value
+     * @param code the String value
+     * @param transactionId the String value
+     * @param transactionPropertyKey the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -13136,13 +12325,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete transaction property.
-     * Delete a property from a specific transaction.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactionId Id of the transaction to delete the property from
-     * @param transactionPropertyKey The key of the property to be deleted
+     * @param scope the String value
+     * @param code the String value
+     * @param transactionId the String value
+     * @param transactionPropertyKey the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -13156,13 +12343,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete transaction property.
-     * Delete a property from a specific transaction.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
-     * @param transactionId Id of the transaction to delete the property from
-     * @param transactionPropertyKey The key of the property to be deleted
+     * @param scope the String value
+     * @param code the String value
+     * @param transactionId the String value
+     * @param transactionPropertyKey the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeletedEntityResponse object
      */
@@ -13198,10 +12383,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -13212,10 +12396,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -13225,10 +12408,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the VersionedResourceListOfOutputTransaction object
      */
@@ -13242,10 +12424,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the VersionedResourceListOfOutputTransaction object
      */
@@ -13279,17 +12460,16 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param asAt the DateTime value
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the trades
-     * @param filter Trade filter
-     * @param parameters Core query parameters
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
+     * @param filter the String value
+     * @param parameters the TransactionQueryParameters value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -13300,17 +12480,16 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param asAt the DateTime value
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the trades
-     * @param filter Trade filter
-     * @param parameters Core query parameters
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
+     * @param filter the String value
+     * @param parameters the TransactionQueryParameters value
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -13320,17 +12499,16 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param asAt the DateTime value
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the trades
-     * @param filter Trade filter
-     * @param parameters Core query parameters
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
+     * @param filter the String value
+     * @param parameters the TransactionQueryParameters value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the VersionedResourceListOfOutputTransaction object
      */
@@ -13344,17 +12522,16 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Get transactions.
      *
-     * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param scope the String value
+     * @param code the String value
      * @param asAt the DateTime value
-     * @param sortBy The columns to sort the returned data by
-     * @param start How many items to skip from the returned set
-     * @param limit How many items to return from the set
-     * @param instrumentPropertyKeys Keys for the instrument properties to be decorated onto the trades
-     * @param filter Trade filter
-     * @param parameters Core query parameters
+     * @param sortBy the List&lt;String&gt; value
+     * @param start the Integer value
+     * @param limit the Integer value
+     * @param instrumentPropertyKeys the List&lt;String&gt; value
+     * @param filter the String value
+     * @param parameters the TransactionQueryParameters value
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the VersionedResourceListOfOutputTransaction object
      */
