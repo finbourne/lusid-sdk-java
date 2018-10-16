@@ -293,6 +293,8 @@
  | <a name="216">216</a>|FeatureNotSupportedOnPortfolioType|  |
  | <a name="217">217</a>|QuotePublishFailure|  |
  | <a name="218">218</a>|QuoteQueryFailure|  |
+ | <a name="222">222</a>|ReferencePortfolioRequestNotSupported|  |
+ | <a name="223">223</a>|TransactionPortfolioRequestNotSupported|  |
  | <a name="-10">-10</a>|ServerConfigurationError|  |
  | <a name="-1">-1</a>|Unknown error|  |.
  */
