@@ -73,6 +73,12 @@ public class Instrument {
     private String marketIdentifierCode;
 
     /**
+     * The lookthroughPortfolio property.
+     */
+    @JsonProperty(value = "lookthroughPortfolio")
+    private ResourceId lookthroughPortfolio;
+
+    /**
      * The links property.
      */
     @JsonProperty(value = "links")
@@ -215,6 +221,26 @@ public class Instrument {
      */
     public Instrument withMarketIdentifierCode(String marketIdentifierCode) {
         this.marketIdentifierCode = marketIdentifierCode;
+        return this;
+    }
+
+    /**
+     * Get the lookthroughPortfolio value.
+     *
+     * @return the lookthroughPortfolio value
+     */
+    public ResourceId lookthroughPortfolio() {
+        return this.lookthroughPortfolio;
+    }
+
+    /**
+     * Set the lookthroughPortfolio value.
+     *
+     * @param lookthroughPortfolio the lookthroughPortfolio value to set
+     * @return the Instrument object itself.
+     */
+    public Instrument withLookthroughPortfolio(ResourceId lookthroughPortfolio) {
+        this.lookthroughPortfolio = lookthroughPortfolio;
         return this;
     }
 
