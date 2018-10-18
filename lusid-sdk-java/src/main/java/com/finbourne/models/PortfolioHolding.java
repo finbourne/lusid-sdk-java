@@ -36,6 +36,12 @@ public class PortfolioHolding {
     private String instrumentUid;
 
     /**
+     * The subHoldingKeys property.
+     */
+    @JsonProperty(value = "subHoldingKeys")
+    private List<PerpetualProperty> subHoldingKeys;
+
+    /**
      * The properties property.
      */
     @JsonProperty(value = "properties")
@@ -64,13 +70,13 @@ public class PortfolioHolding {
      * Book cost of holding in transaction currency.
      */
     @JsonProperty(value = "cost", required = true)
-    private double cost;
+    private CurrencyAndAmount cost;
 
     /**
      * Book cost of holding in portfolio currency.
      */
     @JsonProperty(value = "costPortfolioCcy", required = true)
-    private double costPortfolioCcy;
+    private CurrencyAndAmount costPortfolioCcy;
 
     /**
      * If this is commitment-type holding, the transaction behind it.
@@ -95,6 +101,26 @@ public class PortfolioHolding {
      */
     public PortfolioHolding withInstrumentUid(String instrumentUid) {
         this.instrumentUid = instrumentUid;
+        return this;
+    }
+
+    /**
+     * Get the subHoldingKeys value.
+     *
+     * @return the subHoldingKeys value
+     */
+    public List<PerpetualProperty> subHoldingKeys() {
+        return this.subHoldingKeys;
+    }
+
+    /**
+     * Set the subHoldingKeys value.
+     *
+     * @param subHoldingKeys the subHoldingKeys value to set
+     * @return the PortfolioHolding object itself.
+     */
+    public PortfolioHolding withSubHoldingKeys(List<PerpetualProperty> subHoldingKeys) {
+        this.subHoldingKeys = subHoldingKeys;
         return this;
     }
 
@@ -183,7 +209,7 @@ public class PortfolioHolding {
      *
      * @return the cost value
      */
-    public double cost() {
+    public CurrencyAndAmount cost() {
         return this.cost;
     }
 
@@ -193,7 +219,7 @@ public class PortfolioHolding {
      * @param cost the cost value to set
      * @return the PortfolioHolding object itself.
      */
-    public PortfolioHolding withCost(double cost) {
+    public PortfolioHolding withCost(CurrencyAndAmount cost) {
         this.cost = cost;
         return this;
     }
@@ -203,7 +229,7 @@ public class PortfolioHolding {
      *
      * @return the costPortfolioCcy value
      */
-    public double costPortfolioCcy() {
+    public CurrencyAndAmount costPortfolioCcy() {
         return this.costPortfolioCcy;
     }
 
@@ -213,7 +239,7 @@ public class PortfolioHolding {
      * @param costPortfolioCcy the costPortfolioCcy value to set
      * @return the PortfolioHolding object itself.
      */
-    public PortfolioHolding withCostPortfolioCcy(double costPortfolioCcy) {
+    public PortfolioHolding withCostPortfolioCcy(CurrencyAndAmount costPortfolioCcy) {
         this.costPortfolioCcy = costPortfolioCcy;
         return this;
     }

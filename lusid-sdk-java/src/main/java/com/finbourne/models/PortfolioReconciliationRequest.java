@@ -30,25 +30,25 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class PortfolioReconciliationRequest {
     /**
-     * The portfolioId property.
+     * The id of the portfolio to be reconciled.
      */
     @JsonProperty(value = "portfolioId", required = true)
     private ResourceId portfolioId;
 
     /**
-     * The effectiveAt property.
+     * The effective date of the portfolio.
      */
     @JsonProperty(value = "effectiveAt", required = true)
     private DateTime effectiveAt;
 
     /**
-     * The asAt property.
+     * Optional. The AsAt date of the portfolio.
      */
     @JsonProperty(value = "asAt")
     private DateTime asAt;
 
     /**
-     * Get the portfolioId value.
+     * Get the id of the portfolio to be reconciled.
      *
      * @return the portfolioId value
      */
@@ -57,7 +57,7 @@ public class PortfolioReconciliationRequest {
     }
 
     /**
-     * Set the portfolioId value.
+     * Set the id of the portfolio to be reconciled.
      *
      * @param portfolioId the portfolioId value to set
      * @return the PortfolioReconciliationRequest object itself.
@@ -68,7 +68,7 @@ public class PortfolioReconciliationRequest {
     }
 
     /**
-     * Get the effectiveAt value.
+     * Get the effective date of the portfolio.
      *
      * @return the effectiveAt value
      */
@@ -77,7 +77,7 @@ public class PortfolioReconciliationRequest {
     }
 
     /**
-     * Set the effectiveAt value.
+     * Set the effective date of the portfolio.
      *
      * @param effectiveAt the effectiveAt value to set
      * @return the PortfolioReconciliationRequest object itself.
@@ -88,7 +88,7 @@ public class PortfolioReconciliationRequest {
     }
 
     /**
-     * Get the asAt value.
+     * Get optional. The AsAt date of the portfolio.
      *
      * @return the asAt value
      */
@@ -97,7 +97,7 @@ public class PortfolioReconciliationRequest {
     }
 
     /**
-     * Set the asAt value.
+     * Set optional. The AsAt date of the portfolio.
      *
      * @param asAt the asAt value to set
      * @return the PortfolioReconciliationRequest object itself.

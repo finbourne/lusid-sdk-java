@@ -36,7 +36,7 @@ public class ReconciliationBreak {
     private String instrumentUid;
 
     /**
-     * The subHoldingKeys property.
+     * Any other properties that comprise the Sub-Holding Key.
      */
     @JsonProperty(value = "subHoldingKeys", required = true)
     private List<Property> subHoldingKeys;
@@ -104,7 +104,7 @@ public class ReconciliationBreak {
     }
 
     /**
-     * Get the subHoldingKeys value.
+     * Get any other properties that comprise the Sub-Holding Key.
      *
      * @return the subHoldingKeys value
      */
@@ -113,7 +113,7 @@ public class ReconciliationBreak {
     }
 
     /**
-     * Set the subHoldingKeys value.
+     * Set any other properties that comprise the Sub-Holding Key.
      *
      * @param subHoldingKeys the subHoldingKeys value to set
      * @return the ReconciliationBreak object itself.

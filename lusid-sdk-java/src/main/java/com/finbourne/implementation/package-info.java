@@ -174,8 +174,8 @@
  | HoldingType|string|Type of holding, eg Position, Balance, CashCommitment, Receivable, ForwardFX |
  | Units|decimal|Quantity of holding |
  | SettledUnits|decimal|Settled quantity of holding |
- | Cost|decimal|Book cost of holding in transaction currency |
- | CostPortfolioCcy|decimal|Book cost of holding in portfolio currency |
+ | Cost|currencyandamount|Book cost of holding in transaction currency |
+ | CostPortfolioCcy|currencyandamount|Book cost of holding in portfolio currency |
  | Transaction|TransactionDto|If this is commitment-type holding, the transaction behind it |
  ## Corporate Actions
  Corporate actions are represented within LUSID in terms of a set of instrument-specific 'transitions'.  These transitions are used to specify the participants of the corporate action, and the effect that the corporate action will have on holdings in those participants.
@@ -293,6 +293,8 @@
  | <a name="216">216</a>|FeatureNotSupportedOnPortfolioType|  |
  | <a name="217">217</a>|QuotePublishFailure|  |
  | <a name="218">218</a>|QuoteQueryFailure|  |
+ | <a name="219">219</a>|InvalidInstrumentDefinition|  |
+ | <a name="221">221</a>|InstrumentUpsertFailure|  |
  | <a name="222">222</a>|ReferencePortfolioRequestNotSupported|  |
  | <a name="223">223</a>|TransactionPortfolioRequestNotSupported|  |
  | <a name="-10">-10</a>|ServerConfigurationError|  |

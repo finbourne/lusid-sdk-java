@@ -30,25 +30,28 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class PortfoliosReconciliationRequest {
     /**
-     * The left property.
+     * The specification of the left hand side of the portfolio reconciliation.
      */
     @JsonProperty(value = "left", required = true)
     private PortfolioReconciliationRequest left;
 
     /**
-     * The right property.
+     * The specification of the right hand side of the portfolio
+     * reconciliation.
      */
     @JsonProperty(value = "right", required = true)
     private PortfolioReconciliationRequest right;
 
     /**
-     * The instrumentPropertyKeys property.
+     * Instrument properties to be included with any identified breaks. These
+     * properties will be in the effective and AsAt dates of the left
+     * portfolio.
      */
     @JsonProperty(value = "instrumentPropertyKeys", required = true)
     private List<String> instrumentPropertyKeys;
 
     /**
-     * Get the left value.
+     * Get the specification of the left hand side of the portfolio reconciliation.
      *
      * @return the left value
      */
@@ -57,7 +60,7 @@ public class PortfoliosReconciliationRequest {
     }
 
     /**
-     * Set the left value.
+     * Set the specification of the left hand side of the portfolio reconciliation.
      *
      * @param left the left value to set
      * @return the PortfoliosReconciliationRequest object itself.
@@ -68,7 +71,7 @@ public class PortfoliosReconciliationRequest {
     }
 
     /**
-     * Get the right value.
+     * Get the specification of the right hand side of the portfolio reconciliation.
      *
      * @return the right value
      */
@@ -77,7 +80,7 @@ public class PortfoliosReconciliationRequest {
     }
 
     /**
-     * Set the right value.
+     * Set the specification of the right hand side of the portfolio reconciliation.
      *
      * @param right the right value to set
      * @return the PortfoliosReconciliationRequest object itself.
@@ -88,7 +91,7 @@ public class PortfoliosReconciliationRequest {
     }
 
     /**
-     * Get the instrumentPropertyKeys value.
+     * Get instrument properties to be included with any identified breaks. These properties will be in the effective and AsAt dates of the left portfolio.
      *
      * @return the instrumentPropertyKeys value
      */
@@ -97,7 +100,7 @@ public class PortfoliosReconciliationRequest {
     }
 
     /**
-     * Set the instrumentPropertyKeys value.
+     * Set instrument properties to be included with any identified breaks. These properties will be in the effective and AsAt dates of the left portfolio.
      *
      * @param instrumentPropertyKeys the instrumentPropertyKeys value to set
      * @return the PortfoliosReconciliationRequest object itself.
