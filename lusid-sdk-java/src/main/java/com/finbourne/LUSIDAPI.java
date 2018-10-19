@@ -1445,8 +1445,9 @@ public interface LUSIDAPI {
 
     /**
      * Create instrument.
-     * Attempt to create one or more "client" instruments.
-     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed.
+     * Attempt to create one or more "client" instruments. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
+     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
+     request.
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -1458,8 +1459,9 @@ public interface LUSIDAPI {
 
     /**
      * Create instrument.
-     * Attempt to create one or more "client" instruments.
-     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed.
+     * Attempt to create one or more "client" instruments. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
+     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
+     request.
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -1470,8 +1472,9 @@ public interface LUSIDAPI {
 
     /**
      * Create instrument.
-     * Attempt to create one or more "client" instruments.
-     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed.
+     * Attempt to create one or more "client" instruments. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
+     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
+     request.
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -1481,8 +1484,9 @@ public interface LUSIDAPI {
 
     /**
      * Create instrument.
-     * Attempt to create one or more "client" instruments.
-     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed.
+     * Attempt to create one or more "client" instruments. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
+     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
+     request.
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -1491,8 +1495,9 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<TryAddClientInstruments>> batchAddClientInstrumentsWithServiceResponseAsync();
     /**
      * Create instrument.
-     * Attempt to create one or more "client" instruments.
-     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed.
+     * Attempt to create one or more "client" instruments. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
+     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
+     request.
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
      * @param definitions The client instrument definitions
@@ -1501,12 +1506,13 @@ public interface LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the TryAddClientInstruments object if successful.
      */
-    TryAddClientInstruments batchAddClientInstruments(List<CreateClientInstrumentRequest> definitions);
+    TryAddClientInstruments batchAddClientInstruments(Map<String, CreateClientInstrumentRequest> definitions);
 
     /**
      * Create instrument.
-     * Attempt to create one or more "client" instruments.
-     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed.
+     * Attempt to create one or more "client" instruments. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
+     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
+     request.
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
      * @param definitions The client instrument definitions
@@ -1514,31 +1520,33 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TryAddClientInstruments> batchAddClientInstrumentsAsync(List<CreateClientInstrumentRequest> definitions, final ServiceCallback<TryAddClientInstruments> serviceCallback);
+    ServiceFuture<TryAddClientInstruments> batchAddClientInstrumentsAsync(Map<String, CreateClientInstrumentRequest> definitions, final ServiceCallback<TryAddClientInstruments> serviceCallback);
 
     /**
      * Create instrument.
-     * Attempt to create one or more "client" instruments.
-     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed.
+     * Attempt to create one or more "client" instruments. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
+     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
+     request.
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
      * @param definitions The client instrument definitions
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the TryAddClientInstruments object
      */
-    Observable<TryAddClientInstruments> batchAddClientInstrumentsAsync(List<CreateClientInstrumentRequest> definitions);
+    Observable<TryAddClientInstruments> batchAddClientInstrumentsAsync(Map<String, CreateClientInstrumentRequest> definitions);
 
     /**
      * Create instrument.
-     * Attempt to create one or more "client" instruments.
-     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed.
+     * Attempt to create one or more "client" instruments. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
+     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
+     request.
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
      * @param definitions The client instrument definitions
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the TryAddClientInstruments object
      */
-    Observable<ServiceResponse<TryAddClientInstruments>> batchAddClientInstrumentsWithServiceResponseAsync(List<CreateClientInstrumentRequest> definitions);
+    Observable<ServiceResponse<TryAddClientInstruments>> batchAddClientInstrumentsWithServiceResponseAsync(Map<String, CreateClientInstrumentRequest> definitions);
 
     /**
      * Delete instrument.
