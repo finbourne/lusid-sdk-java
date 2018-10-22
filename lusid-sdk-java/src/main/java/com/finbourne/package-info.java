@@ -291,8 +291,7 @@
  | <a name="214">214</a>|InstrumentByCodeNotFound|  |
  | <a name="215">215</a>|EntitySchemaDoesNotExist|  |
  | <a name="216">216</a>|FeatureNotSupportedOnPortfolioType|  |
- | <a name="217">217</a>|QuotePublishFailure|  |
- | <a name="218">218</a>|QuoteQueryFailure|  |
+ | <a name="217">217</a>|QuoteNotFoundFailure|  |
  | <a name="219">219</a>|InvalidInstrumentDefinition|  |
  | <a name="221">221</a>|InstrumentUpsertFailure|  |
  | <a name="222">222</a>|ReferencePortfolioRequestNotSupported|  |

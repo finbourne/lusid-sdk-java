@@ -31,7 +31,8 @@ public class Link {
     /**
      * Possible values include: 'Root', 'Properties', 'Transactions',
      * 'Details', 'Constituents', 'Holdings', 'Commands',
-     * 'HoldingsAdjustments', 'Parent', 'PropertySchema', 'EntitySchema'.
+     * 'HoldingsAdjustments', 'Parent', 'PropertySchema', 'EntitySchema',
+     * 'Quote'.
      */
     @JsonProperty(value = "relation", required = true)
     private String relation;
@@ -55,7 +56,7 @@ public class Link {
     private String method;
 
     /**
-     * Get possible values include: 'Root', 'Properties', 'Transactions', 'Details', 'Constituents', 'Holdings', 'Commands', 'HoldingsAdjustments', 'Parent', 'PropertySchema', 'EntitySchema'.
+     * Get possible values include: 'Root', 'Properties', 'Transactions', 'Details', 'Constituents', 'Holdings', 'Commands', 'HoldingsAdjustments', 'Parent', 'PropertySchema', 'EntitySchema', 'Quote'.
      *
      * @return the relation value
      */
@@ -64,7 +65,7 @@ public class Link {
     }
 
     /**
-     * Set possible values include: 'Root', 'Properties', 'Transactions', 'Details', 'Constituents', 'Holdings', 'Commands', 'HoldingsAdjustments', 'Parent', 'PropertySchema', 'EntitySchema'.
+     * Set possible values include: 'Root', 'Properties', 'Transactions', 'Details', 'Constituents', 'Holdings', 'Commands', 'HoldingsAdjustments', 'Parent', 'PropertySchema', 'EntitySchema', 'Quote'.
      *
      * @param relation the relation value to set
      * @return the Link object itself.

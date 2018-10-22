@@ -46,6 +46,7 @@ import com.finbourne.models.CreateTransactionPortfolioRequest;
 import com.finbourne.models.DataType;
 import com.finbourne.models.DeleteClientInstrumentsResponse;
 import com.finbourne.models.DeletedEntityResponse;
+import com.finbourne.models.DeleteQuotesResponse;
 import com.finbourne.models.ErrorResponseException;
 import com.finbourne.models.ExpandedGroup;
 import com.finbourne.models.HoldingsAdjustment;
@@ -78,6 +79,7 @@ import com.finbourne.models.ResourceListOfPortfolioGroup;
 import com.finbourne.models.ResourceListOfPortfolioSearchResult;
 import com.finbourne.models.ResourceListOfProcessedCommand;
 import com.finbourne.models.ResourceListOfPropertyDefinition;
+import com.finbourne.models.ResourceListOfQuote;
 import com.finbourne.models.ResourceListOfReconciliationBreak;
 import com.finbourne.models.ResourceListOfReferencePortfolioConstituent;
 import com.finbourne.models.ResourceListOfScope;
@@ -99,6 +101,8 @@ import com.finbourne.models.UpsertCorporateActionsResponse;
 import com.finbourne.models.UpsertInstrumentPropertiesResponse;
 import com.finbourne.models.UpsertPersonalisationResponse;
 import com.finbourne.models.UpsertPortfolioTransactionsResponse;
+import com.finbourne.models.UpsertQuoteRequest;
+import com.finbourne.models.UpsertQuotesResponse;
 import com.finbourne.models.UpsertReferencePortfolioConstituentsResponse;
 import com.finbourne.models.VersionedResourceListOfHolding;
 import com.finbourne.models.VersionedResourceListOfOutputTransaction;
@@ -418,6 +422,18 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI deletePropertyDefinition" })
         @HTTP(path = "api/propertydefinitions/{domain}/{scope}/{code}", method = "DELETE", hasBody = true)
         Observable<Response<ResponseBody>> deletePropertyDefinition(@Path("domain") String domain, @Path("scope") String scope, @Path("code") String code);
+
+        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getQuotes" })
+        @GET("api/quotes/{scope}")
+        Observable<Response<ResponseBody>> getQuotes(@Path("scope") String scope, @Query("quoteIds") String quoteIds, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("maxAge") String maxAge, @Query("page") Integer page, @Query("limit") Integer limit);
+
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI upsertQuotes" })
+        @POST("api/quotes/{scope}")
+        Observable<Response<ResponseBody>> upsertQuotes(@Path("scope") String scope, @Body List<UpsertQuoteRequest> quotes, @Query("effectiveAt") DateTime effectiveAt);
+
+        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI deleteQuote" })
+        @HTTP(path = "api/quotes/{scope}", method = "DELETE", hasBody = true)
+        Observable<Response<ResponseBody>> deleteQuote(@Path("scope") String scope, @Query("id") String id, @Query("effectiveFrom") DateTime effectiveFrom);
 
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI createReferencePortfolio" })
         @POST("api/referenceportfolios/{scope}")
@@ -9087,6 +9103,525 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     private ServiceResponse<DeletedEntityResponse> deletePropertyDefinitionDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
         return this.restClient().responseBuilderFactory().<DeletedEntityResponse, ErrorResponseException>newInstance(this.serializerAdapter())
                 .register(200, new TypeToken<DeletedEntityResponse>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
+     * Get quotes.
+     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
+     Quotes which are older than this at the time of the effective date/time will not be returned.
+     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
+     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
+     *
+     * @param scope The scope of the quotes
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfQuote object if successful.
+     */
+    public ResourceListOfQuote getQuotes(String scope) {
+        return getQuotesWithServiceResponseAsync(scope).toBlocking().single().body();
+    }
+
+    /**
+     * Get quotes.
+     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
+     Quotes which are older than this at the time of the effective date/time will not be returned.
+     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
+     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
+     *
+     * @param scope The scope of the quotes
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<ResourceListOfQuote> getQuotesAsync(String scope, final ServiceCallback<ResourceListOfQuote> serviceCallback) {
+        return ServiceFuture.fromResponse(getQuotesWithServiceResponseAsync(scope), serviceCallback);
+    }
+
+    /**
+     * Get quotes.
+     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
+     Quotes which are older than this at the time of the effective date/time will not be returned.
+     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
+     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
+     *
+     * @param scope The scope of the quotes
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfQuote object
+     */
+    public Observable<ResourceListOfQuote> getQuotesAsync(String scope) {
+        return getQuotesWithServiceResponseAsync(scope).map(new Func1<ServiceResponse<ResourceListOfQuote>, ResourceListOfQuote>() {
+            @Override
+            public ResourceListOfQuote call(ServiceResponse<ResourceListOfQuote> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Get quotes.
+     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
+     Quotes which are older than this at the time of the effective date/time will not be returned.
+     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
+     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
+     *
+     * @param scope The scope of the quotes
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfQuote object
+     */
+    public Observable<ServiceResponse<ResourceListOfQuote>> getQuotesWithServiceResponseAsync(String scope) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        final List<String> quoteIds = null;
+        final DateTime effectiveAt = null;
+        final DateTime asAt = null;
+        final String maxAge = null;
+        final Integer page = null;
+        final Integer limit = null;
+        String quoteIdsConverted = this.serializerAdapter().serializeList(quoteIds, CollectionFormat.MULTI);
+        return service.getQuotes(scope, quoteIdsConverted, effectiveAt, asAt, maxAge, page, limit)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfQuote>>>() {
+                @Override
+                public Observable<ServiceResponse<ResourceListOfQuote>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<ResourceListOfQuote> clientResponse = getQuotesDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Get quotes.
+     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
+     Quotes which are older than this at the time of the effective date/time will not be returned.
+     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
+     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
+     *
+     * @param scope The scope of the quotes
+     * @param quoteIds The ids of the quotes
+     * @param effectiveAt Optional. The date/time from which the quotes are effective
+     * @param asAt Optional. The 'AsAt' date/time
+     * @param maxAge Optional. The quote staleness tolerance
+     * @param page Optional. The page of results to return
+     * @param limit Optional. The number of results per page
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfQuote object if successful.
+     */
+    public ResourceListOfQuote getQuotes(String scope, List<String> quoteIds, DateTime effectiveAt, DateTime asAt, String maxAge, Integer page, Integer limit) {
+        return getQuotesWithServiceResponseAsync(scope, quoteIds, effectiveAt, asAt, maxAge, page, limit).toBlocking().single().body();
+    }
+
+    /**
+     * Get quotes.
+     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
+     Quotes which are older than this at the time of the effective date/time will not be returned.
+     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
+     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
+     *
+     * @param scope The scope of the quotes
+     * @param quoteIds The ids of the quotes
+     * @param effectiveAt Optional. The date/time from which the quotes are effective
+     * @param asAt Optional. The 'AsAt' date/time
+     * @param maxAge Optional. The quote staleness tolerance
+     * @param page Optional. The page of results to return
+     * @param limit Optional. The number of results per page
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<ResourceListOfQuote> getQuotesAsync(String scope, List<String> quoteIds, DateTime effectiveAt, DateTime asAt, String maxAge, Integer page, Integer limit, final ServiceCallback<ResourceListOfQuote> serviceCallback) {
+        return ServiceFuture.fromResponse(getQuotesWithServiceResponseAsync(scope, quoteIds, effectiveAt, asAt, maxAge, page, limit), serviceCallback);
+    }
+
+    /**
+     * Get quotes.
+     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
+     Quotes which are older than this at the time of the effective date/time will not be returned.
+     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
+     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
+     *
+     * @param scope The scope of the quotes
+     * @param quoteIds The ids of the quotes
+     * @param effectiveAt Optional. The date/time from which the quotes are effective
+     * @param asAt Optional. The 'AsAt' date/time
+     * @param maxAge Optional. The quote staleness tolerance
+     * @param page Optional. The page of results to return
+     * @param limit Optional. The number of results per page
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfQuote object
+     */
+    public Observable<ResourceListOfQuote> getQuotesAsync(String scope, List<String> quoteIds, DateTime effectiveAt, DateTime asAt, String maxAge, Integer page, Integer limit) {
+        return getQuotesWithServiceResponseAsync(scope, quoteIds, effectiveAt, asAt, maxAge, page, limit).map(new Func1<ServiceResponse<ResourceListOfQuote>, ResourceListOfQuote>() {
+            @Override
+            public ResourceListOfQuote call(ServiceResponse<ResourceListOfQuote> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Get quotes.
+     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
+     Quotes which are older than this at the time of the effective date/time will not be returned.
+     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
+     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
+     *
+     * @param scope The scope of the quotes
+     * @param quoteIds The ids of the quotes
+     * @param effectiveAt Optional. The date/time from which the quotes are effective
+     * @param asAt Optional. The 'AsAt' date/time
+     * @param maxAge Optional. The quote staleness tolerance
+     * @param page Optional. The page of results to return
+     * @param limit Optional. The number of results per page
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfQuote object
+     */
+    public Observable<ServiceResponse<ResourceListOfQuote>> getQuotesWithServiceResponseAsync(String scope, List<String> quoteIds, DateTime effectiveAt, DateTime asAt, String maxAge, Integer page, Integer limit) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        Validator.validate(quoteIds);
+        String quoteIdsConverted = this.serializerAdapter().serializeList(quoteIds, CollectionFormat.MULTI);
+        return service.getQuotes(scope, quoteIdsConverted, effectiveAt, asAt, maxAge, page, limit)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfQuote>>>() {
+                @Override
+                public Observable<ServiceResponse<ResourceListOfQuote>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<ResourceListOfQuote> clientResponse = getQuotesDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<ResourceListOfQuote> getQuotesDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<ResourceListOfQuote, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<ResourceListOfQuote>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
+     * Add quotes.
+     * Add quotes effective at the specified time. If a quote is added with the same id (and is effective at the same time) as an existing quote, then the more recently added quote will be returned when queried.
+     *
+     * @param scope The scope of the quotes
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the UpsertQuotesResponse object if successful.
+     */
+    public UpsertQuotesResponse upsertQuotes(String scope) {
+        return upsertQuotesWithServiceResponseAsync(scope).toBlocking().single().body();
+    }
+
+    /**
+     * Add quotes.
+     * Add quotes effective at the specified time. If a quote is added with the same id (and is effective at the same time) as an existing quote, then the more recently added quote will be returned when queried.
+     *
+     * @param scope The scope of the quotes
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<UpsertQuotesResponse> upsertQuotesAsync(String scope, final ServiceCallback<UpsertQuotesResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(upsertQuotesWithServiceResponseAsync(scope), serviceCallback);
+    }
+
+    /**
+     * Add quotes.
+     * Add quotes effective at the specified time. If a quote is added with the same id (and is effective at the same time) as an existing quote, then the more recently added quote will be returned when queried.
+     *
+     * @param scope The scope of the quotes
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertQuotesResponse object
+     */
+    public Observable<UpsertQuotesResponse> upsertQuotesAsync(String scope) {
+        return upsertQuotesWithServiceResponseAsync(scope).map(new Func1<ServiceResponse<UpsertQuotesResponse>, UpsertQuotesResponse>() {
+            @Override
+            public UpsertQuotesResponse call(ServiceResponse<UpsertQuotesResponse> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Add quotes.
+     * Add quotes effective at the specified time. If a quote is added with the same id (and is effective at the same time) as an existing quote, then the more recently added quote will be returned when queried.
+     *
+     * @param scope The scope of the quotes
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertQuotesResponse object
+     */
+    public Observable<ServiceResponse<UpsertQuotesResponse>> upsertQuotesWithServiceResponseAsync(String scope) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        final List<UpsertQuoteRequest> quotes = null;
+        final DateTime effectiveAt = null;
+        return service.upsertQuotes(scope, quotes, effectiveAt)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<UpsertQuotesResponse>>>() {
+                @Override
+                public Observable<ServiceResponse<UpsertQuotesResponse>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<UpsertQuotesResponse> clientResponse = upsertQuotesDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Add quotes.
+     * Add quotes effective at the specified time. If a quote is added with the same id (and is effective at the same time) as an existing quote, then the more recently added quote will be returned when queried.
+     *
+     * @param scope The scope of the quotes
+     * @param quotes The quotes to add
+     * @param effectiveAt Optional. The date/time from which the quotes are effective
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the UpsertQuotesResponse object if successful.
+     */
+    public UpsertQuotesResponse upsertQuotes(String scope, List<UpsertQuoteRequest> quotes, DateTime effectiveAt) {
+        return upsertQuotesWithServiceResponseAsync(scope, quotes, effectiveAt).toBlocking().single().body();
+    }
+
+    /**
+     * Add quotes.
+     * Add quotes effective at the specified time. If a quote is added with the same id (and is effective at the same time) as an existing quote, then the more recently added quote will be returned when queried.
+     *
+     * @param scope The scope of the quotes
+     * @param quotes The quotes to add
+     * @param effectiveAt Optional. The date/time from which the quotes are effective
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<UpsertQuotesResponse> upsertQuotesAsync(String scope, List<UpsertQuoteRequest> quotes, DateTime effectiveAt, final ServiceCallback<UpsertQuotesResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(upsertQuotesWithServiceResponseAsync(scope, quotes, effectiveAt), serviceCallback);
+    }
+
+    /**
+     * Add quotes.
+     * Add quotes effective at the specified time. If a quote is added with the same id (and is effective at the same time) as an existing quote, then the more recently added quote will be returned when queried.
+     *
+     * @param scope The scope of the quotes
+     * @param quotes The quotes to add
+     * @param effectiveAt Optional. The date/time from which the quotes are effective
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertQuotesResponse object
+     */
+    public Observable<UpsertQuotesResponse> upsertQuotesAsync(String scope, List<UpsertQuoteRequest> quotes, DateTime effectiveAt) {
+        return upsertQuotesWithServiceResponseAsync(scope, quotes, effectiveAt).map(new Func1<ServiceResponse<UpsertQuotesResponse>, UpsertQuotesResponse>() {
+            @Override
+            public UpsertQuotesResponse call(ServiceResponse<UpsertQuotesResponse> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Add quotes.
+     * Add quotes effective at the specified time. If a quote is added with the same id (and is effective at the same time) as an existing quote, then the more recently added quote will be returned when queried.
+     *
+     * @param scope The scope of the quotes
+     * @param quotes The quotes to add
+     * @param effectiveAt Optional. The date/time from which the quotes are effective
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertQuotesResponse object
+     */
+    public Observable<ServiceResponse<UpsertQuotesResponse>> upsertQuotesWithServiceResponseAsync(String scope, List<UpsertQuoteRequest> quotes, DateTime effectiveAt) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        Validator.validate(quotes);
+        return service.upsertQuotes(scope, quotes, effectiveAt)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<UpsertQuotesResponse>>>() {
+                @Override
+                public Observable<ServiceResponse<UpsertQuotesResponse>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<UpsertQuotesResponse> clientResponse = upsertQuotesDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<UpsertQuotesResponse> upsertQuotesDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<UpsertQuotesResponse, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<UpsertQuotesResponse>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
+     * Delete a quote.
+     * Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+     *
+     * @param scope The scope of the quote
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the DeleteQuotesResponse object if successful.
+     */
+    public DeleteQuotesResponse deleteQuote(String scope) {
+        return deleteQuoteWithServiceResponseAsync(scope).toBlocking().single().body();
+    }
+
+    /**
+     * Delete a quote.
+     * Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+     *
+     * @param scope The scope of the quote
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<DeleteQuotesResponse> deleteQuoteAsync(String scope, final ServiceCallback<DeleteQuotesResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(deleteQuoteWithServiceResponseAsync(scope), serviceCallback);
+    }
+
+    /**
+     * Delete a quote.
+     * Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+     *
+     * @param scope The scope of the quote
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeleteQuotesResponse object
+     */
+    public Observable<DeleteQuotesResponse> deleteQuoteAsync(String scope) {
+        return deleteQuoteWithServiceResponseAsync(scope).map(new Func1<ServiceResponse<DeleteQuotesResponse>, DeleteQuotesResponse>() {
+            @Override
+            public DeleteQuotesResponse call(ServiceResponse<DeleteQuotesResponse> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Delete a quote.
+     * Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+     *
+     * @param scope The scope of the quote
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeleteQuotesResponse object
+     */
+    public Observable<ServiceResponse<DeleteQuotesResponse>> deleteQuoteWithServiceResponseAsync(String scope) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        final String id = null;
+        final DateTime effectiveFrom = null;
+        return service.deleteQuote(scope, id, effectiveFrom)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<DeleteQuotesResponse>>>() {
+                @Override
+                public Observable<ServiceResponse<DeleteQuotesResponse>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<DeleteQuotesResponse> clientResponse = deleteQuoteDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Delete a quote.
+     * Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+     *
+     * @param scope The scope of the quote
+     * @param id The quote id
+     * @param effectiveFrom The date/time from which the quote is effective
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the DeleteQuotesResponse object if successful.
+     */
+    public DeleteQuotesResponse deleteQuote(String scope, String id, DateTime effectiveFrom) {
+        return deleteQuoteWithServiceResponseAsync(scope, id, effectiveFrom).toBlocking().single().body();
+    }
+
+    /**
+     * Delete a quote.
+     * Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+     *
+     * @param scope The scope of the quote
+     * @param id The quote id
+     * @param effectiveFrom The date/time from which the quote is effective
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<DeleteQuotesResponse> deleteQuoteAsync(String scope, String id, DateTime effectiveFrom, final ServiceCallback<DeleteQuotesResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(deleteQuoteWithServiceResponseAsync(scope, id, effectiveFrom), serviceCallback);
+    }
+
+    /**
+     * Delete a quote.
+     * Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+     *
+     * @param scope The scope of the quote
+     * @param id The quote id
+     * @param effectiveFrom The date/time from which the quote is effective
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeleteQuotesResponse object
+     */
+    public Observable<DeleteQuotesResponse> deleteQuoteAsync(String scope, String id, DateTime effectiveFrom) {
+        return deleteQuoteWithServiceResponseAsync(scope, id, effectiveFrom).map(new Func1<ServiceResponse<DeleteQuotesResponse>, DeleteQuotesResponse>() {
+            @Override
+            public DeleteQuotesResponse call(ServiceResponse<DeleteQuotesResponse> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Delete a quote.
+     * Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+     *
+     * @param scope The scope of the quote
+     * @param id The quote id
+     * @param effectiveFrom The date/time from which the quote is effective
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeleteQuotesResponse object
+     */
+    public Observable<ServiceResponse<DeleteQuotesResponse>> deleteQuoteWithServiceResponseAsync(String scope, String id, DateTime effectiveFrom) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        return service.deleteQuote(scope, id, effectiveFrom)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<DeleteQuotesResponse>>>() {
+                @Override
+                public Observable<ServiceResponse<DeleteQuotesResponse>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<DeleteQuotesResponse> clientResponse = deleteQuoteDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<DeleteQuotesResponse> deleteQuoteDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<DeleteQuotesResponse, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<DeleteQuotesResponse>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }
