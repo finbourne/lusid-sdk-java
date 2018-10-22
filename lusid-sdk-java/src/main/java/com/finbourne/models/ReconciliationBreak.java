@@ -39,7 +39,7 @@ public class ReconciliationBreak {
      * Any other properties that comprise the Sub-Holding Key.
      */
     @JsonProperty(value = "subHoldingKeys", required = true)
-    private List<Property> subHoldingKeys;
+    private List<PerpetualProperty> subHoldingKeys;
 
     /**
      * Units from the left hand side.
@@ -108,7 +108,7 @@ public class ReconciliationBreak {
      *
      * @return the subHoldingKeys value
      */
-    public List<Property> subHoldingKeys() {
+    public List<PerpetualProperty> subHoldingKeys() {
         return this.subHoldingKeys;
     }
 
@@ -118,7 +118,7 @@ public class ReconciliationBreak {
      * @param subHoldingKeys the subHoldingKeys value to set
      * @return the ReconciliationBreak object itself.
      */
-    public ReconciliationBreak withSubHoldingKeys(List<Property> subHoldingKeys) {
+    public ReconciliationBreak withSubHoldingKeys(List<PerpetualProperty> subHoldingKeys) {
         this.subHoldingKeys = subHoldingKeys;
         return this;
     }

@@ -296,6 +296,8 @@
  | <a name="221">221</a>|InstrumentUpsertFailure|  |
  | <a name="222">222</a>|ReferencePortfolioRequestNotSupported|  |
  | <a name="223">223</a>|TransactionPortfolioRequestNotSupported|  |
+ | <a name="230">230</a>|TransactionTypeNotFound|  |
+ | <a name="231">231</a>|TransactionTypeDuplication|  |
  | <a name="-10">-10</a>|ServerConfigurationError|  |
  | <a name="-1">-1</a>|Unknown error|  |.
  */
