@@ -2069,6 +2069,79 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<String>> getExcelDownloadUrlWithServiceResponseAsync(String version);
 
     /**
+     * Download the LUSID Excel Addin.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the String object if successful.
+     */
+    String getExcelAddin();
+
+    /**
+     * Download the LUSID Excel Addin.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<String> getExcelAddinAsync(final ServiceCallback<String> serviceCallback);
+
+    /**
+     * Download the LUSID Excel Addin.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the String object
+     */
+    Observable<String> getExcelAddinAsync();
+
+    /**
+     * Download the LUSID Excel Addin.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the String object
+     */
+    Observable<ServiceResponse<String>> getExcelAddinWithServiceResponseAsync();
+    /**
+     * Download the LUSID Excel Addin.
+     *
+     * @param version the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the String object if successful.
+     */
+    String getExcelAddin(String version);
+
+    /**
+     * Download the LUSID Excel Addin.
+     *
+     * @param version the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<String> getExcelAddinAsync(String version, final ServiceCallback<String> serviceCallback);
+
+    /**
+     * Download the LUSID Excel Addin.
+     *
+     * @param version the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the String object
+     */
+    Observable<String> getExcelAddinAsync(String version);
+
+    /**
+     * Download the LUSID Excel Addin.
+     *
+     * @param version the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the String object
+     */
+    Observable<ServiceResponse<String>> getExcelAddinWithServiceResponseAsync(String version);
+
+    /**
      * Get LUSID versions.
      * Get the semantic versions associated with LUSID and its ecosystem.
      *

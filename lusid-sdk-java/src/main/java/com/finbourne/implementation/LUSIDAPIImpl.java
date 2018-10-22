@@ -283,6 +283,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @GET("api/metadata/downloads/excel")
         Observable<Response<ResponseBody>> getExcelDownloadUrl(@Query("version") String version);
 
+        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getExcelAddin" })
+        @GET("api/metadata/downloads/exceladdin")
+        Observable<Response<ResponseBody>> getExcelAddin(@Query("version") String version);
+
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getLusidVersions" })
         @GET("api/metadata/versions")
         Observable<Response<ResponseBody>> getLusidVersions();
@@ -3748,6 +3752,136 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     private ServiceResponse<String> getExcelDownloadUrlDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
+        return this.restClient().responseBuilderFactory().<String, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<String>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
+     * Download the LUSID Excel Addin.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the String object if successful.
+     */
+    public String getExcelAddin() {
+        return getExcelAddinWithServiceResponseAsync().toBlocking().single().body();
+    }
+
+    /**
+     * Download the LUSID Excel Addin.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<String> getExcelAddinAsync(final ServiceCallback<String> serviceCallback) {
+        return ServiceFuture.fromResponse(getExcelAddinWithServiceResponseAsync(), serviceCallback);
+    }
+
+    /**
+     * Download the LUSID Excel Addin.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the String object
+     */
+    public Observable<String> getExcelAddinAsync() {
+        return getExcelAddinWithServiceResponseAsync().map(new Func1<ServiceResponse<String>, String>() {
+            @Override
+            public String call(ServiceResponse<String> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Download the LUSID Excel Addin.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the String object
+     */
+    public Observable<ServiceResponse<String>> getExcelAddinWithServiceResponseAsync() {
+        final String version = null;
+        return service.getExcelAddin(version)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<String>>>() {
+                @Override
+                public Observable<ServiceResponse<String>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<String> clientResponse = getExcelAddinDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Download the LUSID Excel Addin.
+     *
+     * @param version the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the String object if successful.
+     */
+    public String getExcelAddin(String version) {
+        return getExcelAddinWithServiceResponseAsync(version).toBlocking().single().body();
+    }
+
+    /**
+     * Download the LUSID Excel Addin.
+     *
+     * @param version the String value
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<String> getExcelAddinAsync(String version, final ServiceCallback<String> serviceCallback) {
+        return ServiceFuture.fromResponse(getExcelAddinWithServiceResponseAsync(version), serviceCallback);
+    }
+
+    /**
+     * Download the LUSID Excel Addin.
+     *
+     * @param version the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the String object
+     */
+    public Observable<String> getExcelAddinAsync(String version) {
+        return getExcelAddinWithServiceResponseAsync(version).map(new Func1<ServiceResponse<String>, String>() {
+            @Override
+            public String call(ServiceResponse<String> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Download the LUSID Excel Addin.
+     *
+     * @param version the String value
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the String object
+     */
+    public Observable<ServiceResponse<String>> getExcelAddinWithServiceResponseAsync(String version) {
+        return service.getExcelAddin(version)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<String>>>() {
+                @Override
+                public Observable<ServiceResponse<String>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<String> clientResponse = getExcelAddinDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<String> getExcelAddinDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
         return this.restClient().responseBuilderFactory().<String, ErrorResponseException>newInstance(this.serializerAdapter())
                 .register(200, new TypeToken<String>() { }.getType())
                 .registerError(ErrorResponseException.class)
