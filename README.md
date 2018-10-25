@@ -1,14 +1,42 @@
 # LUSID<sup>®</sup> Java SDK
 
-This repository enables the generation of a Java SDK from the FINBOURNE OpenAPI specification using the [autorest](https://github.com/Azure/autorest) tool.
+Maven artifacts can be downloaded from the Open Source Software Repository Hosting (OSSRH) by adding the following to your pom.xml
 
-A generated version of the SDK is included in the `lusid-sdk-java` folder based on the OpenAPI specification named `lusid.json` in the root folder.  The most up to date version of the OpenAPI specification can be downloaded from https://api.finbourne.com/swagger/v0/swagger.json
+```
+<project>
+  ...
+  <repositories>
+    <repository>
+      <id>osssrh</id>
+      <name>OSSRH</name>
+      <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+    </repository>
+  </repositories>
 
-In addtion to the SDK, a set of examples on how to use the SDK can be found in the [src/test/java](https://github.com/finbourne/lusid-sdk-java/tree/master/lusid-sdk-java/src/test/java) folder.  These exist in the form of unit tests and further instructions on running the tests can be found in the [README](https://github.com/finbourne/lusid-sdk-java/blob/master/lusid-sdk-java/readme.md).
+  <dependencies>
+    <dependency>
+      <groupId>com.finbourne</groupId>
+      <artifactId>edp-portfolios-sdk</artifactId>
+      <version>{INSERT VERSION}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.finbourne</groupId>
+      <artifactId>edp-lusid-sdk</artifactId>
+      <version>{INSERT VERSION}</version>
+    </dependency>
+    ...
+  </dependencies>
+  ...
+</project>
+```
+
+ A pre-generated version of the latest SDK is included in the lusid-sdk-java folder based on the OpenAPI specification named lusid.json in the root folder. The most up to date version of the OpenAPI specification can be downloaded from http://api.finbourne.com/swagger/v0/swagger.json
+
+In addition to the SDK, a set of examples on how to use the SDK can be found in the [src/test/java](https://github.com/finbourne/lusid-sdk-java/tree/master/lusid-sdk-java/src/test/java) folder. These exist in the form of unit tests. Further instructions on running them can be found in the [README](https://github.com/finbourne/lusid-sdk-java/blob/master/lusid-sdk-java/readme.md).
 
 # Generating the SDK
 
-The preferred method of generating the SDK is using `docker` and `docker-compose` by running the following command: 
+If you would prefer to generate the Java SDK locally from the FINBOURNE OpenAPI specification, this can be done using autorest and docker:
 
 ```
 $ docker-compose up && docker-compose rm -f

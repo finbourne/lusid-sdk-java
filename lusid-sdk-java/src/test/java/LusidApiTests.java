@@ -50,7 +50,8 @@ public class LusidApiTests {
 
             //  load configuration
             ObjectMapper configMapper = new ObjectMapper();
-            final URL configFile = ClassLoader.getSystemResource("secrets.json");
+            ClassLoader classLoader = getClass().getClassLoader();
+            File configFile = new File(classLoader.getResource("secrets.json").getFile());
 
             if (configFile == null) {
                 fail("cannot find secrets.json in classpath");

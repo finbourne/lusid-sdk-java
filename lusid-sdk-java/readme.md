@@ -20,7 +20,7 @@ $ docker run --rm -it --name lusid-sdk-java-test -v `pwd`:/usr/src finbourne/lus
 
 ## Test Configuration
 
-Create a properties file named `secrets.json` in the `src/main/resources` folder with the structure below and populated with the appropriate values.
+Create a properties file named `secrets.json` in the `src/test/resources` folder with the structure below and populated with the appropriate values.
 
 ``` json
 {
