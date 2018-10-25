@@ -37,6 +37,7 @@
                 </dependencies>
                 <configuration>
                     <includes>**/*Tests.java</includes>
+                    <useSystemClassLoader>false</useSystemClassLoader>
                 </configuration>
             </plugin>
             <plugin>
