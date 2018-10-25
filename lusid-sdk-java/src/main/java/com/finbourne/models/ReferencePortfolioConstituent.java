@@ -48,12 +48,6 @@ public class ReferencePortfolioConstituent {
     private Double weight;
 
     /**
-     * Possible values include: 'Shares', 'Weight', 'Nominal'.
-     */
-    @JsonProperty(value = "type")
-    private String type;
-
-    /**
      * Get the instrumentUid value.
      *
      * @return the instrumentUid value
@@ -110,26 +104,6 @@ public class ReferencePortfolioConstituent {
      */
     public ReferencePortfolioConstituent withWeight(Double weight) {
         this.weight = weight;
-        return this;
-    }
-
-    /**
-     * Get possible values include: 'Shares', 'Weight', 'Nominal'.
-     *
-     * @return the type value
-     */
-    public String type() {
-        return this.type;
-    }
-
-    /**
-     * Set possible values include: 'Shares', 'Weight', 'Nominal'.
-     *
-     * @param type the type value to set
-     * @return the ReferencePortfolioConstituent object itself.
-     */
-    public ReferencePortfolioConstituent withType(String type) {
-        this.type = type;
         return this;
     }
 

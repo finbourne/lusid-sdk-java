@@ -1794,7 +1794,7 @@ public interface LUSIDAPI {
      The response will return both the collection of found instruments for each identifier, as well as a collection of all identifiers for which no instruments could be found (as well as any available details).
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
-     * @param codeType The type of identifiers. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codeType The type of identifiers. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
      * @param codes One or more identifiers of the type specified in the codeType
      * @param asAt Optional. The AsAt date of the data
      * @param instrumentPropertyKeys Optional. Keys of the properties to be decorated on to the instrument
@@ -1811,7 +1811,7 @@ public interface LUSIDAPI {
      The response will return both the collection of found instruments for each identifier, as well as a collection of all identifiers for which no instruments could be found (as well as any available details).
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
-     * @param codeType The type of identifiers. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codeType The type of identifiers. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
      * @param codes One or more identifiers of the type specified in the codeType
      * @param asAt Optional. The AsAt date of the data
      * @param instrumentPropertyKeys Optional. Keys of the properties to be decorated on to the instrument
@@ -1827,7 +1827,7 @@ public interface LUSIDAPI {
      The response will return both the collection of found instruments for each identifier, as well as a collection of all identifiers for which no instruments could be found (as well as any available details).
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
-     * @param codeType The type of identifiers. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codeType The type of identifiers. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
      * @param codes One or more identifiers of the type specified in the codeType
      * @param asAt Optional. The AsAt date of the data
      * @param instrumentPropertyKeys Optional. Keys of the properties to be decorated on to the instrument
@@ -1842,7 +1842,7 @@ public interface LUSIDAPI {
      The response will return both the collection of found instruments for each identifier, as well as a collection of all identifiers for which no instruments could be found (as well as any available details).
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
-     * @param codeType The type of identifiers. Possible values include: 'Undefined', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codeType The type of identifiers. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
      * @param codes One or more identifiers of the type specified in the codeType
      * @param asAt Optional. The AsAt date of the data
      * @param instrumentPropertyKeys Optional. Keys of the properties to be decorated on to the instrument
