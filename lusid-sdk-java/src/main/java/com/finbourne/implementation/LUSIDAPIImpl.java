@@ -8662,7 +8662,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Retrieve the definition for the identified property.
      *
-     * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the requested property
      * @param code The code of the requested property
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8677,7 +8677,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Retrieve the definition for the identified property.
      *
-     * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the requested property
      * @param code The code of the requested property
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -8691,7 +8691,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Retrieve the definition for the identified property.
      *
-     * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the requested property
      * @param code The code of the requested property
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8709,7 +8709,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Retrieve the definition for the identified property.
      *
-     * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the requested property
      * @param code The code of the requested property
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8743,7 +8743,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Retrieve the definition for the identified property.
      *
-     * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the requested property
      * @param code The code of the requested property
      * @param asAt Optional. The AsAt date of the data
@@ -8759,7 +8759,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Retrieve the definition for the identified property.
      *
-     * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the requested property
      * @param code The code of the requested property
      * @param asAt Optional. The AsAt date of the data
@@ -8774,7 +8774,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Retrieve the definition for the identified property.
      *
-     * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the requested property
      * @param code The code of the requested property
      * @param asAt Optional. The AsAt date of the data
@@ -8793,7 +8793,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Retrieve the definition for the identified property.
      *
-     * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the requested property
      * @param code The code of the requested property
      * @param asAt Optional. The AsAt date of the data
@@ -8836,7 +8836,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Not all elements within a property definition are modifiable due to the potential implications for data
      already stored against these properties.
      *
-     * @param domain The Property Domain of the property being updated. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the property being updated. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the property to be updated
      * @param code The code of the property to be updated
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8853,7 +8853,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Not all elements within a property definition are modifiable due to the potential implications for data
      already stored against these properties.
      *
-     * @param domain The Property Domain of the property being updated. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the property being updated. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the property to be updated
      * @param code The code of the property to be updated
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -8869,7 +8869,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Not all elements within a property definition are modifiable due to the potential implications for data
      already stored against these properties.
      *
-     * @param domain The Property Domain of the property being updated. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the property being updated. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the property to be updated
      * @param code The code of the property to be updated
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8889,7 +8889,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Not all elements within a property definition are modifiable due to the potential implications for data
      already stored against these properties.
      *
-     * @param domain The Property Domain of the property being updated. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the property being updated. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the property to be updated
      * @param code The code of the property to be updated
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8925,7 +8925,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Not all elements within a property definition are modifiable due to the potential implications for data
      already stored against these properties.
      *
-     * @param domain The Property Domain of the property being updated. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the property being updated. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the property to be updated
      * @param code The code of the property to be updated
      * @param definition The updated definition of the property
@@ -8943,7 +8943,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Not all elements within a property definition are modifiable due to the potential implications for data
      already stored against these properties.
      *
-     * @param domain The Property Domain of the property being updated. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the property being updated. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the property to be updated
      * @param code The code of the property to be updated
      * @param definition The updated definition of the property
@@ -8960,7 +8960,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Not all elements within a property definition are modifiable due to the potential implications for data
      already stored against these properties.
      *
-     * @param domain The Property Domain of the property being updated. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the property being updated. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the property to be updated
      * @param code The code of the property to be updated
      * @param definition The updated definition of the property
@@ -8981,7 +8981,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Not all elements within a property definition are modifiable due to the potential implications for data
      already stored against these properties.
      *
-     * @param domain The Property Domain of the property being updated. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the property being updated. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the property to be updated
      * @param code The code of the property to be updated
      * @param definition The updated definition of the property
@@ -9023,7 +9023,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Delete the definition of the specified property.
      *
-     * @param domain The Property Domain of the property to be deleted. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the property to be deleted. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the property to be deleted
      * @param code The code of the property to be deleted
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -9038,7 +9038,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Delete the definition of the specified property.
      *
-     * @param domain The Property Domain of the property to be deleted. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the property to be deleted. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the property to be deleted
      * @param code The code of the property to be deleted
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -9052,7 +9052,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Delete the definition of the specified property.
      *
-     * @param domain The Property Domain of the property to be deleted. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the property to be deleted. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the property to be deleted
      * @param code The code of the property to be deleted
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -9070,7 +9070,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     /**
      * Delete the definition of the specified property.
      *
-     * @param domain The Property Domain of the property to be deleted. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'
+     * @param domain The Property Domain of the property to be deleted. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
      * @param scope The scope of the property to be deleted
      * @param code The code of the property to be deleted
      * @throws IllegalArgumentException thrown if parameters fail the validation

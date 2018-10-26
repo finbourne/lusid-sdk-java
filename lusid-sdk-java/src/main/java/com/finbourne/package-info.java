@@ -273,6 +273,8 @@
  | <a name="189">189</a>|PriceNotFound|  |
  | <a name="190">190</a>|InvalidSubHoldingKeysProvided|  |
  | <a name="191">191</a>|DuplicateSubHoldingKeysProvided|  |
+ | <a name="192">192</a>|CutDefinitionNotFound|  |
+ | <a name="193">193</a>|CutDefinitionInvalid|  |
  | <a name="200">200</a>|InvalidUnitForDataType|  |
  | <a name="201">201</a>|InvalidTypeForDataType|  |
  | <a name="202">202</a>|InvalidValueForDataType|  |
@@ -295,6 +297,7 @@
  | <a name="221">221</a>|InstrumentUpsertFailure|  |
  | <a name="222">222</a>|ReferencePortfolioRequestNotSupported|  |
  | <a name="223">223</a>|TransactionPortfolioRequestNotSupported|  |
+ | <a name="224">224</a>|InvalidPropertyValueAssignment|  |
  | <a name="230">230</a>|TransactionTypeNotFound|  |
  | <a name="231">231</a>|TransactionTypeDuplication|  |
  | <a name="-10">-10</a>|ServerConfigurationError|  |

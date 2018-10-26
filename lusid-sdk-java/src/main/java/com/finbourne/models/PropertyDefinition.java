@@ -90,7 +90,7 @@ public class PropertyDefinition {
 
     /**
      * Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding',
-     * 'ReferenceHolding', 'TxnType'.
+     * 'ReferenceHolding', 'TxnType', 'Instrument'.
      */
     @JsonProperty(value = "domain", access = JsonProperty.Access.WRITE_ONLY)
     private String domain;
@@ -294,7 +294,7 @@ public class PropertyDefinition {
     }
 
     /**
-     * Get possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'.
+     * Get possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'.
      *
      * @return the domain value
      */

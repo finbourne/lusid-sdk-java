@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CreatePropertyDefinitionRequest {
     /**
      * Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding',
-     * 'ReferenceHolding', 'TxnType'.
+     * 'ReferenceHolding', 'TxnType', 'Instrument'.
      */
     @JsonProperty(value = "domain")
     private String domain;
@@ -78,7 +78,7 @@ public class CreatePropertyDefinitionRequest {
     private String type;
 
     /**
-     * Get possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'.
+     * Get possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'.
      *
      * @return the domain value
      */
@@ -87,7 +87,7 @@ public class CreatePropertyDefinitionRequest {
     }
 
     /**
-     * Set possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType'.
+     * Set possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'.
      *
      * @param domain the domain value to set
      * @return the CreatePropertyDefinitionRequest object itself.
