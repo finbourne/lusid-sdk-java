@@ -43,6 +43,7 @@ import com.finbourne.models.DeleteClientInstrumentsResponse;
 import com.finbourne.models.DeletedEntityResponse;
 import com.finbourne.models.DeleteQuotesResponse;
 import com.finbourne.models.ErrorResponseException;
+import com.finbourne.models.ExecutionRequest;
 import com.finbourne.models.ExpandedGroup;
 import com.finbourne.models.HoldingsAdjustment;
 import com.finbourne.models.Instrument;
@@ -95,6 +96,7 @@ import com.finbourne.models.UpdatePropertyDefinitionRequest;
 import com.finbourne.models.UpsertCorporateActionsResponse;
 import com.finbourne.models.UpsertInstrumentPropertiesResponse;
 import com.finbourne.models.UpsertPersonalisationResponse;
+import com.finbourne.models.UpsertPortfolioExecutionsResponse;
 import com.finbourne.models.UpsertPortfolioTransactionsResponse;
 import com.finbourne.models.UpsertQuoteRequest;
 import com.finbourne.models.UpsertQuotesResponse;
@@ -7187,6 +7189,95 @@ public interface LUSIDAPI {
      * @return the observable to the PortfolioDetails object
      */
     Observable<ServiceResponse<PortfolioDetails>> upsertPortfolioDetailsWithServiceResponseAsync(String scope, String code, CreatePortfolioDetails details, DateTime effectiveAt);
+
+    /**
+     * Upsert executions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the UpsertPortfolioExecutionsResponse object if successful.
+     */
+    UpsertPortfolioExecutionsResponse upsertExecutions(String scope, String code);
+
+    /**
+     * Upsert executions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<UpsertPortfolioExecutionsResponse> upsertExecutionsAsync(String scope, String code, final ServiceCallback<UpsertPortfolioExecutionsResponse> serviceCallback);
+
+    /**
+     * Upsert executions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertPortfolioExecutionsResponse object
+     */
+    Observable<UpsertPortfolioExecutionsResponse> upsertExecutionsAsync(String scope, String code);
+
+    /**
+     * Upsert executions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertPortfolioExecutionsResponse object
+     */
+    Observable<ServiceResponse<UpsertPortfolioExecutionsResponse>> upsertExecutionsWithServiceResponseAsync(String scope, String code);
+    /**
+     * Upsert executions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param executions The executions to be updated
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the UpsertPortfolioExecutionsResponse object if successful.
+     */
+    UpsertPortfolioExecutionsResponse upsertExecutions(String scope, String code, List<ExecutionRequest> executions);
+
+    /**
+     * Upsert executions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param executions The executions to be updated
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<UpsertPortfolioExecutionsResponse> upsertExecutionsAsync(String scope, String code, List<ExecutionRequest> executions, final ServiceCallback<UpsertPortfolioExecutionsResponse> serviceCallback);
+
+    /**
+     * Upsert executions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param executions The executions to be updated
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertPortfolioExecutionsResponse object
+     */
+    Observable<UpsertPortfolioExecutionsResponse> upsertExecutionsAsync(String scope, String code, List<ExecutionRequest> executions);
+
+    /**
+     * Upsert executions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param executions The executions to be updated
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertPortfolioExecutionsResponse object
+     */
+    Observable<ServiceResponse<UpsertPortfolioExecutionsResponse>> upsertExecutionsWithServiceResponseAsync(String scope, String code, List<ExecutionRequest> executions);
 
     /**
      * Get holdings.

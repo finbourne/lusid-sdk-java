@@ -48,6 +48,7 @@ import com.finbourne.models.DeleteClientInstrumentsResponse;
 import com.finbourne.models.DeletedEntityResponse;
 import com.finbourne.models.DeleteQuotesResponse;
 import com.finbourne.models.ErrorResponseException;
+import com.finbourne.models.ExecutionRequest;
 import com.finbourne.models.ExpandedGroup;
 import com.finbourne.models.HoldingsAdjustment;
 import com.finbourne.models.Instrument;
@@ -100,6 +101,7 @@ import com.finbourne.models.UpdatePropertyDefinitionRequest;
 import com.finbourne.models.UpsertCorporateActionsResponse;
 import com.finbourne.models.UpsertInstrumentPropertiesResponse;
 import com.finbourne.models.UpsertPersonalisationResponse;
+import com.finbourne.models.UpsertPortfolioExecutionsResponse;
 import com.finbourne.models.UpsertPortfolioTransactionsResponse;
 import com.finbourne.models.UpsertQuoteRequest;
 import com.finbourne.models.UpsertQuotesResponse;
@@ -510,6 +512,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI upsertPortfolioDetails" })
         @POST("api/transactionportfolios/{scope}/{code}/details")
         Observable<Response<ResponseBody>> upsertPortfolioDetails(@Path("scope") String scope, @Path("code") String code, @Body CreatePortfolioDetails details, @Query("effectiveAt") DateTime effectiveAt);
+
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI upsertExecutions" })
+        @POST("api/transactionportfolios/{scope}/{code}/executions")
+        Observable<Response<ResponseBody>> upsertExecutions(@Path("scope") String scope, @Path("code") String code, @Body List<ExecutionRequest> executions);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getHoldings" })
         @GET("api/transactionportfolios/{scope}/{code}/holdings")
@@ -12473,6 +12479,165 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     private ServiceResponse<PortfolioDetails> upsertPortfolioDetailsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
         return this.restClient().responseBuilderFactory().<PortfolioDetails, ErrorResponseException>newInstance(this.serializerAdapter())
                 .register(200, new TypeToken<PortfolioDetails>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
+     * Upsert executions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the UpsertPortfolioExecutionsResponse object if successful.
+     */
+    public UpsertPortfolioExecutionsResponse upsertExecutions(String scope, String code) {
+        return upsertExecutionsWithServiceResponseAsync(scope, code).toBlocking().single().body();
+    }
+
+    /**
+     * Upsert executions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<UpsertPortfolioExecutionsResponse> upsertExecutionsAsync(String scope, String code, final ServiceCallback<UpsertPortfolioExecutionsResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(upsertExecutionsWithServiceResponseAsync(scope, code), serviceCallback);
+    }
+
+    /**
+     * Upsert executions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertPortfolioExecutionsResponse object
+     */
+    public Observable<UpsertPortfolioExecutionsResponse> upsertExecutionsAsync(String scope, String code) {
+        return upsertExecutionsWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<UpsertPortfolioExecutionsResponse>, UpsertPortfolioExecutionsResponse>() {
+            @Override
+            public UpsertPortfolioExecutionsResponse call(ServiceResponse<UpsertPortfolioExecutionsResponse> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Upsert executions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertPortfolioExecutionsResponse object
+     */
+    public Observable<ServiceResponse<UpsertPortfolioExecutionsResponse>> upsertExecutionsWithServiceResponseAsync(String scope, String code) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        if (code == null) {
+            throw new IllegalArgumentException("Parameter code is required and cannot be null.");
+        }
+        final List<ExecutionRequest> executions = null;
+        return service.upsertExecutions(scope, code, executions)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<UpsertPortfolioExecutionsResponse>>>() {
+                @Override
+                public Observable<ServiceResponse<UpsertPortfolioExecutionsResponse>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<UpsertPortfolioExecutionsResponse> clientResponse = upsertExecutionsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Upsert executions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param executions The executions to be updated
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the UpsertPortfolioExecutionsResponse object if successful.
+     */
+    public UpsertPortfolioExecutionsResponse upsertExecutions(String scope, String code, List<ExecutionRequest> executions) {
+        return upsertExecutionsWithServiceResponseAsync(scope, code, executions).toBlocking().single().body();
+    }
+
+    /**
+     * Upsert executions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param executions The executions to be updated
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<UpsertPortfolioExecutionsResponse> upsertExecutionsAsync(String scope, String code, List<ExecutionRequest> executions, final ServiceCallback<UpsertPortfolioExecutionsResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(upsertExecutionsWithServiceResponseAsync(scope, code, executions), serviceCallback);
+    }
+
+    /**
+     * Upsert executions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param executions The executions to be updated
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertPortfolioExecutionsResponse object
+     */
+    public Observable<UpsertPortfolioExecutionsResponse> upsertExecutionsAsync(String scope, String code, List<ExecutionRequest> executions) {
+        return upsertExecutionsWithServiceResponseAsync(scope, code, executions).map(new Func1<ServiceResponse<UpsertPortfolioExecutionsResponse>, UpsertPortfolioExecutionsResponse>() {
+            @Override
+            public UpsertPortfolioExecutionsResponse call(ServiceResponse<UpsertPortfolioExecutionsResponse> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Upsert executions.
+     *
+     * @param scope The scope of the portfolio
+     * @param code Code for the portfolio
+     * @param executions The executions to be updated
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the UpsertPortfolioExecutionsResponse object
+     */
+    public Observable<ServiceResponse<UpsertPortfolioExecutionsResponse>> upsertExecutionsWithServiceResponseAsync(String scope, String code, List<ExecutionRequest> executions) {
+        if (scope == null) {
+            throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
+        }
+        if (code == null) {
+            throw new IllegalArgumentException("Parameter code is required and cannot be null.");
+        }
+        Validator.validate(executions);
+        return service.upsertExecutions(scope, code, executions)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<UpsertPortfolioExecutionsResponse>>>() {
+                @Override
+                public Observable<ServiceResponse<UpsertPortfolioExecutionsResponse>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<UpsertPortfolioExecutionsResponse> clientResponse = upsertExecutionsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<UpsertPortfolioExecutionsResponse> upsertExecutionsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<UpsertPortfolioExecutionsResponse, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<UpsertPortfolioExecutionsResponse>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }
