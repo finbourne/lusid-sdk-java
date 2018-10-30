@@ -2075,7 +2075,8 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<String>> getExcelDownloadUrlWithServiceResponseAsync(String version);
 
     /**
-     * Download the LUSID Excel Addin.
+     * Download Excel Addin.
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -2085,7 +2086,8 @@ public interface LUSIDAPI {
     String getExcelAddin();
 
     /**
-     * Download the LUSID Excel Addin.
+     * Download Excel Addin.
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -2094,7 +2096,8 @@ public interface LUSIDAPI {
     ServiceFuture<String> getExcelAddinAsync(final ServiceCallback<String> serviceCallback);
 
     /**
-     * Download the LUSID Excel Addin.
+     * Download Excel Addin.
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the String object
@@ -2102,16 +2105,18 @@ public interface LUSIDAPI {
     Observable<String> getExcelAddinAsync();
 
     /**
-     * Download the LUSID Excel Addin.
+     * Download Excel Addin.
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the String object
      */
     Observable<ServiceResponse<String>> getExcelAddinWithServiceResponseAsync();
     /**
-     * Download the LUSID Excel Addin.
+     * Download Excel Addin.
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
-     * @param version the String value
+     * @param version The requested version of the Excel plugin
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -2120,9 +2125,10 @@ public interface LUSIDAPI {
     String getExcelAddin(String version);
 
     /**
-     * Download the LUSID Excel Addin.
+     * Download Excel Addin.
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
-     * @param version the String value
+     * @param version The requested version of the Excel plugin
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -2130,18 +2136,20 @@ public interface LUSIDAPI {
     ServiceFuture<String> getExcelAddinAsync(String version, final ServiceCallback<String> serviceCallback);
 
     /**
-     * Download the LUSID Excel Addin.
+     * Download Excel Addin.
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
-     * @param version the String value
+     * @param version The requested version of the Excel plugin
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the String object
      */
     Observable<String> getExcelAddinAsync(String version);
 
     /**
-     * Download the LUSID Excel Addin.
+     * Download Excel Addin.
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
-     * @param version the String value
+     * @param version The requested version of the Excel plugin
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the String object
      */
@@ -2333,7 +2341,7 @@ public interface LUSIDAPI {
      * Upsert personalisations.
      * Upsert one or more personalisations.
      *
-     * @param personalisations the List&lt;Personalisation&gt; value
+     * @param personalisations The set of personalisations to persist
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -2345,7 +2353,7 @@ public interface LUSIDAPI {
      * Upsert personalisations.
      * Upsert one or more personalisations.
      *
-     * @param personalisations the List&lt;Personalisation&gt; value
+     * @param personalisations The set of personalisations to persist
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -2356,7 +2364,7 @@ public interface LUSIDAPI {
      * Upsert personalisations.
      * Upsert one or more personalisations.
      *
-     * @param personalisations the List&lt;Personalisation&gt; value
+     * @param personalisations The set of personalisations to persist
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPersonalisationResponse object
      */
@@ -2366,7 +2374,7 @@ public interface LUSIDAPI {
      * Upsert personalisations.
      * Upsert one or more personalisations.
      *
-     * @param personalisations the List&lt;Personalisation&gt; value
+     * @param personalisations The set of personalisations to persist
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPersonalisationResponse object
      */
@@ -4784,6 +4792,7 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<ResourceListOfReconciliationBreak>> reconcileHoldingsWithServiceResponseAsync(PortfoliosReconciliationRequest request, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
+     * Get multiple property definitions.
      * Get one or more property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -4794,6 +4803,7 @@ public interface LUSIDAPI {
     ResourceListOfPropertyDefinition getMultiplePropertyDefinitions();
 
     /**
+     * Get multiple property definitions.
      * Get one or more property definitions.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -4803,6 +4813,7 @@ public interface LUSIDAPI {
     ServiceFuture<ResourceListOfPropertyDefinition> getMultiplePropertyDefinitionsAsync(final ServiceCallback<ResourceListOfPropertyDefinition> serviceCallback);
 
     /**
+     * Get multiple property definitions.
      * Get one or more property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -4811,6 +4822,7 @@ public interface LUSIDAPI {
     Observable<ResourceListOfPropertyDefinition> getMultiplePropertyDefinitionsAsync();
 
     /**
+     * Get multiple property definitions.
      * Get one or more property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -4818,6 +4830,7 @@ public interface LUSIDAPI {
      */
     Observable<ServiceResponse<ResourceListOfPropertyDefinition>> getMultiplePropertyDefinitionsWithServiceResponseAsync();
     /**
+     * Get multiple property definitions.
      * Get one or more property definitions.
      *
      * @param propertyKeys One or more keys for properties for which the schema should be returned
@@ -4834,6 +4847,7 @@ public interface LUSIDAPI {
     ResourceListOfPropertyDefinition getMultiplePropertyDefinitions(List<String> propertyKeys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
+     * Get multiple property definitions.
      * Get one or more property definitions.
      *
      * @param propertyKeys One or more keys for properties for which the schema should be returned
@@ -4849,6 +4863,7 @@ public interface LUSIDAPI {
     ServiceFuture<ResourceListOfPropertyDefinition> getMultiplePropertyDefinitionsAsync(List<String> propertyKeys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfPropertyDefinition> serviceCallback);
 
     /**
+     * Get multiple property definitions.
      * Get one or more property definitions.
      *
      * @param propertyKeys One or more keys for properties for which the schema should be returned
@@ -4863,6 +4878,7 @@ public interface LUSIDAPI {
     Observable<ResourceListOfPropertyDefinition> getMultiplePropertyDefinitionsAsync(List<String> propertyKeys, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
+     * Get multiple property definitions.
      * Get one or more property definitions.
      *
      * @param propertyKeys One or more keys for properties for which the schema should be returned
@@ -4878,6 +4894,7 @@ public interface LUSIDAPI {
 
     /**
      * Define a new property.
+     * Create a new property definition.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -4888,6 +4905,7 @@ public interface LUSIDAPI {
 
     /**
      * Define a new property.
+     * Create a new property definition.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -4897,6 +4915,7 @@ public interface LUSIDAPI {
 
     /**
      * Define a new property.
+     * Create a new property definition.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
@@ -4905,6 +4924,7 @@ public interface LUSIDAPI {
 
     /**
      * Define a new property.
+     * Create a new property definition.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
@@ -4912,6 +4932,7 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<PropertyDefinition>> createPropertyDefinitionWithServiceResponseAsync();
     /**
      * Define a new property.
+     * Create a new property definition.
      *
      * @param definition The definition of the new property
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -4923,6 +4944,7 @@ public interface LUSIDAPI {
 
     /**
      * Define a new property.
+     * Create a new property definition.
      *
      * @param definition The definition of the new property
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -4933,6 +4955,7 @@ public interface LUSIDAPI {
 
     /**
      * Define a new property.
+     * Create a new property definition.
      *
      * @param definition The definition of the new property
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -4942,6 +4965,7 @@ public interface LUSIDAPI {
 
     /**
      * Define a new property.
+     * Create a new property definition.
      *
      * @param definition The definition of the new property
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -4950,6 +4974,7 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<PropertyDefinition>> createPropertyDefinitionWithServiceResponseAsync(CreatePropertyDefinitionRequest definition);
 
     /**
+     * Get property definition.
      * Retrieve the definition for the identified property.
      *
      * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -4963,6 +4988,7 @@ public interface LUSIDAPI {
     PropertyDefinition getPropertyDefinition(String domain, String scope, String code);
 
     /**
+     * Get property definition.
      * Retrieve the definition for the identified property.
      *
      * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -4975,6 +5001,7 @@ public interface LUSIDAPI {
     ServiceFuture<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String code, final ServiceCallback<PropertyDefinition> serviceCallback);
 
     /**
+     * Get property definition.
      * Retrieve the definition for the identified property.
      *
      * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -4986,6 +5013,7 @@ public interface LUSIDAPI {
     Observable<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String code);
 
     /**
+     * Get property definition.
      * Retrieve the definition for the identified property.
      *
      * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -4996,6 +5024,7 @@ public interface LUSIDAPI {
      */
     Observable<ServiceResponse<PropertyDefinition>> getPropertyDefinitionWithServiceResponseAsync(String domain, String scope, String code);
     /**
+     * Get property definition.
      * Retrieve the definition for the identified property.
      *
      * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -5010,6 +5039,7 @@ public interface LUSIDAPI {
     PropertyDefinition getPropertyDefinition(String domain, String scope, String code, DateTime asAt);
 
     /**
+     * Get property definition.
      * Retrieve the definition for the identified property.
      *
      * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -5023,6 +5053,7 @@ public interface LUSIDAPI {
     ServiceFuture<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String code, DateTime asAt, final ServiceCallback<PropertyDefinition> serviceCallback);
 
     /**
+     * Get property definition.
      * Retrieve the definition for the identified property.
      *
      * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -5035,6 +5066,7 @@ public interface LUSIDAPI {
     Observable<PropertyDefinition> getPropertyDefinitionAsync(String domain, String scope, String code, DateTime asAt);
 
     /**
+     * Get property definition.
      * Retrieve the definition for the identified property.
      *
      * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -5160,6 +5192,7 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<PropertyDefinition>> updatePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String code, UpdatePropertyDefinitionRequest definition);
 
     /**
+     * Delete property definition.
      * Delete the definition of the specified property.
      *
      * @param domain The Property Domain of the property to be deleted. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -5173,6 +5206,7 @@ public interface LUSIDAPI {
     DeletedEntityResponse deletePropertyDefinition(String domain, String scope, String code);
 
     /**
+     * Delete property definition.
      * Delete the definition of the specified property.
      *
      * @param domain The Property Domain of the property to be deleted. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -5185,6 +5219,7 @@ public interface LUSIDAPI {
     ServiceFuture<DeletedEntityResponse> deletePropertyDefinitionAsync(String domain, String scope, String code, final ServiceCallback<DeletedEntityResponse> serviceCallback);
 
     /**
+     * Delete property definition.
      * Delete the definition of the specified property.
      *
      * @param domain The Property Domain of the property to be deleted. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -5196,6 +5231,7 @@ public interface LUSIDAPI {
     Observable<DeletedEntityResponse> deletePropertyDefinitionAsync(String domain, String scope, String code);
 
     /**
+     * Delete property definition.
      * Delete the definition of the specified property.
      *
      * @param domain The Property Domain of the property to be deleted. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -5616,10 +5652,11 @@ public interface LUSIDAPI {
 
     /**
      * Get constituents.
+     * Get all the constituents in the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
+     * @param scope The scope of the portfolio
+     * @param code The scope of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -5629,10 +5666,11 @@ public interface LUSIDAPI {
 
     /**
      * Get constituents.
+     * Get all the constituents in the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
+     * @param scope The scope of the portfolio
+     * @param code The scope of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -5641,10 +5679,11 @@ public interface LUSIDAPI {
 
     /**
      * Get constituents.
+     * Get all the constituents in the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
+     * @param scope The scope of the portfolio
+     * @param code The scope of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituent object
      */
@@ -5652,24 +5691,26 @@ public interface LUSIDAPI {
 
     /**
      * Get constituents.
+     * Get all the constituents in the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
+     * @param scope The scope of the portfolio
+     * @param code The scope of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituent object
      */
     Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituent>> getReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
     /**
      * Get constituents.
+     * Get all the constituents in the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
+     * @param scope The scope of the portfolio
+     * @param code The scope of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
+     * @param asAt Optional. The AsAt date of the data
+     * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+     * @param start Optional. When paginating, skip this number of results
+     * @param limit Optional. When paginating, limit the number of returned results to this many
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -5679,14 +5720,15 @@ public interface LUSIDAPI {
 
     /**
      * Get constituents.
+     * Get all the constituents in the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
+     * @param scope The scope of the portfolio
+     * @param code The scope of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
+     * @param asAt Optional. The AsAt date of the data
+     * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+     * @param start Optional. When paginating, skip this number of results
+     * @param limit Optional. When paginating, limit the number of returned results to this many
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -5695,14 +5737,15 @@ public interface LUSIDAPI {
 
     /**
      * Get constituents.
+     * Get all the constituents in the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
+     * @param scope The scope of the portfolio
+     * @param code The scope of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
+     * @param asAt Optional. The AsAt date of the data
+     * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+     * @param start Optional. When paginating, skip this number of results
+     * @param limit Optional. When paginating, limit the number of returned results to this many
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituent object
      */
@@ -5710,14 +5753,15 @@ public interface LUSIDAPI {
 
     /**
      * Get constituents.
+     * Get all the constituents in the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
+     * @param scope The scope of the portfolio
+     * @param code The scope of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
+     * @param asAt Optional. The AsAt date of the data
+     * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+     * @param start Optional. When paginating, skip this number of results
+     * @param limit Optional. When paginating, limit the number of returned results to this many
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituent object
      */
@@ -5727,9 +5771,9 @@ public interface LUSIDAPI {
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
+     * @param scope The scope of the portfolio
+     * @param code The code of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -5741,9 +5785,9 @@ public interface LUSIDAPI {
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
+     * @param scope The scope of the portfolio
+     * @param code The code of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -5754,9 +5798,9 @@ public interface LUSIDAPI {
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
+     * @param scope The scope of the portfolio
+     * @param code The code of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
@@ -5766,9 +5810,9 @@ public interface LUSIDAPI {
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
+     * @param scope The scope of the portfolio
+     * @param code The code of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
@@ -5777,10 +5821,10 @@ public interface LUSIDAPI {
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param constituents the List&lt;ReferencePortfolioConstituentRequest&gt; value
+     * @param scope The scope of the portfolio
+     * @param code The code of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
+     * @param constituents The constituents to upload to the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -5792,10 +5836,10 @@ public interface LUSIDAPI {
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param constituents the List&lt;ReferencePortfolioConstituentRequest&gt; value
+     * @param scope The scope of the portfolio
+     * @param code The code of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
+     * @param constituents The constituents to upload to the portfolio
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -5806,10 +5850,10 @@ public interface LUSIDAPI {
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param constituents the List&lt;ReferencePortfolioConstituentRequest&gt; value
+     * @param scope The scope of the portfolio
+     * @param code The code of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
+     * @param constituents The constituents to upload to the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
@@ -5819,10 +5863,10 @@ public interface LUSIDAPI {
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param constituents the List&lt;ReferencePortfolioConstituentRequest&gt; value
+     * @param scope The scope of the portfolio
+     * @param code The code of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
+     * @param constituents The constituents to upload to the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
@@ -6417,6 +6461,7 @@ public interface LUSIDAPI {
 
     /**
      * Search portfolio groups.
+     * Search through all portfolio groups.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -6427,6 +6472,7 @@ public interface LUSIDAPI {
 
     /**
      * Search portfolio groups.
+     * Search through all portfolio groups.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -6436,6 +6482,7 @@ public interface LUSIDAPI {
 
     /**
      * Search portfolio groups.
+     * Search through all portfolio groups.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioGroup object
@@ -6444,6 +6491,7 @@ public interface LUSIDAPI {
 
     /**
      * Search portfolio groups.
+     * Search through all portfolio groups.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioGroup object
@@ -6451,6 +6499,7 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<ResourceListOfPortfolioGroup>> portfolioGroupsSearchWithServiceResponseAsync();
     /**
      * Search portfolio groups.
+     * Search through all portfolio groups.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -6466,6 +6515,7 @@ public interface LUSIDAPI {
 
     /**
      * Search portfolio groups.
+     * Search through all portfolio groups.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -6480,6 +6530,7 @@ public interface LUSIDAPI {
 
     /**
      * Search portfolio groups.
+     * Search through all portfolio groups.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -6493,6 +6544,7 @@ public interface LUSIDAPI {
 
     /**
      * Search portfolio groups.
+     * Search through all portfolio groups.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -6506,6 +6558,7 @@ public interface LUSIDAPI {
 
     /**
      * Search portfolios.
+     * Search through all portfolios.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -6516,6 +6569,7 @@ public interface LUSIDAPI {
 
     /**
      * Search portfolios.
+     * Search through all portfolios.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -6525,6 +6579,7 @@ public interface LUSIDAPI {
 
     /**
      * Search portfolios.
+     * Search through all portfolios.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioSearchResult object
@@ -6533,6 +6588,7 @@ public interface LUSIDAPI {
 
     /**
      * Search portfolios.
+     * Search through all portfolios.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioSearchResult object
@@ -6540,6 +6596,7 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<ResourceListOfPortfolioSearchResult>> portfoliosSearchWithServiceResponseAsync();
     /**
      * Search portfolios.
+     * Search through all portfolios.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -6555,6 +6612,7 @@ public interface LUSIDAPI {
 
     /**
      * Search portfolios.
+     * Search through all portfolios.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -6569,6 +6627,7 @@ public interface LUSIDAPI {
 
     /**
      * Search portfolios.
+     * Search through all portfolios.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -6582,6 +6641,7 @@ public interface LUSIDAPI {
 
     /**
      * Search portfolios.
+     * Search through all portfolios.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -6595,6 +6655,7 @@ public interface LUSIDAPI {
 
     /**
      * Search property definitions.
+     * Search through all property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -6605,6 +6666,7 @@ public interface LUSIDAPI {
 
     /**
      * Search property definitions.
+     * Search through all property definitions.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -6614,6 +6676,7 @@ public interface LUSIDAPI {
 
     /**
      * Search property definitions.
+     * Search through all property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPropertyDefinition object
@@ -6622,6 +6685,7 @@ public interface LUSIDAPI {
 
     /**
      * Search property definitions.
+     * Search through all property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPropertyDefinition object
@@ -6629,6 +6693,7 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<ResourceListOfPropertyDefinition>> propertiesSearchWithServiceResponseAsync();
     /**
      * Search property definitions.
+     * Search through all property definitions.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -6644,6 +6709,7 @@ public interface LUSIDAPI {
 
     /**
      * Search property definitions.
+     * Search through all property definitions.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -6658,6 +6724,7 @@ public interface LUSIDAPI {
 
     /**
      * Search property definitions.
+     * Search through all property definitions.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -6671,6 +6738,7 @@ public interface LUSIDAPI {
 
     /**
      * Search property definitions.
+     * Search through all property definitions.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -7192,9 +7260,10 @@ public interface LUSIDAPI {
 
     /**
      * Upsert executions.
+     * Inserts new executions, or updates those already present.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The code of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -7204,9 +7273,10 @@ public interface LUSIDAPI {
 
     /**
      * Upsert executions.
+     * Inserts new executions, or updates those already present.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The code of the portfolio
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -7215,9 +7285,10 @@ public interface LUSIDAPI {
 
     /**
      * Upsert executions.
+     * Inserts new executions, or updates those already present.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The code of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPortfolioExecutionsResponse object
      */
@@ -7225,18 +7296,20 @@ public interface LUSIDAPI {
 
     /**
      * Upsert executions.
+     * Inserts new executions, or updates those already present.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The code of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPortfolioExecutionsResponse object
      */
     Observable<ServiceResponse<UpsertPortfolioExecutionsResponse>> upsertExecutionsWithServiceResponseAsync(String scope, String code);
     /**
      * Upsert executions.
+     * Inserts new executions, or updates those already present.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The code of the portfolio
      * @param executions The executions to be updated
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -7247,9 +7320,10 @@ public interface LUSIDAPI {
 
     /**
      * Upsert executions.
+     * Inserts new executions, or updates those already present.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The code of the portfolio
      * @param executions The executions to be updated
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -7259,9 +7333,10 @@ public interface LUSIDAPI {
 
     /**
      * Upsert executions.
+     * Inserts new executions, or updates those already present.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The code of the portfolio
      * @param executions The executions to be updated
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPortfolioExecutionsResponse object
@@ -7270,9 +7345,10 @@ public interface LUSIDAPI {
 
     /**
      * Upsert executions.
+     * Inserts new executions, or updates those already present.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The code of the portfolio
      * @param executions The executions to be updated
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPortfolioExecutionsResponse object

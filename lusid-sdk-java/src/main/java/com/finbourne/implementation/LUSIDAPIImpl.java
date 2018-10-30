@@ -3781,7 +3781,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Download the LUSID Excel Addin.
+     * Download Excel Addin.
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -3793,7 +3794,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Download the LUSID Excel Addin.
+     * Download Excel Addin.
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -3804,7 +3806,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Download the LUSID Excel Addin.
+     * Download Excel Addin.
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the String object
@@ -3819,7 +3822,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Download the LUSID Excel Addin.
+     * Download Excel Addin.
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the String object
@@ -3841,9 +3845,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Download the LUSID Excel Addin.
+     * Download Excel Addin.
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
-     * @param version the String value
+     * @param version The requested version of the Excel plugin
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -3854,9 +3859,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Download the LUSID Excel Addin.
+     * Download Excel Addin.
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
-     * @param version the String value
+     * @param version The requested version of the Excel plugin
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -3866,9 +3872,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Download the LUSID Excel Addin.
+     * Download Excel Addin.
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
-     * @param version the String value
+     * @param version The requested version of the Excel plugin
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the String object
      */
@@ -3882,9 +3889,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Download the LUSID Excel Addin.
+     * Download Excel Addin.
+     * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
-     * @param version the String value
+     * @param version The requested version of the Excel plugin
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the String object
      */
@@ -4219,7 +4227,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Upsert personalisations.
      * Upsert one or more personalisations.
      *
-     * @param personalisations the List&lt;Personalisation&gt; value
+     * @param personalisations The set of personalisations to persist
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -4233,7 +4241,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Upsert personalisations.
      * Upsert one or more personalisations.
      *
-     * @param personalisations the List&lt;Personalisation&gt; value
+     * @param personalisations The set of personalisations to persist
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -4246,7 +4254,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Upsert personalisations.
      * Upsert one or more personalisations.
      *
-     * @param personalisations the List&lt;Personalisation&gt; value
+     * @param personalisations The set of personalisations to persist
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPersonalisationResponse object
      */
@@ -4263,7 +4271,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Upsert personalisations.
      * Upsert one or more personalisations.
      *
-     * @param personalisations the List&lt;Personalisation&gt; value
+     * @param personalisations The set of personalisations to persist
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPersonalisationResponse object
      */
@@ -8376,6 +8384,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get multiple property definitions.
      * Get one or more property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8388,6 +8397,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get multiple property definitions.
      * Get one or more property definitions.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -8399,6 +8409,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get multiple property definitions.
      * Get one or more property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8414,6 +8425,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get multiple property definitions.
      * Get one or more property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8442,6 +8454,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get multiple property definitions.
      * Get one or more property definitions.
      *
      * @param propertyKeys One or more keys for properties for which the schema should be returned
@@ -8460,6 +8473,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get multiple property definitions.
      * Get one or more property definitions.
      *
      * @param propertyKeys One or more keys for properties for which the schema should be returned
@@ -8477,6 +8491,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get multiple property definitions.
      * Get one or more property definitions.
      *
      * @param propertyKeys One or more keys for properties for which the schema should be returned
@@ -8498,6 +8513,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get multiple property definitions.
      * Get one or more property definitions.
      *
      * @param propertyKeys One or more keys for properties for which the schema should be returned
@@ -8536,6 +8552,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Define a new property.
+     * Create a new property definition.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -8548,6 +8565,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Define a new property.
+     * Create a new property definition.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8559,6 +8577,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Define a new property.
+     * Create a new property definition.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
@@ -8574,6 +8593,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Define a new property.
+     * Create a new property definition.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the PropertyDefinition object
@@ -8596,6 +8616,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Define a new property.
+     * Create a new property definition.
      *
      * @param definition The definition of the new property
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8609,6 +8630,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Define a new property.
+     * Create a new property definition.
      *
      * @param definition The definition of the new property
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -8621,6 +8643,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Define a new property.
+     * Create a new property definition.
      *
      * @param definition The definition of the new property
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8637,6 +8660,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Define a new property.
+     * Create a new property definition.
      *
      * @param definition The definition of the new property
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -8666,6 +8690,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get property definition.
      * Retrieve the definition for the identified property.
      *
      * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -8681,6 +8706,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get property definition.
      * Retrieve the definition for the identified property.
      *
      * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -8695,6 +8721,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get property definition.
      * Retrieve the definition for the identified property.
      *
      * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -8713,6 +8740,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get property definition.
      * Retrieve the definition for the identified property.
      *
      * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -8747,6 +8775,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get property definition.
      * Retrieve the definition for the identified property.
      *
      * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -8763,6 +8792,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get property definition.
      * Retrieve the definition for the identified property.
      *
      * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -8778,6 +8808,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get property definition.
      * Retrieve the definition for the identified property.
      *
      * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -8797,6 +8828,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Get property definition.
      * Retrieve the definition for the identified property.
      *
      * @param domain The Property Domain of the requested property. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -9027,6 +9059,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Delete property definition.
      * Delete the definition of the specified property.
      *
      * @param domain The Property Domain of the property to be deleted. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -9042,6 +9075,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Delete property definition.
      * Delete the definition of the specified property.
      *
      * @param domain The Property Domain of the property to be deleted. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -9056,6 +9090,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Delete property definition.
      * Delete the definition of the specified property.
      *
      * @param domain The Property Domain of the property to be deleted. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -9074,6 +9109,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
+     * Delete property definition.
      * Delete the definition of the specified property.
      *
      * @param domain The Property Domain of the property to be deleted. Possible values include: 'Trade', 'Portfolio', 'Security', 'Holding', 'ReferenceHolding', 'TxnType', 'Instrument'
@@ -9787,10 +9823,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Get constituents.
+     * Get all the constituents in the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
+     * @param scope The scope of the portfolio
+     * @param code The scope of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -9802,10 +9839,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Get constituents.
+     * Get all the constituents in the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
+     * @param scope The scope of the portfolio
+     * @param code The scope of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -9816,10 +9854,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Get constituents.
+     * Get all the constituents in the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
+     * @param scope The scope of the portfolio
+     * @param code The scope of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituent object
      */
@@ -9834,10 +9873,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Get constituents.
+     * Get all the constituents in the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
+     * @param scope The scope of the portfolio
+     * @param code The scope of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituent object
      */
@@ -9872,14 +9912,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Get constituents.
+     * Get all the constituents in the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
+     * @param scope The scope of the portfolio
+     * @param code The scope of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
+     * @param asAt Optional. The AsAt date of the data
+     * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+     * @param start Optional. When paginating, skip this number of results
+     * @param limit Optional. When paginating, limit the number of returned results to this many
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -9891,14 +9932,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Get constituents.
+     * Get all the constituents in the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
+     * @param scope The scope of the portfolio
+     * @param code The scope of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
+     * @param asAt Optional. The AsAt date of the data
+     * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+     * @param start Optional. When paginating, skip this number of results
+     * @param limit Optional. When paginating, limit the number of returned results to this many
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -9909,14 +9951,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Get constituents.
+     * Get all the constituents in the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
+     * @param scope The scope of the portfolio
+     * @param code The scope of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
+     * @param asAt Optional. The AsAt date of the data
+     * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+     * @param start Optional. When paginating, skip this number of results
+     * @param limit Optional. When paginating, limit the number of returned results to this many
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituent object
      */
@@ -9931,14 +9974,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Get constituents.
+     * Get all the constituents in the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param asAt the DateTime value
-     * @param sortBy the List&lt;String&gt; value
-     * @param start the Integer value
-     * @param limit the Integer value
+     * @param scope The scope of the portfolio
+     * @param code The scope of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
+     * @param asAt Optional. The AsAt date of the data
+     * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+     * @param start Optional. When paginating, skip this number of results
+     * @param limit Optional. When paginating, limit the number of returned results to this many
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituent object
      */
@@ -9979,9 +10023,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
+     * @param scope The scope of the portfolio
+     * @param code The code of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -9995,9 +10039,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
+     * @param scope The scope of the portfolio
+     * @param code The code of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -10010,9 +10054,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
+     * @param scope The scope of the portfolio
+     * @param code The code of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
@@ -10029,9 +10073,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
+     * @param scope The scope of the portfolio
+     * @param code The code of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
@@ -10064,10 +10108,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param constituents the List&lt;ReferencePortfolioConstituentRequest&gt; value
+     * @param scope The scope of the portfolio
+     * @param code The code of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
+     * @param constituents The constituents to upload to the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -10081,10 +10125,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param constituents the List&lt;ReferencePortfolioConstituentRequest&gt; value
+     * @param scope The scope of the portfolio
+     * @param code The code of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
+     * @param constituents The constituents to upload to the portfolio
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -10097,10 +10141,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param constituents the List&lt;ReferencePortfolioConstituentRequest&gt; value
+     * @param scope The scope of the portfolio
+     * @param code The code of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
+     * @param constituents The constituents to upload to the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
@@ -10117,10 +10161,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
-     * @param scope the String value
-     * @param code the String value
-     * @param effectiveAt the DateTime value
-     * @param constituents the List&lt;ReferencePortfolioConstituentRequest&gt; value
+     * @param scope The scope of the portfolio
+     * @param code The code of the portfolio
+     * @param effectiveAt Optional. The effective date of the data
+     * @param constituents The constituents to upload to the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
@@ -11166,6 +11210,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search portfolio groups.
+     * Search through all portfolio groups.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -11178,6 +11223,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search portfolio groups.
+     * Search through all portfolio groups.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -11189,6 +11235,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search portfolio groups.
+     * Search through all portfolio groups.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioGroup object
@@ -11204,6 +11251,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search portfolio groups.
+     * Search through all portfolio groups.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioGroup object
@@ -11231,6 +11279,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search portfolio groups.
+     * Search through all portfolio groups.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -11248,6 +11297,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search portfolio groups.
+     * Search through all portfolio groups.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -11264,6 +11314,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search portfolio groups.
+     * Search through all portfolio groups.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -11284,6 +11335,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search portfolio groups.
+     * Search through all portfolio groups.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -11319,6 +11371,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search portfolios.
+     * Search through all portfolios.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -11331,6 +11384,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search portfolios.
+     * Search through all portfolios.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -11342,6 +11396,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search portfolios.
+     * Search through all portfolios.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioSearchResult object
@@ -11357,6 +11412,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search portfolios.
+     * Search through all portfolios.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPortfolioSearchResult object
@@ -11384,6 +11440,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search portfolios.
+     * Search through all portfolios.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -11401,6 +11458,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search portfolios.
+     * Search through all portfolios.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -11417,6 +11475,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search portfolios.
+     * Search through all portfolios.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -11437,6 +11496,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search portfolios.
+     * Search through all portfolios.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -11472,6 +11532,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search property definitions.
+     * Search through all property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -11484,6 +11545,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search property definitions.
+     * Search through all property definitions.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -11495,6 +11557,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search property definitions.
+     * Search through all property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPropertyDefinition object
@@ -11510,6 +11573,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search property definitions.
+     * Search through all property definitions.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfPropertyDefinition object
@@ -11537,6 +11601,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search property definitions.
+     * Search through all property definitions.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -11554,6 +11619,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search property definitions.
+     * Search through all property definitions.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -11570,6 +11636,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search property definitions.
+     * Search through all property definitions.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -11590,6 +11657,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Search property definitions.
+     * Search through all property definitions.
      *
      * @param request A valid Elasticsearch 5.x request
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -12485,9 +12553,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Upsert executions.
+     * Inserts new executions, or updates those already present.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The code of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -12499,9 +12568,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Upsert executions.
+     * Inserts new executions, or updates those already present.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The code of the portfolio
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -12512,9 +12582,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Upsert executions.
+     * Inserts new executions, or updates those already present.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The code of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPortfolioExecutionsResponse object
      */
@@ -12529,9 +12600,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Upsert executions.
+     * Inserts new executions, or updates those already present.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The code of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPortfolioExecutionsResponse object
      */
@@ -12559,9 +12631,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Upsert executions.
+     * Inserts new executions, or updates those already present.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The code of the portfolio
      * @param executions The executions to be updated
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -12574,9 +12647,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Upsert executions.
+     * Inserts new executions, or updates those already present.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The code of the portfolio
      * @param executions The executions to be updated
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -12588,9 +12662,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Upsert executions.
+     * Inserts new executions, or updates those already present.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The code of the portfolio
      * @param executions The executions to be updated
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPortfolioExecutionsResponse object
@@ -12606,9 +12681,10 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
 
     /**
      * Upsert executions.
+     * Inserts new executions, or updates those already present.
      *
      * @param scope The scope of the portfolio
-     * @param code Code for the portfolio
+     * @param code The code of the portfolio
      * @param executions The executions to be updated
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertPortfolioExecutionsResponse object
