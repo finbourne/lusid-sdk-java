@@ -39,7 +39,7 @@ public class TargetTaxLot {
      * Book cost of holding in transaction currency.
      */
     @JsonProperty(value = "cost")
-    private Double cost;
+    private CurrencyAndAmount cost;
 
     /**
      * Book cost of holding in portfolio currency.
@@ -90,7 +90,7 @@ public class TargetTaxLot {
      *
      * @return the cost value
      */
-    public Double cost() {
+    public CurrencyAndAmount cost() {
         return this.cost;
     }
 
@@ -100,7 +100,7 @@ public class TargetTaxLot {
      * @param cost the cost value to set
      * @return the TargetTaxLot object itself.
      */
-    public TargetTaxLot withCost(Double cost) {
+    public TargetTaxLot withCost(CurrencyAndAmount cost) {
         this.cost = cost;
         return this;
     }
