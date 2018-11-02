@@ -8040,7 +8040,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolios.
+     * Delete portfolio properties.
      * Delete one, many or all property values from a portfolio for the specified effectiveAt
      Specifying no effectiveAt will delete all properties.
      *
@@ -8056,7 +8056,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolios.
+     * Delete portfolio properties.
      * Delete one, many or all property values from a portfolio for the specified effectiveAt
      Specifying no effectiveAt will delete all properties.
      *
@@ -8071,7 +8071,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolios.
+     * Delete portfolio properties.
      * Delete one, many or all property values from a portfolio for the specified effectiveAt
      Specifying no effectiveAt will delete all properties.
      *
@@ -8090,7 +8090,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolios.
+     * Delete portfolio properties.
      * Delete one, many or all property values from a portfolio for the specified effectiveAt
      Specifying no effectiveAt will delete all properties.
      *
@@ -8124,7 +8124,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolios.
+     * Delete portfolio properties.
      * Delete one, many or all property values from a portfolio for the specified effectiveAt
      Specifying no effectiveAt will delete all properties.
      *
@@ -8142,7 +8142,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolios.
+     * Delete portfolio properties.
      * Delete one, many or all property values from a portfolio for the specified effectiveAt
      Specifying no effectiveAt will delete all properties.
      *
@@ -8159,7 +8159,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolios.
+     * Delete portfolio properties.
      * Delete one, many or all property values from a portfolio for the specified effectiveAt
      Specifying no effectiveAt will delete all properties.
      *
@@ -8180,7 +8180,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete portfolios.
+     * Delete portfolio properties.
      * Delete one, many or all property values from a portfolio for the specified effectiveAt
      Specifying no effectiveAt will delete all properties.
      *

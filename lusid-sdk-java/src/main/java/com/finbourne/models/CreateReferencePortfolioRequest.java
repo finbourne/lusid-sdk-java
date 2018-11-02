@@ -23,6 +23,7 @@
 package com.finbourne.models;
 
 import org.joda.time.DateTime;
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -52,6 +53,12 @@ public class CreateReferencePortfolioRequest {
      */
     @JsonProperty(value = "created")
     private DateTime created;
+
+    /**
+     * Portfolio properties to add to the portfolio.
+     */
+    @JsonProperty(value = "properties")
+    private Map<String, PerpetualPropertyValue> properties;
 
     /**
      * Get the displayName value.
@@ -130,6 +137,26 @@ public class CreateReferencePortfolioRequest {
      */
     public CreateReferencePortfolioRequest withCreated(DateTime created) {
         this.created = created;
+        return this;
+    }
+
+    /**
+     * Get portfolio properties to add to the portfolio.
+     *
+     * @return the properties value
+     */
+    public Map<String, PerpetualPropertyValue> properties() {
+        return this.properties;
+    }
+
+    /**
+     * Set portfolio properties to add to the portfolio.
+     *
+     * @param properties the properties value to set
+     * @return the CreateReferencePortfolioRequest object itself.
+     */
+    public CreateReferencePortfolioRequest withProperties(Map<String, PerpetualPropertyValue> properties) {
+        this.properties = properties;
         return this;
     }
 

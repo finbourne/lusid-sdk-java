@@ -4586,7 +4586,7 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<PortfolioProperties>> upsertPortfolioPropertiesWithServiceResponseAsync(String scope, String code, Map<String, PropertyValue> portfolioProperties, DateTime effectiveAt);
 
     /**
-     * Delete portfolios.
+     * Delete portfolio properties.
      * Delete one, many or all property values from a portfolio for the specified effectiveAt
      Specifying no effectiveAt will delete all properties.
      *
@@ -4600,7 +4600,7 @@ public interface LUSIDAPI {
     DeletedEntityResponse deletePortfolioProperties(String scope, String code);
 
     /**
-     * Delete portfolios.
+     * Delete portfolio properties.
      * Delete one, many or all property values from a portfolio for the specified effectiveAt
      Specifying no effectiveAt will delete all properties.
      *
@@ -4613,7 +4613,7 @@ public interface LUSIDAPI {
     ServiceFuture<DeletedEntityResponse> deletePortfolioPropertiesAsync(String scope, String code, final ServiceCallback<DeletedEntityResponse> serviceCallback);
 
     /**
-     * Delete portfolios.
+     * Delete portfolio properties.
      * Delete one, many or all property values from a portfolio for the specified effectiveAt
      Specifying no effectiveAt will delete all properties.
      *
@@ -4625,7 +4625,7 @@ public interface LUSIDAPI {
     Observable<DeletedEntityResponse> deletePortfolioPropertiesAsync(String scope, String code);
 
     /**
-     * Delete portfolios.
+     * Delete portfolio properties.
      * Delete one, many or all property values from a portfolio for the specified effectiveAt
      Specifying no effectiveAt will delete all properties.
      *
@@ -4636,7 +4636,7 @@ public interface LUSIDAPI {
      */
     Observable<ServiceResponse<DeletedEntityResponse>> deletePortfolioPropertiesWithServiceResponseAsync(String scope, String code);
     /**
-     * Delete portfolios.
+     * Delete portfolio properties.
      * Delete one, many or all property values from a portfolio for the specified effectiveAt
      Specifying no effectiveAt will delete all properties.
      *
@@ -4652,7 +4652,7 @@ public interface LUSIDAPI {
     DeletedEntityResponse deletePortfolioProperties(String scope, String code, DateTime effectiveAt, List<String> portfolioPropertyKeys);
 
     /**
-     * Delete portfolios.
+     * Delete portfolio properties.
      * Delete one, many or all property values from a portfolio for the specified effectiveAt
      Specifying no effectiveAt will delete all properties.
      *
@@ -4667,7 +4667,7 @@ public interface LUSIDAPI {
     ServiceFuture<DeletedEntityResponse> deletePortfolioPropertiesAsync(String scope, String code, DateTime effectiveAt, List<String> portfolioPropertyKeys, final ServiceCallback<DeletedEntityResponse> serviceCallback);
 
     /**
-     * Delete portfolios.
+     * Delete portfolio properties.
      * Delete one, many or all property values from a portfolio for the specified effectiveAt
      Specifying no effectiveAt will delete all properties.
      *
@@ -4681,7 +4681,7 @@ public interface LUSIDAPI {
     Observable<DeletedEntityResponse> deletePortfolioPropertiesAsync(String scope, String code, DateTime effectiveAt, List<String> portfolioPropertyKeys);
 
     /**
-     * Delete portfolios.
+     * Delete portfolio properties.
      * Delete one, many or all property values from a portfolio for the specified effectiveAt
      Specifying no effectiveAt will delete all properties.
      *

@@ -48,6 +48,12 @@ public class ReferencePortfolioConstituentRequest {
     private Double weight;
 
     /**
+     * The currency property.
+     */
+    @JsonProperty(value = "currency")
+    private String currency;
+
+    /**
      * Get the instrumentUid value.
      *
      * @return the instrumentUid value
@@ -104,6 +110,26 @@ public class ReferencePortfolioConstituentRequest {
      */
     public ReferencePortfolioConstituentRequest withWeight(Double weight) {
         this.weight = weight;
+        return this;
+    }
+
+    /**
+     * Get the currency value.
+     *
+     * @return the currency value
+     */
+    public String currency() {
+        return this.currency;
+    }
+
+    /**
+     * Set the currency value.
+     *
+     * @param currency the currency value to set
+     * @return the ReferencePortfolioConstituentRequest object itself.
+     */
+    public ReferencePortfolioConstituentRequest withCurrency(String currency) {
+        this.currency = currency;
         return this;
     }
 
