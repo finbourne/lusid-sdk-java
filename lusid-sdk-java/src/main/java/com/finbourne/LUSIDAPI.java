@@ -66,7 +66,7 @@ import com.finbourne.models.PropertyValue;
 import com.finbourne.models.ReferencePortfolioConstituentRequest;
 import com.finbourne.models.ResourceId;
 import com.finbourne.models.ResourceListOfAnalyticStoreKey;
-import com.finbourne.models.ResourceListOfCorporateActionEvent;
+import com.finbourne.models.ResourceListOfCorporateAction;
 import com.finbourne.models.ResourceListOfDataType;
 import com.finbourne.models.ResourceListOfHoldingsAdjustmentHeader;
 import com.finbourne.models.ResourceListOfPersonalisation;
@@ -80,7 +80,7 @@ import com.finbourne.models.ResourceListOfReconciliationBreak;
 import com.finbourne.models.ResourceListOfReferencePortfolioConstituent;
 import com.finbourne.models.ResourceListOfScope;
 import com.finbourne.models.ResourceListOfString;
-import com.finbourne.models.ResourceListOfTransactionMetaData;
+import com.finbourne.models.ResourceListOfTransactionConfigurationData;
 import com.finbourne.models.ResourceListOfValueType;
 import com.finbourne.models.Results;
 import com.finbourne.models.Schema;
@@ -599,9 +599,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfCorporateActionEvent object if successful.
+     * @return the ResourceListOfCorporateAction object if successful.
      */
-    ResourceListOfCorporateActionEvent getCorporateActions(String scope, String code);
+    ResourceListOfCorporateAction getCorporateActions(String scope, String code);
 
     /**
      * Get corporate actions.
@@ -613,7 +613,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfCorporateActionEvent> getCorporateActionsAsync(String scope, String code, final ServiceCallback<ResourceListOfCorporateActionEvent> serviceCallback);
+    ServiceFuture<ResourceListOfCorporateAction> getCorporateActionsAsync(String scope, String code, final ServiceCallback<ResourceListOfCorporateAction> serviceCallback);
 
     /**
      * Get corporate actions.
@@ -622,9 +622,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the corporate action source
      * @param code The code of the corporate action source
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfCorporateActionEvent object
+     * @return the observable to the ResourceListOfCorporateAction object
      */
-    Observable<ResourceListOfCorporateActionEvent> getCorporateActionsAsync(String scope, String code);
+    Observable<ResourceListOfCorporateAction> getCorporateActionsAsync(String scope, String code);
 
     /**
      * Get corporate actions.
@@ -633,9 +633,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the corporate action source
      * @param code The code of the corporate action source
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfCorporateActionEvent object
+     * @return the observable to the ResourceListOfCorporateAction object
      */
-    Observable<ServiceResponse<ResourceListOfCorporateActionEvent>> getCorporateActionsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<ResourceListOfCorporateAction>> getCorporateActionsWithServiceResponseAsync(String scope, String code);
     /**
      * Get corporate actions.
      * Gets corporate actions from a specific corporate action source.
@@ -651,9 +651,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfCorporateActionEvent object if successful.
+     * @return the ResourceListOfCorporateAction object if successful.
      */
-    ResourceListOfCorporateActionEvent getCorporateActions(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    ResourceListOfCorporateAction getCorporateActions(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Get corporate actions.
@@ -671,7 +671,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfCorporateActionEvent> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfCorporateActionEvent> serviceCallback);
+    ServiceFuture<ResourceListOfCorporateAction> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfCorporateAction> serviceCallback);
 
     /**
      * Get corporate actions.
@@ -686,9 +686,9 @@ public interface LUSIDAPI {
      * @param limit Optional. When paginating, limit the number of returned results to this many
      * @param filter Optional. Expression to filter the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfCorporateActionEvent object
+     * @return the observable to the ResourceListOfCorporateAction object
      */
-    Observable<ResourceListOfCorporateActionEvent> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ResourceListOfCorporateAction> getCorporateActionsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Get corporate actions.
@@ -703,9 +703,9 @@ public interface LUSIDAPI {
      * @param limit Optional. When paginating, limit the number of returned results to this many
      * @param filter Optional. Expression to filter the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfCorporateActionEvent object
+     * @return the observable to the ResourceListOfCorporateAction object
      */
-    Observable<ServiceResponse<ResourceListOfCorporateActionEvent>> getCorporateActionsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+    Observable<ServiceResponse<ResourceListOfCorporateAction>> getCorporateActionsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Upsert corporate actions.
@@ -6757,9 +6757,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfTransactionMetaData object if successful.
+     * @return the ResourceListOfTransactionConfigurationData object if successful.
      */
-    ResourceListOfTransactionMetaData listConfigurationTransactionTypes();
+    ResourceListOfTransactionConfigurationData listConfigurationTransactionTypes();
 
     /**
      * List transaction types.
@@ -6769,25 +6769,25 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfTransactionMetaData> listConfigurationTransactionTypesAsync(final ServiceCallback<ResourceListOfTransactionMetaData> serviceCallback);
+    ServiceFuture<ResourceListOfTransactionConfigurationData> listConfigurationTransactionTypesAsync(final ServiceCallback<ResourceListOfTransactionConfigurationData> serviceCallback);
 
     /**
      * List transaction types.
      * Get the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTransactionMetaData object
+     * @return the observable to the ResourceListOfTransactionConfigurationData object
      */
-    Observable<ResourceListOfTransactionMetaData> listConfigurationTransactionTypesAsync();
+    Observable<ResourceListOfTransactionConfigurationData> listConfigurationTransactionTypesAsync();
 
     /**
      * List transaction types.
      * Get the list of persisted transaction types.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTransactionMetaData object
+     * @return the observable to the ResourceListOfTransactionConfigurationData object
      */
-    Observable<ServiceResponse<ResourceListOfTransactionMetaData>> listConfigurationTransactionTypesWithServiceResponseAsync();
+    Observable<ServiceResponse<ResourceListOfTransactionConfigurationData>> listConfigurationTransactionTypesWithServiceResponseAsync();
 
     /**
      * Set transaction types.
@@ -6797,9 +6797,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfTransactionMetaData object if successful.
+     * @return the ResourceListOfTransactionConfigurationData object if successful.
      */
-    ResourceListOfTransactionMetaData setConfigurationTransactionTypes();
+    ResourceListOfTransactionConfigurationData setConfigurationTransactionTypes();
 
     /**
      * Set transaction types.
@@ -6810,7 +6810,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfTransactionMetaData> setConfigurationTransactionTypesAsync(final ServiceCallback<ResourceListOfTransactionMetaData> serviceCallback);
+    ServiceFuture<ResourceListOfTransactionConfigurationData> setConfigurationTransactionTypesAsync(final ServiceCallback<ResourceListOfTransactionConfigurationData> serviceCallback);
 
     /**
      * Set transaction types.
@@ -6818,9 +6818,9 @@ public interface LUSIDAPI {
      WARNING! Changing these mappings will have a material impact on how data, new and old, is processed and aggregated by LUSID. This will affect your whole organisation. Only change if you are fully aware of the implications of the change.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTransactionMetaData object
+     * @return the observable to the ResourceListOfTransactionConfigurationData object
      */
-    Observable<ResourceListOfTransactionMetaData> setConfigurationTransactionTypesAsync();
+    Observable<ResourceListOfTransactionConfigurationData> setConfigurationTransactionTypesAsync();
 
     /**
      * Set transaction types.
@@ -6828,9 +6828,9 @@ public interface LUSIDAPI {
      WARNING! Changing these mappings will have a material impact on how data, new and old, is processed and aggregated by LUSID. This will affect your whole organisation. Only change if you are fully aware of the implications of the change.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTransactionMetaData object
+     * @return the observable to the ResourceListOfTransactionConfigurationData object
      */
-    Observable<ServiceResponse<ResourceListOfTransactionMetaData>> setConfigurationTransactionTypesWithServiceResponseAsync();
+    Observable<ServiceResponse<ResourceListOfTransactionConfigurationData>> setConfigurationTransactionTypesWithServiceResponseAsync();
     /**
      * Set transaction types.
      * Set all transaction types to be used by the movements engine, for the organisation
@@ -6840,9 +6840,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfTransactionMetaData object if successful.
+     * @return the ResourceListOfTransactionConfigurationData object if successful.
      */
-    ResourceListOfTransactionMetaData setConfigurationTransactionTypes(List<TransactionConfigurationDataRequest> types);
+    ResourceListOfTransactionConfigurationData setConfigurationTransactionTypes(List<TransactionConfigurationDataRequest> types);
 
     /**
      * Set transaction types.
@@ -6854,7 +6854,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfTransactionMetaData> setConfigurationTransactionTypesAsync(List<TransactionConfigurationDataRequest> types, final ServiceCallback<ResourceListOfTransactionMetaData> serviceCallback);
+    ServiceFuture<ResourceListOfTransactionConfigurationData> setConfigurationTransactionTypesAsync(List<TransactionConfigurationDataRequest> types, final ServiceCallback<ResourceListOfTransactionConfigurationData> serviceCallback);
 
     /**
      * Set transaction types.
@@ -6863,9 +6863,9 @@ public interface LUSIDAPI {
      *
      * @param types The complete set of transaction type definitions
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTransactionMetaData object
+     * @return the observable to the ResourceListOfTransactionConfigurationData object
      */
-    Observable<ResourceListOfTransactionMetaData> setConfigurationTransactionTypesAsync(List<TransactionConfigurationDataRequest> types);
+    Observable<ResourceListOfTransactionConfigurationData> setConfigurationTransactionTypesAsync(List<TransactionConfigurationDataRequest> types);
 
     /**
      * Set transaction types.
@@ -6874,9 +6874,9 @@ public interface LUSIDAPI {
      *
      * @param types The complete set of transaction type definitions
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfTransactionMetaData object
+     * @return the observable to the ResourceListOfTransactionConfigurationData object
      */
-    Observable<ServiceResponse<ResourceListOfTransactionMetaData>> setConfigurationTransactionTypesWithServiceResponseAsync(List<TransactionConfigurationDataRequest> types);
+    Observable<ServiceResponse<ResourceListOfTransactionConfigurationData>> setConfigurationTransactionTypesWithServiceResponseAsync(List<TransactionConfigurationDataRequest> types);
 
     /**
      * Create transaction type.

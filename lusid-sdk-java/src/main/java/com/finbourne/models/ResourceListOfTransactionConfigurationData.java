@@ -26,9 +26,9 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The ResourceListOfTransactionMetaData model.
+ * The ResourceListOfTransactionConfigurationData model.
  */
-public class ResourceListOfTransactionMetaData {
+public class ResourceListOfTransactionConfigurationData {
     /**
      * The values property.
      */
@@ -67,9 +67,9 @@ public class ResourceListOfTransactionMetaData {
      * Set the values value.
      *
      * @param values the values value to set
-     * @return the ResourceListOfTransactionMetaData object itself.
+     * @return the ResourceListOfTransactionConfigurationData object itself.
      */
-    public ResourceListOfTransactionMetaData withValues(List<TransactionConfigurationData> values) {
+    public ResourceListOfTransactionConfigurationData withValues(List<TransactionConfigurationData> values) {
         this.values = values;
         return this;
     }
@@ -89,9 +89,9 @@ public class ResourceListOfTransactionMetaData {
      but may include resolved as at time(s).
      *
      * @param href the href value to set
-     * @return the ResourceListOfTransactionMetaData object itself.
+     * @return the ResourceListOfTransactionConfigurationData object itself.
      */
-    public ResourceListOfTransactionMetaData withHref(String href) {
+    public ResourceListOfTransactionConfigurationData withHref(String href) {
         this.href = href;
         return this;
     }
@@ -109,9 +109,9 @@ public class ResourceListOfTransactionMetaData {
      * Set the total number of records returned in the set.
      *
      * @param count the count value to set
-     * @return the ResourceListOfTransactionMetaData object itself.
+     * @return the ResourceListOfTransactionConfigurationData object itself.
      */
-    public ResourceListOfTransactionMetaData withCount(Integer count) {
+    public ResourceListOfTransactionConfigurationData withCount(Integer count) {
         this.count = count;
         return this;
     }
@@ -129,9 +129,9 @@ public class ResourceListOfTransactionMetaData {
      * Set the links value.
      *
      * @param links the links value to set
-     * @return the ResourceListOfTransactionMetaData object itself.
+     * @return the ResourceListOfTransactionConfigurationData object itself.
      */
-    public ResourceListOfTransactionMetaData withLinks(List<Link> links) {
+    public ResourceListOfTransactionConfigurationData withLinks(List<Link> links) {
         this.links = links;
         return this;
     }

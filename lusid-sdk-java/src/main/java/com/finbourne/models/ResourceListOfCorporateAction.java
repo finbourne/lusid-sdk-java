@@ -26,9 +26,9 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The ResourceListOfCorporateActionEvent model.
+ * The ResourceListOfCorporateAction model.
  */
-public class ResourceListOfCorporateActionEvent {
+public class ResourceListOfCorporateAction {
     /**
      * The values property.
      */
@@ -67,9 +67,9 @@ public class ResourceListOfCorporateActionEvent {
      * Set the values value.
      *
      * @param values the values value to set
-     * @return the ResourceListOfCorporateActionEvent object itself.
+     * @return the ResourceListOfCorporateAction object itself.
      */
-    public ResourceListOfCorporateActionEvent withValues(List<CorporateAction> values) {
+    public ResourceListOfCorporateAction withValues(List<CorporateAction> values) {
         this.values = values;
         return this;
     }
@@ -89,9 +89,9 @@ public class ResourceListOfCorporateActionEvent {
      but may include resolved as at time(s).
      *
      * @param href the href value to set
-     * @return the ResourceListOfCorporateActionEvent object itself.
+     * @return the ResourceListOfCorporateAction object itself.
      */
-    public ResourceListOfCorporateActionEvent withHref(String href) {
+    public ResourceListOfCorporateAction withHref(String href) {
         this.href = href;
         return this;
     }
@@ -109,9 +109,9 @@ public class ResourceListOfCorporateActionEvent {
      * Set the total number of records returned in the set.
      *
      * @param count the count value to set
-     * @return the ResourceListOfCorporateActionEvent object itself.
+     * @return the ResourceListOfCorporateAction object itself.
      */
-    public ResourceListOfCorporateActionEvent withCount(Integer count) {
+    public ResourceListOfCorporateAction withCount(Integer count) {
         this.count = count;
         return this;
     }
@@ -129,9 +129,9 @@ public class ResourceListOfCorporateActionEvent {
      * Set the links value.
      *
      * @param links the links value to set
-     * @return the ResourceListOfCorporateActionEvent object itself.
+     * @return the ResourceListOfCorporateAction object itself.
      */
-    public ResourceListOfCorporateActionEvent withLinks(List<Link> links) {
+    public ResourceListOfCorporateAction withLinks(List<Link> links) {
         this.links = links;
         return this;
     }

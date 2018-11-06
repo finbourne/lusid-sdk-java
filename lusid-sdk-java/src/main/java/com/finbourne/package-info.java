@@ -300,6 +300,7 @@
  | <a name="224">224</a>|InvalidPropertyValueAssignment|  |
  | <a name="230">230</a>|TransactionTypeNotFound|  |
  | <a name="231">231</a>|TransactionTypeDuplication|  |
+ | <a name="232">232</a>|PortfolioDoesNotExistAtGivenDate|  |
  | <a name="-10">-10</a>|ServerConfigurationError|  |
  | <a name="-1">-1</a>|Unknown error|  |.
  */
