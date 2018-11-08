@@ -1,0 +1,12 @@
+version: "3"
+
+services:
+
+  lusid-sdk-java-publish:
+    container_name: lusid-sdk-java-publish
+    build:
+      context: .
+      dockerfile: publish.Dockerfile
+    image: finbourne/lusid-sdk-java-publish
+    volumes:
+      - .:/usr/src

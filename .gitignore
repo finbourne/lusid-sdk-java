@@ -6,9 +6,9 @@
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
 
 # User-specific stuff:
-.idea/**/workspace.xml
-.idea/**/tasks.xml
-.idea/dictionaries
+**/.idea/**/workspace.xml
+**/.idea/**/tasks.xml
+**/.idea/dictionaries
 
 # Sensitive or high-churn files:
 .idea/**/dataSources/
@@ -184,7 +184,7 @@ buildNumber.properties
 
 # secrets
 **/secrets*
-
+**/settings.xml
 # Environments
 **/.env
 .idea/
