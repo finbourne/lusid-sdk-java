@@ -1,14 +1,11 @@
-FROM microsoft/dotnet:2.0-sdk
+FROM maven:3.5-jdk-10
 
 RUN mkdir -p /usr/src/
 WORKDIR /usr/src/
 
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils && \
-    curl -sL https://deb.nodesource.com/setup_8.x | bash - && \
-    apt-get install -y nodejs && \
-    apt-get install npm
+RUN wget http://central.maven.org/maven2/io/swagger/swagger-codegen-cli/2.3.1/swagger-codegen-cli-2.3.1.jar -O swagger-codegen-cli.jar
 
-RUN npm install -g autorest@2.0.4262
+ADD generate.sh /usr/src/
+ADD .swagger-codegen-ignore /usr/src/
 
-# use specific version of modeler, see https://github.com/Azure/autorest/issues/2746
-CMD autorest --java --use=@microsoft.azure/autorest.modeler@2.3.40
+ENTRYPOINT [ "/bin/bash", "generate.sh" ]
