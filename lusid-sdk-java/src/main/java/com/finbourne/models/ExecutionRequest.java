@@ -51,8 +51,8 @@ public class ExecutionRequest {
      * FIX field 60.  Time the transaction represented by this ExecutionReport
      * occurred.
      */
-    @JsonProperty(value = "transactTime", required = true)
-    private DateTime transactTime;
+    @JsonProperty(value = "transactionTime", required = true)
+    private DateTime transactionTime;
 
     /**
      * FIX field 38.  Order quantity.
@@ -135,20 +135,20 @@ public class ExecutionRequest {
     /**
      * Get fIX field 60.  Time the transaction represented by this ExecutionReport occurred.
      *
-     * @return the transactTime value
+     * @return the transactionTime value
      */
-    public DateTime transactTime() {
-        return this.transactTime;
+    public DateTime transactionTime() {
+        return this.transactionTime;
     }
 
     /**
      * Set fIX field 60.  Time the transaction represented by this ExecutionReport occurred.
      *
-     * @param transactTime the transactTime value to set
+     * @param transactionTime the transactionTime value to set
      * @return the ExecutionRequest object itself.
      */
-    public ExecutionRequest withTransactTime(DateTime transactTime) {
-        this.transactTime = transactTime;
+    public ExecutionRequest withTransactionTime(DateTime transactionTime) {
+        this.transactionTime = transactionTime;
         return this;
     }
 
