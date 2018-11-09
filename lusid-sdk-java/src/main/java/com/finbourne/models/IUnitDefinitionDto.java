@@ -22,82 +22,70 @@
 
 package com.finbourne.models;
 
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The VersionSummary model.
+ * The IUnitDefinitionDto model.
  */
-public class VersionSummary {
+public class IUnitDefinitionDto {
     /**
-     * The apiVersion property.
+     * Possible values include: 'NoUnits', 'Basic', 'Iso4217Currency'.
      */
-    @JsonProperty(value = "apiVersion", access = JsonProperty.Access.WRITE_ONLY)
-    private String apiVersion;
+    @JsonProperty(value = "schema", access = JsonProperty.Access.WRITE_ONLY)
+    private String schema;
 
     /**
-     * The buildVersion property.
+     * The code property.
      */
-    @JsonProperty(value = "buildVersion", access = JsonProperty.Access.WRITE_ONLY)
-    private String buildVersion;
+    @JsonProperty(value = "code", access = JsonProperty.Access.WRITE_ONLY)
+    private String code;
 
     /**
-     * The excelVersion property.
+     * The displayName property.
      */
-    @JsonProperty(value = "excelVersion", access = JsonProperty.Access.WRITE_ONLY)
-    private String excelVersion;
+    @JsonProperty(value = "displayName", access = JsonProperty.Access.WRITE_ONLY)
+    private String displayName;
 
     /**
-     * The links property.
+     * The description property.
      */
-    @JsonProperty(value = "links")
-    private List<Link> links;
+    @JsonProperty(value = "description", access = JsonProperty.Access.WRITE_ONLY)
+    private String description;
 
     /**
-     * Get the apiVersion value.
+     * Get possible values include: 'NoUnits', 'Basic', 'Iso4217Currency'.
      *
-     * @return the apiVersion value
+     * @return the schema value
      */
-    public String apiVersion() {
-        return this.apiVersion;
+    public String schema() {
+        return this.schema;
     }
 
     /**
-     * Get the buildVersion value.
+     * Get the code value.
      *
-     * @return the buildVersion value
+     * @return the code value
      */
-    public String buildVersion() {
-        return this.buildVersion;
+    public String code() {
+        return this.code;
     }
 
     /**
-     * Get the excelVersion value.
+     * Get the displayName value.
      *
-     * @return the excelVersion value
+     * @return the displayName value
      */
-    public String excelVersion() {
-        return this.excelVersion;
+    public String displayName() {
+        return this.displayName;
     }
 
     /**
-     * Get the links value.
+     * Get the description value.
      *
-     * @return the links value
+     * @return the description value
      */
-    public List<Link> links() {
-        return this.links;
-    }
-
-    /**
-     * Set the links value.
-     *
-     * @param links the links value to set
-     * @return the VersionSummary object itself.
-     */
-    public VersionSummary withLinks(List<Link> links) {
-        this.links = links;
-        return this;
+    public String description() {
+        return this.description;
     }
 
 }

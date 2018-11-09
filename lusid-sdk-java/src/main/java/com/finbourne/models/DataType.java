@@ -86,7 +86,7 @@ public class DataType {
      * The acceptableUnits property.
      */
     @JsonProperty(value = "acceptableUnits")
-    private List<IUnitDefinition> acceptableUnits;
+    private List<IUnitDefinitionDto> acceptableUnits;
 
     /**
      * The links property.
@@ -259,7 +259,7 @@ public class DataType {
      *
      * @return the acceptableUnits value
      */
-    public List<IUnitDefinition> acceptableUnits() {
+    public List<IUnitDefinitionDto> acceptableUnits() {
         return this.acceptableUnits;
     }
 
@@ -269,7 +269,7 @@ public class DataType {
      * @param acceptableUnits the acceptableUnits value to set
      * @return the DataType object itself.
      */
-    public DataType withAcceptableUnits(List<IUnitDefinition> acceptableUnits) {
+    public DataType withAcceptableUnits(List<IUnitDefinitionDto> acceptableUnits) {
         this.acceptableUnits = acceptableUnits;
         return this;
     }

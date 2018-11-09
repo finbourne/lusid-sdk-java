@@ -54,7 +54,7 @@ import com.finbourne.models.HoldingsAdjustment;
 import com.finbourne.models.Instrument;
 import com.finbourne.models.InstrumentAnalytic;
 import com.finbourne.models.InstrumentProperty;
-import com.finbourne.models.IUnitDefinition;
+import com.finbourne.models.IUnitDefinitionDto;
 import com.finbourne.models.ListAggregationResponse;
 import com.finbourne.models.LookupInstrumentsFromCodesResponse;
 import com.finbourne.models.NestedAggregationResponse;
@@ -106,10 +106,10 @@ import com.finbourne.models.UpsertPortfolioTransactionsResponse;
 import com.finbourne.models.UpsertQuoteRequest;
 import com.finbourne.models.UpsertQuotesResponse;
 import com.finbourne.models.UpsertReferencePortfolioConstituentsResponse;
-import com.finbourne.models.VersionedResourceListOfHolding;
 import com.finbourne.models.VersionedResourceListOfOutputTransaction;
+import com.finbourne.models.VersionedResourceListOfPortfolioHolding;
 import com.finbourne.models.VersionedResourceListOfTransaction;
-import com.finbourne.models.VersionSummary;
+import com.finbourne.models.VersionSummaryDto;
 import com.google.common.reflect.TypeToken;
 import com.microsoft.rest.CollectionFormat;
 import com.microsoft.rest.ServiceCallback;
@@ -2273,9 +2273,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the IUnitDefinition object if successful.
+     * @return the IUnitDefinitionDto object if successful.
      */
-    public IUnitDefinition getUnitsFromDataType(String scope, String code) {
+    public IUnitDefinitionDto getUnitsFromDataType(String scope, String code) {
         return getUnitsFromDataTypeWithServiceResponseAsync(scope, code).toBlocking().single().body();
     }
 
@@ -2289,7 +2289,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<IUnitDefinition> getUnitsFromDataTypeAsync(String scope, String code, final ServiceCallback<IUnitDefinition> serviceCallback) {
+    public ServiceFuture<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, final ServiceCallback<IUnitDefinitionDto> serviceCallback) {
         return ServiceFuture.fromResponse(getUnitsFromDataTypeWithServiceResponseAsync(scope, code), serviceCallback);
     }
 
@@ -2300,12 +2300,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param scope The scope of the data type
      * @param code The code of the data type
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinition object
+     * @return the observable to the IUnitDefinitionDto object
      */
-    public Observable<IUnitDefinition> getUnitsFromDataTypeAsync(String scope, String code) {
-        return getUnitsFromDataTypeWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<IUnitDefinition>, IUnitDefinition>() {
+    public Observable<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code) {
+        return getUnitsFromDataTypeWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<IUnitDefinitionDto>, IUnitDefinitionDto>() {
             @Override
-            public IUnitDefinition call(ServiceResponse<IUnitDefinition> response) {
+            public IUnitDefinitionDto call(ServiceResponse<IUnitDefinitionDto> response) {
                 return response.body();
             }
         });
@@ -2318,9 +2318,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param scope The scope of the data type
      * @param code The code of the data type
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinition object
+     * @return the observable to the IUnitDefinitionDto object
      */
-    public Observable<ServiceResponse<IUnitDefinition>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String code) {
+    public Observable<ServiceResponse<IUnitDefinitionDto>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String code) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -2331,11 +2331,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final String filter = null;
         String unitsConverted = this.serializerAdapter().serializeList(units, CollectionFormat.MULTI);
         return service.getUnitsFromDataType(scope, code, unitsConverted, filter)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<IUnitDefinition>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<IUnitDefinitionDto>>>() {
                 @Override
-                public Observable<ServiceResponse<IUnitDefinition>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<IUnitDefinitionDto>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<IUnitDefinition> clientResponse = getUnitsFromDataTypeDelegate(response);
+                        ServiceResponse<IUnitDefinitionDto> clientResponse = getUnitsFromDataTypeDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -2355,9 +2355,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the IUnitDefinition object if successful.
+     * @return the IUnitDefinitionDto object if successful.
      */
-    public IUnitDefinition getUnitsFromDataType(String scope, String code, List<String> units, String filter) {
+    public IUnitDefinitionDto getUnitsFromDataType(String scope, String code, List<String> units, String filter) {
         return getUnitsFromDataTypeWithServiceResponseAsync(scope, code, units, filter).toBlocking().single().body();
     }
 
@@ -2373,7 +2373,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<IUnitDefinition> getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter, final ServiceCallback<IUnitDefinition> serviceCallback) {
+    public ServiceFuture<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter, final ServiceCallback<IUnitDefinitionDto> serviceCallback) {
         return ServiceFuture.fromResponse(getUnitsFromDataTypeWithServiceResponseAsync(scope, code, units, filter), serviceCallback);
     }
 
@@ -2386,12 +2386,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param units One or more unit identifiers for which the definition is being requested
      * @param filter Optional. Expression to filter the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinition object
+     * @return the observable to the IUnitDefinitionDto object
      */
-    public Observable<IUnitDefinition> getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter) {
-        return getUnitsFromDataTypeWithServiceResponseAsync(scope, code, units, filter).map(new Func1<ServiceResponse<IUnitDefinition>, IUnitDefinition>() {
+    public Observable<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter) {
+        return getUnitsFromDataTypeWithServiceResponseAsync(scope, code, units, filter).map(new Func1<ServiceResponse<IUnitDefinitionDto>, IUnitDefinitionDto>() {
             @Override
-            public IUnitDefinition call(ServiceResponse<IUnitDefinition> response) {
+            public IUnitDefinitionDto call(ServiceResponse<IUnitDefinitionDto> response) {
                 return response.body();
             }
         });
@@ -2406,9 +2406,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param units One or more unit identifiers for which the definition is being requested
      * @param filter Optional. Expression to filter the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinition object
+     * @return the observable to the IUnitDefinitionDto object
      */
-    public Observable<ServiceResponse<IUnitDefinition>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String code, List<String> units, String filter) {
+    public Observable<ServiceResponse<IUnitDefinitionDto>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String code, List<String> units, String filter) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -2418,11 +2418,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         Validator.validate(units);
         String unitsConverted = this.serializerAdapter().serializeList(units, CollectionFormat.MULTI);
         return service.getUnitsFromDataType(scope, code, unitsConverted, filter)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<IUnitDefinition>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<IUnitDefinitionDto>>>() {
                 @Override
-                public Observable<ServiceResponse<IUnitDefinition>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<IUnitDefinitionDto>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<IUnitDefinition> clientResponse = getUnitsFromDataTypeDelegate(response);
+                        ServiceResponse<IUnitDefinitionDto> clientResponse = getUnitsFromDataTypeDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -2431,9 +2431,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<IUnitDefinition> getUnitsFromDataTypeDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
-        return this.restClient().responseBuilderFactory().<IUnitDefinition, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<IUnitDefinition>() { }.getType())
+    private ServiceResponse<IUnitDefinitionDto> getUnitsFromDataTypeDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<IUnitDefinitionDto, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<IUnitDefinitionDto>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }
@@ -3925,9 +3925,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionSummary object if successful.
+     * @return the VersionSummaryDto object if successful.
      */
-    public VersionSummary getLusidVersions() {
+    public VersionSummaryDto getLusidVersions() {
         return getLusidVersionsWithServiceResponseAsync().toBlocking().single().body();
     }
 
@@ -3939,7 +3939,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<VersionSummary> getLusidVersionsAsync(final ServiceCallback<VersionSummary> serviceCallback) {
+    public ServiceFuture<VersionSummaryDto> getLusidVersionsAsync(final ServiceCallback<VersionSummaryDto> serviceCallback) {
         return ServiceFuture.fromResponse(getLusidVersionsWithServiceResponseAsync(), serviceCallback);
     }
 
@@ -3948,12 +3948,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get the semantic versions associated with LUSID and its ecosystem.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionSummary object
+     * @return the observable to the VersionSummaryDto object
      */
-    public Observable<VersionSummary> getLusidVersionsAsync() {
-        return getLusidVersionsWithServiceResponseAsync().map(new Func1<ServiceResponse<VersionSummary>, VersionSummary>() {
+    public Observable<VersionSummaryDto> getLusidVersionsAsync() {
+        return getLusidVersionsWithServiceResponseAsync().map(new Func1<ServiceResponse<VersionSummaryDto>, VersionSummaryDto>() {
             @Override
-            public VersionSummary call(ServiceResponse<VersionSummary> response) {
+            public VersionSummaryDto call(ServiceResponse<VersionSummaryDto> response) {
                 return response.body();
             }
         });
@@ -3964,15 +3964,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get the semantic versions associated with LUSID and its ecosystem.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionSummary object
+     * @return the observable to the VersionSummaryDto object
      */
-    public Observable<ServiceResponse<VersionSummary>> getLusidVersionsWithServiceResponseAsync() {
+    public Observable<ServiceResponse<VersionSummaryDto>> getLusidVersionsWithServiceResponseAsync() {
         return service.getLusidVersions()
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<VersionSummary>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<VersionSummaryDto>>>() {
                 @Override
-                public Observable<ServiceResponse<VersionSummary>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<VersionSummaryDto>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<VersionSummary> clientResponse = getLusidVersionsDelegate(response);
+                        ServiceResponse<VersionSummaryDto> clientResponse = getLusidVersionsDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -3981,9 +3981,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<VersionSummary> getLusidVersionsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
-        return this.restClient().responseBuilderFactory().<VersionSummary, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<VersionSummary>() { }.getType())
+    private ServiceResponse<VersionSummaryDto> getLusidVersionsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
+        return this.restClient().responseBuilderFactory().<VersionSummaryDto, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<VersionSummaryDto>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }
@@ -12728,9 +12728,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionedResourceListOfHolding object if successful.
+     * @return the VersionedResourceListOfPortfolioHolding object if successful.
      */
-    public VersionedResourceListOfHolding getHoldings(String scope, String code) {
+    public VersionedResourceListOfPortfolioHolding getHoldings(String scope, String code) {
         return getHoldingsWithServiceResponseAsync(scope, code).toBlocking().single().body();
     }
 
@@ -12745,7 +12745,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<VersionedResourceListOfHolding> getHoldingsAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfHolding> serviceCallback) {
+    public ServiceFuture<VersionedResourceListOfPortfolioHolding> getHoldingsAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfPortfolioHolding> serviceCallback) {
         return ServiceFuture.fromResponse(getHoldingsWithServiceResponseAsync(scope, code), serviceCallback);
     }
 
@@ -12757,12 +12757,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfHolding object
+     * @return the observable to the VersionedResourceListOfPortfolioHolding object
      */
-    public Observable<VersionedResourceListOfHolding> getHoldingsAsync(String scope, String code) {
-        return getHoldingsWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<VersionedResourceListOfHolding>, VersionedResourceListOfHolding>() {
+    public Observable<VersionedResourceListOfPortfolioHolding> getHoldingsAsync(String scope, String code) {
+        return getHoldingsWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<VersionedResourceListOfPortfolioHolding>, VersionedResourceListOfPortfolioHolding>() {
             @Override
-            public VersionedResourceListOfHolding call(ServiceResponse<VersionedResourceListOfHolding> response) {
+            public VersionedResourceListOfPortfolioHolding call(ServiceResponse<VersionedResourceListOfPortfolioHolding> response) {
                 return response.body();
             }
         });
@@ -12776,9 +12776,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfHolding object
+     * @return the observable to the VersionedResourceListOfPortfolioHolding object
      */
-    public Observable<ServiceResponse<VersionedResourceListOfHolding>> getHoldingsWithServiceResponseAsync(String scope, String code) {
+    public Observable<ServiceResponse<VersionedResourceListOfPortfolioHolding>> getHoldingsWithServiceResponseAsync(String scope, String code) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -12795,11 +12795,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final List<String> instrumentPropertyKeys = null;
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
         return service.getHoldings(scope, code, byTaxlots, effectiveAt, asAt, sortByConverted, start, limit, filter, instrumentPropertyKeysConverted)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<VersionedResourceListOfHolding>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<VersionedResourceListOfPortfolioHolding>>>() {
                 @Override
-                public Observable<ServiceResponse<VersionedResourceListOfHolding>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<VersionedResourceListOfPortfolioHolding>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<VersionedResourceListOfHolding> clientResponse = getHoldingsDelegate(response);
+                        ServiceResponse<VersionedResourceListOfPortfolioHolding> clientResponse = getHoldingsDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -12826,9 +12826,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionedResourceListOfHolding object if successful.
+     * @return the VersionedResourceListOfPortfolioHolding object if successful.
      */
-    public VersionedResourceListOfHolding getHoldings(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys) {
+    public VersionedResourceListOfPortfolioHolding getHoldings(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys) {
         return getHoldingsWithServiceResponseAsync(scope, code, byTaxlots, effectiveAt, asAt, sortBy, start, limit, filter, instrumentPropertyKeys).toBlocking().single().body();
     }
 
@@ -12851,7 +12851,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<VersionedResourceListOfHolding> getHoldingsAsync(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys, final ServiceCallback<VersionedResourceListOfHolding> serviceCallback) {
+    public ServiceFuture<VersionedResourceListOfPortfolioHolding> getHoldingsAsync(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys, final ServiceCallback<VersionedResourceListOfPortfolioHolding> serviceCallback) {
         return ServiceFuture.fromResponse(getHoldingsWithServiceResponseAsync(scope, code, byTaxlots, effectiveAt, asAt, sortBy, start, limit, filter, instrumentPropertyKeys), serviceCallback);
     }
 
@@ -12871,12 +12871,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param filter Optional. Expression to filter the result set
      * @param instrumentPropertyKeys Optional. Keys for the instrument property values to be decorated onto the holdings
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfHolding object
+     * @return the observable to the VersionedResourceListOfPortfolioHolding object
      */
-    public Observable<VersionedResourceListOfHolding> getHoldingsAsync(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys) {
-        return getHoldingsWithServiceResponseAsync(scope, code, byTaxlots, effectiveAt, asAt, sortBy, start, limit, filter, instrumentPropertyKeys).map(new Func1<ServiceResponse<VersionedResourceListOfHolding>, VersionedResourceListOfHolding>() {
+    public Observable<VersionedResourceListOfPortfolioHolding> getHoldingsAsync(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys) {
+        return getHoldingsWithServiceResponseAsync(scope, code, byTaxlots, effectiveAt, asAt, sortBy, start, limit, filter, instrumentPropertyKeys).map(new Func1<ServiceResponse<VersionedResourceListOfPortfolioHolding>, VersionedResourceListOfPortfolioHolding>() {
             @Override
-            public VersionedResourceListOfHolding call(ServiceResponse<VersionedResourceListOfHolding> response) {
+            public VersionedResourceListOfPortfolioHolding call(ServiceResponse<VersionedResourceListOfPortfolioHolding> response) {
                 return response.body();
             }
         });
@@ -12898,9 +12898,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param filter Optional. Expression to filter the result set
      * @param instrumentPropertyKeys Optional. Keys for the instrument property values to be decorated onto the holdings
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfHolding object
+     * @return the observable to the VersionedResourceListOfPortfolioHolding object
      */
-    public Observable<ServiceResponse<VersionedResourceListOfHolding>> getHoldingsWithServiceResponseAsync(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys) {
+    public Observable<ServiceResponse<VersionedResourceListOfPortfolioHolding>> getHoldingsWithServiceResponseAsync(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -12911,11 +12911,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         Validator.validate(instrumentPropertyKeys);
         String sortByConverted = this.serializerAdapter().serializeList(sortBy, CollectionFormat.MULTI);String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
         return service.getHoldings(scope, code, byTaxlots, effectiveAt, asAt, sortByConverted, start, limit, filter, instrumentPropertyKeysConverted)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<VersionedResourceListOfHolding>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<VersionedResourceListOfPortfolioHolding>>>() {
                 @Override
-                public Observable<ServiceResponse<VersionedResourceListOfHolding>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<VersionedResourceListOfPortfolioHolding>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<VersionedResourceListOfHolding> clientResponse = getHoldingsDelegate(response);
+                        ServiceResponse<VersionedResourceListOfPortfolioHolding> clientResponse = getHoldingsDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -12924,9 +12924,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<VersionedResourceListOfHolding> getHoldingsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
-        return this.restClient().responseBuilderFactory().<VersionedResourceListOfHolding, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<VersionedResourceListOfHolding>() { }.getType())
+    private ServiceResponse<VersionedResourceListOfPortfolioHolding> getHoldingsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<VersionedResourceListOfPortfolioHolding, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<VersionedResourceListOfPortfolioHolding>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }

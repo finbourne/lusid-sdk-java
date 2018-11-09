@@ -49,7 +49,7 @@ import com.finbourne.models.HoldingsAdjustment;
 import com.finbourne.models.Instrument;
 import com.finbourne.models.InstrumentAnalytic;
 import com.finbourne.models.InstrumentProperty;
-import com.finbourne.models.IUnitDefinition;
+import com.finbourne.models.IUnitDefinitionDto;
 import com.finbourne.models.ListAggregationResponse;
 import com.finbourne.models.LookupInstrumentsFromCodesResponse;
 import com.finbourne.models.NestedAggregationResponse;
@@ -101,10 +101,10 @@ import com.finbourne.models.UpsertPortfolioTransactionsResponse;
 import com.finbourne.models.UpsertQuoteRequest;
 import com.finbourne.models.UpsertQuotesResponse;
 import com.finbourne.models.UpsertReferencePortfolioConstituentsResponse;
-import com.finbourne.models.VersionedResourceListOfHolding;
 import com.finbourne.models.VersionedResourceListOfOutputTransaction;
+import com.finbourne.models.VersionedResourceListOfPortfolioHolding;
 import com.finbourne.models.VersionedResourceListOfTransaction;
-import com.finbourne.models.VersionSummary;
+import com.finbourne.models.VersionSummaryDto;
 import com.microsoft.rest.ServiceCallback;
 import com.microsoft.rest.ServiceFuture;
 import com.microsoft.rest.ServiceResponse;
@@ -1171,9 +1171,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the IUnitDefinition object if successful.
+     * @return the IUnitDefinitionDto object if successful.
      */
-    IUnitDefinition getUnitsFromDataType(String scope, String code);
+    IUnitDefinitionDto getUnitsFromDataType(String scope, String code);
 
     /**
      * Get units from data type.
@@ -1185,7 +1185,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<IUnitDefinition> getUnitsFromDataTypeAsync(String scope, String code, final ServiceCallback<IUnitDefinition> serviceCallback);
+    ServiceFuture<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, final ServiceCallback<IUnitDefinitionDto> serviceCallback);
 
     /**
      * Get units from data type.
@@ -1194,9 +1194,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the data type
      * @param code The code of the data type
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinition object
+     * @return the observable to the IUnitDefinitionDto object
      */
-    Observable<IUnitDefinition> getUnitsFromDataTypeAsync(String scope, String code);
+    Observable<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code);
 
     /**
      * Get units from data type.
@@ -1205,9 +1205,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the data type
      * @param code The code of the data type
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinition object
+     * @return the observable to the IUnitDefinitionDto object
      */
-    Observable<ServiceResponse<IUnitDefinition>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<IUnitDefinitionDto>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String code);
     /**
      * Get units from data type.
      * Get the definitions of the specified units associated bound to a specific data type.
@@ -1219,9 +1219,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the IUnitDefinition object if successful.
+     * @return the IUnitDefinitionDto object if successful.
      */
-    IUnitDefinition getUnitsFromDataType(String scope, String code, List<String> units, String filter);
+    IUnitDefinitionDto getUnitsFromDataType(String scope, String code, List<String> units, String filter);
 
     /**
      * Get units from data type.
@@ -1235,7 +1235,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<IUnitDefinition> getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter, final ServiceCallback<IUnitDefinition> serviceCallback);
+    ServiceFuture<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter, final ServiceCallback<IUnitDefinitionDto> serviceCallback);
 
     /**
      * Get units from data type.
@@ -1246,9 +1246,9 @@ public interface LUSIDAPI {
      * @param units One or more unit identifiers for which the definition is being requested
      * @param filter Optional. Expression to filter the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinition object
+     * @return the observable to the IUnitDefinitionDto object
      */
-    Observable<IUnitDefinition> getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter);
+    Observable<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter);
 
     /**
      * Get units from data type.
@@ -1259,9 +1259,9 @@ public interface LUSIDAPI {
      * @param units One or more unit identifiers for which the definition is being requested
      * @param filter Optional. Expression to filter the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinition object
+     * @return the observable to the IUnitDefinitionDto object
      */
-    Observable<ServiceResponse<IUnitDefinition>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String code, List<String> units, String filter);
+    Observable<ServiceResponse<IUnitDefinitionDto>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String code, List<String> units, String filter);
 
     /**
      * Create derived transaction portfolio.
@@ -2162,9 +2162,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionSummary object if successful.
+     * @return the VersionSummaryDto object if successful.
      */
-    VersionSummary getLusidVersions();
+    VersionSummaryDto getLusidVersions();
 
     /**
      * Get LUSID versions.
@@ -2174,25 +2174,25 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<VersionSummary> getLusidVersionsAsync(final ServiceCallback<VersionSummary> serviceCallback);
+    ServiceFuture<VersionSummaryDto> getLusidVersionsAsync(final ServiceCallback<VersionSummaryDto> serviceCallback);
 
     /**
      * Get LUSID versions.
      * Get the semantic versions associated with LUSID and its ecosystem.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionSummary object
+     * @return the observable to the VersionSummaryDto object
      */
-    Observable<VersionSummary> getLusidVersionsAsync();
+    Observable<VersionSummaryDto> getLusidVersionsAsync();
 
     /**
      * Get LUSID versions.
      * Get the semantic versions associated with LUSID and its ecosystem.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionSummary object
+     * @return the observable to the VersionSummaryDto object
      */
-    Observable<ServiceResponse<VersionSummary>> getLusidVersionsWithServiceResponseAsync();
+    Observable<ServiceResponse<VersionSummaryDto>> getLusidVersionsWithServiceResponseAsync();
 
     /**
      * Get personalisation.
@@ -7365,9 +7365,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionedResourceListOfHolding object if successful.
+     * @return the VersionedResourceListOfPortfolioHolding object if successful.
      */
-    VersionedResourceListOfHolding getHoldings(String scope, String code);
+    VersionedResourceListOfPortfolioHolding getHoldings(String scope, String code);
 
     /**
      * Get holdings.
@@ -7380,7 +7380,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<VersionedResourceListOfHolding> getHoldingsAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfHolding> serviceCallback);
+    ServiceFuture<VersionedResourceListOfPortfolioHolding> getHoldingsAsync(String scope, String code, final ServiceCallback<VersionedResourceListOfPortfolioHolding> serviceCallback);
 
     /**
      * Get holdings.
@@ -7390,9 +7390,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfHolding object
+     * @return the observable to the VersionedResourceListOfPortfolioHolding object
      */
-    Observable<VersionedResourceListOfHolding> getHoldingsAsync(String scope, String code);
+    Observable<VersionedResourceListOfPortfolioHolding> getHoldingsAsync(String scope, String code);
 
     /**
      * Get holdings.
@@ -7402,9 +7402,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfHolding object
+     * @return the observable to the VersionedResourceListOfPortfolioHolding object
      */
-    Observable<ServiceResponse<VersionedResourceListOfHolding>> getHoldingsWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<VersionedResourceListOfPortfolioHolding>> getHoldingsWithServiceResponseAsync(String scope, String code);
     /**
      * Get holdings.
      * Get the aggregate holdings of a transaction portfolio.  If no effectiveAt or asAt
@@ -7423,9 +7423,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the VersionedResourceListOfHolding object if successful.
+     * @return the VersionedResourceListOfPortfolioHolding object if successful.
      */
-    VersionedResourceListOfHolding getHoldings(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys);
+    VersionedResourceListOfPortfolioHolding getHoldings(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys);
 
     /**
      * Get holdings.
@@ -7446,7 +7446,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<VersionedResourceListOfHolding> getHoldingsAsync(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys, final ServiceCallback<VersionedResourceListOfHolding> serviceCallback);
+    ServiceFuture<VersionedResourceListOfPortfolioHolding> getHoldingsAsync(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys, final ServiceCallback<VersionedResourceListOfPortfolioHolding> serviceCallback);
 
     /**
      * Get holdings.
@@ -7464,9 +7464,9 @@ public interface LUSIDAPI {
      * @param filter Optional. Expression to filter the result set
      * @param instrumentPropertyKeys Optional. Keys for the instrument property values to be decorated onto the holdings
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfHolding object
+     * @return the observable to the VersionedResourceListOfPortfolioHolding object
      */
-    Observable<VersionedResourceListOfHolding> getHoldingsAsync(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys);
+    Observable<VersionedResourceListOfPortfolioHolding> getHoldingsAsync(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys);
 
     /**
      * Get holdings.
@@ -7484,9 +7484,9 @@ public interface LUSIDAPI {
      * @param filter Optional. Expression to filter the result set
      * @param instrumentPropertyKeys Optional. Keys for the instrument property values to be decorated onto the holdings
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the VersionedResourceListOfHolding object
+     * @return the observable to the VersionedResourceListOfPortfolioHolding object
      */
-    Observable<ServiceResponse<VersionedResourceListOfHolding>> getHoldingsWithServiceResponseAsync(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys);
+    Observable<ServiceResponse<VersionedResourceListOfPortfolioHolding>> getHoldingsWithServiceResponseAsync(String scope, String code, Boolean byTaxlots, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, List<String> instrumentPropertyKeys);
 
     /**
      * Set all holdings on a transaction portfolio.

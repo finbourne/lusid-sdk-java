@@ -26,9 +26,9 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The VersionedResourceListOfHolding model.
+ * The VersionedResourceListOfPortfolioHolding model.
  */
-public class VersionedResourceListOfHolding {
+public class VersionedResourceListOfPortfolioHolding {
     /**
      * The version property.
      */
@@ -73,9 +73,9 @@ public class VersionedResourceListOfHolding {
      * Set the version value.
      *
      * @param version the version value to set
-     * @return the VersionedResourceListOfHolding object itself.
+     * @return the VersionedResourceListOfPortfolioHolding object itself.
      */
-    public VersionedResourceListOfHolding withVersion(Version version) {
+    public VersionedResourceListOfPortfolioHolding withVersion(Version version) {
         this.version = version;
         return this;
     }
@@ -93,9 +93,9 @@ public class VersionedResourceListOfHolding {
      * Set the values value.
      *
      * @param values the values value to set
-     * @return the VersionedResourceListOfHolding object itself.
+     * @return the VersionedResourceListOfPortfolioHolding object itself.
      */
-    public VersionedResourceListOfHolding withValues(List<PortfolioHolding> values) {
+    public VersionedResourceListOfPortfolioHolding withValues(List<PortfolioHolding> values) {
         this.values = values;
         return this;
     }
@@ -115,9 +115,9 @@ public class VersionedResourceListOfHolding {
      but may include resolved as at time(s).
      *
      * @param href the href value to set
-     * @return the VersionedResourceListOfHolding object itself.
+     * @return the VersionedResourceListOfPortfolioHolding object itself.
      */
-    public VersionedResourceListOfHolding withHref(String href) {
+    public VersionedResourceListOfPortfolioHolding withHref(String href) {
         this.href = href;
         return this;
     }
@@ -135,9 +135,9 @@ public class VersionedResourceListOfHolding {
      * Set the total number of records returned in the set.
      *
      * @param count the count value to set
-     * @return the VersionedResourceListOfHolding object itself.
+     * @return the VersionedResourceListOfPortfolioHolding object itself.
      */
-    public VersionedResourceListOfHolding withCount(Integer count) {
+    public VersionedResourceListOfPortfolioHolding withCount(Integer count) {
         this.count = count;
         return this;
     }
@@ -155,9 +155,9 @@ public class VersionedResourceListOfHolding {
      * Set the links value.
      *
      * @param links the links value to set
-     * @return the VersionedResourceListOfHolding object itself.
+     * @return the VersionedResourceListOfPortfolioHolding object itself.
      */
-    public VersionedResourceListOfHolding withLinks(List<Link> links) {
+    public VersionedResourceListOfPortfolioHolding withLinks(List<Link> links) {
         this.links = links;
         return this;
     }

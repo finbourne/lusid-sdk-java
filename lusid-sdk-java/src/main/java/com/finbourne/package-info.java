@@ -175,7 +175,7 @@
  | SettledUnits|decimal|Settled quantity of holding |
  | Cost|currencyandamount|Book cost of holding in transaction currency |
  | CostPortfolioCcy|currencyandamount|Book cost of holding in portfolio currency |
- | Transaction|TransactionDto|If this is commitment-type holding, the transaction behind it |
+ | Transaction|Transaction|If this is commitment-type holding, the transaction behind it |
  ## Corporate Actions
  Corporate actions are represented within LUSID in terms of a set of instrument-specific 'transitions'.  These transitions are used to specify the participants of the corporate action, and the effect that the corporate action will have on holdings in those participants.
  *Corporate action*
