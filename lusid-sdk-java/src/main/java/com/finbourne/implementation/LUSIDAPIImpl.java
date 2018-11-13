@@ -50,11 +50,11 @@ import com.finbourne.models.DeleteQuotesResponse;
 import com.finbourne.models.ErrorResponseException;
 import com.finbourne.models.ExecutionRequest;
 import com.finbourne.models.ExpandedGroup;
+import com.finbourne.models.FileResponse;
 import com.finbourne.models.HoldingsAdjustment;
 import com.finbourne.models.Instrument;
 import com.finbourne.models.InstrumentAnalytic;
 import com.finbourne.models.InstrumentProperty;
-import com.finbourne.models.IUnitDefinitionDto;
 import com.finbourne.models.ListAggregationResponse;
 import com.finbourne.models.LookupInstrumentsFromCodesResponse;
 import com.finbourne.models.NestedAggregationResponse;
@@ -74,6 +74,7 @@ import com.finbourne.models.ResourceListOfAnalyticStoreKey;
 import com.finbourne.models.ResourceListOfCorporateAction;
 import com.finbourne.models.ResourceListOfDataType;
 import com.finbourne.models.ResourceListOfHoldingsAdjustmentHeader;
+import com.finbourne.models.ResourceListOfIUnitDefinitionDto;
 import com.finbourne.models.ResourceListOfPersonalisation;
 import com.finbourne.models.ResourceListOfPortfolio;
 import com.finbourne.models.ResourceListOfPortfolioGroup;
@@ -89,7 +90,6 @@ import com.finbourne.models.ResourceListOfTransactionConfigurationData;
 import com.finbourne.models.ResourceListOfValueType;
 import com.finbourne.models.Results;
 import com.finbourne.models.Schema;
-import com.finbourne.models.TransactionConfigurationData;
 import com.finbourne.models.TransactionConfigurationDataRequest;
 import com.finbourne.models.TransactionQueryParameters;
 import com.finbourne.models.TransactionRequest;
@@ -2273,9 +2273,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the IUnitDefinitionDto object if successful.
+     * @return the ResourceListOfIUnitDefinitionDto object if successful.
      */
-    public IUnitDefinitionDto getUnitsFromDataType(String scope, String code) {
+    public ResourceListOfIUnitDefinitionDto getUnitsFromDataType(String scope, String code) {
         return getUnitsFromDataTypeWithServiceResponseAsync(scope, code).toBlocking().single().body();
     }
 
@@ -2289,7 +2289,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, final ServiceCallback<IUnitDefinitionDto> serviceCallback) {
+    public ServiceFuture<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, final ServiceCallback<ResourceListOfIUnitDefinitionDto> serviceCallback) {
         return ServiceFuture.fromResponse(getUnitsFromDataTypeWithServiceResponseAsync(scope, code), serviceCallback);
     }
 
@@ -2300,12 +2300,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param scope The scope of the data type
      * @param code The code of the data type
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinitionDto object
+     * @return the observable to the ResourceListOfIUnitDefinitionDto object
      */
-    public Observable<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code) {
-        return getUnitsFromDataTypeWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<IUnitDefinitionDto>, IUnitDefinitionDto>() {
+    public Observable<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code) {
+        return getUnitsFromDataTypeWithServiceResponseAsync(scope, code).map(new Func1<ServiceResponse<ResourceListOfIUnitDefinitionDto>, ResourceListOfIUnitDefinitionDto>() {
             @Override
-            public IUnitDefinitionDto call(ServiceResponse<IUnitDefinitionDto> response) {
+            public ResourceListOfIUnitDefinitionDto call(ServiceResponse<ResourceListOfIUnitDefinitionDto> response) {
                 return response.body();
             }
         });
@@ -2318,9 +2318,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param scope The scope of the data type
      * @param code The code of the data type
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinitionDto object
+     * @return the observable to the ResourceListOfIUnitDefinitionDto object
      */
-    public Observable<ServiceResponse<IUnitDefinitionDto>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String code) {
+    public Observable<ServiceResponse<ResourceListOfIUnitDefinitionDto>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String code) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -2331,11 +2331,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         final String filter = null;
         String unitsConverted = this.serializerAdapter().serializeList(units, CollectionFormat.MULTI);
         return service.getUnitsFromDataType(scope, code, unitsConverted, filter)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<IUnitDefinitionDto>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfIUnitDefinitionDto>>>() {
                 @Override
-                public Observable<ServiceResponse<IUnitDefinitionDto>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<ResourceListOfIUnitDefinitionDto>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<IUnitDefinitionDto> clientResponse = getUnitsFromDataTypeDelegate(response);
+                        ServiceResponse<ResourceListOfIUnitDefinitionDto> clientResponse = getUnitsFromDataTypeDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -2355,9 +2355,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the IUnitDefinitionDto object if successful.
+     * @return the ResourceListOfIUnitDefinitionDto object if successful.
      */
-    public IUnitDefinitionDto getUnitsFromDataType(String scope, String code, List<String> units, String filter) {
+    public ResourceListOfIUnitDefinitionDto getUnitsFromDataType(String scope, String code, List<String> units, String filter) {
         return getUnitsFromDataTypeWithServiceResponseAsync(scope, code, units, filter).toBlocking().single().body();
     }
 
@@ -2373,7 +2373,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter, final ServiceCallback<IUnitDefinitionDto> serviceCallback) {
+    public ServiceFuture<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter, final ServiceCallback<ResourceListOfIUnitDefinitionDto> serviceCallback) {
         return ServiceFuture.fromResponse(getUnitsFromDataTypeWithServiceResponseAsync(scope, code, units, filter), serviceCallback);
     }
 
@@ -2386,12 +2386,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param units One or more unit identifiers for which the definition is being requested
      * @param filter Optional. Expression to filter the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinitionDto object
+     * @return the observable to the ResourceListOfIUnitDefinitionDto object
      */
-    public Observable<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter) {
-        return getUnitsFromDataTypeWithServiceResponseAsync(scope, code, units, filter).map(new Func1<ServiceResponse<IUnitDefinitionDto>, IUnitDefinitionDto>() {
+    public Observable<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter) {
+        return getUnitsFromDataTypeWithServiceResponseAsync(scope, code, units, filter).map(new Func1<ServiceResponse<ResourceListOfIUnitDefinitionDto>, ResourceListOfIUnitDefinitionDto>() {
             @Override
-            public IUnitDefinitionDto call(ServiceResponse<IUnitDefinitionDto> response) {
+            public ResourceListOfIUnitDefinitionDto call(ServiceResponse<ResourceListOfIUnitDefinitionDto> response) {
                 return response.body();
             }
         });
@@ -2406,9 +2406,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @param units One or more unit identifiers for which the definition is being requested
      * @param filter Optional. Expression to filter the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinitionDto object
+     * @return the observable to the ResourceListOfIUnitDefinitionDto object
      */
-    public Observable<ServiceResponse<IUnitDefinitionDto>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String code, List<String> units, String filter) {
+    public Observable<ServiceResponse<ResourceListOfIUnitDefinitionDto>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String code, List<String> units, String filter) {
         if (scope == null) {
             throw new IllegalArgumentException("Parameter scope is required and cannot be null.");
         }
@@ -2418,11 +2418,11 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         Validator.validate(units);
         String unitsConverted = this.serializerAdapter().serializeList(units, CollectionFormat.MULTI);
         return service.getUnitsFromDataType(scope, code, unitsConverted, filter)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<IUnitDefinitionDto>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfIUnitDefinitionDto>>>() {
                 @Override
-                public Observable<ServiceResponse<IUnitDefinitionDto>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<ResourceListOfIUnitDefinitionDto>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<IUnitDefinitionDto> clientResponse = getUnitsFromDataTypeDelegate(response);
+                        ServiceResponse<ResourceListOfIUnitDefinitionDto> clientResponse = getUnitsFromDataTypeDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -2431,9 +2431,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<IUnitDefinitionDto> getUnitsFromDataTypeDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
-        return this.restClient().responseBuilderFactory().<IUnitDefinitionDto, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<IUnitDefinitionDto>() { }.getType())
+    private ServiceResponse<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<ResourceListOfIUnitDefinitionDto, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<ResourceListOfIUnitDefinitionDto>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }
@@ -3787,9 +3787,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the String object if successful.
+     * @return the FileResponse object if successful.
      */
-    public String getExcelAddin() {
+    public FileResponse getExcelAddin() {
         return getExcelAddinWithServiceResponseAsync().toBlocking().single().body();
     }
 
@@ -3801,7 +3801,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<String> getExcelAddinAsync(final ServiceCallback<String> serviceCallback) {
+    public ServiceFuture<FileResponse> getExcelAddinAsync(final ServiceCallback<FileResponse> serviceCallback) {
         return ServiceFuture.fromResponse(getExcelAddinWithServiceResponseAsync(), serviceCallback);
     }
 
@@ -3810,12 +3810,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
+     * @return the observable to the FileResponse object
      */
-    public Observable<String> getExcelAddinAsync() {
-        return getExcelAddinWithServiceResponseAsync().map(new Func1<ServiceResponse<String>, String>() {
+    public Observable<FileResponse> getExcelAddinAsync() {
+        return getExcelAddinWithServiceResponseAsync().map(new Func1<ServiceResponse<FileResponse>, FileResponse>() {
             @Override
-            public String call(ServiceResponse<String> response) {
+            public FileResponse call(ServiceResponse<FileResponse> response) {
                 return response.body();
             }
         });
@@ -3826,16 +3826,16 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
+     * @return the observable to the FileResponse object
      */
-    public Observable<ServiceResponse<String>> getExcelAddinWithServiceResponseAsync() {
+    public Observable<ServiceResponse<FileResponse>> getExcelAddinWithServiceResponseAsync() {
         final String version = null;
         return service.getExcelAddin(version)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<String>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<FileResponse>>>() {
                 @Override
-                public Observable<ServiceResponse<String>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<FileResponse>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<String> clientResponse = getExcelAddinDelegate(response);
+                        ServiceResponse<FileResponse> clientResponse = getExcelAddinDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -3852,9 +3852,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the String object if successful.
+     * @return the FileResponse object if successful.
      */
-    public String getExcelAddin(String version) {
+    public FileResponse getExcelAddin(String version) {
         return getExcelAddinWithServiceResponseAsync(version).toBlocking().single().body();
     }
 
@@ -3867,7 +3867,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<String> getExcelAddinAsync(String version, final ServiceCallback<String> serviceCallback) {
+    public ServiceFuture<FileResponse> getExcelAddinAsync(String version, final ServiceCallback<FileResponse> serviceCallback) {
         return ServiceFuture.fromResponse(getExcelAddinWithServiceResponseAsync(version), serviceCallback);
     }
 
@@ -3877,12 +3877,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param version The requested version of the Excel plugin
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
+     * @return the observable to the FileResponse object
      */
-    public Observable<String> getExcelAddinAsync(String version) {
-        return getExcelAddinWithServiceResponseAsync(version).map(new Func1<ServiceResponse<String>, String>() {
+    public Observable<FileResponse> getExcelAddinAsync(String version) {
+        return getExcelAddinWithServiceResponseAsync(version).map(new Func1<ServiceResponse<FileResponse>, FileResponse>() {
             @Override
-            public String call(ServiceResponse<String> response) {
+            public FileResponse call(ServiceResponse<FileResponse> response) {
                 return response.body();
             }
         });
@@ -3894,15 +3894,15 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param version The requested version of the Excel plugin
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
+     * @return the observable to the FileResponse object
      */
-    public Observable<ServiceResponse<String>> getExcelAddinWithServiceResponseAsync(String version) {
+    public Observable<ServiceResponse<FileResponse>> getExcelAddinWithServiceResponseAsync(String version) {
         return service.getExcelAddin(version)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<String>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<FileResponse>>>() {
                 @Override
-                public Observable<ServiceResponse<String>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<FileResponse>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<String> clientResponse = getExcelAddinDelegate(response);
+                        ServiceResponse<FileResponse> clientResponse = getExcelAddinDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -3911,9 +3911,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<String> getExcelAddinDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
-        return this.restClient().responseBuilderFactory().<String, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<String>() { }.getType())
+    private ServiceResponse<FileResponse> getExcelAddinDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
+        return this.restClient().responseBuilderFactory().<FileResponse, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<FileResponse>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }
@@ -11915,9 +11915,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TransactionConfigurationData object if successful.
+     * @return the ResourceListOfTransactionConfigurationData object if successful.
      */
-    public TransactionConfigurationData createConfigurationTransactionType() {
+    public ResourceListOfTransactionConfigurationData createConfigurationTransactionType() {
         return createConfigurationTransactionTypeWithServiceResponseAsync().toBlocking().single().body();
     }
 
@@ -11929,7 +11929,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<TransactionConfigurationData> createConfigurationTransactionTypeAsync(final ServiceCallback<TransactionConfigurationData> serviceCallback) {
+    public ServiceFuture<ResourceListOfTransactionConfigurationData> createConfigurationTransactionTypeAsync(final ServiceCallback<ResourceListOfTransactionConfigurationData> serviceCallback) {
         return ServiceFuture.fromResponse(createConfigurationTransactionTypeWithServiceResponseAsync(), serviceCallback);
     }
 
@@ -11938,12 +11938,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Create a new transaction type by specifying a definition and the mappings to movements.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TransactionConfigurationData object
+     * @return the observable to the ResourceListOfTransactionConfigurationData object
      */
-    public Observable<TransactionConfigurationData> createConfigurationTransactionTypeAsync() {
-        return createConfigurationTransactionTypeWithServiceResponseAsync().map(new Func1<ServiceResponse<TransactionConfigurationData>, TransactionConfigurationData>() {
+    public Observable<ResourceListOfTransactionConfigurationData> createConfigurationTransactionTypeAsync() {
+        return createConfigurationTransactionTypeWithServiceResponseAsync().map(new Func1<ServiceResponse<ResourceListOfTransactionConfigurationData>, ResourceListOfTransactionConfigurationData>() {
             @Override
-            public TransactionConfigurationData call(ServiceResponse<TransactionConfigurationData> response) {
+            public ResourceListOfTransactionConfigurationData call(ServiceResponse<ResourceListOfTransactionConfigurationData> response) {
                 return response.body();
             }
         });
@@ -11954,16 +11954,16 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Create a new transaction type by specifying a definition and the mappings to movements.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TransactionConfigurationData object
+     * @return the observable to the ResourceListOfTransactionConfigurationData object
      */
-    public Observable<ServiceResponse<TransactionConfigurationData>> createConfigurationTransactionTypeWithServiceResponseAsync() {
+    public Observable<ServiceResponse<ResourceListOfTransactionConfigurationData>> createConfigurationTransactionTypeWithServiceResponseAsync() {
         final TransactionConfigurationDataRequest type = null;
         return service.createConfigurationTransactionType(type)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<TransactionConfigurationData>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfTransactionConfigurationData>>>() {
                 @Override
-                public Observable<ServiceResponse<TransactionConfigurationData>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<ResourceListOfTransactionConfigurationData>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<TransactionConfigurationData> clientResponse = createConfigurationTransactionTypeDelegate(response);
+                        ServiceResponse<ResourceListOfTransactionConfigurationData> clientResponse = createConfigurationTransactionTypeDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -11980,9 +11980,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TransactionConfigurationData object if successful.
+     * @return the ResourceListOfTransactionConfigurationData object if successful.
      */
-    public TransactionConfigurationData createConfigurationTransactionType(TransactionConfigurationDataRequest type) {
+    public ResourceListOfTransactionConfigurationData createConfigurationTransactionType(TransactionConfigurationDataRequest type) {
         return createConfigurationTransactionTypeWithServiceResponseAsync(type).toBlocking().single().body();
     }
 
@@ -11995,7 +11995,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<TransactionConfigurationData> createConfigurationTransactionTypeAsync(TransactionConfigurationDataRequest type, final ServiceCallback<TransactionConfigurationData> serviceCallback) {
+    public ServiceFuture<ResourceListOfTransactionConfigurationData> createConfigurationTransactionTypeAsync(TransactionConfigurationDataRequest type, final ServiceCallback<ResourceListOfTransactionConfigurationData> serviceCallback) {
         return ServiceFuture.fromResponse(createConfigurationTransactionTypeWithServiceResponseAsync(type), serviceCallback);
     }
 
@@ -12005,12 +12005,12 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param type A transaction type definition
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TransactionConfigurationData object
+     * @return the observable to the ResourceListOfTransactionConfigurationData object
      */
-    public Observable<TransactionConfigurationData> createConfigurationTransactionTypeAsync(TransactionConfigurationDataRequest type) {
-        return createConfigurationTransactionTypeWithServiceResponseAsync(type).map(new Func1<ServiceResponse<TransactionConfigurationData>, TransactionConfigurationData>() {
+    public Observable<ResourceListOfTransactionConfigurationData> createConfigurationTransactionTypeAsync(TransactionConfigurationDataRequest type) {
+        return createConfigurationTransactionTypeWithServiceResponseAsync(type).map(new Func1<ServiceResponse<ResourceListOfTransactionConfigurationData>, ResourceListOfTransactionConfigurationData>() {
             @Override
-            public TransactionConfigurationData call(ServiceResponse<TransactionConfigurationData> response) {
+            public ResourceListOfTransactionConfigurationData call(ServiceResponse<ResourceListOfTransactionConfigurationData> response) {
                 return response.body();
             }
         });
@@ -12022,16 +12022,16 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param type A transaction type definition
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TransactionConfigurationData object
+     * @return the observable to the ResourceListOfTransactionConfigurationData object
      */
-    public Observable<ServiceResponse<TransactionConfigurationData>> createConfigurationTransactionTypeWithServiceResponseAsync(TransactionConfigurationDataRequest type) {
+    public Observable<ServiceResponse<ResourceListOfTransactionConfigurationData>> createConfigurationTransactionTypeWithServiceResponseAsync(TransactionConfigurationDataRequest type) {
         Validator.validate(type);
         return service.createConfigurationTransactionType(type)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<TransactionConfigurationData>>>() {
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfTransactionConfigurationData>>>() {
                 @Override
-                public Observable<ServiceResponse<TransactionConfigurationData>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<ResourceListOfTransactionConfigurationData>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<TransactionConfigurationData> clientResponse = createConfigurationTransactionTypeDelegate(response);
+                        ServiceResponse<ResourceListOfTransactionConfigurationData> clientResponse = createConfigurationTransactionTypeDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -12040,9 +12040,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<TransactionConfigurationData> createConfigurationTransactionTypeDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
-        return this.restClient().responseBuilderFactory().<TransactionConfigurationData, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(201, new TypeToken<TransactionConfigurationData>() { }.getType())
+    private ServiceResponse<ResourceListOfTransactionConfigurationData> createConfigurationTransactionTypeDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
+        return this.restClient().responseBuilderFactory().<ResourceListOfTransactionConfigurationData, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(201, new TypeToken<ResourceListOfTransactionConfigurationData>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }

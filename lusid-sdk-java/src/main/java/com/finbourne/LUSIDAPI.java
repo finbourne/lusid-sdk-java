@@ -45,11 +45,11 @@ import com.finbourne.models.DeleteQuotesResponse;
 import com.finbourne.models.ErrorResponseException;
 import com.finbourne.models.ExecutionRequest;
 import com.finbourne.models.ExpandedGroup;
+import com.finbourne.models.FileResponse;
 import com.finbourne.models.HoldingsAdjustment;
 import com.finbourne.models.Instrument;
 import com.finbourne.models.InstrumentAnalytic;
 import com.finbourne.models.InstrumentProperty;
-import com.finbourne.models.IUnitDefinitionDto;
 import com.finbourne.models.ListAggregationResponse;
 import com.finbourne.models.LookupInstrumentsFromCodesResponse;
 import com.finbourne.models.NestedAggregationResponse;
@@ -69,6 +69,7 @@ import com.finbourne.models.ResourceListOfAnalyticStoreKey;
 import com.finbourne.models.ResourceListOfCorporateAction;
 import com.finbourne.models.ResourceListOfDataType;
 import com.finbourne.models.ResourceListOfHoldingsAdjustmentHeader;
+import com.finbourne.models.ResourceListOfIUnitDefinitionDto;
 import com.finbourne.models.ResourceListOfPersonalisation;
 import com.finbourne.models.ResourceListOfPortfolio;
 import com.finbourne.models.ResourceListOfPortfolioGroup;
@@ -84,7 +85,6 @@ import com.finbourne.models.ResourceListOfTransactionConfigurationData;
 import com.finbourne.models.ResourceListOfValueType;
 import com.finbourne.models.Results;
 import com.finbourne.models.Schema;
-import com.finbourne.models.TransactionConfigurationData;
 import com.finbourne.models.TransactionConfigurationDataRequest;
 import com.finbourne.models.TransactionQueryParameters;
 import com.finbourne.models.TransactionRequest;
@@ -1171,9 +1171,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the IUnitDefinitionDto object if successful.
+     * @return the ResourceListOfIUnitDefinitionDto object if successful.
      */
-    IUnitDefinitionDto getUnitsFromDataType(String scope, String code);
+    ResourceListOfIUnitDefinitionDto getUnitsFromDataType(String scope, String code);
 
     /**
      * Get units from data type.
@@ -1185,7 +1185,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, final ServiceCallback<IUnitDefinitionDto> serviceCallback);
+    ServiceFuture<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, final ServiceCallback<ResourceListOfIUnitDefinitionDto> serviceCallback);
 
     /**
      * Get units from data type.
@@ -1194,9 +1194,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the data type
      * @param code The code of the data type
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinitionDto object
+     * @return the observable to the ResourceListOfIUnitDefinitionDto object
      */
-    Observable<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code);
+    Observable<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code);
 
     /**
      * Get units from data type.
@@ -1205,9 +1205,9 @@ public interface LUSIDAPI {
      * @param scope The scope of the data type
      * @param code The code of the data type
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinitionDto object
+     * @return the observable to the ResourceListOfIUnitDefinitionDto object
      */
-    Observable<ServiceResponse<IUnitDefinitionDto>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String code);
+    Observable<ServiceResponse<ResourceListOfIUnitDefinitionDto>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String code);
     /**
      * Get units from data type.
      * Get the definitions of the specified units associated bound to a specific data type.
@@ -1219,9 +1219,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the IUnitDefinitionDto object if successful.
+     * @return the ResourceListOfIUnitDefinitionDto object if successful.
      */
-    IUnitDefinitionDto getUnitsFromDataType(String scope, String code, List<String> units, String filter);
+    ResourceListOfIUnitDefinitionDto getUnitsFromDataType(String scope, String code, List<String> units, String filter);
 
     /**
      * Get units from data type.
@@ -1235,7 +1235,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter, final ServiceCallback<IUnitDefinitionDto> serviceCallback);
+    ServiceFuture<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter, final ServiceCallback<ResourceListOfIUnitDefinitionDto> serviceCallback);
 
     /**
      * Get units from data type.
@@ -1246,9 +1246,9 @@ public interface LUSIDAPI {
      * @param units One or more unit identifiers for which the definition is being requested
      * @param filter Optional. Expression to filter the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinitionDto object
+     * @return the observable to the ResourceListOfIUnitDefinitionDto object
      */
-    Observable<IUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter);
+    Observable<ResourceListOfIUnitDefinitionDto> getUnitsFromDataTypeAsync(String scope, String code, List<String> units, String filter);
 
     /**
      * Get units from data type.
@@ -1259,9 +1259,9 @@ public interface LUSIDAPI {
      * @param units One or more unit identifiers for which the definition is being requested
      * @param filter Optional. Expression to filter the result set
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the IUnitDefinitionDto object
+     * @return the observable to the ResourceListOfIUnitDefinitionDto object
      */
-    Observable<ServiceResponse<IUnitDefinitionDto>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String code, List<String> units, String filter);
+    Observable<ServiceResponse<ResourceListOfIUnitDefinitionDto>> getUnitsFromDataTypeWithServiceResponseAsync(String scope, String code, List<String> units, String filter);
 
     /**
      * Create derived transaction portfolio.
@@ -2081,9 +2081,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the String object if successful.
+     * @return the FileResponse object if successful.
      */
-    String getExcelAddin();
+    FileResponse getExcelAddin();
 
     /**
      * Download Excel Addin.
@@ -2093,25 +2093,25 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<String> getExcelAddinAsync(final ServiceCallback<String> serviceCallback);
+    ServiceFuture<FileResponse> getExcelAddinAsync(final ServiceCallback<FileResponse> serviceCallback);
 
     /**
      * Download Excel Addin.
      * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
+     * @return the observable to the FileResponse object
      */
-    Observable<String> getExcelAddinAsync();
+    Observable<FileResponse> getExcelAddinAsync();
 
     /**
      * Download Excel Addin.
      * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
+     * @return the observable to the FileResponse object
      */
-    Observable<ServiceResponse<String>> getExcelAddinWithServiceResponseAsync();
+    Observable<ServiceResponse<FileResponse>> getExcelAddinWithServiceResponseAsync();
     /**
      * Download Excel Addin.
      * Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned.
@@ -2120,9 +2120,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the String object if successful.
+     * @return the FileResponse object if successful.
      */
-    String getExcelAddin(String version);
+    FileResponse getExcelAddin(String version);
 
     /**
      * Download Excel Addin.
@@ -2133,7 +2133,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<String> getExcelAddinAsync(String version, final ServiceCallback<String> serviceCallback);
+    ServiceFuture<FileResponse> getExcelAddinAsync(String version, final ServiceCallback<FileResponse> serviceCallback);
 
     /**
      * Download Excel Addin.
@@ -2141,9 +2141,9 @@ public interface LUSIDAPI {
      *
      * @param version The requested version of the Excel plugin
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
+     * @return the observable to the FileResponse object
      */
-    Observable<String> getExcelAddinAsync(String version);
+    Observable<FileResponse> getExcelAddinAsync(String version);
 
     /**
      * Download Excel Addin.
@@ -2151,9 +2151,9 @@ public interface LUSIDAPI {
      *
      * @param version The requested version of the Excel plugin
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the String object
+     * @return the observable to the FileResponse object
      */
-    Observable<ServiceResponse<String>> getExcelAddinWithServiceResponseAsync(String version);
+    Observable<ServiceResponse<FileResponse>> getExcelAddinWithServiceResponseAsync(String version);
 
     /**
      * Get LUSID versions.
@@ -6885,9 +6885,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TransactionConfigurationData object if successful.
+     * @return the ResourceListOfTransactionConfigurationData object if successful.
      */
-    TransactionConfigurationData createConfigurationTransactionType();
+    ResourceListOfTransactionConfigurationData createConfigurationTransactionType();
 
     /**
      * Create transaction type.
@@ -6897,25 +6897,25 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TransactionConfigurationData> createConfigurationTransactionTypeAsync(final ServiceCallback<TransactionConfigurationData> serviceCallback);
+    ServiceFuture<ResourceListOfTransactionConfigurationData> createConfigurationTransactionTypeAsync(final ServiceCallback<ResourceListOfTransactionConfigurationData> serviceCallback);
 
     /**
      * Create transaction type.
      * Create a new transaction type by specifying a definition and the mappings to movements.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TransactionConfigurationData object
+     * @return the observable to the ResourceListOfTransactionConfigurationData object
      */
-    Observable<TransactionConfigurationData> createConfigurationTransactionTypeAsync();
+    Observable<ResourceListOfTransactionConfigurationData> createConfigurationTransactionTypeAsync();
 
     /**
      * Create transaction type.
      * Create a new transaction type by specifying a definition and the mappings to movements.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TransactionConfigurationData object
+     * @return the observable to the ResourceListOfTransactionConfigurationData object
      */
-    Observable<ServiceResponse<TransactionConfigurationData>> createConfigurationTransactionTypeWithServiceResponseAsync();
+    Observable<ServiceResponse<ResourceListOfTransactionConfigurationData>> createConfigurationTransactionTypeWithServiceResponseAsync();
     /**
      * Create transaction type.
      * Create a new transaction type by specifying a definition and the mappings to movements.
@@ -6924,9 +6924,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TransactionConfigurationData object if successful.
+     * @return the ResourceListOfTransactionConfigurationData object if successful.
      */
-    TransactionConfigurationData createConfigurationTransactionType(TransactionConfigurationDataRequest type);
+    ResourceListOfTransactionConfigurationData createConfigurationTransactionType(TransactionConfigurationDataRequest type);
 
     /**
      * Create transaction type.
@@ -6937,7 +6937,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<TransactionConfigurationData> createConfigurationTransactionTypeAsync(TransactionConfigurationDataRequest type, final ServiceCallback<TransactionConfigurationData> serviceCallback);
+    ServiceFuture<ResourceListOfTransactionConfigurationData> createConfigurationTransactionTypeAsync(TransactionConfigurationDataRequest type, final ServiceCallback<ResourceListOfTransactionConfigurationData> serviceCallback);
 
     /**
      * Create transaction type.
@@ -6945,9 +6945,9 @@ public interface LUSIDAPI {
      *
      * @param type A transaction type definition
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TransactionConfigurationData object
+     * @return the observable to the ResourceListOfTransactionConfigurationData object
      */
-    Observable<TransactionConfigurationData> createConfigurationTransactionTypeAsync(TransactionConfigurationDataRequest type);
+    Observable<ResourceListOfTransactionConfigurationData> createConfigurationTransactionTypeAsync(TransactionConfigurationDataRequest type);
 
     /**
      * Create transaction type.
@@ -6955,9 +6955,9 @@ public interface LUSIDAPI {
      *
      * @param type A transaction type definition
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TransactionConfigurationData object
+     * @return the observable to the ResourceListOfTransactionConfigurationData object
      */
-    Observable<ServiceResponse<TransactionConfigurationData>> createConfigurationTransactionTypeWithServiceResponseAsync(TransactionConfigurationDataRequest type);
+    Observable<ServiceResponse<ResourceListOfTransactionConfigurationData>> createConfigurationTransactionTypeWithServiceResponseAsync(TransactionConfigurationDataRequest type);
 
     /**
      * Create transaction portfolio.
