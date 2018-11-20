@@ -108,14 +108,42 @@ public class LusidApiTests {
             this.client = new LUSIDAPIImpl(apiUrl, clientBuilder, restBuilder);
         }
 
-        List<String> ids = Arrays.asList("BBG000C6K6G9", "BBG000C04D57", "BBG000FV67Q4", "BBG000BF0KW3", "BBG000BF4KL1");
-        LookupInstrumentsFromCodesResponse idsResult = this.client.lookupInstrumentsFromCodes("Figi", ids, null, null);
+        UpsertInstrumentsResponse instrumentsResponse = this.client.upsertInstruments(Map.of(
+            "r1", new UpsertInstrumentRequest().withName("inst-1").withIdentifiers(Map.of("Figi", "BBG000C6K6G9")),
+            "r2", new UpsertInstrumentRequest().withName("inst-2").withIdentifiers(Map.of("Figi", "BBG000C04D57")),
+            "r3", new UpsertInstrumentRequest().withName("inst-3").withIdentifiers(Map.of("Figi", "BBG000FV67Q4")),
+            "r4", new UpsertInstrumentRequest().withName("inst-4").withIdentifiers(Map.of("Figi", "BBG000BF0KW3")),
+            "r5", new UpsertInstrumentRequest().withName("inst-5").withIdentifiers(Map.of("Figi", "BBG000BF4KL1"))
+        ));
 
-        this.securityIds = idsResult.values().values().stream()
-                .flatMap(r -> r.stream()
-                        .map(i -> i.uid())
+        this.securityIds = instrumentsResponse
+            .values()
+            .values()
+            .stream()
+            .map(inst -> inst.lusidInstrumentId()).collect(Collectors.toList());
+
+        this.client.upsertInstrumentsProperties(
+            List.of(
+                new InstrumentProperty()
+                    .withLusidInstrumentId(this.securityIds.get(0))
+                    .withProperties(
+                        List.of(
+                            new CreateInstrumentPropertyRequest()
+                                .withInstrumentPropertyKey("Instrument/default/Isin")
+                                .withProperty(new PropertyValue().withLabelValue("IT0004966401"))
+                        )
+                ),
+                new InstrumentProperty()
+                    .withLusidInstrumentId(this.securityIds.get(1))
+                    .withProperties(
+                        List.of(
+                            new CreateInstrumentPropertyRequest()
+                                .withInstrumentPropertyKey("Instrument/default/Isin")
+                                .withProperty(new PropertyValue().withLabelValue("FR0010192997"))
+                        )
                 )
-                .collect(Collectors.toList());
+            )
+        );      
     }
 
     @Test
@@ -366,13 +394,23 @@ public class LusidApiTests {
     }
 
     @Test
-    public void lookup_securities()
+    public void find_instruments()
     {
-        final List<String> isins = new ArrayList<>(Arrays.asList("IT0004966401", "FR0010192997"));
-
         //  lookup securities
-        final LookupInstrumentsFromCodesResponse fbnIds = this.client.lookupInstrumentsFromCodes("Isin", isins, null, null);
+        final ResourceListOfInstrument findResponse = this.client.findInstruments(
+            List.of(
+                new Property()
+                    .withKey("Instrument/default/Isin")
+                    .withValue("IT0004966401"),
+                new Property()
+                    .withKey("Instrument/default/Isin")
+                    .withValue("FR0010192997")
+            ),
+            null,
+            null,
+            null
+        );
 
-        assertTrue(fbnIds.values().size() > 0);
+        assertTrue(findResponse.values().size() > 0);
     }
 }
