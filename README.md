@@ -30,7 +30,7 @@ Maven artifacts can be downloaded from the Open Source Software Repository Hosti
 </project>
 ```
 
- A pre-generated version of the latest SDK is included in the lusid-sdk-java folder based on the OpenAPI specification named lusid.json in the root folder. The most up to date version of the OpenAPI specification can be downloaded from http://api.finbourne.com/swagger/v0/swagger.json
+ A pre-generated version of the latest SDK is included in the lusid-sdk-java folder based on the OpenAPI specification named lusid.json in the root folder. The most up to date version of the OpenAPI specification can be downloaded from https://api.lusid.com/swagger/v0/swagger.json
 
 In addition to the SDK, a set of examples on how to use the SDK can be found in the [src/test/java](https://github.com/finbourne/lusid-sdk-java/tree/master/lusid-sdk-java/src/test/java) folder. These exist in the form of unit tests. Further instructions on running them can be found in the [README](https://github.com/finbourne/lusid-sdk-java/blob/master/lusid-sdk-java/readme.md).
 
