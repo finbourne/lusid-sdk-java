@@ -27,9 +27,9 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The DeleteClientInstrumentsResponse model.
+ * The GetInstrumentsResponse model.
  */
-public class DeleteClientInstrumentsResponse {
+public class GetInstrumentsResponse {
     /**
      * The href property.
      */
@@ -37,7 +37,17 @@ public class DeleteClientInstrumentsResponse {
     private String href;
 
     /**
-     * The failed property.
+     * The instruments, keyed by their requested identifier. Only instruments
+     * that were found
+     * will be contained in this collection.
+     */
+    @JsonProperty(value = "values")
+    private Map<String, Instrument> values;
+
+    /**
+     * If any instruments were not found, then they will be listed in as
+     * 'Failed', along with the nature
+     * of their failure.
      */
     @JsonProperty(value = "failed")
     private Map<String, ErrorDetail> failed;
@@ -61,15 +71,38 @@ public class DeleteClientInstrumentsResponse {
      * Set the href value.
      *
      * @param href the href value to set
-     * @return the DeleteClientInstrumentsResponse object itself.
+     * @return the GetInstrumentsResponse object itself.
      */
-    public DeleteClientInstrumentsResponse withHref(String href) {
+    public GetInstrumentsResponse withHref(String href) {
         this.href = href;
         return this;
     }
 
     /**
-     * Get the failed value.
+     * Get the instruments, keyed by their requested identifier. Only instruments that were found
+     will be contained in this collection.
+     *
+     * @return the values value
+     */
+    public Map<String, Instrument> values() {
+        return this.values;
+    }
+
+    /**
+     * Set the instruments, keyed by their requested identifier. Only instruments that were found
+     will be contained in this collection.
+     *
+     * @param values the values value to set
+     * @return the GetInstrumentsResponse object itself.
+     */
+    public GetInstrumentsResponse withValues(Map<String, Instrument> values) {
+        this.values = values;
+        return this;
+    }
+
+    /**
+     * Get if any instruments were not found, then they will be listed in as 'Failed', along with the nature
+     of their failure.
      *
      * @return the failed value
      */
@@ -78,12 +111,13 @@ public class DeleteClientInstrumentsResponse {
     }
 
     /**
-     * Set the failed value.
+     * Set if any instruments were not found, then they will be listed in as 'Failed', along with the nature
+     of their failure.
      *
      * @param failed the failed value to set
-     * @return the DeleteClientInstrumentsResponse object itself.
+     * @return the GetInstrumentsResponse object itself.
      */
-    public DeleteClientInstrumentsResponse withFailed(Map<String, ErrorDetail> failed) {
+    public GetInstrumentsResponse withFailed(Map<String, ErrorDetail> failed) {
         this.failed = failed;
         return this;
     }
@@ -101,9 +135,9 @@ public class DeleteClientInstrumentsResponse {
      * Set the links value.
      *
      * @param links the links value to set
-     * @return the DeleteClientInstrumentsResponse object itself.
+     * @return the GetInstrumentsResponse object itself.
      */
-    public DeleteClientInstrumentsResponse withLinks(List<Link> links) {
+    public GetInstrumentsResponse withLinks(List<Link> links) {
         this.links = links;
         return this;
     }

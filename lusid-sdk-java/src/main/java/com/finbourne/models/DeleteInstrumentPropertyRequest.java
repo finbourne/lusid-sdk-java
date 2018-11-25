@@ -22,27 +22,29 @@
 
 package com.finbourne.models;
 
+import org.joda.time.DateTime;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The CreateInstrumentPropertyRequest model.
+ * The DeleteInstrumentPropertyRequest model.
  */
-public class CreateInstrumentPropertyRequest {
+public class DeleteInstrumentPropertyRequest {
     /**
-     * The property key of the property, e.g, 'Instrument/default/Isin'.
+     * The property key of the property to be removed from the instrument, e.g
+     * 'Instrument/default/Cusip`.
      */
     @JsonProperty(value = "instrumentPropertyKey")
     private String instrumentPropertyKey;
 
     /**
-     * The value of the property, which must not be empty or null. e.g,
-     * 'US0378331005'.
+     * The date at which the property removal should be effective from. If no
+     * value is set, then 'now' is used.
      */
-    @JsonProperty(value = "property")
-    private PropertyValue property;
+    @JsonProperty(value = "effectiveFrom")
+    private DateTime effectiveFrom;
 
     /**
-     * Get the property key of the property, e.g, 'Instrument/default/Isin'.
+     * Get the property key of the property to be removed from the instrument, e.g 'Instrument/default/Cusip`.
      *
      * @return the instrumentPropertyKey value
      */
@@ -51,33 +53,33 @@ public class CreateInstrumentPropertyRequest {
     }
 
     /**
-     * Set the property key of the property, e.g, 'Instrument/default/Isin'.
+     * Set the property key of the property to be removed from the instrument, e.g 'Instrument/default/Cusip`.
      *
      * @param instrumentPropertyKey the instrumentPropertyKey value to set
-     * @return the CreateInstrumentPropertyRequest object itself.
+     * @return the DeleteInstrumentPropertyRequest object itself.
      */
-    public CreateInstrumentPropertyRequest withInstrumentPropertyKey(String instrumentPropertyKey) {
+    public DeleteInstrumentPropertyRequest withInstrumentPropertyKey(String instrumentPropertyKey) {
         this.instrumentPropertyKey = instrumentPropertyKey;
         return this;
     }
 
     /**
-     * Get the value of the property, which must not be empty or null. e.g, 'US0378331005'.
+     * Get the date at which the property removal should be effective from. If no value is set, then 'now' is used.
      *
-     * @return the property value
+     * @return the effectiveFrom value
      */
-    public PropertyValue property() {
-        return this.property;
+    public DateTime effectiveFrom() {
+        return this.effectiveFrom;
     }
 
     /**
-     * Set the value of the property, which must not be empty or null. e.g, 'US0378331005'.
+     * Set the date at which the property removal should be effective from. If no value is set, then 'now' is used.
      *
-     * @param property the property value to set
-     * @return the CreateInstrumentPropertyRequest object itself.
+     * @param effectiveFrom the effectiveFrom value to set
+     * @return the DeleteInstrumentPropertyRequest object itself.
      */
-    public CreateInstrumentPropertyRequest withProperty(PropertyValue property) {
-        this.property = property;
+    public DeleteInstrumentPropertyRequest withEffectiveFrom(DateTime effectiveFrom) {
+        this.effectiveFrom = effectiveFrom;
         return this;
     }
 

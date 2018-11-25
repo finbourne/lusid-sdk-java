@@ -26,20 +26,27 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The UpsertInstrumentPropertiesResponse model.
+ * The ResourceListOfCodeType model.
  */
-public class UpsertInstrumentPropertiesResponse {
+public class ResourceListOfCodeType {
     /**
-     * The href property.
+     * The values property.
+     */
+    @JsonProperty(value = "values")
+    private List<String> values;
+
+    /**
+     * The Uri that returns the same result as the original request,
+     * but may include resolved as at time(s).
      */
     @JsonProperty(value = "href")
     private String href;
 
     /**
-     * A list of any values that failed to be upserted.
+     * The total number of records returned in the set.
      */
-    @JsonProperty(value = "failed", access = JsonProperty.Access.WRITE_ONLY)
-    private List<ErrorDetail> failed;
+    @JsonProperty(value = "count")
+    private Integer count;
 
     /**
      * The links property.
@@ -48,7 +55,28 @@ public class UpsertInstrumentPropertiesResponse {
     private List<Link> links;
 
     /**
-     * Get the href value.
+     * Get the values value.
+     *
+     * @return the values value
+     */
+    public List<String> values() {
+        return this.values;
+    }
+
+    /**
+     * Set the values value.
+     *
+     * @param values the values value to set
+     * @return the ResourceListOfCodeType object itself.
+     */
+    public ResourceListOfCodeType withValues(List<String> values) {
+        this.values = values;
+        return this;
+    }
+
+    /**
+     * Get the Uri that returns the same result as the original request,
+     but may include resolved as at time(s).
      *
      * @return the href value
      */
@@ -57,23 +85,35 @@ public class UpsertInstrumentPropertiesResponse {
     }
 
     /**
-     * Set the href value.
+     * Set the Uri that returns the same result as the original request,
+     but may include resolved as at time(s).
      *
      * @param href the href value to set
-     * @return the UpsertInstrumentPropertiesResponse object itself.
+     * @return the ResourceListOfCodeType object itself.
      */
-    public UpsertInstrumentPropertiesResponse withHref(String href) {
+    public ResourceListOfCodeType withHref(String href) {
         this.href = href;
         return this;
     }
 
     /**
-     * Get a list of any values that failed to be upserted.
+     * Get the total number of records returned in the set.
      *
-     * @return the failed value
+     * @return the count value
      */
-    public List<ErrorDetail> failed() {
-        return this.failed;
+    public Integer count() {
+        return this.count;
+    }
+
+    /**
+     * Set the total number of records returned in the set.
+     *
+     * @param count the count value to set
+     * @return the ResourceListOfCodeType object itself.
+     */
+    public ResourceListOfCodeType withCount(Integer count) {
+        this.count = count;
+        return this;
     }
 
     /**
@@ -89,9 +129,9 @@ public class UpsertInstrumentPropertiesResponse {
      * Set the links value.
      *
      * @param links the links value to set
-     * @return the UpsertInstrumentPropertiesResponse object itself.
+     * @return the ResourceListOfCodeType object itself.
      */
-    public UpsertInstrumentPropertiesResponse withLinks(List<Link> links) {
+    public ResourceListOfCodeType withLinks(List<Link> links) {
         this.links = links;
         return this;
     }

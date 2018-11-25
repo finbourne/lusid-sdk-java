@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  * The format for this can be client-defined, but in order to transparently use
  * vendor libraries it must conform to a format that LUSID understands.
  */
-public class InstrumentDefinition {
+public class InstrumentEconomicDefinition {
     /**
      * The instrumentFormat property.
      */
@@ -56,9 +56,9 @@ public class InstrumentDefinition {
      * Set the instrumentFormat value.
      *
      * @param instrumentFormat the instrumentFormat value to set
-     * @return the InstrumentDefinition object itself.
+     * @return the InstrumentEconomicDefinition object itself.
      */
-    public InstrumentDefinition withInstrumentFormat(String instrumentFormat) {
+    public InstrumentEconomicDefinition withInstrumentFormat(String instrumentFormat) {
         this.instrumentFormat = instrumentFormat;
         return this;
     }
@@ -76,9 +76,9 @@ public class InstrumentDefinition {
      * Set the content value.
      *
      * @param content the content value to set
-     * @return the InstrumentDefinition object itself.
+     * @return the InstrumentEconomicDefinition object itself.
      */
-    public InstrumentDefinition withContent(String content) {
+    public InstrumentEconomicDefinition withContent(String content) {
         this.content = content;
         return this;
     }

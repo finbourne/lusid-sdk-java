@@ -22,13 +22,14 @@
 
 package com.finbourne.models;
 
+import org.joda.time.DateTime;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The UpsertInstrumentPropertiesResponse model.
+ * The DeleteInstrumentResponse model.
  */
-public class UpsertInstrumentPropertiesResponse {
+public class DeleteInstrumentResponse {
     /**
      * The href property.
      */
@@ -36,10 +37,12 @@ public class UpsertInstrumentPropertiesResponse {
     private String href;
 
     /**
-     * A list of any values that failed to be upserted.
+     * The 'as at' time that the instrument was deleted at. As at times
+     * preceding this can
+     * still be used to query the instrument.
      */
-    @JsonProperty(value = "failed", access = JsonProperty.Access.WRITE_ONLY)
-    private List<ErrorDetail> failed;
+    @JsonProperty(value = "asAt")
+    private DateTime asAt;
 
     /**
      * The links property.
@@ -60,20 +63,33 @@ public class UpsertInstrumentPropertiesResponse {
      * Set the href value.
      *
      * @param href the href value to set
-     * @return the UpsertInstrumentPropertiesResponse object itself.
+     * @return the DeleteInstrumentResponse object itself.
      */
-    public UpsertInstrumentPropertiesResponse withHref(String href) {
+    public DeleteInstrumentResponse withHref(String href) {
         this.href = href;
         return this;
     }
 
     /**
-     * Get a list of any values that failed to be upserted.
+     * Get the 'as at' time that the instrument was deleted at. As at times preceding this can
+     still be used to query the instrument.
      *
-     * @return the failed value
+     * @return the asAt value
      */
-    public List<ErrorDetail> failed() {
-        return this.failed;
+    public DateTime asAt() {
+        return this.asAt;
+    }
+
+    /**
+     * Set the 'as at' time that the instrument was deleted at. As at times preceding this can
+     still be used to query the instrument.
+     *
+     * @param asAt the asAt value to set
+     * @return the DeleteInstrumentResponse object itself.
+     */
+    public DeleteInstrumentResponse withAsAt(DateTime asAt) {
+        this.asAt = asAt;
+        return this;
     }
 
     /**
@@ -89,9 +105,9 @@ public class UpsertInstrumentPropertiesResponse {
      * Set the links value.
      *
      * @param links the links value to set
-     * @return the UpsertInstrumentPropertiesResponse object itself.
+     * @return the DeleteInstrumentResponse object itself.
      */
-    public UpsertInstrumentPropertiesResponse withLinks(List<Link> links) {
+    public DeleteInstrumentResponse withLinks(List<Link> links) {
         this.links = links;
         return this;
     }

@@ -37,43 +37,46 @@ public class Instrument {
     private String href;
 
     /**
-     * The uid property.
+     * The lusid instrument id (LUID) of the instrument.
      */
-    @JsonProperty(value = "uid")
-    private String uid;
+    @JsonProperty(value = "lusidInstrumentId")
+    private String lusidInstrumentId;
 
     /**
-     * The version property.
+     * The version of the instrument.
      */
     @JsonProperty(value = "version")
     private Version version;
 
     /**
-     * The commonName property.
+     * The name of the instrument.
      */
-    @JsonProperty(value = "commonName")
-    private String commonName;
+    @JsonProperty(value = "name")
+    private String name;
 
     /**
-     * The aliases property.
+     * The set of identifiers that can be used to uniquely identify the
+     * instrument.
      */
-    @JsonProperty(value = "aliases")
-    private Map<String, String> aliases;
+    @JsonProperty(value = "identifiers")
+    private Map<String, String> identifiers;
 
     /**
-     * The properties property.
+     * Any requested instrument properties. If no property can be found for the
+     * instrument, then
+     * a value of 'Unknown' will be returned.
      */
     @JsonProperty(value = "properties")
     private List<Property> properties;
 
     /**
-     * The marketIdentifierCode property.
+     * The market identifier of the instrument (if any).
      */
     @JsonProperty(value = "marketIdentifierCode")
     private String marketIdentifierCode;
 
     /**
-     * The lookthroughPortfolio property.
+     * The lookthrough portfolio of the instrument (if any).
      */
     @JsonProperty(value = "lookthroughPortfolio")
     private ResourceId lookthroughPortfolio;
@@ -105,27 +108,27 @@ public class Instrument {
     }
 
     /**
-     * Get the uid value.
+     * Get the lusid instrument id (LUID) of the instrument.
      *
-     * @return the uid value
+     * @return the lusidInstrumentId value
      */
-    public String uid() {
-        return this.uid;
+    public String lusidInstrumentId() {
+        return this.lusidInstrumentId;
     }
 
     /**
-     * Set the uid value.
+     * Set the lusid instrument id (LUID) of the instrument.
      *
-     * @param uid the uid value to set
+     * @param lusidInstrumentId the lusidInstrumentId value to set
      * @return the Instrument object itself.
      */
-    public Instrument withUid(String uid) {
-        this.uid = uid;
+    public Instrument withLusidInstrumentId(String lusidInstrumentId) {
+        this.lusidInstrumentId = lusidInstrumentId;
         return this;
     }
 
     /**
-     * Get the version value.
+     * Get the version of the instrument.
      *
      * @return the version value
      */
@@ -134,7 +137,7 @@ public class Instrument {
     }
 
     /**
-     * Set the version value.
+     * Set the version of the instrument.
      *
      * @param version the version value to set
      * @return the Instrument object itself.
@@ -145,47 +148,48 @@ public class Instrument {
     }
 
     /**
-     * Get the commonName value.
+     * Get the name of the instrument.
      *
-     * @return the commonName value
+     * @return the name value
      */
-    public String commonName() {
-        return this.commonName;
+    public String name() {
+        return this.name;
     }
 
     /**
-     * Set the commonName value.
+     * Set the name of the instrument.
      *
-     * @param commonName the commonName value to set
+     * @param name the name value to set
      * @return the Instrument object itself.
      */
-    public Instrument withCommonName(String commonName) {
-        this.commonName = commonName;
+    public Instrument withName(String name) {
+        this.name = name;
         return this;
     }
 
     /**
-     * Get the aliases value.
+     * Get the set of identifiers that can be used to uniquely identify the instrument.
      *
-     * @return the aliases value
+     * @return the identifiers value
      */
-    public Map<String, String> aliases() {
-        return this.aliases;
+    public Map<String, String> identifiers() {
+        return this.identifiers;
     }
 
     /**
-     * Set the aliases value.
+     * Set the set of identifiers that can be used to uniquely identify the instrument.
      *
-     * @param aliases the aliases value to set
+     * @param identifiers the identifiers value to set
      * @return the Instrument object itself.
      */
-    public Instrument withAliases(Map<String, String> aliases) {
-        this.aliases = aliases;
+    public Instrument withIdentifiers(Map<String, String> identifiers) {
+        this.identifiers = identifiers;
         return this;
     }
 
     /**
-     * Get the properties value.
+     * Get any requested instrument properties. If no property can be found for the instrument, then
+     a value of 'Unknown' will be returned.
      *
      * @return the properties value
      */
@@ -194,7 +198,8 @@ public class Instrument {
     }
 
     /**
-     * Set the properties value.
+     * Set any requested instrument properties. If no property can be found for the instrument, then
+     a value of 'Unknown' will be returned.
      *
      * @param properties the properties value to set
      * @return the Instrument object itself.
@@ -205,7 +210,7 @@ public class Instrument {
     }
 
     /**
-     * Get the marketIdentifierCode value.
+     * Get the market identifier of the instrument (if any).
      *
      * @return the marketIdentifierCode value
      */
@@ -214,7 +219,7 @@ public class Instrument {
     }
 
     /**
-     * Set the marketIdentifierCode value.
+     * Set the market identifier of the instrument (if any).
      *
      * @param marketIdentifierCode the marketIdentifierCode value to set
      * @return the Instrument object itself.
@@ -225,7 +230,7 @@ public class Instrument {
     }
 
     /**
-     * Get the lookthroughPortfolio value.
+     * Get the lookthrough portfolio of the instrument (if any).
      *
      * @return the lookthroughPortfolio value
      */
@@ -234,7 +239,7 @@ public class Instrument {
     }
 
     /**
-     * Set the lookthroughPortfolio value.
+     * Set the lookthrough portfolio of the instrument (if any).
      *
      * @param lookthroughPortfolio the lookthroughPortfolio value to set
      * @return the Instrument object itself.

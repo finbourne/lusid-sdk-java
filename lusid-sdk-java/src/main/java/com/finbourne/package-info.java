@@ -21,7 +21,7 @@
 /**
  * This package contains the classes for LUSIDAPI.
  * # Introduction
- This page documents the [LUSID APIs](https://api.finbourne.com/swagger), which allows authorised clients to query and update their data within the LUSID platform.
+ This page documents the [LUSID APIs](https://api.lusid.com/swagger), which allows authorised clients to query and update their data within the LUSID platform.
  SDKs to interact with the LUSID APIs are available in the following languages :
  * [C#](https://github.com/finbourne/lusid-sdk-csharp)
  * [Java](https://github.com/finbourne/lusid-sdk-java)
@@ -75,7 +75,7 @@
  Instrument data can be uploaded to the system using the [Instrument Properties](#tag/InstrumentProperties) endpoint.
  | Field|Type|Description |
  | ---|---|--- |
- | InstrumentUid|string|Unique instrument identifier |
+ | LusidInstrumentId|string|Unique instrument identifier |
  ## Portfolios
  Portfolios are the top-level entity containers within LUSID, containing transactions, corporate actions and holdings.    The transactions build up the portfolio holdings on which valuations, analytics profit & loss and risk can be calculated.
  Properties can be associated with Portfolios to add in additional model data.  Portfolio properties can be changed over time as well.  For example, to allow a Portfolio Manager to be linked with a Portfolio.
@@ -117,12 +117,15 @@
  | SettlementDate|datetime|Settlement date |
  | Units|decimal|Quantity of transaction in units of the instrument |
  | TransactionPrice|tradeprice|Execution price for the transaction |
- | TotalConsideration|currencyandamount|Total value of the transaction |
+ | TotalConsideration|currencyandamount|Total value of the transaction in settlement currency |
  | ExchangeRate|decimal|Rate between transaction and settle currency |
  | TransactionCurrency|currency|Transaction currency |
  | CounterpartyId|string|Counterparty identifier |
  | Source|string|Where this transaction came from |
  | NettingSet|string|  |
+ From these fields, the following values can be calculated
+  * **Transaction value in Transaction currency**: TotalConsideration / ExchangeRate
+  * **Transaction value in Portfolio currency**: Transaction value in Transaction currency * TradeToPortfolioRate
  ### Example Transactions
  #### A Common Purchase Example
  Three example transactions are shown in the table below.

@@ -27,9 +27,9 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The LookupInstrumentsFromCodesResponse model.
+ * The FindInstrumentsResponse model.
  */
-public class LookupInstrumentsFromCodesResponse {
+public class FindInstrumentsResponse {
     /**
      * The href property.
      */
@@ -37,16 +37,14 @@ public class LookupInstrumentsFromCodesResponse {
     private String href;
 
     /**
-     * The values property.
+     * A dictionary of instruments that are keyed by the search criteria
+     * supplied in the
+     * matching request. If no match was found, then there will be no values in
+     * the collection
+     * for that key.
      */
     @JsonProperty(value = "values")
-    private Map<String, List<Instrument>> values;
-
-    /**
-     * The failed property.
-     */
-    @JsonProperty(value = "failed")
-    private Map<String, ErrorDetail> failed;
+    private Map<String, List<InstrumentMatch>> values;
 
     /**
      * The links property.
@@ -67,50 +65,34 @@ public class LookupInstrumentsFromCodesResponse {
      * Set the href value.
      *
      * @param href the href value to set
-     * @return the LookupInstrumentsFromCodesResponse object itself.
+     * @return the FindInstrumentsResponse object itself.
      */
-    public LookupInstrumentsFromCodesResponse withHref(String href) {
+    public FindInstrumentsResponse withHref(String href) {
         this.href = href;
         return this;
     }
 
     /**
-     * Get the values value.
+     * Get a dictionary of instruments that are keyed by the search criteria supplied in the
+     matching request. If no match was found, then there will be no values in the collection
+     for that key.
      *
      * @return the values value
      */
-    public Map<String, List<Instrument>> values() {
+    public Map<String, List<InstrumentMatch>> values() {
         return this.values;
     }
 
     /**
-     * Set the values value.
+     * Set a dictionary of instruments that are keyed by the search criteria supplied in the
+     matching request. If no match was found, then there will be no values in the collection
+     for that key.
      *
      * @param values the values value to set
-     * @return the LookupInstrumentsFromCodesResponse object itself.
+     * @return the FindInstrumentsResponse object itself.
      */
-    public LookupInstrumentsFromCodesResponse withValues(Map<String, List<Instrument>> values) {
+    public FindInstrumentsResponse withValues(Map<String, List<InstrumentMatch>> values) {
         this.values = values;
-        return this;
-    }
-
-    /**
-     * Get the failed value.
-     *
-     * @return the failed value
-     */
-    public Map<String, ErrorDetail> failed() {
-        return this.failed;
-    }
-
-    /**
-     * Set the failed value.
-     *
-     * @param failed the failed value to set
-     * @return the LookupInstrumentsFromCodesResponse object itself.
-     */
-    public LookupInstrumentsFromCodesResponse withFailed(Map<String, ErrorDetail> failed) {
-        this.failed = failed;
         return this;
     }
 
@@ -127,9 +109,9 @@ public class LookupInstrumentsFromCodesResponse {
      * Set the links value.
      *
      * @param links the links value to set
-     * @return the LookupInstrumentsFromCodesResponse object itself.
+     * @return the FindInstrumentsResponse object itself.
      */
-    public LookupInstrumentsFromCodesResponse withLinks(List<Link> links) {
+    public FindInstrumentsResponse withLinks(List<Link> links) {
         this.links = links;
         return this;
     }

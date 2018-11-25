@@ -73,7 +73,7 @@ public class Transaction {
     private TransactionPrice transactionPrice;
 
     /**
-     * Total value of the transaction.
+     * Total value of the transaction in settlement currency.
      */
     @JsonProperty(value = "totalConsideration", required = true)
     private CurrencyAndAmount totalConsideration;
@@ -256,7 +256,7 @@ public class Transaction {
     }
 
     /**
-     * Get total value of the transaction.
+     * Get total value of the transaction in settlement currency.
      *
      * @return the totalConsideration value
      */
@@ -265,7 +265,7 @@ public class Transaction {
     }
 
     /**
-     * Set total value of the transaction.
+     * Set total value of the transaction in settlement currency.
      *
      * @param totalConsideration the totalConsideration value to set
      * @return the Transaction object itself.

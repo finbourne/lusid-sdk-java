@@ -32,37 +32,44 @@ public class InstrumentProperty {
     /**
      * Unique instrument identifier.
      */
-    @JsonProperty(value = "instrumentUid")
-    private String instrumentUid;
+    @JsonProperty(value = "lusidInstrumentId")
+    private String lusidInstrumentId;
 
     /**
-     * The properties property.
+     * A collection of properties to create or update.
      */
     @JsonProperty(value = "properties")
     private List<CreateInstrumentPropertyRequest> properties;
 
     /**
+     * A collection of property keys to remove property values from, if any are
+     * set for the instrument.
+     */
+    @JsonProperty(value = "deletedProperties")
+    private List<DeleteInstrumentPropertyRequest> deletedProperties;
+
+    /**
      * Get unique instrument identifier.
      *
-     * @return the instrumentUid value
+     * @return the lusidInstrumentId value
      */
-    public String instrumentUid() {
-        return this.instrumentUid;
+    public String lusidInstrumentId() {
+        return this.lusidInstrumentId;
     }
 
     /**
      * Set unique instrument identifier.
      *
-     * @param instrumentUid the instrumentUid value to set
+     * @param lusidInstrumentId the lusidInstrumentId value to set
      * @return the InstrumentProperty object itself.
      */
-    public InstrumentProperty withInstrumentUid(String instrumentUid) {
-        this.instrumentUid = instrumentUid;
+    public InstrumentProperty withLusidInstrumentId(String lusidInstrumentId) {
+        this.lusidInstrumentId = lusidInstrumentId;
         return this;
     }
 
     /**
-     * Get the properties value.
+     * Get a collection of properties to create or update.
      *
      * @return the properties value
      */
@@ -71,13 +78,33 @@ public class InstrumentProperty {
     }
 
     /**
-     * Set the properties value.
+     * Set a collection of properties to create or update.
      *
      * @param properties the properties value to set
      * @return the InstrumentProperty object itself.
      */
     public InstrumentProperty withProperties(List<CreateInstrumentPropertyRequest> properties) {
         this.properties = properties;
+        return this;
+    }
+
+    /**
+     * Get a collection of property keys to remove property values from, if any are set for the instrument.
+     *
+     * @return the deletedProperties value
+     */
+    public List<DeleteInstrumentPropertyRequest> deletedProperties() {
+        return this.deletedProperties;
+    }
+
+    /**
+     * Set a collection of property keys to remove property values from, if any are set for the instrument.
+     *
+     * @param deletedProperties the deletedProperties value to set
+     * @return the InstrumentProperty object itself.
+     */
+    public InstrumentProperty withDeletedProperties(List<DeleteInstrumentPropertyRequest> deletedProperties) {
+        this.deletedProperties = deletedProperties;
         return this;
     }
 

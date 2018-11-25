@@ -22,26 +22,29 @@
 
 package com.finbourne.models;
 
+import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The CreateClientInstrumentRequest model.
+ * The UpsertInstrumentRequest model.
  */
-public class CreateClientInstrumentRequest {
+public class UpsertInstrumentRequest {
     /**
-     * The clientInstrumentId property.
-     */
-    @JsonProperty(value = "clientInstrumentId", required = true)
-    private String clientInstrumentId;
-
-    /**
-     * The name property.
+     * Required. The name of the instrument.
      */
     @JsonProperty(value = "name", required = true)
     private String name;
 
     /**
-     * The lookThroughPortfolioId property.
+     * Required. A set of identifiers that uniquely identify this instrument
+     * (e.g FIGI, RIC).
+     */
+    @JsonProperty(value = "identifiers", required = true)
+    private Map<String, String> identifiers;
+
+    /**
+     * Optional. The identifier of the portfolio that represents this
+     * instrument.
      */
     @JsonProperty(value = "lookThroughPortfolioId")
     private ResourceId lookThroughPortfolioId;
@@ -53,31 +56,11 @@ public class CreateClientInstrumentRequest {
      * use
      * vendor libraries it must conform to a format that LUSID understands.
      */
-    @JsonProperty(value = "instrument")
-    private InstrumentDefinition instrument;
+    @JsonProperty(value = "definition")
+    private InstrumentEconomicDefinition definition;
 
     /**
-     * Get the clientInstrumentId value.
-     *
-     * @return the clientInstrumentId value
-     */
-    public String clientInstrumentId() {
-        return this.clientInstrumentId;
-    }
-
-    /**
-     * Set the clientInstrumentId value.
-     *
-     * @param clientInstrumentId the clientInstrumentId value to set
-     * @return the CreateClientInstrumentRequest object itself.
-     */
-    public CreateClientInstrumentRequest withClientInstrumentId(String clientInstrumentId) {
-        this.clientInstrumentId = clientInstrumentId;
-        return this;
-    }
-
-    /**
-     * Get the name value.
+     * Get required. The name of the instrument.
      *
      * @return the name value
      */
@@ -86,18 +69,38 @@ public class CreateClientInstrumentRequest {
     }
 
     /**
-     * Set the name value.
+     * Set required. The name of the instrument.
      *
      * @param name the name value to set
-     * @return the CreateClientInstrumentRequest object itself.
+     * @return the UpsertInstrumentRequest object itself.
      */
-    public CreateClientInstrumentRequest withName(String name) {
+    public UpsertInstrumentRequest withName(String name) {
         this.name = name;
         return this;
     }
 
     /**
-     * Get the lookThroughPortfolioId value.
+     * Get required. A set of identifiers that uniquely identify this instrument (e.g FIGI, RIC).
+     *
+     * @return the identifiers value
+     */
+    public Map<String, String> identifiers() {
+        return this.identifiers;
+    }
+
+    /**
+     * Set required. A set of identifiers that uniquely identify this instrument (e.g FIGI, RIC).
+     *
+     * @param identifiers the identifiers value to set
+     * @return the UpsertInstrumentRequest object itself.
+     */
+    public UpsertInstrumentRequest withIdentifiers(Map<String, String> identifiers) {
+        this.identifiers = identifiers;
+        return this;
+    }
+
+    /**
+     * Get optional. The identifier of the portfolio that represents this instrument.
      *
      * @return the lookThroughPortfolioId value
      */
@@ -106,12 +109,12 @@ public class CreateClientInstrumentRequest {
     }
 
     /**
-     * Set the lookThroughPortfolioId value.
+     * Set optional. The identifier of the portfolio that represents this instrument.
      *
      * @param lookThroughPortfolioId the lookThroughPortfolioId value to set
-     * @return the CreateClientInstrumentRequest object itself.
+     * @return the UpsertInstrumentRequest object itself.
      */
-    public CreateClientInstrumentRequest withLookThroughPortfolioId(ResourceId lookThroughPortfolioId) {
+    public UpsertInstrumentRequest withLookThroughPortfolioId(ResourceId lookThroughPortfolioId) {
         this.lookThroughPortfolioId = lookThroughPortfolioId;
         return this;
     }
@@ -122,10 +125,10 @@ public class CreateClientInstrumentRequest {
      The format for this can be client-defined, but in order to transparently use
      vendor libraries it must conform to a format that LUSID understands.
      *
-     * @return the instrument value
+     * @return the definition value
      */
-    public InstrumentDefinition instrument() {
-        return this.instrument;
+    public InstrumentEconomicDefinition definition() {
+        return this.definition;
     }
 
     /**
@@ -134,11 +137,11 @@ public class CreateClientInstrumentRequest {
      The format for this can be client-defined, but in order to transparently use
      vendor libraries it must conform to a format that LUSID understands.
      *
-     * @param instrument the instrument value to set
-     * @return the CreateClientInstrumentRequest object itself.
+     * @param definition the definition value to set
+     * @return the UpsertInstrumentRequest object itself.
      */
-    public CreateClientInstrumentRequest withInstrument(InstrumentDefinition instrument) {
-        this.instrument = instrument;
+    public UpsertInstrumentRequest withDefinition(InstrumentEconomicDefinition definition) {
+        this.definition = definition;
         return this;
     }
 

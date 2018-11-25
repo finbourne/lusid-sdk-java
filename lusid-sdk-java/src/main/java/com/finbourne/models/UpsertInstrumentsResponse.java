@@ -22,13 +22,14 @@
 
 package com.finbourne.models;
 
+import java.util.Map;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The UpsertInstrumentPropertiesResponse model.
+ * The UpsertInstrumentsResponse model.
  */
-public class UpsertInstrumentPropertiesResponse {
+public class UpsertInstrumentsResponse {
     /**
      * The href property.
      */
@@ -36,10 +37,18 @@ public class UpsertInstrumentPropertiesResponse {
     private String href;
 
     /**
-     * A list of any values that failed to be upserted.
+     * The collection of upserted instruments with their latest parameters.
      */
-    @JsonProperty(value = "failed", access = JsonProperty.Access.WRITE_ONLY)
-    private List<ErrorDetail> failed;
+    @JsonProperty(value = "values")
+    private Map<String, Instrument> values;
+
+    /**
+     * If any instruments failed to be upserted, they will be listed in
+     * 'Failed', along
+     * with a reason why.
+     */
+    @JsonProperty(value = "failed")
+    private Map<String, ErrorDetail> failed;
 
     /**
      * The links property.
@@ -60,20 +69,53 @@ public class UpsertInstrumentPropertiesResponse {
      * Set the href value.
      *
      * @param href the href value to set
-     * @return the UpsertInstrumentPropertiesResponse object itself.
+     * @return the UpsertInstrumentsResponse object itself.
      */
-    public UpsertInstrumentPropertiesResponse withHref(String href) {
+    public UpsertInstrumentsResponse withHref(String href) {
         this.href = href;
         return this;
     }
 
     /**
-     * Get a list of any values that failed to be upserted.
+     * Get the collection of upserted instruments with their latest parameters.
+     *
+     * @return the values value
+     */
+    public Map<String, Instrument> values() {
+        return this.values;
+    }
+
+    /**
+     * Set the collection of upserted instruments with their latest parameters.
+     *
+     * @param values the values value to set
+     * @return the UpsertInstrumentsResponse object itself.
+     */
+    public UpsertInstrumentsResponse withValues(Map<String, Instrument> values) {
+        this.values = values;
+        return this;
+    }
+
+    /**
+     * Get if any instruments failed to be upserted, they will be listed in 'Failed', along
+     with a reason why.
      *
      * @return the failed value
      */
-    public List<ErrorDetail> failed() {
+    public Map<String, ErrorDetail> failed() {
         return this.failed;
+    }
+
+    /**
+     * Set if any instruments failed to be upserted, they will be listed in 'Failed', along
+     with a reason why.
+     *
+     * @param failed the failed value to set
+     * @return the UpsertInstrumentsResponse object itself.
+     */
+    public UpsertInstrumentsResponse withFailed(Map<String, ErrorDetail> failed) {
+        this.failed = failed;
+        return this;
     }
 
     /**
@@ -89,9 +131,9 @@ public class UpsertInstrumentPropertiesResponse {
      * Set the links value.
      *
      * @param links the links value to set
-     * @return the UpsertInstrumentPropertiesResponse object itself.
+     * @return the UpsertInstrumentsResponse object itself.
      */
-    public UpsertInstrumentPropertiesResponse withLinks(List<Link> links) {
+    public UpsertInstrumentsResponse withLinks(List<Link> links) {
         this.links = links;
         return this;
     }

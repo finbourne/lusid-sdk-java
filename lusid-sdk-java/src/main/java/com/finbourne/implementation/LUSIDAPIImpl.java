@@ -33,7 +33,6 @@ import com.finbourne.models.AdjustHoldingRequest;
 import com.finbourne.models.AggregationRequest;
 import com.finbourne.models.AnalyticStore;
 import com.finbourne.models.CreateAnalyticStoreRequest;
-import com.finbourne.models.CreateClientInstrumentRequest;
 import com.finbourne.models.CreateCorporateAction;
 import com.finbourne.models.CreateDataTypeRequest;
 import com.finbourne.models.CreateDerivedTransactionPortfolioRequest;
@@ -44,19 +43,20 @@ import com.finbourne.models.CreateReferencePortfolioRequest;
 import com.finbourne.models.CreateResults;
 import com.finbourne.models.CreateTransactionPortfolioRequest;
 import com.finbourne.models.DataType;
-import com.finbourne.models.DeleteClientInstrumentsResponse;
 import com.finbourne.models.DeletedEntityResponse;
+import com.finbourne.models.DeleteInstrumentResponse;
 import com.finbourne.models.DeleteQuotesResponse;
 import com.finbourne.models.ErrorResponseException;
 import com.finbourne.models.ExecutionRequest;
 import com.finbourne.models.ExpandedGroup;
 import com.finbourne.models.FileResponse;
+import com.finbourne.models.FindInstrumentsResponse;
+import com.finbourne.models.GetInstrumentsResponse;
 import com.finbourne.models.HoldingsAdjustment;
 import com.finbourne.models.Instrument;
 import com.finbourne.models.InstrumentAnalytic;
 import com.finbourne.models.InstrumentProperty;
 import com.finbourne.models.ListAggregationResponse;
-import com.finbourne.models.LookupInstrumentsFromCodesResponse;
 import com.finbourne.models.NestedAggregationResponse;
 import com.finbourne.models.PerpetualPropertyValue;
 import com.finbourne.models.Personalisation;
@@ -65,15 +65,18 @@ import com.finbourne.models.PortfolioDetails;
 import com.finbourne.models.PortfolioGroup;
 import com.finbourne.models.PortfolioProperties;
 import com.finbourne.models.PortfoliosReconciliationRequest;
+import com.finbourne.models.Property;
 import com.finbourne.models.PropertyDefinition;
 import com.finbourne.models.PropertySchema;
 import com.finbourne.models.PropertyValue;
 import com.finbourne.models.ReferencePortfolioConstituentRequest;
 import com.finbourne.models.ResourceId;
 import com.finbourne.models.ResourceListOfAnalyticStoreKey;
+import com.finbourne.models.ResourceListOfCodeType;
 import com.finbourne.models.ResourceListOfCorporateAction;
 import com.finbourne.models.ResourceListOfDataType;
 import com.finbourne.models.ResourceListOfHoldingsAdjustmentHeader;
+import com.finbourne.models.ResourceListOfInstrument;
 import com.finbourne.models.ResourceListOfIUnitDefinitionDto;
 import com.finbourne.models.ResourceListOfPersonalisation;
 import com.finbourne.models.ResourceListOfPortfolio;
@@ -93,13 +96,15 @@ import com.finbourne.models.Schema;
 import com.finbourne.models.TransactionConfigurationDataRequest;
 import com.finbourne.models.TransactionQueryParameters;
 import com.finbourne.models.TransactionRequest;
-import com.finbourne.models.TryAddClientInstruments;
 import com.finbourne.models.UpdateDataTypeRequest;
+import com.finbourne.models.UpdateInstrumentIdentifierRequest;
 import com.finbourne.models.UpdatePortfolioGroupRequest;
 import com.finbourne.models.UpdatePortfolioRequest;
 import com.finbourne.models.UpdatePropertyDefinitionRequest;
 import com.finbourne.models.UpsertCorporateActionsResponse;
 import com.finbourne.models.UpsertInstrumentPropertiesResponse;
+import com.finbourne.models.UpsertInstrumentRequest;
+import com.finbourne.models.UpsertInstrumentsResponse;
 import com.finbourne.models.UpsertPersonalisationResponse;
 import com.finbourne.models.UpsertPortfolioExecutionsResponse;
 import com.finbourne.models.UpsertPortfolioTransactionsResponse;
@@ -261,25 +266,41 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
         @HTTP(path = "api/derivedtransactionportfolios/{scope}/{code}/details", method = "DELETE", hasBody = true)
         Observable<Response<ResponseBody>> deleteDerivedPortfolioDetails(@Path("scope") String scope, @Path("code") String code, @Query("effectiveAt") DateTime effectiveAt);
 
-        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI batchAddClientInstruments" })
-        @POST("api/instruments")
-        Observable<Response<ResponseBody>> batchAddClientInstruments(@Body Map<String, CreateClientInstrumentRequest> definitions);
+        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getInstrumentIdentifiers" })
+        @GET("api/instruments")
+        Observable<Response<ResponseBody>> getInstrumentIdentifiers();
 
-        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI batchDeleteClientInstruments" })
-        @HTTP(path = "api/instruments", method = "DELETE", hasBody = true)
-        Observable<Response<ResponseBody>> batchDeleteClientInstruments(@Query("uids") String uids);
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI upsertInstruments" })
+        @POST("api/instruments")
+        Observable<Response<ResponseBody>> upsertInstruments(@Body Map<String, UpsertInstrumentRequest> requests);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getInstrument" })
-        @GET("api/instruments/{uid}")
-        Observable<Response<ResponseBody>> getInstrument(@Path("uid") String uid, @Query("asAt") DateTime asAt, @Query("instrumentPropertyKeys") String instrumentPropertyKeys);
+        @GET("api/instruments/{type}/{id}")
+        Observable<Response<ResponseBody>> getInstrument(@Path("type") String type, @Path("id") String id, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("instrumentPropertyKeys") String instrumentPropertyKeys);
 
-        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI lookupInstrumentsFromCodes" })
-        @POST("api/instruments/$lookup")
-        Observable<Response<ResponseBody>> lookupInstrumentsFromCodes(@Query("codeType") String codeType, @Body List<String> codes, @Query("asAt") DateTime asAt, @Query("instrumentPropertyKeys") String instrumentPropertyKeys);
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI updateInstrumentIdentifier" })
+        @POST("api/instruments/{type}/{id}")
+        Observable<Response<ResponseBody>> updateInstrumentIdentifier(@Path("type") String type, @Path("id") String id, @Body UpdateInstrumentIdentifierRequest request);
 
-        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI batchUpsertInstrumentProperties" })
+        @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI deleteInstrument" })
+        @HTTP(path = "api/instruments/{type}/{id}", method = "DELETE", hasBody = true)
+        Observable<Response<ResponseBody>> deleteInstrument(@Path("type") String type, @Path("id") String id);
+
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI findExternalInstruments" })
+        @POST("api/instruments/$find")
+        Observable<Response<ResponseBody>> findExternalInstruments(@Query("codeType") String codeType, @Body List<String> codes);
+
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getInstruments" })
+        @POST("api/instruments/$get")
+        Observable<Response<ResponseBody>> getInstruments(@Query("codeType") String codeType, @Body List<String> codes, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("instrumentPropertyKeys") String instrumentPropertyKeys);
+
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI findInstruments" })
+        @POST("api/instruments/$query")
+        Observable<Response<ResponseBody>> findInstruments(@Body List<Property> aliases, @Query("effectiveAt") DateTime effectiveAt, @Query("asAt") DateTime asAt, @Query("instrumentPropertyKeys") String instrumentPropertyKeys);
+
+        @Headers({ "Content-Type: application/json-patch+json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI upsertInstrumentsProperties" })
         @POST("api/instruments/$upsertproperties")
-        Observable<Response<ResponseBody>> batchUpsertInstrumentProperties(@Body List<InstrumentProperty> instrumentProperties);
+        Observable<Response<ResponseBody>> upsertInstrumentsProperties(@Body List<InstrumentProperty> instrumentProperties);
 
         @Headers({ "Content-Type: application/json; charset=utf-8", "x-ms-logging-context: com.finbourne.LUSIDAPI getSamlIdentityProviderId" })
         @GET("api/login/saml/{domain}")
@@ -2758,73 +2779,64 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Create instrument.
-     * Attempt to create one or more "client" instruments. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
-     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
-     request.
-     It is important to always check the 'Failed' set for any unsuccessful results.
+     * Get allowable instrument identifiers.
+     * Gets the set of identifiers that have been configured as unique identifiers for instruments.
+     Only CodeTypes returned from this end point can be used as identifiers for instruments.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryAddClientInstruments object if successful.
+     * @return the ResourceListOfCodeType object if successful.
      */
-    public TryAddClientInstruments batchAddClientInstruments() {
-        return batchAddClientInstrumentsWithServiceResponseAsync().toBlocking().single().body();
+    public ResourceListOfCodeType getInstrumentIdentifiers() {
+        return getInstrumentIdentifiersWithServiceResponseAsync().toBlocking().single().body();
     }
 
     /**
-     * Create instrument.
-     * Attempt to create one or more "client" instruments. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
-     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
-     request.
-     It is important to always check the 'Failed' set for any unsuccessful results.
+     * Get allowable instrument identifiers.
+     * Gets the set of identifiers that have been configured as unique identifiers for instruments.
+     Only CodeTypes returned from this end point can be used as identifiers for instruments.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<TryAddClientInstruments> batchAddClientInstrumentsAsync(final ServiceCallback<TryAddClientInstruments> serviceCallback) {
-        return ServiceFuture.fromResponse(batchAddClientInstrumentsWithServiceResponseAsync(), serviceCallback);
+    public ServiceFuture<ResourceListOfCodeType> getInstrumentIdentifiersAsync(final ServiceCallback<ResourceListOfCodeType> serviceCallback) {
+        return ServiceFuture.fromResponse(getInstrumentIdentifiersWithServiceResponseAsync(), serviceCallback);
     }
 
     /**
-     * Create instrument.
-     * Attempt to create one or more "client" instruments. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
-     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
-     request.
-     It is important to always check the 'Failed' set for any unsuccessful results.
+     * Get allowable instrument identifiers.
+     * Gets the set of identifiers that have been configured as unique identifiers for instruments.
+     Only CodeTypes returned from this end point can be used as identifiers for instruments.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryAddClientInstruments object
+     * @return the observable to the ResourceListOfCodeType object
      */
-    public Observable<TryAddClientInstruments> batchAddClientInstrumentsAsync() {
-        return batchAddClientInstrumentsWithServiceResponseAsync().map(new Func1<ServiceResponse<TryAddClientInstruments>, TryAddClientInstruments>() {
+    public Observable<ResourceListOfCodeType> getInstrumentIdentifiersAsync() {
+        return getInstrumentIdentifiersWithServiceResponseAsync().map(new Func1<ServiceResponse<ResourceListOfCodeType>, ResourceListOfCodeType>() {
             @Override
-            public TryAddClientInstruments call(ServiceResponse<TryAddClientInstruments> response) {
+            public ResourceListOfCodeType call(ServiceResponse<ResourceListOfCodeType> response) {
                 return response.body();
             }
         });
     }
 
     /**
-     * Create instrument.
-     * Attempt to create one or more "client" instruments. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
-     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
-     request.
-     It is important to always check the 'Failed' set for any unsuccessful results.
+     * Get allowable instrument identifiers.
+     * Gets the set of identifiers that have been configured as unique identifiers for instruments.
+     Only CodeTypes returned from this end point can be used as identifiers for instruments.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryAddClientInstruments object
+     * @return the observable to the ResourceListOfCodeType object
      */
-    public Observable<ServiceResponse<TryAddClientInstruments>> batchAddClientInstrumentsWithServiceResponseAsync() {
-        final Map<String, CreateClientInstrumentRequest> definitions = null;
-        return service.batchAddClientInstruments(definitions)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<TryAddClientInstruments>>>() {
+    public Observable<ServiceResponse<ResourceListOfCodeType>> getInstrumentIdentifiersWithServiceResponseAsync() {
+        return service.getInstrumentIdentifiers()
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfCodeType>>>() {
                 @Override
-                public Observable<ServiceResponse<TryAddClientInstruments>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<ResourceListOfCodeType>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<TryAddClientInstruments> clientResponse = batchAddClientInstrumentsDelegate(response);
+                        ServiceResponse<ResourceListOfCodeType> clientResponse = getInstrumentIdentifiersDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -2833,158 +2845,81 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    /**
-     * Create instrument.
-     * Attempt to create one or more "client" instruments. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
-     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
-     request.
-     It is important to always check the 'Failed' set for any unsuccessful results.
-     *
-     * @param definitions The client instrument definitions
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the TryAddClientInstruments object if successful.
-     */
-    public TryAddClientInstruments batchAddClientInstruments(Map<String, CreateClientInstrumentRequest> definitions) {
-        return batchAddClientInstrumentsWithServiceResponseAsync(definitions).toBlocking().single().body();
-    }
-
-    /**
-     * Create instrument.
-     * Attempt to create one or more "client" instruments. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
-     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
-     request.
-     It is important to always check the 'Failed' set for any unsuccessful results.
-     *
-     * @param definitions The client instrument definitions
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    public ServiceFuture<TryAddClientInstruments> batchAddClientInstrumentsAsync(Map<String, CreateClientInstrumentRequest> definitions, final ServiceCallback<TryAddClientInstruments> serviceCallback) {
-        return ServiceFuture.fromResponse(batchAddClientInstrumentsWithServiceResponseAsync(definitions), serviceCallback);
-    }
-
-    /**
-     * Create instrument.
-     * Attempt to create one or more "client" instruments. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
-     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
-     request.
-     It is important to always check the 'Failed' set for any unsuccessful results.
-     *
-     * @param definitions The client instrument definitions
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryAddClientInstruments object
-     */
-    public Observable<TryAddClientInstruments> batchAddClientInstrumentsAsync(Map<String, CreateClientInstrumentRequest> definitions) {
-        return batchAddClientInstrumentsWithServiceResponseAsync(definitions).map(new Func1<ServiceResponse<TryAddClientInstruments>, TryAddClientInstruments>() {
-            @Override
-            public TryAddClientInstruments call(ServiceResponse<TryAddClientInstruments> response) {
-                return response.body();
-            }
-        });
-    }
-
-    /**
-     * Create instrument.
-     * Attempt to create one or more "client" instruments. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
-     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
-     request.
-     It is important to always check the 'Failed' set for any unsuccessful results.
-     *
-     * @param definitions The client instrument definitions
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the TryAddClientInstruments object
-     */
-    public Observable<ServiceResponse<TryAddClientInstruments>> batchAddClientInstrumentsWithServiceResponseAsync(Map<String, CreateClientInstrumentRequest> definitions) {
-        Validator.validate(definitions);
-        return service.batchAddClientInstruments(definitions)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<TryAddClientInstruments>>>() {
-                @Override
-                public Observable<ServiceResponse<TryAddClientInstruments>> call(Response<ResponseBody> response) {
-                    try {
-                        ServiceResponse<TryAddClientInstruments> clientResponse = batchAddClientInstrumentsDelegate(response);
-                        return Observable.just(clientResponse);
-                    } catch (Throwable t) {
-                        return Observable.error(t);
-                    }
-                }
-            });
-    }
-
-    private ServiceResponse<TryAddClientInstruments> batchAddClientInstrumentsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
-        return this.restClient().responseBuilderFactory().<TryAddClientInstruments, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(201, new TypeToken<TryAddClientInstruments>() { }.getType())
+    private ServiceResponse<ResourceListOfCodeType> getInstrumentIdentifiersDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
+        return this.restClient().responseBuilderFactory().<ResourceListOfCodeType, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<ResourceListOfCodeType>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }
 
     /**
-     * Delete instrument.
-     * Attempt to delete one or more "client" instruments.
-     The response will include those instruments that could not be deleted (as well as any available details).
+     * Upsert instruments.
+     * Attempt to master one or more instruments in LUSID's instrument master. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
+     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
+     request.
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DeleteClientInstrumentsResponse object if successful.
+     * @return the UpsertInstrumentsResponse object if successful.
      */
-    public DeleteClientInstrumentsResponse batchDeleteClientInstruments() {
-        return batchDeleteClientInstrumentsWithServiceResponseAsync().toBlocking().single().body();
+    public UpsertInstrumentsResponse upsertInstruments() {
+        return upsertInstrumentsWithServiceResponseAsync().toBlocking().single().body();
     }
 
     /**
-     * Delete instrument.
-     * Attempt to delete one or more "client" instruments.
-     The response will include those instruments that could not be deleted (as well as any available details).
+     * Upsert instruments.
+     * Attempt to master one or more instruments in LUSID's instrument master. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
+     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
+     request.
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<DeleteClientInstrumentsResponse> batchDeleteClientInstrumentsAsync(final ServiceCallback<DeleteClientInstrumentsResponse> serviceCallback) {
-        return ServiceFuture.fromResponse(batchDeleteClientInstrumentsWithServiceResponseAsync(), serviceCallback);
+    public ServiceFuture<UpsertInstrumentsResponse> upsertInstrumentsAsync(final ServiceCallback<UpsertInstrumentsResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(upsertInstrumentsWithServiceResponseAsync(), serviceCallback);
     }
 
     /**
-     * Delete instrument.
-     * Attempt to delete one or more "client" instruments.
-     The response will include those instruments that could not be deleted (as well as any available details).
+     * Upsert instruments.
+     * Attempt to master one or more instruments in LUSID's instrument master. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
+     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
+     request.
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeleteClientInstrumentsResponse object
+     * @return the observable to the UpsertInstrumentsResponse object
      */
-    public Observable<DeleteClientInstrumentsResponse> batchDeleteClientInstrumentsAsync() {
-        return batchDeleteClientInstrumentsWithServiceResponseAsync().map(new Func1<ServiceResponse<DeleteClientInstrumentsResponse>, DeleteClientInstrumentsResponse>() {
+    public Observable<UpsertInstrumentsResponse> upsertInstrumentsAsync() {
+        return upsertInstrumentsWithServiceResponseAsync().map(new Func1<ServiceResponse<UpsertInstrumentsResponse>, UpsertInstrumentsResponse>() {
             @Override
-            public DeleteClientInstrumentsResponse call(ServiceResponse<DeleteClientInstrumentsResponse> response) {
+            public UpsertInstrumentsResponse call(ServiceResponse<UpsertInstrumentsResponse> response) {
                 return response.body();
             }
         });
     }
 
     /**
-     * Delete instrument.
-     * Attempt to delete one or more "client" instruments.
-     The response will include those instruments that could not be deleted (as well as any available details).
+     * Upsert instruments.
+     * Attempt to master one or more instruments in LUSID's instrument master. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
+     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
+     request.
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeleteClientInstrumentsResponse object
+     * @return the observable to the UpsertInstrumentsResponse object
      */
-    public Observable<ServiceResponse<DeleteClientInstrumentsResponse>> batchDeleteClientInstrumentsWithServiceResponseAsync() {
-        final List<String> uids = null;
-        String uidsConverted = this.serializerAdapter().serializeList(uids, CollectionFormat.MULTI);
-        return service.batchDeleteClientInstruments(uidsConverted)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<DeleteClientInstrumentsResponse>>>() {
+    public Observable<ServiceResponse<UpsertInstrumentsResponse>> upsertInstrumentsWithServiceResponseAsync() {
+        final Map<String, UpsertInstrumentRequest> requests = null;
+        return service.upsertInstruments(requests)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<UpsertInstrumentsResponse>>>() {
                 @Override
-                public Observable<ServiceResponse<DeleteClientInstrumentsResponse>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<UpsertInstrumentsResponse>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<DeleteClientInstrumentsResponse> clientResponse = batchDeleteClientInstrumentsDelegate(response);
+                        ServiceResponse<UpsertInstrumentsResponse> clientResponse = upsertInstrumentsDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -2994,74 +2929,77 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Delete instrument.
-     * Attempt to delete one or more "client" instruments.
-     The response will include those instruments that could not be deleted (as well as any available details).
+     * Upsert instruments.
+     * Attempt to master one or more instruments in LUSID's instrument master. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
+     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
+     request.
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
-     * @param uids The unique identifiers of the instruments to delete
+     * @param requests The instrument definitions
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the DeleteClientInstrumentsResponse object if successful.
+     * @return the UpsertInstrumentsResponse object if successful.
      */
-    public DeleteClientInstrumentsResponse batchDeleteClientInstruments(List<String> uids) {
-        return batchDeleteClientInstrumentsWithServiceResponseAsync(uids).toBlocking().single().body();
+    public UpsertInstrumentsResponse upsertInstruments(Map<String, UpsertInstrumentRequest> requests) {
+        return upsertInstrumentsWithServiceResponseAsync(requests).toBlocking().single().body();
     }
 
     /**
-     * Delete instrument.
-     * Attempt to delete one or more "client" instruments.
-     The response will include those instruments that could not be deleted (as well as any available details).
+     * Upsert instruments.
+     * Attempt to master one or more instruments in LUSID's instrument master. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
+     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
+     request.
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
-     * @param uids The unique identifiers of the instruments to delete
+     * @param requests The instrument definitions
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<DeleteClientInstrumentsResponse> batchDeleteClientInstrumentsAsync(List<String> uids, final ServiceCallback<DeleteClientInstrumentsResponse> serviceCallback) {
-        return ServiceFuture.fromResponse(batchDeleteClientInstrumentsWithServiceResponseAsync(uids), serviceCallback);
+    public ServiceFuture<UpsertInstrumentsResponse> upsertInstrumentsAsync(Map<String, UpsertInstrumentRequest> requests, final ServiceCallback<UpsertInstrumentsResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(upsertInstrumentsWithServiceResponseAsync(requests), serviceCallback);
     }
 
     /**
-     * Delete instrument.
-     * Attempt to delete one or more "client" instruments.
-     The response will include those instruments that could not be deleted (as well as any available details).
+     * Upsert instruments.
+     * Attempt to master one or more instruments in LUSID's instrument master. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
+     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
+     request.
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
-     * @param uids The unique identifiers of the instruments to delete
+     * @param requests The instrument definitions
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeleteClientInstrumentsResponse object
+     * @return the observable to the UpsertInstrumentsResponse object
      */
-    public Observable<DeleteClientInstrumentsResponse> batchDeleteClientInstrumentsAsync(List<String> uids) {
-        return batchDeleteClientInstrumentsWithServiceResponseAsync(uids).map(new Func1<ServiceResponse<DeleteClientInstrumentsResponse>, DeleteClientInstrumentsResponse>() {
+    public Observable<UpsertInstrumentsResponse> upsertInstrumentsAsync(Map<String, UpsertInstrumentRequest> requests) {
+        return upsertInstrumentsWithServiceResponseAsync(requests).map(new Func1<ServiceResponse<UpsertInstrumentsResponse>, UpsertInstrumentsResponse>() {
             @Override
-            public DeleteClientInstrumentsResponse call(ServiceResponse<DeleteClientInstrumentsResponse> response) {
+            public UpsertInstrumentsResponse call(ServiceResponse<UpsertInstrumentsResponse> response) {
                 return response.body();
             }
         });
     }
 
     /**
-     * Delete instrument.
-     * Attempt to delete one or more "client" instruments.
-     The response will include those instruments that could not be deleted (as well as any available details).
+     * Upsert instruments.
+     * Attempt to master one or more instruments in LUSID's instrument master. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.
+     The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the
+     request.
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
-     * @param uids The unique identifiers of the instruments to delete
+     * @param requests The instrument definitions
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the DeleteClientInstrumentsResponse object
+     * @return the observable to the UpsertInstrumentsResponse object
      */
-    public Observable<ServiceResponse<DeleteClientInstrumentsResponse>> batchDeleteClientInstrumentsWithServiceResponseAsync(List<String> uids) {
-        Validator.validate(uids);
-        String uidsConverted = this.serializerAdapter().serializeList(uids, CollectionFormat.MULTI);
-        return service.batchDeleteClientInstruments(uidsConverted)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<DeleteClientInstrumentsResponse>>>() {
+    public Observable<ServiceResponse<UpsertInstrumentsResponse>> upsertInstrumentsWithServiceResponseAsync(Map<String, UpsertInstrumentRequest> requests) {
+        Validator.validate(requests);
+        return service.upsertInstruments(requests)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<UpsertInstrumentsResponse>>>() {
                 @Override
-                public Observable<ServiceResponse<DeleteClientInstrumentsResponse>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<UpsertInstrumentsResponse>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<DeleteClientInstrumentsResponse> clientResponse = batchDeleteClientInstrumentsDelegate(response);
+                        ServiceResponse<UpsertInstrumentsResponse> clientResponse = upsertInstrumentsDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -3070,9 +3008,9 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<DeleteClientInstrumentsResponse> batchDeleteClientInstrumentsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
-        return this.restClient().responseBuilderFactory().<DeleteClientInstrumentsResponse, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<DeleteClientInstrumentsResponse>() { }.getType())
+    private ServiceResponse<UpsertInstrumentsResponse> upsertInstrumentsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
+        return this.restClient().responseBuilderFactory().<UpsertInstrumentsResponse, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(201, new TypeToken<UpsertInstrumentsResponse>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }
@@ -3081,39 +3019,42 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get instrument definition.
      * Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param uid The uid of the requested instrument
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The identifier of the requested instrument
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Instrument object if successful.
      */
-    public Instrument getInstrument(String uid) {
-        return getInstrumentWithServiceResponseAsync(uid).toBlocking().single().body();
+    public Instrument getInstrument(String type, String id) {
+        return getInstrumentWithServiceResponseAsync(type, id).toBlocking().single().body();
     }
 
     /**
      * Get instrument definition.
      * Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param uid The uid of the requested instrument
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The identifier of the requested instrument
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Instrument> getInstrumentAsync(String uid, final ServiceCallback<Instrument> serviceCallback) {
-        return ServiceFuture.fromResponse(getInstrumentWithServiceResponseAsync(uid), serviceCallback);
+    public ServiceFuture<Instrument> getInstrumentAsync(String type, String id, final ServiceCallback<Instrument> serviceCallback) {
+        return ServiceFuture.fromResponse(getInstrumentWithServiceResponseAsync(type, id), serviceCallback);
     }
 
     /**
      * Get instrument definition.
      * Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param uid The uid of the requested instrument
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The identifier of the requested instrument
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Instrument object
      */
-    public Observable<Instrument> getInstrumentAsync(String uid) {
-        return getInstrumentWithServiceResponseAsync(uid).map(new Func1<ServiceResponse<Instrument>, Instrument>() {
+    public Observable<Instrument> getInstrumentAsync(String type, String id) {
+        return getInstrumentWithServiceResponseAsync(type, id).map(new Func1<ServiceResponse<Instrument>, Instrument>() {
             @Override
             public Instrument call(ServiceResponse<Instrument> response) {
                 return response.body();
@@ -3125,18 +3066,23 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get instrument definition.
      * Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param uid The uid of the requested instrument
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The identifier of the requested instrument
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Instrument object
      */
-    public Observable<ServiceResponse<Instrument>> getInstrumentWithServiceResponseAsync(String uid) {
-        if (uid == null) {
-            throw new IllegalArgumentException("Parameter uid is required and cannot be null.");
+    public Observable<ServiceResponse<Instrument>> getInstrumentWithServiceResponseAsync(String type, String id) {
+        if (type == null) {
+            throw new IllegalArgumentException("Parameter type is required and cannot be null.");
         }
+        if (id == null) {
+            throw new IllegalArgumentException("Parameter id is required and cannot be null.");
+        }
+        final DateTime effectiveAt = null;
         final DateTime asAt = null;
         final List<String> instrumentPropertyKeys = null;
         String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
-        return service.getInstrument(uid, asAt, instrumentPropertyKeysConverted)
+        return service.getInstrument(type, id, effectiveAt, asAt, instrumentPropertyKeysConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Instrument>>>() {
                 @Override
                 public Observable<ServiceResponse<Instrument>> call(Response<ResponseBody> response) {
@@ -3154,45 +3100,51 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get instrument definition.
      * Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param uid The uid of the requested instrument
-     * @param asAt Optional. The AsAt date of the data
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The identifier of the requested instrument
+     * @param effectiveAt Optional. The effective date of the query
+     * @param asAt Optional. The AsAt date of the query
      * @param instrumentPropertyKeys Optional. Keys of the properties to be decorated on to the instrument
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the Instrument object if successful.
      */
-    public Instrument getInstrument(String uid, DateTime asAt, List<String> instrumentPropertyKeys) {
-        return getInstrumentWithServiceResponseAsync(uid, asAt, instrumentPropertyKeys).toBlocking().single().body();
+    public Instrument getInstrument(String type, String id, DateTime effectiveAt, DateTime asAt, List<String> instrumentPropertyKeys) {
+        return getInstrumentWithServiceResponseAsync(type, id, effectiveAt, asAt, instrumentPropertyKeys).toBlocking().single().body();
     }
 
     /**
      * Get instrument definition.
      * Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param uid The uid of the requested instrument
-     * @param asAt Optional. The AsAt date of the data
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The identifier of the requested instrument
+     * @param effectiveAt Optional. The effective date of the query
+     * @param asAt Optional. The AsAt date of the query
      * @param instrumentPropertyKeys Optional. Keys of the properties to be decorated on to the instrument
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<Instrument> getInstrumentAsync(String uid, DateTime asAt, List<String> instrumentPropertyKeys, final ServiceCallback<Instrument> serviceCallback) {
-        return ServiceFuture.fromResponse(getInstrumentWithServiceResponseAsync(uid, asAt, instrumentPropertyKeys), serviceCallback);
+    public ServiceFuture<Instrument> getInstrumentAsync(String type, String id, DateTime effectiveAt, DateTime asAt, List<String> instrumentPropertyKeys, final ServiceCallback<Instrument> serviceCallback) {
+        return ServiceFuture.fromResponse(getInstrumentWithServiceResponseAsync(type, id, effectiveAt, asAt, instrumentPropertyKeys), serviceCallback);
     }
 
     /**
      * Get instrument definition.
      * Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param uid The uid of the requested instrument
-     * @param asAt Optional. The AsAt date of the data
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The identifier of the requested instrument
+     * @param effectiveAt Optional. The effective date of the query
+     * @param asAt Optional. The AsAt date of the query
      * @param instrumentPropertyKeys Optional. Keys of the properties to be decorated on to the instrument
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Instrument object
      */
-    public Observable<Instrument> getInstrumentAsync(String uid, DateTime asAt, List<String> instrumentPropertyKeys) {
-        return getInstrumentWithServiceResponseAsync(uid, asAt, instrumentPropertyKeys).map(new Func1<ServiceResponse<Instrument>, Instrument>() {
+    public Observable<Instrument> getInstrumentAsync(String type, String id, DateTime effectiveAt, DateTime asAt, List<String> instrumentPropertyKeys) {
+        return getInstrumentWithServiceResponseAsync(type, id, effectiveAt, asAt, instrumentPropertyKeys).map(new Func1<ServiceResponse<Instrument>, Instrument>() {
             @Override
             public Instrument call(ServiceResponse<Instrument> response) {
                 return response.body();
@@ -3204,19 +3156,24 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get instrument definition.
      * Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param uid The uid of the requested instrument
-     * @param asAt Optional. The AsAt date of the data
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The identifier of the requested instrument
+     * @param effectiveAt Optional. The effective date of the query
+     * @param asAt Optional. The AsAt date of the query
      * @param instrumentPropertyKeys Optional. Keys of the properties to be decorated on to the instrument
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Instrument object
      */
-    public Observable<ServiceResponse<Instrument>> getInstrumentWithServiceResponseAsync(String uid, DateTime asAt, List<String> instrumentPropertyKeys) {
-        if (uid == null) {
-            throw new IllegalArgumentException("Parameter uid is required and cannot be null.");
+    public Observable<ServiceResponse<Instrument>> getInstrumentWithServiceResponseAsync(String type, String id, DateTime effectiveAt, DateTime asAt, List<String> instrumentPropertyKeys) {
+        if (type == null) {
+            throw new IllegalArgumentException("Parameter type is required and cannot be null.");
+        }
+        if (id == null) {
+            throw new IllegalArgumentException("Parameter id is required and cannot be null.");
         }
         Validator.validate(instrumentPropertyKeys);
         String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
-        return service.getInstrument(uid, asAt, instrumentPropertyKeysConverted)
+        return service.getInstrument(type, id, effectiveAt, asAt, instrumentPropertyKeysConverted)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Instrument>>>() {
                 @Override
                 public Observable<ServiceResponse<Instrument>> call(Response<ResponseBody> response) {
@@ -3238,73 +3195,469 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lookup instrument definition.
-     * Lookup one or more instrument definitions by specifying non-LUSID identifiers. Optionally, it is possible to decorate each instrument with specified property data.
-     The response will return both the collection of found instruments for each identifier, as well as a collection of all identifiers for which no instruments could be found (as well as any available details).
-     It is important to always check the 'Failed' set for any unsuccessful results.
+     * Update instrument identifier.
+     * Adds, updates, or removes an identifier on an instrument.
      *
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The instrument identifier
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the LookupInstrumentsFromCodesResponse object if successful.
+     * @return the Instrument object if successful.
      */
-    public LookupInstrumentsFromCodesResponse lookupInstrumentsFromCodes() {
-        return lookupInstrumentsFromCodesWithServiceResponseAsync().toBlocking().single().body();
+    public Instrument updateInstrumentIdentifier(String type, String id) {
+        return updateInstrumentIdentifierWithServiceResponseAsync(type, id).toBlocking().single().body();
     }
 
     /**
-     * Lookup instrument definition.
-     * Lookup one or more instrument definitions by specifying non-LUSID identifiers. Optionally, it is possible to decorate each instrument with specified property data.
-     The response will return both the collection of found instruments for each identifier, as well as a collection of all identifiers for which no instruments could be found (as well as any available details).
-     It is important to always check the 'Failed' set for any unsuccessful results.
+     * Update instrument identifier.
+     * Adds, updates, or removes an identifier on an instrument.
      *
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The instrument identifier
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<LookupInstrumentsFromCodesResponse> lookupInstrumentsFromCodesAsync(final ServiceCallback<LookupInstrumentsFromCodesResponse> serviceCallback) {
-        return ServiceFuture.fromResponse(lookupInstrumentsFromCodesWithServiceResponseAsync(), serviceCallback);
+    public ServiceFuture<Instrument> updateInstrumentIdentifierAsync(String type, String id, final ServiceCallback<Instrument> serviceCallback) {
+        return ServiceFuture.fromResponse(updateInstrumentIdentifierWithServiceResponseAsync(type, id), serviceCallback);
     }
 
     /**
-     * Lookup instrument definition.
-     * Lookup one or more instrument definitions by specifying non-LUSID identifiers. Optionally, it is possible to decorate each instrument with specified property data.
-     The response will return both the collection of found instruments for each identifier, as well as a collection of all identifiers for which no instruments could be found (as well as any available details).
-     It is important to always check the 'Failed' set for any unsuccessful results.
+     * Update instrument identifier.
+     * Adds, updates, or removes an identifier on an instrument.
      *
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The instrument identifier
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the LookupInstrumentsFromCodesResponse object
+     * @return the observable to the Instrument object
      */
-    public Observable<LookupInstrumentsFromCodesResponse> lookupInstrumentsFromCodesAsync() {
-        return lookupInstrumentsFromCodesWithServiceResponseAsync().map(new Func1<ServiceResponse<LookupInstrumentsFromCodesResponse>, LookupInstrumentsFromCodesResponse>() {
+    public Observable<Instrument> updateInstrumentIdentifierAsync(String type, String id) {
+        return updateInstrumentIdentifierWithServiceResponseAsync(type, id).map(new Func1<ServiceResponse<Instrument>, Instrument>() {
             @Override
-            public LookupInstrumentsFromCodesResponse call(ServiceResponse<LookupInstrumentsFromCodesResponse> response) {
+            public Instrument call(ServiceResponse<Instrument> response) {
                 return response.body();
             }
         });
     }
 
     /**
-     * Lookup instrument definition.
-     * Lookup one or more instrument definitions by specifying non-LUSID identifiers. Optionally, it is possible to decorate each instrument with specified property data.
-     The response will return both the collection of found instruments for each identifier, as well as a collection of all identifiers for which no instruments could be found (as well as any available details).
+     * Update instrument identifier.
+     * Adds, updates, or removes an identifier on an instrument.
+     *
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The instrument identifier
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Instrument object
+     */
+    public Observable<ServiceResponse<Instrument>> updateInstrumentIdentifierWithServiceResponseAsync(String type, String id) {
+        if (type == null) {
+            throw new IllegalArgumentException("Parameter type is required and cannot be null.");
+        }
+        if (id == null) {
+            throw new IllegalArgumentException("Parameter id is required and cannot be null.");
+        }
+        final UpdateInstrumentIdentifierRequest request = null;
+        return service.updateInstrumentIdentifier(type, id, request)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Instrument>>>() {
+                @Override
+                public Observable<ServiceResponse<Instrument>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<Instrument> clientResponse = updateInstrumentIdentifierDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Update instrument identifier.
+     * Adds, updates, or removes an identifier on an instrument.
+     *
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The instrument identifier
+     * @param request The identifier to add, update, or remove
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the Instrument object if successful.
+     */
+    public Instrument updateInstrumentIdentifier(String type, String id, UpdateInstrumentIdentifierRequest request) {
+        return updateInstrumentIdentifierWithServiceResponseAsync(type, id, request).toBlocking().single().body();
+    }
+
+    /**
+     * Update instrument identifier.
+     * Adds, updates, or removes an identifier on an instrument.
+     *
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The instrument identifier
+     * @param request The identifier to add, update, or remove
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<Instrument> updateInstrumentIdentifierAsync(String type, String id, UpdateInstrumentIdentifierRequest request, final ServiceCallback<Instrument> serviceCallback) {
+        return ServiceFuture.fromResponse(updateInstrumentIdentifierWithServiceResponseAsync(type, id, request), serviceCallback);
+    }
+
+    /**
+     * Update instrument identifier.
+     * Adds, updates, or removes an identifier on an instrument.
+     *
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The instrument identifier
+     * @param request The identifier to add, update, or remove
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Instrument object
+     */
+    public Observable<Instrument> updateInstrumentIdentifierAsync(String type, String id, UpdateInstrumentIdentifierRequest request) {
+        return updateInstrumentIdentifierWithServiceResponseAsync(type, id, request).map(new Func1<ServiceResponse<Instrument>, Instrument>() {
+            @Override
+            public Instrument call(ServiceResponse<Instrument> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Update instrument identifier.
+     * Adds, updates, or removes an identifier on an instrument.
+     *
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The instrument identifier
+     * @param request The identifier to add, update, or remove
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the Instrument object
+     */
+    public Observable<ServiceResponse<Instrument>> updateInstrumentIdentifierWithServiceResponseAsync(String type, String id, UpdateInstrumentIdentifierRequest request) {
+        if (type == null) {
+            throw new IllegalArgumentException("Parameter type is required and cannot be null.");
+        }
+        if (id == null) {
+            throw new IllegalArgumentException("Parameter id is required and cannot be null.");
+        }
+        Validator.validate(request);
+        return service.updateInstrumentIdentifier(type, id, request)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<Instrument>>>() {
+                @Override
+                public Observable<ServiceResponse<Instrument>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<Instrument> clientResponse = updateInstrumentIdentifierDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<Instrument> updateInstrumentIdentifierDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<Instrument, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(201, new TypeToken<Instrument>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
+     * Delete instrument.
+     * Attempt to delete one or more "client" instruments.
+     The response will include those instruments that could not be deleted (as well as any available details).
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The instrument identifier
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the LookupInstrumentsFromCodesResponse object
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the DeleteInstrumentResponse object if successful.
      */
-    public Observable<ServiceResponse<LookupInstrumentsFromCodesResponse>> lookupInstrumentsFromCodesWithServiceResponseAsync() {
+    public DeleteInstrumentResponse deleteInstrument(String type, String id) {
+        return deleteInstrumentWithServiceResponseAsync(type, id).toBlocking().single().body();
+    }
+
+    /**
+     * Delete instrument.
+     * Attempt to delete one or more "client" instruments.
+     The response will include those instruments that could not be deleted (as well as any available details).
+     It is important to always check the 'Failed' set for any unsuccessful results.
+     *
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The instrument identifier
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<DeleteInstrumentResponse> deleteInstrumentAsync(String type, String id, final ServiceCallback<DeleteInstrumentResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(deleteInstrumentWithServiceResponseAsync(type, id), serviceCallback);
+    }
+
+    /**
+     * Delete instrument.
+     * Attempt to delete one or more "client" instruments.
+     The response will include those instruments that could not be deleted (as well as any available details).
+     It is important to always check the 'Failed' set for any unsuccessful results.
+     *
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The instrument identifier
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeleteInstrumentResponse object
+     */
+    public Observable<DeleteInstrumentResponse> deleteInstrumentAsync(String type, String id) {
+        return deleteInstrumentWithServiceResponseAsync(type, id).map(new Func1<ServiceResponse<DeleteInstrumentResponse>, DeleteInstrumentResponse>() {
+            @Override
+            public DeleteInstrumentResponse call(ServiceResponse<DeleteInstrumentResponse> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Delete instrument.
+     * Attempt to delete one or more "client" instruments.
+     The response will include those instruments that could not be deleted (as well as any available details).
+     It is important to always check the 'Failed' set for any unsuccessful results.
+     *
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param id The instrument identifier
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the DeleteInstrumentResponse object
+     */
+    public Observable<ServiceResponse<DeleteInstrumentResponse>> deleteInstrumentWithServiceResponseAsync(String type, String id) {
+        if (type == null) {
+            throw new IllegalArgumentException("Parameter type is required and cannot be null.");
+        }
+        if (id == null) {
+            throw new IllegalArgumentException("Parameter id is required and cannot be null.");
+        }
+        return service.deleteInstrument(type, id)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<DeleteInstrumentResponse>>>() {
+                @Override
+                public Observable<ServiceResponse<DeleteInstrumentResponse>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<DeleteInstrumentResponse> clientResponse = deleteInstrumentDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<DeleteInstrumentResponse> deleteInstrumentDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException, IllegalArgumentException {
+        return this.restClient().responseBuilderFactory().<DeleteInstrumentResponse, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<DeleteInstrumentResponse>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
+     * Find externally mastered instruments.
+     * Search for a set of instruments from an external instrument mastering service.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the FindInstrumentsResponse object if successful.
+     */
+    public FindInstrumentsResponse findExternalInstruments() {
+        return findExternalInstrumentsWithServiceResponseAsync().toBlocking().single().body();
+    }
+
+    /**
+     * Find externally mastered instruments.
+     * Search for a set of instruments from an external instrument mastering service.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<FindInstrumentsResponse> findExternalInstrumentsAsync(final ServiceCallback<FindInstrumentsResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(findExternalInstrumentsWithServiceResponseAsync(), serviceCallback);
+    }
+
+    /**
+     * Find externally mastered instruments.
+     * Search for a set of instruments from an external instrument mastering service.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the FindInstrumentsResponse object
+     */
+    public Observable<FindInstrumentsResponse> findExternalInstrumentsAsync() {
+        return findExternalInstrumentsWithServiceResponseAsync().map(new Func1<ServiceResponse<FindInstrumentsResponse>, FindInstrumentsResponse>() {
+            @Override
+            public FindInstrumentsResponse call(ServiceResponse<FindInstrumentsResponse> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Find externally mastered instruments.
+     * Search for a set of instruments from an external instrument mastering service.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the FindInstrumentsResponse object
+     */
+    public Observable<ServiceResponse<FindInstrumentsResponse>> findExternalInstrumentsWithServiceResponseAsync() {
         final String codeType = null;
         final List<String> codes = null;
+        return service.findExternalInstruments(codeType, codes)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<FindInstrumentsResponse>>>() {
+                @Override
+                public Observable<ServiceResponse<FindInstrumentsResponse>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<FindInstrumentsResponse> clientResponse = findExternalInstrumentsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Find externally mastered instruments.
+     * Search for a set of instruments from an external instrument mastering service.
+     *
+     * @param codeType The type of codes to search for. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codes The collection of instruments to search for
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the FindInstrumentsResponse object if successful.
+     */
+    public FindInstrumentsResponse findExternalInstruments(String codeType, List<String> codes) {
+        return findExternalInstrumentsWithServiceResponseAsync(codeType, codes).toBlocking().single().body();
+    }
+
+    /**
+     * Find externally mastered instruments.
+     * Search for a set of instruments from an external instrument mastering service.
+     *
+     * @param codeType The type of codes to search for. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codes The collection of instruments to search for
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<FindInstrumentsResponse> findExternalInstrumentsAsync(String codeType, List<String> codes, final ServiceCallback<FindInstrumentsResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(findExternalInstrumentsWithServiceResponseAsync(codeType, codes), serviceCallback);
+    }
+
+    /**
+     * Find externally mastered instruments.
+     * Search for a set of instruments from an external instrument mastering service.
+     *
+     * @param codeType The type of codes to search for. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codes The collection of instruments to search for
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the FindInstrumentsResponse object
+     */
+    public Observable<FindInstrumentsResponse> findExternalInstrumentsAsync(String codeType, List<String> codes) {
+        return findExternalInstrumentsWithServiceResponseAsync(codeType, codes).map(new Func1<ServiceResponse<FindInstrumentsResponse>, FindInstrumentsResponse>() {
+            @Override
+            public FindInstrumentsResponse call(ServiceResponse<FindInstrumentsResponse> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Find externally mastered instruments.
+     * Search for a set of instruments from an external instrument mastering service.
+     *
+     * @param codeType The type of codes to search for. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codes The collection of instruments to search for
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the FindInstrumentsResponse object
+     */
+    public Observable<ServiceResponse<FindInstrumentsResponse>> findExternalInstrumentsWithServiceResponseAsync(String codeType, List<String> codes) {
+        Validator.validate(codes);
+        return service.findExternalInstruments(codeType, codes)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<FindInstrumentsResponse>>>() {
+                @Override
+                public Observable<ServiceResponse<FindInstrumentsResponse>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<FindInstrumentsResponse> clientResponse = findExternalInstrumentsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<FindInstrumentsResponse> findExternalInstrumentsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
+        return this.restClient().responseBuilderFactory().<FindInstrumentsResponse, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<FindInstrumentsResponse>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
+     * Get instrument definition.
+     * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the GetInstrumentsResponse object if successful.
+     */
+    public GetInstrumentsResponse getInstruments() {
+        return getInstrumentsWithServiceResponseAsync().toBlocking().single().body();
+    }
+
+    /**
+     * Get instrument definition.
+     * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<GetInstrumentsResponse> getInstrumentsAsync(final ServiceCallback<GetInstrumentsResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(getInstrumentsWithServiceResponseAsync(), serviceCallback);
+    }
+
+    /**
+     * Get instrument definition.
+     * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the GetInstrumentsResponse object
+     */
+    public Observable<GetInstrumentsResponse> getInstrumentsAsync() {
+        return getInstrumentsWithServiceResponseAsync().map(new Func1<ServiceResponse<GetInstrumentsResponse>, GetInstrumentsResponse>() {
+            @Override
+            public GetInstrumentsResponse call(ServiceResponse<GetInstrumentsResponse> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Get instrument definition.
+     * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the GetInstrumentsResponse object
+     */
+    public Observable<ServiceResponse<GetInstrumentsResponse>> getInstrumentsWithServiceResponseAsync() {
+        final String codeType = null;
+        final List<String> codes = null;
+        final DateTime effectiveAt = null;
         final DateTime asAt = null;
         final List<String> instrumentPropertyKeys = null;
         String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
-        return service.lookupInstrumentsFromCodes(codeType, codes, asAt, instrumentPropertyKeysConverted)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<LookupInstrumentsFromCodesResponse>>>() {
+        return service.getInstruments(codeType, codes, effectiveAt, asAt, instrumentPropertyKeysConverted)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<GetInstrumentsResponse>>>() {
                 @Override
-                public Observable<ServiceResponse<LookupInstrumentsFromCodesResponse>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<GetInstrumentsResponse>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<LookupInstrumentsFromCodesResponse> clientResponse = lookupInstrumentsFromCodesDelegate(response);
+                        ServiceResponse<GetInstrumentsResponse> clientResponse = getInstrumentsDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -3314,87 +3667,83 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
     }
 
     /**
-     * Lookup instrument definition.
-     * Lookup one or more instrument definitions by specifying non-LUSID identifiers. Optionally, it is possible to decorate each instrument with specified property data.
-     The response will return both the collection of found instruments for each identifier, as well as a collection of all identifiers for which no instruments could be found (as well as any available details).
-     It is important to always check the 'Failed' set for any unsuccessful results.
+     * Get instrument definition.
+     * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param codeType The type of identifiers. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
-     * @param codes One or more identifiers of the type specified in the codeType
-     * @param asAt Optional. The AsAt date of the data
+     * @param codeType the type of codes being specified. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codes The identifiers of the instruments to get
+     * @param effectiveAt Optional. The effective date of the request
+     * @param asAt Optional. The as at date of the request
      * @param instrumentPropertyKeys Optional. Keys of the properties to be decorated on to the instrument
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the LookupInstrumentsFromCodesResponse object if successful.
+     * @return the GetInstrumentsResponse object if successful.
      */
-    public LookupInstrumentsFromCodesResponse lookupInstrumentsFromCodes(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys) {
-        return lookupInstrumentsFromCodesWithServiceResponseAsync(codeType, codes, asAt, instrumentPropertyKeys).toBlocking().single().body();
+    public GetInstrumentsResponse getInstruments(String codeType, List<String> codes, DateTime effectiveAt, DateTime asAt, List<String> instrumentPropertyKeys) {
+        return getInstrumentsWithServiceResponseAsync(codeType, codes, effectiveAt, asAt, instrumentPropertyKeys).toBlocking().single().body();
     }
 
     /**
-     * Lookup instrument definition.
-     * Lookup one or more instrument definitions by specifying non-LUSID identifiers. Optionally, it is possible to decorate each instrument with specified property data.
-     The response will return both the collection of found instruments for each identifier, as well as a collection of all identifiers for which no instruments could be found (as well as any available details).
-     It is important to always check the 'Failed' set for any unsuccessful results.
+     * Get instrument definition.
+     * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param codeType The type of identifiers. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
-     * @param codes One or more identifiers of the type specified in the codeType
-     * @param asAt Optional. The AsAt date of the data
+     * @param codeType the type of codes being specified. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codes The identifiers of the instruments to get
+     * @param effectiveAt Optional. The effective date of the request
+     * @param asAt Optional. The as at date of the request
      * @param instrumentPropertyKeys Optional. Keys of the properties to be decorated on to the instrument
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<LookupInstrumentsFromCodesResponse> lookupInstrumentsFromCodesAsync(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys, final ServiceCallback<LookupInstrumentsFromCodesResponse> serviceCallback) {
-        return ServiceFuture.fromResponse(lookupInstrumentsFromCodesWithServiceResponseAsync(codeType, codes, asAt, instrumentPropertyKeys), serviceCallback);
+    public ServiceFuture<GetInstrumentsResponse> getInstrumentsAsync(String codeType, List<String> codes, DateTime effectiveAt, DateTime asAt, List<String> instrumentPropertyKeys, final ServiceCallback<GetInstrumentsResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(getInstrumentsWithServiceResponseAsync(codeType, codes, effectiveAt, asAt, instrumentPropertyKeys), serviceCallback);
     }
 
     /**
-     * Lookup instrument definition.
-     * Lookup one or more instrument definitions by specifying non-LUSID identifiers. Optionally, it is possible to decorate each instrument with specified property data.
-     The response will return both the collection of found instruments for each identifier, as well as a collection of all identifiers for which no instruments could be found (as well as any available details).
-     It is important to always check the 'Failed' set for any unsuccessful results.
+     * Get instrument definition.
+     * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param codeType The type of identifiers. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
-     * @param codes One or more identifiers of the type specified in the codeType
-     * @param asAt Optional. The AsAt date of the data
+     * @param codeType the type of codes being specified. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codes The identifiers of the instruments to get
+     * @param effectiveAt Optional. The effective date of the request
+     * @param asAt Optional. The as at date of the request
      * @param instrumentPropertyKeys Optional. Keys of the properties to be decorated on to the instrument
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the LookupInstrumentsFromCodesResponse object
+     * @return the observable to the GetInstrumentsResponse object
      */
-    public Observable<LookupInstrumentsFromCodesResponse> lookupInstrumentsFromCodesAsync(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys) {
-        return lookupInstrumentsFromCodesWithServiceResponseAsync(codeType, codes, asAt, instrumentPropertyKeys).map(new Func1<ServiceResponse<LookupInstrumentsFromCodesResponse>, LookupInstrumentsFromCodesResponse>() {
+    public Observable<GetInstrumentsResponse> getInstrumentsAsync(String codeType, List<String> codes, DateTime effectiveAt, DateTime asAt, List<String> instrumentPropertyKeys) {
+        return getInstrumentsWithServiceResponseAsync(codeType, codes, effectiveAt, asAt, instrumentPropertyKeys).map(new Func1<ServiceResponse<GetInstrumentsResponse>, GetInstrumentsResponse>() {
             @Override
-            public LookupInstrumentsFromCodesResponse call(ServiceResponse<LookupInstrumentsFromCodesResponse> response) {
+            public GetInstrumentsResponse call(ServiceResponse<GetInstrumentsResponse> response) {
                 return response.body();
             }
         });
     }
 
     /**
-     * Lookup instrument definition.
-     * Lookup one or more instrument definitions by specifying non-LUSID identifiers. Optionally, it is possible to decorate each instrument with specified property data.
-     The response will return both the collection of found instruments for each identifier, as well as a collection of all identifiers for which no instruments could be found (as well as any available details).
-     It is important to always check the 'Failed' set for any unsuccessful results.
+     * Get instrument definition.
+     * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param codeType The type of identifiers. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
-     * @param codes One or more identifiers of the type specified in the codeType
-     * @param asAt Optional. The AsAt date of the data
+     * @param codeType the type of codes being specified. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codes The identifiers of the instruments to get
+     * @param effectiveAt Optional. The effective date of the request
+     * @param asAt Optional. The as at date of the request
      * @param instrumentPropertyKeys Optional. Keys of the properties to be decorated on to the instrument
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the LookupInstrumentsFromCodesResponse object
+     * @return the observable to the GetInstrumentsResponse object
      */
-    public Observable<ServiceResponse<LookupInstrumentsFromCodesResponse>> lookupInstrumentsFromCodesWithServiceResponseAsync(String codeType, List<String> codes, DateTime asAt, List<String> instrumentPropertyKeys) {
+    public Observable<ServiceResponse<GetInstrumentsResponse>> getInstrumentsWithServiceResponseAsync(String codeType, List<String> codes, DateTime effectiveAt, DateTime asAt, List<String> instrumentPropertyKeys) {
         Validator.validate(codes);
         Validator.validate(instrumentPropertyKeys);
         String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
-        return service.lookupInstrumentsFromCodes(codeType, codes, asAt, instrumentPropertyKeysConverted)
-            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<LookupInstrumentsFromCodesResponse>>>() {
+        return service.getInstruments(codeType, codes, effectiveAt, asAt, instrumentPropertyKeysConverted)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<GetInstrumentsResponse>>>() {
                 @Override
-                public Observable<ServiceResponse<LookupInstrumentsFromCodesResponse>> call(Response<ResponseBody> response) {
+                public Observable<ServiceResponse<GetInstrumentsResponse>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<LookupInstrumentsFromCodesResponse> clientResponse = lookupInstrumentsFromCodesDelegate(response);
+                        ServiceResponse<GetInstrumentsResponse> clientResponse = getInstrumentsDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -3403,9 +3752,166 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<LookupInstrumentsFromCodesResponse> lookupInstrumentsFromCodesDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
-        return this.restClient().responseBuilderFactory().<LookupInstrumentsFromCodesResponse, ErrorResponseException>newInstance(this.serializerAdapter())
-                .register(200, new TypeToken<LookupInstrumentsFromCodesResponse>() { }.getType())
+    private ServiceResponse<GetInstrumentsResponse> getInstrumentsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
+        return this.restClient().responseBuilderFactory().<GetInstrumentsResponse, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<GetInstrumentsResponse>() { }.getType())
+                .registerError(ErrorResponseException.class)
+                .build(response);
+    }
+
+    /**
+     * Search instrument definition.
+     * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfInstrument object if successful.
+     */
+    public ResourceListOfInstrument findInstruments() {
+        return findInstrumentsWithServiceResponseAsync().toBlocking().single().body();
+    }
+
+    /**
+     * Search instrument definition.
+     * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<ResourceListOfInstrument> findInstrumentsAsync(final ServiceCallback<ResourceListOfInstrument> serviceCallback) {
+        return ServiceFuture.fromResponse(findInstrumentsWithServiceResponseAsync(), serviceCallback);
+    }
+
+    /**
+     * Search instrument definition.
+     * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfInstrument object
+     */
+    public Observable<ResourceListOfInstrument> findInstrumentsAsync() {
+        return findInstrumentsWithServiceResponseAsync().map(new Func1<ServiceResponse<ResourceListOfInstrument>, ResourceListOfInstrument>() {
+            @Override
+            public ResourceListOfInstrument call(ServiceResponse<ResourceListOfInstrument> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Search instrument definition.
+     * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfInstrument object
+     */
+    public Observable<ServiceResponse<ResourceListOfInstrument>> findInstrumentsWithServiceResponseAsync() {
+        final List<Property> aliases = null;
+        final DateTime effectiveAt = null;
+        final DateTime asAt = null;
+        final List<String> instrumentPropertyKeys = null;
+        String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
+        return service.findInstruments(aliases, effectiveAt, asAt, instrumentPropertyKeysConverted)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfInstrument>>>() {
+                @Override
+                public Observable<ServiceResponse<ResourceListOfInstrument>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<ResourceListOfInstrument> clientResponse = findInstrumentsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    /**
+     * Search instrument definition.
+     * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
+     *
+     * @param aliases The list of market aliases (e.g ISIN, Ticker) to find instruments by.
+     * @param effectiveAt Optional. The effective date of the query
+     * @param asAt Optional. The AsAt date of the query
+     * @param instrumentPropertyKeys Optional. Keys of the properties to be decorated on to the instrument
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfInstrument object if successful.
+     */
+    public ResourceListOfInstrument findInstruments(List<Property> aliases, DateTime effectiveAt, DateTime asAt, List<String> instrumentPropertyKeys) {
+        return findInstrumentsWithServiceResponseAsync(aliases, effectiveAt, asAt, instrumentPropertyKeys).toBlocking().single().body();
+    }
+
+    /**
+     * Search instrument definition.
+     * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
+     *
+     * @param aliases The list of market aliases (e.g ISIN, Ticker) to find instruments by.
+     * @param effectiveAt Optional. The effective date of the query
+     * @param asAt Optional. The AsAt date of the query
+     * @param instrumentPropertyKeys Optional. Keys of the properties to be decorated on to the instrument
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    public ServiceFuture<ResourceListOfInstrument> findInstrumentsAsync(List<Property> aliases, DateTime effectiveAt, DateTime asAt, List<String> instrumentPropertyKeys, final ServiceCallback<ResourceListOfInstrument> serviceCallback) {
+        return ServiceFuture.fromResponse(findInstrumentsWithServiceResponseAsync(aliases, effectiveAt, asAt, instrumentPropertyKeys), serviceCallback);
+    }
+
+    /**
+     * Search instrument definition.
+     * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
+     *
+     * @param aliases The list of market aliases (e.g ISIN, Ticker) to find instruments by.
+     * @param effectiveAt Optional. The effective date of the query
+     * @param asAt Optional. The AsAt date of the query
+     * @param instrumentPropertyKeys Optional. Keys of the properties to be decorated on to the instrument
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfInstrument object
+     */
+    public Observable<ResourceListOfInstrument> findInstrumentsAsync(List<Property> aliases, DateTime effectiveAt, DateTime asAt, List<String> instrumentPropertyKeys) {
+        return findInstrumentsWithServiceResponseAsync(aliases, effectiveAt, asAt, instrumentPropertyKeys).map(new Func1<ServiceResponse<ResourceListOfInstrument>, ResourceListOfInstrument>() {
+            @Override
+            public ResourceListOfInstrument call(ServiceResponse<ResourceListOfInstrument> response) {
+                return response.body();
+            }
+        });
+    }
+
+    /**
+     * Search instrument definition.
+     * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
+     *
+     * @param aliases The list of market aliases (e.g ISIN, Ticker) to find instruments by.
+     * @param effectiveAt Optional. The effective date of the query
+     * @param asAt Optional. The AsAt date of the query
+     * @param instrumentPropertyKeys Optional. Keys of the properties to be decorated on to the instrument
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfInstrument object
+     */
+    public Observable<ServiceResponse<ResourceListOfInstrument>> findInstrumentsWithServiceResponseAsync(List<Property> aliases, DateTime effectiveAt, DateTime asAt, List<String> instrumentPropertyKeys) {
+        Validator.validate(aliases);
+        Validator.validate(instrumentPropertyKeys);
+        String instrumentPropertyKeysConverted = this.serializerAdapter().serializeList(instrumentPropertyKeys, CollectionFormat.MULTI);
+        return service.findInstruments(aliases, effectiveAt, asAt, instrumentPropertyKeysConverted)
+            .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<ResourceListOfInstrument>>>() {
+                @Override
+                public Observable<ServiceResponse<ResourceListOfInstrument>> call(Response<ResponseBody> response) {
+                    try {
+                        ServiceResponse<ResourceListOfInstrument> clientResponse = findInstrumentsDelegate(response);
+                        return Observable.just(clientResponse);
+                    } catch (Throwable t) {
+                        return Observable.error(t);
+                    }
+                }
+            });
+    }
+
+    private ServiceResponse<ResourceListOfInstrument> findInstrumentsDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
+        return this.restClient().responseBuilderFactory().<ResourceListOfInstrument, ErrorResponseException>newInstance(this.serializerAdapter())
+                .register(200, new TypeToken<ResourceListOfInstrument>() { }.getType())
                 .registerError(ErrorResponseException.class)
                 .build(response);
     }
@@ -3421,8 +3927,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the UpsertInstrumentPropertiesResponse object if successful.
      */
-    public UpsertInstrumentPropertiesResponse batchUpsertInstrumentProperties() {
-        return batchUpsertInstrumentPropertiesWithServiceResponseAsync().toBlocking().single().body();
+    public UpsertInstrumentPropertiesResponse upsertInstrumentsProperties() {
+        return upsertInstrumentsPropertiesWithServiceResponseAsync().toBlocking().single().body();
     }
 
     /**
@@ -3435,8 +3941,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<UpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesAsync(final ServiceCallback<UpsertInstrumentPropertiesResponse> serviceCallback) {
-        return ServiceFuture.fromResponse(batchUpsertInstrumentPropertiesWithServiceResponseAsync(), serviceCallback);
+    public ServiceFuture<UpsertInstrumentPropertiesResponse> upsertInstrumentsPropertiesAsync(final ServiceCallback<UpsertInstrumentPropertiesResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(upsertInstrumentsPropertiesWithServiceResponseAsync(), serviceCallback);
     }
 
     /**
@@ -3448,8 +3954,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertInstrumentPropertiesResponse object
      */
-    public Observable<UpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesAsync() {
-        return batchUpsertInstrumentPropertiesWithServiceResponseAsync().map(new Func1<ServiceResponse<UpsertInstrumentPropertiesResponse>, UpsertInstrumentPropertiesResponse>() {
+    public Observable<UpsertInstrumentPropertiesResponse> upsertInstrumentsPropertiesAsync() {
+        return upsertInstrumentsPropertiesWithServiceResponseAsync().map(new Func1<ServiceResponse<UpsertInstrumentPropertiesResponse>, UpsertInstrumentPropertiesResponse>() {
             @Override
             public UpsertInstrumentPropertiesResponse call(ServiceResponse<UpsertInstrumentPropertiesResponse> response) {
                 return response.body();
@@ -3466,14 +3972,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertInstrumentPropertiesResponse object
      */
-    public Observable<ServiceResponse<UpsertInstrumentPropertiesResponse>> batchUpsertInstrumentPropertiesWithServiceResponseAsync() {
+    public Observable<ServiceResponse<UpsertInstrumentPropertiesResponse>> upsertInstrumentsPropertiesWithServiceResponseAsync() {
         final List<InstrumentProperty> instrumentProperties = null;
-        return service.batchUpsertInstrumentProperties(instrumentProperties)
+        return service.upsertInstrumentsProperties(instrumentProperties)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<UpsertInstrumentPropertiesResponse>>>() {
                 @Override
                 public Observable<ServiceResponse<UpsertInstrumentPropertiesResponse>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<UpsertInstrumentPropertiesResponse> clientResponse = batchUpsertInstrumentPropertiesDelegate(response);
+                        ServiceResponse<UpsertInstrumentPropertiesResponse> clientResponse = upsertInstrumentsPropertiesDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -3494,8 +4000,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the UpsertInstrumentPropertiesResponse object if successful.
      */
-    public UpsertInstrumentPropertiesResponse batchUpsertInstrumentProperties(List<InstrumentProperty> instrumentProperties) {
-        return batchUpsertInstrumentPropertiesWithServiceResponseAsync(instrumentProperties).toBlocking().single().body();
+    public UpsertInstrumentPropertiesResponse upsertInstrumentsProperties(List<InstrumentProperty> instrumentProperties) {
+        return upsertInstrumentsPropertiesWithServiceResponseAsync(instrumentProperties).toBlocking().single().body();
     }
 
     /**
@@ -3509,8 +4015,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    public ServiceFuture<UpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesAsync(List<InstrumentProperty> instrumentProperties, final ServiceCallback<UpsertInstrumentPropertiesResponse> serviceCallback) {
-        return ServiceFuture.fromResponse(batchUpsertInstrumentPropertiesWithServiceResponseAsync(instrumentProperties), serviceCallback);
+    public ServiceFuture<UpsertInstrumentPropertiesResponse> upsertInstrumentsPropertiesAsync(List<InstrumentProperty> instrumentProperties, final ServiceCallback<UpsertInstrumentPropertiesResponse> serviceCallback) {
+        return ServiceFuture.fromResponse(upsertInstrumentsPropertiesWithServiceResponseAsync(instrumentProperties), serviceCallback);
     }
 
     /**
@@ -3523,8 +4029,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertInstrumentPropertiesResponse object
      */
-    public Observable<UpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesAsync(List<InstrumentProperty> instrumentProperties) {
-        return batchUpsertInstrumentPropertiesWithServiceResponseAsync(instrumentProperties).map(new Func1<ServiceResponse<UpsertInstrumentPropertiesResponse>, UpsertInstrumentPropertiesResponse>() {
+    public Observable<UpsertInstrumentPropertiesResponse> upsertInstrumentsPropertiesAsync(List<InstrumentProperty> instrumentProperties) {
+        return upsertInstrumentsPropertiesWithServiceResponseAsync(instrumentProperties).map(new Func1<ServiceResponse<UpsertInstrumentPropertiesResponse>, UpsertInstrumentPropertiesResponse>() {
             @Override
             public UpsertInstrumentPropertiesResponse call(ServiceResponse<UpsertInstrumentPropertiesResponse> response) {
                 return response.body();
@@ -3542,14 +4048,14 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertInstrumentPropertiesResponse object
      */
-    public Observable<ServiceResponse<UpsertInstrumentPropertiesResponse>> batchUpsertInstrumentPropertiesWithServiceResponseAsync(List<InstrumentProperty> instrumentProperties) {
+    public Observable<ServiceResponse<UpsertInstrumentPropertiesResponse>> upsertInstrumentsPropertiesWithServiceResponseAsync(List<InstrumentProperty> instrumentProperties) {
         Validator.validate(instrumentProperties);
-        return service.batchUpsertInstrumentProperties(instrumentProperties)
+        return service.upsertInstrumentsProperties(instrumentProperties)
             .flatMap(new Func1<Response<ResponseBody>, Observable<ServiceResponse<UpsertInstrumentPropertiesResponse>>>() {
                 @Override
                 public Observable<ServiceResponse<UpsertInstrumentPropertiesResponse>> call(Response<ResponseBody> response) {
                     try {
-                        ServiceResponse<UpsertInstrumentPropertiesResponse> clientResponse = batchUpsertInstrumentPropertiesDelegate(response);
+                        ServiceResponse<UpsertInstrumentPropertiesResponse> clientResponse = upsertInstrumentsPropertiesDelegate(response);
                         return Observable.just(clientResponse);
                     } catch (Throwable t) {
                         return Observable.error(t);
@@ -3558,7 +4064,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
             });
     }
 
-    private ServiceResponse<UpsertInstrumentPropertiesResponse> batchUpsertInstrumentPropertiesDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
+    private ServiceResponse<UpsertInstrumentPropertiesResponse> upsertInstrumentsPropertiesDelegate(Response<ResponseBody> response) throws ErrorResponseException, IOException {
         return this.restClient().responseBuilderFactory().<UpsertInstrumentPropertiesResponse, ErrorResponseException>newInstance(this.serializerAdapter())
                 .register(201, new TypeToken<UpsertInstrumentPropertiesResponse>() { }.getType())
                 .registerError(ErrorResponseException.class)
@@ -9826,8 +10332,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get all the constituents in the specified reference portfolio.
      *
      * @param scope The scope of the portfolio
-     * @param code The scope of the portfolio
-     * @param effectiveAt Optional. The effective date of the data
+     * @param code The code of the portfolio
+     * @param effectiveAt The effective date of the constituents to retrieve
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -9842,8 +10348,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get all the constituents in the specified reference portfolio.
      *
      * @param scope The scope of the portfolio
-     * @param code The scope of the portfolio
-     * @param effectiveAt Optional. The effective date of the data
+     * @param code The code of the portfolio
+     * @param effectiveAt The effective date of the constituents to retrieve
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -9857,8 +10363,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get all the constituents in the specified reference portfolio.
      *
      * @param scope The scope of the portfolio
-     * @param code The scope of the portfolio
-     * @param effectiveAt Optional. The effective date of the data
+     * @param code The code of the portfolio
+     * @param effectiveAt The effective date of the constituents to retrieve
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituent object
      */
@@ -9876,8 +10382,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get all the constituents in the specified reference portfolio.
      *
      * @param scope The scope of the portfolio
-     * @param code The scope of the portfolio
-     * @param effectiveAt Optional. The effective date of the data
+     * @param code The code of the portfolio
+     * @param effectiveAt The effective date of the constituents to retrieve
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the ResourceListOfReferencePortfolioConstituent object
      */
@@ -9915,8 +10421,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get all the constituents in the specified reference portfolio.
      *
      * @param scope The scope of the portfolio
-     * @param code The scope of the portfolio
-     * @param effectiveAt Optional. The effective date of the data
+     * @param code The code of the portfolio
+     * @param effectiveAt The effective date of the constituents to retrieve
      * @param asAt Optional. The AsAt date of the data
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
      * @param start Optional. When paginating, skip this number of results
@@ -9935,8 +10441,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get all the constituents in the specified reference portfolio.
      *
      * @param scope The scope of the portfolio
-     * @param code The scope of the portfolio
-     * @param effectiveAt Optional. The effective date of the data
+     * @param code The code of the portfolio
+     * @param effectiveAt The effective date of the constituents to retrieve
      * @param asAt Optional. The AsAt date of the data
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
      * @param start Optional. When paginating, skip this number of results
@@ -9954,8 +10460,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get all the constituents in the specified reference portfolio.
      *
      * @param scope The scope of the portfolio
-     * @param code The scope of the portfolio
-     * @param effectiveAt Optional. The effective date of the data
+     * @param code The code of the portfolio
+     * @param effectiveAt The effective date of the constituents to retrieve
      * @param asAt Optional. The AsAt date of the data
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
      * @param start Optional. When paginating, skip this number of results
@@ -9977,8 +10483,8 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      * Get all the constituents in the specified reference portfolio.
      *
      * @param scope The scope of the portfolio
-     * @param code The scope of the portfolio
-     * @param effectiveAt Optional. The effective date of the data
+     * @param code The code of the portfolio
+     * @param effectiveAt The effective date of the constituents to retrieve
      * @param asAt Optional. The AsAt date of the data
      * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
      * @param start Optional. When paginating, skip this number of results
@@ -10025,7 +10531,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
-     * @param effectiveAt Optional. The effective date of the data
+     * @param effectiveAt The effective date of the constituents
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
@@ -10041,7 +10547,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
-     * @param effectiveAt Optional. The effective date of the data
+     * @param effectiveAt The effective date of the constituents
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
@@ -10056,7 +10562,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
-     * @param effectiveAt Optional. The effective date of the data
+     * @param effectiveAt The effective date of the constituents
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
@@ -10075,7 +10581,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
-     * @param effectiveAt Optional. The effective date of the data
+     * @param effectiveAt The effective date of the constituents
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
@@ -10110,7 +10616,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
-     * @param effectiveAt Optional. The effective date of the data
+     * @param effectiveAt The effective date of the constituents
      * @param constituents The constituents to upload to the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -10127,7 +10633,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
-     * @param effectiveAt Optional. The effective date of the data
+     * @param effectiveAt The effective date of the constituents
      * @param constituents The constituents to upload to the portfolio
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -10143,7 +10649,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
-     * @param effectiveAt Optional. The effective date of the data
+     * @param effectiveAt The effective date of the constituents
      * @param constituents The constituents to upload to the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
@@ -10163,7 +10669,7 @@ public class LUSIDAPIImpl extends ServiceClient implements LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
-     * @param effectiveAt Optional. The effective date of the data
+     * @param effectiveAt The effective date of the constituents
      * @param constituents The constituents to upload to the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsResponse object

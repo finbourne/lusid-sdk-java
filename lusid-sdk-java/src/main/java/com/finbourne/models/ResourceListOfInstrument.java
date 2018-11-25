@@ -22,31 +22,31 @@
 
 package com.finbourne.models;
 
-import java.util.Map;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The TryAddClientInstruments model.
+ * The ResourceListOfInstrument model.
  */
-public class TryAddClientInstruments {
+public class ResourceListOfInstrument {
     /**
-     * The href property.
+     * The values property.
+     */
+    @JsonProperty(value = "values")
+    private List<Instrument> values;
+
+    /**
+     * The Uri that returns the same result as the original request,
+     * but may include resolved as at time(s).
      */
     @JsonProperty(value = "href")
     private String href;
 
     /**
-     * The values property.
+     * The total number of records returned in the set.
      */
-    @JsonProperty(value = "values")
-    private Map<String, Instrument> values;
-
-    /**
-     * The failed property.
-     */
-    @JsonProperty(value = "failed")
-    private Map<String, ErrorDetail> failed;
+    @JsonProperty(value = "count")
+    private Integer count;
 
     /**
      * The links property.
@@ -55,7 +55,28 @@ public class TryAddClientInstruments {
     private List<Link> links;
 
     /**
-     * Get the href value.
+     * Get the values value.
+     *
+     * @return the values value
+     */
+    public List<Instrument> values() {
+        return this.values;
+    }
+
+    /**
+     * Set the values value.
+     *
+     * @param values the values value to set
+     * @return the ResourceListOfInstrument object itself.
+     */
+    public ResourceListOfInstrument withValues(List<Instrument> values) {
+        this.values = values;
+        return this;
+    }
+
+    /**
+     * Get the Uri that returns the same result as the original request,
+     but may include resolved as at time(s).
      *
      * @return the href value
      */
@@ -64,53 +85,34 @@ public class TryAddClientInstruments {
     }
 
     /**
-     * Set the href value.
+     * Set the Uri that returns the same result as the original request,
+     but may include resolved as at time(s).
      *
      * @param href the href value to set
-     * @return the TryAddClientInstruments object itself.
+     * @return the ResourceListOfInstrument object itself.
      */
-    public TryAddClientInstruments withHref(String href) {
+    public ResourceListOfInstrument withHref(String href) {
         this.href = href;
         return this;
     }
 
     /**
-     * Get the values value.
+     * Get the total number of records returned in the set.
      *
-     * @return the values value
+     * @return the count value
      */
-    public Map<String, Instrument> values() {
-        return this.values;
+    public Integer count() {
+        return this.count;
     }
 
     /**
-     * Set the values value.
+     * Set the total number of records returned in the set.
      *
-     * @param values the values value to set
-     * @return the TryAddClientInstruments object itself.
+     * @param count the count value to set
+     * @return the ResourceListOfInstrument object itself.
      */
-    public TryAddClientInstruments withValues(Map<String, Instrument> values) {
-        this.values = values;
-        return this;
-    }
-
-    /**
-     * Get the failed value.
-     *
-     * @return the failed value
-     */
-    public Map<String, ErrorDetail> failed() {
-        return this.failed;
-    }
-
-    /**
-     * Set the failed value.
-     *
-     * @param failed the failed value to set
-     * @return the TryAddClientInstruments object itself.
-     */
-    public TryAddClientInstruments withFailed(Map<String, ErrorDetail> failed) {
-        this.failed = failed;
+    public ResourceListOfInstrument withCount(Integer count) {
+        this.count = count;
         return this;
     }
 
@@ -127,9 +129,9 @@ public class TryAddClientInstruments {
      * Set the links value.
      *
      * @param links the links value to set
-     * @return the TryAddClientInstruments object itself.
+     * @return the ResourceListOfInstrument object itself.
      */
-    public TryAddClientInstruments withLinks(List<Link> links) {
+    public ResourceListOfInstrument withLinks(List<Link> links) {
         this.links = links;
         return this;
     }
