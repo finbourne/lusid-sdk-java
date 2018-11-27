@@ -47,6 +47,7 @@ import com.finbourne.models.ExpandedGroup;
 import com.finbourne.models.FileResponse;
 import com.finbourne.models.FindInstrumentsResponse;
 import com.finbourne.models.GetInstrumentsResponse;
+import com.finbourne.models.GetReferencePortfolioConstituentsResponse;
 import com.finbourne.models.HoldingsAdjustment;
 import com.finbourne.models.Instrument;
 import com.finbourne.models.InstrumentAnalytic;
@@ -64,7 +65,6 @@ import com.finbourne.models.Property;
 import com.finbourne.models.PropertyDefinition;
 import com.finbourne.models.PropertySchema;
 import com.finbourne.models.PropertyValue;
-import com.finbourne.models.ReferencePortfolioConstituentRequest;
 import com.finbourne.models.ResourceId;
 import com.finbourne.models.ResourceListOfAnalyticStoreKey;
 import com.finbourne.models.ResourceListOfCodeType;
@@ -81,7 +81,6 @@ import com.finbourne.models.ResourceListOfProcessedCommand;
 import com.finbourne.models.ResourceListOfPropertyDefinition;
 import com.finbourne.models.ResourceListOfQuote;
 import com.finbourne.models.ResourceListOfReconciliationBreak;
-import com.finbourne.models.ResourceListOfReferencePortfolioConstituent;
 import com.finbourne.models.ResourceListOfScope;
 import com.finbourne.models.ResourceListOfString;
 import com.finbourne.models.ResourceListOfTransactionConfigurationData;
@@ -105,6 +104,7 @@ import com.finbourne.models.UpsertPortfolioExecutionsResponse;
 import com.finbourne.models.UpsertPortfolioTransactionsResponse;
 import com.finbourne.models.UpsertQuoteRequest;
 import com.finbourne.models.UpsertQuotesResponse;
+import com.finbourne.models.UpsertReferencePortfolioConstituentsRequest;
 import com.finbourne.models.UpsertReferencePortfolioConstituentsResponse;
 import com.finbourne.models.VersionedResourceListOfOutputTransaction;
 import com.finbourne.models.VersionedResourceListOfPortfolioHolding;
@@ -5941,9 +5941,9 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfReferencePortfolioConstituent object if successful.
+     * @return the GetReferencePortfolioConstituentsResponse object if successful.
      */
-    ResourceListOfReferencePortfolioConstituent getReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt);
+    GetReferencePortfolioConstituentsResponse getReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt);
 
     /**
      * Get constituents.
@@ -5956,7 +5956,7 @@ public interface LUSIDAPI {
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfReferencePortfolioConstituent> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<ResourceListOfReferencePortfolioConstituent> serviceCallback);
+    ServiceFuture<GetReferencePortfolioConstituentsResponse> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<GetReferencePortfolioConstituentsResponse> serviceCallback);
 
     /**
      * Get constituents.
@@ -5966,9 +5966,9 @@ public interface LUSIDAPI {
      * @param code The code of the portfolio
      * @param effectiveAt The effective date of the constituents to retrieve
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReferencePortfolioConstituent object
+     * @return the observable to the GetReferencePortfolioConstituentsResponse object
      */
-    Observable<ResourceListOfReferencePortfolioConstituent> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt);
+    Observable<GetReferencePortfolioConstituentsResponse> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt);
 
     /**
      * Get constituents.
@@ -5978,9 +5978,9 @@ public interface LUSIDAPI {
      * @param code The code of the portfolio
      * @param effectiveAt The effective date of the constituents to retrieve
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReferencePortfolioConstituent object
+     * @return the observable to the GetReferencePortfolioConstituentsResponse object
      */
-    Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituent>> getReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
+    Observable<ServiceResponse<GetReferencePortfolioConstituentsResponse>> getReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
     /**
      * Get constituents.
      * Get all the constituents in the specified reference portfolio.
@@ -5989,15 +5989,15 @@ public interface LUSIDAPI {
      * @param code The code of the portfolio
      * @param effectiveAt The effective date of the constituents to retrieve
      * @param asAt Optional. The AsAt date of the data
-     * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+     * @param sortBy Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName
      * @param start Optional. When paginating, skip this number of results
      * @param limit Optional. When paginating, limit the number of returned results to this many
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfReferencePortfolioConstituent object if successful.
+     * @return the GetReferencePortfolioConstituentsResponse object if successful.
      */
-    ResourceListOfReferencePortfolioConstituent getReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    GetReferencePortfolioConstituentsResponse getReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Get constituents.
@@ -6007,14 +6007,14 @@ public interface LUSIDAPI {
      * @param code The code of the portfolio
      * @param effectiveAt The effective date of the constituents to retrieve
      * @param asAt Optional. The AsAt date of the data
-     * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+     * @param sortBy Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName
      * @param start Optional. When paginating, skip this number of results
      * @param limit Optional. When paginating, limit the number of returned results to this many
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfReferencePortfolioConstituent> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<ResourceListOfReferencePortfolioConstituent> serviceCallback);
+    ServiceFuture<GetReferencePortfolioConstituentsResponse> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit, final ServiceCallback<GetReferencePortfolioConstituentsResponse> serviceCallback);
 
     /**
      * Get constituents.
@@ -6024,13 +6024,13 @@ public interface LUSIDAPI {
      * @param code The code of the portfolio
      * @param effectiveAt The effective date of the constituents to retrieve
      * @param asAt Optional. The AsAt date of the data
-     * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+     * @param sortBy Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName
      * @param start Optional. When paginating, skip this number of results
      * @param limit Optional. When paginating, limit the number of returned results to this many
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReferencePortfolioConstituent object
+     * @return the observable to the GetReferencePortfolioConstituentsResponse object
      */
-    Observable<ResourceListOfReferencePortfolioConstituent> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<GetReferencePortfolioConstituentsResponse> getReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Get constituents.
@@ -6040,13 +6040,13 @@ public interface LUSIDAPI {
      * @param code The code of the portfolio
      * @param effectiveAt The effective date of the constituents to retrieve
      * @param asAt Optional. The AsAt date of the data
-     * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+     * @param sortBy Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName
      * @param start Optional. When paginating, skip this number of results
      * @param limit Optional. When paginating, limit the number of returned results to this many
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfReferencePortfolioConstituent object
+     * @return the observable to the GetReferencePortfolioConstituentsResponse object
      */
-    Observable<ServiceResponse<ResourceListOfReferencePortfolioConstituent>> getReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
+    Observable<ServiceResponse<GetReferencePortfolioConstituentsResponse>> getReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, DateTime asAt, List<String> sortBy, Integer start, Integer limit);
 
     /**
      * Add constituents.
@@ -6054,13 +6054,12 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
-     * @param effectiveAt The effective date of the constituents
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the UpsertReferencePortfolioConstituentsResponse object if successful.
      */
-    UpsertReferencePortfolioConstituentsResponse upsertReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt);
+    UpsertReferencePortfolioConstituentsResponse upsertReferencePortfolioConstituents(String scope, String code);
 
     /**
      * Add constituents.
@@ -6068,12 +6067,11 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
-     * @param effectiveAt The effective date of the constituents
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<UpsertReferencePortfolioConstituentsResponse> upsertReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, final ServiceCallback<UpsertReferencePortfolioConstituentsResponse> serviceCallback);
+    ServiceFuture<UpsertReferencePortfolioConstituentsResponse> upsertReferencePortfolioConstituentsAsync(String scope, String code, final ServiceCallback<UpsertReferencePortfolioConstituentsResponse> serviceCallback);
 
     /**
      * Add constituents.
@@ -6081,11 +6079,10 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
-     * @param effectiveAt The effective date of the constituents
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
-    Observable<UpsertReferencePortfolioConstituentsResponse> upsertReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt);
+    Observable<UpsertReferencePortfolioConstituentsResponse> upsertReferencePortfolioConstituentsAsync(String scope, String code);
 
     /**
      * Add constituents.
@@ -6093,25 +6090,23 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
-     * @param effectiveAt The effective date of the constituents
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
-    Observable<ServiceResponse<UpsertReferencePortfolioConstituentsResponse>> upsertReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
+    Observable<ServiceResponse<UpsertReferencePortfolioConstituentsResponse>> upsertReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code);
     /**
      * Add constituents.
      * Add constituents to the specified reference portfolio.
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
-     * @param effectiveAt The effective date of the constituents
      * @param constituents The constituents to upload to the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the UpsertReferencePortfolioConstituentsResponse object if successful.
      */
-    UpsertReferencePortfolioConstituentsResponse upsertReferencePortfolioConstituents(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentRequest> constituents);
+    UpsertReferencePortfolioConstituentsResponse upsertReferencePortfolioConstituents(String scope, String code, UpsertReferencePortfolioConstituentsRequest constituents);
 
     /**
      * Add constituents.
@@ -6119,13 +6114,12 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
-     * @param effectiveAt The effective date of the constituents
      * @param constituents The constituents to upload to the portfolio
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<UpsertReferencePortfolioConstituentsResponse> upsertReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentRequest> constituents, final ServiceCallback<UpsertReferencePortfolioConstituentsResponse> serviceCallback);
+    ServiceFuture<UpsertReferencePortfolioConstituentsResponse> upsertReferencePortfolioConstituentsAsync(String scope, String code, UpsertReferencePortfolioConstituentsRequest constituents, final ServiceCallback<UpsertReferencePortfolioConstituentsResponse> serviceCallback);
 
     /**
      * Add constituents.
@@ -6133,12 +6127,11 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
-     * @param effectiveAt The effective date of the constituents
      * @param constituents The constituents to upload to the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
-    Observable<UpsertReferencePortfolioConstituentsResponse> upsertReferencePortfolioConstituentsAsync(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentRequest> constituents);
+    Observable<UpsertReferencePortfolioConstituentsResponse> upsertReferencePortfolioConstituentsAsync(String scope, String code, UpsertReferencePortfolioConstituentsRequest constituents);
 
     /**
      * Add constituents.
@@ -6146,12 +6139,11 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
-     * @param effectiveAt The effective date of the constituents
      * @param constituents The constituents to upload to the portfolio
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertReferencePortfolioConstituentsResponse object
      */
-    Observable<ServiceResponse<UpsertReferencePortfolioConstituentsResponse>> upsertReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt, List<ReferencePortfolioConstituentRequest> constituents);
+    Observable<ServiceResponse<UpsertReferencePortfolioConstituentsResponse>> upsertReferencePortfolioConstituentsWithServiceResponseAsync(String scope, String code, UpsertReferencePortfolioConstituentsRequest constituents);
 
     /**
      * Get results.

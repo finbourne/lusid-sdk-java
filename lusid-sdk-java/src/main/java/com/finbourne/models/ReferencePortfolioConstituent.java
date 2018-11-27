@@ -32,11 +32,17 @@ public class ReferencePortfolioConstituent {
     /**
      * The instrumentUid property.
      */
-    @JsonProperty(value = "instrumentUid")
+    @JsonProperty(value = "instrumentUid", required = true)
     private String instrumentUid;
 
     /**
-     * The properties property.
+     * The currency property.
+     */
+    @JsonProperty(value = "currency", required = true)
+    private String currency;
+
+    /**
+     * Properties associated with the constituent.
      */
     @JsonProperty(value = "properties")
     private List<Property> properties;
@@ -44,14 +50,14 @@ public class ReferencePortfolioConstituent {
     /**
      * The weight property.
      */
-    @JsonProperty(value = "weight")
-    private Double weight;
+    @JsonProperty(value = "weight", required = true)
+    private double weight;
 
     /**
-     * The currency property.
+     * The floatingWeight property.
      */
-    @JsonProperty(value = "currency")
-    private String currency;
+    @JsonProperty(value = "floatingWeight")
+    private Double floatingWeight;
 
     /**
      * Get the instrumentUid value.
@@ -74,46 +80,6 @@ public class ReferencePortfolioConstituent {
     }
 
     /**
-     * Get the properties value.
-     *
-     * @return the properties value
-     */
-    public List<Property> properties() {
-        return this.properties;
-    }
-
-    /**
-     * Set the properties value.
-     *
-     * @param properties the properties value to set
-     * @return the ReferencePortfolioConstituent object itself.
-     */
-    public ReferencePortfolioConstituent withProperties(List<Property> properties) {
-        this.properties = properties;
-        return this;
-    }
-
-    /**
-     * Get the weight value.
-     *
-     * @return the weight value
-     */
-    public Double weight() {
-        return this.weight;
-    }
-
-    /**
-     * Set the weight value.
-     *
-     * @param weight the weight value to set
-     * @return the ReferencePortfolioConstituent object itself.
-     */
-    public ReferencePortfolioConstituent withWeight(Double weight) {
-        this.weight = weight;
-        return this;
-    }
-
-    /**
      * Get the currency value.
      *
      * @return the currency value
@@ -130,6 +96,66 @@ public class ReferencePortfolioConstituent {
      */
     public ReferencePortfolioConstituent withCurrency(String currency) {
         this.currency = currency;
+        return this;
+    }
+
+    /**
+     * Get properties associated with the constituent.
+     *
+     * @return the properties value
+     */
+    public List<Property> properties() {
+        return this.properties;
+    }
+
+    /**
+     * Set properties associated with the constituent.
+     *
+     * @param properties the properties value to set
+     * @return the ReferencePortfolioConstituent object itself.
+     */
+    public ReferencePortfolioConstituent withProperties(List<Property> properties) {
+        this.properties = properties;
+        return this;
+    }
+
+    /**
+     * Get the weight value.
+     *
+     * @return the weight value
+     */
+    public double weight() {
+        return this.weight;
+    }
+
+    /**
+     * Set the weight value.
+     *
+     * @param weight the weight value to set
+     * @return the ReferencePortfolioConstituent object itself.
+     */
+    public ReferencePortfolioConstituent withWeight(double weight) {
+        this.weight = weight;
+        return this;
+    }
+
+    /**
+     * Get the floatingWeight value.
+     *
+     * @return the floatingWeight value
+     */
+    public Double floatingWeight() {
+        return this.floatingWeight;
+    }
+
+    /**
+     * Set the floatingWeight value.
+     *
+     * @param floatingWeight the floatingWeight value to set
+     * @return the ReferencePortfolioConstituent object itself.
+     */
+    public ReferencePortfolioConstituent withFloatingWeight(Double floatingWeight) {
+        this.floatingWeight = floatingWeight;
         return this;
     }
 
