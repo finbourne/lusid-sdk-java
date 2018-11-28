@@ -35,7 +35,7 @@ public class UpdateInstrumentIdentifierRequest {
      * allowable for instrument identifiers. Possible values include:
      * 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin',
      * 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi',
-     * 'ShareClassFigi', 'Wertpapier'.
+     * 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'.
      */
     @JsonProperty(value = "type")
     private String type;
@@ -59,7 +59,7 @@ public class UpdateInstrumentIdentifierRequest {
 
     /**
      * Get the type of the identifier to upsert. This must be one of the code types marked as
-     allowable for instrument identifiers. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'.
+     allowable for instrument identifiers. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'.
      *
      * @return the type value
      */
@@ -69,7 +69,7 @@ public class UpdateInstrumentIdentifierRequest {
 
     /**
      * Set the type of the identifier to upsert. This must be one of the code types marked as
-     allowable for instrument identifiers. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'.
+     allowable for instrument identifiers. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'.
      *
      * @param type the type value to set
      * @return the UpdateInstrumentIdentifierRequest object itself.

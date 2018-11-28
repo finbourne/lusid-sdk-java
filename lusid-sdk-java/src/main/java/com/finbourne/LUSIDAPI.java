@@ -1606,7 +1606,7 @@ public interface LUSIDAPI {
      * Get instrument definition.
      * Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The identifier of the requested instrument
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -1619,7 +1619,7 @@ public interface LUSIDAPI {
      * Get instrument definition.
      * Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The identifier of the requested instrument
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -1631,7 +1631,7 @@ public interface LUSIDAPI {
      * Get instrument definition.
      * Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The identifier of the requested instrument
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Instrument object
@@ -1642,7 +1642,7 @@ public interface LUSIDAPI {
      * Get instrument definition.
      * Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The identifier of the requested instrument
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Instrument object
@@ -1652,7 +1652,7 @@ public interface LUSIDAPI {
      * Get instrument definition.
      * Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The identifier of the requested instrument
      * @param effectiveAt Optional. The effective date of the query
      * @param asAt Optional. The AsAt date of the query
@@ -1668,7 +1668,7 @@ public interface LUSIDAPI {
      * Get instrument definition.
      * Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The identifier of the requested instrument
      * @param effectiveAt Optional. The effective date of the query
      * @param asAt Optional. The AsAt date of the query
@@ -1683,7 +1683,7 @@ public interface LUSIDAPI {
      * Get instrument definition.
      * Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The identifier of the requested instrument
      * @param effectiveAt Optional. The effective date of the query
      * @param asAt Optional. The AsAt date of the query
@@ -1697,7 +1697,7 @@ public interface LUSIDAPI {
      * Get instrument definition.
      * Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The identifier of the requested instrument
      * @param effectiveAt Optional. The effective date of the query
      * @param asAt Optional. The AsAt date of the query
@@ -1711,7 +1711,7 @@ public interface LUSIDAPI {
      * Update instrument identifier.
      * Adds, updates, or removes an identifier on an instrument.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The instrument identifier
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -1724,7 +1724,7 @@ public interface LUSIDAPI {
      * Update instrument identifier.
      * Adds, updates, or removes an identifier on an instrument.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The instrument identifier
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -1736,7 +1736,7 @@ public interface LUSIDAPI {
      * Update instrument identifier.
      * Adds, updates, or removes an identifier on an instrument.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The instrument identifier
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Instrument object
@@ -1747,7 +1747,7 @@ public interface LUSIDAPI {
      * Update instrument identifier.
      * Adds, updates, or removes an identifier on an instrument.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The instrument identifier
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the Instrument object
@@ -1757,7 +1757,7 @@ public interface LUSIDAPI {
      * Update instrument identifier.
      * Adds, updates, or removes an identifier on an instrument.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The instrument identifier
      * @param request The identifier to add, update, or remove
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -1771,7 +1771,7 @@ public interface LUSIDAPI {
      * Update instrument identifier.
      * Adds, updates, or removes an identifier on an instrument.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The instrument identifier
      * @param request The identifier to add, update, or remove
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -1784,7 +1784,7 @@ public interface LUSIDAPI {
      * Update instrument identifier.
      * Adds, updates, or removes an identifier on an instrument.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The instrument identifier
      * @param request The identifier to add, update, or remove
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -1796,7 +1796,7 @@ public interface LUSIDAPI {
      * Update instrument identifier.
      * Adds, updates, or removes an identifier on an instrument.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The instrument identifier
      * @param request The identifier to add, update, or remove
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -1810,7 +1810,7 @@ public interface LUSIDAPI {
      The response will include those instruments that could not be deleted (as well as any available details).
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The instrument identifier
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -1825,7 +1825,7 @@ public interface LUSIDAPI {
      The response will include those instruments that could not be deleted (as well as any available details).
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The instrument identifier
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -1839,7 +1839,7 @@ public interface LUSIDAPI {
      The response will include those instruments that could not be deleted (as well as any available details).
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The instrument identifier
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeleteInstrumentResponse object
@@ -1852,7 +1852,7 @@ public interface LUSIDAPI {
      The response will include those instruments that could not be deleted (as well as any available details).
      It is important to always check the 'Failed' set for any unsuccessful results.
      *
-     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param type The type of identifier being supplied. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param id The instrument identifier
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeleteInstrumentResponse object
@@ -1901,7 +1901,7 @@ public interface LUSIDAPI {
      * Find externally mastered instruments.
      * Search for a set of instruments from an external instrument mastering service.
      *
-     * @param codeType The type of codes to search for. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codeType The type of codes to search for. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param codes The collection of instruments to search for
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
@@ -1914,7 +1914,7 @@ public interface LUSIDAPI {
      * Find externally mastered instruments.
      * Search for a set of instruments from an external instrument mastering service.
      *
-     * @param codeType The type of codes to search for. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codeType The type of codes to search for. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param codes The collection of instruments to search for
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -1926,7 +1926,7 @@ public interface LUSIDAPI {
      * Find externally mastered instruments.
      * Search for a set of instruments from an external instrument mastering service.
      *
-     * @param codeType The type of codes to search for. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codeType The type of codes to search for. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param codes The collection of instruments to search for
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the FindInstrumentsResponse object
@@ -1937,7 +1937,7 @@ public interface LUSIDAPI {
      * Find externally mastered instruments.
      * Search for a set of instruments from an external instrument mastering service.
      *
-     * @param codeType The type of codes to search for. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codeType The type of codes to search for. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param codes The collection of instruments to search for
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the FindInstrumentsResponse object
@@ -1986,7 +1986,7 @@ public interface LUSIDAPI {
      * Get instrument definition.
      * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param codeType the type of codes being specified. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codeType the type of codes being specified. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param codes The identifiers of the instruments to get
      * @param effectiveAt Optional. The effective date of the request
      * @param asAt Optional. The as at date of the request
@@ -2002,7 +2002,7 @@ public interface LUSIDAPI {
      * Get instrument definition.
      * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param codeType the type of codes being specified. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codeType the type of codes being specified. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param codes The identifiers of the instruments to get
      * @param effectiveAt Optional. The effective date of the request
      * @param asAt Optional. The as at date of the request
@@ -2017,7 +2017,7 @@ public interface LUSIDAPI {
      * Get instrument definition.
      * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param codeType the type of codes being specified. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codeType the type of codes being specified. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param codes The identifiers of the instruments to get
      * @param effectiveAt Optional. The effective date of the request
      * @param asAt Optional. The as at date of the request
@@ -2031,7 +2031,7 @@ public interface LUSIDAPI {
      * Get instrument definition.
      * Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
      *
-     * @param codeType the type of codes being specified. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier'
+     * @param codeType the type of codes being specified. Possible values include: 'Undefined', 'LusidInstrumentId', 'ReutersAssetId', 'CINS', 'Isin', 'Sedol', 'Cusip', 'Ticker', 'ClientInternal', 'Figi', 'CompositeFigi', 'ShareClassFigi', 'Wertpapier', 'RIC', 'QuotePermId'
      * @param codes The identifiers of the instruments to get
      * @param effectiveAt Optional. The effective date of the request
      * @param asAt Optional. The as at date of the request
