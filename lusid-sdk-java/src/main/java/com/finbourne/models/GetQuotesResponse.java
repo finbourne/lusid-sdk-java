@@ -22,63 +22,62 @@
 
 package com.finbourne.models;
 
-import org.joda.time.DateTime;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The response given from the DeleteQuotes Api call.
+ * The GetQuotesResponse model.
  */
-public class DeleteQuotesResponse {
+public class GetQuotesResponse {
     /**
-     * The asAtDate property.
+     * The found property.
      */
-    @JsonProperty(value = "asAtDate", required = true)
-    private DateTime asAtDate;
+    @JsonProperty(value = "found")
+    private List<Quote> found;
 
     /**
-     * The links property.
+     * The notFound property.
      */
-    @JsonProperty(value = "links")
-    private List<Link> links;
+    @JsonProperty(value = "notFound")
+    private List<QuoteId> notFound;
 
     /**
-     * Get the asAtDate value.
+     * Get the found value.
      *
-     * @return the asAtDate value
+     * @return the found value
      */
-    public DateTime asAtDate() {
-        return this.asAtDate;
+    public List<Quote> found() {
+        return this.found;
     }
 
     /**
-     * Set the asAtDate value.
+     * Set the found value.
      *
-     * @param asAtDate the asAtDate value to set
-     * @return the DeleteQuotesResponse object itself.
+     * @param found the found value to set
+     * @return the GetQuotesResponse object itself.
      */
-    public DeleteQuotesResponse withAsAtDate(DateTime asAtDate) {
-        this.asAtDate = asAtDate;
+    public GetQuotesResponse withFound(List<Quote> found) {
+        this.found = found;
         return this;
     }
 
     /**
-     * Get the links value.
+     * Get the notFound value.
      *
-     * @return the links value
+     * @return the notFound value
      */
-    public List<Link> links() {
-        return this.links;
+    public List<QuoteId> notFound() {
+        return this.notFound;
     }
 
     /**
-     * Set the links value.
+     * Set the notFound value.
      *
-     * @param links the links value to set
-     * @return the DeleteQuotesResponse object itself.
+     * @param notFound the notFound value to set
+     * @return the GetQuotesResponse object itself.
      */
-    public DeleteQuotesResponse withLinks(List<Link> links) {
-        this.links = links;
+    public GetQuotesResponse withNotFound(List<QuoteId> notFound) {
+        this.notFound = notFound;
         return this;
     }
 

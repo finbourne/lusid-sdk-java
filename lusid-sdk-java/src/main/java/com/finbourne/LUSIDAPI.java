@@ -40,6 +40,7 @@ import com.finbourne.models.CreateTransactionPortfolioRequest;
 import com.finbourne.models.DataType;
 import com.finbourne.models.DeletedEntityResponse;
 import com.finbourne.models.DeleteInstrumentResponse;
+import com.finbourne.models.DeleteQuoteRequest;
 import com.finbourne.models.DeleteQuotesResponse;
 import com.finbourne.models.ErrorResponseException;
 import com.finbourne.models.ExecutionRequest;
@@ -47,6 +48,7 @@ import com.finbourne.models.ExpandedGroup;
 import com.finbourne.models.FileResponse;
 import com.finbourne.models.FindInstrumentsResponse;
 import com.finbourne.models.GetInstrumentsResponse;
+import com.finbourne.models.GetQuotesResponse;
 import com.finbourne.models.GetReferencePortfolioConstituentsResponse;
 import com.finbourne.models.HoldingsAdjustment;
 import com.finbourne.models.Instrument;
@@ -65,6 +67,7 @@ import com.finbourne.models.Property;
 import com.finbourne.models.PropertyDefinition;
 import com.finbourne.models.PropertySchema;
 import com.finbourne.models.PropertyValue;
+import com.finbourne.models.QuoteId;
 import com.finbourne.models.ResourceId;
 import com.finbourne.models.ResourceListOfAnalyticStoreKey;
 import com.finbourne.models.ResourceListOfCodeType;
@@ -79,7 +82,6 @@ import com.finbourne.models.ResourceListOfPortfolioGroup;
 import com.finbourne.models.ResourceListOfPortfolioSearchResult;
 import com.finbourne.models.ResourceListOfProcessedCommand;
 import com.finbourne.models.ResourceListOfPropertyDefinition;
-import com.finbourne.models.ResourceListOfQuote;
 import com.finbourne.models.ResourceListOfReconciliationBreak;
 import com.finbourne.models.ResourceListOfScope;
 import com.finbourne.models.ResourceListOfString;
@@ -1455,47 +1457,101 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<DeletedEntityResponse>> deleteDerivedPortfolioDetailsWithServiceResponseAsync(String scope, String code, DateTime effectiveAt);
 
     /**
-     * Get allowable instrument identifiers.
-     * Gets the set of identifiers that have been configured as unique identifiers for instruments.
-     Only CodeTypes returned from this end point can be used as identifiers for instruments.
+     * Get all of the currently mastered instruments in LUSID.
+     * Lists all instruments that have been mastered within LUSID.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfCodeType object if successful.
+     * @return the ResourceListOfInstrument object if successful.
      */
-    ResourceListOfCodeType getInstrumentIdentifiers();
+    ResourceListOfInstrument listInstruments();
 
     /**
-     * Get allowable instrument identifiers.
-     * Gets the set of identifiers that have been configured as unique identifiers for instruments.
-     Only CodeTypes returned from this end point can be used as identifiers for instruments.
+     * Get all of the currently mastered instruments in LUSID.
+     * Lists all instruments that have been mastered within LUSID.
      *
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<ResourceListOfCodeType> getInstrumentIdentifiersAsync(final ServiceCallback<ResourceListOfCodeType> serviceCallback);
+    ServiceFuture<ResourceListOfInstrument> listInstrumentsAsync(final ServiceCallback<ResourceListOfInstrument> serviceCallback);
 
     /**
-     * Get allowable instrument identifiers.
-     * Gets the set of identifiers that have been configured as unique identifiers for instruments.
-     Only CodeTypes returned from this end point can be used as identifiers for instruments.
+     * Get all of the currently mastered instruments in LUSID.
+     * Lists all instruments that have been mastered within LUSID.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfCodeType object
+     * @return the observable to the ResourceListOfInstrument object
      */
-    Observable<ResourceListOfCodeType> getInstrumentIdentifiersAsync();
+    Observable<ResourceListOfInstrument> listInstrumentsAsync();
 
     /**
-     * Get allowable instrument identifiers.
-     * Gets the set of identifiers that have been configured as unique identifiers for instruments.
-     Only CodeTypes returned from this end point can be used as identifiers for instruments.
+     * Get all of the currently mastered instruments in LUSID.
+     * Lists all instruments that have been mastered within LUSID.
      *
      * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfCodeType object
+     * @return the observable to the ResourceListOfInstrument object
      */
-    Observable<ServiceResponse<ResourceListOfCodeType>> getInstrumentIdentifiersWithServiceResponseAsync();
+    Observable<ServiceResponse<ResourceListOfInstrument>> listInstrumentsWithServiceResponseAsync();
+    /**
+     * Get all of the currently mastered instruments in LUSID.
+     * Lists all instruments that have been mastered within LUSID.
+     *
+     * @param asAt The AsAt time
+     * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+     * @param start Optional. When paginating, skip this number of results
+     * @param limit Optional. When paginating, limit the number of returned results to this many.
+     * @param filter Optional. Expression to filter the result set
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfInstrument object if successful.
+     */
+    ResourceListOfInstrument listInstruments(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Get all of the currently mastered instruments in LUSID.
+     * Lists all instruments that have been mastered within LUSID.
+     *
+     * @param asAt The AsAt time
+     * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+     * @param start Optional. When paginating, skip this number of results
+     * @param limit Optional. When paginating, limit the number of returned results to this many.
+     * @param filter Optional. Expression to filter the result set
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ResourceListOfInstrument> listInstrumentsAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, final ServiceCallback<ResourceListOfInstrument> serviceCallback);
+
+    /**
+     * Get all of the currently mastered instruments in LUSID.
+     * Lists all instruments that have been mastered within LUSID.
+     *
+     * @param asAt The AsAt time
+     * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+     * @param start Optional. When paginating, skip this number of results
+     * @param limit Optional. When paginating, limit the number of returned results to this many.
+     * @param filter Optional. Expression to filter the result set
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfInstrument object
+     */
+    Observable<ResourceListOfInstrument> listInstrumentsAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
+
+    /**
+     * Get all of the currently mastered instruments in LUSID.
+     * Lists all instruments that have been mastered within LUSID.
+     *
+     * @param asAt The AsAt time
+     * @param sortBy Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+     * @param start Optional. When paginating, skip this number of results
+     * @param limit Optional. When paginating, limit the number of returned results to this many.
+     * @param filter Optional. Expression to filter the result set
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfInstrument object
+     */
+    Observable<ServiceResponse<ResourceListOfInstrument>> listInstrumentsWithServiceResponseAsync(DateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter);
 
     /**
      * Upsert instruments.
@@ -2230,6 +2286,49 @@ public interface LUSIDAPI {
      * @return the observable to the UpsertInstrumentPropertiesResponse object
      */
     Observable<ServiceResponse<UpsertInstrumentPropertiesResponse>> upsertInstrumentsPropertiesWithServiceResponseAsync(List<InstrumentProperty> instrumentProperties);
+
+    /**
+     * Get allowable instrument identifiers.
+     * Gets the set of identifiers that have been configured as unique identifiers for instruments.
+     Only CodeTypes returned from this end point can be used as identifiers for instruments.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the ResourceListOfCodeType object if successful.
+     */
+    ResourceListOfCodeType getInstrumentIdentifiers();
+
+    /**
+     * Get allowable instrument identifiers.
+     * Gets the set of identifiers that have been configured as unique identifiers for instruments.
+     Only CodeTypes returned from this end point can be used as identifiers for instruments.
+     *
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<ResourceListOfCodeType> getInstrumentIdentifiersAsync(final ServiceCallback<ResourceListOfCodeType> serviceCallback);
+
+    /**
+     * Get allowable instrument identifiers.
+     * Gets the set of identifiers that have been configured as unique identifiers for instruments.
+     Only CodeTypes returned from this end point can be used as identifiers for instruments.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfCodeType object
+     */
+    Observable<ResourceListOfCodeType> getInstrumentIdentifiersAsync();
+
+    /**
+     * Get allowable instrument identifiers.
+     * Gets the set of identifiers that have been configured as unique identifiers for instruments.
+     Only CodeTypes returned from this end point can be used as identifiers for instruments.
+     *
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the ResourceListOfCodeType object
+     */
+    Observable<ServiceResponse<ResourceListOfCodeType>> getInstrumentIdentifiersWithServiceResponseAsync();
 
     /**
      * Get SAML Identity Provider.
@@ -4537,7 +4636,7 @@ public interface LUSIDAPI {
 
     /**
      * Get commands.
-     * Gets all commands that modified a specific portfolio.
+     * Gets all commands that modified a specific portfolio, including any input transactions.
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
@@ -4550,7 +4649,7 @@ public interface LUSIDAPI {
 
     /**
      * Get commands.
-     * Gets all commands that modified a specific portfolio.
+     * Gets all commands that modified a specific portfolio, including any input transactions.
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
@@ -4562,7 +4661,7 @@ public interface LUSIDAPI {
 
     /**
      * Get commands.
-     * Gets all commands that modified a specific portfolio.
+     * Gets all commands that modified a specific portfolio, including any input transactions.
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
@@ -4573,7 +4672,7 @@ public interface LUSIDAPI {
 
     /**
      * Get commands.
-     * Gets all commands that modified a specific portfolio.
+     * Gets all commands that modified a specific portfolio, including any input transactions.
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
@@ -4583,7 +4682,7 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<ResourceListOfProcessedCommand>> getPortfolioCommandsWithServiceResponseAsync(String scope, String code);
     /**
      * Get commands.
-     * Gets all commands that modified a specific portfolio.
+     * Gets all commands that modified a specific portfolio, including any input transactions.
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
@@ -4602,7 +4701,7 @@ public interface LUSIDAPI {
 
     /**
      * Get commands.
-     * Gets all commands that modified a specific portfolio.
+     * Gets all commands that modified a specific portfolio, including any input transactions.
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
@@ -4620,7 +4719,7 @@ public interface LUSIDAPI {
 
     /**
      * Get commands.
-     * Gets all commands that modified a specific portfolio.
+     * Gets all commands that modified a specific portfolio, including any input transactions.
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
@@ -4637,7 +4736,7 @@ public interface LUSIDAPI {
 
     /**
      * Get commands.
-     * Gets all commands that modified a specific portfolio.
+     * Gets all commands that modified a specific portfolio, including any input transactions.
      *
      * @param scope The scope of the portfolio
      * @param code The code of the portfolio
@@ -5524,139 +5623,6 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<DeletedEntityResponse>> deletePropertyDefinitionWithServiceResponseAsync(String domain, String scope, String code);
 
     /**
-     * Get quotes.
-     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
-     Quotes which are older than this at the time of the effective date/time will not be returned.
-     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
-     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
-     *
-     * @param scope The scope of the quotes
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfQuote object if successful.
-     */
-    ResourceListOfQuote getQuotes(String scope);
-
-    /**
-     * Get quotes.
-     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
-     Quotes which are older than this at the time of the effective date/time will not be returned.
-     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
-     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
-     *
-     * @param scope The scope of the quotes
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfQuote> getQuotesAsync(String scope, final ServiceCallback<ResourceListOfQuote> serviceCallback);
-
-    /**
-     * Get quotes.
-     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
-     Quotes which are older than this at the time of the effective date/time will not be returned.
-     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
-     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
-     *
-     * @param scope The scope of the quotes
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfQuote object
-     */
-    Observable<ResourceListOfQuote> getQuotesAsync(String scope);
-
-    /**
-     * Get quotes.
-     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
-     Quotes which are older than this at the time of the effective date/time will not be returned.
-     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
-     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
-     *
-     * @param scope The scope of the quotes
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfQuote object
-     */
-    Observable<ServiceResponse<ResourceListOfQuote>> getQuotesWithServiceResponseAsync(String scope);
-    /**
-     * Get quotes.
-     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
-     Quotes which are older than this at the time of the effective date/time will not be returned.
-     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
-     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
-     *
-     * @param scope The scope of the quotes
-     * @param quoteIds The ids of the quotes
-     * @param effectiveAt Optional. The date/time from which the quotes are effective
-     * @param asAt Optional. The 'AsAt' date/time
-     * @param maxAge Optional. The quote staleness tolerance
-     * @param page Optional. The page of results to return
-     * @param limit Optional. The number of results per page
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @throws ErrorResponseException thrown if the request is rejected by server
-     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
-     * @return the ResourceListOfQuote object if successful.
-     */
-    ResourceListOfQuote getQuotes(String scope, List<String> quoteIds, DateTime effectiveAt, DateTime asAt, String maxAge, Integer page, Integer limit);
-
-    /**
-     * Get quotes.
-     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
-     Quotes which are older than this at the time of the effective date/time will not be returned.
-     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
-     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
-     *
-     * @param scope The scope of the quotes
-     * @param quoteIds The ids of the quotes
-     * @param effectiveAt Optional. The date/time from which the quotes are effective
-     * @param asAt Optional. The 'AsAt' date/time
-     * @param maxAge Optional. The quote staleness tolerance
-     * @param page Optional. The page of results to return
-     * @param limit Optional. The number of results per page
-     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the {@link ServiceFuture} object
-     */
-    ServiceFuture<ResourceListOfQuote> getQuotesAsync(String scope, List<String> quoteIds, DateTime effectiveAt, DateTime asAt, String maxAge, Integer page, Integer limit, final ServiceCallback<ResourceListOfQuote> serviceCallback);
-
-    /**
-     * Get quotes.
-     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
-     Quotes which are older than this at the time of the effective date/time will not be returned.
-     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
-     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
-     *
-     * @param scope The scope of the quotes
-     * @param quoteIds The ids of the quotes
-     * @param effectiveAt Optional. The date/time from which the quotes are effective
-     * @param asAt Optional. The 'AsAt' date/time
-     * @param maxAge Optional. The quote staleness tolerance
-     * @param page Optional. The page of results to return
-     * @param limit Optional. The number of results per page
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfQuote object
-     */
-    Observable<ResourceListOfQuote> getQuotesAsync(String scope, List<String> quoteIds, DateTime effectiveAt, DateTime asAt, String maxAge, Integer page, Integer limit);
-
-    /**
-     * Get quotes.
-     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
-     Quotes which are older than this at the time of the effective date/time will not be returned.
-     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
-     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
-     *
-     * @param scope The scope of the quotes
-     * @param quoteIds The ids of the quotes
-     * @param effectiveAt Optional. The date/time from which the quotes are effective
-     * @param asAt Optional. The 'AsAt' date/time
-     * @param maxAge Optional. The quote staleness tolerance
-     * @param page Optional. The page of results to return
-     * @param limit Optional. The number of results per page
-     * @throws IllegalArgumentException thrown if parameters fail the validation
-     * @return the observable to the ResourceListOfQuote object
-     */
-    Observable<ServiceResponse<ResourceListOfQuote>> getQuotesWithServiceResponseAsync(String scope, List<String> quoteIds, DateTime effectiveAt, DateTime asAt, String maxAge, Integer page, Integer limit);
-
-    /**
      * Add quotes.
      * Add quotes effective at the specified time. If a quote is added with the same id (and is effective at the same time) as an existing quote, then the more recently added quote will be returned when queried.
      *
@@ -5704,13 +5670,12 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the quotes
      * @param quotes The quotes to add
-     * @param effectiveAt Optional. The date/time from which the quotes are effective
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the UpsertQuotesResponse object if successful.
      */
-    UpsertQuotesResponse upsertQuotes(String scope, List<UpsertQuoteRequest> quotes, DateTime effectiveAt);
+    UpsertQuotesResponse upsertQuotes(String scope, List<UpsertQuoteRequest> quotes);
 
     /**
      * Add quotes.
@@ -5718,12 +5683,11 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the quotes
      * @param quotes The quotes to add
-     * @param effectiveAt Optional. The date/time from which the quotes are effective
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<UpsertQuotesResponse> upsertQuotesAsync(String scope, List<UpsertQuoteRequest> quotes, DateTime effectiveAt, final ServiceCallback<UpsertQuotesResponse> serviceCallback);
+    ServiceFuture<UpsertQuotesResponse> upsertQuotesAsync(String scope, List<UpsertQuoteRequest> quotes, final ServiceCallback<UpsertQuotesResponse> serviceCallback);
 
     /**
      * Add quotes.
@@ -5731,11 +5695,10 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the quotes
      * @param quotes The quotes to add
-     * @param effectiveAt Optional. The date/time from which the quotes are effective
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertQuotesResponse object
      */
-    Observable<UpsertQuotesResponse> upsertQuotesAsync(String scope, List<UpsertQuoteRequest> quotes, DateTime effectiveAt);
+    Observable<UpsertQuotesResponse> upsertQuotesAsync(String scope, List<UpsertQuoteRequest> quotes);
 
     /**
      * Add quotes.
@@ -5743,15 +5706,14 @@ public interface LUSIDAPI {
      *
      * @param scope The scope of the quotes
      * @param quotes The quotes to add
-     * @param effectiveAt Optional. The date/time from which the quotes are effective
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the UpsertQuotesResponse object
      */
-    Observable<ServiceResponse<UpsertQuotesResponse>> upsertQuotesWithServiceResponseAsync(String scope, List<UpsertQuoteRequest> quotes, DateTime effectiveAt);
+    Observable<ServiceResponse<UpsertQuotesResponse>> upsertQuotesWithServiceResponseAsync(String scope, List<UpsertQuoteRequest> quotes);
 
     /**
      * Delete a quote.
-     * Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+     * Delete the specified quotes. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
      *
      * @param scope The scope of the quote
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -5763,7 +5725,7 @@ public interface LUSIDAPI {
 
     /**
      * Delete a quote.
-     * Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+     * Delete the specified quotes. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
      *
      * @param scope The scope of the quote
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
@@ -5774,7 +5736,7 @@ public interface LUSIDAPI {
 
     /**
      * Delete a quote.
-     * Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+     * Delete the specified quotes. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
      *
      * @param scope The scope of the quote
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -5784,7 +5746,7 @@ public interface LUSIDAPI {
 
     /**
      * Delete a quote.
-     * Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+     * Delete the specified quotes. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
      *
      * @param scope The scope of the quote
      * @throws IllegalArgumentException thrown if parameters fail the validation
@@ -5793,54 +5755,183 @@ public interface LUSIDAPI {
     Observable<ServiceResponse<DeleteQuotesResponse>> deleteQuoteWithServiceResponseAsync(String scope);
     /**
      * Delete a quote.
-     * Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+     * Delete the specified quotes. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
      *
      * @param scope The scope of the quote
-     * @param id The quote id
-     * @param effectiveFrom The date/time from which the quote is effective
+     * @param quotes The quotes to delete
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @throws ErrorResponseException thrown if the request is rejected by server
      * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
      * @return the DeleteQuotesResponse object if successful.
      */
-    DeleteQuotesResponse deleteQuote(String scope, String id, DateTime effectiveFrom);
+    DeleteQuotesResponse deleteQuote(String scope, List<DeleteQuoteRequest> quotes);
 
     /**
      * Delete a quote.
-     * Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+     * Delete the specified quotes. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
      *
      * @param scope The scope of the quote
-     * @param id The quote id
-     * @param effectiveFrom The date/time from which the quote is effective
+     * @param quotes The quotes to delete
      * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the {@link ServiceFuture} object
      */
-    ServiceFuture<DeleteQuotesResponse> deleteQuoteAsync(String scope, String id, DateTime effectiveFrom, final ServiceCallback<DeleteQuotesResponse> serviceCallback);
+    ServiceFuture<DeleteQuotesResponse> deleteQuoteAsync(String scope, List<DeleteQuoteRequest> quotes, final ServiceCallback<DeleteQuotesResponse> serviceCallback);
 
     /**
      * Delete a quote.
-     * Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+     * Delete the specified quotes. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
      *
      * @param scope The scope of the quote
-     * @param id The quote id
-     * @param effectiveFrom The date/time from which the quote is effective
+     * @param quotes The quotes to delete
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeleteQuotesResponse object
      */
-    Observable<DeleteQuotesResponse> deleteQuoteAsync(String scope, String id, DateTime effectiveFrom);
+    Observable<DeleteQuotesResponse> deleteQuoteAsync(String scope, List<DeleteQuoteRequest> quotes);
 
     /**
      * Delete a quote.
-     * Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+     * Delete the specified quotes. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
      *
      * @param scope The scope of the quote
-     * @param id The quote id
-     * @param effectiveFrom The date/time from which the quote is effective
+     * @param quotes The quotes to delete
      * @throws IllegalArgumentException thrown if parameters fail the validation
      * @return the observable to the DeleteQuotesResponse object
      */
-    Observable<ServiceResponse<DeleteQuotesResponse>> deleteQuoteWithServiceResponseAsync(String scope, String id, DateTime effectiveFrom);
+    Observable<ServiceResponse<DeleteQuotesResponse>> deleteQuoteWithServiceResponseAsync(String scope, List<DeleteQuoteRequest> quotes);
+
+    /**
+     * Get quotes.
+     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
+     Quotes which are older than this at the time of the effective date/time will not be returned.
+     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
+     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
+     *
+     * @param scope The scope of the quotes
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the GetQuotesResponse object if successful.
+     */
+    GetQuotesResponse getQuotes(String scope);
+
+    /**
+     * Get quotes.
+     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
+     Quotes which are older than this at the time of the effective date/time will not be returned.
+     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
+     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
+     *
+     * @param scope The scope of the quotes
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<GetQuotesResponse> getQuotesAsync(String scope, final ServiceCallback<GetQuotesResponse> serviceCallback);
+
+    /**
+     * Get quotes.
+     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
+     Quotes which are older than this at the time of the effective date/time will not be returned.
+     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
+     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
+     *
+     * @param scope The scope of the quotes
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the GetQuotesResponse object
+     */
+    Observable<GetQuotesResponse> getQuotesAsync(String scope);
+
+    /**
+     * Get quotes.
+     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
+     Quotes which are older than this at the time of the effective date/time will not be returned.
+     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
+     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
+     *
+     * @param scope The scope of the quotes
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the GetQuotesResponse object
+     */
+    Observable<ServiceResponse<GetQuotesResponse>> getQuotesWithServiceResponseAsync(String scope);
+    /**
+     * Get quotes.
+     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
+     Quotes which are older than this at the time of the effective date/time will not be returned.
+     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
+     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
+     *
+     * @param scope The scope of the quotes
+     * @param quoteIds The ids of the quotes
+     * @param effectiveAt Optional. The date/time from which the quotes are effective
+     * @param asAt Optional. The 'AsAt' date/time
+     * @param maxAge Optional. The quote staleness tolerance
+     * @param page Optional. The page of results to return
+     * @param limit Optional. The number of results per page
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @throws ErrorResponseException thrown if the request is rejected by server
+     * @throws RuntimeException all other wrapped checked exceptions if the request fails to be sent
+     * @return the GetQuotesResponse object if successful.
+     */
+    GetQuotesResponse getQuotes(String scope, List<QuoteId> quoteIds, DateTime effectiveAt, DateTime asAt, String maxAge, Integer page, Integer limit);
+
+    /**
+     * Get quotes.
+     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
+     Quotes which are older than this at the time of the effective date/time will not be returned.
+     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
+     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
+     *
+     * @param scope The scope of the quotes
+     * @param quoteIds The ids of the quotes
+     * @param effectiveAt Optional. The date/time from which the quotes are effective
+     * @param asAt Optional. The 'AsAt' date/time
+     * @param maxAge Optional. The quote staleness tolerance
+     * @param page Optional. The page of results to return
+     * @param limit Optional. The number of results per page
+     * @param serviceCallback the async ServiceCallback to handle successful and failed responses.
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the {@link ServiceFuture} object
+     */
+    ServiceFuture<GetQuotesResponse> getQuotesAsync(String scope, List<QuoteId> quoteIds, DateTime effectiveAt, DateTime asAt, String maxAge, Integer page, Integer limit, final ServiceCallback<GetQuotesResponse> serviceCallback);
+
+    /**
+     * Get quotes.
+     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
+     Quotes which are older than this at the time of the effective date/time will not be returned.
+     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
+     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
+     *
+     * @param scope The scope of the quotes
+     * @param quoteIds The ids of the quotes
+     * @param effectiveAt Optional. The date/time from which the quotes are effective
+     * @param asAt Optional. The 'AsAt' date/time
+     * @param maxAge Optional. The quote staleness tolerance
+     * @param page Optional. The page of results to return
+     * @param limit Optional. The number of results per page
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the GetQuotesResponse object
+     */
+    Observable<GetQuotesResponse> getQuotesAsync(String scope, List<QuoteId> quoteIds, DateTime effectiveAt, DateTime asAt, String maxAge, Integer page, Integer limit);
+
+    /**
+     * Get quotes.
+     * Get quotes effective at the specified date/time (if any). An optional maximum age of quotes can be specified, and is infinite by default.
+     Quotes which are older than this at the time of the effective date/time will not be returned.
+     MaxAge is a duration of time represented in an ISO8601 format, eg. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).
+     The results are paged, and by default the 1st page of results is returned with a limit of 100 results per page.
+     *
+     * @param scope The scope of the quotes
+     * @param quoteIds The ids of the quotes
+     * @param effectiveAt Optional. The date/time from which the quotes are effective
+     * @param asAt Optional. The 'AsAt' date/time
+     * @param maxAge Optional. The quote staleness tolerance
+     * @param page Optional. The page of results to return
+     * @param limit Optional. The number of results per page
+     * @throws IllegalArgumentException thrown if parameters fail the validation
+     * @return the observable to the GetQuotesResponse object
+     */
+    Observable<ServiceResponse<GetQuotesResponse>> getQuotesWithServiceResponseAsync(String scope, List<QuoteId> quoteIds, DateTime effectiveAt, DateTime asAt, String maxAge, Integer page, Integer limit);
 
     /**
      * Create reference portfolio.

@@ -53,7 +53,8 @@ public class UpdateDataTypeRequest {
      * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds',
      * 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements',
      * 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice',
-     * 'UnitCreation', 'Currency', 'UserId', 'MetricValue', 'ArrayOfQuotes'.
+     * 'UnitCreation', 'Currency', 'UserId', 'MetricValue', 'QuoteId',
+     * 'ArrayOfQuoteIds'.
      */
     @JsonProperty(value = "valueType", required = true)
     private String valueType;
@@ -137,7 +138,7 @@ public class UpdateDataTypeRequest {
     }
 
     /**
-     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId', 'MetricValue', 'ArrayOfQuotes'.
+     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId', 'MetricValue', 'QuoteId', 'ArrayOfQuoteIds'.
      *
      * @return the valueType value
      */
@@ -146,7 +147,7 @@ public class UpdateDataTypeRequest {
     }
 
     /**
-     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId', 'MetricValue', 'ArrayOfQuotes'.
+     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId', 'MetricValue', 'QuoteId', 'ArrayOfQuoteIds'.
      *
      * @param valueType the valueType value to set
      * @return the UpdateDataTypeRequest object itself.

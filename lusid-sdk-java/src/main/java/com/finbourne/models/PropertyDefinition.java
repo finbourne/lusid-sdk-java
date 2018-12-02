@@ -47,7 +47,8 @@ public class PropertyDefinition {
      * 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds',
      * 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements',
      * 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice',
-     * 'UnitCreation', 'Currency', 'UserId', 'MetricValue', 'ArrayOfQuotes'.
+     * 'UnitCreation', 'Currency', 'UserId', 'MetricValue', 'QuoteId',
+     * 'ArrayOfQuoteIds'.
      */
     @JsonProperty(value = "valueType")
     private String valueType;
@@ -154,7 +155,7 @@ public class PropertyDefinition {
     }
 
     /**
-     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId', 'MetricValue', 'ArrayOfQuotes'.
+     * Get possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId', 'MetricValue', 'QuoteId', 'ArrayOfQuoteIds'.
      *
      * @return the valueType value
      */
@@ -163,7 +164,7 @@ public class PropertyDefinition {
     }
 
     /**
-     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId', 'MetricValue', 'ArrayOfQuotes'.
+     * Set possible values include: 'String', 'Int', 'Decimal', 'DateTime', 'Boolean', 'Map', 'List', 'PropertyArray', 'Percentage', 'BenchmarkType', 'Code', 'Id', 'Uri', 'ArrayOfIds', 'ArrayOfTransactionAliases', 'ArrayofTransactionMovements', 'ArrayofUnits', 'StringArray', 'CurrencyAndAmount', 'TradePrice', 'UnitCreation', 'Currency', 'UserId', 'MetricValue', 'QuoteId', 'ArrayOfQuoteIds'.
      *
      * @param valueType the valueType value to set
      * @return the PropertyDefinition object itself.

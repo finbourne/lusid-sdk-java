@@ -22,6 +22,7 @@
 
 package com.finbourne.models;
 
+import org.joda.time.DateTime;
 import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -30,10 +31,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class UpsertQuotesResponse {
     /**
-     * The version property.
+     * The asAtDate property.
      */
-    @JsonProperty(value = "version")
-    private Version version;
+    @JsonProperty(value = "asAtDate", required = true)
+    private DateTime asAtDate;
 
     /**
      * The links property.
@@ -42,22 +43,22 @@ public class UpsertQuotesResponse {
     private List<Link> links;
 
     /**
-     * Get the version value.
+     * Get the asAtDate value.
      *
-     * @return the version value
+     * @return the asAtDate value
      */
-    public Version version() {
-        return this.version;
+    public DateTime asAtDate() {
+        return this.asAtDate;
     }
 
     /**
-     * Set the version value.
+     * Set the asAtDate value.
      *
-     * @param version the version value to set
+     * @param asAtDate the asAtDate value to set
      * @return the UpsertQuotesResponse object itself.
      */
-    public UpsertQuotesResponse withVersion(Version version) {
-        this.version = version;
+    public UpsertQuotesResponse withAsAtDate(DateTime asAtDate) {
+        this.asAtDate = asAtDate;
         return this;
     }
 

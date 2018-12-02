@@ -22,6 +22,7 @@
 
 package com.finbourne.models;
 
+import org.joda.time.DateTime;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -29,10 +30,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class Quote {
     /**
-     * The id property.
+     * The quoteId property.
      */
-    @JsonProperty(value = "id", required = true)
-    private String id;
+    @JsonProperty(value = "quoteId", required = true)
+    private QuoteId quoteId;
 
     /**
      * The metricValue property.
@@ -41,28 +42,34 @@ public class Quote {
     private MetricValue metricValue;
 
     /**
-     * The version property.
+     * The effectiveAtDate property.
      */
-    @JsonProperty(value = "version")
-    private Version version;
+    @JsonProperty(value = "effectiveAtDate")
+    private DateTime effectiveAtDate;
 
     /**
-     * Get the id value.
-     *
-     * @return the id value
+     * The asAtDate property.
      */
-    public String id() {
-        return this.id;
+    @JsonProperty(value = "asAtDate")
+    private DateTime asAtDate;
+
+    /**
+     * Get the quoteId value.
+     *
+     * @return the quoteId value
+     */
+    public QuoteId quoteId() {
+        return this.quoteId;
     }
 
     /**
-     * Set the id value.
+     * Set the quoteId value.
      *
-     * @param id the id value to set
+     * @param quoteId the quoteId value to set
      * @return the Quote object itself.
      */
-    public Quote withId(String id) {
-        this.id = id;
+    public Quote withQuoteId(QuoteId quoteId) {
+        this.quoteId = quoteId;
         return this;
     }
 
@@ -87,22 +94,42 @@ public class Quote {
     }
 
     /**
-     * Get the version value.
+     * Get the effectiveAtDate value.
      *
-     * @return the version value
+     * @return the effectiveAtDate value
      */
-    public Version version() {
-        return this.version;
+    public DateTime effectiveAtDate() {
+        return this.effectiveAtDate;
     }
 
     /**
-     * Set the version value.
+     * Set the effectiveAtDate value.
      *
-     * @param version the version value to set
+     * @param effectiveAtDate the effectiveAtDate value to set
      * @return the Quote object itself.
      */
-    public Quote withVersion(Version version) {
-        this.version = version;
+    public Quote withEffectiveAtDate(DateTime effectiveAtDate) {
+        this.effectiveAtDate = effectiveAtDate;
+        return this;
+    }
+
+    /**
+     * Get the asAtDate value.
+     *
+     * @return the asAtDate value
+     */
+    public DateTime asAtDate() {
+        return this.asAtDate;
+    }
+
+    /**
+     * Set the asAtDate value.
+     *
+     * @param asAtDate the asAtDate value to set
+     * @return the Quote object itself.
+     */
+    public Quote withAsAtDate(DateTime asAtDate) {
+        this.asAtDate = asAtDate;
         return this;
     }
 

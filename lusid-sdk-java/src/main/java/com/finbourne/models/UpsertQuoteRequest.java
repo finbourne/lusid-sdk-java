@@ -22,6 +22,7 @@
 
 package com.finbourne.models;
 
+import org.joda.time.DateTime;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
@@ -29,10 +30,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 public class UpsertQuoteRequest {
     /**
-     * The id property.
+     * The quoteId property.
      */
-    @JsonProperty(value = "id", required = true)
-    private String id;
+    @JsonProperty(value = "quoteId", required = true)
+    private QuoteId quoteId;
 
     /**
      * The metricValue property.
@@ -41,22 +42,28 @@ public class UpsertQuoteRequest {
     private MetricValue metricValue;
 
     /**
-     * Get the id value.
-     *
-     * @return the id value
+     * The effectiveAt property.
      */
-    public String id() {
-        return this.id;
+    @JsonProperty(value = "effectiveAt")
+    private DateTime effectiveAt;
+
+    /**
+     * Get the quoteId value.
+     *
+     * @return the quoteId value
+     */
+    public QuoteId quoteId() {
+        return this.quoteId;
     }
 
     /**
-     * Set the id value.
+     * Set the quoteId value.
      *
-     * @param id the id value to set
+     * @param quoteId the quoteId value to set
      * @return the UpsertQuoteRequest object itself.
      */
-    public UpsertQuoteRequest withId(String id) {
-        this.id = id;
+    public UpsertQuoteRequest withQuoteId(QuoteId quoteId) {
+        this.quoteId = quoteId;
         return this;
     }
 
@@ -77,6 +84,26 @@ public class UpsertQuoteRequest {
      */
     public UpsertQuoteRequest withMetricValue(MetricValue metricValue) {
         this.metricValue = metricValue;
+        return this;
+    }
+
+    /**
+     * Get the effectiveAt value.
+     *
+     * @return the effectiveAt value
+     */
+    public DateTime effectiveAt() {
+        return this.effectiveAt;
+    }
+
+    /**
+     * Set the effectiveAt value.
+     *
+     * @param effectiveAt the effectiveAt value to set
+     * @return the UpsertQuoteRequest object itself.
+     */
+    public UpsertQuoteRequest withEffectiveAt(DateTime effectiveAt) {
+        this.effectiveAt = effectiveAt;
         return this;
     }
 

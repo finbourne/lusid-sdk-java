@@ -23,62 +23,61 @@
 package com.finbourne.models;
 
 import org.joda.time.DateTime;
-import java.util.List;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * The response given from the DeleteQuotes Api call.
+ * The DeleteQuoteRequest model.
  */
-public class DeleteQuotesResponse {
+public class DeleteQuoteRequest {
     /**
-     * The asAtDate property.
+     * The quoteId property.
      */
-    @JsonProperty(value = "asAtDate", required = true)
-    private DateTime asAtDate;
+    @JsonProperty(value = "quoteId", required = true)
+    private QuoteId quoteId;
 
     /**
-     * The links property.
+     * The effectiveAt property.
      */
-    @JsonProperty(value = "links")
-    private List<Link> links;
+    @JsonProperty(value = "effectiveAt", required = true)
+    private DateTime effectiveAt;
 
     /**
-     * Get the asAtDate value.
+     * Get the quoteId value.
      *
-     * @return the asAtDate value
+     * @return the quoteId value
      */
-    public DateTime asAtDate() {
-        return this.asAtDate;
+    public QuoteId quoteId() {
+        return this.quoteId;
     }
 
     /**
-     * Set the asAtDate value.
+     * Set the quoteId value.
      *
-     * @param asAtDate the asAtDate value to set
-     * @return the DeleteQuotesResponse object itself.
+     * @param quoteId the quoteId value to set
+     * @return the DeleteQuoteRequest object itself.
      */
-    public DeleteQuotesResponse withAsAtDate(DateTime asAtDate) {
-        this.asAtDate = asAtDate;
+    public DeleteQuoteRequest withQuoteId(QuoteId quoteId) {
+        this.quoteId = quoteId;
         return this;
     }
 
     /**
-     * Get the links value.
+     * Get the effectiveAt value.
      *
-     * @return the links value
+     * @return the effectiveAt value
      */
-    public List<Link> links() {
-        return this.links;
+    public DateTime effectiveAt() {
+        return this.effectiveAt;
     }
 
     /**
-     * Set the links value.
+     * Set the effectiveAt value.
      *
-     * @param links the links value to set
-     * @return the DeleteQuotesResponse object itself.
+     * @param effectiveAt the effectiveAt value to set
+     * @return the DeleteQuoteRequest object itself.
      */
-    public DeleteQuotesResponse withLinks(List<Link> links) {
-        this.links = links;
+    public DeleteQuoteRequest withEffectiveAt(DateTime effectiveAt) {
+        this.effectiveAt = effectiveAt;
         return this;
     }
 
