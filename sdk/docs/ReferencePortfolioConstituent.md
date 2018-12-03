@@ -4,10 +4,11 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**instrumentUid** | **String** |  |  [optional]
-**properties** | [**List&lt;Property&gt;**](Property.md) |  |  [optional]
-**weight** | **Double** |  |  [optional]
-**currency** | **String** |  |  [optional]
+**instrumentUid** | **String** |  | 
+**currency** | **String** |  | 
+**properties** | [**List&lt;Property&gt;**](Property.md) | Properties associated with the constituent |  [optional]
+**weight** | **Double** |  | 
+**floatingWeight** | **Double** |  |  [optional]
 
 
 

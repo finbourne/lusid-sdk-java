@@ -121,7 +121,7 @@ Name | Type | Description  | Notes
 
 <a name="getUnitsFromDataType"></a>
 # **getUnitsFromDataType**
-> IUnitDefinition getUnitsFromDataType(scope, code, units, filter)
+> ResourceListOfIUnitDefinitionDto getUnitsFromDataType(scope, code, units, filter)
 
 Get units from data type
 
@@ -148,7 +148,7 @@ String code = "code_example"; // String | The code of the data type
 List<String> units = Arrays.asList("units_example"); // List<String> | One or more unit identifiers for which the definition is being requested
 String filter = "filter_example"; // String | Optional. Expression to filter the result set
 try {
-    IUnitDefinition result = apiInstance.getUnitsFromDataType(scope, code, units, filter);
+    ResourceListOfIUnitDefinitionDto result = apiInstance.getUnitsFromDataType(scope, code, units, filter);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling DataTypesApi#getUnitsFromDataType");
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**IUnitDefinition**](IUnitDefinition.md)
+[**ResourceListOfIUnitDefinitionDto**](ResourceListOfIUnitDefinitionDto.md)
 
 ### Authorization
 

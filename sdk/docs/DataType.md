@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **valueType** | [**ValueTypeEnum**](#ValueTypeEnum) |  |  [optional]
 **acceptableValues** | **List&lt;Object&gt;** |  |  [optional]
 **unitSchema** | [**UnitSchemaEnum**](#UnitSchemaEnum) |  |  [optional]
-**acceptableUnits** | [**List&lt;IUnitDefinition&gt;**](IUnitDefinition.md) |  |  [optional]
+**acceptableUnits** | [**List&lt;IUnitDefinitionDto&gt;**](IUnitDefinitionDto.md) |  |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
@@ -52,7 +52,8 @@ UNITCREATION | &quot;UnitCreation&quot;
 CURRENCY | &quot;Currency&quot;
 USERID | &quot;UserId&quot;
 METRICVALUE | &quot;MetricValue&quot;
-ARRAYOFQUOTES | &quot;ArrayOfQuotes&quot;
+QUOTEID | &quot;QuoteId&quot;
+ARRAYOFQUOTEIDS | &quot;ArrayOfQuoteIds&quot;
 
 
 <a name="UnitSchemaEnum"></a>

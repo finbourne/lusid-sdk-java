@@ -196,7 +196,7 @@ Name | Type | Description  | Notes
 
 Get commands
 
-Gets all commands that modified a specific portfolio
+Gets all commands that modified a specific portfolio, including any input transactions.
 
 ### Example
 ```java

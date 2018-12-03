@@ -99,14 +99,19 @@ public class LusidApiTests {
         this.instrumentsApi = new InstrumentsApi(apiClient);
         this.propertyDefinitionsApi = new PropertyDefinitionsApi(apiClient);
 
-        List<String> ids = Arrays.asList("BBG000C6K6G9", "BBG000C04D57", "BBG000FV67Q4", "BBG000BF0KW3", "BBG000BF4KL1");
-        LookupInstrumentsFromCodesResponse idsResult = this.instrumentsApi.lookupInstrumentsFromCodes("Figi", ids, null, null);
+        UpsertInstrumentsResponse instrumentsResponse = this.instrumentsApi.upsertInstruments(Map.of(
+                "r1", new UpsertInstrumentRequest().name("inst-1").identifiers(Map.of("Figi", "BBG000C6K6G9")),
+                "r2", new UpsertInstrumentRequest().name("inst-2").identifiers(Map.of("Figi", "BBG000C04D57")),
+                "r3", new UpsertInstrumentRequest().name("inst-3").identifiers(Map.of("Figi", "BBG000FV67Q4")),
+                "r4", new UpsertInstrumentRequest().name("inst-4").identifiers(Map.of("Figi", "BBG000BF0KW3")),
+                "r5", new UpsertInstrumentRequest().name("inst-5").identifiers(Map.of("Figi", "BBG000BF4KL1"))
+        ));
 
-        this.securityIds = idsResult.getValues().values().stream()
-                .flatMap(r -> r.
-                        stream()
-                        .map(Instrument::getUid)
-                )
+        this.securityIds = instrumentsResponse
+                .getValues()
+                .values()
+                .stream()
+                .map(inst -> inst.getLusidInstrumentId())
                 .collect(Collectors.toList());
     }
 
@@ -369,12 +374,21 @@ public class LusidApiTests {
     }
 
     @Test
-    public void lookup_securities() throws ApiException
-    {
+    public void find_instruments() throws ApiException {
         final List<String> isins = new ArrayList<>(Arrays.asList("IT0004966401", "FR0010192997"));
 
-        //  lookup securities
-        final LookupInstrumentsFromCodesResponse fbnIds = this.instrumentsApi.lookupInstrumentsFromCodes("Isin", isins, null, null);
+        final Property isin1 = new Property();
+        isin1.setKey("Instrument/default/Isin");
+        isin1.setValue("IT0004966401");
+
+        final Property isin2 = new Property();
+        isin2.setKey("Instrument/default/Isin");
+        isin2.setValue("FR0010192997");
+
+        //  lookup instruments
+        final ResourceListOfInstrument fbnIds = this.instrumentsApi.findInstruments(
+                List.of(isin1, isin2), null, null, null
+        );
 
         assertTrue(fbnIds.getValues().size() > 0);
     }

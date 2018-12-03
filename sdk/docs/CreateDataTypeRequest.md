@@ -51,7 +51,8 @@ UNITCREATION | &quot;UnitCreation&quot;
 CURRENCY | &quot;Currency&quot;
 USERID | &quot;UserId&quot;
 METRICVALUE | &quot;MetricValue&quot;
-ARRAYOFQUOTES | &quot;ArrayOfQuotes&quot;
+QUOTEID | &quot;QuoteId&quot;
+ARRAYOFQUOTEIDS | &quot;ArrayOfQuoteIds&quot;
 
 
 <a name="UnitSchemaEnum"></a>

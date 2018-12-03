@@ -4,9 +4,10 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | 
+**quoteId** | [**QuoteId**](QuoteId.md) |  | 
 **metricValue** | [**MetricValue**](MetricValue.md) |  | 
-**version** | [**Version**](Version.md) |  |  [optional]
+**effectiveAtDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**asAtDate** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 
 
 
