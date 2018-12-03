@@ -4,18 +4,18 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteQuote**](QuotesApi.md#deleteQuote) | **DELETE** /api/quotes/{scope} | Delete a quote
-[**getQuotes**](QuotesApi.md#getQuotes) | **GET** /api/quotes/{scope} | Get quotes
+[**deleteQuote**](QuotesApi.md#deleteQuote) | **POST** /api/quotes/{scope}/$delete | Delete a quote
+[**getQuotes**](QuotesApi.md#getQuotes) | **POST** /api/quotes/{scope}/$get | Get quotes
 [**upsertQuotes**](QuotesApi.md#upsertQuotes) | **POST** /api/quotes/{scope} | Add quotes
 
 
 <a name="deleteQuote"></a>
 # **deleteQuote**
-> DeleteQuotesResponse deleteQuote(scope, id, effectiveFrom)
+> DeleteQuotesResponse deleteQuote(scope, quotes)
 
 Delete a quote
 
-Delete the specified quote. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
+Delete the specified quotes. In order for a quote to be deleted the id and effectiveFrom date must exactly match.
 
 ### Example
 ```java
@@ -34,10 +34,9 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 QuotesApi apiInstance = new QuotesApi();
 String scope = "scope_example"; // String | The scope of the quote
-String id = "id_example"; // String | The quote id
-OffsetDateTime effectiveFrom = new OffsetDateTime(); // OffsetDateTime | The date/time from which the quote is effective
+List<DeleteQuoteRequest> quotes = Arrays.asList(new DeleteQuoteRequest()); // List<DeleteQuoteRequest> | The quotes to delete
 try {
-    DeleteQuotesResponse result = apiInstance.deleteQuote(scope, id, effectiveFrom);
+    DeleteQuotesResponse result = apiInstance.deleteQuote(scope, quotes);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling QuotesApi#deleteQuote");
@@ -50,8 +49,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the quote |
- **id** | **String**| The quote id | [optional]
- **effectiveFrom** | **OffsetDateTime**| The date/time from which the quote is effective | [optional]
+ **quotes** | [**List&lt;DeleteQuoteRequest&gt;**](DeleteQuoteRequest.md)| The quotes to delete | [optional]
 
 ### Return type
 
@@ -63,12 +61,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
  - **Accept**: text/plain, application/json, text/json
 
 <a name="getQuotes"></a>
 # **getQuotes**
-> ResourceListOfQuote getQuotes(scope, quoteIds, effectiveAt, asAt, maxAge, page, limit)
+> GetQuotesResponse getQuotes(scope, quoteIds, effectiveAt, asAt, maxAge, page, limit)
 
 Get quotes
 
@@ -91,14 +89,14 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 QuotesApi apiInstance = new QuotesApi();
 String scope = "scope_example"; // String | The scope of the quotes
-List<String> quoteIds = Arrays.asList("quoteIds_example"); // List<String> | The ids of the quotes
+List<QuoteId> quoteIds = Arrays.asList(new QuoteId()); // List<QuoteId> | The ids of the quotes
 OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The date/time from which the quotes are effective
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The 'AsAt' date/time
 String maxAge = "maxAge_example"; // String | Optional. The quote staleness tolerance
 Integer page = 56; // Integer | Optional. The page of results to return
 Integer limit = 56; // Integer | Optional. The number of results per page
 try {
-    ResourceListOfQuote result = apiInstance.getQuotes(scope, quoteIds, effectiveAt, asAt, maxAge, page, limit);
+    GetQuotesResponse result = apiInstance.getQuotes(scope, quoteIds, effectiveAt, asAt, maxAge, page, limit);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling QuotesApi#getQuotes");
@@ -111,7 +109,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the quotes |
- **quoteIds** | [**List&lt;String&gt;**](String.md)| The ids of the quotes | [optional]
+ **quoteIds** | [**List&lt;QuoteId&gt;**](QuoteId.md)| The ids of the quotes | [optional]
  **effectiveAt** | **OffsetDateTime**| Optional. The date/time from which the quotes are effective | [optional]
  **asAt** | **OffsetDateTime**| Optional. The &#39;AsAt&#39; date/time | [optional]
  **maxAge** | **String**| Optional. The quote staleness tolerance | [optional]
@@ -120,7 +118,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**ResourceListOfQuote**](ResourceListOfQuote.md)
+[**GetQuotesResponse**](GetQuotesResponse.md)
 
 ### Authorization
 
@@ -128,12 +126,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
  - **Accept**: text/plain, application/json, text/json
 
 <a name="upsertQuotes"></a>
 # **upsertQuotes**
-> UpsertQuotesResponse upsertQuotes(scope, quotes, effectiveAt)
+> UpsertQuotesResponse upsertQuotes(scope, quotes)
 
 Add quotes
 
@@ -157,9 +155,8 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 QuotesApi apiInstance = new QuotesApi();
 String scope = "scope_example"; // String | The scope of the quotes
 List<UpsertQuoteRequest> quotes = Arrays.asList(new UpsertQuoteRequest()); // List<UpsertQuoteRequest> | The quotes to add
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The date/time from which the quotes are effective
 try {
-    UpsertQuotesResponse result = apiInstance.upsertQuotes(scope, quotes, effectiveAt);
+    UpsertQuotesResponse result = apiInstance.upsertQuotes(scope, quotes);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling QuotesApi#upsertQuotes");
@@ -173,7 +170,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the quotes |
  **quotes** | [**List&lt;UpsertQuoteRequest&gt;**](UpsertQuoteRequest.md)| The quotes to add | [optional]
- **effectiveAt** | **OffsetDateTime**| Optional. The date/time from which the quotes are effective | [optional]
 
 ### Return type
 

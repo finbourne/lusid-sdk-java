@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="getExcelAddin"></a>
 # **getExcelAddin**
-> String getExcelAddin(version)
+> FileResponse getExcelAddin(version)
 
 Download Excel Addin
 
@@ -35,7 +35,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 ApplicationMetadataApi apiInstance = new ApplicationMetadataApi();
 String version = "version_example"; // String | The requested version of the Excel plugin
 try {
-    String result = apiInstance.getExcelAddin(version);
+    FileResponse result = apiInstance.getExcelAddin(version);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ApplicationMetadataApi#getExcelAddin");
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**String**
+[**FileResponse**](FileResponse.md)
 
 ### Authorization
 
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 
 <a name="getLusidVersions"></a>
 # **getLusidVersions**
-> VersionSummary getLusidVersions()
+> VersionSummaryDto getLusidVersions()
 
 Get LUSID versions
 
@@ -140,7 +140,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 ApplicationMetadataApi apiInstance = new ApplicationMetadataApi();
 try {
-    VersionSummary result = apiInstance.getLusidVersions();
+    VersionSummaryDto result = apiInstance.getLusidVersions();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ApplicationMetadataApi#getLusidVersions");
@@ -153,7 +153,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**VersionSummary**](VersionSummary.md)
+[**VersionSummaryDto**](VersionSummaryDto.md)
 
 ### Authorization
 

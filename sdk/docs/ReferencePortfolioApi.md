@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createReferencePortfolio**](ReferencePortfolioApi.md#createReferencePortfolio) | **POST** /api/referenceportfolios/{scope} | Create reference portfolio
 [**getReferencePortfolioConstituents**](ReferencePortfolioApi.md#getReferencePortfolioConstituents) | **GET** /api/referenceportfolios/{scope}/{code}/{effectiveAt}/constituents | Get constituents
-[**upsertReferencePortfolioConstituents**](ReferencePortfolioApi.md#upsertReferencePortfolioConstituents) | **POST** /api/referenceportfolios/{scope}/{code}/{effectiveAt}/constituents | Add constituents
+[**upsertReferencePortfolioConstituents**](ReferencePortfolioApi.md#upsertReferencePortfolioConstituents) | **POST** /api/referenceportfolios/{scope}/{code}/constituents | Add constituents
 
 
 <a name="createReferencePortfolio"></a>
@@ -66,7 +66,7 @@ Name | Type | Description  | Notes
 
 <a name="getReferencePortfolioConstituents"></a>
 # **getReferencePortfolioConstituents**
-> ResourceListOfReferencePortfolioConstituent getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, sortBy, start, limit)
+> GetReferencePortfolioConstituentsResponse getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, sortBy, start, limit)
 
 Get constituents
 
@@ -89,14 +89,14 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 ReferencePortfolioApi apiInstance = new ReferencePortfolioApi();
 String scope = "scope_example"; // String | The scope of the portfolio
-String code = "code_example"; // String | The scope of the portfolio
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the data
+String code = "code_example"; // String | The code of the portfolio
+OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | The effective date of the constituents to retrieve
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
 Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many
 try {
-    ResourceListOfReferencePortfolioConstituent result = apiInstance.getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, sortBy, start, limit);
+    GetReferencePortfolioConstituentsResponse result = apiInstance.getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, sortBy, start, limit);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ReferencePortfolioApi#getReferencePortfolioConstituents");
@@ -109,16 +109,16 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
- **code** | **String**| The scope of the portfolio |
- **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the data |
+ **code** | **String**| The code of the portfolio |
+ **effectiveAt** | **OffsetDateTime**| The effective date of the constituents to retrieve |
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
- **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
+ **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
  **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many | [optional]
 
 ### Return type
 
-[**ResourceListOfReferencePortfolioConstituent**](ResourceListOfReferencePortfolioConstituent.md)
+[**GetReferencePortfolioConstituentsResponse**](GetReferencePortfolioConstituentsResponse.md)
 
 ### Authorization
 
@@ -131,7 +131,7 @@ Name | Type | Description  | Notes
 
 <a name="upsertReferencePortfolioConstituents"></a>
 # **upsertReferencePortfolioConstituents**
-> UpsertReferencePortfolioConstituentsResponse upsertReferencePortfolioConstituents(scope, code, effectiveAt, constituents)
+> UpsertReferencePortfolioConstituentsResponse upsertReferencePortfolioConstituents(scope, code, constituents)
 
 Add constituents
 
@@ -155,10 +155,9 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 ReferencePortfolioApi apiInstance = new ReferencePortfolioApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | The code of the portfolio
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the data
-List<ReferencePortfolioConstituentRequest> constituents = Arrays.asList(new ReferencePortfolioConstituentRequest()); // List<ReferencePortfolioConstituentRequest> | The constituents to upload to the portfolio
+UpsertReferencePortfolioConstituentsRequest constituents = new UpsertReferencePortfolioConstituentsRequest(); // UpsertReferencePortfolioConstituentsRequest | The constituents to upload to the portfolio
 try {
-    UpsertReferencePortfolioConstituentsResponse result = apiInstance.upsertReferencePortfolioConstituents(scope, code, effectiveAt, constituents);
+    UpsertReferencePortfolioConstituentsResponse result = apiInstance.upsertReferencePortfolioConstituents(scope, code, constituents);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ReferencePortfolioApi#upsertReferencePortfolioConstituents");
@@ -172,8 +171,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the data |
- **constituents** | [**List&lt;ReferencePortfolioConstituentRequest&gt;**](ReferencePortfolioConstituentRequest.md)| The constituents to upload to the portfolio | [optional]
+ **constituents** | [**UpsertReferencePortfolioConstituentsRequest**](UpsertReferencePortfolioConstituentsRequest.md)| The constituents to upload to the portfolio | [optional]
 
 ### Return type
 

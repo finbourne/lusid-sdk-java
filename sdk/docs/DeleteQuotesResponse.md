@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**version** | [**Version**](Version.md) |  |  [optional]
+**asAtDate** | [**OffsetDateTime**](OffsetDateTime.md) |  | 
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 

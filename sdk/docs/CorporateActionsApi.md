@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 <a name="getCorporateActions"></a>
 # **getCorporateActions**
-> ResourceListOfCorporateAction getCorporateActions(scope, code, effectiveAt, asAt, sortBy, start, limit, filter)
+> ResourceListOfCorporateAction getCorporateActions(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, start, limit, filter)
 
 Get corporate actions
 
@@ -91,14 +91,15 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 CorporateActionsApi apiInstance = new CorporateActionsApi();
 String scope = "scope_example"; // String | The scope of the corporate action source
 String code = "code_example"; // String | The code of the corporate action source
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the data
+OffsetDateTime fromEffectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The start effective date of the data range
+OffsetDateTime toEffectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The end effective date of the data range
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
 List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
 Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many
 String filter = "filter_example"; // String | Optional. Expression to filter the result set
 try {
-    ResourceListOfCorporateAction result = apiInstance.getCorporateActions(scope, code, effectiveAt, asAt, sortBy, start, limit, filter);
+    ResourceListOfCorporateAction result = apiInstance.getCorporateActions(scope, code, fromEffectiveAt, toEffectiveAt, asAt, sortBy, start, limit, filter);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CorporateActionsApi#getCorporateActions");
@@ -112,7 +113,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the corporate action source |
  **code** | **String**| The code of the corporate action source |
- **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the data | [optional]
+ **fromEffectiveAt** | **OffsetDateTime**| Optional. The start effective date of the data range | [optional]
+ **toEffectiveAt** | **OffsetDateTime**| Optional. The end effective date of the data range | [optional]
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]

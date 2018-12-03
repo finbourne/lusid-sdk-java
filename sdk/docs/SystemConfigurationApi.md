@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 <a name="createConfigurationTransactionType"></a>
 # **createConfigurationTransactionType**
-> TransactionConfigurationData createConfigurationTransactionType(type)
+> ResourceListOfTransactionConfigurationData createConfigurationTransactionType(type)
 
 Create transaction type
 
@@ -35,7 +35,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 SystemConfigurationApi apiInstance = new SystemConfigurationApi();
 TransactionConfigurationDataRequest type = new TransactionConfigurationDataRequest(); // TransactionConfigurationDataRequest | A transaction type definition
 try {
-    TransactionConfigurationData result = apiInstance.createConfigurationTransactionType(type);
+    ResourceListOfTransactionConfigurationData result = apiInstance.createConfigurationTransactionType(type);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling SystemConfigurationApi#createConfigurationTransactionType");
@@ -51,7 +51,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**TransactionConfigurationData**](TransactionConfigurationData.md)
+[**ResourceListOfTransactionConfigurationData**](ResourceListOfTransactionConfigurationData.md)
 
 ### Authorization
 

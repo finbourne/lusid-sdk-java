@@ -498,7 +498,7 @@ Name | Type | Description  | Notes
 
 <a name="getHoldings"></a>
 # **getHoldings**
-> VersionedResourceListOfHolding getHoldings(scope, code, byTaxlots, effectiveAt, asAt, sortBy, start, limit, filter, instrumentPropertyKeys)
+> VersionedResourceListOfPortfolioHolding getHoldings(scope, code, byTaxlots, effectiveAt, asAt, sortBy, start, limit, filter, instrumentPropertyKeys)
 
 Get holdings
 
@@ -531,7 +531,7 @@ Integer limit = 56; // Integer | Optional. When paginating, limit the number of 
 String filter = "filter_example"; // String | Optional. Expression to filter the result set
 List<String> instrumentPropertyKeys = Arrays.asList("instrumentPropertyKeys_example"); // List<String> | Optional. Keys for the instrument property values to be decorated onto the holdings
 try {
-    VersionedResourceListOfHolding result = apiInstance.getHoldings(scope, code, byTaxlots, effectiveAt, asAt, sortBy, start, limit, filter, instrumentPropertyKeys);
+    VersionedResourceListOfPortfolioHolding result = apiInstance.getHoldings(scope, code, byTaxlots, effectiveAt, asAt, sortBy, start, limit, filter, instrumentPropertyKeys);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransactionPortfoliosApi#getHoldings");
@@ -556,7 +556,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**VersionedResourceListOfHolding**](VersionedResourceListOfHolding.md)
+[**VersionedResourceListOfPortfolioHolding**](VersionedResourceListOfPortfolioHolding.md)
 
 ### Authorization
 
