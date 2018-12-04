@@ -10,6 +10,7 @@ echo "removing previous sdk"
 
 gen_root=/usr/swagger
 sdk_output_folder=$gen_root/sdk/
+swagger_file=$gen_root/$1
 
 #   remove all previously generated files
 shopt -s extglob 
@@ -25,7 +26,7 @@ cp /usr/src/.swagger-codegen-ignore $sdk_output_folder
 
 # java -jar swagger-codegen-cli.jar swagger-codegen-cli help
 java -jar swagger-codegen-cli.jar generate \
-    -i $gen_root/$1 \
+    -i $swagger_file \
     -l java \
     -o $sdk_output_folder \
     -c $gen_root/config.json
@@ -44,3 +45,7 @@ rm $sdk_output_folder/gradlew
 rm $sdk_output_folder/gradlew.bat
 rm $sdk_output_folder/settings.gradle
 rm $sdk_output_folder/src/main/AndroidManifest.xml
+
+# update pom version
+sdk_version=$(cat $swagger_file | jq -r '.info.version')
+mvn -f $sdk_output_folder/pom.xml versions:set -DnewVersion=$sdk_version-SNAPSHOT
