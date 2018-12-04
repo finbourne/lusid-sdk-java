@@ -27,7 +27,7 @@ import java.io.IOException;
  * This is intended to be the external facing unitemporal property specification data type.
  */
 @ApiModel(description = "This is intended to be the external facing unitemporal property specification data type.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-03T23:36:08.260Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-04T12:11:52.806Z")
 public class PerpetualProperty {
   @SerializedName("key")
   private String key = null;
