@@ -27,7 +27,7 @@ import java.time.OffsetDateTime;
 /**
  * UpdateInstrumentIdentifierRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-06T16:05:38.971Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-06T16:22:55.406Z")
 public class UpdateInstrumentIdentifierRequest {
   /**
    * The type of the identifier to upsert. This must be one of the code types marked as   allowable for instrument identifiers.

@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * ResourceListOfScope
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-06T16:05:38.971Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-06T16:22:55.406Z")
 public class ResourceListOfScope {
   @SerializedName("values")
   private List<String> values = null;
