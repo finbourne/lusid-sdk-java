@@ -1,6 +1,5 @@
 package com.finbourne.lusid.integration;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.finbourne.lusid.ApiClient;
 import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.InstrumentsApi;
@@ -8,111 +7,40 @@ import com.finbourne.lusid.api.PortfoliosApi;
 import com.finbourne.lusid.api.PropertyDefinitionsApi;
 import com.finbourne.lusid.api.TransactionPortfoliosApi;
 import com.finbourne.lusid.model.*;
-import com.squareup.okhttp.*;
+import com.squareup.okhttp.MediaType;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.File;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
 
 public class LusidApiTests {
 
-    private static final MediaType FORM = MediaType.parse("application/x-www-form-urlencoded");
-
-    private List<String> securityIds;
+    private List<String> instrumentIds;
 
     private PortfoliosApi portfoliosApi;
     private TransactionPortfoliosApi transactionPortfoliosApi;
     private InstrumentsApi instrumentsApi;
     private PropertyDefinitionsApi propertyDefinitionsApi;
 
-    public String getEnvironmentOverride(String env, String defaultValue)
-    {
-        String  envOverride = System.getenv(env);
-        return envOverride == null ? defaultValue : envOverride;
-    }
-
     @Before
     public void setUp() throws Exception {
 
-        //  load configuration
-        ObjectMapper configMapper = new ObjectMapper();
-        ClassLoader classLoader = getClass().getClassLoader();
-        File configFile = new File(classLoader.getResource("secrets.json").getFile());
-
-        if (configFile == null) {
-            fail("cannot find secrets.json in classpath");
-        }
-
-        final File configJson = new File(configFile.toURI());
-        final Map apiConfig = configMapper.readValue(configJson, Map.class);
-        final Map config = (Map)apiConfig.get("api");
-
-        final String tokenUrl = this.getEnvironmentOverride("FBN_TOKEN_URL", (String)config.get("tokenUrl"));
-        final String username = this.getEnvironmentOverride("FBN_USERNAME", (String)config.get("username"));
-        final String password = URLEncoder.encode(this.getEnvironmentOverride("FBN_PASSWORD", (String)config.get("password")), StandardCharsets.UTF_8.toString());
-        final String clientId = URLEncoder.encode(this.getEnvironmentOverride("FBN_CLIENT_ID", (String)config.get("clientId")), StandardCharsets.UTF_8.toString());
-        final String clientSecret = URLEncoder.encode(this.getEnvironmentOverride("FBN_CLIENT_SECRET", (String)config.get("clientSecret")), StandardCharsets.UTF_8.toString());
-
-        final String apiUrl = this.getEnvironmentOverride("FBN_LUSID_API_URL", (String)config.get("apiUrl"));
-
-        //  request body
-        final String    tokenRequestBody = String.format("grant_type=password&username=%s&password=%s&scope=openid client groups&client_id=%s&client_secret=%s", username, password, clientId, clientSecret);
-
-        final OkHttpClient oktaClient = new OkHttpClient();
-        final RequestBody body = RequestBody.create(FORM, tokenRequestBody);
-        final Request request = new Request.Builder()
-                .url(tokenUrl)
-                .header("Accept", "application/json")
-                .post(body)
-                .build();
-
-        Response response = oktaClient.newCall(request).execute();
-
-        final String          content = response.body().string();
-        final ObjectMapper    mapper = new ObjectMapper();
-
-        //  map json response
-        final Map bodyValues = mapper.readValue(content, Map.class);
-
-        assertTrue("missing access_token", bodyValues.containsKey("access_token"));
-
-        //  get access token
-        final String apiToken = (String)bodyValues.get("access_token");
-
-        ApiClient   apiClient;
-        apiClient = new ApiClient();
-        apiClient.addDefaultHeader("Authorization", "Bearer " + apiToken);
-        apiClient.setBasePath(apiUrl);
+        File configJson = new TestConfigurationLoader().loadConfiguration("secrets.json");
+        ApiClient   apiClient = new ApiClientBuilder(configJson).build();
 
         this.portfoliosApi = new PortfoliosApi(apiClient);
         this.transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
         this.instrumentsApi = new InstrumentsApi(apiClient);
         this.propertyDefinitionsApi = new PropertyDefinitionsApi(apiClient);
 
-        UpsertInstrumentsResponse instrumentsResponse = this.instrumentsApi.upsertInstruments(Map.of(
-                "r1", new UpsertInstrumentRequest().name("inst-1").identifiers(Map.of("Figi", "BBG000C6K6G9")),
-                "r2", new UpsertInstrumentRequest().name("inst-2").identifiers(Map.of("Figi", "BBG000C04D57")),
-                "r3", new UpsertInstrumentRequest().name("inst-3").identifiers(Map.of("Figi", "BBG000FV67Q4")),
-                "r4", new UpsertInstrumentRequest().name("inst-4").identifiers(Map.of("Figi", "BBG000BF0KW3")),
-                "r5", new UpsertInstrumentRequest().name("inst-5").identifiers(Map.of("Figi", "BBG000BF4KL1"))
-        ));
-
-        this.securityIds = instrumentsResponse
-                .getValues()
-                .values()
-                .stream()
-                .map(inst -> inst.getLusidInstrumentId())
-                .collect(Collectors.toList());
+        this.instrumentIds = new InstrumentLoader().loadInstruments();
     }
 
     @Test
@@ -220,7 +148,7 @@ public class LusidApiTests {
         TransactionRequest transaction = new TransactionRequest()
                 .transactionId(UUID.randomUUID().toString())
                 .type("Buy")
-                .instrumentUid(this.securityIds.get(0))
+                .instrumentUid(this.instrumentIds.get(0))
                 .totalConsideration(new CurrencyAndAmount().currency("GBP").amount(1230.0))
                 .transactionDate(effectiveDate)
                 .settlementDate(effectiveDate)
@@ -305,9 +233,9 @@ public class LusidApiTests {
                                 t.getTotalConsideration().getAmount())));
 
         final List<TransactionSpec> transactionSpecs = new ArrayList<>(Arrays.asList(
-                new TransactionSpec(this.securityIds.get(0), 101.0, OffsetDateTime.of(2018, 1, 1, 0, 0, 0, 0, ZoneOffset.UTC)),
-                new TransactionSpec(this.securityIds.get(1), 102.0, OffsetDateTime.of(2018, 1, 2, 0, 0, 0, 0, ZoneOffset.UTC)),
-                new TransactionSpec(this.securityIds.get(2), 103.0, OffsetDateTime.of(2018, 1, 3, 0, 0, 0, 0, ZoneOffset.UTC))
+                new TransactionSpec(this.instrumentIds.get(0), 101.0, OffsetDateTime.of(2018, 1, 1, 0, 0, 0, 0, ZoneOffset.UTC)),
+                new TransactionSpec(this.instrumentIds.get(1), 102.0, OffsetDateTime.of(2018, 1, 2, 0, 0, 0, 0, ZoneOffset.UTC)),
+                new TransactionSpec(this.instrumentIds.get(2), 103.0, OffsetDateTime.of(2018, 1, 3, 0, 0, 0, 0, ZoneOffset.UTC))
         ));
 
         //  build list of transactions
@@ -332,14 +260,14 @@ public class LusidApiTests {
         Thread.sleep(500);
 
         //  add another trade for 2018-1-8
-        TransactionSpec newTrade = new TransactionSpec(this.securityIds.get(3), 104.0, OffsetDateTime.of(2018, 1, 8, 0, 0, 0, 0, ZoneOffset.UTC));
+        TransactionSpec newTrade = new TransactionSpec(this.instrumentIds.get(3), 104.0, OffsetDateTime.of(2018, 1, 8, 0, 0, 0, 0, ZoneOffset.UTC));
         UpsertPortfolioTransactionsResponse addedResult = this.transactionPortfoliosApi.upsertTransactions(scope, portfolioId, Arrays.asList(buildTransaction.apply(newTrade)));
 
         OffsetDateTime    asAtBatch2 = addedResult.getVersion().getAsAtDate();
         Thread.sleep(500);
 
         //  add back-dated trade
-        TransactionSpec backDatedTrade = new TransactionSpec(this.securityIds.get(4), 105.0, OffsetDateTime.of(2018, 1, 5, 0, 0, 0, 0, ZoneOffset.UTC));
+        TransactionSpec backDatedTrade = new TransactionSpec(this.instrumentIds.get(4), 105.0, OffsetDateTime.of(2018, 1, 5, 0, 0, 0, 0, ZoneOffset.UTC));
         UpsertPortfolioTransactionsResponse backDatedResult = this.transactionPortfoliosApi.upsertTransactions(scope, portfolioId, Arrays.asList(buildTransaction.apply(backDatedTrade)));
 
         OffsetDateTime    asAtBatch3 = backDatedResult.getVersion().getAsAtDate();
