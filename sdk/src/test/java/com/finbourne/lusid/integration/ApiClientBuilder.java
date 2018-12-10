@@ -80,6 +80,10 @@ public class ApiClientBuilder {
 
         Response response = oktaClient.newCall(request).execute();
 
+        if (response.code() != 200) {
+            throw new IOException(response.toString());
+        }
+
         final String          content = response.body().string();
         final ObjectMapper mapper = new ObjectMapper();
 
