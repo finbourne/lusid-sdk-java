@@ -87,6 +87,7 @@ HOLDING | &quot;Holding&quot;
 REFERENCEHOLDING | &quot;ReferenceHolding&quot;
 TXNTYPE | &quot;TxnType&quot;
 INSTRUMENT | &quot;Instrument&quot;
+CUTDEFINITION | &quot;CutDefinition&quot;
 
 
 
