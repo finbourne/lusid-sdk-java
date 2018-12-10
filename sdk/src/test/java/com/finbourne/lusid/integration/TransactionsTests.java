@@ -151,7 +151,7 @@ public class TransactionsTests {
         String portfolioId = portfolio.getId().getCode();
 
         //  swap definition, this is uploaded in a client custom format
-        UpsertInstrumentRequest   swapDefinition = new UpsertInstrumentRequest()
+        InstrumentDefinition   swapDefinition = new InstrumentDefinition()
                 .name("10mm 5Y Fixed")
                 .identifiers(Map.of("ClientInternal", "SW-1"))
                 .definition(

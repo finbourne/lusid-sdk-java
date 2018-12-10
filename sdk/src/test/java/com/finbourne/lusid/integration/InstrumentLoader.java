@@ -3,7 +3,7 @@ package com.finbourne.lusid.integration;
 import com.finbourne.lusid.ApiClient;
 import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.InstrumentsApi;
-import com.finbourne.lusid.model.UpsertInstrumentRequest;
+import com.finbourne.lusid.model.InstrumentDefinition;
 import com.finbourne.lusid.model.UpsertInstrumentsResponse;
 
 import java.io.File;
@@ -28,11 +28,11 @@ public class InstrumentLoader {
         InstrumentsApi instrumentsApi = new InstrumentsApi(apiClient);
 
         UpsertInstrumentsResponse instrumentsResponse = instrumentsApi.upsertInstruments(Map.of(
-                "request1", new UpsertInstrumentRequest().name("VODAFONE GROUP PLC").identifiers(Map.of("Figi", "BBG000C6K6G9")),
-                "request2", new UpsertInstrumentRequest().name("BARCLAYS PLC").identifiers(Map.of("Figi", "BBG000C04D57")),
-                "request3", new UpsertInstrumentRequest().name("NATIONAL GRID PLC").identifiers(Map.of("Figi", "BBG000FV67Q4")),
-                "request4", new UpsertInstrumentRequest().name("SAINSBURY (J) PLC").identifiers(Map.of("Figi", "BBG000BF0KW3")),
-                "request5", new UpsertInstrumentRequest().name("TAYLOR WIMPEY PLC").identifiers(Map.of("Figi", "BBG000BF4KL1"))
+            "request1", new InstrumentDefinition().name("VODAFONE GROUP PLC").identifiers(Map.of("Figi", "BBG000C6K6G9")),
+            "request2", new InstrumentDefinition().name("BARCLAYS PLC").identifiers(Map.of("Figi", "BBG000C04D57")),
+            "request3", new InstrumentDefinition().name("NATIONAL GRID PLC").identifiers(Map.of("Figi", "BBG000FV67Q4")),
+            "request4", new InstrumentDefinition().name("SAINSBURY (J) PLC").identifiers(Map.of("Figi", "BBG000BF0KW3")),
+            "request5", new InstrumentDefinition().name("TAYLOR WIMPEY PLC").identifiers(Map.of("Figi", "BBG000BF4KL1"))
         ));
 
         return instrumentsResponse
