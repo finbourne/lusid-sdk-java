@@ -28,11 +28,11 @@ public class InstrumentLoader {
         InstrumentsApi instrumentsApi = new InstrumentsApi(apiClient);
 
         UpsertInstrumentsResponse instrumentsResponse = instrumentsApi.upsertInstruments(Map.of(
-                "request1", new UpsertInstrumentRequest().name("inst-1").identifiers(Map.of("Figi", "BBG000C6K6G9")),
-                "request2", new UpsertInstrumentRequest().name("inst-2").identifiers(Map.of("Figi", "BBG000C04D57")),
-                "request3", new UpsertInstrumentRequest().name("inst-3").identifiers(Map.of("Figi", "BBG000FV67Q4")),
-                "request4", new UpsertInstrumentRequest().name("inst-4").identifiers(Map.of("Figi", "BBG000BF0KW3")),
-                "request5", new UpsertInstrumentRequest().name("inst-5").identifiers(Map.of("Figi", "BBG000BF4KL1"))
+                "request1", new UpsertInstrumentRequest().name("VODAFONE GROUP PLC").identifiers(Map.of("Figi", "BBG000C6K6G9")),
+                "request2", new UpsertInstrumentRequest().name("BARCLAYS PLC").identifiers(Map.of("Figi", "BBG000C04D57")),
+                "request3", new UpsertInstrumentRequest().name("NATIONAL GRID PLC").identifiers(Map.of("Figi", "BBG000FV67Q4")),
+                "request4", new UpsertInstrumentRequest().name("SAINSBURY (J) PLC").identifiers(Map.of("Figi", "BBG000BF0KW3")),
+                "request5", new UpsertInstrumentRequest().name("TAYLOR WIMPEY PLC").identifiers(Map.of("Figi", "BBG000BF4KL1"))
         ));
 
         return instrumentsResponse
