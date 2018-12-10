@@ -7,7 +7,6 @@ import com.finbourne.lusid.api.PortfoliosApi;
 import com.finbourne.lusid.api.PropertyDefinitionsApi;
 import com.finbourne.lusid.api.TransactionPortfoliosApi;
 import com.finbourne.lusid.model.*;
-import com.squareup.okhttp.MediaType;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -303,8 +302,6 @@ public class LusidApiTests {
 
     @Test
     public void find_instruments() throws ApiException {
-        final List<String> isins = new ArrayList<>(Arrays.asList("IT0004966401", "FR0010192997"));
-
         final Property isin1 = new Property();
         isin1.setKey("Instrument/default/Isin");
         isin1.setValue("IT0004966401");
