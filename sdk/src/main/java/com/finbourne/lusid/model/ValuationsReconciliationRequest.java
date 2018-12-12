@@ -11,85 +11,137 @@
  */
 
 
-package com.finbourne.lusid.api;
+package com.finbourne.lusid.model;
 
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.model.DeletedEntityResponse;
-import com.finbourne.lusid.model.ErrorResponse;
-import com.finbourne.lusid.model.Personalisation;
-import com.finbourne.lusid.model.ResourceListOfPersonalisation;
-import com.finbourne.lusid.model.UpsertPersonalisationResponse;
-import org.junit.Test;
-import org.junit.Ignore;
-
+import java.util.Objects;
+import com.finbourne.lusid.model.ValuationReconciliationRequest;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
- * API tests for PersonalisationsApi
+ * ValuationsReconciliationRequest
  */
-@Ignore
-public class PersonalisationsApiTest {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-12T10:28:03.278Z")
+public class ValuationsReconciliationRequest {
+  @SerializedName("left")
+  private ValuationReconciliationRequest left = null;
 
-    private final PersonalisationsApi api = new PersonalisationsApi();
+  @SerializedName("right")
+  private ValuationReconciliationRequest right = null;
 
-    
-    /**
-     * Delete a personalisation
-     *
-     * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely)
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void deletePersonalisationTest() throws ApiException {
-        String key = null;
-        String scope = null;
-        String group = null;
-        DeletedEntityResponse response = api.deletePersonalisation(key, scope, group);
+  @SerializedName("instrumentPropertyKeys")
+  private List<String> instrumentPropertyKeys = new ArrayList<>();
 
-        // TODO: test validations
+  public ValuationsReconciliationRequest left(ValuationReconciliationRequest left) {
+    this.left = left;
+    return this;
+  }
+
+   /**
+   * The specification of the left hand side of the valuation (risk) reconciliation
+   * @return left
+  **/
+  @ApiModelProperty(required = true, value = "The specification of the left hand side of the valuation (risk) reconciliation")
+  public ValuationReconciliationRequest getLeft() {
+    return left;
+  }
+
+  public void setLeft(ValuationReconciliationRequest left) {
+    this.left = left;
+  }
+
+  public ValuationsReconciliationRequest right(ValuationReconciliationRequest right) {
+    this.right = right;
+    return this;
+  }
+
+   /**
+   * The specification of the right hand side of the valuation (risk) reconciliation
+   * @return right
+  **/
+  @ApiModelProperty(required = true, value = "The specification of the right hand side of the valuation (risk) reconciliation")
+  public ValuationReconciliationRequest getRight() {
+    return right;
+  }
+
+  public void setRight(ValuationReconciliationRequest right) {
+    this.right = right;
+  }
+
+  public ValuationsReconciliationRequest instrumentPropertyKeys(List<String> instrumentPropertyKeys) {
+    this.instrumentPropertyKeys = instrumentPropertyKeys;
+    return this;
+  }
+
+  public ValuationsReconciliationRequest addInstrumentPropertyKeysItem(String instrumentPropertyKeysItem) {
+    this.instrumentPropertyKeys.add(instrumentPropertyKeysItem);
+    return this;
+  }
+
+   /**
+   * Instrument properties to be included with any identified breaks. These properties will be in the effective and AsAt dates of the left portfolio
+   * @return instrumentPropertyKeys
+  **/
+  @ApiModelProperty(required = true, value = "Instrument properties to be included with any identified breaks. These properties will be in the effective and AsAt dates of the left portfolio")
+  public List<String> getInstrumentPropertyKeys() {
+    return instrumentPropertyKeys;
+  }
+
+  public void setInstrumentPropertyKeys(List<String> instrumentPropertyKeys) {
+    this.instrumentPropertyKeys = instrumentPropertyKeys;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
     }
-    
-    /**
-     * Get personalisation
-     *
-     * Get a personalisation, recursing to get any referenced if required.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getPersonalisationsTest() throws ApiException {
-        String pattern = null;
-        String scope = null;
-        Boolean recursive = null;
-        Boolean wildcards = null;
-        List<String> sortBy = null;
-        Integer start = null;
-        Integer limit = null;
-        ResourceListOfPersonalisation response = api.getPersonalisations(pattern, scope, recursive, wildcards, sortBy, start, limit);
-
-        // TODO: test validations
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
-    
-    /**
-     * Upsert personalisations
-     *
-     * Upsert one or more personalisations
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void upsertPersonalisationsTest() throws ApiException {
-        List<Personalisation> personalisations = null;
-        UpsertPersonalisationResponse response = api.upsertPersonalisations(personalisations);
+    ValuationsReconciliationRequest valuationsReconciliationRequest = (ValuationsReconciliationRequest) o;
+    return Objects.equals(this.left, valuationsReconciliationRequest.left) &&
+        Objects.equals(this.right, valuationsReconciliationRequest.right) &&
+        Objects.equals(this.instrumentPropertyKeys, valuationsReconciliationRequest.instrumentPropertyKeys);
+  }
 
-        // TODO: test validations
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(left, right, instrumentPropertyKeys);
+  }
+
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ValuationsReconciliationRequest {\n");
     
+    sb.append("    left: ").append(toIndentedString(left)).append("\n");
+    sb.append("    right: ").append(toIndentedString(right)).append("\n");
+    sb.append("    instrumentPropertyKeys: ").append(toIndentedString(instrumentPropertyKeys)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
+

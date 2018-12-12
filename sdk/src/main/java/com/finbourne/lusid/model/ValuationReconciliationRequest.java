@@ -11,85 +11,108 @@
  */
 
 
-package com.finbourne.lusid.api;
+package com.finbourne.lusid.model;
 
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.model.DeletedEntityResponse;
-import com.finbourne.lusid.model.ErrorResponse;
-import com.finbourne.lusid.model.Personalisation;
-import com.finbourne.lusid.model.ResourceListOfPersonalisation;
-import com.finbourne.lusid.model.UpsertPersonalisationResponse;
-import org.junit.Test;
-import org.junit.Ignore;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Objects;
+import com.finbourne.lusid.model.AggregationRequest;
+import com.finbourne.lusid.model.ResourceId;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 
 /**
- * API tests for PersonalisationsApi
+ * ValuationReconciliationRequest
  */
-@Ignore
-public class PersonalisationsApiTest {
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-12T10:28:03.278Z")
+public class ValuationReconciliationRequest {
+  @SerializedName("portfolioId")
+  private ResourceId portfolioId = null;
 
-    private final PersonalisationsApi api = new PersonalisationsApi();
+  @SerializedName("aggregation")
+  private AggregationRequest aggregation = null;
 
-    
-    /**
-     * Delete a personalisation
-     *
-     * Delete a personalisation at a specific scope (or use scope ALL to purge the setting entirely)
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void deletePersonalisationTest() throws ApiException {
-        String key = null;
-        String scope = null;
-        String group = null;
-        DeletedEntityResponse response = api.deletePersonalisation(key, scope, group);
+  public ValuationReconciliationRequest portfolioId(ResourceId portfolioId) {
+    this.portfolioId = portfolioId;
+    return this;
+  }
 
-        // TODO: test validations
+   /**
+   * The id of the portfolio on which to run the aggregation request
+   * @return portfolioId
+  **/
+  @ApiModelProperty(required = true, value = "The id of the portfolio on which to run the aggregation request")
+  public ResourceId getPortfolioId() {
+    return portfolioId;
+  }
+
+  public void setPortfolioId(ResourceId portfolioId) {
+    this.portfolioId = portfolioId;
+  }
+
+  public ValuationReconciliationRequest aggregation(AggregationRequest aggregation) {
+    this.aggregation = aggregation;
+    return this;
+  }
+
+   /**
+   * The specification of the aggregation request to be used to obtain the risk
+   * @return aggregation
+  **/
+  @ApiModelProperty(required = true, value = "The specification of the aggregation request to be used to obtain the risk")
+  public AggregationRequest getAggregation() {
+    return aggregation;
+  }
+
+  public void setAggregation(AggregationRequest aggregation) {
+    this.aggregation = aggregation;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
     }
-    
-    /**
-     * Get personalisation
-     *
-     * Get a personalisation, recursing to get any referenced if required.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void getPersonalisationsTest() throws ApiException {
-        String pattern = null;
-        String scope = null;
-        Boolean recursive = null;
-        Boolean wildcards = null;
-        List<String> sortBy = null;
-        Integer start = null;
-        Integer limit = null;
-        ResourceListOfPersonalisation response = api.getPersonalisations(pattern, scope, recursive, wildcards, sortBy, start, limit);
-
-        // TODO: test validations
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
-    
-    /**
-     * Upsert personalisations
-     *
-     * Upsert one or more personalisations
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void upsertPersonalisationsTest() throws ApiException {
-        List<Personalisation> personalisations = null;
-        UpsertPersonalisationResponse response = api.upsertPersonalisations(personalisations);
+    ValuationReconciliationRequest valuationReconciliationRequest = (ValuationReconciliationRequest) o;
+    return Objects.equals(this.portfolioId, valuationReconciliationRequest.portfolioId) &&
+        Objects.equals(this.aggregation, valuationReconciliationRequest.aggregation);
+  }
 
-        // TODO: test validations
-    }
+  @Override
+  public int hashCode() {
+    return Objects.hash(portfolioId, aggregation);
+  }
+
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class ValuationReconciliationRequest {\n");
     
+    sb.append("    portfolioId: ").append(toIndentedString(portfolioId)).append("\n");
+    sb.append("    aggregation: ").append(toIndentedString(aggregation)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
+
