@@ -31,8 +31,7 @@ In addition to the SDK, a set of examples on how to use the SDK can be found in 
 
 # Generating the SDK
 
-If you would prefer to generate the Java SDK locally from the FINBOURNE OpenAPI specification, this can be done using `docker` and `docker-compose`:
-
-```
-$ docker-compose up && docker-compose rm -f
-```
+If you would prefer to generate the Java SDK locally from the FINBOURNE OpenAPI specification, follow these steps:
+  * download the latest swagger.json file from https://api.lusid.com/swagger/index.html
+  * save it in this directory as `lusid.json`
+  * run `docker-compose up && docker-compose rm -f`
