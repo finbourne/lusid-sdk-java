@@ -4,53 +4,61 @@ import com.finbourne.lusid.ApiClient;
 import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.AggregationApi;
 import com.finbourne.lusid.api.AnalyticsStoresApi;
+import com.finbourne.lusid.api.InstrumentsApi;
 import com.finbourne.lusid.api.TransactionPortfoliosApi;
 import com.finbourne.lusid.model.*;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
-import java.io.Serializable;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
-import java.util.stream.Collectors;
 
 import static org.junit.Assert.assertEquals;
 
 public class AggregationTests {
 
-    private final String AGGREGATION_KEY = "Holding/default/PV";
-    private final String GROUPBY_KEY = "Instrument/default/Name";
-    private final String INSTRUMENT_KEY = "instrumentId";
-    private final String PRICE_KEY = "price";
-    private final String DATE_KEY = "date";
+    private static final String AGGREGATION_KEY = "Holding/default/PV";
+    private static final String GROUPBY_KEY = "Instrument/default/Name";
+    private static final String INSTRUMENT_KEY = "instrumentId";
+    private static final String PRICE_KEY = "price";
+    private static final String DATE_KEY = "date";
 
     private final OffsetDateTime EFFECTIVE_DATE = OffsetDateTime.of(2018, 1, 1, 0, 0, 0, 0, ZoneOffset.UTC);
 
-    private AnalyticsStoresApi analyticsStoresApi;
-    private TransactionPortfoliosApi transactionPortfoliosApi;
-    private AggregationApi  aggregationApi;
-    private List<String> instrumentIds;
+    private static AnalyticsStoresApi analyticsStoresApi;
+    private static TransactionPortfoliosApi transactionPortfoliosApi;
+    private static AggregationApi  aggregationApi;
+    private static List<String> instrumentIds;
 
-    private TestDataUtilities testDataUtilities;
+    private static TestDataUtilities testDataUtilities;
+    private static InstrumentLoader instrumentLoader;
 
-    @Before
-    public void setUp() throws Exception
+    @BeforeClass
+    public static void setUp() throws Exception
     {
         File configJson = new TestConfigurationLoader().loadConfiguration("secrets.json");
         ApiClient apiClient = new ApiClientBuilder(configJson).build();
 
-        this.testDataUtilities = new TestDataUtilities(this.transactionPortfoliosApi);
+        testDataUtilities = new TestDataUtilities(transactionPortfoliosApi);
 
-        this.transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
-        this.analyticsStoresApi = new AnalyticsStoresApi(apiClient);
-        this.aggregationApi = new AggregationApi(apiClient);
+        transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
+        analyticsStoresApi = new AnalyticsStoresApi(apiClient);
+        aggregationApi = new AggregationApi(apiClient);
 
         //  ensure instruments are created and exist in LUSID
-        this.instrumentIds = new InstrumentLoader().loadInstruments();
+        InstrumentsApi instrumentsApi = new InstrumentsApi(apiClient);
+        instrumentLoader = new InstrumentLoader(instrumentsApi);
+        instrumentIds = instrumentLoader.loadInstruments();
+    }
+
+    @AfterClass
+    public static void tearDown() throws ApiException {
+        instrumentLoader.deleteInstruments();
     }
 
     @Test
@@ -67,9 +75,9 @@ public class AggregationTests {
                     requests.add(testDataUtilities.buildCashFundsInTransactionRequest(30600.0, currency, EFFECTIVE_DATE));
 
                     // create the transaction requests
-                    requests.add(this.testDataUtilities.buildTransactionRequest(this.instrumentIds.get(0), 100.0, 101.0, currency, EFFECTIVE_DATE, "Buy"));
-                    requests.add(this.testDataUtilities.buildTransactionRequest(this.instrumentIds.get(1), 100.0, 102.0, currency, EFFECTIVE_DATE, "Buy"));
-                    requests.add(this.testDataUtilities.buildTransactionRequest(this.instrumentIds.get(2), 100.0, 103.0, currency, EFFECTIVE_DATE, "Buy"));
+                    requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(0), 100.0, 101.0, currency, EFFECTIVE_DATE, "Buy"));
+                    requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(1), 100.0, 102.0, currency, EFFECTIVE_DATE, "Buy"));
+                    requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(2), 100.0, 103.0, currency, EFFECTIVE_DATE, "Buy"));
 
                     return requests;
                 },
@@ -98,7 +106,7 @@ public class AggregationTests {
                 .created(EFFECTIVE_DATE);
 
         //  create portfolio
-        Portfolio portfolio = this.transactionPortfoliosApi.createPortfolio(scope, request);
+        Portfolio portfolio = transactionPortfoliosApi.createPortfolio(scope, request);
 
         assertEquals(portfolio.getId().getCode(), originalPortfolioId);
 
@@ -108,10 +116,10 @@ public class AggregationTests {
         List<TransactionRequest> transactionRequests = createTransactionRequests.get();
 
         //  upload the transactions to LUSID
-        this.transactionPortfoliosApi.upsertTransactions(scope, portfolioId, transactionRequests);
+        transactionPortfoliosApi.upsertTransactions(scope, portfolioId, transactionRequests);
 
         //  set up the prices used for the aggregation in the analytic stores
-        ResourceListOfAnalyticStoreKey analyticsStores = this.analyticsStoresApi.listAnalyticStores(null, null, null, null, null);
+        ResourceListOfAnalyticStoreKey analyticsStores = analyticsStoresApi.listAnalyticStores(null, null, null, null, null);
         AnalyticStoreKey analyticStore = analyticsStores.getValues()
                 .stream()
                 .filter(ask -> ask.getDate().equals(EFFECTIVE_DATE))
@@ -121,17 +129,17 @@ public class AggregationTests {
         if (analyticStore == null) {
             //  create the analytic store
             CreateAnalyticStoreRequest  createAnalyticStoreRequest = new CreateAnalyticStoreRequest().scope(scope).date(EFFECTIVE_DATE);
-            this.analyticsStoresApi.createAnalyticStore(createAnalyticStoreRequest);
+            analyticsStoresApi.createAnalyticStore(createAnalyticStoreRequest);
         }
 
         List<InstrumentAnalytic>    prices = List.of(
-                new InstrumentAnalytic().instrumentUid(this.instrumentIds.get(0)).value(100.0),
-                new InstrumentAnalytic().instrumentUid(this.instrumentIds.get(1)).value(200.0),
-                new InstrumentAnalytic().instrumentUid(this.instrumentIds.get(2)).value(300.0)
+                new InstrumentAnalytic().instrumentUid(instrumentIds.get(0)).value(100.0),
+                new InstrumentAnalytic().instrumentUid(instrumentIds.get(1)).value(200.0),
+                new InstrumentAnalytic().instrumentUid(instrumentIds.get(2)).value(300.0)
         );
 
         //  add prices from the aggregation
-        this.analyticsStoresApi.setAnalytics(scope, EFFECTIVE_DATE.getYear(), EFFECTIVE_DATE.getMonthValue(), EFFECTIVE_DATE.getDayOfMonth(), prices);
+        analyticsStoresApi.setAnalytics(scope, EFFECTIVE_DATE.getYear(), EFFECTIVE_DATE.getMonthValue(), EFFECTIVE_DATE.getDayOfMonth(), prices);
 
         AggregationRequest  aggregationRequest = new AggregationRequest()
                 .recipeId(new ResourceId().scope(scope).code("default"))
@@ -140,10 +148,10 @@ public class AggregationTests {
                         new AggregateSpec().key(AGGREGATION_KEY).op(AggregateSpec.OpEnum.SUM)
                 ))
                 .groupBy(List.of(GROUPBY_KEY))
-                .effectiveAt(this.EFFECTIVE_DATE);
+                .effectiveAt(EFFECTIVE_DATE);
 
         //  do the aggregation
-        ListAggregationResponse aggregationResponse = this.aggregationApi.getAggregationByPortfolio(scope, portfolioId, aggregationRequest, null, null, null);
+        ListAggregationResponse aggregationResponse = aggregationApi.getAggregationByPortfolio(scope, portfolioId, aggregationRequest, null, null, null);
 
         aggregationResponse.getData().sort((o1, o2) -> {
             String name1 = (String)o1.get(GROUPBY_KEY);
