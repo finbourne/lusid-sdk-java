@@ -1,4 +1,4 @@
-FROM maven:3.5-jdk-10
+FROM maven:3.5-jdk-11
 
 RUN mkdir -p /usr/src
 WORKDIR /usr/src
