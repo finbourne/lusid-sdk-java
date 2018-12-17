@@ -51,7 +51,6 @@ public class AggregationTests {
 
         //  ensure instruments are created and exist in LUSID
         this.instrumentIds = new InstrumentLoader().loadInstruments();
-        this.instrumentIds.sort(Comparator.naturalOrder());
     }
 
     @Test
@@ -76,9 +75,9 @@ public class AggregationTests {
                 },
                 results -> {
                     assertEquals(3, results.size());
-                    assertEquals(20000.0, results.get(0).get(AGGREGATION_KEY));
-                    assertEquals(30000.0, results.get(1).get(AGGREGATION_KEY));
-                    assertEquals(10000.0, results.get(2).get(AGGREGATION_KEY));
+                    assertEquals(10000.0, results.get(0).get(AGGREGATION_KEY));
+                    assertEquals(20000.0, results.get(1).get(AGGREGATION_KEY));
+                    assertEquals(30000.0, results.get(2).get(AGGREGATION_KEY));
                 });
     }
 

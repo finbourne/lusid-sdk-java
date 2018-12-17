@@ -3,11 +3,13 @@ package com.finbourne.lusid.integration;
 import com.finbourne.lusid.ApiClient;
 import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.model.Instrument;
 import com.finbourne.lusid.model.InstrumentDefinition;
 import com.finbourne.lusid.model.UpsertInstrumentsResponse;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -39,6 +41,7 @@ public class InstrumentLoader {
                 .getValues()
                 .values()
                 .stream()
+                .sorted(Comparator.comparing(Instrument::getName))
                 .map(inst -> inst.getLusidInstrumentId())
                 .collect(Collectors.toList());
     }

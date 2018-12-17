@@ -160,8 +160,8 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <configuration>
-                    <source>9</source>
-                    <target>9</target>
+                    <source>11</source>
+                    <target>11</target>
                 </configuration>
             </plugin>
         </plugins>
@@ -237,8 +237,8 @@
         </dependency>
     </dependencies>
     <properties>
-        <maven.compiler.source>9</maven.compiler.source>
-        <maven.compiler.target>9</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
         <gson-fire-version>1.8.0</gson-fire-version>
         <swagger-core-version>1.5.15</swagger-core-version>
         <okhttp-version>2.7.5</okhttp-version>

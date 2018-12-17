@@ -299,22 +299,4 @@ public class LusidApiTests {
         System.out.println("transactions at " + OffsetDateTime.now());
         printTransactions.accept(transactions.getValues());
     }
-
-    @Test
-    public void find_instruments() throws ApiException {
-        final Property isin1 = new Property();
-        isin1.setKey("Instrument/default/Isin");
-        isin1.setValue("IT0004966401");
-
-        final Property isin2 = new Property();
-        isin2.setKey("Instrument/default/Isin");
-        isin2.setValue("FR0010192997");
-
-        //  lookup instruments
-        final ResourceListOfInstrument fbnIds = this.instrumentsApi.findInstruments(
-                List.of(isin1, isin2), null, null, null
-        );
-
-        assertTrue(fbnIds.getValues().size() > 0);
-    }
 }
