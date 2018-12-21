@@ -73,11 +73,11 @@ public class InstrumentMasterTests {
                          */
                         .properties(List.of(
                                 new InstrumentProperty()
-                                        .instrumentPropertyKey(ISIN_PROPERTY_KEY)
-                                        .property(new PropertyValue().labelValue("GB00BH4HKS39")),
+                                        .key(ISIN_PROPERTY_KEY)
+                                        .value(new PropertyValue().labelValue("GB00BH4HKS39")),
                                 new InstrumentProperty()
-                                        .instrumentPropertyKey(SEDOL_PROPERTY_KEY)
-                                        .property(new PropertyValue().labelValue("BH4HKS3"))
+                                        .key(SEDOL_PROPERTY_KEY)
+                                        .value(new PropertyValue().labelValue("BH4HKS3"))
                         )),
 
                 "correlationId2", new InstrumentDefinition()
@@ -88,11 +88,11 @@ public class InstrumentMasterTests {
                         ))
                         .properties(List.of(
                                 new InstrumentProperty()
-                                        .instrumentPropertyKey(ISIN_PROPERTY_KEY)
-                                        .property(new PropertyValue().labelValue("GB0031348658")),
+                                        .key(ISIN_PROPERTY_KEY)
+                                        .value(new PropertyValue().labelValue("GB0031348658")),
                                 new InstrumentProperty()
-                                        .instrumentPropertyKey(SEDOL_PROPERTY_KEY)
-                                        .property(new PropertyValue().labelValue("3134865"))
+                                        .key(SEDOL_PROPERTY_KEY)
+                                        .value(new PropertyValue().labelValue("3134865"))
                         )),
 
                 "correlationId3", new InstrumentDefinition()
@@ -103,11 +103,11 @@ public class InstrumentMasterTests {
                         ))
                         .properties(List.of(
                                 new InstrumentProperty()
-                                        .instrumentPropertyKey(ISIN_PROPERTY_KEY)
-                                        .property(new PropertyValue().labelValue("GB00BDR05C01")),
+                                        .key(ISIN_PROPERTY_KEY)
+                                        .value(new PropertyValue().labelValue("GB00BDR05C01")),
                                 new InstrumentProperty()
-                                        .instrumentPropertyKey(SEDOL_PROPERTY_KEY)
-                                        .property(new PropertyValue().labelValue("BDR05C0"))
+                                        .key(SEDOL_PROPERTY_KEY)
+                                        .value(new PropertyValue().labelValue("BDR05C0"))
                         )),
 
                 "correlationId4", new InstrumentDefinition()
@@ -118,11 +118,11 @@ public class InstrumentMasterTests {
                         ))
                         .properties(List.of(
                                 new InstrumentProperty()
-                                        .instrumentPropertyKey(ISIN_PROPERTY_KEY)
-                                        .property(new PropertyValue().labelValue("GB00B019KW72")),
+                                        .key(ISIN_PROPERTY_KEY)
+                                        .value(new PropertyValue().labelValue("GB00B019KW72")),
                                 new InstrumentProperty()
-                                        .instrumentPropertyKey(SEDOL_PROPERTY_KEY)
-                                        .property(new PropertyValue().labelValue("B019KW7"))
+                                        .key(SEDOL_PROPERTY_KEY)
+                                        .value(new PropertyValue().labelValue("B019KW7"))
                         )),
 
                 "correlationId5", new InstrumentDefinition()
@@ -133,11 +133,11 @@ public class InstrumentMasterTests {
                         ))
                         .properties(List.of(
                                 new InstrumentProperty()
-                                        .instrumentPropertyKey(ISIN_PROPERTY_KEY)
-                                        .property(new PropertyValue().labelValue("GB0008782301")),
+                                        .key(ISIN_PROPERTY_KEY)
+                                        .value(new PropertyValue().labelValue("GB0008782301")),
                                 new InstrumentProperty()
-                                        .instrumentPropertyKey(SEDOL_PROPERTY_KEY)
-                                        .property(new PropertyValue().labelValue("0878230"))
+                                        .key(SEDOL_PROPERTY_KEY)
+                                        .value(new PropertyValue().labelValue("0878230"))
                         ))
         ));
 
