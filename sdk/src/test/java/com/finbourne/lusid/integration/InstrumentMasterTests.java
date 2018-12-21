@@ -72,10 +72,10 @@ public class InstrumentMasterTests {
                             Additional non-unique identifiers are added as properties
                          */
                         .properties(List.of(
-                                new UpsertInstrumentPropertyRequest()
+                                new InstrumentProperty()
                                         .instrumentPropertyKey(ISIN_PROPERTY_KEY)
                                         .property(new PropertyValue().labelValue("GB00BH4HKS39")),
-                                new UpsertInstrumentPropertyRequest()
+                                new InstrumentProperty()
                                         .instrumentPropertyKey(SEDOL_PROPERTY_KEY)
                                         .property(new PropertyValue().labelValue("BH4HKS3"))
                         )),
@@ -87,10 +87,10 @@ public class InstrumentMasterTests {
                                 CUSTOM_INTERNAL_SCHEME, "INTERNAL_ID_2"
                         ))
                         .properties(List.of(
-                                new UpsertInstrumentPropertyRequest()
+                                new InstrumentProperty()
                                         .instrumentPropertyKey(ISIN_PROPERTY_KEY)
                                         .property(new PropertyValue().labelValue("GB0031348658")),
-                                new UpsertInstrumentPropertyRequest()
+                                new InstrumentProperty()
                                         .instrumentPropertyKey(SEDOL_PROPERTY_KEY)
                                         .property(new PropertyValue().labelValue("3134865"))
                         )),
@@ -102,10 +102,10 @@ public class InstrumentMasterTests {
                                 CUSTOM_INTERNAL_SCHEME, "INTERNAL_ID_3"
                         ))
                         .properties(List.of(
-                                new UpsertInstrumentPropertyRequest()
+                                new InstrumentProperty()
                                         .instrumentPropertyKey(ISIN_PROPERTY_KEY)
                                         .property(new PropertyValue().labelValue("GB00BDR05C01")),
-                                new UpsertInstrumentPropertyRequest()
+                                new InstrumentProperty()
                                         .instrumentPropertyKey(SEDOL_PROPERTY_KEY)
                                         .property(new PropertyValue().labelValue("BDR05C0"))
                         )),
@@ -117,10 +117,10 @@ public class InstrumentMasterTests {
                                 CUSTOM_INTERNAL_SCHEME, "INTERNAL_ID_4"
                         ))
                         .properties(List.of(
-                                new UpsertInstrumentPropertyRequest()
+                                new InstrumentProperty()
                                         .instrumentPropertyKey(ISIN_PROPERTY_KEY)
                                         .property(new PropertyValue().labelValue("GB00B019KW72")),
-                                new UpsertInstrumentPropertyRequest()
+                                new InstrumentProperty()
                                         .instrumentPropertyKey(SEDOL_PROPERTY_KEY)
                                         .property(new PropertyValue().labelValue("B019KW7"))
                         )),
@@ -132,10 +132,10 @@ public class InstrumentMasterTests {
                                 CUSTOM_INTERNAL_SCHEME, "INTERNAL_ID_5"
                         ))
                         .properties(List.of(
-                                new UpsertInstrumentPropertyRequest()
+                                new InstrumentProperty()
                                         .instrumentPropertyKey(ISIN_PROPERTY_KEY)
                                         .property(new PropertyValue().labelValue("GB0008782301")),
-                                new UpsertInstrumentPropertyRequest()
+                                new InstrumentProperty()
                                         .instrumentPropertyKey(SEDOL_PROPERTY_KEY)
                                         .property(new PropertyValue().labelValue("0878230"))
                         ))
