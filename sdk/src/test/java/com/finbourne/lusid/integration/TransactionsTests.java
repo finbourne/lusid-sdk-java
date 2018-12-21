@@ -5,7 +5,8 @@ import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.InstrumentsApi;
 import com.finbourne.lusid.api.TransactionPortfoliosApi;
 import com.finbourne.lusid.model.*;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
@@ -18,21 +19,28 @@ import static org.junit.Assert.assertEquals;
 
 public class TransactionsTests {
 
-    private InstrumentsApi instrumentsApi;
-    private TransactionPortfoliosApi transactionPortfoliosApi;
-    private List<String> instrumentIds;
+    private static InstrumentsApi instrumentsApi;
+    private static TransactionPortfoliosApi transactionPortfoliosApi;
+    private static List<String> instrumentIds;
+    private static InstrumentLoader instrumentLoader;
 
-    @Before
-    public void setUp() throws Exception
+    @BeforeClass
+    public static void setUp() throws Exception
     {
         File configJson = new TestConfigurationLoader().loadConfiguration("secrets.json");
         ApiClient apiClient = new ApiClientBuilder(configJson).build();
 
-        this.transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
-        this.instrumentsApi = new InstrumentsApi(apiClient);
+        transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
+        instrumentsApi = new InstrumentsApi(apiClient);
 
         //  ensure instruments are created and exist in LUSID
-        this.instrumentIds = new InstrumentLoader().loadInstruments();
+        instrumentLoader = new InstrumentLoader(instrumentsApi);
+        instrumentIds = instrumentLoader.loadInstruments();
+    }
+
+    @AfterClass
+    public static void tearDown() throws ApiException {
+        instrumentLoader.deleteInstruments();
     }
 
     @Test
@@ -51,7 +59,7 @@ public class TransactionsTests {
                 .created(effectiveDate);
 
         //  create portfolio
-        Portfolio portfolio = this.transactionPortfoliosApi.createPortfolio(scope, request);
+        Portfolio portfolio = transactionPortfoliosApi.createPortfolio(scope, request);
 
         assertEquals(portfolio.getId().getCode(), originalPortfolioId);
 
@@ -63,7 +71,7 @@ public class TransactionsTests {
                 .type("Buy")
 
                 //  instruments must already exist in LUSID and have a valid LUSID instrument id
-                .instrumentUid(this.instrumentIds.get(0))
+                .instrumentUid(instrumentIds.get(0))
                 .totalConsideration(new CurrencyAndAmount().currency("GBP").amount(1230.0))
                 .transactionDate(effectiveDate)
                 .settlementDate(effectiveDate)
@@ -72,10 +80,10 @@ public class TransactionsTests {
                 .source(TransactionRequest.SourceEnum.CLIENT);
 
         //  add the trade
-        this.transactionPortfoliosApi.upsertTransactions(scope, portfolioId, new ArrayList<>(Arrays.asList(transaction)));
+        transactionPortfoliosApi.upsertTransactions(scope, portfolioId, new ArrayList<>(Arrays.asList(transaction)));
 
         //  get the trade
-        VersionedResourceListOfTransaction transactions = this.transactionPortfoliosApi.getTransactions(scope,
+        VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(scope,
                 portfolioId, null, null, null, null, null, null, null, null);
 
         assertEquals(1, transactions.getValues().size());
@@ -97,7 +105,7 @@ public class TransactionsTests {
                 .created(effectiveDate);
 
         //  create portfolio
-        Portfolio portfolio = this.transactionPortfoliosApi.createPortfolio(scope, request);
+        Portfolio portfolio = transactionPortfoliosApi.createPortfolio(scope, request);
 
         assertEquals(portfolio.getId().getCode(), originalPortfolioId);
 
@@ -118,10 +126,10 @@ public class TransactionsTests {
                 .source(TransactionRequest.SourceEnum.CLIENT);
 
         //  add the trade
-        this.transactionPortfoliosApi.upsertTransactions(scope, portfolioId, new ArrayList<>(Arrays.asList(transaction)));
+        transactionPortfoliosApi.upsertTransactions(scope, portfolioId, new ArrayList<>(Arrays.asList(transaction)));
 
         //  get the trade
-        VersionedResourceListOfTransaction transactions = this.transactionPortfoliosApi.getTransactions(scope,
+        VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(scope,
                 portfolioId, null, null, null, null, null, null, null, null);
 
         assertEquals(1, transactions.getValues().size());
@@ -144,14 +152,14 @@ public class TransactionsTests {
                 .created(effectiveDate);
 
         //  create portfolio
-        Portfolio portfolio = this.transactionPortfoliosApi.createPortfolio(scope, request);
+        Portfolio portfolio = transactionPortfoliosApi.createPortfolio(scope, request);
 
         assertEquals(portfolio.getId().getCode(), originalPortfolioId);
 
         String portfolioId = portfolio.getId().getCode();
 
         //  swap definition, this is uploaded in a client custom format
-        UpsertInstrumentRequest   swapDefinition = new UpsertInstrumentRequest()
+        InstrumentDefinition   swapDefinition = new InstrumentDefinition()
                 .name("10mm 5Y Fixed")
                 .identifiers(Map.of("ClientInternal", "SW-1"))
                 .definition(
@@ -161,7 +169,7 @@ public class TransactionsTests {
                 );
 
         //  create the swap
-        UpsertInstrumentsResponse instrumentsResponse = this.instrumentsApi.upsertInstruments(
+        UpsertInstrumentsResponse instrumentsResponse = instrumentsApi.upsertInstruments(
                 Map.of("request", swapDefinition)
         );
 
@@ -185,10 +193,10 @@ public class TransactionsTests {
                 .source(TransactionRequest.SourceEnum.CLIENT);
 
         //  add the trade
-        this.transactionPortfoliosApi.upsertTransactions(scope, portfolioId, new ArrayList<>(Arrays.asList(transactionRequest)));
+        transactionPortfoliosApi.upsertTransactions(scope, portfolioId, new ArrayList<>(Arrays.asList(transactionRequest)));
 
         //  get the trade
-        VersionedResourceListOfTransaction transactions = this.transactionPortfoliosApi.getTransactions(scope,
+        VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(scope,
                 portfolioId, null, null, null, null, null, null, null, null);
 
         assertEquals(1, transactions.getValues().size());

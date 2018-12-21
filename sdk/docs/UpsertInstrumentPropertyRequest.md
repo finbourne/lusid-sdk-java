@@ -1,5 +1,5 @@
 
-# CreateInstrumentPropertyRequest
+# UpsertInstrumentPropertyRequest
 
 ## Properties
 Name | Type | Description | Notes

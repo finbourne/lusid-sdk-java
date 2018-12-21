@@ -7,8 +7,8 @@ import com.finbourne.lusid.api.PortfoliosApi;
 import com.finbourne.lusid.api.PropertyDefinitionsApi;
 import com.finbourne.lusid.api.TransactionPortfoliosApi;
 import com.finbourne.lusid.model.*;
-import com.squareup.okhttp.MediaType;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
@@ -18,29 +18,37 @@ import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Function;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class LusidApiTests {
 
-    private List<String> instrumentIds;
+    private static List<String> instrumentIds;
 
-    private PortfoliosApi portfoliosApi;
-    private TransactionPortfoliosApi transactionPortfoliosApi;
-    private InstrumentsApi instrumentsApi;
-    private PropertyDefinitionsApi propertyDefinitionsApi;
+    private static PortfoliosApi portfoliosApi;
+    private static TransactionPortfoliosApi transactionPortfoliosApi;
+    private static PropertyDefinitionsApi propertyDefinitionsApi;
 
-    @Before
-    public void setUp() throws Exception {
+    private static InstrumentLoader instrumentLoader;
+
+    @BeforeClass
+    public static void setUp() throws Exception {
 
         File configJson = new TestConfigurationLoader().loadConfiguration("secrets.json");
         ApiClient   apiClient = new ApiClientBuilder(configJson).build();
 
-        this.portfoliosApi = new PortfoliosApi(apiClient);
-        this.transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
-        this.instrumentsApi = new InstrumentsApi(apiClient);
-        this.propertyDefinitionsApi = new PropertyDefinitionsApi(apiClient);
+        portfoliosApi = new PortfoliosApi(apiClient);
+        transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
+        propertyDefinitionsApi = new PropertyDefinitionsApi(apiClient);
 
-        this.instrumentIds = new InstrumentLoader().loadInstruments();
+        InstrumentsApi instrumentsApi = new InstrumentsApi(apiClient);
+        instrumentLoader = new InstrumentLoader(instrumentsApi);
+        instrumentIds = instrumentLoader.loadInstruments();
+    }
+
+    @AfterClass
+    public static void tearDown() throws ApiException {
+        instrumentLoader.deleteInstruments();
     }
 
     @Test
@@ -54,7 +62,7 @@ public class LusidApiTests {
                 .code(String.format("Id-%s", uuid))
                 .baseCurrency("GBP");
 
-        final Portfolio portfolio = this.transactionPortfoliosApi.createPortfolio(scope, request);
+        final Portfolio portfolio = transactionPortfoliosApi.createPortfolio(scope, request);
 
         assertEquals(request.getCode(), portfolio.getId().getCode());
     }
@@ -76,7 +84,7 @@ public class LusidApiTests {
                 .dataTypeId(new ResourceId().scope("default").code("string"));;
 
         //  create property definition
-        final PropertyDefinition    propertyDefinitionDto = this.propertyDefinitionsApi.createPropertyDefinition(propertyDefinition);
+        final PropertyDefinition    propertyDefinitionDto = propertyDefinitionsApi.createPropertyDefinition(propertyDefinition);
 
         final OffsetDateTime effectiveDate = OffsetDateTime.of(2018, 1, 1, 0, 0, 0, 0, ZoneOffset.UTC);
 
@@ -87,7 +95,7 @@ public class LusidApiTests {
                 .created(effectiveDate);
 
         //  create portfolio
-        final Portfolio  portfolio = this.transactionPortfoliosApi.createPortfolio(scope, request);
+        final Portfolio  portfolio = transactionPortfoliosApi.createPortfolio(scope, request);
 
         assertEquals(request.getCode(), portfolio.getId().getCode());
 
@@ -97,7 +105,7 @@ public class LusidApiTests {
         properties.put(propertyDefinitionDto.getKey(), property);
 
         //  add the property
-        final PortfolioProperties  propertiesResult = this.portfoliosApi.upsertPortfolioProperties(scope, portfolio.getId().getCode(), properties, effectiveDate);
+        final PortfolioProperties  propertiesResult = portfoliosApi.upsertPortfolioProperties(scope, portfolio.getId().getCode(), properties, effectiveDate);
 
         assertEquals(request.getCode(), propertiesResult.getOriginPortfolioId().getCode());
         assertEquals(propertyValue, propertiesResult.getProperties().get(0).getValue());
@@ -122,7 +130,7 @@ public class LusidApiTests {
                 .dataTypeId(new ResourceId().scope("default").code("string"));
 
         //  create property definition
-        final PropertyDefinition propertyDefinitionDto = this.propertyDefinitionsApi.createPropertyDefinition(propertyDefinition);
+        final PropertyDefinition propertyDefinitionDto = propertyDefinitionsApi.createPropertyDefinition(propertyDefinition);
 
         final String originalPortfolioId = String.format("Id-%s", uuid);
         final CreateTransactionPortfolioRequest request = new CreateTransactionPortfolioRequest()
@@ -132,7 +140,7 @@ public class LusidApiTests {
                 .created(effectiveDate);
 
         //  create portfolio
-        final Portfolio portfolio = this.transactionPortfoliosApi.createPortfolio(scope, request);
+        final Portfolio portfolio = transactionPortfoliosApi.createPortfolio(scope, request);
 
         assertEquals(portfolio.getId().getCode(), originalPortfolioId);
 
@@ -148,7 +156,7 @@ public class LusidApiTests {
         TransactionRequest transaction = new TransactionRequest()
                 .transactionId(UUID.randomUUID().toString())
                 .type("Buy")
-                .instrumentUid(this.instrumentIds.get(0))
+                .instrumentUid(instrumentIds.get(0))
                 .totalConsideration(new CurrencyAndAmount().currency("GBP").amount(1230.0))
                 .transactionDate(effectiveDate)
                 .settlementDate(effectiveDate)
@@ -158,10 +166,10 @@ public class LusidApiTests {
                 .properties(properties);
 
         //  add the trade
-        this.transactionPortfoliosApi.upsertTransactions(scope, portfolioId, new ArrayList<>(Arrays.asList(transaction)));
+        transactionPortfoliosApi.upsertTransactions(scope, portfolioId, new ArrayList<>(Arrays.asList(transaction)));
 
         //  get the trade
-        final VersionedResourceListOfTransaction transactions = this.transactionPortfoliosApi.getTransactions(scope,
+        final VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(scope,
                 portfolioId, null, null, null, null, null, null, null, null);
 
         assertEquals(1, transactions.getValues().size());
@@ -193,7 +201,7 @@ public class LusidApiTests {
             private Double price;
             private OffsetDateTime tradeDate;
 
-            TransactionSpec(String id, Double price, OffsetDateTime tradeDate) {
+            private TransactionSpec(String id, Double price, OffsetDateTime tradeDate) {
                 this.id = id;
                 this.price = price;
                 this.tradeDate = tradeDate;
@@ -233,9 +241,9 @@ public class LusidApiTests {
                                 t.getTotalConsideration().getAmount())));
 
         final List<TransactionSpec> transactionSpecs = new ArrayList<>(Arrays.asList(
-                new TransactionSpec(this.instrumentIds.get(0), 101.0, OffsetDateTime.of(2018, 1, 1, 0, 0, 0, 0, ZoneOffset.UTC)),
-                new TransactionSpec(this.instrumentIds.get(1), 102.0, OffsetDateTime.of(2018, 1, 2, 0, 0, 0, 0, ZoneOffset.UTC)),
-                new TransactionSpec(this.instrumentIds.get(2), 103.0, OffsetDateTime.of(2018, 1, 3, 0, 0, 0, 0, ZoneOffset.UTC))
+                new TransactionSpec(instrumentIds.get(0), 101.0, OffsetDateTime.of(2018, 1, 1, 0, 0, 0, 0, ZoneOffset.UTC)),
+                new TransactionSpec(instrumentIds.get(1), 102.0, OffsetDateTime.of(2018, 1, 2, 0, 0, 0, 0, ZoneOffset.UTC)),
+                new TransactionSpec(instrumentIds.get(2), 103.0, OffsetDateTime.of(2018, 1, 3, 0, 0, 0, 0, ZoneOffset.UTC))
         ));
 
         //  build list of transactions
@@ -245,7 +253,7 @@ public class LusidApiTests {
                 .toArray(TransactionRequest[]::new);
 
         //  add initial batch of transactions
-        final UpsertPortfolioTransactionsResponse  initialResult = this.transactionPortfoliosApi.upsertTransactions(scope, portfolioId, Arrays.asList(newTransactions));
+        final UpsertPortfolioTransactionsResponse  initialResult = transactionPortfoliosApi.upsertTransactions(scope, portfolioId, Arrays.asList(newTransactions));
 
         /*
 
@@ -260,64 +268,44 @@ public class LusidApiTests {
         Thread.sleep(500);
 
         //  add another trade for 2018-1-8
-        TransactionSpec newTrade = new TransactionSpec(this.instrumentIds.get(3), 104.0, OffsetDateTime.of(2018, 1, 8, 0, 0, 0, 0, ZoneOffset.UTC));
-        UpsertPortfolioTransactionsResponse addedResult = this.transactionPortfoliosApi.upsertTransactions(scope, portfolioId, Arrays.asList(buildTransaction.apply(newTrade)));
+        TransactionSpec newTrade = new TransactionSpec(instrumentIds.get(3), 104.0, OffsetDateTime.of(2018, 1, 8, 0, 0, 0, 0, ZoneOffset.UTC));
+        UpsertPortfolioTransactionsResponse addedResult = transactionPortfoliosApi.upsertTransactions(scope, portfolioId, Arrays.asList(buildTransaction.apply(newTrade)));
 
         OffsetDateTime    asAtBatch2 = addedResult.getVersion().getAsAtDate();
         Thread.sleep(500);
 
         //  add back-dated trade
-        TransactionSpec backDatedTrade = new TransactionSpec(this.instrumentIds.get(4), 105.0, OffsetDateTime.of(2018, 1, 5, 0, 0, 0, 0, ZoneOffset.UTC));
-        UpsertPortfolioTransactionsResponse backDatedResult = this.transactionPortfoliosApi.upsertTransactions(scope, portfolioId, Arrays.asList(buildTransaction.apply(backDatedTrade)));
+        TransactionSpec backDatedTrade = new TransactionSpec(instrumentIds.get(4), 105.0, OffsetDateTime.of(2018, 1, 5, 0, 0, 0, 0, ZoneOffset.UTC));
+        UpsertPortfolioTransactionsResponse backDatedResult = transactionPortfoliosApi.upsertTransactions(scope, portfolioId, Arrays.asList(buildTransaction.apply(backDatedTrade)));
 
         OffsetDateTime    asAtBatch3 = backDatedResult.getVersion().getAsAtDate();
         Thread.sleep(500);
 
         //  list transactions
-        VersionedResourceListOfTransaction transactions = this.transactionPortfoliosApi.getTransactions(scope, portfolioId, null, null, asAtBatch1, null, 0, Integer.MAX_VALUE, null, null);
+        VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(scope, portfolioId, null, null, asAtBatch1, null, 0, Integer.MAX_VALUE, null, null);
 
 
         assertEquals(String.format("asAt %s", asAtBatch1),3, transactions.getValues().size());
         System.out.println("transactions at " + asAtBatch1);
         printTransactions.accept(transactions.getValues());
 
-        transactions = this.transactionPortfoliosApi.getTransactions(scope, portfolioId, null, null, asAtBatch2, null, 0, Integer.MAX_VALUE, null, null);
+        transactions = transactionPortfoliosApi.getTransactions(scope, portfolioId, null, null, asAtBatch2, null, 0, Integer.MAX_VALUE, null, null);
 
         assertEquals(String.format("asAt %s", asAtBatch2),4, transactions.getValues().size());
         System.out.println("transactions at " + asAtBatch2);
         printTransactions.accept(transactions.getValues());
 
-        transactions = this.transactionPortfoliosApi.getTransactions(scope, portfolioId, null, null, asAtBatch3, null, 0, Integer.MAX_VALUE, null, null);
+        transactions = transactionPortfoliosApi.getTransactions(scope, portfolioId, null, null, asAtBatch3, null, 0, Integer.MAX_VALUE, null, null);
 
         assertEquals(String.format("asAt %s", asAtBatch3), 5, transactions.getValues().size());
         System.out.println("transactions at " + asAtBatch3);
         printTransactions.accept(transactions.getValues());
 
         //  latest transactions
-        transactions = this.transactionPortfoliosApi.getTransactions(scope, portfolioId, null, null, null, null, 0, Integer.MAX_VALUE, null, null);
+        transactions = transactionPortfoliosApi.getTransactions(scope, portfolioId, null, null, null, null, 0, Integer.MAX_VALUE, null, null);
 
         assertEquals(5, transactions.getValues().size());
         System.out.println("transactions at " + OffsetDateTime.now());
         printTransactions.accept(transactions.getValues());
-    }
-
-    @Test
-    public void find_instruments() throws ApiException {
-        final List<String> isins = new ArrayList<>(Arrays.asList("IT0004966401", "FR0010192997"));
-
-        final Property isin1 = new Property();
-        isin1.setKey("Instrument/default/Isin");
-        isin1.setValue("IT0004966401");
-
-        final Property isin2 = new Property();
-        isin2.setKey("Instrument/default/Isin");
-        isin2.setValue("FR0010192997");
-
-        //  lookup instruments
-        final ResourceListOfInstrument fbnIds = this.instrumentsApi.findInstruments(
-                List.of(isin1, isin2), null, null, null
-        );
-
-        assertTrue(fbnIds.getValues().size() > 0);
     }
 }

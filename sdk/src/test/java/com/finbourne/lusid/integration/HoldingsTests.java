@@ -2,9 +2,11 @@ package com.finbourne.lusid.integration;
 
 import com.finbourne.lusid.ApiClient;
 import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.api.InstrumentsApi;
 import com.finbourne.lusid.api.TransactionPortfoliosApi;
 import com.finbourne.lusid.model.*;
-import org.junit.Before;
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.File;
@@ -20,25 +22,33 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 public class HoldingsTests {
 
-    private TestDataUtilities testDataUtilities;
+    private static TestDataUtilities testDataUtilities;
+    private static InstrumentLoader instrumentLoader;
 
-    private TransactionPortfoliosApi transactionPortfoliosApi;
-    private List<String> instrumentIds;
+    private static TransactionPortfoliosApi transactionPortfoliosApi;
+    private static List<String> instrumentIds;
 
-    private final String SCOPE = "finbourne";
+    private static final String SCOPE = "finbourne";
 
-    @Before
-    public void setUp() throws Exception {
+    @BeforeClass
+    public static void setUp() throws Exception {
         File configJson = new TestConfigurationLoader().loadConfiguration("secrets.json");
         ApiClient apiClient = new ApiClientBuilder(configJson).build();
 
-        this.transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
+        transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
 
-        this.testDataUtilities = new TestDataUtilities(this.transactionPortfoliosApi);
+        testDataUtilities = new TestDataUtilities(transactionPortfoliosApi);
 
         //  ensure instruments are created and exist in LUSID
-        this.instrumentIds = new InstrumentLoader().loadInstruments();
-        this.instrumentIds.sort(Comparator.naturalOrder());
+        InstrumentsApi instrumentsApi = new InstrumentsApi(apiClient);
+        instrumentLoader = new InstrumentLoader(instrumentsApi);
+        instrumentIds = instrumentLoader.loadInstruments();
+        instrumentIds.sort(Comparator.naturalOrder());
+    }
+
+    @AfterClass
+    public static void tearDown() throws ApiException {
+        instrumentLoader.deleteInstruments();
     }
 
     @Test
@@ -50,7 +60,7 @@ public class HoldingsTests {
         OffsetDateTime  dayTPlus5 =  OffsetDateTime.of(2018, 1, 5, 0, 0, 0, 0, ZoneOffset.UTC);
         OffsetDateTime  datTPlus10 =  OffsetDateTime.of(2018, 1, 10, 0, 0, 0, 0, ZoneOffset.UTC);
 
-        String portfolioCode = this.testDataUtilities.createTransactionPortfolio(SCOPE);
+        String portfolioCode = testDataUtilities.createTransactionPortfolio(SCOPE);
 
         List<TransactionRequest>    requests = new ArrayList<>();
 
@@ -58,19 +68,19 @@ public class HoldingsTests {
         requests.add(testDataUtilities.buildCashFundsInTransactionRequest(100000.0, currency, day1));
 
         //  add initial transactions
-        requests.add(testDataUtilities.buildTransactionRequest(this.instrumentIds.get(0), 100.0, 101.0, currency, day1, "Buy"));
-        requests.add(testDataUtilities.buildTransactionRequest(this.instrumentIds.get(1), 100.0, 102.0, currency, day1, "Buy"));
-        requests.add(testDataUtilities.buildTransactionRequest(this.instrumentIds.get(2), 100.0, 103.0, currency, day1, "Buy"));
+        requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(0), 100.0, 101.0, currency, day1, "Buy"));
+        requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(1), 100.0, 102.0, currency, day1, "Buy"));
+        requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(2), 100.0, 103.0, currency, day1, "Buy"));
 
         //  on T+5, add a transaction in instrument 3 and increasing the amount of instrument 1
-        requests.add(testDataUtilities.buildTransactionRequest(this.instrumentIds.get(1), 100.0, 104.0, currency, dayTPlus5, "Buy"));
-        requests.add(testDataUtilities.buildTransactionRequest(this.instrumentIds.get(3), 100.0, 105.0, currency, dayTPlus5, "Buy"));
+        requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(1), 100.0, 104.0, currency, dayTPlus5, "Buy"));
+        requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(3), 100.0, 105.0, currency, dayTPlus5, "Buy"));
 
         //  upload the transactions to LUSID
-        this.transactionPortfoliosApi.upsertTransactions(SCOPE, portfolioCode, requests);
+        transactionPortfoliosApi.upsertTransactions(SCOPE, portfolioCode, requests);
 
         //  get the holds on T+10
-        VersionedResourceListOfPortfolioHolding holdings = this.transactionPortfoliosApi.getHoldings(SCOPE, portfolioCode, false, datTPlus10,
+        VersionedResourceListOfPortfolioHolding holdings = transactionPortfoliosApi.getHoldings(SCOPE, portfolioCode, false, datTPlus10,
                 null, null, null, null, null, null);
 
         holdings.getValues().sort(Comparator.comparing(PortfolioHolding::getInstrumentUid));
@@ -83,22 +93,22 @@ public class HoldingsTests {
         assertThat(holdings.getValues().get(0).getUnits(), is(equalTo(48500.0)));
 
         //  instrument holdings, holding type 'P' represents a position
-        assertThat(holdings.getValues().get(1).getInstrumentUid(), is(equalTo(this.instrumentIds.get(0))));
+        assertThat(holdings.getValues().get(1).getInstrumentUid(), is(equalTo(instrumentIds.get(0))));
         assertThat(holdings.getValues().get(1).getHoldingType(), is(equalTo("P")));
         assertThat(holdings.getValues().get(1).getUnits(), is(equalTo(100.0)));
         assertThat(holdings.getValues().get(1).getCost().getAmount(), is(equalTo(10100.0)));
 
-        assertThat(holdings.getValues().get(2).getInstrumentUid(), is(equalTo(this.instrumentIds.get(1))));
+        assertThat(holdings.getValues().get(2).getInstrumentUid(), is(equalTo(instrumentIds.get(1))));
         assertThat(holdings.getValues().get(2).getHoldingType(), is(equalTo("P")));
         assertThat(holdings.getValues().get(2).getUnits(), is(equalTo(200.0)));   //  2 transactions
         assertThat(holdings.getValues().get(2).getCost().getAmount(), is(equalTo(20600.0)));
 
-        assertThat(holdings.getValues().get(3).getInstrumentUid(), is(equalTo(this.instrumentIds.get(2))));
+        assertThat(holdings.getValues().get(3).getInstrumentUid(), is(equalTo(instrumentIds.get(2))));
         assertThat(holdings.getValues().get(3).getHoldingType(), is(equalTo("P")));
         assertThat(holdings.getValues().get(3).getUnits(), is(equalTo(100.0)));
         assertThat(holdings.getValues().get(3).getCost().getAmount(), is(equalTo(10300.0)));
 
-        assertThat(holdings.getValues().get(4).getInstrumentUid(), is(equalTo(this.instrumentIds.get(3))));
+        assertThat(holdings.getValues().get(4).getInstrumentUid(), is(equalTo(instrumentIds.get(3))));
         assertThat(holdings.getValues().get(4).getHoldingType(), is(equalTo("P")));
         assertThat(holdings.getValues().get(4).getUnits(), is(equalTo(100.0)));
         assertThat(holdings.getValues().get(4).getCost().getAmount(), is(equalTo(10500.0)));
@@ -113,12 +123,12 @@ public class HoldingsTests {
         OffsetDateTime  day1 =  OffsetDateTime.of(2018, 1, 1, 0, 0, 0, 0, ZoneOffset.UTC);
         OffsetDateTime  day2 =  OffsetDateTime.of(2018, 1, 5, 0, 0, 0, 0, ZoneOffset.UTC);
 
-        String portfolioCode = this.testDataUtilities.createTransactionPortfolio(SCOPE);
+        String portfolioCode = testDataUtilities.createTransactionPortfolio(SCOPE);
 
         String cashInstrument = "CCY_" + currency;
-        String instrument1 = this.instrumentIds.get(0);
-        String instrument2 = this.instrumentIds.get(1);
-        String instrument3 = this.instrumentIds.get(2);
+        String instrument1 = instrumentIds.get(0);
+        String instrument2 = instrumentIds.get(1);
+        String instrument3 = instrumentIds.get(2);
 
         List<AdjustHoldingRequest> holdingAdjustments = new ArrayList<>();
 
@@ -161,17 +171,17 @@ public class HoldingsTests {
         );
 
         //  set the initial holdings on day 1
-        this.transactionPortfoliosApi.setHoldings(SCOPE, portfolioCode, day1, holdingAdjustments);
+        transactionPortfoliosApi.setHoldings(SCOPE, portfolioCode, day1, holdingAdjustments);
 
         //  add subsequent transactions on day 2
         List<TransactionRequest>    requests = List.of(
                 testDataUtilities.buildTransactionRequest(instrument1, 100.0, 104.0, currency, day2, "Buy"),
                 testDataUtilities.buildTransactionRequest(instrument3, 100.0, 103.0, currency, day2, "Buy")
         );
-        this.transactionPortfoliosApi.upsertTransactions(SCOPE, portfolioCode, requests);
+        transactionPortfoliosApi.upsertTransactions(SCOPE, portfolioCode, requests);
 
         //  get the holdings for day 2
-        VersionedResourceListOfPortfolioHolding holdings = this.transactionPortfoliosApi.getHoldings(SCOPE, portfolioCode, false, day2,
+        VersionedResourceListOfPortfolioHolding holdings = transactionPortfoliosApi.getHoldings(SCOPE, portfolioCode, false, day2,
                 null, null, null, null, null, null);
 
         holdings.getValues().sort(Comparator.comparing(PortfolioHolding::getInstrumentUid));

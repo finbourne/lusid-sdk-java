@@ -5,12 +5,12 @@ All URIs are relative to *https://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteInstrument**](InstrumentsApi.md#deleteInstrument) | **DELETE** /api/instruments/{type}/{id} | Delete instrument
-[**findExternalInstruments**](InstrumentsApi.md#findExternalInstruments) | **POST** /api/instruments/$find | Find externally mastered instruments
-[**findInstruments**](InstrumentsApi.md#findInstruments) | **POST** /api/instruments/$query | Search instrument definition
+[**findInstruments**](InstrumentsApi.md#findInstruments) | **POST** /api/instruments/$find | Search instrument definition
 [**getInstrument**](InstrumentsApi.md#getInstrument) | **GET** /api/instruments/{type}/{id} | Get instrument definition
 [**getInstrumentIdentifiers**](InstrumentsApi.md#getInstrumentIdentifiers) | **GET** /api/instruments/identifiers | Get allowable instrument identifiers
 [**getInstruments**](InstrumentsApi.md#getInstruments) | **POST** /api/instruments/$get | Get instrument definition
 [**listInstruments**](InstrumentsApi.md#listInstruments) | **GET** /api/instruments | Get all of the currently mastered instruments in LUSID
+[**matchInstruments**](InstrumentsApi.md#matchInstruments) | **POST** /api/instruments/$match | Find externally mastered instruments
 [**updateInstrumentIdentifier**](InstrumentsApi.md#updateInstrumentIdentifier) | **POST** /api/instruments/{type}/{id} | Update instrument identifier
 [**upsertInstruments**](InstrumentsApi.md#upsertInstruments) | **POST** /api/instruments | Upsert instruments
 [**upsertInstrumentsProperties**](InstrumentsApi.md#upsertInstrumentsProperties) | **POST** /api/instruments/$upsertproperties | Upsert instrument properties
@@ -69,61 +69,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
-
-<a name="findExternalInstruments"></a>
-# **findExternalInstruments**
-> FindInstrumentsResponse findExternalInstruments(codeType, codes)
-
-Find externally mastered instruments
-
-Search for a set of instruments from an external instrument mastering service
-
-### Example
-```java
-// Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.InstrumentsApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-InstrumentsApi apiInstance = new InstrumentsApi();
-String codeType = "codeType_example"; // String | The type of codes to search for
-List<String> codes = Arrays.asList(new List<String>()); // List<String> | The collection of instruments to search for
-try {
-    FindInstrumentsResponse result = apiInstance.findExternalInstruments(codeType, codes);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling InstrumentsApi#findExternalInstruments");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **codeType** | **String**| The type of codes to search for | [optional] [enum: Undefined, LusidInstrumentId, ReutersAssetId, CINS, Isin, Sedol, Cusip, Ticker, ClientInternal, Figi, CompositeFigi, ShareClassFigi, Wertpapier, RIC, QuotePermId]
- **codes** | **List&lt;String&gt;**| The collection of instruments to search for | [optional]
-
-### Return type
-
-[**FindInstrumentsResponse**](FindInstrumentsResponse.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
  - **Accept**: text/plain, application/json, text/json
 
 <a name="findInstruments"></a>
@@ -415,6 +360,61 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+<a name="matchInstruments"></a>
+# **matchInstruments**
+> MatchInstrumentsResponse matchInstruments(codeType, codes)
+
+Find externally mastered instruments
+
+Search for a set of instruments from an external instrument mastering service
+
+### Example
+```java
+// Import classes:
+//import com.finbourne.lusid.ApiClient;
+//import com.finbourne.lusid.ApiException;
+//import com.finbourne.lusid.Configuration;
+//import com.finbourne.lusid.auth.*;
+//import com.finbourne.lusid.api.InstrumentsApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2
+OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+InstrumentsApi apiInstance = new InstrumentsApi();
+String codeType = "codeType_example"; // String | The type of codes to search for
+List<String> codes = Arrays.asList(new List<String>()); // List<String> | The collection of instruments to search for
+try {
+    MatchInstrumentsResponse result = apiInstance.matchInstruments(codeType, codes);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling InstrumentsApi#matchInstruments");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **codeType** | **String**| The type of codes to search for | [optional] [enum: Undefined, LusidInstrumentId, ReutersAssetId, CINS, Isin, Sedol, Cusip, Ticker, ClientInternal, Figi, CompositeFigi, ShareClassFigi, Wertpapier, RIC, QuotePermId]
+ **codes** | **List&lt;String&gt;**| The collection of instruments to search for | [optional]
+
+### Return type
+
+[**MatchInstrumentsResponse**](MatchInstrumentsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
  - **Accept**: text/plain, application/json, text/json
 
 <a name="updateInstrumentIdentifier"></a>

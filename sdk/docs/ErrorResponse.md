@@ -115,6 +115,16 @@ TRANSACTIONTYPENOTFOUND | &quot;TransactionTypeNotFound&quot;
 TRANSACTIONTYPEDUPLICATION | &quot;TransactionTypeDuplication&quot;
 INVALIDPROPERTYVALUEASSIGNMENT | &quot;InvalidPropertyValueAssignment&quot;
 PORTFOLIODOESNOTEXISTATGIVENDATE | &quot;PortfolioDoesNotExistAtGivenDate&quot;
+DEPENDENCIESFAILURE | &quot;DependenciesFailure&quot;
+PORTFOLIOPREPROCESSFAILURE | &quot;PortfolioPreprocessFailure&quot;
+VALUATIONENGINEFAILURE | &quot;ValuationEngineFailure&quot;
+TASKFACTORYFAILURE | &quot;TaskFactoryFailure&quot;
+TASKEVALUATIONFAILURE | &quot;TaskEvaluationFailure&quot;
+INSTRUMENTFAILURE | &quot;InstrumentFailure&quot;
+CASHFLOWSFAILURE | &quot;CashFlowsFailure&quot;
+RESULTRETRIEVALFAILURE | &quot;ResultRetrievalFailure&quot;
+RESULTPROCESSINGFAILURE | &quot;ResultProcessingFailure&quot;
+VENDORRESULTPROCESSINGFAILURE | &quot;VendorResultProcessingFailure&quot;
 
 
 
