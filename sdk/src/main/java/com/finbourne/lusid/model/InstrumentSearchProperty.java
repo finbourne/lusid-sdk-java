@@ -14,8 +14,6 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.PropertyValue;
-import com.finbourne.lusid.model.TransactionPropertyMappingRequest;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,243 +22,52 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 /**
- * TransactionConfigurationMovementDataRequest
+ * InstrumentSearchProperty
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-22T10:01:41.768Z")
-public class TransactionConfigurationMovementDataRequest {
-  /**
-   * The Movement Types
-   */
-  @JsonAdapter(MovementTypesEnum.Adapter.class)
-  public enum MovementTypesEnum {
-    SETTLEMENT("Settlement"),
-    
-    TRADED("Traded"),
-    
-    FORWARDFX("ForwardFx"),
-    
-    COMMITMENT("Commitment"),
-    
-    RECEIVABLE("Receivable"),
-    
-    CASHSETTLEMENT("CashSettlement"),
-    
-    ACCRUAL("Accrual"),
-    
-    UNSETTLEDCASHTYPES("UnsettledCashTypes");
+public class InstrumentSearchProperty {
+  @SerializedName("key")
+  private String key = null;
 
-    private String value;
+  @SerializedName("value")
+  private String value = null;
 
-    MovementTypesEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static MovementTypesEnum fromValue(String text) {
-      for (MovementTypesEnum b : MovementTypesEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<MovementTypesEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final MovementTypesEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public MovementTypesEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return MovementTypesEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }
-
-  @SerializedName("movementTypes")
-  private MovementTypesEnum movementTypes = null;
-
-  /**
-   * The Movement Side
-   */
-  @JsonAdapter(SideEnum.Adapter.class)
-  public enum SideEnum {
-    SIDE1("Side1"),
-    
-    SIDE2("Side2"),
-    
-    BONDINT("BondInt");
-
-    private String value;
-
-    SideEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SideEnum fromValue(String text) {
-      for (SideEnum b : SideEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<SideEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SideEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SideEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return SideEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }
-
-  @SerializedName("side")
-  private SideEnum side = null;
-
-  @SerializedName("direction")
-  private Integer direction = null;
-
-  @SerializedName("properties")
-  private Map<String, PropertyValue> properties = null;
-
-  @SerializedName("mappings")
-  private List<TransactionPropertyMappingRequest> mappings = null;
-
-  public TransactionConfigurationMovementDataRequest movementTypes(MovementTypesEnum movementTypes) {
-    this.movementTypes = movementTypes;
+  public InstrumentSearchProperty key(String key) {
+    this.key = key;
     return this;
   }
 
    /**
-   * The Movement Types
-   * @return movementTypes
+   * The property key of the property, e.g, &#39;Instrument/default/Isin&#39;
+   * @return key
   **/
-  @ApiModelProperty(required = true, value = "The Movement Types")
-  public MovementTypesEnum getMovementTypes() {
-    return movementTypes;
+  @ApiModelProperty(value = "The property key of the property, e.g, 'Instrument/default/Isin'")
+  public String getKey() {
+    return key;
   }
 
-  public void setMovementTypes(MovementTypesEnum movementTypes) {
-    this.movementTypes = movementTypes;
+  public void setKey(String key) {
+    this.key = key;
   }
 
-  public TransactionConfigurationMovementDataRequest side(SideEnum side) {
-    this.side = side;
+  public InstrumentSearchProperty value(String value) {
+    this.value = value;
     return this;
   }
 
    /**
-   * The Movement Side
-   * @return side
+   * The value of the property, which must not be empty or null. e.g, &#39;US0378331005&#39;
+   * @return value
   **/
-  @ApiModelProperty(required = true, value = "The Movement Side")
-  public SideEnum getSide() {
-    return side;
+  @ApiModelProperty(value = "The value of the property, which must not be empty or null. e.g, 'US0378331005'")
+  public String getValue() {
+    return value;
   }
 
-  public void setSide(SideEnum side) {
-    this.side = side;
-  }
-
-  public TransactionConfigurationMovementDataRequest direction(Integer direction) {
-    this.direction = direction;
-    return this;
-  }
-
-   /**
-   * The Movement direction
-   * @return direction
-  **/
-  @ApiModelProperty(required = true, value = "The Movement direction")
-  public Integer getDirection() {
-    return direction;
-  }
-
-  public void setDirection(Integer direction) {
-    this.direction = direction;
-  }
-
-  public TransactionConfigurationMovementDataRequest properties(Map<String, PropertyValue> properties) {
-    this.properties = properties;
-    return this;
-  }
-
-  public TransactionConfigurationMovementDataRequest putPropertiesItem(String key, PropertyValue propertiesItem) {
-    if (this.properties == null) {
-      this.properties = new HashMap<>();
-    }
-    this.properties.put(key, propertiesItem);
-    return this;
-  }
-
-   /**
-   * Get properties
-   * @return properties
-  **/
-  @ApiModelProperty(value = "")
-  public Map<String, PropertyValue> getProperties() {
-    return properties;
-  }
-
-  public void setProperties(Map<String, PropertyValue> properties) {
-    this.properties = properties;
-  }
-
-  public TransactionConfigurationMovementDataRequest mappings(List<TransactionPropertyMappingRequest> mappings) {
-    this.mappings = mappings;
-    return this;
-  }
-
-  public TransactionConfigurationMovementDataRequest addMappingsItem(TransactionPropertyMappingRequest mappingsItem) {
-    if (this.mappings == null) {
-      this.mappings = new ArrayList<>();
-    }
-    this.mappings.add(mappingsItem);
-    return this;
-  }
-
-   /**
-   * Get mappings
-   * @return mappings
-  **/
-  @ApiModelProperty(value = "")
-  public List<TransactionPropertyMappingRequest> getMappings() {
-    return mappings;
-  }
-
-  public void setMappings(List<TransactionPropertyMappingRequest> mappings) {
-    this.mappings = mappings;
+  public void setValue(String value) {
+    this.value = value;
   }
 
 
@@ -272,30 +79,24 @@ public class TransactionConfigurationMovementDataRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TransactionConfigurationMovementDataRequest transactionConfigurationMovementDataRequest = (TransactionConfigurationMovementDataRequest) o;
-    return Objects.equals(this.movementTypes, transactionConfigurationMovementDataRequest.movementTypes) &&
-        Objects.equals(this.side, transactionConfigurationMovementDataRequest.side) &&
-        Objects.equals(this.direction, transactionConfigurationMovementDataRequest.direction) &&
-        Objects.equals(this.properties, transactionConfigurationMovementDataRequest.properties) &&
-        Objects.equals(this.mappings, transactionConfigurationMovementDataRequest.mappings);
+    InstrumentSearchProperty instrumentSearchProperty = (InstrumentSearchProperty) o;
+    return Objects.equals(this.key, instrumentSearchProperty.key) &&
+        Objects.equals(this.value, instrumentSearchProperty.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(movementTypes, side, direction, properties, mappings);
+    return Objects.hash(key, value);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TransactionConfigurationMovementDataRequest {\n");
+    sb.append("class InstrumentSearchProperty {\n");
     
-    sb.append("    movementTypes: ").append(toIndentedString(movementTypes)).append("\n");
-    sb.append("    side: ").append(toIndentedString(side)).append("\n");
-    sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
-    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
-    sb.append("    mappings: ").append(toIndentedString(mappings)).append("\n");
+    sb.append("    key: ").append(toIndentedString(key)).append("\n");
+    sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("}");
     return sb.toString();
   }

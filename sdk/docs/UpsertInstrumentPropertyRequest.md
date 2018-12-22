@@ -4,8 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**instrumentPropertyKey** | **String** | The property key of the property, e.g, &#39;Instrument/default/Isin&#39; |  [optional]
-**property** | [**PropertyValue**](PropertyValue.md) | The value of the property, which must not be empty or null. e.g, &#39;US0378331005&#39; |  [optional]
+**lusidInstrumentId** | **String** | Unique instrument identifier |  [optional]
+**properties** | [**List&lt;InstrumentProperty&gt;**](InstrumentProperty.md) | A collection of properties to create or update |  [optional]
+**deletedProperties** | [**List&lt;DeleteInstrumentPropertyRequest&gt;**](DeleteInstrumentPropertyRequest.md) | A collection of property keys to remove property values from, if any are set for the instrument |  [optional]
 
 
 

@@ -551,7 +551,7 @@ OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 InstrumentsApi apiInstance = new InstrumentsApi();
-List<InstrumentProperty> instrumentProperties = Arrays.asList(new InstrumentProperty()); // List<InstrumentProperty> | The instrument property data
+List<UpsertInstrumentPropertyRequest> instrumentProperties = Arrays.asList(new UpsertInstrumentPropertyRequest()); // List<UpsertInstrumentPropertyRequest> | The instrument property data
 try {
     UpsertInstrumentPropertiesResponse result = apiInstance.upsertInstrumentsProperties(instrumentProperties);
     System.out.println(result);
@@ -565,7 +565,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **instrumentProperties** | [**List&lt;InstrumentProperty&gt;**](InstrumentProperty.md)| The instrument property data | [optional]
+ **instrumentProperties** | [**List&lt;UpsertInstrumentPropertyRequest&gt;**](UpsertInstrumentPropertyRequest.md)| The instrument property data | [optional]
 
 ### Return type
 

@@ -4,10 +4,68 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**instrumentsSearch**](SearchApi.md#instrumentsSearch) | **POST** /api/search/instruments | Search instruments
 [**portfolioGroupsSearch**](SearchApi.md#portfolioGroupsSearch) | **POST** /api/search/portfoliogroups | Search portfolio groups
 [**portfoliosSearch**](SearchApi.md#portfoliosSearch) | **POST** /api/search/portfolios | Search portfolios
 [**propertiesSearch**](SearchApi.md#propertiesSearch) | **POST** /api/search/propertydefinitions | Search property definitions
 
+
+<a name="instrumentsSearch"></a>
+# **instrumentsSearch**
+> List&lt;InstrumentMatch&gt; instrumentsSearch(symbols, masteredEffectiveAt, masteredOnly)
+
+Search instruments
+
+Search through instruments that have been mastered in LUSID, and optionally augment results with instruments from a symbology service
+
+### Example
+```java
+// Import classes:
+//import com.finbourne.lusid.ApiClient;
+//import com.finbourne.lusid.ApiException;
+//import com.finbourne.lusid.Configuration;
+//import com.finbourne.lusid.auth.*;
+//import com.finbourne.lusid.api.SearchApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2
+OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+SearchApi apiInstance = new SearchApi();
+List<InstrumentSearchProperty> symbols = Arrays.asList(new InstrumentSearchProperty()); // List<InstrumentSearchProperty> | A collection of instrument symbols to search for
+OffsetDateTime masteredEffectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date for searching mastered instruments. If this is not set, then the current date is taken.  This parameter has no effect on instruments that have not been mastered within LUSID.
+Boolean masteredOnly = false; // Boolean | Optional. If set to true, only search over instruments that have been mastered within LUSID. Default to false
+try {
+    List<InstrumentMatch> result = apiInstance.instrumentsSearch(symbols, masteredEffectiveAt, masteredOnly);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling SearchApi#instrumentsSearch");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **symbols** | [**List&lt;InstrumentSearchProperty&gt;**](InstrumentSearchProperty.md)| A collection of instrument symbols to search for | [optional]
+ **masteredEffectiveAt** | **OffsetDateTime**| Optional. The effective date for searching mastered instruments. If this is not set, then the current date is taken.  This parameter has no effect on instruments that have not been mastered within LUSID. | [optional]
+ **masteredOnly** | **Boolean**| Optional. If set to true, only search over instruments that have been mastered within LUSID. Default to false | [optional] [default to false]
+
+### Return type
+
+[**List&lt;InstrumentMatch&gt;**](InstrumentMatch.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
 
 <a name="portfolioGroupsSearch"></a>
 # **portfolioGroupsSearch**

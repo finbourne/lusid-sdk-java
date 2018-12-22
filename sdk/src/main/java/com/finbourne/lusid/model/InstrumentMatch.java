@@ -14,8 +14,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.PropertyValue;
-import com.finbourne.lusid.model.TransactionPropertyMappingRequest;
+import com.finbourne.lusid.model.InstrumentDefinition;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,242 +24,70 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
- * TransactionConfigurationMovementDataRequest
+ * A collection of instrument search results
  */
+@ApiModel(description = "A collection of instrument search results")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2018-12-22T10:01:41.768Z")
-public class TransactionConfigurationMovementDataRequest {
-  /**
-   * The Movement Types
-   */
-  @JsonAdapter(MovementTypesEnum.Adapter.class)
-  public enum MovementTypesEnum {
-    SETTLEMENT("Settlement"),
-    
-    TRADED("Traded"),
-    
-    FORWARDFX("ForwardFx"),
-    
-    COMMITMENT("Commitment"),
-    
-    RECEIVABLE("Receivable"),
-    
-    CASHSETTLEMENT("CashSettlement"),
-    
-    ACCRUAL("Accrual"),
-    
-    UNSETTLEDCASHTYPES("UnsettledCashTypes");
+public class InstrumentMatch {
+  @SerializedName("masteredInstruments")
+  private List<InstrumentDefinition> masteredInstruments = null;
 
-    private String value;
+  @SerializedName("externalInstruments")
+  private List<InstrumentDefinition> externalInstruments = null;
 
-    MovementTypesEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static MovementTypesEnum fromValue(String text) {
-      for (MovementTypesEnum b : MovementTypesEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<MovementTypesEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final MovementTypesEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public MovementTypesEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return MovementTypesEnum.fromValue(String.valueOf(value));
-      }
-    }
+  public InstrumentMatch masteredInstruments(List<InstrumentDefinition> masteredInstruments) {
+    this.masteredInstruments = masteredInstruments;
+    return this;
   }
 
-  @SerializedName("movementTypes")
-  private MovementTypesEnum movementTypes = null;
-
-  /**
-   * The Movement Side
-   */
-  @JsonAdapter(SideEnum.Adapter.class)
-  public enum SideEnum {
-    SIDE1("Side1"),
-    
-    SIDE2("Side2"),
-    
-    BONDINT("BondInt");
-
-    private String value;
-
-    SideEnum(String value) {
-      this.value = value;
+  public InstrumentMatch addMasteredInstrumentsItem(InstrumentDefinition masteredInstrumentsItem) {
+    if (this.masteredInstruments == null) {
+      this.masteredInstruments = new ArrayList<>();
     }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static SideEnum fromValue(String text) {
-      for (SideEnum b : SideEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<SideEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final SideEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public SideEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return SideEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }
-
-  @SerializedName("side")
-  private SideEnum side = null;
-
-  @SerializedName("direction")
-  private Integer direction = null;
-
-  @SerializedName("properties")
-  private Map<String, PropertyValue> properties = null;
-
-  @SerializedName("mappings")
-  private List<TransactionPropertyMappingRequest> mappings = null;
-
-  public TransactionConfigurationMovementDataRequest movementTypes(MovementTypesEnum movementTypes) {
-    this.movementTypes = movementTypes;
+    this.masteredInstruments.add(masteredInstrumentsItem);
     return this;
   }
 
    /**
-   * The Movement Types
-   * @return movementTypes
+   * A collection of instruments that have met some criteria that have been previously  mastered within LUSID
+   * @return masteredInstruments
   **/
-  @ApiModelProperty(required = true, value = "The Movement Types")
-  public MovementTypesEnum getMovementTypes() {
-    return movementTypes;
+  @ApiModelProperty(value = "A collection of instruments that have met some criteria that have been previously  mastered within LUSID")
+  public List<InstrumentDefinition> getMasteredInstruments() {
+    return masteredInstruments;
   }
 
-  public void setMovementTypes(MovementTypesEnum movementTypes) {
-    this.movementTypes = movementTypes;
+  public void setMasteredInstruments(List<InstrumentDefinition> masteredInstruments) {
+    this.masteredInstruments = masteredInstruments;
   }
 
-  public TransactionConfigurationMovementDataRequest side(SideEnum side) {
-    this.side = side;
+  public InstrumentMatch externalInstruments(List<InstrumentDefinition> externalInstruments) {
+    this.externalInstruments = externalInstruments;
     return this;
   }
 
-   /**
-   * The Movement Side
-   * @return side
-  **/
-  @ApiModelProperty(required = true, value = "The Movement Side")
-  public SideEnum getSide() {
-    return side;
-  }
-
-  public void setSide(SideEnum side) {
-    this.side = side;
-  }
-
-  public TransactionConfigurationMovementDataRequest direction(Integer direction) {
-    this.direction = direction;
-    return this;
-  }
-
-   /**
-   * The Movement direction
-   * @return direction
-  **/
-  @ApiModelProperty(required = true, value = "The Movement direction")
-  public Integer getDirection() {
-    return direction;
-  }
-
-  public void setDirection(Integer direction) {
-    this.direction = direction;
-  }
-
-  public TransactionConfigurationMovementDataRequest properties(Map<String, PropertyValue> properties) {
-    this.properties = properties;
-    return this;
-  }
-
-  public TransactionConfigurationMovementDataRequest putPropertiesItem(String key, PropertyValue propertiesItem) {
-    if (this.properties == null) {
-      this.properties = new HashMap<>();
+  public InstrumentMatch addExternalInstrumentsItem(InstrumentDefinition externalInstrumentsItem) {
+    if (this.externalInstruments == null) {
+      this.externalInstruments = new ArrayList<>();
     }
-    this.properties.put(key, propertiesItem);
+    this.externalInstruments.add(externalInstrumentsItem);
     return this;
   }
 
    /**
-   * Get properties
-   * @return properties
+   * A collection of instruments that have met some criteria, but that have not been  mastered within LUSID.
+   * @return externalInstruments
   **/
-  @ApiModelProperty(value = "")
-  public Map<String, PropertyValue> getProperties() {
-    return properties;
+  @ApiModelProperty(value = "A collection of instruments that have met some criteria, but that have not been  mastered within LUSID.")
+  public List<InstrumentDefinition> getExternalInstruments() {
+    return externalInstruments;
   }
 
-  public void setProperties(Map<String, PropertyValue> properties) {
-    this.properties = properties;
-  }
-
-  public TransactionConfigurationMovementDataRequest mappings(List<TransactionPropertyMappingRequest> mappings) {
-    this.mappings = mappings;
-    return this;
-  }
-
-  public TransactionConfigurationMovementDataRequest addMappingsItem(TransactionPropertyMappingRequest mappingsItem) {
-    if (this.mappings == null) {
-      this.mappings = new ArrayList<>();
-    }
-    this.mappings.add(mappingsItem);
-    return this;
-  }
-
-   /**
-   * Get mappings
-   * @return mappings
-  **/
-  @ApiModelProperty(value = "")
-  public List<TransactionPropertyMappingRequest> getMappings() {
-    return mappings;
-  }
-
-  public void setMappings(List<TransactionPropertyMappingRequest> mappings) {
-    this.mappings = mappings;
+  public void setExternalInstruments(List<InstrumentDefinition> externalInstruments) {
+    this.externalInstruments = externalInstruments;
   }
 
 
@@ -272,30 +99,24 @@ public class TransactionConfigurationMovementDataRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    TransactionConfigurationMovementDataRequest transactionConfigurationMovementDataRequest = (TransactionConfigurationMovementDataRequest) o;
-    return Objects.equals(this.movementTypes, transactionConfigurationMovementDataRequest.movementTypes) &&
-        Objects.equals(this.side, transactionConfigurationMovementDataRequest.side) &&
-        Objects.equals(this.direction, transactionConfigurationMovementDataRequest.direction) &&
-        Objects.equals(this.properties, transactionConfigurationMovementDataRequest.properties) &&
-        Objects.equals(this.mappings, transactionConfigurationMovementDataRequest.mappings);
+    InstrumentMatch instrumentMatch = (InstrumentMatch) o;
+    return Objects.equals(this.masteredInstruments, instrumentMatch.masteredInstruments) &&
+        Objects.equals(this.externalInstruments, instrumentMatch.externalInstruments);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(movementTypes, side, direction, properties, mappings);
+    return Objects.hash(masteredInstruments, externalInstruments);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TransactionConfigurationMovementDataRequest {\n");
+    sb.append("class InstrumentMatch {\n");
     
-    sb.append("    movementTypes: ").append(toIndentedString(movementTypes)).append("\n");
-    sb.append("    side: ").append(toIndentedString(side)).append("\n");
-    sb.append("    direction: ").append(toIndentedString(direction)).append("\n");
-    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
-    sb.append("    mappings: ").append(toIndentedString(mappings)).append("\n");
+    sb.append("    masteredInstruments: ").append(toIndentedString(masteredInstruments)).append("\n");
+    sb.append("    externalInstruments: ").append(toIndentedString(externalInstruments)).append("\n");
     sb.append("}");
     return sb.toString();
   }
