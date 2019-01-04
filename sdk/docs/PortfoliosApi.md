@@ -9,8 +9,8 @@ Method | HTTP request | Description
 [**getPortfolio**](PortfoliosApi.md#getPortfolio) | **GET** /api/portfolios/{scope}/{code} | Get portfolio definition
 [**getPortfolioCommands**](PortfoliosApi.md#getPortfolioCommands) | **GET** /api/portfolios/{scope}/{code}/commands | Get commands
 [**getPortfolioProperties**](PortfoliosApi.md#getPortfolioProperties) | **GET** /api/portfolios/{scope}/{code}/properties | Get portfolio properties
-[**listPortfolioScopes**](PortfoliosApi.md#listPortfolioScopes) | **GET** /api/portfolios | List portfolio scopes
-[**listPortfolios**](PortfoliosApi.md#listPortfolios) | **GET** /api/portfolios/{scope} | List portfolios
+[**listPortfolios**](PortfoliosApi.md#listPortfolios) | **GET** /api/portfolios | List portfolios
+[**listPortfoliosForScope**](PortfoliosApi.md#listPortfoliosForScope) | **GET** /api/portfolios/{scope} | List portfolios for scope
 [**updatePortfolio**](PortfoliosApi.md#updatePortfolio) | **PUT** /api/portfolios/{scope}/{code} | Update portfolio definition
 [**upsertPortfolioProperties**](PortfoliosApi.md#upsertPortfolioProperties) | **POST** /api/portfolios/{scope}/{code}/properties | Upsert properties
 
@@ -322,13 +322,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
-<a name="listPortfolioScopes"></a>
-# **listPortfolioScopes**
-> ResourceListOfScope listPortfolioScopes(sortBy, start, limit, filter)
+<a name="listPortfolios"></a>
+# **listPortfolios**
+> ResourceListOfPortfolio listPortfolios(effectiveAt, asAt, sortBy, start, limit, filter, query)
 
-List portfolio scopes
+List portfolios
 
-Lists all scopes that are either currently or have previously had portfolios in them
+List all portfolios matching the specified criteria.                Example query syntax for the query parameter:                - To see which portfolios have holdings in the specified instruments:                    instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))                * Note that if a query is specified then it is executed for the current EffectiveAt and AsAt  Specifying EffectiveAt or AsAt in addition to the query is not supported  Also note that copy/pasting above examples results in incorrect single quote character
 
 ### Example
 ```java
@@ -346,15 +346,18 @@ OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 PortfoliosApi apiInstance = new PortfoliosApi();
+OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the data
+OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
 List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
 Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-String filter = "filter_example"; // String | Filter to be applied to the list of scopes
+String filter = "filter_example"; // String | Optional. Expression to filter the result set
+String query = "query_example"; // String | Optional. Expression specifying the criteria that the returned portfolios must meet
 try {
-    ResourceListOfScope result = apiInstance.listPortfolioScopes(sortBy, start, limit, filter);
+    ResourceListOfPortfolio result = apiInstance.listPortfolios(effectiveAt, asAt, sortBy, start, limit, filter, query);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling PortfoliosApi#listPortfolioScopes");
+    System.err.println("Exception when calling PortfoliosApi#listPortfolios");
     e.printStackTrace();
 }
 ```
@@ -363,14 +366,17 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the data | [optional]
+ **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
  **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
- **filter** | **String**| Filter to be applied to the list of scopes | [optional]
+ **filter** | **String**| Optional. Expression to filter the result set | [optional]
+ **query** | **String**| Optional. Expression specifying the criteria that the returned portfolios must meet | [optional]
 
 ### Return type
 
-[**ResourceListOfScope**](ResourceListOfScope.md)
+[**ResourceListOfPortfolio**](ResourceListOfPortfolio.md)
 
 ### Authorization
 
@@ -381,11 +387,11 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
-<a name="listPortfolios"></a>
-# **listPortfolios**
-> ResourceListOfPortfolio listPortfolios(scope, effectiveAt, asAt, sortBy, start, limit, filter)
+<a name="listPortfoliosForScope"></a>
+# **listPortfoliosForScope**
+> ResourceListOfPortfolio listPortfoliosForScope(scope, effectiveAt, asAt, sortBy, start, limit, filter)
 
-List portfolios
+List portfolios for scope
 
 List all the portfolios in the specified scope
 
@@ -413,10 +419,10 @@ Integer start = 56; // Integer | Optional. When paginating, skip this number of 
 Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
 String filter = "filter_example"; // String | Optional. Expression to filter the result set
 try {
-    ResourceListOfPortfolio result = apiInstance.listPortfolios(scope, effectiveAt, asAt, sortBy, start, limit, filter);
+    ResourceListOfPortfolio result = apiInstance.listPortfoliosForScope(scope, effectiveAt, asAt, sortBy, start, limit, filter);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling PortfoliosApi#listPortfolios");
+    System.err.println("Exception when calling PortfoliosApi#listPortfoliosForScope");
     e.printStackTrace();
 }
 ```
