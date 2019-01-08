@@ -23,7 +23,7 @@ PORTFOLIO | &quot;Portfolio&quot;
 SECURITY | &quot;Security&quot;
 HOLDING | &quot;Holding&quot;
 REFERENCEHOLDING | &quot;ReferenceHolding&quot;
-TXNTYPE | &quot;TxnType&quot;
+TRANSACTIONCONFIGURATION | &quot;TransactionConfiguration&quot;
 INSTRUMENT | &quot;Instrument&quot;
 CUTDEFINITION | &quot;CutDefinition&quot;
 
