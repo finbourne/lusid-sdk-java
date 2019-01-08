@@ -6,10 +6,12 @@ import com.finbourne.lusid.model.Instrument;
 import com.finbourne.lusid.model.InstrumentDefinition;
 import com.finbourne.lusid.model.UpsertInstrumentsResponse;
 
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /*
     Utility to load a set of instruments into LUSID
@@ -29,13 +31,13 @@ class InstrumentLoader {
      */
     List<String> loadInstruments() throws ApiException {
 
-        UpsertInstrumentsResponse instrumentsResponse = instrumentsApi.upsertInstruments(Map.of(
-            "request1", new InstrumentDefinition().name("VODAFONE GROUP PLC").identifiers(Map.of("Figi", "BBG000C6K6G9")),
-            "request2", new InstrumentDefinition().name("BARCLAYS PLC").identifiers(Map.of("Figi", "BBG000C04D57")),
-            "request3", new InstrumentDefinition().name("NATIONAL GRID PLC").identifiers(Map.of("Figi", "BBG000FV67Q4")),
-            "request4", new InstrumentDefinition().name("SAINSBURY (J) PLC").identifiers(Map.of("Figi", "BBG000BF0KW3")),
-            "request5", new InstrumentDefinition().name("TAYLOR WIMPEY PLC").identifiers(Map.of("Figi", "BBG000BF4KL1"))
-        ));
+        UpsertInstrumentsResponse instrumentsResponse = instrumentsApi.upsertInstruments(Stream.of(new Object[][] {
+            { "request1", new InstrumentDefinition().name("VODAFONE GROUP PLC").identifiers(new HashMap<String, String>() {{ put("Figi", "BBG000C6K6G9"); }}) },
+            { "request2", new InstrumentDefinition().name("BARCLAYS PLC").identifiers(new HashMap<String, String>() {{ put("Figi", "BBG000C04D57"); }}) },
+            { "request3", new InstrumentDefinition().name("NATIONAL GRID PLC").identifiers(new HashMap<String, String>() {{ put("Figi", "BBG000FV67Q4"); }}) },
+            { "request4", new InstrumentDefinition().name("SAINSBURY (J) PLC").identifiers(new HashMap<String, String>() {{ put("Figi", "BBG000BF0KW3"); }}) },
+            { "request5", new InstrumentDefinition().name("TAYLOR WIMPEY PLC").identifiers(new HashMap<String, String>() {{ put("Figi", "BBG000BF4KL1"); }}) }
+        }).collect(Collectors.toMap(data -> (String)data[0], data -> (InstrumentDefinition)data[1])));
 
         return instrumentsResponse
                 .getValues()
@@ -48,7 +50,7 @@ class InstrumentLoader {
 
     void deleteInstruments() throws ApiException
     {
-        List<String>    ids = List.of(
+        List<String>    ids = Arrays.asList(
                 "BBG000C6K6G9",
                 "BBG000C04D57",
                 "BBG000FV67Q4",

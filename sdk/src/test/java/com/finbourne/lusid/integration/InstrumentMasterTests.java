@@ -10,8 +10,12 @@ import org.junit.Ignore;
 import org.junit.Test;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.stream.Stream;
+import java.util.stream.Collectors;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -39,7 +43,7 @@ public class InstrumentMasterTests {
     @AfterClass
     public static void tearDown() throws ApiException
     {
-        List<String>    ids = List.of(
+        List<String>    ids = Arrays.asList(
                 "BBG000C6K6G9",
                 "BBG000C04D57",
                 "BBG000FV67Q4",
@@ -54,92 +58,104 @@ public class InstrumentMasterTests {
 
     private static void seedInstrumentMaster() throws ApiException
     {
-        UpsertInstrumentsResponse upsertInstrumentsResponse = instrumentsApi.upsertInstruments(Map.of(
+        UpsertInstrumentsResponse upsertInstrumentsResponse = instrumentsApi.upsertInstruments(Stream.of(new Object[][] {
 
-                "correlationId1", new InstrumentDefinition()
+                {"correlationId1", new InstrumentDefinition()
                         .name("VODAFONE GROUP PLC")
 
                         /*
                             Instruments are created with a set of unique identifiers
                             each under a different scheme
                          */
-                        .identifiers(Map.of(
-                                FIGI_SCHEME, "BBG000C6K6G9",
-                                CUSTOM_INTERNAL_SCHEME, "INTERNAL_ID_1"
-                        ))
+                        .identifiers(new HashMap<String, String>() {
+                            {
+                                put(FIGI_SCHEME,"BBG000C6K6G9");
+                                put(CUSTOM_INTERNAL_SCHEME,"INTERNAL_ID_1");
+                            }
+                        })
 
                         /*
                             Additional non-unique identifiers are added as properties
                          */
-                        .properties(List.of(
+                        .properties(Arrays.asList(
                                 new InstrumentProperty()
                                         .key(ISIN_PROPERTY_KEY)
                                         .value(new PropertyValue().labelValue("GB00BH4HKS39")),
                                 new InstrumentProperty()
                                         .key(SEDOL_PROPERTY_KEY)
                                         .value(new PropertyValue().labelValue("BH4HKS3"))
-                        )),
+                        ))},
 
-                "correlationId2", new InstrumentDefinition()
+                {"correlationId2", new InstrumentDefinition()
                         .name("BARCLAYS PLC")
-                        .identifiers(Map.of(
-                                FIGI_SCHEME, "BBG000C04D57",
-                                CUSTOM_INTERNAL_SCHEME, "INTERNAL_ID_2"
-                        ))
-                        .properties(List.of(
+                        .identifiers(new HashMap<String, String>() {
+                                {
+                                    put(FIGI_SCHEME, "BBG000C04D57");
+                                    put(CUSTOM_INTERNAL_SCHEME, "INTERNAL_ID_2");
+                                }
+                        })
+                        .properties(Arrays.asList(
                                 new InstrumentProperty()
                                         .key(ISIN_PROPERTY_KEY)
                                         .value(new PropertyValue().labelValue("GB0031348658")),
                                 new InstrumentProperty()
                                         .key(SEDOL_PROPERTY_KEY)
                                         .value(new PropertyValue().labelValue("3134865"))
-                        )),
+                        ))},
 
-                "correlationId3", new InstrumentDefinition()
+                {"correlationId3", new InstrumentDefinition()
                         .name("NATIONAL GRID PLC")
-                        .identifiers(Map.of(
-                                FIGI_SCHEME, "BBG000FV67Q4",
-                                CUSTOM_INTERNAL_SCHEME, "INTERNAL_ID_3"
-                        ))
-                        .properties(List.of(
-                                new InstrumentProperty()
-                                        .key(ISIN_PROPERTY_KEY)
-                                        .value(new PropertyValue().labelValue("GB00BDR05C01")),
-                                new InstrumentProperty()
-                                        .key(SEDOL_PROPERTY_KEY)
-                                        .value(new PropertyValue().labelValue("BDR05C0"))
-                        )),
+                        .identifiers(new HashMap<String, String>() {
+                            {
+                                put(FIGI_SCHEME, "BBG000FV67Q4");
+                                put(CUSTOM_INTERNAL_SCHEME, "INTERNAL_ID_3");
+                            }
+                        })
+                        .properties(Arrays.asList(
+                            new InstrumentProperty()
+                                    .key(ISIN_PROPERTY_KEY)
+                                    .value(new PropertyValue().labelValue("GB00BDR05C01")),
+                            new InstrumentProperty()
+                                    .key(SEDOL_PROPERTY_KEY)
+                                    .value(new PropertyValue().labelValue("BDR05C0"))
+                        ))},
 
-                "correlationId4", new InstrumentDefinition()
+                {"correlationId4", new InstrumentDefinition()
                         .name("SAINSBURY (J) PLC")
-                        .identifiers(Map.of(
-                                FIGI_SCHEME, "BBG000BF0KW3",
-                                CUSTOM_INTERNAL_SCHEME, "INTERNAL_ID_4"
-                        ))
-                        .properties(List.of(
+                        .identifiers(new HashMap<String, String>() {
+                            {
+                                put(FIGI_SCHEME,"BBG000BF0KW3");
+                                put(CUSTOM_INTERNAL_SCHEME,"INTERNAL_ID_4");
+                            }
+
+                        })
+                        .properties(Arrays.asList(
                                 new InstrumentProperty()
                                         .key(ISIN_PROPERTY_KEY)
                                         .value(new PropertyValue().labelValue("GB00B019KW72")),
                                 new InstrumentProperty()
                                         .key(SEDOL_PROPERTY_KEY)
                                         .value(new PropertyValue().labelValue("B019KW7"))
-                        )),
+                        ))},
 
-                "correlationId5", new InstrumentDefinition()
+                {"correlationId5", new InstrumentDefinition()
                         .name("TAYLOR WIMPEY PLC")
-                        .identifiers(Map.of(
-                                FIGI_SCHEME, "BBG000BF4KL1",
-                                CUSTOM_INTERNAL_SCHEME, "INTERNAL_ID_5"
-                        ))
-                        .properties(List.of(
+                        .identifiers(new HashMap<String, String>() {
+                            {
+                                put(FIGI_SCHEME,"BBG000BF4KL1");
+                                put(CUSTOM_INTERNAL_SCHEME,"INTERNAL_ID_5");
+                            }
+
+                        })
+                        .properties(Arrays.asList(
                                 new InstrumentProperty()
                                         .key(ISIN_PROPERTY_KEY)
                                         .value(new PropertyValue().labelValue("GB0008782301")),
                                 new InstrumentProperty()
                                         .key(SEDOL_PROPERTY_KEY)
                                         .value(new PropertyValue().labelValue("0878230"))
-                        ))
-        ));
+                        ))}
+        }).collect(Collectors.toMap(data -> (String)data[0], data -> (InstrumentDefinition)data[1])));
 
         assertThat(upsertInstrumentsResponse.getValues().size(), is(equalTo(5)));
     }
@@ -153,8 +169,8 @@ public class InstrumentMasterTests {
             unique id, in this case an OpenFigi, and also return a list of aliases
          */
 
-        GetInstrumentsResponse lookedUpInstruments = instrumentsApi.getInstruments(FIGI_SCHEME, List.of("BBG000C6K6G9"),
-                null, null, List.of(ISIN_PROPERTY_KEY, SEDOL_PROPERTY_KEY));
+        GetInstrumentsResponse lookedUpInstruments = instrumentsApi.getInstruments(FIGI_SCHEME, Arrays.asList("BBG000C6K6G9"),
+                null, null, Arrays.asList(ISIN_PROPERTY_KEY, SEDOL_PROPERTY_KEY));
 
         assertThat(lookedUpInstruments.getValues(), hasKey("BBG000C6K6G9"));
 
@@ -176,7 +192,7 @@ public class InstrumentMasterTests {
             Look up instruments that already exists in the instrument master by a
             list of market identifiers
          */
-        ResourceListOfInstrument instruments = instrumentsApi.findInstruments(List.of(
+        ResourceListOfInstrument instruments = instrumentsApi.findInstruments(Arrays.asList(
                 new Property().key(ISIN_PROPERTY_KEY).value("GB00BH4HKS39"),
                 new Property().key(ISIN_PROPERTY_KEY).value("BBG000C04D57"),
                 new Property().key(ISIN_PROPERTY_KEY).value("GB00BDR05C01"),
@@ -191,7 +207,7 @@ public class InstrumentMasterTests {
         /*
             Look up an instrument not currently in the instrument master (WPP LN)
          */
-        MatchInstrumentsResponse matchInstrumentsResponse = instrumentsApi.matchInstruments(FIGI_SCHEME, List.of("BBG000BF6B57"));
+        MatchInstrumentsResponse matchInstrumentsResponse = instrumentsApi.matchInstruments(FIGI_SCHEME, Arrays.asList("BBG000BF6B57"));
 
         assertThat(matchInstrumentsResponse.getValues().containsKey("BBG000BF6B57"), is(true));
 
@@ -202,7 +218,7 @@ public class InstrumentMasterTests {
             the required information to master the instrument e.g. name, identifier, market
             identifier alias etc.
          */
-        instrumentsApi.upsertInstruments(Map.of("correlationId", instrumentDefinition));
+        instrumentsApi.upsertInstruments(Collections.singletonMap("correlationId", instrumentDefinition));
 
         /*
             Get the instrument from the instrument master

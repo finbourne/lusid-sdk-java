@@ -161,7 +161,7 @@ public class TransactionsTests {
         //  swap definition, this is uploaded in a client custom format
         InstrumentDefinition   swapDefinition = new InstrumentDefinition()
                 .name("10mm 5Y Fixed")
-                .identifiers(Map.of("ClientInternal", "SW-1"))
+                .identifiers(Collections.singletonMap("ClientInternal", "SW-1"))
                 .definition(
                         new InstrumentEconomicDefinition()
                                 .instrumentFormat("CustomFormat")
@@ -170,7 +170,7 @@ public class TransactionsTests {
 
         //  create the swap
         UpsertInstrumentsResponse instrumentsResponse = instrumentsApi.upsertInstruments(
-                Map.of("request", swapDefinition)
+                Collections.singletonMap("request", swapDefinition)
         );
 
         String swapId = instrumentsResponse

@@ -1,4 +1,4 @@
-FROM maven:3.5-jdk-11
+FROM maven:3.6-jdk-8
 
 RUN mkdir -p /usr/src
 WORKDIR /usr/src
@@ -8,4 +8,4 @@ RUN mvn install
 
 ENV FBN_LUSID_API_URL ${FBN_LUSID_API_URL}
 
-ENTRYPOINT mvn -e -fae -Dtest=LusidApiTests test
+ENTRYPOINT mvn -e -fae test

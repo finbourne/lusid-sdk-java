@@ -13,6 +13,7 @@ import java.io.File;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 
@@ -136,7 +137,7 @@ public class HoldingsTests {
         holdingAdjustments.add(
                 new AdjustHoldingRequest()
                     .instrumentUid(cashInstrument)
-                    .taxLots(List.of(
+                    .taxLots(Arrays.asList(
                             new TargetTaxLotRequest()
                             .units(100000.0)))
 
@@ -146,7 +147,7 @@ public class HoldingsTests {
         holdingAdjustments.add(
                 new AdjustHoldingRequest()
                     .instrumentUid(instrument1)
-                    .taxLots(List.of(
+                    .taxLots(Arrays.asList(
                             new TargetTaxLotRequest()
                                     .units(100.0)
                                     .price(101.0)
@@ -160,7 +161,7 @@ public class HoldingsTests {
         holdingAdjustments.add(
                 new AdjustHoldingRequest()
                         .instrumentUid(instrument2)
-                        .taxLots(List.of(
+                        .taxLots(Arrays.asList(
                                 new TargetTaxLotRequest()
                                         .units(100.0)
                                         .price(102.0)
@@ -174,7 +175,7 @@ public class HoldingsTests {
         transactionPortfoliosApi.setHoldings(SCOPE, portfolioCode, day1, holdingAdjustments);
 
         //  add subsequent transactions on day 2
-        List<TransactionRequest>    requests = List.of(
+        List<TransactionRequest>    requests = Arrays.asList(
                 testDataUtilities.buildTransactionRequest(instrument1, 100.0, 104.0, currency, day2, "Buy"),
                 testDataUtilities.buildTransactionRequest(instrument3, 100.0, 103.0, currency, day2, "Buy")
         );

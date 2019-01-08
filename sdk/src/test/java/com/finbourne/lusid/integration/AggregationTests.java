@@ -132,7 +132,7 @@ public class AggregationTests {
             analyticsStoresApi.createAnalyticStore(createAnalyticStoreRequest);
         }
 
-        List<InstrumentAnalytic>    prices = List.of(
+        List<InstrumentAnalytic>    prices = Arrays.asList(
                 new InstrumentAnalytic().instrumentUid(instrumentIds.get(0)).value(100.0),
                 new InstrumentAnalytic().instrumentUid(instrumentIds.get(1)).value(200.0),
                 new InstrumentAnalytic().instrumentUid(instrumentIds.get(2)).value(300.0)
@@ -143,11 +143,11 @@ public class AggregationTests {
 
         AggregationRequest  aggregationRequest = new AggregationRequest()
                 .recipeId(new ResourceId().scope(scope).code("default"))
-                .metrics(List.of(
+                .metrics(Arrays.asList(
                         new AggregateSpec().key(AGGREGATION_KEY).op(AggregateSpec.OpEnum.PROPORTION),
                         new AggregateSpec().key(AGGREGATION_KEY).op(AggregateSpec.OpEnum.SUM)
                 ))
-                .groupBy(List.of(GROUPBY_KEY))
+                .groupBy(Arrays.asList(GROUPBY_KEY))
                 .effectiveAt(EFFECTIVE_DATE);
 
         //  do the aggregation
