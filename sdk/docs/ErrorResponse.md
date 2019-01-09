@@ -17,8 +17,6 @@ Name | Type | Description | Notes
 Name | Value
 ---- | -----
 UNKNOWN | &quot;Unknown&quot;
-PERSONALISATIONNOTFOUND | &quot;PersonalisationNotFound&quot;
-NONRECURSIVEPERSONALISATION | &quot;NonRecursivePersonalisation&quot;
 VERSIONNOTFOUND | &quot;VersionNotFound&quot;
 INSTRUMENTNOTFOUND | &quot;InstrumentNotFound&quot;
 PROPERTYNOTFOUND | &quot;PropertyNotFound&quot;
