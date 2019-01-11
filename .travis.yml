@@ -1,0 +1,9 @@
+language: java
+script: 
+  - cd sdk
+  - mvn -e -fae test
+notifications:
+  slack:
+    rooms:
+      - secure: kYi7tofc8+khtJR4yMwzvb1pxLTjgH3QOBpxq664i9MiaqI8dZFiSYl6ejRfHrDVO4q94VpP48p98LggfIqrXmgII9s/bNJMhuPvom/szzU3+LocAD/tuL+2hfZ3fDWU8pSkm6UUtb2lhx7GH2N2udYevwP/eKnjea/Mv64dZt1nrHBFEAv/dKbAofp10vQSvIzlEwYsJ+/CzmDpxhQ8yCiUGS1lUDX8ZVAk8fxsZ03Ll92EzzQHzoho3ZL9jFMpCMzRJjxHxfp1SupjkWK/LTMuoHENBBwC/8ZMtUKX5WFV6rKbCabMFWo8+jHhMbCgrGjojG0eLB4uVp7mcAnnYxMj1A5edwMuEyhZk9ZSq9r3WOiRc113dZ6ED7/ycZhnY7xYYkAFzT/FwMjmyi4N8rsN/f/u58wO9enTOTszzs6WDRB6mcLF4CCbTNNRYq3RzE6fVwYf8N+ZnGPbhzAvYZZDuRpgxvzixzCpFyMJSuaZxSbF3Bmr3D8s+SZurJ86/7VWaH5lZCFdtLNGzCI/0EFIIdkFlhMgFmNnc/ZpuPHg67EGnvI4cuT6/APuzyEJciWSDUq9NTpiZ8fqLZOIdTYvm6e8F8T+P083EDZSrYqvexTs6dcb+T8xPOpvCsJzroxt6ToI+ZsOX2Akf6La03Cl/5/dEY6uERy0Rl2ochk=
+    on_failure: always

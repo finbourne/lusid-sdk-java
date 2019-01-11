@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/finbourne/lusid-sdk-java.svg?branch=master)](https://travis-ci.org/finbourne/lusid-sdk-java)
+
 # LUSID<sup>®</sup> Java SDK
 
 Maven artifacts can be downloaded from the Open Source Software Repository Hosting (OSSRH) by adding the following to your pom.xml
