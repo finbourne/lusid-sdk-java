@@ -41,8 +41,7 @@ public class AggregationTests {
     @BeforeClass
     public static void setUp() throws Exception
     {
-        File configJson = new TestConfigurationLoader().loadConfiguration("secrets.json");
-        ApiClient apiClient = new ApiClientBuilder(configJson).build();
+        ApiClient apiClient = new ApiClientBuilder("secrets.json").build();
 
         testDataUtilities = new TestDataUtilities(transactionPortfoliosApi);
 

@@ -27,42 +27,39 @@ public class ApiClientBuilder {
     private String apiUrl;
 
 
-    public ApiClientBuilder(File configFile) throws IOException {
-        //  load configuration
-        ObjectMapper configMapper = new ObjectMapper();
-        Map apiConfig = configMapper.readValue(configFile, Map.class);
-        Map config = (Map)apiConfig.get("api");
+    public ApiClientBuilder(String apiConfig) throws IOException {
 
-        String tokenUrl = this.getEnvironmentOverride("FBN_TOKEN_URL", (String)config.get("tokenUrl"));
-        String username = this.getEnvironmentOverride("FBN_USERNAME", (String)config.get("username"));
-        String password = URLEncoder.encode(this.getEnvironmentOverride("FBN_PASSWORD", (String)config.get("password")), StandardCharsets.UTF_8.toString());
-        String clientId = URLEncoder.encode(this.getEnvironmentOverride("FBN_CLIENT_ID", (String)config.get("clientId")), StandardCharsets.UTF_8.toString());
-        String clientSecret = URLEncoder.encode(this.getEnvironmentOverride("FBN_CLIENT_SECRET", (String)config.get("clientSecret")), StandardCharsets.UTF_8.toString());
+        //  firstly try and get the values from environment variables
+        String tokenUrl = System.getenv("FBN_TOKEN_URL");
+        String username = System.getenv("FBN_USERNAME");
+        String password = System.getenv("FBN_PASSWORD");
+        String clientId = System.getenv("FBN_CLIENT_ID");
+        String clientSecret = System.getenv("FBN_CLIENT_SECRET");
+        String apiUrl = System.getenv("FBN_LUSID_API_URL");
 
-        String apiUrl = this.getEnvironmentOverride("FBN_LUSID_API_URL", (String)config.get("apiUrl"));
+        if (tokenUrl == null || username == null || password == null || clientId == null || clientSecret == null || apiUrl == null) {
 
-        init(tokenUrl, username, password, clientId, clientSecret, apiUrl);
-    }
+            File configJson = new TestConfigurationLoader().loadConfiguration(apiConfig);
 
-    public ApiClientBuilder(String tokenUrl, String username, String password, String clientId, String clientSecret, String apiUrl)
-    {
-        init(tokenUrl, username, password, clientId, clientSecret, apiUrl);
-    }
+            //  load configuration from secrets.json if any of the environment variables are missing
+            ObjectMapper configMapper = new ObjectMapper();
+            Map apiConfigValues = configMapper.readValue(configJson, Map.class);
+            Map config = (Map)apiConfigValues.get("api");
 
-    private void init(String tokenUrl, String username, String password, String clientId, String clientSecret, String apiUrl)
-    {
+            tokenUrl = (String)config.get("tokenUrl");
+            username = (String)config.get("username");
+            password = (String)config.get("password");
+            clientId = (String)config.get("clientId");
+            clientSecret = (String)config.get("clientSecret");
+            apiUrl = (String)config.get("apiUrl");
+        }
+
         this.tokenUrl = tokenUrl;
         this.username = username;
-        this.password = password;
+        this.password = URLEncoder.encode(password, StandardCharsets.UTF_8.toString());
         this.clientId = clientId;
-        this.clientSecret = clientSecret;
+        this.clientSecret = URLEncoder.encode(clientSecret, StandardCharsets.UTF_8.toString());;
         this.apiUrl = apiUrl;
-    }
-
-    private String getEnvironmentOverride(String env, String defaultValue)
-    {
-        String  envOverride = System.getenv(env);
-        return envOverride == null ? defaultValue : envOverride;
     }
 
     public ApiClient build() throws IOException

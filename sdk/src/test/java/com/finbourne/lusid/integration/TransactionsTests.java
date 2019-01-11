@@ -9,7 +9,6 @@ import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import java.io.File;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
@@ -27,8 +26,7 @@ public class TransactionsTests {
     @BeforeClass
     public static void setUp() throws Exception
     {
-        File configJson = new TestConfigurationLoader().loadConfiguration("secrets.json");
-        ApiClient apiClient = new ApiClientBuilder(configJson).build();
+        ApiClient apiClient = new ApiClientBuilder("secrets.json").build();
 
         transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
         instrumentsApi = new InstrumentsApi(apiClient);

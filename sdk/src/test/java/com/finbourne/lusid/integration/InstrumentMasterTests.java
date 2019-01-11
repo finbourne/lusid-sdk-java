@@ -9,13 +9,12 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.io.File;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Stream;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -32,8 +31,8 @@ public class InstrumentMasterTests {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        File configJson = new TestConfigurationLoader().loadConfiguration("secrets.json");
-        ApiClient apiClient = new ApiClientBuilder(configJson).build();
+
+        ApiClient apiClient = new ApiClientBuilder("secrets.json").build();
 
         instrumentsApi = new InstrumentsApi(apiClient);
 
