@@ -27,7 +27,7 @@ import java.io.IOException;
  * Expanded instrument definition - in the case of OTC instruments  this contains the definition of the non-exchange traded instrument.  The format for this can be client-defined, but in order to transparently use  vendor libraries it must conform to a format that LUSID understands.
  */
 @ApiModel(description = "Expanded instrument definition - in the case of OTC instruments  this contains the definition of the non-exchange traded instrument.  The format for this can be client-defined, but in order to transparently use  vendor libraries it must conform to a format that LUSID understands.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-12T09:42:18.549Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-14T10:28:17.558Z")
 public class InstrumentEconomicDefinition {
   @SerializedName("instrumentFormat")
   private String instrumentFormat = null;

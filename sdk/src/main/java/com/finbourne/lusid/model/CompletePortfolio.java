@@ -33,7 +33,7 @@ import java.util.List;
 /**
  * CompletePortfolio
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-12T09:42:18.549Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-14T10:28:17.558Z")
 public class CompletePortfolio {
   @SerializedName("id")
   private ResourceId id = null;
