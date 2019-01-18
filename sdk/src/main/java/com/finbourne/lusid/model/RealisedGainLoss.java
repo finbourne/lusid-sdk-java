@@ -28,7 +28,7 @@ import java.time.OffsetDateTime;
 /**
  * RealisedGainLoss
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-17T18:24:21.005Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-18T16:16:06.890Z")
 public class RealisedGainLoss {
   @SerializedName("instrumentUid")
   private String instrumentUid = null;

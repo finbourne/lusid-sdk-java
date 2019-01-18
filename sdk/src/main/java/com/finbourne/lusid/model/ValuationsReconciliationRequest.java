@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * ValuationsReconciliationRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-17T18:24:21.005Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-18T16:16:06.890Z")
 public class ValuationsReconciliationRequest {
   @SerializedName("left")
   private ValuationReconciliationRequest left = null;

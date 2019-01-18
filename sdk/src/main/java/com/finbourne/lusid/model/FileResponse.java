@@ -28,7 +28,7 @@ import java.io.IOException;
  * Allows a file (represented as a stream) to be returned from an Api call
  */
 @ApiModel(description = "Allows a file (represented as a stream) to be returned from an Api call")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-17T18:24:21.005Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-18T16:16:06.890Z")
 public class FileResponse {
   @SerializedName("fileStream")
   private Stream fileStream = null;
