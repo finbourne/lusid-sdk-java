@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createReferencePortfolio**](ReferencePortfolioApi.md#createReferencePortfolio) | **POST** /api/referenceportfolios/{scope} | Create reference portfolio
 [**getReferencePortfolioConstituents**](ReferencePortfolioApi.md#getReferencePortfolioConstituents) | **GET** /api/referenceportfolios/{scope}/{code}/{effectiveAt}/constituents | Get constituents
+[**listConstituentsAdjustments**](ReferencePortfolioApi.md#listConstituentsAdjustments) | **GET** /api/referenceportfolios/{scope}/{code}/constituentsadjustments | Gets constituents adjustments in an interval of effective time.
 [**upsertReferencePortfolioConstituents**](ReferencePortfolioApi.md#upsertReferencePortfolioConstituents) | **POST** /api/referenceportfolios/{scope}/{code}/constituents | Add constituents
 
 
@@ -119,6 +120,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**GetReferencePortfolioConstituentsResponse**](GetReferencePortfolioConstituentsResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+<a name="listConstituentsAdjustments"></a>
+# **listConstituentsAdjustments**
+> ResourceListOfConstituentsAdjustmentHeader listConstituentsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime)
+
+Gets constituents adjustments in an interval of effective time.
+
+Specify a time period in which you&#39;d like to see the list of times that adjustments where made to this portfolio
+
+### Example
+```java
+// Import classes:
+//import com.finbourne.lusid.ApiClient;
+//import com.finbourne.lusid.ApiException;
+//import com.finbourne.lusid.Configuration;
+//import com.finbourne.lusid.auth.*;
+//import com.finbourne.lusid.api.ReferencePortfolioApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2
+OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+ReferencePortfolioApi apiInstance = new ReferencePortfolioApi();
+String scope = "scope_example"; // String | The scope of the portfolio
+String code = "code_example"; // String | Code for the portfolio
+OffsetDateTime fromEffectiveAt = new OffsetDateTime(); // OffsetDateTime | Events between this time (inclusive) and the toEffectiveAt are returned.
+OffsetDateTime toEffectiveAt = new OffsetDateTime(); // OffsetDateTime | Events between this time (inclusive) and the fromEffectiveAt are returned.
+OffsetDateTime asAtTime = new OffsetDateTime(); // OffsetDateTime | The as-at time for which the result is valid.
+try {
+    ResourceListOfConstituentsAdjustmentHeader result = apiInstance.listConstituentsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ReferencePortfolioApi#listConstituentsAdjustments");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scope** | **String**| The scope of the portfolio |
+ **code** | **String**| Code for the portfolio |
+ **fromEffectiveAt** | **OffsetDateTime**| Events between this time (inclusive) and the toEffectiveAt are returned. | [optional]
+ **toEffectiveAt** | **OffsetDateTime**| Events between this time (inclusive) and the fromEffectiveAt are returned. | [optional]
+ **asAtTime** | **OffsetDateTime**| The as-at time for which the result is valid. | [optional]
+
+### Return type
+
+[**ResourceListOfConstituentsAdjustmentHeader**](ResourceListOfConstituentsAdjustmentHeader.md)
 
 ### Authorization
 

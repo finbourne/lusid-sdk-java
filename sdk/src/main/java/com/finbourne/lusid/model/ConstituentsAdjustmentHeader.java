@@ -14,8 +14,8 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.Instrument;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,94 +24,66 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ResourceListOfInstrument
+ * ConstituentsAdjustmentHeader
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-22T13:53:50.754Z")
-public class ResourceListOfInstrument {
-  @SerializedName("values")
-  private List<Instrument> values = null;
+public class ConstituentsAdjustmentHeader {
+  @SerializedName("effectiveAt")
+  private OffsetDateTime effectiveAt = null;
 
-  @SerializedName("href")
-  private String href = null;
-
-  @SerializedName("count")
-  private Integer count = null;
+  @SerializedName("version")
+  private Version version = null;
 
   @SerializedName("links")
   private List<Link> links = null;
 
-  public ResourceListOfInstrument values(List<Instrument> values) {
-    this.values = values;
-    return this;
-  }
-
-  public ResourceListOfInstrument addValuesItem(Instrument valuesItem) {
-    if (this.values == null) {
-      this.values = new ArrayList<>();
-    }
-    this.values.add(valuesItem);
+  public ConstituentsAdjustmentHeader effectiveAt(OffsetDateTime effectiveAt) {
+    this.effectiveAt = effectiveAt;
     return this;
   }
 
    /**
-   * Get values
-   * @return values
+   * There can be at most one holdings adjustment for a portfolio at a  specific effective time so this uniquely identifies the adjustment.
+   * @return effectiveAt
+  **/
+  @ApiModelProperty(value = "There can be at most one holdings adjustment for a portfolio at a  specific effective time so this uniquely identifies the adjustment.")
+  public OffsetDateTime getEffectiveAt() {
+    return effectiveAt;
+  }
+
+  public void setEffectiveAt(OffsetDateTime effectiveAt) {
+    this.effectiveAt = effectiveAt;
+  }
+
+  public ConstituentsAdjustmentHeader version(Version version) {
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
   **/
   @ApiModelProperty(value = "")
-  public List<Instrument> getValues() {
-    return values;
+  public Version getVersion() {
+    return version;
   }
 
-  public void setValues(List<Instrument> values) {
-    this.values = values;
+  public void setVersion(Version version) {
+    this.version = version;
   }
 
-  public ResourceListOfInstrument href(String href) {
-    this.href = href;
-    return this;
-  }
-
-   /**
-   * The Uri that returns the same result as the original request,  but may include resolved as at time(s).
-   * @return href
-  **/
-  @ApiModelProperty(value = "The Uri that returns the same result as the original request,  but may include resolved as at time(s).")
-  public String getHref() {
-    return href;
-  }
-
-  public void setHref(String href) {
-    this.href = href;
-  }
-
-  public ResourceListOfInstrument count(Integer count) {
-    this.count = count;
-    return this;
-  }
-
-   /**
-   * The total number of records returned in the set.  Note: If count is set by the func &#39;AddDynamicCounter&#39;, Count will be zero until the values  are evaluated. This is due to lazy evaluation.
-   * @return count
-  **/
-  @ApiModelProperty(value = "The total number of records returned in the set.  Note: If count is set by the func 'AddDynamicCounter', Count will be zero until the values  are evaluated. This is due to lazy evaluation.")
-  public Integer getCount() {
-    return count;
-  }
-
-  public void setCount(Integer count) {
-    this.count = count;
-  }
-
-  public ResourceListOfInstrument links(List<Link> links) {
+  public ConstituentsAdjustmentHeader links(List<Link> links) {
     this.links = links;
     return this;
   }
 
-  public ResourceListOfInstrument addLinksItem(Link linksItem) {
+  public ConstituentsAdjustmentHeader addLinksItem(Link linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -141,27 +113,25 @@ public class ResourceListOfInstrument {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ResourceListOfInstrument resourceListOfInstrument = (ResourceListOfInstrument) o;
-    return Objects.equals(this.values, resourceListOfInstrument.values) &&
-        Objects.equals(this.href, resourceListOfInstrument.href) &&
-        Objects.equals(this.count, resourceListOfInstrument.count) &&
-        Objects.equals(this.links, resourceListOfInstrument.links);
+    ConstituentsAdjustmentHeader constituentsAdjustmentHeader = (ConstituentsAdjustmentHeader) o;
+    return Objects.equals(this.effectiveAt, constituentsAdjustmentHeader.effectiveAt) &&
+        Objects.equals(this.version, constituentsAdjustmentHeader.version) &&
+        Objects.equals(this.links, constituentsAdjustmentHeader.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, href, count, links);
+    return Objects.hash(effectiveAt, version, links);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResourceListOfInstrument {\n");
+    sb.append("class ConstituentsAdjustmentHeader {\n");
     
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
-    sb.append("    href: ").append(toIndentedString(href)).append("\n");
-    sb.append("    count: ").append(toIndentedString(count)).append("\n");
+    sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();

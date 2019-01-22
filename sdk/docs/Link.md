@@ -26,6 +26,7 @@ PARENT | &quot;Parent&quot;
 PROPERTYSCHEMA | &quot;PropertySchema&quot;
 ENTITYSCHEMA | &quot;EntitySchema&quot;
 QUOTE | &quot;Quote&quot;
+CONSTITUENTSADJUSTMENTS | &quot;ConstituentsAdjustments&quot;
 
 
 <a name="MethodEnum"></a>

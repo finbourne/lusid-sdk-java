@@ -14,7 +14,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.Instrument;
+import com.finbourne.lusid.model.ConstituentsAdjustmentHeader;
 import com.finbourne.lusid.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -28,12 +28,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * ResourceListOfInstrument
+ * ResourceListOfConstituentsAdjustmentHeader
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-22T13:53:50.754Z")
-public class ResourceListOfInstrument {
+public class ResourceListOfConstituentsAdjustmentHeader {
   @SerializedName("values")
-  private List<Instrument> values = null;
+  private List<ConstituentsAdjustmentHeader> values = null;
 
   @SerializedName("href")
   private String href = null;
@@ -44,12 +44,12 @@ public class ResourceListOfInstrument {
   @SerializedName("links")
   private List<Link> links = null;
 
-  public ResourceListOfInstrument values(List<Instrument> values) {
+  public ResourceListOfConstituentsAdjustmentHeader values(List<ConstituentsAdjustmentHeader> values) {
     this.values = values;
     return this;
   }
 
-  public ResourceListOfInstrument addValuesItem(Instrument valuesItem) {
+  public ResourceListOfConstituentsAdjustmentHeader addValuesItem(ConstituentsAdjustmentHeader valuesItem) {
     if (this.values == null) {
       this.values = new ArrayList<>();
     }
@@ -62,15 +62,15 @@ public class ResourceListOfInstrument {
    * @return values
   **/
   @ApiModelProperty(value = "")
-  public List<Instrument> getValues() {
+  public List<ConstituentsAdjustmentHeader> getValues() {
     return values;
   }
 
-  public void setValues(List<Instrument> values) {
+  public void setValues(List<ConstituentsAdjustmentHeader> values) {
     this.values = values;
   }
 
-  public ResourceListOfInstrument href(String href) {
+  public ResourceListOfConstituentsAdjustmentHeader href(String href) {
     this.href = href;
     return this;
   }
@@ -88,7 +88,7 @@ public class ResourceListOfInstrument {
     this.href = href;
   }
 
-  public ResourceListOfInstrument count(Integer count) {
+  public ResourceListOfConstituentsAdjustmentHeader count(Integer count) {
     this.count = count;
     return this;
   }
@@ -106,12 +106,12 @@ public class ResourceListOfInstrument {
     this.count = count;
   }
 
-  public ResourceListOfInstrument links(List<Link> links) {
+  public ResourceListOfConstituentsAdjustmentHeader links(List<Link> links) {
     this.links = links;
     return this;
   }
 
-  public ResourceListOfInstrument addLinksItem(Link linksItem) {
+  public ResourceListOfConstituentsAdjustmentHeader addLinksItem(Link linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -141,11 +141,11 @@ public class ResourceListOfInstrument {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ResourceListOfInstrument resourceListOfInstrument = (ResourceListOfInstrument) o;
-    return Objects.equals(this.values, resourceListOfInstrument.values) &&
-        Objects.equals(this.href, resourceListOfInstrument.href) &&
-        Objects.equals(this.count, resourceListOfInstrument.count) &&
-        Objects.equals(this.links, resourceListOfInstrument.links);
+    ResourceListOfConstituentsAdjustmentHeader resourceListOfConstituentsAdjustmentHeader = (ResourceListOfConstituentsAdjustmentHeader) o;
+    return Objects.equals(this.values, resourceListOfConstituentsAdjustmentHeader.values) &&
+        Objects.equals(this.href, resourceListOfConstituentsAdjustmentHeader.href) &&
+        Objects.equals(this.count, resourceListOfConstituentsAdjustmentHeader.count) &&
+        Objects.equals(this.links, resourceListOfConstituentsAdjustmentHeader.links);
   }
 
   @Override
@@ -157,7 +157,7 @@ public class ResourceListOfInstrument {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResourceListOfInstrument {\n");
+    sb.append("class ResourceListOfConstituentsAdjustmentHeader {\n");
     
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
