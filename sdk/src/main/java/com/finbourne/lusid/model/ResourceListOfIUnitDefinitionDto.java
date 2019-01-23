@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * ResourceListOfIUnitDefinitionDto
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-22T13:53:50.754Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-23T11:07:23.575Z")
 public class ResourceListOfIUnitDefinitionDto {
   @SerializedName("values")
   private List<IUnitDefinitionDto> values = null;

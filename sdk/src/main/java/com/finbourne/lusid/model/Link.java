@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * Link
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-22T13:53:50.754Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-23T11:07:23.575Z")
 public class Link {
   /**
    * Gets or Sets relation

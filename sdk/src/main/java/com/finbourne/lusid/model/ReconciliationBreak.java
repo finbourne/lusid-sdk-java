@@ -32,7 +32,7 @@ import java.util.List;
  * A reconciliation break
  */
 @ApiModel(description = "A reconciliation break")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-22T13:53:50.754Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-23T11:07:23.575Z")
 public class ReconciliationBreak {
   @SerializedName("instrumentUid")
   private String instrumentUid = null;

@@ -27,7 +27,7 @@ import java.io.IOException;
  * Defines a scope
  */
 @ApiModel(description = "Defines a scope")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-22T13:53:50.754Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-23T11:07:23.575Z")
 public class ScopeDefinition {
   @SerializedName("scope")
   private String scope = null;
