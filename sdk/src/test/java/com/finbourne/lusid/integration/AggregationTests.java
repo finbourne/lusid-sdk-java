@@ -23,6 +23,7 @@ import static org.junit.Assert.assertEquals;
 public class AggregationTests {
 
     private static final String AGGREGATION_KEY = "Holding/default/PV";
+    private static final String AGGREGATION_RESULT_KEY = "Sum(Holding/default/PV)";
     private static final String GROUPBY_KEY = "Instrument/default/Name";
     private static final String INSTRUMENT_KEY = "instrumentId";
     private static final String PRICE_KEY = "price";
@@ -82,9 +83,9 @@ public class AggregationTests {
                 },
                 results -> {
                     assertEquals(3, results.size());
-                    assertEquals(10000.0, results.get(0).get(AGGREGATION_KEY));
-                    assertEquals(20000.0, results.get(1).get(AGGREGATION_KEY));
-                    assertEquals(30000.0, results.get(2).get(AGGREGATION_KEY));
+                    assertEquals(10000.0, results.get(0).get(AGGREGATION_RESULT_KEY));
+                    assertEquals(20000.0, results.get(1).get(AGGREGATION_RESULT_KEY));
+                    assertEquals(30000.0, results.get(2).get(AGGREGATION_RESULT_KEY));
                 });
     }
 
@@ -143,6 +144,7 @@ public class AggregationTests {
         AggregationRequest  aggregationRequest = new AggregationRequest()
                 .recipeId(new ResourceId().scope(scope).code("default"))
                 .metrics(Arrays.asList(
+                        new AggregateSpec().key(GROUPBY_KEY).op(AggregateSpec.OpEnum.VALUE),
                         new AggregateSpec().key(AGGREGATION_KEY).op(AggregateSpec.OpEnum.PROPORTION),
                         new AggregateSpec().key(AGGREGATION_KEY).op(AggregateSpec.OpEnum.SUM)
                 ))
