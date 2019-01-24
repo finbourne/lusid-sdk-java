@@ -125,6 +125,7 @@ RESULTRETRIEVALFAILURE | &quot;ResultRetrievalFailure&quot;
 RESULTPROCESSINGFAILURE | &quot;ResultProcessingFailure&quot;
 VENDORRESULTPROCESSINGFAILURE | &quot;VendorResultProcessingFailure&quot;
 CANNOTSUPPLYTIMESWITHPORTFOLIOSQUERY | &quot;CannotSupplyTimesWithPortfoliosQuery&quot;
+ATTEMPTTOUPSERTDUPLICATEQUOTES | &quot;AttemptToUpsertDuplicateQuotes&quot;
 
 
 

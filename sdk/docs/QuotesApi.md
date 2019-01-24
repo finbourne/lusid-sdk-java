@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteQuote**](QuotesApi.md#deleteQuote) | **POST** /api/quotes/{scope}/$delete | Delete a quote
 [**getQuotes**](QuotesApi.md#getQuotes) | **POST** /api/quotes/{scope}/$get | Get quotes
-[**upsertQuotes**](QuotesApi.md#upsertQuotes) | **POST** /api/quotes/{scope} | Add quotes
+[**upsertQuotes**](QuotesApi.md#upsertQuotes) | **POST** /api/quotes/{scope} | Upsert quotes
 
 
 <a name="deleteQuote"></a>
@@ -133,9 +133,9 @@ Name | Type | Description  | Notes
 # **upsertQuotes**
 > UpsertQuotesResponse upsertQuotes(scope, quotes)
 
-Add quotes
+Upsert quotes
 
-Add quotes effective at the specified time. If a quote is added with the same id (and is effective at the same time) as an existing quote, then the more recently added quote will be returned when queried
+Upsert quotes effective at the specified time. If a quote is added with the same id (and is effective at the same time) as an existing quote, then the more recently added quote will be returned when queried
 
 ### Example
 ```java
@@ -154,7 +154,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 QuotesApi apiInstance = new QuotesApi();
 String scope = "scope_example"; // String | The scope of the quotes
-List<UpsertQuoteRequest> quotes = Arrays.asList(new UpsertQuoteRequest()); // List<UpsertQuoteRequest> | The quotes to add
+List<UpsertQuoteRequest> quotes = Arrays.asList(new UpsertQuoteRequest()); // List<UpsertQuoteRequest> | The quotes to upsert
 try {
     UpsertQuotesResponse result = apiInstance.upsertQuotes(scope, quotes);
     System.out.println(result);
@@ -169,7 +169,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the quotes |
- **quotes** | [**List&lt;UpsertQuoteRequest&gt;**](UpsertQuoteRequest.md)| The quotes to add | [optional]
+ **quotes** | [**List&lt;UpsertQuoteRequest&gt;**](UpsertQuoteRequest.md)| The quotes to upsert | [optional]
 
 ### Return type
 

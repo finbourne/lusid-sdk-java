@@ -5,7 +5,6 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **recipeId** | [**ResourceId**](ResourceId.md) |  | 
-**loadReferencePortfolio** | **Boolean** |  |  [optional]
 **asAt** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt date to use |  [optional]
 **effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) |  | 
 **metrics** | [**List&lt;AggregateSpec&gt;**](AggregateSpec.md) |  | 
