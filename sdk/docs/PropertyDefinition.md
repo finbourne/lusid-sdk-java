@@ -48,6 +48,7 @@ CURRENCY | &quot;Currency&quot;
 USERID | &quot;UserId&quot;
 METRICVALUE | &quot;MetricValue&quot;
 QUOTEID | &quot;QuoteId&quot;
+QUOTELINEAGE | &quot;QuoteLineage&quot;
 ARRAYOFQUOTEIDS | &quot;ArrayOfQuoteIds&quot;
 RESOURCEID | &quot;ResourceId&quot;
 

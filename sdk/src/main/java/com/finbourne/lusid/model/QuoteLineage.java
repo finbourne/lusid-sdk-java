@@ -14,7 +14,6 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,244 +22,52 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * CreateDerivedTransactionPortfolioRequest
+ * QuoteLineage
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-28T14:37:58.079Z")
-public class CreateDerivedTransactionPortfolioRequest {
-  @SerializedName("displayName")
-  private String displayName = null;
+public class QuoteLineage {
+  @SerializedName("dataVendor")
+  private String dataVendor = null;
 
-  @SerializedName("description")
-  private String description = null;
+  @SerializedName("contributor")
+  private String contributor = null;
 
-  @SerializedName("code")
-  private String code = null;
-
-  @SerializedName("parentPortfolioId")
-  private ResourceId parentPortfolioId = null;
-
-  @SerializedName("created")
-  private OffsetDateTime created = null;
-
-  @SerializedName("corporateActionSourceId")
-  private ResourceId corporateActionSourceId = null;
-
-  /**
-   * 
-   */
-  @JsonAdapter(AccountingMethodEnum.Adapter.class)
-  public enum AccountingMethodEnum {
-    DEFAULT("Default"),
-    
-    AVERAGECOST("AverageCost"),
-    
-    FIRSTINFIRSTOUT("FirstInFirstOut"),
-    
-    LASTINFIRSTOUT("LastInFirstOut"),
-    
-    HIGHESTCOSTFIRST("HighestCostFirst"),
-    
-    LOWESTCOSTFIRST("LowestCostFirst");
-
-    private String value;
-
-    AccountingMethodEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static AccountingMethodEnum fromValue(String text) {
-      for (AccountingMethodEnum b : AccountingMethodEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<AccountingMethodEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final AccountingMethodEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public AccountingMethodEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return AccountingMethodEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }
-
-  @SerializedName("accountingMethod")
-  private AccountingMethodEnum accountingMethod = null;
-
-  @SerializedName("subHoldingKeys")
-  private List<String> subHoldingKeys = null;
-
-  public CreateDerivedTransactionPortfolioRequest displayName(String displayName) {
-    this.displayName = displayName;
+  public QuoteLineage dataVendor(String dataVendor) {
+    this.dataVendor = dataVendor;
     return this;
   }
 
    /**
    * 
-   * @return displayName
+   * @return dataVendor
   **/
   @ApiModelProperty(required = true, value = "")
-  public String getDisplayName() {
-    return displayName;
+  public String getDataVendor() {
+    return dataVendor;
   }
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
+  public void setDataVendor(String dataVendor) {
+    this.dataVendor = dataVendor;
   }
 
-  public CreateDerivedTransactionPortfolioRequest description(String description) {
-    this.description = description;
+  public QuoteLineage contributor(String contributor) {
+    this.contributor = contributor;
     return this;
   }
 
    /**
    * 
-   * @return description
+   * @return contributor
   **/
-  @ApiModelProperty(value = "")
-  public String getDescription() {
-    return description;
+  @ApiModelProperty(required = true, value = "")
+  public String getContributor() {
+    return contributor;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-  public CreateDerivedTransactionPortfolioRequest code(String code) {
-    this.code = code;
-    return this;
-  }
-
-   /**
-   * 
-   * @return code
-  **/
-  @ApiModelProperty(value = "")
-  public String getCode() {
-    return code;
-  }
-
-  public void setCode(String code) {
-    this.code = code;
-  }
-
-  public CreateDerivedTransactionPortfolioRequest parentPortfolioId(ResourceId parentPortfolioId) {
-    this.parentPortfolioId = parentPortfolioId;
-    return this;
-  }
-
-   /**
-   * 
-   * @return parentPortfolioId
-  **/
-  @ApiModelProperty(value = "")
-  public ResourceId getParentPortfolioId() {
-    return parentPortfolioId;
-  }
-
-  public void setParentPortfolioId(ResourceId parentPortfolioId) {
-    this.parentPortfolioId = parentPortfolioId;
-  }
-
-  public CreateDerivedTransactionPortfolioRequest created(OffsetDateTime created) {
-    this.created = created;
-    return this;
-  }
-
-   /**
-   * 
-   * @return created
-  **/
-  @ApiModelProperty(value = "")
-  public OffsetDateTime getCreated() {
-    return created;
-  }
-
-  public void setCreated(OffsetDateTime created) {
-    this.created = created;
-  }
-
-  public CreateDerivedTransactionPortfolioRequest corporateActionSourceId(ResourceId corporateActionSourceId) {
-    this.corporateActionSourceId = corporateActionSourceId;
-    return this;
-  }
-
-   /**
-   * 
-   * @return corporateActionSourceId
-  **/
-  @ApiModelProperty(value = "")
-  public ResourceId getCorporateActionSourceId() {
-    return corporateActionSourceId;
-  }
-
-  public void setCorporateActionSourceId(ResourceId corporateActionSourceId) {
-    this.corporateActionSourceId = corporateActionSourceId;
-  }
-
-  public CreateDerivedTransactionPortfolioRequest accountingMethod(AccountingMethodEnum accountingMethod) {
-    this.accountingMethod = accountingMethod;
-    return this;
-  }
-
-   /**
-   * 
-   * @return accountingMethod
-  **/
-  @ApiModelProperty(value = "")
-  public AccountingMethodEnum getAccountingMethod() {
-    return accountingMethod;
-  }
-
-  public void setAccountingMethod(AccountingMethodEnum accountingMethod) {
-    this.accountingMethod = accountingMethod;
-  }
-
-  public CreateDerivedTransactionPortfolioRequest subHoldingKeys(List<String> subHoldingKeys) {
-    this.subHoldingKeys = subHoldingKeys;
-    return this;
-  }
-
-  public CreateDerivedTransactionPortfolioRequest addSubHoldingKeysItem(String subHoldingKeysItem) {
-    if (this.subHoldingKeys == null) {
-      this.subHoldingKeys = new ArrayList<>();
-    }
-    this.subHoldingKeys.add(subHoldingKeysItem);
-    return this;
-  }
-
-   /**
-   * 
-   * @return subHoldingKeys
-  **/
-  @ApiModelProperty(value = "")
-  public List<String> getSubHoldingKeys() {
-    return subHoldingKeys;
-  }
-
-  public void setSubHoldingKeys(List<String> subHoldingKeys) {
-    this.subHoldingKeys = subHoldingKeys;
+  public void setContributor(String contributor) {
+    this.contributor = contributor;
   }
 
 
@@ -272,36 +79,24 @@ public class CreateDerivedTransactionPortfolioRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest = (CreateDerivedTransactionPortfolioRequest) o;
-    return Objects.equals(this.displayName, createDerivedTransactionPortfolioRequest.displayName) &&
-        Objects.equals(this.description, createDerivedTransactionPortfolioRequest.description) &&
-        Objects.equals(this.code, createDerivedTransactionPortfolioRequest.code) &&
-        Objects.equals(this.parentPortfolioId, createDerivedTransactionPortfolioRequest.parentPortfolioId) &&
-        Objects.equals(this.created, createDerivedTransactionPortfolioRequest.created) &&
-        Objects.equals(this.corporateActionSourceId, createDerivedTransactionPortfolioRequest.corporateActionSourceId) &&
-        Objects.equals(this.accountingMethod, createDerivedTransactionPortfolioRequest.accountingMethod) &&
-        Objects.equals(this.subHoldingKeys, createDerivedTransactionPortfolioRequest.subHoldingKeys);
+    QuoteLineage quoteLineage = (QuoteLineage) o;
+    return Objects.equals(this.dataVendor, quoteLineage.dataVendor) &&
+        Objects.equals(this.contributor, quoteLineage.contributor);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(displayName, description, code, parentPortfolioId, created, corporateActionSourceId, accountingMethod, subHoldingKeys);
+    return Objects.hash(dataVendor, contributor);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateDerivedTransactionPortfolioRequest {\n");
+    sb.append("class QuoteLineage {\n");
     
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    parentPortfolioId: ").append(toIndentedString(parentPortfolioId)).append("\n");
-    sb.append("    created: ").append(toIndentedString(created)).append("\n");
-    sb.append("    corporateActionSourceId: ").append(toIndentedString(corporateActionSourceId)).append("\n");
-    sb.append("    accountingMethod: ").append(toIndentedString(accountingMethod)).append("\n");
-    sb.append("    subHoldingKeys: ").append(toIndentedString(subHoldingKeys)).append("\n");
+    sb.append("    dataVendor: ").append(toIndentedString(dataVendor)).append("\n");
+    sb.append("    contributor: ").append(toIndentedString(contributor)).append("\n");
     sb.append("}");
     return sb.toString();
   }
