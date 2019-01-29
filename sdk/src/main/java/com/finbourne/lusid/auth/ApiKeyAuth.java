@@ -18,7 +18,7 @@ import com.finbourne.lusid.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-29T14:51:21.448Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-29T16:09:33.734Z")
 public class ApiKeyAuth implements Authentication {
   private final String location;
   private final String paramName;
