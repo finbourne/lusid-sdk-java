@@ -4,21 +4,21 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteInstrument**](InstrumentsApi.md#deleteInstrument) | **DELETE** /api/instruments/{type}/{id} | Delete instrument
+[**deleteInstrument**](InstrumentsApi.md#deleteInstrument) | **DELETE** /api/instruments/{identifierType}/{identifier} | Delete instrument
 [**findInstruments**](InstrumentsApi.md#findInstruments) | **POST** /api/instruments/$find | Search instrument definition
-[**getInstrument**](InstrumentsApi.md#getInstrument) | **GET** /api/instruments/{type}/{id} | Get instrument definition
+[**getInstrument**](InstrumentsApi.md#getInstrument) | **GET** /api/instruments/{identifierType}/{identifier} | Get instrument definition
 [**getInstrumentIdentifiers**](InstrumentsApi.md#getInstrumentIdentifiers) | **GET** /api/instruments/identifiers | Get allowable instrument identifiers
 [**getInstruments**](InstrumentsApi.md#getInstruments) | **POST** /api/instruments/$get | Get instrument definition
 [**listInstruments**](InstrumentsApi.md#listInstruments) | **GET** /api/instruments | Get all of the currently mastered instruments in LUSID
 [**matchInstruments**](InstrumentsApi.md#matchInstruments) | **POST** /api/instruments/$match | Find externally mastered instruments
-[**updateInstrumentIdentifier**](InstrumentsApi.md#updateInstrumentIdentifier) | **POST** /api/instruments/{type}/{id} | Update instrument identifier
+[**updateInstrumentIdentifier**](InstrumentsApi.md#updateInstrumentIdentifier) | **POST** /api/instruments/{identifierType}/{identifier} | Update instrument identifier
 [**upsertInstruments**](InstrumentsApi.md#upsertInstruments) | **POST** /api/instruments | Upsert instruments
 [**upsertInstrumentsProperties**](InstrumentsApi.md#upsertInstrumentsProperties) | **POST** /api/instruments/$upsertproperties | Upsert instrument properties
 
 
 <a name="deleteInstrument"></a>
 # **deleteInstrument**
-> DeleteInstrumentResponse deleteInstrument(type, id)
+> DeleteInstrumentResponse deleteInstrument(identifierType, identifier)
 
 Delete instrument
 
@@ -40,10 +40,10 @@ OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 InstrumentsApi apiInstance = new InstrumentsApi();
-String type = "type_example"; // String | The type of identifier being supplied
-String id = "id_example"; // String | The instrument identifier
+String identifierType = "identifierType_example"; // String | The type of identifier being supplied
+String identifier = "identifier_example"; // String | The instrument identifier
 try {
-    DeleteInstrumentResponse result = apiInstance.deleteInstrument(type, id);
+    DeleteInstrumentResponse result = apiInstance.deleteInstrument(identifierType, identifier);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InstrumentsApi#deleteInstrument");
@@ -55,8 +55,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **type** | **String**| The type of identifier being supplied | [enum: Undefined, LusidInstrumentId, ReutersAssetId, CINS, Isin, Sedol, Cusip, Ticker, ClientInternal, Figi, CompositeFigi, ShareClassFigi, Wertpapier, RIC, QuotePermId]
- **id** | **String**| The instrument identifier |
+ **identifierType** | **String**| The type of identifier being supplied |
+ **identifier** | **String**| The instrument identifier |
 
 ### Return type
 
@@ -132,7 +132,7 @@ Name | Type | Description  | Notes
 
 <a name="getInstrument"></a>
 # **getInstrument**
-> Instrument getInstrument(type, id, effectiveAt, asAt, instrumentPropertyKeys)
+> Instrument getInstrument(identifierType, identifier, effectiveAt, asAt, instrumentPropertyKeys)
 
 Get instrument definition
 
@@ -154,13 +154,13 @@ OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 InstrumentsApi apiInstance = new InstrumentsApi();
-String type = "type_example"; // String | The type of identifier being supplied
-String id = "id_example"; // String | The identifier of the requested instrument
+String identifierType = "identifierType_example"; // String | The type of identifier being supplied
+String identifier = "identifier_example"; // String | The identifier of the requested instrument
 OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the query
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the query
 List<String> instrumentPropertyKeys = Arrays.asList("instrumentPropertyKeys_example"); // List<String> | Optional. Keys of the properties to be decorated on to the instrument
 try {
-    Instrument result = apiInstance.getInstrument(type, id, effectiveAt, asAt, instrumentPropertyKeys);
+    Instrument result = apiInstance.getInstrument(identifierType, identifier, effectiveAt, asAt, instrumentPropertyKeys);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InstrumentsApi#getInstrument");
@@ -172,8 +172,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **type** | **String**| The type of identifier being supplied | [enum: Undefined, LusidInstrumentId, ReutersAssetId, CINS, Isin, Sedol, Cusip, Ticker, ClientInternal, Figi, CompositeFigi, ShareClassFigi, Wertpapier, RIC, QuotePermId]
- **id** | **String**| The identifier of the requested instrument |
+ **identifierType** | **String**| The type of identifier being supplied |
+ **identifier** | **String**| The identifier of the requested instrument |
  **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the query | [optional]
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the query | [optional]
  **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys of the properties to be decorated on to the instrument | [optional]
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
 
 <a name="getInstrumentIdentifiers"></a>
 # **getInstrumentIdentifiers**
-> ResourceListOfCodeType getInstrumentIdentifiers()
+> ResourceListOfString getInstrumentIdentifiers()
 
 Get allowable instrument identifiers
 
@@ -216,7 +216,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 InstrumentsApi apiInstance = new InstrumentsApi();
 try {
-    ResourceListOfCodeType result = apiInstance.getInstrumentIdentifiers();
+    ResourceListOfString result = apiInstance.getInstrumentIdentifiers();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InstrumentsApi#getInstrumentIdentifiers");
@@ -229,7 +229,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ResourceListOfCodeType**](ResourceListOfCodeType.md)
+[**ResourceListOfString**](ResourceListOfString.md)
 
 ### Authorization
 
@@ -242,7 +242,7 @@ This endpoint does not need any parameter.
 
 <a name="getInstruments"></a>
 # **getInstruments**
-> GetInstrumentsResponse getInstruments(codeType, codes, effectiveAt, asAt, instrumentPropertyKeys)
+> GetInstrumentsResponse getInstruments(identifierType, identifiers, effectiveAt, asAt, instrumentPropertyKeys)
 
 Get instrument definition
 
@@ -264,13 +264,13 @@ OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 InstrumentsApi apiInstance = new InstrumentsApi();
-String codeType = "codeType_example"; // String | the type of codes being specified
-List<String> codes = Arrays.asList(new List<String>()); // List<String> | The identifiers of the instruments to get
+String identifierType = "identifierType_example"; // String | The type of identifiers being supplied
+List<String> identifiers = Arrays.asList(new List<String>()); // List<String> | The identifiers of the instruments to get
 OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the request
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The as at date of the request
 List<String> instrumentPropertyKeys = Arrays.asList("instrumentPropertyKeys_example"); // List<String> | Optional. Keys of the properties to be decorated on to the instrument
 try {
-    GetInstrumentsResponse result = apiInstance.getInstruments(codeType, codes, effectiveAt, asAt, instrumentPropertyKeys);
+    GetInstrumentsResponse result = apiInstance.getInstruments(identifierType, identifiers, effectiveAt, asAt, instrumentPropertyKeys);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InstrumentsApi#getInstruments");
@@ -282,8 +282,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **codeType** | **String**| the type of codes being specified | [optional] [enum: Undefined, LusidInstrumentId, ReutersAssetId, CINS, Isin, Sedol, Cusip, Ticker, ClientInternal, Figi, CompositeFigi, ShareClassFigi, Wertpapier, RIC, QuotePermId]
- **codes** | **List&lt;String&gt;**| The identifiers of the instruments to get | [optional]
+ **identifierType** | **String**| The type of identifiers being supplied | [optional]
+ **identifiers** | **List&lt;String&gt;**| The identifiers of the instruments to get | [optional]
  **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the request | [optional]
  **asAt** | **OffsetDateTime**| Optional. The as at date of the request | [optional]
  **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys of the properties to be decorated on to the instrument | [optional]
@@ -364,7 +364,7 @@ Name | Type | Description  | Notes
 
 <a name="matchInstruments"></a>
 # **matchInstruments**
-> MatchInstrumentsResponse matchInstruments(codeType, codes)
+> MatchInstrumentsResponse matchInstruments(identifierType, identifiers)
 
 Find externally mastered instruments
 
@@ -386,10 +386,10 @@ OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 InstrumentsApi apiInstance = new InstrumentsApi();
-String codeType = "codeType_example"; // String | The type of codes to search for
-List<String> codes = Arrays.asList(new List<String>()); // List<String> | The collection of instruments to search for
+String identifierType = "identifierType_example"; // String | The type of identifiers being supplied
+List<String> identifiers = Arrays.asList(new List<String>()); // List<String> | The identifiers of the instruments to get
 try {
-    MatchInstrumentsResponse result = apiInstance.matchInstruments(codeType, codes);
+    MatchInstrumentsResponse result = apiInstance.matchInstruments(identifierType, identifiers);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InstrumentsApi#matchInstruments");
@@ -401,8 +401,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **codeType** | **String**| The type of codes to search for | [optional] [enum: Undefined, LusidInstrumentId, ReutersAssetId, CINS, Isin, Sedol, Cusip, Ticker, ClientInternal, Figi, CompositeFigi, ShareClassFigi, Wertpapier, RIC, QuotePermId]
- **codes** | **List&lt;String&gt;**| The collection of instruments to search for | [optional]
+ **identifierType** | **String**| The type of identifiers being supplied | [optional]
+ **identifiers** | **List&lt;String&gt;**| The identifiers of the instruments to get | [optional]
 
 ### Return type
 
@@ -419,7 +419,7 @@ Name | Type | Description  | Notes
 
 <a name="updateInstrumentIdentifier"></a>
 # **updateInstrumentIdentifier**
-> Instrument updateInstrumentIdentifier(type, id, request)
+> Instrument updateInstrumentIdentifier(identifierType, identifier, request)
 
 Update instrument identifier
 
@@ -441,11 +441,11 @@ OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 InstrumentsApi apiInstance = new InstrumentsApi();
-String type = "type_example"; // String | The type of identifier being supplied
-String id = "id_example"; // String | The instrument identifier
+String identifierType = "identifierType_example"; // String | The type of identifier being supplied
+String identifier = "identifier_example"; // String | The instrument identifier
 UpdateInstrumentIdentifierRequest request = new UpdateInstrumentIdentifierRequest(); // UpdateInstrumentIdentifierRequest | The identifier to add, update, or remove
 try {
-    Instrument result = apiInstance.updateInstrumentIdentifier(type, id, request);
+    Instrument result = apiInstance.updateInstrumentIdentifier(identifierType, identifier, request);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InstrumentsApi#updateInstrumentIdentifier");
@@ -457,8 +457,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **type** | **String**| The type of identifier being supplied | [enum: Undefined, LusidInstrumentId, ReutersAssetId, CINS, Isin, Sedol, Cusip, Ticker, ClientInternal, Figi, CompositeFigi, ShareClassFigi, Wertpapier, RIC, QuotePermId]
- **id** | **String**| The instrument identifier |
+ **identifierType** | **String**| The type of identifier being supplied |
+ **identifier** | **String**| The instrument identifier |
  **request** | [**UpdateInstrumentIdentifierRequest**](UpdateInstrumentIdentifierRequest.md)| The identifier to add, update, or remove | [optional]
 
 ### Return type

@@ -104,7 +104,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **domain** | **String**| The Property Domain of the property to be deleted | [enum: Trade, Portfolio, Security, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutDefinition]
+ **domain** | **String**| The Property Domain of the property to be deleted | [enum: Trade, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutDefinition]
  **scope** | **String**| The scope of the property to be deleted |
  **code** | **String**| The code of the property to be deleted |
 
@@ -225,7 +225,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **domain** | **String**| The Property Domain of the requested property | [enum: Trade, Portfolio, Security, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutDefinition]
+ **domain** | **String**| The Property Domain of the requested property | [enum: Trade, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutDefinition]
  **scope** | **String**| The scope of the requested property |
  **code** | **String**| The code of the requested property |
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
@@ -284,7 +284,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **domain** | **String**| The Property Domain of the property being updated | [enum: Trade, Portfolio, Security, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutDefinition]
+ **domain** | **String**| The Property Domain of the property being updated | [enum: Trade, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutDefinition]
  **scope** | **String**| The scope of the property to be updated |
  **code** | **String**| The code of the property to be updated |
  **definition** | [**UpdatePropertyDefinitionRequest**](UpdatePropertyDefinitionRequest.md)| The updated definition of the property | [optional]

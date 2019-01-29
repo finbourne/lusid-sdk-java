@@ -20,7 +20,6 @@ Name | Value
 ---- | -----
 TRADE | &quot;Trade&quot;
 PORTFOLIO | &quot;Portfolio&quot;
-SECURITY | &quot;Security&quot;
 HOLDING | &quot;Holding&quot;
 REFERENCEHOLDING | &quot;ReferenceHolding&quot;
 TRANSACTIONCONFIGURATION | &quot;TransactionConfiguration&quot;
