@@ -27,7 +27,7 @@ import java.time.OffsetDateTime;
 /**
  * Property
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-29T12:27:05.656Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-01-29T14:51:21.448Z")
 public class Property {
   @SerializedName("key")
   private String key = null;
