@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**buildTransactions**](TransactionPortfoliosApi.md#buildTransactions) | **POST** /api/transactionportfolios/{scope}/{code}/transactions/$build | Build output transactions
 [**cancelAdjustHoldings**](TransactionPortfoliosApi.md#cancelAdjustHoldings) | **DELETE** /api/transactionportfolios/{scope}/{code}/holdings/{effectiveAt} | Cancel holdings adjustments
 [**createPortfolio**](TransactionPortfoliosApi.md#createPortfolio) | **POST** /api/transactionportfolios/{scope} | Create transaction portfolio
+[**deleteExecutions**](TransactionPortfoliosApi.md#deleteExecutions) | **DELETE** /api/transactionportfolios/{scope}/{code}/executions | Delete executions
 [**deletePropertyFromTransaction**](TransactionPortfoliosApi.md#deletePropertyFromTransaction) | **DELETE** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/properties | Delete transaction property
 [**deleteTransactions**](TransactionPortfoliosApi.md#deleteTransactions) | **DELETE** /api/transactionportfolios/{scope}/{code}/transactions | Delete transactions
 [**getDetails**](TransactionPortfoliosApi.md#getDetails) | **GET** /api/transactionportfolios/{scope}/{code}/details | Get portfolio details
@@ -319,6 +320,63 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+<a name="deleteExecutions"></a>
+# **deleteExecutions**
+> DeletedEntityResponse deleteExecutions(scope, code, executionIds)
+
+Delete executions
+
+Delete one or more executions from a transaction portfolio
+
+### Example
+```java
+// Import classes:
+//import com.finbourne.lusid.ApiClient;
+//import com.finbourne.lusid.ApiException;
+//import com.finbourne.lusid.Configuration;
+//import com.finbourne.lusid.auth.*;
+//import com.finbourne.lusid.api.TransactionPortfoliosApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2
+OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+TransactionPortfoliosApi apiInstance = new TransactionPortfoliosApi();
+String scope = "scope_example"; // String | The scope of the portfolio
+String code = "code_example"; // String | The code of the portfolio
+List<String> executionIds = Arrays.asList("executionIds_example"); // List<String> | Ids of executions to delete
+try {
+    DeletedEntityResponse result = apiInstance.deleteExecutions(scope, code, executionIds);
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling TransactionPortfoliosApi#deleteExecutions");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scope** | **String**| The scope of the portfolio |
+ **code** | **String**| The code of the portfolio |
+ **executionIds** | [**List&lt;String&gt;**](String.md)| Ids of executions to delete | [optional]
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
 <a name="deletePropertyFromTransaction"></a>
