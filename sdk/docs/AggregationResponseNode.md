@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**key** | **String** |  |  [optional]
+**key** | [**AggregateSpec**](AggregateSpec.md) |  |  [optional]
 **value** | **String** |  |  [optional]
 **depth** | **Integer** |  |  [optional]
 **properties** | **Map&lt;String, Object&gt;** |  |  [optional]

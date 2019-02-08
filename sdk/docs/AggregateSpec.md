@@ -4,8 +4,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**key** | **String** |  | 
-**op** | [**OpEnum**](#OpEnum) |  | 
+**key** | **String** |  |  [optional]
+**op** | [**OpEnum**](#OpEnum) |  |  [optional]
 
 
 <a name="OpEnum"></a>
