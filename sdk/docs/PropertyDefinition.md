@@ -67,6 +67,7 @@ Name | Value
 ---- | -----
 LABEL | &quot;Label&quot;
 METRIC | &quot;Metric&quot;
+INFORMATION | &quot;Information&quot;
 
 
 <a name="UnitSchemaEnum"></a>
