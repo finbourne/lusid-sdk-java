@@ -4,14 +4,14 @@ All URIs are relative to *https://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteQuote**](QuotesApi.md#deleteQuote) | **POST** /api/quotes/{scope}/$delete | Delete a quote
+[**deleteQuotes**](QuotesApi.md#deleteQuotes) | **POST** /api/quotes/{scope}/$delete | Delete a quote
 [**getQuotes**](QuotesApi.md#getQuotes) | **POST** /api/quotes/{scope}/$get | Get quotes
 [**upsertQuotes**](QuotesApi.md#upsertQuotes) | **POST** /api/quotes/{scope} | Upsert quotes
 
 
-<a name="deleteQuote"></a>
-# **deleteQuote**
-> DeleteQuotesResponse deleteQuote(scope, quotes)
+<a name="deleteQuotes"></a>
+# **deleteQuotes**
+> DeleteQuotesResponse deleteQuotes(scope, quotes)
 
 Delete a quote
 
@@ -36,10 +36,10 @@ QuotesApi apiInstance = new QuotesApi();
 String scope = "scope_example"; // String | The scope of the quote
 List<DeleteQuoteRequest> quotes = Arrays.asList(new DeleteQuoteRequest()); // List<DeleteQuoteRequest> | The quotes to delete
 try {
-    DeleteQuotesResponse result = apiInstance.deleteQuote(scope, quotes);
+    DeleteQuotesResponse result = apiInstance.deleteQuotes(scope, quotes);
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling QuotesApi#deleteQuote");
+    System.err.println("Exception when calling QuotesApi#deleteQuotes");
     e.printStackTrace();
 }
 ```

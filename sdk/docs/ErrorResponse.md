@@ -114,6 +114,8 @@ TRANSACTIONTYPEDUPLICATION | &quot;TransactionTypeDuplication&quot;
 INVALIDPROPERTYVALUEASSIGNMENT | &quot;InvalidPropertyValueAssignment&quot;
 PORTFOLIODOESNOTEXISTATGIVENDATE | &quot;PortfolioDoesNotExistAtGivenDate&quot;
 QUERYPARSERFAILURE | &quot;QueryParserFailure&quot;
+DUPLICATECONSTITUENTFAILURE | &quot;DuplicateConstituentFailure&quot;
+UNRESOLVEDCONSTITUENTFAILURE | &quot;UnresolvedConstituentFailure&quot;
 DEPENDENCIESFAILURE | &quot;DependenciesFailure&quot;
 PORTFOLIOPREPROCESSFAILURE | &quot;PortfolioPreprocessFailure&quot;
 VALUATIONENGINEFAILURE | &quot;ValuationEngineFailure&quot;

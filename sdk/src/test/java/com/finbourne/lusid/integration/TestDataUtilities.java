@@ -6,12 +6,15 @@ import com.finbourne.lusid.model.*;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
-import java.util.List;
+import java.util.HashMap;
 import java.util.UUID;
 
 import static junit.framework.TestCase.assertEquals;
 
 public class TestDataUtilities {
+
+    public static final String LUSID_INSTRUMENT_IDENTIFIER = "Instrument/default/LusidInstrumentId";
+    public static final String LUSID_CASH_IDENTIFIER = "Instrument/default/Currency";
 
     private TransactionPortfoliosApi transactionPortfoliosApi;
 
@@ -70,7 +73,7 @@ public class TestDataUtilities {
         return new TransactionRequest()
                 .transactionId(UUID.randomUUID().toString())
                 .type(transactionType)
-                .instrumentUid(instrumentId)
+                .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_INSTRUMENT_IDENTIFIER, instrumentId); }})
                 .totalConsideration(new CurrencyAndAmount().currency(currency).amount(units * price))
                 .transactionDate(tradeDate)
                 .settlementDate(tradeDate)
@@ -97,7 +100,7 @@ public class TestDataUtilities {
         return new TransactionRequest()
                 .transactionId(UUID.randomUUID().toString())
                 .type("FundsIn")
-                .instrumentUid("CCY_" + currency)
+                .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_CASH_IDENTIFIER, currency); }})
                 .totalConsideration(new CurrencyAndAmount().currency(currency).amount(0.0))
                 .transactionDate(tradeDate)
                 .settlementDate(tradeDate)

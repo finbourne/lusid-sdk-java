@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **transactionId** | **String** | Unique transaction identifier |  [optional]
 **type** | **String** | LUSID transaction type code - Buy, Sell, StockIn, StockOut, etc |  [optional]
 **description** | **String** | LUSID transaction description |  [optional]
+**instrumentIdentifiers** | **Map&lt;String, String&gt;** | Unique instrument identifiers. |  [optional]
 **instrumentUid** | **String** | Unique instrument identifier |  [optional]
 **transactionDate** | [**OffsetDateTime**](OffsetDateTime.md) | Transaction date |  [optional]
 **settlementDate** | [**OffsetDateTime**](OffsetDateTime.md) | Settlement date |  [optional]

@@ -4,6 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**instrumentIdentifiers** | **Map&lt;String, String&gt;** | Unique instrument identifiers. |  [optional]
 **instrumentUid** | **String** | Unique instrument identifier | 
 **subHoldingKeys** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) | Key fields to uniquely index the sub holdings of a instrument |  [optional]
 **properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) | Arbitrary properties to store with the holding |  [optional]

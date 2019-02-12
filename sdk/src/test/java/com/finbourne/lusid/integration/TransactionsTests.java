@@ -14,6 +14,8 @@ import java.time.ZoneOffset;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static com.finbourne.lusid.integration.TestDataUtilities.LUSID_CASH_IDENTIFIER;
+import static com.finbourne.lusid.integration.TestDataUtilities.LUSID_INSTRUMENT_IDENTIFIER;
 import static org.junit.Assert.assertEquals;
 
 public class TransactionsTests {
@@ -69,7 +71,7 @@ public class TransactionsTests {
                 .type("Buy")
 
                 //  instruments must already exist in LUSID and have a valid LUSID instrument id
-                .instrumentUid(instrumentIds.get(0))
+                .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_INSTRUMENT_IDENTIFIER, instrumentIds.get(0)); }})
                 .totalConsideration(new CurrencyAndAmount().currency("GBP").amount(1230.0))
                 .transactionDate(effectiveDate)
                 .settlementDate(effectiveDate)
@@ -116,7 +118,7 @@ public class TransactionsTests {
 
                 //  Cash instruments are identified using CCY_ followed by the ISO currency codes.
                 //  Cash instruments do not need to be created before use
-                .instrumentUid("CCY_GBP")
+                .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_CASH_IDENTIFIER, "GBP"); }})
                 .totalConsideration(new CurrencyAndAmount().currency("GBP").amount(0.0))
                 .transactionDate(effectiveDate)
                 .settlementDate(effectiveDate)
@@ -183,7 +185,7 @@ public class TransactionsTests {
         TransactionRequest transactionRequest = new TransactionRequest()
                 .transactionId(UUID.randomUUID().toString())
                 .type("Buy")
-                .instrumentUid(swapId)
+                .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_INSTRUMENT_IDENTIFIER, swapId); }})
                 .totalConsideration(new CurrencyAndAmount().currency("GBP").amount(0.0))
                 .transactionDate(effectiveDate)
                 .settlementDate(effectiveDate)

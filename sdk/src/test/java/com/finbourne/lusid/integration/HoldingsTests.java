@@ -11,11 +11,10 @@ import org.junit.Test;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
+import static com.finbourne.lusid.integration.TestDataUtilities.LUSID_CASH_IDENTIFIER;
+import static com.finbourne.lusid.integration.TestDataUtilities.LUSID_INSTRUMENT_IDENTIFIER;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -124,7 +123,6 @@ public class HoldingsTests {
 
         String portfolioCode = testDataUtilities.createTransactionPortfolio(SCOPE);
 
-        String cashInstrument = "CCY_" + currency;
         String instrument1 = instrumentIds.get(0);
         String instrument2 = instrumentIds.get(1);
         String instrument3 = instrumentIds.get(2);
@@ -134,7 +132,7 @@ public class HoldingsTests {
         //  cash balance
         holdingAdjustments.add(
                 new AdjustHoldingRequest()
-                    .instrumentUid(cashInstrument)
+                    .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_CASH_IDENTIFIER, currency); }})
                     .taxLots(Arrays.asList(
                             new TargetTaxLotRequest()
                             .units(100000.0)))
@@ -144,7 +142,7 @@ public class HoldingsTests {
         //  instrument 1
         holdingAdjustments.add(
                 new AdjustHoldingRequest()
-                    .instrumentUid(instrument1)
+                    .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_INSTRUMENT_IDENTIFIER, instrument1); }})
                     .taxLots(Arrays.asList(
                             new TargetTaxLotRequest()
                                     .units(100.0)
@@ -158,7 +156,7 @@ public class HoldingsTests {
         //  instrument 2
         holdingAdjustments.add(
                 new AdjustHoldingRequest()
-                        .instrumentUid(instrument2)
+                        .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_INSTRUMENT_IDENTIFIER, instrument2); }})
                         .taxLots(Arrays.asList(
                                 new TargetTaxLotRequest()
                                         .units(100.0)
@@ -189,7 +187,11 @@ public class HoldingsTests {
         assertThat(holdings.getValues().size(), is(equalTo(4)));
 
         //  remaining cash balance which takes into account the purchase transactions on day 2
-        assertThat(holdings.getValues().get(0).getInstrumentUid(), is(equalTo(cashInstrument)));
+
+        // the call to GetHoldings returns the LUID not the identifier we created
+        final String currencyLuid = "CCY_" + currency;
+
+        assertThat(holdings.getValues().get(0).getInstrumentUid(), is(equalTo(currencyLuid)));
         assertThat(holdings.getValues().get(0).getUnits(), is(equalTo(79300.0)));
 
         //  instrument1 - initial holding + transaction on day 2
