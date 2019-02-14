@@ -9,10 +9,7 @@ import org.junit.BeforeClass;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -177,10 +174,13 @@ public class InstrumentMasterTests {
 
         assertThat(instrument.getName(), is(equalTo("VODAFONE GROUP PLC")));
 
-        assertThat(instrument.getProperties().get(0).getKey(), equalTo(ISIN_PROPERTY_KEY));
-        assertThat(instrument.getProperties().get(0).getValue(), equalTo("GB00BH4HKS39"));
-        assertThat(instrument.getProperties().get(1).getKey(), equalTo(SEDOL_PROPERTY_KEY));
-        assertThat(instrument.getProperties().get(1).getValue(), equalTo("BH4HKS3"));
+        List<Property>  identifiers = instrument.getProperties();
+        identifiers.sort(Comparator.comparing(Property::getKey));
+
+        assertThat(identifiers.get(0).getKey(), equalTo(ISIN_PROPERTY_KEY));
+        assertThat(identifiers.get(0).getValue(), equalTo("GB00BH4HKS39"));
+        assertThat(identifiers.get(1).getKey(), equalTo(SEDOL_PROPERTY_KEY));
+        assertThat(identifiers.get(1).getValue(), equalTo("BH4HKS3"));
     }
 
     @Test
