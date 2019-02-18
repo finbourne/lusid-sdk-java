@@ -27,7 +27,7 @@ import java.io.IOException;
  * A price with its associated type
  */
 @ApiModel(description = "A price with its associated type")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-18T20:22:55.781Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-18T21:04:56.052Z")
 public class TransactionPrice {
   @SerializedName("price")
   private Double price = null;
