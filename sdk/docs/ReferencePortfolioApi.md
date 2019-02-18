@@ -5,7 +5,7 @@ All URIs are relative to *https://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createReferencePortfolio**](ReferencePortfolioApi.md#createReferencePortfolio) | **POST** /api/referenceportfolios/{scope} | Create reference portfolio
-[**getReferencePortfolioConstituents**](ReferencePortfolioApi.md#getReferencePortfolioConstituents) | **GET** /api/referenceportfolios/{scope}/{code}/{effectiveAt}/constituents | Get constituents
+[**getReferencePortfolioConstituents**](ReferencePortfolioApi.md#getReferencePortfolioConstituents) | **GET** /api/referenceportfolios/{scope}/{code}/constituents | Get constituents
 [**listConstituentsAdjustments**](ReferencePortfolioApi.md#listConstituentsAdjustments) | **GET** /api/referenceportfolios/{scope}/{code}/constituentsadjustments | Gets constituents adjustments in an interval of effective time.
 [**upsertReferencePortfolioConstituents**](ReferencePortfolioApi.md#upsertReferencePortfolioConstituents) | **POST** /api/referenceportfolios/{scope}/{code}/constituents | Add constituents
 
@@ -91,7 +91,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 ReferencePortfolioApi apiInstance = new ReferencePortfolioApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | The code of the portfolio
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | The effective date of the constituents to retrieve
+OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the constituents to retrieve
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
 List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **effectiveAt** | **OffsetDateTime**| The effective date of the constituents to retrieve |
+ **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the constituents to retrieve | [optional]
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
