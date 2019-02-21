@@ -33,7 +33,7 @@ import java.util.Map;
  * This request specifies target holdings. i.e. holding data that the  system should match. When processed by the movement  engine, it will create &#39;true-up&#39; adjustments on the fly.
  */
 @ApiModel(description = "This request specifies target holdings. i.e. holding data that the  system should match. When processed by the movement  engine, it will create 'true-up' adjustments on the fly.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-21T18:30:49.184Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-02-21T19:11:28.040Z")
 public class AdjustHoldingRequest {
   @SerializedName("instrumentIdentifiers")
   private Map<String, String> instrumentIdentifiers = new HashMap<>();
