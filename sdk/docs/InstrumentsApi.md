@@ -325,11 +325,11 @@ OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 InstrumentsApi apiInstance = new InstrumentsApi();
-OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The AsAt time
+OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt time
 List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
-Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-String filter = "filter_example"; // String | Optional. Expression to filter the result set
+Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many
+String filter = "State eq 'Active'"; // String | Optional. Expression to filter the result set - the default filter returns only instruments in the Active state
 try {
     ResourceListOfInstrument result = apiInstance.listInstruments(asAt, sortBy, start, limit, filter);
     System.out.println(result);
@@ -343,11 +343,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asAt** | **OffsetDateTime**| The AsAt time | [optional]
+ **asAt** | **OffsetDateTime**| Optional. The AsAt time | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
- **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
- **filter** | **String**| Optional. Expression to filter the result set | [optional]
+ **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many | [optional]
+ **filter** | **String**| Optional. Expression to filter the result set - the default filter returns only instruments in the Active state | [optional] [default to State eq &#39;Active&#39;]
 
 ### Return type
 
