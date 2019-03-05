@@ -25,6 +25,7 @@ REFERENCEHOLDING | &quot;ReferenceHolding&quot;
 TRANSACTIONCONFIGURATION | &quot;TransactionConfiguration&quot;
 INSTRUMENT | &quot;Instrument&quot;
 CUTDEFINITION | &quot;CutDefinition&quot;
+ANALYTIC | &quot;Analytic&quot;
 
 
 <a name="LifeTimeEnum"></a>

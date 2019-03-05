@@ -42,6 +42,7 @@ QUOTEID | &quot;QuoteId&quot;
 QUOTELINEAGE | &quot;QuoteLineage&quot;
 ARRAYOFQUOTEIDS | &quot;ArrayOfQuoteIds&quot;
 RESOURCEID | &quot;ResourceId&quot;
+RESULTVALUE | &quot;ResultValue&quot;
 
 
 

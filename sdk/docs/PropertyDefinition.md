@@ -51,6 +51,7 @@ QUOTEID | &quot;QuoteId&quot;
 QUOTELINEAGE | &quot;QuoteLineage&quot;
 ARRAYOFQUOTEIDS | &quot;ArrayOfQuoteIds&quot;
 RESOURCEID | &quot;ResourceId&quot;
+RESULTVALUE | &quot;ResultValue&quot;
 
 
 <a name="LifeTimeEnum"></a>
@@ -90,6 +91,7 @@ REFERENCEHOLDING | &quot;ReferenceHolding&quot;
 TRANSACTIONCONFIGURATION | &quot;TransactionConfiguration&quot;
 INSTRUMENT | &quot;Instrument&quot;
 CUTDEFINITION | &quot;CutDefinition&quot;
+ANALYTIC | &quot;Analytic&quot;
 
 
 
