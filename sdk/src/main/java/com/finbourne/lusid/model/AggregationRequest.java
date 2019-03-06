@@ -33,7 +33,7 @@ import java.util.List;
  * Specification object for the parameters of an aggregation
  */
 @ApiModel(description = "Specification object for the parameters of an aggregation")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-06T01:23:12.899Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-06T02:00:17.644Z")
 public class AggregationRequest {
   @SerializedName("recipeId")
   private ResourceId recipeId = null;

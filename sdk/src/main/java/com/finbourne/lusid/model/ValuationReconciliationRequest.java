@@ -29,7 +29,7 @@ import java.io.IOException;
  * Specification for the parameters that define how to perform a reconciliation between two portfolios. This defines  the specification for one half of that request, namely how to find and perform an aggregation request on one of the portfolios.
  */
 @ApiModel(description = "Specification for the parameters that define how to perform a reconciliation between two portfolios. This defines  the specification for one half of that request, namely how to find and perform an aggregation request on one of the portfolios.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-06T01:23:12.899Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-06T02:00:17.644Z")
 public class ValuationReconciliationRequest {
   @SerializedName("portfolioId")
   private ResourceId portfolioId = null;

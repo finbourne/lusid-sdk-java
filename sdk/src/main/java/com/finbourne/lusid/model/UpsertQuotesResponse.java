@@ -31,7 +31,7 @@ import java.util.List;
  * The response given from the UpsertQuotes Api call
  */
 @ApiModel(description = "The response given from the UpsertQuotes Api call")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-06T01:23:12.899Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-06T02:00:17.644Z")
 public class UpsertQuotesResponse {
   @SerializedName("asAtDate")
   private OffsetDateTime asAtDate = null;

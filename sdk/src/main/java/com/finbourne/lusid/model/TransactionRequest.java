@@ -33,7 +33,7 @@ import java.util.Map;
 /**
  * TransactionRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-06T01:23:12.899Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-06T02:00:17.644Z")
 public class TransactionRequest {
   @SerializedName("transactionId")
   private String transactionId = null;

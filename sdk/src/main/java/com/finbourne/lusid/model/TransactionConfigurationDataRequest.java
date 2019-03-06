@@ -33,7 +33,7 @@ import java.util.Map;
 /**
  * TransactionConfigurationDataRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-06T01:23:12.899Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-06T02:00:17.644Z")
 public class TransactionConfigurationDataRequest {
   @SerializedName("aliases")
   private List<TransactionConfigurationTypeAlias> aliases = new ArrayList<>();

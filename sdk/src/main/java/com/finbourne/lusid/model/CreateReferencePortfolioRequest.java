@@ -31,7 +31,7 @@ import java.util.Map;
 /**
  * CreateReferencePortfolioRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-06T01:23:12.899Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-06T02:00:17.644Z")
 public class CreateReferencePortfolioRequest {
   @SerializedName("displayName")
   private String displayName = null;
