@@ -116,6 +116,7 @@ PORTFOLIODOESNOTEXISTATGIVENDATE | &quot;PortfolioDoesNotExistAtGivenDate&quot;
 QUERYPARSERFAILURE | &quot;QueryParserFailure&quot;
 DUPLICATECONSTITUENTFAILURE | &quot;DuplicateConstituentFailure&quot;
 UNRESOLVEDCONSTITUENTFAILURE | &quot;UnresolvedConstituentFailure&quot;
+MISSINGRECIPEFAILURE | &quot;MissingRecipeFailure&quot;
 DEPENDENCIESFAILURE | &quot;DependenciesFailure&quot;
 PORTFOLIOPREPROCESSFAILURE | &quot;PortfolioPreprocessFailure&quot;
 VALUATIONENGINEFAILURE | &quot;ValuationEngineFailure&quot;
