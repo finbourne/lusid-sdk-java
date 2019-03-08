@@ -204,13 +204,13 @@ public class InstrumentMasterTests {
     public void find_non_mastered_instrument_from_external_source() throws ApiException
     {
         /*
-            Look up an instrument not currently in the instrument master (WPP LN)
+            Look up an instrument not currently in the instrument master (NATIONAL GRID PLC)
          */
-        MatchInstrumentsResponse matchInstrumentsResponse = instrumentsApi.matchInstruments(FIGI_SCHEME, Arrays.asList("BBG000BF6B57"));
+        MatchInstrumentsResponse matchInstrumentsResponse = instrumentsApi.matchInstruments(FIGI_SCHEME, Arrays.asList("BBG000FV67Q4"));
 
-        assertThat(matchInstrumentsResponse.getValues().containsKey("BBG000BF6B57"), is(true));
+        assertThat(matchInstrumentsResponse.getValues().containsKey("BBG000FV67Q4"), is(true));
 
-        InstrumentDefinition    instrumentDefinition = matchInstrumentsResponse.getValues().get("BBG000BF6B57").get(0);
+        InstrumentDefinition    instrumentDefinition = matchInstrumentsResponse.getValues().get("BBG000FV67Q4").get(0);
 
         /*
             Add the instrument to the instrument master.  The result of the match contains
@@ -222,9 +222,9 @@ public class InstrumentMasterTests {
         /*
             Get the instrument from the instrument master
          */
-        Instrument instrument = instrumentsApi.getInstrument(FIGI_SCHEME, "BBG000BF6B57", null, null, null);
+        Instrument instrument = instrumentsApi.getInstrument(FIGI_SCHEME, "BBG000FV67Q4", null, null, null);
 
-        assertThat(instrument.getIdentifiers().get(FIGI_SCHEME), is(equalTo("BBG000BF6B57")));
-        assertThat(instrument.getName(), is(equalTo("WPP PLC")));
+        assertThat(instrument.getIdentifiers().get(FIGI_SCHEME), is(equalTo("BBG000FV67Q4")));
+        assertThat(instrument.getName(), is(equalTo("NATIONAL GRID PLC")));
     }
 }
