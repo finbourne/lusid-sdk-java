@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **exDate** | [**OffsetDateTime**](OffsetDateTime.md) |  | 
 **recordDate** | [**OffsetDateTime**](OffsetDateTime.md) |  | 
 **paymentDate** | [**OffsetDateTime**](OffsetDateTime.md) |  | 
-**transitions** | [**List&lt;CorporateActionTransition&gt;**](CorporateActionTransition.md) |  | 
+**transitions** | [**List&lt;CorporateActionTransitionRequest&gt;**](CorporateActionTransitionRequest.md) |  | 
 
 
 

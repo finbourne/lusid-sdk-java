@@ -14,8 +14,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.Link;
-import com.finbourne.lusid.model.Version;
+import com.finbourne.lusid.model.CorporateActionTransitionComponentRequest;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,153 +23,63 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Summary information of a holdings adjustment for a single portfolio and effective date.
+ * A &#39;transition&#39; within a corporate action, representing a set of output movements paired to a single input position
  */
-@ApiModel(description = "Summary information of a holdings adjustment for a single portfolio and effective date.")
+@ApiModel(description = "A 'transition' within a corporate action, representing a set of output movements paired to a single input position")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-14T16:02:45.789Z")
-public class HoldingsAdjustmentHeader {
-  @SerializedName("effectiveAt")
-  private OffsetDateTime effectiveAt = null;
+public class CorporateActionTransitionRequest {
+  @SerializedName("inputTransition")
+  private CorporateActionTransitionComponentRequest inputTransition = null;
 
-  @SerializedName("version")
-  private Version version = null;
+  @SerializedName("outputTransitions")
+  private List<CorporateActionTransitionComponentRequest> outputTransitions = null;
 
-  /**
-   * Gets or Sets unmatchedHoldingMethod
-   */
-  @JsonAdapter(UnmatchedHoldingMethodEnum.Adapter.class)
-  public enum UnmatchedHoldingMethodEnum {
-    POSITIONTOZERO("PositionToZero"),
-    
-    KEEPTHESAME("KeepTheSame");
-
-    private String value;
-
-    UnmatchedHoldingMethodEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static UnmatchedHoldingMethodEnum fromValue(String text) {
-      for (UnmatchedHoldingMethodEnum b : UnmatchedHoldingMethodEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<UnmatchedHoldingMethodEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final UnmatchedHoldingMethodEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public UnmatchedHoldingMethodEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return UnmatchedHoldingMethodEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }
-
-  @SerializedName("unmatchedHoldingMethod")
-  private UnmatchedHoldingMethodEnum unmatchedHoldingMethod = null;
-
-  @SerializedName("links")
-  private List<Link> links = null;
-
-  public HoldingsAdjustmentHeader effectiveAt(OffsetDateTime effectiveAt) {
-    this.effectiveAt = effectiveAt;
+  public CorporateActionTransitionRequest inputTransition(CorporateActionTransitionComponentRequest inputTransition) {
+    this.inputTransition = inputTransition;
     return this;
   }
 
    /**
-   * There can be at most one holdings adjustment for a portfolio at a  specific effective time so this uniquely identifies the adjustment.
-   * @return effectiveAt
-  **/
-  @ApiModelProperty(value = "There can be at most one holdings adjustment for a portfolio at a  specific effective time so this uniquely identifies the adjustment.")
-  public OffsetDateTime getEffectiveAt() {
-    return effectiveAt;
-  }
-
-  public void setEffectiveAt(OffsetDateTime effectiveAt) {
-    this.effectiveAt = effectiveAt;
-  }
-
-  public HoldingsAdjustmentHeader version(Version version) {
-    this.version = version;
-    return this;
-  }
-
-   /**
-   * Get version
-   * @return version
+   * Get inputTransition
+   * @return inputTransition
   **/
   @ApiModelProperty(value = "")
-  public Version getVersion() {
-    return version;
+  public CorporateActionTransitionComponentRequest getInputTransition() {
+    return inputTransition;
   }
 
-  public void setVersion(Version version) {
-    this.version = version;
+  public void setInputTransition(CorporateActionTransitionComponentRequest inputTransition) {
+    this.inputTransition = inputTransition;
   }
 
-  public HoldingsAdjustmentHeader unmatchedHoldingMethod(UnmatchedHoldingMethodEnum unmatchedHoldingMethod) {
-    this.unmatchedHoldingMethod = unmatchedHoldingMethod;
+  public CorporateActionTransitionRequest outputTransitions(List<CorporateActionTransitionComponentRequest> outputTransitions) {
+    this.outputTransitions = outputTransitions;
     return this;
   }
 
-   /**
-   * Get unmatchedHoldingMethod
-   * @return unmatchedHoldingMethod
-  **/
-  @ApiModelProperty(value = "")
-  public UnmatchedHoldingMethodEnum getUnmatchedHoldingMethod() {
-    return unmatchedHoldingMethod;
-  }
-
-  public void setUnmatchedHoldingMethod(UnmatchedHoldingMethodEnum unmatchedHoldingMethod) {
-    this.unmatchedHoldingMethod = unmatchedHoldingMethod;
-  }
-
-  public HoldingsAdjustmentHeader links(List<Link> links) {
-    this.links = links;
-    return this;
-  }
-
-  public HoldingsAdjustmentHeader addLinksItem(Link linksItem) {
-    if (this.links == null) {
-      this.links = new ArrayList<>();
+  public CorporateActionTransitionRequest addOutputTransitionsItem(CorporateActionTransitionComponentRequest outputTransitionsItem) {
+    if (this.outputTransitions == null) {
+      this.outputTransitions = new ArrayList<>();
     }
-    this.links.add(linksItem);
+    this.outputTransitions.add(outputTransitionsItem);
     return this;
   }
 
    /**
-   * Get links
-   * @return links
+   * Get outputTransitions
+   * @return outputTransitions
   **/
   @ApiModelProperty(value = "")
-  public List<Link> getLinks() {
-    return links;
+  public List<CorporateActionTransitionComponentRequest> getOutputTransitions() {
+    return outputTransitions;
   }
 
-  public void setLinks(List<Link> links) {
-    this.links = links;
+  public void setOutputTransitions(List<CorporateActionTransitionComponentRequest> outputTransitions) {
+    this.outputTransitions = outputTransitions;
   }
 
 
@@ -182,28 +91,24 @@ public class HoldingsAdjustmentHeader {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HoldingsAdjustmentHeader holdingsAdjustmentHeader = (HoldingsAdjustmentHeader) o;
-    return Objects.equals(this.effectiveAt, holdingsAdjustmentHeader.effectiveAt) &&
-        Objects.equals(this.version, holdingsAdjustmentHeader.version) &&
-        Objects.equals(this.unmatchedHoldingMethod, holdingsAdjustmentHeader.unmatchedHoldingMethod) &&
-        Objects.equals(this.links, holdingsAdjustmentHeader.links);
+    CorporateActionTransitionRequest corporateActionTransitionRequest = (CorporateActionTransitionRequest) o;
+    return Objects.equals(this.inputTransition, corporateActionTransitionRequest.inputTransition) &&
+        Objects.equals(this.outputTransitions, corporateActionTransitionRequest.outputTransitions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveAt, version, unmatchedHoldingMethod, links);
+    return Objects.hash(inputTransition, outputTransitions);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class HoldingsAdjustmentHeader {\n");
+    sb.append("class CorporateActionTransitionRequest {\n");
     
-    sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    unmatchedHoldingMethod: ").append(toIndentedString(unmatchedHoldingMethod)).append("\n");
-    sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("    inputTransition: ").append(toIndentedString(inputTransition)).append("\n");
+    sb.append("    outputTransitions: ").append(toIndentedString(outputTransitions)).append("\n");
     sb.append("}");
     return sb.toString();
   }

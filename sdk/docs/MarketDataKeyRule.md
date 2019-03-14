@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**dataScope** | **String** | the scope in which the data should be found when using this rule. |  [optional]
 **key** | **String** | The market data key pattern which this is a rule for. A dot separated string (A.B.C.D.*) | 
 **supplier** | [**SupplierEnum**](#SupplierEnum) | the market data supplier (where the data comes from) | 
+**dataScope** | **String** | the scope in which the data should be found when using this rule. | 
 **quoteType** | [**QuoteTypeEnum**](#QuoteTypeEnum) | is the quote to be looked for a price, yield etc. |  [optional]
 **priceSide** | [**PriceSideEnum**](#PriceSideEnum) | the conceptual qualification for the field. Something like Bid, Ask or Mid. |  [optional]
 

@@ -14,8 +14,6 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.Link;
-import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -24,153 +22,81 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.time.OffsetDateTime;
-import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
- * Summary information of a holdings adjustment for a single portfolio and effective date.
+ * CorporateActionTransitionComponentRequest
  */
-@ApiModel(description = "Summary information of a holdings adjustment for a single portfolio and effective date.")
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-14T16:02:45.789Z")
-public class HoldingsAdjustmentHeader {
-  @SerializedName("effectiveAt")
-  private OffsetDateTime effectiveAt = null;
+public class CorporateActionTransitionComponentRequest {
+  @SerializedName("instrumentIdentifiers")
+  private Map<String, String> instrumentIdentifiers = new HashMap<>();
 
-  @SerializedName("version")
-  private Version version = null;
+  @SerializedName("unitsFactor")
+  private Double unitsFactor = null;
 
-  /**
-   * Gets or Sets unmatchedHoldingMethod
-   */
-  @JsonAdapter(UnmatchedHoldingMethodEnum.Adapter.class)
-  public enum UnmatchedHoldingMethodEnum {
-    POSITIONTOZERO("PositionToZero"),
-    
-    KEEPTHESAME("KeepTheSame");
+  @SerializedName("costFactor")
+  private Double costFactor = null;
 
-    private String value;
-
-    UnmatchedHoldingMethodEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static UnmatchedHoldingMethodEnum fromValue(String text) {
-      for (UnmatchedHoldingMethodEnum b : UnmatchedHoldingMethodEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<UnmatchedHoldingMethodEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final UnmatchedHoldingMethodEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public UnmatchedHoldingMethodEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return UnmatchedHoldingMethodEnum.fromValue(String.valueOf(value));
-      }
-    }
+  public CorporateActionTransitionComponentRequest instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
+    this.instrumentIdentifiers = instrumentIdentifiers;
+    return this;
   }
 
-  @SerializedName("unmatchedHoldingMethod")
-  private UnmatchedHoldingMethodEnum unmatchedHoldingMethod = null;
-
-  @SerializedName("links")
-  private List<Link> links = null;
-
-  public HoldingsAdjustmentHeader effectiveAt(OffsetDateTime effectiveAt) {
-    this.effectiveAt = effectiveAt;
+  public CorporateActionTransitionComponentRequest putInstrumentIdentifiersItem(String key, String instrumentIdentifiersItem) {
+    this.instrumentIdentifiers.put(key, instrumentIdentifiersItem);
     return this;
   }
 
    /**
-   * There can be at most one holdings adjustment for a portfolio at a  specific effective time so this uniquely identifies the adjustment.
-   * @return effectiveAt
+   * unique instrument identifiers.
+   * @return instrumentIdentifiers
   **/
-  @ApiModelProperty(value = "There can be at most one holdings adjustment for a portfolio at a  specific effective time so this uniquely identifies the adjustment.")
-  public OffsetDateTime getEffectiveAt() {
-    return effectiveAt;
+  @ApiModelProperty(required = true, value = "unique instrument identifiers.")
+  public Map<String, String> getInstrumentIdentifiers() {
+    return instrumentIdentifiers;
   }
 
-  public void setEffectiveAt(OffsetDateTime effectiveAt) {
-    this.effectiveAt = effectiveAt;
+  public void setInstrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
+    this.instrumentIdentifiers = instrumentIdentifiers;
   }
 
-  public HoldingsAdjustmentHeader version(Version version) {
-    this.version = version;
+  public CorporateActionTransitionComponentRequest unitsFactor(Double unitsFactor) {
+    this.unitsFactor = unitsFactor;
     return this;
   }
 
    /**
-   * Get version
-   * @return version
+   * 
+   * @return unitsFactor
   **/
-  @ApiModelProperty(value = "")
-  public Version getVersion() {
-    return version;
+  @ApiModelProperty(required = true, value = "")
+  public Double getUnitsFactor() {
+    return unitsFactor;
   }
 
-  public void setVersion(Version version) {
-    this.version = version;
+  public void setUnitsFactor(Double unitsFactor) {
+    this.unitsFactor = unitsFactor;
   }
 
-  public HoldingsAdjustmentHeader unmatchedHoldingMethod(UnmatchedHoldingMethodEnum unmatchedHoldingMethod) {
-    this.unmatchedHoldingMethod = unmatchedHoldingMethod;
+  public CorporateActionTransitionComponentRequest costFactor(Double costFactor) {
+    this.costFactor = costFactor;
     return this;
   }
 
    /**
-   * Get unmatchedHoldingMethod
-   * @return unmatchedHoldingMethod
+   * 
+   * @return costFactor
   **/
-  @ApiModelProperty(value = "")
-  public UnmatchedHoldingMethodEnum getUnmatchedHoldingMethod() {
-    return unmatchedHoldingMethod;
+  @ApiModelProperty(required = true, value = "")
+  public Double getCostFactor() {
+    return costFactor;
   }
 
-  public void setUnmatchedHoldingMethod(UnmatchedHoldingMethodEnum unmatchedHoldingMethod) {
-    this.unmatchedHoldingMethod = unmatchedHoldingMethod;
-  }
-
-  public HoldingsAdjustmentHeader links(List<Link> links) {
-    this.links = links;
-    return this;
-  }
-
-  public HoldingsAdjustmentHeader addLinksItem(Link linksItem) {
-    if (this.links == null) {
-      this.links = new ArrayList<>();
-    }
-    this.links.add(linksItem);
-    return this;
-  }
-
-   /**
-   * Get links
-   * @return links
-  **/
-  @ApiModelProperty(value = "")
-  public List<Link> getLinks() {
-    return links;
-  }
-
-  public void setLinks(List<Link> links) {
-    this.links = links;
+  public void setCostFactor(Double costFactor) {
+    this.costFactor = costFactor;
   }
 
 
@@ -182,28 +108,26 @@ public class HoldingsAdjustmentHeader {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    HoldingsAdjustmentHeader holdingsAdjustmentHeader = (HoldingsAdjustmentHeader) o;
-    return Objects.equals(this.effectiveAt, holdingsAdjustmentHeader.effectiveAt) &&
-        Objects.equals(this.version, holdingsAdjustmentHeader.version) &&
-        Objects.equals(this.unmatchedHoldingMethod, holdingsAdjustmentHeader.unmatchedHoldingMethod) &&
-        Objects.equals(this.links, holdingsAdjustmentHeader.links);
+    CorporateActionTransitionComponentRequest corporateActionTransitionComponentRequest = (CorporateActionTransitionComponentRequest) o;
+    return Objects.equals(this.instrumentIdentifiers, corporateActionTransitionComponentRequest.instrumentIdentifiers) &&
+        Objects.equals(this.unitsFactor, corporateActionTransitionComponentRequest.unitsFactor) &&
+        Objects.equals(this.costFactor, corporateActionTransitionComponentRequest.costFactor);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveAt, version, unmatchedHoldingMethod, links);
+    return Objects.hash(instrumentIdentifiers, unitsFactor, costFactor);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class HoldingsAdjustmentHeader {\n");
+    sb.append("class CorporateActionTransitionComponentRequest {\n");
     
-    sb.append("    effectiveAt: ").append(toIndentedString(effectiveAt)).append("\n");
-    sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    unmatchedHoldingMethod: ").append(toIndentedString(unmatchedHoldingMethod)).append("\n");
-    sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("    instrumentIdentifiers: ").append(toIndentedString(instrumentIdentifiers)).append("\n");
+    sb.append("    unitsFactor: ").append(toIndentedString(unitsFactor)).append("\n");
+    sb.append("    costFactor: ").append(toIndentedString(costFactor)).append("\n");
     sb.append("}");
     return sb.toString();
   }
