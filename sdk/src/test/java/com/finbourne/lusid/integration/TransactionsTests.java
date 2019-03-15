@@ -77,7 +77,7 @@ public class TransactionsTests {
                 .settlementDate(effectiveDate)
                 .units(100.0)
                 .transactionPrice(new TransactionPrice().price(12.3))
-                .source(TransactionRequest.SourceEnum.CLIENT);
+                .source("Custodian");
 
         //  add the trade
         transactionPortfoliosApi.upsertTransactions(scope, portfolioId, new ArrayList<>(Arrays.asList(transaction)));
@@ -123,7 +123,7 @@ public class TransactionsTests {
                 .transactionDate(effectiveDate)
                 .settlementDate(effectiveDate)
                 .units(1000.0)
-                .source(TransactionRequest.SourceEnum.CLIENT);
+                .source("Custodian");
 
         //  add the trade
         transactionPortfoliosApi.upsertTransactions(scope, portfolioId, new ArrayList<>(Arrays.asList(transaction)));
@@ -190,7 +190,7 @@ public class TransactionsTests {
                 .transactionDate(effectiveDate)
                 .settlementDate(effectiveDate)
                 .units(1.0)
-                .source(TransactionRequest.SourceEnum.CLIENT);
+                .source("Custodian");
 
         //  add the trade
         transactionPortfoliosApi.upsertTransactions(scope, portfolioId, new ArrayList<>(Arrays.asList(transactionRequest)));
