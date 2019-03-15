@@ -16,16 +16,8 @@ Name | Type | Description | Notes
 **transactionCurrency** | **String** | Transaction currency |  [optional]
 **properties** | [**Map&lt;String, PerpetualPropertyValue&gt;**](PerpetualPropertyValue.md) |  |  [optional]
 **counterpartyId** | **String** | Counterparty identifier |  [optional]
-**source** | [**SourceEnum**](#SourceEnum) | Where this transaction came from, either Client or System | 
+**source** | **String** | Where this transaction came from | 
 **nettingSet** | **String** |  |  [optional]
-
-
-<a name="SourceEnum"></a>
-## Enum: SourceEnum
-Name | Value
----- | -----
-SYSTEM | &quot;System&quot;
-CLIENT | &quot;Client&quot;
 
 
 

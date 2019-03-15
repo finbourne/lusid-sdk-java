@@ -19,20 +19,12 @@ Name | Type | Description | Notes
 **transactionCurrency** | **String** | Transaction currency |  [optional]
 **properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) |  |  [optional]
 **counterpartyId** | **String** | Counterparty identifier |  [optional]
-**source** | [**SourceEnum**](#SourceEnum) | Where this transaction came from, either Client or System |  [optional]
+**source** | **String** | Where this transaction came from |  [optional]
 **nettingSet** | **String** |  |  [optional]
 **transactionStatus** | [**TransactionStatusEnum**](#TransactionStatusEnum) | Transaction status (active, amended or cancelled) |  [optional]
 **entryDateTime** | [**OffsetDateTime**](OffsetDateTime.md) | Date/Time the transaction was booked into LUSID |  [optional]
 **cancelDateTime** | [**OffsetDateTime**](OffsetDateTime.md) | Date/Time the cancellation was booked into LUSID |  [optional]
 **realisedGainLoss** | [**List&lt;RealisedGainLoss&gt;**](RealisedGainLoss.md) | Collection of gains or losses |  [optional]
-
-
-<a name="SourceEnum"></a>
-## Enum: SourceEnum
-Name | Value
----- | -----
-SYSTEM | &quot;System&quot;
-CLIENT | &quot;Client&quot;
 
 
 <a name="TransactionStatusEnum"></a>
