@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **transactionCurrency** | **String** | Transaction currency |  [optional]
 **properties** | [**Map&lt;String, PerpetualPropertyValue&gt;**](PerpetualPropertyValue.md) |  |  [optional]
 **counterpartyId** | **String** | Counterparty identifier |  [optional]
-**source** | **String** | Where this transaction came from | 
+**source** | **String** | Where this transaction came from |  [optional]
 **nettingSet** | **String** |  |  [optional]
 
 
