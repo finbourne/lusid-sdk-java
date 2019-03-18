@@ -29,7 +29,7 @@ import java.time.OffsetDateTime;
  * Used to specify holdings target amounts at the tax-lot level
  */
 @ApiModel(description = "Used to specify holdings target amounts at the tax-lot level")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-17T14:40:31.194Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-18T10:30:05.980Z")
 public class TargetTaxLot {
   @SerializedName("units")
   private Double units = null;

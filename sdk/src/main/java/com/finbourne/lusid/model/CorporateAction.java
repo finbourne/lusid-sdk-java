@@ -32,7 +32,7 @@ import java.util.List;
  * A corporate action
  */
 @ApiModel(description = "A corporate action")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-17T14:40:31.194Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-18T10:30:05.980Z")
 public class CorporateAction {
   @SerializedName("sourceId")
   private ResourceId sourceId = null;

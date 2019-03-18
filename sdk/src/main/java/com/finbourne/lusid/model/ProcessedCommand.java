@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * ProcessedCommand
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-17T14:40:31.194Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-03-18T10:30:05.980Z")
 public class ProcessedCommand {
   @SerializedName("description")
   private String description = null;
