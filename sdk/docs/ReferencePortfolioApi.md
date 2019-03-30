@@ -67,7 +67,7 @@ Name | Type | Description  | Notes
 
 <a name="getReferencePortfolioConstituents"></a>
 # **getReferencePortfolioConstituents**
-> GetReferencePortfolioConstituentsResponse getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, sortBy, start, limit)
+> GetReferencePortfolioConstituentsResponse getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, sortBy, start, limit, instrumentPropertyKeys)
 
 Get constituents
 
@@ -96,8 +96,9 @@ OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The As
 List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
 Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many
+List<String> instrumentPropertyKeys = Arrays.asList("instrumentPropertyKeys_example"); // List<String> | Optional. The Properties of the constituents
 try {
-    GetReferencePortfolioConstituentsResponse result = apiInstance.getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, sortBy, start, limit);
+    GetReferencePortfolioConstituentsResponse result = apiInstance.getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, sortBy, start, limit, instrumentPropertyKeys);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling ReferencePortfolioApi#getReferencePortfolioConstituents");
@@ -116,6 +117,7 @@ Name | Type | Description  | Notes
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
  **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many | [optional]
+ **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. The Properties of the constituents | [optional]
 
 ### Return type
 
