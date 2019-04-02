@@ -23,6 +23,11 @@ RECEIVABLE | &quot;Receivable&quot;
 CASHSETTLEMENT | &quot;CashSettlement&quot;
 ACCRUAL | &quot;Accrual&quot;
 UNSETTLEDCASHTYPES | &quot;UnsettledCashTypes&quot;
+STOCKMOVEMENT | &quot;StockMovement&quot;
+CASHCOMMITMENT | &quot;CashCommitment&quot;
+CASHRECEIVABLE | &quot;CashReceivable&quot;
+CASHFORWARD | &quot;CashForward&quot;
+CASHACCRUAL | &quot;CashAccrual&quot;
 
 
 <a name="SideEnum"></a>

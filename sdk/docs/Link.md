@@ -25,6 +25,8 @@ HOLDINGSADJUSTMENTS | &quot;HoldingsAdjustments&quot;
 PARENT | &quot;Parent&quot;
 PROPERTYSCHEMA | &quot;PropertySchema&quot;
 ENTITYSCHEMA | &quot;EntitySchema&quot;
+NEXTPAGE | &quot;NextPage&quot;
+PREVIOUSPAGE | &quot;PreviousPage&quot;
 QUOTE | &quot;Quote&quot;
 CONSTITUENTSADJUSTMENTS | &quot;ConstituentsAdjustments&quot;
 

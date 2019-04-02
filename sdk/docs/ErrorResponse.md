@@ -67,7 +67,7 @@ INVALIDALTERNATEID | &quot;InvalidAlternateId&quot;
 CANNOTADDSOURCEPORTFOLIOPROPERTYEXPLICITLY | &quot;CannotAddSourcePortfolioPropertyExplicitly&quot;
 ENTITYALREADYEXISTSINGROUP | &quot;EntityAlreadyExistsInGroup&quot;
 ENTITYWITHIDALREADYEXISTS | &quot;EntityWithIdAlreadyExists&quot;
-PORTFOLIODETAILSDONOTEXIST | &quot;PortfolioDetailsDoNotExist&quot;
+DERIVEDPORTFOLIODETAILSDONOTEXIST | &quot;DerivedPortfolioDetailsDoNotExist&quot;
 PORTFOLIOWITHNAMEALREADYEXISTS | &quot;PortfolioWithNameAlreadyExists&quot;
 INVALIDTRANSACTIONS | &quot;InvalidTransactions&quot;
 REFERENCEPORTFOLIONOTFOUND | &quot;ReferencePortfolioNotFound&quot;

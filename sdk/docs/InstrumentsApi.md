@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 
 <a name="listInstruments"></a>
 # **listInstruments**
-> ResourceListOfInstrument listInstruments(asAt, effectiveAt, sortBy, start, limit, filter, instrumentPropertyKeys)
+> ResourceListOfInstrument listInstruments(asAt, effectiveAt, page, sortBy, start, limit, filter, instrumentPropertyKeys)
 
 Get all of the currently mastered instruments in LUSID
 
@@ -327,13 +327,14 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 InstrumentsApi apiInstance = new InstrumentsApi();
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt time
 OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the query
+String page = "page_example"; // String | Optional. The pagination token to continue listing instruments. This value is returned from a previous call to ListInstruments.  If this is set, then the sortBy, filter, effectiveAt, and asAt fields must not have changed. Also, if set, a start value cannot be set.
 List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
 Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many
 String filter = "State eq 'Active'"; // String | Optional. Expression to filter the result set - the default filter returns only instruments in the Active state
 List<String> instrumentPropertyKeys = Arrays.asList("instrumentPropertyKeys_example"); // List<String> | Optional. Keys of the properties to be decorated on to the instrument
 try {
-    ResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, sortBy, start, limit, filter, instrumentPropertyKeys);
+    ResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, start, limit, filter, instrumentPropertyKeys);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InstrumentsApi#listInstruments");
@@ -347,6 +348,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **asAt** | **OffsetDateTime**| Optional. The AsAt time | [optional]
  **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the query | [optional]
+ **page** | **String**| Optional. The pagination token to continue listing instruments. This value is returned from a previous call to ListInstruments.  If this is set, then the sortBy, filter, effectiveAt, and asAt fields must not have changed. Also, if set, a start value cannot be set. | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
  **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many | [optional]
