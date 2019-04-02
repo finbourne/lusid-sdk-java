@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * GetQuotesResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T21:31:36.039Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T22:13:22.953Z")
 public class GetQuotesResponse {
   @SerializedName("found")
   private List<Quote> found = null;

@@ -18,7 +18,7 @@ import com.finbourne.lusid.Pair;
 import java.util.Map;
 import java.util.List;
 
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T21:31:36.039Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T22:13:22.953Z")
 public class OAuth implements Authentication {
   private String accessToken;
 

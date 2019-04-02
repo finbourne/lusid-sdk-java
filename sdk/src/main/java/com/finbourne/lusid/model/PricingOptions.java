@@ -28,7 +28,7 @@ import java.io.IOException;
  * Options for controlling the default aspects and behaviour of the pricing engine.
  */
 @ApiModel(description = "Options for controlling the default aspects and behaviour of the pricing engine.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T21:31:36.039Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-02T22:13:22.953Z")
 public class PricingOptions {
   @SerializedName("modelSelection")
   private ModelSelection modelSelection = null;
