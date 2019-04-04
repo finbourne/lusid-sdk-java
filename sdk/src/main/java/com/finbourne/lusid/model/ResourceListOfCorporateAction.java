@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * ResourceListOfCorporateAction
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-04T13:29:55.681Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-04T15:31:24.733Z")
 public class ResourceListOfCorporateAction {
   @SerializedName("values")
   private List<CorporateAction> values = null;
