@@ -30,7 +30,7 @@ import java.util.List;
  * A &#39;transition&#39; within a corporate action, representing a set of output movements paired to a single input position
  */
 @ApiModel(description = "A 'transition' within a corporate action, representing a set of output movements paired to a single input position")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T20:29:41.314Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-04T13:29:55.681Z")
 public class CorporateActionTransitionRequest {
   @SerializedName("inputTransition")
   private CorporateActionTransitionComponentRequest inputTransition = null;

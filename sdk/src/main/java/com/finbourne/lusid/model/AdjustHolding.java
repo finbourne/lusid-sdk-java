@@ -31,7 +31,7 @@ import java.util.List;
  * The response given from the AdjustHoldings Api call
  */
 @ApiModel(description = "The response given from the AdjustHoldings Api call")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T20:29:41.314Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-04T13:29:55.681Z")
 public class AdjustHolding {
   @SerializedName("href")
   private String href = null;

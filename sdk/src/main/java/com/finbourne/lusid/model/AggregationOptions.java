@@ -27,7 +27,7 @@ import java.io.IOException;
  * Options for controlling the default aspects and behaviour of the aggregation.
  */
 @ApiModel(description = "Options for controlling the default aspects and behaviour of the aggregation.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T20:29:41.314Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-04T13:29:55.681Z")
 public class AggregationOptions {
   @SerializedName("useAnsiLikeSyntax")
   private Boolean useAnsiLikeSyntax = null;

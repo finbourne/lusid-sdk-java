@@ -30,7 +30,7 @@ import java.util.List;
  * A collection of instrument search results
  */
 @ApiModel(description = "A collection of instrument search results")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-03T20:29:41.314Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-04T13:29:55.681Z")
 public class InstrumentMatch {
   @SerializedName("masteredInstruments")
   private List<InstrumentDefinition> masteredInstruments = null;
