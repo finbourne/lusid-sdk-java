@@ -29,7 +29,7 @@ import java.time.OffsetDateTime;
 /**
  * UpsertQuoteRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-04T15:31:24.733Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-04T15:44:25.243Z")
 public class UpsertQuoteRequest {
   @SerializedName("quoteId")
   private QuoteId quoteId = null;
