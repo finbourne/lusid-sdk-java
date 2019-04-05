@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * ResourceListOfTransactionConfigurationData
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-05T15:05:56.831Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-05T16:58:33.910Z")
 public class ResourceListOfTransactionConfigurationData {
   @SerializedName("values")
   private List<TransactionConfigurationData> values = null;

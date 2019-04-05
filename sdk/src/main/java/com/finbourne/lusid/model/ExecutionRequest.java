@@ -30,7 +30,7 @@ import java.util.Map;
 /**
  * ExecutionRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-05T15:05:56.831Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-05T16:58:33.910Z")
 public class ExecutionRequest {
   @SerializedName("executionId")
   private String executionId = null;
