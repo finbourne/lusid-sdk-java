@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * UpsertInstrumentPropertyRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-05T06:23:03.877Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-05T06:37:11.810Z")
 public class UpsertInstrumentPropertyRequest {
   @SerializedName("lusidInstrumentId")
   private String lusidInstrumentId = null;
