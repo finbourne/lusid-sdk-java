@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **properties** | [**List&lt;Property&gt;**](Property.md) | Any requested instrument properties. If no property can be found for the instrument, then  a value of &#39;Unknown&#39; will be returned |  [optional]
 **lookthroughPortfolio** | [**ResourceId**](ResourceId.md) | The lookthrough portfolio of the instrument (if any). |  [optional]
 **instrumentDefinition** | [**InstrumentEconomicDefinition**](InstrumentEconomicDefinition.md) | The economic definition of the instrument for an OTC or instrument where an expanded definition exists. |  [optional]
-**state** | [**StateEnum**](#StateEnum) |  |  [optional]
+**state** | [**StateEnum**](#StateEnum) |  | 
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 

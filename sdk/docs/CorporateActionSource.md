@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **href** | **String** |  |  [optional]
-**id** | [**ResourceId**](ResourceId.md) |  |  [optional]
-**version** | [**Version**](Version.md) |  |  [optional]
+**id** | [**ResourceId**](ResourceId.md) |  | 
+**version** | [**Version**](Version.md) |  | 
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 

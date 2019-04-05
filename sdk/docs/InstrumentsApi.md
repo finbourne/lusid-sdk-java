@@ -282,8 +282,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifierType** | **String**| The type of identifiers being supplied | [optional]
- **identifiers** | **List&lt;String&gt;**| The identifiers of the instruments to get | [optional]
+ **identifierType** | **String**| The type of identifiers being supplied |
+ **identifiers** | **List&lt;String&gt;**| The identifiers of the instruments to get |
  **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the request | [optional]
  **asAt** | **OffsetDateTime**| Optional. The as at date of the request | [optional]
  **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys of the properties to be decorated on to the instrument | [optional]

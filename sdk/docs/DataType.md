@@ -5,11 +5,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **href** | **String** |  |  [optional]
-**typeValueRange** | [**TypeValueRangeEnum**](#TypeValueRangeEnum) |  |  [optional]
-**id** | [**ResourceId**](ResourceId.md) |  |  [optional]
-**displayName** | **String** |  |  [optional]
-**description** | **String** |  |  [optional]
-**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) |  |  [optional]
+**typeValueRange** | [**TypeValueRangeEnum**](#TypeValueRangeEnum) |  | 
+**id** | [**ResourceId**](ResourceId.md) |  | 
+**displayName** | **String** |  | 
+**description** | **String** |  | 
+**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) |  | 
 **acceptableValues** | **List&lt;Object&gt;** |  |  [optional]
 **unitSchema** | [**UnitSchemaEnum**](#UnitSchemaEnum) |  |  [optional]
 **acceptableUnits** | [**List&lt;IUnitDefinitionDto&gt;**](IUnitDefinitionDto.md) |  |  [optional]

@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **displayName** | **String** |  | 
 **description** | **String** |  |  [optional]
-**code** | **String** |  |  [optional]
-**parentPortfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional]
+**code** | **String** |  | 
+**parentPortfolioId** | [**ResourceId**](ResourceId.md) |  | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **corporateActionSourceId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **accountingMethod** | [**AccountingMethodEnum**](#AccountingMethodEnum) |  |  [optional]
