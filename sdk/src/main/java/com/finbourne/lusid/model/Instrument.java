@@ -35,7 +35,7 @@ import java.util.Map;
 /**
  * Instrument
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-05T06:37:11.810Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-05T07:34:15.897Z")
 public class Instrument {
   @SerializedName("href")
   private String href = null;

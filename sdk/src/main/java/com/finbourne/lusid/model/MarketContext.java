@@ -32,7 +32,7 @@ import java.util.List;
  * Market context node. This defines how LUSID processes parts of a request that require resolution of market data such as instrument prices or  Fx rates. It controls where the data is loaded from and which sources take precedence.
  */
 @ApiModel(description = "Market context node. This defines how LUSID processes parts of a request that require resolution of market data such as instrument prices or  Fx rates. It controls where the data is loaded from and which sources take precedence.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-05T06:37:11.810Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-05T07:34:15.897Z")
 public class MarketContext {
   @SerializedName("marketRules")
   private List<MarketDataKeyRule> marketRules = null;

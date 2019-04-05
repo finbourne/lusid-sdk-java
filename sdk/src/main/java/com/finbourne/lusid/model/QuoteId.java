@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * QuoteId
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-05T06:37:11.810Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-05T07:34:15.897Z")
 public class QuoteId {
   @SerializedName("provider")
   private String provider = null;
