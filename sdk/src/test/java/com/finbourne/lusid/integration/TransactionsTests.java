@@ -89,7 +89,7 @@ public class TransactionsTests {
         assertEquals(1, transactions.getValues().size());
         assertEquals(transaction.getTransactionId(), transactions.getValues().get(0).getTransactionId());
     }
-    
+
     @Test
     public void load_cash_transaction() throws ApiException {
         String uuid = UUID.randomUUID().toString();
@@ -161,7 +161,7 @@ public class TransactionsTests {
         //  swap definition, this is uploaded in a client custom format
         InstrumentDefinition   swapDefinition = new InstrumentDefinition()
                 .name("10mm 5Y Fixed")
-                .identifiers(Collections.singletonMap("ClientInternal", "SW-1"))
+                .identifiers(Collections.singletonMap("ClientInternal", new InstrumentIdValue().value("SW-1")))
                 .definition(
                         new InstrumentEconomicDefinition()
                                 .instrumentFormat("CustomFormat")
