@@ -328,7 +328,7 @@ Name | Type | Description  | Notes
 
 List portfolios
 
-List all portfolios matching the specified criteria.                Example query syntax for the query parameter:                - To see which portfolios have holdings in the specified instruments:                    instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))                * Note that if a query is specified then it is executed for the current EffectiveAt and AsAt  Specifying EffectiveAt or AsAt in addition to the query is not supported  Also note that copy/pasting above examples results in incorrect single quote character
+List all portfolios matching the specified criteria.                Example query syntax for the query parameter:                - To see which portfolios have holdings in the specified instruments:                    instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))                * Note that copy/pasting above examples results in incorrect single quote character
 
 ### Example
 ```java

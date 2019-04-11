@@ -5,12 +5,10 @@ All URIs are relative to *https://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteInstrument**](InstrumentsApi.md#deleteInstrument) | **DELETE** /api/instruments/{identifierType}/{identifier} | Delete instrument
-[**findInstruments**](InstrumentsApi.md#findInstruments) | **POST** /api/instruments/$find | Search instrument definition
 [**getInstrument**](InstrumentsApi.md#getInstrument) | **GET** /api/instruments/{identifierType}/{identifier} | Get instrument definition
 [**getInstrumentIdentifiers**](InstrumentsApi.md#getInstrumentIdentifiers) | **GET** /api/instruments/identifiers | Get allowable instrument identifiers
 [**getInstruments**](InstrumentsApi.md#getInstruments) | **POST** /api/instruments/$get | Get instrument definition
 [**listInstruments**](InstrumentsApi.md#listInstruments) | **GET** /api/instruments | Get all of the currently mastered instruments in LUSID
-[**matchInstruments**](InstrumentsApi.md#matchInstruments) | **POST** /api/instruments/$match | Find externally mastered instruments
 [**updateInstrumentIdentifier**](InstrumentsApi.md#updateInstrumentIdentifier) | **POST** /api/instruments/{identifierType}/{identifier} | Update instrument identifier
 [**upsertInstruments**](InstrumentsApi.md#upsertInstruments) | **POST** /api/instruments | Upsert instruments
 [**upsertInstrumentsProperties**](InstrumentsApi.md#upsertInstrumentsProperties) | **POST** /api/instruments/$upsertproperties | Upsert instrument properties
@@ -69,65 +67,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
-
-<a name="findInstruments"></a>
-# **findInstruments**
-> ResourceListOfInstrument findInstruments(aliases, effectiveAt, asAt, instrumentPropertyKeys)
-
-Search instrument definition
-
-Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
-
-### Example
-```java
-// Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.InstrumentsApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-InstrumentsApi apiInstance = new InstrumentsApi();
-List<Property> aliases = Arrays.asList(new Property()); // List<Property> | The list of market aliases (e.g ISIN, Ticker) to find instruments by.
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the query
-OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the query
-List<String> instrumentPropertyKeys = Arrays.asList("instrumentPropertyKeys_example"); // List<String> | Optional. Keys of the properties to be decorated on to the instrument
-try {
-    ResourceListOfInstrument result = apiInstance.findInstruments(aliases, effectiveAt, asAt, instrumentPropertyKeys);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling InstrumentsApi#findInstruments");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **aliases** | [**List&lt;Property&gt;**](Property.md)| The list of market aliases (e.g ISIN, Ticker) to find instruments by. | [optional]
- **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the query | [optional]
- **asAt** | **OffsetDateTime**| Optional. The AsAt date of the query | [optional]
- **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys of the properties to be decorated on to the instrument | [optional]
-
-### Return type
-
-[**ResourceListOfInstrument**](ResourceListOfInstrument.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
  - **Accept**: text/plain, application/json, text/json
 
 <a name="getInstrument"></a>
@@ -366,61 +305,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
-
-<a name="matchInstruments"></a>
-# **matchInstruments**
-> MatchInstrumentsResponse matchInstruments(identifierType, identifiers)
-
-Find externally mastered instruments
-
-Search for a set of instruments from an external instrument mastering service
-
-### Example
-```java
-// Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.InstrumentsApi;
-
-ApiClient defaultClient = Configuration.getDefaultApiClient();
-
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-InstrumentsApi apiInstance = new InstrumentsApi();
-String identifierType = "identifierType_example"; // String | The type of identifiers being supplied
-List<String> identifiers = Arrays.asList(new List<String>()); // List<String> | The identifiers of the instruments to get
-try {
-    MatchInstrumentsResponse result = apiInstance.matchInstruments(identifierType, identifiers);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling InstrumentsApi#matchInstruments");
-    e.printStackTrace();
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **identifierType** | **String**| The type of identifiers being supplied | [optional]
- **identifiers** | **List&lt;String&gt;**| The identifiers of the instruments to get | [optional]
-
-### Return type
-
-[**MatchInstrumentsResponse**](MatchInstrumentsResponse.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
  - **Accept**: text/plain, application/json, text/json
 
 <a name="updateInstrumentIdentifier"></a>
