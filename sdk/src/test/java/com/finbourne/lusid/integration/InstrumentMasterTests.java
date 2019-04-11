@@ -3,6 +3,7 @@ package com.finbourne.lusid.integration;
 import com.finbourne.lusid.ApiClient;
 import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.api.SearchApi;
 import com.finbourne.lusid.model.*;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -23,8 +24,10 @@ public class InstrumentMasterTests {
 
     private static final String ISIN_PROPERTY_KEY = "Instrument/default/Isin";
     private static final String SEDOL_PROPERTY_KEY = "Instrument/default/Sedol";
+    private static final String FIGI_PROPERTY_KEY = "Instrument/default/Figi";
 
     private static InstrumentsApi instrumentsApi;
+    private static SearchApi searchApi;
 
     @BeforeClass
     public static void setUp() throws Exception {
@@ -32,6 +35,7 @@ public class InstrumentMasterTests {
         ApiClient apiClient = new ApiClientBuilder("secrets.json").build();
 
         instrumentsApi = new InstrumentsApi(apiClient);
+        searchApi = new SearchApi(apiClient);
 
         seedInstrumentMaster();
     }
@@ -206,17 +210,23 @@ public class InstrumentMasterTests {
         /*
             Look up an instrument not currently in the instrument master (NATIONAL GRID PLC)
          */
-        MatchInstrumentsResponse matchInstrumentsResponse = instrumentsApi.matchInstruments(FIGI_SCHEME, Arrays.asList("BBG000FV67Q4"));
 
-        assertThat(matchInstrumentsResponse.getValues().containsKey("BBG000FV67Q4"), is(true));
+        List<InstrumentMatch> instrumentMatch = searchApi.instrumentsSearch(
+            Arrays.asList(
+                new InstrumentSearchProperty().key(FIGI_PROPERTY_KEY).value("BBG000FV67Q4")),
+            null,
+            false);
 
-        InstrumentDefinition    instrumentDefinition = matchInstrumentsResponse.getValues().get("BBG000FV67Q4").get(0);
+        InstrumentDefinition    instrumentDefinition = instrumentMatch.get(0).getExternalInstruments().get(0);
+
+        assertThat(instrumentDefinition.getIdentifiers().containsValue("BBG000FV67Q4"), is(true));
 
         /*
             Add the instrument to the instrument master.  The result of the match contains
             the required information to master the instrument e.g. name, identifier, market
             identifier alias etc.
          */
+
         instrumentsApi.upsertInstruments(Collections.singletonMap("correlationId", instrumentDefinition));
 
         /*
