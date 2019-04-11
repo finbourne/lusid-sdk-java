@@ -195,13 +195,17 @@ public class InstrumentMasterTests {
             Look up instruments that already exists in the instrument master by a
             list of market identifiers
          */
-        ResourceListOfInstrument instruments = instrumentsApi.findInstruments(Arrays.asList(
-                new Property().key(ISIN_PROPERTY_KEY).value("GB00BH4HKS39"),
-                new Property().key(ISIN_PROPERTY_KEY).value("BBG000C04D57"),
-                new Property().key(ISIN_PROPERTY_KEY).value("GB00BDR05C01"),
-                new Property().key(SEDOL_PROPERTY_KEY).value("B019KW7"),
-                new Property().key(SEDOL_PROPERTY_KEY).value("0878230")
-        ), null, null, null);
+
+        List<InstrumentMatch> instrumentMatch = searchApi.instrumentsSearch(
+            Arrays.asList(
+                new InstrumentSearchProperty().key(ISIN_PROPERTY_KEY).value("GB00BH4HKS39"),
+                new InstrumentSearchProperty().key(ISIN_PROPERTY_KEY).value("BBG000C04D57"),
+                new InstrumentSearchProperty().key(ISIN_PROPERTY_KEY).value("GB00BDR05C01"),
+                new InstrumentSearchProperty().key(SEDOL_PROPERTY_KEY).value("B019KW7"),
+                new InstrumentSearchProperty().key(SEDOL_PROPERTY_KEY).value("0878230")),
+            null,
+            true);
+
     }
 
     @Test
