@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * ErrorResponse
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-11T14:24:45.790Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-11T15:29:27.679Z")
 public class ErrorResponse {
   @SerializedName("status")
   private Integer status = null;
@@ -39,6 +39,8 @@ public class ErrorResponse {
    */
   @JsonAdapter(CodeEnum.Adapter.class)
   public enum CodeEnum {
+    UNKNOWN("Unknown"),
+    
     VERSIONNOTFOUND("VersionNotFound"),
     
     INSTRUMENTNOTFOUND("InstrumentNotFound"),
@@ -177,6 +179,8 @@ public class ErrorResponse {
     
     CUTDEFINITIONINVALID("CutDefinitionInvalid"),
     
+    SERVERCONFIGURATIONERROR("ServerConfigurationError"),
+    
     INVALIDUNITFORDATATYPE("InvalidUnitForDataType"),
     
     INVALIDTYPEFORDATATYPE("InvalidTypeForDataType"),
@@ -213,19 +217,19 @@ public class ErrorResponse {
     
     QUOTENOTFOUNDFAILURE("QuoteNotFoundFailure"),
     
-    INVALIDINSTRUMENTDEFINITION("InvalidInstrumentDefinition"),
-    
-    INSTRUMENTUPSERTFAILURE("InstrumentUpsertFailure"),
-    
     REFERENCEPORTFOLIOREQUESTNOTSUPPORTED("ReferencePortfolioRequestNotSupported"),
     
     TRANSACTIONPORTFOLIOREQUESTNOTSUPPORTED("TransactionPortfolioRequestNotSupported"),
     
-    INVALIDPROPERTYVALUEASSIGNMENT("InvalidPropertyValueAssignment"),
+    INVALIDINSTRUMENTDEFINITION("InvalidInstrumentDefinition"),
+    
+    INSTRUMENTUPSERTFAILURE("InstrumentUpsertFailure"),
     
     TRANSACTIONTYPENOTFOUND("TransactionTypeNotFound"),
     
     TRANSACTIONTYPEDUPLICATION("TransactionTypeDuplication"),
+    
+    INVALIDPROPERTYVALUEASSIGNMENT("InvalidPropertyValueAssignment"),
     
     PORTFOLIODOESNOTEXISTATGIVENDATE("PortfolioDoesNotExistAtGivenDate"),
     
@@ -265,11 +269,7 @@ public class ErrorResponse {
     
     CORPORATEACTIONSOURCEDOESNOTEXIST("CorporateActionSourceDoesNotExist"),
     
-    INSTRUMENTIDENTIFIERALREADYINUSE("InstrumentIdentifierAlreadyInUse"),
-    
-    SERVERCONFIGURATIONERROR("ServerConfigurationError"),
-    
-    UNKNOWN("Unknown");
+    INSTRUMENTIDENTIFIERALREADYINUSE("InstrumentIdentifierAlreadyInUse");
 
     private String value;
 

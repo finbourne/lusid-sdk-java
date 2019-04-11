@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 ## Enum: CodeEnum
 Name | Value
 ---- | -----
+UNKNOWN | &quot;Unknown&quot;
 VERSIONNOTFOUND | &quot;VersionNotFound&quot;
 INSTRUMENTNOTFOUND | &quot;InstrumentNotFound&quot;
 PROPERTYNOTFOUND | &quot;PropertyNotFound&quot;
@@ -85,6 +86,7 @@ INVALIDSUBHOLDINGKEYSPROVIDED | &quot;InvalidSubHoldingKeysProvided&quot;
 DUPLICATESUBHOLDINGKEYSPROVIDED | &quot;DuplicateSubHoldingKeysProvided&quot;
 CUTDEFINITIONNOTFOUND | &quot;CutDefinitionNotFound&quot;
 CUTDEFINITIONINVALID | &quot;CutDefinitionInvalid&quot;
+SERVERCONFIGURATIONERROR | &quot;ServerConfigurationError&quot;
 INVALIDUNITFORDATATYPE | &quot;InvalidUnitForDataType&quot;
 INVALIDTYPEFORDATATYPE | &quot;InvalidTypeForDataType&quot;
 INVALIDVALUEFORDATATYPE | &quot;InvalidValueForDataType&quot;
@@ -103,13 +105,13 @@ INSTRUMENTBYCODENOTFOUND | &quot;InstrumentByCodeNotFound&quot;
 ENTITYSCHEMADOESNOTEXIST | &quot;EntitySchemaDoesNotExist&quot;
 FEATURENOTSUPPORTEDONPORTFOLIOTYPE | &quot;FeatureNotSupportedOnPortfolioType&quot;
 QUOTENOTFOUNDFAILURE | &quot;QuoteNotFoundFailure&quot;
-INVALIDINSTRUMENTDEFINITION | &quot;InvalidInstrumentDefinition&quot;
-INSTRUMENTUPSERTFAILURE | &quot;InstrumentUpsertFailure&quot;
 REFERENCEPORTFOLIOREQUESTNOTSUPPORTED | &quot;ReferencePortfolioRequestNotSupported&quot;
 TRANSACTIONPORTFOLIOREQUESTNOTSUPPORTED | &quot;TransactionPortfolioRequestNotSupported&quot;
-INVALIDPROPERTYVALUEASSIGNMENT | &quot;InvalidPropertyValueAssignment&quot;
+INVALIDINSTRUMENTDEFINITION | &quot;InvalidInstrumentDefinition&quot;
+INSTRUMENTUPSERTFAILURE | &quot;InstrumentUpsertFailure&quot;
 TRANSACTIONTYPENOTFOUND | &quot;TransactionTypeNotFound&quot;
 TRANSACTIONTYPEDUPLICATION | &quot;TransactionTypeDuplication&quot;
+INVALIDPROPERTYVALUEASSIGNMENT | &quot;InvalidPropertyValueAssignment&quot;
 PORTFOLIODOESNOTEXISTATGIVENDATE | &quot;PortfolioDoesNotExistAtGivenDate&quot;
 QUERYPARSERFAILURE | &quot;QueryParserFailure&quot;
 DUPLICATECONSTITUENTFAILURE | &quot;DuplicateConstituentFailure&quot;
@@ -130,8 +132,6 @@ CANNOTSUPPLYTIMESWITHPORTFOLIOSQUERY | &quot;CannotSupplyTimesWithPortfoliosQuer
 ATTEMPTTOUPSERTDUPLICATEQUOTES | &quot;AttemptToUpsertDuplicateQuotes&quot;
 CORPORATEACTIONSOURCEDOESNOTEXIST | &quot;CorporateActionSourceDoesNotExist&quot;
 INSTRUMENTIDENTIFIERALREADYINUSE | &quot;InstrumentIdentifierAlreadyInUse&quot;
-SERVERCONFIGURATIONERROR | &quot;ServerConfigurationError&quot;
-UNKNOWN | &quot;Unknown&quot;
 
 
 
