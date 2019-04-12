@@ -132,11 +132,11 @@ Name | Type | Description  | Notes
 
 <a name="getInstrumentIdentifiers"></a>
 # **getInstrumentIdentifiers**
-> ResourceListOfString getInstrumentIdentifiers()
+> ResourceListOfInstrumentIdTypeDescriptor getInstrumentIdentifiers()
 
 Get allowable instrument identifiers
 
-Gets the set of identifiers that have been configured as unique identifiers for instruments.     Only CodeTypes returned from this end point can be used as identifiers for instruments.
+Returns a collection of instrument identifier type descriptors. Each descriptor specifies the properties  of a particular instrument identifier - its name, its cardinality (whether or not multiple instruments can  share the same identifier value), and its corresponding PropertyKey.
 
 ### Example
 ```java
@@ -155,7 +155,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 InstrumentsApi apiInstance = new InstrumentsApi();
 try {
-    ResourceListOfString result = apiInstance.getInstrumentIdentifiers();
+    ResourceListOfInstrumentIdTypeDescriptor result = apiInstance.getInstrumentIdentifiers();
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling InstrumentsApi#getInstrumentIdentifiers");
@@ -168,7 +168,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**ResourceListOfString**](ResourceListOfString.md)
+[**ResourceListOfInstrumentIdTypeDescriptor**](ResourceListOfInstrumentIdTypeDescriptor.md)
 
 ### Authorization
 

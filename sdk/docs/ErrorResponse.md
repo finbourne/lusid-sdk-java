@@ -132,6 +132,12 @@ CANNOTSUPPLYTIMESWITHPORTFOLIOSQUERY | &quot;CannotSupplyTimesWithPortfoliosQuer
 ATTEMPTTOUPSERTDUPLICATEQUOTES | &quot;AttemptToUpsertDuplicateQuotes&quot;
 CORPORATEACTIONSOURCEDOESNOTEXIST | &quot;CorporateActionSourceDoesNotExist&quot;
 INSTRUMENTIDENTIFIERALREADYINUSE | &quot;InstrumentIdentifierAlreadyInUse&quot;
+PORTFOLIOININVALIDSTATE | &quot;PortfolioInInvalidState&quot;
+GROUPININVALIDSTATE | &quot;GroupInInvalidState&quot;
+CORPORATEACTIONSOURCEININVALIDSTATE | &quot;CorporateActionSourceInInvalidState&quot;
+LOOKTHROUGHPORTFOLIOININVALIDSTATE | &quot;LookThroughPortfolioInInvalidState&quot;
+INSTRUMENTININVALIDSTATE | &quot;InstrumentInInvalidState&quot;
+PROPERTYDEFINITIONININVALIDSTATE | &quot;PropertyDefinitionInInvalidState&quot;
 
 
 
