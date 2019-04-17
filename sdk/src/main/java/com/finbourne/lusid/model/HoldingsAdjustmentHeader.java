@@ -32,7 +32,7 @@ import java.util.List;
  * Summary information of a holdings adjustment for a single portfolio and effective date.
  */
 @ApiModel(description = "Summary information of a holdings adjustment for a single portfolio and effective date.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-17T17:36:33.400Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-17T19:35:50.242Z")
 public class HoldingsAdjustmentHeader {
   @SerializedName("effectiveAt")
   private OffsetDateTime effectiveAt = null;

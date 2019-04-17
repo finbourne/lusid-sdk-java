@@ -28,7 +28,7 @@ import java.time.OffsetDateTime;
  * Describes the version metadata of an entity.
  */
 @ApiModel(description = "Describes the version metadata of an entity.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-17T17:36:33.400Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-17T19:35:50.242Z")
 public class Version {
   @SerializedName("effectiveFrom")
   private OffsetDateTime effectiveFrom = null;

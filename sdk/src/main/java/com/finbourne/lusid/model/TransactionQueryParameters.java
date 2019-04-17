@@ -27,7 +27,7 @@ import java.time.OffsetDateTime;
 /**
  * TransactionQueryParameters
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-17T17:36:33.400Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-04-17T19:35:50.242Z")
 public class TransactionQueryParameters {
   @SerializedName("startDate")
   private OffsetDateTime startDate = null;
