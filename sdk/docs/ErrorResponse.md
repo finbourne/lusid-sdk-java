@@ -128,16 +128,9 @@ CASHFLOWSFAILURE | &quot;CashFlowsFailure&quot;
 RESULTRETRIEVALFAILURE | &quot;ResultRetrievalFailure&quot;
 RESULTPROCESSINGFAILURE | &quot;ResultProcessingFailure&quot;
 VENDORRESULTPROCESSINGFAILURE | &quot;VendorResultProcessingFailure&quot;
-CANNOTSUPPLYTIMESWITHPORTFOLIOSQUERY | &quot;CannotSupplyTimesWithPortfoliosQuery&quot;
 ATTEMPTTOUPSERTDUPLICATEQUOTES | &quot;AttemptToUpsertDuplicateQuotes&quot;
 CORPORATEACTIONSOURCEDOESNOTEXIST | &quot;CorporateActionSourceDoesNotExist&quot;
 INSTRUMENTIDENTIFIERALREADYINUSE | &quot;InstrumentIdentifierAlreadyInUse&quot;
-PORTFOLIOININVALIDSTATE | &quot;PortfolioInInvalidState&quot;
-GROUPININVALIDSTATE | &quot;GroupInInvalidState&quot;
-CORPORATEACTIONSOURCEININVALIDSTATE | &quot;CorporateActionSourceInInvalidState&quot;
-LOOKTHROUGHPORTFOLIOININVALIDSTATE | &quot;LookThroughPortfolioInInvalidState&quot;
-INSTRUMENTININVALIDSTATE | &quot;InstrumentInInvalidState&quot;
-PROPERTYDEFINITIONININVALIDSTATE | &quot;PropertyDefinitionInInvalidState&quot;
 
 
 
