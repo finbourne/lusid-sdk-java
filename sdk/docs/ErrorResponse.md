@@ -78,7 +78,7 @@ SEARCHFAILED | &quot;SearchFailed&quot;
 MOVEMENTSENGINECONFIGURATIONKEYFAILURE | &quot;MovementsEngineConfigurationKeyFailure&quot;
 FXRATESOURCENOTFOUND | &quot;FxRateSourceNotFound&quot;
 ACCRUALSOURCENOTFOUND | &quot;AccrualSourceNotFound&quot;
-ENTITLEMENTSFAILURE | &quot;EntitlementsFailure&quot;
+ACCESSDENIED | &quot;AccessDenied&quot;
 INVALIDIDENTITYTOKEN | &quot;InvalidIdentityToken&quot;
 INVALIDREQUESTHEADERS | &quot;InvalidRequestHeaders&quot;
 PRICENOTFOUND | &quot;PriceNotFound&quot;
