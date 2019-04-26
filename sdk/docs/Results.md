@@ -17,6 +17,7 @@ Name | Value
 ---- | -----
 DATAREADER | &quot;DataReader&quot;
 PORTFOLIO | &quot;Portfolio&quot;
+UNKNOWN | &quot;Unknown&quot;
 
 
 

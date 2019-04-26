@@ -125,6 +125,7 @@ TASKFACTORYFAILURE | &quot;TaskFactoryFailure&quot;
 TASKEVALUATIONFAILURE | &quot;TaskEvaluationFailure&quot;
 INSTRUMENTFAILURE | &quot;InstrumentFailure&quot;
 CASHFLOWSFAILURE | &quot;CashFlowsFailure&quot;
+AGGREGATIONFAILURE | &quot;AggregationFailure&quot;
 RESULTRETRIEVALFAILURE | &quot;ResultRetrievalFailure&quot;
 RESULTPROCESSINGFAILURE | &quot;ResultProcessingFailure&quot;
 VENDORRESULTPROCESSINGFAILURE | &quot;VendorResultProcessingFailure&quot;
