@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**getExcelAddin**](ApplicationMetadataApi.md#getExcelAddin) | **GET** /api/metadata/downloads/exceladdin | Download Excel Addin
 [**getExcelDownloadUrl**](ApplicationMetadataApi.md#getExcelDownloadUrl) | **GET** /api/metadata/downloads/excel | Get Excel download url
 [**getLusidVersions**](ApplicationMetadataApi.md#getLusidVersions) | **GET** /api/metadata/versions | Get LUSID versions
+[**listAccessControlledActions**](ApplicationMetadataApi.md#listAccessControlledActions) | **GET** /api/metadata/access/actions | Get resources available for access control
 
 
 <a name="getExcelAddin"></a>
@@ -154,6 +155,55 @@ This endpoint does not need any parameter.
 ### Return type
 
 [**VersionSummaryDto**](VersionSummaryDto.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+<a name="listAccessControlledActions"></a>
+# **listAccessControlledActions**
+> List&lt;AccessControlledAction&gt; listAccessControlledActions()
+
+Get resources available for access control
+
+Get the comprehensive set of resources that are available for access control
+
+### Example
+```java
+// Import classes:
+//import com.finbourne.lusid.ApiClient;
+//import com.finbourne.lusid.ApiException;
+//import com.finbourne.lusid.Configuration;
+//import com.finbourne.lusid.auth.*;
+//import com.finbourne.lusid.api.ApplicationMetadataApi;
+
+ApiClient defaultClient = Configuration.getDefaultApiClient();
+
+// Configure OAuth2 access token for authorization: oauth2
+OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+ApplicationMetadataApi apiInstance = new ApplicationMetadataApi();
+try {
+    List<AccessControlledAction> result = apiInstance.listAccessControlledActions();
+    System.out.println(result);
+} catch (ApiException e) {
+    System.err.println("Exception when calling ApplicationMetadataApi#listAccessControlledActions");
+    e.printStackTrace();
+}
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**List&lt;AccessControlledAction&gt;**](AccessControlledAction.md)
 
 ### Authorization
 
