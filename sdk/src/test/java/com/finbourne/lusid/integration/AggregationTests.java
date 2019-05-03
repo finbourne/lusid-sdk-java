@@ -138,9 +138,10 @@ public class AggregationTests {
                 new InstrumentAnalytic().instrumentUid(instrumentIds.get(2)).value(300.0)
         );
 
-        //  add prices from the aggregation
+        //  add prices to the analytics store
         analyticsStoresApi.setAnalytics(scope, EFFECTIVE_DATE.getYear(), EFFECTIVE_DATE.getMonthValue(), EFFECTIVE_DATE.getDayOfMonth(), prices);
 
+        //    create the aggregation request, this example calculates the percentage of total portfolio value and value by instrument
         AggregationRequest  aggregationRequest = new AggregationRequest()
                 .recipeId(new ResourceId().scope(scope).code("default"))
                 .metrics(Arrays.asList(
