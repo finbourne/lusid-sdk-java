@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 
 <a name="listPortfolios"></a>
 # **listPortfolios**
-> ResourceListOfPortfolio listPortfolios(effectiveAt, asAt, sortBy, start, limit, filter, query)
+> ResourceListOfPortfolio listPortfolios(effectiveAt, asAt, page, sortBy, start, limit, filter, query)
 
 List portfolios
 
@@ -348,13 +348,14 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 PortfoliosApi apiInstance = new PortfoliosApi();
 OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the data
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
+String page = "page_example"; // String | Optional. The pagination token to continue listing portfolios. This value is returned from a previous call to ListPortfolios.  If this is set, then the sortBy, filter, query, effectiveAt, and asAt fields must not have changed. Also, if set, a start  value cannot be set.
 List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
 Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
 String filter = "filter_example"; // String | Optional. Expression to filter the result set
 String query = "query_example"; // String | Optional. Expression specifying the criteria that the returned portfolios must meet
 try {
-    ResourceListOfPortfolio result = apiInstance.listPortfolios(effectiveAt, asAt, sortBy, start, limit, filter, query);
+    ResourceListOfPortfolio result = apiInstance.listPortfolios(effectiveAt, asAt, page, sortBy, start, limit, filter, query);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortfoliosApi#listPortfolios");
@@ -368,6 +369,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the data | [optional]
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
+ **page** | **String**| Optional. The pagination token to continue listing portfolios. This value is returned from a previous call to ListPortfolios.  If this is set, then the sortBy, filter, query, effectiveAt, and asAt fields must not have changed. Also, if set, a start  value cannot be set. | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
  **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
