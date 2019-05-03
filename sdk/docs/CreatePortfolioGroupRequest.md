@@ -4,7 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  | 
+**code** | **String** |  | 
 **values** | [**List&lt;ResourceId&gt;**](ResourceId.md) |  |  [optional]
 **subGroups** | [**List&lt;ResourceId&gt;**](ResourceId.md) |  |  [optional]
 **displayName** | **String** |  | 
