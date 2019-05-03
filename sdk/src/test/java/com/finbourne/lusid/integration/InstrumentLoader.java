@@ -17,11 +17,11 @@ import java.util.stream.Stream;
 /*
     Utility to load a set of instruments into LUSID
  */
-class InstrumentLoader {
+public class InstrumentLoader {
 
     private InstrumentsApi  instrumentsApi;
 
-    InstrumentLoader(InstrumentsApi instrumentsApi) {
+    public InstrumentLoader(InstrumentsApi instrumentsApi) {
         this.instrumentsApi = instrumentsApi;
     }
 
@@ -30,7 +30,7 @@ class InstrumentLoader {
      *
      * @return List of LUSID instrument ids
      */
-    List<String> loadInstruments() throws ApiException {
+    public List<String> loadInstruments() throws ApiException {
 
         UpsertInstrumentsResponse instrumentsResponse = instrumentsApi.upsertInstruments(Stream.of(new Object[][] {
             { "request1", new InstrumentDefinition().name("VODAFONE GROUP PLC").identifiers(new HashMap<String, InstrumentIdValue>() {{ put("Figi", new InstrumentIdValue().value("BBG000C6K6G9")); }}) },
@@ -49,7 +49,7 @@ class InstrumentLoader {
                 .collect(Collectors.toList());
     }
 
-    void deleteInstruments() throws ApiException
+    public void deleteInstruments() throws ApiException
     {
         List<String>    ids = Arrays.asList(
                 "BBG000C6K6G9",
