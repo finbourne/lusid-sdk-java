@@ -4,9 +4,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**valueRequired** | **Boolean** |  |  [optional]
 **displayName** | **String** |  |  [optional]
-**dataTypeId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **lifeTime** | [**LifeTimeEnum**](#LifeTimeEnum) |  |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
 
