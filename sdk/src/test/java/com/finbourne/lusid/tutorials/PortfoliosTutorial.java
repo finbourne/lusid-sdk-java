@@ -111,8 +111,8 @@ public class PortfoliosTutorial {
                         }
                 )
                 .totalConsideration(new CurrencyAndAmount().currency("GBP").amount(1230.0))
-                .transactionDate(effectiveDate)
-                .settlementDate(effectiveDate)
+                .transactionDate(effectiveDate.toString())
+                .settlementDate(effectiveDate.toString())
                 .units(100.0)
                 .transactionPrice(new TransactionPrice().price(12.3))
                 .source("Broker");

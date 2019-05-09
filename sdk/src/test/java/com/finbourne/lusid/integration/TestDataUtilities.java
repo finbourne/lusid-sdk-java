@@ -75,8 +75,8 @@ public class TestDataUtilities {
                 .type(transactionType)
                 .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_INSTRUMENT_IDENTIFIER, instrumentId); }})
                 .totalConsideration(new CurrencyAndAmount().currency(currency).amount(units * price))
-                .transactionDate(tradeDate)
-                .settlementDate(tradeDate)
+                .transactionDate(tradeDate.toString())
+                .settlementDate(tradeDate.toString())
                 .units(units)
                 .transactionPrice(new TransactionPrice().price(price))
                 .source("Custodian");
@@ -102,8 +102,8 @@ public class TestDataUtilities {
                 .type("FundsIn")
                 .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_CASH_IDENTIFIER, currency); }})
                 .totalConsideration(new CurrencyAndAmount().currency(currency).amount(0.0))
-                .transactionDate(tradeDate)
-                .settlementDate(tradeDate)
+                .transactionDate(tradeDate.toString())
+                .settlementDate(tradeDate.toString())
                 .units(units)
                 .source("Custodian");
     }

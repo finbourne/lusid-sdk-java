@@ -73,8 +73,8 @@ public class TransactionsTests {
                 //  instruments must already exist in LUSID and have a valid LUSID instrument id
                 .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_INSTRUMENT_IDENTIFIER, instrumentIds.get(0)); }})
                 .totalConsideration(new CurrencyAndAmount().currency("GBP").amount(1230.0))
-                .transactionDate(effectiveDate)
-                .settlementDate(effectiveDate)
+                .transactionDate(effectiveDate.toString())
+                .settlementDate(effectiveDate.toString())
                 .units(100.0)
                 .transactionPrice(new TransactionPrice().price(12.3))
                 .source("Custodian");
@@ -120,8 +120,8 @@ public class TransactionsTests {
                 //  Cash instruments do not need to be created before use
                 .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_CASH_IDENTIFIER, "GBP"); }})
                 .totalConsideration(new CurrencyAndAmount().currency("GBP").amount(0.0))
-                .transactionDate(effectiveDate)
-                .settlementDate(effectiveDate)
+                .transactionDate(effectiveDate.toString())
+                .settlementDate(effectiveDate.toString())
                 .units(1000.0)
                 .source("Custodian");
 
@@ -187,8 +187,8 @@ public class TransactionsTests {
                 .type("Buy")
                 .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_INSTRUMENT_IDENTIFIER, swapId); }})
                 .totalConsideration(new CurrencyAndAmount().currency("GBP").amount(0.0))
-                .transactionDate(effectiveDate)
-                .settlementDate(effectiveDate)
+                .transactionDate(effectiveDate.toString())
+                .settlementDate(effectiveDate.toString())
                 .units(1.0)
                 .source("Custodian");
 
