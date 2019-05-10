@@ -157,7 +157,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 PortfoliosApi apiInstance = new PortfoliosApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | The code of the portfolio
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the data
+String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
 try {
     Portfolio result = apiInstance.getPortfolio(scope, code, effectiveAt, asAt);
@@ -174,7 +174,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the data | [optional]
+ **effectiveAt** | **String**| Optional. The effective date of the data | [optional]
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
 
 ### Return type
