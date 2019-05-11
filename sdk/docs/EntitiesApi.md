@@ -47,8 +47,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope | [optional]
- **effectiveAt** | **OffsetDateTime**| The effective date of the origin. | [optional]
+ **scope** | **String**| The scope |
+ **effectiveAt** | **OffsetDateTime**| The effective date of the origin. |
  **asAt** | **OffsetDateTime**| The as-at date of the origin. | [optional]
 
 ### Return type
