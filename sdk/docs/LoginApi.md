@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 <a name="getSamlIdentityProviderId"></a>
 # **getSamlIdentityProviderId**
-> LusidProblemDetails getSamlIdentityProviderId(domain)
+> String getSamlIdentityProviderId(domain)
 
 Get SAML Identity Provider
 
@@ -33,7 +33,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 LoginApi apiInstance = new LoginApi();
 String domain = "domain_example"; // String | The domain that the user will be logging in to
 try {
-    LusidProblemDetails result = apiInstance.getSamlIdentityProviderId(domain);
+    String result = apiInstance.getSamlIdentityProviderId(domain);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling LoginApi#getSamlIdentityProviderId");
@@ -49,7 +49,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**LusidProblemDetails**](LusidProblemDetails.md)
+**String**
 
 ### Authorization
 

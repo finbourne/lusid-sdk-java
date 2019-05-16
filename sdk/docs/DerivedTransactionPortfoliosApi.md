@@ -60,7 +60,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
 <a name="deleteDerivedPortfolioDetails"></a>
