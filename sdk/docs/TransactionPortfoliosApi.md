@@ -143,7 +143,7 @@ Name | Type | Description  | Notes
 
 <a name="buildTransactions"></a>
 # **buildTransactions**
-> VersionedResourceListOfOutputTransaction buildTransactions(scope, code, asAt, sortBy, start, limit, instrumentPropertyKeys, filter, parameters)
+> VersionedResourceListOfOutputTransaction buildTransactions(scope, code, asAt, sortBy, start, limit, propertyKeys, filter, parameters)
 
 Build output transactions
 
@@ -171,11 +171,11 @@ OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The As
 List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
 Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-List<String> instrumentPropertyKeys = Arrays.asList("instrumentPropertyKeys_example"); // List<String> | Optional. Keys for the instrument property values to be decorated onto the transactions
+List<String> propertyKeys = Arrays.asList("propertyKeys_example"); // List<String> | Optional. Keys for the transaction or instrument property values that will be decorated onto the transactions. No properties will be decorated if none are specified.
 String filter = "filter_example"; // String | Optional. Expression to filter the result set
 TransactionQueryParameters parameters = new TransactionQueryParameters(); // TransactionQueryParameters | Optional. Transaction query parameters
 try {
-    VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, asAt, sortBy, start, limit, instrumentPropertyKeys, filter, parameters);
+    VersionedResourceListOfOutputTransaction result = apiInstance.buildTransactions(scope, code, asAt, sortBy, start, limit, propertyKeys, filter, parameters);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransactionPortfoliosApi#buildTransactions");
@@ -193,7 +193,7 @@ Name | Type | Description  | Notes
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
  **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
- **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys for the instrument property values to be decorated onto the transactions | [optional]
+ **propertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys for the transaction or instrument property values that will be decorated onto the transactions. No properties will be decorated if none are specified. | [optional]
  **filter** | **String**| Optional. Expression to filter the result set | [optional]
  **parameters** | [**TransactionQueryParameters**](TransactionQueryParameters.md)| Optional. Transaction query parameters | [optional]
 
@@ -556,7 +556,7 @@ Name | Type | Description  | Notes
 
 <a name="getHoldings"></a>
 # **getHoldings**
-> VersionedResourceListOfPortfolioHolding getHoldings(scope, code, byTaxlots, effectiveAt, asAt, sortBy, start, limit, filter, instrumentPropertyKeys)
+> VersionedResourceListOfPortfolioHolding getHoldings(scope, code, byTaxlots, effectiveAt, asAt, sortBy, start, limit, filter, propertyKeys)
 
 Get holdings
 
@@ -587,9 +587,9 @@ List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optiona
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
 Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
 String filter = "filter_example"; // String | Optional. Expression to filter the result set
-List<String> instrumentPropertyKeys = Arrays.asList("instrumentPropertyKeys_example"); // List<String> | Optional. Keys for the instrument property values to be decorated onto the holdings
+List<String> propertyKeys = Arrays.asList("propertyKeys_example"); // List<String> | Optional. Keys for the Holding or instrument property values that will be decorated onto the transactions. No properties will be decorated if none are specified.
 try {
-    VersionedResourceListOfPortfolioHolding result = apiInstance.getHoldings(scope, code, byTaxlots, effectiveAt, asAt, sortBy, start, limit, filter, instrumentPropertyKeys);
+    VersionedResourceListOfPortfolioHolding result = apiInstance.getHoldings(scope, code, byTaxlots, effectiveAt, asAt, sortBy, start, limit, filter, propertyKeys);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransactionPortfoliosApi#getHoldings");
@@ -610,7 +610,7 @@ Name | Type | Description  | Notes
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
  **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
  **filter** | **String**| Optional. Expression to filter the result set | [optional]
- **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys for the instrument property values to be decorated onto the holdings | [optional]
+ **propertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys for the Holding or instrument property values that will be decorated onto the transactions. No properties will be decorated if none are specified. | [optional]
 
 ### Return type
 
@@ -686,7 +686,7 @@ Name | Type | Description  | Notes
 
 <a name="getTransactions"></a>
 # **getTransactions**
-> VersionedResourceListOfTransaction getTransactions(scope, code, fromTransactionDate, toTransactionDate, asAt, sortBy, start, limit, instrumentPropertyKeys, filter)
+> VersionedResourceListOfTransaction getTransactions(scope, code, fromTransactionDate, toTransactionDate, asAt, sortBy, start, limit, propertyKeys, filter)
 
 Get transactions
 
@@ -716,10 +716,10 @@ OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The As
 List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
 Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-List<String> instrumentPropertyKeys = Arrays.asList("instrumentPropertyKeys_example"); // List<String> | Optional. Keys for the instrument property values that will be decorated onto the transactions
+List<String> propertyKeys = Arrays.asList("propertyKeys_example"); // List<String> | Optional. Keys for the transaction or instrument property values that will be decorated onto the transactions. No properties will be decorated if none are specified.
 String filter = "filter_example"; // String | Optional. Expression to filter the result set
 try {
-    VersionedResourceListOfTransaction result = apiInstance.getTransactions(scope, code, fromTransactionDate, toTransactionDate, asAt, sortBy, start, limit, instrumentPropertyKeys, filter);
+    VersionedResourceListOfTransaction result = apiInstance.getTransactions(scope, code, fromTransactionDate, toTransactionDate, asAt, sortBy, start, limit, propertyKeys, filter);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling TransactionPortfoliosApi#getTransactions");
@@ -739,7 +739,7 @@ Name | Type | Description  | Notes
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
  **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
- **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys for the instrument property values that will be decorated onto the transactions | [optional]
+ **propertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys for the transaction or instrument property values that will be decorated onto the transactions. No properties will be decorated if none are specified. | [optional]
  **filter** | **String**| Optional. Expression to filter the result set | [optional]
 
 ### Return type
