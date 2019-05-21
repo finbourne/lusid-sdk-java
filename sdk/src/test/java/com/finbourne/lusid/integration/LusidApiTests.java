@@ -105,7 +105,7 @@ public class LusidApiTests {
         properties.put(propertyDefinitionDto.getKey(), property);
 
         //  add the property
-        final PortfolioProperties  propertiesResult = portfoliosApi.upsertPortfolioProperties(scope, portfolio.getId().getCode(), properties, effectiveDate);
+        final PortfolioProperties  propertiesResult = portfoliosApi.upsertPortfolioProperties(scope, portfolio.getId().getCode(), properties);
 
         assertEquals(request.getCode(), propertiesResult.getOriginPortfolioId().getCode());
         assertEquals(propertyValue, propertiesResult.getProperties().get(0).getValue());

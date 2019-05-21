@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**listPortfolios**](PortfoliosApi.md#listPortfolios) | **GET** /api/portfolios | List portfolios
 [**listPortfoliosForScope**](PortfoliosApi.md#listPortfoliosForScope) | **GET** /api/portfolios/{scope} | List portfolios for scope
 [**updatePortfolio**](PortfoliosApi.md#updatePortfolio) | **PUT** /api/portfolios/{scope}/{code} | Update portfolio definition
-[**upsertPortfolioProperties**](PortfoliosApi.md#upsertPortfolioProperties) | **POST** /api/portfolios/{scope}/{code}/properties | Upsert properties
+[**upsertPortfolioProperties**](PortfoliosApi.md#upsertPortfolioProperties) | **POST** /api/portfolios/{scope}/{code}/properties | Upsert portfolio properties
 
 
 <a name="deletePortfolio"></a>
@@ -515,11 +515,11 @@ Name | Type | Description  | Notes
 
 <a name="upsertPortfolioProperties"></a>
 # **upsertPortfolioProperties**
-> PortfolioProperties upsertPortfolioProperties(scope, code, portfolioProperties, effectiveAt)
+> PortfolioProperties upsertPortfolioProperties(scope, code, portfolioProperties)
 
-Upsert properties
+Upsert portfolio properties
 
-Upsert one or more property values to a portfolio for the specified effectiveAt. All properties must be of the domain Portfolio.
+Upsert one or more property values to a portfolio. All properties must be of the domain Portfolio.
 
 ### Example
 ```java
@@ -539,10 +539,9 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 PortfoliosApi apiInstance = new PortfoliosApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | The code of the portfolio
-Object portfolioProperties = null; // Object | The property values to be upserted to the portfolio
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the change
+Object portfolioProperties = null; // Object | The property values to be upserted to the portfolio. Time variant properties must have an EffectiveFrom date.
 try {
-    PortfolioProperties result = apiInstance.upsertPortfolioProperties(scope, code, portfolioProperties, effectiveAt);
+    PortfolioProperties result = apiInstance.upsertPortfolioProperties(scope, code, portfolioProperties);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortfoliosApi#upsertPortfolioProperties");
@@ -556,8 +555,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **portfolioProperties** | **Object**| The property values to be upserted to the portfolio | [optional]
- **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the change | [optional]
+ **portfolioProperties** | **Object**| The property values to be upserted to the portfolio. Time variant properties must have an EffectiveFrom date. | [optional]
 
 ### Return type
 
