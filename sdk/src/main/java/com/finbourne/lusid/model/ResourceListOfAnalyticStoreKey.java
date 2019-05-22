@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * ResourceListOfAnalyticStoreKey
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T12:11:47.118Z")
+
 public class ResourceListOfAnalyticStoreKey {
   @SerializedName("values")
   private List<AnalyticStoreKey> values = new ArrayList<>();

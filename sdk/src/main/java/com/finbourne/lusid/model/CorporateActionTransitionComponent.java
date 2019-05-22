@@ -29,7 +29,7 @@ import java.util.Map;
 /**
  * CorporateActionTransitionComponent
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T12:11:47.118Z")
+
 public class CorporateActionTransitionComponent {
   @SerializedName("instrumentIdentifiers")
   private Map<String, String> instrumentIdentifiers = new HashMap<>();

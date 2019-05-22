@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * ActionId
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T12:11:47.118Z")
+
 public class ActionId {
   @SerializedName("scope")
   private String scope = null;

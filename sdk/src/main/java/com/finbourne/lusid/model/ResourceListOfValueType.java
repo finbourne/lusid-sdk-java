@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * ResourceListOfValueType
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T12:11:47.118Z")
+
 public class ResourceListOfValueType {
   /**
    * Gets or Sets values

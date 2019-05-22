@@ -27,7 +27,7 @@ import java.io.IOException;
  * It is possible to control which supplier is used for a given asset class.
  */
 @ApiModel(description = "It is possible to control which supplier is used for a given asset class.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T12:11:47.118Z")
+
 public class MarketContextSuppliers {
   /**
    * Gets or Sets commodity

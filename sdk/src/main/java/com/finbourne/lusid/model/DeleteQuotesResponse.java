@@ -31,7 +31,7 @@ import java.util.List;
  * The response given from the DeleteQuotes Api call
  */
 @ApiModel(description = "The response given from the DeleteQuotes Api call")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T12:11:47.118Z")
+
 public class DeleteQuotesResponse {
   @SerializedName("asAt")
   private OffsetDateTime asAt = null;

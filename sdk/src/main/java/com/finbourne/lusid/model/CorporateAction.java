@@ -31,7 +31,7 @@ import java.util.List;
  * A corporate action
  */
 @ApiModel(description = "A corporate action")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T12:11:47.118Z")
+
 public class CorporateAction {
   @SerializedName("corporateActionCode")
   private String corporateActionCode = null;

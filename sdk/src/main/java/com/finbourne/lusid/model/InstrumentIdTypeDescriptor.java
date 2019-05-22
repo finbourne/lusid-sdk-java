@@ -27,7 +27,7 @@ import java.io.IOException;
  * Describes an instrument identifier type - what it&#39;s name, property key, and cardinality type are.
  */
 @ApiModel(description = "Describes an instrument identifier type - what it's name, property key, and cardinality type are.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T12:11:47.118Z")
+
 public class InstrumentIdTypeDescriptor {
   @SerializedName("idName")
   private String idName = null;
