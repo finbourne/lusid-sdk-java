@@ -11,5 +11,6 @@
     "apiPackage": "com.finbourne.lusid.api",
     "invokerPackage": "com.finbourne.lusid",
     "licenseName": "MIT",
-    "licenseUrl": "https://github.com/finbourne/lusid-sdk-java/blob/master/LICENSE.md"
+    "licenseUrl": "https://github.com/finbourne/lusid-sdk-java/blob/master/LICENSE.md",
+    "hideGenerationTimestamp": true
 }
