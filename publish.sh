@@ -13,6 +13,6 @@ profile=$1
 
 sdk_version=$(cat lusid.json | jq -r '.info.version')
 
-mvn -f ./sdk/pom.xml versions:set -DnewVersion=$sdk_version-SNAPSHOT
-mvn -f ./sdk/pom.xml -s ./sdk/settings.xml -P$profile clean install deploy -Dmaven.test.skip=true
+mvn -f sdk/pom.xml versions:set -DnewVersion=$sdk_version-SNAPSHOT
+mvn -f sdk/pom.xml -s sdk/settings.xml -P$profile clean install deploy -Dmaven.test.skip=true
     
