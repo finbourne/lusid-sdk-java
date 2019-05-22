@@ -10,3 +10,5 @@ services:
     image: finbourne/lusid-sdk-java-publish
     volumes:
       - .:/usr/src
+    command:
+      - ossrh
