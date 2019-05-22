@@ -37,7 +37,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 CorporateActionSourcesApi apiInstance = new CorporateActionSourcesApi();
 String scope = "scope_example"; // String | The scope of corporate action source
 String code = "code_example"; // String | The code of the corporate action source
-List<CreateCorporateAction> actions = Arrays.asList(new CreateCorporateAction()); // List<CreateCorporateAction> | The corporate action definitions
+List<UpsertCorporateActionRequest> actions = Arrays.asList(new UpsertCorporateActionRequest()); // List<UpsertCorporateActionRequest> | The corporate action definitions
 try {
     UpsertCorporateActionsResponse result = apiInstance.batchUpsertCorporateActions(scope, code, actions);
     System.out.println(result);
@@ -53,7 +53,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of corporate action source |
  **code** | **String**| The code of the corporate action source |
- **actions** | [**List&lt;CreateCorporateAction&gt;**](CreateCorporateAction.md)| The corporate action definitions | [optional]
+ **actions** | [**List&lt;UpsertCorporateActionRequest&gt;**](UpsertCorporateActionRequest.md)| The corporate action definitions | [optional]
 
 ### Return type
 
@@ -123,7 +123,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteCorporateActionSource"></a>
 # **deleteCorporateActionSource**
-> DeletedEntityResponse deleteCorporateActionSource(scope, code, effectiveAt)
+> DeletedEntityResponse deleteCorporateActionSource(scope, code)
 
 Delete a corporate action source
 
@@ -147,9 +147,8 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 CorporateActionSourcesApi apiInstance = new CorporateActionSourcesApi();
 String scope = "scope_example"; // String | The Scope of the Corporate Action Source to be deleted
 String code = "code_example"; // String | The Code of the Corporate Action Source to be deleted
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The start effective date of the data
 try {
-    DeletedEntityResponse result = apiInstance.deleteCorporateActionSource(scope, code, effectiveAt);
+    DeletedEntityResponse result = apiInstance.deleteCorporateActionSource(scope, code);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CorporateActionSourcesApi#deleteCorporateActionSource");
@@ -163,7 +162,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The Scope of the Corporate Action Source to be deleted |
  **code** | **String**| The Code of the Corporate Action Source to be deleted |
- **effectiveAt** | **OffsetDateTime**| Optional. The start effective date of the data | [optional]
 
 ### Return type
 
@@ -249,7 +247,7 @@ Name | Type | Description  | Notes
 
 <a name="listCorporateActionSources"></a>
 # **listCorporateActionSources**
-> ResourceListOfCorporateActionSource listCorporateActionSources(effectiveAt, asAt, sortBy, start, limit, filter)
+> ResourceListOfCorporateActionSource listCorporateActionSources(asAt, sortBy, start, limit, filter)
 
 Get corporate action sources
 
@@ -271,14 +269,13 @@ OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 CorporateActionSourcesApi apiInstance = new CorporateActionSourcesApi();
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The start effective date of the data range
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
 List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
 Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many
 String filter = "filter_example"; // String | Optional. Expression to filter the result set
 try {
-    ResourceListOfCorporateActionSource result = apiInstance.listCorporateActionSources(effectiveAt, asAt, sortBy, start, limit, filter);
+    ResourceListOfCorporateActionSource result = apiInstance.listCorporateActionSources(asAt, sortBy, start, limit, filter);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling CorporateActionSourcesApi#listCorporateActionSources");
@@ -290,7 +287,6 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **effectiveAt** | **OffsetDateTime**| Optional. The start effective date of the data range | [optional]
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]

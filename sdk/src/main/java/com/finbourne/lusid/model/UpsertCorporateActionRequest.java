@@ -14,7 +14,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.CreateUnitDefinition;
+import com.finbourne.lusid.model.CorporateActionTransitionRequest;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,414 +23,144 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * CreateDataTypeRequest
+ * UpsertCorporateActionRequest
  */
 @javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T15:56:40.328Z")
-public class CreateDataTypeRequest {
-  @SerializedName("scope")
-  private String scope = null;
+public class UpsertCorporateActionRequest {
+  @SerializedName("corporateActionCode")
+  private String corporateActionCode = null;
 
-  @SerializedName("code")
-  private String code = null;
+  @SerializedName("announcementDate")
+  private OffsetDateTime announcementDate = null;
 
-  /**
-   * Gets or Sets typeValueRange
-   */
-  @JsonAdapter(TypeValueRangeEnum.Adapter.class)
-  public enum TypeValueRangeEnum {
-    OPEN("Open"),
-    
-    CLOSED("Closed");
+  @SerializedName("exDate")
+  private OffsetDateTime exDate = null;
 
-    private String value;
+  @SerializedName("recordDate")
+  private OffsetDateTime recordDate = null;
 
-    TypeValueRangeEnum(String value) {
-      this.value = value;
-    }
+  @SerializedName("paymentDate")
+  private OffsetDateTime paymentDate = null;
 
-    public String getValue() {
-      return value;
-    }
+  @SerializedName("transitions")
+  private List<CorporateActionTransitionRequest> transitions = new ArrayList<>();
 
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TypeValueRangeEnum fromValue(String text) {
-      for (TypeValueRangeEnum b : TypeValueRangeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<TypeValueRangeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TypeValueRangeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TypeValueRangeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return TypeValueRangeEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }
-
-  @SerializedName("typeValueRange")
-  private TypeValueRangeEnum typeValueRange = null;
-
-  @SerializedName("displayName")
-  private String displayName = null;
-
-  @SerializedName("description")
-  private String description = null;
-
-  /**
-   * Gets or Sets valueType
-   */
-  @JsonAdapter(ValueTypeEnum.Adapter.class)
-  public enum ValueTypeEnum {
-    STRING("String"),
-    
-    INT("Int"),
-    
-    DECIMAL("Decimal"),
-    
-    DATETIME("DateTime"),
-    
-    BOOLEAN("Boolean"),
-    
-    MAP("Map"),
-    
-    LIST("List"),
-    
-    PROPERTYARRAY("PropertyArray"),
-    
-    PERCENTAGE("Percentage"),
-    
-    BENCHMARKTYPE("BenchmarkType"),
-    
-    CODE("Code"),
-    
-    ID("Id"),
-    
-    URI("Uri"),
-    
-    ARRAYOFIDS("ArrayOfIds"),
-    
-    ARRAYOFTRANSACTIONALIASES("ArrayOfTransactionAliases"),
-    
-    ARRAYOFTRANSACTIONMOVEMENTS("ArrayofTransactionMovements"),
-    
-    ARRAYOFUNITS("ArrayofUnits"),
-    
-    STRINGARRAY("StringArray"),
-    
-    CURRENCYANDAMOUNT("CurrencyAndAmount"),
-    
-    TRADEPRICE("TradePrice"),
-    
-    UNITCREATION("UnitCreation"),
-    
-    CURRENCY("Currency"),
-    
-    USERID("UserId"),
-    
-    METRICVALUE("MetricValue"),
-    
-    QUOTEID("QuoteId"),
-    
-    ARRAYOFQUOTEIDS("ArrayOfQuoteIds"),
-    
-    RESOURCEID("ResourceId"),
-    
-    RESULTVALUE("ResultValue"),
-    
-    CUTLOCALTIME("CutLocalTime");
-
-    private String value;
-
-    ValueTypeEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static ValueTypeEnum fromValue(String text) {
-      for (ValueTypeEnum b : ValueTypeEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<ValueTypeEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final ValueTypeEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public ValueTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return ValueTypeEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }
-
-  @SerializedName("valueType")
-  private ValueTypeEnum valueType = null;
-
-  @SerializedName("acceptableValues")
-  private List<Object> acceptableValues = null;
-
-  /**
-   * Gets or Sets unitSchema
-   */
-  @JsonAdapter(UnitSchemaEnum.Adapter.class)
-  public enum UnitSchemaEnum {
-    NOUNITS("NoUnits"),
-    
-    BASIC("Basic"),
-    
-    ISO4217CURRENCY("Iso4217Currency");
-
-    private String value;
-
-    UnitSchemaEnum(String value) {
-      this.value = value;
-    }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static UnitSchemaEnum fromValue(String text) {
-      for (UnitSchemaEnum b : UnitSchemaEnum.values()) {
-        if (String.valueOf(b.value).equals(text)) {
-          return b;
-        }
-      }
-      return null;
-    }
-
-    public static class Adapter extends TypeAdapter<UnitSchemaEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final UnitSchemaEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public UnitSchemaEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
-        return UnitSchemaEnum.fromValue(String.valueOf(value));
-      }
-    }
-  }
-
-  @SerializedName("unitSchema")
-  private UnitSchemaEnum unitSchema = null;
-
-  @SerializedName("acceptableUnits")
-  private List<CreateUnitDefinition> acceptableUnits = null;
-
-  public CreateDataTypeRequest scope(String scope) {
-    this.scope = scope;
+  public UpsertCorporateActionRequest corporateActionCode(String corporateActionCode) {
+    this.corporateActionCode = corporateActionCode;
     return this;
   }
 
    /**
-   * Get scope
-   * @return scope
+   * 
+   * @return corporateActionCode
   **/
   @ApiModelProperty(required = true, value = "")
-  public String getScope() {
-    return scope;
+  public String getCorporateActionCode() {
+    return corporateActionCode;
   }
 
-  public void setScope(String scope) {
-    this.scope = scope;
+  public void setCorporateActionCode(String corporateActionCode) {
+    this.corporateActionCode = corporateActionCode;
   }
 
-  public CreateDataTypeRequest code(String code) {
-    this.code = code;
+  public UpsertCorporateActionRequest announcementDate(OffsetDateTime announcementDate) {
+    this.announcementDate = announcementDate;
     return this;
   }
 
    /**
-   * Get code
-   * @return code
+   * 
+   * @return announcementDate
   **/
   @ApiModelProperty(required = true, value = "")
-  public String getCode() {
-    return code;
+  public OffsetDateTime getAnnouncementDate() {
+    return announcementDate;
   }
 
-  public void setCode(String code) {
-    this.code = code;
+  public void setAnnouncementDate(OffsetDateTime announcementDate) {
+    this.announcementDate = announcementDate;
   }
 
-  public CreateDataTypeRequest typeValueRange(TypeValueRangeEnum typeValueRange) {
-    this.typeValueRange = typeValueRange;
+  public UpsertCorporateActionRequest exDate(OffsetDateTime exDate) {
+    this.exDate = exDate;
     return this;
   }
 
    /**
-   * Get typeValueRange
-   * @return typeValueRange
+   * 
+   * @return exDate
   **/
   @ApiModelProperty(required = true, value = "")
-  public TypeValueRangeEnum getTypeValueRange() {
-    return typeValueRange;
+  public OffsetDateTime getExDate() {
+    return exDate;
   }
 
-  public void setTypeValueRange(TypeValueRangeEnum typeValueRange) {
-    this.typeValueRange = typeValueRange;
+  public void setExDate(OffsetDateTime exDate) {
+    this.exDate = exDate;
   }
 
-  public CreateDataTypeRequest displayName(String displayName) {
-    this.displayName = displayName;
+  public UpsertCorporateActionRequest recordDate(OffsetDateTime recordDate) {
+    this.recordDate = recordDate;
     return this;
   }
 
    /**
-   * Get displayName
-   * @return displayName
+   * 
+   * @return recordDate
   **/
   @ApiModelProperty(required = true, value = "")
-  public String getDisplayName() {
-    return displayName;
+  public OffsetDateTime getRecordDate() {
+    return recordDate;
   }
 
-  public void setDisplayName(String displayName) {
-    this.displayName = displayName;
+  public void setRecordDate(OffsetDateTime recordDate) {
+    this.recordDate = recordDate;
   }
 
-  public CreateDataTypeRequest description(String description) {
-    this.description = description;
+  public UpsertCorporateActionRequest paymentDate(OffsetDateTime paymentDate) {
+    this.paymentDate = paymentDate;
     return this;
   }
 
    /**
-   * Get description
-   * @return description
+   * 
+   * @return paymentDate
   **/
   @ApiModelProperty(required = true, value = "")
-  public String getDescription() {
-    return description;
+  public OffsetDateTime getPaymentDate() {
+    return paymentDate;
   }
 
-  public void setDescription(String description) {
-    this.description = description;
+  public void setPaymentDate(OffsetDateTime paymentDate) {
+    this.paymentDate = paymentDate;
   }
 
-  public CreateDataTypeRequest valueType(ValueTypeEnum valueType) {
-    this.valueType = valueType;
+  public UpsertCorporateActionRequest transitions(List<CorporateActionTransitionRequest> transitions) {
+    this.transitions = transitions;
+    return this;
+  }
+
+  public UpsertCorporateActionRequest addTransitionsItem(CorporateActionTransitionRequest transitionsItem) {
+    this.transitions.add(transitionsItem);
     return this;
   }
 
    /**
-   * Get valueType
-   * @return valueType
+   * Get transitions
+   * @return transitions
   **/
   @ApiModelProperty(required = true, value = "")
-  public ValueTypeEnum getValueType() {
-    return valueType;
+  public List<CorporateActionTransitionRequest> getTransitions() {
+    return transitions;
   }
 
-  public void setValueType(ValueTypeEnum valueType) {
-    this.valueType = valueType;
-  }
-
-  public CreateDataTypeRequest acceptableValues(List<Object> acceptableValues) {
-    this.acceptableValues = acceptableValues;
-    return this;
-  }
-
-  public CreateDataTypeRequest addAcceptableValuesItem(Object acceptableValuesItem) {
-    if (this.acceptableValues == null) {
-      this.acceptableValues = new ArrayList<>();
-    }
-    this.acceptableValues.add(acceptableValuesItem);
-    return this;
-  }
-
-   /**
-   * Get acceptableValues
-   * @return acceptableValues
-  **/
-  @ApiModelProperty(value = "")
-  public List<Object> getAcceptableValues() {
-    return acceptableValues;
-  }
-
-  public void setAcceptableValues(List<Object> acceptableValues) {
-    this.acceptableValues = acceptableValues;
-  }
-
-  public CreateDataTypeRequest unitSchema(UnitSchemaEnum unitSchema) {
-    this.unitSchema = unitSchema;
-    return this;
-  }
-
-   /**
-   * Get unitSchema
-   * @return unitSchema
-  **/
-  @ApiModelProperty(value = "")
-  public UnitSchemaEnum getUnitSchema() {
-    return unitSchema;
-  }
-
-  public void setUnitSchema(UnitSchemaEnum unitSchema) {
-    this.unitSchema = unitSchema;
-  }
-
-  public CreateDataTypeRequest acceptableUnits(List<CreateUnitDefinition> acceptableUnits) {
-    this.acceptableUnits = acceptableUnits;
-    return this;
-  }
-
-  public CreateDataTypeRequest addAcceptableUnitsItem(CreateUnitDefinition acceptableUnitsItem) {
-    if (this.acceptableUnits == null) {
-      this.acceptableUnits = new ArrayList<>();
-    }
-    this.acceptableUnits.add(acceptableUnitsItem);
-    return this;
-  }
-
-   /**
-   * Get acceptableUnits
-   * @return acceptableUnits
-  **/
-  @ApiModelProperty(value = "")
-  public List<CreateUnitDefinition> getAcceptableUnits() {
-    return acceptableUnits;
-  }
-
-  public void setAcceptableUnits(List<CreateUnitDefinition> acceptableUnits) {
-    this.acceptableUnits = acceptableUnits;
+  public void setTransitions(List<CorporateActionTransitionRequest> transitions) {
+    this.transitions = transitions;
   }
 
 
@@ -442,38 +172,32 @@ public class CreateDataTypeRequest {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    CreateDataTypeRequest createDataTypeRequest = (CreateDataTypeRequest) o;
-    return Objects.equals(this.scope, createDataTypeRequest.scope) &&
-        Objects.equals(this.code, createDataTypeRequest.code) &&
-        Objects.equals(this.typeValueRange, createDataTypeRequest.typeValueRange) &&
-        Objects.equals(this.displayName, createDataTypeRequest.displayName) &&
-        Objects.equals(this.description, createDataTypeRequest.description) &&
-        Objects.equals(this.valueType, createDataTypeRequest.valueType) &&
-        Objects.equals(this.acceptableValues, createDataTypeRequest.acceptableValues) &&
-        Objects.equals(this.unitSchema, createDataTypeRequest.unitSchema) &&
-        Objects.equals(this.acceptableUnits, createDataTypeRequest.acceptableUnits);
+    UpsertCorporateActionRequest upsertCorporateActionRequest = (UpsertCorporateActionRequest) o;
+    return Objects.equals(this.corporateActionCode, upsertCorporateActionRequest.corporateActionCode) &&
+        Objects.equals(this.announcementDate, upsertCorporateActionRequest.announcementDate) &&
+        Objects.equals(this.exDate, upsertCorporateActionRequest.exDate) &&
+        Objects.equals(this.recordDate, upsertCorporateActionRequest.recordDate) &&
+        Objects.equals(this.paymentDate, upsertCorporateActionRequest.paymentDate) &&
+        Objects.equals(this.transitions, upsertCorporateActionRequest.transitions);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(scope, code, typeValueRange, displayName, description, valueType, acceptableValues, unitSchema, acceptableUnits);
+    return Objects.hash(corporateActionCode, announcementDate, exDate, recordDate, paymentDate, transitions);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class CreateDataTypeRequest {\n");
+    sb.append("class UpsertCorporateActionRequest {\n");
     
-    sb.append("    scope: ").append(toIndentedString(scope)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    typeValueRange: ").append(toIndentedString(typeValueRange)).append("\n");
-    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    valueType: ").append(toIndentedString(valueType)).append("\n");
-    sb.append("    acceptableValues: ").append(toIndentedString(acceptableValues)).append("\n");
-    sb.append("    unitSchema: ").append(toIndentedString(unitSchema)).append("\n");
-    sb.append("    acceptableUnits: ").append(toIndentedString(acceptableUnits)).append("\n");
+    sb.append("    corporateActionCode: ").append(toIndentedString(corporateActionCode)).append("\n");
+    sb.append("    announcementDate: ").append(toIndentedString(announcementDate)).append("\n");
+    sb.append("    exDate: ").append(toIndentedString(exDate)).append("\n");
+    sb.append("    recordDate: ").append(toIndentedString(recordDate)).append("\n");
+    sb.append("    paymentDate: ").append(toIndentedString(paymentDate)).append("\n");
+    sb.append("    transitions: ").append(toIndentedString(transitions)).append("\n");
     sb.append("}");
     return sb.toString();
   }
