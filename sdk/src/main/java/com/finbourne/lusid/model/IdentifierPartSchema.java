@@ -29,7 +29,7 @@ import java.util.List;
 /**
  * The schema of an contributing part of a valid LUSID resource identifier
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T11:58:45.679Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T12:11:47.118Z")
 public class ScopeIdPathDefinition {
   @SerializedName("scope")
   private String scope = null;

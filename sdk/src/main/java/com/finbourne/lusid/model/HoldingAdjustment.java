@@ -33,7 +33,7 @@ import java.util.Map;
  * This &#39;dto&#39; contains target holdings. i.e. holding data that the  system should match. When processed by the movement  engine, it will create &#39;true-up&#39; adjustments on the fly.
  */
 @ApiModel(description = "This 'dto' contains target holdings. i.e. holding data that the  system should match. When processed by the movement  engine, it will create 'true-up' adjustments on the fly.")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T11:58:45.679Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T12:11:47.118Z")
 public class HoldingAdjustment {
   @SerializedName("instrumentIdentifiers")
   private Map<String, String> instrumentIdentifiers = null;

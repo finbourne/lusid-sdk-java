@@ -26,7 +26,7 @@ import java.io.IOException;
 /**
  * UpdatePropertyDefinitionRequest
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T11:58:45.679Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T12:11:47.118Z")
 public class UpdatePropertyDefinitionRequest {
   @SerializedName("displayName")
   private String displayName = null;

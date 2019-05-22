@@ -32,7 +32,7 @@ import java.util.List;
  * An action on LUSID that can be access controlled
  */
 @ApiModel(description = "An action on LUSID that can be access controlled")
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T11:58:45.679Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T12:11:47.118Z")
 public class AccessControlledAction {
   @SerializedName("description")
   private String description = null;

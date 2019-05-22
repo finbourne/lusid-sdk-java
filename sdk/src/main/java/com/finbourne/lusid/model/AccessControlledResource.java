@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * A resource to which access can be controlled
  */
-@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T11:58:45.679Z")
+@javax.annotation.Generated(value = "io.swagger.codegen.languages.JavaClientCodegen", date = "2019-05-22T12:11:47.118Z")
 public class CodeOnlyIdPathDefinition {
   @SerializedName("code")
   private String code = null;
