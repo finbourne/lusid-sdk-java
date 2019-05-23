@@ -29,7 +29,6 @@ NEXTPAGE | &quot;NextPage&quot;
 PREVIOUSPAGE | &quot;PreviousPage&quot;
 QUOTE | &quot;Quote&quot;
 CONSTITUENTSADJUSTMENTS | &quot;ConstituentsAdjustments&quot;
-VALUES | &quot;Values&quot;
 
 
 <a name="MethodEnum"></a>

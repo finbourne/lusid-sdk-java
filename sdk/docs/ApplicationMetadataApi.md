@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**getExcelAddin**](ApplicationMetadataApi.md#getExcelAddin) | **GET** /api/metadata/downloads/exceladdin | Download Excel Addin
 [**getExcelDownloadUrl**](ApplicationMetadataApi.md#getExcelDownloadUrl) | **GET** /api/metadata/downloads/excel | Get Excel download url
 [**getLusidVersions**](ApplicationMetadataApi.md#getLusidVersions) | **GET** /api/metadata/versions | Get LUSID versions
-[**listAccessControlledResources**](ApplicationMetadataApi.md#listAccessControlledResources) | **GET** /api/metadata/access/resources | Get resources available for access control
+[**listAccessControlledActions**](ApplicationMetadataApi.md#listAccessControlledActions) | **GET** /api/metadata/access/actions | Get resources available for access control
 
 
 <a name="getExcelAddin"></a>
@@ -165,9 +165,9 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
-<a name="listAccessControlledResources"></a>
-# **listAccessControlledResources**
-> ResourceListOfAccessControlledResource listAccessControlledResources(filter)
+<a name="listAccessControlledActions"></a>
+# **listAccessControlledActions**
+> List&lt;AccessControlledAction&gt; listAccessControlledActions()
 
 Get resources available for access control
 
@@ -189,25 +189,21 @@ OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 ApplicationMetadataApi apiInstance = new ApplicationMetadataApi();
-String filter = "filter_example"; // String | Optional. Expression to filter the result set
 try {
-    ResourceListOfAccessControlledResource result = apiInstance.listAccessControlledResources(filter);
+    List<AccessControlledAction> result = apiInstance.listAccessControlledActions();
     System.out.println(result);
 } catch (ApiException e) {
-    System.err.println("Exception when calling ApplicationMetadataApi#listAccessControlledResources");
+    System.err.println("Exception when calling ApplicationMetadataApi#listAccessControlledActions");
     e.printStackTrace();
 }
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filter** | **String**| Optional. Expression to filter the result set | [optional]
+This endpoint does not need any parameter.
 
 ### Return type
 
-[**ResourceListOfAccessControlledResource**](ResourceListOfAccessControlledResource.md)
+[**List&lt;AccessControlledAction&gt;**](AccessControlledAction.md)
 
 ### Authorization
 
