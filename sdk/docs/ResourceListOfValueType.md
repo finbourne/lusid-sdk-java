@@ -44,6 +44,7 @@ RESOURCEID | &quot;ResourceId&quot;
 RESULTVALUE | &quot;ResultValue&quot;
 CUTLOCALTIME | &quot;CutLocalTime&quot;
 DATEORCUTLABEL | &quot;DateOrCutLabel&quot;
+TRANSITION | &quot;Transition&quot;
 
 
 
