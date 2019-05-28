@@ -46,6 +46,7 @@ ARRAYOFQUOTEIDS | &quot;ArrayOfQuoteIds&quot;
 RESOURCEID | &quot;ResourceId&quot;
 RESULTVALUE | &quot;ResultValue&quot;
 CUTLOCALTIME | &quot;CutLocalTime&quot;
+DATEORCUTLABEL | &quot;DateOrCutLabel&quot;
 
 
 
