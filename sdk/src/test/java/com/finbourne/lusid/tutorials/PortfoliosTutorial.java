@@ -55,7 +55,6 @@ public class PortfoliosTutorial {
 
     @AfterClass
     public static void tearDown() throws ApiException {
-        instrumentLoader.deleteInstruments();
     }
 
     @Test

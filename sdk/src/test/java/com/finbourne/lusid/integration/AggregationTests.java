@@ -58,7 +58,6 @@ public class AggregationTests {
 
     @AfterClass
     public static void tearDown() throws ApiException {
-        instrumentLoader.deleteInstruments();
     }
 
     @Test

@@ -40,7 +40,6 @@ public class TransactionsTests {
 
     @AfterClass
     public static void tearDown() throws ApiException {
-        instrumentLoader.deleteInstruments();
     }
 
     @Test
