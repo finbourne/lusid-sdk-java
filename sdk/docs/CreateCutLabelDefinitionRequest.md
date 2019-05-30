@@ -9,7 +9,6 @@ Name | Type | Description | Notes
 **description** | **String** |  |  [optional]
 **cutLocalTime** | [**CutLocalTime**](CutLocalTime.md) |  | 
 **timeZone** | **String** |  | 
-**effectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) |  | 
 
 
 
