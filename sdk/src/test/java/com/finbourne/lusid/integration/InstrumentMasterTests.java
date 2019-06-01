@@ -3,11 +3,9 @@ package com.finbourne.lusid.integration;
 import com.finbourne.lusid.ApiClient;
 import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.InstrumentsApi;
-import com.finbourne.lusid.api.SearchApi;
 import com.finbourne.lusid.model.*;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import java.util.*;
@@ -29,7 +27,6 @@ public class InstrumentMasterTests {
     private static final String FIGI_PROPERTY_KEY = "Instrument/default/Figi";
 
     private static InstrumentsApi instrumentsApi;
-    private static SearchApi searchApi;
 
     @BeforeClass
     public static void setUp() throws Exception {
@@ -37,7 +34,6 @@ public class InstrumentMasterTests {
         ApiClient apiClient = new ApiClientBuilder("secrets.json").build();
 
         instrumentsApi = new InstrumentsApi(apiClient);
-        searchApi = new SearchApi(apiClient);
 
         seedInstrumentMaster();
     }
@@ -157,57 +153,4 @@ public class InstrumentMasterTests {
         assertThat(identifiers.get(1).getValue(), equalTo("BH4HKS3"));
     }
 
-    @Test
-    public void lookup_instrument_by_market_identifier() throws ApiException
-    {
-        /*
-            Look up instruments that already exists in the instrument master by a
-            list of market identifiers
-         */
-
-        List<InstrumentMatch> instrumentMatch = searchApi.instrumentsSearch(
-            Arrays.asList(
-                new InstrumentSearchProperty().key(ISIN_PROPERTY_KEY).value("GB00BH4HKS39"),
-                new InstrumentSearchProperty().key(ISIN_PROPERTY_KEY).value("BBG000C04D57"),
-                new InstrumentSearchProperty().key(ISIN_PROPERTY_KEY).value("GB00BDR05C01"),
-                new InstrumentSearchProperty().key(SEDOL_PROPERTY_KEY).value("B019KW7"),
-                new InstrumentSearchProperty().key(SEDOL_PROPERTY_KEY).value("0878230")),
-            null,
-            true);
-
-    }
-
-    @Test
-    public void find_non_mastered_instrument_from_external_source() throws ApiException
-    {
-        /*
-            Look up an instrument not currently in the instrument master (NATIONAL GRID PLC)
-         */
-
-        List<InstrumentMatch> instrumentMatch = searchApi.instrumentsSearch(
-            Arrays.asList(
-                new InstrumentSearchProperty().key(FIGI_PROPERTY_KEY).value("BBG000FV67Q4")),
-            null,
-            false);
-
-        InstrumentDefinition    instrumentDefinition = instrumentMatch.get(0).getExternalInstruments().get(0);
-
-        assertThat(instrumentDefinition.getIdentifiers().get(FIGI_SCHEME).getValue(), is(equalTo("BBG000FV67Q4")));
-
-        /*
-            Add the instrument to the instrument master.  The result of the match contains
-            the required information to master the instrument e.g. name, identifier, market
-            identifier alias etc.
-         */
-
-        instrumentsApi.upsertInstruments(Collections.singletonMap("correlationId", instrumentDefinition));
-
-        /*
-            Get the instrument from the instrument master
-         */
-        Instrument instrument = instrumentsApi.getInstrument(FIGI_SCHEME, "BBG000FV67Q4", null, null, null);
-
-        assertThat(instrument.getIdentifiers().get(FIGI_SCHEME), is(equalTo("BBG000FV67Q4")));
-        assertThat(instrument.getName(), is(equalTo("NATIONAL GRID PLC")));
-    }
 }
