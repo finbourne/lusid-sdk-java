@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **transactionDate** | [**OffsetDateTime**](OffsetDateTime.md) | Transaction date |  [optional]
 **settlementDate** | [**OffsetDateTime**](OffsetDateTime.md) | Settlement date |  [optional]
 **units** | **Double** | Quantity of trade in units of the instrument |  [optional]
+**transactionAmount** | **Double** | Total value of the transaction in trade currency |  [optional]
 **transactionPrice** | [**TransactionPrice**](TransactionPrice.md) | Execution price for the transaction |  [optional]
 **totalConsideration** | [**CurrencyAndAmount**](CurrencyAndAmount.md) | Total value of the transaction in settlement currency |  [optional]
 **exchangeRate** | **Double** | Rate between transaction and settlement currency |  [optional]
