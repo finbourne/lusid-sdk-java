@@ -481,7 +481,7 @@ PortfoliosApi apiInstance = new PortfoliosApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | The code of the portfolio
 UpdatePortfolioRequest request = new UpdatePortfolioRequest(); // UpdatePortfolioRequest | The updated portfolio definition
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date for the change
+String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date for the change
 try {
     Portfolio result = apiInstance.updatePortfolio(scope, code, request, effectiveAt);
     System.out.println(result);
@@ -498,7 +498,7 @@ Name | Type | Description  | Notes
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
  **request** | [**UpdatePortfolioRequest**](UpdatePortfolioRequest.md)| The updated portfolio definition | [optional]
- **effectiveAt** | **OffsetDateTime**| Optional. The effective date for the change | [optional]
+ **effectiveAt** | **String**| Optional. The effective date for the change | [optional]
 
 ### Return type
 
