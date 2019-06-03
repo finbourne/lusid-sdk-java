@@ -2,11 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.finbourne</groupId>
-    <artifactId>lusid-sdk-preview</artifactId>
+    <artifactId>lusid-sdk</artifactId>
     <packaging>jar</packaging>
     <name>lusid-sdk</name>
-    <version>0.10.184-SNAPSHOT</version>
-    <url>https://github.com/swagger-api/swagger-codegen</url>
+    <version>0.5.2672-SNAPSHOT</version>
     <description>LUSID Java SDK</description>    
 
     <licenses>
