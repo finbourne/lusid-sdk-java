@@ -91,7 +91,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 ReferencePortfolioApi apiInstance = new ReferencePortfolioApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | The code of the portfolio
-String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the constituents to retrieve
+OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the constituents to retrieve
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
 List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **effectiveAt** | **String**| Optional. The effective date of the constituents to retrieve | [optional]
+ **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the constituents to retrieve | [optional]
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
@@ -158,8 +158,8 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 ReferencePortfolioApi apiInstance = new ReferencePortfolioApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | Code for the portfolio
-String fromEffectiveAt = "fromEffectiveAt_example"; // String | Events between this time (inclusive) and the toEffectiveAt are returned.
-String toEffectiveAt = "toEffectiveAt_example"; // String | Events between this time (inclusive) and the fromEffectiveAt are returned.
+OffsetDateTime fromEffectiveAt = new OffsetDateTime(); // OffsetDateTime | Events between this time (inclusive) and the toEffectiveAt are returned.
+OffsetDateTime toEffectiveAt = new OffsetDateTime(); // OffsetDateTime | Events between this time (inclusive) and the fromEffectiveAt are returned.
 OffsetDateTime asAtTime = new OffsetDateTime(); // OffsetDateTime | The as-at time for which the result is valid.
 try {
     ResourceListOfConstituentsAdjustmentHeader result = apiInstance.listConstituentsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime);
@@ -176,8 +176,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| Code for the portfolio |
- **fromEffectiveAt** | **String**| Events between this time (inclusive) and the toEffectiveAt are returned. | [optional]
- **toEffectiveAt** | **String**| Events between this time (inclusive) and the fromEffectiveAt are returned. | [optional]
+ **fromEffectiveAt** | **OffsetDateTime**| Events between this time (inclusive) and the toEffectiveAt are returned. | [optional]
+ **toEffectiveAt** | **OffsetDateTime**| Events between this time (inclusive) and the fromEffectiveAt are returned. | [optional]
  **asAtTime** | **OffsetDateTime**| The as-at time for which the result is valid. | [optional]
 
 ### Return type

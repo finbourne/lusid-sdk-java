@@ -108,7 +108,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 TransactionPortfoliosApi apiInstance = new TransactionPortfoliosApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | The code of the portfolio
-String effectiveAt = "effectiveAt_example"; // String | The effective date of the change
+OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | The effective date of the change
 List<AdjustHoldingRequest> holdingAdjustments = Arrays.asList(new AdjustHoldingRequest()); // List<AdjustHoldingRequest> | The selected set of holdings adjustments
 try {
     AdjustHolding result = apiInstance.adjustHoldings(scope, code, effectiveAt, holdingAdjustments);
@@ -125,7 +125,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **effectiveAt** | **String**| The effective date of the change |
+ **effectiveAt** | **OffsetDateTime**| The effective date of the change |
  **holdingAdjustments** | [**List&lt;AdjustHoldingRequest&gt;**](AdjustHoldingRequest.md)| The selected set of holdings adjustments | [optional]
 
 ### Return type
@@ -236,7 +236,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 TransactionPortfoliosApi apiInstance = new TransactionPortfoliosApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | The code of the portfolio
-String effectiveAt = "effectiveAt_example"; // String | The effective date of the change
+OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | The effective date of the change
 try {
     DeletedEntityResponse result = apiInstance.cancelAdjustHoldings(scope, code, effectiveAt);
     System.out.println(result);
@@ -252,7 +252,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **effectiveAt** | **String**| The effective date of the change |
+ **effectiveAt** | **OffsetDateTime**| The effective date of the change |
 
 ### Return type
 
@@ -521,7 +521,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 TransactionPortfoliosApi apiInstance = new TransactionPortfoliosApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | The code of the portfolio
-String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
+OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the data
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
 try {
     PortfolioDetails result = apiInstance.getDetails(scope, code, effectiveAt, asAt);
@@ -538,7 +538,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **effectiveAt** | **String**| Optional. The effective date of the data | [optional]
+ **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the data | [optional]
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
 
 ### Return type
@@ -581,7 +581,7 @@ TransactionPortfoliosApi apiInstance = new TransactionPortfoliosApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | The code of the portfolio
 Boolean byTaxlots = true; // Boolean | Option to expand holdings to return the underlying tax-lots
-String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the portfolio
+OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the portfolio
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
 List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
@@ -604,7 +604,7 @@ Name | Type | Description  | Notes
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
  **byTaxlots** | **Boolean**| Option to expand holdings to return the underlying tax-lots | [optional]
- **effectiveAt** | **String**| Optional. The effective date of the portfolio | [optional]
+ **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the portfolio | [optional]
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
@@ -651,7 +651,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 TransactionPortfoliosApi apiInstance = new TransactionPortfoliosApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | The code of the portfolio
-String effectiveAt = "effectiveAt_example"; // String | The effective time of the holdings adjustment
+OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | The effective time of the holdings adjustment
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
 try {
     HoldingsAdjustment result = apiInstance.getHoldingsAdjustment(scope, code, effectiveAt, asAt);
@@ -668,7 +668,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **effectiveAt** | **String**| The effective time of the holdings adjustment |
+ **effectiveAt** | **OffsetDateTime**| The effective time of the holdings adjustment |
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
 
 ### Return type
@@ -710,8 +710,8 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 TransactionPortfoliosApi apiInstance = new TransactionPortfoliosApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | The code of the portfolio
-String fromTransactionDate = "fromTransactionDate_example"; // String | Optional. Limit the returned transactions to those with a transaction date equal or later than this date
-String toTransactionDate = "toTransactionDate_example"; // String | Optional. Limit the returned transactions to those with a transaction date equal or before this date
+OffsetDateTime fromTransactionDate = new OffsetDateTime(); // OffsetDateTime | Optional. Limit the returned transactions to those with a transaction date equal or later than this date
+OffsetDateTime toTransactionDate = new OffsetDateTime(); // OffsetDateTime | Optional. Limit the returned transactions to those with a transaction date equal or before this date
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
 List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
@@ -733,8 +733,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **fromTransactionDate** | **String**| Optional. Limit the returned transactions to those with a transaction date equal or later than this date | [optional]
- **toTransactionDate** | **String**| Optional. Limit the returned transactions to those with a transaction date equal or before this date | [optional]
+ **fromTransactionDate** | **OffsetDateTime**| Optional. Limit the returned transactions to those with a transaction date equal or later than this date | [optional]
+ **toTransactionDate** | **OffsetDateTime**| Optional. Limit the returned transactions to those with a transaction date equal or before this date | [optional]
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
@@ -781,8 +781,8 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 TransactionPortfoliosApi apiInstance = new TransactionPortfoliosApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | Code for the portfolio
-String fromEffectiveAt = "fromEffectiveAt_example"; // String | Holdings adjustments between this time (inclusive) and the toEffectiveAt are returned.
-String toEffectiveAt = "toEffectiveAt_example"; // String | Holdings adjustments between this time (inclusive) and the fromEffectiveAt are returned.
+OffsetDateTime fromEffectiveAt = new OffsetDateTime(); // OffsetDateTime | Holdings adjustments between this time (inclusive) and the toEffectiveAt are returned.
+OffsetDateTime toEffectiveAt = new OffsetDateTime(); // OffsetDateTime | Holdings adjustments between this time (inclusive) and the fromEffectiveAt are returned.
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
 try {
     ResourceListOfHoldingsAdjustmentHeader result = apiInstance.listHoldingsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAt);
@@ -799,8 +799,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| Code for the portfolio |
- **fromEffectiveAt** | **String**| Holdings adjustments between this time (inclusive) and the toEffectiveAt are returned. | [optional]
- **toEffectiveAt** | **String**| Holdings adjustments between this time (inclusive) and the fromEffectiveAt are returned. | [optional]
+ **fromEffectiveAt** | **OffsetDateTime**| Holdings adjustments between this time (inclusive) and the toEffectiveAt are returned. | [optional]
+ **toEffectiveAt** | **OffsetDateTime**| Holdings adjustments between this time (inclusive) and the fromEffectiveAt are returned. | [optional]
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
 
 ### Return type
@@ -842,7 +842,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 TransactionPortfoliosApi apiInstance = new TransactionPortfoliosApi();
 String scope = "scope_example"; // String | The scope of the transaction portfolio
 String code = "code_example"; // String | The code of the transaction portfolio
-String effectiveAt = "effectiveAt_example"; // String | The effective date of the change
+OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | The effective date of the change
 List<AdjustHoldingRequest> holdingAdjustments = Arrays.asList(new AdjustHoldingRequest()); // List<AdjustHoldingRequest> | The complete set of holdings adjustments for the portfolio
 try {
     AdjustHolding result = apiInstance.setHoldings(scope, code, effectiveAt, holdingAdjustments);
@@ -859,7 +859,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the transaction portfolio |
  **code** | **String**| The code of the transaction portfolio |
- **effectiveAt** | **String**| The effective date of the change |
+ **effectiveAt** | **OffsetDateTime**| The effective date of the change |
  **holdingAdjustments** | [**List&lt;AdjustHoldingRequest&gt;**](AdjustHoldingRequest.md)| The complete set of holdings adjustments for the portfolio | [optional]
 
 ### Return type
@@ -959,7 +959,7 @@ TransactionPortfoliosApi apiInstance = new TransactionPortfoliosApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | The code of the portfolio
 CreatePortfolioDetails details = new CreatePortfolioDetails(); // CreatePortfolioDetails | The set of details for the portfolio
-String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the change
+OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the change
 try {
     PortfolioDetails result = apiInstance.upsertPortfolioDetails(scope, code, details, effectiveAt);
     System.out.println(result);
@@ -976,7 +976,7 @@ Name | Type | Description  | Notes
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
  **details** | [**CreatePortfolioDetails**](CreatePortfolioDetails.md)| The set of details for the portfolio | [optional]
- **effectiveAt** | **String**| Optional. The effective date of the change | [optional]
+ **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the change | [optional]
 
 ### Return type
 
