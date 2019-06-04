@@ -29,7 +29,8 @@ java -jar swagger-codegen-cli.jar generate \
     -i $swagger_file \
     -l java \
     -o $sdk_output_folder \
-    -c $gen_root/config.json
+    -c $gen_root/config.json \
+    -t $gen_root/templates
 
 rm -rf $sdk_output_folder/.gradle
 rm -rf $sdk_output_folder/gradle
