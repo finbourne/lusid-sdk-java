@@ -41,7 +41,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 PortfoliosApi apiInstance = new PortfoliosApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | The code of the portfolio
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the deletion
+String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the deletion
 try {
     DeletedEntityResponse result = apiInstance.deletePortfolio(scope, code, effectiveAt);
     System.out.println(result);
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the deletion | [optional]
+ **effectiveAt** | **String**| Optional. The effective date of the deletion | [optional]
 
 ### Return type
 
@@ -98,7 +98,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 PortfoliosApi apiInstance = new PortfoliosApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | Code for the portfolio
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the deletion
+String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the deletion
 List<String> portfolioPropertyKeys = Arrays.asList("portfolioPropertyKeys_example"); // List<String> | Optional. The keys of the properties to be deleted. None specified indicates the intention to delete all properties from the portfolio
 try {
     DeletedEntityResponse result = apiInstance.deletePortfolioProperties(scope, code, effectiveAt, portfolioPropertyKeys);
@@ -115,7 +115,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| Code for the portfolio |
- **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the deletion | [optional]
+ **effectiveAt** | **String**| Optional. The effective date of the deletion | [optional]
  **portfolioPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. The keys of the properties to be deleted. None specified indicates the intention to delete all properties from the portfolio | [optional]
 
 ### Return type
@@ -283,7 +283,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 PortfoliosApi apiInstance = new PortfoliosApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | The code of the portfolio
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the data
+String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
 List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the data | [optional]
+ **effectiveAt** | **String**| Optional. The effective date of the data | [optional]
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
@@ -346,7 +346,7 @@ OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
 oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 PortfoliosApi apiInstance = new PortfoliosApi();
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the data
+String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
 String page = "page_example"; // String | Optional. The pagination token to continue listing portfolios. This value is returned from a previous call to ListPortfolios.  If this is set, then the sortBy, filter, query, effectiveAt, and asAt fields must not have changed. Also, if set, a start  value cannot be set.
 List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
@@ -367,7 +367,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the data | [optional]
+ **effectiveAt** | **String**| Optional. The effective date of the data | [optional]
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
  **page** | **String**| Optional. The pagination token to continue listing portfolios. This value is returned from a previous call to ListPortfolios.  If this is set, then the sortBy, filter, query, effectiveAt, and asAt fields must not have changed. Also, if set, a start  value cannot be set. | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
@@ -414,7 +414,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
 PortfoliosApi apiInstance = new PortfoliosApi();
 String scope = "scope_example"; // String | The scope
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the data
+String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
 List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
@@ -434,7 +434,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope |
- **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the data | [optional]
+ **effectiveAt** | **String**| Optional. The effective date of the data | [optional]
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
