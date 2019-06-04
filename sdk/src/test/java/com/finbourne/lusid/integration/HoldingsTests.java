@@ -77,7 +77,7 @@ public class HoldingsTests {
         transactionPortfoliosApi.upsertTransactions(SCOPE, portfolioCode, requests);
 
         //  get the holds on T+10
-        VersionedResourceListOfPortfolioHolding holdings = transactionPortfoliosApi.getHoldings(SCOPE, portfolioCode, false, datTPlus10,
+        VersionedResourceListOfPortfolioHolding holdings = transactionPortfoliosApi.getHoldings(SCOPE, portfolioCode, false, datTPlus10.toString(),
                 null, null, null, null, null, null);
 
         holdings.getValues().sort(Comparator.comparing(PortfolioHolding::getInstrumentUid));
@@ -167,7 +167,7 @@ public class HoldingsTests {
         );
 
         //  set the initial holdings on day 1
-        transactionPortfoliosApi.setHoldings(SCOPE, portfolioCode, day1, holdingAdjustments);
+        transactionPortfoliosApi.setHoldings(SCOPE, portfolioCode, day1.toString(), holdingAdjustments);
 
         //  add subsequent transactions on day 2
         List<TransactionRequest>    requests = Arrays.asList(
@@ -177,7 +177,7 @@ public class HoldingsTests {
         transactionPortfoliosApi.upsertTransactions(SCOPE, portfolioCode, requests);
 
         //  get the holdings for day 2
-        VersionedResourceListOfPortfolioHolding holdings = transactionPortfoliosApi.getHoldings(SCOPE, portfolioCode, false, day2,
+        VersionedResourceListOfPortfolioHolding holdings = transactionPortfoliosApi.getHoldings(SCOPE, portfolioCode, false, day2.toString(),
                 null, null, null, null, null, null);
 
         holdings.getValues().sort(Comparator.comparing(PortfolioHolding::getInstrumentUid));
