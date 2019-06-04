@@ -89,7 +89,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 DerivedTransactionPortfoliosApi apiInstance = new DerivedTransactionPortfoliosApi();
 String scope = "scope_example"; // String | The scope of the portfolio
 String code = "code_example"; // String | The code of the portfolio
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | The effective date of the change
+String effectiveAt = "effectiveAt_example"; // String | The effective date of the change
 try {
     DeletedEntityResponse result = apiInstance.deleteDerivedPortfolioDetails(scope, code, effectiveAt);
     System.out.println(result);
@@ -105,7 +105,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **effectiveAt** | **OffsetDateTime**| The effective date of the change | [optional]
+ **effectiveAt** | **String**| The effective date of the change | [optional]
 
 ### Return type
 
