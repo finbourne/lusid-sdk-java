@@ -112,8 +112,8 @@ public class {{classname}} {
         };
         final String {{localVariablePrefix}}localVarContentType = {{localVariablePrefix}}apiClient.selectHeaderContentType({{localVariablePrefix}}localVarContentTypes);
         {{localVariablePrefix}}localVarHeaderParams.put("Content-Type", {{localVariablePrefix}}localVarContentType);
-        {{localVariablePrefix}}localVarHeaderParams.put("X-LUSID-Sdk-Language", "Java");
-        {{localVariablePrefix}}localVarHeaderParams.put("X-LUSID-Sdk-Version", "{{version}}");
+        {{localVariablePrefix}}localVarHeaderParams.put("X-LUSID-SDK-Language", "Java");
+        {{localVariablePrefix}}localVarHeaderParams.put("X-LUSID-SDK-Version", "{{version}}");
 
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
