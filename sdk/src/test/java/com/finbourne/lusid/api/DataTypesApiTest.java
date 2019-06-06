@@ -14,11 +14,13 @@
 package com.finbourne.lusid.api;
 
 import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.model.CreateDataTypeRequest;
 import com.finbourne.lusid.model.DataType;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import com.finbourne.lusid.model.ResourceListOfDataType;
 import com.finbourne.lusid.model.ResourceListOfIUnitDefinitionDto;
+import com.finbourne.lusid.model.UpdateDataTypeRequest;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -35,6 +37,22 @@ public class DataTypesApiTest {
 
     private final DataTypesApi api = new DataTypesApi();
 
+    
+    /**
+     * Create data type definition
+     *
+     * Create a new data type definition    Data types cannot be created in either the \&quot;default\&quot; or \&quot;system\&quot; scopes.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void createDataTypeTest() throws ApiException {
+        CreateDataTypeRequest request = null;
+        DataType response = api.createDataType(request);
+
+        // TODO: test validations
+    }
     
     /**
      * Get data type definition
@@ -90,6 +108,24 @@ public class DataTypesApiTest {
         Integer limit = null;
         String filter = null;
         ResourceListOfDataType response = api.listDataTypes(scope, includeDefault, includeSystem, sortBy, start, limit, filter);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Update data type definition
+     *
+     * Update the definition of the specified existing data type    Not all elements within a data type definition are modifiable due to the potential implications for data  already stored against the types
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void updateDataTypeTest() throws ApiException {
+        String scope = null;
+        String code = null;
+        UpdateDataTypeRequest request = null;
+        DataType response = api.updateDataType(scope, code, request);
 
         // TODO: test validations
     }

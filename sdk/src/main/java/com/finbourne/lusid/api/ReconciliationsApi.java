@@ -31,6 +31,7 @@ import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import com.finbourne.lusid.model.PortfoliosReconciliationRequest;
 import com.finbourne.lusid.model.ResourceListOfReconciliationBreak;
+import com.finbourne.lusid.model.ValuationsReconciliationRequest;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -101,8 +102,6 @@ public class ReconciliationsApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
-        localVarHeaderParams.put("X-LUSID-SDK-Language", "Java");
-        localVarHeaderParams.put("X-LUSID-SDK-Version", "0.10.209");
 
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
@@ -196,6 +195,147 @@ public class ReconciliationsApi {
         }
 
         com.squareup.okhttp.Call call = reconcileHoldingsValidateBeforeCall(request, sortBy, start, limit, filter, progressListener, progressRequestListener);
+        Type localVarReturnType = new TypeToken<ResourceListOfReconciliationBreak>(){}.getType();
+        apiClient.executeAsync(call, localVarReturnType, callback);
+        return call;
+    }
+    /**
+     * Build call for reconcileValuation
+     * @param request The specifications of the inputs to the reconciliation (optional)
+     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
+     * @param start Optional. When paginating, skip this number of results (optional)
+     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
+     * @param filter Optional. Expression to filter the result set (optional)
+     * @param progressListener Progress listener
+     * @param progressRequestListener Progress request listener
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     */
+    public com.squareup.okhttp.Call reconcileValuationCall(ValuationsReconciliationRequest request, List<String> sortBy, Integer start, Integer limit, String filter, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        Object localVarPostBody = request;
+
+        // create path and map variables
+        String localVarPath = "/api/portfolios/$reconcileValuation";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        if (sortBy != null)
+        localVarCollectionQueryParams.addAll(apiClient.parameterToPairs("multi", "sortBy", sortBy));
+        if (start != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("start", start));
+        if (limit != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("limit", limit));
+        if (filter != null)
+        localVarQueryParams.addAll(apiClient.parameterToPair("filter", filter));
+
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain", "application/json", "text/json"
+        };
+        final String localVarAccept = apiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) localVarHeaderParams.put("Accept", localVarAccept);
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        if(progressListener != null) {
+            apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
+                @Override
+                public com.squareup.okhttp.Response intercept(com.squareup.okhttp.Interceptor.Chain chain) throws IOException {
+                    com.squareup.okhttp.Response originalResponse = chain.proceed(chain.request());
+                    return originalResponse.newBuilder()
+                    .body(new ProgressResponseBody(originalResponse.body(), progressListener))
+                    .build();
+                }
+            });
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return apiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, progressRequestListener);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private com.squareup.okhttp.Call reconcileValuationValidateBeforeCall(ValuationsReconciliationRequest request, List<String> sortBy, Integer start, Integer limit, String filter, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        
+
+        com.squareup.okhttp.Call call = reconcileValuationCall(request, sortBy, start, limit, filter, progressListener, progressRequestListener);
+        return call;
+
+    }
+
+    /**
+     * Reconcile valuations performed on one or two sets of holdings using one or two configuration recipes.
+     * Perform valuation of one or two set of holdings using different one or two configuration recipes. Produce a breakdown of the resulting differences in valuation.
+     * @param request The specifications of the inputs to the reconciliation (optional)
+     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
+     * @param start Optional. When paginating, skip this number of results (optional)
+     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
+     * @param filter Optional. Expression to filter the result set (optional)
+     * @return ResourceListOfReconciliationBreak
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ResourceListOfReconciliationBreak reconcileValuation(ValuationsReconciliationRequest request, List<String> sortBy, Integer start, Integer limit, String filter) throws ApiException {
+        ApiResponse<ResourceListOfReconciliationBreak> resp = reconcileValuationWithHttpInfo(request, sortBy, start, limit, filter);
+        return resp.getData();
+    }
+
+    /**
+     * Reconcile valuations performed on one or two sets of holdings using one or two configuration recipes.
+     * Perform valuation of one or two set of holdings using different one or two configuration recipes. Produce a breakdown of the resulting differences in valuation.
+     * @param request The specifications of the inputs to the reconciliation (optional)
+     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
+     * @param start Optional. When paginating, skip this number of results (optional)
+     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
+     * @param filter Optional. Expression to filter the result set (optional)
+     * @return ApiResponse&lt;ResourceListOfReconciliationBreak&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     */
+    public ApiResponse<ResourceListOfReconciliationBreak> reconcileValuationWithHttpInfo(ValuationsReconciliationRequest request, List<String> sortBy, Integer start, Integer limit, String filter) throws ApiException {
+        com.squareup.okhttp.Call call = reconcileValuationValidateBeforeCall(request, sortBy, start, limit, filter, null, null);
+        Type localVarReturnType = new TypeToken<ResourceListOfReconciliationBreak>(){}.getType();
+        return apiClient.execute(call, localVarReturnType);
+    }
+
+    /**
+     * Reconcile valuations performed on one or two sets of holdings using one or two configuration recipes. (asynchronously)
+     * Perform valuation of one or two set of holdings using different one or two configuration recipes. Produce a breakdown of the resulting differences in valuation.
+     * @param request The specifications of the inputs to the reconciliation (optional)
+     * @param sortBy Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName (optional)
+     * @param start Optional. When paginating, skip this number of results (optional)
+     * @param limit Optional. When paginating, limit the number of returned results to this many. (optional)
+     * @param filter Optional. Expression to filter the result set (optional)
+     * @param callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     */
+    public com.squareup.okhttp.Call reconcileValuationAsync(ValuationsReconciliationRequest request, List<String> sortBy, Integer start, Integer limit, String filter, final ApiCallback<ResourceListOfReconciliationBreak> callback) throws ApiException {
+
+        ProgressResponseBody.ProgressListener progressListener = null;
+        ProgressRequestBody.ProgressRequestListener progressRequestListener = null;
+
+        if (callback != null) {
+            progressListener = new ProgressResponseBody.ProgressListener() {
+                @Override
+                public void update(long bytesRead, long contentLength, boolean done) {
+                    callback.onDownloadProgress(bytesRead, contentLength, done);
+                }
+            };
+
+            progressRequestListener = new ProgressRequestBody.ProgressRequestListener() {
+                @Override
+                public void onRequestProgress(long bytesWritten, long contentLength, boolean done) {
+                    callback.onUploadProgress(bytesWritten, contentLength, done);
+                }
+            };
+        }
+
+        com.squareup.okhttp.Call call = reconcileValuationValidateBeforeCall(request, sortBy, start, limit, filter, progressListener, progressRequestListener);
         Type localVarReturnType = new TypeToken<ResourceListOfReconciliationBreak>(){}.getType();
         apiClient.executeAsync(call, localVarReturnType, callback);
         return call;
