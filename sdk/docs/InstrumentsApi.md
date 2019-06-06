@@ -95,7 +95,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 InstrumentsApi apiInstance = new InstrumentsApi();
 String identifierType = "identifierType_example"; // String | The type of identifier being supplied
 String identifier = "identifier_example"; // String | The identifier of the requested instrument
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the query
+String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the query
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the query
 List<String> instrumentPropertyKeys = Arrays.asList("instrumentPropertyKeys_example"); // List<String> | Optional. Keys of the properties to be decorated on to the instrument
 try {
@@ -113,7 +113,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifierType** | **String**| The type of identifier being supplied |
  **identifier** | **String**| The identifier of the requested instrument |
- **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the query | [optional]
+ **effectiveAt** | **String**| Optional. The effective date of the query | [optional]
  **asAt** | **OffsetDateTime**| Optional. The AsAt date of the query | [optional]
  **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys of the properties to be decorated on to the instrument | [optional]
 
@@ -205,7 +205,7 @@ oauth2.setAccessToken("YOUR ACCESS TOKEN");
 InstrumentsApi apiInstance = new InstrumentsApi();
 String identifierType = "identifierType_example"; // String | The type of identifiers being supplied
 List<String> identifiers = Arrays.asList(new List<String>()); // List<String> | The identifiers of the instruments to get
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the request
+String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the request
 OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The as at date of the request
 List<String> instrumentPropertyKeys = Arrays.asList("instrumentPropertyKeys_example"); // List<String> | Optional. Keys of the properties to be decorated on to the instrument
 try {
@@ -223,7 +223,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifierType** | **String**| The type of identifiers being supplied |
  **identifiers** | **List&lt;String&gt;**| The identifiers of the instruments to get |
- **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the request | [optional]
+ **effectiveAt** | **String**| Optional. The effective date of the request | [optional]
  **asAt** | **OffsetDateTime**| Optional. The as at date of the request | [optional]
  **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys of the properties to be decorated on to the instrument | [optional]
 
