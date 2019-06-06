@@ -5,7 +5,7 @@
     <artifactId>lusid-sdk</artifactId>
     <packaging>jar</packaging>
     <name>lusid-sdk</name>
-    <version>0.10.206-SNAPSHOT</version>
+    <version>0.10.207-SNAPSHOT</version>
     <description>LUSID Java SDK</description>    
 
     <licenses>
