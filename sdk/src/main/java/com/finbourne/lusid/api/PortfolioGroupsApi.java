@@ -100,6 +100,8 @@ public class PortfolioGroupsApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
+        localVarHeaderParams.put("X-LUSID-SDK-Language", "Java");
+        localVarHeaderParams.put("X-LUSID-SDK-Version", "0.10.209");
 
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
@@ -237,6 +239,8 @@ public class PortfolioGroupsApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
+        localVarHeaderParams.put("X-LUSID-SDK-Language", "Java");
+        localVarHeaderParams.put("X-LUSID-SDK-Version", "0.10.209");
 
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
@@ -372,6 +376,8 @@ public class PortfolioGroupsApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
+        localVarHeaderParams.put("X-LUSID-SDK-Language", "Java");
+        localVarHeaderParams.put("X-LUSID-SDK-Version", "0.10.209");
 
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
@@ -504,6 +510,8 @@ public class PortfolioGroupsApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
+        localVarHeaderParams.put("X-LUSID-SDK-Language", "Java");
+        localVarHeaderParams.put("X-LUSID-SDK-Version", "0.10.209");
 
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
@@ -653,6 +661,8 @@ public class PortfolioGroupsApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
+        localVarHeaderParams.put("X-LUSID-SDK-Language", "Java");
+        localVarHeaderParams.put("X-LUSID-SDK-Version", "0.10.209");
 
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
@@ -790,6 +800,8 @@ public class PortfolioGroupsApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
+        localVarHeaderParams.put("X-LUSID-SDK-Language", "Java");
+        localVarHeaderParams.put("X-LUSID-SDK-Version", "0.10.209");
 
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
@@ -942,6 +954,8 @@ public class PortfolioGroupsApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
+        localVarHeaderParams.put("X-LUSID-SDK-Language", "Java");
+        localVarHeaderParams.put("X-LUSID-SDK-Version", "0.10.209");
 
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
@@ -1096,6 +1110,8 @@ public class PortfolioGroupsApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
+        localVarHeaderParams.put("X-LUSID-SDK-Language", "Java");
+        localVarHeaderParams.put("X-LUSID-SDK-Version", "0.10.209");
 
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
@@ -1256,6 +1272,8 @@ public class PortfolioGroupsApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
+        localVarHeaderParams.put("X-LUSID-SDK-Language", "Java");
+        localVarHeaderParams.put("X-LUSID-SDK-Version", "0.10.209");
 
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
@@ -1411,6 +1429,8 @@ public class PortfolioGroupsApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
+        localVarHeaderParams.put("X-LUSID-SDK-Language", "Java");
+        localVarHeaderParams.put("X-LUSID-SDK-Version", "0.10.209");
 
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
@@ -1552,6 +1572,8 @@ public class PortfolioGroupsApi {
         };
         final String localVarContentType = apiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
+        localVarHeaderParams.put("X-LUSID-SDK-Language", "Java");
+        localVarHeaderParams.put("X-LUSID-SDK-Version", "0.10.209");
 
         if(progressListener != null) {
             apiClient.getHttpClient().networkInterceptors().add(new com.squareup.okhttp.Interceptor() {
