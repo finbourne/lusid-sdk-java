@@ -80,7 +80,7 @@ public class LusidApiTests {
                 .valueRequired(false)
                 .displayName("Fund Style")
                 .lifeTime(CreatePropertyDefinitionRequest.LifeTimeEnum.PERPETUAL)
-                .dataTypeId(new ResourceId().scope("default").code("string"));;
+                .dataTypeId(new ResourceId().scope("system").code("string"));;
 
         //  create property definition
         final PropertyDefinition    propertyDefinitionDto = propertyDefinitionsApi.createPropertyDefinition(propertyDefinition);
@@ -126,7 +126,7 @@ public class LusidApiTests {
                 .valueRequired(false)
                 .displayName("Trader Id")
                 .lifeTime(CreatePropertyDefinitionRequest.LifeTimeEnum.PERPETUAL)
-                .dataTypeId(new ResourceId().scope("default").code("string"));
+                .dataTypeId(new ResourceId().scope("system").code("string"));
 
         //  create property definition
         final PropertyDefinition propertyDefinitionDto = propertyDefinitionsApi.createPropertyDefinition(propertyDefinition);
