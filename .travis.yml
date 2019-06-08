@@ -1,7 +1,6 @@
 language: java
 services:
 - docker
-
 script:
 - |
 
@@ -22,7 +21,7 @@ script:
   fi
 
   cd sdk
-  docker build -t lusid-sdk-java-test .
+  docker build -t lusid-sdk-java-preview-test .
   docker run \
     -e FBN_TOKEN_URL=${!fbn_token_url} \
     -e FBN_USERNAME=${!fbn_username} \
@@ -31,10 +30,11 @@ script:
     -e FBN_CLIENT_SECRET=${!fbn_client_secret} \
     -e FBN_LUSID_API_URL=${!fbn_lusid_api_url} \
     -v $(pwd):/usr/src/ \
-    lusid-sdk-java-test
-
+    lusid-sdk-java-preview-test
+  
 notifications:
   slack:
     rooms:
-      secure: "dtdpx/VDxKS5dL7BRdNN4l0QIUVpSXcaOR6n3eCi+cdGlcGjKpewywoWi1V/lKJyJ77p8lCec0jjgfRS5OgMPbtXJHaLQQbqZwZ9wUGeUwSvHJYbbrGzStW/ss+HpwNW8O0hbleFg3fD8BSPl4W9nOfpVqnv6KAl+mWaW0g4/d3DnxiZ2BtxF8dx+CgpXBDdebh7dYyKN41iTn13tBhsH0bo3sF8H5mfMtIhSqza9uc7yBLH70IdTcpHZkBoggMKE1DG2s3U+CYTMgV5WceSrSpkFo/xdbiAxfZ2Zv27CPWDL1rBQvXBFm+QYB08b/L7e/2uGn3G5UvJmLeTy0LXrA+cIXpmMEyHljmGZxaiUJqdZAjhbGJvevcPzoZ2rh2UATAuVQ1njECFLi/JQaAcpKlaHA4dvLSYZyp0JoLXufy9KMQ5PqGhrCmxcQWdo72HKnPQbal23nex5QVXncqtGo59Mb/QFsKnZOvsKpix0+arSD1MeRTJ1ik/hHGHFWx71mh0Ceya/HCp29LTc/f9KafUGfwUK9cfKmDo/PttNILDz2qxtbc/SlfnxRH3ZEMFbTphiZB3VzM0yu1Ys2g5y3HROFOmoPprvKcyCrax8l2qtTH/NAlETkQ0zLYp3yf9HBgUL+ZXsWYE9P7/pAshBGZ4gfZzVHukwy9O0Ps7kAE="
+      secure: "gB9lWzqg4mRpNbJdbQ5PXDCwKICYP4JGRI9t+6cuHlIZOIcaed+qb4wRW7U6RKUuT1nvXmLcvtW8Jz2jq7SJBPVcPGKf/z65G4dx6eQUX/YeuUmhBdZd4D0ksUnL2i5HsptoBSed6ZaF9qzwZ26Rhwf6b8DZyx0MS3ITLQbN3OFxP7TOsw6CITCtwHU3WLkbUx15H2uY1ZUNX+TSkt3hQr+k38BGV1VIO0dVuCF7OivXA6ITv71DytkGfI6bgM/R979Mzmfh0UBmtOiNqMd//6fXDPHLi5y6b+zhK2B+JgAX/oYmFr3zJXwJL/gemF9OwGOv0JujNRn0eIOulmB43TMUTY7Yfk3SudC3GP+pEzHbaWRp20VBlzXck2qd9Ta3lpnXkv4Yzx+ozM1Ovzl/KazHKfUlILhczWdbO/pGfo1M5MY1masgB9KrFdMRJwWWbyw0WORLxNkmjEmLL/XyOpw/1LUxFyqRrRlO7ei2WDAucJ8YN0pHqjSaelVFQnqleOdBpeUTn2IvTWLNa/NrL5iq3hMMUjpgwB8s9gAgBwweGjSxreLFwwh3D3CGsk19feyJ8DhsG97iMjglu/B/0NLvAiLfNITTIFNKWU+E+S4J+gNAnKknG6kFwiPmJ+tHqBRy67KMnNJL4MEBXNhrMfRtQJC4z3kUVcihal4yBJA="
     on_failure: always
+
