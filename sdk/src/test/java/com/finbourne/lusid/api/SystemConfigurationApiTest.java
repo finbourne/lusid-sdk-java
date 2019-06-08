@@ -66,4 +66,20 @@ public class SystemConfigurationApiTest {
         // TODO: test validations
     }
     
+    /**
+     * Set transaction types
+     *
+     * Set all transaction types to be used by the movements engine, for the organisation                WARNING! Changing these mappings will have a material impact on how data, new and old, is processed and aggregated by LUSID. This will affect your whole organisation. Only change if you are fully aware of the implications of the change.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void setConfigurationTransactionTypesTest() throws ApiException {
+        List<TransactionConfigurationDataRequest> types = null;
+        ResourceListOfTransactionConfigurationData response = api.setConfigurationTransactionTypes(types);
+
+        // TODO: test validations
+    }
+    
 }

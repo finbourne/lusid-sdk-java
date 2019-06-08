@@ -18,6 +18,7 @@ import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import com.finbourne.lusid.model.PortfoliosReconciliationRequest;
 import com.finbourne.lusid.model.ResourceListOfReconciliationBreak;
+import com.finbourne.lusid.model.ValuationsReconciliationRequest;
 import org.junit.Test;
 import org.junit.Ignore;
 
@@ -51,6 +52,26 @@ public class ReconciliationsApiTest {
         Integer limit = null;
         String filter = null;
         ResourceListOfReconciliationBreak response = api.reconcileHoldings(request, sortBy, start, limit, filter);
+
+        // TODO: test validations
+    }
+    
+    /**
+     * Reconcile valuations performed on one or two sets of holdings using one or two configuration recipes.
+     *
+     * Perform valuation of one or two set of holdings using different one or two configuration recipes. Produce a breakdown of the resulting differences in valuation.
+     *
+     * @throws ApiException
+     *          if the Api call fails
+     */
+    @Test
+    public void reconcileValuationTest() throws ApiException {
+        ValuationsReconciliationRequest request = null;
+        List<String> sortBy = null;
+        Integer start = null;
+        Integer limit = null;
+        String filter = null;
+        ResourceListOfReconciliationBreak response = api.reconcileValuation(request, sortBy, start, limit, filter);
 
         // TODO: test validations
     }
