@@ -2,12 +2,12 @@ version: "3"
 
 services:
 
-  lusid-sdk-java-publish:
-    container_name: lusid-sdk-java-publish
+  lusid-sdk-java-preview-publish:
+    container_name: lusid-sdk-java-preview-publish
     build:
       context: .
       dockerfile: publish.Dockerfile
-    image: finbourne/lusid-sdk-java-publish
+    image: finbourne/lusid-sdk-java-preview-publish
     volumes:
       - .:/usr/src
     command:
