@@ -201,7 +201,7 @@ List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optiona
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
 Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
 String filter = "filter_example"; // String | Optional. Expression to filter the result set
-String query = "query_example"; // String | Optional. Expression specifying the criteria that the returned portfolios must meet
+String query = "query_example"; // String | Optional. Expression specifying the criteria that the returned cut labels must meet
 try {
     ResourceListOfCutLabelDefinition result = apiInstance.listCutLabelDefinitions(asAt, sortBy, start, limit, filter, query);
     System.out.println(result);
@@ -220,7 +220,7 @@ Name | Type | Description  | Notes
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
  **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
  **filter** | **String**| Optional. Expression to filter the result set | [optional]
- **query** | **String**| Optional. Expression specifying the criteria that the returned portfolios must meet | [optional]
+ **query** | **String**| Optional. Expression specifying the criteria that the returned cut labels must meet | [optional]
 
 ### Return type
 
