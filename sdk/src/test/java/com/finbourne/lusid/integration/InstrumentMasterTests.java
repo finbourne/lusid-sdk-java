@@ -38,22 +38,6 @@ public class InstrumentMasterTests {
         seedInstrumentMaster();
     }
 
-    @AfterClass
-    public static void tearDown() throws ApiException
-    {
-        List<String>    ids = Arrays.asList(
-                "BBG000C6K6G9",
-                "BBG000C04D57",
-                "BBG000FV67Q4",
-                "BBG000BF0KW3",
-                "BBG000BF4KL1"
-        );
-
-        for (String id : ids) {
-            instrumentsApi.deleteInstrument(FIGI_SCHEME, id);
-        }
-    }
-
     private static void seedInstrumentMaster() throws ApiException
     {
         UpsertInstrumentsResponse upsertInstrumentsResponse = instrumentsApi.upsertInstruments(Stream.of(new Object[][] {
