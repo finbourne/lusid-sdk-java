@@ -1,4 +1,4 @@
-package com.finbourne.lusid.integration;
+package com.finbourne.lusid.utilities;
 
 import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.InstrumentsApi;

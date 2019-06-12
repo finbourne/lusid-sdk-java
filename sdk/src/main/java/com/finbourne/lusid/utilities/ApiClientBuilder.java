@@ -1,4 +1,4 @@
-package com.finbourne.lusid.integration;
+package com.finbourne.lusid.utilities;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.finbourne.lusid.ApiClient;
@@ -9,8 +9,6 @@ import java.io.IOException;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
-
-import static org.junit.Assert.assertTrue;
 
 /**
  * Utility class to build an ApiClient from a set of configuration
@@ -39,7 +37,7 @@ public class ApiClientBuilder {
 
         if (tokenUrl == null || username == null || password == null || clientId == null || clientSecret == null || apiUrl == null) {
 
-            File configJson = new TestConfigurationLoader().loadConfiguration(apiConfig);
+            File configJson = new ConfigurationLoader().loadConfiguration(apiConfig);
 
             //  load configuration from secrets.json if any of the environment variables are missing
             ObjectMapper configMapper = new ObjectMapper();
@@ -87,7 +85,9 @@ public class ApiClientBuilder {
         //  map json response
         final Map bodyValues = mapper.readValue(content, Map.class);
 
-        assertTrue("missing access_token", bodyValues.containsKey("access_token"));
+        if (!bodyValues.containsKey("access_token")) {
+            throw new IOException("missing access_token");
+        }
 
         //  get access token
         final String apiToken = (String)bodyValues.get("access_token");

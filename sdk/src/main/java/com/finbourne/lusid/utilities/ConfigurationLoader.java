@@ -1,9 +1,9 @@
-package com.finbourne.lusid.integration;
+package com.finbourne.lusid.utilities;
 
 import java.io.File;
 import java.io.IOException;
 
-public class TestConfigurationLoader {
+public class ConfigurationLoader {
 
     /**
      * Loads the API configuration from a resource in the classpath

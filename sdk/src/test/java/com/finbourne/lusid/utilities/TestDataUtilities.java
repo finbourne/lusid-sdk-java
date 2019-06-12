@@ -1,4 +1,4 @@
-package com.finbourne.lusid.integration;
+package com.finbourne.lusid.utilities;
 
 import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.TransactionPortfoliosApi;
@@ -12,6 +12,8 @@ import java.util.UUID;
 import static junit.framework.TestCase.assertEquals;
 
 public class TestDataUtilities {
+
+    public static String TutorialScope = "Testdemo";
 
     public static final String LUSID_INSTRUMENT_IDENTIFIER = "Instrument/default/LusidInstrumentId";
     public static final String LUSID_CASH_IDENTIFIER = "Instrument/default/Currency";
