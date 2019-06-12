@@ -1,10 +1,10 @@
-package com.finbourne.lusid.integration;
+package com.finbourne.lusid.tutorials.marketdata;
 
 import com.finbourne.lusid.ApiClient;
 import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.InstrumentsApi;
 import com.finbourne.lusid.model.*;
-import org.junit.AfterClass;
+import com.finbourne.lusid.utilities.ApiClientBuilder;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ import java.util.stream.Stream;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-public class InstrumentMasterTests {
+public class InstrumentMaster {
 
     private static final String FIGI_SCHEME = "Figi";
     private static final String CUSTOM_INTERNAL_SCHEME = "ClientInternal";
@@ -37,7 +37,7 @@ public class InstrumentMasterTests {
 
         seedInstrumentMaster();
     }
-
+    
     private static void seedInstrumentMaster() throws ApiException
     {
         UpsertInstrumentsResponse upsertInstrumentsResponse = instrumentsApi.upsertInstruments(Stream.of(new Object[][] {

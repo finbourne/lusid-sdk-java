@@ -1,11 +1,12 @@
-package com.finbourne.lusid.integration;
+package com.finbourne.lusid.tutorials.ibor;
 
 import com.finbourne.lusid.ApiClient;
 import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.InstrumentsApi;
 import com.finbourne.lusid.api.TransactionPortfoliosApi;
 import com.finbourne.lusid.model.*;
-import org.junit.AfterClass;
+import com.finbourne.lusid.utilities.ApiClientBuilder;
+import com.finbourne.lusid.utilities.InstrumentLoader;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -14,16 +15,14 @@ import java.time.ZoneOffset;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static com.finbourne.lusid.integration.TestDataUtilities.LUSID_CASH_IDENTIFIER;
-import static com.finbourne.lusid.integration.TestDataUtilities.LUSID_INSTRUMENT_IDENTIFIER;
+import static com.finbourne.lusid.utilities.TestDataUtilities.*;
 import static org.junit.Assert.assertEquals;
 
-public class TransactionsTests {
+public class Transactions {
 
     private static InstrumentsApi instrumentsApi;
     private static TransactionPortfoliosApi transactionPortfoliosApi;
     private static List<String> instrumentIds;
-    private static InstrumentLoader instrumentLoader;
 
     @BeforeClass
     public static void setUp() throws Exception
@@ -34,19 +33,14 @@ public class TransactionsTests {
         instrumentsApi = new InstrumentsApi(apiClient);
 
         //  ensure instruments are created and exist in LUSID
-        instrumentLoader = new InstrumentLoader(instrumentsApi);
+        InstrumentLoader instrumentLoader = new InstrumentLoader(instrumentsApi);
         instrumentIds = instrumentLoader.loadInstruments();
-    }
-
-    @AfterClass
-    public static void tearDown() throws ApiException {
     }
 
     @Test
     public void load_listed_instrument_transaction() throws ApiException
     {
         String uuid = UUID.randomUUID().toString();
-        String scope = "finbourne";
         OffsetDateTime effectiveDate = OffsetDateTime.of(2018, 1, 1, 0, 0, 0, 0, ZoneOffset.UTC);
 
         //  portfolio request
@@ -58,7 +52,7 @@ public class TransactionsTests {
                 .created(effectiveDate);
 
         //  create portfolio
-        Portfolio portfolio = transactionPortfoliosApi.createPortfolio(scope, request);
+        Portfolio portfolio = transactionPortfoliosApi.createPortfolio(TutorialScope, request);
 
         assertEquals(portfolio.getId().getCode(), originalPortfolioId);
 
@@ -79,10 +73,10 @@ public class TransactionsTests {
                 .source("Custodian");
 
         //  add the trade
-        transactionPortfoliosApi.upsertTransactions(scope, portfolioId, new ArrayList<>(Arrays.asList(transaction)));
+        transactionPortfoliosApi.upsertTransactions(TutorialScope, portfolioId, new ArrayList<>(Collections.singletonList(transaction)));
 
         //  get the trade
-        VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(scope,
+        VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(TutorialScope,
                 portfolioId, null, null, null, null, null, null, null, null);
 
         assertEquals(1, transactions.getValues().size());
@@ -92,7 +86,6 @@ public class TransactionsTests {
     @Test
     public void load_cash_transaction() throws ApiException {
         String uuid = UUID.randomUUID().toString();
-        String scope = "finbourne";
         OffsetDateTime effectiveDate = OffsetDateTime.of(2018, 1, 1, 0, 0, 0, 0, ZoneOffset.UTC);
 
         //  portfolio request
@@ -104,7 +97,7 @@ public class TransactionsTests {
                 .created(effectiveDate);
 
         //  create portfolio
-        Portfolio portfolio = transactionPortfoliosApi.createPortfolio(scope, request);
+        Portfolio portfolio = transactionPortfoliosApi.createPortfolio(TutorialScope, request);
 
         assertEquals(portfolio.getId().getCode(), originalPortfolioId);
 
@@ -125,10 +118,10 @@ public class TransactionsTests {
                 .source("Custodian");
 
         //  add the trade
-        transactionPortfoliosApi.upsertTransactions(scope, portfolioId, new ArrayList<>(Arrays.asList(transaction)));
+        transactionPortfoliosApi.upsertTransactions(TutorialScope, portfolioId, new ArrayList<>(Collections.singletonList(transaction)));
 
         //  get the trade
-        VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(scope,
+        VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(TutorialScope,
                 portfolioId, null, null, null, null, null, null, null, null);
 
         assertEquals(1, transactions.getValues().size());
@@ -139,7 +132,6 @@ public class TransactionsTests {
     public void load_otc_instrument_transaction() throws ApiException
     {
         String uuid = UUID.randomUUID().toString();
-        String scope = "finbourne";
         OffsetDateTime effectiveDate = OffsetDateTime.of(2018, 1, 1, 0, 0, 0, 0, ZoneOffset.UTC);
 
         //  portfolio request
@@ -151,7 +143,7 @@ public class TransactionsTests {
                 .created(effectiveDate);
 
         //  create portfolio
-        Portfolio portfolio = transactionPortfoliosApi.createPortfolio(scope, request);
+        Portfolio portfolio = transactionPortfoliosApi.createPortfolio(TutorialScope, request);
 
         assertEquals(portfolio.getId().getCode(), originalPortfolioId);
 
@@ -176,7 +168,7 @@ public class TransactionsTests {
                 .getValues()
                 .values()
                 .stream()
-                .map(inst -> inst.getLusidInstrumentId())
+                .map(Instrument::getLusidInstrumentId)
                 .collect(Collectors.toList())
                 .get(0);
 
@@ -192,10 +184,10 @@ public class TransactionsTests {
                 .source("Custodian");
 
         //  add the trade
-        transactionPortfoliosApi.upsertTransactions(scope, portfolioId, new ArrayList<>(Arrays.asList(transactionRequest)));
+        transactionPortfoliosApi.upsertTransactions(TutorialScope, portfolioId, new ArrayList<>(Collections.singletonList(transactionRequest)));
 
         //  get the trade
-        VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(scope,
+        VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(TutorialScope,
                 portfolioId, null, null, null, null, null, null, null, null);
 
         assertEquals(1, transactions.getValues().size());
