@@ -16,7 +16,7 @@ swagger_file=$gen_root/$1
 shopt -s extglob 
 rm -rf $sdk_output_folder/docs
 rm -rf $sdk_output_folder/target
-rm -rf $sdk_output_folder/src/main/java/com/finbourne/lusid/!(utilities)
+rm -rf $sdk_output_folder/src/main/java
 rm -rf $sdk_output_folder/src/test/java/com/finbourne/lusid/api
 shopt -u extglob 
 
