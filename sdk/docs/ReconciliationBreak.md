@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **leftCost** | [**CurrencyAndAmount**](CurrencyAndAmount.md) | Cost from the left hand side | 
 **rightCost** | [**CurrencyAndAmount**](CurrencyAndAmount.md) | Cost from the right hand side | 
 **differenceCost** | [**CurrencyAndAmount**](CurrencyAndAmount.md) | Difference in cost | 
-**instrumentProperties** | [**List&lt;Property&gt;**](Property.md) | Additional features relating to the security | 
+**instrumentProperties** | [**List&lt;Property&gt;**](Property.md) | Additional features relating to the instrument | 
 
 
 
