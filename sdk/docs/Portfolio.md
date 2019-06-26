@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **parentPortfolioId** | [**ResourceId**](ResourceId.md) | If this is a derived portfolio, the identifier of the portfolio from which it is derived |  [optional]
 **version** | [**Version**](Version.md) | The version of the portfolio |  [optional]
 **isDerived** | **Boolean** |  |  [optional]
+**properties** | [**List&lt;Property&gt;**](Property.md) | Any requested portfolio properties |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 

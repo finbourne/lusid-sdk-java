@@ -324,7 +324,7 @@ Name | Type | Description  | Notes
 
 <a name="listPortfolios"></a>
 # **listPortfolios**
-> ResourceListOfPortfolio listPortfolios(effectiveAt, asAt, page, sortBy, start, limit, filter, query)
+> ResourceListOfPortfolio listPortfolios(effectiveAt, asAt, page, sortBy, start, limit, filter, query, portfolioPropertyKeys)
 
 List portfolios
 
@@ -354,8 +354,9 @@ Integer start = 56; // Integer | Optional. When paginating, skip this number of 
 Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
 String filter = "filter_example"; // String | Optional. Expression to filter the result set
 String query = "query_example"; // String | Optional. Expression specifying the criteria that the returned portfolios must meet
+List<String> portfolioPropertyKeys = Arrays.asList("portfolioPropertyKeys_example"); // List<String> | Optional. Keys of the properties to be decorated on to the portfolio
 try {
-    ResourceListOfPortfolio result = apiInstance.listPortfolios(effectiveAt, asAt, page, sortBy, start, limit, filter, query);
+    ResourceListOfPortfolio result = apiInstance.listPortfolios(effectiveAt, asAt, page, sortBy, start, limit, filter, query, portfolioPropertyKeys);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortfoliosApi#listPortfolios");
@@ -375,6 +376,7 @@ Name | Type | Description  | Notes
  **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
  **filter** | **String**| Optional. Expression to filter the result set | [optional]
  **query** | **String**| Optional. Expression specifying the criteria that the returned portfolios must meet | [optional]
+ **portfolioPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys of the properties to be decorated on to the portfolio | [optional]
 
 ### Return type
 
@@ -391,7 +393,7 @@ Name | Type | Description  | Notes
 
 <a name="listPortfoliosForScope"></a>
 # **listPortfoliosForScope**
-> ResourceListOfPortfolio listPortfoliosForScope(scope, effectiveAt, asAt, sortBy, start, limit, filter)
+> ResourceListOfPortfolio listPortfoliosForScope(scope, effectiveAt, asAt, sortBy, start, limit, filter, portfolioPropertyKeys)
 
 List portfolios for scope
 
@@ -420,8 +422,9 @@ List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optiona
 Integer start = 56; // Integer | Optional. When paginating, skip this number of results
 Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
 String filter = "filter_example"; // String | Optional. Expression to filter the result set
+List<String> portfolioPropertyKeys = Arrays.asList("portfolioPropertyKeys_example"); // List<String> | Optional. Keys of the properties to be decorated on to the portfolio
 try {
-    ResourceListOfPortfolio result = apiInstance.listPortfoliosForScope(scope, effectiveAt, asAt, sortBy, start, limit, filter);
+    ResourceListOfPortfolio result = apiInstance.listPortfoliosForScope(scope, effectiveAt, asAt, sortBy, start, limit, filter, portfolioPropertyKeys);
     System.out.println(result);
 } catch (ApiException e) {
     System.err.println("Exception when calling PortfoliosApi#listPortfoliosForScope");
@@ -440,6 +443,7 @@ Name | Type | Description  | Notes
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
  **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
  **filter** | **String**| Optional. Expression to filter the result set | [optional]
+ **portfolioPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys of the properties to be decorated on to the portfolio | [optional]
 
 ### Return type
 
