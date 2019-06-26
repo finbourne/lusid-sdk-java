@@ -4,9 +4,9 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**displayName** | **String** |  |  [optional]
-**lifeTime** | [**LifeTimeEnum**](#LifeTimeEnum) |  |  [optional]
-**type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
+**displayName** | **String** | The display name of the property. | 
+**lifeTime** | [**LifeTimeEnum**](#LifeTimeEnum) | Controls how the property&#39;s values can change over time. |  [optional]
+**type** | [**TypeEnum**](#TypeEnum) | The type of the property. |  [optional]
 
 
 <a name="LifeTimeEnum"></a>
