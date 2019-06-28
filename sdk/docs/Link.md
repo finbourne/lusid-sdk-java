@@ -1,7 +1,9 @@
 
+
 # Link
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **relation** | [**RelationEnum**](#RelationEnum) |  | 
@@ -10,8 +12,9 @@ Name | Type | Description | Notes
 **method** | [**MethodEnum**](#MethodEnum) |  | 
 
 
-<a name="RelationEnum"></a>
+
 ## Enum: RelationEnum
+
 Name | Value
 ---- | -----
 ROOT | &quot;Root&quot;
@@ -32,8 +35,9 @@ CONSTITUENTSADJUSTMENTS | &quot;ConstituentsAdjustments&quot;
 VALUES | &quot;Values&quot;
 
 
-<a name="MethodEnum"></a>
+
 ## Enum: MethodEnum
+
 Name | Value
 ---- | -----
 POST | &quot;POST&quot;

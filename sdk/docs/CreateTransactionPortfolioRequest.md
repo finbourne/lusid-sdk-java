@@ -1,7 +1,9 @@
 
+
 # CreateTransactionPortfolioRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **displayName** | **String** |  | 
@@ -15,8 +17,9 @@ Name | Type | Description | Notes
 **properties** | [**Map&lt;String, PropertyValue&gt;**](PropertyValue.md) | Portfolio properties to add to the portfolio |  [optional]
 
 
-<a name="AccountingMethodEnum"></a>
+
 ## Enum: AccountingMethodEnum
+
 Name | Value
 ---- | -----
 DEFAULT | &quot;Default&quot;

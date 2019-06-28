@@ -1,7 +1,9 @@
 
+
 # TransactionConfigurationMovementData
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **movementTypes** | [**MovementTypesEnum**](#MovementTypesEnum) | The Movement Types | 
@@ -11,8 +13,9 @@ Name | Type | Description | Notes
 **mappings** | [**List&lt;TransactionPropertyMapping&gt;**](TransactionPropertyMapping.md) |  |  [optional]
 
 
-<a name="MovementTypesEnum"></a>
+
 ## Enum: MovementTypesEnum
+
 Name | Value
 ---- | -----
 SETTLEMENT | &quot;Settlement&quot;
@@ -30,8 +33,9 @@ CASHFORWARD | &quot;CashForward&quot;
 CASHACCRUAL | &quot;CashAccrual&quot;
 
 
-<a name="SideEnum"></a>
+
 ## Enum: SideEnum
+
 Name | Value
 ---- | -----
 SIDE1 | &quot;Side1&quot;

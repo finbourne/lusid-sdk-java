@@ -1,7 +1,9 @@
 
+
 # PerpetualPropertyValue
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **labelValue** | **String** |  |  [optional]

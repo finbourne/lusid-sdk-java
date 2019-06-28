@@ -1,6 +1,6 @@
 # InstrumentsApi
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -25,27 +25,36 @@ Attempt to delete one or more \&quot;client\&quot; instruments.    The response 
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.InstrumentsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-InstrumentsApi apiInstance = new InstrumentsApi();
-String identifierType = "identifierType_example"; // String | The type of identifier being supplied
-String identifier = "identifier_example"; // String | The instrument identifier
-try {
-    DeleteInstrumentResponse result = apiInstance.deleteInstrument(identifierType, identifier);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling InstrumentsApi#deleteInstrument");
-    e.printStackTrace();
+    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
+    String identifierType = "identifierType_example"; // String | The type of identifier being supplied
+    String identifier = "identifier_example"; // String | The instrument identifier
+    try {
+      DeleteInstrumentResponse result = apiInstance.deleteInstrument(identifierType, identifier);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InstrumentsApi#deleteInstrument");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -69,6 +78,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="getInstrument"></a>
 # **getInstrument**
 > Instrument getInstrument(identifierType, identifier, effectiveAt, asAt, instrumentPropertyKeys)
@@ -80,30 +96,39 @@ Get an individual instrument by the one of its unique instrument identifiers. Op
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.InstrumentsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-InstrumentsApi apiInstance = new InstrumentsApi();
-String identifierType = "identifierType_example"; // String | The type of identifier being supplied
-String identifier = "identifier_example"; // String | The identifier of the requested instrument
-String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the query
-OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the query
-List<String> instrumentPropertyKeys = Arrays.asList("instrumentPropertyKeys_example"); // List<String> | Optional. Keys of the properties to be decorated on to the instrument
-try {
-    Instrument result = apiInstance.getInstrument(identifierType, identifier, effectiveAt, asAt, instrumentPropertyKeys);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling InstrumentsApi#getInstrument");
-    e.printStackTrace();
+    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
+    String identifierType = "identifierType_example"; // String | The type of identifier being supplied
+    String identifier = "identifier_example"; // String | The identifier of the requested instrument
+    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the query
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the query
+    List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | Optional. Keys of the properties to be decorated on to the instrument
+    try {
+      Instrument result = apiInstance.getInstrument(identifierType, identifier, effectiveAt, asAt, instrumentPropertyKeys);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InstrumentsApi#getInstrument");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -130,6 +155,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="getInstrumentIdentifiers"></a>
 # **getInstrumentIdentifiers**
 > ResourceListOfInstrumentIdTypeDescriptor getInstrumentIdentifiers()
@@ -141,25 +173,34 @@ Returns a collection of instrument identifier type descriptors. Each descriptor 
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.InstrumentsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-InstrumentsApi apiInstance = new InstrumentsApi();
-try {
-    ResourceListOfInstrumentIdTypeDescriptor result = apiInstance.getInstrumentIdentifiers();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling InstrumentsApi#getInstrumentIdentifiers");
-    e.printStackTrace();
+    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
+    try {
+      ResourceListOfInstrumentIdTypeDescriptor result = apiInstance.getInstrumentIdentifiers();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InstrumentsApi#getInstrumentIdentifiers");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -179,6 +220,12 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**0** | Error response |  -  |
+
 <a name="getInstruments"></a>
 # **getInstruments**
 > GetInstrumentsResponse getInstruments(identifierType, identifiers, effectiveAt, asAt, instrumentPropertyKeys)
@@ -190,30 +237,39 @@ Get a collection of instruments by a set of identifiers. Optionally, it is possi
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.InstrumentsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-InstrumentsApi apiInstance = new InstrumentsApi();
-String identifierType = "identifierType_example"; // String | The type of identifiers being supplied
-List<String> identifiers = Arrays.asList(new List<String>()); // List<String> | The identifiers of the instruments to get
-String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the request
-OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The as at date of the request
-List<String> instrumentPropertyKeys = Arrays.asList("instrumentPropertyKeys_example"); // List<String> | Optional. Keys of the properties to be decorated on to the instrument
-try {
-    GetInstrumentsResponse result = apiInstance.getInstruments(identifierType, identifiers, effectiveAt, asAt, instrumentPropertyKeys);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling InstrumentsApi#getInstruments");
-    e.printStackTrace();
+    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
+    String identifierType = "identifierType_example"; // String | The type of identifiers being supplied
+    List<String> identifiers = Arrays.asList(); // List<String> | The identifiers of the instruments to get
+    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the request
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The as at date of the request
+    List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | Optional. Keys of the properties to be decorated on to the instrument
+    try {
+      GetInstrumentsResponse result = apiInstance.getInstruments(identifierType, identifiers, effectiveAt, asAt, instrumentPropertyKeys);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InstrumentsApi#getInstruments");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -222,7 +278,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifierType** | **String**| The type of identifiers being supplied |
- **identifiers** | **List&lt;String&gt;**| The identifiers of the instruments to get |
+ **identifiers** | [**List&lt;String&gt;**](String.md)| The identifiers of the instruments to get |
  **effectiveAt** | **String**| Optional. The effective date of the request | [optional]
  **asAt** | **OffsetDateTime**| Optional. The as at date of the request | [optional]
  **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys of the properties to be decorated on to the instrument | [optional]
@@ -240,6 +296,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="listInstruments"></a>
 # **listInstruments**
 > ResourceListOfInstrument listInstruments(asAt, effectiveAt, page, sortBy, start, limit, filter, instrumentPropertyKeys)
@@ -251,33 +314,42 @@ Lists all instruments that have been mastered within LUSID.
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.InstrumentsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-InstrumentsApi apiInstance = new InstrumentsApi();
-OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt time
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the query
-String page = "page_example"; // String | Optional. The pagination token to continue listing instruments. This value is returned from a previous call to ListInstruments.  If this is set, then the sortBy, filter, effectiveAt, and asAt fields must not have changed. Also, if set, a start value cannot be set.
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-Integer start = 56; // Integer | Optional. When paginating, skip this number of results
-Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many
-String filter = "State eq 'Active'"; // String | Optional. Expression to filter the result set - the default filter returns only instruments in the Active state
-List<String> instrumentPropertyKeys = Arrays.asList("instrumentPropertyKeys_example"); // List<String> | Optional. Keys of the properties to be decorated on to the instrument
-try {
-    ResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, start, limit, filter, instrumentPropertyKeys);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling InstrumentsApi#listInstruments");
-    e.printStackTrace();
+    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt time
+    OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the query
+    String page = "page_example"; // String | Optional. The pagination token to continue listing instruments. This value is returned from a previous call to ListInstruments.  If this is set, then the sortBy, filter, effectiveAt, and asAt fields must not have changed. Also, if set, a start value cannot be set.
+    List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+    Integer start = 56; // Integer | Optional. When paginating, skip this number of results
+    Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many
+    String filter = "\"State eq 'Active'\""; // String | Optional. Expression to filter the result set - the default filter returns only instruments in the Active state
+    List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | Optional. Keys of the properties to be decorated on to the instrument
+    try {
+      ResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, start, limit, filter, instrumentPropertyKeys);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InstrumentsApi#listInstruments");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -291,7 +363,7 @@ Name | Type | Description  | Notes
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
  **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many | [optional]
- **filter** | **String**| Optional. Expression to filter the result set - the default filter returns only instruments in the Active state | [optional] [default to State eq &#39;Active&#39;]
+ **filter** | **String**| Optional. Expression to filter the result set - the default filter returns only instruments in the Active state | [optional] [default to &quot;State eq &#39;Active&#39;&quot;]
  **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys of the properties to be decorated on to the instrument | [optional]
 
 ### Return type
@@ -307,6 +379,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="updateInstrumentIdentifier"></a>
 # **updateInstrumentIdentifier**
 > Instrument updateInstrumentIdentifier(identifierType, identifier, request)
@@ -318,28 +397,37 @@ Adds, updates, or removes an identifier on an instrument
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.InstrumentsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-InstrumentsApi apiInstance = new InstrumentsApi();
-String identifierType = "identifierType_example"; // String | The type of identifier being supplied
-String identifier = "identifier_example"; // String | The instrument identifier
-UpdateInstrumentIdentifierRequest request = new UpdateInstrumentIdentifierRequest(); // UpdateInstrumentIdentifierRequest | The identifier to add, update, or remove
-try {
-    Instrument result = apiInstance.updateInstrumentIdentifier(identifierType, identifier, request);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling InstrumentsApi#updateInstrumentIdentifier");
-    e.printStackTrace();
+    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
+    String identifierType = "identifierType_example"; // String | The type of identifier being supplied
+    String identifier = "identifier_example"; // String | The instrument identifier
+    UpdateInstrumentIdentifierRequest request = new UpdateInstrumentIdentifierRequest(); // UpdateInstrumentIdentifierRequest | The identifier to add, update, or remove
+    try {
+      Instrument result = apiInstance.updateInstrumentIdentifier(identifierType, identifier, request);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InstrumentsApi#updateInstrumentIdentifier");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -364,6 +452,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="upsertInstruments"></a>
 # **upsertInstruments**
 > UpsertInstrumentsResponse upsertInstruments(requests)
@@ -375,26 +470,35 @@ Attempt to master one or more instruments in LUSID&#39;s instrument master. Each
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.InstrumentsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-InstrumentsApi apiInstance = new InstrumentsApi();
-Object requests = null; // Object | The instrument definitions
-try {
-    UpsertInstrumentsResponse result = apiInstance.upsertInstruments(requests);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling InstrumentsApi#upsertInstruments");
-    e.printStackTrace();
+    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
+    Map<String, InstrumentDefinition> requests = new HashMap(); // Map<String, InstrumentDefinition> | The instrument definitions
+    try {
+      UpsertInstrumentsResponse result = apiInstance.upsertInstruments(requests);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InstrumentsApi#upsertInstruments");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -402,7 +506,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requests** | **Object**| The instrument definitions | [optional]
+ **requests** | [**Map&lt;String, InstrumentDefinition&gt;**](InstrumentDefinition.md)| The instrument definitions | [optional]
 
 ### Return type
 
@@ -417,6 +521,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="upsertInstrumentsProperties"></a>
 # **upsertInstrumentsProperties**
 > UpsertInstrumentPropertiesResponse upsertInstrumentsProperties(instrumentProperties)
@@ -428,26 +539,35 @@ Attempt to upsert property data for one or more instruments, properties, and eff
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.InstrumentsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.InstrumentsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-InstrumentsApi apiInstance = new InstrumentsApi();
-List<UpsertInstrumentPropertyRequest> instrumentProperties = Arrays.asList(new UpsertInstrumentPropertyRequest()); // List<UpsertInstrumentPropertyRequest> | The instrument property data
-try {
-    UpsertInstrumentPropertiesResponse result = apiInstance.upsertInstrumentsProperties(instrumentProperties);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling InstrumentsApi#upsertInstrumentsProperties");
-    e.printStackTrace();
+    InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
+    List<UpsertInstrumentPropertyRequest> instrumentProperties = Arrays.asList(null); // List<UpsertInstrumentPropertyRequest> | The instrument property data
+    try {
+      UpsertInstrumentPropertiesResponse result = apiInstance.upsertInstrumentsProperties(instrumentProperties);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling InstrumentsApi#upsertInstrumentsProperties");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -469,4 +589,11 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
 

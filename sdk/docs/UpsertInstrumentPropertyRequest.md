@@ -1,7 +1,9 @@
 
+
 # UpsertInstrumentPropertyRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **lusidInstrumentId** | **String** | Unique instrument identifier |  [optional]

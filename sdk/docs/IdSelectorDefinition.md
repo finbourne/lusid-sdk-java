@@ -1,7 +1,9 @@
 
+
 # IdSelectorDefinition
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **identifier** | **Map&lt;String, String&gt;** |  |  [optional]

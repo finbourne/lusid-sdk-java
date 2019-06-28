@@ -1,7 +1,9 @@
 
+
 # Stream
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **canRead** | **Boolean** |  |  [optional]

@@ -1,6 +1,6 @@
 # PropertyDefinitionsApi
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -22,26 +22,35 @@ Define a new property.
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PropertyDefinitionsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PropertyDefinitionsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi();
-CreatePropertyDefinitionRequest definition = new CreatePropertyDefinitionRequest(); // CreatePropertyDefinitionRequest | The definition of the new property.
-try {
-    PropertyDefinition result = apiInstance.createPropertyDefinition(definition);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PropertyDefinitionsApi#createPropertyDefinition");
-    e.printStackTrace();
+    PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi(defaultClient);
+    CreatePropertyDefinitionRequest definition = new CreatePropertyDefinitionRequest(); // CreatePropertyDefinitionRequest | The definition of the new property.
+    try {
+      PropertyDefinition result = apiInstance.createPropertyDefinition(definition);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PropertyDefinitionsApi#createPropertyDefinition");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -64,6 +73,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="deletePropertyDefinition"></a>
 # **deletePropertyDefinition**
 > DeletedEntityResponse deletePropertyDefinition(domain, scope, code)
@@ -75,28 +91,37 @@ Delete the definition of the specified property.
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PropertyDefinitionsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PropertyDefinitionsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi();
-String domain = "domain_example"; // String | The domain of the property to be deleted.
-String scope = "scope_example"; // String | The scope of the property to be deleted.
-String code = "code_example"; // String | The code of the property to be deleted. Together with the domain and scope this uniquely              identifies the property.
-try {
-    DeletedEntityResponse result = apiInstance.deletePropertyDefinition(domain, scope, code);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PropertyDefinitionsApi#deletePropertyDefinition");
-    e.printStackTrace();
+    PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi(defaultClient);
+    String domain = "domain_example"; // String | The domain of the property to be deleted.
+    String scope = "scope_example"; // String | The scope of the property to be deleted.
+    String code = "code_example"; // String | The code of the property to be deleted. Together with the domain and scope this uniquely              identifies the property.
+    try {
+      DeletedEntityResponse result = apiInstance.deletePropertyDefinition(domain, scope, code);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PropertyDefinitionsApi#deletePropertyDefinition");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -121,6 +146,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="getMultiplePropertyDefinitions"></a>
 # **getMultiplePropertyDefinitions**
 > ResourceListOfPropertyDefinition getMultiplePropertyDefinitions(propertyKeys, asAt, filter)
@@ -132,28 +164,37 @@ Retrieve the definition of one or more specified properties.
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PropertyDefinitionsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PropertyDefinitionsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi();
-List<String> propertyKeys = Arrays.asList("propertyKeys_example"); // List<String> | One or more property keys which identify each property that a definition should              be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. \"Instrument/system/Name\".
-OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the property definition/s.
-String filter = "filter_example"; // String | Expression to filter the result set.
-try {
-    ResourceListOfPropertyDefinition result = apiInstance.getMultiplePropertyDefinitions(propertyKeys, asAt, filter);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PropertyDefinitionsApi#getMultiplePropertyDefinitions");
-    e.printStackTrace();
+    PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi(defaultClient);
+    List<String> propertyKeys = Arrays.asList(); // List<String> | One or more property keys which identify each property that a definition should              be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. \"Instrument/system/Name\".
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the property definition/s.
+    String filter = "filter_example"; // String | Expression to filter the result set.
+    try {
+      ResourceListOfPropertyDefinition result = apiInstance.getMultiplePropertyDefinitions(propertyKeys, asAt, filter);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PropertyDefinitionsApi#getMultiplePropertyDefinitions");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -178,6 +219,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="getPropertyDefinition"></a>
 # **getPropertyDefinition**
 > PropertyDefinition getPropertyDefinition(domain, scope, code, asAt)
@@ -189,29 +237,38 @@ Retrieve the definition of the specified property.
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PropertyDefinitionsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PropertyDefinitionsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi();
-String domain = "domain_example"; // String | The domain of the specified property.
-String scope = "scope_example"; // String | The scope of the specified property.
-String code = "code_example"; // String | The code of the specified property. Together with the domain and scope this uniquely              identifies the property.
-OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the property definition.
-try {
-    PropertyDefinition result = apiInstance.getPropertyDefinition(domain, scope, code, asAt);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PropertyDefinitionsApi#getPropertyDefinition");
-    e.printStackTrace();
+    PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi(defaultClient);
+    String domain = "domain_example"; // String | The domain of the specified property.
+    String scope = "scope_example"; // String | The scope of the specified property.
+    String code = "code_example"; // String | The code of the specified property. Together with the domain and scope this uniquely              identifies the property.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the property definition.
+    try {
+      PropertyDefinition result = apiInstance.getPropertyDefinition(domain, scope, code, asAt);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PropertyDefinitionsApi#getPropertyDefinition");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -237,6 +294,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="updatePropertyDefinition"></a>
 # **updatePropertyDefinition**
 > PropertyDefinition updatePropertyDefinition(domain, scope, code, definition)
@@ -248,29 +312,38 @@ Update the definition of the specified existing property. Not all elements withi
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PropertyDefinitionsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PropertyDefinitionsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi();
-String domain = "domain_example"; // String | The domain of the property being updated.
-String scope = "scope_example"; // String | The scope of the property being updated.
-String code = "code_example"; // String | The code of the property being updated. Together with the domain and scope this uniquely              identifies the property.
-UpdatePropertyDefinitionRequest definition = new UpdatePropertyDefinitionRequest(); // UpdatePropertyDefinitionRequest | The updated definition of the property.
-try {
-    PropertyDefinition result = apiInstance.updatePropertyDefinition(domain, scope, code, definition);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PropertyDefinitionsApi#updatePropertyDefinition");
-    e.printStackTrace();
+    PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi(defaultClient);
+    String domain = "domain_example"; // String | The domain of the property being updated.
+    String scope = "scope_example"; // String | The scope of the property being updated.
+    String code = "code_example"; // String | The code of the property being updated. Together with the domain and scope this uniquely              identifies the property.
+    UpdatePropertyDefinitionRequest definition = new UpdatePropertyDefinitionRequest(); // UpdatePropertyDefinitionRequest | The updated definition of the property.
+    try {
+      PropertyDefinition result = apiInstance.updatePropertyDefinition(domain, scope, code, definition);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PropertyDefinitionsApi#updatePropertyDefinition");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -295,4 +368,11 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
 

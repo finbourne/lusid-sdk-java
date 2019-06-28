@@ -1,7 +1,9 @@
 
+
 # CompletePortfolio
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | [**ResourceId**](ResourceId.md) |  |  [optional]
@@ -18,8 +20,9 @@ Name | Type | Description | Notes
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
+
 Name | Value
 ---- | -----
 TRANSACTION | &quot;Transaction&quot;

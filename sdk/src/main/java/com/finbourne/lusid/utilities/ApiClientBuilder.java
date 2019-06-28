@@ -2,7 +2,7 @@ package com.finbourne.lusid.utilities;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.finbourne.lusid.ApiClient;
-import com.squareup.okhttp.*;
+import okhttp3.*;
 
 import java.io.File;
 import java.io.IOException;

@@ -1,7 +1,9 @@
 
+
 # ResourceListOfTransactionConfigurationData
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **values** | [**List&lt;TransactionConfigurationData&gt;**](TransactionConfigurationData.md) |  | 

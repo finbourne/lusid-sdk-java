@@ -76,7 +76,7 @@ public class Holdings {
 
         holdings.getValues().sort(Comparator.comparing(PortfolioHolding::getInstrumentUid));
 
-        assertThat(holdings.getCount(), is(equalTo(5)));
+        assertThat(holdings.getValues().size(), is(equalTo(5)));
 
         //  cash balance
         assertThat(holdings.getValues().get(0).getInstrumentUid(), is(equalTo("CCY_" + currency)));

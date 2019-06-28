@@ -1,7 +1,9 @@
 
+
 # ResourceListOfScopeDefinition
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **values** | [**List&lt;ScopeDefinition&gt;**](ScopeDefinition.md) |  | 

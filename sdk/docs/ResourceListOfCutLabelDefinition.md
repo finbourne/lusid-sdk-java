@@ -1,7 +1,9 @@
 
+
 # ResourceListOfCutLabelDefinition
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **values** | [**List&lt;CutLabelDefinition&gt;**](CutLabelDefinition.md) |  | 

@@ -1,7 +1,9 @@
 
+
 # ResourceListOfPortfolio
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **values** | [**List&lt;Portfolio&gt;**](Portfolio.md) |  | 

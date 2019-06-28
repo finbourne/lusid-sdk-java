@@ -1,7 +1,9 @@
 
+
 # PropertyDefinition
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **href** | **String** |  |  [optional]
@@ -19,8 +21,9 @@ Name | Type | Description | Notes
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
-<a name="ValueTypeEnum"></a>
+
 ## Enum: ValueTypeEnum
+
 Name | Value
 ---- | -----
 STRING | &quot;String&quot;
@@ -56,16 +59,18 @@ DATEORCUTLABEL | &quot;DateOrCutLabel&quot;
 TRANSITION | &quot;Transition&quot;
 
 
-<a name="LifeTimeEnum"></a>
+
 ## Enum: LifeTimeEnum
+
 Name | Value
 ---- | -----
 PERPETUAL | &quot;Perpetual&quot;
 TIMEVARIANT | &quot;TimeVariant&quot;
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
+
 Name | Value
 ---- | -----
 LABEL | &quot;Label&quot;
@@ -73,8 +78,9 @@ METRIC | &quot;Metric&quot;
 INFORMATION | &quot;Information&quot;
 
 
-<a name="UnitSchemaEnum"></a>
+
 ## Enum: UnitSchemaEnum
+
 Name | Value
 ---- | -----
 NOUNITS | &quot;NoUnits&quot;
@@ -82,8 +88,9 @@ BASIC | &quot;Basic&quot;
 ISO4217CURRENCY | &quot;Iso4217Currency&quot;
 
 
-<a name="DomainEnum"></a>
+
 ## Enum: DomainEnum
+
 Name | Value
 ---- | -----
 TRADE | &quot;Trade&quot;

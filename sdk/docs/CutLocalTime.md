@@ -1,7 +1,9 @@
 
+
 # CutLocalTime
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hours** | **Integer** |  |  [optional]

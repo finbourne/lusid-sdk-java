@@ -9,7 +9,7 @@ fi
 echo "removing previous sdk"
 
 gen_root=/usr/swagger
-sdk_output_folder=$gen_root/sdk/
+sdk_output_folder=$gen_root/sdk
 swagger_file=$gen_root/$1
 
 #   remove all previously generated files
@@ -22,21 +22,22 @@ shopt -u extglob
 
 # ignore files
 mkdir -p $sdk_output_folder
-cp /usr/src/.swagger-codegen-ignore $sdk_output_folder
+cp /usr/src/.openapi-generator-ignore $sdk_output_folder
 
-# java -jar swagger-codegen-cli.jar swagger-codegen-cli help
-java -jar swagger-codegen-cli.jar generate \
+java -jar openapi-generator-cli.jar generate \
     -i $swagger_file \
-    -l java \
+    -g java \
     -o $sdk_output_folder \
-    -c $gen_root/config.json
+    -c $gen_root/config.json \
+    -t $gen_root/templates
 
-rm -rf $sdk_output_folder/.gradle
-rm -rf $sdk_output_folder/gradle
-rm -rf $sdk_output_folder/.swagger-codegen
-rm $sdk_output_folder/.swagger-codegen-ignore
+rm $sdk_output_folder/.openapi-generator-ignore
+
+# remove redundant generated build files
+rm -rf $sdk_output_folder/.openapi-generator/
+rm -rf $sdk_output_folder/gradle/
+rm -rf $sdk_output_folder/.gitignore
 rm $sdk_output_folder/.travis.yml
-rm $sdk_output_folder/.gitignore
 rm $sdk_output_folder/build.gradle
 rm $sdk_output_folder/build.sbt
 rm $sdk_output_folder/git_push.sh

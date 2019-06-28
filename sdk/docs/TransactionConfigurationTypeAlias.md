@@ -1,7 +1,9 @@
 
+
 # TransactionConfigurationTypeAlias
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | The transaction type | 
@@ -11,8 +13,9 @@ Name | Type | Description | Notes
 **transactionRoles** | [**TransactionRolesEnum**](#TransactionRolesEnum) | Transactions role within a class. E.g. Increase a long position | 
 
 
-<a name="TransactionRolesEnum"></a>
+
 ## Enum: TransactionRolesEnum
+
 Name | Value
 ---- | -----
 NONE | &quot;None&quot;
