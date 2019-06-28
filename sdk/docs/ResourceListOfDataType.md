@@ -1,7 +1,9 @@
 
+
 # ResourceListOfDataType
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **values** | [**List&lt;DataType&gt;**](DataType.md) |  | 

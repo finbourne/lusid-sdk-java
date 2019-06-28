@@ -95,7 +95,7 @@ public class Reconciliation {
                         .asAt(lastAsAt)
         );
 
-        ResourceListOfReconciliationBreak breaks = reconciliationsApi.reconcileHoldings(reconciliationRequest, null, null, null, null);
+        ResourceListOfReconciliationBreak breaks = reconciliationsApi.reconcileHoldings(null, null, null, null, reconciliationRequest);
 
         for (ReconciliationBreak value : breaks.getValues()) {
             System.out.println(String.format("%s\t%f\t%f", value.getInstrumentUid(), value.getDifferenceUnits(), value.getDifferenceCost().getAmount()));

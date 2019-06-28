@@ -1,7 +1,9 @@
 
+
 # Transaction
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **transactionId** | **String** | Unique transaction identifier | 
@@ -11,8 +13,8 @@ Name | Type | Description | Notes
 **transactionDate** | [**OffsetDateTime**](OffsetDateTime.md) | Transaction date | 
 **settlementDate** | [**OffsetDateTime**](OffsetDateTime.md) | Settlement date | 
 **units** | **Double** | Quantity of trade in units of the instrument | 
-**transactionPrice** | [**TransactionPrice**](TransactionPrice.md) | Execution price for the transaction | 
-**totalConsideration** | [**CurrencyAndAmount**](CurrencyAndAmount.md) | Total value of the transaction in settlement currency | 
+**transactionPrice** | [**TransactionPrice**](TransactionPrice.md) |  | 
+**totalConsideration** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
 **exchangeRate** | **Double** | Rate between transaction and settlement currency |  [optional]
 **transactionCurrency** | **String** | Transaction currency |  [optional]
 **properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) |  |  [optional]

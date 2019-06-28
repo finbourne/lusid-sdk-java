@@ -1,7 +1,9 @@
 
+
 # ResourceListOfReconciliationBreak
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **values** | [**List&lt;ReconciliationBreak&gt;**](ReconciliationBreak.md) |  | 

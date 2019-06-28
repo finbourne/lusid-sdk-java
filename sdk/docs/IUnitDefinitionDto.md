@@ -1,7 +1,9 @@
 
+
 # IUnitDefinitionDto
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **schema** | [**SchemaEnum**](#SchemaEnum) |  |  [optional]
@@ -10,8 +12,9 @@ Name | Type | Description | Notes
 **description** | **String** |  |  [optional]
 
 
-<a name="SchemaEnum"></a>
+
 ## Enum: SchemaEnum
+
 Name | Value
 ---- | -----
 NOUNITS | &quot;NoUnits&quot;

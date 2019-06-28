@@ -1,7 +1,9 @@
 
+
 # PortfolioHolding
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **instrumentUid** | **String** | Unique instrument identifier | 
@@ -10,9 +12,9 @@ Name | Type | Description | Notes
 **holdingType** | **String** | Type of holding, eg Position, Balance, CashCommitment, Receivable, ForwardFX | 
 **units** | **Double** | Quantity of holding | 
 **settledUnits** | **Double** | Settled quantity of holding | 
-**cost** | [**CurrencyAndAmount**](CurrencyAndAmount.md) | Book cost of holding in transaction currency | 
-**costPortfolioCcy** | [**CurrencyAndAmount**](CurrencyAndAmount.md) | Book cost of holding in portfolio currency | 
-**transaction** | [**Transaction**](Transaction.md) | If this is commitment-type holding, the transaction behind it |  [optional]
+**cost** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
+**costPortfolioCcy** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
+**transaction** | [**Transaction**](Transaction.md) |  |  [optional]
 
 
 

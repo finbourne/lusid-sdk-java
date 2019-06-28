@@ -1,7 +1,9 @@
 
+
 # ResourceListOfPropertyDefinition
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **values** | [**List&lt;PropertyDefinition&gt;**](PropertyDefinition.md) |  | 

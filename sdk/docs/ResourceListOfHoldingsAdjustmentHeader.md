@@ -1,7 +1,9 @@
 
+
 # ResourceListOfHoldingsAdjustmentHeader
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **values** | [**List&lt;HoldingsAdjustmentHeader&gt;**](HoldingsAdjustmentHeader.md) |  | 

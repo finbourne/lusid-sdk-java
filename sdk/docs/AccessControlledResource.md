@@ -1,7 +1,9 @@
 
+
 # AccessControlledResource
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **application** | **String** | The application to which this resource belongs |  [optional]

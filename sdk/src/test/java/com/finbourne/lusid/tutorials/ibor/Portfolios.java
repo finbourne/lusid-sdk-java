@@ -245,7 +245,7 @@ public class Portfolios {
         //    Get the list of scopes across all entities
         ResourceListOfScopeDefinition    scopes = scopesApi.listScopes(null, null, null, null, null);
 
-        assertThat(scopes.getCount(), is(greaterThan(0)));
+        assertThat(scopes.getValues().size(), is(greaterThan(0)));
     }
 
     @Test
@@ -261,6 +261,6 @@ public class Portfolios {
         //    Retrieve the list of portfolios from a given scope
         ResourceListOfPortfolio portfolios = portfoliosApi.listPortfoliosForScope(scope, null, null, null, null, null, null, null);
 
-        assertThat(portfolios.getCount(), is(equalTo(10)));
+        assertThat(portfolios.getValues().size(), is(equalTo(10)));
     }
 }

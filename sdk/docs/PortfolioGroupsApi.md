@@ -1,6 +1,6 @@
 # PortfolioGroupsApi
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,28 +28,37 @@ Adds a portfolio to a previously defined portfolio group
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfolioGroupsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfolioGroupsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfolioGroupsApi apiInstance = new PortfolioGroupsApi();
-String scope = "scope_example"; // String | The scope of the portfolio group to which a portfolio is being added
-String code = "code_example"; // String | The code of the portfolio group to which a portfolio is being added
-ResourceId portfolioId = new ResourceId(); // ResourceId | The id of the portfolio
-try {
-    PortfolioGroup result = apiInstance.addPortfolioToGroup(scope, code, portfolioId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfolioGroupsApi#addPortfolioToGroup");
-    e.printStackTrace();
+    PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio group to which a portfolio is being added
+    String code = "code_example"; // String | The code of the portfolio group to which a portfolio is being added
+    ResourceId portfolioId = new ResourceId(); // ResourceId | The id of the portfolio
+    try {
+      PortfolioGroup result = apiInstance.addPortfolioToGroup(scope, code, portfolioId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfolioGroupsApi#addPortfolioToGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -74,6 +83,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="addSubGroupToGroup"></a>
 # **addSubGroupToGroup**
 > PortfolioGroup addSubGroupToGroup(scope, code, portfolioGroupId)
@@ -85,28 +101,37 @@ Adds a portfolio group, as a sub-group, to an existing portfolio group
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfolioGroupsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfolioGroupsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfolioGroupsApi apiInstance = new PortfolioGroupsApi();
-String scope = "scope_example"; // String | The scope of the portfolio group to which a sub-group is being added
-String code = "code_example"; // String | The code of the portfolio group to which a sub-group is being added
-ResourceId portfolioGroupId = new ResourceId(); // ResourceId | The id of the portfolio group being added as a sub-group
-try {
-    PortfolioGroup result = apiInstance.addSubGroupToGroup(scope, code, portfolioGroupId);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfolioGroupsApi#addSubGroupToGroup");
-    e.printStackTrace();
+    PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio group to which a sub-group is being added
+    String code = "code_example"; // String | The code of the portfolio group to which a sub-group is being added
+    ResourceId portfolioGroupId = new ResourceId(); // ResourceId | The id of the portfolio group being added as a sub-group
+    try {
+      PortfolioGroup result = apiInstance.addSubGroupToGroup(scope, code, portfolioGroupId);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfolioGroupsApi#addSubGroupToGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -131,6 +156,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="createPortfolioGroup"></a>
 # **createPortfolioGroup**
 > PortfolioGroup createPortfolioGroup(scope, request)
@@ -142,27 +174,36 @@ Create a new portfolio group.
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfolioGroupsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfolioGroupsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfolioGroupsApi apiInstance = new PortfolioGroupsApi();
-String scope = "scope_example"; // String | The scope into which the portfolio group will be created
-CreatePortfolioGroupRequest request = new CreatePortfolioGroupRequest(); // CreatePortfolioGroupRequest | The definition of the new portfolio group
-try {
-    PortfolioGroup result = apiInstance.createPortfolioGroup(scope, request);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfolioGroupsApi#createPortfolioGroup");
-    e.printStackTrace();
+    PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope into which the portfolio group will be created
+    CreatePortfolioGroupRequest request = new CreatePortfolioGroupRequest(); // CreatePortfolioGroupRequest | The definition of the new portfolio group
+    try {
+      PortfolioGroup result = apiInstance.createPortfolioGroup(scope, request);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfolioGroupsApi#createPortfolioGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -186,6 +227,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="deletePortfolioFromGroup"></a>
 # **deletePortfolioFromGroup**
 > PortfolioGroup deletePortfolioFromGroup(scope, code, portfolioScope, portfolioCode)
@@ -197,29 +245,38 @@ Removes a portfolio from a portfolio group
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfolioGroupsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfolioGroupsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfolioGroupsApi apiInstance = new PortfolioGroupsApi();
-String scope = "scope_example"; // String | The scope of the portfolio group
-String code = "code_example"; // String | The code of the portfolio group
-String portfolioScope = "portfolioScope_example"; // String | The scope of the portfolio being removed
-String portfolioCode = "portfolioCode_example"; // String | The code of the portfolio being removed
-try {
-    PortfolioGroup result = apiInstance.deletePortfolioFromGroup(scope, code, portfolioScope, portfolioCode);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfolioGroupsApi#deletePortfolioFromGroup");
-    e.printStackTrace();
+    PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio group
+    String code = "code_example"; // String | The code of the portfolio group
+    String portfolioScope = "portfolioScope_example"; // String | The scope of the portfolio being removed
+    String portfolioCode = "portfolioCode_example"; // String | The code of the portfolio being removed
+    try {
+      PortfolioGroup result = apiInstance.deletePortfolioFromGroup(scope, code, portfolioScope, portfolioCode);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfolioGroupsApi#deletePortfolioFromGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -245,6 +302,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="deletePortfolioGroup"></a>
 # **deletePortfolioGroup**
 > DeletedEntityResponse deletePortfolioGroup(scope, code)
@@ -256,27 +320,36 @@ Deletes the definition of the specified portfolio group
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfolioGroupsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfolioGroupsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfolioGroupsApi apiInstance = new PortfolioGroupsApi();
-String scope = "scope_example"; // String | The scope of the portfolio group
-String code = "code_example"; // String | The code of the portfolio group
-try {
-    DeletedEntityResponse result = apiInstance.deletePortfolioGroup(scope, code);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfolioGroupsApi#deletePortfolioGroup");
-    e.printStackTrace();
+    PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio group
+    String code = "code_example"; // String | The code of the portfolio group
+    try {
+      DeletedEntityResponse result = apiInstance.deletePortfolioGroup(scope, code);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfolioGroupsApi#deletePortfolioGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -300,6 +373,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="deleteSubGroupFromGroup"></a>
 # **deleteSubGroupFromGroup**
 > PortfolioGroup deleteSubGroupFromGroup(scope, code, subgroupScope, subgroupCode)
@@ -311,29 +391,38 @@ Remove a portfolio group (sub-group) from a parent portfolio group
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfolioGroupsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfolioGroupsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfolioGroupsApi apiInstance = new PortfolioGroupsApi();
-String scope = "scope_example"; // String | The scope of the portfolio group
-String code = "code_example"; // String | The code of the portfolio group
-String subgroupScope = "subgroupScope_example"; // String | The scope of the sub-group being removed
-String subgroupCode = "subgroupCode_example"; // String | The code of the sub-group being removed
-try {
-    PortfolioGroup result = apiInstance.deleteSubGroupFromGroup(scope, code, subgroupScope, subgroupCode);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfolioGroupsApi#deleteSubGroupFromGroup");
-    e.printStackTrace();
+    PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio group
+    String code = "code_example"; // String | The code of the portfolio group
+    String subgroupScope = "subgroupScope_example"; // String | The scope of the sub-group being removed
+    String subgroupCode = "subgroupCode_example"; // String | The code of the sub-group being removed
+    try {
+      PortfolioGroup result = apiInstance.deleteSubGroupFromGroup(scope, code, subgroupScope, subgroupCode);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfolioGroupsApi#deleteSubGroupFromGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -359,6 +448,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="getPortfolioGroup"></a>
 # **getPortfolioGroup**
 > PortfolioGroup getPortfolioGroup(scope, code, asAt)
@@ -370,28 +466,37 @@ Get the definition of the specified portfolio group
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfolioGroupsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfolioGroupsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfolioGroupsApi apiInstance = new PortfolioGroupsApi();
-String scope = "scope_example"; // String | The scope of the portfolio group
-String code = "code_example"; // String | The code of the portfolio group
-OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
-try {
-    PortfolioGroup result = apiInstance.getPortfolioGroup(scope, code, asAt);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfolioGroupsApi#getPortfolioGroup");
-    e.printStackTrace();
+    PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio group
+    String code = "code_example"; // String | The code of the portfolio group
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
+    try {
+      PortfolioGroup result = apiInstance.getPortfolioGroup(scope, code, asAt);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfolioGroupsApi#getPortfolioGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -416,6 +521,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="getPortfolioGroupCommands"></a>
 # **getPortfolioGroupCommands**
 > ResourceListOfProcessedCommand getPortfolioGroupCommands(scope, code, fromAsAt, toAsAt, sortBy, start, limit, filter)
@@ -427,33 +539,42 @@ Gets all commands that modified a specific portfolio group
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfolioGroupsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfolioGroupsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfolioGroupsApi apiInstance = new PortfolioGroupsApi();
-String scope = "scope_example"; // String | The scope of the portfolio group
-String code = "code_example"; // String | The code of the portfolio group
-OffsetDateTime fromAsAt = new OffsetDateTime(); // OffsetDateTime | Optional. Filters commands by those that were processed at or after this date and time
-OffsetDateTime toAsAt = new OffsetDateTime(); // OffsetDateTime | Optional. Filters commands by those that were processed at or before this date and time
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-Integer start = 56; // Integer | Optional. When paginating, skip this number of results
-Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-String filter = "filter_example"; // String | Optional. Expression to filter the result set
-try {
-    ResourceListOfProcessedCommand result = apiInstance.getPortfolioGroupCommands(scope, code, fromAsAt, toAsAt, sortBy, start, limit, filter);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfolioGroupsApi#getPortfolioGroupCommands");
-    e.printStackTrace();
+    PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio group
+    String code = "code_example"; // String | The code of the portfolio group
+    OffsetDateTime fromAsAt = new OffsetDateTime(); // OffsetDateTime | Optional. Filters commands by those that were processed at or after this date and time
+    OffsetDateTime toAsAt = new OffsetDateTime(); // OffsetDateTime | Optional. Filters commands by those that were processed at or before this date and time
+    List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+    Integer start = 56; // Integer | Optional. When paginating, skip this number of results
+    Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
+    String filter = "filter_example"; // String | Optional. Expression to filter the result set
+    try {
+      ResourceListOfProcessedCommand result = apiInstance.getPortfolioGroupCommands(scope, code, fromAsAt, toAsAt, sortBy, start, limit, filter);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfolioGroupsApi#getPortfolioGroupCommands");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -483,6 +604,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The commands that modified the specified portfolio group. |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="getPortfolioGroupExpansion"></a>
 # **getPortfolioGroupExpansion**
 > ExpandedGroup getPortfolioGroupExpansion(scope, code, effectiveAt, asAt, propertyFilter)
@@ -494,30 +622,39 @@ Lists all portfolios in a group, and all sub groups. Portfolios are decorated wi
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfolioGroupsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfolioGroupsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfolioGroupsApi apiInstance = new PortfolioGroupsApi();
-String scope = "scope_example"; // String | The scope of the portfolio
-String code = "code_example"; // String | The code of the portfolio
-OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the data
-OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
-List<String> propertyFilter = Arrays.asList("propertyFilter_example"); // List<String> | Optional. The restricted set of properties that should be returned
-try {
-    ExpandedGroup result = apiInstance.getPortfolioGroupExpansion(scope, code, effectiveAt, asAt, propertyFilter);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfolioGroupsApi#getPortfolioGroupExpansion");
-    e.printStackTrace();
+    PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio
+    String code = "code_example"; // String | The code of the portfolio
+    OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the data
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
+    List<String> propertyFilter = Arrays.asList(); // List<String> | Optional. The restricted set of properties that should be returned
+    try {
+      ExpandedGroup result = apiInstance.getPortfolioGroupExpansion(scope, code, effectiveAt, asAt, propertyFilter);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfolioGroupsApi#getPortfolioGroupExpansion");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -544,6 +681,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="listPortfolioGroups"></a>
 # **listPortfolioGroups**
 > ResourceListOfPortfolioGroup listPortfolioGroups(scope, asAt, sortBy, start, limit, filter)
@@ -555,31 +699,40 @@ Lists all portfolio groups in a specified scope
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfolioGroupsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfolioGroupsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfolioGroupsApi apiInstance = new PortfolioGroupsApi();
-String scope = "scope_example"; // String | The scope
-OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-Integer start = 56; // Integer | Optional. When paginating, skip this number of results
-Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-String filter = "filter_example"; // String | Optional. Expression to filter the result set
-try {
-    ResourceListOfPortfolioGroup result = apiInstance.listPortfolioGroups(scope, asAt, sortBy, start, limit, filter);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfolioGroupsApi#listPortfolioGroups");
-    e.printStackTrace();
+    PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
+    List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+    Integer start = 56; // Integer | Optional. When paginating, skip this number of results
+    Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
+    String filter = "filter_example"; // String | Optional. Expression to filter the result set
+    try {
+      ResourceListOfPortfolioGroup result = apiInstance.listPortfolioGroups(scope, asAt, sortBy, start, limit, filter);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfolioGroupsApi#listPortfolioGroups");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -607,6 +760,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="updatePortfolioGroup"></a>
 # **updatePortfolioGroup**
 > PortfolioGroup updatePortfolioGroup(scope, code, request)
@@ -618,28 +778,37 @@ Update the definition of the specified existing portfolio group.    Not all elem
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfolioGroupsApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfolioGroupsApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfolioGroupsApi apiInstance = new PortfolioGroupsApi();
-String scope = "scope_example"; // String | The scope of the portfolio group
-String code = "code_example"; // String | The code of the portfolio group
-UpdatePortfolioGroupRequest request = new UpdatePortfolioGroupRequest(); // UpdatePortfolioGroupRequest | The updated definition of the portfolio group
-try {
-    PortfolioGroup result = apiInstance.updatePortfolioGroup(scope, code, request);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfolioGroupsApi#updatePortfolioGroup");
-    e.printStackTrace();
+    PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio group
+    String code = "code_example"; // String | The code of the portfolio group
+    UpdatePortfolioGroupRequest request = new UpdatePortfolioGroupRequest(); // UpdatePortfolioGroupRequest | The updated definition of the portfolio group
+    try {
+      PortfolioGroup result = apiInstance.updatePortfolioGroup(scope, code, request);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfolioGroupsApi#updatePortfolioGroup");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -663,4 +832,11 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**201** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
 

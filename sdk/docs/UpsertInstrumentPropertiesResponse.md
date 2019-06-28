@@ -1,7 +1,9 @@
 
+
 # UpsertInstrumentPropertiesResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **asAtDate** | [**OffsetDateTime**](OffsetDateTime.md) |  | 

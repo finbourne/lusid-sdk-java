@@ -1,7 +1,9 @@
 
+
 # TransactionConfigurationData
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **aliases** | [**List&lt;TransactionConfigurationTypeAlias&gt;**](TransactionConfigurationTypeAlias.md) | List of transaction codes that map to this specific transaction model | 

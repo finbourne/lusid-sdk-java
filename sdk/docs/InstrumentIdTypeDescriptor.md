@@ -1,7 +1,9 @@
 
+
 # InstrumentIdTypeDescriptor
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **idName** | **String** | The name of the identifier type | 

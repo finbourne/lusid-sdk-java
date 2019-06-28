@@ -1,7 +1,9 @@
 
+
 # ResourceListOfInstrumentIdTypeDescriptor
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **values** | [**List&lt;InstrumentIdTypeDescriptor&gt;**](InstrumentIdTypeDescriptor.md) |  | 

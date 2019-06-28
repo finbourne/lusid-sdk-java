@@ -1,7 +1,9 @@
 
+
 # OutputTransaction
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **transactionId** | **String** | Unique transaction identifier |  [optional]
@@ -13,8 +15,8 @@ Name | Type | Description | Notes
 **settlementDate** | [**OffsetDateTime**](OffsetDateTime.md) | Settlement date |  [optional]
 **units** | **Double** | Quantity of trade in units of the instrument |  [optional]
 **transactionAmount** | **Double** | Total value of the transaction in trade currency |  [optional]
-**transactionPrice** | [**TransactionPrice**](TransactionPrice.md) | Execution price for the transaction |  [optional]
-**totalConsideration** | [**CurrencyAndAmount**](CurrencyAndAmount.md) | Total value of the transaction in settlement currency |  [optional]
+**transactionPrice** | [**TransactionPrice**](TransactionPrice.md) |  |  [optional]
+**totalConsideration** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
 **exchangeRate** | **Double** | Rate between transaction and settlement currency |  [optional]
 **transactionToPortfolioRate** | **Double** | Rate between transaction and portfolio currency |  [optional]
 **transactionCurrency** | **String** | Transaction currency |  [optional]
@@ -28,8 +30,9 @@ Name | Type | Description | Notes
 **realisedGainLoss** | [**List&lt;RealisedGainLoss&gt;**](RealisedGainLoss.md) | Collection of gains or losses |  [optional]
 
 
-<a name="TransactionStatusEnum"></a>
+
 ## Enum: TransactionStatusEnum
+
 Name | Value
 ---- | -----
 ACTIVE | &quot;Active&quot;

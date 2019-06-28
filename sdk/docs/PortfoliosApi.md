@@ -1,6 +1,6 @@
 # PortfoliosApi
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -26,28 +26,37 @@ Delete a portfolio at the specified effectiveAt
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfoliosApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfoliosApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfoliosApi apiInstance = new PortfoliosApi();
-String scope = "scope_example"; // String | The scope of the portfolio
-String code = "code_example"; // String | The code of the portfolio
-String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the deletion
-try {
-    DeletedEntityResponse result = apiInstance.deletePortfolio(scope, code, effectiveAt);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfoliosApi#deletePortfolio");
-    e.printStackTrace();
+    PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio
+    String code = "code_example"; // String | The code of the portfolio
+    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the deletion
+    try {
+      DeletedEntityResponse result = apiInstance.deletePortfolio(scope, code, effectiveAt);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfoliosApi#deletePortfolio");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -72,6 +81,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="deletePortfolioProperties"></a>
 # **deletePortfolioProperties**
 > DeletedEntityResponse deletePortfolioProperties(scope, code, effectiveAt, portfolioPropertyKeys)
@@ -83,29 +99,38 @@ Delete one, many or all property values from a portfolio for the specified effec
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfoliosApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfoliosApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfoliosApi apiInstance = new PortfoliosApi();
-String scope = "scope_example"; // String | The scope of the portfolio
-String code = "code_example"; // String | Code for the portfolio
-String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the deletion
-List<String> portfolioPropertyKeys = Arrays.asList("portfolioPropertyKeys_example"); // List<String> | Optional. The keys of the properties to be deleted. None specified indicates the intention to delete all properties from the portfolio
-try {
-    DeletedEntityResponse result = apiInstance.deletePortfolioProperties(scope, code, effectiveAt, portfolioPropertyKeys);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfoliosApi#deletePortfolioProperties");
-    e.printStackTrace();
+    PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio
+    String code = "code_example"; // String | Code for the portfolio
+    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the deletion
+    List<String> portfolioPropertyKeys = Arrays.asList(); // List<String> | Optional. The keys of the properties to be deleted. None specified indicates the intention to delete all properties from the portfolio
+    try {
+      DeletedEntityResponse result = apiInstance.deletePortfolioProperties(scope, code, effectiveAt, portfolioPropertyKeys);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfoliosApi#deletePortfolioProperties");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -131,6 +156,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="getPortfolio"></a>
 # **getPortfolio**
 > Portfolio getPortfolio(scope, code, effectiveAt, asAt)
@@ -142,29 +174,38 @@ Retrieves the basic set of information about a portfolio using the specified sco
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfoliosApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfoliosApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfoliosApi apiInstance = new PortfoliosApi();
-String scope = "scope_example"; // String | The scope of the portfolio
-String code = "code_example"; // String | The code of the portfolio
-String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
-OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
-try {
-    Portfolio result = apiInstance.getPortfolio(scope, code, effectiveAt, asAt);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfoliosApi#getPortfolio");
-    e.printStackTrace();
+    PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio
+    String code = "code_example"; // String | The code of the portfolio
+    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
+    try {
+      Portfolio result = apiInstance.getPortfolio(scope, code, effectiveAt, asAt);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfoliosApi#getPortfolio");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -190,6 +231,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The requested portfolio |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="getPortfolioCommands"></a>
 # **getPortfolioCommands**
 > ResourceListOfProcessedCommand getPortfolioCommands(scope, code, fromAsAt, toAsAt, sortBy, start, limit, filter)
@@ -201,33 +249,42 @@ Gets all commands that modified a specific portfolio, including any input transa
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfoliosApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfoliosApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfoliosApi apiInstance = new PortfoliosApi();
-String scope = "scope_example"; // String | The scope of the portfolio
-String code = "code_example"; // String | The code of the portfolio
-OffsetDateTime fromAsAt = new OffsetDateTime(); // OffsetDateTime | Optional. Filters commands by those that were processed at or after this date and time
-OffsetDateTime toAsAt = new OffsetDateTime(); // OffsetDateTime | Optional. Filters commands by those that were processed at or before this date and time
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-Integer start = 56; // Integer | Optional. When paginating, skip this number of results
-Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-String filter = "filter_example"; // String | Optional. Expression to filter the result set
-try {
-    ResourceListOfProcessedCommand result = apiInstance.getPortfolioCommands(scope, code, fromAsAt, toAsAt, sortBy, start, limit, filter);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfoliosApi#getPortfolioCommands");
-    e.printStackTrace();
+    PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio
+    String code = "code_example"; // String | The code of the portfolio
+    OffsetDateTime fromAsAt = new OffsetDateTime(); // OffsetDateTime | Optional. Filters commands by those that were processed at or after this date and time
+    OffsetDateTime toAsAt = new OffsetDateTime(); // OffsetDateTime | Optional. Filters commands by those that were processed at or before this date and time
+    List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+    Integer start = 56; // Integer | Optional. When paginating, skip this number of results
+    Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
+    String filter = "filter_example"; // String | Optional. Expression to filter the result set
+    try {
+      ResourceListOfProcessedCommand result = apiInstance.getPortfolioCommands(scope, code, fromAsAt, toAsAt, sortBy, start, limit, filter);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfoliosApi#getPortfolioCommands");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -257,6 +314,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The commands that modified the specified portfolio. |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="getPortfolioProperties"></a>
 # **getPortfolioProperties**
 > PortfolioProperties getPortfolioProperties(scope, code, effectiveAt, asAt, sortBy, start, limit)
@@ -268,32 +332,41 @@ Get the properties of a portfolio
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfoliosApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfoliosApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfoliosApi apiInstance = new PortfoliosApi();
-String scope = "scope_example"; // String | The scope of the portfolio
-String code = "code_example"; // String | The code of the portfolio
-String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
-OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-Integer start = 56; // Integer | Optional. When paginating, skip this number of results
-Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-try {
-    PortfolioProperties result = apiInstance.getPortfolioProperties(scope, code, effectiveAt, asAt, sortBy, start, limit);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfoliosApi#getPortfolioProperties");
-    e.printStackTrace();
+    PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio
+    String code = "code_example"; // String | The code of the portfolio
+    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
+    List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+    Integer start = 56; // Integer | Optional. When paginating, skip this number of results
+    Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
+    try {
+      PortfolioProperties result = apiInstance.getPortfolioProperties(scope, code, effectiveAt, asAt, sortBy, start, limit);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfoliosApi#getPortfolioProperties");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -322,6 +395,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The properties of the requested portfolio |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="listPortfolios"></a>
 # **listPortfolios**
 > ResourceListOfPortfolio listPortfolios(effectiveAt, asAt, page, sortBy, start, limit, filter, query, portfolioPropertyKeys)
@@ -333,34 +413,43 @@ List all portfolios matching the specified criteria.                Example quer
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfoliosApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfoliosApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfoliosApi apiInstance = new PortfoliosApi();
-String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
-OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
-String page = "page_example"; // String | Optional. The pagination token to continue listing portfolios. This value is returned from a previous call to ListPortfolios.  If this is set, then the sortBy, filter, query, effectiveAt, and asAt fields must not have changed. Also, if set, a start  value cannot be set.
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-Integer start = 56; // Integer | Optional. When paginating, skip this number of results
-Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-String filter = "filter_example"; // String | Optional. Expression to filter the result set
-String query = "query_example"; // String | Optional. Expression specifying the criteria that the returned portfolios must meet
-List<String> portfolioPropertyKeys = Arrays.asList("portfolioPropertyKeys_example"); // List<String> | Optional. Keys of the properties to be decorated on to the portfolio
-try {
-    ResourceListOfPortfolio result = apiInstance.listPortfolios(effectiveAt, asAt, page, sortBy, start, limit, filter, query, portfolioPropertyKeys);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfoliosApi#listPortfolios");
-    e.printStackTrace();
+    PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
+    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
+    String page = "page_example"; // String | Optional. The pagination token to continue listing portfolios. This value is returned from a previous call to ListPortfolios.  If this is set, then the sortBy, filter, query, effectiveAt, and asAt fields must not have changed. Also, if set, a start  value cannot be set.
+    List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+    Integer start = 56; // Integer | Optional. When paginating, skip this number of results
+    Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
+    String filter = "filter_example"; // String | Optional. Expression to filter the result set
+    String query = "query_example"; // String | Optional. Expression specifying the criteria that the returned portfolios must meet
+    List<String> portfolioPropertyKeys = Arrays.asList(); // List<String> | Optional. Keys of the properties to be decorated on to the portfolio
+    try {
+      ResourceListOfPortfolio result = apiInstance.listPortfolios(effectiveAt, asAt, page, sortBy, start, limit, filter, query, portfolioPropertyKeys);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfoliosApi#listPortfolios");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -391,6 +480,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A list of portfolios |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="listPortfoliosForScope"></a>
 # **listPortfoliosForScope**
 > ResourceListOfPortfolio listPortfoliosForScope(scope, effectiveAt, asAt, sortBy, start, limit, filter, portfolioPropertyKeys)
@@ -402,33 +498,42 @@ List all the portfolios in the specified scope
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfoliosApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfoliosApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfoliosApi apiInstance = new PortfoliosApi();
-String scope = "scope_example"; // String | The scope
-String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
-OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
-List<String> sortBy = Arrays.asList("sortBy_example"); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-Integer start = 56; // Integer | Optional. When paginating, skip this number of results
-Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-String filter = "filter_example"; // String | Optional. Expression to filter the result set
-List<String> portfolioPropertyKeys = Arrays.asList("portfolioPropertyKeys_example"); // List<String> | Optional. Keys of the properties to be decorated on to the portfolio
-try {
-    ResourceListOfPortfolio result = apiInstance.listPortfoliosForScope(scope, effectiveAt, asAt, sortBy, start, limit, filter, portfolioPropertyKeys);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfoliosApi#listPortfoliosForScope");
-    e.printStackTrace();
+    PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
+    String scope = "scope_example"; // String | The scope
+    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
+    List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
+    Integer start = 56; // Integer | Optional. When paginating, skip this number of results
+    Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
+    String filter = "filter_example"; // String | Optional. Expression to filter the result set
+    List<String> portfolioPropertyKeys = Arrays.asList(); // List<String> | Optional. Keys of the properties to be decorated on to the portfolio
+    try {
+      ResourceListOfPortfolio result = apiInstance.listPortfoliosForScope(scope, effectiveAt, asAt, sortBy, start, limit, filter, portfolioPropertyKeys);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfoliosApi#listPortfoliosForScope");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -458,9 +563,16 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | A list of portfolios in the requested scope |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="updatePortfolio"></a>
 # **updatePortfolio**
-> Portfolio updatePortfolio(scope, code, request, effectiveAt)
+> Portfolio updatePortfolio(scope, code, effectiveAt, request)
 
 Update portfolio definition
 
@@ -469,29 +581,38 @@ Update the definition of a specific portfolio. Note, some parts of a portfolio d
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfoliosApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfoliosApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfoliosApi apiInstance = new PortfoliosApi();
-String scope = "scope_example"; // String | The scope of the portfolio
-String code = "code_example"; // String | The code of the portfolio
-UpdatePortfolioRequest request = new UpdatePortfolioRequest(); // UpdatePortfolioRequest | The updated portfolio definition
-String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date for the change
-try {
-    Portfolio result = apiInstance.updatePortfolio(scope, code, request, effectiveAt);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfoliosApi#updatePortfolio");
-    e.printStackTrace();
+    PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio
+    String code = "code_example"; // String | The code of the portfolio
+    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date for the change
+    UpdatePortfolioRequest request = new UpdatePortfolioRequest(); // UpdatePortfolioRequest | The updated portfolio definition
+    try {
+      Portfolio result = apiInstance.updatePortfolio(scope, code, effectiveAt, request);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfoliosApi#updatePortfolio");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -501,8 +622,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **request** | [**UpdatePortfolioRequest**](UpdatePortfolioRequest.md)| The updated portfolio definition | [optional]
  **effectiveAt** | **String**| Optional. The effective date for the change | [optional]
+ **request** | [**UpdatePortfolioRequest**](UpdatePortfolioRequest.md)| The updated portfolio definition | [optional]
 
 ### Return type
 
@@ -517,6 +638,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="upsertPortfolioProperties"></a>
 # **upsertPortfolioProperties**
 > PortfolioProperties upsertPortfolioProperties(scope, code, portfolioProperties)
@@ -528,28 +656,37 @@ Upsert one or more property values to a portfolio. All properties must be of the
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.PortfoliosApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfoliosApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-PortfoliosApi apiInstance = new PortfoliosApi();
-String scope = "scope_example"; // String | The scope of the portfolio
-String code = "code_example"; // String | The code of the portfolio
-Object portfolioProperties = null; // Object | The property values to be upserted to the portfolio. Time variant properties must have an EffectiveFrom date.
-try {
-    PortfolioProperties result = apiInstance.upsertPortfolioProperties(scope, code, portfolioProperties);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling PortfoliosApi#upsertPortfolioProperties");
-    e.printStackTrace();
+    PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the portfolio
+    String code = "code_example"; // String | The code of the portfolio
+    Map<String, PropertyValue> portfolioProperties = new HashMap(); // Map<String, PropertyValue> | The property values to be upserted to the portfolio. Time variant properties must have an EffectiveFrom date.
+    try {
+      PortfolioProperties result = apiInstance.upsertPortfolioProperties(scope, code, portfolioProperties);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfoliosApi#upsertPortfolioProperties");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -559,7 +696,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **portfolioProperties** | **Object**| The property values to be upserted to the portfolio. Time variant properties must have an EffectiveFrom date. | [optional]
+ **portfolioProperties** | [**Map&lt;String, PropertyValue&gt;**](PropertyValue.md)| The property values to be upserted to the portfolio. Time variant properties must have an EffectiveFrom date. | [optional]
 
 ### Return type
 
@@ -573,4 +710,11 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
 

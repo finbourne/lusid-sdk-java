@@ -1,7 +1,9 @@
 
+
 # UpdatePropertyDefinitionRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **displayName** | **String** | The display name of the property. | 
@@ -9,16 +11,18 @@ Name | Type | Description | Notes
 **type** | [**TypeEnum**](#TypeEnum) | The type of the property. |  [optional]
 
 
-<a name="LifeTimeEnum"></a>
+
 ## Enum: LifeTimeEnum
+
 Name | Value
 ---- | -----
 PERPETUAL | &quot;Perpetual&quot;
 TIMEVARIANT | &quot;TimeVariant&quot;
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
+
 Name | Value
 ---- | -----
 LABEL | &quot;Label&quot;

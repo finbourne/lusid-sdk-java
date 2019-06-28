@@ -1,7 +1,9 @@
 
+
 # CreateDerivedTransactionPortfolioRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **displayName** | **String** |  | 
@@ -14,8 +16,9 @@ Name | Type | Description | Notes
 **subHoldingKeys** | **List&lt;String&gt;** |  |  [optional]
 
 
-<a name="AccountingMethodEnum"></a>
+
 ## Enum: AccountingMethodEnum
+
 Name | Value
 ---- | -----
 DEFAULT | &quot;Default&quot;

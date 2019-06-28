@@ -1,6 +1,6 @@
 # ApplicationMetadataApi
 
-All URIs are relative to *https://localhost*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -20,26 +20,35 @@ Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific val
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.ApplicationMetadataApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ApplicationMetadataApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-ApplicationMetadataApi apiInstance = new ApplicationMetadataApi();
-String version = "version_example"; // String | The requested version of the Excel plugin
-try {
-    FileResponse result = apiInstance.getExcelAddin(version);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ApplicationMetadataApi#getExcelAddin");
-    e.printStackTrace();
+    ApplicationMetadataApi apiInstance = new ApplicationMetadataApi(defaultClient);
+    String version = "version_example"; // String | The requested version of the Excel plugin
+    try {
+      FileResponse result = apiInstance.getExcelAddin(version);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ApplicationMetadataApi#getExcelAddin");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -62,6 +71,13 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
 <a name="getLusidVersions"></a>
 # **getLusidVersions**
 > VersionSummaryDto getLusidVersions()
@@ -73,25 +89,34 @@ Get the semantic versions associated with LUSID and its ecosystem
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.ApplicationMetadataApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ApplicationMetadataApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-ApplicationMetadataApi apiInstance = new ApplicationMetadataApi();
-try {
-    VersionSummaryDto result = apiInstance.getLusidVersions();
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ApplicationMetadataApi#getLusidVersions");
-    e.printStackTrace();
+    ApplicationMetadataApi apiInstance = new ApplicationMetadataApi(defaultClient);
+    try {
+      VersionSummaryDto result = apiInstance.getLusidVersions();
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ApplicationMetadataApi#getLusidVersions");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -111,6 +136,12 @@ This endpoint does not need any parameter.
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
 
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Collection of versions associated with LUSID |  -  |
+**0** | Error response |  -  |
+
 <a name="listAccessControlledResources"></a>
 # **listAccessControlledResources**
 > ResourceListOfAccessControlledResource listAccessControlledResources(filter)
@@ -122,26 +153,35 @@ Get the comprehensive set of resources that are available for access control
 ### Example
 ```java
 // Import classes:
-//import com.finbourne.lusid.ApiClient;
-//import com.finbourne.lusid.ApiException;
-//import com.finbourne.lusid.Configuration;
-//import com.finbourne.lusid.auth.*;
-//import com.finbourne.lusid.api.ApplicationMetadataApi;
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ApplicationMetadataApi;
 
-ApiClient defaultClient = Configuration.getDefaultApiClient();
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
-// Configure OAuth2 access token for authorization: oauth2
-OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-ApplicationMetadataApi apiInstance = new ApplicationMetadataApi();
-String filter = "filter_example"; // String | Optional. Expression to filter the result set
-try {
-    ResourceListOfAccessControlledResource result = apiInstance.listAccessControlledResources(filter);
-    System.out.println(result);
-} catch (ApiException e) {
-    System.err.println("Exception when calling ApplicationMetadataApi#listAccessControlledResources");
-    e.printStackTrace();
+    ApplicationMetadataApi apiInstance = new ApplicationMetadataApi(defaultClient);
+    String filter = "filter_example"; // String | Optional. Expression to filter the result set
+    try {
+      ResourceListOfAccessControlledResource result = apiInstance.listAccessControlledResources(filter);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ApplicationMetadataApi#listAccessControlledResources");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
 }
 ```
 
@@ -163,4 +203,11 @@ Name | Type | Description  | Notes
 
  - **Content-Type**: Not defined
  - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
 
