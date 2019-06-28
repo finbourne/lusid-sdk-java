@@ -77,7 +77,7 @@ public class Transactions {
 
         //  get the trade
         VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(TutorialScope,
-                portfolioId, null, null, null, null, null, null, null, null);
+                portfolioId, null, null, null, null, null);
 
         assertEquals(1, transactions.getValues().size());
         assertEquals(transaction.getTransactionId(), transactions.getValues().get(0).getTransactionId());
@@ -122,7 +122,7 @@ public class Transactions {
 
         //  get the trade
         VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(TutorialScope,
-                portfolioId, null, null, null, null, null, null, null, null);
+                portfolioId, null, null, null, null, null);
 
         assertEquals(1, transactions.getValues().size());
         assertEquals(transaction.getTransactionId(), transactions.getValues().get(0).getTransactionId());
@@ -188,7 +188,7 @@ public class Transactions {
 
         //  get the trade
         VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(TutorialScope,
-                portfolioId, null, null, null, null, null, null, null, null);
+                portfolioId, null, null, null, null, null);
 
         assertEquals(1, transactions.getValues().size());
 
