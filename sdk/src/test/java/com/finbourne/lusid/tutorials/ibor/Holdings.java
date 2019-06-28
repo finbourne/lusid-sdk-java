@@ -72,7 +72,7 @@ public class Holdings {
 
         //  get the holds on T+10
         VersionedResourceListOfPortfolioHolding holdings = transactionPortfoliosApi.getHoldings(TutorialScope, portfolioCode, false, datTPlus10.toString(),
-                null, null, null, null, null, null);
+                null, null, null);
 
         holdings.getValues().sort(Comparator.comparing(PortfolioHolding::getInstrumentUid));
 
@@ -172,7 +172,7 @@ public class Holdings {
 
         //  get the holdings for day 2
         VersionedResourceListOfPortfolioHolding holdings = transactionPortfoliosApi.getHoldings(TutorialScope, portfolioCode, false, day2.toString(),
-                null, null, null, null, null, null);
+                null, null, null);
 
         holdings.getValues().sort(Comparator.comparing(PortfolioHolding::getInstrumentUid));
 
