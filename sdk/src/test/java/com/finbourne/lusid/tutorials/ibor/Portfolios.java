@@ -122,7 +122,7 @@ public class Portfolios {
         PortfolioProperties portfolioProperties = portfoliosApi.getPortfolioProperties(TutorialScope, portfolio.getId().getCode(), null, null, null, null, null);
 
         assertEquals(1, portfolioProperties.getProperties().size());
-        assertEquals(property.getLabelValue(), portfolioProperties.getProperties().get(0).getValue());
+        assertEquals(property.getLabelValue(), portfolioProperties.getProperties().get(propertyDefinitionDto.getKey()).getValue());
     }
 
     @Test
