@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**baseCurrency** | **String** | The base currency of the transaction portfolio. | 
+**baseCurrency** | **String** |  |  [optional]
 **corporateActionSourceId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 
 

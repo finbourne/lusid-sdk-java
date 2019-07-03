@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | **Double** | The numerical value of the property. |  [optional]
+**value** | **Double** |  |  [optional]
 **unit** | **String** |  |  [optional]
 
 
