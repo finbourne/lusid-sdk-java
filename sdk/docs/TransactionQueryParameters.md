@@ -6,10 +6,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**startDate** | **String** | The required set of transactions should begin from this date |  [optional]
-**endDate** | **String** | The required set of transactions should end at this date |  [optional]
-**queryMode** | [**QueryModeEnum**](#QueryModeEnum) | The method for date selection. Trade date or Settlement date |  [optional]
-**showCancelledTransactions** | **Boolean** | Option to include cancelled transactions in the results |  [optional]
+**startDate** | **String** | The lower bound effectiveAt datetime (inclusive) from which to build the transactions. | 
+**endDate** | **String** | The upper bound effectiveAt datetime (inclusive) from which to retrieve transactions. | 
+**queryMode** | [**QueryModeEnum**](#QueryModeEnum) | The date to compare against the upper and lower bounds for the effectiveAt datetime. Defaults to &#39;TradeDate&#39; if not specified. |  [optional]
+**showCancelledTransactions** | **Boolean** | Option to specify whether or not to include cancelled transactions in the output. Defaults to False if not specified. |  [optional]
 
 
 
