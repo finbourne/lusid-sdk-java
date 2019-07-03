@@ -6,15 +6,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**displayName** | **String** |  | 
-**description** | **String** |  |  [optional]
-**code** | **String** |  | 
-**created** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**baseCurrency** | **String** |  | 
+**displayName** | **String** | The name of the transaction portfolio. | 
+**description** | **String** | A long form description of the transaction portfolio. |  [optional]
+**code** | **String** | The code that the transaction portfolio will be created with. Together with the scope this uniquely identifies the transaction portfolio. | 
+**created** | [**OffsetDateTime**](OffsetDateTime.md) | The effectiveAt datetime at which the transaction portfolio will be created. No transactions can be upserted to the transaction portfolio before this date. Defaults to the current datetime if not specified. |  [optional]
+**baseCurrency** | **String** | The base currency of the transaction portfolio. | 
 **corporateActionSourceId** | [**ResourceId**](ResourceId.md) |  |  [optional]
-**accountingMethod** | [**AccountingMethodEnum**](#AccountingMethodEnum) |  |  [optional]
-**subHoldingKeys** | **List&lt;String&gt;** |  |  [optional]
-**properties** | [**Map&lt;String, PropertyValue&gt;**](PropertyValue.md) | Portfolio properties to add to the portfolio |  [optional]
+**accountingMethod** | [**AccountingMethodEnum**](#AccountingMethodEnum) | Determines the accounting treatment given to the transaction portfolio&#39;s tax lots. |  [optional]
+**subHoldingKeys** | **List&lt;String&gt;** | A set of unique transaction properties to group the transaction portfolio&#39;s holdings by. Each property must be from the &#39;Trade&#39; domain and should be identified by its key which has the format {domain}/{scope}/{code}, e.g. &#39;Trade/strategies/quantsignal&#39;. |  [optional]
+**properties** | [**Map&lt;String, PropertyValue&gt;**](PropertyValue.md) | A set of unique portfolio properties to add to the transaction portfolio. Each property should be identified by its key which has the format {domain}/{scope}/{code}, e.g. &#39;Portfolio/Manager/Id&#39;. These properties must be pre-defined. |  [optional]
 
 
 
