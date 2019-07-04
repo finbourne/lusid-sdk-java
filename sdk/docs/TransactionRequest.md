@@ -19,7 +19,6 @@ Name | Type | Description | Notes
 **properties** | [**Map&lt;String, PerpetualPropertyValue&gt;**](PerpetualPropertyValue.md) | Set of unique transaction properties and associated values to store with the transaction. Each property must be from the &#39;Trade&#39; domain. |  [optional]
 **counterpartyId** | **String** | The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration. |  [optional]
 **source** | **String** | The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration. |  [optional]
-**nettingSet** | **String** | The netting set. |  [optional]
 
 
 

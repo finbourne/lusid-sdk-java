@@ -20,7 +20,6 @@ Name | Type | Description | Notes
 **properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) |  |  [optional]
 **counterpartyId** | **String** | Counterparty identifier |  [optional]
 **source** | **String** | Where this transaction came from | 
-**nettingSet** | **String** |  |  [optional]
 
 
 

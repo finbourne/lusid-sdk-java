@@ -23,7 +23,6 @@ Name | Type | Description | Notes
 **properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) |  |  [optional]
 **counterpartyId** | **String** | Counterparty identifier |  [optional]
 **source** | **String** | Where this transaction came from |  [optional]
-**nettingSet** | **String** |  |  [optional]
 **transactionStatus** | [**TransactionStatusEnum**](#TransactionStatusEnum) | Transaction status (active, amended or cancelled) |  [optional]
 **entryDateTime** | [**OffsetDateTime**](OffsetDateTime.md) | Date / time the transaction was booked into LUSID |  [optional]
 **cancelDateTime** | [**OffsetDateTime**](OffsetDateTime.md) | Date / time the cancellation was booked into LUSID |  [optional]
