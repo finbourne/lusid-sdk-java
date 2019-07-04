@@ -88,4 +88,15 @@ public class ApiException extends Exception {
     public String getResponseBody() {
         return responseBody;
     }
+
+    /**
+    *  Override toString() to include LUSID requestId
+    */
+    public String toString() {
+
+        List<String> ids = responseHeaders.get("lusid-meta-requestid");
+        String requestId = ids == null ? "" : ids.stream().findFirst().get();
+
+        return String.format("LUSID requestId = %s\nResponse body = %s\n%s", requestId, responseBody, super.toString());
+    }
 }
