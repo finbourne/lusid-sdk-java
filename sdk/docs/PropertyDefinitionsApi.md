@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**deletePropertyDefinition**](PropertyDefinitionsApi.md#deletePropertyDefinition) | **DELETE** /api/propertydefinitions/{domain}/{scope}/{code} | Delete property definition
 [**getMultiplePropertyDefinitions**](PropertyDefinitionsApi.md#getMultiplePropertyDefinitions) | **GET** /api/propertydefinitions | Get multiple property definitions
 [**getPropertyDefinition**](PropertyDefinitionsApi.md#getPropertyDefinition) | **GET** /api/propertydefinitions/{domain}/{scope}/{code} | Get property definition
-[**updatePropertyDefinition**](PropertyDefinitionsApi.md#updatePropertyDefinition) | **PUT** /api/propertydefinitions/{domain}/{scope}/{code} | Update property definition
+[**updatePropertyDefinition**](PropertyDefinitionsApi.md#updatePropertyDefinition) | **PATCH** /api/propertydefinitions/{domain}/{scope}/{code} | Update property definition
 
 
 <a name="createPropertyDefinition"></a>
@@ -307,7 +307,7 @@ Name | Type | Description  | Notes
 
 Update property definition
 
-Update the definition of the specified existing property. Not all elements within a property definition  are modifiable due to the potential implications for data already stored against the property.
+Update display name of specified existing property.
 
 ### Example
 ```java
