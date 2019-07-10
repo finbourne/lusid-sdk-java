@@ -1,19 +1,19 @@
 # ApplicationMetadataApi
 
-All URIs are relative to *http://http:/api*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getExcelAddin**](ApplicationMetadataApi.md#getExcelAddin) | **GET** /api/metadata/downloads/exceladdin | Download Excel Addin
-[**getLusidVersions**](ApplicationMetadataApi.md#getLusidVersions) | **GET** /api/metadata/versions | Get LUSID versions
-[**listAccessControlledResources**](ApplicationMetadataApi.md#listAccessControlledResources) | **GET** /api/metadata/access/resources | Get resources available for access control
+[**getExcelAddin**](ApplicationMetadataApi.md#getExcelAddin) | **GET** /api/metadata/downloads/exceladdin | [EARLY ACCESS] Download Excel Addin
+[**getLusidVersions**](ApplicationMetadataApi.md#getLusidVersions) | **GET** /api/metadata/versions | [EARLY ACCESS] Get LUSID versions
+[**listAccessControlledResources**](ApplicationMetadataApi.md#listAccessControlledResources) | **GET** /api/metadata/access/resources | [EARLY ACCESS] Get resources available for access control
 
 
 <a name="getExcelAddin"></a>
 # **getExcelAddin**
 > FileResponse getExcelAddin(version)
 
-Download Excel Addin
+[EARLY ACCESS] Download Excel Addin
 
 Download the LUSID Excel Addin for Microsoft Excel. Not providing a specific value will return the latest version being returned
 
@@ -30,7 +30,7 @@ import com.finbourne.lusid.api.ApplicationMetadataApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://http:/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 # **getLusidVersions**
 > VersionSummaryDto getLusidVersions()
 
-Get LUSID versions
+[EARLY ACCESS] Get LUSID versions
 
 Get the semantic versions associated with LUSID and its ecosystem
 
@@ -99,7 +99,7 @@ import com.finbourne.lusid.api.ApplicationMetadataApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://http:/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -146,7 +146,7 @@ This endpoint does not need any parameter.
 # **listAccessControlledResources**
 > ResourceListOfAccessControlledResource listAccessControlledResources(filter)
 
-Get resources available for access control
+[EARLY ACCESS] Get resources available for access control
 
 Get the comprehensive set of resources that are available for access control
 
@@ -163,7 +163,7 @@ import com.finbourne.lusid.api.ApplicationMetadataApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://http:/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
