@@ -1,6 +1,6 @@
 # InstrumentsApi
 
-All URIs are relative to *http://localhost*
+All URIs are relative to *http://http:/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -35,7 +35,7 @@ import com.finbourne.lusid.api.InstrumentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://http:/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -106,7 +106,7 @@ import com.finbourne.lusid.api.InstrumentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://http:/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -183,7 +183,7 @@ import com.finbourne.lusid.api.InstrumentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://http:/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -247,7 +247,7 @@ import com.finbourne.lusid.api.InstrumentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://http:/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -324,7 +324,7 @@ import com.finbourne.lusid.api.InstrumentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://http:/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -332,7 +332,7 @@ public class Example {
 
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
     OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt time
-    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the query
+    OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | Optional. The effective date of the query
     String page = "page_example"; // String | Optional. The pagination token to continue listing instruments. This value is returned from a previous call to ListInstruments.  If this is set, then the sortBy, filter, effectiveAt, and asAt fields must not have changed. Also, if set, a start value cannot be set.
     List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
     Integer start = 56; // Integer | Optional. When paginating, skip this number of results
@@ -358,7 +358,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **asAt** | **OffsetDateTime**| Optional. The AsAt time | [optional]
- **effectiveAt** | **String**| Optional. The effective date of the query | [optional]
+ **effectiveAt** | **OffsetDateTime**| Optional. The effective date of the query | [optional]
  **page** | **String**| Optional. The pagination token to continue listing instruments. This value is returned from a previous call to ListInstruments.  If this is set, then the sortBy, filter, effectiveAt, and asAt fields must not have changed. Also, if set, a start value cannot be set. | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
@@ -407,7 +407,7 @@ import com.finbourne.lusid.api.InstrumentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://http:/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -480,7 +480,7 @@ import com.finbourne.lusid.api.InstrumentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://http:/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -549,7 +549,7 @@ import com.finbourne.lusid.api.InstrumentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
+    defaultClient.setBasePath("http://http:/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
