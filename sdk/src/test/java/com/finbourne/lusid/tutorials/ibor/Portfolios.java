@@ -5,6 +5,7 @@ import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.*;
 import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.utilities.ApiClientBuilder;
+import com.finbourne.lusid.utilities.CredentialsSource;
 import com.finbourne.lusid.utilities.InstrumentLoader;
 import com.finbourne.lusid.utilities.TestDataUtilities;
 import org.junit.BeforeClass;
@@ -34,7 +35,7 @@ public class Portfolios {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        ApiClient apiClient = new ApiClientBuilder("secrets.json").build();
+        ApiClient apiClient = new ApiClientBuilder(CredentialsSource.credentialsFile).build();
 
         transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
         scopesApi = new ScopesApi(apiClient);

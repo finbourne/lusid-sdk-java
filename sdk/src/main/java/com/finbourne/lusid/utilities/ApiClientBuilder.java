@@ -23,7 +23,7 @@ public class ApiClientBuilder {
     private String clientId;
     private String clientSecret;
     private String apiUrl;
-
+    private String applicationName;
 
     public ApiClientBuilder(String apiConfig) throws IOException {
 
@@ -34,6 +34,7 @@ public class ApiClientBuilder {
         String clientId = System.getenv("FBN_CLIENT_ID");
         String clientSecret = System.getenv("FBN_CLIENT_SECRET");
         String apiUrl = System.getenv("FBN_LUSID_API_URL");
+        String applicationName = System.getenv("FBN_APP_NAME");
 
         if (tokenUrl == null || username == null || password == null || clientId == null || clientSecret == null || apiUrl == null) {
 
@@ -50,6 +51,8 @@ public class ApiClientBuilder {
             clientId = (String)config.get("clientId");
             clientSecret = (String)config.get("clientSecret");
             apiUrl = (String)config.get("apiUrl");
+            applicationName = config.containsKey("applicationName") ? (String)config.get("applicationName") : null;
+
         }
 
         this.tokenUrl = tokenUrl;
@@ -58,6 +61,7 @@ public class ApiClientBuilder {
         this.clientId = clientId;
         this.clientSecret = URLEncoder.encode(clientSecret, StandardCharsets.UTF_8.toString());;
         this.apiUrl = apiUrl;
+        this.applicationName = applicationName;
     }
 
     public ApiClient build() throws IOException
@@ -95,6 +99,7 @@ public class ApiClientBuilder {
         ApiClient   apiClient;
         apiClient = new ApiClient();
         apiClient.addDefaultHeader("Authorization", "Bearer " + apiToken);
+        apiClient.addDefaultHeader("X-LUSID-Application", applicationName);
         apiClient.setBasePath(apiUrl);
 
         return apiClient;
