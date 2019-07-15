@@ -7,6 +7,7 @@ import com.finbourne.lusid.api.ReconciliationsApi;
 import com.finbourne.lusid.api.TransactionPortfoliosApi;
 import com.finbourne.lusid.model.*;
 import com.finbourne.lusid.utilities.ApiClientBuilder;
+import com.finbourne.lusid.utilities.CredentialsSource;
 import com.finbourne.lusid.utilities.InstrumentLoader;
 import com.finbourne.lusid.utilities.TestDataUtilities;
 import org.junit.BeforeClass;
@@ -33,7 +34,7 @@ public class Reconciliation {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        ApiClient apiClient = new ApiClientBuilder("secrets.json").build();
+        ApiClient apiClient = new ApiClientBuilder(CredentialsSource.credentialsFile).build();
 
         transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
         reconciliationsApi = new ReconciliationsApi(apiClient);
