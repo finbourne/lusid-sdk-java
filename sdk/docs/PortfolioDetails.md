@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **version** | [**Version**](Version.md) |  |  [optional]
 **baseCurrency** | **String** |  |  [optional]
 **corporateActionSourceId** | [**ResourceId**](ResourceId.md) |  |  [optional]
+**subHoldingKeys** | **List&lt;String&gt;** |  |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
