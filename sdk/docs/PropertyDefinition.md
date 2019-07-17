@@ -51,7 +51,7 @@ CURRENCY | &quot;Currency&quot;
 USERID | &quot;UserId&quot;
 METRICVALUE | &quot;MetricValue&quot;
 QUOTEID | &quot;QuoteId&quot;
-QUOTESERIESID | &quot;QuoteSeriesId&quot;
+ARRAYOFQUOTEIDS | &quot;ArrayOfQuoteIds&quot;
 RESOURCEID | &quot;ResourceId&quot;
 RESULTVALUE | &quot;ResultValue&quot;
 CUTLOCALTIME | &quot;CutLocalTime&quot;
