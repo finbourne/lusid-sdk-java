@@ -18,7 +18,6 @@ rm -rf $sdk_output_folder/docs
 rm -rf $sdk_output_folder/target
 rm -rf $sdk_output_folder/src/main/java/com/finbourne/lusid/!(utilities)
 rm -rf $sdk_output_folder/src/test/java/com/finbourne/lusid/api
-rm -rf $sdk_output_folder/src/test/java/com/finbourne/lusid/model
 shopt -u extglob 
 
 # ignore files
