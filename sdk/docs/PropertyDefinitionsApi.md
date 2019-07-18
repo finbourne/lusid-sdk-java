@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Success |  -  |
+**201** | The newly created property definition |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | The time that the property definition was deleted |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -181,9 +181,9 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi(defaultClient);
-    List<String> propertyKeys = Arrays.asList(); // List<String> | One or more property keys which identify each property that a definition should              be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. \"Instrument/system/Name\".
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the property definition/s.
-    String filter = "filter_example"; // String | Expression to filter the result set.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | One or more property keys which identify each property that a definition should              be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. 'Portfolio/Manager/Id'.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the property definitions. Defaults to return              the latest version of each definition if not specified.
+    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
       ResourceListOfPropertyDefinition result = apiInstance.getMultiplePropertyDefinitions(propertyKeys, asAt, filter);
       System.out.println(result);
@@ -202,9 +202,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **propertyKeys** | [**List&lt;String&gt;**](String.md)| One or more property keys which identify each property that a definition should              be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. \&quot;Instrument/system/Name\&quot;. |
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the property definition/s. | [optional]
- **filter** | **String**| Expression to filter the result set. | [optional]
+ **propertyKeys** | [**List&lt;String&gt;**](String.md)| One or more property keys which identify each property that a definition should              be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. &#39;Portfolio/Manager/Id&#39;. |
+ **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the property definitions. Defaults to return              the latest version of each definition if not specified. | [optional]
+ **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
 
 ### Return type
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | The requested property definitions |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -232,7 +232,7 @@ Name | Type | Description  | Notes
 
 [EARLY ACCESS] Get property definition
 
-Retrieve the definition of the specified property.
+Retrieve the definition of a specified property.
 
 ### Example
 ```java
@@ -257,7 +257,7 @@ public class Example {
     String domain = "domain_example"; // String | The domain of the specified property.
     String scope = "scope_example"; // String | The scope of the specified property.
     String code = "code_example"; // String | The code of the specified property. Together with the domain and scope this uniquely              identifies the property.
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the property definition.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the property definition. Defaults to return              the latest version of the definition if not specified.
     try {
       PropertyDefinition result = apiInstance.getPropertyDefinition(domain, scope, code, asAt);
       System.out.println(result);
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
  **domain** | **String**| The domain of the specified property. | [enum: Trade, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic]
  **scope** | **String**| The scope of the specified property. |
  **code** | **String**| The code of the specified property. Together with the domain and scope this uniquely              identifies the property. |
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the property definition. | [optional]
+ **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the property definition. Defaults to return              the latest version of the definition if not specified. | [optional]
 
 ### Return type
 
@@ -297,7 +297,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | The requested property definition |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -307,7 +307,7 @@ Name | Type | Description  | Notes
 
 [EARLY ACCESS] Update property definition
 
-Update display name of specified existing property.
+Update the definition of a specified existing property. Not all elements within a property definition  are modifiable due to the potential implications for values already stored against the property.
 
 ### Example
 ```java
@@ -372,7 +372,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | The updated property definition |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 

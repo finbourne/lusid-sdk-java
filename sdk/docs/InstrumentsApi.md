@@ -5,13 +5,13 @@ All URIs are relative to *http://localhost*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteInstrument**](InstrumentsApi.md#deleteInstrument) | **DELETE** /api/instruments/{identifierType}/{identifier} | [EARLY ACCESS] Delete instrument
-[**getInstrument**](InstrumentsApi.md#getInstrument) | **GET** /api/instruments/{identifierType}/{identifier} | [EARLY ACCESS] Get instrument definition
-[**getInstrumentIdentifiers**](InstrumentsApi.md#getInstrumentIdentifiers) | **GET** /api/instruments/identifiers | [EARLY ACCESS] Get allowable instrument identifiers
-[**getInstruments**](InstrumentsApi.md#getInstruments) | **POST** /api/instruments/$get | [EARLY ACCESS] Get instrument definition
-[**listInstruments**](InstrumentsApi.md#listInstruments) | **GET** /api/instruments | [EARLY ACCESS] Get all of the currently mastered instruments in LUSID
+[**getInstrument**](InstrumentsApi.md#getInstrument) | **GET** /api/instruments/{identifierType}/{identifier} | [EARLY ACCESS] Get instrument
+[**getInstrumentIdentifiers**](InstrumentsApi.md#getInstrumentIdentifiers) | **GET** /api/instruments/identifiers | [EARLY ACCESS] Get instrument identifiers
+[**getInstruments**](InstrumentsApi.md#getInstruments) | **POST** /api/instruments/$get | [EARLY ACCESS] Get instruments
+[**listInstruments**](InstrumentsApi.md#listInstruments) | **GET** /api/instruments | [EARLY ACCESS] List instruments
 [**updateInstrumentIdentifier**](InstrumentsApi.md#updateInstrumentIdentifier) | **POST** /api/instruments/{identifierType}/{identifier} | [EARLY ACCESS] Update instrument identifier
 [**upsertInstruments**](InstrumentsApi.md#upsertInstruments) | **POST** /api/instruments | [EARLY ACCESS] Upsert instruments
-[**upsertInstrumentsProperties**](InstrumentsApi.md#upsertInstrumentsProperties) | **POST** /api/instruments/$upsertproperties | [EARLY ACCESS] Upsert instrument properties
+[**upsertInstrumentsProperties**](InstrumentsApi.md#upsertInstrumentsProperties) | **POST** /api/instruments/$upsertproperties | [EARLY ACCESS] Upsert instruments properties
 
 
 <a name="deleteInstrument"></a>
@@ -20,7 +20,7 @@ Method | HTTP request | Description
 
 [EARLY ACCESS] Delete instrument
 
-Attempt to delete one or more \&quot;client\&quot; instruments.    The response will include those instruments that could not be deleted (as well as any available details).                It is important to always check the &#39;Failed&#39; set for any unsuccessful results.
+Delete a single instrument identified by a unique instrument identifier. Once an instrument has been  deleted it will be marked as &#39;inactive&#39; and it can no longer be used when updating or inserting transactions or holdings.  You can still query existing transactions and holdings related to the deleted instrument.
 
 ### Example
 ```java
@@ -42,8 +42,8 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String identifierType = "identifierType_example"; // String | The type of identifier being supplied
-    String identifier = "identifier_example"; // String | The instrument identifier
+    String identifierType = "identifierType_example"; // String | The identifier being supplied e.g. \"Figi\".
+    String identifier = "identifier_example"; // String | The value of the identifier that resolves to the instrument to delete.
     try {
       DeleteInstrumentResponse result = apiInstance.deleteInstrument(identifierType, identifier);
       System.out.println(result);
@@ -62,8 +62,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifierType** | **String**| The type of identifier being supplied |
- **identifier** | **String**| The instrument identifier |
+ **identifierType** | **String**| The identifier being supplied e.g. \&quot;Figi\&quot;. |
+ **identifier** | **String**| The value of the identifier that resolves to the instrument to delete. |
 
 ### Return type
 
@@ -81,7 +81,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | The datetime that the instrument was deleted |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -89,9 +89,9 @@ Name | Type | Description  | Notes
 # **getInstrument**
 > Instrument getInstrument(identifierType, identifier, effectiveAt, asAt, instrumentPropertyKeys)
 
-[EARLY ACCESS] Get instrument definition
+[EARLY ACCESS] Get instrument
 
-Get an individual instrument by the one of its unique instrument identifiers. Optionally, it is possible to decorate each instrument with specified property data.
+Get the definition of a single instrument identified by a unique instrument identifier.
 
 ### Example
 ```java
@@ -113,11 +113,11 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String identifierType = "identifierType_example"; // String | The type of identifier being supplied
-    String identifier = "identifier_example"; // String | The identifier of the requested instrument
-    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the query
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the query
-    List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | Optional. Keys of the properties to be decorated on to the instrument
+    String identifierType = "identifierType_example"; // String | The identifier being supplied e.g. \"Figi\".
+    String identifier = "identifier_example"; // String | The value of the identifier for the requested instrument.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to retrieve the instrument definition.              Defaults to the current LUSID system datetime if not specified.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument definition. Defaults to              return the latest version of the instrument definition if not specified.
+    List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto the instrument.              These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
     try {
       Instrument result = apiInstance.getInstrument(identifierType, identifier, effectiveAt, asAt, instrumentPropertyKeys);
       System.out.println(result);
@@ -136,11 +136,11 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifierType** | **String**| The type of identifier being supplied |
- **identifier** | **String**| The identifier of the requested instrument |
- **effectiveAt** | **String**| Optional. The effective date of the query | [optional]
- **asAt** | **OffsetDateTime**| Optional. The AsAt date of the query | [optional]
- **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys of the properties to be decorated on to the instrument | [optional]
+ **identifierType** | **String**| The identifier being supplied e.g. \&quot;Figi\&quot;. |
+ **identifier** | **String**| The value of the identifier for the requested instrument. |
+ **effectiveAt** | **String**| The effective datetime at which to retrieve the instrument definition.              Defaults to the current LUSID system datetime if not specified. | [optional]
+ **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument definition. Defaults to              return the latest version of the instrument definition if not specified. | [optional]
+ **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto the instrument.              These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. | [optional]
 
 ### Return type
 
@@ -158,7 +158,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | The requested instrument |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -166,9 +166,9 @@ Name | Type | Description  | Notes
 # **getInstrumentIdentifiers**
 > ResourceListOfInstrumentIdTypeDescriptor getInstrumentIdentifiers()
 
-[EARLY ACCESS] Get allowable instrument identifiers
+[EARLY ACCESS] Get instrument identifiers
 
-Returns a collection of instrument identifier type descriptors. Each descriptor specifies the properties  of a particular instrument identifier - its name, its cardinality (whether or not multiple instruments can  share the same identifier value), and its corresponding PropertyKey.
+Get the allowable instrument identifiers and their descriptions.
 
 ### Example
 ```java
@@ -230,9 +230,9 @@ This endpoint does not need any parameter.
 # **getInstruments**
 > GetInstrumentsResponse getInstruments(identifierType, identifiers, effectiveAt, asAt, instrumentPropertyKeys)
 
-[EARLY ACCESS] Get instrument definition
+[EARLY ACCESS] Get instruments
 
-Get a collection of instruments by a set of identifiers. Optionally, it is possible to decorate each instrument with specified property data.
+Get the definition of one or more instruments identified by a collection of unique instrument identifiers.
 
 ### Example
 ```java
@@ -254,11 +254,11 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String identifierType = "identifierType_example"; // String | The type of identifiers being supplied
-    List<String> identifiers = Arrays.asList(); // List<String> | The identifiers of the instruments to get
-    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the request
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The as at date of the request
-    List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | Optional. Keys of the properties to be decorated on to the instrument
+    String identifierType = "identifierType_example"; // String | The identifier being supplied e.g. \"Figi\".
+    List<String> identifiers = Arrays.asList(); // List<String> | The values of the identifier for the requested instruments.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to retrieve the instrument definitions.              Defaults to the current LUSID system datetime if not specified.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument definitions.              Defaults to return the latest version of each instrument definition if not specified.
+    List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto the instrument.              These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
     try {
       GetInstrumentsResponse result = apiInstance.getInstruments(identifierType, identifiers, effectiveAt, asAt, instrumentPropertyKeys);
       System.out.println(result);
@@ -277,11 +277,11 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifierType** | **String**| The type of identifiers being supplied |
- **identifiers** | [**List&lt;String&gt;**](String.md)| The identifiers of the instruments to get |
- **effectiveAt** | **String**| Optional. The effective date of the request | [optional]
- **asAt** | **OffsetDateTime**| Optional. The as at date of the request | [optional]
- **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys of the properties to be decorated on to the instrument | [optional]
+ **identifierType** | **String**| The identifier being supplied e.g. \&quot;Figi\&quot;. |
+ **identifiers** | [**List&lt;String&gt;**](String.md)| The values of the identifier for the requested instruments. |
+ **effectiveAt** | **String**| The effective datetime at which to retrieve the instrument definitions.              Defaults to the current LUSID system datetime if not specified. | [optional]
+ **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument definitions.              Defaults to return the latest version of each instrument definition if not specified. | [optional]
+ **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto the instrument.              These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. | [optional]
 
 ### Return type
 
@@ -299,7 +299,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | The requested instruments which could be identified along with any failures |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -307,9 +307,9 @@ Name | Type | Description  | Notes
 # **listInstruments**
 > ResourceListOfInstrument listInstruments(asAt, effectiveAt, page, sortBy, start, limit, filter, instrumentPropertyKeys)
 
-[EARLY ACCESS] Get all of the currently mastered instruments in LUSID
+[EARLY ACCESS] List instruments
 
-Lists all instruments that have been mastered within LUSID.
+List all the instruments that have been mastered in the LUSID instrument master.
 
 ### Example
 ```java
@@ -331,14 +331,14 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt time
-    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the query
-    String page = "page_example"; // String | Optional. The pagination token to continue listing instruments. This value is returned from a previous call to ListInstruments.  If this is set, then the sortBy, filter, effectiveAt, and asAt fields must not have changed. Also, if set, a start value cannot be set.
-    List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-    Integer start = 56; // Integer | Optional. When paginating, skip this number of results
-    Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many
-    String filter = "\"State eq 'Active'\""; // String | Optional. Expression to filter the result set - the default filter returns only instruments in the Active state
-    List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | Optional. Keys of the properties to be decorated on to the instrument
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to list the instruments. Defaults to return the latest              version of each instruments if not specified.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to list the instruments.              Defaults to the current LUSID system datetime if not specified.
+    String page = "page_example"; // String | The pagination token to use to continue listing instruments from a previous call to list instruments.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided.
+    List<String> sortBy = Arrays.asList(); // List<String> | Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName.
+    Integer start = 56; // Integer | When paginating, skip this number of results.
+    Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
+    String filter = "\"State eq 'Active'\""; // String | Expression to filter the result set. Defaults to filter down to active instruments only, i.e. those              that have not been deleted. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+    List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto the instrument. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
     try {
       ResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, start, limit, filter, instrumentPropertyKeys);
       System.out.println(result);
@@ -357,14 +357,14 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **asAt** | **OffsetDateTime**| Optional. The AsAt time | [optional]
- **effectiveAt** | **String**| Optional. The effective date of the query | [optional]
- **page** | **String**| Optional. The pagination token to continue listing instruments. This value is returned from a previous call to ListInstruments.  If this is set, then the sortBy, filter, effectiveAt, and asAt fields must not have changed. Also, if set, a start value cannot be set. | [optional]
- **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
- **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
- **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many | [optional]
- **filter** | **String**| Optional. Expression to filter the result set - the default filter returns only instruments in the Active state | [optional] [default to &quot;State eq &#39;Active&#39;&quot;]
- **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys of the properties to be decorated on to the instrument | [optional]
+ **asAt** | **OffsetDateTime**| The asAt datetime at which to list the instruments. Defaults to return the latest              version of each instruments if not specified. | [optional]
+ **effectiveAt** | **String**| The effective datetime at which to list the instruments.              Defaults to the current LUSID system datetime if not specified. | [optional]
+ **page** | **String**| The pagination token to use to continue listing instruments from a previous call to list instruments.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional]
+ **sortBy** | [**List&lt;String&gt;**](String.md)| Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. | [optional]
+ **start** | **Integer**| When paginating, skip this number of results. | [optional]
+ **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional]
+ **filter** | **String**| Expression to filter the result set. Defaults to filter down to active instruments only, i.e. those              that have not been deleted. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] [default to &quot;State eq &#39;Active&#39;&quot;]
+ **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto the instrument. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. | [optional]
 
 ### Return type
 
@@ -382,7 +382,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | The requested instruments |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -392,7 +392,7 @@ Name | Type | Description  | Notes
 
 [EARLY ACCESS] Update instrument identifier
 
-Adds, updates, or removes an identifier on an instrument
+Update, insert or delete a single instrument identifier for a single instrument. If it is not being deleted  the identifier will be updated if it already exists and inserted if it does not.
 
 ### Example
 ```java
@@ -414,9 +414,9 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    String identifierType = "identifierType_example"; // String | The type of identifier being supplied
-    String identifier = "identifier_example"; // String | The instrument identifier
-    UpdateInstrumentIdentifierRequest request = new UpdateInstrumentIdentifierRequest(); // UpdateInstrumentIdentifierRequest | The identifier to add, update, or remove
+    String identifierType = "identifierType_example"; // String | The identifier to use to resolve the instrument e.g. \"Figi\".
+    String identifier = "identifier_example"; // String | The original value of the identifier for the requested instrument.
+    UpdateInstrumentIdentifierRequest request = new UpdateInstrumentIdentifierRequest(); // UpdateInstrumentIdentifierRequest | The identifier to update or remove. This may or may not be the same identifier used              to resolve the instrument.
     try {
       Instrument result = apiInstance.updateInstrumentIdentifier(identifierType, identifier, request);
       System.out.println(result);
@@ -435,9 +435,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **identifierType** | **String**| The type of identifier being supplied |
- **identifier** | **String**| The instrument identifier |
- **request** | [**UpdateInstrumentIdentifierRequest**](UpdateInstrumentIdentifierRequest.md)| The identifier to add, update, or remove | [optional]
+ **identifierType** | **String**| The identifier to use to resolve the instrument e.g. \&quot;Figi\&quot;. |
+ **identifier** | **String**| The original value of the identifier for the requested instrument. |
+ **request** | [**UpdateInstrumentIdentifierRequest**](UpdateInstrumentIdentifierRequest.md)| The identifier to update or remove. This may or may not be the same identifier used              to resolve the instrument. |
 
 ### Return type
 
@@ -455,7 +455,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | The updated instrument definition with the identifier updated, inserted or deleted |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -465,7 +465,7 @@ Name | Type | Description  | Notes
 
 [EARLY ACCESS] Upsert instruments
 
-Attempt to master one or more instruments in LUSID&#39;s instrument master. Each instrument is keyed by some unique key. This key is unimportant, and serves only as a method to identify created instruments in the response.    The response will return both the collection of successfully created instruments, as well as those that were rejected and why their creation failed. They will be keyed against the key supplied in the  request.                It is important to always check the &#39;Failed&#39; set for any unsuccessful results.
+Update or insert one or more instruments into the LUSID instrument master. An instrument will be updated  if it already exists and inserted if it does not.                In the request each instrument definition should be keyed by a unique correlation id. This id is ephemeral  and is not stored by LUSID. It serves only as a way to easily identify each instrument in the response.    The response will return both the collection of successfully updated or inserted instruments, as well as those that failed.  For the failures a reason will be provided explaining why the instrument could not be updated or inserted.                It is important to always check the failed set for any unsuccessful results.
 
 ### Example
 ```java
@@ -487,7 +487,7 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    Map<String, InstrumentDefinition> requests = new HashMap(); // Map<String, InstrumentDefinition> | The instrument definitions
+    Map<String, InstrumentDefinition> requests = new HashMap(); // Map<String, InstrumentDefinition> | The definitions of the instruments to update or insert.
     try {
       UpsertInstrumentsResponse result = apiInstance.upsertInstruments(requests);
       System.out.println(result);
@@ -506,7 +506,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requests** | [**Map&lt;String, InstrumentDefinition&gt;**](InstrumentDefinition.md)| The instrument definitions | [optional]
+ **requests** | [**Map&lt;String, InstrumentDefinition&gt;**](InstrumentDefinition.md)| The definitions of the instruments to update or insert. | [optional]
 
 ### Return type
 
@@ -524,7 +524,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Success |  -  |
+**201** | The successfully updated or inserted instruments along with any failures |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -532,9 +532,9 @@ Name | Type | Description  | Notes
 # **upsertInstrumentsProperties**
 > UpsertInstrumentPropertiesResponse upsertInstrumentsProperties(instrumentProperties)
 
-[EARLY ACCESS] Upsert instrument properties
+[EARLY ACCESS] Upsert instruments properties
 
-Attempt to upsert property data for one or more instruments, properties, and effective dates.    The response will include the details of any failures that occurred during data storage.                It is important to always check the &#39;Failed&#39; collection for any unsuccessful results.
+Update or insert one or more instrument properties for one or more instruments. Each instrument property will be updated  if it already exists and inserted if it does not. If any properties fail to be updated or inserted, none will be updated or inserted and  the reason for the failure will be returned.
 
 ### Example
 ```java
@@ -556,7 +556,7 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    List<UpsertInstrumentPropertyRequest> instrumentProperties = Arrays.asList(null); // List<UpsertInstrumentPropertyRequest> | The instrument property data
+    List<UpsertInstrumentPropertyRequest> instrumentProperties = Arrays.asList(null); // List<UpsertInstrumentPropertyRequest> | A collection of instruments and associated instrument properties to update or insert.
     try {
       UpsertInstrumentPropertiesResponse result = apiInstance.upsertInstrumentsProperties(instrumentProperties);
       System.out.println(result);
@@ -575,7 +575,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **instrumentProperties** | [**List&lt;UpsertInstrumentPropertyRequest&gt;**](UpsertInstrumentPropertyRequest.md)| The instrument property data | [optional]
+ **instrumentProperties** | [**List&lt;UpsertInstrumentPropertyRequest&gt;**](UpsertInstrumentPropertyRequest.md)| A collection of instruments and associated instrument properties to update or insert. |
 
 ### Return type
 
@@ -593,7 +593,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | Success |  -  |
+**201** | The asAt time at which the properties were updated, inserted or deleted |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 

@@ -6,15 +6,15 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**instrumentUid** | **String** | Unique instrument identifier |  [optional]
-**units** | **Double** | Quantity against which gain has been made in units of the instrument |  [optional]
-**purchaseTradeDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date the position was originally purchased |  [optional]
-**purchaseSettlementDate** | [**OffsetDateTime**](OffsetDateTime.md) | Date the position originally settled |  [optional]
-**purchasePrice** | **Double** | Price the instrument was purchased at |  [optional]
-**costTradeCcy** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
-**costPortfolioCcy** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
-**realisedTradeCcy** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
-**realisedTotal** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
+**instrumentUid** | **String** | The unqiue Lusid Instrument Id (LUID) of the instrument that this gain or loss is associated with. | 
+**units** | **Double** | The number of units of the associated instrument against which the gain or loss has been realised. | 
+**purchaseTradeDate** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime that the units associated with this gain or loss where originally purchased. |  [optional]
+**purchaseSettlementDate** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime that the units associated with this gain or loss where originally settled. |  [optional]
+**purchasePrice** | **Double** | The purchase price of each unit associated with this gain or loss. |  [optional]
+**costTradeCcy** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
+**costPortfolioCcy** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
+**realisedTradeCcy** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
+**realisedTotal** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
 **realisedMarket** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
 **realisedCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
 

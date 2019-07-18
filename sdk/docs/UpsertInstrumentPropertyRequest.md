@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**lusidInstrumentId** | **String** | Unique instrument identifier |  [optional]
-**properties** | [**List&lt;InstrumentProperty&gt;**](InstrumentProperty.md) | A collection of properties to create or update |  [optional]
-**deletedProperties** | [**List&lt;DeleteInstrumentPropertyRequest&gt;**](DeleteInstrumentPropertyRequest.md) | A collection of property keys to remove property values from, if any are set for the instrument |  [optional]
+**lusidInstrumentId** | **String** | The unique Lusid Instrument Identifier (LUID) of the instrument to update or insert properties on. | 
+**properties** | [**List&lt;InstrumentProperty&gt;**](InstrumentProperty.md) | Set of unique instrument properties and associated values to store with the instrument. Each property must be from the &#39;Instrument&#39; domain. |  [optional]
+**deletedProperties** | [**List&lt;DeleteInstrumentPropertyRequest&gt;**](DeleteInstrumentPropertyRequest.md) | Set of unique instrument properties to delete from the instrument. |  [optional]
 
 
 

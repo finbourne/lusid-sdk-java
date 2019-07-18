@@ -6,18 +6,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**href** | **String** |  |  [optional]
-**key** | **String** |  |  [optional]
-**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) |  |  [optional]
-**valueRequired** | **Boolean** |  |  [optional]
-**displayName** | **String** |  |  [optional]
+**href** | **String** | The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional]
+**key** | **String** | The property key which uniquely identifies the property. The format for the property key is {domain}/{scope}/{code}, e.g. &#39;Portfolio/Manager/Id&#39;. |  [optional]
+**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) | The type of values that can be associated with this property. This is defined by the property&#39;s data type. |  [optional]
+**valueRequired** | **Boolean** | Whether or not a value is always required for this property. |  [optional]
+**displayName** | **String** | The display name of the property. |  [optional]
 **dataTypeId** | [**ResourceId**](ResourceId.md) |  |  [optional]
-**lifeTime** | [**LifeTimeEnum**](#LifeTimeEnum) |  |  [optional]
-**type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
-**unitSchema** | [**UnitSchemaEnum**](#UnitSchemaEnum) |  |  [optional]
-**domain** | [**DomainEnum**](#DomainEnum) |  |  [optional]
-**scope** | **String** |  |  [optional]
-**code** | **String** |  |  [optional]
+**lifeTime** | [**LifeTimeEnum**](#LifeTimeEnum) | Describes how the property&#39;s values can change over time. |  [optional]
+**type** | [**TypeEnum**](#TypeEnum) | The type of the property. |  [optional]
+**unitSchema** | [**UnitSchemaEnum**](#UnitSchemaEnum) | The units that can be associated with the property&#39;s values. This is defined by the property&#39;s data type. |  [optional]
+**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. |  [optional]
+**scope** | **String** | The scope that the property exists in. |  [optional]
+**code** | **String** | The code of the property. Together with the domain and scope this uniquely identifies the property. |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
