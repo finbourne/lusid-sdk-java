@@ -101,7 +101,9 @@ public class Portfolios {
         PropertyDefinition    propertyDefinitionDto = propertyDefinitionsApi.createPropertyDefinition(propertyDefinition);
 
         //  Create the property value
-        PropertyValue property = new PropertyValue().labelValue("Active");
+        Property    property = new Property()
+                .key(propertyDefinitionDto.getKey())
+                .value(new PropertyValue().labelValue("Active"));
 
         //  Details of the portfolio to be created
         CreateTransactionPortfolioRequest  request = new CreateTransactionPortfolioRequest()
@@ -111,7 +113,7 @@ public class Portfolios {
                 .created(effectiveDate)
 
                 //  Set the property value when creating the portfolio
-                .properties(new HashMap<String, PropertyValue>() {
+                .properties(new HashMap<String, Property>() {
                     { put(propertyDefinitionDto.getKey(), property); }
                 });
 
@@ -123,7 +125,7 @@ public class Portfolios {
         PortfolioProperties portfolioProperties = portfoliosApi.getPortfolioProperties(TutorialScope, portfolio.getId().getCode(), null, null, null, null, null);
 
         assertEquals(1, portfolioProperties.getProperties().size());
-        assertEquals(property.getLabelValue(), portfolioProperties.getProperties().get(propertyDefinitionDto.getKey()).getValue());
+        assertEquals(property.getValue(), portfolioProperties.getProperties().get(propertyDefinitionDto.getKey()).getValue());
     }
 
     @Test
