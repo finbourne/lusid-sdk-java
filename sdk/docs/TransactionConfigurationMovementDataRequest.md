@@ -20,16 +20,18 @@ Name | Value
 ---- | -----
 SETTLEMENT | &quot;Settlement&quot;
 TRADED | &quot;Traded&quot;
-FORWARDFX | &quot;ForwardFx&quot;
+FUTURECASH | &quot;FutureCash&quot;
 COMMITMENT | &quot;Commitment&quot;
 RECEIVABLE | &quot;Receivable&quot;
 CASHSETTLEMENT | &quot;CashSettlement&quot;
 ACCRUAL | &quot;Accrual&quot;
+FORWARDFX | &quot;ForwardFx&quot;
 UNSETTLEDCASHTYPES | &quot;UnsettledCashTypes&quot;
 STOCKMOVEMENT | &quot;StockMovement&quot;
 CASHCOMMITMENT | &quot;CashCommitment&quot;
 CASHRECEIVABLE | &quot;CashReceivable&quot;
 CASHFORWARD | &quot;CashForward&quot;
+CASHFXFORWARD | &quot;CashFxForward&quot;
 CASHACCRUAL | &quot;CashAccrual&quot;
 
 
