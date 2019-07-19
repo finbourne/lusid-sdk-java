@@ -51,7 +51,7 @@ CURRENCY | &quot;Currency&quot;
 USERID | &quot;UserId&quot;
 METRICVALUE | &quot;MetricValue&quot;
 QUOTEID | &quot;QuoteId&quot;
-ARRAYOFQUOTEIDS | &quot;ArrayOfQuoteIds&quot;
+QUOTESERIESID | &quot;QuoteSeriesId&quot;
 RESOURCEID | &quot;ResourceId&quot;
 RESULTVALUE | &quot;ResultValue&quot;
 CUTLOCALTIME | &quot;CutLocalTime&quot;
@@ -93,7 +93,7 @@ ISO4217CURRENCY | &quot;Iso4217Currency&quot;
 
 Name | Value
 ---- | -----
-TRADE | &quot;Trade&quot;
+TRANSACTION | &quot;Transaction&quot;
 PORTFOLIO | &quot;Portfolio&quot;
 HOLDING | &quot;Holding&quot;
 REFERENCEHOLDING | &quot;ReferenceHolding&quot;

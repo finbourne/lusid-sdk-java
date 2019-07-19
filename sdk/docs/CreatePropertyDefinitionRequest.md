@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 
 Name | Value
 ---- | -----
-TRADE | &quot;Trade&quot;
+TRANSACTION | &quot;Transaction&quot;
 PORTFOLIO | &quot;Portfolio&quot;
 HOLDING | &quot;Holding&quot;
 REFERENCEHOLDING | &quot;ReferenceHolding&quot;
