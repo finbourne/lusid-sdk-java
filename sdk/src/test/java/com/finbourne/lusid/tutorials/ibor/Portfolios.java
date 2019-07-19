@@ -180,7 +180,7 @@ public class Portfolios {
         CreatePropertyDefinitionRequest    propertyDefinition = new CreatePropertyDefinitionRequest()
 
                 //  The domain the property is to be applied to
-                .domain(CreatePropertyDefinitionRequest.DomainEnum.TRADE)
+                .domain(CreatePropertyDefinitionRequest.DomainEnum.TRANSACTION)
 
                 //  The scope the property will be created in
                 .scope(TutorialScope)
