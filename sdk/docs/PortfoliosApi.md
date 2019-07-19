@@ -675,7 +675,7 @@ public class Example {
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio
     String code = "code_example"; // String | The code of the portfolio
-    Map<String, PropertyValue> portfolioProperties = new HashMap(); // Map<String, PropertyValue> | The property values to be upserted to the portfolio. Time variant properties must have an EffectiveFrom date.
+    Map<String, Property> portfolioProperties = new HashMap(); // Map<String, Property> | The property values to be upserted to the portfolio. Time variant properties must have an EffectiveFrom date.
     try {
       PortfolioProperties result = apiInstance.upsertPortfolioProperties(scope, code, portfolioProperties);
       System.out.println(result);
@@ -696,7 +696,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **portfolioProperties** | [**Map&lt;String, PropertyValue&gt;**](PropertyValue.md)| The property values to be upserted to the portfolio. Time variant properties must have an EffectiveFrom date. | [optional]
+ **portfolioProperties** | [**Map&lt;String, Property&gt;**](Property.md)| The property values to be upserted to the portfolio. Time variant properties must have an EffectiveFrom date. | [optional]
 
 ### Return type
 

@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **parentPortfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **version** | [**Version**](Version.md) |  | 
 **isDerived** | **Boolean** | Whether or not this is a derived portfolio. |  [optional]
-**properties** | [**List&lt;Property&gt;**](Property.md) | The requested portfolio properties. These will be from the &#39;Portfolio&#39; domain. |  [optional]
+**properties** | [**Map&lt;String, Property&gt;**](Property.md) | The requested portfolio properties. These will be from the &#39;Portfolio&#39; domain. |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
