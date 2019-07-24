@@ -17,11 +17,11 @@ Method | HTTP request | Description
 
 <a name="deletePortfolio"></a>
 # **deletePortfolio**
-> DeletedEntityResponse deletePortfolio(scope, code, effectiveAt)
+> DeletedEntityResponse deletePortfolio(scope, code)
 
 [EARLY ACCESS] Delete portfolio
 
-Delete a portfolio at the specified effectiveAt
+The deletion of the portfolio will be valid from portfolio&#39;s creation time. This implies the portfolio would no longer exist from the AsAt time of deletion.
 
 ### Example
 ```java
@@ -45,9 +45,8 @@ public class Example {
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio
     String code = "code_example"; // String | The code of the portfolio
-    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the deletion
     try {
-      DeletedEntityResponse result = apiInstance.deletePortfolio(scope, code, effectiveAt);
+      DeletedEntityResponse result = apiInstance.deletePortfolio(scope, code);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfoliosApi#deletePortfolio");
@@ -66,7 +65,6 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **effectiveAt** | **String**| Optional. The effective date of the deletion | [optional]
 
 ### Return type
 

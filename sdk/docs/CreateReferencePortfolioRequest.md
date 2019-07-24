@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **description** | **String** |  |  [optional]
 **code** | **String** |  | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**properties** | [**Map&lt;String, PerpetualPropertyValue&gt;**](PerpetualPropertyValue.md) | Portfolio properties to add to the portfolio |  [optional]
+**properties** | [**Map&lt;String, Property&gt;**](Property.md) | Portfolio properties to add to the portfolio |  [optional]
 
 
 

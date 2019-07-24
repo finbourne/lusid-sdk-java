@@ -4,7 +4,6 @@ All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addTransactionProperty**](TransactionPortfoliosApi.md#addTransactionProperty) | **POST** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/properties | [EARLY ACCESS] Add transaction property
 [**adjustHoldings**](TransactionPortfoliosApi.md#adjustHoldings) | **POST** /api/transactionportfolios/{scope}/{code}/holdings/{effectiveAt} | [EARLY ACCESS] Adjust holdings
 [**buildTransactions**](TransactionPortfoliosApi.md#buildTransactions) | **POST** /api/transactionportfolios/{scope}/{code}/transactions/$build | [EARLY ACCESS] Build transactions
 [**cancelAdjustHoldings**](TransactionPortfoliosApi.md#cancelAdjustHoldings) | **DELETE** /api/transactionportfolios/{scope}/{code}/holdings/{effectiveAt} | [EARLY ACCESS] Cancel adjust holdings
@@ -20,83 +19,9 @@ Method | HTTP request | Description
 [**setHoldings**](TransactionPortfoliosApi.md#setHoldings) | **PUT** /api/transactionportfolios/{scope}/{code}/holdings/{effectiveAt} | [EARLY ACCESS] Set holdings
 [**upsertExecutions**](TransactionPortfoliosApi.md#upsertExecutions) | **POST** /api/transactionportfolios/{scope}/{code}/executions | [EARLY ACCESS] Upsert executions
 [**upsertPortfolioDetails**](TransactionPortfoliosApi.md#upsertPortfolioDetails) | **POST** /api/transactionportfolios/{scope}/{code}/details | [EARLY ACCESS] Upsert portfolio details
+[**upsertTransactionProperties**](TransactionPortfoliosApi.md#upsertTransactionProperties) | **POST** /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/properties | [EARLY ACCESS] Update or insert transaction properties
 [**upsertTransactions**](TransactionPortfoliosApi.md#upsertTransactions) | **POST** /api/transactionportfolios/{scope}/{code}/transactions | [EARLY ACCESS] Upsert transactions
 
-
-<a name="addTransactionProperty"></a>
-# **addTransactionProperty**
-> AddTransactionPropertyResponse addTransactionProperty(scope, code, transactionId, transactionProperties)
-
-[EARLY ACCESS] Add transaction property
-
-Update or insert one or more transaction properties to a single transaction in a transaction portfolio.  Each property will be updated if it already exists and inserted if it does not.
-
-### Example
-```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
-import com.finbourne.lusid.api.TransactionPortfoliosApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-    TransactionPortfoliosApi apiInstance = new TransactionPortfoliosApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the transaction portfolio.
-    String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio.
-    String transactionId = "transactionId_example"; // String | The unique id of the transaction to update or insert properties against.
-    Map<String, PerpetualPropertyValue> transactionProperties = new HashMap(); // Map<String, PerpetualPropertyValue> | The properties with their associated values to update or insert onto the              transaction.
-    try {
-      AddTransactionPropertyResponse result = apiInstance.addTransactionProperty(scope, code, transactionId, transactionProperties);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling TransactionPortfoliosApi#addTransactionProperty");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the transaction portfolio. |
- **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
- **transactionId** | **String**| The unique id of the transaction to update or insert properties against. |
- **transactionProperties** | [**Map&lt;String, PerpetualPropertyValue&gt;**](PerpetualPropertyValue.md)| The properties with their associated values to update or insert onto the              transaction. |
-
-### Return type
-
-[**AddTransactionPropertyResponse**](AddTransactionPropertyResponse.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | The version of the transaction portfolio that contains the newly updated or inserted transaction property |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
 
 <a name="adjustHoldings"></a>
 # **adjustHoldings**
@@ -1226,6 +1151,81 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The newly updated or inserted details |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
+<a name="upsertTransactionProperties"></a>
+# **upsertTransactionProperties**
+> UpsertTransactionPropertiesResponse upsertTransactionProperties(scope, code, transactionId, transactionProperties)
+
+[EARLY ACCESS] Update or insert transaction properties
+
+Update or insert one or more transaction properties to a single transaction in a transaction portfolio.  Each property will be updated if it already exists and inserted if it does not.  Both transaction and portfolio must exist at the time when properties are updated or inserted.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.TransactionPortfoliosApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    TransactionPortfoliosApi apiInstance = new TransactionPortfoliosApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the transaction portfolio.
+    String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio.
+    String transactionId = "transactionId_example"; // String | The unique id of the transaction to update or insert properties against.
+    Map<String, PerpetualPropertyValue> transactionProperties = new HashMap(); // Map<String, PerpetualPropertyValue> | The properties with their associated values to update or insert onto the              transaction.
+    try {
+      UpsertTransactionPropertiesResponse result = apiInstance.upsertTransactionProperties(scope, code, transactionId, transactionProperties);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling TransactionPortfoliosApi#upsertTransactionProperties");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scope** | **String**| The scope of the transaction portfolio. |
+ **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
+ **transactionId** | **String**| The unique id of the transaction to update or insert properties against. |
+ **transactionProperties** | [**Map&lt;String, PerpetualPropertyValue&gt;**](PerpetualPropertyValue.md)| The properties with their associated values to update or insert onto the              transaction. |
+
+### Return type
+
+[**UpsertTransactionPropertiesResponse**](UpsertTransactionPropertiesResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The version of the transaction portfolio that contains the newly updated or inserted transaction property |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
