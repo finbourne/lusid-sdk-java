@@ -9,11 +9,11 @@ Method | HTTP request | Description
 
 <a name="listScopes"></a>
 # **listScopes**
-> ResourceListOfScopeDefinition listScopes(sortBy, start, limit, filter, query)
+> ResourceListOfScopeDefinition listScopes(filter)
 
 [EARLY ACCESS] List scopes
 
-List all the scopes
+List all the scopes that contain data.
 
 ### Example
 ```java
@@ -35,13 +35,9 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     ScopesApi apiInstance = new ScopesApi(defaultClient);
-    List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-    Integer start = 56; // Integer | Optional. When paginating, skip this number of results
-    Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-    String filter = "filter_example"; // String | Optional. Expression to filter the result set
-    String query = "query_example"; // String | Optional. Expression specifying the criteria that the returned portfolios must meet
+    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
-      ResourceListOfScopeDefinition result = apiInstance.listScopes(sortBy, start, limit, filter, query);
+      ResourceListOfScopeDefinition result = apiInstance.listScopes(filter);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ScopesApi#listScopes");
@@ -58,11 +54,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
- **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
- **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
- **filter** | **String**| Optional. Expression to filter the result set | [optional]
- **query** | **String**| Optional. Expression specifying the criteria that the returned portfolios must meet | [optional]
+ **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
 
 ### Return type
 

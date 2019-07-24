@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**scope** | **String** |  | 
+**scope** | **String** | The unique identifier for the scope. | 
 
 
 
