@@ -246,7 +246,7 @@ public class Portfolios {
     public void list_scopes() throws ApiException {
 
         //    Get the list of scopes across all entities
-        ResourceListOfScopeDefinition    scopes = scopesApi.listScopes(null, null, null, null, null);
+        ResourceListOfScopeDefinition    scopes = scopesApi.listScopes(null);
 
         assertThat(scopes.getValues().size(), is(greaterThan(0)));
     }
