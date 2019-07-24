@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **transactionCurrency** | **String** | The transaction currency. |  [optional]
 **properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) | Set of unique transaction properties and associated values to stored with the transaction. Each property will be from the &#39;Transaction&#39; domain. |  [optional]
 **counterpartyId** | **String** | The identifier for the counterparty of the transaction. |  [optional]
-**source** | **String** | The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration. | 
+**source** | **String** | The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration. |  [optional]
 
 
 

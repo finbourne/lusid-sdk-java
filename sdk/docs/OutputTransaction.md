@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **transactionCurrency** | **String** | The transaction currency. |  [optional]
 **properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) | Set of unique transaction properties and associated values to stored with the transaction. Each property will be from the &#39;Transaction&#39; domain. |  [optional]
 **counterpartyId** | **String** | The identifier for the counterparty of the transaction. |  [optional]
-**source** | **String** | The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration. | 
+**source** | **String** | The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration. |  [optional]
 **transactionStatus** | [**TransactionStatusEnum**](#TransactionStatusEnum) | The status of the transaction. | 
 **entryDateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt datetime that the transaction was added to LUSID. |  [optional]
 **cancelDateTime** | [**OffsetDateTime**](OffsetDateTime.md) | If the transaction has been cancelled, the asAt datetime that the transaction was cancelled. |  [optional]
