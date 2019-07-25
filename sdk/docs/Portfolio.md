@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **description** | **String** | The long form description of the portfolio. |  [optional]
 **created** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime at which the portfolio was created. No transactions or constituents can be added to the portfolio before this date. | 
 **parentPortfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional]
-**version** | [**Version**](Version.md) |  | 
+**version** | [**Version**](Version.md) |  |  [optional]
 **isDerived** | **Boolean** | Whether or not this is a derived portfolio. |  [optional]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | The requested portfolio properties. These will be from the &#39;Portfolio&#39; domain. |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
