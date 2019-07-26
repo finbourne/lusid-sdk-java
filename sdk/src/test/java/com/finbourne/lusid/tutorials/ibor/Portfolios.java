@@ -175,7 +175,7 @@ public class Portfolios {
 
         String uuid = UUID.randomUUID().toString();
         String propertyName = String.format("traderId-%s", uuid);
-        String propertyValue = "A Trader";
+        String propertyValueAsString = "A Trader";
         OffsetDateTime effectiveDate = OffsetDateTime.of(2018, 1, 1, 0, 0, 0, 0, ZoneOffset.UTC);
 
         //  Details of the property to be created
@@ -202,9 +202,10 @@ public class Portfolios {
         String portfolioId = testDataUtilities.createTransactionPortfolio(TutorialScope);
 
         //  Create the property value
-        PerpetualPropertyValue property = new PerpetualPropertyValue().labelValue(propertyValue);
+        PropertyValue propertyValue = new PropertyValue().labelValue(propertyValueAsString);
+        PerpetualProperty property = new PerpetualProperty().key(propertyDefinition.getDisplayName()).value(propertyValue);
 
-        Map<String, PerpetualPropertyValue> properties = new HashMap<>();
+        Map<String, PerpetualProperty> properties = new HashMap<>();
         properties.put(propertyDefinitionDto.getKey(), property);
 
         //  Details of the transaction to be added
