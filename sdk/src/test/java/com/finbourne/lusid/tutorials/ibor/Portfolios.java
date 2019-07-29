@@ -203,7 +203,7 @@ public class Portfolios {
 
         //  Create the property value
         PropertyValue propertyValue = new PropertyValue().labelValue(propertyValueAsString);
-        PerpetualProperty property = new PerpetualProperty().key(propertyDefinition.getDisplayName()).value(propertyValue);
+        PerpetualProperty property = new PerpetualProperty().key(propertyDefinitionDto.getKey()).value(propertyValue);
 
         Map<String, PerpetualProperty> properties = new HashMap<>();
         properties.put(propertyDefinitionDto.getKey(), property);
@@ -240,7 +240,7 @@ public class Portfolios {
 
         assertEquals(1, transactions.getValues().size());
         assertEquals(transaction.getTransactionId(), transactions.getValues().get(0).getTransactionId());
-        assertEquals(propertyValue, transactions.getValues().get(0).getProperties().get(0).getValue());
+        assertEquals(propertyValue, transactions.getValues().get(0).getProperties().get(propertyDefinitionDto.getKey()).getValue());
     }
 
     @Test
