@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **movementTypes** | [**MovementTypesEnum**](#MovementTypesEnum) | The Movement Types | 
 **side** | [**SideEnum**](#SideEnum) | The Movement Side | 
 **direction** | **Integer** | The Movement direction | 
-**properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) |  |  [optional]
+**properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) |  |  [optional]
 **mappings** | [**List&lt;TransactionPropertyMapping&gt;**](TransactionPropertyMapping.md) |  |  [optional]
 
 

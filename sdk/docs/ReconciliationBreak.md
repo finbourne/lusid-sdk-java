@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **instrumentUid** | **String** | Unique instrument identifier | 
-**subHoldingKeys** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) | Any other properties that comprise the Sub-Holding Key | 
+**subHoldingKeys** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Any other properties that comprise the Sub-Holding Key | 
 **leftUnits** | **Double** | Units from the left hand side | 
 **rightUnits** | **Double** | Units from the right hand side | 
 **differenceUnits** | **Double** | Difference in units | 

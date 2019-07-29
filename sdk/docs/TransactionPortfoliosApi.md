@@ -1185,7 +1185,7 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the transaction portfolio.
     String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio.
     String transactionId = "transactionId_example"; // String | The unique id of the transaction to update or insert properties against.
-    Map<String, PerpetualPropertyValue> transactionProperties = new HashMap(); // Map<String, PerpetualPropertyValue> | The properties with their associated values to update or insert onto the              transaction.
+    Map<String, PerpetualProperty> transactionProperties = new HashMap(); // Map<String, PerpetualProperty> | The properties with their associated values to update or insert onto the              transaction.
     try {
       UpsertTransactionPropertiesResponse result = apiInstance.upsertTransactionProperties(scope, code, transactionId, transactionProperties);
       System.out.println(result);
@@ -1207,7 +1207,7 @@ Name | Type | Description  | Notes
  **scope** | **String**| The scope of the transaction portfolio. |
  **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
  **transactionId** | **String**| The unique id of the transaction to update or insert properties against. |
- **transactionProperties** | [**Map&lt;String, PerpetualPropertyValue&gt;**](PerpetualPropertyValue.md)| The properties with their associated values to update or insert onto the              transaction. |
+ **transactionProperties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md)| The properties with their associated values to update or insert onto the              transaction. |
 
 ### Return type
 
