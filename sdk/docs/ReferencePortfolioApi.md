@@ -83,11 +83,11 @@ Name | Type | Description  | Notes
 
 <a name="getReferencePortfolioConstituents"></a>
 # **getReferencePortfolioConstituents**
-> GetReferencePortfolioConstituentsResponse getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, sortBy, start, limit, instrumentPropertyKeys)
+> GetReferencePortfolioConstituentsResponse getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, propertyKeys)
 
 [EARLY ACCESS] Get constituents
 
-Get all the constituents in the specified reference portfolio
+Get constituents from the specified reference portfolio at an effective time.
 
 ### Example
 ```java
@@ -109,16 +109,13 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     ReferencePortfolioApi apiInstance = new ReferencePortfolioApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the portfolio
-    String code = "code_example"; // String | The code of the portfolio
-    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the constituents to retrieve
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
-    List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use the '-' sign to denote descending order e.g. -MyFieldName
-    Integer start = 56; // Integer | Optional. When paginating, skip this number of results
-    Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many
-    List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | Optional. The Properties of the constituents
+    String scope = "scope_example"; // String | The scope of the reference portfolio.
+    String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio.
+    String effectiveAt = "effectiveAt_example"; // String | The effective date of the constituents to retrieve. Defaults to the current LUSID system datetime if not specified.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve constituents. Defaults to return the latest version              of each constituent if not specified.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" or \"ReferenceHolding\" domain to decorate onto              the constituents. These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or              \"ReferenceHolding/strategy/quantsignal\". Defaults to return all available instrument and reference holding properties if not specified.
     try {
-      GetReferencePortfolioConstituentsResponse result = apiInstance.getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, sortBy, start, limit, instrumentPropertyKeys);
+      GetReferencePortfolioConstituentsResponse result = apiInstance.getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, propertyKeys);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ReferencePortfolioApi#getReferencePortfolioConstituents");
@@ -135,14 +132,11 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the portfolio |
- **code** | **String**| The code of the portfolio |
- **effectiveAt** | **String**| Optional. The effective date of the constituents to retrieve | [optional]
- **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
- **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
- **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
- **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many | [optional]
- **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. The Properties of the constituents | [optional]
+ **scope** | **String**| The scope of the reference portfolio. |
+ **code** | **String**| The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. |
+ **effectiveAt** | **String**| The effective date of the constituents to retrieve. Defaults to the current LUSID system datetime if not specified. | [optional]
+ **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve constituents. Defaults to return the latest version              of each constituent if not specified. | [optional]
+ **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; or \&quot;ReferenceHolding\&quot; domain to decorate onto              the constituents. These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot; or              \&quot;ReferenceHolding/strategy/quantsignal\&quot;. Defaults to return all available instrument and reference holding properties if not specified. | [optional]
 
 ### Return type
 
