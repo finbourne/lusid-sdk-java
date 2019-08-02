@@ -93,6 +93,7 @@ ISO4217CURRENCY | &quot;Iso4217Currency&quot;
 
 Name | Value
 ---- | -----
+NOTDEFINED | &quot;NotDefined&quot;
 TRANSACTION | &quot;Transaction&quot;
 PORTFOLIO | &quot;Portfolio&quot;
 HOLDING | &quot;Holding&quot;

@@ -6,13 +6,13 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property will be created in. |  [optional]
+**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property will be created in. | 
 **scope** | **String** | The scope that the property will be created in. | 
 **code** | **String** | The code that the property will be created with. Together with the domain and  scope this uniquely identifies the property. | 
-**valueRequired** | **Boolean** | Whether or not a value is always required for this property. |  [optional]
+**valueRequired** | **Boolean** | Whether or not a value is always required for this property. Defaults to false if not specified. |  [optional]
 **displayName** | **String** | The display name of the property. | 
 **dataTypeId** | [**ResourceId**](ResourceId.md) |  | 
-**lifeTime** | [**LifeTimeEnum**](#LifeTimeEnum) | Controls how the property&#39;s values can change over time. |  [optional]
+**lifeTime** | [**LifeTimeEnum**](#LifeTimeEnum) | Controls how the property&#39;s values can change over time. Defaults to \&quot;Perpetual\&quot; if not specified. |  [optional]
 
 
 
@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 
 Name | Value
 ---- | -----
+NOTDEFINED | &quot;NotDefined&quot;
 TRANSACTION | &quot;Transaction&quot;
 PORTFOLIO | &quot;Portfolio&quot;
 HOLDING | &quot;Holding&quot;
