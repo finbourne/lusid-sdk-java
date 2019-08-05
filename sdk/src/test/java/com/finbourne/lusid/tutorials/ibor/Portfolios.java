@@ -122,7 +122,7 @@ public class Portfolios {
 
         assertEquals(request.getCode(), portfolio.getId().getCode());
 
-        PortfolioProperties portfolioProperties = portfoliosApi.getPortfolioProperties(TutorialScope, portfolio.getId().getCode(), null, null, null, null, null);
+        PortfolioProperties portfolioProperties = portfoliosApi.getPortfolioProperties(TutorialScope, portfolio.getId().getCode(), null, null);
 
         assertEquals(1, portfolioProperties.getProperties().size());
         assertEquals(property.getValue(), portfolioProperties.getProperties().get(propertyDefinitionDto.getKey()).getValue());
@@ -263,7 +263,7 @@ public class Portfolios {
         }
 
         //    Retrieve the list of portfolios from a given scope
-        ResourceListOfPortfolio portfolios = portfoliosApi.listPortfoliosForScope(scope, null, null, null, null, null, null, null);
+        ResourceListOfPortfolio portfolios = portfoliosApi.listPortfoliosForScope(scope, null, null, null, null);
 
         assertThat(portfolios.getValues().size(), is(equalTo(10)));
     }
