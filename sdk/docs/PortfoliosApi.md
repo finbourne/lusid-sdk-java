@@ -6,12 +6,12 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deletePortfolio**](PortfoliosApi.md#deletePortfolio) | **DELETE** /api/portfolios/{scope}/{code} | [EARLY ACCESS] Delete portfolio
 [**deletePortfolioProperties**](PortfoliosApi.md#deletePortfolioProperties) | **DELETE** /api/portfolios/{scope}/{code}/properties | [EARLY ACCESS] Delete portfolio properties
-[**getPortfolio**](PortfoliosApi.md#getPortfolio) | **GET** /api/portfolios/{scope}/{code} | [EARLY ACCESS] Get portfolio definition
-[**getPortfolioCommands**](PortfoliosApi.md#getPortfolioCommands) | **GET** /api/portfolios/{scope}/{code}/commands | [EARLY ACCESS] Get commands
+[**getPortfolio**](PortfoliosApi.md#getPortfolio) | **GET** /api/portfolios/{scope}/{code} | [EARLY ACCESS] Get portfolio
+[**getPortfolioCommands**](PortfoliosApi.md#getPortfolioCommands) | **GET** /api/portfolios/{scope}/{code}/commands | [EARLY ACCESS] Get portfolio commands
 [**getPortfolioProperties**](PortfoliosApi.md#getPortfolioProperties) | **GET** /api/portfolios/{scope}/{code}/properties | [EARLY ACCESS] Get portfolio properties
 [**listPortfolios**](PortfoliosApi.md#listPortfolios) | **GET** /api/portfolios | [EARLY ACCESS] List portfolios
 [**listPortfoliosForScope**](PortfoliosApi.md#listPortfoliosForScope) | **GET** /api/portfolios/{scope} | [EARLY ACCESS] List portfolios for scope
-[**updatePortfolio**](PortfoliosApi.md#updatePortfolio) | **PUT** /api/portfolios/{scope}/{code} | [EARLY ACCESS] Update portfolio definition
+[**updatePortfolio**](PortfoliosApi.md#updatePortfolio) | **PUT** /api/portfolios/{scope}/{code} | [EARLY ACCESS] Update portfolio
 [**upsertPortfolioProperties**](PortfoliosApi.md#upsertPortfolioProperties) | **POST** /api/portfolios/{scope}/{code}/properties | [EARLY ACCESS] Upsert portfolio properties
 
 
@@ -21,7 +21,7 @@ Method | HTTP request | Description
 
 [EARLY ACCESS] Delete portfolio
 
-The deletion of the portfolio will be valid from portfolio&#39;s creation time. This implies the portfolio would no longer exist from the AsAt time of deletion.
+Delete a single portfolio. The deletion of the portfolio will be valid from the portfolio&#39;s creation datetime. This means that the portfolio will no longer exist at any effective datetime from the asAt datetime of deletion.
 
 ### Example
 ```java
@@ -43,8 +43,8 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the portfolio
-    String code = "code_example"; // String | The code of the portfolio
+    String scope = "scope_example"; // String | The scope of the portfolio.
+    String code = "code_example"; // String | The code of the portfolio.
     try {
       DeletedEntityResponse result = apiInstance.deletePortfolio(scope, code);
       System.out.println(result);
@@ -63,8 +63,8 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the portfolio |
- **code** | **String**| The code of the portfolio |
+ **scope** | **String**| The scope of the portfolio. |
+ **code** | **String**| The code of the portfolio. |
 
 ### Return type
 
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | The datetime that the portfolio was deleted |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -92,7 +92,7 @@ Name | Type | Description  | Notes
 
 [EARLY ACCESS] Delete portfolio properties
 
-Delete one, many or all property values from a portfolio for the specified effectiveAt                Specifying no effectiveAt will delete all properties
+Delete one or more properties from a single portfolio.
 
 ### Example
 ```java
@@ -114,10 +114,10 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the portfolio
-    String code = "code_example"; // String | Code for the portfolio
-    List<String> portfolioPropertyKeys = Arrays.asList(); // List<String> | The keys of the properties to be deleted.
-    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the deletion
+    String scope = "scope_example"; // String | The scope of the portfolio to delete properties from.
+    String code = "code_example"; // String | The code of the portfolio to delete properties from. Together with the scope this uniquely              identifies the portfolio.
+    List<String> portfolioPropertyKeys = Arrays.asList(); // List<String> | The property keys of the properties to delete. These take the format              {domain}/{scope}/{code} e.g. \"Portfolio/Manager/Id\". Each property must be from the \"Portfolio\" domain.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to delete the properties. Defaults to the current LUSID system datetime if not specified.
     try {
       DeletedEntityResponse result = apiInstance.deletePortfolioProperties(scope, code, portfolioPropertyKeys, effectiveAt);
       System.out.println(result);
@@ -136,10 +136,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the portfolio |
- **code** | **String**| Code for the portfolio |
- **portfolioPropertyKeys** | [**List&lt;String&gt;**](String.md)| The keys of the properties to be deleted. | [optional]
- **effectiveAt** | **String**| Optional. The effective date of the deletion | [optional]
+ **scope** | **String**| The scope of the portfolio to delete properties from. |
+ **code** | **String**| The code of the portfolio to delete properties from. Together with the scope this uniquely              identifies the portfolio. |
+ **portfolioPropertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. Each property must be from the \&quot;Portfolio\&quot; domain. |
+ **effectiveAt** | **String**| The effective datetime at which to delete the properties. Defaults to the current LUSID system datetime if not specified. | [optional]
 
 ### Return type
 
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | The datetime that the properties were deleted from the specified portfolio |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -165,9 +165,9 @@ Name | Type | Description  | Notes
 # **getPortfolio**
 > Portfolio getPortfolio(scope, code, effectiveAt, asAt)
 
-[EARLY ACCESS] Get portfolio definition
+[EARLY ACCESS] Get portfolio
 
-Retrieves the basic set of information about a portfolio using the specified scope and code.
+Retrieve the definition of a single portfolio.
 
 ### Example
 ```java
@@ -189,10 +189,10 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the portfolio
-    String code = "code_example"; // String | The code of the portfolio
-    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
+    String scope = "scope_example"; // String | The scope of the portfolio to retrieve the definition for.
+    String code = "code_example"; // String | The code of the portfolio to retrieve the definition for. Together with the scope this              uniquely identifies the portfolio.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio definition. Defaults to return the latest version of the portfolio definition if not specified.
     try {
       Portfolio result = apiInstance.getPortfolio(scope, code, effectiveAt, asAt);
       System.out.println(result);
@@ -211,10 +211,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the portfolio |
- **code** | **String**| The code of the portfolio |
- **effectiveAt** | **String**| Optional. The effective date of the data | [optional]
- **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
+ **scope** | **String**| The scope of the portfolio to retrieve the definition for. |
+ **code** | **String**| The code of the portfolio to retrieve the definition for. Together with the scope this              uniquely identifies the portfolio. |
+ **effectiveAt** | **String**| The effective datetime at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified. | [optional]
+ **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the portfolio definition. Defaults to return the latest version of the portfolio definition if not specified. | [optional]
 
 ### Return type
 
@@ -232,17 +232,17 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The requested portfolio |  -  |
+**200** | The requested portfolio definition |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
 <a name="getPortfolioCommands"></a>
 # **getPortfolioCommands**
-> ResourceListOfProcessedCommand getPortfolioCommands(scope, code, fromAsAt, toAsAt, sortBy, start, limit, filter)
+> ResourceListOfProcessedCommand getPortfolioCommands(scope, code, fromAsAt, toAsAt, filter)
 
-[EARLY ACCESS] Get commands
+[EARLY ACCESS] Get portfolio commands
 
-Gets all commands that modified a specific portfolio, including any input transactions.
+Gets all the commands that modified a single portfolio, including any input transactions.
 
 ### Example
 ```java
@@ -264,16 +264,13 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the portfolio
-    String code = "code_example"; // String | The code of the portfolio
-    OffsetDateTime fromAsAt = new OffsetDateTime(); // OffsetDateTime | Optional. Filters commands by those that were processed at or after this date and time
-    OffsetDateTime toAsAt = new OffsetDateTime(); // OffsetDateTime | Optional. Filters commands by those that were processed at or before this date and time
-    List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-    Integer start = 56; // Integer | Optional. When paginating, skip this number of results
-    Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-    String filter = "filter_example"; // String | Optional. Expression to filter the result set
+    String scope = "scope_example"; // String | The scope of the portfolio to retrieve the commands for.
+    String code = "code_example"; // String | The code of the portfolio to retrieve the commands for. Together with the scope this uniquely identifies              the portfolio.
+    OffsetDateTime fromAsAt = new OffsetDateTime(); // OffsetDateTime | The lower bound asAt datetime (inclusive) from which to retrieve commands. There is no lower bound if this is not specified.
+    OffsetDateTime toAsAt = new OffsetDateTime(); // OffsetDateTime | The upper bound asAt datetime (inclusive) from which to retrieve commands. There is no upper bound if this is not specified.
+    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
-      ResourceListOfProcessedCommand result = apiInstance.getPortfolioCommands(scope, code, fromAsAt, toAsAt, sortBy, start, limit, filter);
+      ResourceListOfProcessedCommand result = apiInstance.getPortfolioCommands(scope, code, fromAsAt, toAsAt, filter);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfoliosApi#getPortfolioCommands");
@@ -290,14 +287,11 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the portfolio |
- **code** | **String**| The code of the portfolio |
- **fromAsAt** | **OffsetDateTime**| Optional. Filters commands by those that were processed at or after this date and time | [optional]
- **toAsAt** | **OffsetDateTime**| Optional. Filters commands by those that were processed at or before this date and time | [optional]
- **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
- **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
- **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
- **filter** | **String**| Optional. Expression to filter the result set | [optional]
+ **scope** | **String**| The scope of the portfolio to retrieve the commands for. |
+ **code** | **String**| The code of the portfolio to retrieve the commands for. Together with the scope this uniquely identifies              the portfolio. |
+ **fromAsAt** | **OffsetDateTime**| The lower bound asAt datetime (inclusive) from which to retrieve commands. There is no lower bound if this is not specified. | [optional]
+ **toAsAt** | **OffsetDateTime**| The upper bound asAt datetime (inclusive) from which to retrieve commands. There is no upper bound if this is not specified. | [optional]
+ **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
 
 ### Return type
 
@@ -321,11 +315,11 @@ Name | Type | Description  | Notes
 
 <a name="getPortfolioProperties"></a>
 # **getPortfolioProperties**
-> PortfolioProperties getPortfolioProperties(scope, code, effectiveAt, asAt, sortBy, start, limit)
+> PortfolioProperties getPortfolioProperties(scope, code, effectiveAt, asAt)
 
 [EARLY ACCESS] Get portfolio properties
 
-Get the properties of a portfolio
+List all the properties of a single portfolio.
 
 ### Example
 ```java
@@ -347,15 +341,12 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the portfolio
-    String code = "code_example"; // String | The code of the portfolio
-    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
-    List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-    Integer start = 56; // Integer | Optional. When paginating, skip this number of results
-    Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
+    String scope = "scope_example"; // String | The scope of the portfolio to list the properties for.
+    String code = "code_example"; // String | The code of the portfolio to list the properties for. Together with the scope this uniquely              identifies the portfolio.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to list the portfolio's properties. Defaults to the current LUSID system datetime if not specified.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to list the portfolio's properties. Defaults to return the latest version of each property if not specified.
     try {
-      PortfolioProperties result = apiInstance.getPortfolioProperties(scope, code, effectiveAt, asAt, sortBy, start, limit);
+      PortfolioProperties result = apiInstance.getPortfolioProperties(scope, code, effectiveAt, asAt);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfoliosApi#getPortfolioProperties");
@@ -372,13 +363,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the portfolio |
- **code** | **String**| The code of the portfolio |
- **effectiveAt** | **String**| Optional. The effective date of the data | [optional]
- **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
- **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
- **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
- **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
+ **scope** | **String**| The scope of the portfolio to list the properties for. |
+ **code** | **String**| The code of the portfolio to list the properties for. Together with the scope this uniquely              identifies the portfolio. |
+ **effectiveAt** | **String**| The effective datetime at which to list the portfolio&#39;s properties. Defaults to the current LUSID system datetime if not specified. | [optional]
+ **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolio&#39;s properties. Defaults to return the latest version of each property if not specified. | [optional]
 
 ### Return type
 
@@ -396,17 +384,17 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The properties of the requested portfolio |  -  |
+**200** | The properties of the specified portfolio |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
 <a name="listPortfolios"></a>
 # **listPortfolios**
-> ResourceListOfPortfolio listPortfolios(effectiveAt, asAt, page, sortBy, start, limit, filter, query, portfolioPropertyKeys)
+> ResourceListOfPortfolio listPortfolios(effectiveAt, asAt, page, start, limit, filter, query, portfolioPropertyKeys)
 
 [EARLY ACCESS] List portfolios
 
-List all portfolios matching the specified criteria.                Example query syntax for the query parameter:                - To see which portfolios have holdings in the specified instruments:                    instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))                * Note that copy/pasting above examples results in incorrect single quote character
+List all the portfolios matching the specified criteria.
 
 ### Example
 ```java
@@ -428,17 +416,16 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
-    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
-    String page = "page_example"; // String | Optional. The pagination token to continue listing portfolios. This value is returned from a previous call to ListPortfolios.  If this is set, then the sortBy, filter, query, effectiveAt, and asAt fields must not have changed. Also, if set, a start  value cannot be set.
-    List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-    Integer start = 56; // Integer | Optional. When paginating, skip this number of results
-    Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-    String filter = "filter_example"; // String | Optional. Expression to filter the result set
-    String query = "query_example"; // String | Optional. Expression specifying the criteria that the returned portfolios must meet
-    List<String> portfolioPropertyKeys = Arrays.asList(); // List<String> | Optional. Keys of the properties to be decorated on to the portfolio
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to list the portfolios. Defaults to return the latest version              of each portfolio if not specified.
+    String page = "page_example"; // String | The pagination token to use to continue listing portfolios from a previous call to list portfolios. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
+    Integer start = 56; // Integer | When paginating, skip this number of results.
+    Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 65,535 if not specified.
+    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+    String query = "query_example"; // String | Expression specifying the criteria that the returned portfolios must meet e.g. to see which              portfolios have holdings in the instruments with a Lusid Instrument Id (LUID) of 'LUID_PPA8HI6M' or a Figi of 'BBG000BLNNH6'              you would specify \"instrument.identifiers in (('LusidInstrumentId', 'LUID_PPA8HI6M'), ('Figi', 'BBG000BLNNH6'))\".
+    List<String> portfolioPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Portfolio\" domain to decorate onto each portfolio.              These take the format {domain}/{scope}/{code} e.g. \"Portfolio/Manager/Id\".
     try {
-      ResourceListOfPortfolio result = apiInstance.listPortfolios(effectiveAt, asAt, page, sortBy, start, limit, filter, query, portfolioPropertyKeys);
+      ResourceListOfPortfolio result = apiInstance.listPortfolios(effectiveAt, asAt, page, start, limit, filter, query, portfolioPropertyKeys);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfoliosApi#listPortfolios");
@@ -455,15 +442,14 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **effectiveAt** | **String**| Optional. The effective date of the data | [optional]
- **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
- **page** | **String**| Optional. The pagination token to continue listing portfolios. This value is returned from a previous call to ListPortfolios.  If this is set, then the sortBy, filter, query, effectiveAt, and asAt fields must not have changed. Also, if set, a start  value cannot be set. | [optional]
- **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
- **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
- **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
- **filter** | **String**| Optional. Expression to filter the result set | [optional]
- **query** | **String**| Optional. Expression specifying the criteria that the returned portfolios must meet | [optional]
- **portfolioPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys of the properties to be decorated on to the portfolio | [optional]
+ **effectiveAt** | **String**| The effective datetime at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified. | [optional]
+ **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolios. Defaults to return the latest version              of each portfolio if not specified. | [optional]
+ **page** | **String**| The pagination token to use to continue listing portfolios from a previous call to list portfolios. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional]
+ **start** | **Integer**| When paginating, skip this number of results. | [optional]
+ **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 65,535 if not specified. | [optional]
+ **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
+ **query** | **String**| Expression specifying the criteria that the returned portfolios must meet e.g. to see which              portfolios have holdings in the instruments with a Lusid Instrument Id (LUID) of &#39;LUID_PPA8HI6M&#39; or a Figi of &#39;BBG000BLNNH6&#39;              you would specify \&quot;instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))\&quot;. | [optional]
+ **portfolioPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Portfolio\&quot; domain to decorate onto each portfolio.              These take the format {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. | [optional]
 
 ### Return type
 
@@ -481,17 +467,17 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | A list of portfolios |  -  |
+**200** | The requested portfolios |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
 <a name="listPortfoliosForScope"></a>
 # **listPortfoliosForScope**
-> ResourceListOfPortfolio listPortfoliosForScope(scope, effectiveAt, asAt, sortBy, start, limit, filter, portfolioPropertyKeys)
+> ResourceListOfPortfolio listPortfoliosForScope(scope, effectiveAt, asAt, filter, portfolioPropertyKeys)
 
 [EARLY ACCESS] List portfolios for scope
 
-List all the portfolios in the specified scope
+List all the portfolios in a single scope.
 
 ### Example
 ```java
@@ -513,16 +499,13 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
-    String scope = "scope_example"; // String | The scope
-    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date of the data
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The AsAt date of the data
-    List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
-    Integer start = 56; // Integer | Optional. When paginating, skip this number of results
-    Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
-    String filter = "filter_example"; // String | Optional. Expression to filter the result set
-    List<String> portfolioPropertyKeys = Arrays.asList(); // List<String> | Optional. Keys of the properties to be decorated on to the portfolio
+    String scope = "scope_example"; // String | The scope of the portfolios.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to list the portfolios. Defaults to return the latest version              of each portfolio if not specified.
+    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+    List<String> portfolioPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Portfolio\" domain to decorate onto each portfolio.              These take the format {domain}/{scope}/{code} e.g. \"Portfolio/Manager/Id\".
     try {
-      ResourceListOfPortfolio result = apiInstance.listPortfoliosForScope(scope, effectiveAt, asAt, sortBy, start, limit, filter, portfolioPropertyKeys);
+      ResourceListOfPortfolio result = apiInstance.listPortfoliosForScope(scope, effectiveAt, asAt, filter, portfolioPropertyKeys);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfoliosApi#listPortfoliosForScope");
@@ -539,14 +522,11 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope |
- **effectiveAt** | **String**| Optional. The effective date of the data | [optional]
- **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
- **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
- **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
- **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
- **filter** | **String**| Optional. Expression to filter the result set | [optional]
- **portfolioPropertyKeys** | [**List&lt;String&gt;**](String.md)| Optional. Keys of the properties to be decorated on to the portfolio | [optional]
+ **scope** | **String**| The scope of the portfolios. |
+ **effectiveAt** | **String**| The effective datetime at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified. | [optional]
+ **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolios. Defaults to return the latest version              of each portfolio if not specified. | [optional]
+ **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
+ **portfolioPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Portfolio\&quot; domain to decorate onto each portfolio.              These take the format {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. | [optional]
 
 ### Return type
 
@@ -564,7 +544,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | A list of portfolios in the requested scope |  -  |
+**200** | The portfolios in the specified scope |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -572,9 +552,9 @@ Name | Type | Description  | Notes
 # **updatePortfolio**
 > Portfolio updatePortfolio(scope, code, effectiveAt, request)
 
-[EARLY ACCESS] Update portfolio definition
+[EARLY ACCESS] Update portfolio
 
-Update the definition of a specific portfolio. Note, some parts of a portfolio definition are not available for modification after the initial creation.
+Update the definition of a single portfolio. Not all elements within a portfolio definition are  modifiable due to the potential implications for data already stored against the portfolio.
 
 ### Example
 ```java
@@ -596,10 +576,10 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the portfolio
-    String code = "code_example"; // String | The code of the portfolio
-    String effectiveAt = "effectiveAt_example"; // String | Optional. The effective date for the change
-    UpdatePortfolioRequest request = new UpdatePortfolioRequest(); // UpdatePortfolioRequest | The updated portfolio definition
+    String scope = "scope_example"; // String | The scope of the portfolio to update the definition for.
+    String code = "code_example"; // String | The code of the portfolio to update the definition for. Together with the scope this uniquely              identifies the portfolio.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to update the definition. Defaults to the current              LUSID system datetime if not specified.
+    UpdatePortfolioRequest request = new UpdatePortfolioRequest(); // UpdatePortfolioRequest | The updated portfolio definition.
     try {
       Portfolio result = apiInstance.updatePortfolio(scope, code, effectiveAt, request);
       System.out.println(result);
@@ -618,10 +598,10 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the portfolio |
- **code** | **String**| The code of the portfolio |
- **effectiveAt** | **String**| Optional. The effective date for the change | [optional]
- **request** | [**UpdatePortfolioRequest**](UpdatePortfolioRequest.md)| The updated portfolio definition | [optional]
+ **scope** | **String**| The scope of the portfolio to update the definition for. |
+ **code** | **String**| The code of the portfolio to update the definition for. Together with the scope this uniquely              identifies the portfolio. |
+ **effectiveAt** | **String**| The effective datetime at which to update the definition. Defaults to the current              LUSID system datetime if not specified. | [optional]
+ **request** | [**UpdatePortfolioRequest**](UpdatePortfolioRequest.md)| The updated portfolio definition. | [optional]
 
 ### Return type
 
@@ -639,7 +619,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | The updated definition of the portfolio. |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -649,7 +629,7 @@ Name | Type | Description  | Notes
 
 [EARLY ACCESS] Upsert portfolio properties
 
-Upsert one or more property values to a portfolio. All properties must be of the domain Portfolio.
+Update or insert one or more properties onto a single portfolio. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Portfolio&#39;.
 
 ### Example
 ```java
@@ -671,9 +651,9 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the portfolio
-    String code = "code_example"; // String | The code of the portfolio
-    Map<String, Property> portfolioProperties = new HashMap(); // Map<String, Property> | The property values to be upserted to the portfolio. Time variant properties must have an EffectiveFrom date.
+    String scope = "scope_example"; // String | The scope of the portfolio to update or insert the properties onto.
+    String code = "code_example"; // String | The code of the portfolio to update or insert the properties onto. Together with the scope              this uniquely identifies the portfolio.
+    Map<String, Property> portfolioProperties = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the portfolio. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"Portfolio/Manager/Id\".
     try {
       PortfolioProperties result = apiInstance.upsertPortfolioProperties(scope, code, portfolioProperties);
       System.out.println(result);
@@ -692,9 +672,9 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the portfolio |
- **code** | **String**| The code of the portfolio |
- **portfolioProperties** | [**Map&lt;String, Property&gt;**](Property.md)| The property values to be upserted to the portfolio. Time variant properties must have an EffectiveFrom date. | [optional]
+ **scope** | **String**| The scope of the portfolio to update or insert the properties onto. |
+ **code** | **String**| The code of the portfolio to update or insert the properties onto. Together with the scope              this uniquely identifies the portfolio. |
+ **portfolioProperties** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the portfolio. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. | [optional]
 
 ### Return type
 
@@ -712,7 +692,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | The updated or inserted properties |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 

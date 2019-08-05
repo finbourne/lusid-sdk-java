@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **String** |  |  [optional]
+**id** | **String** | The unique id of the user. |  [optional]
 
 
 
