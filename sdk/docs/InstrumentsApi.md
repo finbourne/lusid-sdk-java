@@ -115,7 +115,7 @@ public class Example {
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
     String identifierType = "identifierType_example"; // String | The identifier being supplied e.g. \"Figi\".
     String identifier = "identifier_example"; // String | The value of the identifier for the requested instrument.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to retrieve the instrument definition.              Defaults to the current LUSID system datetime if not specified.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument definition.              Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument definition. Defaults to              return the latest version of the instrument definition if not specified.
     List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto the instrument.              These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
     try {
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifierType** | **String**| The identifier being supplied e.g. \&quot;Figi\&quot;. |
  **identifier** | **String**| The value of the identifier for the requested instrument. |
- **effectiveAt** | **String**| The effective datetime at which to retrieve the instrument definition.              Defaults to the current LUSID system datetime if not specified. | [optional]
+ **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the instrument definition.              Defaults to the current LUSID system datetime if not specified. | [optional]
  **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument definition. Defaults to              return the latest version of the instrument definition if not specified. | [optional]
  **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto the instrument.              These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. | [optional]
 
@@ -223,7 +223,7 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
+**200** | The allowable instrument identifiers |  -  |
 **0** | Error response |  -  |
 
 <a name="getInstruments"></a>
@@ -256,7 +256,7 @@ public class Example {
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
     String identifierType = "identifierType_example"; // String | The identifier being supplied e.g. \"Figi\".
     List<String> identifiers = Arrays.asList(); // List<String> | The values of the identifier for the requested instruments.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to retrieve the instrument definitions.              Defaults to the current LUSID system datetime if not specified.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument definitions.              Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument definitions.              Defaults to return the latest version of each instrument definition if not specified.
     List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto the instrument.              These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
     try {
@@ -279,7 +279,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **identifierType** | **String**| The identifier being supplied e.g. \&quot;Figi\&quot;. |
  **identifiers** | [**List&lt;String&gt;**](String.md)| The values of the identifier for the requested instruments. |
- **effectiveAt** | **String**| The effective datetime at which to retrieve the instrument definitions.              Defaults to the current LUSID system datetime if not specified. | [optional]
+ **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the instrument definitions.              Defaults to the current LUSID system datetime if not specified. | [optional]
  **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument definitions.              Defaults to return the latest version of each instrument definition if not specified. | [optional]
  **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto the instrument.              These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. | [optional]
 
@@ -332,7 +332,7 @@ public class Example {
 
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
     OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to list the instruments. Defaults to return the latest              version of each instruments if not specified.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to list the instruments.              Defaults to the current LUSID system datetime if not specified.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the instruments.              Defaults to the current LUSID system datetime if not specified.
     String page = "page_example"; // String | The pagination token to use to continue listing instruments from a previous call to list instruments.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided.
     List<String> sortBy = Arrays.asList(); // List<String> | Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName.
     Integer start = 56; // Integer | When paginating, skip this number of results.
@@ -358,7 +358,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **asAt** | **OffsetDateTime**| The asAt datetime at which to list the instruments. Defaults to return the latest              version of each instruments if not specified. | [optional]
- **effectiveAt** | **String**| The effective datetime at which to list the instruments.              Defaults to the current LUSID system datetime if not specified. | [optional]
+ **effectiveAt** | **String**| The effective datetime or cut label at which to list the instruments.              Defaults to the current LUSID system datetime if not specified. | [optional]
  **page** | **String**| The pagination token to use to continue listing instruments from a previous call to list instruments.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional]
  **sortBy** | [**List&lt;String&gt;**](String.md)| Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. | [optional]
  **start** | **Integer**| When paginating, skip this number of results. | [optional]

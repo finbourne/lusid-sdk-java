@@ -117,7 +117,7 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the portfolio to delete properties from.
     String code = "code_example"; // String | The code of the portfolio to delete properties from. Together with the scope this uniquely              identifies the portfolio.
     List<String> portfolioPropertyKeys = Arrays.asList(); // List<String> | The property keys of the properties to delete. These take the format              {domain}/{scope}/{code} e.g. \"Portfolio/Manager/Id\". Each property must be from the \"Portfolio\" domain.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to delete the properties. Defaults to the current LUSID system datetime if not specified.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete the properties. Defaults to the current LUSID system datetime if not specified.
     try {
       DeletedEntityResponse result = apiInstance.deletePortfolioProperties(scope, code, portfolioPropertyKeys, effectiveAt);
       System.out.println(result);
@@ -139,7 +139,7 @@ Name | Type | Description  | Notes
  **scope** | **String**| The scope of the portfolio to delete properties from. |
  **code** | **String**| The code of the portfolio to delete properties from. Together with the scope this uniquely              identifies the portfolio. |
  **portfolioPropertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. Each property must be from the \&quot;Portfolio\&quot; domain. |
- **effectiveAt** | **String**| The effective datetime at which to delete the properties. Defaults to the current LUSID system datetime if not specified. | [optional]
+ **effectiveAt** | **String**| The effective datetime or cut label at which to delete the properties. Defaults to the current LUSID system datetime if not specified. | [optional]
 
 ### Return type
 
@@ -191,7 +191,7 @@ public class Example {
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio to retrieve the definition for.
     String code = "code_example"; // String | The code of the portfolio to retrieve the definition for. Together with the scope this              uniquely identifies the portfolio.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio definition. Defaults to return the latest version of the portfolio definition if not specified.
     try {
       Portfolio result = apiInstance.getPortfolio(scope, code, effectiveAt, asAt);
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio to retrieve the definition for. |
  **code** | **String**| The code of the portfolio to retrieve the definition for. Together with the scope this              uniquely identifies the portfolio. |
- **effectiveAt** | **String**| The effective datetime at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified. | [optional]
+ **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified. | [optional]
  **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the portfolio definition. Defaults to return the latest version of the portfolio definition if not specified. | [optional]
 
 ### Return type
@@ -343,7 +343,7 @@ public class Example {
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio to list the properties for.
     String code = "code_example"; // String | The code of the portfolio to list the properties for. Together with the scope this uniquely              identifies the portfolio.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to list the portfolio's properties. Defaults to the current LUSID system datetime if not specified.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the portfolio's properties. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to list the portfolio's properties. Defaults to return the latest version of each property if not specified.
     try {
       PortfolioProperties result = apiInstance.getPortfolioProperties(scope, code, effectiveAt, asAt);
@@ -365,7 +365,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio to list the properties for. |
  **code** | **String**| The code of the portfolio to list the properties for. Together with the scope this uniquely              identifies the portfolio. |
- **effectiveAt** | **String**| The effective datetime at which to list the portfolio&#39;s properties. Defaults to the current LUSID system datetime if not specified. | [optional]
+ **effectiveAt** | **String**| The effective datetime or cut label at which to list the portfolio&#39;s properties. Defaults to the current LUSID system datetime if not specified. | [optional]
  **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolio&#39;s properties. Defaults to return the latest version of each property if not specified. | [optional]
 
 ### Return type
@@ -416,7 +416,7 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified.
     OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to list the portfolios. Defaults to return the latest version              of each portfolio if not specified.
     String page = "page_example"; // String | The pagination token to use to continue listing portfolios from a previous call to list portfolios. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
     Integer start = 56; // Integer | When paginating, skip this number of results.
@@ -442,7 +442,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **effectiveAt** | **String**| The effective datetime at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified. | [optional]
+ **effectiveAt** | **String**| The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified. | [optional]
  **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolios. Defaults to return the latest version              of each portfolio if not specified. | [optional]
  **page** | **String**| The pagination token to use to continue listing portfolios from a previous call to list portfolios. This  value is returned from the previous call. If a pagination token is provided the filter, effectiveAt  and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional]
  **start** | **Integer**| When paginating, skip this number of results. | [optional]
@@ -500,7 +500,7 @@ public class Example {
 
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolios.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified.
     OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to list the portfolios. Defaults to return the latest version              of each portfolio if not specified.
     String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     List<String> portfolioPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Portfolio\" domain to decorate onto each portfolio.              These take the format {domain}/{scope}/{code} e.g. \"Portfolio/Manager/Id\".
@@ -523,7 +523,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolios. |
- **effectiveAt** | **String**| The effective datetime at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified. | [optional]
+ **effectiveAt** | **String**| The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified. | [optional]
  **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolios. Defaults to return the latest version              of each portfolio if not specified. | [optional]
  **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
  **portfolioPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Portfolio\&quot; domain to decorate onto each portfolio.              These take the format {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. | [optional]
@@ -578,7 +578,7 @@ public class Example {
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio to update the definition for.
     String code = "code_example"; // String | The code of the portfolio to update the definition for. Together with the scope this uniquely              identifies the portfolio.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime at which to update the definition. Defaults to the current              LUSID system datetime if not specified.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to update the definition. Defaults to the current              LUSID system datetime if not specified.
     UpdatePortfolioRequest request = new UpdatePortfolioRequest(); // UpdatePortfolioRequest | The updated portfolio definition.
     try {
       Portfolio result = apiInstance.updatePortfolio(scope, code, effectiveAt, request);
@@ -600,7 +600,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio to update the definition for. |
  **code** | **String**| The code of the portfolio to update the definition for. Together with the scope this uniquely              identifies the portfolio. |
- **effectiveAt** | **String**| The effective datetime at which to update the definition. Defaults to the current              LUSID system datetime if not specified. | [optional]
+ **effectiveAt** | **String**| The effective datetime or cut label at which to update the definition. Defaults to the current              LUSID system datetime if not specified. | [optional]
  **request** | [**UpdatePortfolioRequest**](UpdatePortfolioRequest.md)| The updated portfolio definition. | [optional]
 
 ### Return type
