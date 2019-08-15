@@ -194,7 +194,7 @@ public class Instruments {
     @Test
     public void list_instruments_by_Identifier_type() throws ApiException {
 
-        List<String>    figis = Arrays.asList("BBG00M1BQWX0", "BBG00D1PBRL9", "BBG00BW1V2M4");
+        List<String>    figis = Arrays.asList("BBG000C6K6G9", "BBG000C04D57", "BBG000FV67Q4");
 
         //  Get a set of instruments querying by FIGIs
         GetInstrumentsResponse instruments = instrumentsApi.getInstruments("Figi", figis, null, null, null);
@@ -212,7 +212,7 @@ public class Instruments {
         String propertyKey = String.format("Instrument/%s/CustomSector", TutorialScope);
 
         //  Get the LusidInstrumentId (LUID)
-        Instrument instrument = instrumentsApi.getInstrument("Figi", "BBG00M1BQWX0", null, null, null);
+        Instrument instrument = instrumentsApi.getInstrument("Figi", "BBG000C6K6G9", null, null, null);
 
         //    Add it to the instrument
         instrumentsApi.upsertInstrumentsProperties(Collections.singletonList(new UpsertInstrumentPropertyRequest()
