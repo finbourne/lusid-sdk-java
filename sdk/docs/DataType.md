@@ -63,6 +63,8 @@ RESULTVALUE | &quot;ResultValue&quot;
 CUTLOCALTIME | &quot;CutLocalTime&quot;
 DATEORCUTLABEL | &quot;DateOrCutLabel&quot;
 TRANSITION | &quot;Transition&quot;
+STRUCTUREDDATA | &quot;StructuredData&quot;
+STRUCTUREDDATAID | &quot;StructuredDataId&quot;
 
 
 
