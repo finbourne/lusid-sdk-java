@@ -6,7 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteInstrument**](InstrumentsApi.md#deleteInstrument) | **DELETE** /api/instruments/{identifierType}/{identifier} | [EARLY ACCESS] Delete instrument
 [**getInstrument**](InstrumentsApi.md#getInstrument) | **GET** /api/instruments/{identifierType}/{identifier} | [EARLY ACCESS] Get instrument
-[**getInstrumentIdentifiers**](InstrumentsApi.md#getInstrumentIdentifiers) | **GET** /api/instruments/identifiers | [EARLY ACCESS] Get instrument identifiers
+[**getInstrumentIdentifierTypes**](InstrumentsApi.md#getInstrumentIdentifierTypes) | **GET** /api/instruments/identifierTypes | [EARLY ACCESS] Get instrument identifier types
 [**getInstruments**](InstrumentsApi.md#getInstruments) | **POST** /api/instruments/$get | [EARLY ACCESS] Get instruments
 [**listInstruments**](InstrumentsApi.md#listInstruments) | **GET** /api/instruments | [EARLY ACCESS] List instruments
 [**updateInstrumentIdentifier**](InstrumentsApi.md#updateInstrumentIdentifier) | **POST** /api/instruments/{identifierType}/{identifier} | [EARLY ACCESS] Update instrument identifier
@@ -162,13 +162,13 @@ Name | Type | Description  | Notes
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
-<a name="getInstrumentIdentifiers"></a>
-# **getInstrumentIdentifiers**
-> ResourceListOfInstrumentIdTypeDescriptor getInstrumentIdentifiers()
+<a name="getInstrumentIdentifierTypes"></a>
+# **getInstrumentIdentifierTypes**
+> ResourceListOfInstrumentIdTypeDescriptor getInstrumentIdentifierTypes()
 
-[EARLY ACCESS] Get instrument identifiers
+[EARLY ACCESS] Get instrument identifier types
 
-Get the allowable instrument identifiers and their descriptions.
+Get the allowable instrument identifier types and their descriptions.
 
 ### Example
 ```java
@@ -191,10 +191,10 @@ public class Example {
 
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
     try {
-      ResourceListOfInstrumentIdTypeDescriptor result = apiInstance.getInstrumentIdentifiers();
+      ResourceListOfInstrumentIdTypeDescriptor result = apiInstance.getInstrumentIdentifierTypes();
       System.out.println(result);
     } catch (ApiException e) {
-      System.err.println("Exception when calling InstrumentsApi#getInstrumentIdentifiers");
+      System.err.println("Exception when calling InstrumentsApi#getInstrumentIdentifierTypes");
       System.err.println("Status code: " + e.getCode());
       System.err.println("Reason: " + e.getResponseBody());
       System.err.println("Response headers: " + e.getResponseHeaders());
@@ -223,7 +223,7 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The allowable instrument identifiers |  -  |
+**200** | The allowable instrument identifier types |  -  |
 **0** | Error response |  -  |
 
 <a name="getInstruments"></a>
