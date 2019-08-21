@@ -169,14 +169,14 @@ public class Instruments {
     public void list_available_identifiers() throws ApiException {
 
         //    Get the list of identifier schemes
-        ResourceListOfInstrumentIdTypeDescriptor identifiers = instrumentsApi.getInstrumentIdentifiers();
+        ResourceListOfInstrumentIdTypeDescriptor identifiers = instrumentsApi.getInstrumentIdentifierTypes();
 
         //    Schemes are returned as descriptors containing the name, property key and uniqueness constraint
 
         for (InstrumentIdTypeDescriptor scheme : identifiers.getValues())
         {
-            System.out.println(String.format("name: %s\nproperty key: %s\nis unique: %s\n", scheme.getIdName(),
-                    scheme.getPropertyKeyValue(), scheme.getIsUniqueIdentifier()));
+            System.out.println(String.format("name: %s\nproperty key: %s\nis unique: %s\n", scheme.getIdentifierType(),
+                    scheme.getPropertyKey(), scheme.getIsUniqueIdentifierType()));
         }
     }
 
