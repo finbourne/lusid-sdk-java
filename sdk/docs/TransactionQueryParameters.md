@@ -17,7 +17,6 @@ Name | Type | Description | Notes
 
 Name | Value
 ---- | -----
-NONE | &quot;None&quot;
 TRADEDATE | &quot;TradeDate&quot;
 SETTLEDATE | &quot;SettleDate&quot;
 
