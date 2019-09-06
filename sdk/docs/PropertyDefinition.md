@@ -59,6 +59,8 @@ DATEORCUTLABEL | &quot;DateOrCutLabel&quot;
 TRANSITION | &quot;Transition&quot;
 STRUCTUREDDATA | &quot;StructuredData&quot;
 STRUCTUREDDATAID | &quot;StructuredDataId&quot;
+CONFIGURATIONRECIPE | &quot;ConfigurationRecipe&quot;
+CONFIGURATIONRECIPESNIPPET | &quot;ConfigurationRecipeSnippet&quot;
 
 
 
