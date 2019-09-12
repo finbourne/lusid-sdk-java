@@ -42,6 +42,7 @@ Name | Value
 ---- | -----
 SIDE1 | &quot;Side1&quot;
 SIDE2 | &quot;Side2&quot;
+SIDE2SEPARATEBONDINTEREST | &quot;Side2SeparateBondInterest&quot;
 BONDINT | &quot;BondInt&quot;
 
 
