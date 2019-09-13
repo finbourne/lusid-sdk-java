@@ -15,7 +15,7 @@ public class ApiExceptionTests {
     @Test
     public void thrown_exception_tostring_contains_requestid() throws IOException, ApiException {
 
-        ApiClient apiClient = new ApiClientBuilder(CredentialsSource.credentialsFile).build();
+        ApiClient apiClient = new ApiClientBuilder().build(CredentialsSource.credentialsFile);
 
         PortfoliosApi portfoliosApi = new PortfoliosApi(apiClient);
 
