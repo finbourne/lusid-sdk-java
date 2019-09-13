@@ -4,8 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.finbourne.lusid.ApiClient;
 import okhttp3.*;
 
-import java.io.File;
 import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Proxy;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.Map;
@@ -17,73 +18,52 @@ public class ApiClientBuilder {
 
     private static final MediaType FORM = MediaType.parse("application/x-www-form-urlencoded");
 
-    private String tokenUrl;
-    private String username;
-    private String password;
-    private String clientId;
-    private String clientSecret;
-    private String apiUrl;
-    private String applicationName;
+    public ApiClient build(String apiSecretsFilename) throws IOException
+    {
+        ApiConfiguration    apiConfiguration = new ApiConfigurationBuilder().build(apiSecretsFilename);
 
-    public ApiClientBuilder(String apiConfig) throws IOException {
+        //  request body
+        final String    tokenRequestBody = String.format("grant_type=password&username=%s&password=%s&scope=openid client groups&client_id=%s&client_secret=%s",
+                apiConfiguration.getUsername(),
+                URLEncoder.encode(apiConfiguration.getPassword(), StandardCharsets.UTF_8.toString()),
+                apiConfiguration.getClientId(),
+                URLEncoder.encode(apiConfiguration.getClientSecret(), StandardCharsets.UTF_8.toString()));
 
-        //  firstly try and get the values from environment variables
-        String tokenUrl = System.getenv("FBN_TOKEN_URL");
-        String username = System.getenv("FBN_USERNAME");
-        String password = System.getenv("FBN_PASSWORD");
-        String clientId = System.getenv("FBN_CLIENT_ID");
-        String clientSecret = System.getenv("FBN_CLIENT_SECRET");
-        String apiUrl = System.getenv("FBN_LUSID_API_URL");
-        String applicationName = System.getenv("FBN_APP_NAME");
+        final OkHttpClient    httpClient;
 
-        if (tokenUrl == null || username == null || password == null || clientId == null || clientSecret == null || apiUrl == null) {
+        //  use a proxy if given
+        if (apiConfiguration.getProxyAddress() != null) {
 
-            File configJson = new ConfigurationLoader().loadConfiguration(apiConfig);
+            InetSocketAddress proxy = new InetSocketAddress(apiConfiguration.getProxyAddress(), apiConfiguration.getProxyPort());
 
-            //  load configuration from secrets.json if any of the environment variables are missing
-            ObjectMapper configMapper = new ObjectMapper();
-            Map apiConfigValues = configMapper.readValue(configJson, Map.class);
-            Map config = (Map)apiConfigValues.get("api");
-
-            tokenUrl = (String)config.get("tokenUrl");
-            username = (String)config.get("username");
-            password = (String)config.get("password");
-            clientId = (String)config.get("clientId");
-            clientSecret = (String)config.get("clientSecret");
-            apiUrl = (String)config.get("apiUrl");
-            applicationName = config.containsKey("applicationName") ? (String)config.get("applicationName") : null;
-
+            httpClient = new OkHttpClient.Builder()
+                    .proxy(new Proxy(Proxy.Type.HTTP, proxy))
+                    .proxyAuthenticator((route, response) -> {
+                        String credential = Credentials.basic(apiConfiguration.getProxyUsername(), apiConfiguration.getProxyPassword());
+                        return response.request().newBuilder()
+                                .header("Proxy-Authorization", credential)
+                                .build();
+                    })
+                    .build();
+        }
+        else {
+            httpClient = new OkHttpClient();
         }
 
-        this.tokenUrl = tokenUrl;
-        this.username = username;
-        this.password = URLEncoder.encode(password, StandardCharsets.UTF_8.toString());
-        this.clientId = clientId;
-        this.clientSecret = URLEncoder.encode(clientSecret, StandardCharsets.UTF_8.toString());;
-        this.apiUrl = apiUrl;
-        this.applicationName = applicationName;
-    }
-
-    public ApiClient build() throws IOException
-    {
-        //  request body
-        final String    tokenRequestBody = String.format("grant_type=password&username=%s&password=%s&scope=openid client groups&client_id=%s&client_secret=%s", username, password, clientId, clientSecret);
-
-        final OkHttpClient oktaClient = new OkHttpClient();
         final RequestBody body = RequestBody.create(FORM, tokenRequestBody);
         final Request request = new Request.Builder()
-                .url(tokenUrl)
+                .url(apiConfiguration.getTokenUrl())
                 .header("Accept", "application/json")
                 .post(body)
                 .build();
 
-        Response response = oktaClient.newCall(request).execute();
+        Response response = httpClient.newCall(request).execute();
 
         if (response.code() != 200) {
             throw new IOException(response.toString());
         }
 
-        final String          content = response.body().string();
+        final String    content = response.body().string();
         final ObjectMapper mapper = new ObjectMapper();
 
         //  map json response
@@ -96,11 +76,15 @@ public class ApiClientBuilder {
         //  get access token
         final String apiToken = (String)bodyValues.get("access_token");
 
-        ApiClient   apiClient;
-        apiClient = new ApiClient();
+        ApiClient   apiClient = new ApiClient();
+
+        if (apiConfiguration.getProxyAddress() != null) {
+            apiClient.setHttpClient(httpClient);
+        }
+
         apiClient.addDefaultHeader("Authorization", "Bearer " + apiToken);
-        apiClient.addDefaultHeader("X-LUSID-Application", applicationName);
-        apiClient.setBasePath(apiUrl);
+        apiClient.addDefaultHeader("X-LUSID-Application", apiConfiguration.getApplicationName());
+        apiClient.setBasePath(apiConfiguration.getApiUrl());
 
         return apiClient;
     }

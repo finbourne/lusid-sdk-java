@@ -28,7 +28,7 @@ public class Transactions {
     @BeforeClass
     public static void setUp() throws Exception
     {
-        ApiClient apiClient = new ApiClientBuilder(CredentialsSource.credentialsFile).build();
+        ApiClient apiClient = new ApiClientBuilder().build(CredentialsSource.credentialsFile);
 
         transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
         instrumentsApi = new InstrumentsApi(apiClient);

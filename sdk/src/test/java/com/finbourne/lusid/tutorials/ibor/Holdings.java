@@ -31,7 +31,7 @@ public class Holdings {
     @BeforeClass
     public static void setUp() throws Exception {
 
-        ApiClient apiClient = new ApiClientBuilder(CredentialsSource.credentialsFile).build();
+        ApiClient apiClient = new ApiClientBuilder().build(CredentialsSource.credentialsFile);
         transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
 
         testDataUtilities = new TestDataUtilities(transactionPortfoliosApi);
