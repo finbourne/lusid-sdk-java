@@ -56,7 +56,7 @@ import com.finbourne.lusid.auth.OAuthFlow;
 
 public class ApiClient {
 
-    private String basePath = "http://http:/api";
+    private String basePath = "http://localhost/api";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private String tempFolderPath = null;
@@ -148,7 +148,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g http://http:/api
+     * @param basePath Base path of the URL (e.g http://localhost/api
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {
