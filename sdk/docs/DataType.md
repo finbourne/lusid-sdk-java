@@ -67,6 +67,9 @@ STRUCTUREDDATA | &quot;StructuredData&quot;
 STRUCTUREDDATAID | &quot;StructuredDataId&quot;
 CONFIGURATIONRECIPE | &quot;ConfigurationRecipe&quot;
 CONFIGURATIONRECIPESNIPPET | &quot;ConfigurationRecipeSnippet&quot;
+STRUCTUREDRESULTDATAID | &quot;StructuredResultDataId&quot;
+STRUCTUREDRESULTDATA | &quot;StructuredResultData&quot;
+DATAMAPPING | &quot;DataMapping&quot;
 
 
 
