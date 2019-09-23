@@ -1,6 +1,6 @@
 # PortfolioGroupsApi
 
-All URIs are relative to *http://localhost/api*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -19,7 +19,7 @@ Method | HTTP request | Description
 
 <a name="addPortfolioToGroup"></a>
 # **addPortfolioToGroup**
-> PortfolioGroup addPortfolioToGroup(scope, code, portfolioId)
+> PortfolioGroup addPortfolioToGroup(scope, code, effectiveAt, portfolioId)
 
 [EARLY ACCESS] Add portfolio to group
 
@@ -38,7 +38,7 @@ import com.finbourne.lusid.api.PortfolioGroupsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -47,9 +47,10 @@ public class Example {
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio group to add a portfolio to.
     String code = "code_example"; // String | The code of the portfolio group to add a portfolio to. Together with the scope this uniquely identifies the portfolio group.
+    OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | The effective datetime from which the portfolio will be added to the group.
     ResourceId portfolioId = new ResourceId(); // ResourceId | The resource identifier of the portfolio to add to the portfolio group.
     try {
-      PortfolioGroup result = apiInstance.addPortfolioToGroup(scope, code, portfolioId);
+      PortfolioGroup result = apiInstance.addPortfolioToGroup(scope, code, effectiveAt, portfolioId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#addPortfolioToGroup");
@@ -68,6 +69,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio group to add a portfolio to. |
  **code** | **String**| The code of the portfolio group to add a portfolio to. Together with the scope this uniquely identifies the portfolio group. |
+ **effectiveAt** | **OffsetDateTime**| The effective datetime from which the portfolio will be added to the group. | [optional]
  **portfolioId** | [**ResourceId**](ResourceId.md)| The resource identifier of the portfolio to add to the portfolio group. | [optional]
 
 ### Return type
@@ -92,7 +94,7 @@ Name | Type | Description  | Notes
 
 <a name="addSubGroupToGroup"></a>
 # **addSubGroupToGroup**
-> PortfolioGroup addSubGroupToGroup(scope, code, portfolioGroupId)
+> PortfolioGroup addSubGroupToGroup(scope, code, effectiveAt, portfolioGroupId)
 
 [EARLY ACCESS] Add sub group to group
 
@@ -111,7 +113,7 @@ import com.finbourne.lusid.api.PortfolioGroupsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -120,9 +122,10 @@ public class Example {
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio group to add a portfolio group to.
     String code = "code_example"; // String | The code of the portfolio group to add a portfolio group to. Together with the scope this uniquely identifies the portfolio group.
+    OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | The effective datetime from which the sub group will be added to the group.
     ResourceId portfolioGroupId = new ResourceId(); // ResourceId | The resource identifier of the portfolio group to add to the portfolio group as a sub group.
     try {
-      PortfolioGroup result = apiInstance.addSubGroupToGroup(scope, code, portfolioGroupId);
+      PortfolioGroup result = apiInstance.addSubGroupToGroup(scope, code, effectiveAt, portfolioGroupId);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#addSubGroupToGroup");
@@ -141,6 +144,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio group to add a portfolio group to. |
  **code** | **String**| The code of the portfolio group to add a portfolio group to. Together with the scope this uniquely identifies the portfolio group. |
+ **effectiveAt** | **OffsetDateTime**| The effective datetime from which the sub group will be added to the group. | [optional]
  **portfolioGroupId** | [**ResourceId**](ResourceId.md)| The resource identifier of the portfolio group to add to the portfolio group as a sub group. | [optional]
 
 ### Return type
@@ -184,7 +188,7 @@ import com.finbourne.lusid.api.PortfolioGroupsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -236,7 +240,7 @@ Name | Type | Description  | Notes
 
 <a name="deletePortfolioFromGroup"></a>
 # **deletePortfolioFromGroup**
-> PortfolioGroup deletePortfolioFromGroup(scope, code, portfolioScope, portfolioCode)
+> PortfolioGroup deletePortfolioFromGroup(scope, code, portfolioScope, portfolioCode, effectiveAt)
 
 [EARLY ACCESS] Delete portfolio from group
 
@@ -255,7 +259,7 @@ import com.finbourne.lusid.api.PortfolioGroupsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -266,8 +270,9 @@ public class Example {
     String code = "code_example"; // String | The code of the portfolio group to remove the portfolio from. Together with the scope this uniquely identifies the portfolio group.
     String portfolioScope = "portfolioScope_example"; // String | The scope of the portfolio being removed from the portfolio group.
     String portfolioCode = "portfolioCode_example"; // String | The code of the portfolio being removed from the portfolio group. Together with the scope this uniquely identifies the portfolio to remove.
+    OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | The effective datetime from which the portfolio will be removed from the portfolio group.
     try {
-      PortfolioGroup result = apiInstance.deletePortfolioFromGroup(scope, code, portfolioScope, portfolioCode);
+      PortfolioGroup result = apiInstance.deletePortfolioFromGroup(scope, code, portfolioScope, portfolioCode, effectiveAt);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#deletePortfolioFromGroup");
@@ -288,6 +293,7 @@ Name | Type | Description  | Notes
  **code** | **String**| The code of the portfolio group to remove the portfolio from. Together with the scope this uniquely identifies the portfolio group. |
  **portfolioScope** | **String**| The scope of the portfolio being removed from the portfolio group. |
  **portfolioCode** | **String**| The code of the portfolio being removed from the portfolio group. Together with the scope this uniquely identifies the portfolio to remove. |
+ **effectiveAt** | **OffsetDateTime**| The effective datetime from which the portfolio will be removed from the portfolio group. | [optional]
 
 ### Return type
 
@@ -315,7 +321,7 @@ Name | Type | Description  | Notes
 
 [EARLY ACCESS] Delete portfolio group
 
-Delete a single portfolio group. A portfolio group can be deleted while it still contains portfolios or sub groups.  In this case any portfolios or sub groups contained in this group will not be deleted however they will no longer be grouped together by this portfolio group.
+Delete a single portfolio group. A portfolio group can be deleted while it still contains portfolios or sub groups.  In this case any portfolios or sub groups contained in this group will not be deleted, however they will no longer be grouped together by this portfolio group.  The deletion will be valid from the portfolio group&#39;s creation datetime, ie. the portfolio group will no longer exist at any effective datetime from the asAt datetime of deletion.
 
 ### Example
 ```java
@@ -330,7 +336,7 @@ import com.finbourne.lusid.api.PortfolioGroupsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -382,7 +388,7 @@ Name | Type | Description  | Notes
 
 <a name="deleteSubGroupFromGroup"></a>
 # **deleteSubGroupFromGroup**
-> PortfolioGroup deleteSubGroupFromGroup(scope, code, subgroupScope, subgroupCode)
+> PortfolioGroup deleteSubGroupFromGroup(scope, code, subgroupScope, subgroupCode, effectiveAt)
 
 [EARLY ACCESS] Delete sub group from group
 
@@ -401,7 +407,7 @@ import com.finbourne.lusid.api.PortfolioGroupsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -412,8 +418,9 @@ public class Example {
     String code = "code_example"; // String | The code of the portfolio group to remove the sub group from. Together with the scope this uniquely identifies the portfolio group.
     String subgroupScope = "subgroupScope_example"; // String | The scope of the sub group to remove from the portfolio group.
     String subgroupCode = "subgroupCode_example"; // String | The code of the sub group to remove from the portfolio group. Together with the scope this uniquely identifies the sub group.
+    OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | The effective datetime from which the sub group will be removed from the portfolio group.
     try {
-      PortfolioGroup result = apiInstance.deleteSubGroupFromGroup(scope, code, subgroupScope, subgroupCode);
+      PortfolioGroup result = apiInstance.deleteSubGroupFromGroup(scope, code, subgroupScope, subgroupCode, effectiveAt);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#deleteSubGroupFromGroup");
@@ -434,6 +441,7 @@ Name | Type | Description  | Notes
  **code** | **String**| The code of the portfolio group to remove the sub group from. Together with the scope this uniquely identifies the portfolio group. |
  **subgroupScope** | **String**| The scope of the sub group to remove from the portfolio group. |
  **subgroupCode** | **String**| The code of the sub group to remove from the portfolio group. Together with the scope this uniquely identifies the sub group. |
+ **effectiveAt** | **OffsetDateTime**| The effective datetime from which the sub group will be removed from the portfolio group. | [optional]
 
 ### Return type
 
@@ -457,7 +465,7 @@ Name | Type | Description  | Notes
 
 <a name="getPortfolioGroup"></a>
 # **getPortfolioGroup**
-> PortfolioGroup getPortfolioGroup(scope, code, asAt)
+> PortfolioGroup getPortfolioGroup(scope, code, effectiveAt, asAt)
 
 [EARLY ACCESS] Get portfolio group
 
@@ -476,7 +484,7 @@ import com.finbourne.lusid.api.PortfolioGroupsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -485,9 +493,10 @@ public class Example {
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio group to retrieve the definition for.
     String code = "code_example"; // String | The code of the portfolio group to retrieve the definition for. Together with the scope              this uniquely identifies the portfolio group.
+    OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | The effective datetime at which to retrieve the portfolio group definition. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio group definition. Defaults to return              the latest version of the portfolio group definition if not specified.
     try {
-      PortfolioGroup result = apiInstance.getPortfolioGroup(scope, code, asAt);
+      PortfolioGroup result = apiInstance.getPortfolioGroup(scope, code, effectiveAt, asAt);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#getPortfolioGroup");
@@ -506,6 +515,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio group to retrieve the definition for. |
  **code** | **String**| The code of the portfolio group to retrieve the definition for. Together with the scope              this uniquely identifies the portfolio group. |
+ **effectiveAt** | **OffsetDateTime**| The effective datetime at which to retrieve the portfolio group definition. Defaults to the current LUSID system datetime if not specified. | [optional]
  **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the portfolio group definition. Defaults to return              the latest version of the portfolio group definition if not specified. | [optional]
 
 ### Return type
@@ -549,7 +559,7 @@ import com.finbourne.lusid.api.PortfolioGroupsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -626,7 +636,7 @@ import com.finbourne.lusid.api.PortfolioGroupsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -684,7 +694,7 @@ Name | Type | Description  | Notes
 
 <a name="listPortfolioGroups"></a>
 # **listPortfolioGroups**
-> ResourceListOfPortfolioGroup listPortfolioGroups(scope, asAt, filter)
+> ResourceListOfPortfolioGroup listPortfolioGroups(scope, effectiveAt, asAt, filter)
 
 [EARLY ACCESS] List portfolio groups
 
@@ -703,7 +713,7 @@ import com.finbourne.lusid.api.PortfolioGroupsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -711,10 +721,11 @@ public class Example {
 
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope to list the portfolio groups in.
+    OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | The effective datetime at which to list the portfolio groups. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to list the portfolio groups. Defaults to return the latest version of each portfolio group if not specified.
     String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
-      ResourceListOfPortfolioGroup result = apiInstance.listPortfolioGroups(scope, asAt, filter);
+      ResourceListOfPortfolioGroup result = apiInstance.listPortfolioGroups(scope, effectiveAt, asAt, filter);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#listPortfolioGroups");
@@ -732,6 +743,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope to list the portfolio groups in. |
+ **effectiveAt** | **OffsetDateTime**| The effective datetime at which to list the portfolio groups. Defaults to the current LUSID system datetime if not specified. | [optional]
  **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolio groups. Defaults to return the latest version of each portfolio group if not specified. | [optional]
  **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
 
@@ -757,7 +769,7 @@ Name | Type | Description  | Notes
 
 <a name="updatePortfolioGroup"></a>
 # **updatePortfolioGroup**
-> PortfolioGroup updatePortfolioGroup(scope, code, request)
+> PortfolioGroup updatePortfolioGroup(scope, code, effectiveAt, request)
 
 [EARLY ACCESS] Update portfolio group
 
@@ -776,7 +788,7 @@ import com.finbourne.lusid.api.PortfolioGroupsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -785,9 +797,10 @@ public class Example {
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio group to update the definition for.
     String code = "code_example"; // String | The code of the portfolio group to update the definition for. Together with the scope this uniquely identifies the portfolio group.
+    OffsetDateTime effectiveAt = new OffsetDateTime(); // OffsetDateTime | The effective datetime at which to update the definition.
     UpdatePortfolioGroupRequest request = new UpdatePortfolioGroupRequest(); // UpdatePortfolioGroupRequest | The updated portfolio group definition.
     try {
-      PortfolioGroup result = apiInstance.updatePortfolioGroup(scope, code, request);
+      PortfolioGroup result = apiInstance.updatePortfolioGroup(scope, code, effectiveAt, request);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfolioGroupsApi#updatePortfolioGroup");
@@ -806,6 +819,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio group to update the definition for. |
  **code** | **String**| The code of the portfolio group to update the definition for. Together with the scope this uniquely identifies the portfolio group. |
+ **effectiveAt** | **OffsetDateTime**| The effective datetime at which to update the definition. | [optional]
  **request** | [**UpdatePortfolioGroupRequest**](UpdatePortfolioGroupRequest.md)| The updated portfolio group definition. | [optional]
 
 ### Return type
