@@ -29,6 +29,7 @@ TRANSACTIONCONFIGURATION | &quot;TransactionConfiguration&quot;
 INSTRUMENT | &quot;Instrument&quot;
 CUTLABELDEFINITION | &quot;CutLabelDefinition&quot;
 ANALYTIC | &quot;Analytic&quot;
+PORTFOLIOGROUP | &quot;PortfolioGroup&quot;
 
 
 
