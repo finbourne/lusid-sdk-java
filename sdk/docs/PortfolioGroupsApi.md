@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio group to add a portfolio to. |
  **code** | **String**| The code of the portfolio group to add a portfolio to. Together with the scope this uniquely identifies the portfolio group. |
- **effectiveAt** | **OffsetDateTime**| The effective datetime from which the portfolio will be added to the group. | [optional]
+ **effectiveAt** | **OffsetDateTime**| The effective datetime from which the portfolio will be added to the group. |
  **portfolioId** | [**ResourceId**](ResourceId.md)| The resource identifier of the portfolio to add to the portfolio group. | [optional]
 
 ### Return type
@@ -144,7 +144,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio group to add a portfolio group to. |
  **code** | **String**| The code of the portfolio group to add a portfolio group to. Together with the scope this uniquely identifies the portfolio group. |
- **effectiveAt** | **OffsetDateTime**| The effective datetime from which the sub group will be added to the group. | [optional]
+ **effectiveAt** | **OffsetDateTime**| The effective datetime from which the sub group will be added to the group. |
  **portfolioGroupId** | [**ResourceId**](ResourceId.md)| The resource identifier of the portfolio group to add to the portfolio group as a sub group. | [optional]
 
 ### Return type
@@ -293,7 +293,7 @@ Name | Type | Description  | Notes
  **code** | **String**| The code of the portfolio group to remove the portfolio from. Together with the scope this uniquely identifies the portfolio group. |
  **portfolioScope** | **String**| The scope of the portfolio being removed from the portfolio group. |
  **portfolioCode** | **String**| The code of the portfolio being removed from the portfolio group. Together with the scope this uniquely identifies the portfolio to remove. |
- **effectiveAt** | **OffsetDateTime**| The effective datetime from which the portfolio will be removed from the portfolio group. | [optional]
+ **effectiveAt** | **OffsetDateTime**| The effective datetime from which the portfolio will be removed from the portfolio group. |
 
 ### Return type
 
@@ -441,7 +441,7 @@ Name | Type | Description  | Notes
  **code** | **String**| The code of the portfolio group to remove the sub group from. Together with the scope this uniquely identifies the portfolio group. |
  **subgroupScope** | **String**| The scope of the sub group to remove from the portfolio group. |
  **subgroupCode** | **String**| The code of the sub group to remove from the portfolio group. Together with the scope this uniquely identifies the sub group. |
- **effectiveAt** | **OffsetDateTime**| The effective datetime from which the sub group will be removed from the portfolio group. | [optional]
+ **effectiveAt** | **OffsetDateTime**| The effective datetime from which the sub group will be removed from the portfolio group. |
 
 ### Return type
 
@@ -819,7 +819,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio group to update the definition for. |
  **code** | **String**| The code of the portfolio group to update the definition for. Together with the scope this uniquely identifies the portfolio group. |
- **effectiveAt** | **OffsetDateTime**| The effective datetime at which to update the definition. | [optional]
+ **effectiveAt** | **OffsetDateTime**| The effective datetime at which to update the definition. |
  **request** | [**UpdatePortfolioGroupRequest**](UpdatePortfolioGroupRequest.md)| The updated portfolio group definition. | [optional]
 
 ### Return type
