@@ -90,13 +90,13 @@ public class ApiException extends Exception {
     }
 
     /**
-    *  Override toString() to include LUSID requestId
+    *  Override getMessage() to include LUSID requestId
     */
-    public String toString() {
-
+    @Override
+    public String getMessage() {
         List<String> ids = responseHeaders.get("lusid-meta-requestid");
         String requestId = ids == null ? "" : ids.stream().findFirst().get();
 
-        return String.format("LUSID requestId = %s\nResponse body = %s\n%s", requestId, responseBody, super.toString());
+        return String.format("LUSID requestId = %s\nResponse body = %s\n%s", requestId, responseBody, super.getMessage());
     }
 }
