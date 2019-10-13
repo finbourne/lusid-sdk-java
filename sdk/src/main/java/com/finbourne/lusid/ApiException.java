@@ -94,6 +94,11 @@ public class ApiException extends Exception {
     */
     @Override
     public String getMessage() {
+
+        if (responseHeaders == null) {
+            return String.format("Response body = %s\n%s", responseBody, super.getMessage());
+        }
+        
         List<String> ids = responseHeaders.get("lusid-meta-requestid");
         String requestId = ids == null ? "" : ids.stream().findFirst().get();
 
