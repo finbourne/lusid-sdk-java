@@ -15,8 +15,6 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.finbourne.lusid.model.AccessControlledResource;
-import com.finbourne.lusid.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,91 +23,23 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * ResourceListOfAccessControlledResource
+ * HttpMethod
  */
 
-public class ResourceListOfAccessControlledResource {
-  public static final String SERIALIZED_NAME_VALUES = "values";
-  @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<AccessControlledResource> values = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
-  private String href;
-
-  public static final String SERIALIZED_NAME_LINKS = "links";
-  @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
-
-  public ResourceListOfAccessControlledResource values(List<AccessControlledResource> values) {
-    this.values = values;
-    return this;
-  }
-
-  public ResourceListOfAccessControlledResource addValuesItem(AccessControlledResource valuesItem) {
-    this.values.add(valuesItem);
-    return this;
-  }
+public class HttpMethod {
+  public static final String SERIALIZED_NAME_METHOD = "method";
+  @SerializedName(SERIALIZED_NAME_METHOD)
+  private String method;
 
    /**
-   * Get values
-   * @return values
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public List<AccessControlledResource> getValues() {
-    return values;
-  }
-
-  public void setValues(List<AccessControlledResource> values) {
-    this.values = values;
-  }
-
-  public ResourceListOfAccessControlledResource href(String href) {
-    this.href = href;
-    return this;
-  }
-
-   /**
-   * Get href
-   * @return href
+   * Get method
+   * @return method
   **/
   @ApiModelProperty(value = "")
-  public String getHref() {
-    return href;
-  }
-
-  public void setHref(String href) {
-    this.href = href;
-  }
-
-  public ResourceListOfAccessControlledResource links(List<Link> links) {
-    this.links = links;
-    return this;
-  }
-
-  public ResourceListOfAccessControlledResource addLinksItem(Link linksItem) {
-    if (this.links == null) {
-      this.links = new ArrayList<>();
-    }
-    this.links.add(linksItem);
-    return this;
-  }
-
-   /**
-   * Get links
-   * @return links
-  **/
-  @ApiModelProperty(value = "")
-  public List<Link> getLinks() {
-    return links;
-  }
-
-  public void setLinks(List<Link> links) {
-    this.links = links;
+  public String getMethod() {
+    return method;
   }
 
 
@@ -121,25 +51,21 @@ public class ResourceListOfAccessControlledResource {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ResourceListOfAccessControlledResource resourceListOfAccessControlledResource = (ResourceListOfAccessControlledResource) o;
-    return Objects.equals(this.values, resourceListOfAccessControlledResource.values) &&
-        Objects.equals(this.href, resourceListOfAccessControlledResource.href) &&
-        Objects.equals(this.links, resourceListOfAccessControlledResource.links);
+    HttpMethod httpMethod = (HttpMethod) o;
+    return Objects.equals(this.method, httpMethod.method);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, href, links);
+    return Objects.hash(method);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResourceListOfAccessControlledResource {\n");
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
-    sb.append("    href: ").append(toIndentedString(href)).append("\n");
-    sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("class HttpMethod {\n");
+    sb.append("    method: ").append(toIndentedString(method)).append("\n");
     sb.append("}");
     return sb.toString();
   }

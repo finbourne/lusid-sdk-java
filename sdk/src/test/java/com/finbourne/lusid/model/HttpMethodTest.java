@@ -13,10 +13,6 @@
 
 package com.finbourne.lusid.model;
 
-import java.util.Objects;
-import java.util.Arrays;
-import com.finbourne.lusid.model.AccessControlledResource;
-import com.finbourne.lusid.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,135 +21,31 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
+
 
 /**
- * ResourceListOfAccessControlledResource
+ * Model tests for HttpMethod
  */
+public class HttpMethodTest {
+    private final HttpMethod model = new HttpMethod();
 
-public class ResourceListOfAccessControlledResource {
-  public static final String SERIALIZED_NAME_VALUES = "values";
-  @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<AccessControlledResource> values = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
-  private String href;
-
-  public static final String SERIALIZED_NAME_LINKS = "links";
-  @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
-
-  public ResourceListOfAccessControlledResource values(List<AccessControlledResource> values) {
-    this.values = values;
-    return this;
-  }
-
-  public ResourceListOfAccessControlledResource addValuesItem(AccessControlledResource valuesItem) {
-    this.values.add(valuesItem);
-    return this;
-  }
-
-   /**
-   * Get values
-   * @return values
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public List<AccessControlledResource> getValues() {
-    return values;
-  }
-
-  public void setValues(List<AccessControlledResource> values) {
-    this.values = values;
-  }
-
-  public ResourceListOfAccessControlledResource href(String href) {
-    this.href = href;
-    return this;
-  }
-
-   /**
-   * Get href
-   * @return href
-  **/
-  @ApiModelProperty(value = "")
-  public String getHref() {
-    return href;
-  }
-
-  public void setHref(String href) {
-    this.href = href;
-  }
-
-  public ResourceListOfAccessControlledResource links(List<Link> links) {
-    this.links = links;
-    return this;
-  }
-
-  public ResourceListOfAccessControlledResource addLinksItem(Link linksItem) {
-    if (this.links == null) {
-      this.links = new ArrayList<>();
+    /**
+     * Model tests for HttpMethod
+     */
+    @Test
+    public void testHttpMethod() {
+        // TODO: test HttpMethod
     }
-    this.links.add(linksItem);
-    return this;
-  }
 
-   /**
-   * Get links
-   * @return links
-  **/
-  @ApiModelProperty(value = "")
-  public List<Link> getLinks() {
-    return links;
-  }
-
-  public void setLinks(List<Link> links) {
-    this.links = links;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    /**
+     * Test the property 'method'
+     */
+    @Test
+    public void methodTest() {
+        // TODO: test method
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    ResourceListOfAccessControlledResource resourceListOfAccessControlledResource = (ResourceListOfAccessControlledResource) o;
-    return Objects.equals(this.values, resourceListOfAccessControlledResource.values) &&
-        Objects.equals(this.href, resourceListOfAccessControlledResource.href) &&
-        Objects.equals(this.links, resourceListOfAccessControlledResource.links);
-  }
-
-  @Override
-  public int hashCode() {
-    return Objects.hash(values, href, links);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ResourceListOfAccessControlledResource {\n");
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
-    sb.append("    href: ").append(toIndentedString(href)).append("\n");
-    sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
-  }
 
 }
-
