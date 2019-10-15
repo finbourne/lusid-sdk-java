@@ -16,7 +16,8 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import java.util.Arrays;
 import com.finbourne.lusid.model.Link;
-import com.finbourne.lusid.model.PortfolioGroup;
+import com.finbourne.lusid.model.Property;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -26,58 +27,41 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
- * ResourceListOfPortfolioGroup
+ * PortfolioGroupProperties
  */
 
-public class ResourceListOfPortfolioGroup {
-  public static final String SERIALIZED_NAME_VALUES = "values";
-  @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<PortfolioGroup> values = new ArrayList<>();
-
+public class PortfolioGroupProperties {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
   private String href;
+
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, Property> properties = new HashMap<>();
+
+  public static final String SERIALIZED_NAME_VERSION = "version";
+  @SerializedName(SERIALIZED_NAME_VERSION)
+  private Version version = null;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links = new ArrayList<>();
 
-  public ResourceListOfPortfolioGroup values(List<PortfolioGroup> values) {
-    this.values = values;
-    return this;
-  }
-
-  public ResourceListOfPortfolioGroup addValuesItem(PortfolioGroup valuesItem) {
-    this.values.add(valuesItem);
-    return this;
-  }
-
-   /**
-   * Get values
-   * @return values
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public List<PortfolioGroup> getValues() {
-    return values;
-  }
-
-  public void setValues(List<PortfolioGroup> values) {
-    this.values = values;
-  }
-
-  public ResourceListOfPortfolioGroup href(String href) {
+  public PortfolioGroupProperties href(String href) {
     this.href = href;
     return this;
   }
 
    /**
-   * Get href
+   * The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
    * @return href
   **/
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(value = "The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.")
   public String getHref() {
     return href;
   }
@@ -86,12 +70,56 @@ public class ResourceListOfPortfolioGroup {
     this.href = href;
   }
 
-  public ResourceListOfPortfolioGroup links(List<Link> links) {
+  public PortfolioGroupProperties properties(Map<String, Property> properties) {
+    this.properties = properties;
+    return this;
+  }
+
+  public PortfolioGroupProperties putPropertiesItem(String key, Property propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * The portfolio group properties. These will be from the &#39;PortfolioGroup&#39; domain.
+   * @return properties
+  **/
+  @ApiModelProperty(value = "The portfolio group properties. These will be from the 'PortfolioGroup' domain.")
+  public Map<String, Property> getProperties() {
+    return properties;
+  }
+
+  public void setProperties(Map<String, Property> properties) {
+    this.properties = properties;
+  }
+
+  public PortfolioGroupProperties version(Version version) {
+    this.version = version;
+    return this;
+  }
+
+   /**
+   * Get version
+   * @return version
+  **/
+  @ApiModelProperty(value = "")
+  public Version getVersion() {
+    return version;
+  }
+
+  public void setVersion(Version version) {
+    this.version = version;
+  }
+
+  public PortfolioGroupProperties links(List<Link> links) {
     this.links = links;
     return this;
   }
 
-  public ResourceListOfPortfolioGroup addLinksItem(Link linksItem) {
+  public PortfolioGroupProperties addLinksItem(Link linksItem) {
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -121,24 +149,26 @@ public class ResourceListOfPortfolioGroup {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    ResourceListOfPortfolioGroup resourceListOfPortfolioGroup = (ResourceListOfPortfolioGroup) o;
-    return Objects.equals(this.values, resourceListOfPortfolioGroup.values) &&
-        Objects.equals(this.href, resourceListOfPortfolioGroup.href) &&
-        Objects.equals(this.links, resourceListOfPortfolioGroup.links);
+    PortfolioGroupProperties portfolioGroupProperties = (PortfolioGroupProperties) o;
+    return Objects.equals(this.href, portfolioGroupProperties.href) &&
+        Objects.equals(this.properties, portfolioGroupProperties.properties) &&
+        Objects.equals(this.version, portfolioGroupProperties.version) &&
+        Objects.equals(this.links, portfolioGroupProperties.links);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(values, href, links);
+    return Objects.hash(href, properties, version, links);
   }
 
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResourceListOfPortfolioGroup {\n");
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
+    sb.append("class PortfolioGroupProperties {\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();

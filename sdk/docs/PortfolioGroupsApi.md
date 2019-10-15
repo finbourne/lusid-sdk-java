@@ -7,14 +7,17 @@ Method | HTTP request | Description
 [**addPortfolioToGroup**](PortfolioGroupsApi.md#addPortfolioToGroup) | **POST** /api/portfoliogroups/{scope}/{code}/portfolios | [EARLY ACCESS] Add portfolio to group
 [**addSubGroupToGroup**](PortfolioGroupsApi.md#addSubGroupToGroup) | **POST** /api/portfoliogroups/{scope}/{code}/subgroups | [EARLY ACCESS] Add sub group to group
 [**createPortfolioGroup**](PortfolioGroupsApi.md#createPortfolioGroup) | **POST** /api/portfoliogroups/{scope} | [EARLY ACCESS] Create portfolio group
+[**deleteGroupProperties**](PortfolioGroupsApi.md#deleteGroupProperties) | **POST** /api/portfoliogroups/{scope}/{code}/properties/$delete | [EARLY ACCESS] Delete group properties
 [**deletePortfolioFromGroup**](PortfolioGroupsApi.md#deletePortfolioFromGroup) | **DELETE** /api/portfoliogroups/{scope}/{code}/portfolios/{portfolioScope}/{portfolioCode} | [EARLY ACCESS] Delete portfolio from group
 [**deletePortfolioGroup**](PortfolioGroupsApi.md#deletePortfolioGroup) | **DELETE** /api/portfoliogroups/{scope}/{code} | [EARLY ACCESS] Delete portfolio group
 [**deleteSubGroupFromGroup**](PortfolioGroupsApi.md#deleteSubGroupFromGroup) | **DELETE** /api/portfoliogroups/{scope}/{code}/subgroups/{subgroupScope}/{subgroupCode} | [EARLY ACCESS] Delete sub group from group
+[**getGroupProperties**](PortfolioGroupsApi.md#getGroupProperties) | **GET** /api/portfoliogroups/{scope}/{code}/properties | [EARLY ACCESS] Get group properties
 [**getPortfolioGroup**](PortfolioGroupsApi.md#getPortfolioGroup) | **GET** /api/portfoliogroups/{scope}/{code} | [EARLY ACCESS] Get portfolio group
 [**getPortfolioGroupCommands**](PortfolioGroupsApi.md#getPortfolioGroupCommands) | **GET** /api/portfoliogroups/{scope}/{code}/commands | [EARLY ACCESS] Get portfolio group commands
 [**getPortfolioGroupExpansion**](PortfolioGroupsApi.md#getPortfolioGroupExpansion) | **GET** /api/portfoliogroups/{scope}/{code}/expansion | [EARLY ACCESS] Get portfolio group expansion
 [**listPortfolioGroups**](PortfolioGroupsApi.md#listPortfolioGroups) | **GET** /api/portfoliogroups/{scope} | [EARLY ACCESS] List portfolio groups
 [**updatePortfolioGroup**](PortfolioGroupsApi.md#updatePortfolioGroup) | **PUT** /api/portfoliogroups/{scope}/{code} | [EARLY ACCESS] Update portfolio group
+[**upsertGroupProperties**](PortfolioGroupsApi.md#upsertGroupProperties) | **POST** /api/portfoliogroups/{scope}/{code}/properties/$upsert | [EARLY ACCESS] Upsert group properties
 
 
 <a name="addPortfolioToGroup"></a>
@@ -235,6 +238,81 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | The newly created portfolio group |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
+<a name="deleteGroupProperties"></a>
+# **deleteGroupProperties**
+> DeletedEntityResponse deleteGroupProperties(scope, code, propertyKeys, effectiveAt)
+
+[EARLY ACCESS] Delete group properties
+
+Delete one or more properties from a single portfolio group. If the properties are time variant then an effective date time from which the properties  will be deleted must be specified. If the properties are perpetual then it is invalid to specify an effective date time for deletion.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfolioGroupsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the group to delete properties from.
+    String code = "code_example"; // String | The code of the group to delete properties from. Together with the scope this uniquely identifies the group.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the properties to delete. These take the format              {domain}/{scope}/{code} e.g. \"PortfolioGroup/Manager/Id\". Each property must be from the \"PortfolioGroup\" domain.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete the properties.
+    try {
+      DeletedEntityResponse result = apiInstance.deleteGroupProperties(scope, code, propertyKeys, effectiveAt);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfolioGroupsApi#deleteGroupProperties");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scope** | **String**| The scope of the group to delete properties from. |
+ **code** | **String**| The code of the group to delete properties from. Together with the scope this uniquely identifies the group. |
+ **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;. Each property must be from the \&quot;PortfolioGroup\&quot; domain. |
+ **effectiveAt** | **String**| The effective datetime or cut label at which to delete the properties. | [optional]
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The datetime that the properties were deleted from the specified group |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -460,6 +538,81 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The portfolio group with the sub group removed from the group |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
+<a name="getGroupProperties"></a>
+# **getGroupProperties**
+> PortfolioGroupProperties getGroupProperties(scope, code, effectiveAt, asAt)
+
+[EARLY ACCESS] Get group properties
+
+List all the properties of a single portfolio group.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfolioGroupsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the group to list the properties for.
+    String code = "code_example"; // String | The code of the group to list the properties for. Together with the scope this uniquely identifies the group.
+    String effectiveAt = "effectiveAt_example"; // String | The effective date time or cut label at which to list the group's properties. Defaults to the current LUSID system datetime if not specified.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt date time at which to list the group's properties. Defaults to return the latest version of each property if not specified.
+    try {
+      PortfolioGroupProperties result = apiInstance.getGroupProperties(scope, code, effectiveAt, asAt);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfolioGroupsApi#getGroupProperties");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scope** | **String**| The scope of the group to list the properties for. |
+ **code** | **String**| The code of the group to list the properties for. Together with the scope this uniquely identifies the group. |
+ **effectiveAt** | **String**| The effective date time or cut label at which to list the group&#39;s properties. Defaults to the current LUSID system datetime if not specified. | [optional]
+ **asAt** | **OffsetDateTime**| The asAt date time at which to list the group&#39;s properties. Defaults to return the latest version of each property if not specified. | [optional]
+
+### Return type
+
+[**PortfolioGroupProperties**](PortfolioGroupProperties.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The properties of the specified group |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -839,6 +992,79 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **201** | The updated definition of the portfolio group |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
+<a name="upsertGroupProperties"></a>
+# **upsertGroupProperties**
+> PortfolioGroupProperties upsertGroupProperties(scope, code, groupProperties)
+
+[EARLY ACCESS] Upsert group properties
+
+Update or insert one or more properties onto a single group. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;PortfolioGroup&#39;.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.PortfolioGroupsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("http://localhost/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the group to update or insert the properties onto.
+    String code = "code_example"; // String | The code of the group to update or insert the properties onto. Together with the scope this uniquely identifies the group.
+    Map<String, Property> groupProperties = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the group. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"PortfolioGroup/Manager/Id\".
+    try {
+      PortfolioGroupProperties result = apiInstance.upsertGroupProperties(scope, code, groupProperties);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling PortfolioGroupsApi#upsertGroupProperties");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scope** | **String**| The scope of the group to update or insert the properties onto. |
+ **code** | **String**| The code of the group to update or insert the properties onto. Together with the scope this uniquely identifies the group. |
+ **groupProperties** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the group. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;PortfolioGroup/Manager/Id\&quot;. | [optional]
+
+### Return type
+
+[**PortfolioGroupProperties**](PortfolioGroupProperties.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The updated or inserted properties |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 

@@ -13,10 +13,9 @@
 
 package com.finbourne.lusid.model;
 
-import java.util.Objects;
-import java.util.Arrays;
 import com.finbourne.lusid.model.Link;
-import com.finbourne.lusid.model.PortfolioGroup;
+import com.finbourne.lusid.model.Property;
+import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -26,134 +25,58 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
+
 
 /**
- * ResourceListOfPortfolioGroup
+ * Model tests for PortfolioGroupProperties
  */
+public class PortfolioGroupPropertiesTest {
+    private final PortfolioGroupProperties model = new PortfolioGroupProperties();
 
-public class ResourceListOfPortfolioGroup {
-  public static final String SERIALIZED_NAME_VALUES = "values";
-  @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<PortfolioGroup> values = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
-  private String href;
-
-  public static final String SERIALIZED_NAME_LINKS = "links";
-  @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
-
-  public ResourceListOfPortfolioGroup values(List<PortfolioGroup> values) {
-    this.values = values;
-    return this;
-  }
-
-  public ResourceListOfPortfolioGroup addValuesItem(PortfolioGroup valuesItem) {
-    this.values.add(valuesItem);
-    return this;
-  }
-
-   /**
-   * Get values
-   * @return values
-  **/
-  @ApiModelProperty(required = true, value = "")
-  public List<PortfolioGroup> getValues() {
-    return values;
-  }
-
-  public void setValues(List<PortfolioGroup> values) {
-    this.values = values;
-  }
-
-  public ResourceListOfPortfolioGroup href(String href) {
-    this.href = href;
-    return this;
-  }
-
-   /**
-   * Get href
-   * @return href
-  **/
-  @ApiModelProperty(value = "")
-  public String getHref() {
-    return href;
-  }
-
-  public void setHref(String href) {
-    this.href = href;
-  }
-
-  public ResourceListOfPortfolioGroup links(List<Link> links) {
-    this.links = links;
-    return this;
-  }
-
-  public ResourceListOfPortfolioGroup addLinksItem(Link linksItem) {
-    if (this.links == null) {
-      this.links = new ArrayList<>();
+    /**
+     * Model tests for PortfolioGroupProperties
+     */
+    @Test
+    public void testPortfolioGroupProperties() {
+        // TODO: test PortfolioGroupProperties
     }
-    this.links.add(linksItem);
-    return this;
-  }
 
-   /**
-   * Get links
-   * @return links
-  **/
-  @ApiModelProperty(value = "")
-  public List<Link> getLinks() {
-    return links;
-  }
-
-  public void setLinks(List<Link> links) {
-    this.links = links;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    /**
+     * Test the property 'href'
+     */
+    @Test
+    public void hrefTest() {
+        // TODO: test href
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Test the property 'properties'
+     */
+    @Test
+    public void propertiesTest() {
+        // TODO: test properties
     }
-    ResourceListOfPortfolioGroup resourceListOfPortfolioGroup = (ResourceListOfPortfolioGroup) o;
-    return Objects.equals(this.values, resourceListOfPortfolioGroup.values) &&
-        Objects.equals(this.href, resourceListOfPortfolioGroup.href) &&
-        Objects.equals(this.links, resourceListOfPortfolioGroup.links);
-  }
 
-  @Override
-  public int hashCode() {
-    return Objects.hash(values, href, links);
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class ResourceListOfPortfolioGroup {\n");
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
-    sb.append("    href: ").append(toIndentedString(href)).append("\n");
-    sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Test the property 'version'
+     */
+    @Test
+    public void versionTest() {
+        // TODO: test version
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    /**
+     * Test the property 'links'
+     */
+    @Test
+    public void linksTest() {
+        // TODO: test links
+    }
 
 }
-
