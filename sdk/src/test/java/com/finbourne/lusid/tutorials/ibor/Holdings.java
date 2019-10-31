@@ -72,8 +72,8 @@ public class Holdings {
         transactionPortfoliosApi.upsertTransactions(TutorialScope, portfolioCode, requests);
 
         //  get the holds on T+10
-        VersionedResourceListOfPortfolioHolding holdings = transactionPortfoliosApi.getHoldings(TutorialScope, portfolioCode, false, datTPlus10.toString(),
-                null, null, null);
+        VersionedResourceListOfPortfolioHolding holdings = transactionPortfoliosApi.getHoldings(TutorialScope, portfolioCode, datTPlus10.toString(),
+                null, null, null, false);
 
         holdings.getValues().sort(Comparator.comparing(PortfolioHolding::getInstrumentUid));
 
@@ -172,8 +172,8 @@ public class Holdings {
         transactionPortfoliosApi.upsertTransactions(TutorialScope, portfolioCode, requests);
 
         //  get the holdings for day 2
-        VersionedResourceListOfPortfolioHolding holdings = transactionPortfoliosApi.getHoldings(TutorialScope, portfolioCode, false, day2.toString(),
-                null, null, null);
+        VersionedResourceListOfPortfolioHolding holdings = transactionPortfoliosApi.getHoldings(TutorialScope, portfolioCode, day2.toString(),
+                null, null, null, false);
 
         holdings.getValues().sort(Comparator.comparing(PortfolioHolding::getInstrumentUid));
 
