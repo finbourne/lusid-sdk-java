@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **displayName** | **String** |  | 
 **description** | **String** |  | 
 **valueType** | [**ValueTypeEnum**](#ValueTypeEnum) |  | 
-**acceptableValues** | [**List&lt;PropertyValue&gt;**](PropertyValue.md) |  |  [optional]
+**acceptableValues** | **List&lt;Object&gt;** |  |  [optional]
 **unitSchema** | [**UnitSchemaEnum**](#UnitSchemaEnum) |  |  [optional]
 **acceptableUnits** | [**List&lt;IUnitDefinitionDto&gt;**](IUnitDefinitionDto.md) |  |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
