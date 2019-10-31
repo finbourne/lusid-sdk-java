@@ -1,6 +1,6 @@
 # PortfoliosApi
 
-All URIs are relative to *http://localhost/api*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -36,7 +36,7 @@ import com.finbourne.lusid.api.PortfoliosApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -88,7 +88,7 @@ Name | Type | Description  | Notes
 
 <a name="deletePortfolioProperties"></a>
 # **deletePortfolioProperties**
-> DeletedEntityResponse deletePortfolioProperties(scope, code, portfolioPropertyKeys, effectiveAt)
+> DeletedEntityResponse deletePortfolioProperties(scope, code, propertyKeys, effectiveAt)
 
 [EARLY ACCESS] Delete portfolio properties
 
@@ -107,7 +107,7 @@ import com.finbourne.lusid.api.PortfoliosApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -116,10 +116,10 @@ public class Example {
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio to delete properties from.
     String code = "code_example"; // String | The code of the portfolio to delete properties from. Together with the scope this uniquely              identifies the portfolio.
-    List<String> portfolioPropertyKeys = Arrays.asList(); // List<String> | The property keys of the properties to delete. These take the format              {domain}/{scope}/{code} e.g. \"Portfolio/Manager/Id\". Each property must be from the \"Portfolio\" domain.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | The property keys of the properties to delete. These take the format              {domain}/{scope}/{code} e.g. \"Portfolio/Manager/Id\". Each property must be from the \"Portfolio\" domain.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to delete the properties.
     try {
-      DeletedEntityResponse result = apiInstance.deletePortfolioProperties(scope, code, portfolioPropertyKeys, effectiveAt);
+      DeletedEntityResponse result = apiInstance.deletePortfolioProperties(scope, code, propertyKeys, effectiveAt);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfoliosApi#deletePortfolioProperties");
@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio to delete properties from. |
  **code** | **String**| The code of the portfolio to delete properties from. Together with the scope this uniquely              identifies the portfolio. |
- **portfolioPropertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. Each property must be from the \&quot;Portfolio\&quot; domain. |
+ **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. Each property must be from the \&quot;Portfolio\&quot; domain. |
  **effectiveAt** | **String**| The effective datetime or cut label at which to delete the properties. | [optional]
 
 ### Return type
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 
 <a name="getPortfolio"></a>
 # **getPortfolio**
-> Portfolio getPortfolio(scope, code, effectiveAt, asAt)
+> Portfolio getPortfolio(scope, code, effectiveAt, asAt, propertyKeys)
 
 [EARLY ACCESS] Get portfolio
 
@@ -182,7 +182,7 @@ import com.finbourne.lusid.api.PortfoliosApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -193,8 +193,9 @@ public class Example {
     String code = "code_example"; // String | The code of the portfolio to retrieve the definition for. Together with the scope this              uniquely identifies the portfolio.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio definition. Defaults to return the latest version of the portfolio definition if not specified.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Portfolio\" domain to decorate onto the portfolio.              These take the format {domain}/{scope}/{code} e.g. \"Portfolio/Manager/Id\".
     try {
-      Portfolio result = apiInstance.getPortfolio(scope, code, effectiveAt, asAt);
+      Portfolio result = apiInstance.getPortfolio(scope, code, effectiveAt, asAt, propertyKeys);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfoliosApi#getPortfolio");
@@ -215,6 +216,7 @@ Name | Type | Description  | Notes
  **code** | **String**| The code of the portfolio to retrieve the definition for. Together with the scope this              uniquely identifies the portfolio. |
  **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the portfolio definition. Defaults to the current LUSID system datetime if not specified. | [optional]
  **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the portfolio definition. Defaults to return the latest version of the portfolio definition if not specified. | [optional]
+ **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Portfolio\&quot; domain to decorate onto the portfolio.              These take the format {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. | [optional]
 
 ### Return type
 
@@ -257,7 +259,7 @@ import com.finbourne.lusid.api.PortfoliosApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -334,7 +336,7 @@ import com.finbourne.lusid.api.PortfoliosApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -390,7 +392,7 @@ Name | Type | Description  | Notes
 
 <a name="listPortfolios"></a>
 # **listPortfolios**
-> ResourceListOfPortfolio listPortfolios(effectiveAt, asAt, page, start, limit, filter, query, portfolioPropertyKeys)
+> ResourceListOfPortfolio listPortfolios(effectiveAt, asAt, page, start, limit, filter, query, propertyKeys)
 
 [EARLY ACCESS] List portfolios
 
@@ -409,7 +411,7 @@ import com.finbourne.lusid.api.PortfoliosApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -423,9 +425,9 @@ public class Example {
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 65,535 if not specified.
     String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     String query = "query_example"; // String | Expression specifying the criteria that the returned portfolios must meet e.g. to see which              portfolios have holdings in the instruments with a Lusid Instrument Id (LUID) of 'LUID_PPA8HI6M' or a Figi of 'BBG000BLNNH6'              you would specify \"instrument.identifiers in (('LusidInstrumentId', 'LUID_PPA8HI6M'), ('Figi', 'BBG000BLNNH6'))\".
-    List<String> portfolioPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Portfolio\" domain to decorate onto each portfolio.              These take the format {domain}/{scope}/{code} e.g. \"Portfolio/Manager/Id\".
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Portfolio\" domain to decorate onto each portfolio.              These take the format {domain}/{scope}/{code} e.g. \"Portfolio/Manager/Id\".
     try {
-      ResourceListOfPortfolio result = apiInstance.listPortfolios(effectiveAt, asAt, page, start, limit, filter, query, portfolioPropertyKeys);
+      ResourceListOfPortfolio result = apiInstance.listPortfolios(effectiveAt, asAt, page, start, limit, filter, query, propertyKeys);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfoliosApi#listPortfolios");
@@ -449,7 +451,7 @@ Name | Type | Description  | Notes
  **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 65,535 if not specified. | [optional]
  **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
  **query** | **String**| Expression specifying the criteria that the returned portfolios must meet e.g. to see which              portfolios have holdings in the instruments with a Lusid Instrument Id (LUID) of &#39;LUID_PPA8HI6M&#39; or a Figi of &#39;BBG000BLNNH6&#39;              you would specify \&quot;instrument.identifiers in ((&#39;LusidInstrumentId&#39;, &#39;LUID_PPA8HI6M&#39;), (&#39;Figi&#39;, &#39;BBG000BLNNH6&#39;))\&quot;. | [optional]
- **portfolioPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Portfolio\&quot; domain to decorate onto each portfolio.              These take the format {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. | [optional]
+ **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Portfolio\&quot; domain to decorate onto each portfolio.              These take the format {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. | [optional]
 
 ### Return type
 
@@ -473,7 +475,7 @@ Name | Type | Description  | Notes
 
 <a name="listPortfoliosForScope"></a>
 # **listPortfoliosForScope**
-> ResourceListOfPortfolio listPortfoliosForScope(scope, effectiveAt, asAt, filter, portfolioPropertyKeys)
+> ResourceListOfPortfolio listPortfoliosForScope(scope, effectiveAt, asAt, filter, propertyKeys)
 
 [EARLY ACCESS] List portfolios for scope
 
@@ -492,7 +494,7 @@ import com.finbourne.lusid.api.PortfoliosApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -503,9 +505,9 @@ public class Example {
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified.
     OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to list the portfolios. Defaults to return the latest version              of each portfolio if not specified.
     String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-    List<String> portfolioPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Portfolio\" domain to decorate onto each portfolio.              These take the format {domain}/{scope}/{code} e.g. \"Portfolio/Manager/Id\".
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Portfolio\" domain to decorate onto each portfolio.              These take the format {domain}/{scope}/{code} e.g. \"Portfolio/Manager/Id\".
     try {
-      ResourceListOfPortfolio result = apiInstance.listPortfoliosForScope(scope, effectiveAt, asAt, filter, portfolioPropertyKeys);
+      ResourceListOfPortfolio result = apiInstance.listPortfoliosForScope(scope, effectiveAt, asAt, filter, propertyKeys);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfoliosApi#listPortfoliosForScope");
@@ -526,7 +528,7 @@ Name | Type | Description  | Notes
  **effectiveAt** | **String**| The effective datetime or cut label at which to list the portfolios. Defaults to the current LUSID              system datetime if not specified. | [optional]
  **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolios. Defaults to return the latest version              of each portfolio if not specified. | [optional]
  **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
- **portfolioPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Portfolio\&quot; domain to decorate onto each portfolio.              These take the format {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. | [optional]
+ **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Portfolio\&quot; domain to decorate onto each portfolio.              These take the format {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. | [optional]
 
 ### Return type
 
@@ -550,7 +552,7 @@ Name | Type | Description  | Notes
 
 <a name="updatePortfolio"></a>
 # **updatePortfolio**
-> Portfolio updatePortfolio(scope, code, effectiveAt, request)
+> Portfolio updatePortfolio(scope, code, portfolioDefinition, effectiveAt)
 
 [EARLY ACCESS] Update portfolio
 
@@ -569,7 +571,7 @@ import com.finbourne.lusid.api.PortfoliosApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -578,10 +580,10 @@ public class Example {
     PortfoliosApi apiInstance = new PortfoliosApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio to update the definition for.
     String code = "code_example"; // String | The code of the portfolio to update the definition for. Together with the scope this uniquely              identifies the portfolio.
+    UpdatePortfolioRequest portfolioDefinition = new UpdatePortfolioRequest(); // UpdatePortfolioRequest | The updated portfolio definition.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to update the definition. Defaults to the current              LUSID system datetime if not specified.
-    UpdatePortfolioRequest request = new UpdatePortfolioRequest(); // UpdatePortfolioRequest | The updated portfolio definition.
     try {
-      Portfolio result = apiInstance.updatePortfolio(scope, code, effectiveAt, request);
+      Portfolio result = apiInstance.updatePortfolio(scope, code, portfolioDefinition, effectiveAt);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling PortfoliosApi#updatePortfolio");
@@ -600,8 +602,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio to update the definition for. |
  **code** | **String**| The code of the portfolio to update the definition for. Together with the scope this uniquely              identifies the portfolio. |
+ **portfolioDefinition** | [**UpdatePortfolioRequest**](UpdatePortfolioRequest.md)| The updated portfolio definition. |
  **effectiveAt** | **String**| The effective datetime or cut label at which to update the definition. Defaults to the current              LUSID system datetime if not specified. | [optional]
- **request** | [**UpdatePortfolioRequest**](UpdatePortfolioRequest.md)| The updated portfolio definition. | [optional]
 
 ### Return type
 
@@ -644,7 +646,7 @@ import com.finbourne.lusid.api.PortfoliosApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -674,7 +676,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio to update or insert the properties onto. |
  **code** | **String**| The code of the portfolio to update or insert the properties onto. Together with the scope              this uniquely identifies the portfolio. |
- **portfolioProperties** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the portfolio. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. | [optional]
+ **portfolioProperties** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the portfolio. Each property in              the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. |
 
 ### Return type
 

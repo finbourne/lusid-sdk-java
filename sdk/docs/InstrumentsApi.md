@@ -1,6 +1,6 @@
 # InstrumentsApi
 
-All URIs are relative to *http://localhost/api*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -35,7 +35,7 @@ import com.finbourne.lusid.api.InstrumentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 
 <a name="getInstrument"></a>
 # **getInstrument**
-> Instrument getInstrument(identifierType, identifier, effectiveAt, asAt, instrumentPropertyKeys)
+> Instrument getInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys)
 
 [EARLY ACCESS] Get instrument
 
@@ -106,7 +106,7 @@ import com.finbourne.lusid.api.InstrumentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -117,9 +117,9 @@ public class Example {
     String identifier = "identifier_example"; // String | The value of the identifier for the requested instrument.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument definition.              Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument definition. Defaults to              return the latest version of the instrument definition if not specified.
-    List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto the instrument.              These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto the instrument.              These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
     try {
-      Instrument result = apiInstance.getInstrument(identifierType, identifier, effectiveAt, asAt, instrumentPropertyKeys);
+      Instrument result = apiInstance.getInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstrumentsApi#getInstrument");
@@ -140,7 +140,7 @@ Name | Type | Description  | Notes
  **identifier** | **String**| The value of the identifier for the requested instrument. |
  **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the instrument definition.              Defaults to the current LUSID system datetime if not specified. | [optional]
  **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument definition. Defaults to              return the latest version of the instrument definition if not specified. | [optional]
- **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto the instrument.              These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. | [optional]
+ **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto the instrument.              These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. | [optional]
 
 ### Return type
 
@@ -183,7 +183,7 @@ import com.finbourne.lusid.api.InstrumentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -228,7 +228,7 @@ This endpoint does not need any parameter.
 
 <a name="getInstruments"></a>
 # **getInstruments**
-> GetInstrumentsResponse getInstruments(identifierType, identifiers, effectiveAt, asAt, instrumentPropertyKeys)
+> GetInstrumentsResponse getInstruments(identifierType, identifiers, effectiveAt, asAt, propertyKeys)
 
 [EARLY ACCESS] Get instruments
 
@@ -247,7 +247,7 @@ import com.finbourne.lusid.api.InstrumentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -258,9 +258,9 @@ public class Example {
     List<String> identifiers = Arrays.asList(); // List<String> | The values of the identifier for the requested instruments.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument definitions.              Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument definitions.              Defaults to return the latest version of each instrument definition if not specified.
-    List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto the instrument.              These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Instrument\" domain to decorate onto the instrument.              These take the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\".
     try {
-      GetInstrumentsResponse result = apiInstance.getInstruments(identifierType, identifiers, effectiveAt, asAt, instrumentPropertyKeys);
+      GetInstrumentsResponse result = apiInstance.getInstruments(identifierType, identifiers, effectiveAt, asAt, propertyKeys);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstrumentsApi#getInstruments");
@@ -281,7 +281,7 @@ Name | Type | Description  | Notes
  **identifiers** | [**List&lt;String&gt;**](String.md)| The values of the identifier for the requested instruments. |
  **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the instrument definitions.              Defaults to the current LUSID system datetime if not specified. | [optional]
  **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the instrument definitions.              Defaults to return the latest version of each instrument definition if not specified. | [optional]
- **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto the instrument.              These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. | [optional]
+ **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Instrument\&quot; domain to decorate onto the instrument.              These take the format {domain}/{scope}/{code} e.g. \&quot;Instrument/system/Name\&quot;. | [optional]
 
 ### Return type
 
@@ -324,7 +324,7 @@ import com.finbourne.lusid.api.InstrumentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -407,7 +407,7 @@ import com.finbourne.lusid.api.InstrumentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -461,7 +461,7 @@ Name | Type | Description  | Notes
 
 <a name="upsertInstruments"></a>
 # **upsertInstruments**
-> UpsertInstrumentsResponse upsertInstruments(requests)
+> UpsertInstrumentsResponse upsertInstruments(instruments)
 
 [EARLY ACCESS] Upsert instruments
 
@@ -480,16 +480,16 @@ import com.finbourne.lusid.api.InstrumentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    Map<String, InstrumentDefinition> requests = new HashMap(); // Map<String, InstrumentDefinition> | The definitions of the instruments to update or insert.
+    Map<String, InstrumentDefinition> instruments = new HashMap(); // Map<String, InstrumentDefinition> | The definitions of the instruments to update or insert.
     try {
-      UpsertInstrumentsResponse result = apiInstance.upsertInstruments(requests);
+      UpsertInstrumentsResponse result = apiInstance.upsertInstruments(instruments);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling InstrumentsApi#upsertInstruments");
@@ -506,7 +506,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **requests** | [**Map&lt;String, InstrumentDefinition&gt;**](InstrumentDefinition.md)| The definitions of the instruments to update or insert. | [optional]
+ **instruments** | [**Map&lt;String, InstrumentDefinition&gt;**](InstrumentDefinition.md)| The definitions of the instruments to update or insert. |
 
 ### Return type
 
@@ -549,7 +549,7 @@ import com.finbourne.lusid.api.InstrumentsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");

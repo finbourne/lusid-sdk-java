@@ -1,12 +1,12 @@
 # ReferencePortfolioApi
 
-All URIs are relative to *http://localhost/api*
+All URIs are relative to *http://localhost*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createReferencePortfolio**](ReferencePortfolioApi.md#createReferencePortfolio) | **POST** /api/referenceportfolios/{scope} | [EARLY ACCESS] Create reference portfolio
 [**getReferencePortfolioConstituents**](ReferencePortfolioApi.md#getReferencePortfolioConstituents) | **GET** /api/referenceportfolios/{scope}/{code}/constituents | [EARLY ACCESS] Get constituents
-[**listConstituentsAdjustments**](ReferencePortfolioApi.md#listConstituentsAdjustments) | **GET** /api/referenceportfolios/{scope}/{code}/constituentsadjustments | [EARLY ACCESS] Gets constituents adjustments in an interval of effective time.
+[**listConstituentsAdjustments**](ReferencePortfolioApi.md#listConstituentsAdjustments) | **GET** /api/referenceportfolios/{scope}/{code}/constituentsadjustments | [EARLY ACCESS] List constituents adjustments
 [**upsertReferencePortfolioConstituents**](ReferencePortfolioApi.md#upsertReferencePortfolioConstituents) | **POST** /api/referenceportfolios/{scope}/{code}/constituents | [EARLY ACCESS] Add constituents
 
 
@@ -31,7 +31,7 @@ import com.finbourne.lusid.api.ReferencePortfolioApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -59,7 +59,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The intended scope of the portfolio |
- **referencePortfolio** | [**CreateReferencePortfolioRequest**](CreateReferencePortfolioRequest.md)| The portfolio creation request object | [optional]
+ **referencePortfolio** | [**CreateReferencePortfolioRequest**](CreateReferencePortfolioRequest.md)| The portfolio creation request object |
 
 ### Return type
 
@@ -102,7 +102,7 @@ import com.finbourne.lusid.api.ReferencePortfolioApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -162,9 +162,9 @@ Name | Type | Description  | Notes
 # **listConstituentsAdjustments**
 > ResourceListOfConstituentsAdjustmentHeader listConstituentsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime)
 
-[EARLY ACCESS] Gets constituents adjustments in an interval of effective time.
+[EARLY ACCESS] List constituents adjustments
 
-Specify a time period in which you&#39;d like to see the list of times that adjustments where made to this portfolio
+List the constituent adjustments made to the specified reference portfolio over a specified interval of effective time.
 
 ### Example
 ```java
@@ -179,7 +179,7 @@ import com.finbourne.lusid.api.ReferencePortfolioApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -211,8 +211,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| Code for the portfolio |
- **fromEffectiveAt** | **String**| Events between this time (inclusive) and the toEffectiveAt are returned. | [optional]
- **toEffectiveAt** | **String**| Events between this time (inclusive) and the fromEffectiveAt are returned. | [optional]
+ **fromEffectiveAt** | **String**| Events between this time (inclusive) and the toEffectiveAt are returned. |
+ **toEffectiveAt** | **String**| Events between this time (inclusive) and the fromEffectiveAt are returned. |
  **asAtTime** | **OffsetDateTime**| The as-at time for which the result is valid. | [optional]
 
 ### Return type
@@ -256,7 +256,7 @@ import com.finbourne.lusid.api.ReferencePortfolioApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -286,7 +286,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio |
  **code** | **String**| The code of the portfolio |
- **constituents** | [**UpsertReferencePortfolioConstituentsRequest**](UpsertReferencePortfolioConstituentsRequest.md)| The constituents to upload to the portfolio | [optional]
+ **constituents** | [**UpsertReferencePortfolioConstituentsRequest**](UpsertReferencePortfolioConstituentsRequest.md)| The constituents to upload to the portfolio |
 
 ### Return type
 
