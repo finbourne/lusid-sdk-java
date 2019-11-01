@@ -64,6 +64,8 @@ CONFIGURATIONRECIPESNIPPET | &quot;ConfigurationRecipeSnippet&quot;
 STRUCTUREDRESULTDATAID | &quot;StructuredResultDataId&quot;
 STRUCTUREDRESULTDATA | &quot;StructuredResultData&quot;
 DATAMAPPING | &quot;DataMapping&quot;
+LUSIDINSTRUMENT | &quot;LusidInstrument&quot;
+WEIGHTEDINSTRUMENT | &quot;WeightedInstrument&quot;
 
 
 
