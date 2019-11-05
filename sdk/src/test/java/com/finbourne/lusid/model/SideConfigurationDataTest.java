@@ -14,7 +14,6 @@
 package com.finbourne.lusid.model;
 
 import com.finbourne.lusid.model.Link;
-import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -31,33 +30,65 @@ import org.junit.Test;
 
 
 /**
- * Model tests for AdjustHolding
+ * Model tests for SideConfigurationData
  */
-public class AdjustHoldingTest {
-    private final AdjustHolding model = new AdjustHolding();
+public class SideConfigurationDataTest {
+    private final SideConfigurationData model = new SideConfigurationData();
 
     /**
-     * Model tests for AdjustHolding
+     * Model tests for SideConfigurationData
      */
     @Test
-    public void testAdjustHolding() {
-        // TODO: test AdjustHolding
+    public void testSideConfigurationData() {
+        // TODO: test SideConfigurationData
     }
 
     /**
-     * Test the property 'href'
+     * Test the property 'side'
      */
     @Test
-    public void hrefTest() {
-        // TODO: test href
+    public void sideTest() {
+        // TODO: test side
     }
 
     /**
-     * Test the property 'version'
+     * Test the property 'security'
      */
     @Test
-    public void versionTest() {
-        // TODO: test version
+    public void securityTest() {
+        // TODO: test security
+    }
+
+    /**
+     * Test the property 'currency'
+     */
+    @Test
+    public void currencyTest() {
+        // TODO: test currency
+    }
+
+    /**
+     * Test the property 'rate'
+     */
+    @Test
+    public void rateTest() {
+        // TODO: test rate
+    }
+
+    /**
+     * Test the property 'units'
+     */
+    @Test
+    public void unitsTest() {
+        // TODO: test units
+    }
+
+    /**
+     * Test the property 'amount'
+     */
+    @Test
+    public void amountTest() {
+        // TODO: test amount
     }
 
     /**
