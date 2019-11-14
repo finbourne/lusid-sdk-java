@@ -58,11 +58,11 @@ public class TransactionConfigurationTypeAlias {
     
     SHORTSHORTER("ShortShorter"),
     
+    SHORTER("Shorter"),
+    
     SHORTLONGER("ShortLonger"),
     
     LONGER("Longer"),
-    
-    SHORTER("Shorter"),
     
     ALLROLES("AllRoles");
 

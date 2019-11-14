@@ -22,9 +22,9 @@ NONE | &quot;None&quot;
 LONGLONGER | &quot;LongLonger&quot;
 LONGSHORTER | &quot;LongShorter&quot;
 SHORTSHORTER | &quot;ShortShorter&quot;
+SHORTER | &quot;Shorter&quot;
 SHORTLONGER | &quot;ShortLonger&quot;
 LONGER | &quot;Longer&quot;
-SHORTER | &quot;Shorter&quot;
 ALLROLES | &quot;AllRoles&quot;
 
 

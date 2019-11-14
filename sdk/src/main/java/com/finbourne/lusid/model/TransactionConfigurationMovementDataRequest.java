@@ -44,6 +44,8 @@ public class TransactionConfigurationMovementDataRequest {
     
     TRADED("Traded"),
     
+    STOCKMOVEMENT("StockMovement"),
+    
     FUTURECASH("FutureCash"),
     
     COMMITMENT("Commitment"),
@@ -52,23 +54,21 @@ public class TransactionConfigurationMovementDataRequest {
     
     CASHSETTLEMENT("CashSettlement"),
     
-    ACCRUAL("Accrual"),
-    
-    FORWARDFX("ForwardFx"),
-    
-    UNSETTLEDCASHTYPES("UnsettledCashTypes"),
-    
-    STOCKMOVEMENT("StockMovement"),
+    CASHFORWARD("CashForward"),
     
     CASHCOMMITMENT("CashCommitment"),
     
     CASHRECEIVABLE("CashReceivable"),
     
-    CASHFORWARD("CashForward"),
+    ACCRUAL("Accrual"),
+    
+    CASHACCRUAL("CashAccrual"),
+    
+    FORWARDFX("ForwardFx"),
     
     CASHFXFORWARD("CashFxForward"),
     
-    CASHACCRUAL("CashAccrual");
+    UNSETTLEDCASHTYPES("UnsettledCashTypes");
 
     private String value;
 
