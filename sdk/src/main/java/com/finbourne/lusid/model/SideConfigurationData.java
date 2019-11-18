@@ -13,7 +13,9 @@
 
 package com.finbourne.lusid.model;
 
-import com.finbourne.lusid.model.PerpetualProperty;
+import java.util.Objects;
+import java.util.Arrays;
+import com.finbourne.lusid.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,58 +24,227 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import org.junit.Assert;
-import org.junit.Ignore;
-import org.junit.Test;
-
 
 /**
- * Model tests for ReferencePortfolioConstituentRequest
+ * Configuration needed to define a side. Sides are referenced by Label. Beyond that, other properties  can be used to reference either transaction fields, or transaction properties.
  */
-public class ReferencePortfolioConstituentRequestTest {
-    private final ReferencePortfolioConstituentRequest model = new ReferencePortfolioConstituentRequest();
+@ApiModel(description = "Configuration needed to define a side. Sides are referenced by Label. Beyond that, other properties  can be used to reference either transaction fields, or transaction properties.")
 
-    /**
-     * Model tests for ReferencePortfolioConstituentRequest
-     */
-    @Test
-    public void testReferencePortfolioConstituentRequest() {
-        // TODO: test ReferencePortfolioConstituentRequest
-    }
+public class SideConfigurationData {
+  public static final String SERIALIZED_NAME_SIDE = "side";
+  @SerializedName(SERIALIZED_NAME_SIDE)
+  private String side;
 
-    /**
-     * Test the property 'instrumentIdentifiers'
-     */
-    @Test
-    public void instrumentIdentifiersTest() {
-        // TODO: test instrumentIdentifiers
-    }
+  public static final String SERIALIZED_NAME_SECURITY = "security";
+  @SerializedName(SERIALIZED_NAME_SECURITY)
+  private String security;
 
-    /**
-     * Test the property 'properties'
-     */
-    @Test
-    public void propertiesTest() {
-        // TODO: test properties
-    }
+  public static final String SERIALIZED_NAME_CURRENCY = "currency";
+  @SerializedName(SERIALIZED_NAME_CURRENCY)
+  private String currency;
 
-    /**
-     * Test the property 'weight'
-     */
-    @Test
-    public void weightTest() {
-        // TODO: test weight
-    }
+  public static final String SERIALIZED_NAME_RATE = "rate";
+  @SerializedName(SERIALIZED_NAME_RATE)
+  private String rate;
 
-    /**
-     * Test the property 'currency'
-     */
-    @Test
-    public void currencyTest() {
-        // TODO: test currency
+  public static final String SERIALIZED_NAME_UNITS = "units";
+  @SerializedName(SERIALIZED_NAME_UNITS)
+  private String units;
+
+  public static final String SERIALIZED_NAME_AMOUNT = "amount";
+  @SerializedName(SERIALIZED_NAME_AMOUNT)
+  private String amount;
+
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
+  private List<Link> links = new ArrayList<>();
+
+  public SideConfigurationData side(String side) {
+    this.side = side;
+    return this;
+  }
+
+   /**
+   * The side&#39;s label.
+   * @return side
+  **/
+  @ApiModelProperty(required = true, value = "The side's label.")
+  public String getSide() {
+    return side;
+  }
+
+  public void setSide(String side) {
+    this.side = side;
+  }
+
+  public SideConfigurationData security(String security) {
+    this.security = security;
+    return this;
+  }
+
+   /**
+   * The security, or instrument.
+   * @return security
+  **/
+  @ApiModelProperty(required = true, value = "The security, or instrument.")
+  public String getSecurity() {
+    return security;
+  }
+
+  public void setSecurity(String security) {
+    this.security = security;
+  }
+
+  public SideConfigurationData currency(String currency) {
+    this.currency = currency;
+    return this;
+  }
+
+   /**
+   * The currency.
+   * @return currency
+  **/
+  @ApiModelProperty(required = true, value = "The currency.")
+  public String getCurrency() {
+    return currency;
+  }
+
+  public void setCurrency(String currency) {
+    this.currency = currency;
+  }
+
+  public SideConfigurationData rate(String rate) {
+    this.rate = rate;
+    return this;
+  }
+
+   /**
+   * The rate.
+   * @return rate
+  **/
+  @ApiModelProperty(required = true, value = "The rate.")
+  public String getRate() {
+    return rate;
+  }
+
+  public void setRate(String rate) {
+    this.rate = rate;
+  }
+
+  public SideConfigurationData units(String units) {
+    this.units = units;
+    return this;
+  }
+
+   /**
+   * The units.
+   * @return units
+  **/
+  @ApiModelProperty(required = true, value = "The units.")
+  public String getUnits() {
+    return units;
+  }
+
+  public void setUnits(String units) {
+    this.units = units;
+  }
+
+  public SideConfigurationData amount(String amount) {
+    this.amount = amount;
+    return this;
+  }
+
+   /**
+   * The amount.
+   * @return amount
+  **/
+  @ApiModelProperty(required = true, value = "The amount.")
+  public String getAmount() {
+    return amount;
+  }
+
+  public void setAmount(String amount) {
+    this.amount = amount;
+  }
+
+  public SideConfigurationData links(List<Link> links) {
+    this.links = links;
+    return this;
+  }
+
+  public SideConfigurationData addLinksItem(Link linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
     }
+    this.links.add(linksItem);
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @ApiModelProperty(value = "")
+  public List<Link> getLinks() {
+    return links;
+  }
+
+  public void setLinks(List<Link> links) {
+    this.links = links;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    SideConfigurationData sideConfigurationData = (SideConfigurationData) o;
+    return Objects.equals(this.side, sideConfigurationData.side) &&
+        Objects.equals(this.security, sideConfigurationData.security) &&
+        Objects.equals(this.currency, sideConfigurationData.currency) &&
+        Objects.equals(this.rate, sideConfigurationData.rate) &&
+        Objects.equals(this.units, sideConfigurationData.units) &&
+        Objects.equals(this.amount, sideConfigurationData.amount) &&
+        Objects.equals(this.links, sideConfigurationData.links);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(side, security, currency, rate, units, amount, links);
+  }
+
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class SideConfigurationData {\n");
+    sb.append("    side: ").append(toIndentedString(side)).append("\n");
+    sb.append("    security: ").append(toIndentedString(security)).append("\n");
+    sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    rate: ").append(toIndentedString(rate)).append("\n");
+    sb.append("    units: ").append(toIndentedString(units)).append("\n");
+    sb.append("    amount: ").append(toIndentedString(amount)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
 
 }
+

@@ -13,7 +13,7 @@
 
 package com.finbourne.lusid.model;
 
-import com.finbourne.lusid.model.PerpetualProperty;
+import com.finbourne.lusid.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -22,50 +22,41 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 
 
 /**
- * Model tests for ReferencePortfolioConstituentRequest
+ * Model tests for SideConfigurationData
  */
-public class ReferencePortfolioConstituentRequestTest {
-    private final ReferencePortfolioConstituentRequest model = new ReferencePortfolioConstituentRequest();
+public class SideConfigurationDataTest {
+    private final SideConfigurationData model = new SideConfigurationData();
 
     /**
-     * Model tests for ReferencePortfolioConstituentRequest
+     * Model tests for SideConfigurationData
      */
     @Test
-    public void testReferencePortfolioConstituentRequest() {
-        // TODO: test ReferencePortfolioConstituentRequest
+    public void testSideConfigurationData() {
+        // TODO: test SideConfigurationData
     }
 
     /**
-     * Test the property 'instrumentIdentifiers'
+     * Test the property 'side'
      */
     @Test
-    public void instrumentIdentifiersTest() {
-        // TODO: test instrumentIdentifiers
+    public void sideTest() {
+        // TODO: test side
     }
 
     /**
-     * Test the property 'properties'
+     * Test the property 'security'
      */
     @Test
-    public void propertiesTest() {
-        // TODO: test properties
-    }
-
-    /**
-     * Test the property 'weight'
-     */
-    @Test
-    public void weightTest() {
-        // TODO: test weight
+    public void securityTest() {
+        // TODO: test security
     }
 
     /**
@@ -74,6 +65,38 @@ public class ReferencePortfolioConstituentRequestTest {
     @Test
     public void currencyTest() {
         // TODO: test currency
+    }
+
+    /**
+     * Test the property 'rate'
+     */
+    @Test
+    public void rateTest() {
+        // TODO: test rate
+    }
+
+    /**
+     * Test the property 'units'
+     */
+    @Test
+    public void unitsTest() {
+        // TODO: test units
+    }
+
+    /**
+     * Test the property 'amount'
+     */
+    @Test
+    public void amountTest() {
+        // TODO: test amount
+    }
+
+    /**
+     * Test the property 'links'
+     */
+    @Test
+    public void linksTest() {
+        // TODO: test links
     }
 
 }
