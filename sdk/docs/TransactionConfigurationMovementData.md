@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **movementTypes** | [**MovementTypesEnum**](#MovementTypesEnum) | The Movement Types | 
-**side** | [**SideEnum**](#SideEnum) | The Movement Side | 
+**side** | **String** | The Movement Side | 
 **direction** | **Integer** | The Movement direction | 
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) |  |  [optional]
 **mappings** | [**List&lt;TransactionPropertyMapping&gt;**](TransactionPropertyMapping.md) |  |  [optional]
@@ -33,17 +33,6 @@ CASHRECEIVABLE | &quot;CashReceivable&quot;
 CASHFORWARD | &quot;CashForward&quot;
 CASHFXFORWARD | &quot;CashFxForward&quot;
 CASHACCRUAL | &quot;CashAccrual&quot;
-
-
-
-## Enum: SideEnum
-
-Name | Value
----- | -----
-SIDE1 | &quot;Side1&quot;
-SIDE2 | &quot;Side2&quot;
-SIDE2SEPARATEBONDINTEREST | &quot;Side2SeparateBondInterest&quot;
-BONDINT | &quot;BondInt&quot;
 
 
 
