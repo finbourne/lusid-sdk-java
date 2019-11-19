@@ -61,11 +61,11 @@ public class TransactionRequest {
 
   public static final String SERIALIZED_NAME_TRANSACTION_PRICE = "transactionPrice";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_PRICE)
-  private TransactionPrice transactionPrice = null;
+  private TransactionPrice transactionPrice;
 
   public static final String SERIALIZED_NAME_TOTAL_CONSIDERATION = "totalConsideration";
   @SerializedName(SERIALIZED_NAME_TOTAL_CONSIDERATION)
-  private CurrencyAndAmount totalConsideration = null;
+  private CurrencyAndAmount totalConsideration;
 
   public static final String SERIALIZED_NAME_EXCHANGE_RATE = "exchangeRate";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_RATE)
@@ -77,7 +77,7 @@ public class TransactionRequest {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = new HashMap<>();
+  private Map<String, PerpetualProperty> properties = null;
 
   public static final String SERIALIZED_NAME_COUNTERPARTY_ID = "counterpartyId";
   @SerializedName(SERIALIZED_NAME_COUNTERPARTY_ID)
@@ -87,7 +87,9 @@ public class TransactionRequest {
   @SerializedName(SERIALIZED_NAME_SOURCE)
   private String source;
 
+
   public TransactionRequest transactionId(String transactionId) {
+    
     this.transactionId = transactionId;
     return this;
   }
@@ -97,15 +99,19 @@ public class TransactionRequest {
    * @return transactionId
   **/
   @ApiModelProperty(required = true, value = "The unique identifier for the transaction.")
+
   public String getTransactionId() {
     return transactionId;
   }
+
 
   public void setTransactionId(String transactionId) {
     this.transactionId = transactionId;
   }
 
+
   public TransactionRequest type(String type) {
+    
     this.type = type;
     return this;
   }
@@ -115,15 +121,19 @@ public class TransactionRequest {
    * @return type
   **/
   @ApiModelProperty(required = true, value = "The type of the transaction e.g. 'Buy', 'Sell'. The transaction type should have been pre-configured via the System Configuration API endpoint. If it hasn't been pre-configured the transaction will still be updated or inserted however you will be unable to generate the resultant holdings for the portfolio that contains this transaction as LUSID does not know how to process it.")
+
   public String getType() {
     return type;
   }
+
 
   public void setType(String type) {
     this.type = type;
   }
 
+
   public TransactionRequest instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
+    
     this.instrumentIdentifiers = instrumentIdentifiers;
     return this;
   }
@@ -138,15 +148,19 @@ public class TransactionRequest {
    * @return instrumentIdentifiers
   **/
   @ApiModelProperty(required = true, value = "A set of instrument identifiers to use to resolve the transaction to a unique instrument.")
+
   public Map<String, String> getInstrumentIdentifiers() {
     return instrumentIdentifiers;
   }
+
 
   public void setInstrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
     this.instrumentIdentifiers = instrumentIdentifiers;
   }
 
+
   public TransactionRequest transactionDate(String transactionDate) {
+    
     this.transactionDate = transactionDate;
     return this;
   }
@@ -156,15 +170,19 @@ public class TransactionRequest {
    * @return transactionDate
   **/
   @ApiModelProperty(required = true, value = "The date of the transaction.")
+
   public String getTransactionDate() {
     return transactionDate;
   }
+
 
   public void setTransactionDate(String transactionDate) {
     this.transactionDate = transactionDate;
   }
 
+
   public TransactionRequest settlementDate(String settlementDate) {
+    
     this.settlementDate = settlementDate;
     return this;
   }
@@ -174,15 +192,19 @@ public class TransactionRequest {
    * @return settlementDate
   **/
   @ApiModelProperty(required = true, value = "The settlement date of the transaction.")
+
   public String getSettlementDate() {
     return settlementDate;
   }
+
 
   public void setSettlementDate(String settlementDate) {
     this.settlementDate = settlementDate;
   }
 
+
   public TransactionRequest units(Double units) {
+    
     this.units = units;
     return this;
   }
@@ -192,15 +214,19 @@ public class TransactionRequest {
    * @return units
   **/
   @ApiModelProperty(required = true, value = "The number of units transacted in the associated instrument.")
+
   public Double getUnits() {
     return units;
   }
+
 
   public void setUnits(Double units) {
     this.units = units;
   }
 
+
   public TransactionRequest transactionPrice(TransactionPrice transactionPrice) {
+    
     this.transactionPrice = transactionPrice;
     return this;
   }
@@ -210,15 +236,19 @@ public class TransactionRequest {
    * @return transactionPrice
   **/
   @ApiModelProperty(required = true, value = "")
+
   public TransactionPrice getTransactionPrice() {
     return transactionPrice;
   }
+
 
   public void setTransactionPrice(TransactionPrice transactionPrice) {
     this.transactionPrice = transactionPrice;
   }
 
+
   public TransactionRequest totalConsideration(CurrencyAndAmount totalConsideration) {
+    
     this.totalConsideration = totalConsideration;
     return this;
   }
@@ -228,15 +258,19 @@ public class TransactionRequest {
    * @return totalConsideration
   **/
   @ApiModelProperty(required = true, value = "")
+
   public CurrencyAndAmount getTotalConsideration() {
     return totalConsideration;
   }
+
 
   public void setTotalConsideration(CurrencyAndAmount totalConsideration) {
     this.totalConsideration = totalConsideration;
   }
 
+
   public TransactionRequest exchangeRate(Double exchangeRate) {
+    
     this.exchangeRate = exchangeRate;
     return this;
   }
@@ -245,16 +279,21 @@ public class TransactionRequest {
    * The exchange rate between the transaction and settlement currency. For example if the transaction currency is in USD and the settlement currency is in GBP this this the USD/GBP rate.
    * @return exchangeRate
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The exchange rate between the transaction and settlement currency. For example if the transaction currency is in USD and the settlement currency is in GBP this this the USD/GBP rate.")
+
   public Double getExchangeRate() {
     return exchangeRate;
   }
+
 
   public void setExchangeRate(Double exchangeRate) {
     this.exchangeRate = exchangeRate;
   }
 
+
   public TransactionRequest transactionCurrency(String transactionCurrency) {
+    
     this.transactionCurrency = transactionCurrency;
     return this;
   }
@@ -263,16 +302,21 @@ public class TransactionRequest {
    * The transaction currency.
    * @return transactionCurrency
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The transaction currency.")
+
   public String getTransactionCurrency() {
     return transactionCurrency;
   }
+
 
   public void setTransactionCurrency(String transactionCurrency) {
     this.transactionCurrency = transactionCurrency;
   }
 
+
   public TransactionRequest properties(Map<String, PerpetualProperty> properties) {
+    
     this.properties = properties;
     return this;
   }
@@ -289,16 +333,21 @@ public class TransactionRequest {
    * Set of unique transaction properties and associated values to store with the transaction. Each property must be from the &#39;Transaction&#39; domain.
    * @return properties
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "Set of unique transaction properties and associated values to store with the transaction. Each property must be from the 'Transaction' domain.")
+
   public Map<String, PerpetualProperty> getProperties() {
     return properties;
   }
+
 
   public void setProperties(Map<String, PerpetualProperty> properties) {
     this.properties = properties;
   }
 
+
   public TransactionRequest counterpartyId(String counterpartyId) {
+    
     this.counterpartyId = counterpartyId;
     return this;
   }
@@ -307,16 +356,21 @@ public class TransactionRequest {
    * The identifier for the counterparty of the transaction.
    * @return counterpartyId
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The identifier for the counterparty of the transaction.")
+
   public String getCounterpartyId() {
     return counterpartyId;
   }
+
 
   public void setCounterpartyId(String counterpartyId) {
     this.counterpartyId = counterpartyId;
   }
 
+
   public TransactionRequest source(String source) {
+    
     this.source = source;
     return this;
   }
@@ -325,10 +379,13 @@ public class TransactionRequest {
    * The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration.
    * @return source
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration.")
+
   public String getSource() {
     return source;
   }
+
 
   public void setSource(String source) {
     this.source = source;

@@ -42,9 +42,11 @@ public class UpsertInstrumentPropertyRequest {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private List<Property> properties = new ArrayList<>();
+  private List<Property> properties = null;
+
 
   public UpsertInstrumentPropertyRequest identifierType(String identifierType) {
+    
     this.identifierType = identifierType;
     return this;
   }
@@ -54,15 +56,19 @@ public class UpsertInstrumentPropertyRequest {
    * @return identifierType
   **/
   @ApiModelProperty(required = true, value = "The instrument identifier type.")
+
   public String getIdentifierType() {
     return identifierType;
   }
+
 
   public void setIdentifierType(String identifierType) {
     this.identifierType = identifierType;
   }
 
+
   public UpsertInstrumentPropertyRequest identifier(String identifier) {
+    
     this.identifier = identifier;
     return this;
   }
@@ -72,15 +78,19 @@ public class UpsertInstrumentPropertyRequest {
    * @return identifier
   **/
   @ApiModelProperty(required = true, value = "The unique instrument identifier of the instrument to update or insert properties on.")
+
   public String getIdentifier() {
     return identifier;
   }
+
 
   public void setIdentifier(String identifier) {
     this.identifier = identifier;
   }
 
+
   public UpsertInstrumentPropertyRequest properties(List<Property> properties) {
+    
     this.properties = properties;
     return this;
   }
@@ -97,10 +107,13 @@ public class UpsertInstrumentPropertyRequest {
    * Set of unique instrument properties and associated values to store with the instrument. Each property must be from the &#39;Instrument&#39; domain.
    * @return properties
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "Set of unique instrument properties and associated values to store with the instrument. Each property must be from the 'Instrument' domain.")
+
   public List<Property> getProperties() {
     return properties;
   }
+
 
   public void setProperties(List<Property> properties) {
     this.properties = properties;

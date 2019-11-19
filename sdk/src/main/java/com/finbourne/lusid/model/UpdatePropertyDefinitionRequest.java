@@ -33,7 +33,9 @@ public class UpdatePropertyDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
   private String displayName;
 
+
   public UpdatePropertyDefinitionRequest displayName(String displayName) {
+    
     this.displayName = displayName;
     return this;
   }
@@ -43,9 +45,11 @@ public class UpdatePropertyDefinitionRequest {
    * @return displayName
   **/
   @ApiModelProperty(required = true, value = "The display name of the property.")
+
   public String getDisplayName() {
     return displayName;
   }
+
 
   public void setDisplayName(String displayName) {
     this.displayName = displayName;

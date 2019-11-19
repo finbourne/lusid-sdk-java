@@ -52,9 +52,11 @@ public class CreateReferencePortfolioRequest {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, Property> properties = new HashMap<>();
+  private Map<String, Property> properties = null;
+
 
   public CreateReferencePortfolioRequest displayName(String displayName) {
+    
     this.displayName = displayName;
     return this;
   }
@@ -64,15 +66,19 @@ public class CreateReferencePortfolioRequest {
    * @return displayName
   **/
   @ApiModelProperty(required = true, value = "")
+
   public String getDisplayName() {
     return displayName;
   }
+
 
   public void setDisplayName(String displayName) {
     this.displayName = displayName;
   }
 
+
   public CreateReferencePortfolioRequest description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -81,16 +87,21 @@ public class CreateReferencePortfolioRequest {
    * 
    * @return description
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getDescription() {
     return description;
   }
+
 
   public void setDescription(String description) {
     this.description = description;
   }
 
+
   public CreateReferencePortfolioRequest code(String code) {
+    
     this.code = code;
     return this;
   }
@@ -100,15 +111,19 @@ public class CreateReferencePortfolioRequest {
    * @return code
   **/
   @ApiModelProperty(required = true, value = "")
+
   public String getCode() {
     return code;
   }
+
 
   public void setCode(String code) {
     this.code = code;
   }
 
+
   public CreateReferencePortfolioRequest created(OffsetDateTime created) {
+    
     this.created = created;
     return this;
   }
@@ -117,16 +132,21 @@ public class CreateReferencePortfolioRequest {
    * 
    * @return created
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public OffsetDateTime getCreated() {
     return created;
   }
+
 
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+
   public CreateReferencePortfolioRequest properties(Map<String, Property> properties) {
+    
     this.properties = properties;
     return this;
   }
@@ -143,10 +163,13 @@ public class CreateReferencePortfolioRequest {
    * Portfolio properties to add to the portfolio
    * @return properties
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "Portfolio properties to add to the portfolio")
+
   public Map<String, Property> getProperties() {
     return properties;
   }
+
 
   public void setProperties(Map<String, Property> properties) {
     this.properties = properties;

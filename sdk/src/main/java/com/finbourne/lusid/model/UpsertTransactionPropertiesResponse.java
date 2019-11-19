@@ -42,17 +42,19 @@ public class UpsertTransactionPropertiesResponse {
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = new HashMap<>();
+  private Map<String, PerpetualProperty> properties = null;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public UpsertTransactionPropertiesResponse href(String href) {
+    
     this.href = href;
     return this;
   }
@@ -61,16 +63,21 @@ public class UpsertTransactionPropertiesResponse {
    * The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
    * @return href
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.")
+
   public String getHref() {
     return href;
   }
+
 
   public void setHref(String href) {
     this.href = href;
   }
 
+
   public UpsertTransactionPropertiesResponse version(Version version) {
+    
     this.version = version;
     return this;
   }
@@ -79,16 +86,21 @@ public class UpsertTransactionPropertiesResponse {
    * Get version
    * @return version
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Version getVersion() {
     return version;
   }
+
 
   public void setVersion(Version version) {
     this.version = version;
   }
 
+
   public UpsertTransactionPropertiesResponse properties(Map<String, PerpetualProperty> properties) {
+    
     this.properties = properties;
     return this;
   }
@@ -105,16 +117,21 @@ public class UpsertTransactionPropertiesResponse {
    * Get properties
    * @return properties
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Map<String, PerpetualProperty> getProperties() {
     return properties;
   }
+
 
   public void setProperties(Map<String, PerpetualProperty> properties) {
     this.properties = properties;
   }
 
+
   public UpsertTransactionPropertiesResponse links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -131,10 +148,13 @@ public class UpsertTransactionPropertiesResponse {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

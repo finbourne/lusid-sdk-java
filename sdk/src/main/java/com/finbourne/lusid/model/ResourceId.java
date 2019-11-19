@@ -37,7 +37,9 @@ public class ResourceId {
   @SerializedName(SERIALIZED_NAME_CODE)
   private String code;
 
+
   public ResourceId scope(String scope) {
+    
     this.scope = scope;
     return this;
   }
@@ -46,16 +48,21 @@ public class ResourceId {
    * Get scope
    * @return scope
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getScope() {
     return scope;
   }
+
 
   public void setScope(String scope) {
     this.scope = scope;
   }
 
+
   public ResourceId code(String code) {
+    
     this.code = code;
     return this;
   }
@@ -64,10 +71,13 @@ public class ResourceId {
    * Get code
    * @return code
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getCode() {
     return code;
   }
+
 
   public void setCode(String code) {
     this.code = code;

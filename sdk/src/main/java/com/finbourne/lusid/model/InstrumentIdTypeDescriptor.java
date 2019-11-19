@@ -42,7 +42,9 @@ public class InstrumentIdTypeDescriptor {
   @SerializedName(SERIALIZED_NAME_IS_UNIQUE_IDENTIFIER_TYPE)
   private Boolean isUniqueIdentifierType;
 
+
   public InstrumentIdTypeDescriptor identifierType(String identifierType) {
+    
     this.identifierType = identifierType;
     return this;
   }
@@ -52,15 +54,19 @@ public class InstrumentIdTypeDescriptor {
    * @return identifierType
   **/
   @ApiModelProperty(required = true, value = "The name of the identifier type.")
+
   public String getIdentifierType() {
     return identifierType;
   }
+
 
   public void setIdentifierType(String identifierType) {
     this.identifierType = identifierType;
   }
 
+
   public InstrumentIdTypeDescriptor propertyKey(String propertyKey) {
+    
     this.propertyKey = propertyKey;
     return this;
   }
@@ -70,15 +76,19 @@ public class InstrumentIdTypeDescriptor {
    * @return propertyKey
   **/
   @ApiModelProperty(required = true, value = "The property key that corresponds to the identifier type.")
+
   public String getPropertyKey() {
     return propertyKey;
   }
+
 
   public void setPropertyKey(String propertyKey) {
     this.propertyKey = propertyKey;
   }
 
+
   public InstrumentIdTypeDescriptor isUniqueIdentifierType(Boolean isUniqueIdentifierType) {
+    
     this.isUniqueIdentifierType = isUniqueIdentifierType;
     return this;
   }
@@ -88,9 +98,11 @@ public class InstrumentIdTypeDescriptor {
    * @return isUniqueIdentifierType
   **/
   @ApiModelProperty(required = true, value = "Whether or not the identifier type is enforced to be unique.")
+
   public Boolean getIsUniqueIdentifierType() {
     return isUniqueIdentifierType;
   }
+
 
   public void setIsUniqueIdentifierType(Boolean isUniqueIdentifierType) {
     this.isUniqueIdentifierType = isUniqueIdentifierType;

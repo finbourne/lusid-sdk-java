@@ -38,7 +38,7 @@ import java.util.Map;
 public class HoldingAdjustment {
   public static final String SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS = "instrumentIdentifiers";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS)
-  private Map<String, String> instrumentIdentifiers = new HashMap<>();
+  private Map<String, String> instrumentIdentifiers = null;
 
   public static final String SERIALIZED_NAME_INSTRUMENT_UID = "instrumentUid";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_UID)
@@ -46,17 +46,19 @@ public class HoldingAdjustment {
 
   public static final String SERIALIZED_NAME_SUB_HOLDING_KEYS = "subHoldingKeys";
   @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEYS)
-  private Map<String, PerpetualProperty> subHoldingKeys = new HashMap<>();
+  private Map<String, PerpetualProperty> subHoldingKeys = null;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = new HashMap<>();
+  private Map<String, PerpetualProperty> properties = null;
 
   public static final String SERIALIZED_NAME_TAX_LOTS = "taxLots";
   @SerializedName(SERIALIZED_NAME_TAX_LOTS)
   private List<TargetTaxLot> taxLots = new ArrayList<>();
 
+
   public HoldingAdjustment instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
+    
     this.instrumentIdentifiers = instrumentIdentifiers;
     return this;
   }
@@ -73,16 +75,21 @@ public class HoldingAdjustment {
    * The set of instrument identifiers that can be used to resolve the holding adjustment to a unique instrument.
    * @return instrumentIdentifiers
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The set of instrument identifiers that can be used to resolve the holding adjustment to a unique instrument.")
+
   public Map<String, String> getInstrumentIdentifiers() {
     return instrumentIdentifiers;
   }
+
 
   public void setInstrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
     this.instrumentIdentifiers = instrumentIdentifiers;
   }
 
+
   public HoldingAdjustment instrumentUid(String instrumentUid) {
+    
     this.instrumentUid = instrumentUid;
     return this;
   }
@@ -92,15 +99,19 @@ public class HoldingAdjustment {
    * @return instrumentUid
   **/
   @ApiModelProperty(required = true, value = "The unqiue Lusid Instrument Id (LUID) of the instrument that the holding adjustment is in.")
+
   public String getInstrumentUid() {
     return instrumentUid;
   }
+
 
   public void setInstrumentUid(String instrumentUid) {
     this.instrumentUid = instrumentUid;
   }
 
+
   public HoldingAdjustment subHoldingKeys(Map<String, PerpetualProperty> subHoldingKeys) {
+    
     this.subHoldingKeys = subHoldingKeys;
     return this;
   }
@@ -117,16 +128,21 @@ public class HoldingAdjustment {
    * The set of unique transaction properties and associated values stored with the holding adjustment transactions automatically created by LUSID. Each property will be from the &#39;Transaction&#39; domain.
    * @return subHoldingKeys
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The set of unique transaction properties and associated values stored with the holding adjustment transactions automatically created by LUSID. Each property will be from the 'Transaction' domain.")
+
   public Map<String, PerpetualProperty> getSubHoldingKeys() {
     return subHoldingKeys;
   }
+
 
   public void setSubHoldingKeys(Map<String, PerpetualProperty> subHoldingKeys) {
     this.subHoldingKeys = subHoldingKeys;
   }
 
+
   public HoldingAdjustment properties(Map<String, PerpetualProperty> properties) {
+    
     this.properties = properties;
     return this;
   }
@@ -143,16 +159,21 @@ public class HoldingAdjustment {
    * The set of unique holding properties and associated values stored with the target holding. Each property will be from the &#39;Holding&#39; domain.
    * @return properties
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The set of unique holding properties and associated values stored with the target holding. Each property will be from the 'Holding' domain.")
+
   public Map<String, PerpetualProperty> getProperties() {
     return properties;
   }
+
 
   public void setProperties(Map<String, PerpetualProperty> properties) {
     this.properties = properties;
   }
 
+
   public HoldingAdjustment taxLots(List<TargetTaxLot> taxLots) {
+    
     this.taxLots = taxLots;
     return this;
   }
@@ -167,9 +188,11 @@ public class HoldingAdjustment {
    * @return taxLots
   **/
   @ApiModelProperty(required = true, value = "The tax-lots that together make up the target holding.")
+
   public List<TargetTaxLot> getTaxLots() {
     return taxLots;
   }
+
 
   public void setTaxLots(List<TargetTaxLot> taxLots) {
     this.taxLots = taxLots;

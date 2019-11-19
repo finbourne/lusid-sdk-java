@@ -38,7 +38,9 @@ public class CurrencyAndAmount {
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
+
   public CurrencyAndAmount amount(Double amount) {
+    
     this.amount = amount;
     return this;
   }
@@ -47,16 +49,21 @@ public class CurrencyAndAmount {
    * Get amount
    * @return amount
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Double getAmount() {
     return amount;
   }
+
 
   public void setAmount(Double amount) {
     this.amount = amount;
   }
 
+
   public CurrencyAndAmount currency(String currency) {
+    
     this.currency = currency;
     return this;
   }
@@ -65,10 +72,13 @@ public class CurrencyAndAmount {
    * Get currency
    * @return currency
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getCurrency() {
     return currency;
   }
+
 
   public void setCurrency(String currency) {
     this.currency = currency;

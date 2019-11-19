@@ -39,9 +39,11 @@ public class UpsertInstrumentPropertiesResponse {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public UpsertInstrumentPropertiesResponse asAtDate(OffsetDateTime asAtDate) {
+    
     this.asAtDate = asAtDate;
     return this;
   }
@@ -51,15 +53,19 @@ public class UpsertInstrumentPropertiesResponse {
    * @return asAtDate
   **/
   @ApiModelProperty(required = true, value = "The asAt datetime at which the properties were updated or inserted on the specified instruments.")
+
   public OffsetDateTime getAsAtDate() {
     return asAtDate;
   }
+
 
   public void setAsAtDate(OffsetDateTime asAtDate) {
     this.asAtDate = asAtDate;
   }
 
+
   public UpsertInstrumentPropertiesResponse links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -76,10 +82,13 @@ public class UpsertInstrumentPropertiesResponse {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

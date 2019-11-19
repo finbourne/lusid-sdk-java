@@ -98,7 +98,7 @@ public class TransactionConfigurationTypeAlias {
 
       @Override
       public TransactionRolesEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return TransactionRolesEnum.fromValue(value);
       }
     }
@@ -108,7 +108,9 @@ public class TransactionConfigurationTypeAlias {
   @SerializedName(SERIALIZED_NAME_TRANSACTION_ROLES)
   private TransactionRolesEnum transactionRoles;
 
+
   public TransactionConfigurationTypeAlias type(String type) {
+    
     this.type = type;
     return this;
   }
@@ -118,15 +120,19 @@ public class TransactionConfigurationTypeAlias {
    * @return type
   **/
   @ApiModelProperty(required = true, value = "The transaction type")
+
   public String getType() {
     return type;
   }
+
 
   public void setType(String type) {
     this.type = type;
   }
 
+
   public TransactionConfigurationTypeAlias description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -136,15 +142,19 @@ public class TransactionConfigurationTypeAlias {
    * @return description
   **/
   @ApiModelProperty(required = true, value = "Brief description of the transaction")
+
   public String getDescription() {
     return description;
   }
+
 
   public void setDescription(String description) {
     this.description = description;
   }
 
+
   public TransactionConfigurationTypeAlias transactionClass(String transactionClass) {
+    
     this.transactionClass = transactionClass;
     return this;
   }
@@ -154,15 +164,19 @@ public class TransactionConfigurationTypeAlias {
    * @return transactionClass
   **/
   @ApiModelProperty(required = true, value = "Relates types of a similar class. E.g. Buy/Sell, StockIn/StockOut")
+
   public String getTransactionClass() {
     return transactionClass;
   }
+
 
   public void setTransactionClass(String transactionClass) {
     this.transactionClass = transactionClass;
   }
 
+
   public TransactionConfigurationTypeAlias transactionGroup(String transactionGroup) {
+    
     this.transactionGroup = transactionGroup;
     return this;
   }
@@ -172,15 +186,19 @@ public class TransactionConfigurationTypeAlias {
    * @return transactionGroup
   **/
   @ApiModelProperty(required = true, value = "Group is a set of codes related to a source, or sync")
+
   public String getTransactionGroup() {
     return transactionGroup;
   }
+
 
   public void setTransactionGroup(String transactionGroup) {
     this.transactionGroup = transactionGroup;
   }
 
+
   public TransactionConfigurationTypeAlias transactionRoles(TransactionRolesEnum transactionRoles) {
+    
     this.transactionRoles = transactionRoles;
     return this;
   }
@@ -190,9 +208,11 @@ public class TransactionConfigurationTypeAlias {
    * @return transactionRoles
   **/
   @ApiModelProperty(required = true, value = "Transactions role within a class. E.g. Increase a long position")
+
   public TransactionRolesEnum getTransactionRoles() {
     return transactionRoles;
   }
+
 
   public void setTransactionRoles(TransactionRolesEnum transactionRoles) {
     this.transactionRoles = transactionRoles;

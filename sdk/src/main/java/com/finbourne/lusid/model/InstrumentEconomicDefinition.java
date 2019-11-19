@@ -38,7 +38,9 @@ public class InstrumentEconomicDefinition {
   @SerializedName(SERIALIZED_NAME_CONTENT)
   private String content;
 
+
   public InstrumentEconomicDefinition instrumentFormat(String instrumentFormat) {
+    
     this.instrumentFormat = instrumentFormat;
     return this;
   }
@@ -48,15 +50,19 @@ public class InstrumentEconomicDefinition {
    * @return instrumentFormat
   **/
   @ApiModelProperty(required = true, value = "The format of the expanded definition.")
+
   public String getInstrumentFormat() {
     return instrumentFormat;
   }
+
 
   public void setInstrumentFormat(String instrumentFormat) {
     this.instrumentFormat = instrumentFormat;
   }
 
+
   public InstrumentEconomicDefinition content(String content) {
+    
     this.content = content;
     return this;
   }
@@ -66,9 +72,11 @@ public class InstrumentEconomicDefinition {
    * @return content
   **/
   @ApiModelProperty(required = true, value = "The content of the expanded definition. There is no validation on the format of this.")
+
   public String getContent() {
     return content;
   }
+
 
   public void setContent(String content) {
     this.content = content;

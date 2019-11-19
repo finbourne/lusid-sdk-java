@@ -55,54 +55,76 @@ public class IdentifierPartSchema {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
    /**
    * The typical index in the identifier in which this part appears
    * @return index
   **/
   @ApiModelProperty(required = true, value = "The typical index in the identifier in which this part appears")
+
   public Integer getIndex() {
     return index;
   }
+
+
+
 
    /**
    * The name of the identifier part that can/should be provided for this resource type
    * @return name
   **/
   @ApiModelProperty(required = true, value = "The name of the identifier part that can/should be provided for this resource type")
+
   public String getName() {
     return name;
   }
+
+
+
 
    /**
    * The display name of the identifier part
    * @return displayName
   **/
   @ApiModelProperty(required = true, value = "The display name of the identifier part")
+
   public String getDisplayName() {
     return displayName;
   }
+
+
+
 
    /**
    * A brief description of the point of this identifier part
    * @return description
   **/
   @ApiModelProperty(required = true, value = "A brief description of the point of this identifier part")
+
   public String getDescription() {
     return description;
   }
+
+
+
 
    /**
    * Whether a value is required to be provided
    * @return required
   **/
   @ApiModelProperty(required = true, value = "Whether a value is required to be provided")
+
   public Boolean getRequired() {
     return required;
   }
 
+
+
+
   public IdentifierPartSchema links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -119,10 +141,13 @@ public class IdentifierPartSchema {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

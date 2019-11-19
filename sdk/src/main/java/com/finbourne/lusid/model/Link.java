@@ -45,7 +45,9 @@ public class Link {
   @SerializedName(SERIALIZED_NAME_METHOD)
   private String method;
 
+
   public Link relation(String relation) {
+    
     this.relation = relation;
     return this;
   }
@@ -55,15 +57,19 @@ public class Link {
    * @return relation
   **/
   @ApiModelProperty(required = true, value = "")
+
   public String getRelation() {
     return relation;
   }
+
 
   public void setRelation(String relation) {
     this.relation = relation;
   }
 
+
   public Link href(String href) {
+    
     this.href = href;
     return this;
   }
@@ -73,15 +79,19 @@ public class Link {
    * @return href
   **/
   @ApiModelProperty(required = true, value = "")
+
   public String getHref() {
     return href;
   }
+
 
   public void setHref(String href) {
     this.href = href;
   }
 
+
   public Link description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -90,16 +100,21 @@ public class Link {
    * Get description
    * @return description
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getDescription() {
     return description;
   }
+
 
   public void setDescription(String description) {
     this.description = description;
   }
 
+
   public Link method(String method) {
+    
     this.method = method;
     return this;
   }
@@ -109,9 +124,11 @@ public class Link {
    * @return method
   **/
   @ApiModelProperty(required = true, value = "")
+
   public String getMethod() {
     return method;
   }
+
 
   public void setMethod(String method) {
     this.method = method;

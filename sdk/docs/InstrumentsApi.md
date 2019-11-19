@@ -556,7 +556,7 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    List<UpsertInstrumentPropertyRequest> instrumentProperties = Arrays.asList(null); // List<UpsertInstrumentPropertyRequest> | A collection of instruments and associated instrument properties to update or insert.
+    List<UpsertInstrumentPropertyRequest> instrumentProperties = Arrays.asList(); // List<UpsertInstrumentPropertyRequest> | A collection of instruments and associated instrument properties to update or insert.
     try {
       UpsertInstrumentPropertiesResponse result = apiInstance.upsertInstrumentsProperties(instrumentProperties);
       System.out.println(result);

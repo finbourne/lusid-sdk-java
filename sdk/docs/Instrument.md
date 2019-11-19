@@ -2,6 +2,7 @@
 
 # Instrument
 
+A list of instruments.
 ## Properties
 
 Name | Type | Description | Notes

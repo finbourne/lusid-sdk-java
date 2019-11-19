@@ -41,7 +41,7 @@ public class HoldingsAdjustmentHeader {
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   /**
    * Describes how the holdings were adjusted. If &#39;PositionToZero&#39; the entire transaction portfolio&#39;s holdings were set via a call to &#39;Set holdings&#39;. If &#39;KeepTheSame&#39; only the specified holdings were adjusted via a call to &#39;Adjust holdings&#39;.
@@ -84,7 +84,7 @@ public class HoldingsAdjustmentHeader {
 
       @Override
       public UnmatchedHoldingMethodEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return UnmatchedHoldingMethodEnum.fromValue(value);
       }
     }
@@ -96,9 +96,11 @@ public class HoldingsAdjustmentHeader {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public HoldingsAdjustmentHeader effectiveAt(OffsetDateTime effectiveAt) {
+    
     this.effectiveAt = effectiveAt;
     return this;
   }
@@ -108,15 +110,19 @@ public class HoldingsAdjustmentHeader {
    * @return effectiveAt
   **/
   @ApiModelProperty(required = true, value = "The effective datetime from which the adjustment is valid. There can only be one holdings adjustment for a transaction portfolio at a specific effective datetime, so this uniquely identifies the adjustment.")
+
   public OffsetDateTime getEffectiveAt() {
     return effectiveAt;
   }
+
 
   public void setEffectiveAt(OffsetDateTime effectiveAt) {
     this.effectiveAt = effectiveAt;
   }
 
+
   public HoldingsAdjustmentHeader version(Version version) {
+    
     this.version = version;
     return this;
   }
@@ -126,15 +132,19 @@ public class HoldingsAdjustmentHeader {
    * @return version
   **/
   @ApiModelProperty(required = true, value = "")
+
   public Version getVersion() {
     return version;
   }
+
 
   public void setVersion(Version version) {
     this.version = version;
   }
 
+
   public HoldingsAdjustmentHeader unmatchedHoldingMethod(UnmatchedHoldingMethodEnum unmatchedHoldingMethod) {
+    
     this.unmatchedHoldingMethod = unmatchedHoldingMethod;
     return this;
   }
@@ -144,15 +154,19 @@ public class HoldingsAdjustmentHeader {
    * @return unmatchedHoldingMethod
   **/
   @ApiModelProperty(required = true, value = "Describes how the holdings were adjusted. If 'PositionToZero' the entire transaction portfolio's holdings were set via a call to 'Set holdings'. If 'KeepTheSame' only the specified holdings were adjusted via a call to 'Adjust holdings'.")
+
   public UnmatchedHoldingMethodEnum getUnmatchedHoldingMethod() {
     return unmatchedHoldingMethod;
   }
+
 
   public void setUnmatchedHoldingMethod(UnmatchedHoldingMethodEnum unmatchedHoldingMethod) {
     this.unmatchedHoldingMethod = unmatchedHoldingMethod;
   }
 
+
   public HoldingsAdjustmentHeader links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -169,10 +183,13 @@ public class HoldingsAdjustmentHeader {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

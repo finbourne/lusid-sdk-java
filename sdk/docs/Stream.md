@@ -6,11 +6,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**canRead** | **Boolean** |  |  [optional]
-**canSeek** | **Boolean** |  |  [optional]
-**canTimeout** | **Boolean** |  |  [optional]
-**canWrite** | **Boolean** |  |  [optional]
-**length** | **Long** |  |  [optional]
+**canRead** | **Boolean** |  |  [optional] [readonly]
+**canSeek** | **Boolean** |  |  [optional] [readonly]
+**canTimeout** | **Boolean** |  |  [optional] [readonly]
+**canWrite** | **Boolean** |  |  [optional] [readonly]
+**length** | **Long** |  |  [optional] [readonly]
 **position** | **Long** |  |  [optional]
 **readTimeout** | **Integer** |  |  [optional]
 **writeTimeout** | **Integer** |  |  [optional]

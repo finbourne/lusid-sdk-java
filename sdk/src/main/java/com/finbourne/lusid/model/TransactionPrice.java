@@ -76,7 +76,7 @@ public class TransactionPrice {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -86,7 +86,9 @@ public class TransactionPrice {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private TypeEnum type;
 
+
   public TransactionPrice price(Double price) {
+    
     this.price = price;
     return this;
   }
@@ -95,16 +97,21 @@ public class TransactionPrice {
    * Get price
    * @return price
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Double getPrice() {
     return price;
   }
+
 
   public void setPrice(Double price) {
     this.price = price;
   }
 
+
   public TransactionPrice type(TypeEnum type) {
+    
     this.type = type;
     return this;
   }
@@ -113,10 +120,13 @@ public class TransactionPrice {
    * Get type
    * @return type
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public TypeEnum getType() {
     return type;
   }
+
 
   public void setType(TypeEnum type) {
     this.type = type;

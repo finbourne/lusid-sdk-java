@@ -81,7 +81,7 @@ public class GetReferencePortfolioConstituentsResponse {
 
       @Override
       public WeightTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return WeightTypeEnum.fromValue(value);
       }
     }
@@ -138,7 +138,7 @@ public class GetReferencePortfolioConstituentsResponse {
 
       @Override
       public PeriodTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return PeriodTypeEnum.fromValue(value);
       }
     }
@@ -162,9 +162,11 @@ public class GetReferencePortfolioConstituentsResponse {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public GetReferencePortfolioConstituentsResponse effectiveFrom(OffsetDateTime effectiveFrom) {
+    
     this.effectiveFrom = effectiveFrom;
     return this;
   }
@@ -174,15 +176,19 @@ public class GetReferencePortfolioConstituentsResponse {
    * @return effectiveFrom
   **/
   @ApiModelProperty(required = true, value = "")
+
   public OffsetDateTime getEffectiveFrom() {
     return effectiveFrom;
   }
+
 
   public void setEffectiveFrom(OffsetDateTime effectiveFrom) {
     this.effectiveFrom = effectiveFrom;
   }
 
+
   public GetReferencePortfolioConstituentsResponse weightType(WeightTypeEnum weightType) {
+    
     this.weightType = weightType;
     return this;
   }
@@ -192,15 +198,19 @@ public class GetReferencePortfolioConstituentsResponse {
    * @return weightType
   **/
   @ApiModelProperty(required = true, value = "")
+
   public WeightTypeEnum getWeightType() {
     return weightType;
   }
+
 
   public void setWeightType(WeightTypeEnum weightType) {
     this.weightType = weightType;
   }
 
+
   public GetReferencePortfolioConstituentsResponse periodType(PeriodTypeEnum periodType) {
+    
     this.periodType = periodType;
     return this;
   }
@@ -209,16 +219,21 @@ public class GetReferencePortfolioConstituentsResponse {
    * 
    * @return periodType
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public PeriodTypeEnum getPeriodType() {
     return periodType;
   }
+
 
   public void setPeriodType(PeriodTypeEnum periodType) {
     this.periodType = periodType;
   }
 
+
   public GetReferencePortfolioConstituentsResponse periodCount(Integer periodCount) {
+    
     this.periodCount = periodCount;
     return this;
   }
@@ -227,16 +242,21 @@ public class GetReferencePortfolioConstituentsResponse {
    * 
    * @return periodCount
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Integer getPeriodCount() {
     return periodCount;
   }
+
 
   public void setPeriodCount(Integer periodCount) {
     this.periodCount = periodCount;
   }
 
+
   public GetReferencePortfolioConstituentsResponse constituents(List<ReferencePortfolioConstituent> constituents) {
+    
     this.constituents = constituents;
     return this;
   }
@@ -251,15 +271,19 @@ public class GetReferencePortfolioConstituentsResponse {
    * @return constituents
   **/
   @ApiModelProperty(required = true, value = "Set of constituents (instrument/weight pairings)")
+
   public List<ReferencePortfolioConstituent> getConstituents() {
     return constituents;
   }
+
 
   public void setConstituents(List<ReferencePortfolioConstituent> constituents) {
     this.constituents = constituents;
   }
 
+
   public GetReferencePortfolioConstituentsResponse href(String href) {
+    
     this.href = href;
     return this;
   }
@@ -268,16 +292,21 @@ public class GetReferencePortfolioConstituentsResponse {
    * The Uri that returns the same result as the original request,  but may include resolved as at time(s).
    * @return href
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The Uri that returns the same result as the original request,  but may include resolved as at time(s).")
+
   public String getHref() {
     return href;
   }
+
 
   public void setHref(String href) {
     this.href = href;
   }
 
+
   public GetReferencePortfolioConstituentsResponse links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -294,10 +323,13 @@ public class GetReferencePortfolioConstituentsResponse {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

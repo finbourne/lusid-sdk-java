@@ -47,7 +47,7 @@ public class CutLabelDefinition {
 
   public static final String SERIALIZED_NAME_CUT_LOCAL_TIME = "cutLocalTime";
   @SerializedName(SERIALIZED_NAME_CUT_LOCAL_TIME)
-  private CutLocalTime cutLocalTime = null;
+  private CutLocalTime cutLocalTime;
 
   public static final String SERIALIZED_NAME_TIME_ZONE = "timeZone";
   @SerializedName(SERIALIZED_NAME_TIME_ZONE)
@@ -59,9 +59,11 @@ public class CutLabelDefinition {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public CutLabelDefinition code(String code) {
+    
     this.code = code;
     return this;
   }
@@ -70,16 +72,21 @@ public class CutLabelDefinition {
    * 
    * @return code
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getCode() {
     return code;
   }
+
 
   public void setCode(String code) {
     this.code = code;
   }
 
+
   public CutLabelDefinition displayName(String displayName) {
+    
     this.displayName = displayName;
     return this;
   }
@@ -88,16 +95,21 @@ public class CutLabelDefinition {
    * 
    * @return displayName
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getDisplayName() {
     return displayName;
   }
+
 
   public void setDisplayName(String displayName) {
     this.displayName = displayName;
   }
 
+
   public CutLabelDefinition description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -106,16 +118,21 @@ public class CutLabelDefinition {
    * 
    * @return description
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getDescription() {
     return description;
   }
+
 
   public void setDescription(String description) {
     this.description = description;
   }
 
+
   public CutLabelDefinition cutLocalTime(CutLocalTime cutLocalTime) {
+    
     this.cutLocalTime = cutLocalTime;
     return this;
   }
@@ -124,16 +141,21 @@ public class CutLabelDefinition {
    * Get cutLocalTime
    * @return cutLocalTime
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public CutLocalTime getCutLocalTime() {
     return cutLocalTime;
   }
+
 
   public void setCutLocalTime(CutLocalTime cutLocalTime) {
     this.cutLocalTime = cutLocalTime;
   }
 
+
   public CutLabelDefinition timeZone(String timeZone) {
+    
     this.timeZone = timeZone;
     return this;
   }
@@ -142,25 +164,35 @@ public class CutLabelDefinition {
    * 
    * @return timeZone
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getTimeZone() {
     return timeZone;
   }
+
 
   public void setTimeZone(String timeZone) {
     this.timeZone = timeZone;
   }
 
+
    /**
    * Get href
    * @return href
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getHref() {
     return href;
   }
 
+
+
+
   public CutLabelDefinition links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -177,10 +209,13 @@ public class CutLabelDefinition {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

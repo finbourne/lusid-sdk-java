@@ -35,7 +35,7 @@ import java.util.List;
 public class UpsertPortfolioExecutionsResponse {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -43,9 +43,11 @@ public class UpsertPortfolioExecutionsResponse {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public UpsertPortfolioExecutionsResponse version(Version version) {
+    
     this.version = version;
     return this;
   }
@@ -55,15 +57,19 @@ public class UpsertPortfolioExecutionsResponse {
    * @return version
   **/
   @ApiModelProperty(required = true, value = "")
+
   public Version getVersion() {
     return version;
   }
+
 
   public void setVersion(Version version) {
     this.version = version;
   }
 
+
   public UpsertPortfolioExecutionsResponse href(String href) {
+    
     this.href = href;
     return this;
   }
@@ -72,16 +78,21 @@ public class UpsertPortfolioExecutionsResponse {
    * The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
    * @return href
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.")
+
   public String getHref() {
     return href;
   }
+
 
   public void setHref(String href) {
     this.href = href;
   }
 
+
   public UpsertPortfolioExecutionsResponse links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -98,10 +109,13 @@ public class UpsertPortfolioExecutionsResponse {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

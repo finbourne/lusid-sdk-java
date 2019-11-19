@@ -39,13 +39,15 @@ public class UpsertReferencePortfolioConstituentsResponse {
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public UpsertReferencePortfolioConstituentsResponse href(String href) {
+    
     this.href = href;
     return this;
   }
@@ -54,16 +56,21 @@ public class UpsertReferencePortfolioConstituentsResponse {
    * Get href
    * @return href
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getHref() {
     return href;
   }
+
 
   public void setHref(String href) {
     this.href = href;
   }
 
+
   public UpsertReferencePortfolioConstituentsResponse version(Version version) {
+    
     this.version = version;
     return this;
   }
@@ -72,16 +79,21 @@ public class UpsertReferencePortfolioConstituentsResponse {
    * Get version
    * @return version
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Version getVersion() {
     return version;
   }
+
 
   public void setVersion(Version version) {
     this.version = version;
   }
 
+
   public UpsertReferencePortfolioConstituentsResponse links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -98,10 +110,13 @@ public class UpsertReferencePortfolioConstituentsResponse {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

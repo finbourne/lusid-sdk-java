@@ -6,10 +6,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**schema** | [**SchemaEnum**](#SchemaEnum) |  |  [optional]
-**code** | **String** |  |  [optional]
-**displayName** | **String** |  |  [optional]
-**description** | **String** |  |  [optional]
+**schema** | [**SchemaEnum**](#SchemaEnum) |  |  [optional] [readonly]
+**code** | **String** |  |  [optional] [readonly]
+**displayName** | **String** |  |  [optional] [readonly]
+**description** | **String** |  |  [optional] [readonly]
 
 
 

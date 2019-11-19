@@ -78,7 +78,7 @@ public class TransactionQueryParameters {
 
       @Override
       public QueryModeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return QueryModeEnum.fromValue(value);
       }
     }
@@ -92,7 +92,9 @@ public class TransactionQueryParameters {
   @SerializedName(SERIALIZED_NAME_SHOW_CANCELLED_TRANSACTIONS)
   private Boolean showCancelledTransactions;
 
+
   public TransactionQueryParameters startDate(String startDate) {
+    
     this.startDate = startDate;
     return this;
   }
@@ -102,15 +104,19 @@ public class TransactionQueryParameters {
    * @return startDate
   **/
   @ApiModelProperty(required = true, value = "The lower bound effective datetime or cut label (inclusive) from which to build the transactions.")
+
   public String getStartDate() {
     return startDate;
   }
+
 
   public void setStartDate(String startDate) {
     this.startDate = startDate;
   }
 
+
   public TransactionQueryParameters endDate(String endDate) {
+    
     this.endDate = endDate;
     return this;
   }
@@ -120,15 +126,19 @@ public class TransactionQueryParameters {
    * @return endDate
   **/
   @ApiModelProperty(required = true, value = "The upper bound effective datetime or cut label (inclusive) from which to retrieve transactions.")
+
   public String getEndDate() {
     return endDate;
   }
+
 
   public void setEndDate(String endDate) {
     this.endDate = endDate;
   }
 
+
   public TransactionQueryParameters queryMode(QueryModeEnum queryMode) {
+    
     this.queryMode = queryMode;
     return this;
   }
@@ -137,16 +147,21 @@ public class TransactionQueryParameters {
    * The date to compare against the upper and lower bounds for the effective datetime or cut label. Defaults to &#39;TradeDate&#39; if not specified.
    * @return queryMode
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The date to compare against the upper and lower bounds for the effective datetime or cut label. Defaults to 'TradeDate' if not specified.")
+
   public QueryModeEnum getQueryMode() {
     return queryMode;
   }
+
 
   public void setQueryMode(QueryModeEnum queryMode) {
     this.queryMode = queryMode;
   }
 
+
   public TransactionQueryParameters showCancelledTransactions(Boolean showCancelledTransactions) {
+    
     this.showCancelledTransactions = showCancelledTransactions;
     return this;
   }
@@ -155,10 +170,13 @@ public class TransactionQueryParameters {
    * Option to specify whether or not to include cancelled transactions in the output. Defaults to False if not specified.
    * @return showCancelledTransactions
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "Option to specify whether or not to include cancelled transactions in the output. Defaults to False if not specified.")
+
   public Boolean getShowCancelledTransactions() {
     return showCancelledTransactions;
   }
+
 
   public void setShowCancelledTransactions(Boolean showCancelledTransactions) {
     this.showCancelledTransactions = showCancelledTransactions;

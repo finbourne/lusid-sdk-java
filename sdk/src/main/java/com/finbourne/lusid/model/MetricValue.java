@@ -37,7 +37,9 @@ public class MetricValue {
   @SerializedName(SERIALIZED_NAME_UNIT)
   private String unit;
 
+
   public MetricValue value(Double value) {
+    
     this.value = value;
     return this;
   }
@@ -46,16 +48,21 @@ public class MetricValue {
    * The numerical value of the property.
    * @return value
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The numerical value of the property.")
+
   public Double getValue() {
     return value;
   }
+
 
   public void setValue(Double value) {
     this.value = value;
   }
 
+
   public MetricValue unit(String unit) {
+    
     this.unit = unit;
     return this;
   }
@@ -64,10 +71,13 @@ public class MetricValue {
    * Get unit
    * @return unit
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getUnit() {
     return unit;
   }
+
 
   public void setUnit(String unit) {
     this.unit = unit;

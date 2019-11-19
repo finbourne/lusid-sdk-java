@@ -2,6 +2,7 @@
 
 # AccessControlledAction
 
+An action on LUSID that can be access controlled
 ## Properties
 
 Name | Type | Description | Notes

@@ -80,7 +80,7 @@ public class UpsertReferencePortfolioConstituentsRequest {
 
       @Override
       public WeightTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return WeightTypeEnum.fromValue(value);
       }
     }
@@ -137,7 +137,7 @@ public class UpsertReferencePortfolioConstituentsRequest {
 
       @Override
       public PeriodTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return PeriodTypeEnum.fromValue(value);
       }
     }
@@ -155,7 +155,9 @@ public class UpsertReferencePortfolioConstituentsRequest {
   @SerializedName(SERIALIZED_NAME_CONSTITUENTS)
   private List<ReferencePortfolioConstituentRequest> constituents = new ArrayList<>();
 
+
   public UpsertReferencePortfolioConstituentsRequest effectiveFrom(OffsetDateTime effectiveFrom) {
+    
     this.effectiveFrom = effectiveFrom;
     return this;
   }
@@ -165,15 +167,19 @@ public class UpsertReferencePortfolioConstituentsRequest {
    * @return effectiveFrom
   **/
   @ApiModelProperty(required = true, value = "")
+
   public OffsetDateTime getEffectiveFrom() {
     return effectiveFrom;
   }
+
 
   public void setEffectiveFrom(OffsetDateTime effectiveFrom) {
     this.effectiveFrom = effectiveFrom;
   }
 
+
   public UpsertReferencePortfolioConstituentsRequest weightType(WeightTypeEnum weightType) {
+    
     this.weightType = weightType;
     return this;
   }
@@ -183,15 +189,19 @@ public class UpsertReferencePortfolioConstituentsRequest {
    * @return weightType
   **/
   @ApiModelProperty(required = true, value = "")
+
   public WeightTypeEnum getWeightType() {
     return weightType;
   }
+
 
   public void setWeightType(WeightTypeEnum weightType) {
     this.weightType = weightType;
   }
 
+
   public UpsertReferencePortfolioConstituentsRequest periodType(PeriodTypeEnum periodType) {
+    
     this.periodType = periodType;
     return this;
   }
@@ -200,16 +210,21 @@ public class UpsertReferencePortfolioConstituentsRequest {
    * 
    * @return periodType
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public PeriodTypeEnum getPeriodType() {
     return periodType;
   }
+
 
   public void setPeriodType(PeriodTypeEnum periodType) {
     this.periodType = periodType;
   }
 
+
   public UpsertReferencePortfolioConstituentsRequest periodCount(Integer periodCount) {
+    
     this.periodCount = periodCount;
     return this;
   }
@@ -218,16 +233,21 @@ public class UpsertReferencePortfolioConstituentsRequest {
    * 
    * @return periodCount
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Integer getPeriodCount() {
     return periodCount;
   }
+
 
   public void setPeriodCount(Integer periodCount) {
     this.periodCount = periodCount;
   }
 
+
   public UpsertReferencePortfolioConstituentsRequest constituents(List<ReferencePortfolioConstituentRequest> constituents) {
+    
     this.constituents = constituents;
     return this;
   }
@@ -242,9 +262,11 @@ public class UpsertReferencePortfolioConstituentsRequest {
    * @return constituents
   **/
   @ApiModelProperty(required = true, value = "Set of constituents (instrument/weight pairings)")
+
   public List<ReferencePortfolioConstituentRequest> getConstituents() {
     return constituents;
   }
+
 
   public void setConstituents(List<ReferencePortfolioConstituentRequest> constituents) {
     this.constituents = constituents;

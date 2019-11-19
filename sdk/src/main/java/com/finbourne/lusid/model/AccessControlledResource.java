@@ -53,13 +53,15 @@ public class AccessControlledResource {
 
   public static final String SERIALIZED_NAME_IDENTIFIER_PARTS = "identifierParts";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_PARTS)
-  private List<IdentifierPartSchema> identifierParts = new ArrayList<>();
+  private List<IdentifierPartSchema> identifierParts = null;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public AccessControlledResource application(String application) {
+    
     this.application = application;
     return this;
   }
@@ -68,16 +70,21 @@ public class AccessControlledResource {
    * The application to which this resource belongs
    * @return application
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The application to which this resource belongs")
+
   public String getApplication() {
     return application;
   }
+
 
   public void setApplication(String application) {
     this.application = application;
   }
 
+
   public AccessControlledResource name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -86,16 +93,21 @@ public class AccessControlledResource {
    * The display name of the resource
    * @return name
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The display name of the resource")
+
   public String getName() {
     return name;
   }
+
 
   public void setName(String name) {
     this.name = name;
   }
 
+
   public AccessControlledResource description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -105,15 +117,19 @@ public class AccessControlledResource {
    * @return description
   **/
   @ApiModelProperty(required = true, value = "The description of the resource")
+
   public String getDescription() {
     return description;
   }
+
 
   public void setDescription(String description) {
     this.description = description;
   }
 
+
   public AccessControlledResource actions(List<AccessControlledAction> actions) {
+    
     this.actions = actions;
     return this;
   }
@@ -128,15 +144,19 @@ public class AccessControlledResource {
    * @return actions
   **/
   @ApiModelProperty(required = true, value = "The actions acceptable for this type of resource")
+
   public List<AccessControlledAction> getActions() {
     return actions;
   }
+
 
   public void setActions(List<AccessControlledAction> actions) {
     this.actions = actions;
   }
 
+
   public AccessControlledResource identifierParts(List<IdentifierPartSchema> identifierParts) {
+    
     this.identifierParts = identifierParts;
     return this;
   }
@@ -153,16 +173,21 @@ public class AccessControlledResource {
    * The constituent parts of a valid identifier for this resource
    * @return identifierParts
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The constituent parts of a valid identifier for this resource")
+
   public List<IdentifierPartSchema> getIdentifierParts() {
     return identifierParts;
   }
+
 
   public void setIdentifierParts(List<IdentifierPartSchema> identifierParts) {
     this.identifierParts = identifierParts;
   }
 
+
   public AccessControlledResource links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -179,10 +204,13 @@ public class AccessControlledResource {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

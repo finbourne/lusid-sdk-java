@@ -61,7 +61,9 @@ public class ExecutionRequest {
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
+
   public ExecutionRequest executionId(String executionId) {
+    
     this.executionId = executionId;
     return this;
   }
@@ -71,15 +73,19 @@ public class ExecutionRequest {
    * @return executionId
   **/
   @ApiModelProperty(required = true, value = "The unique identifier of the Execution Report (8) message as assigned by sell-side. FIX field 17.")
+
   public String getExecutionId() {
     return executionId;
   }
+
 
   public void setExecutionId(String executionId) {
     this.executionId = executionId;
   }
 
+
   public ExecutionRequest side(String side) {
+    
     this.side = side;
     return this;
   }
@@ -89,15 +95,19 @@ public class ExecutionRequest {
    * @return side
   **/
   @ApiModelProperty(required = true, value = "The side of the order. FIX field 54.")
+
   public String getSide() {
     return side;
   }
+
 
   public void setSide(String side) {
     this.side = side;
   }
 
+
   public ExecutionRequest instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
+    
     this.instrumentIdentifiers = instrumentIdentifiers;
     return this;
   }
@@ -112,15 +122,19 @@ public class ExecutionRequest {
    * @return instrumentIdentifiers
   **/
   @ApiModelProperty(required = true, value = "A set of instrument identifiers to use to resolve the execution to a unique instrument.")
+
   public Map<String, String> getInstrumentIdentifiers() {
     return instrumentIdentifiers;
   }
+
 
   public void setInstrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
     this.instrumentIdentifiers = instrumentIdentifiers;
   }
 
+
   public ExecutionRequest transactionTime(OffsetDateTime transactionTime) {
+    
     this.transactionTime = transactionTime;
     return this;
   }
@@ -130,15 +144,19 @@ public class ExecutionRequest {
    * @return transactionTime
   **/
   @ApiModelProperty(required = true, value = "Time of execution/order creation. FIX field 60.")
+
   public OffsetDateTime getTransactionTime() {
     return transactionTime;
   }
+
 
   public void setTransactionTime(OffsetDateTime transactionTime) {
     this.transactionTime = transactionTime;
   }
 
+
   public ExecutionRequest lastShares(Double lastShares) {
+    
     this.lastShares = lastShares;
     return this;
   }
@@ -148,15 +166,19 @@ public class ExecutionRequest {
    * @return lastShares
   **/
   @ApiModelProperty(required = true, value = "Quantity (e.g. shares) bought/sold on this (last) fill. FIX field 32.")
+
   public Double getLastShares() {
     return lastShares;
   }
+
 
   public void setLastShares(Double lastShares) {
     this.lastShares = lastShares;
   }
 
+
   public ExecutionRequest lastPx(Double lastPx) {
+    
     this.lastPx = lastPx;
     return this;
   }
@@ -166,15 +188,19 @@ public class ExecutionRequest {
    * @return lastPx
   **/
   @ApiModelProperty(required = true, value = "Price of this (last) fill. FIX field 31.")
+
   public Double getLastPx() {
     return lastPx;
   }
+
 
   public void setLastPx(Double lastPx) {
     this.lastPx = lastPx;
   }
 
+
   public ExecutionRequest currency(String currency) {
+    
     this.currency = currency;
     return this;
   }
@@ -184,9 +210,11 @@ public class ExecutionRequest {
    * @return currency
   **/
   @ApiModelProperty(required = true, value = "The currency used for the price. FIX field 15.")
+
   public String getCurrency() {
     return currency;
   }
+
 
   public void setCurrency(String currency) {
     this.currency = currency;

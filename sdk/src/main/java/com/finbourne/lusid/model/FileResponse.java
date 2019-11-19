@@ -33,7 +33,7 @@ import java.io.IOException;
 public class FileResponse {
   public static final String SERIALIZED_NAME_FILE_STREAM = "fileStream";
   @SerializedName(SERIALIZED_NAME_FILE_STREAM)
-  private Stream fileStream = null;
+  private Stream fileStream;
 
   public static final String SERIALIZED_NAME_CONTENT_TYPE = "contentType";
   @SerializedName(SERIALIZED_NAME_CONTENT_TYPE)
@@ -43,7 +43,9 @@ public class FileResponse {
   @SerializedName(SERIALIZED_NAME_DOWNLOADED_FILENAME)
   private String downloadedFilename;
 
+
   public FileResponse fileStream(Stream fileStream) {
+    
     this.fileStream = fileStream;
     return this;
   }
@@ -52,32 +54,45 @@ public class FileResponse {
    * Get fileStream
    * @return fileStream
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Stream getFileStream() {
     return fileStream;
   }
+
 
   public void setFileStream(Stream fileStream) {
     this.fileStream = fileStream;
   }
 
+
    /**
    * Get contentType
    * @return contentType
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getContentType() {
     return contentType;
   }
+
+
+
 
    /**
    * Get downloadedFilename
    * @return downloadedFilename
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getDownloadedFilename() {
     return downloadedFilename;
   }
+
+
 
 
   @Override

@@ -46,9 +46,11 @@ public class TransactionConfigurationData {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = new HashMap<>();
+  private Map<String, PerpetualProperty> properties = null;
+
 
   public TransactionConfigurationData aliases(List<TransactionConfigurationTypeAlias> aliases) {
+    
     this.aliases = aliases;
     return this;
   }
@@ -63,15 +65,19 @@ public class TransactionConfigurationData {
    * @return aliases
   **/
   @ApiModelProperty(required = true, value = "List of transaction codes that map to this specific transaction model")
+
   public List<TransactionConfigurationTypeAlias> getAliases() {
     return aliases;
   }
+
 
   public void setAliases(List<TransactionConfigurationTypeAlias> aliases) {
     this.aliases = aliases;
   }
 
+
   public TransactionConfigurationData movements(List<TransactionConfigurationMovementData> movements) {
+    
     this.movements = movements;
     return this;
   }
@@ -86,15 +92,19 @@ public class TransactionConfigurationData {
    * @return movements
   **/
   @ApiModelProperty(required = true, value = "Movement data for the transaction code")
+
   public List<TransactionConfigurationMovementData> getMovements() {
     return movements;
   }
+
 
   public void setMovements(List<TransactionConfigurationMovementData> movements) {
     this.movements = movements;
   }
 
+
   public TransactionConfigurationData properties(Map<String, PerpetualProperty> properties) {
+    
     this.properties = properties;
     return this;
   }
@@ -111,10 +121,13 @@ public class TransactionConfigurationData {
    * Get properties
    * @return properties
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Map<String, PerpetualProperty> getProperties() {
     return properties;
   }
+
 
   public void setProperties(Map<String, PerpetualProperty> properties) {
     this.properties = properties;

@@ -47,7 +47,7 @@ public class CreateDerivedTransactionPortfolioRequest {
 
   public static final String SERIALIZED_NAME_PARENT_PORTFOLIO_ID = "parentPortfolioId";
   @SerializedName(SERIALIZED_NAME_PARENT_PORTFOLIO_ID)
-  private ResourceId parentPortfolioId = null;
+  private ResourceId parentPortfolioId;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -55,7 +55,7 @@ public class CreateDerivedTransactionPortfolioRequest {
 
   public static final String SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID = "corporateActionSourceId";
   @SerializedName(SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID)
-  private ResourceId corporateActionSourceId = null;
+  private ResourceId corporateActionSourceId;
 
   /**
    * 
@@ -106,7 +106,7 @@ public class CreateDerivedTransactionPortfolioRequest {
 
       @Override
       public AccountingMethodEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return AccountingMethodEnum.fromValue(value);
       }
     }
@@ -118,9 +118,11 @@ public class CreateDerivedTransactionPortfolioRequest {
 
   public static final String SERIALIZED_NAME_SUB_HOLDING_KEYS = "subHoldingKeys";
   @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEYS)
-  private List<String> subHoldingKeys = new ArrayList<>();
+  private List<String> subHoldingKeys = null;
+
 
   public CreateDerivedTransactionPortfolioRequest displayName(String displayName) {
+    
     this.displayName = displayName;
     return this;
   }
@@ -130,15 +132,19 @@ public class CreateDerivedTransactionPortfolioRequest {
    * @return displayName
   **/
   @ApiModelProperty(required = true, value = "")
+
   public String getDisplayName() {
     return displayName;
   }
+
 
   public void setDisplayName(String displayName) {
     this.displayName = displayName;
   }
 
+
   public CreateDerivedTransactionPortfolioRequest description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -147,16 +153,21 @@ public class CreateDerivedTransactionPortfolioRequest {
    * 
    * @return description
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getDescription() {
     return description;
   }
+
 
   public void setDescription(String description) {
     this.description = description;
   }
 
+
   public CreateDerivedTransactionPortfolioRequest code(String code) {
+    
     this.code = code;
     return this;
   }
@@ -166,15 +177,19 @@ public class CreateDerivedTransactionPortfolioRequest {
    * @return code
   **/
   @ApiModelProperty(required = true, value = "")
+
   public String getCode() {
     return code;
   }
+
 
   public void setCode(String code) {
     this.code = code;
   }
 
+
   public CreateDerivedTransactionPortfolioRequest parentPortfolioId(ResourceId parentPortfolioId) {
+    
     this.parentPortfolioId = parentPortfolioId;
     return this;
   }
@@ -184,15 +199,19 @@ public class CreateDerivedTransactionPortfolioRequest {
    * @return parentPortfolioId
   **/
   @ApiModelProperty(required = true, value = "")
+
   public ResourceId getParentPortfolioId() {
     return parentPortfolioId;
   }
+
 
   public void setParentPortfolioId(ResourceId parentPortfolioId) {
     this.parentPortfolioId = parentPortfolioId;
   }
 
+
   public CreateDerivedTransactionPortfolioRequest created(OffsetDateTime created) {
+    
     this.created = created;
     return this;
   }
@@ -201,16 +220,21 @@ public class CreateDerivedTransactionPortfolioRequest {
    * 
    * @return created
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public OffsetDateTime getCreated() {
     return created;
   }
+
 
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+
   public CreateDerivedTransactionPortfolioRequest corporateActionSourceId(ResourceId corporateActionSourceId) {
+    
     this.corporateActionSourceId = corporateActionSourceId;
     return this;
   }
@@ -219,16 +243,21 @@ public class CreateDerivedTransactionPortfolioRequest {
    * Get corporateActionSourceId
    * @return corporateActionSourceId
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public ResourceId getCorporateActionSourceId() {
     return corporateActionSourceId;
   }
+
 
   public void setCorporateActionSourceId(ResourceId corporateActionSourceId) {
     this.corporateActionSourceId = corporateActionSourceId;
   }
 
+
   public CreateDerivedTransactionPortfolioRequest accountingMethod(AccountingMethodEnum accountingMethod) {
+    
     this.accountingMethod = accountingMethod;
     return this;
   }
@@ -237,16 +266,21 @@ public class CreateDerivedTransactionPortfolioRequest {
    * 
    * @return accountingMethod
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public AccountingMethodEnum getAccountingMethod() {
     return accountingMethod;
   }
+
 
   public void setAccountingMethod(AccountingMethodEnum accountingMethod) {
     this.accountingMethod = accountingMethod;
   }
 
+
   public CreateDerivedTransactionPortfolioRequest subHoldingKeys(List<String> subHoldingKeys) {
+    
     this.subHoldingKeys = subHoldingKeys;
     return this;
   }
@@ -263,10 +297,13 @@ public class CreateDerivedTransactionPortfolioRequest {
    * 
    * @return subHoldingKeys
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<String> getSubHoldingKeys() {
     return subHoldingKeys;
   }
+
 
   public void setSubHoldingKeys(List<String> subHoldingKeys) {
     this.subHoldingKeys = subHoldingKeys;

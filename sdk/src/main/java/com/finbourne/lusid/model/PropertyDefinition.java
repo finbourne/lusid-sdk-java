@@ -159,7 +159,7 @@ public class PropertyDefinition {
 
       @Override
       public ValueTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return ValueTypeEnum.fromValue(value);
       }
     }
@@ -179,7 +179,7 @@ public class PropertyDefinition {
 
   public static final String SERIALIZED_NAME_DATA_TYPE_ID = "dataTypeId";
   @SerializedName(SERIALIZED_NAME_DATA_TYPE_ID)
-  private ResourceId dataTypeId = null;
+  private ResourceId dataTypeId;
 
   /**
    * Describes how the property&#39;s values can change over time.
@@ -222,7 +222,7 @@ public class PropertyDefinition {
 
       @Override
       public LifeTimeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return LifeTimeEnum.fromValue(value);
       }
     }
@@ -275,7 +275,7 @@ public class PropertyDefinition {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -328,7 +328,7 @@ public class PropertyDefinition {
 
       @Override
       public UnitSchemaEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return UnitSchemaEnum.fromValue(value);
       }
     }
@@ -399,7 +399,7 @@ public class PropertyDefinition {
 
       @Override
       public DomainEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return DomainEnum.fromValue(value);
       }
     }
@@ -419,9 +419,11 @@ public class PropertyDefinition {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public PropertyDefinition href(String href) {
+    
     this.href = href;
     return this;
   }
@@ -430,16 +432,21 @@ public class PropertyDefinition {
    * The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
    * @return href
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.")
+
   public String getHref() {
     return href;
   }
+
 
   public void setHref(String href) {
     this.href = href;
   }
 
+
   public PropertyDefinition key(String key) {
+    
     this.key = key;
     return this;
   }
@@ -448,16 +455,21 @@ public class PropertyDefinition {
    * The property key which uniquely identifies the property. The format for the property key is {domain}/{scope}/{code}, e.g. &#39;Portfolio/Manager/Id&#39;.
    * @return key
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The property key which uniquely identifies the property. The format for the property key is {domain}/{scope}/{code}, e.g. 'Portfolio/Manager/Id'.")
+
   public String getKey() {
     return key;
   }
+
 
   public void setKey(String key) {
     this.key = key;
   }
 
+
   public PropertyDefinition valueType(ValueTypeEnum valueType) {
+    
     this.valueType = valueType;
     return this;
   }
@@ -466,16 +478,21 @@ public class PropertyDefinition {
    * The type of values that can be associated with this property. This is defined by the property&#39;s data type.
    * @return valueType
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The type of values that can be associated with this property. This is defined by the property's data type.")
+
   public ValueTypeEnum getValueType() {
     return valueType;
   }
+
 
   public void setValueType(ValueTypeEnum valueType) {
     this.valueType = valueType;
   }
 
+
   public PropertyDefinition valueRequired(Boolean valueRequired) {
+    
     this.valueRequired = valueRequired;
     return this;
   }
@@ -484,16 +501,21 @@ public class PropertyDefinition {
    * Whether or not a value is always required for this property.
    * @return valueRequired
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "Whether or not a value is always required for this property.")
+
   public Boolean getValueRequired() {
     return valueRequired;
   }
+
 
   public void setValueRequired(Boolean valueRequired) {
     this.valueRequired = valueRequired;
   }
 
+
   public PropertyDefinition displayName(String displayName) {
+    
     this.displayName = displayName;
     return this;
   }
@@ -502,16 +524,21 @@ public class PropertyDefinition {
    * The display name of the property.
    * @return displayName
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The display name of the property.")
+
   public String getDisplayName() {
     return displayName;
   }
+
 
   public void setDisplayName(String displayName) {
     this.displayName = displayName;
   }
 
+
   public PropertyDefinition dataTypeId(ResourceId dataTypeId) {
+    
     this.dataTypeId = dataTypeId;
     return this;
   }
@@ -520,16 +547,21 @@ public class PropertyDefinition {
    * Get dataTypeId
    * @return dataTypeId
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public ResourceId getDataTypeId() {
     return dataTypeId;
   }
+
 
   public void setDataTypeId(ResourceId dataTypeId) {
     this.dataTypeId = dataTypeId;
   }
 
+
   public PropertyDefinition lifeTime(LifeTimeEnum lifeTime) {
+    
     this.lifeTime = lifeTime;
     return this;
   }
@@ -538,16 +570,21 @@ public class PropertyDefinition {
    * Describes how the property&#39;s values can change over time.
    * @return lifeTime
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "Describes how the property's values can change over time.")
+
   public LifeTimeEnum getLifeTime() {
     return lifeTime;
   }
+
 
   public void setLifeTime(LifeTimeEnum lifeTime) {
     this.lifeTime = lifeTime;
   }
 
+
   public PropertyDefinition type(TypeEnum type) {
+    
     this.type = type;
     return this;
   }
@@ -556,16 +593,21 @@ public class PropertyDefinition {
    * The type of the property.
    * @return type
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The type of the property.")
+
   public TypeEnum getType() {
     return type;
   }
+
 
   public void setType(TypeEnum type) {
     this.type = type;
   }
 
+
   public PropertyDefinition unitSchema(UnitSchemaEnum unitSchema) {
+    
     this.unitSchema = unitSchema;
     return this;
   }
@@ -574,43 +616,63 @@ public class PropertyDefinition {
    * The units that can be associated with the property&#39;s values. This is defined by the property&#39;s data type.
    * @return unitSchema
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The units that can be associated with the property's values. This is defined by the property's data type.")
+
   public UnitSchemaEnum getUnitSchema() {
     return unitSchema;
   }
+
 
   public void setUnitSchema(UnitSchemaEnum unitSchema) {
     this.unitSchema = unitSchema;
   }
 
+
    /**
    * The domain that the property exists in.
    * @return domain
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The domain that the property exists in.")
+
   public DomainEnum getDomain() {
     return domain;
   }
+
+
+
 
    /**
    * The scope that the property exists in.
    * @return scope
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The scope that the property exists in.")
+
   public String getScope() {
     return scope;
   }
+
+
+
 
    /**
    * The code of the property. Together with the domain and scope this uniquely identifies the property.
    * @return code
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The code of the property. Together with the domain and scope this uniquely identifies the property.")
+
   public String getCode() {
     return code;
   }
 
+
+
+
   public PropertyDefinition links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -627,10 +689,13 @@ public class PropertyDefinition {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

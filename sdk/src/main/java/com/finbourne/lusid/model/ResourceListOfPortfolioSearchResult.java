@@ -43,9 +43,11 @@ public class ResourceListOfPortfolioSearchResult {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public ResourceListOfPortfolioSearchResult values(List<PortfolioSearchResult> values) {
+    
     this.values = values;
     return this;
   }
@@ -60,15 +62,19 @@ public class ResourceListOfPortfolioSearchResult {
    * @return values
   **/
   @ApiModelProperty(required = true, value = "")
+
   public List<PortfolioSearchResult> getValues() {
     return values;
   }
+
 
   public void setValues(List<PortfolioSearchResult> values) {
     this.values = values;
   }
 
+
   public ResourceListOfPortfolioSearchResult href(String href) {
+    
     this.href = href;
     return this;
   }
@@ -77,16 +83,21 @@ public class ResourceListOfPortfolioSearchResult {
    * Get href
    * @return href
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getHref() {
     return href;
   }
+
 
   public void setHref(String href) {
     this.href = href;
   }
 
+
   public ResourceListOfPortfolioSearchResult links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -103,10 +114,13 @@ public class ResourceListOfPortfolioSearchResult {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

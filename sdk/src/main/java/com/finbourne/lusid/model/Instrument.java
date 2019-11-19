@@ -49,7 +49,7 @@ public class Instrument {
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -61,15 +61,15 @@ public class Instrument {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private List<Property> properties = new ArrayList<>();
+  private List<Property> properties = null;
 
   public static final String SERIALIZED_NAME_LOOKTHROUGH_PORTFOLIO = "lookthroughPortfolio";
   @SerializedName(SERIALIZED_NAME_LOOKTHROUGH_PORTFOLIO)
-  private ResourceId lookthroughPortfolio = null;
+  private ResourceId lookthroughPortfolio;
 
   public static final String SERIALIZED_NAME_INSTRUMENT_DEFINITION = "instrumentDefinition";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_DEFINITION)
-  private InstrumentEconomicDefinition instrumentDefinition = null;
+  private InstrumentEconomicDefinition instrumentDefinition;
 
   /**
    * The state of of the instrument at the asAt datetime of this version of the instrument definition.
@@ -112,7 +112,7 @@ public class Instrument {
 
       @Override
       public StateEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return StateEnum.fromValue(value);
       }
     }
@@ -124,9 +124,11 @@ public class Instrument {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public Instrument href(String href) {
+    
     this.href = href;
     return this;
   }
@@ -135,16 +137,21 @@ public class Instrument {
    * The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
    * @return href
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.")
+
   public String getHref() {
     return href;
   }
+
 
   public void setHref(String href) {
     this.href = href;
   }
 
+
   public Instrument lusidInstrumentId(String lusidInstrumentId) {
+    
     this.lusidInstrumentId = lusidInstrumentId;
     return this;
   }
@@ -154,15 +161,19 @@ public class Instrument {
    * @return lusidInstrumentId
   **/
   @ApiModelProperty(required = true, value = "The unique LUSID Instrument Identifier (LUID) of the instrument.")
+
   public String getLusidInstrumentId() {
     return lusidInstrumentId;
   }
+
 
   public void setLusidInstrumentId(String lusidInstrumentId) {
     this.lusidInstrumentId = lusidInstrumentId;
   }
 
+
   public Instrument version(Version version) {
+    
     this.version = version;
     return this;
   }
@@ -172,15 +183,19 @@ public class Instrument {
    * @return version
   **/
   @ApiModelProperty(required = true, value = "")
+
   public Version getVersion() {
     return version;
   }
+
 
   public void setVersion(Version version) {
     this.version = version;
   }
 
+
   public Instrument name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -190,15 +205,19 @@ public class Instrument {
    * @return name
   **/
   @ApiModelProperty(required = true, value = "The name of the instrument.")
+
   public String getName() {
     return name;
   }
+
 
   public void setName(String name) {
     this.name = name;
   }
 
+
   public Instrument identifiers(Map<String, String> identifiers) {
+    
     this.identifiers = identifiers;
     return this;
   }
@@ -213,15 +232,19 @@ public class Instrument {
    * @return identifiers
   **/
   @ApiModelProperty(required = true, value = "The set of identifiers that can be used to identify the instrument.")
+
   public Map<String, String> getIdentifiers() {
     return identifiers;
   }
+
 
   public void setIdentifiers(Map<String, String> identifiers) {
     this.identifiers = identifiers;
   }
 
+
   public Instrument properties(List<Property> properties) {
+    
     this.properties = properties;
     return this;
   }
@@ -238,16 +261,21 @@ public class Instrument {
    * The requested instrument properties. These will be from the &#39;Instrument&#39; domain.
    * @return properties
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The requested instrument properties. These will be from the 'Instrument' domain.")
+
   public List<Property> getProperties() {
     return properties;
   }
+
 
   public void setProperties(List<Property> properties) {
     this.properties = properties;
   }
 
+
   public Instrument lookthroughPortfolio(ResourceId lookthroughPortfolio) {
+    
     this.lookthroughPortfolio = lookthroughPortfolio;
     return this;
   }
@@ -256,16 +284,21 @@ public class Instrument {
    * Get lookthroughPortfolio
    * @return lookthroughPortfolio
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public ResourceId getLookthroughPortfolio() {
     return lookthroughPortfolio;
   }
+
 
   public void setLookthroughPortfolio(ResourceId lookthroughPortfolio) {
     this.lookthroughPortfolio = lookthroughPortfolio;
   }
 
+
   public Instrument instrumentDefinition(InstrumentEconomicDefinition instrumentDefinition) {
+    
     this.instrumentDefinition = instrumentDefinition;
     return this;
   }
@@ -274,16 +307,21 @@ public class Instrument {
    * Get instrumentDefinition
    * @return instrumentDefinition
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public InstrumentEconomicDefinition getInstrumentDefinition() {
     return instrumentDefinition;
   }
+
 
   public void setInstrumentDefinition(InstrumentEconomicDefinition instrumentDefinition) {
     this.instrumentDefinition = instrumentDefinition;
   }
 
+
   public Instrument state(StateEnum state) {
+    
     this.state = state;
     return this;
   }
@@ -293,15 +331,19 @@ public class Instrument {
    * @return state
   **/
   @ApiModelProperty(required = true, value = "The state of of the instrument at the asAt datetime of this version of the instrument definition.")
+
   public StateEnum getState() {
     return state;
   }
+
 
   public void setState(StateEnum state) {
     this.state = state;
   }
 
+
   public Instrument links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -318,10 +360,13 @@ public class Instrument {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

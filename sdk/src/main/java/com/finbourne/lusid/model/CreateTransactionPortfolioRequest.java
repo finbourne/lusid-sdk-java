@@ -58,7 +58,7 @@ public class CreateTransactionPortfolioRequest {
 
   public static final String SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID = "corporateActionSourceId";
   @SerializedName(SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID)
-  private ResourceId corporateActionSourceId = null;
+  private ResourceId corporateActionSourceId;
 
   /**
    * Determines the accounting treatment given to the transaction portfolio&#39;s tax lots.
@@ -109,7 +109,7 @@ public class CreateTransactionPortfolioRequest {
 
       @Override
       public AccountingMethodEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return AccountingMethodEnum.fromValue(value);
       }
     }
@@ -121,13 +121,15 @@ public class CreateTransactionPortfolioRequest {
 
   public static final String SERIALIZED_NAME_SUB_HOLDING_KEYS = "subHoldingKeys";
   @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEYS)
-  private List<String> subHoldingKeys = new ArrayList<>();
+  private List<String> subHoldingKeys = null;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, Property> properties = new HashMap<>();
+  private Map<String, Property> properties = null;
+
 
   public CreateTransactionPortfolioRequest displayName(String displayName) {
+    
     this.displayName = displayName;
     return this;
   }
@@ -137,15 +139,19 @@ public class CreateTransactionPortfolioRequest {
    * @return displayName
   **/
   @ApiModelProperty(required = true, value = "The name of the transaction portfolio.")
+
   public String getDisplayName() {
     return displayName;
   }
+
 
   public void setDisplayName(String displayName) {
     this.displayName = displayName;
   }
 
+
   public CreateTransactionPortfolioRequest description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -154,16 +160,21 @@ public class CreateTransactionPortfolioRequest {
    * A long form description of the transaction portfolio.
    * @return description
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "A long form description of the transaction portfolio.")
+
   public String getDescription() {
     return description;
   }
+
 
   public void setDescription(String description) {
     this.description = description;
   }
 
+
   public CreateTransactionPortfolioRequest code(String code) {
+    
     this.code = code;
     return this;
   }
@@ -173,15 +184,19 @@ public class CreateTransactionPortfolioRequest {
    * @return code
   **/
   @ApiModelProperty(required = true, value = "The code that the transaction portfolio will be created with. Together with the scope this uniquely identifies the transaction portfolio.")
+
   public String getCode() {
     return code;
   }
+
 
   public void setCode(String code) {
     this.code = code;
   }
 
+
   public CreateTransactionPortfolioRequest created(OffsetDateTime created) {
+    
     this.created = created;
     return this;
   }
@@ -190,16 +205,21 @@ public class CreateTransactionPortfolioRequest {
    * The effective datetime at which the transaction portfolio will be created. No transactions can be added to the transaction portfolio before this date. Defaults to the current LUSID system datetime if not specified.
    * @return created
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The effective datetime at which the transaction portfolio will be created. No transactions can be added to the transaction portfolio before this date. Defaults to the current LUSID system datetime if not specified.")
+
   public OffsetDateTime getCreated() {
     return created;
   }
+
 
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+
   public CreateTransactionPortfolioRequest baseCurrency(String baseCurrency) {
+    
     this.baseCurrency = baseCurrency;
     return this;
   }
@@ -209,15 +229,19 @@ public class CreateTransactionPortfolioRequest {
    * @return baseCurrency
   **/
   @ApiModelProperty(required = true, value = "The base currency of the transaction portfolio.")
+
   public String getBaseCurrency() {
     return baseCurrency;
   }
+
 
   public void setBaseCurrency(String baseCurrency) {
     this.baseCurrency = baseCurrency;
   }
 
+
   public CreateTransactionPortfolioRequest corporateActionSourceId(ResourceId corporateActionSourceId) {
+    
     this.corporateActionSourceId = corporateActionSourceId;
     return this;
   }
@@ -226,16 +250,21 @@ public class CreateTransactionPortfolioRequest {
    * Get corporateActionSourceId
    * @return corporateActionSourceId
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public ResourceId getCorporateActionSourceId() {
     return corporateActionSourceId;
   }
+
 
   public void setCorporateActionSourceId(ResourceId corporateActionSourceId) {
     this.corporateActionSourceId = corporateActionSourceId;
   }
 
+
   public CreateTransactionPortfolioRequest accountingMethod(AccountingMethodEnum accountingMethod) {
+    
     this.accountingMethod = accountingMethod;
     return this;
   }
@@ -244,16 +273,21 @@ public class CreateTransactionPortfolioRequest {
    * Determines the accounting treatment given to the transaction portfolio&#39;s tax lots.
    * @return accountingMethod
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "Determines the accounting treatment given to the transaction portfolio's tax lots.")
+
   public AccountingMethodEnum getAccountingMethod() {
     return accountingMethod;
   }
+
 
   public void setAccountingMethod(AccountingMethodEnum accountingMethod) {
     this.accountingMethod = accountingMethod;
   }
 
+
   public CreateTransactionPortfolioRequest subHoldingKeys(List<String> subHoldingKeys) {
+    
     this.subHoldingKeys = subHoldingKeys;
     return this;
   }
@@ -270,16 +304,21 @@ public class CreateTransactionPortfolioRequest {
    * A set of unique transaction properties to group the transaction portfolio&#39;s holdings by. Each property must be from the &#39;Transaction&#39; domain and should be identified by its key which has the format {domain}/{scope}/{code}, e.g. &#39;Transaction/strategies/quantsignal&#39;.
    * @return subHoldingKeys
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "A set of unique transaction properties to group the transaction portfolio's holdings by. Each property must be from the 'Transaction' domain and should be identified by its key which has the format {domain}/{scope}/{code}, e.g. 'Transaction/strategies/quantsignal'.")
+
   public List<String> getSubHoldingKeys() {
     return subHoldingKeys;
   }
+
 
   public void setSubHoldingKeys(List<String> subHoldingKeys) {
     this.subHoldingKeys = subHoldingKeys;
   }
 
+
   public CreateTransactionPortfolioRequest properties(Map<String, Property> properties) {
+    
     this.properties = properties;
     return this;
   }
@@ -296,10 +335,13 @@ public class CreateTransactionPortfolioRequest {
    * A set of unique portfolio properties to add to the transaction portfolio. Each property must be from the &#39;Portfolio&#39; domain and should be identified by its key which has the format {domain}/{scope}/{code}, e.g. &#39;Portfolio/Manager/Id&#39;. These properties must be pre-defined.
    * @return properties
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "A set of unique portfolio properties to add to the transaction portfolio. Each property must be from the 'Portfolio' domain and should be identified by its key which has the format {domain}/{scope}/{code}, e.g. 'Portfolio/Manager/Id'. These properties must be pre-defined.")
+
   public Map<String, Property> getProperties() {
     return properties;
   }
+
 
   public void setProperties(Map<String, Property> properties) {
     this.properties = properties;

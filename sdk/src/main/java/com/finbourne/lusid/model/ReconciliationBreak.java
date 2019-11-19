@@ -59,21 +59,23 @@ public class ReconciliationBreak {
 
   public static final String SERIALIZED_NAME_LEFT_COST = "leftCost";
   @SerializedName(SERIALIZED_NAME_LEFT_COST)
-  private CurrencyAndAmount leftCost = null;
+  private CurrencyAndAmount leftCost;
 
   public static final String SERIALIZED_NAME_RIGHT_COST = "rightCost";
   @SerializedName(SERIALIZED_NAME_RIGHT_COST)
-  private CurrencyAndAmount rightCost = null;
+  private CurrencyAndAmount rightCost;
 
   public static final String SERIALIZED_NAME_DIFFERENCE_COST = "differenceCost";
   @SerializedName(SERIALIZED_NAME_DIFFERENCE_COST)
-  private CurrencyAndAmount differenceCost = null;
+  private CurrencyAndAmount differenceCost;
 
   public static final String SERIALIZED_NAME_INSTRUMENT_PROPERTIES = "instrumentProperties";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_PROPERTIES)
   private List<Property> instrumentProperties = new ArrayList<>();
 
+
   public ReconciliationBreak instrumentUid(String instrumentUid) {
+    
     this.instrumentUid = instrumentUid;
     return this;
   }
@@ -83,15 +85,19 @@ public class ReconciliationBreak {
    * @return instrumentUid
   **/
   @ApiModelProperty(required = true, value = "Unique instrument identifier")
+
   public String getInstrumentUid() {
     return instrumentUid;
   }
+
 
   public void setInstrumentUid(String instrumentUid) {
     this.instrumentUid = instrumentUid;
   }
 
+
   public ReconciliationBreak subHoldingKeys(Map<String, PerpetualProperty> subHoldingKeys) {
+    
     this.subHoldingKeys = subHoldingKeys;
     return this;
   }
@@ -106,15 +112,19 @@ public class ReconciliationBreak {
    * @return subHoldingKeys
   **/
   @ApiModelProperty(required = true, value = "Any other properties that comprise the Sub-Holding Key")
+
   public Map<String, PerpetualProperty> getSubHoldingKeys() {
     return subHoldingKeys;
   }
+
 
   public void setSubHoldingKeys(Map<String, PerpetualProperty> subHoldingKeys) {
     this.subHoldingKeys = subHoldingKeys;
   }
 
+
   public ReconciliationBreak leftUnits(Double leftUnits) {
+    
     this.leftUnits = leftUnits;
     return this;
   }
@@ -124,15 +134,19 @@ public class ReconciliationBreak {
    * @return leftUnits
   **/
   @ApiModelProperty(required = true, value = "Units from the left hand side")
+
   public Double getLeftUnits() {
     return leftUnits;
   }
+
 
   public void setLeftUnits(Double leftUnits) {
     this.leftUnits = leftUnits;
   }
 
+
   public ReconciliationBreak rightUnits(Double rightUnits) {
+    
     this.rightUnits = rightUnits;
     return this;
   }
@@ -142,15 +156,19 @@ public class ReconciliationBreak {
    * @return rightUnits
   **/
   @ApiModelProperty(required = true, value = "Units from the right hand side")
+
   public Double getRightUnits() {
     return rightUnits;
   }
+
 
   public void setRightUnits(Double rightUnits) {
     this.rightUnits = rightUnits;
   }
 
+
   public ReconciliationBreak differenceUnits(Double differenceUnits) {
+    
     this.differenceUnits = differenceUnits;
     return this;
   }
@@ -160,15 +178,19 @@ public class ReconciliationBreak {
    * @return differenceUnits
   **/
   @ApiModelProperty(required = true, value = "Difference in units")
+
   public Double getDifferenceUnits() {
     return differenceUnits;
   }
+
 
   public void setDifferenceUnits(Double differenceUnits) {
     this.differenceUnits = differenceUnits;
   }
 
+
   public ReconciliationBreak leftCost(CurrencyAndAmount leftCost) {
+    
     this.leftCost = leftCost;
     return this;
   }
@@ -178,15 +200,19 @@ public class ReconciliationBreak {
    * @return leftCost
   **/
   @ApiModelProperty(required = true, value = "")
+
   public CurrencyAndAmount getLeftCost() {
     return leftCost;
   }
+
 
   public void setLeftCost(CurrencyAndAmount leftCost) {
     this.leftCost = leftCost;
   }
 
+
   public ReconciliationBreak rightCost(CurrencyAndAmount rightCost) {
+    
     this.rightCost = rightCost;
     return this;
   }
@@ -196,15 +222,19 @@ public class ReconciliationBreak {
    * @return rightCost
   **/
   @ApiModelProperty(required = true, value = "")
+
   public CurrencyAndAmount getRightCost() {
     return rightCost;
   }
+
 
   public void setRightCost(CurrencyAndAmount rightCost) {
     this.rightCost = rightCost;
   }
 
+
   public ReconciliationBreak differenceCost(CurrencyAndAmount differenceCost) {
+    
     this.differenceCost = differenceCost;
     return this;
   }
@@ -214,15 +244,19 @@ public class ReconciliationBreak {
    * @return differenceCost
   **/
   @ApiModelProperty(required = true, value = "")
+
   public CurrencyAndAmount getDifferenceCost() {
     return differenceCost;
   }
+
 
   public void setDifferenceCost(CurrencyAndAmount differenceCost) {
     this.differenceCost = differenceCost;
   }
 
+
   public ReconciliationBreak instrumentProperties(List<Property> instrumentProperties) {
+    
     this.instrumentProperties = instrumentProperties;
     return this;
   }
@@ -237,9 +271,11 @@ public class ReconciliationBreak {
    * @return instrumentProperties
   **/
   @ApiModelProperty(required = true, value = "Additional features relating to the instrument")
+
   public List<Property> getInstrumentProperties() {
     return instrumentProperties;
   }
+
 
   public void setInstrumentProperties(List<Property> instrumentProperties) {
     this.instrumentProperties = instrumentProperties;

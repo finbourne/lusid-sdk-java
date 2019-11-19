@@ -34,7 +34,9 @@ public class ScopeDefinition {
   @SerializedName(SERIALIZED_NAME_SCOPE)
   private String scope;
 
+
   public ScopeDefinition scope(String scope) {
+    
     this.scope = scope;
     return this;
   }
@@ -44,9 +46,11 @@ public class ScopeDefinition {
    * @return scope
   **/
   @ApiModelProperty(required = true, value = "The unique identifier for the scope.")
+
   public String getScope() {
     return scope;
   }
+
 
   public void setScope(String scope) {
     this.scope = scope;

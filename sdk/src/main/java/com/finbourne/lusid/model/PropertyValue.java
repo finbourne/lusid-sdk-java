@@ -37,9 +37,11 @@ public class PropertyValue {
 
   public static final String SERIALIZED_NAME_METRIC_VALUE = "metricValue";
   @SerializedName(SERIALIZED_NAME_METRIC_VALUE)
-  private MetricValue metricValue = null;
+  private MetricValue metricValue;
+
 
   public PropertyValue labelValue(String labelValue) {
+    
     this.labelValue = labelValue;
     return this;
   }
@@ -48,16 +50,21 @@ public class PropertyValue {
    * The text value of a property defined as having the &#39;Label&#39; type.
    * @return labelValue
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The text value of a property defined as having the 'Label' type.")
+
   public String getLabelValue() {
     return labelValue;
   }
+
 
   public void setLabelValue(String labelValue) {
     this.labelValue = labelValue;
   }
 
+
   public PropertyValue metricValue(MetricValue metricValue) {
+    
     this.metricValue = metricValue;
     return this;
   }
@@ -66,10 +73,13 @@ public class PropertyValue {
    * Get metricValue
    * @return metricValue
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public MetricValue getMetricValue() {
     return metricValue;
   }
+
 
   public void setMetricValue(MetricValue metricValue) {
     this.metricValue = metricValue;

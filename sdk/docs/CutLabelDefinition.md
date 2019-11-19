@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **description** | **String** |  |  [optional]
 **cutLocalTime** | [**CutLocalTime**](CutLocalTime.md) |  |  [optional]
 **timeZone** | **String** |  |  [optional]
-**href** | **String** |  |  [optional]
+**href** | **String** |  |  [optional] [readonly]
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 

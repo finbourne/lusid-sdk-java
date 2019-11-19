@@ -42,13 +42,15 @@ public class ProcessedCommand {
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private User userId = null;
+  private User userId;
 
   public static final String SERIALIZED_NAME_PROCESSED_TIME = "processedTime";
   @SerializedName(SERIALIZED_NAME_PROCESSED_TIME)
   private OffsetDateTime processedTime;
 
+
   public ProcessedCommand description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -58,15 +60,19 @@ public class ProcessedCommand {
    * @return description
   **/
   @ApiModelProperty(required = true, value = "The description of the command issued.")
+
   public String getDescription() {
     return description;
   }
+
 
   public void setDescription(String description) {
     this.description = description;
   }
 
+
   public ProcessedCommand path(String path) {
+    
     this.path = path;
     return this;
   }
@@ -75,16 +81,21 @@ public class ProcessedCommand {
    * The unique identifier for the command including the request id.
    * @return path
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The unique identifier for the command including the request id.")
+
   public String getPath() {
     return path;
   }
+
 
   public void setPath(String path) {
     this.path = path;
   }
 
+
   public ProcessedCommand userId(User userId) {
+    
     this.userId = userId;
     return this;
   }
@@ -94,15 +105,19 @@ public class ProcessedCommand {
    * @return userId
   **/
   @ApiModelProperty(required = true, value = "")
+
   public User getUserId() {
     return userId;
   }
+
 
   public void setUserId(User userId) {
     this.userId = userId;
   }
 
+
   public ProcessedCommand processedTime(OffsetDateTime processedTime) {
+    
     this.processedTime = processedTime;
     return this;
   }
@@ -112,9 +127,11 @@ public class ProcessedCommand {
    * @return processedTime
   **/
   @ApiModelProperty(required = true, value = "The asAt datetime that the events published by the processing of this command were committed to LUSID.")
+
   public OffsetDateTime getProcessedTime() {
     return processedTime;
   }
+
 
   public void setProcessedTime(OffsetDateTime processedTime) {
     this.processedTime = processedTime;

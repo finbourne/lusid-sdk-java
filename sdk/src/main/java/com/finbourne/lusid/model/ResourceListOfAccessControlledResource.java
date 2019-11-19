@@ -43,9 +43,11 @@ public class ResourceListOfAccessControlledResource {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public ResourceListOfAccessControlledResource values(List<AccessControlledResource> values) {
+    
     this.values = values;
     return this;
   }
@@ -60,15 +62,19 @@ public class ResourceListOfAccessControlledResource {
    * @return values
   **/
   @ApiModelProperty(required = true, value = "")
+
   public List<AccessControlledResource> getValues() {
     return values;
   }
+
 
   public void setValues(List<AccessControlledResource> values) {
     this.values = values;
   }
 
+
   public ResourceListOfAccessControlledResource href(String href) {
+    
     this.href = href;
     return this;
   }
@@ -77,16 +83,21 @@ public class ResourceListOfAccessControlledResource {
    * Get href
    * @return href
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getHref() {
     return href;
   }
+
 
   public void setHref(String href) {
     this.href = href;
   }
 
+
   public ResourceListOfAccessControlledResource links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -103,10 +114,13 @@ public class ResourceListOfAccessControlledResource {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

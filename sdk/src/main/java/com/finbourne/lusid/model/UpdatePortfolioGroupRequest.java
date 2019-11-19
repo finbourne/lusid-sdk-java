@@ -37,7 +37,9 @@ public class UpdatePortfolioGroupRequest {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+
   public UpdatePortfolioGroupRequest displayName(String displayName) {
+    
     this.displayName = displayName;
     return this;
   }
@@ -47,15 +49,19 @@ public class UpdatePortfolioGroupRequest {
    * @return displayName
   **/
   @ApiModelProperty(required = true, value = "The name of the portfolio group.")
+
   public String getDisplayName() {
     return displayName;
   }
+
 
   public void setDisplayName(String displayName) {
     this.displayName = displayName;
   }
 
+
   public UpdatePortfolioGroupRequest description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -64,10 +70,13 @@ public class UpdatePortfolioGroupRequest {
    * A long form description of the portfolio group.
    * @return description
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "A long form description of the portfolio group.")
+
   public String getDescription() {
     return description;
   }
+
 
   public void setDescription(String description) {
     this.description = description;

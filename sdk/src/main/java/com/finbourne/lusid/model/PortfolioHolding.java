@@ -43,11 +43,11 @@ public class PortfolioHolding {
 
   public static final String SERIALIZED_NAME_SUB_HOLDING_KEYS = "subHoldingKeys";
   @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEYS)
-  private Map<String, PerpetualProperty> subHoldingKeys = new HashMap<>();
+  private Map<String, PerpetualProperty> subHoldingKeys = null;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, Property> properties = new HashMap<>();
+  private Map<String, Property> properties = null;
 
   public static final String SERIALIZED_NAME_HOLDING_TYPE = "holdingType";
   @SerializedName(SERIALIZED_NAME_HOLDING_TYPE)
@@ -63,17 +63,19 @@ public class PortfolioHolding {
 
   public static final String SERIALIZED_NAME_COST = "cost";
   @SerializedName(SERIALIZED_NAME_COST)
-  private CurrencyAndAmount cost = null;
+  private CurrencyAndAmount cost;
 
   public static final String SERIALIZED_NAME_COST_PORTFOLIO_CCY = "costPortfolioCcy";
   @SerializedName(SERIALIZED_NAME_COST_PORTFOLIO_CCY)
-  private CurrencyAndAmount costPortfolioCcy = null;
+  private CurrencyAndAmount costPortfolioCcy;
 
   public static final String SERIALIZED_NAME_TRANSACTION = "transaction";
   @SerializedName(SERIALIZED_NAME_TRANSACTION)
-  private Transaction transaction = null;
+  private Transaction transaction;
+
 
   public PortfolioHolding instrumentUid(String instrumentUid) {
+    
     this.instrumentUid = instrumentUid;
     return this;
   }
@@ -83,15 +85,19 @@ public class PortfolioHolding {
    * @return instrumentUid
   **/
   @ApiModelProperty(required = true, value = "The unqiue Lusid Instrument Id (LUID) of the instrument that the holding is in.")
+
   public String getInstrumentUid() {
     return instrumentUid;
   }
+
 
   public void setInstrumentUid(String instrumentUid) {
     this.instrumentUid = instrumentUid;
   }
 
+
   public PortfolioHolding subHoldingKeys(Map<String, PerpetualProperty> subHoldingKeys) {
+    
     this.subHoldingKeys = subHoldingKeys;
     return this;
   }
@@ -108,16 +114,21 @@ public class PortfolioHolding {
    * The sub-holding properties which identify the holding. Each property will be from the &#39;Transaction&#39; domain. These are configured when a transaction portfolio is created.
    * @return subHoldingKeys
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The sub-holding properties which identify the holding. Each property will be from the 'Transaction' domain. These are configured when a transaction portfolio is created.")
+
   public Map<String, PerpetualProperty> getSubHoldingKeys() {
     return subHoldingKeys;
   }
+
 
   public void setSubHoldingKeys(Map<String, PerpetualProperty> subHoldingKeys) {
     this.subHoldingKeys = subHoldingKeys;
   }
 
+
   public PortfolioHolding properties(Map<String, Property> properties) {
+    
     this.properties = properties;
     return this;
   }
@@ -134,16 +145,21 @@ public class PortfolioHolding {
    * The properties which have been requested to be decorated onto the holding. These will be from the &#39;Instrument&#39; or &#39;Holding&#39; domain.
    * @return properties
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The properties which have been requested to be decorated onto the holding. These will be from the 'Instrument' or 'Holding' domain.")
+
   public Map<String, Property> getProperties() {
     return properties;
   }
+
 
   public void setProperties(Map<String, Property> properties) {
     this.properties = properties;
   }
 
+
   public PortfolioHolding holdingType(String holdingType) {
+    
     this.holdingType = holdingType;
     return this;
   }
@@ -153,15 +169,19 @@ public class PortfolioHolding {
    * @return holdingType
   **/
   @ApiModelProperty(required = true, value = "The type of the holding e.g. Position, Balance, CashCommitment, Receivable, ForwardFX etc.")
+
   public String getHoldingType() {
     return holdingType;
   }
+
 
   public void setHoldingType(String holdingType) {
     this.holdingType = holdingType;
   }
 
+
   public PortfolioHolding units(Double units) {
+    
     this.units = units;
     return this;
   }
@@ -171,15 +191,19 @@ public class PortfolioHolding {
    * @return units
   **/
   @ApiModelProperty(required = true, value = "The total number of units of the holding.")
+
   public Double getUnits() {
     return units;
   }
+
 
   public void setUnits(Double units) {
     this.units = units;
   }
 
+
   public PortfolioHolding settledUnits(Double settledUnits) {
+    
     this.settledUnits = settledUnits;
     return this;
   }
@@ -189,15 +213,19 @@ public class PortfolioHolding {
    * @return settledUnits
   **/
   @ApiModelProperty(required = true, value = "The total number of settled units of the holding.")
+
   public Double getSettledUnits() {
     return settledUnits;
   }
+
 
   public void setSettledUnits(Double settledUnits) {
     this.settledUnits = settledUnits;
   }
 
+
   public PortfolioHolding cost(CurrencyAndAmount cost) {
+    
     this.cost = cost;
     return this;
   }
@@ -207,15 +235,19 @@ public class PortfolioHolding {
    * @return cost
   **/
   @ApiModelProperty(required = true, value = "")
+
   public CurrencyAndAmount getCost() {
     return cost;
   }
+
 
   public void setCost(CurrencyAndAmount cost) {
     this.cost = cost;
   }
 
+
   public PortfolioHolding costPortfolioCcy(CurrencyAndAmount costPortfolioCcy) {
+    
     this.costPortfolioCcy = costPortfolioCcy;
     return this;
   }
@@ -225,15 +257,19 @@ public class PortfolioHolding {
    * @return costPortfolioCcy
   **/
   @ApiModelProperty(required = true, value = "")
+
   public CurrencyAndAmount getCostPortfolioCcy() {
     return costPortfolioCcy;
   }
+
 
   public void setCostPortfolioCcy(CurrencyAndAmount costPortfolioCcy) {
     this.costPortfolioCcy = costPortfolioCcy;
   }
 
+
   public PortfolioHolding transaction(Transaction transaction) {
+    
     this.transaction = transaction;
     return this;
   }
@@ -242,10 +278,13 @@ public class PortfolioHolding {
    * Get transaction
    * @return transaction
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Transaction getTransaction() {
     return transaction;
   }
+
 
   public void setTransaction(Transaction transaction) {
     this.transaction = transaction;

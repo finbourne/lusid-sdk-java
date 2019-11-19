@@ -47,9 +47,11 @@ public class DeletedEntityResponse {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public DeletedEntityResponse href(String href) {
+    
     this.href = href;
     return this;
   }
@@ -58,16 +60,21 @@ public class DeletedEntityResponse {
    * The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
    * @return href
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.")
+
   public String getHref() {
     return href;
   }
+
 
   public void setHref(String href) {
     this.href = href;
   }
 
+
   public DeletedEntityResponse effectiveFrom(OffsetDateTime effectiveFrom) {
+    
     this.effectiveFrom = effectiveFrom;
     return this;
   }
@@ -76,16 +83,21 @@ public class DeletedEntityResponse {
    * The effective datetime at which the deletion became valid. May be null in the case where multiple date times are applicable.
    * @return effectiveFrom
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The effective datetime at which the deletion became valid. May be null in the case where multiple date times are applicable.")
+
   public OffsetDateTime getEffectiveFrom() {
     return effectiveFrom;
   }
+
 
   public void setEffectiveFrom(OffsetDateTime effectiveFrom) {
     this.effectiveFrom = effectiveFrom;
   }
 
+
   public DeletedEntityResponse asAt(OffsetDateTime asAt) {
+    
     this.asAt = asAt;
     return this;
   }
@@ -95,15 +107,19 @@ public class DeletedEntityResponse {
    * @return asAt
   **/
   @ApiModelProperty(required = true, value = "The asAt datetime at which the deletion was committed to LUSID.")
+
   public OffsetDateTime getAsAt() {
     return asAt;
   }
+
 
   public void setAsAt(OffsetDateTime asAt) {
     this.asAt = asAt;
   }
 
+
   public DeletedEntityResponse links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -120,10 +136,13 @@ public class DeletedEntityResponse {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

@@ -41,7 +41,9 @@ public class UpdateInstrumentIdentifierRequest {
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
   private String effectiveAt;
 
+
   public UpdateInstrumentIdentifierRequest type(String type) {
+    
     this.type = type;
     return this;
   }
@@ -51,15 +53,19 @@ public class UpdateInstrumentIdentifierRequest {
    * @return type
   **/
   @ApiModelProperty(required = true, value = "The allowable instrument identifier to update, insert or remove e.g. 'Figi'.")
+
   public String getType() {
     return type;
   }
+
 
   public void setType(String type) {
     this.type = type;
   }
 
+
   public UpdateInstrumentIdentifierRequest value(String value) {
+    
     this.value = value;
     return this;
   }
@@ -68,16 +74,21 @@ public class UpdateInstrumentIdentifierRequest {
    * The new value of the allowable instrument identifier. If unspecified the identifier will be removed from the instrument.
    * @return value
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The new value of the allowable instrument identifier. If unspecified the identifier will be removed from the instrument.")
+
   public String getValue() {
     return value;
   }
+
 
   public void setValue(String value) {
     this.value = value;
   }
 
+
   public UpdateInstrumentIdentifierRequest effectiveAt(String effectiveAt) {
+    
     this.effectiveAt = effectiveAt;
     return this;
   }
@@ -86,10 +97,13 @@ public class UpdateInstrumentIdentifierRequest {
    * The effective datetime from which the identifier should be updated, inserted or removed. Defaults to the current LUSID system datetime if not specified.
    * @return effectiveAt
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The effective datetime from which the identifier should be updated, inserted or removed. Defaults to the current LUSID system datetime if not specified.")
+
   public String getEffectiveAt() {
     return effectiveAt;
   }
+
 
   public void setEffectiveAt(String effectiveAt) {
     this.effectiveAt = effectiveAt;

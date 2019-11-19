@@ -47,17 +47,19 @@ public class InstrumentDefinition {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private List<Property> properties = new ArrayList<>();
+  private List<Property> properties = null;
 
   public static final String SERIALIZED_NAME_LOOK_THROUGH_PORTFOLIO_ID = "lookThroughPortfolioId";
   @SerializedName(SERIALIZED_NAME_LOOK_THROUGH_PORTFOLIO_ID)
-  private ResourceId lookThroughPortfolioId = null;
+  private ResourceId lookThroughPortfolioId;
 
   public static final String SERIALIZED_NAME_DEFINITION = "definition";
   @SerializedName(SERIALIZED_NAME_DEFINITION)
-  private InstrumentEconomicDefinition definition = null;
+  private InstrumentEconomicDefinition definition;
+
 
   public InstrumentDefinition name(String name) {
+    
     this.name = name;
     return this;
   }
@@ -67,15 +69,19 @@ public class InstrumentDefinition {
    * @return name
   **/
   @ApiModelProperty(required = true, value = "The name of the instrument.")
+
   public String getName() {
     return name;
   }
+
 
   public void setName(String name) {
     this.name = name;
   }
 
+
   public InstrumentDefinition identifiers(Map<String, InstrumentIdValue> identifiers) {
+    
     this.identifiers = identifiers;
     return this;
   }
@@ -90,15 +96,19 @@ public class InstrumentDefinition {
    * @return identifiers
   **/
   @ApiModelProperty(required = true, value = "A set of identifiers that can be used to identify the instrument. At least one of these must be configured to be a unique identifier.")
+
   public Map<String, InstrumentIdValue> getIdentifiers() {
     return identifiers;
   }
+
 
   public void setIdentifiers(Map<String, InstrumentIdValue> identifiers) {
     this.identifiers = identifiers;
   }
 
+
   public InstrumentDefinition properties(List<Property> properties) {
+    
     this.properties = properties;
     return this;
   }
@@ -115,16 +125,21 @@ public class InstrumentDefinition {
    * Set of unique instrument properties and associated values to store with the instrument. Each property must be from the &#39;Instrument&#39; domain.
    * @return properties
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "Set of unique instrument properties and associated values to store with the instrument. Each property must be from the 'Instrument' domain.")
+
   public List<Property> getProperties() {
     return properties;
   }
+
 
   public void setProperties(List<Property> properties) {
     this.properties = properties;
   }
 
+
   public InstrumentDefinition lookThroughPortfolioId(ResourceId lookThroughPortfolioId) {
+    
     this.lookThroughPortfolioId = lookThroughPortfolioId;
     return this;
   }
@@ -133,16 +148,21 @@ public class InstrumentDefinition {
    * Get lookThroughPortfolioId
    * @return lookThroughPortfolioId
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public ResourceId getLookThroughPortfolioId() {
     return lookThroughPortfolioId;
   }
+
 
   public void setLookThroughPortfolioId(ResourceId lookThroughPortfolioId) {
     this.lookThroughPortfolioId = lookThroughPortfolioId;
   }
 
+
   public InstrumentDefinition definition(InstrumentEconomicDefinition definition) {
+    
     this.definition = definition;
     return this;
   }
@@ -151,10 +171,13 @@ public class InstrumentDefinition {
    * Get definition
    * @return definition
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public InstrumentEconomicDefinition getDefinition() {
     return definition;
   }
+
 
   public void setDefinition(InstrumentEconomicDefinition definition) {
     this.definition = definition;

@@ -72,7 +72,7 @@ public class IUnitDefinitionDto {
 
       @Override
       public SchemaEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return SchemaEnum.fromValue(value);
       }
     }
@@ -94,41 +94,61 @@ public class IUnitDefinitionDto {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+
    /**
    * Get schema
    * @return schema
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public SchemaEnum getSchema() {
     return schema;
   }
+
+
+
 
    /**
    * Get code
    * @return code
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getCode() {
     return code;
   }
+
+
+
 
    /**
    * Get displayName
    * @return displayName
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getDisplayName() {
     return displayName;
   }
+
+
+
 
    /**
    * Get description
    * @return description
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getDescription() {
     return description;
   }
+
+
 
 
   @Override

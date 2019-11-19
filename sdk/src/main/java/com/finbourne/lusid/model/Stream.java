@@ -61,52 +61,79 @@ public class Stream {
   @SerializedName(SERIALIZED_NAME_WRITE_TIMEOUT)
   private Integer writeTimeout;
 
+
    /**
    * Get canRead
    * @return canRead
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Boolean getCanRead() {
     return canRead;
   }
+
+
+
 
    /**
    * Get canSeek
    * @return canSeek
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Boolean getCanSeek() {
     return canSeek;
   }
+
+
+
 
    /**
    * Get canTimeout
    * @return canTimeout
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Boolean getCanTimeout() {
     return canTimeout;
   }
+
+
+
 
    /**
    * Get canWrite
    * @return canWrite
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Boolean getCanWrite() {
     return canWrite;
   }
+
+
+
 
    /**
    * Get length
    * @return length
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Long getLength() {
     return length;
   }
 
+
+
+
   public Stream position(Long position) {
+    
     this.position = position;
     return this;
   }
@@ -115,16 +142,21 @@ public class Stream {
    * Get position
    * @return position
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Long getPosition() {
     return position;
   }
+
 
   public void setPosition(Long position) {
     this.position = position;
   }
 
+
   public Stream readTimeout(Integer readTimeout) {
+    
     this.readTimeout = readTimeout;
     return this;
   }
@@ -133,16 +165,21 @@ public class Stream {
    * Get readTimeout
    * @return readTimeout
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Integer getReadTimeout() {
     return readTimeout;
   }
+
 
   public void setReadTimeout(Integer readTimeout) {
     this.readTimeout = readTimeout;
   }
 
+
   public Stream writeTimeout(Integer writeTimeout) {
+    
     this.writeTimeout = writeTimeout;
     return this;
   }
@@ -151,10 +188,13 @@ public class Stream {
    * Get writeTimeout
    * @return writeTimeout
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Integer getWriteTimeout() {
     return writeTimeout;
   }
+
 
   public void setWriteTimeout(Integer writeTimeout) {
     this.writeTimeout = writeTimeout;

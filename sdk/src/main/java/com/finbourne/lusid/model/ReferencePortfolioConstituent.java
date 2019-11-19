@@ -35,7 +35,7 @@ import java.util.Map;
 public class ReferencePortfolioConstituent {
   public static final String SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS = "instrumentIdentifiers";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS)
-  private Map<String, String> instrumentIdentifiers = new HashMap<>();
+  private Map<String, String> instrumentIdentifiers = null;
 
   public static final String SERIALIZED_NAME_INSTRUMENT_UID = "instrumentUid";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_UID)
@@ -47,7 +47,7 @@ public class ReferencePortfolioConstituent {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = new HashMap<>();
+  private Map<String, PerpetualProperty> properties = null;
 
   public static final String SERIALIZED_NAME_WEIGHT = "weight";
   @SerializedName(SERIALIZED_NAME_WEIGHT)
@@ -57,7 +57,9 @@ public class ReferencePortfolioConstituent {
   @SerializedName(SERIALIZED_NAME_FLOATING_WEIGHT)
   private Double floatingWeight;
 
+
   public ReferencePortfolioConstituent instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
+    
     this.instrumentIdentifiers = instrumentIdentifiers;
     return this;
   }
@@ -74,16 +76,21 @@ public class ReferencePortfolioConstituent {
    * Unique instrument identifiers
    * @return instrumentIdentifiers
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "Unique instrument identifiers")
+
   public Map<String, String> getInstrumentIdentifiers() {
     return instrumentIdentifiers;
   }
+
 
   public void setInstrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
     this.instrumentIdentifiers = instrumentIdentifiers;
   }
 
+
   public ReferencePortfolioConstituent instrumentUid(String instrumentUid) {
+    
     this.instrumentUid = instrumentUid;
     return this;
   }
@@ -93,15 +100,19 @@ public class ReferencePortfolioConstituent {
    * @return instrumentUid
   **/
   @ApiModelProperty(required = true, value = "LUSID's internal unique instrument identifier, resolved from the instrument identifiers")
+
   public String getInstrumentUid() {
     return instrumentUid;
   }
+
 
   public void setInstrumentUid(String instrumentUid) {
     this.instrumentUid = instrumentUid;
   }
 
+
   public ReferencePortfolioConstituent currency(String currency) {
+    
     this.currency = currency;
     return this;
   }
@@ -111,15 +122,19 @@ public class ReferencePortfolioConstituent {
    * @return currency
   **/
   @ApiModelProperty(required = true, value = "")
+
   public String getCurrency() {
     return currency;
   }
+
 
   public void setCurrency(String currency) {
     this.currency = currency;
   }
 
+
   public ReferencePortfolioConstituent properties(Map<String, PerpetualProperty> properties) {
+    
     this.properties = properties;
     return this;
   }
@@ -136,16 +151,21 @@ public class ReferencePortfolioConstituent {
    * Properties associated with the constituent
    * @return properties
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "Properties associated with the constituent")
+
   public Map<String, PerpetualProperty> getProperties() {
     return properties;
   }
+
 
   public void setProperties(Map<String, PerpetualProperty> properties) {
     this.properties = properties;
   }
 
+
   public ReferencePortfolioConstituent weight(Double weight) {
+    
     this.weight = weight;
     return this;
   }
@@ -155,15 +175,19 @@ public class ReferencePortfolioConstituent {
    * @return weight
   **/
   @ApiModelProperty(required = true, value = "")
+
   public Double getWeight() {
     return weight;
   }
+
 
   public void setWeight(Double weight) {
     this.weight = weight;
   }
 
+
   public ReferencePortfolioConstituent floatingWeight(Double floatingWeight) {
+    
     this.floatingWeight = floatingWeight;
     return this;
   }
@@ -172,10 +196,13 @@ public class ReferencePortfolioConstituent {
    * 
    * @return floatingWeight
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Double getFloatingWeight() {
     return floatingWeight;
   }
+
 
   public void setFloatingWeight(Double floatingWeight) {
     this.floatingWeight = floatingWeight;

@@ -40,11 +40,11 @@ public class PortfolioDetails {
 
   public static final String SERIALIZED_NAME_ORIGIN_PORTFOLIO_ID = "originPortfolioId";
   @SerializedName(SERIALIZED_NAME_ORIGIN_PORTFOLIO_ID)
-  private ResourceId originPortfolioId = null;
+  private ResourceId originPortfolioId;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_BASE_CURRENCY = "baseCurrency";
   @SerializedName(SERIALIZED_NAME_BASE_CURRENCY)
@@ -52,17 +52,19 @@ public class PortfolioDetails {
 
   public static final String SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID = "corporateActionSourceId";
   @SerializedName(SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID)
-  private ResourceId corporateActionSourceId = null;
+  private ResourceId corporateActionSourceId;
 
   public static final String SERIALIZED_NAME_SUB_HOLDING_KEYS = "subHoldingKeys";
   @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEYS)
-  private List<String> subHoldingKeys = new ArrayList<>();
+  private List<String> subHoldingKeys = null;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public PortfolioDetails href(String href) {
+    
     this.href = href;
     return this;
   }
@@ -71,16 +73,21 @@ public class PortfolioDetails {
    * The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
    * @return href
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.")
+
   public String getHref() {
     return href;
   }
+
 
   public void setHref(String href) {
     this.href = href;
   }
 
+
   public PortfolioDetails originPortfolioId(ResourceId originPortfolioId) {
+    
     this.originPortfolioId = originPortfolioId;
     return this;
   }
@@ -90,15 +97,19 @@ public class PortfolioDetails {
    * @return originPortfolioId
   **/
   @ApiModelProperty(required = true, value = "")
+
   public ResourceId getOriginPortfolioId() {
     return originPortfolioId;
   }
+
 
   public void setOriginPortfolioId(ResourceId originPortfolioId) {
     this.originPortfolioId = originPortfolioId;
   }
 
+
   public PortfolioDetails version(Version version) {
+    
     this.version = version;
     return this;
   }
@@ -108,15 +119,19 @@ public class PortfolioDetails {
    * @return version
   **/
   @ApiModelProperty(required = true, value = "")
+
   public Version getVersion() {
     return version;
   }
+
 
   public void setVersion(Version version) {
     this.version = version;
   }
 
+
   public PortfolioDetails baseCurrency(String baseCurrency) {
+    
     this.baseCurrency = baseCurrency;
     return this;
   }
@@ -126,15 +141,19 @@ public class PortfolioDetails {
    * @return baseCurrency
   **/
   @ApiModelProperty(required = true, value = "The base currency of the transaction portfolio.")
+
   public String getBaseCurrency() {
     return baseCurrency;
   }
+
 
   public void setBaseCurrency(String baseCurrency) {
     this.baseCurrency = baseCurrency;
   }
 
+
   public PortfolioDetails corporateActionSourceId(ResourceId corporateActionSourceId) {
+    
     this.corporateActionSourceId = corporateActionSourceId;
     return this;
   }
@@ -143,16 +162,21 @@ public class PortfolioDetails {
    * Get corporateActionSourceId
    * @return corporateActionSourceId
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public ResourceId getCorporateActionSourceId() {
     return corporateActionSourceId;
   }
+
 
   public void setCorporateActionSourceId(ResourceId corporateActionSourceId) {
     this.corporateActionSourceId = corporateActionSourceId;
   }
 
+
   public PortfolioDetails subHoldingKeys(List<String> subHoldingKeys) {
+    
     this.subHoldingKeys = subHoldingKeys;
     return this;
   }
@@ -169,16 +193,21 @@ public class PortfolioDetails {
    * Get subHoldingKeys
    * @return subHoldingKeys
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<String> getSubHoldingKeys() {
     return subHoldingKeys;
   }
+
 
   public void setSubHoldingKeys(List<String> subHoldingKeys) {
     this.subHoldingKeys = subHoldingKeys;
   }
 
+
   public PortfolioDetails links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -195,10 +224,13 @@ public class PortfolioDetails {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

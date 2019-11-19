@@ -41,7 +41,9 @@ public class ActionId {
   @SerializedName(SERIALIZED_NAME_ENTITY)
   private String entity;
 
+
   public ActionId scope(String scope) {
+    
     this.scope = scope;
     return this;
   }
@@ -51,15 +53,19 @@ public class ActionId {
    * @return scope
   **/
   @ApiModelProperty(required = true, value = "")
+
   public String getScope() {
     return scope;
   }
+
 
   public void setScope(String scope) {
     this.scope = scope;
   }
 
+
   public ActionId activity(String activity) {
+    
     this.activity = activity;
     return this;
   }
@@ -69,15 +75,19 @@ public class ActionId {
    * @return activity
   **/
   @ApiModelProperty(required = true, value = "")
+
   public String getActivity() {
     return activity;
   }
+
 
   public void setActivity(String activity) {
     this.activity = activity;
   }
 
+
   public ActionId entity(String entity) {
+    
     this.entity = entity;
     return this;
   }
@@ -87,9 +97,11 @@ public class ActionId {
    * @return entity
   **/
   @ApiModelProperty(required = true, value = "")
+
   public String getEntity() {
     return entity;
   }
+
 
   public void setEntity(String entity) {
     this.entity = entity;

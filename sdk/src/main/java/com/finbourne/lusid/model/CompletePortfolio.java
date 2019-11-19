@@ -38,7 +38,7 @@ import java.util.List;
 public class CompletePortfolio {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private ResourceId id = null;
+  private ResourceId id;
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -58,7 +58,7 @@ public class CompletePortfolio {
 
   public static final String SERIALIZED_NAME_PARENT_PORTFOLIO_ID = "parentPortfolioId";
   @SerializedName(SERIALIZED_NAME_PARENT_PORTFOLIO_ID)
-  private ResourceId parentPortfolioId = null;
+  private ResourceId parentPortfolioId;
 
   public static final String SERIALIZED_NAME_IS_DERIVED = "isDerived";
   @SerializedName(SERIALIZED_NAME_IS_DERIVED)
@@ -107,7 +107,7 @@ public class CompletePortfolio {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -119,11 +119,11 @@ public class CompletePortfolio {
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private List<Property> properties = new ArrayList<>();
+  private List<Property> properties = null;
 
   public static final String SERIALIZED_NAME_BASE_CURRENCY = "baseCurrency";
   @SerializedName(SERIALIZED_NAME_BASE_CURRENCY)
@@ -131,9 +131,11 @@ public class CompletePortfolio {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public CompletePortfolio id(ResourceId id) {
+    
     this.id = id;
     return this;
   }
@@ -143,51 +145,75 @@ public class CompletePortfolio {
    * @return id
   **/
   @ApiModelProperty(required = true, value = "")
+
   public ResourceId getId() {
     return id;
   }
+
 
   public void setId(ResourceId id) {
     this.id = id;
   }
 
+
    /**
    * The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
    * @return href
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.")
+
   public String getHref() {
     return href;
   }
+
+
+
 
    /**
    * The long form description of the portfolio.
    * @return description
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The long form description of the portfolio.")
+
   public String getDescription() {
     return description;
   }
+
+
+
 
    /**
    * The name of the portfolio.
    * @return displayName
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The name of the portfolio.")
+
   public String getDisplayName() {
     return displayName;
   }
+
+
+
 
    /**
    * The effective datetime at which the portfolio was created. No transactions or constituents can be added to the portfolio before this date.
    * @return created
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The effective datetime at which the portfolio was created. No transactions or constituents can be added to the portfolio before this date.")
+
   public OffsetDateTime getCreated() {
     return created;
   }
 
+
+
+
   public CompletePortfolio parentPortfolioId(ResourceId parentPortfolioId) {
+    
     this.parentPortfolioId = parentPortfolioId;
     return this;
   }
@@ -196,34 +222,49 @@ public class CompletePortfolio {
    * Get parentPortfolioId
    * @return parentPortfolioId
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public ResourceId getParentPortfolioId() {
     return parentPortfolioId;
   }
+
 
   public void setParentPortfolioId(ResourceId parentPortfolioId) {
     this.parentPortfolioId = parentPortfolioId;
   }
 
+
    /**
    * Whether or not this is a derived portfolio.
    * @return isDerived
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "Whether or not this is a derived portfolio.")
+
   public Boolean getIsDerived() {
     return isDerived;
   }
+
+
+
 
    /**
    * The type of the portfolio.
    * @return type
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The type of the portfolio.")
+
   public TypeEnum getType() {
     return type;
   }
 
+
+
+
   public CompletePortfolio version(Version version) {
+    
     this.version = version;
     return this;
   }
@@ -233,15 +274,19 @@ public class CompletePortfolio {
    * @return version
   **/
   @ApiModelProperty(required = true, value = "")
+
   public Version getVersion() {
     return version;
   }
+
 
   public void setVersion(Version version) {
     this.version = version;
   }
 
+
   public CompletePortfolio properties(List<Property> properties) {
+    
     this.properties = properties;
     return this;
   }
@@ -258,16 +303,21 @@ public class CompletePortfolio {
    * The requested portfolio properties. These will be from the &#39;Portfolio&#39; domain.
    * @return properties
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The requested portfolio properties. These will be from the 'Portfolio' domain.")
+
   public List<Property> getProperties() {
     return properties;
   }
+
 
   public void setProperties(List<Property> properties) {
     this.properties = properties;
   }
 
+
   public CompletePortfolio baseCurrency(String baseCurrency) {
+    
     this.baseCurrency = baseCurrency;
     return this;
   }
@@ -276,16 +326,21 @@ public class CompletePortfolio {
    * If the portfolio is a transaction portfolio or derived transaction portfolio, this is the base currency of the portfolio.
    * @return baseCurrency
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "If the portfolio is a transaction portfolio or derived transaction portfolio, this is the base currency of the portfolio.")
+
   public String getBaseCurrency() {
     return baseCurrency;
   }
+
 
   public void setBaseCurrency(String baseCurrency) {
     this.baseCurrency = baseCurrency;
   }
 
+
   public CompletePortfolio links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -302,10 +357,13 @@ public class CompletePortfolio {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

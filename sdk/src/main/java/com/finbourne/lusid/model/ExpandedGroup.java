@@ -41,7 +41,7 @@ public class ExpandedGroup {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private ResourceId id = null;
+  private ResourceId id;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -53,21 +53,23 @@ public class ExpandedGroup {
 
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<CompletePortfolio> values = new ArrayList<>();
+  private List<CompletePortfolio> values = null;
 
   public static final String SERIALIZED_NAME_SUB_GROUPS = "subGroups";
   @SerializedName(SERIALIZED_NAME_SUB_GROUPS)
-  private List<ExpandedGroup> subGroups = new ArrayList<>();
+  private List<ExpandedGroup> subGroups = null;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public ExpandedGroup href(String href) {
+    
     this.href = href;
     return this;
   }
@@ -76,16 +78,21 @@ public class ExpandedGroup {
    * The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
    * @return href
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.")
+
   public String getHref() {
     return href;
   }
+
 
   public void setHref(String href) {
     this.href = href;
   }
 
+
   public ExpandedGroup id(ResourceId id) {
+    
     this.id = id;
     return this;
   }
@@ -95,15 +102,19 @@ public class ExpandedGroup {
    * @return id
   **/
   @ApiModelProperty(required = true, value = "")
+
   public ResourceId getId() {
     return id;
   }
+
 
   public void setId(ResourceId id) {
     this.id = id;
   }
 
+
   public ExpandedGroup displayName(String displayName) {
+    
     this.displayName = displayName;
     return this;
   }
@@ -113,15 +124,19 @@ public class ExpandedGroup {
    * @return displayName
   **/
   @ApiModelProperty(required = true, value = "The name of the portfolio group.")
+
   public String getDisplayName() {
     return displayName;
   }
+
 
   public void setDisplayName(String displayName) {
     this.displayName = displayName;
   }
 
+
   public ExpandedGroup description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -130,16 +145,21 @@ public class ExpandedGroup {
    * The long form description of the portfolio group.
    * @return description
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The long form description of the portfolio group.")
+
   public String getDescription() {
     return description;
   }
+
 
   public void setDescription(String description) {
     this.description = description;
   }
 
+
   public ExpandedGroup values(List<CompletePortfolio> values) {
+    
     this.values = values;
     return this;
   }
@@ -156,16 +176,21 @@ public class ExpandedGroup {
    * The collection of resource identifiers for the portfolios contained in the portfolio group.
    * @return values
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The collection of resource identifiers for the portfolios contained in the portfolio group.")
+
   public List<CompletePortfolio> getValues() {
     return values;
   }
+
 
   public void setValues(List<CompletePortfolio> values) {
     this.values = values;
   }
 
+
   public ExpandedGroup subGroups(List<ExpandedGroup> subGroups) {
+    
     this.subGroups = subGroups;
     return this;
   }
@@ -182,16 +207,21 @@ public class ExpandedGroup {
    * The collection of resource identifiers for the portfolio groups contained in the portfolio group as sub groups.
    * @return subGroups
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The collection of resource identifiers for the portfolio groups contained in the portfolio group as sub groups.")
+
   public List<ExpandedGroup> getSubGroups() {
     return subGroups;
   }
+
 
   public void setSubGroups(List<ExpandedGroup> subGroups) {
     this.subGroups = subGroups;
   }
 
+
   public ExpandedGroup version(Version version) {
+    
     this.version = version;
     return this;
   }
@@ -200,16 +230,21 @@ public class ExpandedGroup {
    * Get version
    * @return version
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public Version getVersion() {
     return version;
   }
+
 
   public void setVersion(Version version) {
     this.version = version;
   }
 
+
   public ExpandedGroup links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -226,10 +261,13 @@ public class ExpandedGroup {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

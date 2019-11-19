@@ -41,13 +41,15 @@ public class TransactionSetConfigurationData {
 
   public static final String SERIALIZED_NAME_SIDE_DEFINITIONS = "sideDefinitions";
   @SerializedName(SERIALIZED_NAME_SIDE_DEFINITIONS)
-  private List<SideConfigurationData> sideDefinitions = new ArrayList<>();
+  private List<SideConfigurationData> sideDefinitions = null;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public TransactionSetConfigurationData transactionConfigs(List<TransactionConfigurationData> transactionConfigs) {
+    
     this.transactionConfigs = transactionConfigs;
     return this;
   }
@@ -62,15 +64,19 @@ public class TransactionSetConfigurationData {
    * @return transactionConfigs
   **/
   @ApiModelProperty(required = true, value = "Collection of transaction type models")
+
   public List<TransactionConfigurationData> getTransactionConfigs() {
     return transactionConfigs;
   }
+
 
   public void setTransactionConfigs(List<TransactionConfigurationData> transactionConfigs) {
     this.transactionConfigs = transactionConfigs;
   }
 
+
   public TransactionSetConfigurationData sideDefinitions(List<SideConfigurationData> sideDefinitions) {
+    
     this.sideDefinitions = sideDefinitions;
     return this;
   }
@@ -87,16 +93,21 @@ public class TransactionSetConfigurationData {
    * Collection of side definitions
    * @return sideDefinitions
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "Collection of side definitions")
+
   public List<SideConfigurationData> getSideDefinitions() {
     return sideDefinitions;
   }
+
 
   public void setSideDefinitions(List<SideConfigurationData> sideDefinitions) {
     this.sideDefinitions = sideDefinitions;
   }
 
+
   public TransactionSetConfigurationData links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -113,10 +124,13 @@ public class TransactionSetConfigurationData {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

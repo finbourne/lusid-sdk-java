@@ -39,7 +39,9 @@ public class Version {
   @SerializedName(SERIALIZED_NAME_AS_AT_DATE)
   private OffsetDateTime asAtDate;
 
+
   public Version effectiveFrom(OffsetDateTime effectiveFrom) {
+    
     this.effectiveFrom = effectiveFrom;
     return this;
   }
@@ -49,15 +51,19 @@ public class Version {
    * @return effectiveFrom
   **/
   @ApiModelProperty(required = true, value = "The effective datetime at which this version became valid. Only applies when a single entity is being interacted with.")
+
   public OffsetDateTime getEffectiveFrom() {
     return effectiveFrom;
   }
+
 
   public void setEffectiveFrom(OffsetDateTime effectiveFrom) {
     this.effectiveFrom = effectiveFrom;
   }
 
+
   public Version asAtDate(OffsetDateTime asAtDate) {
+    
     this.asAtDate = asAtDate;
     return this;
   }
@@ -67,9 +73,11 @@ public class Version {
    * @return asAtDate
   **/
   @ApiModelProperty(required = true, value = "The asAt datetime at which the data was committed to LUSID.")
+
   public OffsetDateTime getAsAtDate() {
     return asAtDate;
   }
+
 
   public void setAsAtDate(OffsetDateTime asAtDate) {
     this.asAtDate = asAtDate;

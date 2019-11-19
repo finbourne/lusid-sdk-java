@@ -34,14 +34,19 @@ public class User {
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
+
    /**
    * The unique id of the user.
    * @return id
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The unique id of the user.")
+
   public String getId() {
     return id;
   }
+
+
 
 
   @Override

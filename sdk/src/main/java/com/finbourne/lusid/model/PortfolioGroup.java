@@ -41,7 +41,7 @@ public class PortfolioGroup {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private ResourceId id = null;
+  private ResourceId id;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -57,21 +57,23 @@ public class PortfolioGroup {
 
   public static final String SERIALIZED_NAME_PORTFOLIOS = "portfolios";
   @SerializedName(SERIALIZED_NAME_PORTFOLIOS)
-  private List<ResourceId> portfolios = new ArrayList<>();
+  private List<ResourceId> portfolios = null;
 
   public static final String SERIALIZED_NAME_SUB_GROUPS = "subGroups";
   @SerializedName(SERIALIZED_NAME_SUB_GROUPS)
-  private List<ResourceId> subGroups = new ArrayList<>();
+  private List<ResourceId> subGroups = null;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public PortfolioGroup href(String href) {
+    
     this.href = href;
     return this;
   }
@@ -80,16 +82,21 @@ public class PortfolioGroup {
    * The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
    * @return href
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.")
+
   public String getHref() {
     return href;
   }
+
 
   public void setHref(String href) {
     this.href = href;
   }
 
+
   public PortfolioGroup id(ResourceId id) {
+    
     this.id = id;
     return this;
   }
@@ -99,15 +106,19 @@ public class PortfolioGroup {
    * @return id
   **/
   @ApiModelProperty(required = true, value = "")
+
   public ResourceId getId() {
     return id;
   }
+
 
   public void setId(ResourceId id) {
     this.id = id;
   }
 
+
   public PortfolioGroup displayName(String displayName) {
+    
     this.displayName = displayName;
     return this;
   }
@@ -117,15 +128,19 @@ public class PortfolioGroup {
    * @return displayName
   **/
   @ApiModelProperty(required = true, value = "The name of the portfolio group.")
+
   public String getDisplayName() {
     return displayName;
   }
+
 
   public void setDisplayName(String displayName) {
     this.displayName = displayName;
   }
 
+
   public PortfolioGroup description(String description) {
+    
     this.description = description;
     return this;
   }
@@ -134,16 +149,21 @@ public class PortfolioGroup {
    * The long form description of the portfolio group.
    * @return description
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The long form description of the portfolio group.")
+
   public String getDescription() {
     return description;
   }
+
 
   public void setDescription(String description) {
     this.description = description;
   }
 
+
   public PortfolioGroup created(OffsetDateTime created) {
+    
     this.created = created;
     return this;
   }
@@ -152,16 +172,21 @@ public class PortfolioGroup {
    * The effective datetime at which the portfolio group was created. No portfolios or sub groups can be added to the group before this date.
    * @return created
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The effective datetime at which the portfolio group was created. No portfolios or sub groups can be added to the group before this date.")
+
   public OffsetDateTime getCreated() {
     return created;
   }
+
 
   public void setCreated(OffsetDateTime created) {
     this.created = created;
   }
 
+
   public PortfolioGroup portfolios(List<ResourceId> portfolios) {
+    
     this.portfolios = portfolios;
     return this;
   }
@@ -178,16 +203,21 @@ public class PortfolioGroup {
    * The collection of resource identifiers for the portfolios contained in the portfolio group.
    * @return portfolios
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The collection of resource identifiers for the portfolios contained in the portfolio group.")
+
   public List<ResourceId> getPortfolios() {
     return portfolios;
   }
+
 
   public void setPortfolios(List<ResourceId> portfolios) {
     this.portfolios = portfolios;
   }
 
+
   public PortfolioGroup subGroups(List<ResourceId> subGroups) {
+    
     this.subGroups = subGroups;
     return this;
   }
@@ -204,16 +234,21 @@ public class PortfolioGroup {
    * The collection of resource identifiers for the portfolio groups contained in the portfolio group as sub groups.
    * @return subGroups
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "The collection of resource identifiers for the portfolio groups contained in the portfolio group as sub groups.")
+
   public List<ResourceId> getSubGroups() {
     return subGroups;
   }
+
 
   public void setSubGroups(List<ResourceId> subGroups) {
     this.subGroups = subGroups;
   }
 
+
   public PortfolioGroup version(Version version) {
+    
     this.version = version;
     return this;
   }
@@ -223,15 +258,19 @@ public class PortfolioGroup {
    * @return version
   **/
   @ApiModelProperty(required = true, value = "")
+
   public Version getVersion() {
     return version;
   }
+
 
   public void setVersion(Version version) {
     this.version = version;
   }
 
+
   public PortfolioGroup links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -248,10 +287,13 @@ public class PortfolioGroup {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;

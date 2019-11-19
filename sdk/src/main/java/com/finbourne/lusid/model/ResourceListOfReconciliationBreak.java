@@ -43,9 +43,11 @@ public class ResourceListOfReconciliationBreak {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public ResourceListOfReconciliationBreak values(List<ReconciliationBreak> values) {
+    
     this.values = values;
     return this;
   }
@@ -60,15 +62,19 @@ public class ResourceListOfReconciliationBreak {
    * @return values
   **/
   @ApiModelProperty(required = true, value = "")
+
   public List<ReconciliationBreak> getValues() {
     return values;
   }
+
 
   public void setValues(List<ReconciliationBreak> values) {
     this.values = values;
   }
 
+
   public ResourceListOfReconciliationBreak href(String href) {
+    
     this.href = href;
     return this;
   }
@@ -77,16 +83,21 @@ public class ResourceListOfReconciliationBreak {
    * Get href
    * @return href
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public String getHref() {
     return href;
   }
+
 
   public void setHref(String href) {
     this.href = href;
   }
 
+
   public ResourceListOfReconciliationBreak links(List<Link> links) {
+    
     this.links = links;
     return this;
   }
@@ -103,10 +114,13 @@ public class ResourceListOfReconciliationBreak {
    * Get links
    * @return links
   **/
+  @javax.annotation.Nullable
   @ApiModelProperty(value = "")
+
   public List<Link> getLinks() {
     return links;
   }
+
 
   public void setLinks(List<Link> links) {
     this.links = links;
