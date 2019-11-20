@@ -113,6 +113,7 @@ CUTLABELDEFINITION | &quot;CutLabelDefinition&quot;
 ANALYTIC | &quot;Analytic&quot;
 PORTFOLIOGROUP | &quot;PortfolioGroup&quot;
 PERSON | &quot;Person&quot;
+ACCESSMETADATA | &quot;AccessMetadata&quot;
 
 
 
