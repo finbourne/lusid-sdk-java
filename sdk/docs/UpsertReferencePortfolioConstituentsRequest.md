@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**effectiveFrom** | **String** | The first date from which the weights will apply | 
+**effectiveFrom** | [**OffsetDateTime**](OffsetDateTime.md) |  | 
 **weightType** | [**WeightTypeEnum**](#WeightTypeEnum) |  | 
 **periodType** | [**PeriodTypeEnum**](#PeriodTypeEnum) |  |  [optional]
 **periodCount** | **Integer** |  |  [optional]
