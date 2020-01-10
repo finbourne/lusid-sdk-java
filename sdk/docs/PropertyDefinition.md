@@ -18,7 +18,6 @@ Name | Type | Description | Notes
 **domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. |  [optional]
 **scope** | **String** | The scope that the property exists in. |  [optional]
 **code** | **String** | The code of the property. Together with the domain and scope this uniquely identifies the property. |  [optional]
-**constraintStyle** | **String** | Describes the uniqueness and cardinality of the property for entity objects under the property domain specified in Key. |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
