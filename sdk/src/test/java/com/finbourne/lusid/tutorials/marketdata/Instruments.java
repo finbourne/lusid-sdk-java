@@ -186,7 +186,7 @@ public class Instruments {
         final int pageSize = 5;
 
         //    List the instruments restricting, the number that are returned
-        ResourceListOfInstrument instruments = instrumentsApi.listInstruments(null, null, null, null, null, pageSize, null, null);
+        PagedResourceListOfInstrument instruments = instrumentsApi.listInstruments(null, null, null, null, null, pageSize, null, null);
 
         assertThat(instruments.getValues().size(), is(equalTo(pageSize)));
     }
