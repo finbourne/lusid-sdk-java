@@ -19,7 +19,7 @@ Name | Value
 ---- | -----
 NOUNITS | &quot;NoUnits&quot;
 BASIC | &quot;Basic&quot;
-ISO4217CURRENCY | &quot;Iso4217Currency&quot;
+CURRENCY | &quot;Currency&quot;
 
 
 
