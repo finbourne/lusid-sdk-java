@@ -72,6 +72,9 @@ STRUCTUREDRESULTDATA | &quot;StructuredResultData&quot;
 DATAMAPPING | &quot;DataMapping&quot;
 LUSIDINSTRUMENT | &quot;LusidInstrument&quot;
 WEIGHTEDINSTRUMENT | &quot;WeightedInstrument&quot;
+TENOR | &quot;Tenor&quot;
+CDSDETAILSPECIFICATIONS | &quot;CdsDetailSpecifications&quot;
+FLOWCONVENTIONS | &quot;FlowConventions&quot;
 
 
 
