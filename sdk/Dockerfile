@@ -1,4 +1,4 @@
-FROM maven:3.5-jdk-10 as maven
+FROM maven:3.6.3-jdk-11-slim as maven
 
 RUN apt-get update && apt-get install -y jq
 
