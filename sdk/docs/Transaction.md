@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **transactionDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date of the transaction. | 
 **settlementDate** | [**OffsetDateTime**](OffsetDateTime.md) | The settlement date of the transaction. | 
 **units** | **Double** | The number of units transacted in the associated instrument. | 
-**transactionPrice** | [**TransactionPrice**](TransactionPrice.md) |  | 
+**transactionPrice** | [**TransactionPrice**](TransactionPrice.md) |  |  [optional]
 **totalConsideration** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
 **exchangeRate** | **Double** | The exchange rate between the transaction and settlement currency. For example if the transaction currency is in USD and the settlement currency is in GBP this this the USD/GBP rate. |  [optional]
 **transactionCurrency** | **String** | The transaction currency. |  [optional]
