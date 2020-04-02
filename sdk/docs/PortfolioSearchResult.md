@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | [**ResourceId**](ResourceId.md) |  | 
 **type** | [**TypeEnum**](#TypeEnum) | The type of the portfolio. | 
-**href** | **String** | The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional]
+**href** | **String** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional]
 **description** | **String** | The long form description of the portfolio. |  [optional]
 **displayName** | **String** | The name of the portfolio. | 
 **isDerived** | **Boolean** | Whether or not this is a derived portfolio. |  [optional]

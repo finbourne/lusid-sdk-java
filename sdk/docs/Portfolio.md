@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**href** | **String** | The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional]
+**href** | **String** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional]
 **id** | [**ResourceId**](ResourceId.md) |  | 
 **type** | [**TypeEnum**](#TypeEnum) | The type of the portfolio. | 
 **displayName** | **String** | The name of the portfolio. | 

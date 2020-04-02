@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**href** | **String** | The specifc Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional]
+**href** | **String** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional]
 **originPortfolioId** | [**ResourceId**](ResourceId.md) |  | 
 **version** | [**Version**](Version.md) |  | 
 **baseCurrency** | **String** | The base currency of the transaction portfolio. | 
