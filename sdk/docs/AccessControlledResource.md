@@ -6,11 +6,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**application** | **String** | The application to which this resource belongs |  [optional]
-**name** | **String** | The display name of the resource |  [optional]
-**description** | **String** | The description of the resource | 
-**actions** | [**List&lt;AccessControlledAction&gt;**](AccessControlledAction.md) | The actions acceptable for this type of resource | 
-**identifierParts** | [**List&lt;IdentifierPartSchema&gt;**](IdentifierPartSchema.md) | The constituent parts of a valid identifier for this resource |  [optional]
+**application** | **String** |  |  [optional]
+**name** | **String** |  |  [optional]
+**description** | **String** |  | 
+**actions** | [**List&lt;AccessControlledAction&gt;**](AccessControlledAction.md) |  | 
+**identifierParts** | [**List&lt;IdentifierPartSchema&gt;**](IdentifierPartSchema.md) |  |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
