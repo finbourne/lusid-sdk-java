@@ -162,7 +162,7 @@ public class Holdings {
         );
 
         //  set the initial holdings on day 1
-        transactionPortfoliosApi.setHoldings(TutorialScope, portfolioCode, day1.toString(), holdingAdjustments);
+        transactionPortfoliosApi.setHoldings(TutorialScope, portfolioCode, day1.toString(), holdingAdjustments, null);
 
         //  add subsequent transactions on day 2
         List<TransactionRequest>    requests = Arrays.asList(
