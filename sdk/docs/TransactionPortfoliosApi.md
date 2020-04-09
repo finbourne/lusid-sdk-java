@@ -25,7 +25,7 @@ Method | HTTP request | Description
 
 <a name="adjustHoldings"></a>
 # **adjustHoldings**
-> AdjustHolding adjustHoldings(scope, code, effectiveAt, holdingAdjustments)
+> AdjustHolding adjustHoldings(scope, code, effectiveAt, holdingAdjustments, reconciliationMethods)
 
 Adjust holdings
 
@@ -55,8 +55,9 @@ public class Example {
     String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the holdings should be set to the provided targets.
     List<AdjustHoldingRequest> holdingAdjustments = Arrays.asList(null); // List<AdjustHoldingRequest> | The selected set of holdings to adjust to the provided targets for the              transaction portfolio.
+    List<String> reconciliationMethods = Arrays.asList(); // List<String> | Optional parameter for specifying a reconciliation method: e.g. FxForward.
     try {
-      AdjustHolding result = apiInstance.adjustHoldings(scope, code, effectiveAt, holdingAdjustments);
+      AdjustHolding result = apiInstance.adjustHoldings(scope, code, effectiveAt, holdingAdjustments, reconciliationMethods);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionPortfoliosApi#adjustHoldings");
@@ -77,6 +78,7 @@ Name | Type | Description  | Notes
  **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
  **effectiveAt** | **String**| The effective datetime or cut label at which the holdings should be set to the provided targets. |
  **holdingAdjustments** | [**List&lt;AdjustHoldingRequest&gt;**](AdjustHoldingRequest.md)| The selected set of holdings to adjust to the provided targets for the              transaction portfolio. |
+ **reconciliationMethods** | [**List&lt;String&gt;**](String.md)| Optional parameter for specifying a reconciliation method: e.g. FxForward. | [optional]
 
 ### Return type
 
@@ -933,7 +935,7 @@ Name | Type | Description  | Notes
 
 <a name="setHoldings"></a>
 # **setHoldings**
-> AdjustHolding setHoldings(scope, code, effectiveAt, holdingAdjustments)
+> AdjustHolding setHoldings(scope, code, effectiveAt, holdingAdjustments, reconciliationMethods)
 
 Set holdings
 
@@ -963,8 +965,9 @@ public class Example {
     String code = "code_example"; // String | The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which the holdings should be set to the provided targets.
     List<AdjustHoldingRequest> holdingAdjustments = Arrays.asList(null); // List<AdjustHoldingRequest> | The complete set of target holdings for the transaction portfolio.
+    List<String> reconciliationMethods = Arrays.asList(); // List<String> | Optional parameter for specifying a reconciliation method: e.g. FxForward.
     try {
-      AdjustHolding result = apiInstance.setHoldings(scope, code, effectiveAt, holdingAdjustments);
+      AdjustHolding result = apiInstance.setHoldings(scope, code, effectiveAt, holdingAdjustments, reconciliationMethods);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling TransactionPortfoliosApi#setHoldings");
@@ -985,6 +988,7 @@ Name | Type | Description  | Notes
  **code** | **String**| The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. |
  **effectiveAt** | **String**| The effective datetime or cut label at which the holdings should be set to the provided targets. |
  **holdingAdjustments** | [**List&lt;AdjustHoldingRequest&gt;**](AdjustHoldingRequest.md)| The complete set of target holdings for the transaction portfolio. |
+ **reconciliationMethods** | [**List&lt;String&gt;**](String.md)| Optional parameter for specifying a reconciliation method: e.g. FxForward. | [optional]
 
 ### Return type
 
