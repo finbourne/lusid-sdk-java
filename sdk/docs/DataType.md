@@ -75,6 +75,8 @@ WEIGHTEDINSTRUMENT | &quot;WeightedInstrument&quot;
 TENOR | &quot;Tenor&quot;
 CDSDETAILSPECIFICATIONS | &quot;CdsDetailSpecifications&quot;
 FLOWCONVENTIONS | &quot;FlowConventions&quot;
+LEGDEFINITION | &quot;LegDefinition&quot;
+INDEXCONVENTION | &quot;IndexConvention&quot;
 ORDERID | &quot;OrderId&quot;
 
 
