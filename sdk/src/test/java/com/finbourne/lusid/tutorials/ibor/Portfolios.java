@@ -83,14 +83,14 @@ public class Portfolios {
         CreatePropertyDefinitionRequest propertyDefinition = new CreatePropertyDefinitionRequest()
 
                 //  The domain the property is to be applied to
-                .domain(CreatePropertyDefinitionRequest.DomainEnum.PORTFOLIO)
+                .domain(PropertyDomain.PORTFOLIO)
 
                 //  The scope the property will be created in
                 .scope(TutorialScope)
 
                 //  When the property value is set it will be valid forever and cannot be changed.
                 //  Properties whose values can change over time should be created with LifeTimeEnum.TIMEVARIANT
-                .lifeTime(CreatePropertyDefinitionRequest.LifeTimeEnum.PERPETUAL)
+                .lifeTime(PropertyLifeTime.PERPETUAL)
 
                 .code(propertyName)
                 .valueRequired(false)
@@ -182,14 +182,14 @@ public class Portfolios {
         CreatePropertyDefinitionRequest    propertyDefinition = new CreatePropertyDefinitionRequest()
 
                 //  The domain the property is to be applied to
-                .domain(CreatePropertyDefinitionRequest.DomainEnum.TRANSACTION)
+                .domain(PropertyDomain.TRANSACTION)
 
                 //  The scope the property will be created in
                 .scope(TutorialScope)
 
                 //  When the property value is set it will be valid forever and cannot be changed.
                 //  Properties whose values can change over time should be created with LifeTimeEnum.TIMEVARIANT
-                .lifeTime(CreatePropertyDefinitionRequest.LifeTimeEnum.PERPETUAL)
+                .lifeTime(PropertyLifeTime.PERPETUAL)
 
                 .code(propertyName)
                 .valueRequired(false)

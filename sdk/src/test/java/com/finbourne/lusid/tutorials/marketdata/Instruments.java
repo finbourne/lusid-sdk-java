@@ -53,9 +53,9 @@ public class Instruments {
             //  Property definition doesn't exist (returns 404), so create one
             //  Details of the property to be created
             CreatePropertyDefinitionRequest propertyDefinition = new CreatePropertyDefinitionRequest()
-                    .domain(CreatePropertyDefinitionRequest.DomainEnum.INSTRUMENT)
+                    .domain(PropertyDomain.INSTRUMENT)
                     .scope(TutorialScope)
-                    .lifeTime(CreatePropertyDefinitionRequest.LifeTimeEnum.PERPETUAL)
+                    .lifeTime(PropertyLifeTime.PERPETUAL)
                     .code(code)
                     .valueRequired(false)
                     .displayName("Fund Style")
