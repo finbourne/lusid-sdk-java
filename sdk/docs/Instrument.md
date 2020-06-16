@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**href** | **String** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional]
+**href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional]
 **lusidInstrumentId** | **String** | The unique LUSID Instrument Identifier (LUID) of the instrument. | 
 **version** | [**Version**](Version.md) |  | 
 **name** | **String** | The name of the instrument. | 
@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **properties** | [**List&lt;Property&gt;**](Property.md) | The requested instrument properties. These will be from the &#39;Instrument&#39; domain. |  [optional]
 **lookthroughPortfolio** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **instrumentDefinition** | [**InstrumentEconomicDefinition**](InstrumentEconomicDefinition.md) |  |  [optional]
-**state** | [**StateEnum**](#StateEnum) | The state of of the instrument at the asAt datetime of this version of the instrument definition. | 
+**state** | [**StateEnum**](#StateEnum) | The state of of the instrument at the asAt datetime of this version of the instrument definition. The available values are: Active, Inactive | 
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 

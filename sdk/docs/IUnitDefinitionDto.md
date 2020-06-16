@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**schema** | [**SchemaEnum**](#SchemaEnum) |  |  [optional]
+**schema** | [**SchemaEnum**](#SchemaEnum) | The available values are: NoUnits, Basic, Iso4217Currency |  [optional]
 **code** | **String** |  |  [optional]
 **displayName** | **String** |  |  [optional]
 **description** | **String** |  |  [optional]

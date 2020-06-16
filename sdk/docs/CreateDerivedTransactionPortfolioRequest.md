@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **parentPortfolioId** | [**ResourceId**](ResourceId.md) |  | 
 **created** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **corporateActionSourceId** | [**ResourceId**](ResourceId.md) |  |  [optional]
-**accountingMethod** | [**AccountingMethodEnum**](#AccountingMethodEnum) |  |  [optional]
+**accountingMethod** | [**AccountingMethodEnum**](#AccountingMethodEnum) | The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst |  [optional]
 **subHoldingKeys** | **List&lt;String&gt;** |  |  [optional]
 
 

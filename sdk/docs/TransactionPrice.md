@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **price** | **Double** |  |  [optional]
-**type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
+**type** | [**TypeEnum**](#TypeEnum) | The available values are: Price, Yield, Spread |  [optional]
 
 
 

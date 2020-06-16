@@ -1,6 +1,6 @@
 # CutLabelDefinitionsApi
 
-All URIs are relative to *http://localhost/api*
+All URIs are relative to *http://localhost:46312*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 <a name="createCutLabelDefinition"></a>
 # **createCutLabelDefinition**
-> CutLabelDefinition createCutLabelDefinition(createRequest)
+> CutLabelDefinition createCutLabelDefinition(createCutLabelDefinitionRequest)
 
 [EARLY ACCESS] Create a Cut Label
 
@@ -32,16 +32,16 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost:46312");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     CutLabelDefinitionsApi apiInstance = new CutLabelDefinitionsApi(defaultClient);
-    CreateCutLabelDefinitionRequest createRequest = new CreateCutLabelDefinitionRequest(); // CreateCutLabelDefinitionRequest | The cut label definition
+    CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest = {"code":"CutLabelCode","displayName":"CutLabelDisplayName","description":"description of cut label","cutLocalTime":{"hours":17,"minutes":0},"timeZone":"GB"}; // CreateCutLabelDefinitionRequest | The cut label definition
     try {
-      CutLabelDefinition result = apiInstance.createCutLabelDefinition(createRequest);
+      CutLabelDefinition result = apiInstance.createCutLabelDefinition(createCutLabelDefinitionRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CutLabelDefinitionsApi#createCutLabelDefinition");
@@ -58,7 +58,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **createRequest** | [**CreateCutLabelDefinitionRequest**](CreateCutLabelDefinitionRequest.md)| The cut label definition | [optional]
+ **createCutLabelDefinitionRequest** | [**CreateCutLabelDefinitionRequest**](CreateCutLabelDefinitionRequest.md)| The cut label definition | [optional]
 
 ### Return type
 
@@ -70,7 +70,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
@@ -101,7 +101,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost:46312");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -170,7 +170,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost:46312");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -241,7 +241,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost:46312");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -301,7 +301,7 @@ Name | Type | Description  | Notes
 
 <a name="updateCutLabelDefinition"></a>
 # **updateCutLabelDefinition**
-> CutLabelDefinition updateCutLabelDefinition(code, updateRequest)
+> CutLabelDefinition updateCutLabelDefinition(code, updateCutLabelDefinitionRequest)
 
 [EARLY ACCESS] Update a Cut Label
 
@@ -320,7 +320,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost/api");
+    defaultClient.setBasePath("http://localhost:46312");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -328,9 +328,9 @@ public class Example {
 
     CutLabelDefinitionsApi apiInstance = new CutLabelDefinitionsApi(defaultClient);
     String code = "code_example"; // String | The Code of the Cut Label that is being updated
-    UpdateCutLabelDefinitionRequest updateRequest = new UpdateCutLabelDefinitionRequest(); // UpdateCutLabelDefinitionRequest | The cut label update definition
+    UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest = {"displayName":"CutLabelDisplayName","description":"description of cut label","cutLocalTime":{"hours":17,"minutes":0},"timeZone":"GB"}; // UpdateCutLabelDefinitionRequest | The cut label update definition
     try {
-      CutLabelDefinition result = apiInstance.updateCutLabelDefinition(code, updateRequest);
+      CutLabelDefinition result = apiInstance.updateCutLabelDefinition(code, updateCutLabelDefinitionRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CutLabelDefinitionsApi#updateCutLabelDefinition");
@@ -348,7 +348,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **code** | **String**| The Code of the Cut Label that is being updated |
- **updateRequest** | [**UpdateCutLabelDefinitionRequest**](UpdateCutLabelDefinitionRequest.md)| The cut label update definition | [optional]
+ **updateCutLabelDefinitionRequest** | [**UpdateCutLabelDefinitionRequest**](UpdateCutLabelDefinitionRequest.md)| The cut label update definition | [optional]
 
 ### Return type
 
@@ -360,7 +360,7 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details

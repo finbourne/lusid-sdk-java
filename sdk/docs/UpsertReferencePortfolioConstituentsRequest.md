@@ -7,8 +7,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **effectiveFrom** | **String** | The first date from which the weights will apply | 
-**weightType** | [**WeightTypeEnum**](#WeightTypeEnum) |  | 
-**periodType** | [**PeriodTypeEnum**](#PeriodTypeEnum) |  |  [optional]
+**weightType** | [**WeightTypeEnum**](#WeightTypeEnum) | The available values are: Static, Floating, Periodical | 
+**periodType** | [**PeriodTypeEnum**](#PeriodTypeEnum) | The available values are: Daily, Weekly, Monthly, Quarterly, Annually |  [optional]
 **periodCount** | **Integer** |  |  [optional]
 **constituents** | [**List&lt;ReferencePortfolioConstituentRequest&gt;**](ReferencePortfolioConstituentRequest.md) | Set of constituents (instrument/weight pairings) | 
 

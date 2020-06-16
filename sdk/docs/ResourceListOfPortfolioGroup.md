@@ -7,7 +7,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **values** | [**List&lt;PortfolioGroup&gt;**](PortfolioGroup.md) |  | 
-**href** | **String** |  |  [optional]
+**href** | [**URI**](URI.md) |  |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
