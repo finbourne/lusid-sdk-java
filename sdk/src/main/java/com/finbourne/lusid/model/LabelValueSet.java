@@ -11,43 +11,93 @@
  */
 
 
-package com.finbourne.lusid.api;
+package com.finbourne.lusid.model;
 
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.model.LusidProblemDetails;
-import com.finbourne.lusid.model.LusidValidationProblemDetails;
-import com.finbourne.lusid.model.ResourceListOfScopeDefinition;
-import org.junit.Test;
-import org.junit.Ignore;
-
+import java.util.Objects;
+import java.util.Arrays;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
- * API tests for ScopesApi
+ * The set of string labels in a multi-value property.
  */
-@Ignore
-public class ScopesApiTest {
+@ApiModel(description = "The set of string labels in a multi-value property.")
 
-    private final ScopesApi api = new ScopesApi();
+public class LabelValueSet {
+  public static final String SERIALIZED_NAME_VALUES = "values";
+  @SerializedName(SERIALIZED_NAME_VALUES)
+  private List<String> values = new ArrayList<>();
 
-    
-    /**
-     * [EARLY ACCESS] List Scopes
-     *
-     * List all the scopes that contain data.
-     *
-     * @throws ApiException
-     *          if the Api call fails
-     */
-    @Test
-    public void listScopesTest() throws ApiException {
-        String filter = null;
-        ResourceListOfScopeDefinition response = api.listScopes(filter);
+  public LabelValueSet values(List<String> values) {
+    this.values = values;
+    return this;
+  }
 
-        // TODO: test validations
+  public LabelValueSet addValuesItem(String valuesItem) {
+    if (this.values == null) {
+      this.values = new ArrayList<>();
     }
-    
+    this.values.add(valuesItem);
+    return this;
+  }
+
+   /**
+   * Get values
+   * @return values
+  **/
+  @ApiModelProperty(value = "")
+  public List<String> getValues() {
+    return values;
+  }
+
+  public void setValues(List<String> values) {
+    this.values = values;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    return true;
+  }
+
+  @Override
+  public int hashCode() {
+    return super.hashCode();
+  }
+
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class LabelValueSet {\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }

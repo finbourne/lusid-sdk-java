@@ -11,43 +11,43 @@
  */
 
 
-package com.finbourne.lusid.api;
+package com.finbourne.lusid.model;
 
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.model.LusidProblemDetails;
-import com.finbourne.lusid.model.LusidValidationProblemDetails;
-import com.finbourne.lusid.model.ResourceListOfScopeDefinition;
-import org.junit.Test;
-import org.junit.Ignore;
-
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
+
 
 /**
- * API tests for ScopesApi
+ * Model tests for LabelValueSet
  */
-@Ignore
-public class ScopesApiTest {
+public class LabelValueSetTest {
+    private final LabelValueSet model = new LabelValueSet();
 
-    private final ScopesApi api = new ScopesApi();
-
-    
     /**
-     * [EARLY ACCESS] List Scopes
-     *
-     * List all the scopes that contain data.
-     *
-     * @throws ApiException
-     *          if the Api call fails
+     * Model tests for LabelValueSet
      */
     @Test
-    public void listScopesTest() throws ApiException {
-        String filter = null;
-        ResourceListOfScopeDefinition response = api.listScopes(filter);
-
-        // TODO: test validations
+    public void testLabelValueSet() {
+        // TODO: test LabelValueSet
     }
-    
+
+    /**
+     * Test the property 'values'
+     */
+    @Test
+    public void valuesTest() {
+        // TODO: test values
+    }
+
 }
