@@ -8,14 +8,14 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional]
 **key** | **String** | The property key which uniquely identifies the property. The format for the property key is {domain}/{scope}/{code}, e.g. &#39;Portfolio/Manager/Id&#39;. |  [optional]
-**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) | The type of values that can be associated with this property. This is defined by the property&#39;s data type. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, BenchmarkType, Code, Id, Uri, ArrayOfIds, ArrayOfTransactionAliases, ArrayofTransactionMovements, ArrayofUnits, StringArray, CurrencyAndAmount, TradePrice, UnitCreation, Currency, UserId, MetricValue, QuoteId, QuoteSeriesId, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, Transition, StructuredData, StructuredDataId, ConfigurationRecipe, ConfigurationRecipeSnippet, StructuredResultDataId, StructuredResultData, DataMapping, LusidInstrument, WeightedInstrument, Tenor, CdsProtectionDetailSpecification, FlowConventions, CdsFlowConventions, LegDefinition, IndexConvention, OrderId, Order, Quote |  [optional]
+**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) | The type of values that can be associated with this property. This is defined by the property&#39;s data type. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, BenchmarkType, Code, Id, Uri, ArrayOfIds, ArrayOfTransactionAliases, ArrayofTransactionMovements, ArrayofUnits, StringArray, CurrencyAndAmount, TradePrice, UnitCreation, Currency, UserId, MetricValue, QuoteId, QuoteSeriesId, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, Transition, StructuredData, StructuredDataId, ConfigurationRecipe, ConfigurationRecipeSnippet, StructuredResultDataId, StructuredResultData, DataMapping, LusidInstrument, WeightedInstrument, Tenor, CdsProtectionDetailSpecification, FlowConventions, CdsFlowConventions, LegDefinition, IndexConvention, OrderId, Order, Quote, WeekendMask, DateAttributes |  [optional]
 **valueRequired** | **Boolean** | Whether or not a value is always required for this property. |  [optional]
 **displayName** | **String** | The display name of the property. |  [optional]
 **dataTypeId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **lifeTime** | [**LifeTimeEnum**](#LifeTimeEnum) | Describes how the property&#39;s values can change over time. The available values are: Perpetual, TimeVariant |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) | The type of the property. The available values are: Label, Metric, Information |  [optional]
 **unitSchema** | [**UnitSchemaEnum**](#UnitSchemaEnum) | The units that can be associated with the property&#39;s values. This is defined by the property&#39;s data type. The available values are: NoUnits, Basic, Iso4217Currency |  [optional]
-**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation |  [optional]
+**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar |  [optional]
 **scope** | **String** | The scope that the property exists in. |  [optional]
 **code** | **String** | The code of the property. Together with the domain and scope this uniquely identifies the property. |  [optional]
 **constraintStyle** | **String** | Describes the uniqueness and cardinality of the property for entity objects under the property domain specified in Key. |  [optional]
@@ -76,6 +76,8 @@ INDEXCONVENTION | &quot;IndexConvention&quot;
 ORDERID | &quot;OrderId&quot;
 ORDER | &quot;Order&quot;
 QUOTE | &quot;Quote&quot;
+WEEKENDMASK | &quot;WeekendMask&quot;
+DATEATTRIBUTES | &quot;DateAttributes&quot;
 
 
 
@@ -129,6 +131,7 @@ UNITRESULT | &quot;UnitResult&quot;
 MARKETDATA | &quot;MarketData&quot;
 CONFIGURATIONRECIPE | &quot;ConfigurationRecipe&quot;
 ALLOCATION | &quot;Allocation&quot;
+CALENDAR | &quot;Calendar&quot;
 
 
 
