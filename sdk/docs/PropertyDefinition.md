@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional]
 **key** | **String** | The property key which uniquely identifies the property. The format for the property key is {domain}/{scope}/{code}, e.g. &#39;Portfolio/Manager/Id&#39;. |  [optional]
-**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) | The type of values that can be associated with this property. This is defined by the property&#39;s data type. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, BenchmarkType, Code, Id, Uri, ArrayOfIds, ArrayOfTransactionAliases, ArrayofTransactionMovements, ArrayofUnits, StringArray, CurrencyAndAmount, TradePrice, UnitCreation, Currency, UserId, MetricValue, QuoteId, QuoteSeriesId, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, Transition, StructuredData, StructuredDataId, ConfigurationRecipe, ConfigurationRecipeSnippet, StructuredResultDataId, StructuredResultData, DataMapping, LusidInstrument, WeightedInstrument, Tenor, CdsProtectionDetailSpecification, FlowConventions, CdsFlowConventions, LegDefinition, IndexConvention, OrderId, Order, Quote, WeekendMask, DateAttributes |  [optional]
+**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) | The type of values that can be associated with this property. This is defined by the property&#39;s data type. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, BenchmarkType, Code, Id, Uri, ArrayOfIds, ArrayOfTransactionAliases, ArrayofTransactionMovements, ArrayofUnits, StringArray, CurrencyAndAmount, TradePrice, UnitCreation, Currency, UserId, MetricValue, QuoteId, QuoteSeriesId, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, Transition, StructuredData, StructuredDataId, ConfigurationRecipe, ConfigurationRecipeSnippet, StructuredResultDataId, StructuredResultData, DataMapping, LusidInstrument, WeightedInstrument, Tenor, CdsProtectionDetailSpecification, FlowConventions, CdsFlowConventions, Conventions, LegDefinition, IndexConvention, OrderId, Order, Quote, WeekendMask, DateAttributes |  [optional]
 **displayName** | **String** | The display name of the property. |  [optional]
 **dataTypeId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) | The type of the property. The available values are: Label, Metric, Information |  [optional]
@@ -73,6 +73,7 @@ TENOR | &quot;Tenor&quot;
 CDSPROTECTIONDETAILSPECIFICATION | &quot;CdsProtectionDetailSpecification&quot;
 FLOWCONVENTIONS | &quot;FlowConventions&quot;
 CDSFLOWCONVENTIONS | &quot;CdsFlowConventions&quot;
+CONVENTIONS | &quot;Conventions&quot;
 LEGDEFINITION | &quot;LegDefinition&quot;
 INDEXCONVENTION | &quot;IndexConvention&quot;
 ORDERID | &quot;OrderId&quot;

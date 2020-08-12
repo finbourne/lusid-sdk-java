@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | [**ResourceId**](ResourceId.md) |  | 
 **displayName** | **String** |  | 
 **description** | **String** |  | 
-**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) | The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, BenchmarkType, Code, Id, Uri, ArrayOfIds, ArrayOfTransactionAliases, ArrayofTransactionMovements, ArrayofUnits, StringArray, CurrencyAndAmount, TradePrice, UnitCreation, Currency, UserId, MetricValue, QuoteId, QuoteSeriesId, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, Transition, StructuredData, StructuredDataId, ConfigurationRecipe, ConfigurationRecipeSnippet, StructuredResultDataId, StructuredResultData, DataMapping, LusidInstrument, WeightedInstrument, Tenor, CdsProtectionDetailSpecification, FlowConventions, CdsFlowConventions, LegDefinition, IndexConvention, OrderId, Order, Quote, WeekendMask, DateAttributes | 
+**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) | The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, BenchmarkType, Code, Id, Uri, ArrayOfIds, ArrayOfTransactionAliases, ArrayofTransactionMovements, ArrayofUnits, StringArray, CurrencyAndAmount, TradePrice, UnitCreation, Currency, UserId, MetricValue, QuoteId, QuoteSeriesId, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, Transition, StructuredData, StructuredDataId, ConfigurationRecipe, ConfigurationRecipeSnippet, StructuredResultDataId, StructuredResultData, DataMapping, LusidInstrument, WeightedInstrument, Tenor, CdsProtectionDetailSpecification, FlowConventions, CdsFlowConventions, Conventions, LegDefinition, IndexConvention, OrderId, Order, Quote, WeekendMask, DateAttributes | 
 **acceptableValues** | **List&lt;String&gt;** |  |  [optional]
 **unitSchema** | [**UnitSchemaEnum**](#UnitSchemaEnum) | The available values are: NoUnits, Basic, Iso4217Currency |  [optional]
 **acceptableUnits** | [**List&lt;IUnitDefinitionDto&gt;**](IUnitDefinitionDto.md) |  |  [optional]
@@ -76,6 +76,7 @@ TENOR | &quot;Tenor&quot;
 CDSPROTECTIONDETAILSPECIFICATION | &quot;CdsProtectionDetailSpecification&quot;
 FLOWCONVENTIONS | &quot;FlowConventions&quot;
 CDSFLOWCONVENTIONS | &quot;CdsFlowConventions&quot;
+CONVENTIONS | &quot;Conventions&quot;
 LEGDEFINITION | &quot;LegDefinition&quot;
 INDEXCONVENTION | &quot;IndexConvention&quot;
 ORDERID | &quot;OrderId&quot;
