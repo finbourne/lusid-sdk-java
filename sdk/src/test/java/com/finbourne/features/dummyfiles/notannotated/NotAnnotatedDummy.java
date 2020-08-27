@@ -1,4 +1,4 @@
-package com.finbourne.features.unit.dummyfiles.notannotated;
+package com.finbourne.features.dummyfiles.notannotated;
 
 public class NotAnnotatedDummy {
     public void methodOne() {

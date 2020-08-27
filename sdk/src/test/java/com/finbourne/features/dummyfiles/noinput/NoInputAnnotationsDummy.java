@@ -1,4 +1,4 @@
-package com.finbourne.features.unit.dummyfiles.noinput;
+package com.finbourne.features.dummyfiles.noinput;
 
 import com.finbourne.features.LusidFeature;
 
