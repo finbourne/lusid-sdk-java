@@ -147,8 +147,8 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>src/test/java</source> <!-- Auto Generated Swagger Tests Only -->
-                                <source>src/test/unit/java</source>
+                                <source>
+                                src/test/java</source>
                             </sources>
                         </configuration>
                     </execution>

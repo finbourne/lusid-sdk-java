@@ -1,13 +1,13 @@
-package com.finbourne.features.dummyfiles.empties;
+package com.finbourne.features.unit.dummyfiles.valid;
 
 import com.finbourne.features.LusidFeature;
 
-public class EmptyAnnotationsDummy {
-    @LusidFeature("")
+public class ValidAnnotationsDummy {
+    @LusidFeature("F1")
     public void methodOne() {
     }
 
-    @LusidFeature("control annotation")
+    @LusidFeature("F2")
     public void methodTwo() {
     }
 

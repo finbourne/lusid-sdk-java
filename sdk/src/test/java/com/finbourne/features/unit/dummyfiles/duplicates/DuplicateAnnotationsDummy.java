@@ -1,4 +1,4 @@
-package com.finbourne.features.dummyfiles.duplicates;
+package com.finbourne.features.unit.dummyfiles.duplicates;
 
 import com.finbourne.features.LusidFeature;
 

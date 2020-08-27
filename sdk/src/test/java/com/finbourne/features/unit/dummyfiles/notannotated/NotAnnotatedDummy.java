@@ -1,6 +1,4 @@
-package com.finbourne.features.dummyfiles.notannotated;
-
-import com.finbourne.features.LusidFeature;
+package com.finbourne.features.unit.dummyfiles.notannotated;
 
 public class NotAnnotatedDummy {
     public void methodOne() {
