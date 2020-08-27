@@ -147,8 +147,8 @@
                         </goals>
                         <configuration>
                             <sources>
-                                <source>
-                                src/test/java</source>
+                                <source>src/test/java</source> <!-- Auto Generated Swagger Tests Only -->
+                                <source>src/test/unit/java</source>
                             </sources>
                         </configuration>
                     </execution>
@@ -224,6 +224,11 @@
     </profiles>
 
     <dependencies>
+        <dependency>
+            <groupId>com.finbourne</groupId>
+            <artifactId>lusid-features</artifactId>
+            <version>1.0.1</version>
+        </dependency>
         <dependency>
             <groupId>io.swagger</groupId>
             <artifactId>swagger-annotations</artifactId>

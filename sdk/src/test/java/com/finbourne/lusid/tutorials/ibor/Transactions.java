@@ -1,5 +1,6 @@
 package com.finbourne.lusid.tutorials.ibor;
 
+import com.finbourne.features.LusidFeature;
 import com.finbourne.lusid.ApiClient;
 import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.InstrumentsApi;
@@ -39,6 +40,7 @@ public class Transactions {
     }
 
     @Test
+    @LusidFeature("F17")
     public void load_listed_instrument_transaction() throws ApiException
     {
         String uuid = UUID.randomUUID().toString();
@@ -85,6 +87,7 @@ public class Transactions {
     }
 
     @Test
+    @LusidFeature("F18")
     public void load_cash_transaction() throws ApiException {
         String uuid = UUID.randomUUID().toString();
         OffsetDateTime effectiveDate = OffsetDateTime.of(2018, 1, 1, 0, 0, 0, 0, ZoneOffset.UTC);
@@ -128,5 +131,6 @@ public class Transactions {
         assertEquals(1, transactions.getValues().size());
         assertEquals(transaction.getTransactionId(), transactions.getValues().get(0).getTransactionId());
     }
+
 
 }

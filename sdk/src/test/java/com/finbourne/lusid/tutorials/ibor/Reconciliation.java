@@ -1,5 +1,6 @@
 package com.finbourne.lusid.tutorials.ibor;
 
+import com.finbourne.features.LusidFeature;
 import com.finbourne.lusid.ApiClient;
 import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.InstrumentsApi;
@@ -47,6 +48,7 @@ public class Reconciliation {
     }
 
     @Test
+    @LusidFeature("F16")
     public void reconcile_portfolio() throws ApiException {
 
         //  Create the portfolio

@@ -1,5 +1,6 @@
 package com.finbourne.lusid.tutorials.ibor;
 
+import com.finbourne.features.LusidFeature;
 import com.finbourne.lusid.ApiClient;
 import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.InstrumentsApi;
@@ -44,6 +45,7 @@ public class Holdings {
     }
 
     @Test
+    @LusidFeature("F2")
     public void get_holdings() throws ApiException {
 
         final String    currency = "GBP";
@@ -108,6 +110,7 @@ public class Holdings {
     }
 
     @Test
+    @LusidFeature("F3")
     public void set_target_holdings() throws ApiException {
 
         final String    currency = "GBP";

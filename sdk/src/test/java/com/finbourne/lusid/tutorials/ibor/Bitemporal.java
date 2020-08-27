@@ -1,5 +1,6 @@
 package com.finbourne.lusid.tutorials.ibor;
 
+import com.finbourne.features.LusidFeature;
 import com.finbourne.lusid.ApiClient;
 import com.finbourne.lusid.api.InstrumentsApi;
 import com.finbourne.lusid.api.TransactionPortfoliosApi;
@@ -47,6 +48,7 @@ public class Bitemporal {
     }
 
     @Test
+    @LusidFeature("F1")
     public void apply_bitemporal_portfolio_change() throws Exception
     {
         String portfolioId = testDataUtilities.createTransactionPortfolio(TutorialScope);
