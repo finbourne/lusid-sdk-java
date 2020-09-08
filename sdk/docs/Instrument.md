@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **identifiers** | **Map&lt;String, String&gt;** | The set of identifiers that can be used to identify the instrument. | 
 **properties** | [**List&lt;Property&gt;**](Property.md) | The requested instrument properties. These will be from the &#39;Instrument&#39; domain. |  [optional]
 **lookthroughPortfolio** | [**ResourceId**](ResourceId.md) |  |  [optional]
-**instrumentDefinition** | [**InstrumentEconomicDefinition**](InstrumentEconomicDefinition.md) |  |  [optional]
+**instrumentDefinition** | [**LusidInstrument**](LusidInstrument.md) |  |  [optional]
 **state** | [**StateEnum**](#StateEnum) | The state of of the instrument at the asAt datetime of this version of the instrument definition. The available values are: Active, Inactive | 
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
