@@ -5,7 +5,7 @@
     <artifactId>lusid-sdk</artifactId>
     <packaging>jar</packaging>
     <name>lusid-sdk</name>
-    <version>0.11.1909-SNAPSHOT</version>
+    <version>0.11.1910-SNAPSHOT</version>
     <url>https://github.com/swagger-api/swagger-codegen</url>
     <description>LUSID Java SDK</description>    
 
