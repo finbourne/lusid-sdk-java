@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **dataTypeId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) | The type of the property. The available values are: Label, Metric, Information |  [optional]
 **unitSchema** | [**UnitSchemaEnum**](#UnitSchemaEnum) | The units that can be associated with the property&#39;s values. This is defined by the property&#39;s data type. The available values are: NoUnits, Basic, Iso4217Currency |  [optional]
-**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar |  [optional]
+**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity |  [optional]
 **scope** | **String** | The scope that the property exists in. |  [optional]
 **code** | **String** | The code of the property. Together with the domain and scope this uniquely identifies the property. |  [optional]
 **valueRequired** | **Boolean** | Whether or not a value is always required for this property. |  [optional]
@@ -92,6 +92,7 @@ MARKETDATA | &quot;MarketData&quot;
 CONFIGURATIONRECIPE | &quot;ConfigurationRecipe&quot;
 ALLOCATION | &quot;Allocation&quot;
 CALENDAR | &quot;Calendar&quot;
+LEGALENTITY | &quot;LegalEntity&quot;
 
 
 

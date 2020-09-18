@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar | 
+**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity | 
 **scope** | **String** | The scope that the property exists in. | 
 **code** | **String** | The code of the property. Together with the domain and scope this uniquely identifies the property. | 
 **valueRequired** | **Boolean** | Whether or not a value is always required for this property. |  [optional]
@@ -40,6 +40,7 @@ MARKETDATA | &quot;MarketData&quot;
 CONFIGURATIONRECIPE | &quot;ConfigurationRecipe&quot;
 ALLOCATION | &quot;Allocation&quot;
 CALENDAR | &quot;Calendar&quot;
+LEGALENTITY | &quot;LegalEntity&quot;
 
 
 
