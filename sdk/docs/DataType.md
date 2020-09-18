@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **id** | [**ResourceId**](ResourceId.md) |  | 
 **displayName** | **String** |  | 
 **description** | **String** |  | 
-**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) | The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel | 
+**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) | The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel | 
 **acceptableValues** | **List&lt;String&gt;** |  |  [optional]
 **unitSchema** | [**UnitSchemaEnum**](#UnitSchemaEnum) | The available values are: NoUnits, Basic, Iso4217Currency |  [optional]
 **acceptableUnits** | [**List&lt;IUnitDefinitionDto&gt;**](IUnitDefinitionDto.md) |  |  [optional]
@@ -44,6 +44,7 @@ PERCENTAGE | &quot;Percentage&quot;
 CODE | &quot;Code&quot;
 ID | &quot;Id&quot;
 URI | &quot;Uri&quot;
+CURRENCYANDAMOUNT | &quot;CurrencyAndAmount&quot;
 CURRENCY | &quot;Currency&quot;
 METRICVALUE | &quot;MetricValue&quot;
 RESOURCEID | &quot;ResourceId&quot;
