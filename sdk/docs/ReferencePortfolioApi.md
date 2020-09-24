@@ -1,6 +1,6 @@
 # ReferencePortfolioApi
 
-All URIs are relative to *http://localhost:51156*
+All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -31,7 +31,7 @@ import com.finbourne.lusid.api.ReferencePortfolioApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:51156");
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -39,7 +39,7 @@ public class Example {
 
     ReferencePortfolioApi apiInstance = new ReferencePortfolioApi(defaultClient);
     String scope = "scope_example"; // String | The intended scope of the portfolio
-    CreateReferencePortfolioRequest createReferencePortfolioRequest = {"displayName":"MyPortfolioName","description":"Description of my portfolio","code":"MyPortfolioCode","created":"2018-03-05T00:00:00+00:00","properties":{}}; // CreateReferencePortfolioRequest | The portfolio creation request object
+    CreateReferencePortfolioRequest createReferencePortfolioRequest = {"displayName":"MyPortfolioName","description":"Description of my portfolio","code":"MyPortfolioCode","created":"2018-03-05T00:00:00.0000000+00:00","properties":{}}; // CreateReferencePortfolioRequest | The portfolio creation request object
     try {
       Portfolio result = apiInstance.createReferencePortfolio(scope, createReferencePortfolioRequest);
       System.out.println(result);
@@ -102,7 +102,7 @@ import com.finbourne.lusid.api.ReferencePortfolioApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:51156");
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -179,7 +179,7 @@ import com.finbourne.lusid.api.ReferencePortfolioApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:51156");
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -256,7 +256,7 @@ import com.finbourne.lusid.api.ReferencePortfolioApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:51156");
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -265,7 +265,7 @@ public class Example {
     ReferencePortfolioApi apiInstance = new ReferencePortfolioApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio
     String code = "code_example"; // String | The code of the portfolio
-    UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest = {"effectiveFrom":"2018-03-05T00:00:00+00:00","weightType":"Periodical","periodType":"Quarterly","periodCount":2,"constituents":[{"instrumentIdentifiers":{"instrument/default/Figi":"BBG0077GZM13","instrument/default/Isin":"GB00BH4HKS39"},"properties":{"portfolio/MyScope/MyPropertyKey":{"key":"Portfolio/MyScope/MyPropertyKey","value":{"metricValue":{"value":12345.5672,"unit":"Unit"}}}},"weight":100,"currency":"GBP"},{"instrumentIdentifiers":{"instrument/default/Figi":"BBG0077H2WN1","instrument/default/Isin":"US0378331005"},"properties":{},"weight":50,"currency":"USD"}]}; // UpsertReferencePortfolioConstituentsRequest | The constituents to upload to the portfolio
+    UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest = {"effectiveFrom":"2018-03-05T00:00:00.0000000+00:00","weightType":"Periodical","periodType":"Quarterly","periodCount":2,"constituents":[{"instrumentIdentifiers":{"instrument/default/Figi":"BBG0077GZM13","instrument/default/Isin":"GB00BH4HKS39"},"properties":{"portfolio/MyScope/MyPropertyKey":{"key":"Portfolio/MyScope/MyPropertyKey","value":{"metricValue":{"value":12345.5672,"unit":"Unit"}}}},"weight":100,"currency":"GBP"},{"instrumentIdentifiers":{"instrument/default/Figi":"BBG0077H2WN1","instrument/default/Isin":"US0378331005"},"properties":{},"weight":50,"currency":"USD"}]}; // UpsertReferencePortfolioConstituentsRequest | The constituents to upload to the portfolio
     try {
       UpsertReferencePortfolioConstituentsResponse result = apiInstance.upsertReferencePortfolioConstituents(scope, code, upsertReferencePortfolioConstituentsRequest);
       System.out.println(result);
