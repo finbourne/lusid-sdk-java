@@ -1,6 +1,6 @@
 # ScopesApi
 
-All URIs are relative to *http://localhost:33669*
+All URIs are relative to *http://localhost:52203*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,7 +28,7 @@ import com.finbourne.lusid.api.ScopesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:33669");
+    defaultClient.setBasePath("http://localhost:52203");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
