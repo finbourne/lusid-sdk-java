@@ -236,38 +236,4 @@ public class Instruments {
 
         assertThat(property.getValue().getLabelValue(), equalTo("Telecoms"));
     }
-<<<<<<< HEAD
-=======
-
-    @Test
-    @LusidFeature("F27")
-    public void create_custom_instrument() throws ApiException {
-
-        //  swap definition, this is uploaded in a client custom format
-        InstrumentDefinition   swapDefinition = new InstrumentDefinition()
-                .name("10mm 5Y Fixed")
-
-                //  The set of identifiers used for identifying the instrument
-                //  e.g. for uploading transactions
-                .identifiers(Collections.singletonMap("ClientInternal", new InstrumentIdValue().value("SW-1")))
-
-                //  The details for valuing the instrument
-                .definition(
-
-                        new InstrumentEconomicDefinition()
-
-                                //  Identifies which valuation engine to use
-                                .instrumentFormat("CustomFormat")
-                                .content("<customFormat>upload in custom xml or JSON format</customFormat>")
-                );
-
-        //  create the swap
-        UpsertInstrumentsResponse instrumentsResponse = instrumentsApi.upsertInstruments(
-                Collections.singletonMap("request", swapDefinition)
-        );
-
-        assertThat(instrumentsResponse.getFailed().keySet(), is(empty()));
-    }
-
->>>>>>> a3f2c05d1c... feature/SE-300 added full annotation scanner
 }
