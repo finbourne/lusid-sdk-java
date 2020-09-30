@@ -274,11 +274,6 @@
             <artifactId>jackson-databind</artifactId>
             <version>${fasterxml-version}</version>
         </dependency>
-        <dependency>
-            <groupId>com.finbourne</groupId>
-            <artifactId>lusid-features</artifactId>
-            <version>1.0.1</version>
-        </dependency>
         <!-- test dependencies -->
         <dependency>
             <groupId>junit</groupId>
