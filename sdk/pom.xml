@@ -223,6 +223,17 @@
 
     </profiles>
 
+    <repositories>
+        <repository>
+            <id>osssrh</id>
+            <name>OSSRH</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
+
     <dependencies>
         <dependency>
             <groupId>com.finbourne</groupId>
