@@ -1,6 +1,6 @@
 # ApplicationMetadataApi
 
-All URIs are relative to *http://localhost:31025*
+All URIs are relative to *http://localhost:53406*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,7 +30,7 @@ import com.finbourne.lusid.api.ApplicationMetadataApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:31025");
+    defaultClient.setBasePath("http://localhost:53406");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -99,7 +99,7 @@ import com.finbourne.lusid.api.ApplicationMetadataApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:31025");
+    defaultClient.setBasePath("http://localhost:53406");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -163,7 +163,7 @@ import com.finbourne.lusid.api.ApplicationMetadataApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:31025");
+    defaultClient.setBasePath("http://localhost:53406");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
