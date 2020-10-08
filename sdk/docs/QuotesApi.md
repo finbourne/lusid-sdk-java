@@ -1,6 +1,6 @@
 # QuotesApi
 
-All URIs are relative to *http://localhost:37773*
+All URIs are relative to *http://localhost:47265*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,7 +28,7 @@ import com.finbourne.lusid.api.QuotesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:37773");
+    defaultClient.setBasePath("http://localhost:47265");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
