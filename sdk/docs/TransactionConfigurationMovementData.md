@@ -7,10 +7,11 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **movementTypes** | [**MovementTypesEnum**](#MovementTypesEnum) | . The available values are: Settlement, Traded, StockMovement, FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment, CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, UnsettledCashTypes | 
-**side** | **String** | The Movement Side | 
-**direction** | **Integer** | The Movement direction | 
+**side** | **String** | The movement side | 
+**direction** | **Integer** | The movement direction | 
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) |  |  [optional]
 **mappings** | [**List&lt;TransactionPropertyMapping&gt;**](TransactionPropertyMapping.md) |  |  [optional]
+**name** | **String** | The movement name (optional) |  [optional]
 
 
 
