@@ -1,6 +1,6 @@
 # DataTypesApi
 
-All URIs are relative to *http://localhost:54360*
+All URIs are relative to *http://localhost:34093*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -30,7 +30,7 @@ import com.finbourne.lusid.api.DataTypesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:54360");
+    defaultClient.setBasePath("http://localhost:34093");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -103,7 +103,7 @@ import com.finbourne.lusid.api.DataTypesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:54360");
+    defaultClient.setBasePath("http://localhost:34093");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -180,7 +180,7 @@ import com.finbourne.lusid.api.DataTypesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:54360");
+    defaultClient.setBasePath("http://localhost:34093");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
