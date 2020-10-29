@@ -1,6 +1,6 @@
 # LoginApi
 
-All URIs are relative to *http://localhost:31151*
+All URIs are relative to *http://localhost:52455*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,7 +28,7 @@ import com.finbourne.lusid.api.LoginApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:31151");
+    defaultClient.setBasePath("http://localhost:52455");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
