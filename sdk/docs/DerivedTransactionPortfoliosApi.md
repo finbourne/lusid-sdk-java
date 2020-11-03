@@ -1,6 +1,6 @@
 # DerivedTransactionPortfoliosApi
 
-All URIs are relative to *http://localhost:46927*
+All URIs are relative to *http://localhost:45576*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -29,7 +29,7 @@ import com.finbourne.lusid.api.DerivedTransactionPortfoliosApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:46927");
+    defaultClient.setBasePath("http://localhost:45576");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -100,7 +100,7 @@ import com.finbourne.lusid.api.DerivedTransactionPortfoliosApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:46927");
+    defaultClient.setBasePath("http://localhost:45576");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
