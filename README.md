@@ -2,8 +2,8 @@
 
 | branch | status |
 | --- | --- |
-| `master` | ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/com.finbourne/lusid-sdk?server=https%3A%2F%2Foss.sonatype.org) [![Build Status](https://travis-ci.org/finbourne/lusid-sdk-java.svg?branch=master)](https://travis-ci.org/finbourne/lusid-sdk-java) |
-| `develop` | [![Build Status](https://travis-ci.org/finbourne/lusid-sdk-java.svg?branch=develop)](https://travis-ci.org/finbourne/lusid-sdk-java) |
+| `master` | ![Sonatype Nexus (Snapshots)](https://img.shields.io/nexus/s/com.finbourne/lusid-sdk?server=https%3A%2F%2Foss.sonatype.org) ![run-sdk-tests](https://github.com/finbourne/lusid-sdk-java/workflows/run-sdk-tests/badge.svg?branch=master) |
+| `develop` | ![run-sdk-tests](https://github.com/finbourne/lusid-sdk-java/workflows/run-sdk-tests/badge.svg?branch=develop) |
 
 # LUSID<sup>®</sup> Java SDK
 
