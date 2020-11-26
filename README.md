@@ -1,4 +1,5 @@
 ![LUSID_by_Finbourne](https://content.finbourne.com/LUSID_repo.png)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffinbourne%2Flusid-sdk-java.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffinbourne%2Flusid-sdk-java?ref=badge_shield)
 
 | branch | status |
 | --- | --- |
@@ -34,3 +35,7 @@ Maven artifacts can be downloaded from the Open Source Software Repository Hosti
 
 
 For further documentation on building the SDK, running the tutorials and using the SDK please see the [wiki](https://github.com/finbourne/lusid-sdk-java/wiki).
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Ffinbourne%2Flusid-sdk-java.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Ffinbourne%2Flusid-sdk-java?ref=badge_large)
