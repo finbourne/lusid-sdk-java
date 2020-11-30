@@ -13,8 +13,8 @@
 
 package com.finbourne.lusid.model;
 
-import java.util.Objects;
-import java.util.Arrays;
+import com.finbourne.lusid.model.CutLabelDefinition;
+import com.finbourne.lusid.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,93 +23,50 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
+
 
 /**
- * MetricValue
+ * Model tests for ResourceListOfCutLabelDefinition
  */
+public class ResourceListOfCutLabelDefinitionTest {
+    private final ResourceListOfCutLabelDefinition model = new ResourceListOfCutLabelDefinition();
 
-public class MetricValue {
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
-  private Double value;
-
-  public static final String SERIALIZED_NAME_UNIT = "unit";
-  @SerializedName(SERIALIZED_NAME_UNIT)
-  private String unit;
-
-  public MetricValue value(Double value) {
-    this.value = value;
-    return this;
-  }
-
-   /**
-   * The numerical value of the property.
-   * @return value
-  **/
-  @ApiModelProperty(value = "The numerical value of the property.")
-  public Double getValue() {
-    return value;
-  }
-
-  public void setValue(Double value) {
-    this.value = value;
-  }
-
-  public MetricValue unit(String unit) {
-    this.unit = unit;
-    return this;
-  }
-
-   /**
-   * Get unit
-   * @return unit
-  **/
-  @ApiModelProperty(value = "")
-  public String getUnit() {
-    return unit;
-  }
-
-  public void setUnit(String unit) {
-    this.unit = unit;
-  }
-
-
-  @Override
-  public boolean equals(java.lang.Object o) {
-    if (this == o) {
-      return true;
+    /**
+     * Model tests for ResourceListOfCutLabelDefinition
+     */
+    @Test
+    public void testResourceListOfCutLabelDefinition() {
+        // TODO: test ResourceListOfCutLabelDefinition
     }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
+
+    /**
+     * Test the property 'values'
+     */
+    @Test
+    public void valuesTest() {
+        // TODO: test values
     }
-    return true;
-  }
 
-  @Override
-  public int hashCode() {
-    return super.hashCode();
-  }
-
-
-  @Override
-  public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class MetricValue {\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("    unit: ").append(toIndentedString(unit)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(java.lang.Object o) {
-    if (o == null) {
-      return "null";
+    /**
+     * Test the property 'href'
+     */
+    @Test
+    public void hrefTest() {
+        // TODO: test href
     }
-    return o.toString().replace("\n", "\n    ");
-  }
+
+    /**
+     * Test the property 'links'
+     */
+    @Test
+    public void linksTest() {
+        // TODO: test links
+    }
 
 }

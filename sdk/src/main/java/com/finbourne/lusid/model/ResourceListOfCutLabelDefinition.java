@@ -15,6 +15,8 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.finbourne.lusid.model.CutLabelDefinition;
+import com.finbourne.lusid.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,54 +25,92 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
- * MetricValue
+ * ResourceListOfCutLabelDefinition
  */
 
-public class MetricValue {
-  public static final String SERIALIZED_NAME_VALUE = "value";
-  @SerializedName(SERIALIZED_NAME_VALUE)
-  private Double value;
+public class ResourceListOfCutLabelDefinition {
+  public static final String SERIALIZED_NAME_VALUES = "values";
+  @SerializedName(SERIALIZED_NAME_VALUES)
+  private List<CutLabelDefinition> values = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_UNIT = "unit";
-  @SerializedName(SERIALIZED_NAME_UNIT)
-  private String unit;
+  public static final String SERIALIZED_NAME_HREF = "href";
+  @SerializedName(SERIALIZED_NAME_HREF)
+  private URI href;
 
-  public MetricValue value(Double value) {
-    this.value = value;
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
+  private List<Link> links = new ArrayList<>();
+
+  public ResourceListOfCutLabelDefinition values(List<CutLabelDefinition> values) {
+    this.values = values;
+    return this;
+  }
+
+  public ResourceListOfCutLabelDefinition addValuesItem(CutLabelDefinition valuesItem) {
+    this.values.add(valuesItem);
     return this;
   }
 
    /**
-   * The numerical value of the property.
-   * @return value
+   * Get values
+   * @return values
   **/
-  @ApiModelProperty(value = "The numerical value of the property.")
-  public Double getValue() {
-    return value;
+  @ApiModelProperty(required = true, value = "")
+  public List<CutLabelDefinition> getValues() {
+    return values;
   }
 
-  public void setValue(Double value) {
-    this.value = value;
+  public void setValues(List<CutLabelDefinition> values) {
+    this.values = values;
   }
 
-  public MetricValue unit(String unit) {
-    this.unit = unit;
+  public ResourceListOfCutLabelDefinition href(URI href) {
+    this.href = href;
     return this;
   }
 
    /**
-   * Get unit
-   * @return unit
+   * Get href
+   * @return href
   **/
   @ApiModelProperty(value = "")
-  public String getUnit() {
-    return unit;
+  public URI getHref() {
+    return href;
   }
 
-  public void setUnit(String unit) {
-    this.unit = unit;
+  public void setHref(URI href) {
+    this.href = href;
+  }
+
+  public ResourceListOfCutLabelDefinition links(List<Link> links) {
+    this.links = links;
+    return this;
+  }
+
+  public ResourceListOfCutLabelDefinition addLinksItem(Link linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
+    }
+    this.links.add(linksItem);
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @ApiModelProperty(value = "")
+  public List<Link> getLinks() {
+    return links;
+  }
+
+  public void setLinks(List<Link> links) {
+    this.links = links;
   }
 
 
@@ -94,9 +134,10 @@ public class MetricValue {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class MetricValue {\n");
-    sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("    unit: ").append(toIndentedString(unit)).append("\n");
+    sb.append("class ResourceListOfCutLabelDefinition {\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
+    sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
   }
