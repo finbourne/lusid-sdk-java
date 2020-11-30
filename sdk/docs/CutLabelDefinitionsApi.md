@@ -1,6 +1,6 @@
 # CutLabelDefinitionsApi
 
-All URIs are relative to *http://localhost:37284*
+All URIs are relative to *http://localhost:45648*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -32,7 +32,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:37284");
+    defaultClient.setBasePath("http://localhost:45648");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -101,7 +101,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:37284");
+    defaultClient.setBasePath("http://localhost:45648");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -170,7 +170,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:37284");
+    defaultClient.setBasePath("http://localhost:45648");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 
 <a name="listCutLabelDefinitions"></a>
 # **listCutLabelDefinitions**
-> ResourceListOfCutLabelDefinition listCutLabelDefinitions(asAt, sortBy, start, limit, filter, query)
+> PagedResourceListOfCutLabelDefinition listCutLabelDefinitions(asAt, sortBy, start, limit, filter, page)
 
 [EARLY ACCESS] List Existing Cut Labels
 
@@ -241,7 +241,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:37284");
+    defaultClient.setBasePath("http://localhost:45648");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -253,9 +253,9 @@ public class Example {
     Integer start = 56; // Integer | Optional. When paginating, skip this number of results
     Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
     String filter = "filter_example"; // String | Optional. Expression to filter the result set.              For example, to filter on code, use \"code eq 'string'\"              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
-    String query = "query_example"; // String | Optional. Expression specifying the criteria that the returned cut labels must meet
+    String page = "page_example"; // String | The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call.  If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. Also, if set, a start value cannot be provided.
     try {
-      ResourceListOfCutLabelDefinition result = apiInstance.listCutLabelDefinitions(asAt, sortBy, start, limit, filter, query);
+      PagedResourceListOfCutLabelDefinition result = apiInstance.listCutLabelDefinitions(asAt, sortBy, start, limit, filter, page);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling CutLabelDefinitionsApi#listCutLabelDefinitions");
@@ -277,11 +277,11 @@ Name | Type | Description  | Notes
  **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
  **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
  **filter** | **String**| Optional. Expression to filter the result set.              For example, to filter on code, use \&quot;code eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
- **query** | **String**| Optional. Expression specifying the criteria that the returned cut labels must meet | [optional]
+ **page** | **String**| The pagination token to use to continue listing cut labels from a previous call This value is returned from the previous call.  If a pagination token is provided the sortBy, filter, and asAt fields  must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional]
 
 ### Return type
 
-[**ResourceListOfCutLabelDefinition**](ResourceListOfCutLabelDefinition.md)
+[**PagedResourceListOfCutLabelDefinition**](PagedResourceListOfCutLabelDefinition.md)
 
 ### Authorization
 
@@ -320,7 +320,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:37284");
+    defaultClient.setBasePath("http://localhost:45648");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
