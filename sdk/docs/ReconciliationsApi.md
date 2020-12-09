@@ -1,6 +1,6 @@
 # ReconciliationsApi
 
-All URIs are relative to *http://localhost:62194*
+All URIs are relative to *http://localhost:57442*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,7 +28,7 @@ import com.finbourne.lusid.api.ReconciliationsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://localhost:62194");
+    defaultClient.setBasePath("http://localhost:57442");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
