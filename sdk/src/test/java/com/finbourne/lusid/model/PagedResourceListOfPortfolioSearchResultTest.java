@@ -11,29 +11,78 @@
  */
 
 
-package com.finbourne.lusid.auth;
+package com.finbourne.lusid.model;
 
-import com.finbourne.lusid.Pair;
-
-import java.util.Map;
+import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.PortfolioSearchResult;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
+import org.junit.Assert;
+import org.junit.Ignore;
+import org.junit.Test;
 
 
-public class OAuth implements Authentication {
-  private String accessToken;
+/**
+ * Model tests for PagedResourceListOfPortfolioSearchResult
+ */
+public class PagedResourceListOfPortfolioSearchResultTest {
+    private final PagedResourceListOfPortfolioSearchResult model = new PagedResourceListOfPortfolioSearchResult();
 
-  public String getAccessToken() {
-    return accessToken;
-  }
-
-  public void setAccessToken(String accessToken) {
-    this.accessToken = accessToken;
-  }
-
-  @Override
-  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams) {
-    if (accessToken != null) {
-      headerParams.put("Authorization", "Bearer " + accessToken);
+    /**
+     * Model tests for PagedResourceListOfPortfolioSearchResult
+     */
+    @Test
+    public void testPagedResourceListOfPortfolioSearchResult() {
+        // TODO: test PagedResourceListOfPortfolioSearchResult
     }
-  }
+
+    /**
+     * Test the property 'nextPage'
+     */
+    @Test
+    public void nextPageTest() {
+        // TODO: test nextPage
+    }
+
+    /**
+     * Test the property 'previousPage'
+     */
+    @Test
+    public void previousPageTest() {
+        // TODO: test previousPage
+    }
+
+    /**
+     * Test the property 'values'
+     */
+    @Test
+    public void valuesTest() {
+        // TODO: test values
+    }
+
+    /**
+     * Test the property 'href'
+     */
+    @Test
+    public void hrefTest() {
+        // TODO: test href
+    }
+
+    /**
+     * Test the property 'links'
+     */
+    @Test
+    public void linksTest() {
+        // TODO: test links
+    }
+
 }

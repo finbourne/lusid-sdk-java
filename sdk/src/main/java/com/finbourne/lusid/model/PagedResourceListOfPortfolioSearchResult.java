@@ -11,29 +11,192 @@
  */
 
 
-package com.finbourne.lusid.auth;
+package com.finbourne.lusid.model;
 
-import com.finbourne.lusid.Pair;
-
-import java.util.Map;
+import java.util.Objects;
+import java.util.Arrays;
+import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.PortfolioSearchResult;
+import com.google.gson.TypeAdapter;
+import com.google.gson.annotations.JsonAdapter;
+import com.google.gson.annotations.SerializedName;
+import com.google.gson.stream.JsonReader;
+import com.google.gson.stream.JsonWriter;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+import java.io.IOException;
+import java.net.URI;
+import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * PagedResourceListOfPortfolioSearchResult
+ */
 
-public class OAuth implements Authentication {
-  private String accessToken;
+public class PagedResourceListOfPortfolioSearchResult {
+  public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
+  @SerializedName(SERIALIZED_NAME_NEXT_PAGE)
+  private String nextPage;
 
-  public String getAccessToken() {
-    return accessToken;
+  public static final String SERIALIZED_NAME_PREVIOUS_PAGE = "previousPage";
+  @SerializedName(SERIALIZED_NAME_PREVIOUS_PAGE)
+  private String previousPage;
+
+  public static final String SERIALIZED_NAME_VALUES = "values";
+  @SerializedName(SERIALIZED_NAME_VALUES)
+  private List<PortfolioSearchResult> values = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_HREF = "href";
+  @SerializedName(SERIALIZED_NAME_HREF)
+  private URI href;
+
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
+  private List<Link> links = new ArrayList<>();
+
+  public PagedResourceListOfPortfolioSearchResult nextPage(String nextPage) {
+    this.nextPage = nextPage;
+    return this;
   }
 
-  public void setAccessToken(String accessToken) {
-    this.accessToken = accessToken;
+   /**
+   * Get nextPage
+   * @return nextPage
+  **/
+  @ApiModelProperty(value = "")
+  public String getNextPage() {
+    return nextPage;
+  }
+
+  public void setNextPage(String nextPage) {
+    this.nextPage = nextPage;
+  }
+
+  public PagedResourceListOfPortfolioSearchResult previousPage(String previousPage) {
+    this.previousPage = previousPage;
+    return this;
+  }
+
+   /**
+   * Get previousPage
+   * @return previousPage
+  **/
+  @ApiModelProperty(value = "")
+  public String getPreviousPage() {
+    return previousPage;
+  }
+
+  public void setPreviousPage(String previousPage) {
+    this.previousPage = previousPage;
+  }
+
+  public PagedResourceListOfPortfolioSearchResult values(List<PortfolioSearchResult> values) {
+    this.values = values;
+    return this;
+  }
+
+  public PagedResourceListOfPortfolioSearchResult addValuesItem(PortfolioSearchResult valuesItem) {
+    this.values.add(valuesItem);
+    return this;
+  }
+
+   /**
+   * Get values
+   * @return values
+  **/
+  @ApiModelProperty(required = true, value = "")
+  public List<PortfolioSearchResult> getValues() {
+    return values;
+  }
+
+  public void setValues(List<PortfolioSearchResult> values) {
+    this.values = values;
+  }
+
+  public PagedResourceListOfPortfolioSearchResult href(URI href) {
+    this.href = href;
+    return this;
+  }
+
+   /**
+   * Get href
+   * @return href
+  **/
+  @ApiModelProperty(value = "")
+  public URI getHref() {
+    return href;
+  }
+
+  public void setHref(URI href) {
+    this.href = href;
+  }
+
+  public PagedResourceListOfPortfolioSearchResult links(List<Link> links) {
+    this.links = links;
+    return this;
+  }
+
+  public PagedResourceListOfPortfolioSearchResult addLinksItem(Link linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
+    }
+    this.links.add(linksItem);
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @ApiModelProperty(value = "")
+  public List<Link> getLinks() {
+    return links;
+  }
+
+  public void setLinks(List<Link> links) {
+    this.links = links;
+  }
+
+
+  @Override
+  public boolean equals(java.lang.Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
+    }
+    return true;
   }
 
   @Override
-  public void applyToParams(List<Pair> queryParams, Map<String, String> headerParams) {
-    if (accessToken != null) {
-      headerParams.put("Authorization", "Bearer " + accessToken);
-    }
+  public int hashCode() {
+    return super.hashCode();
   }
+
+
+  @Override
+  public String toString() {
+    StringBuilder sb = new StringBuilder();
+    sb.append("class PagedResourceListOfPortfolioSearchResult {\n");
+    sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
+    sb.append("    previousPage: ").append(toIndentedString(previousPage)).append("\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
+    sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("}");
+    return sb.toString();
+  }
+
+  /**
+   * Convert the given object to string with each line indented by 4 spaces
+   * (except the first line).
+   */
+  private String toIndentedString(java.lang.Object o) {
+    if (o == null) {
+      return "null";
+    }
+    return o.toString().replace("\n", "\n    ");
+  }
+
 }
