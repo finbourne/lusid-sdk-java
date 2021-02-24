@@ -1,6 +1,6 @@
 # SystemConfigurationApi
 
-All URIs are relative to *https://fbn-prd.lusid.com/api*
+All URIs are relative to *http://local-unit-test-server.lusid.com:62805*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -29,7 +29,7 @@ import com.finbourne.lusid.api.SystemConfigurationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:62805");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -79,7 +79,7 @@ Name | Type | Description  | Notes
 
 <a name="listConfigurationTransactionTypes"></a>
 # **listConfigurationTransactionTypes**
-> TransactionSetConfigurationData listConfigurationTransactionTypes()
+> TransactionSetConfigurationData listConfigurationTransactionTypes(asAt)
 
 [EARLY ACCESS] List transaction types
 
@@ -98,15 +98,16 @@ import com.finbourne.lusid.api.SystemConfigurationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:62805");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     SystemConfigurationApi apiInstance = new SystemConfigurationApi(defaultClient);
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the Transaction configuration types. Defaults              to return the latest version of the holdings if not specified.
     try {
-      TransactionSetConfigurationData result = apiInstance.listConfigurationTransactionTypes();
+      TransactionSetConfigurationData result = apiInstance.listConfigurationTransactionTypes(asAt);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling SystemConfigurationApi#listConfigurationTransactionTypes");
@@ -120,7 +121,10 @@ public class Example {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Transaction configuration types. Defaults              to return the latest version of the holdings if not specified. | [optional]
 
 ### Return type
 
@@ -139,5 +143,6 @@ This endpoint does not need any parameter.
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
