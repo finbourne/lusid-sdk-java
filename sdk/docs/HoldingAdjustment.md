@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **instrumentUid** | **String** | The unqiue Lusid Instrument Id (LUID) of the instrument that the holding adjustment is in. | 
 **subHoldingKeys** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | The set of unique transaction properties and associated values stored with the holding adjustment transactions automatically created by LUSID. Each property will be from the &#39;Transaction&#39; domain. |  [optional]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | The set of unique holding properties and associated values stored with the target holding. Each property will be from the &#39;Holding&#39; domain. |  [optional]
-**currency** | **String** | The Holding currency. |  [optional]
 **taxLots** | [**List&lt;TargetTaxLot&gt;**](TargetTaxLot.md) | The tax-lots that together make up the target holding. | 
 
 
