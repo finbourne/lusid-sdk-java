@@ -15,7 +15,6 @@ Name | Type | Description | Notes
 **cost** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
 **costPortfolioCcy** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
 **transaction** | [**Transaction**](Transaction.md) |  |  [optional]
-**currency** | **String** | The holding currency. |  [optional]
 
 
 
