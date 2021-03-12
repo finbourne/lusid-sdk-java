@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Set of unique transaction properties and associated values to stored with the transaction. Each property will be from the &#39;Transaction&#39; domain. |  [optional]
 **counterpartyId** | **String** | The identifier for the counterparty of the transaction. |  [optional]
 **source** | **String** | The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration. |  [optional]
+**entryDateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt datetime that the transaction was added to LUSID. |  [optional]
 
 
 
