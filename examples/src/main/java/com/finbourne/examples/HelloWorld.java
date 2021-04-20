@@ -88,7 +88,8 @@ public class HelloWorld {
             System.out.printf("%s %s %s",
                     luidToName.get(holding.getInstrumentUid()),
                     holding.getUnits(),
-                    holding.getCost().getAmount());
+                    holding.getCost().getAmount()
+            );
         }
         // end::get-holdings[]
     }
