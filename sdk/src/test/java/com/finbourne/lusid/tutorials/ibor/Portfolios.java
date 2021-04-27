@@ -11,6 +11,7 @@ import com.finbourne.lusid.utilities.InstrumentLoader;
 import com.finbourne.lusid.utilities.TestDataUtilities;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.Ignore;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
@@ -249,6 +250,7 @@ public class Portfolios {
     }
 
     @Test
+    @Ignore
     @LusidFeature("F12")
     public void list_scopes() throws ApiException {
 
