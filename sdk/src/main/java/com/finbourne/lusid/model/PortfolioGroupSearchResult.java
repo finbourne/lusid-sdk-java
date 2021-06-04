@@ -34,7 +34,7 @@ import java.util.List;
 /**
  * PortfolioGroupSearchResult
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class PortfolioGroupSearchResult {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -42,7 +42,7 @@ public class PortfolioGroupSearchResult {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private ResourceId id;
+  private ResourceId id = null;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -58,23 +58,22 @@ public class PortfolioGroupSearchResult {
 
   public static final String SERIALIZED_NAME_PORTFOLIOS = "portfolios";
   @SerializedName(SERIALIZED_NAME_PORTFOLIOS)
-  private List<ResourceId> portfolios = null;
+  private List<ResourceId> portfolios = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_SUB_GROUPS = "subGroups";
   @SerializedName(SERIALIZED_NAME_SUB_GROUPS)
-  private List<ResourceId> subGroups = null;
+  private List<ResourceId> subGroups = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version;
+  private Version version = null;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public PortfolioGroupSearchResult href(URI href) {
-    this.href = href; 
+    this.href = href;
     return this;
   }
 
@@ -91,9 +90,8 @@ public class PortfolioGroupSearchResult {
     this.href = href;
   }
 
-
   public PortfolioGroupSearchResult id(ResourceId id) {
-    this.id = id; 
+    this.id = id;
     return this;
   }
 
@@ -110,9 +108,8 @@ public class PortfolioGroupSearchResult {
     this.id = id;
   }
 
-
   public PortfolioGroupSearchResult displayName(String displayName) {
-    this.displayName = displayName; 
+    this.displayName = displayName;
     return this;
   }
 
@@ -129,9 +126,8 @@ public class PortfolioGroupSearchResult {
     this.displayName = displayName;
   }
 
-
   public PortfolioGroupSearchResult description(String description) {
-    this.description = description; 
+    this.description = description;
     return this;
   }
 
@@ -148,9 +144,8 @@ public class PortfolioGroupSearchResult {
     this.description = description;
   }
 
-
   public PortfolioGroupSearchResult created(OffsetDateTime created) {
-    this.created = created; 
+    this.created = created;
     return this;
   }
 
@@ -167,14 +162,12 @@ public class PortfolioGroupSearchResult {
     this.created = created;
   }
 
-
   public PortfolioGroupSearchResult portfolios(List<ResourceId> portfolios) {
-    this.portfolios = portfolios; 
+    this.portfolios = portfolios;
     return this;
   }
 
   public PortfolioGroupSearchResult addPortfoliosItem(ResourceId portfoliosItem) {
-   
     if (this.portfolios == null) {
       this.portfolios = new ArrayList<>();
     }
@@ -195,14 +188,12 @@ public class PortfolioGroupSearchResult {
     this.portfolios = portfolios;
   }
 
-
   public PortfolioGroupSearchResult subGroups(List<ResourceId> subGroups) {
-    this.subGroups = subGroups; 
+    this.subGroups = subGroups;
     return this;
   }
 
   public PortfolioGroupSearchResult addSubGroupsItem(ResourceId subGroupsItem) {
-   
     if (this.subGroups == null) {
       this.subGroups = new ArrayList<>();
     }
@@ -223,9 +214,8 @@ public class PortfolioGroupSearchResult {
     this.subGroups = subGroups;
   }
 
-
   public PortfolioGroupSearchResult version(Version version) {
-    this.version = version; 
+    this.version = version;
     return this;
   }
 
@@ -242,14 +232,12 @@ public class PortfolioGroupSearchResult {
     this.version = version;
   }
 
-
   public PortfolioGroupSearchResult links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public PortfolioGroupSearchResult addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -272,7 +260,7 @@ public class PortfolioGroupSearchResult {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -284,8 +272,9 @@ public class PortfolioGroupSearchResult {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -308,7 +297,7 @@ public class PortfolioGroupSearchResult {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

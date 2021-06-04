@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * IUnitDefinitionDto
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class IUnitDefinitionDto {
   /**
    * The available values are: NoUnits, Basic, Iso4217Currency
@@ -72,7 +72,7 @@ public class IUnitDefinitionDto {
 
       @Override
       public SchemaEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return SchemaEnum.fromValue(value);
       }
     }
@@ -94,9 +94,8 @@ public class IUnitDefinitionDto {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-
   public IUnitDefinitionDto schema(SchemaEnum schema) {
-    this.schema = schema; 
+    this.schema = schema;
     return this;
   }
 
@@ -113,7 +112,6 @@ public class IUnitDefinitionDto {
     this.schema = schema;
   }
 
-
    /**
    * Get code
    * @return code
@@ -123,8 +121,6 @@ public class IUnitDefinitionDto {
     return code;
   }
 
-
-
    /**
    * Get displayName
    * @return displayName
@@ -133,8 +129,6 @@ public class IUnitDefinitionDto {
   public String getDisplayName() {
     return displayName;
   }
-
-
 
    /**
    * Get description
@@ -146,9 +140,8 @@ public class IUnitDefinitionDto {
   }
 
 
-
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -160,8 +153,9 @@ public class IUnitDefinitionDto {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -179,7 +173,7 @@ public class IUnitDefinitionDto {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

@@ -29,7 +29,7 @@ import java.io.IOException;
  * This request specifies a new Cut Label Definition
  */
 @ApiModel(description = "This request specifies a new Cut Label Definition")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class CreateCutLabelDefinitionRequest {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
@@ -45,15 +45,14 @@ public class CreateCutLabelDefinitionRequest {
 
   public static final String SERIALIZED_NAME_CUT_LOCAL_TIME = "cutLocalTime";
   @SerializedName(SERIALIZED_NAME_CUT_LOCAL_TIME)
-  private CutLocalTime cutLocalTime;
+  private CutLocalTime cutLocalTime = null;
 
   public static final String SERIALIZED_NAME_TIME_ZONE = "timeZone";
   @SerializedName(SERIALIZED_NAME_TIME_ZONE)
   private String timeZone;
 
-
   public CreateCutLabelDefinitionRequest code(String code) {
-    this.code = code; 
+    this.code = code;
     return this;
   }
 
@@ -70,9 +69,8 @@ public class CreateCutLabelDefinitionRequest {
     this.code = code;
   }
 
-
   public CreateCutLabelDefinitionRequest displayName(String displayName) {
-    this.displayName = displayName; 
+    this.displayName = displayName;
     return this;
   }
 
@@ -89,9 +87,8 @@ public class CreateCutLabelDefinitionRequest {
     this.displayName = displayName;
   }
 
-
   public CreateCutLabelDefinitionRequest description(String description) {
-    this.description = description; 
+    this.description = description;
     return this;
   }
 
@@ -108,9 +105,8 @@ public class CreateCutLabelDefinitionRequest {
     this.description = description;
   }
 
-
   public CreateCutLabelDefinitionRequest cutLocalTime(CutLocalTime cutLocalTime) {
-    this.cutLocalTime = cutLocalTime; 
+    this.cutLocalTime = cutLocalTime;
     return this;
   }
 
@@ -127,9 +123,8 @@ public class CreateCutLabelDefinitionRequest {
     this.cutLocalTime = cutLocalTime;
   }
 
-
   public CreateCutLabelDefinitionRequest timeZone(String timeZone) {
-    this.timeZone = timeZone; 
+    this.timeZone = timeZone;
     return this;
   }
 
@@ -148,7 +143,7 @@ public class CreateCutLabelDefinitionRequest {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -160,8 +155,9 @@ public class CreateCutLabelDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -180,7 +176,7 @@ public class CreateCutLabelDefinitionRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

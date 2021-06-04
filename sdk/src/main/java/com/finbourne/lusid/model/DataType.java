@@ -33,7 +33,7 @@ import java.util.List;
 /**
  * DataType
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class DataType {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -80,7 +80,7 @@ public class DataType {
 
       @Override
       public TypeValueRangeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TypeValueRangeEnum.fromValue(value);
       }
     }
@@ -92,7 +92,7 @@ public class DataType {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private ResourceId id;
+  private ResourceId id = null;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -179,7 +179,7 @@ public class DataType {
 
       @Override
       public ValueTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return ValueTypeEnum.fromValue(value);
       }
     }
@@ -191,7 +191,7 @@ public class DataType {
 
   public static final String SERIALIZED_NAME_ACCEPTABLE_VALUES = "acceptableValues";
   @SerializedName(SERIALIZED_NAME_ACCEPTABLE_VALUES)
-  private List<String> acceptableValues = null;
+  private List<String> acceptableValues = new ArrayList<>();
 
   /**
    * The available values are: NoUnits, Basic, Iso4217Currency
@@ -236,7 +236,7 @@ public class DataType {
 
       @Override
       public UnitSchemaEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return UnitSchemaEnum.fromValue(value);
       }
     }
@@ -248,15 +248,14 @@ public class DataType {
 
   public static final String SERIALIZED_NAME_ACCEPTABLE_UNITS = "acceptableUnits";
   @SerializedName(SERIALIZED_NAME_ACCEPTABLE_UNITS)
-  private List<IUnitDefinitionDto> acceptableUnits = null;
+  private List<IUnitDefinitionDto> acceptableUnits = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public DataType href(URI href) {
-    this.href = href; 
+    this.href = href;
     return this;
   }
 
@@ -273,9 +272,8 @@ public class DataType {
     this.href = href;
   }
 
-
   public DataType typeValueRange(TypeValueRangeEnum typeValueRange) {
-    this.typeValueRange = typeValueRange; 
+    this.typeValueRange = typeValueRange;
     return this;
   }
 
@@ -292,9 +290,8 @@ public class DataType {
     this.typeValueRange = typeValueRange;
   }
 
-
   public DataType id(ResourceId id) {
-    this.id = id; 
+    this.id = id;
     return this;
   }
 
@@ -311,9 +308,8 @@ public class DataType {
     this.id = id;
   }
 
-
   public DataType displayName(String displayName) {
-    this.displayName = displayName; 
+    this.displayName = displayName;
     return this;
   }
 
@@ -330,9 +326,8 @@ public class DataType {
     this.displayName = displayName;
   }
 
-
   public DataType description(String description) {
-    this.description = description; 
+    this.description = description;
     return this;
   }
 
@@ -349,9 +344,8 @@ public class DataType {
     this.description = description;
   }
 
-
   public DataType valueType(ValueTypeEnum valueType) {
-    this.valueType = valueType; 
+    this.valueType = valueType;
     return this;
   }
 
@@ -368,14 +362,12 @@ public class DataType {
     this.valueType = valueType;
   }
 
-
   public DataType acceptableValues(List<String> acceptableValues) {
-    this.acceptableValues = acceptableValues; 
+    this.acceptableValues = acceptableValues;
     return this;
   }
 
   public DataType addAcceptableValuesItem(String acceptableValuesItem) {
-   
     if (this.acceptableValues == null) {
       this.acceptableValues = new ArrayList<>();
     }
@@ -396,9 +388,8 @@ public class DataType {
     this.acceptableValues = acceptableValues;
   }
 
-
   public DataType unitSchema(UnitSchemaEnum unitSchema) {
-    this.unitSchema = unitSchema; 
+    this.unitSchema = unitSchema;
     return this;
   }
 
@@ -415,14 +406,12 @@ public class DataType {
     this.unitSchema = unitSchema;
   }
 
-
   public DataType acceptableUnits(List<IUnitDefinitionDto> acceptableUnits) {
-    this.acceptableUnits = acceptableUnits; 
+    this.acceptableUnits = acceptableUnits;
     return this;
   }
 
   public DataType addAcceptableUnitsItem(IUnitDefinitionDto acceptableUnitsItem) {
-   
     if (this.acceptableUnits == null) {
       this.acceptableUnits = new ArrayList<>();
     }
@@ -443,14 +432,12 @@ public class DataType {
     this.acceptableUnits = acceptableUnits;
   }
 
-
   public DataType links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public DataType addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -473,7 +460,7 @@ public class DataType {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -485,8 +472,9 @@ public class DataType {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -510,7 +498,7 @@ public class DataType {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

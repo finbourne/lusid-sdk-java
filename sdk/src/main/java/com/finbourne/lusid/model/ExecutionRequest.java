@@ -31,7 +31,7 @@ import java.util.Map;
 /**
  * ExecutionRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class ExecutionRequest {
   public static final String SERIALIZED_NAME_EXECUTION_ID = "executionId";
   @SerializedName(SERIALIZED_NAME_EXECUTION_ID)
@@ -61,9 +61,8 @@ public class ExecutionRequest {
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
-
   public ExecutionRequest executionId(String executionId) {
-    this.executionId = executionId; 
+    this.executionId = executionId;
     return this;
   }
 
@@ -80,9 +79,8 @@ public class ExecutionRequest {
     this.executionId = executionId;
   }
 
-
   public ExecutionRequest side(String side) {
-    this.side = side; 
+    this.side = side;
     return this;
   }
 
@@ -99,9 +97,8 @@ public class ExecutionRequest {
     this.side = side;
   }
 
-
   public ExecutionRequest instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
-    this.instrumentIdentifiers = instrumentIdentifiers; 
+    this.instrumentIdentifiers = instrumentIdentifiers;
     return this;
   }
 
@@ -123,9 +120,8 @@ public class ExecutionRequest {
     this.instrumentIdentifiers = instrumentIdentifiers;
   }
 
-
   public ExecutionRequest transactionTime(OffsetDateTime transactionTime) {
-    this.transactionTime = transactionTime; 
+    this.transactionTime = transactionTime;
     return this;
   }
 
@@ -142,9 +138,8 @@ public class ExecutionRequest {
     this.transactionTime = transactionTime;
   }
 
-
   public ExecutionRequest lastShares(Double lastShares) {
-    this.lastShares = lastShares; 
+    this.lastShares = lastShares;
     return this;
   }
 
@@ -161,9 +156,8 @@ public class ExecutionRequest {
     this.lastShares = lastShares;
   }
 
-
   public ExecutionRequest lastPx(Double lastPx) {
-    this.lastPx = lastPx; 
+    this.lastPx = lastPx;
     return this;
   }
 
@@ -180,9 +174,8 @@ public class ExecutionRequest {
     this.lastPx = lastPx;
   }
 
-
   public ExecutionRequest currency(String currency) {
-    this.currency = currency; 
+    this.currency = currency;
     return this;
   }
 
@@ -201,7 +194,7 @@ public class ExecutionRequest {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -213,8 +206,9 @@ public class ExecutionRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -235,7 +229,7 @@ public class ExecutionRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

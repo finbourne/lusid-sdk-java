@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * MetricValue
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class MetricValue {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
@@ -37,9 +37,8 @@ public class MetricValue {
   @SerializedName(SERIALIZED_NAME_UNIT)
   private String unit;
 
-
   public MetricValue value(Double value) {
-    this.value = value; 
+    this.value = value;
     return this;
   }
 
@@ -56,9 +55,8 @@ public class MetricValue {
     this.value = value;
   }
 
-
   public MetricValue unit(String unit) {
-    this.unit = unit; 
+    this.unit = unit;
     return this;
   }
 
@@ -77,7 +75,7 @@ public class MetricValue {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -89,8 +87,9 @@ public class MetricValue {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -106,7 +105,7 @@ public class MetricValue {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

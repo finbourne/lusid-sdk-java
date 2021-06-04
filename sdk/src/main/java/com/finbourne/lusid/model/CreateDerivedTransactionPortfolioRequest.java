@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * CreateDerivedTransactionPortfolioRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class CreateDerivedTransactionPortfolioRequest {
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -47,7 +47,7 @@ public class CreateDerivedTransactionPortfolioRequest {
 
   public static final String SERIALIZED_NAME_PARENT_PORTFOLIO_ID = "parentPortfolioId";
   @SerializedName(SERIALIZED_NAME_PARENT_PORTFOLIO_ID)
-  private ResourceId parentPortfolioId;
+  private ResourceId parentPortfolioId = null;
 
   public static final String SERIALIZED_NAME_CREATED = "created";
   @SerializedName(SERIALIZED_NAME_CREATED)
@@ -55,7 +55,7 @@ public class CreateDerivedTransactionPortfolioRequest {
 
   public static final String SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID = "corporateActionSourceId";
   @SerializedName(SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID)
-  private ResourceId corporateActionSourceId;
+  private ResourceId corporateActionSourceId = null;
 
   /**
    * The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst
@@ -106,7 +106,7 @@ public class CreateDerivedTransactionPortfolioRequest {
 
       @Override
       public AccountingMethodEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return AccountingMethodEnum.fromValue(value);
       }
     }
@@ -118,11 +118,10 @@ public class CreateDerivedTransactionPortfolioRequest {
 
   public static final String SERIALIZED_NAME_SUB_HOLDING_KEYS = "subHoldingKeys";
   @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEYS)
-  private List<String> subHoldingKeys = null;
-
+  private List<String> subHoldingKeys = new ArrayList<>();
 
   public CreateDerivedTransactionPortfolioRequest displayName(String displayName) {
-    this.displayName = displayName; 
+    this.displayName = displayName;
     return this;
   }
 
@@ -139,9 +138,8 @@ public class CreateDerivedTransactionPortfolioRequest {
     this.displayName = displayName;
   }
 
-
   public CreateDerivedTransactionPortfolioRequest description(String description) {
-    this.description = description; 
+    this.description = description;
     return this;
   }
 
@@ -158,9 +156,8 @@ public class CreateDerivedTransactionPortfolioRequest {
     this.description = description;
   }
 
-
   public CreateDerivedTransactionPortfolioRequest code(String code) {
-    this.code = code; 
+    this.code = code;
     return this;
   }
 
@@ -177,9 +174,8 @@ public class CreateDerivedTransactionPortfolioRequest {
     this.code = code;
   }
 
-
   public CreateDerivedTransactionPortfolioRequest parentPortfolioId(ResourceId parentPortfolioId) {
-    this.parentPortfolioId = parentPortfolioId; 
+    this.parentPortfolioId = parentPortfolioId;
     return this;
   }
 
@@ -196,9 +192,8 @@ public class CreateDerivedTransactionPortfolioRequest {
     this.parentPortfolioId = parentPortfolioId;
   }
 
-
   public CreateDerivedTransactionPortfolioRequest created(OffsetDateTime created) {
-    this.created = created; 
+    this.created = created;
     return this;
   }
 
@@ -215,9 +210,8 @@ public class CreateDerivedTransactionPortfolioRequest {
     this.created = created;
   }
 
-
   public CreateDerivedTransactionPortfolioRequest corporateActionSourceId(ResourceId corporateActionSourceId) {
-    this.corporateActionSourceId = corporateActionSourceId; 
+    this.corporateActionSourceId = corporateActionSourceId;
     return this;
   }
 
@@ -234,9 +228,8 @@ public class CreateDerivedTransactionPortfolioRequest {
     this.corporateActionSourceId = corporateActionSourceId;
   }
 
-
   public CreateDerivedTransactionPortfolioRequest accountingMethod(AccountingMethodEnum accountingMethod) {
-    this.accountingMethod = accountingMethod; 
+    this.accountingMethod = accountingMethod;
     return this;
   }
 
@@ -253,14 +246,12 @@ public class CreateDerivedTransactionPortfolioRequest {
     this.accountingMethod = accountingMethod;
   }
 
-
   public CreateDerivedTransactionPortfolioRequest subHoldingKeys(List<String> subHoldingKeys) {
-    this.subHoldingKeys = subHoldingKeys; 
+    this.subHoldingKeys = subHoldingKeys;
     return this;
   }
 
   public CreateDerivedTransactionPortfolioRequest addSubHoldingKeysItem(String subHoldingKeysItem) {
-   
     if (this.subHoldingKeys == null) {
       this.subHoldingKeys = new ArrayList<>();
     }
@@ -283,7 +274,7 @@ public class CreateDerivedTransactionPortfolioRequest {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -295,8 +286,9 @@ public class CreateDerivedTransactionPortfolioRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -318,7 +310,7 @@ public class CreateDerivedTransactionPortfolioRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

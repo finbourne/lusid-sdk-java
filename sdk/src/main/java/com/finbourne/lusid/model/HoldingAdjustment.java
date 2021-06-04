@@ -34,11 +34,11 @@ import java.util.Map;
  * The target holdings.
  */
 @ApiModel(description = "The target holdings.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class HoldingAdjustment {
   public static final String SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS = "instrumentIdentifiers";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS)
-  private Map<String, String> instrumentIdentifiers = null;
+  private Map<String, String> instrumentIdentifiers = new HashMap<>();
 
   public static final String SERIALIZED_NAME_INSTRUMENT_UID = "instrumentUid";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_UID)
@@ -46,11 +46,11 @@ public class HoldingAdjustment {
 
   public static final String SERIALIZED_NAME_SUB_HOLDING_KEYS = "subHoldingKeys";
   @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEYS)
-  private Map<String, PerpetualProperty> subHoldingKeys = null;
+  private Map<String, PerpetualProperty> subHoldingKeys = new HashMap<>();
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = null;
+  private Map<String, PerpetualProperty> properties = new HashMap<>();
 
   public static final String SERIALIZED_NAME_TAX_LOTS = "taxLots";
   @SerializedName(SERIALIZED_NAME_TAX_LOTS)
@@ -60,9 +60,8 @@ public class HoldingAdjustment {
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
-
   public HoldingAdjustment instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
-    this.instrumentIdentifiers = instrumentIdentifiers; 
+    this.instrumentIdentifiers = instrumentIdentifiers;
     return this;
   }
 
@@ -87,9 +86,8 @@ public class HoldingAdjustment {
     this.instrumentIdentifiers = instrumentIdentifiers;
   }
 
-
   public HoldingAdjustment instrumentUid(String instrumentUid) {
-    this.instrumentUid = instrumentUid; 
+    this.instrumentUid = instrumentUid;
     return this;
   }
 
@@ -106,9 +104,8 @@ public class HoldingAdjustment {
     this.instrumentUid = instrumentUid;
   }
 
-
   public HoldingAdjustment subHoldingKeys(Map<String, PerpetualProperty> subHoldingKeys) {
-    this.subHoldingKeys = subHoldingKeys; 
+    this.subHoldingKeys = subHoldingKeys;
     return this;
   }
 
@@ -133,9 +130,8 @@ public class HoldingAdjustment {
     this.subHoldingKeys = subHoldingKeys;
   }
 
-
   public HoldingAdjustment properties(Map<String, PerpetualProperty> properties) {
-    this.properties = properties; 
+    this.properties = properties;
     return this;
   }
 
@@ -160,14 +156,12 @@ public class HoldingAdjustment {
     this.properties = properties;
   }
 
-
   public HoldingAdjustment taxLots(List<TargetTaxLot> taxLots) {
-    this.taxLots = taxLots; 
+    this.taxLots = taxLots;
     return this;
   }
 
   public HoldingAdjustment addTaxLotsItem(TargetTaxLot taxLotsItem) {
-   
     this.taxLots.add(taxLotsItem);
     return this;
   }
@@ -185,9 +179,8 @@ public class HoldingAdjustment {
     this.taxLots = taxLots;
   }
 
-
   public HoldingAdjustment currency(String currency) {
-    this.currency = currency; 
+    this.currency = currency;
     return this;
   }
 
@@ -206,7 +199,7 @@ public class HoldingAdjustment {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -218,8 +211,9 @@ public class HoldingAdjustment {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -239,7 +233,7 @@ public class HoldingAdjustment {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

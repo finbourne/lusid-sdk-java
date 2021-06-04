@@ -28,7 +28,7 @@ import java.io.IOException;
  * The description of an allowable instrument identifier.
  */
 @ApiModel(description = "The description of an allowable instrument identifier.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class InstrumentIdTypeDescriptor {
   public static final String SERIALIZED_NAME_IDENTIFIER_TYPE = "identifierType";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_TYPE)
@@ -42,9 +42,8 @@ public class InstrumentIdTypeDescriptor {
   @SerializedName(SERIALIZED_NAME_IS_UNIQUE_IDENTIFIER_TYPE)
   private Boolean isUniqueIdentifierType;
 
-
   public InstrumentIdTypeDescriptor identifierType(String identifierType) {
-    this.identifierType = identifierType; 
+    this.identifierType = identifierType;
     return this;
   }
 
@@ -61,9 +60,8 @@ public class InstrumentIdTypeDescriptor {
     this.identifierType = identifierType;
   }
 
-
   public InstrumentIdTypeDescriptor propertyKey(String propertyKey) {
-    this.propertyKey = propertyKey; 
+    this.propertyKey = propertyKey;
     return this;
   }
 
@@ -80,9 +78,8 @@ public class InstrumentIdTypeDescriptor {
     this.propertyKey = propertyKey;
   }
 
-
   public InstrumentIdTypeDescriptor isUniqueIdentifierType(Boolean isUniqueIdentifierType) {
-    this.isUniqueIdentifierType = isUniqueIdentifierType; 
+    this.isUniqueIdentifierType = isUniqueIdentifierType;
     return this;
   }
 
@@ -101,7 +98,7 @@ public class InstrumentIdTypeDescriptor {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -113,8 +110,9 @@ public class InstrumentIdTypeDescriptor {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -131,7 +129,7 @@ public class InstrumentIdTypeDescriptor {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

@@ -28,15 +28,14 @@ import java.io.IOException;
 /**
  * CreatePortfolioDetails
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class CreatePortfolioDetails {
   public static final String SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID = "corporateActionSourceId";
   @SerializedName(SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID)
-  private ResourceId corporateActionSourceId;
-
+  private ResourceId corporateActionSourceId = null;
 
   public CreatePortfolioDetails corporateActionSourceId(ResourceId corporateActionSourceId) {
-    this.corporateActionSourceId = corporateActionSourceId; 
+    this.corporateActionSourceId = corporateActionSourceId;
     return this;
   }
 
@@ -55,7 +54,7 @@ public class CreatePortfolioDetails {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -67,8 +66,9 @@ public class CreatePortfolioDetails {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -83,7 +83,7 @@ public class CreatePortfolioDetails {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

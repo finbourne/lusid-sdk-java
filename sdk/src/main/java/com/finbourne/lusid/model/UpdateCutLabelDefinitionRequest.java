@@ -29,7 +29,7 @@ import java.io.IOException;
  * This request specifies a new Cut Label Definition
  */
 @ApiModel(description = "This request specifies a new Cut Label Definition")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class UpdateCutLabelDefinitionRequest {
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -41,15 +41,14 @@ public class UpdateCutLabelDefinitionRequest {
 
   public static final String SERIALIZED_NAME_CUT_LOCAL_TIME = "cutLocalTime";
   @SerializedName(SERIALIZED_NAME_CUT_LOCAL_TIME)
-  private CutLocalTime cutLocalTime;
+  private CutLocalTime cutLocalTime = null;
 
   public static final String SERIALIZED_NAME_TIME_ZONE = "timeZone";
   @SerializedName(SERIALIZED_NAME_TIME_ZONE)
   private String timeZone;
 
-
   public UpdateCutLabelDefinitionRequest displayName(String displayName) {
-    this.displayName = displayName; 
+    this.displayName = displayName;
     return this;
   }
 
@@ -66,9 +65,8 @@ public class UpdateCutLabelDefinitionRequest {
     this.displayName = displayName;
   }
 
-
   public UpdateCutLabelDefinitionRequest description(String description) {
-    this.description = description; 
+    this.description = description;
     return this;
   }
 
@@ -85,9 +83,8 @@ public class UpdateCutLabelDefinitionRequest {
     this.description = description;
   }
 
-
   public UpdateCutLabelDefinitionRequest cutLocalTime(CutLocalTime cutLocalTime) {
-    this.cutLocalTime = cutLocalTime; 
+    this.cutLocalTime = cutLocalTime;
     return this;
   }
 
@@ -104,9 +101,8 @@ public class UpdateCutLabelDefinitionRequest {
     this.cutLocalTime = cutLocalTime;
   }
 
-
   public UpdateCutLabelDefinitionRequest timeZone(String timeZone) {
-    this.timeZone = timeZone; 
+    this.timeZone = timeZone;
     return this;
   }
 
@@ -125,7 +121,7 @@ public class UpdateCutLabelDefinitionRequest {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -137,8 +133,9 @@ public class UpdateCutLabelDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -156,7 +153,7 @@ public class UpdateCutLabelDefinitionRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

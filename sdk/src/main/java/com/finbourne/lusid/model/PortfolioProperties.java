@@ -35,7 +35,7 @@ import java.util.Map;
 /**
  * PortfolioProperties
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class PortfolioProperties {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -43,19 +43,18 @@ public class PortfolioProperties {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, Property> properties = null;
+  private Map<String, Property> properties = new HashMap<>();
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version;
+  private Version version = null;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public PortfolioProperties href(URI href) {
-    this.href = href; 
+    this.href = href;
     return this;
   }
 
@@ -72,9 +71,8 @@ public class PortfolioProperties {
     this.href = href;
   }
 
-
   public PortfolioProperties properties(Map<String, Property> properties) {
-    this.properties = properties; 
+    this.properties = properties;
     return this;
   }
 
@@ -99,9 +97,8 @@ public class PortfolioProperties {
     this.properties = properties;
   }
 
-
   public PortfolioProperties version(Version version) {
-    this.version = version; 
+    this.version = version;
     return this;
   }
 
@@ -118,14 +115,12 @@ public class PortfolioProperties {
     this.version = version;
   }
 
-
   public PortfolioProperties links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public PortfolioProperties addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -148,7 +143,7 @@ public class PortfolioProperties {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -160,8 +155,9 @@ public class PortfolioProperties {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -179,7 +175,7 @@ public class PortfolioProperties {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

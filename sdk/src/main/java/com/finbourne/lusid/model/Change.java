@@ -34,7 +34,7 @@ import java.util.List;
  * The time an entity was modified (amendment and/or historical correction).
  */
 @ApiModel(description = "The time an entity was modified (amendment and/or historical correction).")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class Change {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -42,7 +42,7 @@ public class Change {
 
   public static final String SERIALIZED_NAME_ENTITY_ID = "entityId";
   @SerializedName(SERIALIZED_NAME_ENTITY_ID)
-  private ResourceId entityId;
+  private ResourceId entityId = null;
 
   public static final String SERIALIZED_NAME_CORRECTED = "corrected";
   @SerializedName(SERIALIZED_NAME_CORRECTED)
@@ -70,11 +70,10 @@ public class Change {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public Change href(URI href) {
-    this.href = href; 
+    this.href = href;
     return this;
   }
 
@@ -91,9 +90,8 @@ public class Change {
     this.href = href;
   }
 
-
   public Change entityId(ResourceId entityId) {
-    this.entityId = entityId; 
+    this.entityId = entityId;
     return this;
   }
 
@@ -110,9 +108,8 @@ public class Change {
     this.entityId = entityId;
   }
 
-
   public Change corrected(Boolean corrected) {
-    this.corrected = corrected; 
+    this.corrected = corrected;
     return this;
   }
 
@@ -129,9 +126,8 @@ public class Change {
     this.corrected = corrected;
   }
 
-
   public Change correctionEffectiveAt(OffsetDateTime correctionEffectiveAt) {
-    this.correctionEffectiveAt = correctionEffectiveAt; 
+    this.correctionEffectiveAt = correctionEffectiveAt;
     return this;
   }
 
@@ -148,9 +144,8 @@ public class Change {
     this.correctionEffectiveAt = correctionEffectiveAt;
   }
 
-
   public Change correctionAsAt(OffsetDateTime correctionAsAt) {
-    this.correctionAsAt = correctionAsAt; 
+    this.correctionAsAt = correctionAsAt;
     return this;
   }
 
@@ -167,9 +162,8 @@ public class Change {
     this.correctionAsAt = correctionAsAt;
   }
 
-
   public Change amended(Boolean amended) {
-    this.amended = amended; 
+    this.amended = amended;
     return this;
   }
 
@@ -186,9 +180,8 @@ public class Change {
     this.amended = amended;
   }
 
-
   public Change amendmentEffectiveAt(OffsetDateTime amendmentEffectiveAt) {
-    this.amendmentEffectiveAt = amendmentEffectiveAt; 
+    this.amendmentEffectiveAt = amendmentEffectiveAt;
     return this;
   }
 
@@ -205,9 +198,8 @@ public class Change {
     this.amendmentEffectiveAt = amendmentEffectiveAt;
   }
 
-
   public Change amendmentAsAt(OffsetDateTime amendmentAsAt) {
-    this.amendmentAsAt = amendmentAsAt; 
+    this.amendmentAsAt = amendmentAsAt;
     return this;
   }
 
@@ -224,14 +216,12 @@ public class Change {
     this.amendmentAsAt = amendmentAsAt;
   }
 
-
   public Change links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public Change addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -254,7 +244,7 @@ public class Change {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -266,8 +256,9 @@ public class Change {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -290,7 +281,7 @@ public class Change {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

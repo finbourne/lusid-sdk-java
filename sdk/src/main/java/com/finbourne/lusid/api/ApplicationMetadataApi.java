@@ -41,6 +41,7 @@ import java.util.Map;
 
 public class ApplicationMetadataApi {
     private ApiClient localVarApiClient;
+
     public ApplicationMetadataApi() {
         this(Configuration.getDefaultApiClient());
     }
@@ -72,21 +73,19 @@ public class ApplicationMetadataApi {
      </table>
      */
     public okhttp3.Call getExcelAddinCall(String version, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/metadata/downloads/exceladdin";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         if (version != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("version", version));
         }
 
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -104,7 +103,7 @@ public class ApplicationMetadataApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3105");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -171,6 +170,7 @@ public class ApplicationMetadataApi {
      </table>
      */
     public okhttp3.Call getExcelAddinAsync(String version, final ApiCallback<FileResponse> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = getExcelAddinValidateBeforeCall(version, _callback);
         Type localVarReturnType = new TypeToken<FileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -189,7 +189,7 @@ public class ApplicationMetadataApi {
      </table>
      */
     public okhttp3.Call getLusidVersionsCall(final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/metadata/versions";
@@ -197,9 +197,7 @@ public class ApplicationMetadataApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -217,7 +215,7 @@ public class ApplicationMetadataApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3105");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -278,6 +276,7 @@ public class ApplicationMetadataApi {
      </table>
      */
     public okhttp3.Call getLusidVersionsAsync(final ApiCallback<VersionSummaryDto> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = getLusidVersionsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<VersionSummaryDto>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -298,21 +297,19 @@ public class ApplicationMetadataApi {
      </table>
      */
     public okhttp3.Call listAccessControlledResourcesCall(String filter, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/metadata/access/resources";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         if (filter != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
         }
 
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -330,7 +327,7 @@ public class ApplicationMetadataApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3105");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -397,6 +394,7 @@ public class ApplicationMetadataApi {
      </table>
      */
     public okhttp3.Call listAccessControlledResourcesAsync(String filter, final ApiCallback<ResourceListOfAccessControlledResource> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = listAccessControlledResourcesValidateBeforeCall(filter, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfAccessControlledResource>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);

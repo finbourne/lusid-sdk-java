@@ -31,7 +31,7 @@ import java.util.Map;
 /**
  * LusidValidationProblemDetails
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class LusidValidationProblemDetails {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -39,7 +39,7 @@ public class LusidValidationProblemDetails {
 
   public static final String SERIALIZED_NAME_ERROR_DETAILS = "errorDetails";
   @SerializedName(SERIALIZED_NAME_ERROR_DETAILS)
-  private List<Map<String, String>> errorDetails = null;
+  private List<Map<String, String>> errorDetails = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
@@ -47,7 +47,7 @@ public class LusidValidationProblemDetails {
 
   public static final String SERIALIZED_NAME_ERRORS = "errors";
   @SerializedName(SERIALIZED_NAME_ERRORS)
-  private Map<String, List<String>> errors = null;
+  private Map<String, List<String>> errors = new HashMap<>();
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -71,11 +71,10 @@ public class LusidValidationProblemDetails {
 
   public static final String SERIALIZED_NAME_EXTENSIONS = "extensions";
   @SerializedName(SERIALIZED_NAME_EXTENSIONS)
-  private Map<String, Object> extensions = null;
-
+  private Map<String, Object> extensions = new HashMap<>();
 
   public LusidValidationProblemDetails name(String name) {
-    this.name = name; 
+    this.name = name;
     return this;
   }
 
@@ -92,14 +91,12 @@ public class LusidValidationProblemDetails {
     this.name = name;
   }
 
-
   public LusidValidationProblemDetails errorDetails(List<Map<String, String>> errorDetails) {
-    this.errorDetails = errorDetails; 
+    this.errorDetails = errorDetails;
     return this;
   }
 
   public LusidValidationProblemDetails addErrorDetailsItem(Map<String, String> errorDetailsItem) {
-   
     if (this.errorDetails == null) {
       this.errorDetails = new ArrayList<>();
     }
@@ -120,9 +117,8 @@ public class LusidValidationProblemDetails {
     this.errorDetails = errorDetails;
   }
 
-
   public LusidValidationProblemDetails code(Integer code) {
-    this.code = code; 
+    this.code = code;
     return this;
   }
 
@@ -139,9 +135,8 @@ public class LusidValidationProblemDetails {
     this.code = code;
   }
 
-
   public LusidValidationProblemDetails errors(Map<String, List<String>> errors) {
-    this.errors = errors; 
+    this.errors = errors;
     return this;
   }
 
@@ -166,9 +161,8 @@ public class LusidValidationProblemDetails {
     this.errors = errors;
   }
 
-
   public LusidValidationProblemDetails type(String type) {
-    this.type = type; 
+    this.type = type;
     return this;
   }
 
@@ -185,9 +179,8 @@ public class LusidValidationProblemDetails {
     this.type = type;
   }
 
-
   public LusidValidationProblemDetails title(String title) {
-    this.title = title; 
+    this.title = title;
     return this;
   }
 
@@ -204,9 +197,8 @@ public class LusidValidationProblemDetails {
     this.title = title;
   }
 
-
   public LusidValidationProblemDetails status(Integer status) {
-    this.status = status; 
+    this.status = status;
     return this;
   }
 
@@ -223,9 +215,8 @@ public class LusidValidationProblemDetails {
     this.status = status;
   }
 
-
   public LusidValidationProblemDetails detail(String detail) {
-    this.detail = detail; 
+    this.detail = detail;
     return this;
   }
 
@@ -242,9 +233,8 @@ public class LusidValidationProblemDetails {
     this.detail = detail;
   }
 
-
   public LusidValidationProblemDetails instance(String instance) {
-    this.instance = instance; 
+    this.instance = instance;
     return this;
   }
 
@@ -261,7 +251,6 @@ public class LusidValidationProblemDetails {
     this.instance = instance;
   }
 
-
    /**
    * Get extensions
    * @return extensions
@@ -272,9 +261,8 @@ public class LusidValidationProblemDetails {
   }
 
 
-
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -286,8 +274,9 @@ public class LusidValidationProblemDetails {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -311,7 +300,7 @@ public class LusidValidationProblemDetails {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

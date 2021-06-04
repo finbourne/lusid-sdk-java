@@ -34,7 +34,7 @@ import java.util.List;
 /**
  * PortfolioGroup
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class PortfolioGroup {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -42,7 +42,7 @@ public class PortfolioGroup {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private ResourceId id;
+  private ResourceId id = null;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -58,23 +58,22 @@ public class PortfolioGroup {
 
   public static final String SERIALIZED_NAME_PORTFOLIOS = "portfolios";
   @SerializedName(SERIALIZED_NAME_PORTFOLIOS)
-  private List<ResourceId> portfolios = null;
+  private List<ResourceId> portfolios = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_SUB_GROUPS = "subGroups";
   @SerializedName(SERIALIZED_NAME_SUB_GROUPS)
-  private List<ResourceId> subGroups = null;
+  private List<ResourceId> subGroups = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version;
+  private Version version = null;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public PortfolioGroup href(URI href) {
-    this.href = href; 
+    this.href = href;
     return this;
   }
 
@@ -91,9 +90,8 @@ public class PortfolioGroup {
     this.href = href;
   }
 
-
   public PortfolioGroup id(ResourceId id) {
-    this.id = id; 
+    this.id = id;
     return this;
   }
 
@@ -110,9 +108,8 @@ public class PortfolioGroup {
     this.id = id;
   }
 
-
   public PortfolioGroup displayName(String displayName) {
-    this.displayName = displayName; 
+    this.displayName = displayName;
     return this;
   }
 
@@ -129,9 +126,8 @@ public class PortfolioGroup {
     this.displayName = displayName;
   }
 
-
   public PortfolioGroup description(String description) {
-    this.description = description; 
+    this.description = description;
     return this;
   }
 
@@ -148,9 +144,8 @@ public class PortfolioGroup {
     this.description = description;
   }
 
-
   public PortfolioGroup created(OffsetDateTime created) {
-    this.created = created; 
+    this.created = created;
     return this;
   }
 
@@ -167,14 +162,12 @@ public class PortfolioGroup {
     this.created = created;
   }
 
-
   public PortfolioGroup portfolios(List<ResourceId> portfolios) {
-    this.portfolios = portfolios; 
+    this.portfolios = portfolios;
     return this;
   }
 
   public PortfolioGroup addPortfoliosItem(ResourceId portfoliosItem) {
-   
     if (this.portfolios == null) {
       this.portfolios = new ArrayList<>();
     }
@@ -195,14 +188,12 @@ public class PortfolioGroup {
     this.portfolios = portfolios;
   }
 
-
   public PortfolioGroup subGroups(List<ResourceId> subGroups) {
-    this.subGroups = subGroups; 
+    this.subGroups = subGroups;
     return this;
   }
 
   public PortfolioGroup addSubGroupsItem(ResourceId subGroupsItem) {
-   
     if (this.subGroups == null) {
       this.subGroups = new ArrayList<>();
     }
@@ -223,9 +214,8 @@ public class PortfolioGroup {
     this.subGroups = subGroups;
   }
 
-
   public PortfolioGroup version(Version version) {
-    this.version = version; 
+    this.version = version;
     return this;
   }
 
@@ -242,14 +232,12 @@ public class PortfolioGroup {
     this.version = version;
   }
 
-
   public PortfolioGroup links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public PortfolioGroup addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -272,7 +260,7 @@ public class PortfolioGroup {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -284,8 +272,9 @@ public class PortfolioGroup {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -308,7 +297,7 @@ public class PortfolioGroup {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

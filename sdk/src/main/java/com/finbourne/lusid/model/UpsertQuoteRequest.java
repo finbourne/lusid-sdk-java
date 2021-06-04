@@ -30,15 +30,15 @@ import java.io.IOException;
  * The details of the quote including its unique identifier, value and lineage.
  */
 @ApiModel(description = "The details of the quote including its unique identifier, value and lineage.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class UpsertQuoteRequest {
   public static final String SERIALIZED_NAME_QUOTE_ID = "quoteId";
   @SerializedName(SERIALIZED_NAME_QUOTE_ID)
-  private QuoteId quoteId;
+  private QuoteId quoteId = null;
 
   public static final String SERIALIZED_NAME_METRIC_VALUE = "metricValue";
   @SerializedName(SERIALIZED_NAME_METRIC_VALUE)
-  private MetricValue metricValue;
+  private MetricValue metricValue = null;
 
   public static final String SERIALIZED_NAME_LINEAGE = "lineage";
   @SerializedName(SERIALIZED_NAME_LINEAGE)
@@ -48,9 +48,8 @@ public class UpsertQuoteRequest {
   @SerializedName(SERIALIZED_NAME_SCALE_FACTOR)
   private Double scaleFactor;
 
-
   public UpsertQuoteRequest quoteId(QuoteId quoteId) {
-    this.quoteId = quoteId; 
+    this.quoteId = quoteId;
     return this;
   }
 
@@ -67,9 +66,8 @@ public class UpsertQuoteRequest {
     this.quoteId = quoteId;
   }
 
-
   public UpsertQuoteRequest metricValue(MetricValue metricValue) {
-    this.metricValue = metricValue; 
+    this.metricValue = metricValue;
     return this;
   }
 
@@ -86,9 +84,8 @@ public class UpsertQuoteRequest {
     this.metricValue = metricValue;
   }
 
-
   public UpsertQuoteRequest lineage(String lineage) {
-    this.lineage = lineage; 
+    this.lineage = lineage;
     return this;
   }
 
@@ -105,9 +102,8 @@ public class UpsertQuoteRequest {
     this.lineage = lineage;
   }
 
-
   public UpsertQuoteRequest scaleFactor(Double scaleFactor) {
-    this.scaleFactor = scaleFactor; 
+    this.scaleFactor = scaleFactor;
     return this;
   }
 
@@ -126,7 +122,7 @@ public class UpsertQuoteRequest {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -138,8 +134,9 @@ public class UpsertQuoteRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -157,7 +154,7 @@ public class UpsertQuoteRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

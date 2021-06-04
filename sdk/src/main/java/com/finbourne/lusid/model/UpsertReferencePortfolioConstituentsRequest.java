@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * UpsertReferencePortfolioConstituentsRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class UpsertReferencePortfolioConstituentsRequest {
   public static final String SERIALIZED_NAME_EFFECTIVE_FROM = "effectiveFrom";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_FROM)
@@ -79,7 +79,7 @@ public class UpsertReferencePortfolioConstituentsRequest {
 
       @Override
       public WeightTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return WeightTypeEnum.fromValue(value);
       }
     }
@@ -125,7 +125,7 @@ public class UpsertReferencePortfolioConstituentsRequest {
           return b;
         }
       }
-      return null;
+      throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
     public static class Adapter extends TypeAdapter<PeriodTypeEnum> {
@@ -136,7 +136,7 @@ public class UpsertReferencePortfolioConstituentsRequest {
 
       @Override
       public PeriodTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return PeriodTypeEnum.fromValue(value);
       }
     }
@@ -154,9 +154,8 @@ public class UpsertReferencePortfolioConstituentsRequest {
   @SerializedName(SERIALIZED_NAME_CONSTITUENTS)
   private List<ReferencePortfolioConstituentRequest> constituents = new ArrayList<>();
 
-
   public UpsertReferencePortfolioConstituentsRequest effectiveFrom(String effectiveFrom) {
-    this.effectiveFrom = effectiveFrom; 
+    this.effectiveFrom = effectiveFrom;
     return this;
   }
 
@@ -173,9 +172,8 @@ public class UpsertReferencePortfolioConstituentsRequest {
     this.effectiveFrom = effectiveFrom;
   }
 
-
   public UpsertReferencePortfolioConstituentsRequest weightType(WeightTypeEnum weightType) {
-    this.weightType = weightType; 
+    this.weightType = weightType;
     return this;
   }
 
@@ -192,9 +190,8 @@ public class UpsertReferencePortfolioConstituentsRequest {
     this.weightType = weightType;
   }
 
-
   public UpsertReferencePortfolioConstituentsRequest periodType(PeriodTypeEnum periodType) {
-    this.periodType = periodType; 
+    this.periodType = periodType;
     return this;
   }
 
@@ -211,9 +208,8 @@ public class UpsertReferencePortfolioConstituentsRequest {
     this.periodType = periodType;
   }
 
-
   public UpsertReferencePortfolioConstituentsRequest periodCount(Integer periodCount) {
-    this.periodCount = periodCount; 
+    this.periodCount = periodCount;
     return this;
   }
 
@@ -230,14 +226,12 @@ public class UpsertReferencePortfolioConstituentsRequest {
     this.periodCount = periodCount;
   }
 
-
   public UpsertReferencePortfolioConstituentsRequest constituents(List<ReferencePortfolioConstituentRequest> constituents) {
-    this.constituents = constituents; 
+    this.constituents = constituents;
     return this;
   }
 
   public UpsertReferencePortfolioConstituentsRequest addConstituentsItem(ReferencePortfolioConstituentRequest constituentsItem) {
-   
     this.constituents.add(constituentsItem);
     return this;
   }
@@ -257,7 +251,7 @@ public class UpsertReferencePortfolioConstituentsRequest {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -269,8 +263,9 @@ public class UpsertReferencePortfolioConstituentsRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -289,7 +284,7 @@ public class UpsertReferencePortfolioConstituentsRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

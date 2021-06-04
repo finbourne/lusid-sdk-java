@@ -28,7 +28,7 @@ import java.io.IOException;
  * An amount of a specific currency, specifying a value and an associated unit
  */
 @ApiModel(description = "An amount of a specific currency, specifying a value and an associated unit")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class CurrencyAndAmount {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
@@ -38,9 +38,8 @@ public class CurrencyAndAmount {
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
-
   public CurrencyAndAmount amount(Double amount) {
-    this.amount = amount; 
+    this.amount = amount;
     return this;
   }
 
@@ -57,9 +56,8 @@ public class CurrencyAndAmount {
     this.amount = amount;
   }
 
-
   public CurrencyAndAmount currency(String currency) {
-    this.currency = currency; 
+    this.currency = currency;
     return this;
   }
 
@@ -78,7 +76,7 @@ public class CurrencyAndAmount {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -90,8 +88,9 @@ public class CurrencyAndAmount {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -107,7 +106,7 @@ public class CurrencyAndAmount {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

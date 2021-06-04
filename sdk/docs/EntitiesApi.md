@@ -37,7 +37,7 @@ public class Example {
     EntitiesApi apiInstance = new EntitiesApi(defaultClient);
     String scope = "scope_example"; // String | The scope
     String effectiveAt = "effectiveAt_example"; // String | The effective date of the origin.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The as-at date of the origin.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The as-at date of the origin.
     try {
       ResourceListOfChange result = apiInstance.getPortfolioChanges(scope, effectiveAt, asAt);
       System.out.println(result);

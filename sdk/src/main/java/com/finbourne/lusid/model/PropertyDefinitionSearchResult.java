@@ -33,7 +33,7 @@ import java.util.List;
  * A property definition search result
  */
 @ApiModel(description = "A property definition search result")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class PropertyDefinitionSearchResult {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -120,7 +120,7 @@ public class PropertyDefinitionSearchResult {
 
       @Override
       public ValueTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return ValueTypeEnum.fromValue(value);
       }
     }
@@ -136,7 +136,7 @@ public class PropertyDefinitionSearchResult {
 
   public static final String SERIALIZED_NAME_DATA_TYPE_ID = "dataTypeId";
   @SerializedName(SERIALIZED_NAME_DATA_TYPE_ID)
-  private ResourceId dataTypeId;
+  private ResourceId dataTypeId = null;
 
   /**
    * The type of the property. The available values are: Label, Metric, Information
@@ -181,7 +181,7 @@ public class PropertyDefinitionSearchResult {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -234,7 +234,7 @@ public class PropertyDefinitionSearchResult {
 
       @Override
       public UnitSchemaEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return UnitSchemaEnum.fromValue(value);
       }
     }
@@ -319,7 +319,7 @@ public class PropertyDefinitionSearchResult {
 
       @Override
       public DomainEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return DomainEnum.fromValue(value);
       }
     }
@@ -382,7 +382,7 @@ public class PropertyDefinitionSearchResult {
 
       @Override
       public LifeTimeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return LifeTimeEnum.fromValue(value);
       }
     }
@@ -437,7 +437,7 @@ public class PropertyDefinitionSearchResult {
 
       @Override
       public PropertyDefinitionTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return PropertyDefinitionTypeEnum.fromValue(value);
       }
     }
@@ -457,11 +457,10 @@ public class PropertyDefinitionSearchResult {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public PropertyDefinitionSearchResult href(URI href) {
-    this.href = href; 
+    this.href = href;
     return this;
   }
 
@@ -478,9 +477,8 @@ public class PropertyDefinitionSearchResult {
     this.href = href;
   }
 
-
   public PropertyDefinitionSearchResult key(String key) {
-    this.key = key; 
+    this.key = key;
     return this;
   }
 
@@ -497,9 +495,8 @@ public class PropertyDefinitionSearchResult {
     this.key = key;
   }
 
-
   public PropertyDefinitionSearchResult valueType(ValueTypeEnum valueType) {
-    this.valueType = valueType; 
+    this.valueType = valueType;
     return this;
   }
 
@@ -516,9 +513,8 @@ public class PropertyDefinitionSearchResult {
     this.valueType = valueType;
   }
 
-
   public PropertyDefinitionSearchResult displayName(String displayName) {
-    this.displayName = displayName; 
+    this.displayName = displayName;
     return this;
   }
 
@@ -535,9 +531,8 @@ public class PropertyDefinitionSearchResult {
     this.displayName = displayName;
   }
 
-
   public PropertyDefinitionSearchResult dataTypeId(ResourceId dataTypeId) {
-    this.dataTypeId = dataTypeId; 
+    this.dataTypeId = dataTypeId;
     return this;
   }
 
@@ -554,9 +549,8 @@ public class PropertyDefinitionSearchResult {
     this.dataTypeId = dataTypeId;
   }
 
-
   public PropertyDefinitionSearchResult type(TypeEnum type) {
-    this.type = type; 
+    this.type = type;
     return this;
   }
 
@@ -573,9 +567,8 @@ public class PropertyDefinitionSearchResult {
     this.type = type;
   }
 
-
   public PropertyDefinitionSearchResult unitSchema(UnitSchemaEnum unitSchema) {
-    this.unitSchema = unitSchema; 
+    this.unitSchema = unitSchema;
     return this;
   }
 
@@ -592,9 +585,8 @@ public class PropertyDefinitionSearchResult {
     this.unitSchema = unitSchema;
   }
 
-
   public PropertyDefinitionSearchResult domain(DomainEnum domain) {
-    this.domain = domain; 
+    this.domain = domain;
     return this;
   }
 
@@ -611,7 +603,6 @@ public class PropertyDefinitionSearchResult {
     this.domain = domain;
   }
 
-
    /**
    * The scope that the property exists in.
    * @return scope
@@ -620,8 +611,6 @@ public class PropertyDefinitionSearchResult {
   public String getScope() {
     return scope;
   }
-
-
 
    /**
    * The code of the property. Together with the domain and scope this uniquely identifies the property.
@@ -632,10 +621,8 @@ public class PropertyDefinitionSearchResult {
     return code;
   }
 
-
-
   public PropertyDefinitionSearchResult valueRequired(Boolean valueRequired) {
-    this.valueRequired = valueRequired; 
+    this.valueRequired = valueRequired;
     return this;
   }
 
@@ -652,9 +639,8 @@ public class PropertyDefinitionSearchResult {
     this.valueRequired = valueRequired;
   }
 
-
   public PropertyDefinitionSearchResult lifeTime(LifeTimeEnum lifeTime) {
-    this.lifeTime = lifeTime; 
+    this.lifeTime = lifeTime;
     return this;
   }
 
@@ -671,9 +657,8 @@ public class PropertyDefinitionSearchResult {
     this.lifeTime = lifeTime;
   }
 
-
   public PropertyDefinitionSearchResult constraintStyle(String constraintStyle) {
-    this.constraintStyle = constraintStyle; 
+    this.constraintStyle = constraintStyle;
     return this;
   }
 
@@ -690,9 +675,8 @@ public class PropertyDefinitionSearchResult {
     this.constraintStyle = constraintStyle;
   }
 
-
   public PropertyDefinitionSearchResult propertyDefinitionType(PropertyDefinitionTypeEnum propertyDefinitionType) {
-    this.propertyDefinitionType = propertyDefinitionType; 
+    this.propertyDefinitionType = propertyDefinitionType;
     return this;
   }
 
@@ -709,9 +693,8 @@ public class PropertyDefinitionSearchResult {
     this.propertyDefinitionType = propertyDefinitionType;
   }
 
-
   public PropertyDefinitionSearchResult propertyDescription(String propertyDescription) {
-    this.propertyDescription = propertyDescription; 
+    this.propertyDescription = propertyDescription;
     return this;
   }
 
@@ -728,9 +711,8 @@ public class PropertyDefinitionSearchResult {
     this.propertyDescription = propertyDescription;
   }
 
-
   public PropertyDefinitionSearchResult derivationFormula(String derivationFormula) {
-    this.derivationFormula = derivationFormula; 
+    this.derivationFormula = derivationFormula;
     return this;
   }
 
@@ -747,14 +729,12 @@ public class PropertyDefinitionSearchResult {
     this.derivationFormula = derivationFormula;
   }
 
-
   public PropertyDefinitionSearchResult links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public PropertyDefinitionSearchResult addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -777,7 +757,7 @@ public class PropertyDefinitionSearchResult {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -789,8 +769,9 @@ public class PropertyDefinitionSearchResult {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -821,7 +802,7 @@ public class PropertyDefinitionSearchResult {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * IdentifierPartSchema
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class IdentifierPartSchema {
   public static final String SERIALIZED_NAME_INDEX = "index";
   @SerializedName(SERIALIZED_NAME_INDEX)
@@ -54,11 +54,10 @@ public class IdentifierPartSchema {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public IdentifierPartSchema index(Integer index) {
-    this.index = index; 
+    this.index = index;
     return this;
   }
 
@@ -75,9 +74,8 @@ public class IdentifierPartSchema {
     this.index = index;
   }
 
-
   public IdentifierPartSchema name(String name) {
-    this.name = name; 
+    this.name = name;
     return this;
   }
 
@@ -94,9 +92,8 @@ public class IdentifierPartSchema {
     this.name = name;
   }
 
-
   public IdentifierPartSchema displayName(String displayName) {
-    this.displayName = displayName; 
+    this.displayName = displayName;
     return this;
   }
 
@@ -113,9 +110,8 @@ public class IdentifierPartSchema {
     this.displayName = displayName;
   }
 
-
   public IdentifierPartSchema description(String description) {
-    this.description = description; 
+    this.description = description;
     return this;
   }
 
@@ -132,9 +128,8 @@ public class IdentifierPartSchema {
     this.description = description;
   }
 
-
   public IdentifierPartSchema required(Boolean required) {
-    this.required = required; 
+    this.required = required;
     return this;
   }
 
@@ -151,14 +146,12 @@ public class IdentifierPartSchema {
     this.required = required;
   }
 
-
   public IdentifierPartSchema links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public IdentifierPartSchema addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -181,7 +174,7 @@ public class IdentifierPartSchema {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -193,8 +186,9 @@ public class IdentifierPartSchema {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -214,7 +208,7 @@ public class IdentifierPartSchema {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

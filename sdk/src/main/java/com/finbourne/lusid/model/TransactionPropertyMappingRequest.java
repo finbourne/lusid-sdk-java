@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * TransactionPropertyMappingRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class TransactionPropertyMappingRequest {
   public static final String SERIALIZED_NAME_PROPERTY_KEY = "propertyKey";
   @SerializedName(SERIALIZED_NAME_PROPERTY_KEY)
@@ -39,11 +39,10 @@ public class TransactionPropertyMappingRequest {
 
   public static final String SERIALIZED_NAME_SET_TO = "setTo";
   @SerializedName(SERIALIZED_NAME_SET_TO)
-  private Object setTo;
-
+  private Object setTo = null;
 
   public TransactionPropertyMappingRequest propertyKey(String propertyKey) {
-    this.propertyKey = propertyKey; 
+    this.propertyKey = propertyKey;
     return this;
   }
 
@@ -60,9 +59,8 @@ public class TransactionPropertyMappingRequest {
     this.propertyKey = propertyKey;
   }
 
-
   public TransactionPropertyMappingRequest mapFrom(String mapFrom) {
-    this.mapFrom = mapFrom; 
+    this.mapFrom = mapFrom;
     return this;
   }
 
@@ -79,9 +77,8 @@ public class TransactionPropertyMappingRequest {
     this.mapFrom = mapFrom;
   }
 
-
   public TransactionPropertyMappingRequest setTo(Object setTo) {
-    this.setTo = setTo; 
+    this.setTo = setTo;
     return this;
   }
 
@@ -100,7 +97,7 @@ public class TransactionPropertyMappingRequest {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -112,8 +109,9 @@ public class TransactionPropertyMappingRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -130,7 +128,7 @@ public class TransactionPropertyMappingRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

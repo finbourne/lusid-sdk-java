@@ -31,11 +31,11 @@ import java.util.Map;
 /**
  * ReferencePortfolioConstituent
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class ReferencePortfolioConstituent {
   public static final String SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS = "instrumentIdentifiers";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS)
-  private Map<String, String> instrumentIdentifiers = null;
+  private Map<String, String> instrumentIdentifiers = new HashMap<>();
 
   public static final String SERIALIZED_NAME_INSTRUMENT_UID = "instrumentUid";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_UID)
@@ -47,7 +47,7 @@ public class ReferencePortfolioConstituent {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = null;
+  private Map<String, PerpetualProperty> properties = new HashMap<>();
 
   public static final String SERIALIZED_NAME_WEIGHT = "weight";
   @SerializedName(SERIALIZED_NAME_WEIGHT)
@@ -57,9 +57,8 @@ public class ReferencePortfolioConstituent {
   @SerializedName(SERIALIZED_NAME_FLOATING_WEIGHT)
   private Double floatingWeight;
 
-
   public ReferencePortfolioConstituent instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
-    this.instrumentIdentifiers = instrumentIdentifiers; 
+    this.instrumentIdentifiers = instrumentIdentifiers;
     return this;
   }
 
@@ -84,9 +83,8 @@ public class ReferencePortfolioConstituent {
     this.instrumentIdentifiers = instrumentIdentifiers;
   }
 
-
   public ReferencePortfolioConstituent instrumentUid(String instrumentUid) {
-    this.instrumentUid = instrumentUid; 
+    this.instrumentUid = instrumentUid;
     return this;
   }
 
@@ -103,9 +101,8 @@ public class ReferencePortfolioConstituent {
     this.instrumentUid = instrumentUid;
   }
 
-
   public ReferencePortfolioConstituent currency(String currency) {
-    this.currency = currency; 
+    this.currency = currency;
     return this;
   }
 
@@ -122,9 +119,8 @@ public class ReferencePortfolioConstituent {
     this.currency = currency;
   }
 
-
   public ReferencePortfolioConstituent properties(Map<String, PerpetualProperty> properties) {
-    this.properties = properties; 
+    this.properties = properties;
     return this;
   }
 
@@ -149,9 +145,8 @@ public class ReferencePortfolioConstituent {
     this.properties = properties;
   }
 
-
   public ReferencePortfolioConstituent weight(Double weight) {
-    this.weight = weight; 
+    this.weight = weight;
     return this;
   }
 
@@ -168,9 +163,8 @@ public class ReferencePortfolioConstituent {
     this.weight = weight;
   }
 
-
   public ReferencePortfolioConstituent floatingWeight(Double floatingWeight) {
-    this.floatingWeight = floatingWeight; 
+    this.floatingWeight = floatingWeight;
     return this;
   }
 
@@ -189,7 +183,7 @@ public class ReferencePortfolioConstituent {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -201,8 +195,9 @@ public class ReferencePortfolioConstituent {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -222,7 +217,7 @@ public class ReferencePortfolioConstituent {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

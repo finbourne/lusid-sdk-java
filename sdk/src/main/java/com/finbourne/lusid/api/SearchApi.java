@@ -41,6 +41,7 @@ import java.util.Map;
 
 public class SearchApi {
     private ApiClient localVarApiClient;
+
     public SearchApi() {
         this(Configuration.getDefaultApiClient());
     }
@@ -76,17 +77,13 @@ public class SearchApi {
      </table>
      */
     public okhttp3.Call searchPortfolioGroupsCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/search/portfoliogroups";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         if (search != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("search", search));
         }
@@ -107,6 +104,8 @@ public class SearchApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -124,7 +123,7 @@ public class SearchApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3105");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -203,6 +202,7 @@ public class SearchApi {
      </table>
      */
     public okhttp3.Call searchPortfolioGroupsAsync(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback<PagedResourceListOfPortfolioGroupSearchResult> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = searchPortfolioGroupsValidateBeforeCall(search, filter, sortBy, limit, page, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioGroupSearchResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -227,17 +227,13 @@ public class SearchApi {
      </table>
      */
     public okhttp3.Call searchPortfoliosCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/search/portfolios";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         if (search != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("search", search));
         }
@@ -258,6 +254,8 @@ public class SearchApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -275,7 +273,7 @@ public class SearchApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3105");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -354,6 +352,7 @@ public class SearchApi {
      </table>
      */
     public okhttp3.Call searchPortfoliosAsync(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback<PagedResourceListOfPortfolioSearchResult> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = searchPortfoliosValidateBeforeCall(search, filter, sortBy, limit, page, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPortfolioSearchResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -378,17 +377,13 @@ public class SearchApi {
      </table>
      */
     public okhttp3.Call searchPropertiesCall(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/search/propertydefinitions";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         if (search != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("search", search));
         }
@@ -409,6 +404,8 @@ public class SearchApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -426,7 +423,7 @@ public class SearchApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3105");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -505,6 +502,7 @@ public class SearchApi {
      </table>
      */
     public okhttp3.Call searchPropertiesAsync(String search, String filter, String sortBy, Integer limit, String page, final ApiCallback<PagedResourceListOfPropertyDefinitionSearchResult> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = searchPropertiesValidateBeforeCall(search, filter, sortBy, limit, page, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPropertyDefinitionSearchResult>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);

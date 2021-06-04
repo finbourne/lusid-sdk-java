@@ -31,7 +31,7 @@ import java.util.List;
 /**
  * UpsertInstrumentPropertiesResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class UpsertInstrumentPropertiesResponse {
   public static final String SERIALIZED_NAME_AS_AT_DATE = "asAtDate";
   @SerializedName(SERIALIZED_NAME_AS_AT_DATE)
@@ -39,11 +39,10 @@ public class UpsertInstrumentPropertiesResponse {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public UpsertInstrumentPropertiesResponse asAtDate(OffsetDateTime asAtDate) {
-    this.asAtDate = asAtDate; 
+    this.asAtDate = asAtDate;
     return this;
   }
 
@@ -60,14 +59,12 @@ public class UpsertInstrumentPropertiesResponse {
     this.asAtDate = asAtDate;
   }
 
-
   public UpsertInstrumentPropertiesResponse links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public UpsertInstrumentPropertiesResponse addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -90,7 +87,7 @@ public class UpsertInstrumentPropertiesResponse {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -102,8 +99,9 @@ public class UpsertInstrumentPropertiesResponse {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -119,7 +117,7 @@ public class UpsertInstrumentPropertiesResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

@@ -23,30 +23,27 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.util.LinkedHashSet;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * The set of string labels in a multi-value property.
  */
 @ApiModel(description = "The set of string labels in a multi-value property.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class LabelValueSet {
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
-  private Set<String> values = null;
+  private List<String> values = new ArrayList<>();
 
-
-  public LabelValueSet values(Set<String> values) {
-    this.values = values; 
+  public LabelValueSet values(List<String> values) {
+    this.values = values;
     return this;
   }
 
   public LabelValueSet addValuesItem(String valuesItem) {
-   
     if (this.values == null) {
-      this.values = new LinkedHashSet<>();
+      this.values = new ArrayList<>();
     }
     this.values.add(valuesItem);
     return this;
@@ -57,17 +54,17 @@ public class LabelValueSet {
    * @return values
   **/
   @ApiModelProperty(value = "")
-  public Set<String> getValues() {
+  public List<String> getValues() {
     return values;
   }
 
-  public void setValues(Set<String> values) {
+  public void setValues(List<String> values) {
     this.values = values;
   }
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -79,8 +76,9 @@ public class LabelValueSet {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -95,7 +93,7 @@ public class LabelValueSet {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
