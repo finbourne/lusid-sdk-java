@@ -1,6 +1,6 @@
 # SystemConfigurationApi
 
-All URIs are relative to *https://fbn-prd.lusid.com/api*
+All URIs are relative to *http://local-unit-test-server.lusid.com:45296*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -29,14 +29,14 @@ import com.finbourne.lusid.api.SystemConfigurationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:45296");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     SystemConfigurationApi apiInstance = new SystemConfigurationApi(defaultClient);
-    TransactionConfigurationDataRequest transactionConfigurationDataRequest = {"aliases":[{"type":"Another-Sell","description":"Sale","transactionClass":"MyDefault","transactionGroup":"MyGroup","transactionRoles":"LongShorter"}],"movements":[{"movementTypes":"StockMovement","side":"Side1","direction":-1,"properties":{},"mappings":[]},{"movementTypes":"CashCommitment","side":"Side2","direction":1,"properties":{},"mappings":[]}],"properties":{}}; // TransactionConfigurationDataRequest | A transaction type definition
+    TransactionConfigurationDataRequest transactionConfigurationDataRequest = new TransactionConfigurationDataRequest(); // TransactionConfigurationDataRequest | A transaction type definition
     try {
       TransactionSetConfigurationData result = apiInstance.createConfigurationTransactionType(transactionConfigurationDataRequest);
       System.out.println(result);
@@ -98,14 +98,14 @@ import com.finbourne.lusid.api.SystemConfigurationApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:45296");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     SystemConfigurationApi apiInstance = new SystemConfigurationApi(defaultClient);
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the Transaction configuration types. Defaults              to return the latest version of the holdings if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Transaction configuration types. Defaults              to return the latest version of the holdings if not specified.
     try {
       TransactionSetConfigurationData result = apiInstance.listConfigurationTransactionTypes(asAt);
       System.out.println(result);

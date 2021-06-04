@@ -2,18 +2,20 @@
 
 # Change
 
+The time an entity was modified (amendment and/or historical correction).
+
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**href** | [**URI**](URI.md) |  |  [optional]
+**href** | **URI** |  |  [optional]
 **entityId** | [**ResourceId**](ResourceId.md) |  | 
 **corrected** | **Boolean** |  | 
-**correctionEffectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**correctionAsAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**correctionEffectiveAt** | **OffsetDateTime** |  |  [optional]
+**correctionAsAt** | **OffsetDateTime** |  |  [optional]
 **amended** | **Boolean** |  | 
-**amendmentEffectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**amendmentAsAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
+**amendmentEffectiveAt** | **OffsetDateTime** |  |  [optional]
+**amendmentAsAt** | **OffsetDateTime** |  |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
