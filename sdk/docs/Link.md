@@ -2,12 +2,13 @@
 
 # Link
 
+
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **relation** | **String** |  | 
-**href** | [**URI**](URI.md) |  | 
+**href** | **URI** |  | 
 **description** | **String** |  |  [optional]
 **method** | **String** |  | 
 

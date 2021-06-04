@@ -373,12 +373,12 @@ info:
     \ Action Does Not Exist|  |\n"
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3105
+  version: 0.11.3106
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:45296
+- url: http://local-unit-test-server.lusid.com:62780
 security:
 - {}
 tags:
