@@ -46,6 +46,7 @@ import java.util.Map;
 
 public class PortfoliosApi {
     private ApiClient localVarApiClient;
+
     public PortfoliosApi() {
         this(Configuration.getDefaultApiClient());
     }
@@ -78,7 +79,7 @@ public class PortfoliosApi {
      </table>
      */
     public okhttp3.Call deletePortfolioCall(String scope, String code, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/portfolios/{scope}/{code}"
@@ -88,9 +89,7 @@ public class PortfoliosApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -108,7 +107,7 @@ public class PortfoliosApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -188,6 +187,7 @@ public class PortfoliosApi {
      </table>
      */
     public okhttp3.Call deletePortfolioAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = deletePortfolioValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -211,7 +211,7 @@ public class PortfoliosApi {
      </table>
      */
     public okhttp3.Call deletePortfolioPropertiesCall(String scope, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/portfolios/{scope}/{code}/properties"
@@ -220,10 +220,6 @@ public class PortfoliosApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         if (effectiveAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
         }
@@ -232,6 +228,8 @@ public class PortfoliosApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
 
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -249,7 +247,7 @@ public class PortfoliosApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -340,6 +338,7 @@ public class PortfoliosApi {
      </table>
      */
     public okhttp3.Call deletePortfolioPropertiesAsync(String scope, String code, List<String> propertyKeys, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = deletePortfolioPropertiesValidateBeforeCall(scope, code, propertyKeys, effectiveAt, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -364,7 +363,7 @@ public class PortfoliosApi {
      </table>
      */
     public okhttp3.Call getPortfolioCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/portfolios/{scope}/{code}"
@@ -373,10 +372,6 @@ public class PortfoliosApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         if (effectiveAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
         }
@@ -389,6 +384,8 @@ public class PortfoliosApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
 
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -406,7 +403,7 @@ public class PortfoliosApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -495,6 +492,7 @@ public class PortfoliosApi {
      </table>
      */
     public okhttp3.Call getPortfolioAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Portfolio> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = getPortfolioValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -521,7 +519,7 @@ public class PortfoliosApi {
      </table>
      */
     public okhttp3.Call getPortfolioCommandsCall(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/portfolios/{scope}/{code}/commands"
@@ -530,10 +528,6 @@ public class PortfoliosApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         if (fromAsAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("fromAsAt", fromAsAt));
         }
@@ -554,6 +548,8 @@ public class PortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
         }
 
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -571,7 +567,7 @@ public class PortfoliosApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -666,6 +662,7 @@ public class PortfoliosApi {
      </table>
      */
     public okhttp3.Call getPortfolioCommandsAsync(String scope, String code, OffsetDateTime fromAsAt, OffsetDateTime toAsAt, String filter, String page, Integer limit, final ApiCallback<ResourceListOfProcessedCommand> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = getPortfolioCommandsValidateBeforeCall(scope, code, fromAsAt, toAsAt, filter, page, limit, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfProcessedCommand>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -689,7 +686,7 @@ public class PortfoliosApi {
      </table>
      */
     public okhttp3.Call getPortfolioPropertiesCall(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/portfolios/{scope}/{code}/properties"
@@ -698,10 +695,6 @@ public class PortfoliosApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         if (effectiveAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
         }
@@ -710,6 +703,8 @@ public class PortfoliosApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -727,7 +722,7 @@ public class PortfoliosApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -813,6 +808,7 @@ public class PortfoliosApi {
      </table>
      */
     public okhttp3.Call getPortfolioPropertiesAsync(String scope, String code, String effectiveAt, OffsetDateTime asAt, final ApiCallback<PortfolioProperties> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = getPortfolioPropertiesValidateBeforeCall(scope, code, effectiveAt, asAt, _callback);
         Type localVarReturnType = new TypeToken<PortfolioProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -840,17 +836,13 @@ public class PortfoliosApi {
      </table>
      */
     public okhttp3.Call listPortfoliosCall(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, String query, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/portfolios";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         if (effectiveAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
         }
@@ -883,6 +875,8 @@ public class PortfoliosApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
 
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -900,7 +894,7 @@ public class PortfoliosApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -988,6 +982,7 @@ public class PortfoliosApi {
      </table>
      */
     public okhttp3.Call listPortfoliosAsync(String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, String query, List<String> propertyKeys, final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = listPortfoliosValidateBeforeCall(effectiveAt, asAt, page, start, limit, filter, query, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -1015,7 +1010,7 @@ public class PortfoliosApi {
      </table>
      */
     public okhttp3.Call listPortfoliosForScopeCall(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/portfolios/{scope}"
@@ -1023,10 +1018,6 @@ public class PortfoliosApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         if (effectiveAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
         }
@@ -1055,6 +1046,8 @@ public class PortfoliosApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
 
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -1072,7 +1065,7 @@ public class PortfoliosApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -1165,6 +1158,7 @@ public class PortfoliosApi {
      </table>
      */
     public okhttp3.Call listPortfoliosForScopeAsync(String scope, String effectiveAt, OffsetDateTime asAt, String page, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<ResourceListOfPortfolio> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = listPortfoliosForScopeValidateBeforeCall(scope, effectiveAt, asAt, page, start, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfPortfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -1197,14 +1191,12 @@ public class PortfoliosApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         if (effectiveAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
         }
 
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -1222,7 +1214,7 @@ public class PortfoliosApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -1313,6 +1305,7 @@ public class PortfoliosApi {
      </table>
      */
     public okhttp3.Call updatePortfolioAsync(String scope, String code, UpdatePortfolioRequest updatePortfolioRequest, String effectiveAt, final ApiCallback<Portfolio> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = updatePortfolioValidateBeforeCall(scope, code, updatePortfolioRequest, effectiveAt, _callback);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -1345,9 +1338,7 @@ public class PortfoliosApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -1365,7 +1356,7 @@ public class PortfoliosApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -1453,6 +1444,7 @@ public class PortfoliosApi {
      </table>
      */
     public okhttp3.Call upsertPortfolioPropertiesAsync(String scope, String code, Map<String, Property> requestBody, final ApiCallback<PortfolioProperties> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = upsertPortfolioPropertiesValidateBeforeCall(scope, code, requestBody, _callback);
         Type localVarReturnType = new TypeToken<PortfolioProperties>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);

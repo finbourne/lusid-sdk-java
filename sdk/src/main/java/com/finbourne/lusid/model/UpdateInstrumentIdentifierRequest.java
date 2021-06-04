@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * UpdateInstrumentIdentifierRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class UpdateInstrumentIdentifierRequest {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -41,9 +41,8 @@ public class UpdateInstrumentIdentifierRequest {
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
   private String effectiveAt;
 
-
   public UpdateInstrumentIdentifierRequest type(String type) {
-    this.type = type; 
+    this.type = type;
     return this;
   }
 
@@ -60,9 +59,8 @@ public class UpdateInstrumentIdentifierRequest {
     this.type = type;
   }
 
-
   public UpdateInstrumentIdentifierRequest value(String value) {
-    this.value = value; 
+    this.value = value;
     return this;
   }
 
@@ -79,9 +77,8 @@ public class UpdateInstrumentIdentifierRequest {
     this.value = value;
   }
 
-
   public UpdateInstrumentIdentifierRequest effectiveAt(String effectiveAt) {
-    this.effectiveAt = effectiveAt; 
+    this.effectiveAt = effectiveAt;
     return this;
   }
 
@@ -100,7 +97,7 @@ public class UpdateInstrumentIdentifierRequest {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -112,8 +109,9 @@ public class UpdateInstrumentIdentifierRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -130,7 +128,7 @@ public class UpdateInstrumentIdentifierRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

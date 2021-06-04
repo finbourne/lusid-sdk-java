@@ -29,19 +29,18 @@ import java.io.IOException;
  * The unique identifier of the quote.
  */
 @ApiModel(description = "The unique identifier of the quote.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class QuoteId {
   public static final String SERIALIZED_NAME_QUOTE_SERIES_ID = "quoteSeriesId";
   @SerializedName(SERIALIZED_NAME_QUOTE_SERIES_ID)
-  private QuoteSeriesId quoteSeriesId;
+  private QuoteSeriesId quoteSeriesId = null;
 
   public static final String SERIALIZED_NAME_EFFECTIVE_AT = "effectiveAt";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
   private String effectiveAt;
 
-
   public QuoteId quoteSeriesId(QuoteSeriesId quoteSeriesId) {
-    this.quoteSeriesId = quoteSeriesId; 
+    this.quoteSeriesId = quoteSeriesId;
     return this;
   }
 
@@ -58,9 +57,8 @@ public class QuoteId {
     this.quoteSeriesId = quoteSeriesId;
   }
 
-
   public QuoteId effectiveAt(String effectiveAt) {
-    this.effectiveAt = effectiveAt; 
+    this.effectiveAt = effectiveAt;
     return this;
   }
 
@@ -79,7 +77,7 @@ public class QuoteId {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -91,8 +89,9 @@ public class QuoteId {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -108,7 +107,7 @@ public class QuoteId {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

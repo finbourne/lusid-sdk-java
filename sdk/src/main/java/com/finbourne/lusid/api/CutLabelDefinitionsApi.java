@@ -43,6 +43,7 @@ import java.util.Map;
 
 public class CutLabelDefinitionsApi {
     private ApiClient localVarApiClient;
+
     public CutLabelDefinitionsApi() {
         this(Configuration.getDefaultApiClient());
     }
@@ -82,9 +83,7 @@ public class CutLabelDefinitionsApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -102,7 +101,7 @@ public class CutLabelDefinitionsApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -169,6 +168,7 @@ public class CutLabelDefinitionsApi {
      </table>
      */
     public okhttp3.Call createCutLabelDefinitionAsync(CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest, final ApiCallback<CutLabelDefinition> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = createCutLabelDefinitionValidateBeforeCall(createCutLabelDefinitionRequest, _callback);
         Type localVarReturnType = new TypeToken<CutLabelDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -189,7 +189,7 @@ public class CutLabelDefinitionsApi {
      </table>
      */
     public okhttp3.Call deleteCutLabelDefinitionCall(String code, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/systemconfiguration/cutlabels/{code}"
@@ -198,9 +198,7 @@ public class CutLabelDefinitionsApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -218,7 +216,7 @@ public class CutLabelDefinitionsApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -290,6 +288,7 @@ public class CutLabelDefinitionsApi {
      </table>
      */
     public okhttp3.Call deleteCutLabelDefinitionAsync(String code, final ApiCallback<OffsetDateTime> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = deleteCutLabelDefinitionValidateBeforeCall(code, _callback);
         Type localVarReturnType = new TypeToken<OffsetDateTime>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -311,7 +310,7 @@ public class CutLabelDefinitionsApi {
      </table>
      */
     public okhttp3.Call getCutLabelDefinitionCall(String code, OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/systemconfiguration/cutlabels/{code}"
@@ -319,14 +318,12 @@ public class CutLabelDefinitionsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         if (asAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -344,7 +341,7 @@ public class CutLabelDefinitionsApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -419,6 +416,7 @@ public class CutLabelDefinitionsApi {
      </table>
      */
     public okhttp3.Call getCutLabelDefinitionAsync(String code, OffsetDateTime asAt, final ApiCallback<CutLabelDefinition> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = getCutLabelDefinitionValidateBeforeCall(code, asAt, _callback);
         Type localVarReturnType = new TypeToken<CutLabelDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -444,17 +442,13 @@ public class CutLabelDefinitionsApi {
      </table>
      */
     public okhttp3.Call listCutLabelDefinitionsCall(OffsetDateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, String page, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/systemconfiguration/cutlabels";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         if (asAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
@@ -479,6 +473,8 @@ public class CutLabelDefinitionsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
         }
 
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -496,7 +492,7 @@ public class CutLabelDefinitionsApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -578,6 +574,7 @@ public class CutLabelDefinitionsApi {
      </table>
      */
     public okhttp3.Call listCutLabelDefinitionsAsync(OffsetDateTime asAt, List<String> sortBy, Integer start, Integer limit, String filter, String page, final ApiCallback<PagedResourceListOfCutLabelDefinition> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = listCutLabelDefinitionsValidateBeforeCall(asAt, sortBy, start, limit, filter, page, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfCutLabelDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -608,9 +605,7 @@ public class CutLabelDefinitionsApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -628,7 +623,7 @@ public class CutLabelDefinitionsApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -703,6 +698,7 @@ public class CutLabelDefinitionsApi {
      </table>
      */
     public okhttp3.Call updateCutLabelDefinitionAsync(String code, UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest, final ApiCallback<CutLabelDefinition> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = updateCutLabelDefinitionValidateBeforeCall(code, updateCutLabelDefinitionRequest, _callback);
         Type localVarReturnType = new TypeToken<CutLabelDefinition>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);

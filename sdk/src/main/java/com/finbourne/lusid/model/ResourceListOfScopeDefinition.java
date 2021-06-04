@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * ResourceListOfScopeDefinition
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class ResourceListOfScopeDefinition {
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
@@ -44,7 +44,7 @@ public class ResourceListOfScopeDefinition {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
+  private List<Link> links = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
   @SerializedName(SERIALIZED_NAME_NEXT_PAGE)
@@ -54,14 +54,12 @@ public class ResourceListOfScopeDefinition {
   @SerializedName(SERIALIZED_NAME_PREVIOUS_PAGE)
   private String previousPage;
 
-
   public ResourceListOfScopeDefinition values(List<ScopeDefinition> values) {
-    this.values = values; 
+    this.values = values;
     return this;
   }
 
   public ResourceListOfScopeDefinition addValuesItem(ScopeDefinition valuesItem) {
-   
     this.values.add(valuesItem);
     return this;
   }
@@ -79,9 +77,8 @@ public class ResourceListOfScopeDefinition {
     this.values = values;
   }
 
-
   public ResourceListOfScopeDefinition href(URI href) {
-    this.href = href; 
+    this.href = href;
     return this;
   }
 
@@ -98,14 +95,12 @@ public class ResourceListOfScopeDefinition {
     this.href = href;
   }
 
-
   public ResourceListOfScopeDefinition links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public ResourceListOfScopeDefinition addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -126,9 +121,8 @@ public class ResourceListOfScopeDefinition {
     this.links = links;
   }
 
-
   public ResourceListOfScopeDefinition nextPage(String nextPage) {
-    this.nextPage = nextPage; 
+    this.nextPage = nextPage;
     return this;
   }
 
@@ -145,9 +139,8 @@ public class ResourceListOfScopeDefinition {
     this.nextPage = nextPage;
   }
 
-
   public ResourceListOfScopeDefinition previousPage(String previousPage) {
-    this.previousPage = previousPage; 
+    this.previousPage = previousPage;
     return this;
   }
 
@@ -166,7 +159,7 @@ public class ResourceListOfScopeDefinition {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -178,8 +171,9 @@ public class ResourceListOfScopeDefinition {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -198,7 +192,7 @@ public class ResourceListOfScopeDefinition {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

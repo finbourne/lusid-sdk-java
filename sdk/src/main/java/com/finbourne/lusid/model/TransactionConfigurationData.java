@@ -34,7 +34,7 @@ import java.util.Map;
 /**
  * TransactionConfigurationData
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class TransactionConfigurationData {
   public static final String SERIALIZED_NAME_ALIASES = "aliases";
   @SerializedName(SERIALIZED_NAME_ALIASES)
@@ -46,16 +46,14 @@ public class TransactionConfigurationData {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = null;
-
+  private Map<String, PerpetualProperty> properties = new HashMap<>();
 
   public TransactionConfigurationData aliases(List<TransactionConfigurationTypeAlias> aliases) {
-    this.aliases = aliases; 
+    this.aliases = aliases;
     return this;
   }
 
   public TransactionConfigurationData addAliasesItem(TransactionConfigurationTypeAlias aliasesItem) {
-   
     this.aliases.add(aliasesItem);
     return this;
   }
@@ -73,14 +71,12 @@ public class TransactionConfigurationData {
     this.aliases = aliases;
   }
 
-
   public TransactionConfigurationData movements(List<TransactionConfigurationMovementData> movements) {
-    this.movements = movements; 
+    this.movements = movements;
     return this;
   }
 
   public TransactionConfigurationData addMovementsItem(TransactionConfigurationMovementData movementsItem) {
-   
     this.movements.add(movementsItem);
     return this;
   }
@@ -98,9 +94,8 @@ public class TransactionConfigurationData {
     this.movements = movements;
   }
 
-
   public TransactionConfigurationData properties(Map<String, PerpetualProperty> properties) {
-    this.properties = properties; 
+    this.properties = properties;
     return this;
   }
 
@@ -127,7 +122,7 @@ public class TransactionConfigurationData {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -139,8 +134,9 @@ public class TransactionConfigurationData {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -157,7 +153,7 @@ public class TransactionConfigurationData {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

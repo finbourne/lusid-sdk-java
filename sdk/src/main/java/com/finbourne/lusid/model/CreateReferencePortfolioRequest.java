@@ -32,7 +32,7 @@ import java.util.Map;
 /**
  * CreateReferencePortfolioRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class CreateReferencePortfolioRequest {
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -52,11 +52,10 @@ public class CreateReferencePortfolioRequest {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, Property> properties = null;
-
+  private Map<String, Property> properties = new HashMap<>();
 
   public CreateReferencePortfolioRequest displayName(String displayName) {
-    this.displayName = displayName; 
+    this.displayName = displayName;
     return this;
   }
 
@@ -73,9 +72,8 @@ public class CreateReferencePortfolioRequest {
     this.displayName = displayName;
   }
 
-
   public CreateReferencePortfolioRequest description(String description) {
-    this.description = description; 
+    this.description = description;
     return this;
   }
 
@@ -92,9 +90,8 @@ public class CreateReferencePortfolioRequest {
     this.description = description;
   }
 
-
   public CreateReferencePortfolioRequest code(String code) {
-    this.code = code; 
+    this.code = code;
     return this;
   }
 
@@ -111,9 +108,8 @@ public class CreateReferencePortfolioRequest {
     this.code = code;
   }
 
-
   public CreateReferencePortfolioRequest created(OffsetDateTime created) {
-    this.created = created; 
+    this.created = created;
     return this;
   }
 
@@ -130,9 +126,8 @@ public class CreateReferencePortfolioRequest {
     this.created = created;
   }
 
-
   public CreateReferencePortfolioRequest properties(Map<String, Property> properties) {
-    this.properties = properties; 
+    this.properties = properties;
     return this;
   }
 
@@ -159,7 +154,7 @@ public class CreateReferencePortfolioRequest {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -171,8 +166,9 @@ public class CreateReferencePortfolioRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -191,7 +187,7 @@ public class CreateReferencePortfolioRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

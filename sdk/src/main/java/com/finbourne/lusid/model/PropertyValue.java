@@ -30,7 +30,7 @@ import java.io.IOException;
  * The value of the property.
  */
 @ApiModel(description = "The value of the property.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class PropertyValue {
   public static final String SERIALIZED_NAME_LABEL_VALUE = "labelValue";
   @SerializedName(SERIALIZED_NAME_LABEL_VALUE)
@@ -38,15 +38,14 @@ public class PropertyValue {
 
   public static final String SERIALIZED_NAME_METRIC_VALUE = "metricValue";
   @SerializedName(SERIALIZED_NAME_METRIC_VALUE)
-  private MetricValue metricValue;
+  private MetricValue metricValue = null;
 
   public static final String SERIALIZED_NAME_LABEL_VALUE_SET = "labelValueSet";
   @SerializedName(SERIALIZED_NAME_LABEL_VALUE_SET)
-  private LabelValueSet labelValueSet;
-
+  private LabelValueSet labelValueSet = null;
 
   public PropertyValue labelValue(String labelValue) {
-    this.labelValue = labelValue; 
+    this.labelValue = labelValue;
     return this;
   }
 
@@ -63,9 +62,8 @@ public class PropertyValue {
     this.labelValue = labelValue;
   }
 
-
   public PropertyValue metricValue(MetricValue metricValue) {
-    this.metricValue = metricValue; 
+    this.metricValue = metricValue;
     return this;
   }
 
@@ -82,9 +80,8 @@ public class PropertyValue {
     this.metricValue = metricValue;
   }
 
-
   public PropertyValue labelValueSet(LabelValueSet labelValueSet) {
-    this.labelValueSet = labelValueSet; 
+    this.labelValueSet = labelValueSet;
     return this;
   }
 
@@ -103,7 +100,7 @@ public class PropertyValue {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -115,8 +112,9 @@ public class PropertyValue {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -133,7 +131,7 @@ public class PropertyValue {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

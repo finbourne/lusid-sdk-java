@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * AccessControlledResource
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class AccessControlledResource {
   public static final String SERIALIZED_NAME_APPLICATION = "application";
   @SerializedName(SERIALIZED_NAME_APPLICATION)
@@ -52,15 +52,14 @@ public class AccessControlledResource {
 
   public static final String SERIALIZED_NAME_IDENTIFIER_PARTS = "identifierParts";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_PARTS)
-  private List<IdentifierPartSchema> identifierParts = null;
+  private List<IdentifierPartSchema> identifierParts = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public AccessControlledResource application(String application) {
-    this.application = application; 
+    this.application = application;
     return this;
   }
 
@@ -77,9 +76,8 @@ public class AccessControlledResource {
     this.application = application;
   }
 
-
   public AccessControlledResource name(String name) {
-    this.name = name; 
+    this.name = name;
     return this;
   }
 
@@ -96,9 +94,8 @@ public class AccessControlledResource {
     this.name = name;
   }
 
-
   public AccessControlledResource description(String description) {
-    this.description = description; 
+    this.description = description;
     return this;
   }
 
@@ -115,14 +112,12 @@ public class AccessControlledResource {
     this.description = description;
   }
 
-
   public AccessControlledResource actions(List<AccessControlledAction> actions) {
-    this.actions = actions; 
+    this.actions = actions;
     return this;
   }
 
   public AccessControlledResource addActionsItem(AccessControlledAction actionsItem) {
-   
     this.actions.add(actionsItem);
     return this;
   }
@@ -140,14 +135,12 @@ public class AccessControlledResource {
     this.actions = actions;
   }
 
-
   public AccessControlledResource identifierParts(List<IdentifierPartSchema> identifierParts) {
-    this.identifierParts = identifierParts; 
+    this.identifierParts = identifierParts;
     return this;
   }
 
   public AccessControlledResource addIdentifierPartsItem(IdentifierPartSchema identifierPartsItem) {
-   
     if (this.identifierParts == null) {
       this.identifierParts = new ArrayList<>();
     }
@@ -168,14 +161,12 @@ public class AccessControlledResource {
     this.identifierParts = identifierParts;
   }
 
-
   public AccessControlledResource links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public AccessControlledResource addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -198,7 +189,7 @@ public class AccessControlledResource {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -210,8 +201,9 @@ public class AccessControlledResource {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -231,7 +223,7 @@ public class AccessControlledResource {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

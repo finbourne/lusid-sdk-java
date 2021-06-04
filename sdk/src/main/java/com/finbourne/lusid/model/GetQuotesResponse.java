@@ -35,7 +35,7 @@ import java.util.Map;
 /**
  * GetQuotesResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class GetQuotesResponse {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -43,23 +43,22 @@ public class GetQuotesResponse {
 
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
-  private Map<String, Quote> values = null;
+  private Map<String, Quote> values = new HashMap<>();
 
   public static final String SERIALIZED_NAME_NOT_FOUND = "notFound";
   @SerializedName(SERIALIZED_NAME_NOT_FOUND)
-  private Map<String, ErrorDetail> notFound = null;
+  private Map<String, ErrorDetail> notFound = new HashMap<>();
 
   public static final String SERIALIZED_NAME_FAILED = "failed";
   @SerializedName(SERIALIZED_NAME_FAILED)
-  private Map<String, ErrorDetail> failed = null;
+  private Map<String, ErrorDetail> failed = new HashMap<>();
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public GetQuotesResponse href(URI href) {
-    this.href = href; 
+    this.href = href;
     return this;
   }
 
@@ -76,9 +75,8 @@ public class GetQuotesResponse {
     this.href = href;
   }
 
-
   public GetQuotesResponse values(Map<String, Quote> values) {
-    this.values = values; 
+    this.values = values;
     return this;
   }
 
@@ -103,9 +101,8 @@ public class GetQuotesResponse {
     this.values = values;
   }
 
-
   public GetQuotesResponse notFound(Map<String, ErrorDetail> notFound) {
-    this.notFound = notFound; 
+    this.notFound = notFound;
     return this;
   }
 
@@ -130,9 +127,8 @@ public class GetQuotesResponse {
     this.notFound = notFound;
   }
 
-
   public GetQuotesResponse failed(Map<String, ErrorDetail> failed) {
-    this.failed = failed; 
+    this.failed = failed;
     return this;
   }
 
@@ -157,14 +153,12 @@ public class GetQuotesResponse {
     this.failed = failed;
   }
 
-
   public GetQuotesResponse links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public GetQuotesResponse addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -187,7 +181,7 @@ public class GetQuotesResponse {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -199,8 +193,9 @@ public class GetQuotesResponse {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -219,7 +214,7 @@ public class GetQuotesResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

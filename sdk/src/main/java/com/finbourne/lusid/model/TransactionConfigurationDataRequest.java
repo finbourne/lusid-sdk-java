@@ -34,7 +34,7 @@ import java.util.Map;
 /**
  * TransactionConfigurationDataRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class TransactionConfigurationDataRequest {
   public static final String SERIALIZED_NAME_ALIASES = "aliases";
   @SerializedName(SERIALIZED_NAME_ALIASES)
@@ -46,16 +46,14 @@ public class TransactionConfigurationDataRequest {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = null;
-
+  private Map<String, PerpetualProperty> properties = new HashMap<>();
 
   public TransactionConfigurationDataRequest aliases(List<TransactionConfigurationTypeAlias> aliases) {
-    this.aliases = aliases; 
+    this.aliases = aliases;
     return this;
   }
 
   public TransactionConfigurationDataRequest addAliasesItem(TransactionConfigurationTypeAlias aliasesItem) {
-   
     this.aliases.add(aliasesItem);
     return this;
   }
@@ -73,14 +71,12 @@ public class TransactionConfigurationDataRequest {
     this.aliases = aliases;
   }
 
-
   public TransactionConfigurationDataRequest movements(List<TransactionConfigurationMovementDataRequest> movements) {
-    this.movements = movements; 
+    this.movements = movements;
     return this;
   }
 
   public TransactionConfigurationDataRequest addMovementsItem(TransactionConfigurationMovementDataRequest movementsItem) {
-   
     this.movements.add(movementsItem);
     return this;
   }
@@ -98,9 +94,8 @@ public class TransactionConfigurationDataRequest {
     this.movements = movements;
   }
 
-
   public TransactionConfigurationDataRequest properties(Map<String, PerpetualProperty> properties) {
-    this.properties = properties; 
+    this.properties = properties;
     return this;
   }
 
@@ -127,7 +122,7 @@ public class TransactionConfigurationDataRequest {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -139,8 +134,9 @@ public class TransactionConfigurationDataRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -157,7 +153,7 @@ public class TransactionConfigurationDataRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * CutLabelDefinition
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class CutLabelDefinition {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
@@ -48,7 +48,7 @@ public class CutLabelDefinition {
 
   public static final String SERIALIZED_NAME_CUT_LOCAL_TIME = "cutLocalTime";
   @SerializedName(SERIALIZED_NAME_CUT_LOCAL_TIME)
-  private CutLocalTime cutLocalTime;
+  private CutLocalTime cutLocalTime = null;
 
   public static final String SERIALIZED_NAME_TIME_ZONE = "timeZone";
   @SerializedName(SERIALIZED_NAME_TIME_ZONE)
@@ -60,11 +60,10 @@ public class CutLabelDefinition {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public CutLabelDefinition code(String code) {
-    this.code = code; 
+    this.code = code;
     return this;
   }
 
@@ -81,9 +80,8 @@ public class CutLabelDefinition {
     this.code = code;
   }
 
-
   public CutLabelDefinition displayName(String displayName) {
-    this.displayName = displayName; 
+    this.displayName = displayName;
     return this;
   }
 
@@ -100,9 +98,8 @@ public class CutLabelDefinition {
     this.displayName = displayName;
   }
 
-
   public CutLabelDefinition description(String description) {
-    this.description = description; 
+    this.description = description;
     return this;
   }
 
@@ -119,9 +116,8 @@ public class CutLabelDefinition {
     this.description = description;
   }
 
-
   public CutLabelDefinition cutLocalTime(CutLocalTime cutLocalTime) {
-    this.cutLocalTime = cutLocalTime; 
+    this.cutLocalTime = cutLocalTime;
     return this;
   }
 
@@ -138,9 +134,8 @@ public class CutLabelDefinition {
     this.cutLocalTime = cutLocalTime;
   }
 
-
   public CutLabelDefinition timeZone(String timeZone) {
-    this.timeZone = timeZone; 
+    this.timeZone = timeZone;
     return this;
   }
 
@@ -157,9 +152,8 @@ public class CutLabelDefinition {
     this.timeZone = timeZone;
   }
 
-
   public CutLabelDefinition href(URI href) {
-    this.href = href; 
+    this.href = href;
     return this;
   }
 
@@ -176,14 +170,12 @@ public class CutLabelDefinition {
     this.href = href;
   }
 
-
   public CutLabelDefinition links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public CutLabelDefinition addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -206,7 +198,7 @@ public class CutLabelDefinition {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -218,8 +210,9 @@ public class CutLabelDefinition {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -240,7 +233,7 @@ public class CutLabelDefinition {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

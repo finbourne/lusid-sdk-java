@@ -28,15 +28,14 @@ import java.io.IOException;
  * The unique id of the user that issued the command.
  */
 @ApiModel(description = "The unique id of the user that issued the command.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class User {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
-
   public User id(String id) {
-    this.id = id; 
+    this.id = id;
     return this;
   }
 
@@ -55,7 +54,7 @@ public class User {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -67,8 +66,9 @@ public class User {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -83,7 +83,7 @@ public class User {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

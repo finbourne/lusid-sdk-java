@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * AccessControlledAction
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class AccessControlledAction {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -40,19 +40,18 @@ public class AccessControlledAction {
 
   public static final String SERIALIZED_NAME_ACTION = "action";
   @SerializedName(SERIALIZED_NAME_ACTION)
-  private ActionId action;
+  private ActionId action = null;
 
   public static final String SERIALIZED_NAME_LIMITED_SET = "limitedSet";
   @SerializedName(SERIALIZED_NAME_LIMITED_SET)
-  private List<IdSelectorDefinition> limitedSet = null;
+  private List<IdSelectorDefinition> limitedSet = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public AccessControlledAction description(String description) {
-    this.description = description; 
+    this.description = description;
     return this;
   }
 
@@ -69,9 +68,8 @@ public class AccessControlledAction {
     this.description = description;
   }
 
-
   public AccessControlledAction action(ActionId action) {
-    this.action = action; 
+    this.action = action;
     return this;
   }
 
@@ -88,14 +86,12 @@ public class AccessControlledAction {
     this.action = action;
   }
 
-
   public AccessControlledAction limitedSet(List<IdSelectorDefinition> limitedSet) {
-    this.limitedSet = limitedSet; 
+    this.limitedSet = limitedSet;
     return this;
   }
 
   public AccessControlledAction addLimitedSetItem(IdSelectorDefinition limitedSetItem) {
-   
     if (this.limitedSet == null) {
       this.limitedSet = new ArrayList<>();
     }
@@ -116,14 +112,12 @@ public class AccessControlledAction {
     this.limitedSet = limitedSet;
   }
 
-
   public AccessControlledAction links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public AccessControlledAction addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -146,7 +140,7 @@ public class AccessControlledAction {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -158,8 +152,9 @@ public class AccessControlledAction {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -177,7 +172,7 @@ public class AccessControlledAction {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

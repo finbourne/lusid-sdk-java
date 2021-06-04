@@ -33,7 +33,7 @@ import java.util.List;
  * A collection of the data required to configure transaction types..
  */
 @ApiModel(description = "A collection of the data required to configure transaction types..")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class TransactionSetConfigurationData {
   public static final String SERIALIZED_NAME_TRANSACTION_CONFIGS = "transactionConfigs";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_CONFIGS)
@@ -41,20 +41,18 @@ public class TransactionSetConfigurationData {
 
   public static final String SERIALIZED_NAME_SIDE_DEFINITIONS = "sideDefinitions";
   @SerializedName(SERIALIZED_NAME_SIDE_DEFINITIONS)
-  private List<SideConfigurationData> sideDefinitions = null;
+  private List<SideConfigurationData> sideDefinitions = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public TransactionSetConfigurationData transactionConfigs(List<TransactionConfigurationData> transactionConfigs) {
-    this.transactionConfigs = transactionConfigs; 
+    this.transactionConfigs = transactionConfigs;
     return this;
   }
 
   public TransactionSetConfigurationData addTransactionConfigsItem(TransactionConfigurationData transactionConfigsItem) {
-   
     this.transactionConfigs.add(transactionConfigsItem);
     return this;
   }
@@ -72,14 +70,12 @@ public class TransactionSetConfigurationData {
     this.transactionConfigs = transactionConfigs;
   }
 
-
   public TransactionSetConfigurationData sideDefinitions(List<SideConfigurationData> sideDefinitions) {
-    this.sideDefinitions = sideDefinitions; 
+    this.sideDefinitions = sideDefinitions;
     return this;
   }
 
   public TransactionSetConfigurationData addSideDefinitionsItem(SideConfigurationData sideDefinitionsItem) {
-   
     if (this.sideDefinitions == null) {
       this.sideDefinitions = new ArrayList<>();
     }
@@ -100,14 +96,12 @@ public class TransactionSetConfigurationData {
     this.sideDefinitions = sideDefinitions;
   }
 
-
   public TransactionSetConfigurationData links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public TransactionSetConfigurationData addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -130,7 +124,7 @@ public class TransactionSetConfigurationData {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -142,8 +136,9 @@ public class TransactionSetConfigurationData {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -160,7 +155,7 @@ public class TransactionSetConfigurationData {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

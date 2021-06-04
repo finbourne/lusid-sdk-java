@@ -31,7 +31,7 @@ import java.util.Map;
 /**
  * ReferencePortfolioConstituentRequest
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class ReferencePortfolioConstituentRequest {
   public static final String SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS = "instrumentIdentifiers";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS)
@@ -39,7 +39,7 @@ public class ReferencePortfolioConstituentRequest {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = null;
+  private Map<String, PerpetualProperty> properties = new HashMap<>();
 
   public static final String SERIALIZED_NAME_WEIGHT = "weight";
   @SerializedName(SERIALIZED_NAME_WEIGHT)
@@ -49,9 +49,8 @@ public class ReferencePortfolioConstituentRequest {
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
-
   public ReferencePortfolioConstituentRequest instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
-    this.instrumentIdentifiers = instrumentIdentifiers; 
+    this.instrumentIdentifiers = instrumentIdentifiers;
     return this;
   }
 
@@ -73,9 +72,8 @@ public class ReferencePortfolioConstituentRequest {
     this.instrumentIdentifiers = instrumentIdentifiers;
   }
 
-
   public ReferencePortfolioConstituentRequest properties(Map<String, PerpetualProperty> properties) {
-    this.properties = properties; 
+    this.properties = properties;
     return this;
   }
 
@@ -100,9 +98,8 @@ public class ReferencePortfolioConstituentRequest {
     this.properties = properties;
   }
 
-
   public ReferencePortfolioConstituentRequest weight(Double weight) {
-    this.weight = weight; 
+    this.weight = weight;
     return this;
   }
 
@@ -119,9 +116,8 @@ public class ReferencePortfolioConstituentRequest {
     this.weight = weight;
   }
 
-
   public ReferencePortfolioConstituentRequest currency(String currency) {
-    this.currency = currency; 
+    this.currency = currency;
     return this;
   }
 
@@ -140,7 +136,7 @@ public class ReferencePortfolioConstituentRequest {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -152,8 +148,9 @@ public class ReferencePortfolioConstituentRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -171,7 +168,7 @@ public class ReferencePortfolioConstituentRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

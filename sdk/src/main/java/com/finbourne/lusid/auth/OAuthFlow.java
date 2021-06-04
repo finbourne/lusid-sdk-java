@@ -13,10 +13,6 @@
 
 package com.finbourne.lusid.auth;
 
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public enum OAuthFlow {
-    accessCode, //called authorizationCode  in OpenAPI 3.0
-    implicit, 
-    password,
-    application //called clientCredentials in OpenAPI 3.0
+    accessCode, implicit, password, application
 }

@@ -35,7 +35,7 @@ import java.util.Map;
 /**
  * UpsertQuotesResponse
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class UpsertQuotesResponse {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -43,19 +43,18 @@ public class UpsertQuotesResponse {
 
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
-  private Map<String, Quote> values = null;
+  private Map<String, Quote> values = new HashMap<>();
 
   public static final String SERIALIZED_NAME_FAILED = "failed";
   @SerializedName(SERIALIZED_NAME_FAILED)
-  private Map<String, ErrorDetail> failed = null;
+  private Map<String, ErrorDetail> failed = new HashMap<>();
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public UpsertQuotesResponse href(URI href) {
-    this.href = href; 
+    this.href = href;
     return this;
   }
 
@@ -72,9 +71,8 @@ public class UpsertQuotesResponse {
     this.href = href;
   }
 
-
   public UpsertQuotesResponse values(Map<String, Quote> values) {
-    this.values = values; 
+    this.values = values;
     return this;
   }
 
@@ -99,9 +97,8 @@ public class UpsertQuotesResponse {
     this.values = values;
   }
 
-
   public UpsertQuotesResponse failed(Map<String, ErrorDetail> failed) {
-    this.failed = failed; 
+    this.failed = failed;
     return this;
   }
 
@@ -126,14 +123,12 @@ public class UpsertQuotesResponse {
     this.failed = failed;
   }
 
-
   public UpsertQuotesResponse links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public UpsertQuotesResponse addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -156,7 +151,7 @@ public class UpsertQuotesResponse {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -168,8 +163,9 @@ public class UpsertQuotesResponse {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -187,7 +183,7 @@ public class UpsertQuotesResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

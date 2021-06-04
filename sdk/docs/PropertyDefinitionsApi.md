@@ -39,7 +39,7 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi(defaultClient);
-    CreatePropertyDefinitionRequest createPropertyDefinitionRequest = new CreatePropertyDefinitionRequest(); // CreatePropertyDefinitionRequest | The definition of the new property.
+    CreatePropertyDefinitionRequest createPropertyDefinitionRequest = {"domain":"Portfolio","scope":"MyScope","code":"MyPropertyName","valueRequired":false,"displayName":"My Property Display Name","dataTypeId":{"scope":"system","code":"string"},"lifeTime":"Perpetual","constraintStyle":"Property","propertyDescription":"Optional property description"}; // CreatePropertyDefinitionRequest | The definition of the new property.
     try {
       PropertyDefinition result = apiInstance.createPropertyDefinition(createPropertyDefinitionRequest);
       System.out.println(result);
@@ -182,7 +182,7 @@ public class Example {
 
     PropertyDefinitionsApi apiInstance = new PropertyDefinitionsApi(defaultClient);
     List<String> propertyKeys = Arrays.asList(); // List<String> | One or more property keys which identify each property that a definition should              be retrieved for. The format for each property key is {domain}/{scope}/{code}, e.g. 'Portfolio/Manager/Id'.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the property definitions. Defaults to return              the latest version of each definition if not specified.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the property definitions. Defaults to return              the latest version of each definition if not specified.
     String filter = "filter_example"; // String | Expression to filter the result set.               For example, to filter on the Lifetime, use \"lifeTime eq 'Perpetual'\"              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
       ResourceListOfPropertyDefinition result = apiInstance.getMultiplePropertyDefinitions(propertyKeys, asAt, filter);
@@ -257,7 +257,7 @@ public class Example {
     String domain = "domain_example"; // String | The domain of the specified property.
     String scope = "scope_example"; // String | The scope of the specified property.
     String code = "code_example"; // String | The code of the specified property. Together with the domain and scope this uniquely              identifies the property.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the property definition. Defaults to return              the latest version of the definition if not specified.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the property definition. Defaults to return              the latest version of the definition if not specified.
     try {
       PropertyDefinition result = apiInstance.getPropertyDefinition(domain, scope, code, asAt);
       System.out.println(result);
@@ -332,7 +332,7 @@ public class Example {
     String domain = "domain_example"; // String | The domain of the property being updated.
     String scope = "scope_example"; // String | The scope of the property being updated.
     String code = "code_example"; // String | The code of the property being updated. Together with the domain and scope this uniquely              identifies the property.
-    UpdatePropertyDefinitionRequest updatePropertyDefinitionRequest = new UpdatePropertyDefinitionRequest(); // UpdatePropertyDefinitionRequest | The updated definition of the property.
+    UpdatePropertyDefinitionRequest updatePropertyDefinitionRequest = {"displayName":"MyPropertyName","propertyDescription":"Option Property description"}; // UpdatePropertyDefinitionRequest | The updated definition of the property.
     try {
       PropertyDefinition result = apiInstance.updatePropertyDefinition(domain, scope, code, updatePropertyDefinitionRequest);
       System.out.println(result);

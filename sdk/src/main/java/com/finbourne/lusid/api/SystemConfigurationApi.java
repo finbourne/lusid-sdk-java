@@ -41,6 +41,7 @@ import java.util.Map;
 
 public class SystemConfigurationApi {
     private ApiClient localVarApiClient;
+
     public SystemConfigurationApi() {
         this(Configuration.getDefaultApiClient());
     }
@@ -80,9 +81,7 @@ public class SystemConfigurationApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -100,7 +99,7 @@ public class SystemConfigurationApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -167,6 +166,7 @@ public class SystemConfigurationApi {
      </table>
      */
     public okhttp3.Call createConfigurationTransactionTypeAsync(TransactionConfigurationDataRequest transactionConfigurationDataRequest, final ApiCallback<TransactionSetConfigurationData> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = createConfigurationTransactionTypeValidateBeforeCall(transactionConfigurationDataRequest, _callback);
         Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -187,21 +187,19 @@ public class SystemConfigurationApi {
      </table>
      */
     public okhttp3.Call listConfigurationTransactionTypesCall(OffsetDateTime asAt, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/systemconfiguration/transactions";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         if (asAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
 
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -219,7 +217,7 @@ public class SystemConfigurationApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -286,6 +284,7 @@ public class SystemConfigurationApi {
      </table>
      */
     public okhttp3.Call listConfigurationTransactionTypesAsync(OffsetDateTime asAt, final ApiCallback<TransactionSetConfigurationData> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = listConfigurationTransactionTypesValidateBeforeCall(asAt, _callback);
         Type localVarReturnType = new TypeToken<TransactionSetConfigurationData>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);

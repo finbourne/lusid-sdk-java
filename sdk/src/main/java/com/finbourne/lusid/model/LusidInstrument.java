@@ -28,7 +28,8 @@ import java.io.IOException;
  * Base class in hierarchy for LUSID Instruments. Valuation would normally be performed through passing LUSID a Code for a portfolio to be valued.  In that case the set of instruments have already been uploaded. Equally, one might wish to pass in a set of instruments directly and have LUSID  value the inlined set. This the base instrument for this case.
  */
 @ApiModel(description = "Base class in hierarchy for LUSID Instruments. Valuation would normally be performed through passing LUSID a Code for a portfolio to be valued.  In that case the set of instruments have already been uploaded. Equally, one might wish to pass in a set of instruments directly and have LUSID  value the inlined set. This the base instrument for this case.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
+
 public class LusidInstrument {
   /**
    * The available values are: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CashSettled, CdsIndex, Basket, FundingLeg, CrossCurrencySwap
@@ -113,7 +114,7 @@ public class LusidInstrument {
 
       @Override
       public InstrumentTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return InstrumentTypeEnum.fromValue(value);
       }
     }
@@ -121,14 +122,13 @@ public class LusidInstrument {
 
   public static final String SERIALIZED_NAME_INSTRUMENT_TYPE = "instrumentType";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_TYPE)
-  protected InstrumentTypeEnum instrumentType;
+  private InstrumentTypeEnum instrumentType;
 
   public LusidInstrument() {
     //this.instrumentType = this.getClass().getSimpleName();
   }
-
   public LusidInstrument instrumentType(InstrumentTypeEnum instrumentType) {
-    this.instrumentType = instrumentType; 
+    this.instrumentType = instrumentType;
     return this;
   }
 
@@ -147,7 +147,7 @@ public class LusidInstrument {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -159,8 +159,9 @@ public class LusidInstrument {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -175,7 +176,7 @@ public class LusidInstrument {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

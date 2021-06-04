@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * ActionId
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class ActionId {
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
@@ -41,9 +41,8 @@ public class ActionId {
   @SerializedName(SERIALIZED_NAME_ENTITY)
   private String entity;
 
-
   public ActionId scope(String scope) {
-    this.scope = scope; 
+    this.scope = scope;
     return this;
   }
 
@@ -60,9 +59,8 @@ public class ActionId {
     this.scope = scope;
   }
 
-
   public ActionId activity(String activity) {
-    this.activity = activity; 
+    this.activity = activity;
     return this;
   }
 
@@ -79,9 +77,8 @@ public class ActionId {
     this.activity = activity;
   }
 
-
   public ActionId entity(String entity) {
-    this.entity = entity; 
+    this.entity = entity;
     return this;
   }
 
@@ -100,7 +97,7 @@ public class ActionId {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -112,8 +109,9 @@ public class ActionId {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -130,7 +128,7 @@ public class ActionId {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

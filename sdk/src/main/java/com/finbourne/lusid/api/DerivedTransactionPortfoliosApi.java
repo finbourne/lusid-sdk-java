@@ -41,6 +41,7 @@ import java.util.Map;
 
 public class DerivedTransactionPortfoliosApi {
     private ApiClient localVarApiClient;
+
     public DerivedTransactionPortfoliosApi() {
         this(Configuration.getDefaultApiClient());
     }
@@ -82,9 +83,7 @@ public class DerivedTransactionPortfoliosApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -102,7 +101,7 @@ public class DerivedTransactionPortfoliosApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -177,6 +176,7 @@ public class DerivedTransactionPortfoliosApi {
      </table>
      */
     public okhttp3.Call createDerivedPortfolioAsync(String scope, CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest, final ApiCallback<Portfolio> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = createDerivedPortfolioValidateBeforeCall(scope, createDerivedTransactionPortfolioRequest, _callback);
         Type localVarReturnType = new TypeToken<Portfolio>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -199,7 +199,7 @@ public class DerivedTransactionPortfoliosApi {
      </table>
      */
     public okhttp3.Call deleteDerivedPortfolioDetailsCall(String scope, String code, String effectiveAt, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
+        Object localVarPostBody = new Object();
 
         // create path and map variables
         String localVarPath = "/api/derivedtransactionportfolios/{scope}/{code}/details"
@@ -208,14 +208,12 @@ public class DerivedTransactionPortfoliosApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
         if (effectiveAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("effectiveAt", effectiveAt));
         }
 
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -233,7 +231,7 @@ public class DerivedTransactionPortfoliosApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3106");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -316,6 +314,7 @@ public class DerivedTransactionPortfoliosApi {
      </table>
      */
     public okhttp3.Call deleteDerivedPortfolioDetailsAsync(String scope, String code, String effectiveAt, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
         okhttp3.Call localVarCall = deleteDerivedPortfolioDetailsValidateBeforeCall(scope, code, effectiveAt, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);

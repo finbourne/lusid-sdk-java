@@ -37,7 +37,7 @@ public class Example {
 
     DerivedTransactionPortfoliosApi apiInstance = new DerivedTransactionPortfoliosApi(defaultClient);
     String scope = "scope_example"; // String | The scope in which to create the derived transaction portfolio.
-    CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest = new CreateDerivedTransactionPortfolioRequest(); // CreateDerivedTransactionPortfolioRequest | The definition of the derived transaction portfolio.
+    CreateDerivedTransactionPortfolioRequest createDerivedTransactionPortfolioRequest = {"displayName":"MyDerivedPortfolioName","description":"Example long form portfolio description","code":"MyDerivedPortfolioCode","parentPortfolioId":{"scope":"MyParentPortfolioScope","code":"MyParentPortfolioCode"},"created":"2018-03-05T00:00:00.0000000+00:00","corporateActionSourceId":{"scope":"MyScope","code":"MyCorporateActionSourceId"},"accountingMethod":"FirstInFirstOut","subHoldingKeys":["Transaction/MyScope/Strategy","Transaction/MyScope/SubAccount"]}; // CreateDerivedTransactionPortfolioRequest | The definition of the derived transaction portfolio.
     try {
       Portfolio result = apiInstance.createDerivedPortfolio(scope, createDerivedTransactionPortfolioRequest);
       System.out.println(result);

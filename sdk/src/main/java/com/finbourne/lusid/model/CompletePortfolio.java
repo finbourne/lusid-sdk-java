@@ -35,11 +35,11 @@ import java.util.List;
 /**
  * CompletePortfolio
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class CompletePortfolio {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private ResourceId id;
+  private ResourceId id = null;
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -59,7 +59,7 @@ public class CompletePortfolio {
 
   public static final String SERIALIZED_NAME_PARENT_PORTFOLIO_ID = "parentPortfolioId";
   @SerializedName(SERIALIZED_NAME_PARENT_PORTFOLIO_ID)
-  private ResourceId parentPortfolioId;
+  private ResourceId parentPortfolioId = null;
 
   public static final String SERIALIZED_NAME_IS_DERIVED = "isDerived";
   @SerializedName(SERIALIZED_NAME_IS_DERIVED)
@@ -108,7 +108,7 @@ public class CompletePortfolio {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
+        String value = jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -120,11 +120,11 @@ public class CompletePortfolio {
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version;
+  private Version version = null;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private List<Property> properties = null;
+  private List<Property> properties = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_BASE_CURRENCY = "baseCurrency";
   @SerializedName(SERIALIZED_NAME_BASE_CURRENCY)
@@ -132,11 +132,10 @@ public class CompletePortfolio {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public CompletePortfolio id(ResourceId id) {
-    this.id = id; 
+    this.id = id;
     return this;
   }
 
@@ -153,9 +152,8 @@ public class CompletePortfolio {
     this.id = id;
   }
 
-
   public CompletePortfolio href(URI href) {
-    this.href = href; 
+    this.href = href;
     return this;
   }
 
@@ -172,9 +170,8 @@ public class CompletePortfolio {
     this.href = href;
   }
 
-
   public CompletePortfolio description(String description) {
-    this.description = description; 
+    this.description = description;
     return this;
   }
 
@@ -191,9 +188,8 @@ public class CompletePortfolio {
     this.description = description;
   }
 
-
   public CompletePortfolio displayName(String displayName) {
-    this.displayName = displayName; 
+    this.displayName = displayName;
     return this;
   }
 
@@ -210,9 +206,8 @@ public class CompletePortfolio {
     this.displayName = displayName;
   }
 
-
   public CompletePortfolio created(OffsetDateTime created) {
-    this.created = created; 
+    this.created = created;
     return this;
   }
 
@@ -229,9 +224,8 @@ public class CompletePortfolio {
     this.created = created;
   }
 
-
   public CompletePortfolio parentPortfolioId(ResourceId parentPortfolioId) {
-    this.parentPortfolioId = parentPortfolioId; 
+    this.parentPortfolioId = parentPortfolioId;
     return this;
   }
 
@@ -248,7 +242,6 @@ public class CompletePortfolio {
     this.parentPortfolioId = parentPortfolioId;
   }
 
-
    /**
    * Whether or not this is a derived portfolio.
    * @return isDerived
@@ -258,10 +251,8 @@ public class CompletePortfolio {
     return isDerived;
   }
 
-
-
   public CompletePortfolio type(TypeEnum type) {
-    this.type = type; 
+    this.type = type;
     return this;
   }
 
@@ -278,9 +269,8 @@ public class CompletePortfolio {
     this.type = type;
   }
 
-
   public CompletePortfolio version(Version version) {
-    this.version = version; 
+    this.version = version;
     return this;
   }
 
@@ -297,14 +287,12 @@ public class CompletePortfolio {
     this.version = version;
   }
 
-
   public CompletePortfolio properties(List<Property> properties) {
-    this.properties = properties; 
+    this.properties = properties;
     return this;
   }
 
   public CompletePortfolio addPropertiesItem(Property propertiesItem) {
-   
     if (this.properties == null) {
       this.properties = new ArrayList<>();
     }
@@ -325,9 +313,8 @@ public class CompletePortfolio {
     this.properties = properties;
   }
 
-
   public CompletePortfolio baseCurrency(String baseCurrency) {
-    this.baseCurrency = baseCurrency; 
+    this.baseCurrency = baseCurrency;
     return this;
   }
 
@@ -344,14 +331,12 @@ public class CompletePortfolio {
     this.baseCurrency = baseCurrency;
   }
 
-
   public CompletePortfolio links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public CompletePortfolio addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -374,7 +359,7 @@ public class CompletePortfolio {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -386,8 +371,9 @@ public class CompletePortfolio {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -413,7 +399,7 @@ public class CompletePortfolio {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

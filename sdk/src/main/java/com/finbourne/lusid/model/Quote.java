@@ -31,15 +31,15 @@ import java.time.OffsetDateTime;
  * The quote id, value and lineage of the quotes all keyed by a unique correlation id.
  */
 @ApiModel(description = "The quote id, value and lineage of the quotes all keyed by a unique correlation id.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class Quote {
   public static final String SERIALIZED_NAME_QUOTE_ID = "quoteId";
   @SerializedName(SERIALIZED_NAME_QUOTE_ID)
-  private QuoteId quoteId;
+  private QuoteId quoteId = null;
 
   public static final String SERIALIZED_NAME_METRIC_VALUE = "metricValue";
   @SerializedName(SERIALIZED_NAME_METRIC_VALUE)
-  private MetricValue metricValue;
+  private MetricValue metricValue = null;
 
   public static final String SERIALIZED_NAME_LINEAGE = "lineage";
   @SerializedName(SERIALIZED_NAME_LINEAGE)
@@ -61,9 +61,8 @@ public class Quote {
   @SerializedName(SERIALIZED_NAME_SCALE_FACTOR)
   private Double scaleFactor;
 
-
   public Quote quoteId(QuoteId quoteId) {
-    this.quoteId = quoteId; 
+    this.quoteId = quoteId;
     return this;
   }
 
@@ -80,9 +79,8 @@ public class Quote {
     this.quoteId = quoteId;
   }
 
-
   public Quote metricValue(MetricValue metricValue) {
-    this.metricValue = metricValue; 
+    this.metricValue = metricValue;
     return this;
   }
 
@@ -99,9 +97,8 @@ public class Quote {
     this.metricValue = metricValue;
   }
 
-
   public Quote lineage(String lineage) {
-    this.lineage = lineage; 
+    this.lineage = lineage;
     return this;
   }
 
@@ -118,9 +115,8 @@ public class Quote {
     this.lineage = lineage;
   }
 
-
   public Quote cutLabel(String cutLabel) {
-    this.cutLabel = cutLabel; 
+    this.cutLabel = cutLabel;
     return this;
   }
 
@@ -137,9 +133,8 @@ public class Quote {
     this.cutLabel = cutLabel;
   }
 
-
   public Quote uploadedBy(String uploadedBy) {
-    this.uploadedBy = uploadedBy; 
+    this.uploadedBy = uploadedBy;
     return this;
   }
 
@@ -156,9 +151,8 @@ public class Quote {
     this.uploadedBy = uploadedBy;
   }
 
-
   public Quote asAt(OffsetDateTime asAt) {
-    this.asAt = asAt; 
+    this.asAt = asAt;
     return this;
   }
 
@@ -175,9 +169,8 @@ public class Quote {
     this.asAt = asAt;
   }
 
-
   public Quote scaleFactor(Double scaleFactor) {
-    this.scaleFactor = scaleFactor; 
+    this.scaleFactor = scaleFactor;
     return this;
   }
 
@@ -196,7 +189,7 @@ public class Quote {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -208,8 +201,9 @@ public class Quote {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -230,7 +224,7 @@ public class Quote {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

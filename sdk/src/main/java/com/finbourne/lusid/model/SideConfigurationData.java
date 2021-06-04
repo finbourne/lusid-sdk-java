@@ -31,7 +31,7 @@ import java.util.List;
  * Configuration needed to define a side. Sides are referenced by Label. Beyond that, other properties  can be used to reference either transaction fields, or transaction properties.
  */
 @ApiModel(description = "Configuration needed to define a side. Sides are referenced by Label. Beyond that, other properties  can be used to reference either transaction fields, or transaction properties.")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class SideConfigurationData {
   public static final String SERIALIZED_NAME_SIDE = "side";
   @SerializedName(SERIALIZED_NAME_SIDE)
@@ -59,11 +59,10 @@ public class SideConfigurationData {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public SideConfigurationData side(String side) {
-    this.side = side; 
+    this.side = side;
     return this;
   }
 
@@ -80,9 +79,8 @@ public class SideConfigurationData {
     this.side = side;
   }
 
-
   public SideConfigurationData security(String security) {
-    this.security = security; 
+    this.security = security;
     return this;
   }
 
@@ -99,9 +97,8 @@ public class SideConfigurationData {
     this.security = security;
   }
 
-
   public SideConfigurationData currency(String currency) {
-    this.currency = currency; 
+    this.currency = currency;
     return this;
   }
 
@@ -118,9 +115,8 @@ public class SideConfigurationData {
     this.currency = currency;
   }
 
-
   public SideConfigurationData rate(String rate) {
-    this.rate = rate; 
+    this.rate = rate;
     return this;
   }
 
@@ -137,9 +133,8 @@ public class SideConfigurationData {
     this.rate = rate;
   }
 
-
   public SideConfigurationData units(String units) {
-    this.units = units; 
+    this.units = units;
     return this;
   }
 
@@ -156,9 +151,8 @@ public class SideConfigurationData {
     this.units = units;
   }
 
-
   public SideConfigurationData amount(String amount) {
-    this.amount = amount; 
+    this.amount = amount;
     return this;
   }
 
@@ -175,14 +169,12 @@ public class SideConfigurationData {
     this.amount = amount;
   }
 
-
   public SideConfigurationData links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public SideConfigurationData addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -205,7 +197,7 @@ public class SideConfigurationData {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -217,8 +209,9 @@ public class SideConfigurationData {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -239,7 +232,7 @@ public class SideConfigurationData {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }

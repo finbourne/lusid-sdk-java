@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * PagedResourceListOfInstrument
  */
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
+
 public class PagedResourceListOfInstrument {
   public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
   @SerializedName(SERIALIZED_NAME_NEXT_PAGE)
@@ -52,11 +52,10 @@ public class PagedResourceListOfInstrument {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
-
+  private List<Link> links = new ArrayList<>();
 
   public PagedResourceListOfInstrument nextPage(String nextPage) {
-    this.nextPage = nextPage; 
+    this.nextPage = nextPage;
     return this;
   }
 
@@ -73,9 +72,8 @@ public class PagedResourceListOfInstrument {
     this.nextPage = nextPage;
   }
 
-
   public PagedResourceListOfInstrument previousPage(String previousPage) {
-    this.previousPage = previousPage; 
+    this.previousPage = previousPage;
     return this;
   }
 
@@ -92,14 +90,12 @@ public class PagedResourceListOfInstrument {
     this.previousPage = previousPage;
   }
 
-
   public PagedResourceListOfInstrument values(List<Instrument> values) {
-    this.values = values; 
+    this.values = values;
     return this;
   }
 
   public PagedResourceListOfInstrument addValuesItem(Instrument valuesItem) {
-   
     this.values.add(valuesItem);
     return this;
   }
@@ -117,9 +113,8 @@ public class PagedResourceListOfInstrument {
     this.values = values;
   }
 
-
   public PagedResourceListOfInstrument href(URI href) {
-    this.href = href; 
+    this.href = href;
     return this;
   }
 
@@ -136,14 +131,12 @@ public class PagedResourceListOfInstrument {
     this.href = href;
   }
 
-
   public PagedResourceListOfInstrument links(List<Link> links) {
-    this.links = links; 
+    this.links = links;
     return this;
   }
 
   public PagedResourceListOfInstrument addLinksItem(Link linksItem) {
-   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -166,7 +159,7 @@ public class PagedResourceListOfInstrument {
 
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(java.lang.Object o) {
     if (this == o) {
       return true;
     }
@@ -178,8 +171,9 @@ public class PagedResourceListOfInstrument {
 
   @Override
   public int hashCode() {
-    return super.hashCode();  
+    return super.hashCode();
   }
+
 
   @Override
   public String toString() {
@@ -198,7 +192,7 @@ public class PagedResourceListOfInstrument {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(Object o) {
+  private String toIndentedString(java.lang.Object o) {
     if (o == null) {
       return "null";
     }
