@@ -1,6 +1,6 @@
 # ReferencePortfolioApi
 
-All URIs are relative to *https://fbn-prd.lusid.com/api*
+All URIs are relative to *http://local-unit-test-server.lusid.com:63946*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -31,7 +31,7 @@ import com.finbourne.lusid.api.ReferencePortfolioApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:63946");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -102,7 +102,7 @@ import com.finbourne.lusid.api.ReferencePortfolioApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:63946");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -179,7 +179,7 @@ import com.finbourne.lusid.api.ReferencePortfolioApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:63946");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -190,7 +190,7 @@ public class Example {
     String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio.
     String fromEffectiveAt = "fromEffectiveAt_example"; // String | Events between this time (inclusive) and the toEffectiveAt are returned.
     String toEffectiveAt = "toEffectiveAt_example"; // String | Events between this time (inclusive) and the fromEffectiveAt are returned.
-    OffsetDateTime asAtTime = new OffsetDateTime(); // OffsetDateTime | The as-at time for which the result is valid.
+    OffsetDateTime asAtTime = new OffsetDateTime(); // OffsetDateTime | The asAt time for which the result is valid.
     try {
       ResourceListOfConstituentsAdjustmentHeader result = apiInstance.listConstituentsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime);
       System.out.println(result);
@@ -213,7 +213,7 @@ Name | Type | Description  | Notes
  **code** | **String**| The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio. |
  **fromEffectiveAt** | **String**| Events between this time (inclusive) and the toEffectiveAt are returned. |
  **toEffectiveAt** | **String**| Events between this time (inclusive) and the fromEffectiveAt are returned. |
- **asAtTime** | **OffsetDateTime**| The as-at time for which the result is valid. | [optional]
+ **asAtTime** | **OffsetDateTime**| The asAt time for which the result is valid. | [optional]
 
 ### Return type
 
@@ -256,7 +256,7 @@ import com.finbourne.lusid.api.ReferencePortfolioApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:63946");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");

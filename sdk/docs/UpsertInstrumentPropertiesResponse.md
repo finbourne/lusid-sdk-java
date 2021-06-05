@@ -6,7 +6,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**asAtDate** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt datetime at which the properties were updated or inserted on the specified instruments. | 
+**asAtDate** | [**OffsetDateTime**](OffsetDateTime.md) | The as-at datetime at which properties were created or updated. | 
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
