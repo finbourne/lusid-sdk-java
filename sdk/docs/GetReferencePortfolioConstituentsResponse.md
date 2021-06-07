@@ -2,17 +2,16 @@
 
 # GetReferencePortfolioConstituentsResponse
 
-
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**effectiveFrom** | **OffsetDateTime** |  | 
+**effectiveFrom** | [**OffsetDateTime**](OffsetDateTime.md) |  | 
 **weightType** | [**WeightTypeEnum**](#WeightTypeEnum) | The available values are: Static, Floating, Periodical | 
 **periodType** | [**PeriodTypeEnum**](#PeriodTypeEnum) | The available values are: Daily, Weekly, Monthly, Quarterly, Annually |  [optional]
 **periodCount** | **Integer** |  |  [optional]
 **constituents** | [**List&lt;ReferencePortfolioConstituent&gt;**](ReferencePortfolioConstituent.md) | Set of constituents (instrument/weight pairings) | 
-**href** | **URI** | The Uri that returns the same result as the original request,  but may include resolved as at time(s). |  [optional]
+**href** | [**URI**](URI.md) | The Uri that returns the same result as the original request,  but may include resolved as at time(s). |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 

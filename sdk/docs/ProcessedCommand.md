@@ -2,8 +2,6 @@
 
 # ProcessedCommand
 
-The list of commands.
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -11,7 +9,7 @@ Name | Type | Description | Notes
 **description** | **String** | The description of the command issued. | 
 **path** | **String** | The unique identifier for the command including the request id. |  [optional]
 **userId** | [**User**](User.md) |  | 
-**processedTime** | **OffsetDateTime** | The asAt datetime that the events published by the processing of this command were committed to LUSID. | 
+**processedTime** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt datetime that the events published by the processing of this command were committed to LUSID. | 
 
 
 
