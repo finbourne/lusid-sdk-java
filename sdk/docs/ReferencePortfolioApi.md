@@ -39,7 +39,7 @@ public class Example {
 
     ReferencePortfolioApi apiInstance = new ReferencePortfolioApi(defaultClient);
     String scope = "scope_example"; // String | The scope in which to create the reference portfolio.
-    CreateReferencePortfolioRequest createReferencePortfolioRequest = {"displayName":"MyPortfolioName","description":"Description of my portfolio","code":"MyPortfolioCode","created":"2018-03-05T00:00:00.0000000+00:00","properties":{}}; // CreateReferencePortfolioRequest | The definition of the reference portfolio.
+    CreateReferencePortfolioRequest createReferencePortfolioRequest = new CreateReferencePortfolioRequest(); // CreateReferencePortfolioRequest | The definition of the reference portfolio.
     try {
       Portfolio result = apiInstance.createReferencePortfolio(scope, createReferencePortfolioRequest);
       System.out.println(result);
@@ -112,7 +112,7 @@ public class Example {
     String scope = "scope_example"; // String | The scope of the reference portfolio.
     String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio.
     String effectiveAt = "effectiveAt_example"; // String | The effective date of the constituents to retrieve. Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve constituents. Defaults to return the latest version              of each constituent if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve constituents. Defaults to return the latest version              of each constituent if not specified.
     List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' or 'ReferenceHolding' domain to decorate onto              constituents. These take the format {domain}/{scope}/{code} e.g. 'Instrument/system/Name' or              'ReferenceHolding/strategy/quantsignal'. Defaults to return all available instrument and reference holding properties if not specified.
     try {
       GetReferencePortfolioConstituentsResponse result = apiInstance.getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, propertyKeys);
@@ -190,7 +190,7 @@ public class Example {
     String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio.
     String fromEffectiveAt = "fromEffectiveAt_example"; // String | Events between this time (inclusive) and the toEffectiveAt are returned.
     String toEffectiveAt = "toEffectiveAt_example"; // String | Events between this time (inclusive) and the fromEffectiveAt are returned.
-    OffsetDateTime asAtTime = new OffsetDateTime(); // OffsetDateTime | The asAt time for which the result is valid.
+    OffsetDateTime asAtTime = OffsetDateTime.now(); // OffsetDateTime | The asAt time for which the result is valid.
     try {
       ResourceListOfConstituentsAdjustmentHeader result = apiInstance.listConstituentsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime);
       System.out.println(result);
@@ -265,7 +265,7 @@ public class Example {
     ReferencePortfolioApi apiInstance = new ReferencePortfolioApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the reference portfolio.
     String code = "code_example"; // String | The code of the reference portfolio. Together with the scope this uniquely identifies              the reference portfolio.
-    UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest = {"effectiveFrom":"2018-03-05T00:00:00.0000000+00:00","weightType":"Periodical","periodType":"Quarterly","periodCount":2,"constituents":[{"instrumentIdentifiers":{"instrument/default/Figi":"BBG0077GZM13","instrument/default/Isin":"GB00BH4HKS39"},"properties":{"portfolio/MyScope/MyPropertyKey":{"key":"Portfolio/MyScope/MyPropertyKey","value":{"metricValue":{"value":12345.5672,"unit":"Unit"}}}},"weight":100,"currency":"GBP"},{"instrumentIdentifiers":{"instrument/default/Figi":"BBG0077H2WN1","instrument/default/Isin":"US0378331005"},"properties":{},"weight":50,"currency":"USD"}]}; // UpsertReferencePortfolioConstituentsRequest | The constituents to upload to the reference portfolio.
+    UpsertReferencePortfolioConstituentsRequest upsertReferencePortfolioConstituentsRequest = new UpsertReferencePortfolioConstituentsRequest(); // UpsertReferencePortfolioConstituentsRequest | The constituents to upload to the reference portfolio.
     try {
       UpsertReferencePortfolioConstituentsResponse result = apiInstance.upsertReferencePortfolioConstituents(scope, code, upsertReferencePortfolioConstituentsRequest);
       System.out.println(result);

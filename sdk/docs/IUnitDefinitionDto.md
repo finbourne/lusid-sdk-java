@@ -2,14 +2,15 @@
 
 # IUnitDefinitionDto
 
+
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **schema** | [**SchemaEnum**](#SchemaEnum) | The available values are: NoUnits, Basic, Iso4217Currency |  [optional]
-**code** | **String** |  |  [optional]
-**displayName** | **String** |  |  [optional]
-**description** | **String** |  |  [optional]
+**code** | **String** |  |  [optional] [readonly]
+**displayName** | **String** |  |  [optional] [readonly]
+**description** | **String** |  |  [optional] [readonly]
 
 
 
