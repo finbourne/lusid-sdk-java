@@ -2,16 +2,15 @@
 
 # Stream
 
-
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**canRead** | **Boolean** |  |  [optional] [readonly]
-**canSeek** | **Boolean** |  |  [optional] [readonly]
-**canTimeout** | **Boolean** |  |  [optional] [readonly]
-**canWrite** | **Boolean** |  |  [optional] [readonly]
-**length** | **Long** |  |  [optional] [readonly]
+**canRead** | **Boolean** |  |  [optional]
+**canSeek** | **Boolean** |  |  [optional]
+**canTimeout** | **Boolean** |  |  [optional]
+**canWrite** | **Boolean** |  |  [optional]
+**length** | **Long** |  |  [optional]
 **position** | **Long** |  |  [optional]
 **readTimeout** | **Integer** |  |  [optional]
 **writeTimeout** | **Integer** |  |  [optional]

@@ -2,7 +2,6 @@
 
 # UpdatePortfolioRequest
 
-
 ## Properties
 
 Name | Type | Description | Notes

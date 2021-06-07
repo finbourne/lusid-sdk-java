@@ -2,7 +2,6 @@
 
 # PerpetualProperty
 
-
 ## Properties
 
 Name | Type | Description | Notes
