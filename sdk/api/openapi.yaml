@@ -370,15 +370,17 @@ info:
     \ Validation Failure|  |\n| <a name=\"695\">695</a>|Relationship Not Found|  |\n\
     | <a name=\"697\">697</a>|Derived Property Formula No Longer Valid|  |\n| <a name=\"\
     698\">698</a>|Story is not available|  |\n| <a name=\"703\">703</a>|Corporate\
-    \ Action Does Not Exist|  |\n"
+    \ Action Does Not Exist|  |\n| <a name=\"720\">720</a>|The provided sort and filter\
+    \ combination is not valid|  |\n| <a name=\"721\">721</a>|A2B generation failed|\
+    \  |\n"
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3106
+  version: 0.11.3109-mark
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:62780
+- url: http://local-unit-test-server.lusid.com:63946
 security:
 - {}
 tags:
@@ -416,8 +418,9 @@ tags:
   name: Derived Transaction Portfolios
 - description: Methods for querying data about entities
   name: Entities
-- description: Methods for interacting with instruments. Read more about instruments
-    in the LUSID Knowledge Base here https://support.lusid.com/what-is-an-instrument.
+- description: An instrument represents a financial asset that an investor owns or
+    has exposure to. Each transaction should be booked against an instrument stored
+    in the LUSID instrument master. For more information, see https://support.lusid.com/knowledgebase/article/KA-01857.
   name: Instruments
 - description: Endpoints for interacting with Legal Entities.
   name: Legal Entities
@@ -435,9 +438,9 @@ tags:
     Groups in the LUSID Knowledge Base here https://support.lusid.com/how-do-you-group-and-aggregate-portfolios.
   name: Portfolio Groups
 - description: 'A portfolio is a store of economic information. There are three types:
-    transaction, reference and derived transaction. Note that Portfolio API endpoints
-    can also be called when interacting with the Transaction Portfolios API,  Reference
-    Portfolio API or Derived Transaction Portfolios API. For more information, see
+    transaction, reference and derived transaction. Note that these endpoints can
+    also be called when interacting with the respective Transaction Portfolios API,  Reference
+    Portfolio API and Derived Transaction Portfolios API. For more information, see
     https://support.lusid.com/knowledgebase/article/KA-01848.'
   name: Portfolios
 - description: Methods for interacting with Properties. Read more about Properties
@@ -473,10 +476,16 @@ tags:
 - description: Methods for the storage and retrieval of structured market data documents.
     Read more about these in the LUSID Knowledge Base here https://support.lusid.com/knowledgebase/article/KA-01894.
   name: Structured Market Data
-- description: Methods for the storage and retrieval of structured result data documents.
-    Read more about these in the LUSID Knowledge Base here https://support.lusid.com/knowledgebase/article/KA-01893.
+- description: The structured result store persists information that might be useful
+    to help value a portfolio or analyse performance or risk, but that is not traded
+    like quote data (which can be stored in the quote store). For more information,
+    see https://support.lusid.com/knowledgebase/article/KA-01893.
   name: Structured Result Data
-- description: Methods for updating system configuration with Portfolios
+- description: LUSID is a transaction-based system. Every transaction in a particular
+    instrument should belong to a transaction type in order that it might contribute
+    to measuring your holding (position) in that instrument. Transaction types are
+    a fundamental building block of LUSID, and care should be exercised when changing
+    them. For more information, see https://support.lusid.com/knowledgebase/article/KA-01872/.
   name: System Configuration
 - description: A transaction portfolio stores transactions and calculates instrument
     holdings and cash balances, enabling valuation, analytic, profit & loss, risk
@@ -484,6 +493,8 @@ tags:
     is a type of portfolio, so endpoints in the Portfolios API can also be called.
     For more information, see https://support.lusid.com/knowledgebase/article/KA-01851.
   name: Transaction Portfolios
+- description: Methods for translating between dialects.
+  name: Translation
 paths:
   /api/datatypes/{scope}:
     get:
@@ -1130,70 +1141,70 @@ paths:
       x-accepts: application/json
   /api/instruments:
     get:
-      description: |-
-        List all the instruments that have been mastered in the LUSID instrument master.
-
-        The maximum number of instruments that this method can list per request is 2,000.
+      description: "List all the instruments in the instrument master.\r\n       \
+        \     \r\nTo retrieve a particular set of instruments instead, use the Get\
+        \ instruments endpoint.\n\nThe maximum number of instruments that this method\
+        \ can list per request is 2,000."
       operationId: ListInstruments
       parameters:
-      - description: "The asAt datetime at which to list the instruments. Defaults\
-          \ to return the latest\r\n            version of each instruments if not\
+      - description: "The asAt datetime at which to list instruments. Defaults to\
+          \ returning the latest\r\n             version of each instrument if not\
           \ specified."
         explode: true
         in: query
         name: asAt
         required: false
         schema:
-          description: "The asAt datetime at which to list the instruments. Defaults\
-            \ to return the latest\r\n            version of each instruments if not\
+          description: "The asAt datetime at which to list instruments. Defaults to\
+            \ returning the latest\r\n             version of each instrument if not\
             \ specified."
           format: date-time
           nullable: true
           type: string
         style: form
         x-nullable: true
-      - description: "The effective datetime or cut label at which to list the instruments.\r\
-          \n            Defaults to the current LUSID system datetime if not specified."
+      - description: "The effective datetime or cut label at which to list instruments.\r\
+          \n             Defaults to the current LUSID system datetime if not specified."
         explode: true
         in: query
         name: effectiveAt
         required: false
         schema:
-          description: "The effective datetime or cut label at which to list the instruments.\r\
-            \n            Defaults to the current LUSID system datetime if not specified."
+          description: "The effective datetime or cut label at which to list instruments.\r\
+            \n             Defaults to the current LUSID system datetime if not specified."
           format: dateorcutlabel
           nullable: true
           type: string
         style: form
-      - description: "The pagination token to use to continue listing instruments\
-          \ from a previous call to list instruments.\r\n            This value is\
-          \ returned from the previous call. If a pagination token is provided the\
-          \ sortBy, filter, effectiveAt, and asAt fields\r\n            must not have\
-          \ changed since the original request. Also, if set, a start value cannot\
-          \ be provided."
+      - description: "The pagination token to use to continue listing instruments;\
+          \ this value is returned from\r\n             the previous call. If a pagination\
+          \ token is provided, the <i>sortBy</i>, <i>filter</i>, <i>effectiveAt</i>\
+          \ and\r\n             <i>asAt</i> fields must not have changed since the\
+          \ original request. Also, a <i>start</i> value cannot be\r\n           \
+          \  provided. For more information, see https://support.lusid.com/knowledgebase/article/KA-01915."
         explode: true
         in: query
         name: page
         required: false
         schema:
-          description: "The pagination token to use to continue listing instruments\
-            \ from a previous call to list instruments.\r\n            This value\
-            \ is returned from the previous call. If a pagination token is provided\
-            \ the sortBy, filter, effectiveAt, and asAt fields\r\n            must\
-            \ not have changed since the original request. Also, if set, a start value\
-            \ cannot be provided."
+          description: "The pagination token to use to continue listing instruments;\
+            \ this value is returned from\r\n             the previous call. If a\
+            \ pagination token is provided, the <i>sortBy</i>, <i>filter</i>, <i>effectiveAt</i>\
+            \ and\r\n             <i>asAt</i> fields must not have changed since the\
+            \ original request. Also, a <i>start</i> value cannot be\r\n         \
+            \    provided. For more information, see https://support.lusid.com/knowledgebase/article/KA-01915."
           nullable: true
           type: string
         style: form
-      - description: Order the results by these fields. Use use the '-' sign to denote
-          descending order e.g. -MyFieldName.
+      - description: "Order results by particular fields. Use the '-' sign to denote\
+          \ descending order, for\r\n             example '-MyFieldName'."
         explode: true
         in: query
         name: sortBy
         required: false
         schema:
-          description: Order the results by these fields. Use use the '-' sign to
-            denote descending order e.g. -MyFieldName.
+          description: "Order results by particular fields. Use the '-' sign to denote\
+            \ descending order, for\r\n             example '-MyFieldName'."
           items:
             type: string
           nullable: true
@@ -1212,15 +1223,13 @@ paths:
           type: integer
         style: form
         x-nullable: true
-      - description: When paginating, limit the number of returned results to this
-          many.
+      - description: When paginating, limit the results to this number.
         explode: true
         in: query
         name: limit
         required: false
         schema:
-          description: When paginating, limit the number of returned results to this
-            many.
+          description: When paginating, limit the results to this number.
           format: int32
           maximum: 5000
           minimum: 1
@@ -1228,32 +1237,33 @@ paths:
           type: integer
         style: form
         x-nullable: true
-      - description: "Expression to filter the result set. Defaults to filter down\
-          \ to active instruments only, i.e. those\r\n            that have not been\
-          \ deleted. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+      - description: "Expression to filter the result set. Defaults to filtering out\
+          \ inactive instruments\r\n             (that is, those that have been deleted).\
+          \ For more information about filtering results,\r\n             see https://support.lusid.com/knowledgebase/article/KA-01914."
         explode: true
         in: query
         name: filter
         required: false
         schema:
           default: State eq 'Active'
-          description: "Expression to filter the result set. Defaults to filter down\
-            \ to active instruments only, i.e. those\r\n            that have not\
-            \ been deleted. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          description: "Expression to filter the result set. Defaults to filtering\
+            \ out inactive instruments\r\n             (that is, those that have been\
+            \ deleted). For more information about filtering results,\r\n        \
+            \     see https://support.lusid.com/knowledgebase/article/KA-01914."
           nullable: true
           type: string
         style: form
-      - description: A list of property keys from the "Instrument" domain to decorate
-          onto each instrument. These take the format {domain}/{scope}/{code} e.g.
-          "Instrument/system/Name".
+      - description: "A list of property keys from the 'Instrument' domain to decorate\
+          \ onto\r\n             instruments. These must have the format {domain}/{scope}/{code},\
+          \ for example 'Instrument/system/Name'."
         explode: true
         in: query
         name: instrumentPropertyKeys
         required: false
         schema:
-          description: A list of property keys from the "Instrument" domain to decorate
-            onto each instrument. These take the format {domain}/{scope}/{code} e.g.
-            "Instrument/system/Name".
+          description: "A list of property keys from the 'Instrument' domain to decorate\
+            \ onto\r\n             instruments. These must have the format {domain}/{scope}/{code},\
+            \ for example 'Instrument/system/Name'."
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
@@ -1301,16 +1311,19 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
     post:
-      description: "Update or insert one or more instruments into the LUSID instrument\
-        \ master. An instrument will be updated\r\nif it already exists and inserted\
-        \ if it does not.\r\n            \r\nIn the request each instrument definition\
-        \ should be keyed by a unique correlation id. This id is ephemeral\r\nand\
-        \ is not stored by LUSID. It serves only as a way to easily identify each\
-        \ instrument in the response.\r\n            \r\nThe response will return\
-        \ both the collection of successfully updated or inserted instruments, as\
-        \ well as those that failed.\r\nFor the failures a reason will be provided\
-        \ explaining why the instrument could not be updated or inserted.\r\n    \
-        \        \r\nIt is important to always check the failed set for any unsuccessful\
+      description: "Create or update one or more instruments in the instrument master.\
+        \ An instrument is updated\r\nif it already exists and created if it does\
+        \ not.\r\n            \r\nIn the request, each instrument definition should\
+        \ be keyed by a unique correlation ID. This ID is ephemeral\r\nand not stored\
+        \ by LUSID. It serves only to easily identify each instrument in the response.\r\
+        \n            \r\nNote that an instrument must have at least one unique identifier,\
+        \ which is a combination of a type\r\n(such as 'Figi') and a value (such as\
+        \ 'BBG000BS1N49'). In addition, a random value is automatically\r\ngenerated\
+        \ for a LUSID Instrument ID (LUID) unique type by the system. For more information,\
+        \ see\r\nhttps://support.lusid.com/knowledgebase/article/KA-01862.\r\n   \
+        \         \r\nThe response returns both the collection of successfully created\
+        \ or updated instruments, as well as those\r\nthat failed. For each failure,\
+        \ a reason is provided. It is important to check the failed set for\r\nunsuccessful\
         \ results.\n\nThe maximum number of instruments that this method can upsert\
         \ per request is 2,000."
       operationId: UpsertInstruments
@@ -1368,7 +1381,7 @@ paths:
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/InstrumentDefinition'
-              description: The definitions of the instruments to update or insert.
+              description: The definitions of the instruments to create or update.
               type: object
           application/json:
             example:
@@ -1422,7 +1435,7 @@ paths:
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/InstrumentDefinition'
-              description: The definitions of the instruments to update or insert.
+              description: The definitions of the instruments to create or update.
               type: object
           text/json:
             example:
@@ -1476,7 +1489,7 @@ paths:
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/InstrumentDefinition'
-              description: The definitions of the instruments to update or insert.
+              description: The definitions of the instruments to create or update.
               type: object
           application/*+json:
             example:
@@ -1530,9 +1543,9 @@ paths:
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/InstrumentDefinition'
-              description: The definitions of the instruments to update or insert.
+              description: The definitions of the instruments to create or update.
               type: object
-        description: The definitions of the instruments to update or insert.
+        description: The definitions of the instruments to create or update.
         required: true
       responses:
         "201":
@@ -1546,7 +1559,7 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/UpsertInstrumentsResponse'
-          description: The successfully updated or inserted instruments along with
+          description: The successfully created or updated instruments along with
             any failures
         "400":
           content:
@@ -1576,61 +1589,63 @@ paths:
       x-accepts: application/json
   /api/instruments/$get:
     post:
-      description: Get the definition of one or more instruments identified by a collection
-        of unique instrument identifiers.
+      description: "Retrieve the definition of one or more instruments, as identified\
+        \ by a collection of unique identifiers.\r\n            \r\nNote that to retrieve\
+        \ all the instruments in the instrument master, use the List instruments endpoint\
+        \ instead."
       operationId: GetInstruments
       parameters:
-      - description: The identifier being supplied e.g. "Figi".
+      - description: The unique identifier type to use, for example 'Figi'.
         explode: true
         in: query
         name: identifierType
         required: true
         schema:
-          description: The identifier being supplied e.g. "Figi".
+          description: The unique identifier type to use, for example 'Figi'.
           type: string
         style: form
       - description: "The effective datetime or cut label at which to retrieve the\
-          \ instrument definitions.\r\n            Defaults to the current LUSID system\
-          \ datetime if not specified."
+          \ instrument definitions.\r\n             Defaults to the current LUSID\
+          \ system datetime if not specified."
         explode: true
         in: query
         name: effectiveAt
         required: false
         schema:
           description: "The effective datetime or cut label at which to retrieve the\
-            \ instrument definitions.\r\n            Defaults to the current LUSID\
+            \ instrument definitions.\r\n             Defaults to the current LUSID\
             \ system datetime if not specified."
           format: dateorcutlabel
           nullable: true
           type: string
         style: form
       - description: "The asAt datetime at which to retrieve the instrument definitions.\r\
-          \n            Defaults to return the latest version of each instrument definition\
-          \ if not specified."
+          \n             Defaults to returning the latest version of each instrument\
+          \ definition if not specified."
         explode: true
         in: query
         name: asAt
         required: false
         schema:
           description: "The asAt datetime at which to retrieve the instrument definitions.\r\
-            \n            Defaults to return the latest version of each instrument\
+            \n             Defaults to returning the latest version of each instrument\
             \ definition if not specified."
           format: date-time
           nullable: true
           type: string
         style: form
         x-nullable: true
-      - description: "A list of property keys from the \"Instrument\" domain to decorate\
-          \ onto the instrument.\r\n            These take the format {domain}/{scope}/{code}\
-          \ e.g. \"Instrument/system/Name\"."
+      - description: "A list of property keys from the 'Instrument' domain to decorate\
+          \ onto the instrument.\r\n             These must have the format {domain}/{scope}/{code},\
+          \ for example 'Instrument/system/Name'."
         explode: true
         in: query
         name: propertyKeys
         required: false
         schema:
-          description: "A list of property keys from the \"Instrument\" domain to\
-            \ decorate onto the instrument.\r\n            These take the format {domain}/{scope}/{code}\
-            \ e.g. \"Instrument/system/Name\"."
+          description: "A list of property keys from the 'Instrument' domain to decorate\
+            \ onto the instrument.\r\n             These must have the format {domain}/{scope}/{code},\
+            \ for example 'Instrument/system/Name'."
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
@@ -1646,7 +1661,8 @@ paths:
             - instrument-identifier-1
             - instrument-identifier-2
             schema:
-              description: The values of the identifier for the requested instruments.
+              description: A list of one or more <i>identifierType</i> values to use
+                to identify instruments.
               items:
                 type: string
               type: array
@@ -1655,7 +1671,8 @@ paths:
             - instrument-identifier-1
             - instrument-identifier-2
             schema:
-              description: The values of the identifier for the requested instruments.
+              description: A list of one or more <i>identifierType</i> values to use
+                to identify instruments.
               items:
                 type: string
               type: array
@@ -1664,7 +1681,8 @@ paths:
             - instrument-identifier-1
             - instrument-identifier-2
             schema:
-              description: The values of the identifier for the requested instruments.
+              description: A list of one or more <i>identifierType</i> values to use
+                to identify instruments.
               items:
                 type: string
               type: array
@@ -1673,11 +1691,13 @@ paths:
             - instrument-identifier-1
             - instrument-identifier-2
             schema:
-              description: The values of the identifier for the requested instruments.
+              description: A list of one or more <i>identifierType</i> values to use
+                to identify instruments.
               items:
                 type: string
               type: array
-        description: The values of the identifier for the requested instruments.
+        description: A list of one or more <i>identifierType</i> values to use to
+          identify instruments.
         required: true
       responses:
         "200":
@@ -1721,15 +1741,14 @@ paths:
       x-accepts: application/json
   /api/instruments/$upsertproperties:
     post:
-      description: "Update or insert one or more instrument properties for one or\
-        \ more instruments. Each instrument property will be updated\r\nif it already\
-        \ exists and inserted if it does not. If any properties fail to be updated\
-        \ or inserted, none will be updated or inserted and\r\nthe reason for the\
-        \ failure will be returned.\r\n            \r\nProperties have an <i>effectiveFrom</i>\
-        \ datetime for which the property is valid, and an <i>effectiveUntil</i>\r\
-        \ndatetime until which the property is valid. Not supplying an <i>effectiveUntil</i>\
-        \ datetime results in the property being\r\nvalid indefinitely, or until the\
-        \ next <i>effectiveFrom</i> datetime of the property."
+      description: "Create or update one or more properties for particular instruments.\r\
+        \n            \r\nEach instrument property is updated if it exists and created\
+        \ if it does not. For any failures, a reason\r\nis provided.\r\n         \
+        \   \r\nProperties have an <i>effectiveFrom</i> datetime from which the property\
+        \ is valid, and an <i>effectiveUntil</i>\r\ndatetime until which the property\
+        \ is valid. Not supplying an <i>effectiveUntil</i> datetime results in the\
+        \ property being\r\nvalid indefinitely, or until the next <i>effectiveFrom</i>\
+        \ datetime of the property."
       operationId: UpsertInstrumentsProperties
       requestBody:
         content:
@@ -1757,8 +1776,8 @@ paths:
                 effectiveFrom: 2020-03-15T12:00:00.0000000+00:00
                 effectiveUntil: 2021-01-15T12:00:00.0000000+00:00
             schema:
-              description: A collection of instruments and associated instrument properties
-                to update or insert.
+              description: A list of instruments and associated instrument properties
+                to create or update.
               items:
                 $ref: '#/components/schemas/UpsertInstrumentPropertyRequest'
               type: array
@@ -1786,8 +1805,8 @@ paths:
                 effectiveFrom: 2020-03-15T12:00:00.0000000+00:00
                 effectiveUntil: 2021-01-15T12:00:00.0000000+00:00
             schema:
-              description: A collection of instruments and associated instrument properties
-                to update or insert.
+              description: A list of instruments and associated instrument properties
+                to create or update.
               items:
                 $ref: '#/components/schemas/UpsertInstrumentPropertyRequest'
               type: array
@@ -1815,8 +1834,8 @@ paths:
                 effectiveFrom: 2020-03-15T12:00:00.0000000+00:00
                 effectiveUntil: 2021-01-15T12:00:00.0000000+00:00
             schema:
-              description: A collection of instruments and associated instrument properties
-                to update or insert.
+              description: A list of instruments and associated instrument properties
+                to create or update.
               items:
                 $ref: '#/components/schemas/UpsertInstrumentPropertyRequest'
               type: array
@@ -1844,13 +1863,13 @@ paths:
                 effectiveFrom: 2020-03-15T12:00:00.0000000+00:00
                 effectiveUntil: 2021-01-15T12:00:00.0000000+00:00
             schema:
-              description: A collection of instruments and associated instrument properties
-                to update or insert.
+              description: A list of instruments and associated instrument properties
+                to create or update.
               items:
                 $ref: '#/components/schemas/UpsertInstrumentPropertyRequest'
               type: array
-        description: A collection of instruments and associated instrument properties
-          to update or insert.
+        description: A list of instruments and associated instrument properties to
+          create or update.
         required: true
       responses:
         "201":
@@ -1864,8 +1883,7 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/UpsertInstrumentPropertiesResponse'
-          description: The asAt time at which the properties were updated, inserted
-            or deleted
+          description: The asAt datetime at which the properties were created or updated.
         "400":
           content:
             text/plain:
@@ -1894,7 +1912,13 @@ paths:
       x-accepts: application/json
   /api/instruments/identifierTypes:
     get:
-      description: Get the allowable instrument identifier types and their descriptions.
+      description: "Retrieve a list of all valid instrument identifier types and whether\
+        \ they are unique or not.\r\n            \r\nAn instrument must have a value\
+        \ for at least one unique identifier type (it can have more than one unique\
+        \ type and value).\r\nIn addition, a value is automatically generated for\
+        \ a LUSID Instrument ID (LUID) unique type by the system.\r\n            \r\
+        \nAn instrument can have values for multiple non-unique identifier types (or\
+        \ it can have zero non-unique types and values)."
       operationId: GetInstrumentIdentifierTypes
       responses:
         "200":
@@ -1908,7 +1932,7 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/ResourceListOfInstrumentIdTypeDescriptor'
-          description: The allowable instrument identifier types
+          description: A list of valid instrument identifier types.
         default:
           content:
             application/json:
@@ -1924,32 +1948,32 @@ paths:
       x-accepts: application/json
   /api/instruments/{identifierType}/{identifier}:
     delete:
-      description: "Delete a single instrument identified by a unique instrument identifier.\
-        \ Once an instrument has been\r\ndeleted it will be marked as 'inactive' and\
-        \ it can no longer be used when updating or inserting transactions or holdings.\r\
-        \nYou can still query existing transactions and holdings related to the deleted\
-        \ instrument."
+      description: "Delete a particular instrument, as identified by a particular\
+        \ instrument identifier.\r\n            \r\nOnce deleted, an instrument is\
+        \ marked as inactive and can no longer be referenced when creating or updating\r\
+        \ntransactions or holdings. You can still query existing transactions and\
+        \ holdings related to the\r\ndeleted instrument."
       operationId: DeleteInstrument
       parameters:
-      - description: The identifier being supplied e.g. "Figi".
+      - description: The unique identifier type to search, for example 'Figi'.
         explode: false
         in: path
         name: identifierType
         required: true
         schema:
-          description: The identifier being supplied e.g. "Figi".
+          description: The unique identifier type to search, for example 'Figi'.
           nullable: true
           type: string
         style: simple
-      - description: The value of the identifier that resolves to the instrument to
-          delete.
+      - description: An <i>identifierType</i> value to use to identify the instrument,
+          for example 'BBG000BLNNV0'.
         explode: false
         in: path
         name: identifier
         required: true
         schema:
-          description: The value of the identifier that resolves to the instrument
-            to delete.
+          description: An <i>identifierType</i> value to use to identify the instrument,
+            for example 'BBG000BLNNV0'.
           nullable: true
           type: string
         style: simple
@@ -1992,72 +2016,72 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
     get:
-      description: Get the definition of a single instrument identified by a unique
-        instrument identifier.
+      description: Retrieve the definition of a particular instrument, as identified
+        by a particular unique identifier.
       operationId: GetInstrument
       parameters:
-      - description: The identifier being supplied e.g. "Figi".
+      - description: The unique identifier type to use, for example 'Figi'.
         explode: false
         in: path
         name: identifierType
         required: true
         schema:
-          description: The identifier being supplied e.g. "Figi".
+          description: The unique identifier type to use, for example 'Figi'.
           nullable: true
           type: string
         style: simple
-      - description: The value of the identifier for the requested instrument.
+      - description: An <i>identifierType</i> value to use to identify the instrument,
+          for example 'BBG000BLNNV0'.
         explode: false
         in: path
         name: identifier
         required: true
         schema:
-          description: The value of the identifier for the requested instrument.
+          description: An <i>identifierType</i> value to use to identify the instrument,
+            for example 'BBG000BLNNV0'.
           nullable: true
           type: string
         style: simple
       - description: "The effective datetime or cut label at which to retrieve the\
-          \ instrument definition.\r\n            Defaults to the current LUSID system\
-          \ datetime if not specified."
+          \ instrument.\r\n            Defaults to the current LUSID system datetime\
+          \ if not specified."
         explode: true
         in: query
         name: effectiveAt
         required: false
         schema:
           description: "The effective datetime or cut label at which to retrieve the\
-            \ instrument definition.\r\n            Defaults to the current LUSID\
-            \ system datetime if not specified."
+            \ instrument.\r\n            Defaults to the current LUSID system datetime\
+            \ if not specified."
           format: dateorcutlabel
           nullable: true
           type: string
         style: form
-      - description: "The asAt datetime at which to retrieve the instrument definition.\
-          \ Defaults to\r\n            return the latest version of the instrument\
-          \ definition if not specified."
+      - description: "The asAt datetime at which to retrieve the instrument. Defaults\
+          \ to\r\n            returning the latest version if not specified."
         explode: true
         in: query
         name: asAt
         required: false
         schema:
-          description: "The asAt datetime at which to retrieve the instrument definition.\
-            \ Defaults to\r\n            return the latest version of the instrument\
-            \ definition if not specified."
+          description: "The asAt datetime at which to retrieve the instrument. Defaults\
+            \ to\r\n            returning the latest version if not specified."
           format: date-time
           nullable: true
           type: string
         style: form
         x-nullable: true
-      - description: "A list of property keys from the \"Instrument\" domain to decorate\
-          \ onto the instrument.\r\n            These take the format {domain}/{scope}/{code}\
-          \ e.g. \"Instrument/system/Name\"."
+      - description: "A list of property keys from the 'Instrument' domain to decorate\
+          \ onto the instrument.\r\n            These must have the format {domain}/{scope}/{code},\
+          \ for example 'Instrument/system/Name'."
         explode: true
         in: query
         name: propertyKeys
         required: false
         schema:
-          description: "A list of property keys from the \"Instrument\" domain to\
-            \ decorate onto the instrument.\r\n            These take the format {domain}/{scope}/{code}\
-            \ e.g. \"Instrument/system/Name\"."
+          description: "A list of property keys from the 'Instrument' domain to decorate\
+            \ onto the instrument.\r\n            These must have the format {domain}/{scope}/{code},\
+            \ for example 'Instrument/system/Name'."
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
@@ -2078,7 +2102,7 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Instrument'
-          description: The requested instrument
+          description: The requested instrument.
         "400":
           content:
             text/plain:
@@ -2105,28 +2129,31 @@ paths:
       x-fbn-apistatus: Stable
       x-accepts: application/json
     post:
-      description: "Update, insert or delete a single instrument identifier for a\
-        \ single instrument. If it is not being deleted\r\nthe identifier will be\
-        \ updated if it already exists and inserted if it does not."
+      description: "Create, update or delete a particular instrument identifier for\
+        \ an instrument.\r\n            \r\nTo delete the identifier, leave the value\
+        \ unspecified in the request. If not being deleted, the\r\nidentifier is updated\
+        \ if it exists and created if it does not."
       operationId: UpdateInstrumentIdentifier
       parameters:
-      - description: The identifier to use to resolve the instrument e.g. "Figi".
+      - description: The unique identifier type to search, for example 'Figi'.
         explode: false
         in: path
         name: identifierType
         required: true
         schema:
-          description: The identifier to use to resolve the instrument e.g. "Figi".
+          description: The unique identifier type to search, for example 'Figi'.
           nullable: true
           type: string
         style: simple
-      - description: The original value of the identifier for the requested instrument.
+      - description: An <i>identifierType</i> value to use to identify the instrument,
+          for example 'BBG000BLNNV0'.
         explode: false
         in: path
         name: identifier
         required: true
         schema:
-          description: The original value of the identifier for the requested instrument.
+          description: An <i>identifierType</i> value to use to identify the instrument,
+            for example 'BBG000BLNNV0'.
           nullable: true
           type: string
         style: simple
@@ -2160,8 +2187,9 @@ paths:
               effectiveAt: 2018-02-01T10:00:00.0000000+00:00
             schema:
               $ref: '#/components/schemas/UpdateInstrumentIdentifierRequest'
-        description: "The identifier to update or remove. This may or may not be the\
-          \ same identifier used\r\n            to resolve the instrument."
+        description: "The identifier to update or delete. This need not be the same\
+          \ value as the\r\n             'identifier' parameter used to retrieve the\
+          \ instrument."
         required: true
       responses:
         "200":
@@ -2175,8 +2203,8 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/Instrument'
-          description: The updated instrument definition with the identifier updated,
-            inserted or deleted
+          description: The updated instrument definition with the identifier created,
+            updated or deleted
         "400":
           content:
             text/plain:
@@ -2205,32 +2233,35 @@ paths:
       x-accepts: application/json
   /api/instruments/{identifierType}/{identifier}/properties/time-series:
     get:
-      description: List the complete time series of an instrument property.
+      description: Retrieve the complete time series (history) for a particular property
+        of an instrument.
       operationId: GetInstrumentPropertyTimeSeries
       parameters:
-      - description: The identifier type of the instrument, e.g., "Figi"
+      - description: The unique identifier type to search, for example 'Figi'.
         explode: false
         in: path
         name: identifierType
         required: true
         schema:
-          description: The identifier type of the instrument, e.g., "Figi"
+          description: The unique identifier type to search, for example 'Figi'.
           nullable: true
           type: string
         style: simple
-      - description: The value of the identifier for the requested instrument.
+      - description: An <i>identifierType</i> value to use to identify the instrument,
+          for example 'BBG000BLNNV0'.
         explode: false
         in: path
         name: identifier
         required: true
         schema:
-          description: The value of the identifier for the requested instrument.
+          description: An <i>identifierType</i> value to use to identify the instrument,
+            for example 'BBG000BLNNV0'.
           nullable: true
           type: string
         style: simple
-      - description: "The property key of the property that will have its history\
-          \ shown. These must be in the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\"\
-          .\r\n            Each property must be from the \"Instrument\" domain."
+      - description: "The property key of a property from the 'Instrument' domain\
+          \ whose history to retrieve.\r\n            This must have the format {domain}/{scope}/{code},\
+          \ for example 'Instrument/system/Name'."
         explode: true
         in: query
         name: propertyKey
@@ -2241,73 +2272,73 @@ paths:
           nullable: true
           type: string
         style: form
-      - description: The effective datetime used to resolve the instrument from the
-          provided identifier. Defaults to the current LUSID system datetime if not
-          specified.
+      - description: "The effective datetime used to resolve the instrument from the\
+          \ identifier.\r\n            Defaults to the current LUSID system datetime\
+          \ if not specified."
         explode: true
         in: query
         name: identifierEffectiveAt
         required: false
         schema:
-          description: The effective datetime used to resolve the instrument from
-            the provided identifier. Defaults to the current LUSID system datetime
-            if not specified.
+          description: "The effective datetime used to resolve the instrument from\
+            \ the identifier.\r\n            Defaults to the current LUSID system\
+            \ datetime if not specified."
           nullable: true
           type: string
         style: form
-      - description: The asAt datetime at which to list the instrument's property
-          history. Defaults to return the current datetime if not supplied.
+      - description: "The asAt datetime at which to retrieve the instrument's property\
+          \ history. Defaults to\r\n            returning the current datetime if\
+          \ not supplied."
         explode: true
         in: query
         name: asAt
         required: false
         schema:
-          description: The asAt datetime at which to list the instrument's property
-            history. Defaults to return the current datetime if not supplied.
+          description: "The asAt datetime at which to retrieve the instrument's property\
+            \ history. Defaults to\r\n            returning the current datetime if\
+            \ not supplied."
           format: date-time
           nullable: true
           type: string
         style: form
         x-nullable: true
-      - description: Expression to filter the result set. Read more about filtering
-          results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+      - description: "Expression to filter the results. For more information about\
+          \ filtering,\r\n            see https://support.lusid.com/knowledgebase/article/KA-01914."
         explode: true
         in: query
         name: filter
         required: false
         schema:
-          description: Expression to filter the result set. Read more about filtering
-            results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+          description: "Expression to filter the results. For more information about\
+            \ filtering,\r\n            see https://support.lusid.com/knowledgebase/article/KA-01914."
           nullable: true
           type: string
         style: form
-      - description: "The pagination token to use to continue listing properties from\
-          \ a previous call to get property time series.\r\n            This value\
-          \ is returned from the previous call. If a pagination token is provided\
-          \ the filter, effectiveAt, and asAt fields\r\n            must not have\
-          \ changed since the original request."
+      - description: "The pagination token to use to continue listing properties;\
+          \ this value is returned from\r\n            the previous call. If a pagination\
+          \ token is provided, the <i>filter</i>, <i>effectiveAt</i> and\r\n     \
+          \       <i>asAt</i> fields must not have changed since the original request.\
+          \ For more information, see\r\n            https://support.lusid.com/knowledgebase/article/KA-01915."
         explode: true
         in: query
         name: page
         required: false
         schema:
-          description: "The pagination token to use to continue listing properties\
-            \ from a previous call to get property time series.\r\n            This\
-            \ value is returned from the previous call. If a pagination token is provided\
-            \ the filter, effectiveAt, and asAt fields\r\n            must not have\
-            \ changed since the original request."
+          description: "The pagination token to use to continue listing properties;\
+            \ this value is returned from\r\n            the previous call. If a pagination\
+            \ token is provided, the <i>filter</i>, <i>effectiveAt</i> and\r\n   \
+            \         <i>asAt</i> fields must not have changed since the original\
+            \ request. For more information, see\r\n            https://support.lusid.com/knowledgebase/article/KA-01915."
           nullable: true
           type: string
         style: form
-      - description: When paginating, limit the number of returned results to this
-          many.
+      - description: When paginating, limit the results to this number.
         explode: true
         in: query
         name: limit
         required: false
         schema:
-          description: When paginating, limit the number of returned results to this
-            many.
+          description: When paginating, limit the results to this number.
           format: int32
           maximum: 5000
           minimum: 1
@@ -2348,7 +2379,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] Get the time series of an instrument property'
+      summary: '[EARLY ACCESS] Get instrument property time series'
       tags:
       - Instruments
       x-fbn-apistatus: EarlyAccess
@@ -6301,36 +6332,37 @@ paths:
           nullable: true
           type: string
         style: form
-      - description: "The as-at datetime at which to list the portfolios. Defaults\
-          \ to return the latest version\r\n            of each portfolio if not specified."
+      - description: "The asAt datetime at which to list the portfolios. Defaults\
+          \ to returning the latest version\r\n            of each portfolio if not\
+          \ specified."
         explode: true
         in: query
         name: asAt
         required: false
         schema:
-          description: "The as-at datetime at which to list the portfolios. Defaults\
-            \ to return the latest version\r\n            of each portfolio if not\
-            \ specified."
+          description: "The asAt datetime at which to list the portfolios. Defaults\
+            \ to returning the latest version\r\n            of each portfolio if\
+            \ not specified."
           format: date-time
           nullable: true
           type: string
         style: form
         x-nullable: true
-      - description: "The pagination token to use to continue listing portfolios from\
-          \ a previous call to list portfolios. This\r\nvalue is returned from the\
-          \ previous call. If a pagination token is provided the filter, effectiveAt\r\
-          \nand asAt fields must not have changed since the original request. Also,\
-          \ if set, a start value cannot be provided."
+      - description: "The pagination token to use to continue listing portfolios;\
+          \ this\r\n            value is returned from the previous call. If a pagination\
+          \ token is provided, the filter, effectiveAt\r\n            and asAt fields\
+          \ must not have changed since the original request. Also, if set, a start\
+          \ value cannot be provided."
         explode: true
         in: query
         name: page
         required: false
         schema:
-          description: "The pagination token to use to continue listing portfolios\
-            \ from a previous call to list portfolios. This\r\nvalue is returned from\
-            \ the previous call. If a pagination token is provided the filter, effectiveAt\r\
-            \nand asAt fields must not have changed since the original request. Also,\
-            \ if set, a start value cannot be provided."
+          description: "The pagination token to use to continue listing portfolios;\
+            \ this\r\n            value is returned from the previous call. If a pagination\
+            \ token is provided, the filter, effectiveAt\r\n            and asAt fields\
+            \ must not have changed since the original request. Also, if set, a start\
+            \ value cannot be provided."
           nullable: true
           type: string
         style: form
@@ -6346,15 +6378,15 @@ paths:
           type: integer
         style: form
         x-nullable: true
-      - description: When paginating, limit the number of returned results to this
-          many. Defaults to 65,535 if not specified.
+      - description: When paginating, limit the results to this number. Defaults to
+          65,535 if not specified.
         explode: true
         in: query
         name: limit
         required: false
         schema:
-          description: When paginating, limit the number of returned results to this
-            many. Defaults to 65,535 if not specified.
+          description: When paginating, limit the results to this number. Defaults
+            to 65,535 if not specified.
           format: int32
           maximum: 5000
           minimum: 1
@@ -6362,24 +6394,24 @@ paths:
           type: integer
         style: form
         x-nullable: true
-      - description: "Expression to filter the result set.\r\n            For example,\
-          \ to filter on the Type, use \"type eq 'Transaction'\"\r\n            Read\
-          \ more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+      - description: "Expression to filter the results.\r\n            For example,\
+          \ to filter on the transaction type, specify \"type eq 'Transaction'\".\
+          \ For more information about filtering\r\n            results, see https://support.lusid.com/knowledgebase/article/KA-01914."
         explode: true
         in: query
         name: filter
         required: false
         schema:
-          description: "Expression to filter the result set.\r\n            For example,\
-            \ to filter on the Type, use \"type eq 'Transaction'\"\r\n           \
-            \ Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          description: "Expression to filter the results.\r\n            For example,\
+            \ to filter on the transaction type, specify \"type eq 'Transaction'\"\
+            . For more information about filtering\r\n            results, see https://support.lusid.com/knowledgebase/article/KA-01914."
           nullable: true
           type: string
         style: form
       - description: "Expression specifying the criteria that the returned portfolios\
           \ must meet. For example, to see which\r\n            portfolios have holdings\
-          \ in the instruments with a Lusid Instrument Id (LUID) of 'LUID_PPA8HI6M'\
-          \ or a Figi of 'BBG000BLNNH6'\r\n            you would specify \"instrument.identifiers\
+          \ in instruments with a LusidInstrumentId (LUID) of 'LUID_PPA8HI6M' or a\
+          \ Figi of 'BBG000BLNNH6',\r\n            specify \"instrument.identifiers\
           \ in (('LusidInstrumentId', 'LUID_PPA8HI6M'), ('Figi', 'BBG000BLNNH6'))\"\
           ."
         explode: true
@@ -6389,8 +6421,8 @@ paths:
         schema:
           description: "Expression specifying the criteria that the returned portfolios\
             \ must meet. For example, to see which\r\n            portfolios have\
-            \ holdings in the instruments with a Lusid Instrument Id (LUID) of 'LUID_PPA8HI6M'\
-            \ or a Figi of 'BBG000BLNNH6'\r\n            you would specify \"instrument.identifiers\
+            \ holdings in instruments with a LusidInstrumentId (LUID) of 'LUID_PPA8HI6M'\
+            \ or a Figi of 'BBG000BLNNH6',\r\n            specify \"instrument.identifiers\
             \ in (('LusidInstrumentId', 'LUID_PPA8HI6M'), ('Figi', 'BBG000BLNNH6'))\"\
             ."
           nullable: true
@@ -6631,16 +6663,16 @@ paths:
       x-accepts: application/json
   /api/portfolios/{scope}:
     get:
-      description: List all the portfolios in a scope.
+      description: List all the portfolios in a particular scope.
       operationId: ListPortfoliosForScope
       parameters:
-      - description: The scope of the portfolios.
+      - description: The scope whose portfolios to list.
         explode: false
         in: path
         name: scope
         required: true
         schema:
-          description: The scope of the portfolios.
+          description: The scope whose portfolios to list.
           maxLength: 64
           minLength: 1
           nullable: true
@@ -6661,36 +6693,37 @@ paths:
           nullable: true
           type: string
         style: form
-      - description: "The as-at datetime at which to list the portfolios. Defaults\
-          \ to return the latest version\r\n            of each portfolio if not specified."
+      - description: "The asAt datetime at which to list the portfolios. Defaults\
+          \ to returning the latest version\r\n            of each portfolio if not\
+          \ specified."
         explode: true
         in: query
         name: asAt
         required: false
         schema:
-          description: "The as-at datetime at which to list the portfolios. Defaults\
-            \ to return the latest version\r\n            of each portfolio if not\
-            \ specified."
+          description: "The asAt datetime at which to list the portfolios. Defaults\
+            \ to returning the latest version\r\n            of each portfolio if\
+            \ not specified."
           format: date-time
           nullable: true
           type: string
         style: form
         x-nullable: true
-      - description: "The pagination token to use to continue listing portfolios from\
-          \ a previous call to list portfolios. This\r\nvalue is returned from the\
-          \ previous call. If a pagination token is provided the filter, effectiveAt\r\
-          \nand asAt fields must not have changed since the original request. Also,\
-          \ if set, a start value cannot be provided."
+      - description: "The pagination token to use to continue listing portfolios.\
+          \ This\r\nvalue is returned from the previous call. If a pagination token\
+          \ is provided, the filter, effectiveAt\r\nand asAt fields must not have\
+          \ changed since the original request. Also, if set, a start value cannot\
+          \ be provided."
         explode: true
         in: query
         name: page
         required: false
         schema:
-          description: "The pagination token to use to continue listing portfolios\
-            \ from a previous call to list portfolios. This\r\nvalue is returned from\
-            \ the previous call. If a pagination token is provided the filter, effectiveAt\r\
-            \nand asAt fields must not have changed since the original request. Also,\
-            \ if set, a start value cannot be provided."
+          description: "The pagination token to use to continue listing portfolios.\
+            \ This\r\nvalue is returned from the previous call. If a pagination token\
+            \ is provided, the filter, effectiveAt\r\nand asAt fields must not have\
+            \ changed since the original request. Also, if set, a start value cannot\
+            \ be provided."
           nullable: true
           type: string
         style: form
@@ -6706,15 +6739,15 @@ paths:
           type: integer
         style: form
         x-nullable: true
-      - description: When paginating, limit the number of returned results to this
-          many. Defaults to 65,535 if not specified.
+      - description: When paginating, limit the results to this number. Defaults to
+          65,535 if not specified.
         explode: true
         in: query
         name: limit
         required: false
         schema:
-          description: When paginating, limit the number of returned results to this
-            many. Defaults to 65,535 if not specified.
+          description: When paginating, limit the results to this number. Defaults
+            to 65,535 if not specified.
           format: int32
           maximum: 5000
           minimum: 1
@@ -6722,19 +6755,19 @@ paths:
           type: integer
         style: form
         x-nullable: true
-      - description: "Expression to filter the result set.\r\n            For example,\
+      - description: "Expression to filter the results.\r\n            For example,\
           \ to return only transactions with a transaction type of 'Buy', specify\
           \ \"type eq 'Buy'\".\r\n            For more information about filtering\
-          \ LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914."
+          \ results, see https://support.lusid.com/knowledgebase/article/KA-01914."
         explode: true
         in: query
         name: filter
         required: false
         schema:
-          description: "Expression to filter the result set.\r\n            For example,\
+          description: "Expression to filter the results.\r\n            For example,\
             \ to return only transactions with a transaction type of 'Buy', specify\
             \ \"type eq 'Buy'\".\r\n            For more information about filtering\
-            \ LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914."
+            \ results, see https://support.lusid.com/knowledgebase/article/KA-01914."
           nullable: true
           type: string
         style: form
@@ -6797,10 +6830,10 @@ paths:
       x-accepts: application/json
   /api/portfolios/{scope}/{code}:
     delete:
-      description: "Delete a portfolio.\r\n            \r\nThe deletion will take\
-        \ effect from the portfolio's creation datetime. This means that the portfolio\
-        \ will no longer exist at any effective datetime, from the as-at datetime\
-        \ of deletion."
+      description: "Delete a particular portfolio.\r\n            \r\nThe deletion\
+        \ will take effect from the portfolio's creation datetime. This means that\
+        \ the portfolio will no longer exist at any effective datetime, as per the\
+        \ asAt datetime of deletion."
       operationId: DeletePortfolio
       parameters:
       - description: The scope of the portfolio.
@@ -6870,7 +6903,7 @@ paths:
       x-fbn-apistatus: Stable
       x-accepts: application/json
     get:
-      description: Retrieve the definition of a portfolio.
+      description: Retrieve the definition of a particular portfolio.
       operationId: GetPortfolio
       parameters:
       - description: The scope of the portfolio.
@@ -6917,16 +6950,16 @@ paths:
           type: string
         style: form
       - description: The asAt datetime at which to retrieve the portfolio definition.
-          Defaults to return the latest version of the portfolio definition if not
-          specified.
+          Defaults to returning the latest version of the portfolio definition if
+          not specified.
         explode: true
         in: query
         name: asAt
         required: false
         schema:
           description: The asAt datetime at which to retrieve the portfolio definition.
-            Defaults to return the latest version of the portfolio definition if not
-            specified.
+            Defaults to returning the latest version of the portfolio definition if
+            not specified.
           format: date-time
           nullable: true
           type: string
@@ -6990,9 +7023,9 @@ paths:
       x-fbn-apistatus: Stable
       x-accepts: application/json
     put:
-      description: "Update the definition of a portfolio.\r\n            \r\nNote\
-        \ that not all elements of a portfolio definition are\r\nmodifiable due to\
-        \ the potential implications for data already stored against the portfolio."
+      description: "Update the definition of a particular portfolio.\r\n         \
+        \   \r\nNote that not all elements of a portfolio definition are\r\nmodifiable\
+        \ due to the potential implications for data already stored."
       operationId: UpdatePortfolio
       parameters:
       - description: The scope of the portfolio.
@@ -7106,8 +7139,8 @@ paths:
       x-accepts: application/json
   /api/portfolios/{scope}/{code}/commands:
     get:
-      description: Get all the commands that modified a portfolio, including any input
-        transactions.
+      description: Get all the commands that modified a particular portfolio, including
+        any input transactions.
       operationId: GetPortfolioCommands
       parameters:
       - description: The scope of the portfolio.
@@ -7138,69 +7171,69 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
-      - description: The lower bound as-at datetime (inclusive) from which to retrieve
+      - description: The lower bound asAt datetime (inclusive) from which to retrieve
           commands. There is no lower bound if this is not specified.
         explode: true
         in: query
         name: fromAsAt
         required: false
         schema:
-          description: The lower bound as-at datetime (inclusive) from which to retrieve
+          description: The lower bound asAt datetime (inclusive) from which to retrieve
             commands. There is no lower bound if this is not specified.
           format: date-time
           nullable: true
           type: string
         style: form
         x-nullable: true
-      - description: The upper bound as-at datetime (inclusive) from which to retrieve
+      - description: The upper bound asAt datetime (inclusive) from which to retrieve
           commands. There is no upper bound if this is not specified.
         explode: true
         in: query
         name: toAsAt
         required: false
         schema:
-          description: The upper bound as-at datetime (inclusive) from which to retrieve
+          description: The upper bound asAt datetime (inclusive) from which to retrieve
             commands. There is no upper bound if this is not specified.
           format: date-time
           nullable: true
           type: string
         style: form
         x-nullable: true
-      - description: "Expression to filter the result set.\r\n            For example,\
-          \ to filter on the User ID, use \"userId.id eq 'string'\"\r\n          \
-          \  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+      - description: "Expression to filter the results.\r\n            For example,\
+          \ to filter on the User ID, specify \"userId.id eq 'string'\".\r\n     \
+          \       For more information about filtering, see https://support.lusid.com/knowledgebase/article/KA-01914."
         explode: true
         in: query
         name: filter
         required: false
         schema:
-          description: "Expression to filter the result set.\r\n            For example,\
-            \ to filter on the User ID, use \"userId.id eq 'string'\"\r\n        \
-            \    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          description: "Expression to filter the results.\r\n            For example,\
+            \ to filter on the User ID, specify \"userId.id eq 'string'\".\r\n   \
+            \         For more information about filtering, see https://support.lusid.com/knowledgebase/article/KA-01914."
           nullable: true
           type: string
         style: form
-      - description: The pagination token to use to continue listing commands from
-          a previous call to GetPortfolioCommands.
+      - description: The pagination token to use to continue listing commands; this
+          value is returned from the previous call.
         explode: true
         in: query
         name: page
         required: false
         schema:
-          description: The pagination token to use to continue listing commands from
-            a previous call to GetPortfolioCommands.
+          description: The pagination token to use to continue listing commands; this
+            value is returned from the previous call.
           nullable: true
           type: string
         style: form
-      - description: When paginating, limit the number of returned results to this
-          many. Defaults to 500 if not specified.
+      - description: When paginating, limit the results to this number. Defaults to
+          500 if not specified.
         explode: true
         in: query
         name: limit
         required: false
         schema:
-          description: When paginating, limit the number of returned results to this
-            many. Defaults to 500 if not specified.
+          description: When paginating, limit the results to this number. Defaults
+            to 500 if not specified.
           format: int32
           maximum: 5000
           minimum: 1
@@ -7248,10 +7281,10 @@ paths:
       x-accepts: application/json
   /api/portfolios/{scope}/{code}/properties:
     delete:
-      description: "Delete one or more properties from a single portfolio. If the\
-        \ properties are time variant then an effective date time from which the properties\r\
-        \nwill be deleted must be specified. If the properties are perpetual then\
-        \ it is invalid to specify an effective date time for deletion."
+      description: "Delete one or more properties from a particular portfolio. If\
+        \ the properties are time-variant then an effective datetime from which\r\n\
+        to delete properties must be specified. If the properties are perpetual then\
+        \ it is invalid to specify an effective datetime for deletion."
       operationId: DeletePortfolioProperties
       parameters:
       - description: The scope of the portfolio.
@@ -7282,13 +7315,14 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
-      - description: The effective datetime or cut label at which to delete the properties.
+      - description: The effective datetime or cut label at which to delete time-variant
+          properties.
         explode: true
         in: query
         name: effectiveAt
         required: false
         schema:
-          description: The effective datetime or cut label at which to delete the
+          description: The effective datetime or cut label at which to delete time-variant
             properties.
           format: dateorcutlabel
           nullable: true
@@ -7351,7 +7385,7 @@ paths:
       x-fbn-apistatus: Stable
       x-accepts: application/json
     get:
-      description: List all the properties of a portfolio.
+      description: List all the properties of a particular portfolio.
       operationId: GetPortfolioProperties
       parameters:
       - description: The scope of the portfolio.
@@ -7395,15 +7429,15 @@ paths:
           nullable: true
           type: string
         style: form
-      - description: The as-at datetime at which to list the portfolio's properties.
-          Defaults to return the latest version of each property if not specified.
+      - description: The asAt datetime at which to list the portfolio's properties.
+          Defaults to returning the latest version of each property if not specified.
         explode: true
         in: query
         name: asAt
         required: false
         schema:
-          description: The as-at datetime at which to list the portfolio's properties.
-            Defaults to return the latest version of each property if not specified.
+          description: The asAt datetime at which to list the portfolio's properties.
+            Defaults to returning the latest version of each property if not specified.
           format: date-time
           nullable: true
           type: string
@@ -7448,14 +7482,14 @@ paths:
       x-fbn-apistatus: Stable
       x-accepts: application/json
     post:
-      description: "Update or insert one or more properties onto a single portfolio.\
-        \ A property will be updated if it\r\nalready exists and inserted if it does\
-        \ not. All properties must be from the 'Portfolio' domain.\r\n           \
-        \ \r\nProperties have an <i>effectiveFrom</i> datetime for which the property\
-        \ is valid, and an <i>effectiveUntil</i>\r\ndatetime until which the property\
-        \ is valid. Not supplying an <i>effectiveUntil</i> datetime results in the\
-        \ property being\r\nvalid indefinitely, or until the next <i>effectiveFrom</i>\
-        \ datetime of the property."
+      description: "Create or update one or more properties for a particular portfolio.\
+        \ A property is updated if it\r\nalready exists and created if it does not.\
+        \ All properties must be from the 'Portfolio' domain.\r\n            \r\n\
+        Properties have an <i>effectiveFrom</i> datetime from which the property is\
+        \ valid, and an <i>effectiveUntil</i>\r\ndatetime until which it is valid.\
+        \ Not supplying an <i>effectiveUntil</i> datetime results in the property\
+        \ being\r\nvalid indefinitely, or until the next <i>effectiveFrom</i> datetime\
+        \ of the property."
       operationId: UpsertPortfolioProperties
       parameters:
       - description: The scope of the portfolio.
@@ -7515,10 +7549,10 @@ paths:
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/Property'
-              description: "The properties to be updated or inserted onto the portfolio.\
-                \ Each property in\r\n             the request must be keyed by its\
-                \ unique property key. This has the format {domain}/{scope}/{code},\
-                \ for example\r\n             'Portfolio/Manager/Id'."
+              description: "The properties to be created or updated. Each property\
+                \ in\r\n             the request must be keyed by its unique property\
+                \ key. This has the format {domain}/{scope}/{code}, for example\r\n\
+                \             'Portfolio/Manager/Id'."
               type: object
           application/json:
             example:
@@ -7547,10 +7581,10 @@ paths:
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/Property'
-              description: "The properties to be updated or inserted onto the portfolio.\
-                \ Each property in\r\n             the request must be keyed by its\
-                \ unique property key. This has the format {domain}/{scope}/{code},\
-                \ for example\r\n             'Portfolio/Manager/Id'."
+              description: "The properties to be created or updated. Each property\
+                \ in\r\n             the request must be keyed by its unique property\
+                \ key. This has the format {domain}/{scope}/{code}, for example\r\n\
+                \             'Portfolio/Manager/Id'."
               type: object
           text/json:
             example:
@@ -7579,10 +7613,10 @@ paths:
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/Property'
-              description: "The properties to be updated or inserted onto the portfolio.\
-                \ Each property in\r\n             the request must be keyed by its\
-                \ unique property key. This has the format {domain}/{scope}/{code},\
-                \ for example\r\n             'Portfolio/Manager/Id'."
+              description: "The properties to be created or updated. Each property\
+                \ in\r\n             the request must be keyed by its unique property\
+                \ key. This has the format {domain}/{scope}/{code}, for example\r\n\
+                \             'Portfolio/Manager/Id'."
               type: object
           application/*+json:
             example:
@@ -7611,15 +7645,14 @@ paths:
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/Property'
-              description: "The properties to be updated or inserted onto the portfolio.\
-                \ Each property in\r\n             the request must be keyed by its\
-                \ unique property key. This has the format {domain}/{scope}/{code},\
-                \ for example\r\n             'Portfolio/Manager/Id'."
+              description: "The properties to be created or updated. Each property\
+                \ in\r\n             the request must be keyed by its unique property\
+                \ key. This has the format {domain}/{scope}/{code}, for example\r\n\
+                \             'Portfolio/Manager/Id'."
               type: object
-        description: "The properties to be updated or inserted onto the portfolio.\
-          \ Each property in\r\n             the request must be keyed by its unique\
-          \ property key. This has the format {domain}/{scope}/{code}, for example\r\
-          \n             'Portfolio/Manager/Id'."
+        description: "The properties to be created or updated. Each property in\r\n\
+          \             the request must be keyed by its unique property key. This\
+          \ has the format {domain}/{scope}/{code}, for example\r\n             'Portfolio/Manager/Id'."
         required: true
       responses:
         "200":
@@ -9463,13 +9496,13 @@ paths:
           format: dateorcutlabel
           type: string
         style: form
-      - description: The as-at time for which the result is valid.
+      - description: The asAt time for which the result is valid.
         explode: true
         in: query
         name: asAtTime
         required: false
         schema:
-          description: The as-at time for which the result is valid.
+          description: The asAt time for which the result is valid.
           format: date-time
           nullable: true
           type: string
@@ -10531,20 +10564,19 @@ paths:
       x-accepts: application/json
   /api/systemconfiguration/transactions:
     get:
-      description: Get the list of persisted transaction types
+      description: "Get the list of current transaction types. For information on\
+        \ the default transaction types provided with\r\nLUSID, see https://support.lusid.com/knowledgebase/article/KA-01873/."
       operationId: ListConfigurationTransactionTypes
       parameters:
-      - description: "The asAt datetime at which to retrieve the Transaction configuration\
-          \ types. Defaults\r\n            to return the latest version of the holdings\
-          \ if not specified."
+      - description: "The asAt datetime at which to retrieve the transaction types.\
+          \ Defaults\r\n            to returning the latest versions if not specified."
         explode: true
         in: query
         name: asAt
         required: false
         schema:
-          description: "The asAt datetime at which to retrieve the Transaction configuration\
-            \ types. Defaults\r\n            to return the latest version of the holdings\
-            \ if not specified."
+          description: "The asAt datetime at which to retrieve the transaction types.\
+            \ Defaults\r\n            to returning the latest versions if not specified."
           format: date-time
           nullable: true
           type: string
@@ -10590,8 +10622,8 @@ paths:
       x-accepts: application/json
   /api/systemconfiguration/transactions/type:
     post:
-      description: Create a new transaction type by specifying a definition and the
-        mappings to movements
+      description: Create a new transaction type by specifying a definition and mappings
+        to movements.
       operationId: CreateConfigurationTransactionType
       requestBody:
         content:
@@ -10683,7 +10715,7 @@ paths:
               properties: {}
             schema:
               $ref: '#/components/schemas/TransactionConfigurationDataRequest'
-        description: A transaction type definition
+        description: A transaction type definition.
       responses:
         "201":
           content:
@@ -11105,7 +11137,7 @@ paths:
           format: dateorcutlabel
           type: string
         style: form
-      - description: "The as-at datetime at which to retrieve the portfolio. Defaults\
+      - description: "The asAt datetime at which to retrieve the portfolio. Defaults\
           \ to returning the latest version\r\n            of each transaction if\
           \ not specified."
         explode: true
@@ -11113,7 +11145,7 @@ paths:
         name: asAt
         required: false
         schema:
-          description: "The as-at datetime at which to retrieve the portfolio. Defaults\
+          description: "The asAt datetime at which to retrieve the portfolio. Defaults\
             \ to returning the latest version\r\n            of each transaction if\
             \ not specified."
           format: date-time
@@ -13101,9 +13133,11 @@ paths:
       x-fbn-apistatus: Stable
       x-accepts: application/json
     post:
-      description: "Update or insert details that can be changed for a transaction\
-        \ portfolio once it has been created. The details will be updated\r\nif they\
-        \ already exist and inserted if they do not."
+      description: "Create or update certain details for a particular transaction\
+        \ portfolio. The details are updated if they already exist, and inserted if\
+        \ they do not.\r\n            \r\nNote that not all elements of a transaction\
+        \ portfolio definition are\r\nmodifiable once it has been created due to the\
+        \ potential implications for data already stored."
       operationId: UpsertPortfolioDetails
       parameters:
       - description: The scope of the transaction portfolio.
@@ -13120,14 +13154,14 @@ paths:
           type: string
         style: simple
       - description: "The code of the transaction portfolio. Together with the\r\n\
-          \            scope this uniquely identifies the transaction portfolio."
+          \             scope this uniquely identifies the transaction portfolio."
         explode: false
         in: path
         name: code
         required: true
         schema:
           description: "The code of the transaction portfolio. Together with the\r\
-            \n            scope this uniquely identifies the transaction portfolio."
+            \n             scope this uniquely identifies the transaction portfolio."
           maxLength: 64
           minLength: 1
           nullable: true
@@ -13135,15 +13169,15 @@ paths:
           type: string
         style: simple
       - description: "The effective datetime or cut label at which the updated or\
-          \ inserted details should become valid.\r\n            Defaults to the current\
-          \ LUSID system datetime if not specified."
+          \ inserted details should become valid.\r\n             Defaults to the\
+          \ current LUSID system datetime if not specified."
         explode: true
         in: query
         name: effectiveAt
         required: false
         schema:
           description: "The effective datetime or cut label at which the updated or\
-            \ inserted details should become valid.\r\n            Defaults to the\
+            \ inserted details should become valid.\r\n             Defaults to the\
             \ current LUSID system datetime if not specified."
           format: dateorcutlabel
           nullable: true
@@ -13179,7 +13213,7 @@ paths:
                 code: Vendor1
             schema:
               $ref: '#/components/schemas/CreatePortfolioDetails'
-        description: The details to update or insert for the specified transaction
+        description: The details to create or update for the specified transaction
           portfolio.
         required: true
       responses:
@@ -13335,9 +13369,8 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
     post:
-      description: "Update or insert executions into the specified transaction portfolio.\
-        \ An execution will be updated\r\nif it already exists and inserted if it\
-        \ does not."
+      description: "Create or update executions in the transaction portfolio. An execution\
+        \ will be updated\r\nif it already exists and created if it does not."
       operationId: UpsertExecutions
       parameters:
       - description: The scope of the transaction portfolio.
@@ -13381,7 +13414,7 @@ paths:
               lastPx: 1.23
               currency: USD
             schema:
-              description: The executions to update or insert.
+              description: The executions to create or update.
               items:
                 $ref: '#/components/schemas/ExecutionRequest'
               nullable: true
@@ -13397,7 +13430,7 @@ paths:
               lastPx: 1.23
               currency: USD
             schema:
-              description: The executions to update or insert.
+              description: The executions to create or update.
               items:
                 $ref: '#/components/schemas/ExecutionRequest'
               nullable: true
@@ -13413,7 +13446,7 @@ paths:
               lastPx: 1.23
               currency: USD
             schema:
-              description: The executions to update or insert.
+              description: The executions to create or update.
               items:
                 $ref: '#/components/schemas/ExecutionRequest'
               nullable: true
@@ -13429,12 +13462,12 @@ paths:
               lastPx: 1.23
               currency: USD
             schema:
-              description: The executions to update or insert.
+              description: The executions to create or update.
               items:
                 $ref: '#/components/schemas/ExecutionRequest'
               nullable: true
               type: array
-        description: The executions to update or insert.
+        description: The executions to create or update.
       responses:
         "200":
           content:
@@ -13604,15 +13637,15 @@ paths:
           nullable: true
           type: string
         style: form
-      - description: "The as-at datetime at which to retrieve the holdings of the\
-          \ transaction portfolio. Defaults\r\n            to return the latest version\
-          \ if not specified."
+      - description: "The asAt datetime at which to retrieve the holdings of the transaction\
+          \ portfolio. Defaults\r\n            to return the latest version if not\
+          \ specified."
         explode: true
         in: query
         name: asAt
         required: false
         schema:
-          description: "The as-at datetime at which to retrieve the holdings of the\
+          description: "The asAt datetime at which to retrieve the holdings of the\
             \ transaction portfolio. Defaults\r\n            to return the latest\
             \ version if not specified."
           format: date-time
@@ -14712,7 +14745,7 @@ paths:
           nullable: true
           type: string
         style: form
-      - description: "The as-at datetime at which to retrieve transactions. Defaults\
+      - description: "The asAt datetime at which to retrieve transactions. Defaults\
           \ to returning the latest version\r\n            of each transaction if\
           \ not specified."
         explode: true
@@ -14720,7 +14753,7 @@ paths:
         name: asAt
         required: false
         schema:
-          description: "The as-at datetime at which to retrieve transactions. Defaults\
+          description: "The asAt datetime at which to retrieve transactions. Defaults\
             \ to returning the latest version\r\n            of each transaction if\
             \ not specified."
           format: date-time
@@ -14915,10 +14948,10 @@ paths:
       x-fbn-apistatus: Stable
       x-accepts: application/json
     post:
-      description: "Update or insert transactions into the transaction portfolio.\
-        \ A transaction will be updated\r\nif it already exists and inserted if it\
-        \ does not.\n\nThe maximum number of transactions that this method can upsert\
-        \ per request is 10,000."
+      description: "Create or update transactions in the transaction portfolio. A\
+        \ transaction will be updated\r\nif it already exists and created if it does\
+        \ not.\n\nThe maximum number of transactions that this method can upsert per\
+        \ request is 10,000."
       operationId: UpsertTransactions
       parameters:
       - description: The scope of the transaction portfolio.
@@ -14976,7 +15009,7 @@ paths:
               counterpartyId: CounterpartyId-118263
               source: ""
             schema:
-              description: A list of transactions to be updated or inserted.
+              description: A list of transactions to be created or updated.
               items:
                 $ref: '#/components/schemas/TransactionRequest'
               type: array
@@ -15005,7 +15038,7 @@ paths:
               counterpartyId: CounterpartyId-118263
               source: ""
             schema:
-              description: A list of transactions to be updated or inserted.
+              description: A list of transactions to be created or updated.
               items:
                 $ref: '#/components/schemas/TransactionRequest'
               type: array
@@ -15034,7 +15067,7 @@ paths:
               counterpartyId: CounterpartyId-118263
               source: ""
             schema:
-              description: A list of transactions to be updated or inserted.
+              description: A list of transactions to be created or updated.
               items:
                 $ref: '#/components/schemas/TransactionRequest'
               type: array
@@ -15063,11 +15096,11 @@ paths:
               counterpartyId: CounterpartyId-118263
               source: ""
             schema:
-              description: A list of transactions to be updated or inserted.
+              description: A list of transactions to be created or updated.
               items:
                 $ref: '#/components/schemas/TransactionRequest'
               type: array
-        description: A list of transactions to be updated or inserted.
+        description: A list of transactions to be created or updated.
         required: true
       responses:
         "200":
@@ -15837,10 +15870,10 @@ paths:
       x-fbn-apistatus: Stable
       x-accepts: application/json
     post:
-      description: "Update or insert one or more transaction properties to a single\
-        \ transaction in a transaction portfolio.\r\nEach property will be updated\
-        \ if it already exists and inserted if it does not.\r\nBoth transaction and\
-        \ portfolio must exist at the time when properties are updated or inserted."
+      description: "Create or update one or more transaction properties for a single\
+        \ transaction in the transaction portfolio.\r\nEach property will be updated\
+        \ if it already exists and created if it does not.\r\nBoth transaction and\
+        \ portfolio must exist at the time when properties are created or updated."
       operationId: UpsertTransactionProperties
       parameters:
       - description: The scope of the transaction portfolio.
@@ -15871,14 +15904,14 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
-      - description: The unique ID of the transaction to update or insert properties
+      - description: The unique ID of the transaction to create or update properties
           for.
         explode: false
         in: path
         name: transactionId
         required: true
         schema:
-          description: The unique ID of the transaction to update or insert properties
+          description: The unique ID of the transaction to create or update properties
             for.
           nullable: true
           type: string
@@ -15902,8 +15935,8 @@ paths:
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/PerpetualProperty'
-              description: The properties and their associated values to update or
-                insert.
+              description: The properties and their associated values to create or
+                update.
               type: object
           application/json:
             example:
@@ -15922,8 +15955,8 @@ paths:
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/PerpetualProperty'
-              description: The properties and their associated values to update or
-                insert.
+              description: The properties and their associated values to create or
+                update.
               type: object
           text/json:
             example:
@@ -15942,8 +15975,8 @@ paths:
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/PerpetualProperty'
-              description: The properties and their associated values to update or
-                insert.
+              description: The properties and their associated values to create or
+                update.
               type: object
           application/*+json:
             example:
@@ -15962,10 +15995,10 @@ paths:
             schema:
               additionalProperties:
                 $ref: '#/components/schemas/PerpetualProperty'
-              description: The properties and their associated values to update or
-                insert.
+              description: The properties and their associated values to create or
+                update.
               type: object
-        description: The properties and their associated values to update or insert.
+        description: The properties and their associated values to create or update.
         required: true
       responses:
         "200":
@@ -17440,7 +17473,7 @@ components:
           nullable: true
           type: string
         asAt:
-          description: The asAt datetime at which the instrument was deleted.
+          description: The as-at datetime at which the instrument was deleted.
           format: date-time
           type: string
         links:
@@ -17706,16 +17739,16 @@ components:
           key: key
       properties:
         identifierType:
-          description: The instrument identifier type.
+          description: The unique identifier type to search for the instrument, for
+            example 'Figi'.
           type: string
         identifier:
-          description: The unique instrument identifier of the instrument to update
-            or insert properties on.
+          description: A value of that type to identify the instrument to upsert properties
+            for, for example 'BBG000BLNNV0'.
           type: string
         properties:
-          description: Set of unique instrument properties and associated values to
-            store with the instrument. Each property must be from the 'Instrument'
-            domain.
+          description: A set of instrument properties and associated values to store
+            for the instrument. Each property must be from the 'Instrument' domain.
           items:
             $ref: '#/components/schemas/Property'
           nullable: true
@@ -17739,8 +17772,7 @@ components:
         asAtDate: 2000-01-23T04:56:07.000+00:00
       properties:
         asAtDate:
-          description: The asAt datetime at which the properties were updated or inserted
-            on the specified instruments.
+          description: The as-at datetime at which properties were created or updated.
           format: date-time
           type: string
         links:
@@ -23943,9 +23975,12 @@ components:
           type: string
         subHoldingKeys:
           description: A set of unique transaction properties to group the transaction
-            portfolio's holdings by. Each property must be from the 'Transaction'
-            domain and identified by a key in the format {domain}/{scope}/{code},
-            for example 'Transaction/strategies/quantsignal'.
+            portfolio's holdings by, perhaps for strategy tagging. Each property must
+            be from the 'Transaction' domain and identified by a key in the format
+            {domain}/{scope}/{code}, for example 'Transaction/strategies/quantsignal'.
+            Note that sub-holding keys cannot currently be added after the transaction
+            portfolio has been created; see https://support.lusid.com/knowledgebase/article/KA-01879/en-us
+            for more information.
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
@@ -23955,10 +23990,10 @@ components:
         properties:
           additionalProperties:
             $ref: '#/components/schemas/Property'
-          description: A set of unique portfolio properties to add to the transaction
-            portfolio. Each property must be from the 'Portfolio' domain and identified
-            by a key in the format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'.
-            Note these properties must be pre-defined.
+          description: A set of unique portfolio properties to add custom data to
+            the transaction portfolio. Each property must be from the 'Portfolio'
+            domain and identified by a key in the format {domain}/{scope}/{code},
+            for example 'Portfolio/Manager/Id'. Note these properties must be pre-defined.
           nullable: true
           type: object
       required:
@@ -25242,4 +25277,5 @@ x-tagGroups:
   - Structured Result Data
   - System Configuration
   - Transaction Portfolios
+  - Translation
 

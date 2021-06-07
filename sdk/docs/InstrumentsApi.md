@@ -117,7 +117,7 @@ public class Example {
     String identifierType = "identifierType_example"; // String | The unique identifier type to use, for example 'Figi'.
     String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument.              Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument. Defaults to              returning the latest version if not specified.
     List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto the instrument.              These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
     try {
       Instrument result = apiInstance.getInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys);
@@ -259,7 +259,7 @@ public class Example {
     String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
     String propertyKey = "propertyKey_example"; // String | The property key of a property from the 'Instrument' domain whose history to retrieve.              This must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
     String identifierEffectiveAt = "identifierEffectiveAt_example"; // String | The effective datetime used to resolve the instrument from the identifier.              Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument's property history. Defaults to              returning the current datetime if not supplied.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument's property history. Defaults to              returning the current datetime if not supplied.
     String filter = "filter_example"; // String | Expression to filter the results. For more information about filtering,              see https://support.lusid.com/knowledgebase/article/KA-01914.
     String page = "page_example"; // String | The pagination token to use to continue listing properties; this value is returned from              the previous call. If a pagination token is provided, the <i>filter</i>, <i>effectiveAt</i> and              <i>asAt</i> fields must not have changed since the original request. For more information, see              https://support.lusid.com/knowledgebase/article/KA-01915.
     Integer limit = 56; // Integer | When paginating, limit the results to this number.
@@ -341,7 +341,7 @@ public class Example {
     String identifierType = "identifierType_example"; // String | The unique identifier type to use, for example 'Figi'.
     List<String> requestBody = ["instrument-identifier-1","instrument-identifier-2"]; // List<String> | A list of one or more <i>identifierType</i> values to use to identify instruments.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the instrument definitions.               Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument definitions.               Defaults to returning the latest version of each instrument definition if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the instrument definitions.               Defaults to returning the latest version of each instrument definition if not specified.
     List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto the instrument.               These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
     try {
       GetInstrumentsResponse result = apiInstance.getInstruments(identifierType, requestBody, effectiveAt, asAt, propertyKeys);
@@ -415,13 +415,13 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to list instruments. Defaults to returning the latest               version of each instrument if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list instruments. Defaults to returning the latest               version of each instrument if not specified.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list instruments.               Defaults to the current LUSID system datetime if not specified.
     String page = "page_example"; // String | The pagination token to use to continue listing instruments; this value is returned from               the previous call. If a pagination token is provided, the <i>sortBy</i>, <i>filter</i>, <i>effectiveAt</i> and               <i>asAt</i> fields must not have changed since the original request. Also, a <i>start</i> value cannot be               provided. For more information, see https://support.lusid.com/knowledgebase/article/KA-01915.
     List<String> sortBy = Arrays.asList(); // List<String> | Order results by particular fields. Use the '-' sign to denote descending order, for               example '-MyFieldName'.
     Integer start = 56; // Integer | When paginating, skip this number of results.
     Integer limit = 56; // Integer | When paginating, limit the results to this number.
-    String filter = "\"State eq 'Active'\""; // String | Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914.
+    String filter = "State eq 'Active'"; // String | Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914.
     List<String> instrumentPropertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Instrument' domain to decorate onto               instruments. These must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'.
     try {
       PagedResourceListOfInstrument result = apiInstance.listInstruments(asAt, effectiveAt, page, sortBy, start, limit, filter, instrumentPropertyKeys);
@@ -447,7 +447,7 @@ Name | Type | Description  | Notes
  **sortBy** | [**List&lt;String&gt;**](String.md)| Order results by particular fields. Use the &#39;-&#39; sign to denote descending order, for               example &#39;-MyFieldName&#39;. | [optional]
  **start** | **Integer**| When paginating, skip this number of results. | [optional]
  **limit** | **Integer**| When paginating, limit the results to this number. | [optional]
- **filter** | **String**| Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] [default to &quot;State eq &#39;Active&#39;&quot;]
+ **filter** | **String**| Expression to filter the result set. Defaults to filtering out inactive instruments               (that is, those that have been deleted). For more information about filtering results,               see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] [default to State eq &#39;Active&#39;]
  **instrumentPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Instrument&#39; domain to decorate onto               instruments. These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;. | [optional]
 
 ### Return type
@@ -500,7 +500,7 @@ public class Example {
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
     String identifierType = "identifierType_example"; // String | The unique identifier type to search, for example 'Figi'.
     String identifier = "identifier_example"; // String | An <i>identifierType</i> value to use to identify the instrument, for example 'BBG000BLNNV0'.
-    UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest = {"type":"Figi","value":"updated-figi","effectiveAt":"2018-02-01T10:00:00.0000000+00:00"}; // UpdateInstrumentIdentifierRequest | The identifier to update or delete. This need not be the same value as the               'identifier' parameter used to retrieve the instrument.
+    UpdateInstrumentIdentifierRequest updateInstrumentIdentifierRequest = new UpdateInstrumentIdentifierRequest(); // UpdateInstrumentIdentifierRequest | The identifier to update or delete. This need not be the same value as the               'identifier' parameter used to retrieve the instrument.
     try {
       Instrument result = apiInstance.updateInstrumentIdentifier(identifierType, identifier, updateInstrumentIdentifierRequest);
       System.out.println(result);
@@ -571,7 +571,7 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    Map<String, InstrumentDefinition> requestBody = {"request_id_1":{"name":"Instrument name","identifiers":{"clientInternal":{"value":"some-identifier","effectiveAt":"0001-01-01T00:00:00.0000000+00:00"},"figi":{"value":"some-figi-code","effectiveAt":"0001-01-01T00:00:00.0000000+00:00"},"isin":{"value":"some-isin-code","effectiveAt":"0001-01-01T00:00:00.0000000+00:00"}},"properties":[{"key":"Instrument/someScope/somePropertyName","value":{"labelValue":"some-property-value"},"effectiveFrom":"2018-06-18T09:00:00.0000000+00:00"}],"lookThroughPortfolioId":{"scope":"MyScope","code":"portfolio-code"},"definition":{"instrumentFormat":{"sourceSystem":"systemA","vendor":"Unknown","version":"1.0.0"},"content":"{\"some-key\": \"some-value\"}","instrumentType":"ExoticInstrument"}},"request_id_2":{"name":"Instrument name","identifiers":{"clientInternal":{"value":"some-identifier-2","effectiveAt":"0001-01-01T00:00:00.0000000+00:00"},"figi":{"value":"some-figi-code-2","effectiveAt":"0001-01-01T00:00:00.0000000+00:00"}},"properties":[],"lookThroughPortfolioId":{"scope":"MyScope","code":"portfolio-code"},"definition":{"instrumentFormat":{"sourceSystem":"systemA","vendor":"Unknown","version":"1.0.0"},"content":"{\"some-key\": \"some-value\"}","instrumentType":"ExoticInstrument"}}}; // Map<String, InstrumentDefinition> | The definitions of the instruments to create or update.
+    Map<String, InstrumentDefinition> requestBody = new HashMap(); // Map<String, InstrumentDefinition> | The definitions of the instruments to create or update.
     try {
       UpsertInstrumentsResponse result = apiInstance.upsertInstruments(requestBody);
       System.out.println(result);
@@ -640,7 +640,7 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     InstrumentsApi apiInstance = new InstrumentsApi(defaultClient);
-    List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest = [{"identifierType":"LusidInstrumentId","identifier":"LUID_00000000","properties":[{"key":"Instrument/MyScope/SomePropertyName","value":{"labelValue":"SomeValue1"},"effectiveFrom":"2016-09-15T12:00:00.0000000+00:00"},{"key":"Instrument/MyScope/SomePropertyName","value":{"labelValue":"SomeValue2"},"effectiveFrom":"2017-08-10T12:00:00.0000000+00:00"},{"key":"Instrument/MyScope/AnotherPropertyName","value":{"labelValue":"AnotherValue1"},"effectiveFrom":"2018-03-05T12:00:00.0000000+00:00","effectiveUntil":"2019-06-01T12:00:00.0000000+00:00"},{"key":"Instrument/MyScope/AnotherPropertyName","value":{"labelValue":"AnotherValue2"},"effectiveFrom":"2020-03-15T12:00:00.0000000+00:00","effectiveUntil":"2021-01-15T12:00:00.0000000+00:00"}]}]; // List<UpsertInstrumentPropertyRequest> | A list of instruments and associated instrument properties to create or update.
+    List<UpsertInstrumentPropertyRequest> upsertInstrumentPropertyRequest = Arrays.asList(); // List<UpsertInstrumentPropertyRequest> | A list of instruments and associated instrument properties to create or update.
     try {
       UpsertInstrumentPropertiesResponse result = apiInstance.upsertInstrumentsProperties(upsertInstrumentPropertyRequest);
       System.out.println(result);

@@ -39,7 +39,7 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     CutLabelDefinitionsApi apiInstance = new CutLabelDefinitionsApi(defaultClient);
-    CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest = {"code":"CutLabelCode","displayName":"CutLabelDisplayName","description":"description of cut label","cutLocalTime":{"hours":17,"minutes":0},"timeZone":"GB"}; // CreateCutLabelDefinitionRequest | The cut label definition
+    CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest = new CreateCutLabelDefinitionRequest(); // CreateCutLabelDefinitionRequest | The cut label definition
     try {
       CutLabelDefinition result = apiInstance.createCutLabelDefinition(createCutLabelDefinitionRequest);
       System.out.println(result);
@@ -178,7 +178,7 @@ public class Example {
 
     CutLabelDefinitionsApi apiInstance = new CutLabelDefinitionsApi(defaultClient);
     String code = "code_example"; // String | The Code of the Cut Label that is being queried
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The time at which to get the Cut Label
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The time at which to get the Cut Label
     try {
       CutLabelDefinition result = apiInstance.getCutLabelDefinition(code, asAt);
       System.out.println(result);
@@ -248,7 +248,7 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     CutLabelDefinitionsApi apiInstance = new CutLabelDefinitionsApi(defaultClient);
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The As At time at which listed Cut Labels are valid
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The As At time at which listed Cut Labels are valid
     List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
     Integer start = 56; // Integer | Optional. When paginating, skip this number of results
     Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
@@ -328,7 +328,7 @@ public class Example {
 
     CutLabelDefinitionsApi apiInstance = new CutLabelDefinitionsApi(defaultClient);
     String code = "code_example"; // String | The Code of the Cut Label that is being updated
-    UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest = {"displayName":"CutLabelDisplayName","description":"description of cut label","cutLocalTime":{"hours":17,"minutes":0},"timeZone":"GB"}; // UpdateCutLabelDefinitionRequest | The cut label update definition
+    UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest = new UpdateCutLabelDefinitionRequest(); // UpdateCutLabelDefinitionRequest | The cut label update definition
     try {
       CutLabelDefinition result = apiInstance.updateCutLabelDefinition(code, updateCutLabelDefinitionRequest);
       System.out.println(result);

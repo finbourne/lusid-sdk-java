@@ -36,7 +36,7 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     SystemConfigurationApi apiInstance = new SystemConfigurationApi(defaultClient);
-    TransactionConfigurationDataRequest transactionConfigurationDataRequest = {"aliases":[{"type":"Another-Sell","description":"Sale","transactionClass":"MyDefault","transactionGroup":"MyGroup","transactionRoles":"LongShorter"}],"movements":[{"movementTypes":"StockMovement","side":"Side1","direction":-1,"properties":{},"mappings":[]},{"movementTypes":"CashCommitment","side":"Side2","direction":1,"properties":{},"mappings":[]}],"properties":{}}; // TransactionConfigurationDataRequest | A transaction type definition.
+    TransactionConfigurationDataRequest transactionConfigurationDataRequest = new TransactionConfigurationDataRequest(); // TransactionConfigurationDataRequest | A transaction type definition.
     try {
       TransactionSetConfigurationData result = apiInstance.createConfigurationTransactionType(transactionConfigurationDataRequest);
       System.out.println(result);
@@ -105,7 +105,7 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     SystemConfigurationApi apiInstance = new SystemConfigurationApi(defaultClient);
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the transaction types. Defaults              to returning the latest versions if not specified.
     try {
       TransactionSetConfigurationData result = apiInstance.listConfigurationTransactionTypes(asAt);
       System.out.println(result);
