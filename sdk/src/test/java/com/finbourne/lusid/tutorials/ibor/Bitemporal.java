@@ -89,26 +89,26 @@ public class Bitemporal {
         Thread.sleep(500);
 
         //  list transactions
-        VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(TutorialScope, portfolioId, null, null, asAtBatch1, null, null);
+        VersionedResourceListOfTransaction transactions = transactionPortfoliosApi.getTransactions(TutorialScope, portfolioId, null, null, asAtBatch1, null, null, null, null);
 
         assertEquals(String.format("asAt %s", asAtBatch1),3, transactions.getValues().size());
         System.out.println("transactions at " + asAtBatch1);
         printTransactions.accept(transactions.getValues());
 
-        transactions = transactionPortfoliosApi.getTransactions(TutorialScope, portfolioId, null, null, asAtBatch2, null, null);
+        transactions = transactionPortfoliosApi.getTransactions(TutorialScope, portfolioId, null, null, asAtBatch2, null, null, null, null);
 
         assertEquals(String.format("asAt %s", asAtBatch2),4, transactions.getValues().size());
         System.out.println("transactions at " + asAtBatch2);
         printTransactions.accept(transactions.getValues());
 
-        transactions = transactionPortfoliosApi.getTransactions(TutorialScope, portfolioId, null, null, asAtBatch3, null, null);
+        transactions = transactionPortfoliosApi.getTransactions(TutorialScope, portfolioId, null, null, asAtBatch3, null, null, null, null);
 
         assertEquals(String.format("asAt %s", asAtBatch3), 5, transactions.getValues().size());
         System.out.println("transactions at " + asAtBatch3);
         printTransactions.accept(transactions.getValues());
 
         //  latest transactions
-        transactions = transactionPortfoliosApi.getTransactions(TutorialScope, portfolioId, null, null, null, null, null);
+        transactions = transactionPortfoliosApi.getTransactions(TutorialScope, portfolioId, null, null, null, null, null, null, null);
 
         assertEquals(5, transactions.getValues().size());
         System.out.println("transactions at " + OffsetDateTime.now());
