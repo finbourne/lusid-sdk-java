@@ -6,9 +6,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **String** | The name of the error | 
-**errorDetails** | [**List&lt;Map&lt;String, String&gt;&gt;**](Map.md) | Any additional informational information available about the nature and detail of the problem |  [optional]
-**code** | **Integer** | Get the error code of the response | 
+**name** | **String** |  | 
+**errorDetails** | [**List&lt;Map&lt;String, String&gt;&gt;**](Map.md) |  |  [optional]
+**code** | **Integer** |  | 
 **errors** | [**Map&lt;String, List&lt;String&gt;&gt;**](List.md) |  |  [optional]
 **type** | **String** |  |  [optional]
 **title** | **String** |  |  [optional]
