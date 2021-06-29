@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **lookthroughPortfolio** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **instrumentDefinition** | [**LusidInstrument**](LusidInstrument.md) |  |  [optional]
 **state** | [**StateEnum**](#StateEnum) | The state of of the instrument at the asAt datetime of this version of the instrument definition. The available values are: Active, Inactive | 
-**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
 
