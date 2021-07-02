@@ -25,9 +25,8 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * Identifiers of an entity
+ * ResourceId
  */
-@ApiModel(description = "Identifiers of an entity")
 
 public class ResourceId {
   public static final String SERIALIZED_NAME_SCOPE = "scope";
@@ -44,10 +43,10 @@ public class ResourceId {
   }
 
    /**
-   * The scope used to identify an entity
+   * Get scope
    * @return scope
   **/
-  @ApiModelProperty(required = true, value = "The scope used to identify an entity")
+  @ApiModelProperty(required = true, value = "")
   public String getScope() {
     return scope;
   }
@@ -62,10 +61,10 @@ public class ResourceId {
   }
 
    /**
-   * The code used to identify an entity
+   * Get code
    * @return code
   **/
-  @ApiModelProperty(required = true, value = "The code used to identify an entity")
+  @ApiModelProperty(required = true, value = "")
   public String getCode() {
     return code;
   }
