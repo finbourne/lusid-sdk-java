@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **amended** | **Boolean** |  | 
 **amendmentEffectiveAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
 **amendmentAsAt** | [**OffsetDateTime**](OffsetDateTime.md) |  |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 
 
