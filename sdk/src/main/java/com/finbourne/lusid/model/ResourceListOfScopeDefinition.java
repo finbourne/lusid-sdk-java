@@ -30,9 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A collection of resources that can be returned from requests.
+ * ResourceListOfScopeDefinition
  */
-@ApiModel(description = "A collection of resources that can be returned from requests.")
 
 public class ResourceListOfScopeDefinition {
   public static final String SERIALIZED_NAME_VALUES = "values";
@@ -66,10 +65,10 @@ public class ResourceListOfScopeDefinition {
   }
 
    /**
-   * The resources to list.
+   * Get values
    * @return values
   **/
-  @ApiModelProperty(required = true, value = "The resources to list.")
+  @ApiModelProperty(required = true, value = "")
   public List<ScopeDefinition> getValues() {
     return values;
   }
@@ -84,10 +83,10 @@ public class ResourceListOfScopeDefinition {
   }
 
    /**
-   * The URI of the resource list.
+   * Get href
    * @return href
   **/
-  @ApiModelProperty(value = "The URI of the resource list.")
+  @ApiModelProperty(value = "")
   public URI getHref() {
     return href;
   }
@@ -110,10 +109,10 @@ public class ResourceListOfScopeDefinition {
   }
 
    /**
-   * Collection of links.
+   * Get links
    * @return links
   **/
-  @ApiModelProperty(value = "Collection of links.")
+  @ApiModelProperty(value = "")
   public List<Link> getLinks() {
     return links;
   }
@@ -128,10 +127,10 @@ public class ResourceListOfScopeDefinition {
   }
 
    /**
-   * The next page of results.
+   * Get nextPage
    * @return nextPage
   **/
-  @ApiModelProperty(value = "The next page of results.")
+  @ApiModelProperty(value = "")
   public String getNextPage() {
     return nextPage;
   }
@@ -146,10 +145,10 @@ public class ResourceListOfScopeDefinition {
   }
 
    /**
-   * The previous page of results.
+   * Get previousPage
    * @return previousPage
   **/
-  @ApiModelProperty(value = "The previous page of results.")
+  @ApiModelProperty(value = "")
   public String getPreviousPage() {
     return previousPage;
   }
