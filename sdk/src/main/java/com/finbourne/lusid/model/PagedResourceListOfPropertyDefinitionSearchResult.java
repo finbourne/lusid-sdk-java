@@ -30,9 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A paginated list of resource that can be returned from a request.
+ * PagedResourceListOfPropertyDefinitionSearchResult
  */
-@ApiModel(description = "A paginated list of resource that can be returned from a request.")
 
 public class PagedResourceListOfPropertyDefinitionSearchResult {
   public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
@@ -61,10 +60,10 @@ public class PagedResourceListOfPropertyDefinitionSearchResult {
   }
 
    /**
-   * The next page of results.
+   * Get nextPage
    * @return nextPage
   **/
-  @ApiModelProperty(value = "The next page of results.")
+  @ApiModelProperty(value = "")
   public String getNextPage() {
     return nextPage;
   }
@@ -79,10 +78,10 @@ public class PagedResourceListOfPropertyDefinitionSearchResult {
   }
 
    /**
-   * The previous page of results.
+   * Get previousPage
    * @return previousPage
   **/
-  @ApiModelProperty(value = "The previous page of results.")
+  @ApiModelProperty(value = "")
   public String getPreviousPage() {
     return previousPage;
   }
@@ -102,10 +101,10 @@ public class PagedResourceListOfPropertyDefinitionSearchResult {
   }
 
    /**
-   * The resources to list.
+   * Get values
    * @return values
   **/
-  @ApiModelProperty(required = true, value = "The resources to list.")
+  @ApiModelProperty(required = true, value = "")
   public List<PropertyDefinitionSearchResult> getValues() {
     return values;
   }
@@ -120,10 +119,10 @@ public class PagedResourceListOfPropertyDefinitionSearchResult {
   }
 
    /**
-   * The URI of the resource list.
+   * Get href
    * @return href
   **/
-  @ApiModelProperty(value = "The URI of the resource list.")
+  @ApiModelProperty(value = "")
   public URI getHref() {
     return href;
   }
@@ -146,10 +145,10 @@ public class PagedResourceListOfPropertyDefinitionSearchResult {
   }
 
    /**
-   * Collection of links.
+   * Get links
    * @return links
   **/
-  @ApiModelProperty(value = "Collection of links.")
+  @ApiModelProperty(value = "")
   public List<Link> getLinks() {
     return links;
   }
