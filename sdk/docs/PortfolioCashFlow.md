@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **translationGainLoss** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
 **costBasisReportingCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
 **transaction** | [**Transaction**](Transaction.md) |  |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
 
