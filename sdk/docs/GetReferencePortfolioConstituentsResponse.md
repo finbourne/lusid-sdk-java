@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **periodCount** | **Integer** |  |  [optional]
 **constituents** | [**List&lt;ReferencePortfolioConstituent&gt;**](ReferencePortfolioConstituent.md) | Set of constituents (instrument/weight pairings) | 
 **href** | [**URI**](URI.md) | The Uri that returns the same result as the original request,  but may include resolved as at time(s). |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
 
