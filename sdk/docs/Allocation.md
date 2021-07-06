@@ -24,7 +24,7 @@ Name | Type | Description | Notes
 **settlementCurrency** | **String** | The settlement currency of this allocation. |  [optional]
 **settlementCurrencyFxRate** | **Double** | The settlement currency to allocation currency FX rate. |  [optional]
 **counterparty** | **String** | The counterparty for this allocation. |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 
 
