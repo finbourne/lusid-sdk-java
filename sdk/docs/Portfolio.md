@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **isDerived** | **Boolean** | Whether or not this is a derived portfolio. |  [optional]
 **baseCurrency** | **String** | The base currency of the portfolio. This will be an empty string for reference portfolios. |  [optional]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | The requested portfolio properties. These will be from the &#39;Portfolio&#39; domain. |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
 
