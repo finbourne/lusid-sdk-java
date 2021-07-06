@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **baseCurrency** | **String** | The base currency of the transaction portfolio. | 
 **corporateActionSourceId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **subHoldingKeys** | **List&lt;String&gt;** |  |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 
 

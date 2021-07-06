@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **propertyDefinitionType** | [**PropertyDefinitionTypeEnum**](#PropertyDefinitionTypeEnum) | The definition type (DerivedDefinition or Definition). The available values are: ValueProperty, DerivedDefinition |  [optional]
 **propertyDescription** | **String** | A brief description of what a property of this property definition contains. |  [optional]
 **derivationFormula** | **String** | The rule that defines how data is composed for a derived property. |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 
 
