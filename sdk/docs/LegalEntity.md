@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **identifiers** | [**Map&lt;String, Property&gt;**](Property.md) | Unique client-defined identifiers of the Legal Entity. |  [optional]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties associated to the Legal Entity. |  [optional]
 **version** | [**Version**](Version.md) |  |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 
 
