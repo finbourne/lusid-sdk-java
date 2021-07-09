@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **rate** | **String** | The rate. | 
 **units** | **String** | The units. | 
 **amount** | **String** | The amount. | 
-**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
 

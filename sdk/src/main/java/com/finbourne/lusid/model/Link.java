@@ -26,9 +26,8 @@ import java.io.IOException;
 import java.net.URI;
 
 /**
- * Link class.
+ * Link
  */
-@ApiModel(description = "Link class.")
 
 public class Link {
   public static final String SERIALIZED_NAME_RELATION = "relation";
@@ -53,10 +52,10 @@ public class Link {
   }
 
    /**
-   * Relation of link.
+   * Get relation
    * @return relation
   **/
-  @ApiModelProperty(required = true, value = "Relation of link.")
+  @ApiModelProperty(required = true, value = "")
   public String getRelation() {
     return relation;
   }
@@ -71,10 +70,10 @@ public class Link {
   }
 
    /**
-   * Href of link.
+   * Get href
    * @return href
   **/
-  @ApiModelProperty(required = true, value = "Href of link.")
+  @ApiModelProperty(required = true, value = "")
   public URI getHref() {
     return href;
   }
@@ -89,10 +88,10 @@ public class Link {
   }
 
    /**
-   * Description of link.
+   * Get description
    * @return description
   **/
-  @ApiModelProperty(value = "Description of link.")
+  @ApiModelProperty(value = "")
   public String getDescription() {
     return description;
   }
@@ -107,10 +106,10 @@ public class Link {
   }
 
    /**
-   * Http method of link.
+   * Get method
    * @return method
   **/
-  @ApiModelProperty(required = true, value = "Http method of link.")
+  @ApiModelProperty(required = true, value = "")
   public String getMethod() {
     return method;
   }
