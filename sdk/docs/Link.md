@@ -6,10 +6,10 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**relation** | **String** |  | 
-**href** | [**URI**](URI.md) |  | 
-**description** | **String** |  |  [optional]
-**method** | **String** |  | 
+**relation** | **String** | Relation of link. | 
+**href** | [**URI**](URI.md) | Href of link. | 
+**description** | **String** | Description of link. |  [optional]
+**method** | **String** | Http method of link. | 
 
 
 
