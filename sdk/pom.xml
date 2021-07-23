@@ -5,7 +5,7 @@
     <artifactId>lusid-sdk</artifactId>
     <packaging>jar</packaging>
     <name>lusid-sdk</name>
-    <version>0.11.3305-SNAPSHOT</version>
+    <version>0.11.3306-SNAPSHOT</version>
     <url>https://github.com/openapitools/openapi-generator</url>
     <description>OpenAPI Java</description>
     <scm>
