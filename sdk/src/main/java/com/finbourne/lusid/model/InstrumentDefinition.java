@@ -35,7 +35,7 @@ import java.util.Map;
 /**
  * InstrumentDefinition
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class InstrumentDefinition {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -47,18 +47,19 @@ public class InstrumentDefinition {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private List<Property> properties = new ArrayList<>();
+  private List<Property> properties = null;
 
   public static final String SERIALIZED_NAME_LOOK_THROUGH_PORTFOLIO_ID = "lookThroughPortfolioId";
   @SerializedName(SERIALIZED_NAME_LOOK_THROUGH_PORTFOLIO_ID)
-  private ResourceId lookThroughPortfolioId = null;
+  private ResourceId lookThroughPortfolioId;
 
   public static final String SERIALIZED_NAME_DEFINITION = "definition";
   @SerializedName(SERIALIZED_NAME_DEFINITION)
-  private LusidInstrument definition = null;
+  private LusidInstrument definition;
+
 
   public InstrumentDefinition name(String name) {
-    this.name = name;
+    this.name = name; 
     return this;
   }
 
@@ -75,8 +76,9 @@ public class InstrumentDefinition {
     this.name = name;
   }
 
+
   public InstrumentDefinition identifiers(Map<String, InstrumentIdValue> identifiers) {
-    this.identifiers = identifiers;
+    this.identifiers = identifiers; 
     return this;
   }
 
@@ -98,12 +100,14 @@ public class InstrumentDefinition {
     this.identifiers = identifiers;
   }
 
+
   public InstrumentDefinition properties(List<Property> properties) {
-    this.properties = properties;
+    this.properties = properties; 
     return this;
   }
 
   public InstrumentDefinition addPropertiesItem(Property propertiesItem) {
+   
     if (this.properties == null) {
       this.properties = new ArrayList<>();
     }
@@ -124,8 +128,9 @@ public class InstrumentDefinition {
     this.properties = properties;
   }
 
+
   public InstrumentDefinition lookThroughPortfolioId(ResourceId lookThroughPortfolioId) {
-    this.lookThroughPortfolioId = lookThroughPortfolioId;
+    this.lookThroughPortfolioId = lookThroughPortfolioId; 
     return this;
   }
 
@@ -142,8 +147,9 @@ public class InstrumentDefinition {
     this.lookThroughPortfolioId = lookThroughPortfolioId;
   }
 
+
   public InstrumentDefinition definition(LusidInstrument definition) {
-    this.definition = definition;
+    this.definition = definition; 
     return this;
   }
 
@@ -162,7 +168,7 @@ public class InstrumentDefinition {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -174,9 +180,8 @@ public class InstrumentDefinition {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -195,7 +200,7 @@ public class InstrumentDefinition {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

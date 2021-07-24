@@ -34,7 +34,7 @@ import java.util.List;
  * Full content of a holdings adjustment for a single portfolio and effective date.
  */
 @ApiModel(description = "Full content of a holdings adjustment for a single portfolio and effective date.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class HoldingsAdjustment {
   public static final String SERIALIZED_NAME_EFFECTIVE_AT = "effectiveAt";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
@@ -42,7 +42,7 @@ public class HoldingsAdjustment {
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   /**
    * Describes how the holdings were adjusted. If &#39;PositionToZero&#39; the entire transaction portfolio&#39;s holdings were set via a call to &#39;Set holdings&#39;. If &#39;KeepTheSame&#39; only the specified holdings were adjusted via a call to &#39;Adjust holdings&#39;. The available values are: PositionToZero, KeepTheSame
@@ -85,7 +85,7 @@ public class HoldingsAdjustment {
 
       @Override
       public UnmatchedHoldingMethodEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return UnmatchedHoldingMethodEnum.fromValue(value);
       }
     }
@@ -101,10 +101,11 @@ public class HoldingsAdjustment {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public HoldingsAdjustment effectiveAt(OffsetDateTime effectiveAt) {
-    this.effectiveAt = effectiveAt;
+    this.effectiveAt = effectiveAt; 
     return this;
   }
 
@@ -121,8 +122,9 @@ public class HoldingsAdjustment {
     this.effectiveAt = effectiveAt;
   }
 
+
   public HoldingsAdjustment version(Version version) {
-    this.version = version;
+    this.version = version; 
     return this;
   }
 
@@ -139,8 +141,9 @@ public class HoldingsAdjustment {
     this.version = version;
   }
 
+
   public HoldingsAdjustment unmatchedHoldingMethod(UnmatchedHoldingMethodEnum unmatchedHoldingMethod) {
-    this.unmatchedHoldingMethod = unmatchedHoldingMethod;
+    this.unmatchedHoldingMethod = unmatchedHoldingMethod; 
     return this;
   }
 
@@ -157,12 +160,14 @@ public class HoldingsAdjustment {
     this.unmatchedHoldingMethod = unmatchedHoldingMethod;
   }
 
+
   public HoldingsAdjustment adjustments(List<HoldingAdjustment> adjustments) {
-    this.adjustments = adjustments;
+    this.adjustments = adjustments; 
     return this;
   }
 
   public HoldingsAdjustment addAdjustmentsItem(HoldingAdjustment adjustmentsItem) {
+   
     this.adjustments.add(adjustmentsItem);
     return this;
   }
@@ -180,12 +185,14 @@ public class HoldingsAdjustment {
     this.adjustments = adjustments;
   }
 
+
   public HoldingsAdjustment links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public HoldingsAdjustment addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -208,7 +215,7 @@ public class HoldingsAdjustment {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -220,9 +227,8 @@ public class HoldingsAdjustment {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -241,7 +247,7 @@ public class HoldingsAdjustment {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

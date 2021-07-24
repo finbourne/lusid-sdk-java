@@ -1,6 +1,6 @@
 # CutLabelDefinitionsApi
 
-All URIs are relative to *https://fbn-prd.lusid.com/api*
+All URIs are relative to *http://local-unit-test-server.lusid.com:32886*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -32,14 +32,14 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:32886");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     CutLabelDefinitionsApi apiInstance = new CutLabelDefinitionsApi(defaultClient);
-    CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest = {"code":"CutLabelCode","displayName":"CutLabelDisplayName","description":"description of cut label","cutLocalTime":{"hours":17,"minutes":0},"timeZone":"GB"}; // CreateCutLabelDefinitionRequest | The cut label definition
+    CreateCutLabelDefinitionRequest createCutLabelDefinitionRequest = new CreateCutLabelDefinitionRequest(); // CreateCutLabelDefinitionRequest | The cut label definition
     try {
       CutLabelDefinition result = apiInstance.createCutLabelDefinition(createCutLabelDefinitionRequest);
       System.out.println(result);
@@ -101,7 +101,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:32886");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -170,7 +170,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:32886");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -178,7 +178,7 @@ public class Example {
 
     CutLabelDefinitionsApi apiInstance = new CutLabelDefinitionsApi(defaultClient);
     String code = "code_example"; // String | The Code of the Cut Label that is being queried
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The time at which to get the Cut Label
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The time at which to get the Cut Label
     try {
       CutLabelDefinition result = apiInstance.getCutLabelDefinition(code, asAt);
       System.out.println(result);
@@ -241,14 +241,14 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:32886");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     CutLabelDefinitionsApi apiInstance = new CutLabelDefinitionsApi(defaultClient);
-    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | Optional. The As At time at which listed Cut Labels are valid
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. The As At time at which listed Cut Labels are valid
     List<String> sortBy = Arrays.asList(); // List<String> | Optional. Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName
     Integer start = 56; // Integer | Optional. When paginating, skip this number of results
     Integer limit = 56; // Integer | Optional. When paginating, limit the number of returned results to this many.
@@ -320,7 +320,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:32886");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -328,7 +328,7 @@ public class Example {
 
     CutLabelDefinitionsApi apiInstance = new CutLabelDefinitionsApi(defaultClient);
     String code = "code_example"; // String | The Code of the Cut Label that is being updated
-    UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest = {"displayName":"CutLabelDisplayName","description":"description of cut label","cutLocalTime":{"hours":17,"minutes":0},"timeZone":"GB"}; // UpdateCutLabelDefinitionRequest | The cut label update definition
+    UpdateCutLabelDefinitionRequest updateCutLabelDefinitionRequest = new UpdateCutLabelDefinitionRequest(); // UpdateCutLabelDefinitionRequest | The cut label update definition
     try {
       CutLabelDefinition result = apiInstance.updateCutLabelDefinition(code, updateCutLabelDefinitionRequest);
       System.out.println(result);

@@ -29,7 +29,7 @@ import java.time.OffsetDateTime;
 /**
  * RealisedGainLoss
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class RealisedGainLoss {
   public static final String SERIALIZED_NAME_INSTRUMENT_UID = "instrumentUid";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_UID)
@@ -53,30 +53,31 @@ public class RealisedGainLoss {
 
   public static final String SERIALIZED_NAME_COST_TRADE_CCY = "costTradeCcy";
   @SerializedName(SERIALIZED_NAME_COST_TRADE_CCY)
-  private CurrencyAndAmount costTradeCcy = null;
+  private CurrencyAndAmount costTradeCcy;
 
   public static final String SERIALIZED_NAME_COST_PORTFOLIO_CCY = "costPortfolioCcy";
   @SerializedName(SERIALIZED_NAME_COST_PORTFOLIO_CCY)
-  private CurrencyAndAmount costPortfolioCcy = null;
+  private CurrencyAndAmount costPortfolioCcy;
 
   public static final String SERIALIZED_NAME_REALISED_TRADE_CCY = "realisedTradeCcy";
   @SerializedName(SERIALIZED_NAME_REALISED_TRADE_CCY)
-  private CurrencyAndAmount realisedTradeCcy = null;
+  private CurrencyAndAmount realisedTradeCcy;
 
   public static final String SERIALIZED_NAME_REALISED_TOTAL = "realisedTotal";
   @SerializedName(SERIALIZED_NAME_REALISED_TOTAL)
-  private CurrencyAndAmount realisedTotal = null;
+  private CurrencyAndAmount realisedTotal;
 
   public static final String SERIALIZED_NAME_REALISED_MARKET = "realisedMarket";
   @SerializedName(SERIALIZED_NAME_REALISED_MARKET)
-  private CurrencyAndAmount realisedMarket = null;
+  private CurrencyAndAmount realisedMarket;
 
   public static final String SERIALIZED_NAME_REALISED_CURRENCY = "realisedCurrency";
   @SerializedName(SERIALIZED_NAME_REALISED_CURRENCY)
-  private CurrencyAndAmount realisedCurrency = null;
+  private CurrencyAndAmount realisedCurrency;
+
 
   public RealisedGainLoss instrumentUid(String instrumentUid) {
-    this.instrumentUid = instrumentUid;
+    this.instrumentUid = instrumentUid; 
     return this;
   }
 
@@ -93,8 +94,9 @@ public class RealisedGainLoss {
     this.instrumentUid = instrumentUid;
   }
 
+
   public RealisedGainLoss units(Double units) {
-    this.units = units;
+    this.units = units; 
     return this;
   }
 
@@ -111,6 +113,7 @@ public class RealisedGainLoss {
     this.units = units;
   }
 
+
    /**
    * The effective datetime that the units associated with this gain or loss where originally purchased.
    * @return purchaseTradeDate
@@ -119,6 +122,8 @@ public class RealisedGainLoss {
   public OffsetDateTime getPurchaseTradeDate() {
     return purchaseTradeDate;
   }
+
+
 
    /**
    * The effective datetime that the units associated with this gain or loss where originally settled.
@@ -129,8 +134,10 @@ public class RealisedGainLoss {
     return purchaseSettlementDate;
   }
 
+
+
   public RealisedGainLoss purchasePrice(Double purchasePrice) {
-    this.purchasePrice = purchasePrice;
+    this.purchasePrice = purchasePrice; 
     return this;
   }
 
@@ -147,8 +154,9 @@ public class RealisedGainLoss {
     this.purchasePrice = purchasePrice;
   }
 
+
   public RealisedGainLoss costTradeCcy(CurrencyAndAmount costTradeCcy) {
-    this.costTradeCcy = costTradeCcy;
+    this.costTradeCcy = costTradeCcy; 
     return this;
   }
 
@@ -165,8 +173,9 @@ public class RealisedGainLoss {
     this.costTradeCcy = costTradeCcy;
   }
 
+
   public RealisedGainLoss costPortfolioCcy(CurrencyAndAmount costPortfolioCcy) {
-    this.costPortfolioCcy = costPortfolioCcy;
+    this.costPortfolioCcy = costPortfolioCcy; 
     return this;
   }
 
@@ -183,8 +192,9 @@ public class RealisedGainLoss {
     this.costPortfolioCcy = costPortfolioCcy;
   }
 
+
   public RealisedGainLoss realisedTradeCcy(CurrencyAndAmount realisedTradeCcy) {
-    this.realisedTradeCcy = realisedTradeCcy;
+    this.realisedTradeCcy = realisedTradeCcy; 
     return this;
   }
 
@@ -201,8 +211,9 @@ public class RealisedGainLoss {
     this.realisedTradeCcy = realisedTradeCcy;
   }
 
+
   public RealisedGainLoss realisedTotal(CurrencyAndAmount realisedTotal) {
-    this.realisedTotal = realisedTotal;
+    this.realisedTotal = realisedTotal; 
     return this;
   }
 
@@ -219,8 +230,9 @@ public class RealisedGainLoss {
     this.realisedTotal = realisedTotal;
   }
 
+
   public RealisedGainLoss realisedMarket(CurrencyAndAmount realisedMarket) {
-    this.realisedMarket = realisedMarket;
+    this.realisedMarket = realisedMarket; 
     return this;
   }
 
@@ -237,8 +249,9 @@ public class RealisedGainLoss {
     this.realisedMarket = realisedMarket;
   }
 
+
   public RealisedGainLoss realisedCurrency(CurrencyAndAmount realisedCurrency) {
-    this.realisedCurrency = realisedCurrency;
+    this.realisedCurrency = realisedCurrency; 
     return this;
   }
 
@@ -257,7 +270,7 @@ public class RealisedGainLoss {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -269,9 +282,8 @@ public class RealisedGainLoss {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -296,7 +308,7 @@ public class RealisedGainLoss {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

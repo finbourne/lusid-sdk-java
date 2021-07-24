@@ -29,11 +29,11 @@ import java.io.IOException;
  * Allows a file (represented as a stream) to be returned from an Api call
  */
 @ApiModel(description = "Allows a file (represented as a stream) to be returned from an Api call")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class FileResponse {
   public static final String SERIALIZED_NAME_FILE_STREAM = "fileStream";
   @SerializedName(SERIALIZED_NAME_FILE_STREAM)
-  private Stream fileStream = null;
+  private Stream fileStream;
 
   public static final String SERIALIZED_NAME_CONTENT_TYPE = "contentType";
   @SerializedName(SERIALIZED_NAME_CONTENT_TYPE)
@@ -43,8 +43,9 @@ public class FileResponse {
   @SerializedName(SERIALIZED_NAME_DOWNLOADED_FILENAME)
   private String downloadedFilename;
 
+
   public FileResponse fileStream(Stream fileStream) {
-    this.fileStream = fileStream;
+    this.fileStream = fileStream; 
     return this;
   }
 
@@ -61,8 +62,9 @@ public class FileResponse {
     this.fileStream = fileStream;
   }
 
+
   public FileResponse contentType(String contentType) {
-    this.contentType = contentType;
+    this.contentType = contentType; 
     return this;
   }
 
@@ -79,8 +81,9 @@ public class FileResponse {
     this.contentType = contentType;
   }
 
+
   public FileResponse downloadedFilename(String downloadedFilename) {
-    this.downloadedFilename = downloadedFilename;
+    this.downloadedFilename = downloadedFilename; 
     return this;
   }
 
@@ -99,7 +102,7 @@ public class FileResponse {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -111,9 +114,8 @@ public class FileResponse {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -130,7 +132,7 @@ public class FileResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

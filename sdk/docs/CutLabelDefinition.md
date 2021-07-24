@@ -2,6 +2,7 @@
 
 # CutLabelDefinition
 
+
 ## Properties
 
 Name | Type | Description | Notes
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 **description** | **String** |  |  [optional]
 **cutLocalTime** | [**CutLocalTime**](CutLocalTime.md) |  |  [optional]
 **timeZone** | **String** |  |  [optional]
-**href** | [**URI**](URI.md) |  |  [optional]
+**href** | **URI** |  |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 

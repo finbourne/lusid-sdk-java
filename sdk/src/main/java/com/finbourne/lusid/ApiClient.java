@@ -15,6 +15,7 @@ package com.finbourne.lusid;
 
 import okhttp3.*;
 import okhttp3.internal.http.HttpMethod;
+import okhttp3.internal.tls.OkHostnameVerifier;
 import okhttp3.logging.HttpLoggingInterceptor;
 import okhttp3.logging.HttpLoggingInterceptor.Level;
 import okio.BufferedSink;
@@ -28,8 +29,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
+import java.net.URI;
 import java.net.URLConnection;
 import java.net.URLEncoder;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.security.GeneralSecurityException;
 import java.security.KeyStore;
 import java.security.SecureRandom;
@@ -49,6 +53,7 @@ import java.util.regex.Pattern;
 
 import com.finbourne.lusid.auth.Authentication;
 import com.finbourne.lusid.auth.HttpBasicAuth;
+import com.finbourne.lusid.auth.HttpBearerAuth;
 import com.finbourne.lusid.auth.ApiKeyAuth;
 import com.finbourne.lusid.auth.OAuth;
 import com.finbourne.lusid.auth.RetryingOAuth;
@@ -56,9 +61,10 @@ import com.finbourne.lusid.auth.OAuthFlow;
 
 public class ApiClient {
 
-    private String basePath = "https://fbn-prd.lusid.com/api";
+    private String basePath = "http://local-unit-test-server.lusid.com:32886";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
+    private Map<String, String> defaultCookieMap = new HashMap<String, String>();
     private String tempFolderPath = null;
 
     private Map<String, Authentication> authentications;
@@ -82,6 +88,21 @@ public class ApiClient {
      */
     public ApiClient() {
         init();
+        initHttpClient();
+
+        // Setup authentications (key: authentication name, value: authentication).
+        authentications.put("oauth2", new OAuth());
+        // Prevent the authentications from being modified.
+        authentications = Collections.unmodifiableMap(authentications);
+    }
+
+    /*
+     * Basic constructor with custom OkHttpClient
+     */
+    public ApiClient(OkHttpClient client) {
+        init();
+
+        httpClient = client;
 
         // Setup authentications (key: authentication name, value: authentication).
         authentications.put("oauth2", new OAuth());
@@ -107,25 +128,55 @@ public class ApiClient {
      * Constructor for ApiClient to support access token retry on 401/403 configured with client ID, secret, and additional parameters
      */
     public ApiClient(String clientId, String clientSecret, Map<String, String> parameters) {
-        init();
+        this(null, clientId, clientSecret, parameters);
+    }
 
-        RetryingOAuth retryingOAuth = new RetryingOAuth("", clientId, OAuthFlow.implicit, clientSecret, parameters);
+    /*
+     * Constructor for ApiClient to support access token retry on 401/403 configured with base path, client ID, secret, and additional parameters
+     */
+    public ApiClient(String basePath, String clientId, String clientSecret, Map<String, String> parameters) {
+        init();
+        if (basePath != null) {
+            this.basePath = basePath;
+        }
+
+        String tokenUrl = "";
+        if (!"".equals(tokenUrl) && !URI.create(tokenUrl).isAbsolute()) {
+            URI uri = URI.create(getBasePath());
+            tokenUrl = uri.getScheme() + ":" +
+                (uri.getAuthority() != null ? "//" + uri.getAuthority() : "") +
+                tokenUrl;
+            if (!URI.create(tokenUrl).isAbsolute()) {
+                throw new IllegalArgumentException("OAuth2 token URL must be an absolute URL");
+            }
+        }
+        RetryingOAuth retryingOAuth = new RetryingOAuth(tokenUrl, clientId, OAuthFlow.implicit, clientSecret, parameters);
         authentications.put(
                 "oauth2",
                 retryingOAuth
         );
-        httpClient.interceptors().add(retryingOAuth);
+        initHttpClient(Collections.<Interceptor>singletonList(retryingOAuth));
+        // Setup authentications (key: authentication name, value: authentication).
 
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
     }
 
-    private void init() {
+    private void initHttpClient() {
+        initHttpClient(Collections.<Interceptor>emptyList());
+    }
+
+    private void initHttpClient(List<Interceptor> interceptors) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.addNetworkInterceptor(getProgressInterceptor());
+        for (Interceptor interceptor: interceptors) {
+            builder.addInterceptor(interceptor);
+        }
+
         httpClient = builder.build();
+    }
 
-
+    private void init() {
         verifyingSsl = true;
 
         json = new JSON();
@@ -148,7 +199,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g https://fbn-prd.lusid.com/api
+     * @param basePath Base path of the URL (e.g http://local-unit-test-server.lusid.com:32886
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {
@@ -166,24 +217,14 @@ public class ApiClient {
     }
 
     /**
-     * Set HTTP client
+     * Set HTTP client, which must never be null.
      *
      * @param newHttpClient An instance of OkHttpClient
      * @return Api Client
+     * @throws NullPointerException when newHttpClient is null
      */
     public ApiClient setHttpClient(OkHttpClient newHttpClient) {
-        if(!httpClient.equals(newHttpClient)) {
-            OkHttpClient.Builder builder = newHttpClient.newBuilder();
-            Iterator<Interceptor> networkInterceptorIterator = httpClient.networkInterceptors().iterator();
-            while(networkInterceptorIterator.hasNext()) {
-                builder.addNetworkInterceptor(networkInterceptorIterator.next());
-            }
-            Iterator<Interceptor> interceptorIterator = httpClient.interceptors().iterator();
-            while(interceptorIterator.hasNext()) {
-                builder.addInterceptor(interceptorIterator.next());
-            }
-            this.httpClient = builder.build();
-        }
+        this.httpClient = Objects.requireNonNull(newHttpClient, "HttpClient must not be null!");
         return this;
     }
 
@@ -317,6 +358,7 @@ public class ApiClient {
         return authentications.get(authName);
     }
 
+
     /**
      * Helper method to set username for the first HTTP basic authentication.
      *
@@ -416,6 +458,18 @@ public class ApiClient {
     }
 
     /**
+     * Add a default cookie.
+     *
+     * @param key The cookie's key
+     * @param value The cookie's value
+     * @return ApiClient
+     */
+    public ApiClient addDefaultCookie(String key, String value) {
+        defaultCookieMap.put(key, value);
+        return this;
+    }
+
+    /**
      * Check that whether debugging is enabled for this API client.
      *
      * @return True if debugging is enabled, false otherwise.
@@ -437,7 +491,9 @@ public class ApiClient {
                 loggingInterceptor.setLevel(Level.BODY);
                 httpClient = httpClient.newBuilder().addInterceptor(loggingInterceptor).build();
             } else {
-                httpClient.interceptors().remove(loggingInterceptor);
+                final OkHttpClient.Builder builder = httpClient.newBuilder();
+                builder.interceptors().remove(loggingInterceptor);
+                httpClient = builder.build();
                 loggingInterceptor = null;
             }
         }
@@ -450,7 +506,7 @@ public class ApiClient {
      * with file response. The default value is <code>null</code>, i.e. using
      * the system's default tempopary folder.
      *
-     * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/io/File.html#createTempFile">createTempFile</a>
+     * @see <a href="https://docs.oracle.com/javase/7/docs/api/java/nio/file/Files.html#createTempFile(java.lang.String,%20java.lang.String,%20java.nio.file.attribute.FileAttribute...)">createTempFile</a>
      * @return Temporary folder path
      */
     public String getTempFolderPath() {
@@ -838,10 +894,10 @@ public class ApiClient {
     public RequestBody serialize(Object obj, String contentType) throws ApiException {
         if (obj instanceof byte[]) {
             // Binary (byte array) body parameter support.
-            return RequestBody.create(MediaType.parse(contentType), (byte[]) obj);
+            return RequestBody.create((byte[]) obj, MediaType.parse(contentType));
         } else if (obj instanceof File) {
             // File body parameter support.
-            return RequestBody.create(MediaType.parse(contentType), (File) obj);
+            return RequestBody.create((File) obj, MediaType.parse(contentType));
         } else if (isJsonMime(contentType)) {
             String content;
             if (obj != null) {
@@ -849,7 +905,7 @@ public class ApiClient {
             } else {
                 content = null;
             }
-            return RequestBody.create(MediaType.parse(contentType), content);
+            return RequestBody.create(content, MediaType.parse(contentType));
         } else {
             throw new ApiException("Content type \"" + contentType + "\" is not supported");
         }
@@ -906,15 +962,15 @@ public class ApiClient {
                 prefix = filename.substring(0, pos) + "-";
                 suffix = filename.substring(pos);
             }
-            // File.createTempFile requires the prefix to be at least three characters long
+            // Files.createTempFile requires the prefix to be at least three characters long
             if (prefix.length() < 3)
                 prefix = "download-";
         }
 
         if (tempFolderPath == null)
-            return File.createTempFile(prefix, suffix);
+            return Files.createTempFile(prefix, suffix).toFile();
         else
-            return File.createTempFile(prefix, suffix, new File(tempFolderPath));
+            return Files.createTempFile(Paths.get(tempFolderPath), prefix, suffix).toFile();
     }
 
     /**
@@ -986,6 +1042,9 @@ public class ApiClient {
                 } catch (ApiException e) {
                     callback.onFailure(e, response.code(), response.headers().toMultimap());
                     return;
+                } catch (Exception e) {
+                    callback.onFailure(new ApiException(e), response.code(), response.headers().toMultimap());
+                    return;
                 }
                 callback.onSuccess(result, response.code(), response.headers().toMultimap());
             }
@@ -1040,14 +1099,15 @@ public class ApiClient {
      * @param collectionQueryParams The collection query parameters
      * @param body The request body object
      * @param headerParams The header parameters
+     * @param cookieParams The cookie parameters
      * @param formParams The form parameters
      * @param authNames The authentications to apply
      * @param callback Callback for upload/download progress
      * @return The HTTP call
      * @throws ApiException If fail to serialize the request body object
      */
-    public Call buildCall(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, ApiCallback callback) throws ApiException {
-        Request request = buildRequest(path, method, queryParams, collectionQueryParams, body, headerParams, formParams, authNames, callback);
+    public Call buildCall(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, String> cookieParams, Map<String, Object> formParams, String[] authNames, ApiCallback callback) throws ApiException {
+        Request request = buildRequest(path, method, queryParams, collectionQueryParams, body, headerParams, cookieParams, formParams, authNames, callback);
 
         return httpClient.newCall(request);
     }
@@ -1061,18 +1121,20 @@ public class ApiClient {
      * @param collectionQueryParams The collection query parameters
      * @param body The request body object
      * @param headerParams The header parameters
+     * @param cookieParams The cookie parameters
      * @param formParams The form parameters
      * @param authNames The authentications to apply
      * @param callback Callback for upload/download progress
      * @return The HTTP request
      * @throws ApiException If fail to serialize the request body object
      */
-    public Request buildRequest(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, ApiCallback callback) throws ApiException {
-        updateParamsForAuth(authNames, queryParams, headerParams);
+    public Request buildRequest(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, String> cookieParams, Map<String, Object> formParams, String[] authNames, ApiCallback callback) throws ApiException {
+        updateParamsForAuth(authNames, queryParams, headerParams, cookieParams);
 
         final String url = buildUrl(path, queryParams, collectionQueryParams);
         final Request.Builder reqBuilder = new Request.Builder().url(url);
         processHeaderParams(headerParams, reqBuilder);
+        processCookieParams(cookieParams, reqBuilder);
 
         String contentType = (String) headerParams.get("Content-Type");
         // ensuring a default content type
@@ -1093,7 +1155,7 @@ public class ApiClient {
                 reqBody = null;
             } else {
                 // use an empty request body (for POST, PUT and PATCH)
-                reqBody = RequestBody.create(MediaType.parse(contentType), "");
+                reqBody = RequestBody.create("", MediaType.parse(contentType));
             }
         } else {
             reqBody = serialize(body, contentType);
@@ -1167,8 +1229,8 @@ public class ApiClient {
     /**
      * Set header parameters to the request builder, including default headers.
      *
-     * @param headerParams Header parameters in the ofrm of Map
-     * @param reqBuilder Reqeust.Builder
+     * @param headerParams Header parameters in the form of Map
+     * @param reqBuilder Request.Builder
      */
     public void processHeaderParams(Map<String, String> headerParams, Request.Builder reqBuilder) {
         for (Entry<String, String> param : headerParams.entrySet()) {
@@ -1182,19 +1244,37 @@ public class ApiClient {
     }
 
     /**
+     * Set cookie parameters to the request builder, including default cookies.
+     *
+     * @param cookieParams Cookie parameters in the form of Map
+     * @param reqBuilder Request.Builder
+     */
+    public void processCookieParams(Map<String, String> cookieParams, Request.Builder reqBuilder) {
+        for (Entry<String, String> param : cookieParams.entrySet()) {
+            reqBuilder.addHeader("Cookie", String.format("%s=%s", param.getKey(), param.getValue()));
+        }
+        for (Entry<String, String> param : defaultCookieMap.entrySet()) {
+            if (!cookieParams.containsKey(param.getKey())) {
+                reqBuilder.addHeader("Cookie", String.format("%s=%s", param.getKey(), param.getValue()));
+            }
+        }
+    }
+
+    /**
      * Update query and header parameters based on authentication settings.
      *
      * @param authNames The authentications to apply
      * @param queryParams List of query parameters
      * @param headerParams Map of header parameters
+     * @param cookieParams Map of cookie parameters
      */
-    public void updateParamsForAuth(String[] authNames, List<Pair> queryParams, Map<String, String> headerParams) {
+    public void updateParamsForAuth(String[] authNames, List<Pair> queryParams, Map<String, String> headerParams, Map<String, String> cookieParams) {
         for (String authName : authNames) {
             Authentication auth = authentications.get(authName);
             if (auth == null) {
                 throw new RuntimeException("Authentication undefined: " + authName);
             }
-            auth.applyToParams(queryParams, headerParams);
+            auth.applyToParams(queryParams, headerParams, cookieParams);
         }
     }
 
@@ -1226,10 +1306,10 @@ public class ApiClient {
                 File file = (File) param.getValue();
                 Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey() + "\"; filename=\"" + file.getName() + "\"");
                 MediaType mediaType = MediaType.parse(guessContentTypeFromFile(file));
-                mpBuilder.addPart(partHeaders, RequestBody.create(mediaType, file));
+                mpBuilder.addPart(partHeaders, RequestBody.create(file, mediaType));
             } else {
                 Headers partHeaders = Headers.of("Content-Disposition", "form-data; name=\"" + param.getKey() + "\"");
-                mpBuilder.addPart(partHeaders, RequestBody.create(null, parameterToString(param.getValue())));
+                mpBuilder.addPart(partHeaders, RequestBody.create(parameterToString(param.getValue()), null));
             }
         }
         return mpBuilder.build();
@@ -1277,8 +1357,8 @@ public class ApiClient {
      */
     private void applySslSettings() {
         try {
-            TrustManager[] trustManagers = null;
-            HostnameVerifier hostnameVerifier = null;
+            TrustManager[] trustManagers;
+            HostnameVerifier hostnameVerifier;
             if (!verifyingSsl) {
                 trustManagers = new TrustManager[]{
                         new X509TrustManager() {
@@ -1296,40 +1376,42 @@ public class ApiClient {
                             }
                         }
                 };
-                SSLContext sslContext = SSLContext.getInstance("TLS");
                 hostnameVerifier = new HostnameVerifier() {
                     @Override
                     public boolean verify(String hostname, SSLSession session) {
                         return true;
                     }
                 };
-            } else if (sslCaCert != null) {
-                char[] password = null; // Any password will work.
-                CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
-                Collection<? extends Certificate> certificates = certificateFactory.generateCertificates(sslCaCert);
-                if (certificates.isEmpty()) {
-                    throw new IllegalArgumentException("expected non-empty set of trusted certificates");
-                }
-                KeyStore caKeyStore = newEmptyKeyStore(password);
-                int index = 0;
-                for (Certificate certificate : certificates) {
-                    String certificateAlias = "ca" + Integer.toString(index++);
-                    caKeyStore.setCertificateEntry(certificateAlias, certificate);
-                }
-                TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
-                trustManagerFactory.init(caKeyStore);
-                trustManagers = trustManagerFactory.getTrustManagers();
-            }
-
-            if (keyManagers != null || trustManagers != null) {
-                SSLContext sslContext = SSLContext.getInstance("TLS");
-                sslContext.init(keyManagers, trustManagers, new SecureRandom());
-                httpClient = httpClient.newBuilder().sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustManagers[0]).build();
             } else {
-                httpClient = httpClient.newBuilder().sslSocketFactory(null, (X509TrustManager) trustManagers[0]).build();
+                TrustManagerFactory trustManagerFactory = TrustManagerFactory.getInstance(TrustManagerFactory.getDefaultAlgorithm());
+
+                if (sslCaCert == null) {
+                    trustManagerFactory.init((KeyStore) null);
+                } else {
+                    char[] password = null; // Any password will work.
+                    CertificateFactory certificateFactory = CertificateFactory.getInstance("X.509");
+                    Collection<? extends Certificate> certificates = certificateFactory.generateCertificates(sslCaCert);
+                    if (certificates.isEmpty()) {
+                        throw new IllegalArgumentException("expected non-empty set of trusted certificates");
+                    }
+                    KeyStore caKeyStore = newEmptyKeyStore(password);
+                    int index = 0;
+                    for (Certificate certificate : certificates) {
+                        String certificateAlias = "ca" + Integer.toString(index++);
+                        caKeyStore.setCertificateEntry(certificateAlias, certificate);
+                    }
+                    trustManagerFactory.init(caKeyStore);
+                }
+                trustManagers = trustManagerFactory.getTrustManagers();
+                hostnameVerifier = OkHostnameVerifier.INSTANCE;
             }
 
-            httpClient = httpClient.newBuilder().hostnameVerifier(hostnameVerifier).build();
+            SSLContext sslContext = SSLContext.getInstance("TLS");
+            sslContext.init(keyManagers, trustManagers, new SecureRandom());
+            httpClient = httpClient.newBuilder()
+                            .sslSocketFactory(sslContext.getSocketFactory(), (X509TrustManager) trustManagers[0])
+                            .hostnameVerifier(hostnameVerifier)
+                            .build();
         } catch (GeneralSecurityException e) {
             throw new RuntimeException(e);
         }

@@ -2,6 +2,8 @@
 
 # OrderSetRequest
 
+A request to create or update multiple Orders.
+
 ## Properties
 
 Name | Type | Description | Notes

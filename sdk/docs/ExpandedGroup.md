@@ -2,11 +2,12 @@
 
 # ExpandedGroup
 
+
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**href** | [**URI**](URI.md) | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional]
+**href** | **URI** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional]
 **id** | [**ResourceId**](ResourceId.md) |  | 
 **displayName** | **String** | The name of the portfolio group. | 
 **description** | **String** | The long form description of the portfolio group. |  [optional]

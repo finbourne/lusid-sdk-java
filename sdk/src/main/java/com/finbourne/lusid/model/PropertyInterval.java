@@ -29,26 +29,27 @@ import java.io.IOException;
 /**
  * PropertyInterval
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PropertyInterval {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
-  private PropertyValue value = null;
+  private PropertyValue value;
 
   public static final String SERIALIZED_NAME_EFFECTIVE_RANGE = "effectiveRange";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_RANGE)
-  private DateRange effectiveRange = null;
+  private DateRange effectiveRange;
 
   public static final String SERIALIZED_NAME_AS_AT_RANGE = "asAtRange";
   @SerializedName(SERIALIZED_NAME_AS_AT_RANGE)
-  private DateRange asAtRange = null;
+  private DateRange asAtRange;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
+
   public PropertyInterval value(PropertyValue value) {
-    this.value = value;
+    this.value = value; 
     return this;
   }
 
@@ -65,8 +66,9 @@ public class PropertyInterval {
     this.value = value;
   }
 
+
   public PropertyInterval effectiveRange(DateRange effectiveRange) {
-    this.effectiveRange = effectiveRange;
+    this.effectiveRange = effectiveRange; 
     return this;
   }
 
@@ -83,8 +85,9 @@ public class PropertyInterval {
     this.effectiveRange = effectiveRange;
   }
 
+
   public PropertyInterval asAtRange(DateRange asAtRange) {
-    this.asAtRange = asAtRange;
+    this.asAtRange = asAtRange; 
     return this;
   }
 
@@ -101,8 +104,9 @@ public class PropertyInterval {
     this.asAtRange = asAtRange;
   }
 
+
   public PropertyInterval status(String status) {
-    this.status = status;
+    this.status = status; 
     return this;
   }
 
@@ -121,7 +125,7 @@ public class PropertyInterval {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -133,9 +137,8 @@ public class PropertyInterval {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -153,7 +156,7 @@ public class PropertyInterval {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

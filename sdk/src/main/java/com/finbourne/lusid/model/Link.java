@@ -29,7 +29,7 @@ import java.net.URI;
  * Link class.
  */
 @ApiModel(description = "Link class.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Link {
   public static final String SERIALIZED_NAME_RELATION = "relation";
   @SerializedName(SERIALIZED_NAME_RELATION)
@@ -47,8 +47,9 @@ public class Link {
   @SerializedName(SERIALIZED_NAME_METHOD)
   private String method;
 
+
   public Link relation(String relation) {
-    this.relation = relation;
+    this.relation = relation; 
     return this;
   }
 
@@ -65,8 +66,9 @@ public class Link {
     this.relation = relation;
   }
 
+
   public Link href(URI href) {
-    this.href = href;
+    this.href = href; 
     return this;
   }
 
@@ -83,8 +85,9 @@ public class Link {
     this.href = href;
   }
 
+
   public Link description(String description) {
-    this.description = description;
+    this.description = description; 
     return this;
   }
 
@@ -101,8 +104,9 @@ public class Link {
     this.description = description;
   }
 
+
   public Link method(String method) {
-    this.method = method;
+    this.method = method; 
     return this;
   }
 
@@ -121,7 +125,7 @@ public class Link {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -133,9 +137,8 @@ public class Link {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -153,7 +156,7 @@ public class Link {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

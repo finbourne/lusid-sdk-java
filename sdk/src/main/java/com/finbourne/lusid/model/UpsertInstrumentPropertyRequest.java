@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * UpsertInstrumentPropertyRequest
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpsertInstrumentPropertyRequest {
   public static final String SERIALIZED_NAME_IDENTIFIER_TYPE = "identifierType";
   @SerializedName(SERIALIZED_NAME_IDENTIFIER_TYPE)
@@ -42,10 +42,11 @@ public class UpsertInstrumentPropertyRequest {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private List<Property> properties = new ArrayList<>();
+  private List<Property> properties = null;
+
 
   public UpsertInstrumentPropertyRequest identifierType(String identifierType) {
-    this.identifierType = identifierType;
+    this.identifierType = identifierType; 
     return this;
   }
 
@@ -62,8 +63,9 @@ public class UpsertInstrumentPropertyRequest {
     this.identifierType = identifierType;
   }
 
+
   public UpsertInstrumentPropertyRequest identifier(String identifier) {
-    this.identifier = identifier;
+    this.identifier = identifier; 
     return this;
   }
 
@@ -80,12 +82,14 @@ public class UpsertInstrumentPropertyRequest {
     this.identifier = identifier;
   }
 
+
   public UpsertInstrumentPropertyRequest properties(List<Property> properties) {
-    this.properties = properties;
+    this.properties = properties; 
     return this;
   }
 
   public UpsertInstrumentPropertyRequest addPropertiesItem(Property propertiesItem) {
+   
     if (this.properties == null) {
       this.properties = new ArrayList<>();
     }
@@ -108,7 +112,7 @@ public class UpsertInstrumentPropertyRequest {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -120,9 +124,8 @@ public class UpsertInstrumentPropertyRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -139,7 +142,7 @@ public class UpsertInstrumentPropertyRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

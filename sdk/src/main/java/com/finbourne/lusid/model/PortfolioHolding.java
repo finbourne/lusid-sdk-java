@@ -35,7 +35,7 @@ import java.util.Map;
  * A list of holdings.
  */
 @ApiModel(description = "A list of holdings.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PortfolioHolding {
   public static final String SERIALIZED_NAME_INSTRUMENT_UID = "instrumentUid";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_UID)
@@ -43,11 +43,11 @@ public class PortfolioHolding {
 
   public static final String SERIALIZED_NAME_SUB_HOLDING_KEYS = "subHoldingKeys";
   @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEYS)
-  private Map<String, PerpetualProperty> subHoldingKeys = new HashMap<>();
+  private Map<String, PerpetualProperty> subHoldingKeys = null;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, Property> properties = new HashMap<>();
+  private Map<String, Property> properties = null;
 
   public static final String SERIALIZED_NAME_HOLDING_TYPE = "holdingType";
   @SerializedName(SERIALIZED_NAME_HOLDING_TYPE)
@@ -63,22 +63,23 @@ public class PortfolioHolding {
 
   public static final String SERIALIZED_NAME_COST = "cost";
   @SerializedName(SERIALIZED_NAME_COST)
-  private CurrencyAndAmount cost = null;
+  private CurrencyAndAmount cost;
 
   public static final String SERIALIZED_NAME_COST_PORTFOLIO_CCY = "costPortfolioCcy";
   @SerializedName(SERIALIZED_NAME_COST_PORTFOLIO_CCY)
-  private CurrencyAndAmount costPortfolioCcy = null;
+  private CurrencyAndAmount costPortfolioCcy;
 
   public static final String SERIALIZED_NAME_TRANSACTION = "transaction";
   @SerializedName(SERIALIZED_NAME_TRANSACTION)
-  private Transaction transaction = null;
+  private Transaction transaction;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
+
   public PortfolioHolding instrumentUid(String instrumentUid) {
-    this.instrumentUid = instrumentUid;
+    this.instrumentUid = instrumentUid; 
     return this;
   }
 
@@ -95,8 +96,9 @@ public class PortfolioHolding {
     this.instrumentUid = instrumentUid;
   }
 
+
   public PortfolioHolding subHoldingKeys(Map<String, PerpetualProperty> subHoldingKeys) {
-    this.subHoldingKeys = subHoldingKeys;
+    this.subHoldingKeys = subHoldingKeys; 
     return this;
   }
 
@@ -121,8 +123,9 @@ public class PortfolioHolding {
     this.subHoldingKeys = subHoldingKeys;
   }
 
+
   public PortfolioHolding properties(Map<String, Property> properties) {
-    this.properties = properties;
+    this.properties = properties; 
     return this;
   }
 
@@ -147,8 +150,9 @@ public class PortfolioHolding {
     this.properties = properties;
   }
 
+
   public PortfolioHolding holdingType(String holdingType) {
-    this.holdingType = holdingType;
+    this.holdingType = holdingType; 
     return this;
   }
 
@@ -165,8 +169,9 @@ public class PortfolioHolding {
     this.holdingType = holdingType;
   }
 
+
   public PortfolioHolding units(Double units) {
-    this.units = units;
+    this.units = units; 
     return this;
   }
 
@@ -183,8 +188,9 @@ public class PortfolioHolding {
     this.units = units;
   }
 
+
   public PortfolioHolding settledUnits(Double settledUnits) {
-    this.settledUnits = settledUnits;
+    this.settledUnits = settledUnits; 
     return this;
   }
 
@@ -201,8 +207,9 @@ public class PortfolioHolding {
     this.settledUnits = settledUnits;
   }
 
+
   public PortfolioHolding cost(CurrencyAndAmount cost) {
-    this.cost = cost;
+    this.cost = cost; 
     return this;
   }
 
@@ -219,8 +226,9 @@ public class PortfolioHolding {
     this.cost = cost;
   }
 
+
   public PortfolioHolding costPortfolioCcy(CurrencyAndAmount costPortfolioCcy) {
-    this.costPortfolioCcy = costPortfolioCcy;
+    this.costPortfolioCcy = costPortfolioCcy; 
     return this;
   }
 
@@ -237,8 +245,9 @@ public class PortfolioHolding {
     this.costPortfolioCcy = costPortfolioCcy;
   }
 
+
   public PortfolioHolding transaction(Transaction transaction) {
-    this.transaction = transaction;
+    this.transaction = transaction; 
     return this;
   }
 
@@ -255,8 +264,9 @@ public class PortfolioHolding {
     this.transaction = transaction;
   }
 
+
   public PortfolioHolding currency(String currency) {
-    this.currency = currency;
+    this.currency = currency; 
     return this;
   }
 
@@ -275,7 +285,7 @@ public class PortfolioHolding {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -287,9 +297,8 @@ public class PortfolioHolding {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -313,7 +322,7 @@ public class PortfolioHolding {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

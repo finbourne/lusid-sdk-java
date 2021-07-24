@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * TransactionConfigurationTypeAlias
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TransactionConfigurationTypeAlias {
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -98,7 +98,7 @@ public class TransactionConfigurationTypeAlias {
 
       @Override
       public TransactionRolesEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return TransactionRolesEnum.fromValue(value);
       }
     }
@@ -108,8 +108,9 @@ public class TransactionConfigurationTypeAlias {
   @SerializedName(SERIALIZED_NAME_TRANSACTION_ROLES)
   private TransactionRolesEnum transactionRoles;
 
+
   public TransactionConfigurationTypeAlias type(String type) {
-    this.type = type;
+    this.type = type; 
     return this;
   }
 
@@ -126,8 +127,9 @@ public class TransactionConfigurationTypeAlias {
     this.type = type;
   }
 
+
   public TransactionConfigurationTypeAlias description(String description) {
-    this.description = description;
+    this.description = description; 
     return this;
   }
 
@@ -144,8 +146,9 @@ public class TransactionConfigurationTypeAlias {
     this.description = description;
   }
 
+
   public TransactionConfigurationTypeAlias transactionClass(String transactionClass) {
-    this.transactionClass = transactionClass;
+    this.transactionClass = transactionClass; 
     return this;
   }
 
@@ -162,8 +165,9 @@ public class TransactionConfigurationTypeAlias {
     this.transactionClass = transactionClass;
   }
 
+
   public TransactionConfigurationTypeAlias transactionGroup(String transactionGroup) {
-    this.transactionGroup = transactionGroup;
+    this.transactionGroup = transactionGroup; 
     return this;
   }
 
@@ -180,8 +184,9 @@ public class TransactionConfigurationTypeAlias {
     this.transactionGroup = transactionGroup;
   }
 
+
   public TransactionConfigurationTypeAlias transactionRoles(TransactionRolesEnum transactionRoles) {
-    this.transactionRoles = transactionRoles;
+    this.transactionRoles = transactionRoles; 
     return this;
   }
 
@@ -200,7 +205,7 @@ public class TransactionConfigurationTypeAlias {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -212,9 +217,8 @@ public class TransactionConfigurationTypeAlias {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -233,7 +237,7 @@ public class TransactionConfigurationTypeAlias {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

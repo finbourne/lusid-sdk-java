@@ -2,6 +2,8 @@
 
 # AccessControlledResource
 
+A resource to which access can be controlled
+
 ## Properties
 
 Name | Type | Description | Notes

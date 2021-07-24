@@ -44,7 +44,6 @@ import java.util.Map;
 
 public class AllocationsApi {
     private ApiClient localVarApiClient;
-
     public AllocationsApi() {
         this(Configuration.getDefaultApiClient());
     }
@@ -77,7 +76,7 @@ public class AllocationsApi {
      </table>
      */
     public okhttp3.Call deleteAllocationCall(String scope, String code, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/api/allocations/{scope}/{code}"
@@ -87,7 +86,9 @@ public class AllocationsApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -105,7 +106,7 @@ public class AllocationsApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3313");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -185,7 +186,6 @@ public class AllocationsApi {
      </table>
      */
     public okhttp3.Call deleteAllocationAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
-
         okhttp3.Call localVarCall = deleteAllocationValidateBeforeCall(scope, code, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -209,7 +209,7 @@ public class AllocationsApi {
      </table>
      */
     public okhttp3.Call getAllocationCall(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/api/allocations/{scope}/{code}"
@@ -218,6 +218,10 @@ public class AllocationsApi {
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (asAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
@@ -226,8 +230,6 @@ public class AllocationsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -245,7 +247,7 @@ public class AllocationsApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3313");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -331,7 +333,6 @@ public class AllocationsApi {
      </table>
      */
     public okhttp3.Call getAllocationAsync(String scope, String code, OffsetDateTime asAt, List<String> propertyKeys, final ApiCallback<Allocation> _callback) throws ApiException {
-
         okhttp3.Call localVarCall = getAllocationValidateBeforeCall(scope, code, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<Allocation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -344,7 +345,7 @@ public class AllocationsApi {
      * @param sortBy Allocation the results by these fields. Use use the &#39;-&#39; sign to denote descending allocation e.g. -MyFieldName. (optional)
      * @param start When paginating, skip this number of results. (optional)
      * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional, default to &quot;&quot;)
+     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional, default to )
      * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto each allocation.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -358,13 +359,17 @@ public class AllocationsApi {
      </table>
      */
     public okhttp3.Call listAllocationsCall(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = new Object();
+        Object localVarPostBody = null;
 
         // create path and map variables
         String localVarPath = "/api/allocations";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         if (asAt != null) {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
         }
@@ -393,8 +398,6 @@ public class AllocationsApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "propertyKeys", propertyKeys));
         }
 
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -412,7 +415,7 @@ public class AllocationsApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3313");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -432,7 +435,7 @@ public class AllocationsApi {
      * @param sortBy Allocation the results by these fields. Use use the &#39;-&#39; sign to denote descending allocation e.g. -MyFieldName. (optional)
      * @param start When paginating, skip this number of results. (optional)
      * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional, default to &quot;&quot;)
+     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional, default to )
      * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto each allocation.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. (optional)
      * @return PagedResourceListOfAllocation
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -457,7 +460,7 @@ public class AllocationsApi {
      * @param sortBy Allocation the results by these fields. Use use the &#39;-&#39; sign to denote descending allocation e.g. -MyFieldName. (optional)
      * @param start When paginating, skip this number of results. (optional)
      * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional, default to &quot;&quot;)
+     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional, default to )
      * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto each allocation.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. (optional)
      * @return ApiResponse&lt;PagedResourceListOfAllocation&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
@@ -483,7 +486,7 @@ public class AllocationsApi {
      * @param sortBy Allocation the results by these fields. Use use the &#39;-&#39; sign to denote descending allocation e.g. -MyFieldName. (optional)
      * @param start When paginating, skip this number of results. (optional)
      * @param limit When paginating, limit the number of returned results to this many. (optional)
-     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional, default to &quot;&quot;)
+     * @param filter Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. (optional, default to )
      * @param propertyKeys A list of property keys from the \&quot;Allocations\&quot; domain to decorate onto each allocation.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Allocations/system/Name\&quot;. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -497,7 +500,6 @@ public class AllocationsApi {
      </table>
      */
     public okhttp3.Call listAllocationsAsync(OffsetDateTime asAt, String page, List<String> sortBy, Integer start, Integer limit, String filter, List<String> propertyKeys, final ApiCallback<PagedResourceListOfAllocation> _callback) throws ApiException {
-
         okhttp3.Call localVarCall = listAllocationsValidateBeforeCall(asAt, page, sortBy, start, limit, filter, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfAllocation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
@@ -526,7 +528,9 @@ public class AllocationsApi {
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
         final String[] localVarAccepts = {
             "text/plain", "application/json", "text/json"
         };
@@ -544,7 +548,7 @@ public class AllocationsApi {
         localVarHeaderParams.put("X-LUSID-SDK-Version", "0.11.3313");
 
         String[] localVarAuthNames = new String[] { "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
@@ -611,7 +615,6 @@ public class AllocationsApi {
      </table>
      */
     public okhttp3.Call upsertAllocationsAsync(AllocationSetRequest allocationSetRequest, final ApiCallback<ResourceListOfAllocation> _callback) throws ApiException {
-
         okhttp3.Call localVarCall = upsertAllocationsValidateBeforeCall(allocationSetRequest, _callback);
         Type localVarReturnType = new TypeToken<ResourceListOfAllocation>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);

@@ -33,11 +33,11 @@ import java.util.List;
 /**
  * VersionedResourceListOfOutputTransaction
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class VersionedResourceListOfOutputTransaction {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
@@ -57,10 +57,11 @@ public class VersionedResourceListOfOutputTransaction {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public VersionedResourceListOfOutputTransaction version(Version version) {
-    this.version = version;
+    this.version = version; 
     return this;
   }
 
@@ -77,12 +78,14 @@ public class VersionedResourceListOfOutputTransaction {
     this.version = version;
   }
 
+
   public VersionedResourceListOfOutputTransaction values(List<OutputTransaction> values) {
-    this.values = values;
+    this.values = values; 
     return this;
   }
 
   public VersionedResourceListOfOutputTransaction addValuesItem(OutputTransaction valuesItem) {
+   
     this.values.add(valuesItem);
     return this;
   }
@@ -100,8 +103,9 @@ public class VersionedResourceListOfOutputTransaction {
     this.values = values;
   }
 
+
   public VersionedResourceListOfOutputTransaction href(URI href) {
-    this.href = href;
+    this.href = href; 
     return this;
   }
 
@@ -118,8 +122,9 @@ public class VersionedResourceListOfOutputTransaction {
     this.href = href;
   }
 
+
   public VersionedResourceListOfOutputTransaction nextPage(String nextPage) {
-    this.nextPage = nextPage;
+    this.nextPage = nextPage; 
     return this;
   }
 
@@ -136,8 +141,9 @@ public class VersionedResourceListOfOutputTransaction {
     this.nextPage = nextPage;
   }
 
+
   public VersionedResourceListOfOutputTransaction previousPage(String previousPage) {
-    this.previousPage = previousPage;
+    this.previousPage = previousPage; 
     return this;
   }
 
@@ -154,12 +160,14 @@ public class VersionedResourceListOfOutputTransaction {
     this.previousPage = previousPage;
   }
 
+
   public VersionedResourceListOfOutputTransaction links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public VersionedResourceListOfOutputTransaction addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -182,7 +190,7 @@ public class VersionedResourceListOfOutputTransaction {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -194,9 +202,8 @@ public class VersionedResourceListOfOutputTransaction {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -216,7 +223,7 @@ public class VersionedResourceListOfOutputTransaction {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

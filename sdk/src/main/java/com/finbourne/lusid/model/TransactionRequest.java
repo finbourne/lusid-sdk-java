@@ -33,7 +33,7 @@ import java.util.Map;
 /**
  * TransactionRequest
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TransactionRequest {
   public static final String SERIALIZED_NAME_TRANSACTION_ID = "transactionId";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_ID)
@@ -61,11 +61,11 @@ public class TransactionRequest {
 
   public static final String SERIALIZED_NAME_TRANSACTION_PRICE = "transactionPrice";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_PRICE)
-  private TransactionPrice transactionPrice = null;
+  private TransactionPrice transactionPrice;
 
   public static final String SERIALIZED_NAME_TOTAL_CONSIDERATION = "totalConsideration";
   @SerializedName(SERIALIZED_NAME_TOTAL_CONSIDERATION)
-  private CurrencyAndAmount totalConsideration = null;
+  private CurrencyAndAmount totalConsideration;
 
   public static final String SERIALIZED_NAME_EXCHANGE_RATE = "exchangeRate";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_RATE)
@@ -77,7 +77,7 @@ public class TransactionRequest {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = new HashMap<>();
+  private Map<String, PerpetualProperty> properties = null;
 
   public static final String SERIALIZED_NAME_COUNTERPARTY_ID = "counterpartyId";
   @SerializedName(SERIALIZED_NAME_COUNTERPARTY_ID)
@@ -87,8 +87,9 @@ public class TransactionRequest {
   @SerializedName(SERIALIZED_NAME_SOURCE)
   private String source;
 
+
   public TransactionRequest transactionId(String transactionId) {
-    this.transactionId = transactionId;
+    this.transactionId = transactionId; 
     return this;
   }
 
@@ -105,8 +106,9 @@ public class TransactionRequest {
     this.transactionId = transactionId;
   }
 
+
   public TransactionRequest type(String type) {
-    this.type = type;
+    this.type = type; 
     return this;
   }
 
@@ -123,8 +125,9 @@ public class TransactionRequest {
     this.type = type;
   }
 
+
   public TransactionRequest instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
-    this.instrumentIdentifiers = instrumentIdentifiers;
+    this.instrumentIdentifiers = instrumentIdentifiers; 
     return this;
   }
 
@@ -146,8 +149,9 @@ public class TransactionRequest {
     this.instrumentIdentifiers = instrumentIdentifiers;
   }
 
+
   public TransactionRequest transactionDate(String transactionDate) {
-    this.transactionDate = transactionDate;
+    this.transactionDate = transactionDate; 
     return this;
   }
 
@@ -164,8 +168,9 @@ public class TransactionRequest {
     this.transactionDate = transactionDate;
   }
 
+
   public TransactionRequest settlementDate(String settlementDate) {
-    this.settlementDate = settlementDate;
+    this.settlementDate = settlementDate; 
     return this;
   }
 
@@ -182,8 +187,9 @@ public class TransactionRequest {
     this.settlementDate = settlementDate;
   }
 
+
   public TransactionRequest units(Double units) {
-    this.units = units;
+    this.units = units; 
     return this;
   }
 
@@ -200,8 +206,9 @@ public class TransactionRequest {
     this.units = units;
   }
 
+
   public TransactionRequest transactionPrice(TransactionPrice transactionPrice) {
-    this.transactionPrice = transactionPrice;
+    this.transactionPrice = transactionPrice; 
     return this;
   }
 
@@ -218,8 +225,9 @@ public class TransactionRequest {
     this.transactionPrice = transactionPrice;
   }
 
+
   public TransactionRequest totalConsideration(CurrencyAndAmount totalConsideration) {
-    this.totalConsideration = totalConsideration;
+    this.totalConsideration = totalConsideration; 
     return this;
   }
 
@@ -236,8 +244,9 @@ public class TransactionRequest {
     this.totalConsideration = totalConsideration;
   }
 
+
   public TransactionRequest exchangeRate(Double exchangeRate) {
-    this.exchangeRate = exchangeRate;
+    this.exchangeRate = exchangeRate; 
     return this;
   }
 
@@ -254,8 +263,9 @@ public class TransactionRequest {
     this.exchangeRate = exchangeRate;
   }
 
+
   public TransactionRequest transactionCurrency(String transactionCurrency) {
-    this.transactionCurrency = transactionCurrency;
+    this.transactionCurrency = transactionCurrency; 
     return this;
   }
 
@@ -272,8 +282,9 @@ public class TransactionRequest {
     this.transactionCurrency = transactionCurrency;
   }
 
+
   public TransactionRequest properties(Map<String, PerpetualProperty> properties) {
-    this.properties = properties;
+    this.properties = properties; 
     return this;
   }
 
@@ -298,8 +309,9 @@ public class TransactionRequest {
     this.properties = properties;
   }
 
+
   public TransactionRequest counterpartyId(String counterpartyId) {
-    this.counterpartyId = counterpartyId;
+    this.counterpartyId = counterpartyId; 
     return this;
   }
 
@@ -316,8 +328,9 @@ public class TransactionRequest {
     this.counterpartyId = counterpartyId;
   }
 
+
   public TransactionRequest source(String source) {
-    this.source = source;
+    this.source = source; 
     return this;
   }
 
@@ -336,7 +349,7 @@ public class TransactionRequest {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -348,9 +361,8 @@ public class TransactionRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -377,7 +389,7 @@ public class TransactionRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

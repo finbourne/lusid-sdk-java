@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * UpdatePortfolioRequest
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpdatePortfolioRequest {
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -37,8 +37,9 @@ public class UpdatePortfolioRequest {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+
   public UpdatePortfolioRequest displayName(String displayName) {
-    this.displayName = displayName;
+    this.displayName = displayName; 
     return this;
   }
 
@@ -55,8 +56,9 @@ public class UpdatePortfolioRequest {
     this.displayName = displayName;
   }
 
+
   public UpdatePortfolioRequest description(String description) {
-    this.description = description;
+    this.description = description; 
     return this;
   }
 
@@ -75,7 +77,7 @@ public class UpdatePortfolioRequest {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -87,9 +89,8 @@ public class UpdatePortfolioRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -105,7 +106,7 @@ public class UpdatePortfolioRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

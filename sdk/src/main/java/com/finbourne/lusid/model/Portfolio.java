@@ -38,7 +38,7 @@ import java.util.Map;
  * A list of portfolios.
  */
 @ApiModel(description = "A list of portfolios.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Portfolio {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -46,7 +46,7 @@ public class Portfolio {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private ResourceId id = null;
+  private ResourceId id;
 
   /**
    * The type of the portfolio. The available values are: Transaction, Reference, DerivedTransaction
@@ -91,7 +91,7 @@ public class Portfolio {
 
       @Override
       public TypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return TypeEnum.fromValue(value);
       }
     }
@@ -115,11 +115,11 @@ public class Portfolio {
 
   public static final String SERIALIZED_NAME_PARENT_PORTFOLIO_ID = "parentPortfolioId";
   @SerializedName(SERIALIZED_NAME_PARENT_PORTFOLIO_ID)
-  private ResourceId parentPortfolioId = null;
+  private ResourceId parentPortfolioId;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_IS_DERIVED = "isDerived";
   @SerializedName(SERIALIZED_NAME_IS_DERIVED)
@@ -131,14 +131,15 @@ public class Portfolio {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, Property> properties = new HashMap<>();
+  private Map<String, Property> properties = null;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public Portfolio href(URI href) {
-    this.href = href;
+    this.href = href; 
     return this;
   }
 
@@ -155,8 +156,9 @@ public class Portfolio {
     this.href = href;
   }
 
+
   public Portfolio id(ResourceId id) {
-    this.id = id;
+    this.id = id; 
     return this;
   }
 
@@ -173,8 +175,9 @@ public class Portfolio {
     this.id = id;
   }
 
+
   public Portfolio type(TypeEnum type) {
-    this.type = type;
+    this.type = type; 
     return this;
   }
 
@@ -191,8 +194,9 @@ public class Portfolio {
     this.type = type;
   }
 
+
   public Portfolio displayName(String displayName) {
-    this.displayName = displayName;
+    this.displayName = displayName; 
     return this;
   }
 
@@ -209,8 +213,9 @@ public class Portfolio {
     this.displayName = displayName;
   }
 
+
   public Portfolio description(String description) {
-    this.description = description;
+    this.description = description; 
     return this;
   }
 
@@ -227,8 +232,9 @@ public class Portfolio {
     this.description = description;
   }
 
+
   public Portfolio created(OffsetDateTime created) {
-    this.created = created;
+    this.created = created; 
     return this;
   }
 
@@ -245,8 +251,9 @@ public class Portfolio {
     this.created = created;
   }
 
+
   public Portfolio parentPortfolioId(ResourceId parentPortfolioId) {
-    this.parentPortfolioId = parentPortfolioId;
+    this.parentPortfolioId = parentPortfolioId; 
     return this;
   }
 
@@ -263,8 +270,9 @@ public class Portfolio {
     this.parentPortfolioId = parentPortfolioId;
   }
 
+
   public Portfolio version(Version version) {
-    this.version = version;
+    this.version = version; 
     return this;
   }
 
@@ -281,8 +289,9 @@ public class Portfolio {
     this.version = version;
   }
 
+
   public Portfolio isDerived(Boolean isDerived) {
-    this.isDerived = isDerived;
+    this.isDerived = isDerived; 
     return this;
   }
 
@@ -299,8 +308,9 @@ public class Portfolio {
     this.isDerived = isDerived;
   }
 
+
   public Portfolio baseCurrency(String baseCurrency) {
-    this.baseCurrency = baseCurrency;
+    this.baseCurrency = baseCurrency; 
     return this;
   }
 
@@ -317,8 +327,9 @@ public class Portfolio {
     this.baseCurrency = baseCurrency;
   }
 
+
   public Portfolio properties(Map<String, Property> properties) {
-    this.properties = properties;
+    this.properties = properties; 
     return this;
   }
 
@@ -343,12 +354,14 @@ public class Portfolio {
     this.properties = properties;
   }
 
+
   public Portfolio links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public Portfolio addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -371,7 +384,7 @@ public class Portfolio {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -383,9 +396,8 @@ public class Portfolio {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -411,7 +423,7 @@ public class Portfolio {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

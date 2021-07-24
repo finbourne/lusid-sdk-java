@@ -35,7 +35,7 @@ import java.util.Map;
  * A reconciliation break
  */
 @ApiModel(description = "A reconciliation break")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ReconciliationBreak {
   public static final String SERIALIZED_NAME_INSTRUMENT_UID = "instrumentUid";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_UID)
@@ -59,22 +59,23 @@ public class ReconciliationBreak {
 
   public static final String SERIALIZED_NAME_LEFT_COST = "leftCost";
   @SerializedName(SERIALIZED_NAME_LEFT_COST)
-  private CurrencyAndAmount leftCost = null;
+  private CurrencyAndAmount leftCost;
 
   public static final String SERIALIZED_NAME_RIGHT_COST = "rightCost";
   @SerializedName(SERIALIZED_NAME_RIGHT_COST)
-  private CurrencyAndAmount rightCost = null;
+  private CurrencyAndAmount rightCost;
 
   public static final String SERIALIZED_NAME_DIFFERENCE_COST = "differenceCost";
   @SerializedName(SERIALIZED_NAME_DIFFERENCE_COST)
-  private CurrencyAndAmount differenceCost = null;
+  private CurrencyAndAmount differenceCost;
 
   public static final String SERIALIZED_NAME_INSTRUMENT_PROPERTIES = "instrumentProperties";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_PROPERTIES)
   private List<Property> instrumentProperties = new ArrayList<>();
 
+
   public ReconciliationBreak instrumentUid(String instrumentUid) {
-    this.instrumentUid = instrumentUid;
+    this.instrumentUid = instrumentUid; 
     return this;
   }
 
@@ -91,8 +92,9 @@ public class ReconciliationBreak {
     this.instrumentUid = instrumentUid;
   }
 
+
   public ReconciliationBreak subHoldingKeys(Map<String, PerpetualProperty> subHoldingKeys) {
-    this.subHoldingKeys = subHoldingKeys;
+    this.subHoldingKeys = subHoldingKeys; 
     return this;
   }
 
@@ -114,8 +116,9 @@ public class ReconciliationBreak {
     this.subHoldingKeys = subHoldingKeys;
   }
 
+
   public ReconciliationBreak leftUnits(Double leftUnits) {
-    this.leftUnits = leftUnits;
+    this.leftUnits = leftUnits; 
     return this;
   }
 
@@ -132,8 +135,9 @@ public class ReconciliationBreak {
     this.leftUnits = leftUnits;
   }
 
+
   public ReconciliationBreak rightUnits(Double rightUnits) {
-    this.rightUnits = rightUnits;
+    this.rightUnits = rightUnits; 
     return this;
   }
 
@@ -150,8 +154,9 @@ public class ReconciliationBreak {
     this.rightUnits = rightUnits;
   }
 
+
   public ReconciliationBreak differenceUnits(Double differenceUnits) {
-    this.differenceUnits = differenceUnits;
+    this.differenceUnits = differenceUnits; 
     return this;
   }
 
@@ -168,8 +173,9 @@ public class ReconciliationBreak {
     this.differenceUnits = differenceUnits;
   }
 
+
   public ReconciliationBreak leftCost(CurrencyAndAmount leftCost) {
-    this.leftCost = leftCost;
+    this.leftCost = leftCost; 
     return this;
   }
 
@@ -186,8 +192,9 @@ public class ReconciliationBreak {
     this.leftCost = leftCost;
   }
 
+
   public ReconciliationBreak rightCost(CurrencyAndAmount rightCost) {
-    this.rightCost = rightCost;
+    this.rightCost = rightCost; 
     return this;
   }
 
@@ -204,8 +211,9 @@ public class ReconciliationBreak {
     this.rightCost = rightCost;
   }
 
+
   public ReconciliationBreak differenceCost(CurrencyAndAmount differenceCost) {
-    this.differenceCost = differenceCost;
+    this.differenceCost = differenceCost; 
     return this;
   }
 
@@ -222,12 +230,14 @@ public class ReconciliationBreak {
     this.differenceCost = differenceCost;
   }
 
+
   public ReconciliationBreak instrumentProperties(List<Property> instrumentProperties) {
-    this.instrumentProperties = instrumentProperties;
+    this.instrumentProperties = instrumentProperties; 
     return this;
   }
 
   public ReconciliationBreak addInstrumentPropertiesItem(Property instrumentPropertiesItem) {
+   
     this.instrumentProperties.add(instrumentPropertiesItem);
     return this;
   }
@@ -247,7 +257,7 @@ public class ReconciliationBreak {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -259,9 +269,8 @@ public class ReconciliationBreak {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -284,7 +293,7 @@ public class ReconciliationBreak {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

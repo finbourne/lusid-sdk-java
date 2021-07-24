@@ -33,7 +33,7 @@ import java.util.List;
 /**
  * GetReferencePortfolioConstituentsResponse
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class GetReferencePortfolioConstituentsResponse {
   public static final String SERIALIZED_NAME_EFFECTIVE_FROM = "effectiveFrom";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_FROM)
@@ -82,7 +82,7 @@ public class GetReferencePortfolioConstituentsResponse {
 
       @Override
       public WeightTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return WeightTypeEnum.fromValue(value);
       }
     }
@@ -128,7 +128,7 @@ public class GetReferencePortfolioConstituentsResponse {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
 
     public static class Adapter extends TypeAdapter<PeriodTypeEnum> {
@@ -139,7 +139,7 @@ public class GetReferencePortfolioConstituentsResponse {
 
       @Override
       public PeriodTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return PeriodTypeEnum.fromValue(value);
       }
     }
@@ -163,10 +163,11 @@ public class GetReferencePortfolioConstituentsResponse {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public GetReferencePortfolioConstituentsResponse effectiveFrom(OffsetDateTime effectiveFrom) {
-    this.effectiveFrom = effectiveFrom;
+    this.effectiveFrom = effectiveFrom; 
     return this;
   }
 
@@ -183,8 +184,9 @@ public class GetReferencePortfolioConstituentsResponse {
     this.effectiveFrom = effectiveFrom;
   }
 
+
   public GetReferencePortfolioConstituentsResponse weightType(WeightTypeEnum weightType) {
-    this.weightType = weightType;
+    this.weightType = weightType; 
     return this;
   }
 
@@ -201,8 +203,9 @@ public class GetReferencePortfolioConstituentsResponse {
     this.weightType = weightType;
   }
 
+
   public GetReferencePortfolioConstituentsResponse periodType(PeriodTypeEnum periodType) {
-    this.periodType = periodType;
+    this.periodType = periodType; 
     return this;
   }
 
@@ -219,8 +222,9 @@ public class GetReferencePortfolioConstituentsResponse {
     this.periodType = periodType;
   }
 
+
   public GetReferencePortfolioConstituentsResponse periodCount(Integer periodCount) {
-    this.periodCount = periodCount;
+    this.periodCount = periodCount; 
     return this;
   }
 
@@ -237,12 +241,14 @@ public class GetReferencePortfolioConstituentsResponse {
     this.periodCount = periodCount;
   }
 
+
   public GetReferencePortfolioConstituentsResponse constituents(List<ReferencePortfolioConstituent> constituents) {
-    this.constituents = constituents;
+    this.constituents = constituents; 
     return this;
   }
 
   public GetReferencePortfolioConstituentsResponse addConstituentsItem(ReferencePortfolioConstituent constituentsItem) {
+   
     this.constituents.add(constituentsItem);
     return this;
   }
@@ -260,8 +266,9 @@ public class GetReferencePortfolioConstituentsResponse {
     this.constituents = constituents;
   }
 
+
   public GetReferencePortfolioConstituentsResponse href(URI href) {
-    this.href = href;
+    this.href = href; 
     return this;
   }
 
@@ -278,12 +285,14 @@ public class GetReferencePortfolioConstituentsResponse {
     this.href = href;
   }
 
+
   public GetReferencePortfolioConstituentsResponse links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public GetReferencePortfolioConstituentsResponse addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -306,7 +315,7 @@ public class GetReferencePortfolioConstituentsResponse {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -318,9 +327,8 @@ public class GetReferencePortfolioConstituentsResponse {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -341,7 +349,7 @@ public class GetReferencePortfolioConstituentsResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

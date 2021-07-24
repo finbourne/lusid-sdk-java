@@ -38,19 +38,19 @@ import java.util.Map;
  * An Allocation of a certain quantity of a specific instrument against an originating  Order.
  */
 @ApiModel(description = "An Allocation of a certain quantity of a specific instrument against an originating  Order.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Allocation {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private ResourceId id = null;
+  private ResourceId id;
 
   public static final String SERIALIZED_NAME_ALLOCATED_ORDER_ID = "allocatedOrderId";
   @SerializedName(SERIALIZED_NAME_ALLOCATED_ORDER_ID)
-  private ResourceId allocatedOrderId = null;
+  private ResourceId allocatedOrderId;
 
   public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
-  private ResourceId portfolioId = null;
+  private ResourceId portfolioId;
 
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
@@ -62,11 +62,11 @@ public class Allocation {
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = new HashMap<>();
+  private Map<String, PerpetualProperty> properties = null;
 
   public static final String SERIALIZED_NAME_LUSID_INSTRUMENT_ID = "lusidInstrumentId";
   @SerializedName(SERIALIZED_NAME_LUSID_INSTRUMENT_ID)
@@ -74,7 +74,7 @@ public class Allocation {
 
   public static final String SERIALIZED_NAME_PLACEMENT_IDS = "placementIds";
   @SerializedName(SERIALIZED_NAME_PLACEMENT_IDS)
-  private List<ResourceId> placementIds = new ArrayList<>();
+  private List<ResourceId> placementIds = null;
 
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
@@ -98,7 +98,7 @@ public class Allocation {
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
-  private CurrencyAndAmount price = null;
+  private CurrencyAndAmount price;
 
   public static final String SERIALIZED_NAME_SETTLEMENT_CURRENCY = "settlementCurrency";
   @SerializedName(SERIALIZED_NAME_SETTLEMENT_CURRENCY)
@@ -114,10 +114,11 @@ public class Allocation {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public Allocation id(ResourceId id) {
-    this.id = id;
+    this.id = id; 
     return this;
   }
 
@@ -134,8 +135,9 @@ public class Allocation {
     this.id = id;
   }
 
+
   public Allocation allocatedOrderId(ResourceId allocatedOrderId) {
-    this.allocatedOrderId = allocatedOrderId;
+    this.allocatedOrderId = allocatedOrderId; 
     return this;
   }
 
@@ -152,8 +154,9 @@ public class Allocation {
     this.allocatedOrderId = allocatedOrderId;
   }
 
+
   public Allocation portfolioId(ResourceId portfolioId) {
-    this.portfolioId = portfolioId;
+    this.portfolioId = portfolioId; 
     return this;
   }
 
@@ -170,8 +173,9 @@ public class Allocation {
     this.portfolioId = portfolioId;
   }
 
+
   public Allocation quantity(Integer quantity) {
-    this.quantity = quantity;
+    this.quantity = quantity; 
     return this;
   }
 
@@ -188,8 +192,9 @@ public class Allocation {
     this.quantity = quantity;
   }
 
+
   public Allocation instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
-    this.instrumentIdentifiers = instrumentIdentifiers;
+    this.instrumentIdentifiers = instrumentIdentifiers; 
     return this;
   }
 
@@ -211,8 +216,9 @@ public class Allocation {
     this.instrumentIdentifiers = instrumentIdentifiers;
   }
 
+
   public Allocation version(Version version) {
-    this.version = version;
+    this.version = version; 
     return this;
   }
 
@@ -229,8 +235,9 @@ public class Allocation {
     this.version = version;
   }
 
+
   public Allocation properties(Map<String, PerpetualProperty> properties) {
-    this.properties = properties;
+    this.properties = properties; 
     return this;
   }
 
@@ -255,8 +262,9 @@ public class Allocation {
     this.properties = properties;
   }
 
+
   public Allocation lusidInstrumentId(String lusidInstrumentId) {
-    this.lusidInstrumentId = lusidInstrumentId;
+    this.lusidInstrumentId = lusidInstrumentId; 
     return this;
   }
 
@@ -273,12 +281,14 @@ public class Allocation {
     this.lusidInstrumentId = lusidInstrumentId;
   }
 
+
   public Allocation placementIds(List<ResourceId> placementIds) {
-    this.placementIds = placementIds;
+    this.placementIds = placementIds; 
     return this;
   }
 
   public Allocation addPlacementIdsItem(ResourceId placementIdsItem) {
+   
     if (this.placementIds == null) {
       this.placementIds = new ArrayList<>();
     }
@@ -299,8 +309,9 @@ public class Allocation {
     this.placementIds = placementIds;
   }
 
+
   public Allocation state(String state) {
-    this.state = state;
+    this.state = state; 
     return this;
   }
 
@@ -317,8 +328,9 @@ public class Allocation {
     this.state = state;
   }
 
+
   public Allocation side(String side) {
-    this.side = side;
+    this.side = side; 
     return this;
   }
 
@@ -335,8 +347,9 @@ public class Allocation {
     this.side = side;
   }
 
+
   public Allocation type(String type) {
-    this.type = type;
+    this.type = type; 
     return this;
   }
 
@@ -353,8 +366,9 @@ public class Allocation {
     this.type = type;
   }
 
+
   public Allocation settlementDate(OffsetDateTime settlementDate) {
-    this.settlementDate = settlementDate;
+    this.settlementDate = settlementDate; 
     return this;
   }
 
@@ -371,8 +385,9 @@ public class Allocation {
     this.settlementDate = settlementDate;
   }
 
+
   public Allocation date(OffsetDateTime date) {
-    this.date = date;
+    this.date = date; 
     return this;
   }
 
@@ -389,8 +404,9 @@ public class Allocation {
     this.date = date;
   }
 
+
   public Allocation price(CurrencyAndAmount price) {
-    this.price = price;
+    this.price = price; 
     return this;
   }
 
@@ -407,8 +423,9 @@ public class Allocation {
     this.price = price;
   }
 
+
   public Allocation settlementCurrency(String settlementCurrency) {
-    this.settlementCurrency = settlementCurrency;
+    this.settlementCurrency = settlementCurrency; 
     return this;
   }
 
@@ -425,8 +442,9 @@ public class Allocation {
     this.settlementCurrency = settlementCurrency;
   }
 
+
   public Allocation settlementCurrencyFxRate(Double settlementCurrencyFxRate) {
-    this.settlementCurrencyFxRate = settlementCurrencyFxRate;
+    this.settlementCurrencyFxRate = settlementCurrencyFxRate; 
     return this;
   }
 
@@ -443,8 +461,9 @@ public class Allocation {
     this.settlementCurrencyFxRate = settlementCurrencyFxRate;
   }
 
+
   public Allocation counterparty(String counterparty) {
-    this.counterparty = counterparty;
+    this.counterparty = counterparty; 
     return this;
   }
 
@@ -461,12 +480,14 @@ public class Allocation {
     this.counterparty = counterparty;
   }
 
+
   public Allocation links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public Allocation addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -489,7 +510,7 @@ public class Allocation {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -501,9 +522,8 @@ public class Allocation {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -536,7 +556,7 @@ public class Allocation {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

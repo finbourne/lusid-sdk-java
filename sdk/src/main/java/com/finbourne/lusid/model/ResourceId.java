@@ -28,7 +28,7 @@ import java.io.IOException;
  * Identifiers of an entity
  */
 @ApiModel(description = "Identifiers of an entity")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ResourceId {
   public static final String SERIALIZED_NAME_SCOPE = "scope";
   @SerializedName(SERIALIZED_NAME_SCOPE)
@@ -38,8 +38,9 @@ public class ResourceId {
   @SerializedName(SERIALIZED_NAME_CODE)
   private String code;
 
+
   public ResourceId scope(String scope) {
-    this.scope = scope;
+    this.scope = scope; 
     return this;
   }
 
@@ -56,8 +57,9 @@ public class ResourceId {
     this.scope = scope;
   }
 
+
   public ResourceId code(String code) {
-    this.code = code;
+    this.code = code; 
     return this;
   }
 
@@ -76,7 +78,7 @@ public class ResourceId {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -88,9 +90,8 @@ public class ResourceId {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -106,7 +107,7 @@ public class ResourceId {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

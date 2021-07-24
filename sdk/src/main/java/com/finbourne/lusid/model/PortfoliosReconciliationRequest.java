@@ -30,22 +30,23 @@ import java.util.List;
 /**
  * PortfoliosReconciliationRequest
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PortfoliosReconciliationRequest {
   public static final String SERIALIZED_NAME_LEFT = "left";
   @SerializedName(SERIALIZED_NAME_LEFT)
-  private PortfolioReconciliationRequest left = null;
+  private PortfolioReconciliationRequest left;
 
   public static final String SERIALIZED_NAME_RIGHT = "right";
   @SerializedName(SERIALIZED_NAME_RIGHT)
-  private PortfolioReconciliationRequest right = null;
+  private PortfolioReconciliationRequest right;
 
   public static final String SERIALIZED_NAME_INSTRUMENT_PROPERTY_KEYS = "instrumentPropertyKeys";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_PROPERTY_KEYS)
   private List<String> instrumentPropertyKeys = new ArrayList<>();
 
+
   public PortfoliosReconciliationRequest left(PortfolioReconciliationRequest left) {
-    this.left = left;
+    this.left = left; 
     return this;
   }
 
@@ -62,8 +63,9 @@ public class PortfoliosReconciliationRequest {
     this.left = left;
   }
 
+
   public PortfoliosReconciliationRequest right(PortfolioReconciliationRequest right) {
-    this.right = right;
+    this.right = right; 
     return this;
   }
 
@@ -80,12 +82,14 @@ public class PortfoliosReconciliationRequest {
     this.right = right;
   }
 
+
   public PortfoliosReconciliationRequest instrumentPropertyKeys(List<String> instrumentPropertyKeys) {
-    this.instrumentPropertyKeys = instrumentPropertyKeys;
+    this.instrumentPropertyKeys = instrumentPropertyKeys; 
     return this;
   }
 
   public PortfoliosReconciliationRequest addInstrumentPropertyKeysItem(String instrumentPropertyKeysItem) {
+   
     this.instrumentPropertyKeys.add(instrumentPropertyKeysItem);
     return this;
   }
@@ -105,7 +109,7 @@ public class PortfoliosReconciliationRequest {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -117,9 +121,8 @@ public class PortfoliosReconciliationRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -136,7 +139,7 @@ public class PortfoliosReconciliationRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

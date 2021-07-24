@@ -35,11 +35,11 @@ import java.util.Map;
  * A request to create or update an Order.
  */
 @ApiModel(description = "A request to create or update an Order.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class OrderRequest {
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = new HashMap<>();
+  private Map<String, PerpetualProperty> properties = null;
 
   public static final String SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS = "instrumentIdentifiers";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS)
@@ -55,15 +55,15 @@ public class OrderRequest {
 
   public static final String SERIALIZED_NAME_ORDER_BOOK_ID = "orderBookId";
   @SerializedName(SERIALIZED_NAME_ORDER_BOOK_ID)
-  private ResourceId orderBookId = null;
+  private ResourceId orderBookId;
 
   public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
-  private ResourceId portfolioId = null;
+  private ResourceId portfolioId;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private ResourceId id = null;
+  private ResourceId id;
 
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
@@ -83,18 +83,19 @@ public class OrderRequest {
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
-  private CurrencyAndAmount price = null;
+  private CurrencyAndAmount price;
 
   public static final String SERIALIZED_NAME_ORDER_INSTRUCTION = "orderInstruction";
   @SerializedName(SERIALIZED_NAME_ORDER_INSTRUCTION)
-  private ResourceId orderInstruction = null;
+  private ResourceId orderInstruction;
 
   public static final String SERIALIZED_NAME_PACKAGE = "package";
   @SerializedName(SERIALIZED_NAME_PACKAGE)
-  private ResourceId _package = null;
+  private ResourceId _package;
+
 
   public OrderRequest properties(Map<String, PerpetualProperty> properties) {
-    this.properties = properties;
+    this.properties = properties; 
     return this;
   }
 
@@ -119,8 +120,9 @@ public class OrderRequest {
     this.properties = properties;
   }
 
+
   public OrderRequest instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
-    this.instrumentIdentifiers = instrumentIdentifiers;
+    this.instrumentIdentifiers = instrumentIdentifiers; 
     return this;
   }
 
@@ -142,8 +144,9 @@ public class OrderRequest {
     this.instrumentIdentifiers = instrumentIdentifiers;
   }
 
+
   public OrderRequest quantity(Integer quantity) {
-    this.quantity = quantity;
+    this.quantity = quantity; 
     return this;
   }
 
@@ -160,8 +163,9 @@ public class OrderRequest {
     this.quantity = quantity;
   }
 
+
   public OrderRequest side(String side) {
-    this.side = side;
+    this.side = side; 
     return this;
   }
 
@@ -178,8 +182,9 @@ public class OrderRequest {
     this.side = side;
   }
 
+
   public OrderRequest orderBookId(ResourceId orderBookId) {
-    this.orderBookId = orderBookId;
+    this.orderBookId = orderBookId; 
     return this;
   }
 
@@ -196,8 +201,9 @@ public class OrderRequest {
     this.orderBookId = orderBookId;
   }
 
+
   public OrderRequest portfolioId(ResourceId portfolioId) {
-    this.portfolioId = portfolioId;
+    this.portfolioId = portfolioId; 
     return this;
   }
 
@@ -214,8 +220,9 @@ public class OrderRequest {
     this.portfolioId = portfolioId;
   }
 
+
   public OrderRequest id(ResourceId id) {
-    this.id = id;
+    this.id = id; 
     return this;
   }
 
@@ -232,8 +239,9 @@ public class OrderRequest {
     this.id = id;
   }
 
+
   public OrderRequest state(String state) {
-    this.state = state;
+    this.state = state; 
     return this;
   }
 
@@ -250,8 +258,9 @@ public class OrderRequest {
     this.state = state;
   }
 
+
   public OrderRequest type(String type) {
-    this.type = type;
+    this.type = type; 
     return this;
   }
 
@@ -268,8 +277,9 @@ public class OrderRequest {
     this.type = type;
   }
 
+
   public OrderRequest timeInForce(String timeInForce) {
-    this.timeInForce = timeInForce;
+    this.timeInForce = timeInForce; 
     return this;
   }
 
@@ -286,8 +296,9 @@ public class OrderRequest {
     this.timeInForce = timeInForce;
   }
 
+
   public OrderRequest date(OffsetDateTime date) {
-    this.date = date;
+    this.date = date; 
     return this;
   }
 
@@ -304,8 +315,9 @@ public class OrderRequest {
     this.date = date;
   }
 
+
   public OrderRequest price(CurrencyAndAmount price) {
-    this.price = price;
+    this.price = price; 
     return this;
   }
 
@@ -322,8 +334,9 @@ public class OrderRequest {
     this.price = price;
   }
 
+
   public OrderRequest orderInstruction(ResourceId orderInstruction) {
-    this.orderInstruction = orderInstruction;
+    this.orderInstruction = orderInstruction; 
     return this;
   }
 
@@ -340,8 +353,9 @@ public class OrderRequest {
     this.orderInstruction = orderInstruction;
   }
 
+
   public OrderRequest _package(ResourceId _package) {
-    this._package = _package;
+    this._package = _package; 
     return this;
   }
 
@@ -360,7 +374,7 @@ public class OrderRequest {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -372,9 +386,8 @@ public class OrderRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -402,7 +415,7 @@ public class OrderRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

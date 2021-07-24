@@ -30,7 +30,7 @@ import java.time.OffsetDateTime;
  * The list of commands.
  */
 @ApiModel(description = "The list of commands.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ProcessedCommand {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -42,14 +42,15 @@ public class ProcessedCommand {
 
   public static final String SERIALIZED_NAME_USER_ID = "userId";
   @SerializedName(SERIALIZED_NAME_USER_ID)
-  private User userId = null;
+  private User userId;
 
   public static final String SERIALIZED_NAME_PROCESSED_TIME = "processedTime";
   @SerializedName(SERIALIZED_NAME_PROCESSED_TIME)
   private OffsetDateTime processedTime;
 
+
   public ProcessedCommand description(String description) {
-    this.description = description;
+    this.description = description; 
     return this;
   }
 
@@ -66,8 +67,9 @@ public class ProcessedCommand {
     this.description = description;
   }
 
+
   public ProcessedCommand path(String path) {
-    this.path = path;
+    this.path = path; 
     return this;
   }
 
@@ -84,8 +86,9 @@ public class ProcessedCommand {
     this.path = path;
   }
 
+
   public ProcessedCommand userId(User userId) {
-    this.userId = userId;
+    this.userId = userId; 
     return this;
   }
 
@@ -102,8 +105,9 @@ public class ProcessedCommand {
     this.userId = userId;
   }
 
+
   public ProcessedCommand processedTime(OffsetDateTime processedTime) {
-    this.processedTime = processedTime;
+    this.processedTime = processedTime; 
     return this;
   }
 
@@ -122,7 +126,7 @@ public class ProcessedCommand {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -134,9 +138,8 @@ public class ProcessedCommand {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -154,7 +157,7 @@ public class ProcessedCommand {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

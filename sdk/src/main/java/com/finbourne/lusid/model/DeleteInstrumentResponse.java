@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * DeleteInstrumentResponse
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DeleteInstrumentResponse {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -44,10 +44,11 @@ public class DeleteInstrumentResponse {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public DeleteInstrumentResponse href(URI href) {
-    this.href = href;
+    this.href = href; 
     return this;
   }
 
@@ -64,8 +65,9 @@ public class DeleteInstrumentResponse {
     this.href = href;
   }
 
+
   public DeleteInstrumentResponse asAt(OffsetDateTime asAt) {
-    this.asAt = asAt;
+    this.asAt = asAt; 
     return this;
   }
 
@@ -82,12 +84,14 @@ public class DeleteInstrumentResponse {
     this.asAt = asAt;
   }
 
+
   public DeleteInstrumentResponse links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public DeleteInstrumentResponse addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -110,7 +114,7 @@ public class DeleteInstrumentResponse {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -122,9 +126,8 @@ public class DeleteInstrumentResponse {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -141,7 +144,7 @@ public class DeleteInstrumentResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

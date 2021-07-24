@@ -2,9 +2,9 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.finbourne</groupId>
-    <artifactId>lusid-sdk</artifactId>
+    <artifactId>lusid-sdk-preview</artifactId>
     <packaging>jar</packaging>
-    <name>lusid-sdk</name>
+    <name>lusid-sdk-preview</name>
     <version>0.11.3313-SNAPSHOT</version>
     <url>https://github.com/openapitools/openapi-generator</url>
     <description>OpenAPI Java</description>
