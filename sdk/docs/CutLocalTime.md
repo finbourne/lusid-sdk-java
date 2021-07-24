@@ -2,7 +2,6 @@
 
 # CutLocalTime
 
-
 ## Properties
 
 Name | Type | Description | Notes

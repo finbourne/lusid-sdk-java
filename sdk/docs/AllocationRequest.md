@@ -2,8 +2,6 @@
 
 # AllocationRequest
 
-A request to create or update an Allocation.
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -18,8 +16,8 @@ Name | Type | Description | Notes
 **state** | **String** | The state of this allocation. |  [optional]
 **side** | **String** | The side of this allocation (examples: Buy, Sell, ...). |  [optional]
 **type** | **String** | The type of order associated with this allocation (examples: Limit, Market, ...). |  [optional]
-**settlementDate** | **OffsetDateTime** | The settlement date for this allocation. |  [optional]
-**date** | **OffsetDateTime** | The date of this allocation. |  [optional]
+**settlementDate** | [**OffsetDateTime**](OffsetDateTime.md) | The settlement date for this allocation. |  [optional]
+**date** | [**OffsetDateTime**](OffsetDateTime.md) | The date of this allocation. |  [optional]
 **price** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
 **settlementCurrency** | **String** | The settlement currency of this allocation. |  [optional]
 **settlementCurrencyFxRate** | **Double** | The settlement currency to allocation currency FX rate. |  [optional]

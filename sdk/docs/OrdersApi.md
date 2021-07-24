@@ -1,6 +1,6 @@
 # OrdersApi
 
-All URIs are relative to *http://local-unit-test-server.lusid.com:32886*
+All URIs are relative to *http://local-unit-test-server.lusid.com:43074*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -31,7 +31,7 @@ import com.finbourne.lusid.api.OrdersApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:32886");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:43074");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -102,7 +102,7 @@ import com.finbourne.lusid.api.OrdersApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:32886");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:43074");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -111,7 +111,7 @@ public class Example {
     OrdersApi apiInstance = new OrdersApi(defaultClient);
     String scope = "scope_example"; // String | The scope to which the order belongs.
     String code = "code_example"; // String | The order's unique identifier.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the order. Defaults to return the latest version of the order if not specified.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the order. Defaults to return the latest version of the order if not specified.
     List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Orders\" domain to decorate onto the order.              These take the format {domain}/{scope}/{code} e.g. \"Orders/system/Name\".
     try {
       Order result = apiInstance.getOrder(scope, code, asAt, propertyKeys);
@@ -177,19 +177,19 @@ import com.finbourne.lusid.api.OrdersApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:32886");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:43074");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     OrdersApi apiInstance = new OrdersApi(defaultClient);
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the order. Defaults to return the latest version of the order if not specified.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The asAt datetime at which to retrieve the order. Defaults to return the latest version of the order if not specified.
     String page = "page_example"; // String | The pagination token to use to continue listing orders from a previous call to list orders.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided.
     List<String> sortBy = Arrays.asList(); // List<String> | Order the results by these fields. Use use the '-' sign to denote descending order e.g. -MyFieldName.
     Integer start = 56; // Integer | When paginating, skip this number of results.
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
-    String filter = ""; // String | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid.
+    String filter = "\"\""; // String | Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid.
     List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the \"Orders\" domain to decorate onto each order.                  These take the format {domain}/{scope}/{code} e.g. \"Orders/system/Name\".
     try {
       PagedResourceListOfOrder result = apiInstance.listOrders(asAt, page, sortBy, start, limit, filter, propertyKeys);
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
  **sortBy** | [**List&lt;String&gt;**](String.md)| Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName. | [optional]
  **start** | **Integer**| When paginating, skip this number of results. | [optional]
  **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional]
- **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional] [default to ]
+ **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional] [default to &quot;&quot;]
  **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Orders\&quot; domain to decorate onto each order.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Orders/system/Name\&quot;. | [optional]
 
 ### Return type
@@ -258,14 +258,14 @@ import com.finbourne.lusid.api.OrdersApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:32886");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:43074");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     OrdersApi apiInstance = new OrdersApi(defaultClient);
-    OrderSetRequest orderSetRequest = new OrderSetRequest(); // OrderSetRequest | The collection of order requests.
+    OrderSetRequest orderSetRequest = {"orderRequests":[{"properties":{"order/MyScope/SomeOrderProperty":{"key":"Order/MyScope/SomeOrderProperty","value":{"labelValue":"XYZ000034567"}}},"instrumentIdentifiers":{"instrument/default/Currency":"GBP"},"quantity":100,"side":"Buy","orderBookId":{"scope":"MyScope","code":"UKEQ Orders"},"portfolioId":{"scope":"MyScope","code":"UK Equity"},"id":{"scope":"MyScope","code":"ORD00000123"},"state":"New","type":"Limit","timeInForce":"GoodTilCancel","date":"2023-05-02T00:00:00.0000000+00:00","price":{"amount":534,"currency":"USD"},"orderInstruction":{"scope":"MyScope","code":"Instruction-06"},"package":{"scope":"MyScope","code":"UKEQ Package"}}]}; // OrderSetRequest | The collection of order requests.
     try {
       ResourceListOfOrder result = apiInstance.upsertOrders(orderSetRequest);
       System.out.println(result);

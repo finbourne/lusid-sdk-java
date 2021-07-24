@@ -1,6 +1,6 @@
 # EntitiesApi
 
-All URIs are relative to *http://local-unit-test-server.lusid.com:32886*
+All URIs are relative to *http://local-unit-test-server.lusid.com:43074*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
@@ -28,7 +28,7 @@ import com.finbourne.lusid.api.EntitiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:32886");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:43074");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -37,7 +37,7 @@ public class Example {
     EntitiesApi apiInstance = new EntitiesApi(defaultClient);
     String scope = "scope_example"; // String | The scope
     String effectiveAt = "effectiveAt_example"; // String | The effective date of the origin.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The as-at date of the origin.
+    OffsetDateTime asAt = new OffsetDateTime(); // OffsetDateTime | The as-at date of the origin.
     try {
       ResourceListOfChange result = apiInstance.getPortfolioChanges(scope, effectiveAt, asAt);
       System.out.println(result);
