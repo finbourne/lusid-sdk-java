@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **lusidLegalEntityId** | **String** | The unique LUSID Legal Entity Identifier (LULEID) of the Legal Entity. This field is not populated until further notice. |  [optional]
 **identifiers** | [**Map&lt;String, Property&gt;**](Property.md) | Unique client-defined identifiers of the Legal Entity. |  [optional]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties associated to the Legal Entity. |  [optional]
+**counterpartyRiskInformation** | [**CounterpartyRiskInformation**](CounterpartyRiskInformation.md) |  |  [optional]
 **version** | [**Version**](Version.md) |  |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
