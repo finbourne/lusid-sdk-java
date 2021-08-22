@@ -2,7 +2,6 @@
 
 # UpsertReferencePortfolioConstituentsRequest
 
-
 ## Properties
 
 Name | Type | Description | Notes

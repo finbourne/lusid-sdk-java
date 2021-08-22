@@ -2,8 +2,6 @@
 
 # UpsertQuoteRequest
 
-The details of the quote including its unique identifier, value and lineage.
-
 ## Properties
 
 Name | Type | Description | Notes

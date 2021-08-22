@@ -2,7 +2,6 @@
 
 # TransactionConfigurationMovementDataRequest
 
-
 ## Properties
 
 Name | Type | Description | Notes

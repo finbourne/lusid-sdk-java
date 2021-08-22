@@ -2,8 +2,6 @@
 
 # AccessControlledAction
 
-An action that can be access controlled
-
 ## Properties
 
 Name | Type | Description | Notes

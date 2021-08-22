@@ -2,7 +2,6 @@
 
 # CreateTransactionPortfolioRequest
 
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -10,7 +9,7 @@ Name | Type | Description | Notes
 **displayName** | **String** | The name of the transaction portfolio. | 
 **description** | **String** | A description for the transaction portfolio. |  [optional]
 **code** | **String** | The code of the transaction portfolio. Together with the scope this uniquely identifies the transaction portfolio. | 
-**created** | **OffsetDateTime** | The effective datetime at which to create the transaction portfolio. No transactions can be added to the transaction portfolio before this date. Defaults to the current LUSID system datetime if not specified. |  [optional]
+**created** | [**OffsetDateTime**](OffsetDateTime.md) | The effective datetime at which to create the transaction portfolio. No transactions can be added to the transaction portfolio before this date. Defaults to the current LUSID system datetime if not specified. |  [optional]
 **baseCurrency** | **String** | The base currency of the transaction portfolio in ISO 4217 currency code format. | 
 **corporateActionSourceId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **accountingMethod** | [**AccountingMethodEnum**](#AccountingMethodEnum) | Determines the accounting treatment given to the transaction portfolio&#39;s tax lots. The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst |  [optional]

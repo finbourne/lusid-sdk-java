@@ -2,8 +2,6 @@
 
 # Order
 
-An Order for a certain quantity of a specific instrument
-
 ## Properties
 
 Name | Type | Description | Notes
@@ -20,7 +18,7 @@ Name | Type | Description | Notes
 **state** | **String** | The order&#39;s state (examples: New, PartiallyFilled, ...) |  [optional]
 **type** | **String** | The order&#39;s type (examples: Limit, Market, ...) |  [optional]
 **timeInForce** | **String** | The order&#39;s time in force (examples: Day, GoodTilCancel, ...) |  [optional]
-**date** | **OffsetDateTime** | The date on which the order was made |  [optional]
+**date** | [**OffsetDateTime**](OffsetDateTime.md) | The date on which the order was made |  [optional]
 **price** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
 **orderInstructionId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **packageId** | [**ResourceId**](ResourceId.md) |  |  [optional]

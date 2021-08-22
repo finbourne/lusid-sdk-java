@@ -2,7 +2,6 @@
 
 # UpdatePropertyDefinitionRequest
 
-
 ## Properties
 
 Name | Type | Description | Notes
