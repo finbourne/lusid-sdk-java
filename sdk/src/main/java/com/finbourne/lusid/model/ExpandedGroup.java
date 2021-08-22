@@ -34,7 +34,7 @@ import java.util.List;
 /**
  * ExpandedGroup
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ExpandedGroup {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -42,7 +42,7 @@ public class ExpandedGroup {
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private ResourceId id = null;
+  private ResourceId id;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -54,22 +54,23 @@ public class ExpandedGroup {
 
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<CompletePortfolio> values = new ArrayList<>();
+  private List<CompletePortfolio> values = null;
 
   public static final String SERIALIZED_NAME_SUB_GROUPS = "subGroups";
   @SerializedName(SERIALIZED_NAME_SUB_GROUPS)
-  private List<ExpandedGroup> subGroups = new ArrayList<>();
+  private List<ExpandedGroup> subGroups = null;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public ExpandedGroup href(URI href) {
-    this.href = href;
+    this.href = href; 
     return this;
   }
 
@@ -86,8 +87,9 @@ public class ExpandedGroup {
     this.href = href;
   }
 
+
   public ExpandedGroup id(ResourceId id) {
-    this.id = id;
+    this.id = id; 
     return this;
   }
 
@@ -104,8 +106,9 @@ public class ExpandedGroup {
     this.id = id;
   }
 
+
   public ExpandedGroup displayName(String displayName) {
-    this.displayName = displayName;
+    this.displayName = displayName; 
     return this;
   }
 
@@ -122,8 +125,9 @@ public class ExpandedGroup {
     this.displayName = displayName;
   }
 
+
   public ExpandedGroup description(String description) {
-    this.description = description;
+    this.description = description; 
     return this;
   }
 
@@ -140,12 +144,14 @@ public class ExpandedGroup {
     this.description = description;
   }
 
+
   public ExpandedGroup values(List<CompletePortfolio> values) {
-    this.values = values;
+    this.values = values; 
     return this;
   }
 
   public ExpandedGroup addValuesItem(CompletePortfolio valuesItem) {
+   
     if (this.values == null) {
       this.values = new ArrayList<>();
     }
@@ -166,12 +172,14 @@ public class ExpandedGroup {
     this.values = values;
   }
 
+
   public ExpandedGroup subGroups(List<ExpandedGroup> subGroups) {
-    this.subGroups = subGroups;
+    this.subGroups = subGroups; 
     return this;
   }
 
   public ExpandedGroup addSubGroupsItem(ExpandedGroup subGroupsItem) {
+   
     if (this.subGroups == null) {
       this.subGroups = new ArrayList<>();
     }
@@ -192,8 +200,9 @@ public class ExpandedGroup {
     this.subGroups = subGroups;
   }
 
+
   public ExpandedGroup version(Version version) {
-    this.version = version;
+    this.version = version; 
     return this;
   }
 
@@ -210,12 +219,14 @@ public class ExpandedGroup {
     this.version = version;
   }
 
+
   public ExpandedGroup links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public ExpandedGroup addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -238,7 +249,7 @@ public class ExpandedGroup {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -250,9 +261,8 @@ public class ExpandedGroup {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -274,7 +284,7 @@ public class ExpandedGroup {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

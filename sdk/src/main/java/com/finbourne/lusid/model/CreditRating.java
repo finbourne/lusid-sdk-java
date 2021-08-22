@@ -28,7 +28,7 @@ import java.io.IOException;
  * Object describing a credit rating,  which assesses the stability and credit worthiness of a legal entity  and hence its likelihood of defaulting on its outstanding obligations (typically debt).
  */
 @ApiModel(description = "Object describing a credit rating,  which assesses the stability and credit worthiness of a legal entity  and hence its likelihood of defaulting on its outstanding obligations (typically debt).")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreditRating {
   public static final String SERIALIZED_NAME_RATING_SOURCE = "ratingSource";
   @SerializedName(SERIALIZED_NAME_RATING_SOURCE)
@@ -38,8 +38,9 @@ public class CreditRating {
   @SerializedName(SERIALIZED_NAME_RATING)
   private String rating;
 
+
   public CreditRating ratingSource(String ratingSource) {
-    this.ratingSource = ratingSource;
+    this.ratingSource = ratingSource; 
     return this;
   }
 
@@ -56,8 +57,9 @@ public class CreditRating {
     this.ratingSource = ratingSource;
   }
 
+
   public CreditRating rating(String rating) {
-    this.rating = rating;
+    this.rating = rating; 
     return this;
   }
 
@@ -76,7 +78,7 @@ public class CreditRating {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -88,9 +90,8 @@ public class CreditRating {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -106,7 +107,7 @@ public class CreditRating {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

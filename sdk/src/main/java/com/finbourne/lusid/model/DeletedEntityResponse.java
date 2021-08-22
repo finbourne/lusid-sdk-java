@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * DeletedEntityResponse
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DeletedEntityResponse {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -48,10 +48,11 @@ public class DeletedEntityResponse {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public DeletedEntityResponse href(URI href) {
-    this.href = href;
+    this.href = href; 
     return this;
   }
 
@@ -68,8 +69,9 @@ public class DeletedEntityResponse {
     this.href = href;
   }
 
+
   public DeletedEntityResponse effectiveFrom(OffsetDateTime effectiveFrom) {
-    this.effectiveFrom = effectiveFrom;
+    this.effectiveFrom = effectiveFrom; 
     return this;
   }
 
@@ -86,8 +88,9 @@ public class DeletedEntityResponse {
     this.effectiveFrom = effectiveFrom;
   }
 
+
   public DeletedEntityResponse asAt(OffsetDateTime asAt) {
-    this.asAt = asAt;
+    this.asAt = asAt; 
     return this;
   }
 
@@ -104,12 +107,14 @@ public class DeletedEntityResponse {
     this.asAt = asAt;
   }
 
+
   public DeletedEntityResponse links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public DeletedEntityResponse addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -132,7 +137,7 @@ public class DeletedEntityResponse {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -144,9 +149,8 @@ public class DeletedEntityResponse {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -164,7 +168,7 @@ public class DeletedEntityResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

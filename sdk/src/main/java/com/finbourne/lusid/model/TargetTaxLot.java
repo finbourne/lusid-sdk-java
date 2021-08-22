@@ -30,7 +30,7 @@ import java.time.OffsetDateTime;
  * Used to specify holdings target amounts at the tax-lot level
  */
 @ApiModel(description = "Used to specify holdings target amounts at the tax-lot level")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TargetTaxLot {
   public static final String SERIALIZED_NAME_UNITS = "units";
   @SerializedName(SERIALIZED_NAME_UNITS)
@@ -38,7 +38,7 @@ public class TargetTaxLot {
 
   public static final String SERIALIZED_NAME_COST = "cost";
   @SerializedName(SERIALIZED_NAME_COST)
-  private CurrencyAndAmount cost = null;
+  private CurrencyAndAmount cost;
 
   public static final String SERIALIZED_NAME_PORTFOLIO_COST = "portfolioCost";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_COST)
@@ -56,8 +56,9 @@ public class TargetTaxLot {
   @SerializedName(SERIALIZED_NAME_SETTLEMENT_DATE)
   private OffsetDateTime settlementDate;
 
+
   public TargetTaxLot units(Double units) {
-    this.units = units;
+    this.units = units; 
     return this;
   }
 
@@ -74,8 +75,9 @@ public class TargetTaxLot {
     this.units = units;
   }
 
+
   public TargetTaxLot cost(CurrencyAndAmount cost) {
-    this.cost = cost;
+    this.cost = cost; 
     return this;
   }
 
@@ -92,8 +94,9 @@ public class TargetTaxLot {
     this.cost = cost;
   }
 
+
   public TargetTaxLot portfolioCost(Double portfolioCost) {
-    this.portfolioCost = portfolioCost;
+    this.portfolioCost = portfolioCost; 
     return this;
   }
 
@@ -110,8 +113,9 @@ public class TargetTaxLot {
     this.portfolioCost = portfolioCost;
   }
 
+
   public TargetTaxLot price(Double price) {
-    this.price = price;
+    this.price = price; 
     return this;
   }
 
@@ -128,8 +132,9 @@ public class TargetTaxLot {
     this.price = price;
   }
 
+
   public TargetTaxLot purchaseDate(OffsetDateTime purchaseDate) {
-    this.purchaseDate = purchaseDate;
+    this.purchaseDate = purchaseDate; 
     return this;
   }
 
@@ -146,8 +151,9 @@ public class TargetTaxLot {
     this.purchaseDate = purchaseDate;
   }
 
+
   public TargetTaxLot settlementDate(OffsetDateTime settlementDate) {
-    this.settlementDate = settlementDate;
+    this.settlementDate = settlementDate; 
     return this;
   }
 
@@ -166,7 +172,7 @@ public class TargetTaxLot {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -178,9 +184,8 @@ public class TargetTaxLot {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -200,7 +205,7 @@ public class TargetTaxLot {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

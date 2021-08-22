@@ -31,18 +31,20 @@ import java.util.List;
  * A request to create or update multiple Allocations.
  */
 @ApiModel(description = "A request to create or update multiple Allocations.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AllocationSetRequest {
   public static final String SERIALIZED_NAME_ALLOCATION_REQUESTS = "allocationRequests";
   @SerializedName(SERIALIZED_NAME_ALLOCATION_REQUESTS)
-  private List<AllocationRequest> allocationRequests = new ArrayList<>();
+  private List<AllocationRequest> allocationRequests = null;
+
 
   public AllocationSetRequest allocationRequests(List<AllocationRequest> allocationRequests) {
-    this.allocationRequests = allocationRequests;
+    this.allocationRequests = allocationRequests; 
     return this;
   }
 
   public AllocationSetRequest addAllocationRequestsItem(AllocationRequest allocationRequestsItem) {
+   
     if (this.allocationRequests == null) {
       this.allocationRequests = new ArrayList<>();
     }
@@ -65,7 +67,7 @@ public class AllocationSetRequest {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -77,9 +79,8 @@ public class AllocationSetRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -94,7 +95,7 @@ public class AllocationSetRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

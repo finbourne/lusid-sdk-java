@@ -2,6 +2,8 @@
 
 # Transaction
 
+A list of transactions.
+
 ## Properties
 
 Name | Type | Description | Notes
@@ -10,8 +12,8 @@ Name | Type | Description | Notes
 **type** | **String** | The type of the transaction e.g. &#39;Buy&#39;, &#39;Sell&#39;. The transaction type should have been pre-configured via the System Configuration API endpoint. | 
 **instrumentIdentifiers** | **Map&lt;String, String&gt;** | A set of instrument identifiers that can resolve the transaction to a unique instrument. |  [optional]
 **instrumentUid** | **String** | The unqiue Lusid Instrument Id (LUID) of the instrument that the transaction is in. | 
-**transactionDate** | [**OffsetDateTime**](OffsetDateTime.md) | The date of the transaction. | 
-**settlementDate** | [**OffsetDateTime**](OffsetDateTime.md) | The settlement date of the transaction. | 
+**transactionDate** | **OffsetDateTime** | The date of the transaction. | 
+**settlementDate** | **OffsetDateTime** | The settlement date of the transaction. | 
 **units** | **Double** | The number of units transacted in the associated instrument. | 
 **transactionPrice** | [**TransactionPrice**](TransactionPrice.md) |  |  [optional]
 **totalConsideration** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
@@ -20,7 +22,7 @@ Name | Type | Description | Notes
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Set of unique transaction properties and associated values to stored with the transaction. Each property will be from the &#39;Transaction&#39; domain. |  [optional]
 **counterpartyId** | **String** | The identifier for the counterparty of the transaction. |  [optional]
 **source** | **String** | The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration. |  [optional]
-**entryDateTime** | [**OffsetDateTime**](OffsetDateTime.md) | The asAt datetime that the transaction was added to LUSID. |  [optional]
+**entryDateTime** | **OffsetDateTime** | The asAt datetime that the transaction was added to LUSID. |  [optional]
 
 
 

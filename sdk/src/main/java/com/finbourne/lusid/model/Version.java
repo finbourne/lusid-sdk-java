@@ -29,7 +29,7 @@ import java.time.OffsetDateTime;
  * The version metadata.
  */
 @ApiModel(description = "The version metadata.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Version {
   public static final String SERIALIZED_NAME_EFFECTIVE_FROM = "effectiveFrom";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_FROM)
@@ -39,8 +39,9 @@ public class Version {
   @SerializedName(SERIALIZED_NAME_AS_AT_DATE)
   private OffsetDateTime asAtDate;
 
+
   public Version effectiveFrom(OffsetDateTime effectiveFrom) {
-    this.effectiveFrom = effectiveFrom;
+    this.effectiveFrom = effectiveFrom; 
     return this;
   }
 
@@ -57,8 +58,9 @@ public class Version {
     this.effectiveFrom = effectiveFrom;
   }
 
+
   public Version asAtDate(OffsetDateTime asAtDate) {
-    this.asAtDate = asAtDate;
+    this.asAtDate = asAtDate; 
     return this;
   }
 
@@ -77,7 +79,7 @@ public class Version {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -89,9 +91,8 @@ public class Version {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -107,7 +108,7 @@ public class Version {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

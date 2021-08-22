@@ -33,7 +33,7 @@ import java.util.List;
  * A collection of resources that can be returned from requests.
  */
 @ApiModel(description = "A collection of resources that can be returned from requests.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ResourceListOfPortfolioGroup {
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
@@ -45,7 +45,7 @@ public class ResourceListOfPortfolioGroup {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
 
   public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
   @SerializedName(SERIALIZED_NAME_NEXT_PAGE)
@@ -55,12 +55,14 @@ public class ResourceListOfPortfolioGroup {
   @SerializedName(SERIALIZED_NAME_PREVIOUS_PAGE)
   private String previousPage;
 
+
   public ResourceListOfPortfolioGroup values(List<PortfolioGroup> values) {
-    this.values = values;
+    this.values = values; 
     return this;
   }
 
   public ResourceListOfPortfolioGroup addValuesItem(PortfolioGroup valuesItem) {
+   
     this.values.add(valuesItem);
     return this;
   }
@@ -78,8 +80,9 @@ public class ResourceListOfPortfolioGroup {
     this.values = values;
   }
 
+
   public ResourceListOfPortfolioGroup href(URI href) {
-    this.href = href;
+    this.href = href; 
     return this;
   }
 
@@ -96,12 +99,14 @@ public class ResourceListOfPortfolioGroup {
     this.href = href;
   }
 
+
   public ResourceListOfPortfolioGroup links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public ResourceListOfPortfolioGroup addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -122,8 +127,9 @@ public class ResourceListOfPortfolioGroup {
     this.links = links;
   }
 
+
   public ResourceListOfPortfolioGroup nextPage(String nextPage) {
-    this.nextPage = nextPage;
+    this.nextPage = nextPage; 
     return this;
   }
 
@@ -140,8 +146,9 @@ public class ResourceListOfPortfolioGroup {
     this.nextPage = nextPage;
   }
 
+
   public ResourceListOfPortfolioGroup previousPage(String previousPage) {
-    this.previousPage = previousPage;
+    this.previousPage = previousPage; 
     return this;
   }
 
@@ -160,7 +167,7 @@ public class ResourceListOfPortfolioGroup {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -172,9 +179,8 @@ public class ResourceListOfPortfolioGroup {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -193,7 +199,7 @@ public class ResourceListOfPortfolioGroup {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -33,7 +33,7 @@ import java.util.Map;
 /**
  * TransactionConfigurationMovementDataRequest
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TransactionConfigurationMovementDataRequest {
   /**
    * . The available values are: Settlement, Traded, StockMovement, FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment, CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, UnsettledCashTypes, Carry, CarryAsPnl
@@ -106,7 +106,7 @@ public class TransactionConfigurationMovementDataRequest {
 
       @Override
       public MovementTypesEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return MovementTypesEnum.fromValue(value);
       }
     }
@@ -126,18 +126,19 @@ public class TransactionConfigurationMovementDataRequest {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = new HashMap<>();
+  private Map<String, PerpetualProperty> properties = null;
 
   public static final String SERIALIZED_NAME_MAPPINGS = "mappings";
   @SerializedName(SERIALIZED_NAME_MAPPINGS)
-  private List<TransactionPropertyMappingRequest> mappings = new ArrayList<>();
+  private List<TransactionPropertyMappingRequest> mappings = null;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+
   public TransactionConfigurationMovementDataRequest movementTypes(MovementTypesEnum movementTypes) {
-    this.movementTypes = movementTypes;
+    this.movementTypes = movementTypes; 
     return this;
   }
 
@@ -154,8 +155,9 @@ public class TransactionConfigurationMovementDataRequest {
     this.movementTypes = movementTypes;
   }
 
+
   public TransactionConfigurationMovementDataRequest side(String side) {
-    this.side = side;
+    this.side = side; 
     return this;
   }
 
@@ -172,8 +174,9 @@ public class TransactionConfigurationMovementDataRequest {
     this.side = side;
   }
 
+
   public TransactionConfigurationMovementDataRequest direction(Integer direction) {
-    this.direction = direction;
+    this.direction = direction; 
     return this;
   }
 
@@ -190,8 +193,9 @@ public class TransactionConfigurationMovementDataRequest {
     this.direction = direction;
   }
 
+
   public TransactionConfigurationMovementDataRequest properties(Map<String, PerpetualProperty> properties) {
-    this.properties = properties;
+    this.properties = properties; 
     return this;
   }
 
@@ -216,12 +220,14 @@ public class TransactionConfigurationMovementDataRequest {
     this.properties = properties;
   }
 
+
   public TransactionConfigurationMovementDataRequest mappings(List<TransactionPropertyMappingRequest> mappings) {
-    this.mappings = mappings;
+    this.mappings = mappings; 
     return this;
   }
 
   public TransactionConfigurationMovementDataRequest addMappingsItem(TransactionPropertyMappingRequest mappingsItem) {
+   
     if (this.mappings == null) {
       this.mappings = new ArrayList<>();
     }
@@ -242,8 +248,9 @@ public class TransactionConfigurationMovementDataRequest {
     this.mappings = mappings;
   }
 
+
   public TransactionConfigurationMovementDataRequest name(String name) {
-    this.name = name;
+    this.name = name; 
     return this;
   }
 
@@ -262,7 +269,7 @@ public class TransactionConfigurationMovementDataRequest {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -274,9 +281,8 @@ public class TransactionConfigurationMovementDataRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -296,7 +302,7 @@ public class TransactionConfigurationMovementDataRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

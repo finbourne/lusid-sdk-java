@@ -28,7 +28,7 @@ import java.io.IOException;
 /**
  * CreateDerivedPropertyDefinitionRequest
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateDerivedPropertyDefinitionRequest {
   /**
    * The domain that the property exists in. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction
@@ -117,7 +117,7 @@ public class CreateDerivedPropertyDefinitionRequest {
 
       @Override
       public DomainEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return DomainEnum.fromValue(value);
       }
     }
@@ -141,7 +141,7 @@ public class CreateDerivedPropertyDefinitionRequest {
 
   public static final String SERIALIZED_NAME_DATA_TYPE_ID = "dataTypeId";
   @SerializedName(SERIALIZED_NAME_DATA_TYPE_ID)
-  private ResourceId dataTypeId = null;
+  private ResourceId dataTypeId;
 
   public static final String SERIALIZED_NAME_PROPERTY_DESCRIPTION = "propertyDescription";
   @SerializedName(SERIALIZED_NAME_PROPERTY_DESCRIPTION)
@@ -151,8 +151,9 @@ public class CreateDerivedPropertyDefinitionRequest {
   @SerializedName(SERIALIZED_NAME_DERIVATION_FORMULA)
   private String derivationFormula;
 
+
   public CreateDerivedPropertyDefinitionRequest domain(DomainEnum domain) {
-    this.domain = domain;
+    this.domain = domain; 
     return this;
   }
 
@@ -169,8 +170,9 @@ public class CreateDerivedPropertyDefinitionRequest {
     this.domain = domain;
   }
 
+
   public CreateDerivedPropertyDefinitionRequest scope(String scope) {
-    this.scope = scope;
+    this.scope = scope; 
     return this;
   }
 
@@ -187,8 +189,9 @@ public class CreateDerivedPropertyDefinitionRequest {
     this.scope = scope;
   }
 
+
   public CreateDerivedPropertyDefinitionRequest code(String code) {
-    this.code = code;
+    this.code = code; 
     return this;
   }
 
@@ -205,8 +208,9 @@ public class CreateDerivedPropertyDefinitionRequest {
     this.code = code;
   }
 
+
   public CreateDerivedPropertyDefinitionRequest displayName(String displayName) {
-    this.displayName = displayName;
+    this.displayName = displayName; 
     return this;
   }
 
@@ -223,8 +227,9 @@ public class CreateDerivedPropertyDefinitionRequest {
     this.displayName = displayName;
   }
 
+
   public CreateDerivedPropertyDefinitionRequest dataTypeId(ResourceId dataTypeId) {
-    this.dataTypeId = dataTypeId;
+    this.dataTypeId = dataTypeId; 
     return this;
   }
 
@@ -241,8 +246,9 @@ public class CreateDerivedPropertyDefinitionRequest {
     this.dataTypeId = dataTypeId;
   }
 
+
   public CreateDerivedPropertyDefinitionRequest propertyDescription(String propertyDescription) {
-    this.propertyDescription = propertyDescription;
+    this.propertyDescription = propertyDescription; 
     return this;
   }
 
@@ -259,8 +265,9 @@ public class CreateDerivedPropertyDefinitionRequest {
     this.propertyDescription = propertyDescription;
   }
 
+
   public CreateDerivedPropertyDefinitionRequest derivationFormula(String derivationFormula) {
-    this.derivationFormula = derivationFormula;
+    this.derivationFormula = derivationFormula; 
     return this;
   }
 
@@ -279,7 +286,7 @@ public class CreateDerivedPropertyDefinitionRequest {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -291,9 +298,8 @@ public class CreateDerivedPropertyDefinitionRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -314,7 +320,7 @@ public class CreateDerivedPropertyDefinitionRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

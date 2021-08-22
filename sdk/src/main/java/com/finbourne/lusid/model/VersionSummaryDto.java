@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * VersionSummaryDto
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class VersionSummaryDto {
   public static final String SERIALIZED_NAME_API_VERSION = "apiVersion";
   @SerializedName(SERIALIZED_NAME_API_VERSION)
@@ -46,10 +46,11 @@ public class VersionSummaryDto {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public VersionSummaryDto apiVersion(String apiVersion) {
-    this.apiVersion = apiVersion;
+    this.apiVersion = apiVersion; 
     return this;
   }
 
@@ -66,8 +67,9 @@ public class VersionSummaryDto {
     this.apiVersion = apiVersion;
   }
 
+
   public VersionSummaryDto buildVersion(String buildVersion) {
-    this.buildVersion = buildVersion;
+    this.buildVersion = buildVersion; 
     return this;
   }
 
@@ -84,8 +86,9 @@ public class VersionSummaryDto {
     this.buildVersion = buildVersion;
   }
 
+
   public VersionSummaryDto excelVersion(String excelVersion) {
-    this.excelVersion = excelVersion;
+    this.excelVersion = excelVersion; 
     return this;
   }
 
@@ -102,12 +105,14 @@ public class VersionSummaryDto {
     this.excelVersion = excelVersion;
   }
 
+
   public VersionSummaryDto links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public VersionSummaryDto addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -130,7 +135,7 @@ public class VersionSummaryDto {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -142,9 +147,8 @@ public class VersionSummaryDto {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -162,7 +166,7 @@ public class VersionSummaryDto {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

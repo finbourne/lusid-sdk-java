@@ -37,7 +37,7 @@ import java.util.Map;
  * The details for the cashflow for a given portfolio.
  */
 @ApiModel(description = "The details for the cashflow for a given portfolio.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PortfolioCashFlow {
   public static final String SERIALIZED_NAME_GROUP_BY_ID = "groupById";
   @SerializedName(SERIALIZED_NAME_GROUP_BY_ID)
@@ -53,7 +53,7 @@ public class PortfolioCashFlow {
 
   public static final String SERIALIZED_NAME_SUB_HOLDING_KEYS = "subHoldingKeys";
   @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEYS)
-  private Map<String, PerpetualProperty> subHoldingKeys = new HashMap<>();
+  private Map<String, PerpetualProperty> subHoldingKeys = null;
 
   public static final String SERIALIZED_NAME_TYPE = "type";
   @SerializedName(SERIALIZED_NAME_TYPE)
@@ -65,11 +65,11 @@ public class PortfolioCashFlow {
 
   public static final String SERIALIZED_NAME_CASHFLOW = "cashflow";
   @SerializedName(SERIALIZED_NAME_CASHFLOW)
-  private CurrencyAndAmount cashflow = null;
+  private CurrencyAndAmount cashflow;
 
   public static final String SERIALIZED_NAME_BALANCE = "balance";
   @SerializedName(SERIALIZED_NAME_BALANCE)
-  private CurrencyAndAmount balance = null;
+  private CurrencyAndAmount balance;
 
   public static final String SERIALIZED_NAME_FX_RATE = "fxRate";
   @SerializedName(SERIALIZED_NAME_FX_RATE)
@@ -77,30 +77,31 @@ public class PortfolioCashFlow {
 
   public static final String SERIALIZED_NAME_CASHFLOW_REPORTING_CURRENCY = "cashflowReportingCurrency";
   @SerializedName(SERIALIZED_NAME_CASHFLOW_REPORTING_CURRENCY)
-  private CurrencyAndAmount cashflowReportingCurrency = null;
+  private CurrencyAndAmount cashflowReportingCurrency;
 
   public static final String SERIALIZED_NAME_BALANCE_REPORTING_CURRENCY = "balanceReportingCurrency";
   @SerializedName(SERIALIZED_NAME_BALANCE_REPORTING_CURRENCY)
-  private CurrencyAndAmount balanceReportingCurrency = null;
+  private CurrencyAndAmount balanceReportingCurrency;
 
   public static final String SERIALIZED_NAME_TRANSLATION_GAIN_LOSS = "translationGainLoss";
   @SerializedName(SERIALIZED_NAME_TRANSLATION_GAIN_LOSS)
-  private CurrencyAndAmount translationGainLoss = null;
+  private CurrencyAndAmount translationGainLoss;
 
   public static final String SERIALIZED_NAME_COST_BASIS_REPORTING_CURRENCY = "costBasisReportingCurrency";
   @SerializedName(SERIALIZED_NAME_COST_BASIS_REPORTING_CURRENCY)
-  private CurrencyAndAmount costBasisReportingCurrency = null;
+  private CurrencyAndAmount costBasisReportingCurrency;
 
   public static final String SERIALIZED_NAME_TRANSACTION = "transaction";
   @SerializedName(SERIALIZED_NAME_TRANSACTION)
-  private Transaction transaction = null;
+  private Transaction transaction;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public PortfolioCashFlow groupById(Integer groupById) {
-    this.groupById = groupById;
+    this.groupById = groupById; 
     return this;
   }
 
@@ -117,8 +118,9 @@ public class PortfolioCashFlow {
     this.groupById = groupById;
   }
 
+
   public PortfolioCashFlow sequenceNumber(Integer sequenceNumber) {
-    this.sequenceNumber = sequenceNumber;
+    this.sequenceNumber = sequenceNumber; 
     return this;
   }
 
@@ -135,8 +137,9 @@ public class PortfolioCashFlow {
     this.sequenceNumber = sequenceNumber;
   }
 
+
   public PortfolioCashFlow effectiveDate(OffsetDateTime effectiveDate) {
-    this.effectiveDate = effectiveDate;
+    this.effectiveDate = effectiveDate; 
     return this;
   }
 
@@ -153,8 +156,9 @@ public class PortfolioCashFlow {
     this.effectiveDate = effectiveDate;
   }
 
+
   public PortfolioCashFlow subHoldingKeys(Map<String, PerpetualProperty> subHoldingKeys) {
-    this.subHoldingKeys = subHoldingKeys;
+    this.subHoldingKeys = subHoldingKeys; 
     return this;
   }
 
@@ -179,8 +183,9 @@ public class PortfolioCashFlow {
     this.subHoldingKeys = subHoldingKeys;
   }
 
+
   public PortfolioCashFlow type(String type) {
-    this.type = type;
+    this.type = type; 
     return this;
   }
 
@@ -197,8 +202,9 @@ public class PortfolioCashFlow {
     this.type = type;
   }
 
+
   public PortfolioCashFlow movementName(String movementName) {
-    this.movementName = movementName;
+    this.movementName = movementName; 
     return this;
   }
 
@@ -215,8 +221,9 @@ public class PortfolioCashFlow {
     this.movementName = movementName;
   }
 
+
   public PortfolioCashFlow cashflow(CurrencyAndAmount cashflow) {
-    this.cashflow = cashflow;
+    this.cashflow = cashflow; 
     return this;
   }
 
@@ -233,8 +240,9 @@ public class PortfolioCashFlow {
     this.cashflow = cashflow;
   }
 
+
   public PortfolioCashFlow balance(CurrencyAndAmount balance) {
-    this.balance = balance;
+    this.balance = balance; 
     return this;
   }
 
@@ -251,8 +259,9 @@ public class PortfolioCashFlow {
     this.balance = balance;
   }
 
+
   public PortfolioCashFlow fxRate(Double fxRate) {
-    this.fxRate = fxRate;
+    this.fxRate = fxRate; 
     return this;
   }
 
@@ -269,8 +278,9 @@ public class PortfolioCashFlow {
     this.fxRate = fxRate;
   }
 
+
   public PortfolioCashFlow cashflowReportingCurrency(CurrencyAndAmount cashflowReportingCurrency) {
-    this.cashflowReportingCurrency = cashflowReportingCurrency;
+    this.cashflowReportingCurrency = cashflowReportingCurrency; 
     return this;
   }
 
@@ -287,8 +297,9 @@ public class PortfolioCashFlow {
     this.cashflowReportingCurrency = cashflowReportingCurrency;
   }
 
+
   public PortfolioCashFlow balanceReportingCurrency(CurrencyAndAmount balanceReportingCurrency) {
-    this.balanceReportingCurrency = balanceReportingCurrency;
+    this.balanceReportingCurrency = balanceReportingCurrency; 
     return this;
   }
 
@@ -305,8 +316,9 @@ public class PortfolioCashFlow {
     this.balanceReportingCurrency = balanceReportingCurrency;
   }
 
+
   public PortfolioCashFlow translationGainLoss(CurrencyAndAmount translationGainLoss) {
-    this.translationGainLoss = translationGainLoss;
+    this.translationGainLoss = translationGainLoss; 
     return this;
   }
 
@@ -323,8 +335,9 @@ public class PortfolioCashFlow {
     this.translationGainLoss = translationGainLoss;
   }
 
+
   public PortfolioCashFlow costBasisReportingCurrency(CurrencyAndAmount costBasisReportingCurrency) {
-    this.costBasisReportingCurrency = costBasisReportingCurrency;
+    this.costBasisReportingCurrency = costBasisReportingCurrency; 
     return this;
   }
 
@@ -341,8 +354,9 @@ public class PortfolioCashFlow {
     this.costBasisReportingCurrency = costBasisReportingCurrency;
   }
 
+
   public PortfolioCashFlow transaction(Transaction transaction) {
-    this.transaction = transaction;
+    this.transaction = transaction; 
     return this;
   }
 
@@ -359,12 +373,14 @@ public class PortfolioCashFlow {
     this.transaction = transaction;
   }
 
+
   public PortfolioCashFlow links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public PortfolioCashFlow addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -387,7 +403,7 @@ public class PortfolioCashFlow {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -399,9 +415,8 @@ public class PortfolioCashFlow {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -430,7 +445,7 @@ public class PortfolioCashFlow {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

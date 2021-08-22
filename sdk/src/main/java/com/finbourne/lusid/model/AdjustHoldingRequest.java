@@ -34,7 +34,7 @@ import java.util.Map;
  * This request specifies target holdings. i.e. holding data that the  system should match. When processed by the movement  engine, it will create &#39;true-up&#39; adjustments on the fly.
  */
 @ApiModel(description = "This request specifies target holdings. i.e. holding data that the  system should match. When processed by the movement  engine, it will create 'true-up' adjustments on the fly.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AdjustHoldingRequest {
   public static final String SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS = "instrumentIdentifiers";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS)
@@ -42,11 +42,11 @@ public class AdjustHoldingRequest {
 
   public static final String SERIALIZED_NAME_SUB_HOLDING_KEYS = "subHoldingKeys";
   @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEYS)
-  private Map<String, PerpetualProperty> subHoldingKeys = new HashMap<>();
+  private Map<String, PerpetualProperty> subHoldingKeys = null;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = new HashMap<>();
+  private Map<String, PerpetualProperty> properties = null;
 
   public static final String SERIALIZED_NAME_TAX_LOTS = "taxLots";
   @SerializedName(SERIALIZED_NAME_TAX_LOTS)
@@ -56,8 +56,9 @@ public class AdjustHoldingRequest {
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
+
   public AdjustHoldingRequest instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
-    this.instrumentIdentifiers = instrumentIdentifiers;
+    this.instrumentIdentifiers = instrumentIdentifiers; 
     return this;
   }
 
@@ -79,8 +80,9 @@ public class AdjustHoldingRequest {
     this.instrumentIdentifiers = instrumentIdentifiers;
   }
 
+
   public AdjustHoldingRequest subHoldingKeys(Map<String, PerpetualProperty> subHoldingKeys) {
-    this.subHoldingKeys = subHoldingKeys;
+    this.subHoldingKeys = subHoldingKeys; 
     return this;
   }
 
@@ -105,8 +107,9 @@ public class AdjustHoldingRequest {
     this.subHoldingKeys = subHoldingKeys;
   }
 
+
   public AdjustHoldingRequest properties(Map<String, PerpetualProperty> properties) {
-    this.properties = properties;
+    this.properties = properties; 
     return this;
   }
 
@@ -131,12 +134,14 @@ public class AdjustHoldingRequest {
     this.properties = properties;
   }
 
+
   public AdjustHoldingRequest taxLots(List<TargetTaxLotRequest> taxLots) {
-    this.taxLots = taxLots;
+    this.taxLots = taxLots; 
     return this;
   }
 
   public AdjustHoldingRequest addTaxLotsItem(TargetTaxLotRequest taxLotsItem) {
+   
     this.taxLots.add(taxLotsItem);
     return this;
   }
@@ -154,8 +159,9 @@ public class AdjustHoldingRequest {
     this.taxLots = taxLots;
   }
 
+
   public AdjustHoldingRequest currency(String currency) {
-    this.currency = currency;
+    this.currency = currency; 
     return this;
   }
 
@@ -174,7 +180,7 @@ public class AdjustHoldingRequest {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -186,9 +192,8 @@ public class AdjustHoldingRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -207,7 +212,7 @@ public class AdjustHoldingRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

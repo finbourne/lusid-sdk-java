@@ -32,7 +32,7 @@ import java.util.List;
 /**
  * UpsertReferencePortfolioConstituentsResponse
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpsertReferencePortfolioConstituentsResponse {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -40,14 +40,15 @@ public class UpsertReferencePortfolioConstituentsResponse {
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public UpsertReferencePortfolioConstituentsResponse href(URI href) {
-    this.href = href;
+    this.href = href; 
     return this;
   }
 
@@ -64,8 +65,9 @@ public class UpsertReferencePortfolioConstituentsResponse {
     this.href = href;
   }
 
+
   public UpsertReferencePortfolioConstituentsResponse version(Version version) {
-    this.version = version;
+    this.version = version; 
     return this;
   }
 
@@ -82,12 +84,14 @@ public class UpsertReferencePortfolioConstituentsResponse {
     this.version = version;
   }
 
+
   public UpsertReferencePortfolioConstituentsResponse links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public UpsertReferencePortfolioConstituentsResponse addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -110,7 +114,7 @@ public class UpsertReferencePortfolioConstituentsResponse {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -122,9 +126,8 @@ public class UpsertReferencePortfolioConstituentsResponse {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -141,7 +144,7 @@ public class UpsertReferencePortfolioConstituentsResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

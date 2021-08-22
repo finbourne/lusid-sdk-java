@@ -2,6 +2,8 @@
 
 # TransactionSetConfigurationData
 
+A collection of the data required to configure transaction types..
+
 ## Properties
 
 Name | Type | Description | Notes

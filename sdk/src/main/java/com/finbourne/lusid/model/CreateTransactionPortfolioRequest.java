@@ -34,7 +34,7 @@ import java.util.Map;
 /**
  * CreateTransactionPortfolioRequest
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreateTransactionPortfolioRequest {
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -58,7 +58,7 @@ public class CreateTransactionPortfolioRequest {
 
   public static final String SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID = "corporateActionSourceId";
   @SerializedName(SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID)
-  private ResourceId corporateActionSourceId = null;
+  private ResourceId corporateActionSourceId;
 
   /**
    * Determines the accounting treatment given to the transaction portfolio&#39;s tax lots. The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst
@@ -109,7 +109,7 @@ public class CreateTransactionPortfolioRequest {
 
       @Override
       public AccountingMethodEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return AccountingMethodEnum.fromValue(value);
       }
     }
@@ -121,14 +121,15 @@ public class CreateTransactionPortfolioRequest {
 
   public static final String SERIALIZED_NAME_SUB_HOLDING_KEYS = "subHoldingKeys";
   @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEYS)
-  private List<String> subHoldingKeys = new ArrayList<>();
+  private List<String> subHoldingKeys = null;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, Property> properties = new HashMap<>();
+  private Map<String, Property> properties = null;
+
 
   public CreateTransactionPortfolioRequest displayName(String displayName) {
-    this.displayName = displayName;
+    this.displayName = displayName; 
     return this;
   }
 
@@ -145,8 +146,9 @@ public class CreateTransactionPortfolioRequest {
     this.displayName = displayName;
   }
 
+
   public CreateTransactionPortfolioRequest description(String description) {
-    this.description = description;
+    this.description = description; 
     return this;
   }
 
@@ -163,8 +165,9 @@ public class CreateTransactionPortfolioRequest {
     this.description = description;
   }
 
+
   public CreateTransactionPortfolioRequest code(String code) {
-    this.code = code;
+    this.code = code; 
     return this;
   }
 
@@ -181,8 +184,9 @@ public class CreateTransactionPortfolioRequest {
     this.code = code;
   }
 
+
   public CreateTransactionPortfolioRequest created(OffsetDateTime created) {
-    this.created = created;
+    this.created = created; 
     return this;
   }
 
@@ -199,8 +203,9 @@ public class CreateTransactionPortfolioRequest {
     this.created = created;
   }
 
+
   public CreateTransactionPortfolioRequest baseCurrency(String baseCurrency) {
-    this.baseCurrency = baseCurrency;
+    this.baseCurrency = baseCurrency; 
     return this;
   }
 
@@ -217,8 +222,9 @@ public class CreateTransactionPortfolioRequest {
     this.baseCurrency = baseCurrency;
   }
 
+
   public CreateTransactionPortfolioRequest corporateActionSourceId(ResourceId corporateActionSourceId) {
-    this.corporateActionSourceId = corporateActionSourceId;
+    this.corporateActionSourceId = corporateActionSourceId; 
     return this;
   }
 
@@ -235,8 +241,9 @@ public class CreateTransactionPortfolioRequest {
     this.corporateActionSourceId = corporateActionSourceId;
   }
 
+
   public CreateTransactionPortfolioRequest accountingMethod(AccountingMethodEnum accountingMethod) {
-    this.accountingMethod = accountingMethod;
+    this.accountingMethod = accountingMethod; 
     return this;
   }
 
@@ -253,12 +260,14 @@ public class CreateTransactionPortfolioRequest {
     this.accountingMethod = accountingMethod;
   }
 
+
   public CreateTransactionPortfolioRequest subHoldingKeys(List<String> subHoldingKeys) {
-    this.subHoldingKeys = subHoldingKeys;
+    this.subHoldingKeys = subHoldingKeys; 
     return this;
   }
 
   public CreateTransactionPortfolioRequest addSubHoldingKeysItem(String subHoldingKeysItem) {
+   
     if (this.subHoldingKeys == null) {
       this.subHoldingKeys = new ArrayList<>();
     }
@@ -279,8 +288,9 @@ public class CreateTransactionPortfolioRequest {
     this.subHoldingKeys = subHoldingKeys;
   }
 
+
   public CreateTransactionPortfolioRequest properties(Map<String, Property> properties) {
-    this.properties = properties;
+    this.properties = properties; 
     return this;
   }
 
@@ -307,7 +317,7 @@ public class CreateTransactionPortfolioRequest {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -319,9 +329,8 @@ public class CreateTransactionPortfolioRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -344,7 +353,7 @@ public class CreateTransactionPortfolioRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

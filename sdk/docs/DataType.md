@@ -2,11 +2,12 @@
 
 # DataType
 
+
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**href** | [**URI**](URI.md) |  |  [optional]
+**href** | **URI** |  |  [optional]
 **typeValueRange** | [**TypeValueRangeEnum**](#TypeValueRangeEnum) | The available values are: Open, Closed | 
 **id** | [**ResourceId**](ResourceId.md) |  | 
 **displayName** | **String** |  | 

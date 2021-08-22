@@ -28,7 +28,7 @@ import java.time.OffsetDateTime;
 /**
  * DateRange
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DateRange {
   public static final String SERIALIZED_NAME_FROM_DATE = "fromDate";
   @SerializedName(SERIALIZED_NAME_FROM_DATE)
@@ -38,8 +38,9 @@ public class DateRange {
   @SerializedName(SERIALIZED_NAME_UNTIL_DATE)
   private OffsetDateTime untilDate;
 
+
   public DateRange fromDate(OffsetDateTime fromDate) {
-    this.fromDate = fromDate;
+    this.fromDate = fromDate; 
     return this;
   }
 
@@ -56,8 +57,9 @@ public class DateRange {
     this.fromDate = fromDate;
   }
 
+
   public DateRange untilDate(OffsetDateTime untilDate) {
-    this.untilDate = untilDate;
+    this.untilDate = untilDate; 
     return this;
   }
 
@@ -76,7 +78,7 @@ public class DateRange {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -88,9 +90,8 @@ public class DateRange {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -106,7 +107,7 @@ public class DateRange {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

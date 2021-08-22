@@ -33,7 +33,7 @@ import java.util.List;
 /**
  * PortfolioDetails
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PortfolioDetails {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -41,11 +41,11 @@ public class PortfolioDetails {
 
   public static final String SERIALIZED_NAME_ORIGIN_PORTFOLIO_ID = "originPortfolioId";
   @SerializedName(SERIALIZED_NAME_ORIGIN_PORTFOLIO_ID)
-  private ResourceId originPortfolioId = null;
+  private ResourceId originPortfolioId;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_BASE_CURRENCY = "baseCurrency";
   @SerializedName(SERIALIZED_NAME_BASE_CURRENCY)
@@ -53,18 +53,19 @@ public class PortfolioDetails {
 
   public static final String SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID = "corporateActionSourceId";
   @SerializedName(SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID)
-  private ResourceId corporateActionSourceId = null;
+  private ResourceId corporateActionSourceId;
 
   public static final String SERIALIZED_NAME_SUB_HOLDING_KEYS = "subHoldingKeys";
   @SerializedName(SERIALIZED_NAME_SUB_HOLDING_KEYS)
-  private List<String> subHoldingKeys = new ArrayList<>();
+  private List<String> subHoldingKeys = null;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public PortfolioDetails href(URI href) {
-    this.href = href;
+    this.href = href; 
     return this;
   }
 
@@ -81,8 +82,9 @@ public class PortfolioDetails {
     this.href = href;
   }
 
+
   public PortfolioDetails originPortfolioId(ResourceId originPortfolioId) {
-    this.originPortfolioId = originPortfolioId;
+    this.originPortfolioId = originPortfolioId; 
     return this;
   }
 
@@ -99,8 +101,9 @@ public class PortfolioDetails {
     this.originPortfolioId = originPortfolioId;
   }
 
+
   public PortfolioDetails version(Version version) {
-    this.version = version;
+    this.version = version; 
     return this;
   }
 
@@ -117,8 +120,9 @@ public class PortfolioDetails {
     this.version = version;
   }
 
+
   public PortfolioDetails baseCurrency(String baseCurrency) {
-    this.baseCurrency = baseCurrency;
+    this.baseCurrency = baseCurrency; 
     return this;
   }
 
@@ -135,8 +139,9 @@ public class PortfolioDetails {
     this.baseCurrency = baseCurrency;
   }
 
+
   public PortfolioDetails corporateActionSourceId(ResourceId corporateActionSourceId) {
-    this.corporateActionSourceId = corporateActionSourceId;
+    this.corporateActionSourceId = corporateActionSourceId; 
     return this;
   }
 
@@ -153,12 +158,14 @@ public class PortfolioDetails {
     this.corporateActionSourceId = corporateActionSourceId;
   }
 
+
   public PortfolioDetails subHoldingKeys(List<String> subHoldingKeys) {
-    this.subHoldingKeys = subHoldingKeys;
+    this.subHoldingKeys = subHoldingKeys; 
     return this;
   }
 
   public PortfolioDetails addSubHoldingKeysItem(String subHoldingKeysItem) {
+   
     if (this.subHoldingKeys == null) {
       this.subHoldingKeys = new ArrayList<>();
     }
@@ -179,12 +186,14 @@ public class PortfolioDetails {
     this.subHoldingKeys = subHoldingKeys;
   }
 
+
   public PortfolioDetails links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public PortfolioDetails addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -207,7 +216,7 @@ public class PortfolioDetails {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -219,9 +228,8 @@ public class PortfolioDetails {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -242,7 +250,7 @@ public class PortfolioDetails {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * TransactionQueryParameters
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TransactionQueryParameters {
   public static final String SERIALIZED_NAME_START_DATE = "startDate";
   @SerializedName(SERIALIZED_NAME_START_DATE)
@@ -78,7 +78,7 @@ public class TransactionQueryParameters {
 
       @Override
       public QueryModeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return QueryModeEnum.fromValue(value);
       }
     }
@@ -92,8 +92,9 @@ public class TransactionQueryParameters {
   @SerializedName(SERIALIZED_NAME_SHOW_CANCELLED_TRANSACTIONS)
   private Boolean showCancelledTransactions;
 
+
   public TransactionQueryParameters startDate(String startDate) {
-    this.startDate = startDate;
+    this.startDate = startDate; 
     return this;
   }
 
@@ -110,8 +111,9 @@ public class TransactionQueryParameters {
     this.startDate = startDate;
   }
 
+
   public TransactionQueryParameters endDate(String endDate) {
-    this.endDate = endDate;
+    this.endDate = endDate; 
     return this;
   }
 
@@ -128,8 +130,9 @@ public class TransactionQueryParameters {
     this.endDate = endDate;
   }
 
+
   public TransactionQueryParameters queryMode(QueryModeEnum queryMode) {
-    this.queryMode = queryMode;
+    this.queryMode = queryMode; 
     return this;
   }
 
@@ -146,8 +149,9 @@ public class TransactionQueryParameters {
     this.queryMode = queryMode;
   }
 
+
   public TransactionQueryParameters showCancelledTransactions(Boolean showCancelledTransactions) {
-    this.showCancelledTransactions = showCancelledTransactions;
+    this.showCancelledTransactions = showCancelledTransactions; 
     return this;
   }
 
@@ -166,7 +170,7 @@ public class TransactionQueryParameters {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -178,9 +182,8 @@ public class TransactionQueryParameters {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -198,7 +201,7 @@ public class TransactionQueryParameters {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

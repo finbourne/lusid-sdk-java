@@ -34,7 +34,7 @@ import java.util.Map;
 /**
  * CreatePortfolioGroupRequest
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CreatePortfolioGroupRequest {
   public static final String SERIALIZED_NAME_CODE = "code";
   @SerializedName(SERIALIZED_NAME_CODE)
@@ -46,15 +46,15 @@ public class CreatePortfolioGroupRequest {
 
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<ResourceId> values = new ArrayList<>();
+  private List<ResourceId> values = null;
 
   public static final String SERIALIZED_NAME_SUB_GROUPS = "subGroups";
   @SerializedName(SERIALIZED_NAME_SUB_GROUPS)
-  private List<ResourceId> subGroups = new ArrayList<>();
+  private List<ResourceId> subGroups = null;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, Property> properties = new HashMap<>();
+  private Map<String, Property> properties = null;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -64,8 +64,9 @@ public class CreatePortfolioGroupRequest {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+
   public CreatePortfolioGroupRequest code(String code) {
-    this.code = code;
+    this.code = code; 
     return this;
   }
 
@@ -82,8 +83,9 @@ public class CreatePortfolioGroupRequest {
     this.code = code;
   }
 
+
   public CreatePortfolioGroupRequest created(OffsetDateTime created) {
-    this.created = created;
+    this.created = created; 
     return this;
   }
 
@@ -100,12 +102,14 @@ public class CreatePortfolioGroupRequest {
     this.created = created;
   }
 
+
   public CreatePortfolioGroupRequest values(List<ResourceId> values) {
-    this.values = values;
+    this.values = values; 
     return this;
   }
 
   public CreatePortfolioGroupRequest addValuesItem(ResourceId valuesItem) {
+   
     if (this.values == null) {
       this.values = new ArrayList<>();
     }
@@ -126,12 +130,14 @@ public class CreatePortfolioGroupRequest {
     this.values = values;
   }
 
+
   public CreatePortfolioGroupRequest subGroups(List<ResourceId> subGroups) {
-    this.subGroups = subGroups;
+    this.subGroups = subGroups; 
     return this;
   }
 
   public CreatePortfolioGroupRequest addSubGroupsItem(ResourceId subGroupsItem) {
+   
     if (this.subGroups == null) {
       this.subGroups = new ArrayList<>();
     }
@@ -152,8 +158,9 @@ public class CreatePortfolioGroupRequest {
     this.subGroups = subGroups;
   }
 
+
   public CreatePortfolioGroupRequest properties(Map<String, Property> properties) {
-    this.properties = properties;
+    this.properties = properties; 
     return this;
   }
 
@@ -178,8 +185,9 @@ public class CreatePortfolioGroupRequest {
     this.properties = properties;
   }
 
+
   public CreatePortfolioGroupRequest displayName(String displayName) {
-    this.displayName = displayName;
+    this.displayName = displayName; 
     return this;
   }
 
@@ -196,8 +204,9 @@ public class CreatePortfolioGroupRequest {
     this.displayName = displayName;
   }
 
+
   public CreatePortfolioGroupRequest description(String description) {
-    this.description = description;
+    this.description = description; 
     return this;
   }
 
@@ -216,7 +225,7 @@ public class CreatePortfolioGroupRequest {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -228,9 +237,8 @@ public class CreatePortfolioGroupRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -251,7 +259,7 @@ public class CreatePortfolioGroupRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

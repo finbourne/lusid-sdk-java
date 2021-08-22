@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * TransactionPropertyMapping
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class TransactionPropertyMapping {
   public static final String SERIALIZED_NAME_PROPERTY_KEY = "propertyKey";
   @SerializedName(SERIALIZED_NAME_PROPERTY_KEY)
@@ -39,10 +39,11 @@ public class TransactionPropertyMapping {
 
   public static final String SERIALIZED_NAME_SET_TO = "setTo";
   @SerializedName(SERIALIZED_NAME_SET_TO)
-  private Object setTo = null;
+  private Object setTo;
+
 
   public TransactionPropertyMapping propertyKey(String propertyKey) {
-    this.propertyKey = propertyKey;
+    this.propertyKey = propertyKey; 
     return this;
   }
 
@@ -59,8 +60,9 @@ public class TransactionPropertyMapping {
     this.propertyKey = propertyKey;
   }
 
+
   public TransactionPropertyMapping mapFrom(String mapFrom) {
-    this.mapFrom = mapFrom;
+    this.mapFrom = mapFrom; 
     return this;
   }
 
@@ -77,8 +79,9 @@ public class TransactionPropertyMapping {
     this.mapFrom = mapFrom;
   }
 
+
   public TransactionPropertyMapping setTo(Object setTo) {
-    this.setTo = setTo;
+    this.setTo = setTo; 
     return this;
   }
 
@@ -97,7 +100,7 @@ public class TransactionPropertyMapping {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -109,9 +112,8 @@ public class TransactionPropertyMapping {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -128,7 +130,7 @@ public class TransactionPropertyMapping {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

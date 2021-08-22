@@ -28,7 +28,7 @@ import java.io.IOException;
  * The time invariant unique identifier of the quote. Combined with the effective datetime of the quote this  uniquely identifies the quote. This can be thought of as a unique identifier for a time series of quotes.
  */
 @ApiModel(description = "The time invariant unique identifier of the quote. Combined with the effective datetime of the quote this  uniquely identifies the quote. This can be thought of as a unique identifier for a time series of quotes.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class QuoteSeriesId {
   public static final String SERIALIZED_NAME_PROVIDER = "provider";
   @SerializedName(SERIALIZED_NAME_PROVIDER)
@@ -82,7 +82,7 @@ public class QuoteSeriesId {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
 
     public static class Adapter extends TypeAdapter<InstrumentIdTypeEnum> {
@@ -93,7 +93,7 @@ public class QuoteSeriesId {
 
       @Override
       public InstrumentIdTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return InstrumentIdTypeEnum.fromValue(value);
       }
     }
@@ -145,7 +145,7 @@ public class QuoteSeriesId {
           return b;
         }
       }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
+      return null;
     }
 
     public static class Adapter extends TypeAdapter<QuoteTypeEnum> {
@@ -156,7 +156,7 @@ public class QuoteSeriesId {
 
       @Override
       public QuoteTypeEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return QuoteTypeEnum.fromValue(value);
       }
     }
@@ -170,8 +170,9 @@ public class QuoteSeriesId {
   @SerializedName(SERIALIZED_NAME_FIELD)
   private String field;
 
+
   public QuoteSeriesId provider(String provider) {
-    this.provider = provider;
+    this.provider = provider; 
     return this;
   }
 
@@ -188,8 +189,9 @@ public class QuoteSeriesId {
     this.provider = provider;
   }
 
+
   public QuoteSeriesId priceSource(String priceSource) {
-    this.priceSource = priceSource;
+    this.priceSource = priceSource; 
     return this;
   }
 
@@ -206,8 +208,9 @@ public class QuoteSeriesId {
     this.priceSource = priceSource;
   }
 
+
   public QuoteSeriesId instrumentId(String instrumentId) {
-    this.instrumentId = instrumentId;
+    this.instrumentId = instrumentId; 
     return this;
   }
 
@@ -224,8 +227,9 @@ public class QuoteSeriesId {
     this.instrumentId = instrumentId;
   }
 
+
   public QuoteSeriesId instrumentIdType(InstrumentIdTypeEnum instrumentIdType) {
-    this.instrumentIdType = instrumentIdType;
+    this.instrumentIdType = instrumentIdType; 
     return this;
   }
 
@@ -242,8 +246,9 @@ public class QuoteSeriesId {
     this.instrumentIdType = instrumentIdType;
   }
 
+
   public QuoteSeriesId quoteType(QuoteTypeEnum quoteType) {
-    this.quoteType = quoteType;
+    this.quoteType = quoteType; 
     return this;
   }
 
@@ -260,8 +265,9 @@ public class QuoteSeriesId {
     this.quoteType = quoteType;
   }
 
+
   public QuoteSeriesId field(String field) {
-    this.field = field;
+    this.field = field; 
     return this;
   }
 
@@ -280,7 +286,7 @@ public class QuoteSeriesId {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -292,9 +298,8 @@ public class QuoteSeriesId {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -314,7 +319,7 @@ public class QuoteSeriesId {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

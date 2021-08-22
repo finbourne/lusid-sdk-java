@@ -30,7 +30,7 @@ import java.util.Map;
 /**
  * ErrorDetail
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ErrorDetail {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
@@ -46,10 +46,11 @@ public class ErrorDetail {
 
   public static final String SERIALIZED_NAME_ERROR_DETAILS = "errorDetails";
   @SerializedName(SERIALIZED_NAME_ERROR_DETAILS)
-  private List<Map<String, String>> errorDetails = new ArrayList<>();
+  private List<Map<String, String>> errorDetails = null;
+
 
   public ErrorDetail id(String id) {
-    this.id = id;
+    this.id = id; 
     return this;
   }
 
@@ -66,8 +67,9 @@ public class ErrorDetail {
     this.id = id;
   }
 
+
   public ErrorDetail type(String type) {
-    this.type = type;
+    this.type = type; 
     return this;
   }
 
@@ -84,8 +86,9 @@ public class ErrorDetail {
     this.type = type;
   }
 
+
   public ErrorDetail detail(String detail) {
-    this.detail = detail;
+    this.detail = detail; 
     return this;
   }
 
@@ -102,12 +105,14 @@ public class ErrorDetail {
     this.detail = detail;
   }
 
+
   public ErrorDetail errorDetails(List<Map<String, String>> errorDetails) {
-    this.errorDetails = errorDetails;
+    this.errorDetails = errorDetails; 
     return this;
   }
 
   public ErrorDetail addErrorDetailsItem(Map<String, String> errorDetailsItem) {
+   
     if (this.errorDetails == null) {
       this.errorDetails = new ArrayList<>();
     }
@@ -130,7 +135,7 @@ public class ErrorDetail {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -142,9 +147,8 @@ public class ErrorDetail {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -162,7 +166,7 @@ public class ErrorDetail {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

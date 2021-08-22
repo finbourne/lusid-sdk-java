@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * Stream
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Stream {
   public static final String SERIALIZED_NAME_CAN_READ = "canRead";
   @SerializedName(SERIALIZED_NAME_CAN_READ)
@@ -61,6 +61,7 @@ public class Stream {
   @SerializedName(SERIALIZED_NAME_WRITE_TIMEOUT)
   private Integer writeTimeout;
 
+
    /**
    * Get canRead
    * @return canRead
@@ -69,6 +70,8 @@ public class Stream {
   public Boolean getCanRead() {
     return canRead;
   }
+
+
 
    /**
    * Get canSeek
@@ -79,6 +82,8 @@ public class Stream {
     return canSeek;
   }
 
+
+
    /**
    * Get canTimeout
    * @return canTimeout
@@ -87,6 +92,8 @@ public class Stream {
   public Boolean getCanTimeout() {
     return canTimeout;
   }
+
+
 
    /**
    * Get canWrite
@@ -97,6 +104,8 @@ public class Stream {
     return canWrite;
   }
 
+
+
    /**
    * Get length
    * @return length
@@ -106,8 +115,10 @@ public class Stream {
     return length;
   }
 
+
+
   public Stream position(Long position) {
-    this.position = position;
+    this.position = position; 
     return this;
   }
 
@@ -124,8 +135,9 @@ public class Stream {
     this.position = position;
   }
 
+
   public Stream readTimeout(Integer readTimeout) {
-    this.readTimeout = readTimeout;
+    this.readTimeout = readTimeout; 
     return this;
   }
 
@@ -142,8 +154,9 @@ public class Stream {
     this.readTimeout = readTimeout;
   }
 
+
   public Stream writeTimeout(Integer writeTimeout) {
-    this.writeTimeout = writeTimeout;
+    this.writeTimeout = writeTimeout; 
     return this;
   }
 
@@ -162,7 +175,7 @@ public class Stream {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -174,9 +187,8 @@ public class Stream {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -198,7 +210,7 @@ public class Stream {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }
