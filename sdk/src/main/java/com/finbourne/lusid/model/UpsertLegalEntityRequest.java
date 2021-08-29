@@ -33,7 +33,7 @@ import java.util.Map;
  * Request to create or update an legal entity
  */
 @ApiModel(description = "Request to create or update an legal entity")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpsertLegalEntityRequest {
   public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
   @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
@@ -41,7 +41,7 @@ public class UpsertLegalEntityRequest {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, Property> properties = new HashMap<>();
+  private Map<String, Property> properties = null;
 
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
@@ -53,10 +53,11 @@ public class UpsertLegalEntityRequest {
 
   public static final String SERIALIZED_NAME_COUNTERPARTY_RISK_INFORMATION = "counterpartyRiskInformation";
   @SerializedName(SERIALIZED_NAME_COUNTERPARTY_RISK_INFORMATION)
-  private CounterpartyRiskInformation counterpartyRiskInformation = null;
+  private CounterpartyRiskInformation counterpartyRiskInformation;
+
 
   public UpsertLegalEntityRequest identifiers(Map<String, Property> identifiers) {
-    this.identifiers = identifiers;
+    this.identifiers = identifiers; 
     return this;
   }
 
@@ -78,8 +79,9 @@ public class UpsertLegalEntityRequest {
     this.identifiers = identifiers;
   }
 
+
   public UpsertLegalEntityRequest properties(Map<String, Property> properties) {
-    this.properties = properties;
+    this.properties = properties; 
     return this;
   }
 
@@ -104,8 +106,9 @@ public class UpsertLegalEntityRequest {
     this.properties = properties;
   }
 
+
   public UpsertLegalEntityRequest displayName(String displayName) {
-    this.displayName = displayName;
+    this.displayName = displayName; 
     return this;
   }
 
@@ -122,8 +125,9 @@ public class UpsertLegalEntityRequest {
     this.displayName = displayName;
   }
 
+
   public UpsertLegalEntityRequest description(String description) {
-    this.description = description;
+    this.description = description; 
     return this;
   }
 
@@ -140,8 +144,9 @@ public class UpsertLegalEntityRequest {
     this.description = description;
   }
 
+
   public UpsertLegalEntityRequest counterpartyRiskInformation(CounterpartyRiskInformation counterpartyRiskInformation) {
-    this.counterpartyRiskInformation = counterpartyRiskInformation;
+    this.counterpartyRiskInformation = counterpartyRiskInformation; 
     return this;
   }
 
@@ -160,7 +165,7 @@ public class UpsertLegalEntityRequest {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -172,9 +177,8 @@ public class UpsertLegalEntityRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -193,7 +197,7 @@ public class UpsertLegalEntityRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

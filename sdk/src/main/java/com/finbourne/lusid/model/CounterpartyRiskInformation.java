@@ -32,7 +32,7 @@ import java.util.List;
  * In the event that the legal entity is a counterparty to an OTC transaction  (as signatory to a counterparty agreement such as an ISDA 2002 Master Agreement),  this information would be needed for calculations  such as Credit-Valuation-Adjustments and Debit-Valuation-Adjustments (CVA, DVA, XVA etc).
  */
 @ApiModel(description = "In the event that the legal entity is a counterparty to an OTC transaction  (as signatory to a counterparty agreement such as an ISDA 2002 Master Agreement),  this information would be needed for calculations  such as Credit-Valuation-Adjustments and Debit-Valuation-Adjustments (CVA, DVA, XVA etc).")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CounterpartyRiskInformation {
   public static final String SERIALIZED_NAME_COUNTRY_OF_RISK = "countryOfRisk";
   @SerializedName(SERIALIZED_NAME_COUNTRY_OF_RISK)
@@ -46,8 +46,9 @@ public class CounterpartyRiskInformation {
   @SerializedName(SERIALIZED_NAME_INDUSTRY_CLASSIFIERS)
   private List<IndustryClassifier> industryClassifiers = new ArrayList<>();
 
+
   public CounterpartyRiskInformation countryOfRisk(String countryOfRisk) {
-    this.countryOfRisk = countryOfRisk;
+    this.countryOfRisk = countryOfRisk; 
     return this;
   }
 
@@ -64,12 +65,14 @@ public class CounterpartyRiskInformation {
     this.countryOfRisk = countryOfRisk;
   }
 
+
   public CounterpartyRiskInformation creditRatings(List<CreditRating> creditRatings) {
-    this.creditRatings = creditRatings;
+    this.creditRatings = creditRatings; 
     return this;
   }
 
   public CounterpartyRiskInformation addCreditRatingsItem(CreditRating creditRatingsItem) {
+   
     this.creditRatings.add(creditRatingsItem);
     return this;
   }
@@ -87,12 +90,14 @@ public class CounterpartyRiskInformation {
     this.creditRatings = creditRatings;
   }
 
+
   public CounterpartyRiskInformation industryClassifiers(List<IndustryClassifier> industryClassifiers) {
-    this.industryClassifiers = industryClassifiers;
+    this.industryClassifiers = industryClassifiers; 
     return this;
   }
 
   public CounterpartyRiskInformation addIndustryClassifiersItem(IndustryClassifier industryClassifiersItem) {
+   
     this.industryClassifiers.add(industryClassifiersItem);
     return this;
   }
@@ -112,7 +117,7 @@ public class CounterpartyRiskInformation {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -124,9 +129,8 @@ public class CounterpartyRiskInformation {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -143,7 +147,7 @@ public class CounterpartyRiskInformation {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

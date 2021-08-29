@@ -29,7 +29,7 @@ import java.time.OffsetDateTime;
  * A list of Returns.
  */
 @ApiModel(description = "A list of Returns.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PerformanceReturn {
   public static final String SERIALIZED_NAME_EFFECTIVE_AT = "effectiveAt";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
@@ -51,8 +51,9 @@ public class PerformanceReturn {
   @SerializedName(SERIALIZED_NAME_PERIOD)
   private String period;
 
+
   public PerformanceReturn effectiveAt(OffsetDateTime effectiveAt) {
-    this.effectiveAt = effectiveAt;
+    this.effectiveAt = effectiveAt; 
     return this;
   }
 
@@ -69,8 +70,9 @@ public class PerformanceReturn {
     this.effectiveAt = effectiveAt;
   }
 
+
   public PerformanceReturn rateOfReturn(Double rateOfReturn) {
-    this.rateOfReturn = rateOfReturn;
+    this.rateOfReturn = rateOfReturn; 
     return this;
   }
 
@@ -87,8 +89,9 @@ public class PerformanceReturn {
     this.rateOfReturn = rateOfReturn;
   }
 
+
   public PerformanceReturn openingMarketValue(Double openingMarketValue) {
-    this.openingMarketValue = openingMarketValue;
+    this.openingMarketValue = openingMarketValue; 
     return this;
   }
 
@@ -105,8 +108,9 @@ public class PerformanceReturn {
     this.openingMarketValue = openingMarketValue;
   }
 
+
   public PerformanceReturn closingMarketValue(Double closingMarketValue) {
-    this.closingMarketValue = closingMarketValue;
+    this.closingMarketValue = closingMarketValue; 
     return this;
   }
 
@@ -123,8 +127,9 @@ public class PerformanceReturn {
     this.closingMarketValue = closingMarketValue;
   }
 
+
   public PerformanceReturn period(String period) {
-    this.period = period;
+    this.period = period; 
     return this;
   }
 
@@ -143,7 +148,7 @@ public class PerformanceReturn {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -155,9 +160,8 @@ public class PerformanceReturn {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -176,7 +180,7 @@ public class PerformanceReturn {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

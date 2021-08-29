@@ -29,11 +29,11 @@ import java.time.OffsetDateTime;
 /**
  * PortfolioReconciliationRequest
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PortfolioReconciliationRequest {
   public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
-  private ResourceId portfolioId = null;
+  private ResourceId portfolioId;
 
   public static final String SERIALIZED_NAME_EFFECTIVE_AT = "effectiveAt";
   @SerializedName(SERIALIZED_NAME_EFFECTIVE_AT)
@@ -43,8 +43,9 @@ public class PortfolioReconciliationRequest {
   @SerializedName(SERIALIZED_NAME_AS_AT)
   private OffsetDateTime asAt;
 
+
   public PortfolioReconciliationRequest portfolioId(ResourceId portfolioId) {
-    this.portfolioId = portfolioId;
+    this.portfolioId = portfolioId; 
     return this;
   }
 
@@ -61,8 +62,9 @@ public class PortfolioReconciliationRequest {
     this.portfolioId = portfolioId;
   }
 
+
   public PortfolioReconciliationRequest effectiveAt(String effectiveAt) {
-    this.effectiveAt = effectiveAt;
+    this.effectiveAt = effectiveAt; 
     return this;
   }
 
@@ -79,8 +81,9 @@ public class PortfolioReconciliationRequest {
     this.effectiveAt = effectiveAt;
   }
 
+
   public PortfolioReconciliationRequest asAt(OffsetDateTime asAt) {
-    this.asAt = asAt;
+    this.asAt = asAt; 
     return this;
   }
 
@@ -99,7 +102,7 @@ public class PortfolioReconciliationRequest {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -111,9 +114,8 @@ public class PortfolioReconciliationRequest {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -130,7 +132,7 @@ public class PortfolioReconciliationRequest {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

@@ -38,7 +38,7 @@ import java.util.Map;
  * A list of instruments.
  */
 @ApiModel(description = "A list of instruments.")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Instrument {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -50,7 +50,7 @@ public class Instrument {
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -62,15 +62,15 @@ public class Instrument {
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private List<Property> properties = new ArrayList<>();
+  private List<Property> properties = null;
 
   public static final String SERIALIZED_NAME_LOOKTHROUGH_PORTFOLIO = "lookthroughPortfolio";
   @SerializedName(SERIALIZED_NAME_LOOKTHROUGH_PORTFOLIO)
-  private ResourceId lookthroughPortfolio = null;
+  private ResourceId lookthroughPortfolio;
 
   public static final String SERIALIZED_NAME_INSTRUMENT_DEFINITION = "instrumentDefinition";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_DEFINITION)
-  private LusidInstrument instrumentDefinition = null;
+  private LusidInstrument instrumentDefinition;
 
   /**
    * The state of of the instrument at the asAt datetime of this version of the instrument definition. The available values are: Active, Inactive
@@ -113,7 +113,7 @@ public class Instrument {
 
       @Override
       public StateEnum read(final JsonReader jsonReader) throws IOException {
-        String value = jsonReader.nextString();
+        String value =  jsonReader.nextString();
         return StateEnum.fromValue(value);
       }
     }
@@ -125,10 +125,11 @@ public class Instrument {
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public Instrument href(URI href) {
-    this.href = href;
+    this.href = href; 
     return this;
   }
 
@@ -145,8 +146,9 @@ public class Instrument {
     this.href = href;
   }
 
+
   public Instrument lusidInstrumentId(String lusidInstrumentId) {
-    this.lusidInstrumentId = lusidInstrumentId;
+    this.lusidInstrumentId = lusidInstrumentId; 
     return this;
   }
 
@@ -163,8 +165,9 @@ public class Instrument {
     this.lusidInstrumentId = lusidInstrumentId;
   }
 
+
   public Instrument version(Version version) {
-    this.version = version;
+    this.version = version; 
     return this;
   }
 
@@ -181,8 +184,9 @@ public class Instrument {
     this.version = version;
   }
 
+
   public Instrument name(String name) {
-    this.name = name;
+    this.name = name; 
     return this;
   }
 
@@ -199,8 +203,9 @@ public class Instrument {
     this.name = name;
   }
 
+
   public Instrument identifiers(Map<String, String> identifiers) {
-    this.identifiers = identifiers;
+    this.identifiers = identifiers; 
     return this;
   }
 
@@ -222,12 +227,14 @@ public class Instrument {
     this.identifiers = identifiers;
   }
 
+
   public Instrument properties(List<Property> properties) {
-    this.properties = properties;
+    this.properties = properties; 
     return this;
   }
 
   public Instrument addPropertiesItem(Property propertiesItem) {
+   
     if (this.properties == null) {
       this.properties = new ArrayList<>();
     }
@@ -248,8 +255,9 @@ public class Instrument {
     this.properties = properties;
   }
 
+
   public Instrument lookthroughPortfolio(ResourceId lookthroughPortfolio) {
-    this.lookthroughPortfolio = lookthroughPortfolio;
+    this.lookthroughPortfolio = lookthroughPortfolio; 
     return this;
   }
 
@@ -266,8 +274,9 @@ public class Instrument {
     this.lookthroughPortfolio = lookthroughPortfolio;
   }
 
+
   public Instrument instrumentDefinition(LusidInstrument instrumentDefinition) {
-    this.instrumentDefinition = instrumentDefinition;
+    this.instrumentDefinition = instrumentDefinition; 
     return this;
   }
 
@@ -284,8 +293,9 @@ public class Instrument {
     this.instrumentDefinition = instrumentDefinition;
   }
 
+
   public Instrument state(StateEnum state) {
-    this.state = state;
+    this.state = state; 
     return this;
   }
 
@@ -302,12 +312,14 @@ public class Instrument {
     this.state = state;
   }
 
+
   public Instrument links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public Instrument addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -330,7 +342,7 @@ public class Instrument {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -342,9 +354,8 @@ public class Instrument {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -368,7 +379,7 @@ public class Instrument {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

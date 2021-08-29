@@ -27,7 +27,7 @@ import java.io.IOException;
 /**
  * CutLocalTime
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class CutLocalTime {
   public static final String SERIALIZED_NAME_HOURS = "hours";
   @SerializedName(SERIALIZED_NAME_HOURS)
@@ -37,8 +37,9 @@ public class CutLocalTime {
   @SerializedName(SERIALIZED_NAME_MINUTES)
   private Integer minutes;
 
+
   public CutLocalTime hours(Integer hours) {
-    this.hours = hours;
+    this.hours = hours; 
     return this;
   }
 
@@ -55,8 +56,9 @@ public class CutLocalTime {
     this.hours = hours;
   }
 
+
   public CutLocalTime minutes(Integer minutes) {
-    this.minutes = minutes;
+    this.minutes = minutes; 
     return this;
   }
 
@@ -75,7 +77,7 @@ public class CutLocalTime {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -87,9 +89,8 @@ public class CutLocalTime {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -105,7 +106,7 @@ public class CutLocalTime {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

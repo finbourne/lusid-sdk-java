@@ -38,15 +38,15 @@ import java.util.Map;
  * An Order for a certain quantity of a specific instrument
  */
 @ApiModel(description = "An Order for a certain quantity of a specific instrument")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Order {
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = new HashMap<>();
+  private Map<String, PerpetualProperty> properties = null;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS = "instrumentIdentifiers";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_IDENTIFIERS)
@@ -62,15 +62,15 @@ public class Order {
 
   public static final String SERIALIZED_NAME_ORDER_BOOK_ID = "orderBookId";
   @SerializedName(SERIALIZED_NAME_ORDER_BOOK_ID)
-  private ResourceId orderBookId = null;
+  private ResourceId orderBookId;
 
   public static final String SERIALIZED_NAME_PORTFOLIO_ID = "portfolioId";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_ID)
-  private ResourceId portfolioId = null;
+  private ResourceId portfolioId;
 
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
-  private ResourceId id = null;
+  private ResourceId id;
 
   public static final String SERIALIZED_NAME_LUSID_INSTRUMENT_ID = "lusidInstrumentId";
   @SerializedName(SERIALIZED_NAME_LUSID_INSTRUMENT_ID)
@@ -94,22 +94,23 @@ public class Order {
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
-  private CurrencyAndAmount price = null;
+  private CurrencyAndAmount price;
 
   public static final String SERIALIZED_NAME_ORDER_INSTRUCTION_ID = "orderInstructionId";
   @SerializedName(SERIALIZED_NAME_ORDER_INSTRUCTION_ID)
-  private ResourceId orderInstructionId = null;
+  private ResourceId orderInstructionId;
 
   public static final String SERIALIZED_NAME_PACKAGE_ID = "packageId";
   @SerializedName(SERIALIZED_NAME_PACKAGE_ID)
-  private ResourceId packageId = null;
+  private ResourceId packageId;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public Order properties(Map<String, PerpetualProperty> properties) {
-    this.properties = properties;
+    this.properties = properties; 
     return this;
   }
 
@@ -134,8 +135,9 @@ public class Order {
     this.properties = properties;
   }
 
+
   public Order version(Version version) {
-    this.version = version;
+    this.version = version; 
     return this;
   }
 
@@ -152,8 +154,9 @@ public class Order {
     this.version = version;
   }
 
+
   public Order instrumentIdentifiers(Map<String, String> instrumentIdentifiers) {
-    this.instrumentIdentifiers = instrumentIdentifiers;
+    this.instrumentIdentifiers = instrumentIdentifiers; 
     return this;
   }
 
@@ -175,8 +178,9 @@ public class Order {
     this.instrumentIdentifiers = instrumentIdentifiers;
   }
 
+
   public Order quantity(Integer quantity) {
-    this.quantity = quantity;
+    this.quantity = quantity; 
     return this;
   }
 
@@ -193,8 +197,9 @@ public class Order {
     this.quantity = quantity;
   }
 
+
   public Order side(String side) {
-    this.side = side;
+    this.side = side; 
     return this;
   }
 
@@ -211,8 +216,9 @@ public class Order {
     this.side = side;
   }
 
+
   public Order orderBookId(ResourceId orderBookId) {
-    this.orderBookId = orderBookId;
+    this.orderBookId = orderBookId; 
     return this;
   }
 
@@ -229,8 +235,9 @@ public class Order {
     this.orderBookId = orderBookId;
   }
 
+
   public Order portfolioId(ResourceId portfolioId) {
-    this.portfolioId = portfolioId;
+    this.portfolioId = portfolioId; 
     return this;
   }
 
@@ -247,8 +254,9 @@ public class Order {
     this.portfolioId = portfolioId;
   }
 
+
   public Order id(ResourceId id) {
-    this.id = id;
+    this.id = id; 
     return this;
   }
 
@@ -265,8 +273,9 @@ public class Order {
     this.id = id;
   }
 
+
   public Order lusidInstrumentId(String lusidInstrumentId) {
-    this.lusidInstrumentId = lusidInstrumentId;
+    this.lusidInstrumentId = lusidInstrumentId; 
     return this;
   }
 
@@ -283,8 +292,9 @@ public class Order {
     this.lusidInstrumentId = lusidInstrumentId;
   }
 
+
   public Order state(String state) {
-    this.state = state;
+    this.state = state; 
     return this;
   }
 
@@ -301,8 +311,9 @@ public class Order {
     this.state = state;
   }
 
+
   public Order type(String type) {
-    this.type = type;
+    this.type = type; 
     return this;
   }
 
@@ -319,8 +330,9 @@ public class Order {
     this.type = type;
   }
 
+
   public Order timeInForce(String timeInForce) {
-    this.timeInForce = timeInForce;
+    this.timeInForce = timeInForce; 
     return this;
   }
 
@@ -337,8 +349,9 @@ public class Order {
     this.timeInForce = timeInForce;
   }
 
+
   public Order date(OffsetDateTime date) {
-    this.date = date;
+    this.date = date; 
     return this;
   }
 
@@ -355,8 +368,9 @@ public class Order {
     this.date = date;
   }
 
+
   public Order price(CurrencyAndAmount price) {
-    this.price = price;
+    this.price = price; 
     return this;
   }
 
@@ -373,8 +387,9 @@ public class Order {
     this.price = price;
   }
 
+
   public Order orderInstructionId(ResourceId orderInstructionId) {
-    this.orderInstructionId = orderInstructionId;
+    this.orderInstructionId = orderInstructionId; 
     return this;
   }
 
@@ -391,8 +406,9 @@ public class Order {
     this.orderInstructionId = orderInstructionId;
   }
 
+
   public Order packageId(ResourceId packageId) {
-    this.packageId = packageId;
+    this.packageId = packageId; 
     return this;
   }
 
@@ -409,12 +425,14 @@ public class Order {
     this.packageId = packageId;
   }
 
+
   public Order links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public Order addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -437,7 +455,7 @@ public class Order {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -449,9 +467,8 @@ public class Order {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -482,7 +499,7 @@ public class Order {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

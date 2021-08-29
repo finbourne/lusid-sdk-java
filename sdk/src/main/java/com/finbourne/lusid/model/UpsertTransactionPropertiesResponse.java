@@ -35,7 +35,7 @@ import java.util.Map;
 /**
  * UpsertTransactionPropertiesResponse
  */
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpsertTransactionPropertiesResponse {
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -43,18 +43,19 @@ public class UpsertTransactionPropertiesResponse {
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
-  private Map<String, PerpetualProperty> properties = new HashMap<>();
+  private Map<String, PerpetualProperty> properties = null;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public UpsertTransactionPropertiesResponse href(URI href) {
-    this.href = href;
+    this.href = href; 
     return this;
   }
 
@@ -71,8 +72,9 @@ public class UpsertTransactionPropertiesResponse {
     this.href = href;
   }
 
+
   public UpsertTransactionPropertiesResponse version(Version version) {
-    this.version = version;
+    this.version = version; 
     return this;
   }
 
@@ -89,8 +91,9 @@ public class UpsertTransactionPropertiesResponse {
     this.version = version;
   }
 
+
   public UpsertTransactionPropertiesResponse properties(Map<String, PerpetualProperty> properties) {
-    this.properties = properties;
+    this.properties = properties; 
     return this;
   }
 
@@ -115,12 +118,14 @@ public class UpsertTransactionPropertiesResponse {
     this.properties = properties;
   }
 
+
   public UpsertTransactionPropertiesResponse links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public UpsertTransactionPropertiesResponse addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -143,7 +148,7 @@ public class UpsertTransactionPropertiesResponse {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -155,9 +160,8 @@ public class UpsertTransactionPropertiesResponse {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -175,7 +179,7 @@ public class UpsertTransactionPropertiesResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }

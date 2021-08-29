@@ -36,11 +36,11 @@ import java.util.Map;
  * Response from upserting Returns
  */
 @ApiModel(description = "Response from upserting Returns")
-
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class UpsertReturnsResponse {
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
-  private Version version = null;
+  private Version version;
 
   public static final String SERIALIZED_NAME_HREF = "href";
   @SerializedName(SERIALIZED_NAME_HREF)
@@ -48,18 +48,19 @@ public class UpsertReturnsResponse {
 
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<Map<String, OffsetDateTime>> values = new ArrayList<>();
+  private List<Map<String, OffsetDateTime>> values = null;
 
   public static final String SERIALIZED_NAME_FAILED = "failed";
   @SerializedName(SERIALIZED_NAME_FAILED)
-  private List<Map<String, ErrorDetail>> failed = new ArrayList<>();
+  private List<Map<String, ErrorDetail>> failed = null;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = new ArrayList<>();
+  private List<Link> links = null;
+
 
   public UpsertReturnsResponse version(Version version) {
-    this.version = version;
+    this.version = version; 
     return this;
   }
 
@@ -76,8 +77,9 @@ public class UpsertReturnsResponse {
     this.version = version;
   }
 
+
   public UpsertReturnsResponse href(URI href) {
-    this.href = href;
+    this.href = href; 
     return this;
   }
 
@@ -94,12 +96,14 @@ public class UpsertReturnsResponse {
     this.href = href;
   }
 
+
   public UpsertReturnsResponse values(List<Map<String, OffsetDateTime>> values) {
-    this.values = values;
+    this.values = values; 
     return this;
   }
 
   public UpsertReturnsResponse addValuesItem(Map<String, OffsetDateTime> valuesItem) {
+   
     if (this.values == null) {
       this.values = new ArrayList<>();
     }
@@ -120,12 +124,14 @@ public class UpsertReturnsResponse {
     this.values = values;
   }
 
+
   public UpsertReturnsResponse failed(List<Map<String, ErrorDetail>> failed) {
-    this.failed = failed;
+    this.failed = failed; 
     return this;
   }
 
   public UpsertReturnsResponse addFailedItem(Map<String, ErrorDetail> failedItem) {
+   
     if (this.failed == null) {
       this.failed = new ArrayList<>();
     }
@@ -146,12 +152,14 @@ public class UpsertReturnsResponse {
     this.failed = failed;
   }
 
+
   public UpsertReturnsResponse links(List<Link> links) {
-    this.links = links;
+    this.links = links; 
     return this;
   }
 
   public UpsertReturnsResponse addLinksItem(Link linksItem) {
+   
     if (this.links == null) {
       this.links = new ArrayList<>();
     }
@@ -174,7 +182,7 @@ public class UpsertReturnsResponse {
 
 
   @Override
-  public boolean equals(java.lang.Object o) {
+  public boolean equals(Object o) {
     if (this == o) {
       return true;
     }
@@ -186,9 +194,8 @@ public class UpsertReturnsResponse {
 
   @Override
   public int hashCode() {
-    return super.hashCode();
+    return super.hashCode();  
   }
-
 
   @Override
   public String toString() {
@@ -207,7 +214,7 @@ public class UpsertReturnsResponse {
    * Convert the given object to string with each line indented by 4 spaces
    * (except the first line).
    */
-  private String toIndentedString(java.lang.Object o) {
+  private String toIndentedString(Object o) {
     if (o == null) {
       return "null";
     }
