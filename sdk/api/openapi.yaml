@@ -34,12 +34,12 @@ info:
     | Configuration | File store for secrets and other sensitive information. | [Swagger](https://www.lusid.com/configuration/swagger/index.html) |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3449
+  version: 0.11.3450
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:49165
+- url: http://local-unit-test-server.lusid.com:38845
 security:
 - {}
 tags:
@@ -71,6 +71,7 @@ tags:
 - description: Methods for the storage and retrieval of counterparty related information
     such as Counterparty Agreements, Credit Support Annexes and Netting Set data.
   name: Counterparties
+- name: CustomEntities
 - name: CustomEntityDefinitions
 - description: Methods for interacting with Cut Label Definitions
   name: Cut Label Definitions
@@ -9599,7 +9600,7 @@ paths:
             Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition,
             Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData,
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
-            Block, Participation, Package, OrderInstruction'
+            Block, Participation, Package, OrderInstruction, CustomEntity'
           enum:
           - NotDefined
           - Transaction
@@ -9626,6 +9627,7 @@ paths:
           - Participation
           - Package
           - OrderInstruction
+          - CustomEntity
           type: string
         style: simple
       - description: The scope of the property to be deleted.
@@ -9708,7 +9710,7 @@ paths:
             Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition,
             Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData,
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
-            Block, Participation, Package, OrderInstruction'
+            Block, Participation, Package, OrderInstruction, CustomEntity'
           enum:
           - NotDefined
           - Transaction
@@ -9735,6 +9737,7 @@ paths:
           - Participation
           - Package
           - OrderInstruction
+          - CustomEntity
           type: string
         style: simple
       - description: The scope of the specified property.
@@ -9835,7 +9838,7 @@ paths:
             Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition,
             Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData,
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
-            Block, Participation, Package, OrderInstruction'
+            Block, Participation, Package, OrderInstruction, CustomEntity'
           enum:
           - NotDefined
           - Transaction
@@ -9862,6 +9865,7 @@ paths:
           - Participation
           - Package
           - OrderInstruction
+          - CustomEntity
           type: string
         style: simple
       - description: The scope of the property being updated.
@@ -18645,7 +18649,8 @@ components:
             are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration,
             Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata,
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
-            LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction'
+            LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
+            CustomEntity'
           enum:
           - NotDefined
           - Transaction
@@ -18672,6 +18677,7 @@ components:
           - Participation
           - Package
           - OrderInstruction
+          - CustomEntity
           type: string
         scope:
           description: The scope that the property exists in.
@@ -18872,7 +18878,8 @@ components:
             are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration,
             Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata,
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
-            LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction'
+            LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
+            CustomEntity'
           enum:
           - NotDefined
           - Transaction
@@ -18899,6 +18906,7 @@ components:
           - Participation
           - Package
           - OrderInstruction
+          - CustomEntity
           type: string
         scope:
           description: The scope that the property exists in.
@@ -23454,7 +23462,8 @@ components:
             are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration,
             Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata,
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
-            LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction'
+            LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
+            CustomEntity'
           enum:
           - NotDefined
           - Transaction
@@ -23481,6 +23490,7 @@ components:
           - Participation
           - Package
           - OrderInstruction
+          - CustomEntity
           type: string
         scope:
           description: The scope that the property exists in.
@@ -23630,7 +23640,8 @@ components:
             are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration,
             Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata,
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
-            LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction'
+            LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
+            CustomEntity'
           enum:
           - NotDefined
           - Transaction
@@ -23657,6 +23668,7 @@ components:
           - Participation
           - Package
           - OrderInstruction
+          - CustomEntity
           type: string
         scope:
           description: The scope that the property exists in.
@@ -28610,6 +28622,7 @@ x-tagGroups:
   - Conventions
   - Corporate Action Sources
   - Counterparties
+  - CustomEntities
   - CustomEntityDefinitions
   - Cut Label Definitions
   - Data Types
