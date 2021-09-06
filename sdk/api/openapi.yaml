@@ -34,12 +34,12 @@ info:
     | Configuration | File store for secrets and other sensitive information. | [Swagger](https://www.lusid.com/configuration/swagger/index.html) |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3457
+  version: 0.11.3454
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:51720
+- url: https://fbn-prd.lusid.com/api
 security:
 - {}
 tags:
@@ -92,8 +92,6 @@ tags:
     at the as-at time of update, and its not possible to make retroactive (or forward)
     changes.
   name: Executions
-- description: Methods for storage and retrieval of Fees and Commissions rules
-  name: FeesAndCommissions
 - description: An instrument represents a financial asset that an investor owns or
     has exposure to. Each transaction should be booked against an instrument stored
     in the LUSID instrument master. For more information, see https://support.lusid.com/knowledgebase/article/KA-01857.
@@ -28608,7 +28606,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://dummyurl.lusid.com/
+          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
           scopes: {}
       type: oauth2
 x-tagGroups:
@@ -28631,7 +28629,6 @@ x-tagGroups:
   - Derived Transaction Portfolios
   - Entities
   - Executions
-  - FeesAndCommissions
   - Instruments
   - Legal Entities
   - Login
