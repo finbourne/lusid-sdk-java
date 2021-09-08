@@ -34,12 +34,12 @@ info:
     | Configuration | File store for secrets and other sensitive information. | [Swagger](https://www.lusid.com/configuration/swagger/index.html) |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3464
+  version: 0.11.3465
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:37552
+- url: http://local-unit-test-server.lusid.com:56349
 security:
 - {}
 tags:
@@ -2690,11 +2690,10 @@ paths:
         explode: true
         in: query
         name: propertyKey
-        required: false
+        required: true
         schema:
           description: The key that uniquely identifies the property. It has the format
             {domain}/{scope}/{code}.
-          nullable: true
           type: string
         style: form
       - description: "The effective datetime used to resolve the instrument from the\
@@ -6122,14 +6121,23 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
-      - description: The effective datetime or cut label at which to delete the properties.
+      - description: "The effective datetime or cut label at which to delete time-variant\
+          \ properties from.\r\n            The property must exist at the specified\
+          \ 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is\r\n\
+          \            before the time-variant property exists then a failure is returned.\
+          \ Do not specify this parameter if any of\r\n            the properties\
+          \ to delete are perpetual."
         explode: true
         in: query
         name: effectiveAt
         required: false
         schema:
-          description: The effective datetime or cut label at which to delete the
-            properties.
+          description: "The effective datetime or cut label at which to delete time-variant\
+            \ properties from.\r\n            The property must exist at the specified\
+            \ 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is\r\
+            \n            before the time-variant property exists then a failure is\
+            \ returned. Do not specify this parameter if any of\r\n            the\
+            \ properties to delete are perpetual."
           format: dateorcutlabel
           nullable: true
           type: string
@@ -6450,6 +6458,161 @@ paths:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
       x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/portfoliogroups/{scope}/{code}/properties/time-series:
+    get:
+      description: List the complete time series of a portfolio group property.
+      operationId: GetPortfolioGroupPropertyTimeSeries
+      parameters:
+      - description: The scope of the group.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the group.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "The code of the group. Together with the scope this uniquely\
+          \ identifies\r\n            the portfolio group."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: "The code of the group. Together with the scope this uniquely\
+            \ identifies\r\n            the portfolio group."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "The property key of the property that will have its history\
+          \ shown. These must be in the format {domain}/{scope}/{code} e.g. \"PortfolioGroup/Manager/Id\"\
+          .\r\n            Each property must be from the \"PortfolioGroup\" domain."
+        explode: true
+        in: query
+        name: propertyKey
+        required: true
+        schema:
+          description: The key that uniquely identifies the property. It has the format
+            {domain}/{scope}/{code}.
+          type: string
+        style: form
+      - description: The effective datetime used to resolve the portfolio group. Defaults
+          to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: portfolioGroupEffectiveAt
+        required: false
+        schema:
+          description: The effective datetime used to resolve the portfolio group.
+            Defaults to the current LUSID system datetime if not specified.
+          nullable: true
+          type: string
+        style: form
+      - description: The asAt datetime at which to list the portfolio group's property
+          history. Defaults to return the current datetime if not supplied.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to list the portfolio group's property
+            history. Defaults to return the current datetime if not supplied.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: Expression to filter the result set. Read more about filtering
+          results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: Expression to filter the result set. Read more about filtering
+            results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+          nullable: true
+          type: string
+        style: form
+      - description: "The pagination token to use to continue listing properties from\
+          \ a previous call to get property time series.\r\n            This value\
+          \ is returned from the previous call. If a pagination token is provided\
+          \ the filter, effectiveAt, and asAt fields\r\n            must not have\
+          \ changed since the original request."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          description: "The pagination token to use to continue listing properties\
+            \ from a previous call to get property time series.\r\n            This\
+            \ value is returned from the previous call. If a pagination token is provided\
+            \ the filter, effectiveAt, and asAt fields\r\n            must not have\
+            \ changed since the original request."
+          nullable: true
+          type: string
+        style: form
+      - description: When paginating, limit the number of returned results to this
+          many.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: When paginating, limit the number of returned results to this
+            many.
+          format: int32
+          maximum: 5000
+          minimum: 1
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfPropertyInterval'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfPropertyInterval'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfPropertyInterval'
+          description: The time series of the property
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] Get the time series of a portfolio group property'
+      tags:
+      - Portfolio Groups
+      x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/portfoliogroups/{scope}/{code}/subgroups:
     post:
@@ -8627,15 +8790,23 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
-      - description: The effective datetime or cut label at which to delete time-variant
-          properties.
+      - description: "The effective datetime or cut label at which to delete time-variant\
+          \ properties from.\r\n            The property must exist at the specified\
+          \ 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is\r\n\
+          \            before the time-variant property exists then a failure is returned.\
+          \ Do not specify this parameter if any of\r\n            the properties\
+          \ to delete are perpetual."
         explode: true
         in: query
         name: effectiveAt
         required: false
         schema:
-          description: The effective datetime or cut label at which to delete time-variant
-            properties.
+          description: "The effective datetime or cut label at which to delete time-variant\
+            \ properties from.\r\n            The property must exist at the specified\
+            \ 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is\r\
+            \n            before the time-variant property exists then a failure is\
+            \ returned. Do not specify this parameter if any of\r\n            the\
+            \ properties to delete are perpetual."
           format: dateorcutlabel
           nullable: true
           type: string
