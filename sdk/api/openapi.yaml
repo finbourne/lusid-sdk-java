@@ -34,12 +34,12 @@ info:
     | Configuration | File store for secrets and other sensitive information. | [Swagger](https://www.lusid.com/configuration/swagger/index.html) |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3469
+  version: 0.11.3470
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:59385
+- url: http://local-unit-test-server.lusid.com:31634
 security:
 - {}
 tags:
@@ -165,8 +165,6 @@ tags:
   name: Scopes
 - description: Methods providing Search capability.
   name: Search
-- description: Methods for generating and using sequences.
-  name: Sequences
 - description: Methods for the storage and retrieval of structured market data documents.
     Read more about these in the LUSID Knowledge Base here https://support.lusid.com/knowledgebase/article/KA-01894.
   name: Structured Market Data
@@ -28827,7 +28825,6 @@ x-tagGroups:
   - Schemas
   - Scopes
   - Search
-  - Sequences
   - Structured Market Data
   - Structured Result Data
   - System Configuration
