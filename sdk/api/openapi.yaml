@@ -271,12 +271,12 @@ info:
     | <a name="752">752</a>|Luminesce process returned an error.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3537
+  version: 0.11.3538
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:60569
+- url: http://local-unit-test-server.lusid.com:60231
 security:
 - {}
 tags:
@@ -12767,6 +12767,7 @@ paths:
                 transactionClass: MyDefault
                 transactionGroup: MyGroup
                 transactionRoles: LongShorter
+                isDefault: false
               movements:
               - movementTypes: StockMovement
                 side: Side1
@@ -12789,6 +12790,7 @@ paths:
                 transactionClass: MyDefault
                 transactionGroup: MyGroup
                 transactionRoles: LongShorter
+                isDefault: false
               movements:
               - movementTypes: StockMovement
                 side: Side1
@@ -12811,6 +12813,7 @@ paths:
                 transactionClass: MyDefault
                 transactionGroup: MyGroup
                 transactionRoles: LongShorter
+                isDefault: false
               movements:
               - movementTypes: StockMovement
                 side: Side1
@@ -12833,6 +12836,7 @@ paths:
                 transactionClass: MyDefault
                 transactionGroup: MyGroup
                 transactionRoles: LongShorter
+                isDefault: false
               movements:
               - movementTypes: StockMovement
                 side: Side1
@@ -26926,11 +26930,13 @@ components:
       example:
         aliases:
         - transactionRoles: None
+          isDefault: true
           transactionClass: transactionClass
           transactionGroup: transactionGroup
           description: description
           type: type
         - transactionRoles: None
+          isDefault: true
           transactionClass: transactionClass
           transactionGroup: transactionGroup
           description: description
@@ -27021,11 +27027,13 @@ components:
       example:
         aliases:
         - transactionRoles: None
+          isDefault: true
           transactionClass: transactionClass
           transactionGroup: transactionGroup
           description: description
           type: type
         - transactionRoles: None
+          isDefault: true
           transactionClass: transactionClass
           transactionGroup: transactionGroup
           description: description
@@ -27275,6 +27283,7 @@ components:
       additionalProperties: false
       example:
         transactionRoles: None
+        isDefault: true
         transactionClass: transactionClass
         transactionGroup: transactionGroup
         description: description
@@ -27305,6 +27314,9 @@ components:
           - Longer
           - AllRoles
           type: string
+        isDefault:
+          description: IsDefault is a flag that denotes the default alias for a group
+          type: boolean
       required:
       - description
       - transactionClass
@@ -27558,11 +27570,13 @@ components:
         transactionConfigs:
         - aliases:
           - transactionRoles: None
+            isDefault: true
             transactionClass: transactionClass
             transactionGroup: transactionGroup
             description: description
             type: type
           - transactionRoles: None
+            isDefault: true
             transactionClass: transactionClass
             transactionGroup: transactionGroup
             description: description
@@ -27628,11 +27642,13 @@ components:
               key: key
         - aliases:
           - transactionRoles: None
+            isDefault: true
             transactionClass: transactionClass
             transactionGroup: transactionGroup
             description: description
             type: type
           - transactionRoles: None
+            isDefault: true
             transactionClass: transactionClass
             transactionGroup: transactionGroup
             description: description
