@@ -271,7 +271,7 @@ info:
     | <a name="752">752</a>|Luminesce process returned an error.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3561
+  version: 0.11.3562
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
