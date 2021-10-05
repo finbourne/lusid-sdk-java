@@ -271,12 +271,12 @@ info:
     | <a name="752">752</a>|Luminesce process returned an error.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3572
+  version: 0.11.3573
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:39300
+- url: http://local-unit-test-server.lusid.com:32792
 security:
 - {}
 tags:
@@ -9480,13 +9480,14 @@ paths:
           nullable: true
           type: string
         style: form
-      - description: Show the Returns on a Daily or Monthly period.
+      - description: Show the Returns on a Daily or Monthly period. Defaults to Daily.
         explode: true
         in: query
         name: period
         required: false
         schema:
-          description: Show the Returns on a Daily or Monthly period.
+          description: Show the Returns on a Daily or Monthly period. Defaults to
+            Daily.
           nullable: true
           type: string
         style: form
@@ -22815,7 +22816,8 @@ components:
           nullable: true
           type: number
         period:
-          description: Show the returns on a Daily or Monthly period.
+          description: Upsert the returns on a Daily or Monthly period. Defaults to
+            Daily.
           nullable: true
           type: string
       required:

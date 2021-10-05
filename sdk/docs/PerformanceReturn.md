@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **rateOfReturn** | **Double** | The return number. | 
 **openingMarketValue** | **Double** | The opening market value. |  [optional]
 **closingMarketValue** | **Double** | The closing market value. |  [optional]
-**period** | **String** | Show the returns on a Daily or Monthly period. |  [optional]
+**period** | **String** | Upsert the returns on a Daily or Monthly period. Defaults to Daily. |  [optional]
 
 
 
