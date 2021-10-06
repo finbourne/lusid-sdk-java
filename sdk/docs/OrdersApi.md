@@ -1,20 +1,20 @@
 # OrdersApi
 
-All URIs are relative to *http://local-unit-test-server.lusid.com:55238*
+All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteOrder**](OrdersApi.md#deleteOrder) | **DELETE** /api/orders/{scope}/{code} | [EARLY ACCESS] DeleteOrder: Delete order
-[**getOrder**](OrdersApi.md#getOrder) | **GET** /api/orders/{scope}/{code} | [EARLY ACCESS] GetOrder: Get Order
-[**listOrders**](OrdersApi.md#listOrders) | **GET** /api/orders | [EARLY ACCESS] ListOrders: List Orders
-[**upsertOrders**](OrdersApi.md#upsertOrders) | **POST** /api/orders | [EARLY ACCESS] UpsertOrders: Upsert Order
+[**deleteOrder**](OrdersApi.md#deleteOrder) | **DELETE** /api/orders/{scope}/{code} | [EARLY ACCESS] Delete order
+[**getOrder**](OrdersApi.md#getOrder) | **GET** /api/orders/{scope}/{code} | [EARLY ACCESS] Get Order
+[**listOrders**](OrdersApi.md#listOrders) | **GET** /api/orders | [EARLY ACCESS] List Orders
+[**upsertOrders**](OrdersApi.md#upsertOrders) | **POST** /api/orders | [EARLY ACCESS] Upsert Order
 
 
 <a name="deleteOrder"></a>
 # **deleteOrder**
 > DeletedEntityResponse deleteOrder(scope, code)
 
-[EARLY ACCESS] DeleteOrder: Delete order
+[EARLY ACCESS] Delete order
 
 Delete an order. Deletion will be valid from the order&#39;s creation datetime.  This means that the order will no longer exist at any effective datetime from the asAt datetime of deletion.
 
@@ -31,7 +31,7 @@ import com.finbourne.lusid.api.OrdersApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:55238");
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 # **getOrder**
 > Order getOrder(scope, code, asAt, propertyKeys)
 
-[EARLY ACCESS] GetOrder: Get Order
+[EARLY ACCESS] Get Order
 
 Fetch an Order that matches the specified identifier
 
@@ -102,7 +102,7 @@ import com.finbourne.lusid.api.OrdersApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:55238");
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 # **listOrders**
 > PagedResourceListOfOrder listOrders(asAt, page, sortBy, start, limit, filter, propertyKeys)
 
-[EARLY ACCESS] ListOrders: List Orders
+[EARLY ACCESS] List Orders
 
 Fetch the last pre-AsAt date version of each order in scope (does not fetch the entire history).
 
@@ -177,7 +177,7 @@ import com.finbourne.lusid.api.OrdersApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:55238");
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 # **upsertOrders**
 > ResourceListOfOrder upsertOrders(orderSetRequest)
 
-[EARLY ACCESS] UpsertOrders: Upsert Order
+[EARLY ACCESS] Upsert Order
 
 Upsert; update existing orders with given ids, or create new orders otherwise.
 
@@ -258,7 +258,7 @@ import com.finbourne.lusid.api.OrdersApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:55238");
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");

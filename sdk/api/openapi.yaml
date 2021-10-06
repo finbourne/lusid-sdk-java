@@ -271,12 +271,12 @@ info:
     | <a name="752">752</a>|Luminesce process returned an error.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3579
+  version: 0.11.3575
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:55238
+- url: https://fbn-prd.lusid.com/api
 security:
 - {}
 tags:
@@ -575,7 +575,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ListAllocations: List Allocations'
+      summary: '[EARLY ACCESS] List Allocations'
       tags:
       - Allocations
       x-fbn-apistatus: EarlyAccess
@@ -875,7 +875,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] UpsertAllocations: Upsert Allocations'
+      summary: '[EARLY ACCESS] Upsert Allocations'
       tags:
       - Allocations
       x-fbn-apistatus: EarlyAccess
@@ -947,7 +947,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] DeleteAllocation: Delete allocation'
+      summary: '[EARLY ACCESS] Delete allocation'
       tags:
       - Allocations
       x-fbn-apistatus: EarlyAccess
@@ -1153,7 +1153,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetAllocation: Get Allocation'
+      summary: '[EARLY ACCESS] Get Allocation'
       tags:
       - Allocations
       x-fbn-apistatus: EarlyAccess
@@ -1293,7 +1293,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ListDataTypes: List data types'
+      summary: '[EARLY ACCESS] List data types'
       tags:
       - Data Types
       x-fbn-apistatus: EarlyAccess
@@ -1378,7 +1378,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetDataType: Get data type definition'
+      summary: '[EARLY ACCESS] Get data type definition'
       tags:
       - Data Types
       x-fbn-apistatus: EarlyAccess
@@ -1492,7 +1492,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetUnitsFromDataType: Get units from data type'
+      summary: '[EARLY ACCESS] Get units from data type'
       tags:
       - Data Types
       x-fbn-apistatus: EarlyAccess
@@ -1624,7 +1624,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] CreateDerivedPortfolio: Create derived portfolio'
+      summary: '[EARLY ACCESS] Create derived portfolio'
       tags:
       - Derived Transaction Portfolios
       x-fbn-apistatus: EarlyAccess
@@ -1712,8 +1712,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] DeleteDerivedPortfolioDetails: Delete derived portfolio
-        details'
+      summary: '[EARLY ACCESS] Delete derived portfolio details'
       tags:
       - Derived Transaction Portfolios
       x-fbn-apistatus: EarlyAccess
@@ -1797,8 +1796,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetPortfolioChanges: Get the next change to each portfolio
-        in a scope.'
+      summary: '[EARLY ACCESS] Get the next change to each portfolio in a scope.'
       tags:
       - Entities
       x-fbn-apistatus: EarlyAccess
@@ -1969,7 +1967,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ListInstruments: List instruments'
+      summary: '[EARLY ACCESS] List instruments'
       tags:
       - Instruments
       x-fbn-apistatus: EarlyAccess
@@ -2245,7 +2243,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'UpsertInstruments: Upsert instruments'
+      summary: Upsert instruments
       tags:
       - Instruments
       x-fbn-apistatus: Stable
@@ -2397,7 +2395,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'GetInstruments: Get instruments'
+      summary: Get instruments
       tags:
       - Instruments
       x-fbn-apistatus: Stable
@@ -2568,7 +2566,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'UpsertInstrumentsProperties: Upsert instruments properties'
+      summary: Upsert instruments properties
       tags:
       - Instruments
       x-fbn-apistatus: Stable
@@ -2605,8 +2603,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetInstrumentIdentifierTypes: Get instrument identifier
-        types'
+      summary: '[EARLY ACCESS] Get instrument identifier types'
       tags:
       - Instruments
       x-fbn-apistatus: EarlyAccess
@@ -2675,7 +2672,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] DeleteInstrument: Delete instrument'
+      summary: '[EARLY ACCESS] Delete instrument'
       tags:
       - Instruments
       x-fbn-apistatus: EarlyAccess
@@ -2788,7 +2785,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'GetInstrument: Get instrument'
+      summary: Get instrument
       tags:
       - Instruments
       x-fbn-apistatus: Stable
@@ -2890,7 +2887,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] UpdateInstrumentIdentifier: Update instrument identifier'
+      summary: '[EARLY ACCESS] Update instrument identifier'
       tags:
       - Instruments
       x-fbn-apistatus: EarlyAccess
@@ -3043,8 +3040,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetInstrumentPropertyTimeSeries: Get instrument property
-        time series'
+      summary: '[EARLY ACCESS] Get instrument property time series'
       tags:
       - Instruments
       x-fbn-apistatus: EarlyAccess
@@ -3362,7 +3358,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] UpsertLegalEntity: Upsert Legal Entity'
+      summary: '[EARLY ACCESS] Upsert Legal Entity'
       tags:
       - Legal Entities
       x-fbn-apistatus: EarlyAccess
@@ -3759,7 +3755,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ListLegalEntities: List Legal Entities'
+      summary: '[EARLY ACCESS] List Legal Entities'
       tags:
       - Legal Entities
       x-fbn-apistatus: EarlyAccess
@@ -3844,7 +3840,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] DeleteLegalEntity: Delete Legal Entity'
+      summary: '[EARLY ACCESS] Delete Legal Entity'
       tags:
       - Legal Entities
       x-fbn-apistatus: EarlyAccess
@@ -4100,7 +4096,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetLegalEntity: Get Legal Entity'
+      summary: '[EARLY ACCESS] Get Legal Entity'
       tags:
       - Legal Entities
       x-fbn-apistatus: EarlyAccess
@@ -4154,7 +4150,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'GetSamlIdentityProviderId: Get SAML Identity Provider'
+      summary: Get SAML Identity Provider
       tags:
       - Login
       x-fbn-apistatus: Stable
@@ -4213,8 +4209,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ListAccessControlledResources: Get resources available
-        for access control'
+      summary: '[EARLY ACCESS] Get resources available for access control'
       tags:
       - Application Metadata
       x-fbn-apistatus: EarlyAccess
@@ -4268,7 +4263,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetExcelAddin: Download Excel Addin'
+      summary: '[EARLY ACCESS] Download Excel Addin'
       tags:
       - Application Metadata
       x-fbn-apistatus: EarlyAccess
@@ -4298,7 +4293,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetLusidVersions: Get LUSID versions'
+      summary: '[EARLY ACCESS] Get LUSID versions'
       tags:
       - Application Metadata
       x-fbn-apistatus: EarlyAccess
@@ -4449,7 +4444,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ListOrders: List Orders'
+      summary: '[EARLY ACCESS] List Orders'
       tags:
       - Orders
       x-fbn-apistatus: EarlyAccess
@@ -4749,7 +4744,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] UpsertOrders: Upsert Order'
+      summary: '[EARLY ACCESS] Upsert Order'
       tags:
       - Orders
       x-fbn-apistatus: EarlyAccess
@@ -4821,7 +4816,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] DeleteOrder: Delete order'
+      summary: '[EARLY ACCESS] Delete order'
       tags:
       - Orders
       x-fbn-apistatus: EarlyAccess
@@ -5027,7 +5022,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetOrder: Get Order'
+      summary: '[EARLY ACCESS] Get Order'
       tags:
       - Orders
       x-fbn-apistatus: EarlyAccess
@@ -5122,7 +5117,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ListPortfolioGroups: List portfolio groups'
+      summary: '[EARLY ACCESS] List portfolio groups'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -5245,7 +5240,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] CreatePortfolioGroup: Create portfolio group'
+      summary: '[EARLY ACCESS] Create portfolio group'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -5323,7 +5318,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] DeletePortfolioGroup: Delete portfolio group'
+      summary: '[EARLY ACCESS] Delete portfolio group'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -5426,7 +5421,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetPortfolioGroup: Get portfolio group'
+      summary: '[EARLY ACCESS] Get portfolio group'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -5537,7 +5532,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] UpdatePortfolioGroup: Update portfolio group'
+      summary: '[EARLY ACCESS] Update portfolio group'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -5645,7 +5640,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetPortfolioGroupCommands: Get portfolio group commands'
+      summary: '[EARLY ACCESS] Get portfolio group commands'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -5766,7 +5761,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetPortfolioGroupExpansion: Get portfolio group expansion'
+      summary: '[EARLY ACCESS] Get portfolio group expansion'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -6000,8 +5995,8 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetHoldingsForPortfolioGroup: Get holdings for transaction
-        portfolios in portfolio group'
+      summary: '[EARLY ACCESS] Get holdings for transaction portfolios in portfolio
+        group'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -6114,7 +6109,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] AddPortfolioToGroup: Add portfolio to group'
+      summary: '[EARLY ACCESS] Add portfolio to group'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -6224,7 +6219,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] DeletePortfolioFromGroup: Delete portfolio from group'
+      summary: '[EARLY ACCESS] Delete portfolio from group'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -6322,7 +6317,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetGroupProperties: Get group properties'
+      summary: '[EARLY ACCESS] Get group properties'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -6476,7 +6471,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] DeleteGroupProperties: Delete group properties'
+      summary: '[EARLY ACCESS] Delete group properties'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -6695,7 +6690,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] UpsertGroupProperties: Upsert group properties'
+      summary: '[EARLY ACCESS] Upsert group properties'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -6851,8 +6846,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetPortfolioGroupPropertyTimeSeries: Get the time series
-        of a portfolio group property'
+      summary: '[EARLY ACCESS] Get the time series of a portfolio group property'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -6966,7 +6960,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] AddSubGroupToGroup: Add sub group to group'
+      summary: '[EARLY ACCESS] Add sub group to group'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -7074,7 +7068,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] DeleteSubGroupFromGroup: Delete sub group from group'
+      summary: '[EARLY ACCESS] Delete sub group from group'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -7368,8 +7362,8 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetTransactionsForPortfolioGroup: Get transactions
-        for transaction portfolios in a portfolio group'
+      summary: '[EARLY ACCESS] Get transactions for transaction portfolios in a portfolio
+        group'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -8024,8 +8018,8 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] BuildTransactionsForPortfolioGroup: Build transactions
-        for transaction portfolios in a portfolio group'
+      summary: '[EARLY ACCESS] Build transactions for transaction portfolios in a
+        portfolio group'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -8198,7 +8192,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'ListPortfolios: List portfolios'
+      summary: List portfolios
       tags:
       - Portfolios
       x-fbn-apistatus: Stable
@@ -8373,7 +8367,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ReconcileHoldings: Reconcile portfolio holdings'
+      summary: '[EARLY ACCESS] Reconcile portfolio holdings'
       tags:
       - Reconciliations
       x-fbn-apistatus: EarlyAccess
@@ -8541,7 +8535,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'ListPortfoliosForScope: List portfolios for scope'
+      summary: List portfolios for scope
       tags:
       - Portfolios
       x-fbn-apistatus: Stable
@@ -8615,7 +8609,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'DeletePortfolio: Delete portfolio'
+      summary: Delete portfolio
       tags:
       - Portfolios
       x-fbn-apistatus: Stable
@@ -8735,7 +8729,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'GetPortfolio: Get portfolio'
+      summary: Get portfolio
       tags:
       - Portfolios
       x-fbn-apistatus: Stable
@@ -8849,7 +8843,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'UpdatePortfolio: Update portfolio'
+      summary: Update portfolio
       tags:
       - Portfolios
       x-fbn-apistatus: Stable
@@ -8992,7 +8986,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetPortfolioCommands: Get portfolio commands'
+      summary: '[EARLY ACCESS] Get portfolio commands'
       tags:
       - Portfolios
       x-fbn-apistatus: EarlyAccess
@@ -9105,7 +9099,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'DeletePortfolioProperties: Delete portfolio properties'
+      summary: Delete portfolio properties
       tags:
       - Portfolios
       x-fbn-apistatus: Stable
@@ -9202,7 +9196,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'GetPortfolioProperties: Get portfolio properties'
+      summary: Get portfolio properties
       tags:
       - Portfolios
       x-fbn-apistatus: Stable
@@ -9413,7 +9407,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'UpsertPortfolioProperties: Upsert portfolio properties'
+      summary: Upsert portfolio properties
       tags:
       - Portfolios
       x-fbn-apistatus: Stable
@@ -9544,7 +9538,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetPortfolioReturns: Get Returns'
+      summary: '[EARLY ACCESS] Get Returns'
       tags:
       - Portfolios
       x-fbn-apistatus: EarlyAccess
@@ -9699,7 +9693,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] UpsertPortfolioReturns: Upsert Returns'
+      summary: '[EARLY ACCESS] Upsert Returns'
       tags:
       - Portfolios
       x-fbn-apistatus: EarlyAccess
@@ -9790,7 +9784,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'GetMultiplePropertyDefinitions: Get multiple property definitions'
+      summary: Get multiple property definitions
       tags:
       - Property Definitions
       x-fbn-apistatus: Stable
@@ -9895,7 +9889,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'CreatePropertyDefinition: Create property definition'
+      summary: Create property definition
       tags:
       - Property Definitions
       x-fbn-apistatus: Stable
@@ -9998,8 +9992,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] CreateDerivedPropertyDefinition: Create derived property
-        definition'
+      summary: '[EARLY ACCESS] Create derived property definition'
       tags:
       - Property Definitions
       x-fbn-apistatus: EarlyAccess
@@ -10111,7 +10104,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'DeletePropertyDefinition: Delete property definition'
+      summary: Delete property definition
       tags:
       - Property Definitions
       x-fbn-apistatus: Stable
@@ -10237,7 +10230,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'GetPropertyDefinition: Get property definition'
+      summary: Get property definition
       tags:
       - Property Definitions
       x-fbn-apistatus: Stable
@@ -10377,7 +10370,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'UpdatePropertyDefinition: Update property definition'
+      summary: Update property definition
       tags:
       - Property Definitions
       x-fbn-apistatus: Stable
@@ -10501,7 +10494,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ListQuotesForScope: List quotes for scope'
+      summary: '[EARLY ACCESS] List quotes for scope'
       tags:
       - Quotes
       x-fbn-apistatus: EarlyAccess
@@ -10715,7 +10708,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] UpsertQuotes: Upsert quotes'
+      summary: '[EARLY ACCESS] Upsert quotes'
       tags:
       - Quotes
       x-fbn-apistatus: EarlyAccess
@@ -10853,7 +10846,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] DeleteQuotes: Delete quotes'
+      summary: '[EARLY ACCESS] Delete quotes'
       tags:
       - Quotes
       x-fbn-apistatus: EarlyAccess
@@ -10980,7 +10973,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[DEPRECATED] ListQuotes: List quotes'
+      summary: '[DEPRECATED] List quotes'
       tags:
       - Quotes
       x-fbn-apistatus: Deprecated
@@ -11172,7 +11165,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetQuotes: Get quotes'
+      summary: '[EARLY ACCESS] Get quotes'
       tags:
       - Quotes
       x-fbn-apistatus: EarlyAccess
@@ -11266,7 +11259,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'CreateReferencePortfolio: Create reference portfolio'
+      summary: Create reference portfolio
       tags:
       - Reference Portfolio
       x-fbn-apistatus: Stable
@@ -11391,7 +11384,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'GetReferencePortfolioConstituents: Get reference portfolio constituents'
+      summary: Get reference portfolio constituents
       tags:
       - Reference Portfolio
       x-fbn-apistatus: Stable
@@ -11573,7 +11566,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'UpsertReferencePortfolioConstituents: Upsert reference portfolio constituents'
+      summary: Upsert reference portfolio constituents
       tags:
       - Reference Portfolio
       x-fbn-apistatus: Stable
@@ -11681,7 +11674,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'ListConstituentsAdjustments: List constituents adjustments'
+      summary: List constituents adjustments
       tags:
       - Reference Portfolio
       x-fbn-apistatus: Stable
@@ -11741,7 +11734,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ListScopes: List Scopes'
+      summary: '[EARLY ACCESS] List Scopes'
       tags:
       - Scopes
       x-fbn-apistatus: EarlyAccess
@@ -11902,7 +11895,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] SearchPortfolioGroups: Search Portfolio Groups'
+      summary: '[EARLY ACCESS] Search Portfolio Groups'
       tags:
       - Search
       x-fbn-apistatus: EarlyAccess
@@ -12078,7 +12071,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] SearchPortfolios: Search Portfolios'
+      summary: '[EARLY ACCESS] Search Portfolios'
       tags:
       - Search
       x-fbn-apistatus: EarlyAccess
@@ -12254,7 +12247,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] SearchProperties: Search Property Definitions'
+      summary: '[EARLY ACCESS] Search Property Definitions'
       tags:
       - Search
       x-fbn-apistatus: EarlyAccess
@@ -12383,7 +12376,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ListCutLabelDefinitions: List Existing Cut Labels'
+      summary: '[EARLY ACCESS] List Existing Cut Labels'
       tags:
       - Cut Label Definitions
       x-fbn-apistatus: EarlyAccess
@@ -12471,7 +12464,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] CreateCutLabelDefinition: Create a Cut Label'
+      summary: '[EARLY ACCESS] Create a Cut Label'
       tags:
       - Cut Label Definitions
       x-fbn-apistatus: EarlyAccess
@@ -12531,7 +12524,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] DeleteCutLabelDefinition: Delete a Cut Label'
+      summary: '[EARLY ACCESS] Delete a Cut Label'
       tags:
       - Cut Label Definitions
       x-fbn-apistatus: EarlyAccess
@@ -12598,7 +12591,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetCutLabelDefinition: Get a Cut Label'
+      summary: '[EARLY ACCESS] Get a Cut Label'
       tags:
       - Cut Label Definitions
       x-fbn-apistatus: EarlyAccess
@@ -12696,7 +12689,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] UpdateCutLabelDefinition: Update a Cut Label'
+      summary: '[EARLY ACCESS] Update a Cut Label'
       tags:
       - Cut Label Definitions
       x-fbn-apistatus: EarlyAccess
@@ -12755,8 +12748,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ListConfigurationTransactionTypes: List transaction
-        types'
+      summary: '[EARLY ACCESS] List transaction types'
       tags:
       - System Configuration
       x-fbn-apistatus: EarlyAccess
@@ -12894,8 +12886,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] CreateConfigurationTransactionType: Create transaction
-        type'
+      summary: '[EARLY ACCESS] Create transaction type'
       tags:
       - System Configuration
       x-fbn-apistatus: EarlyAccess
@@ -13061,7 +13052,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'CreatePortfolio: Create portfolio'
+      summary: Create portfolio
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: Stable
@@ -13216,7 +13207,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ResolveInstrument: Resolve instrument'
+      summary: '[EARLY ACCESS] Resolve instrument'
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: EarlyAccess
@@ -15141,7 +15132,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetPortfolioCashStatement: Get portfolio cash statement'
+      summary: '[EARLY ACCESS] Get portfolio cash statement'
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: EarlyAccess
@@ -15273,7 +15264,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'GetDetails: Get details'
+      summary: Get details
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: Stable
@@ -15425,7 +15416,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'UpsertPortfolioDetails: Upsert portfolio details'
+      summary: Upsert portfolio details
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: Stable
@@ -15511,7 +15502,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'CancelAdjustHoldings: Cancel adjust holdings'
+      summary: Cancel adjust holdings
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: Stable
@@ -15741,7 +15732,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'GetHoldings: Get holdings'
+      summary: Get holdings
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: Stable
@@ -15973,7 +15964,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'AdjustHoldings: Adjust holdings'
+      summary: Adjust holdings
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: Stable
@@ -16205,7 +16196,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'SetHoldings: Set holdings'
+      summary: Set holdings
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: Stable
@@ -16325,7 +16316,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'ListHoldingsAdjustments: List holdings adjustments'
+      summary: List holdings adjustments
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: Stable
@@ -16515,7 +16506,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'GetHoldingsAdjustment: Get holdings adjustment'
+      summary: Get holdings adjustment
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: Stable
@@ -16597,7 +16588,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'CancelTransactions: Cancel transactions'
+      summary: Cancel transactions
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: Stable
@@ -16891,7 +16882,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'GetTransactions: Get transactions'
+      summary: Get transactions
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: Stable
@@ -17085,7 +17076,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'UpsertTransactions: Upsert transactions'
+      summary: Upsert transactions
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: Stable
@@ -17738,7 +17729,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'BuildTransactions: Build transactions'
+      summary: Build transactions
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: Stable
@@ -17839,7 +17830,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'DeletePropertiesFromTransaction: Delete properties from transaction'
+      summary: Delete properties from transaction
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: Stable
@@ -18009,7 +18000,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: 'UpsertTransactionProperties: Upsert transaction properties'
+      summary: Upsert transaction properties
       tags:
       - Transaction Portfolios
       x-fbn-apistatus: Stable
@@ -29047,7 +29038,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://dummyurl.lusid.com/
+          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
           scopes: {}
       type: oauth2
 x-tagGroups:

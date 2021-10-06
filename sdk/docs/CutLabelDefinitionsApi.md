@@ -1,21 +1,21 @@
 # CutLabelDefinitionsApi
 
-All URIs are relative to *http://local-unit-test-server.lusid.com:55238*
+All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createCutLabelDefinition**](CutLabelDefinitionsApi.md#createCutLabelDefinition) | **POST** /api/systemconfiguration/cutlabels | [EARLY ACCESS] CreateCutLabelDefinition: Create a Cut Label
-[**deleteCutLabelDefinition**](CutLabelDefinitionsApi.md#deleteCutLabelDefinition) | **DELETE** /api/systemconfiguration/cutlabels/{code} | [EARLY ACCESS] DeleteCutLabelDefinition: Delete a Cut Label
-[**getCutLabelDefinition**](CutLabelDefinitionsApi.md#getCutLabelDefinition) | **GET** /api/systemconfiguration/cutlabels/{code} | [EARLY ACCESS] GetCutLabelDefinition: Get a Cut Label
-[**listCutLabelDefinitions**](CutLabelDefinitionsApi.md#listCutLabelDefinitions) | **GET** /api/systemconfiguration/cutlabels | [EARLY ACCESS] ListCutLabelDefinitions: List Existing Cut Labels
-[**updateCutLabelDefinition**](CutLabelDefinitionsApi.md#updateCutLabelDefinition) | **PUT** /api/systemconfiguration/cutlabels/{code} | [EARLY ACCESS] UpdateCutLabelDefinition: Update a Cut Label
+[**createCutLabelDefinition**](CutLabelDefinitionsApi.md#createCutLabelDefinition) | **POST** /api/systemconfiguration/cutlabels | [EARLY ACCESS] Create a Cut Label
+[**deleteCutLabelDefinition**](CutLabelDefinitionsApi.md#deleteCutLabelDefinition) | **DELETE** /api/systemconfiguration/cutlabels/{code} | [EARLY ACCESS] Delete a Cut Label
+[**getCutLabelDefinition**](CutLabelDefinitionsApi.md#getCutLabelDefinition) | **GET** /api/systemconfiguration/cutlabels/{code} | [EARLY ACCESS] Get a Cut Label
+[**listCutLabelDefinitions**](CutLabelDefinitionsApi.md#listCutLabelDefinitions) | **GET** /api/systemconfiguration/cutlabels | [EARLY ACCESS] List Existing Cut Labels
+[**updateCutLabelDefinition**](CutLabelDefinitionsApi.md#updateCutLabelDefinition) | **PUT** /api/systemconfiguration/cutlabels/{code} | [EARLY ACCESS] Update a Cut Label
 
 
 <a name="createCutLabelDefinition"></a>
 # **createCutLabelDefinition**
 > CutLabelDefinition createCutLabelDefinition(createCutLabelDefinitionRequest)
 
-[EARLY ACCESS] CreateCutLabelDefinition: Create a Cut Label
+[EARLY ACCESS] Create a Cut Label
 
 Create a Cut Label valid in all scopes
 
@@ -32,7 +32,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:55238");
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 # **deleteCutLabelDefinition**
 > OffsetDateTime deleteCutLabelDefinition(code)
 
-[EARLY ACCESS] DeleteCutLabelDefinition: Delete a Cut Label
+[EARLY ACCESS] Delete a Cut Label
 
 Delete a specified cut label
 
@@ -101,7 +101,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:55238");
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 # **getCutLabelDefinition**
 > CutLabelDefinition getCutLabelDefinition(code, asAt)
 
-[EARLY ACCESS] GetCutLabelDefinition: Get a Cut Label
+[EARLY ACCESS] Get a Cut Label
 
 Get a specified cut label at a given time
 
@@ -170,7 +170,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:55238");
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 # **listCutLabelDefinitions**
 > PagedResourceListOfCutLabelDefinition listCutLabelDefinitions(asAt, sortBy, start, limit, filter, page)
 
-[EARLY ACCESS] ListCutLabelDefinitions: List Existing Cut Labels
+[EARLY ACCESS] List Existing Cut Labels
 
 List all the Cut Label Definitions that are valid at the given AsAt time
 
@@ -241,7 +241,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:55238");
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 # **updateCutLabelDefinition**
 > CutLabelDefinition updateCutLabelDefinition(code, updateCutLabelDefinitionRequest)
 
-[EARLY ACCESS] UpdateCutLabelDefinition: Update a Cut Label
+[EARLY ACCESS] Update a Cut Label
 
 Update a specified cut label
 
@@ -320,7 +320,7 @@ import com.finbourne.lusid.api.CutLabelDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:55238");
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
