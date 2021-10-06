@@ -4,31 +4,31 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**addPortfolioToGroup**](PortfolioGroupsApi.md#addPortfolioToGroup) | **POST** /api/portfoliogroups/{scope}/{code}/portfolios | [EARLY ACCESS] Add portfolio to group
-[**addSubGroupToGroup**](PortfolioGroupsApi.md#addSubGroupToGroup) | **POST** /api/portfoliogroups/{scope}/{code}/subgroups | [EARLY ACCESS] Add sub group to group
-[**buildTransactionsForPortfolioGroup**](PortfolioGroupsApi.md#buildTransactionsForPortfolioGroup) | **POST** /api/portfoliogroups/{scope}/{code}/transactions/$build | [EARLY ACCESS] Build transactions for transaction portfolios in a portfolio group
-[**createPortfolioGroup**](PortfolioGroupsApi.md#createPortfolioGroup) | **POST** /api/portfoliogroups/{scope} | [EARLY ACCESS] Create portfolio group
-[**deleteGroupProperties**](PortfolioGroupsApi.md#deleteGroupProperties) | **POST** /api/portfoliogroups/{scope}/{code}/properties/$delete | [EARLY ACCESS] Delete group properties
-[**deletePortfolioFromGroup**](PortfolioGroupsApi.md#deletePortfolioFromGroup) | **DELETE** /api/portfoliogroups/{scope}/{code}/portfolios/{portfolioScope}/{portfolioCode} | [EARLY ACCESS] Delete portfolio from group
-[**deletePortfolioGroup**](PortfolioGroupsApi.md#deletePortfolioGroup) | **DELETE** /api/portfoliogroups/{scope}/{code} | [EARLY ACCESS] Delete portfolio group
-[**deleteSubGroupFromGroup**](PortfolioGroupsApi.md#deleteSubGroupFromGroup) | **DELETE** /api/portfoliogroups/{scope}/{code}/subgroups/{subgroupScope}/{subgroupCode} | [EARLY ACCESS] Delete sub group from group
-[**getGroupProperties**](PortfolioGroupsApi.md#getGroupProperties) | **GET** /api/portfoliogroups/{scope}/{code}/properties | [EARLY ACCESS] Get group properties
-[**getHoldingsForPortfolioGroup**](PortfolioGroupsApi.md#getHoldingsForPortfolioGroup) | **GET** /api/portfoliogroups/{scope}/{code}/holdings | [EARLY ACCESS] Get holdings for transaction portfolios in portfolio group
-[**getPortfolioGroup**](PortfolioGroupsApi.md#getPortfolioGroup) | **GET** /api/portfoliogroups/{scope}/{code} | [EARLY ACCESS] Get portfolio group
-[**getPortfolioGroupCommands**](PortfolioGroupsApi.md#getPortfolioGroupCommands) | **GET** /api/portfoliogroups/{scope}/{code}/commands | [EARLY ACCESS] Get portfolio group commands
-[**getPortfolioGroupExpansion**](PortfolioGroupsApi.md#getPortfolioGroupExpansion) | **GET** /api/portfoliogroups/{scope}/{code}/expansion | [EARLY ACCESS] Get portfolio group expansion
-[**getPortfolioGroupPropertyTimeSeries**](PortfolioGroupsApi.md#getPortfolioGroupPropertyTimeSeries) | **GET** /api/portfoliogroups/{scope}/{code}/properties/time-series | [EARLY ACCESS] Get the time series of a portfolio group property
-[**getTransactionsForPortfolioGroup**](PortfolioGroupsApi.md#getTransactionsForPortfolioGroup) | **GET** /api/portfoliogroups/{scope}/{code}/transactions | [EARLY ACCESS] Get transactions for transaction portfolios in a portfolio group
-[**listPortfolioGroups**](PortfolioGroupsApi.md#listPortfolioGroups) | **GET** /api/portfoliogroups/{scope} | [EARLY ACCESS] List portfolio groups
-[**updatePortfolioGroup**](PortfolioGroupsApi.md#updatePortfolioGroup) | **PUT** /api/portfoliogroups/{scope}/{code} | [EARLY ACCESS] Update portfolio group
-[**upsertGroupProperties**](PortfolioGroupsApi.md#upsertGroupProperties) | **POST** /api/portfoliogroups/{scope}/{code}/properties/$upsert | [EARLY ACCESS] Upsert group properties
+[**addPortfolioToGroup**](PortfolioGroupsApi.md#addPortfolioToGroup) | **POST** /api/portfoliogroups/{scope}/{code}/portfolios | [EARLY ACCESS] AddPortfolioToGroup: Add portfolio to group
+[**addSubGroupToGroup**](PortfolioGroupsApi.md#addSubGroupToGroup) | **POST** /api/portfoliogroups/{scope}/{code}/subgroups | [EARLY ACCESS] AddSubGroupToGroup: Add sub group to group
+[**buildTransactionsForPortfolioGroup**](PortfolioGroupsApi.md#buildTransactionsForPortfolioGroup) | **POST** /api/portfoliogroups/{scope}/{code}/transactions/$build | [EARLY ACCESS] BuildTransactionsForPortfolioGroup: Build transactions for transaction portfolios in a portfolio group
+[**createPortfolioGroup**](PortfolioGroupsApi.md#createPortfolioGroup) | **POST** /api/portfoliogroups/{scope} | [EARLY ACCESS] CreatePortfolioGroup: Create portfolio group
+[**deleteGroupProperties**](PortfolioGroupsApi.md#deleteGroupProperties) | **POST** /api/portfoliogroups/{scope}/{code}/properties/$delete | [EARLY ACCESS] DeleteGroupProperties: Delete group properties
+[**deletePortfolioFromGroup**](PortfolioGroupsApi.md#deletePortfolioFromGroup) | **DELETE** /api/portfoliogroups/{scope}/{code}/portfolios/{portfolioScope}/{portfolioCode} | [EARLY ACCESS] DeletePortfolioFromGroup: Delete portfolio from group
+[**deletePortfolioGroup**](PortfolioGroupsApi.md#deletePortfolioGroup) | **DELETE** /api/portfoliogroups/{scope}/{code} | [EARLY ACCESS] DeletePortfolioGroup: Delete portfolio group
+[**deleteSubGroupFromGroup**](PortfolioGroupsApi.md#deleteSubGroupFromGroup) | **DELETE** /api/portfoliogroups/{scope}/{code}/subgroups/{subgroupScope}/{subgroupCode} | [EARLY ACCESS] DeleteSubGroupFromGroup: Delete sub group from group
+[**getGroupProperties**](PortfolioGroupsApi.md#getGroupProperties) | **GET** /api/portfoliogroups/{scope}/{code}/properties | [EARLY ACCESS] GetGroupProperties: Get group properties
+[**getHoldingsForPortfolioGroup**](PortfolioGroupsApi.md#getHoldingsForPortfolioGroup) | **GET** /api/portfoliogroups/{scope}/{code}/holdings | [EARLY ACCESS] GetHoldingsForPortfolioGroup: Get holdings for transaction portfolios in portfolio group
+[**getPortfolioGroup**](PortfolioGroupsApi.md#getPortfolioGroup) | **GET** /api/portfoliogroups/{scope}/{code} | [EARLY ACCESS] GetPortfolioGroup: Get portfolio group
+[**getPortfolioGroupCommands**](PortfolioGroupsApi.md#getPortfolioGroupCommands) | **GET** /api/portfoliogroups/{scope}/{code}/commands | [EARLY ACCESS] GetPortfolioGroupCommands: Get portfolio group commands
+[**getPortfolioGroupExpansion**](PortfolioGroupsApi.md#getPortfolioGroupExpansion) | **GET** /api/portfoliogroups/{scope}/{code}/expansion | [EARLY ACCESS] GetPortfolioGroupExpansion: Get portfolio group expansion
+[**getPortfolioGroupPropertyTimeSeries**](PortfolioGroupsApi.md#getPortfolioGroupPropertyTimeSeries) | **GET** /api/portfoliogroups/{scope}/{code}/properties/time-series | [EARLY ACCESS] GetPortfolioGroupPropertyTimeSeries: Get the time series of a portfolio group property
+[**getTransactionsForPortfolioGroup**](PortfolioGroupsApi.md#getTransactionsForPortfolioGroup) | **GET** /api/portfoliogroups/{scope}/{code}/transactions | [EARLY ACCESS] GetTransactionsForPortfolioGroup: Get transactions for transaction portfolios in a portfolio group
+[**listPortfolioGroups**](PortfolioGroupsApi.md#listPortfolioGroups) | **GET** /api/portfoliogroups/{scope} | [EARLY ACCESS] ListPortfolioGroups: List portfolio groups
+[**updatePortfolioGroup**](PortfolioGroupsApi.md#updatePortfolioGroup) | **PUT** /api/portfoliogroups/{scope}/{code} | [EARLY ACCESS] UpdatePortfolioGroup: Update portfolio group
+[**upsertGroupProperties**](PortfolioGroupsApi.md#upsertGroupProperties) | **POST** /api/portfoliogroups/{scope}/{code}/properties/$upsert | [EARLY ACCESS] UpsertGroupProperties: Upsert group properties
 
 
 <a name="addPortfolioToGroup"></a>
 # **addPortfolioToGroup**
 > PortfolioGroup addPortfolioToGroup(scope, code, effectiveAt, resourceId)
 
-[EARLY ACCESS] Add portfolio to group
+[EARLY ACCESS] AddPortfolioToGroup: Add portfolio to group
 
 Add a single portfolio to a portfolio group.
 
@@ -103,7 +103,7 @@ Name | Type | Description  | Notes
 # **addSubGroupToGroup**
 > PortfolioGroup addSubGroupToGroup(scope, code, effectiveAt, resourceId)
 
-[EARLY ACCESS] Add sub group to group
+[EARLY ACCESS] AddSubGroupToGroup: Add sub group to group
 
 Add a portfolio group to a portfolio group as a sub group.
 
@@ -178,7 +178,7 @@ Name | Type | Description  | Notes
 # **buildTransactionsForPortfolioGroup**
 > VersionedResourceListOfOutputTransaction buildTransactionsForPortfolioGroup(scope, code, transactionQueryParameters, asAt, filter, propertyKeys, limit, page)
 
-[EARLY ACCESS] Build transactions for transaction portfolios in a portfolio group
+[EARLY ACCESS] BuildTransactionsForPortfolioGroup: Build transactions for transaction portfolios in a portfolio group
 
 Build transactions for transaction portfolios in a portfolio group over a given interval of effective time.     When the specified portfolio in a portfolio group is a derived transaction portfolio, the returned set of transactions is the  union set of all transactions of the parent (and any grandparents etc.) and the specified derived transaction portfolio itself.
 
@@ -261,7 +261,7 @@ Name | Type | Description  | Notes
 # **createPortfolioGroup**
 > PortfolioGroup createPortfolioGroup(scope, createPortfolioGroupRequest)
 
-[EARLY ACCESS] Create portfolio group
+[EARLY ACCESS] CreatePortfolioGroup: Create portfolio group
 
 Create a portfolio group in a specific scope.
 
@@ -332,7 +332,7 @@ Name | Type | Description  | Notes
 # **deleteGroupProperties**
 > DeletedEntityResponse deleteGroupProperties(scope, code, requestBody, effectiveAt)
 
-[EARLY ACCESS] Delete group properties
+[EARLY ACCESS] DeleteGroupProperties: Delete group properties
 
 Delete one or more properties from a single portfolio group. If the properties are time variant then an effective date time from which the properties  will be deleted must be specified. If the properties are perpetual then it is invalid to specify an effective date time for deletion.
 
@@ -407,7 +407,7 @@ Name | Type | Description  | Notes
 # **deletePortfolioFromGroup**
 > PortfolioGroup deletePortfolioFromGroup(scope, code, portfolioScope, portfolioCode, effectiveAt)
 
-[EARLY ACCESS] Delete portfolio from group
+[EARLY ACCESS] DeletePortfolioFromGroup: Delete portfolio from group
 
 Remove a single portfolio from a portfolio group.
 
@@ -484,7 +484,7 @@ Name | Type | Description  | Notes
 # **deletePortfolioGroup**
 > DeletedEntityResponse deletePortfolioGroup(scope, code)
 
-[EARLY ACCESS] Delete portfolio group
+[EARLY ACCESS] DeletePortfolioGroup: Delete portfolio group
 
 Delete a single portfolio group. A portfolio group can be deleted while it still contains portfolios or sub groups.  In this case any portfolios or sub groups contained in this group will not be deleted, however they will no longer be grouped together by this portfolio group.  The deletion will be valid from the portfolio group&#39;s creation datetime, ie. the portfolio group will no longer exist at any effective datetime from the asAt datetime of deletion.
 
@@ -555,7 +555,7 @@ Name | Type | Description  | Notes
 # **deleteSubGroupFromGroup**
 > PortfolioGroup deleteSubGroupFromGroup(scope, code, subgroupScope, subgroupCode, effectiveAt)
 
-[EARLY ACCESS] Delete sub group from group
+[EARLY ACCESS] DeleteSubGroupFromGroup: Delete sub group from group
 
 Remove a single portfolio group (sub group) from a portfolio group.
 
@@ -632,7 +632,7 @@ Name | Type | Description  | Notes
 # **getGroupProperties**
 > PortfolioGroupProperties getGroupProperties(scope, code, effectiveAt, asAt)
 
-[EARLY ACCESS] Get group properties
+[EARLY ACCESS] GetGroupProperties: Get group properties
 
 List all the properties of a single portfolio group.
 
@@ -707,7 +707,7 @@ Name | Type | Description  | Notes
 # **getHoldingsForPortfolioGroup**
 > VersionedResourceListOfPortfolioHolding getHoldingsForPortfolioGroup(scope, code, effectiveAt, asAt, filter, propertyKeys, byTaxlots)
 
-[EARLY ACCESS] Get holdings for transaction portfolios in portfolio group
+[EARLY ACCESS] GetHoldingsForPortfolioGroup: Get holdings for transaction portfolios in portfolio group
 
 Get the holdings of transaction portfolios in specified portfolio group.
 
@@ -788,7 +788,7 @@ Name | Type | Description  | Notes
 # **getPortfolioGroup**
 > PortfolioGroup getPortfolioGroup(scope, code, effectiveAt, asAt)
 
-[EARLY ACCESS] Get portfolio group
+[EARLY ACCESS] GetPortfolioGroup: Get portfolio group
 
 Retrieve the definition of a single portfolio group.
 
@@ -863,7 +863,7 @@ Name | Type | Description  | Notes
 # **getPortfolioGroupCommands**
 > ResourceListOfProcessedCommand getPortfolioGroupCommands(scope, code, fromAsAt, toAsAt, filter)
 
-[EARLY ACCESS] Get portfolio group commands
+[EARLY ACCESS] GetPortfolioGroupCommands: Get portfolio group commands
 
 Gets all the commands that modified a single portfolio group.
 
@@ -940,7 +940,7 @@ Name | Type | Description  | Notes
 # **getPortfolioGroupExpansion**
 > ExpandedGroup getPortfolioGroupExpansion(scope, code, effectiveAt, asAt, propertyFilter)
 
-[EARLY ACCESS] Get portfolio group expansion
+[EARLY ACCESS] GetPortfolioGroupExpansion: Get portfolio group expansion
 
 List all the portfolios in a group, including all portfolios within sub groups in the group. Each portfolio will be decorated with all of its properties unless a property filter is specified.
 
@@ -1017,7 +1017,7 @@ Name | Type | Description  | Notes
 # **getPortfolioGroupPropertyTimeSeries**
 > ResourceListOfPropertyInterval getPortfolioGroupPropertyTimeSeries(scope, code, propertyKey, portfolioGroupEffectiveAt, asAt, filter, page, limit)
 
-[EARLY ACCESS] Get the time series of a portfolio group property
+[EARLY ACCESS] GetPortfolioGroupPropertyTimeSeries: Get the time series of a portfolio group property
 
 List the complete time series of a portfolio group property.
 
@@ -1100,7 +1100,7 @@ Name | Type | Description  | Notes
 # **getTransactionsForPortfolioGroup**
 > VersionedResourceListOfTransaction getTransactionsForPortfolioGroup(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page)
 
-[EARLY ACCESS] Get transactions for transaction portfolios in a portfolio group
+[EARLY ACCESS] GetTransactionsForPortfolioGroup: Get transactions for transaction portfolios in a portfolio group
 
 Get transactions for transaction portfolios in a portfolio group over a given interval of effective time.     When the specified portfolio in a portfolio group is a derived transaction portfolio, the returned set of transactions is the  union set of all transactions of the parent (and any grandparents etc.) and the specified derived transaction portfolio itself.
 
@@ -1185,7 +1185,7 @@ Name | Type | Description  | Notes
 # **listPortfolioGroups**
 > ResourceListOfPortfolioGroup listPortfolioGroups(scope, effectiveAt, asAt, filter)
 
-[EARLY ACCESS] List portfolio groups
+[EARLY ACCESS] ListPortfolioGroups: List portfolio groups
 
 List all the portfolio groups in a single scope.
 
@@ -1260,7 +1260,7 @@ Name | Type | Description  | Notes
 # **updatePortfolioGroup**
 > PortfolioGroup updatePortfolioGroup(scope, code, effectiveAt, updatePortfolioGroupRequest)
 
-[EARLY ACCESS] Update portfolio group
+[EARLY ACCESS] UpdatePortfolioGroup: Update portfolio group
 
 Update the definition of a single portfolio group. Not all elements within a portfolio group definition are modifiable  due to the potential implications for data already stored against the portfolio group.
 
@@ -1335,7 +1335,7 @@ Name | Type | Description  | Notes
 # **upsertGroupProperties**
 > PortfolioGroupProperties upsertGroupProperties(scope, code, requestBody)
 
-[EARLY ACCESS] Upsert group properties
+[EARLY ACCESS] UpsertGroupProperties: Upsert group properties
 
 Update or insert one or more properties onto a single group. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;PortfolioGroup&#39;.                Upserting a property that exists for a group, with a null value, will delete the instance of the property for that group.    Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 

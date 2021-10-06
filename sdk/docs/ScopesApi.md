@@ -4,14 +4,14 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listScopes**](ScopesApi.md#listScopes) | **GET** /api/scopes | [EARLY ACCESS] List Scopes
+[**listScopes**](ScopesApi.md#listScopes) | **GET** /api/scopes | [EARLY ACCESS] ListScopes: List Scopes
 
 
 <a name="listScopes"></a>
 # **listScopes**
 > ResourceListOfScopeDefinition listScopes(filter)
 
-[EARLY ACCESS] List Scopes
+[EARLY ACCESS] ListScopes: List Scopes
 
 List all the scopes that contain data.
 

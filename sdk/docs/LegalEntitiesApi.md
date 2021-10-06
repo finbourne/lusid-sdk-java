@@ -4,17 +4,17 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteLegalEntity**](LegalEntitiesApi.md#deleteLegalEntity) | **DELETE** /api/legalentities/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] Delete Legal Entity
-[**getLegalEntity**](LegalEntitiesApi.md#getLegalEntity) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] Get Legal Entity
-[**listLegalEntities**](LegalEntitiesApi.md#listLegalEntities) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode} | [EARLY ACCESS] List Legal Entities
-[**upsertLegalEntity**](LegalEntitiesApi.md#upsertLegalEntity) | **POST** /api/legalentities | [EARLY ACCESS] Upsert Legal Entity
+[**deleteLegalEntity**](LegalEntitiesApi.md#deleteLegalEntity) | **DELETE** /api/legalentities/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] DeleteLegalEntity: Delete Legal Entity
+[**getLegalEntity**](LegalEntitiesApi.md#getLegalEntity) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] GetLegalEntity: Get Legal Entity
+[**listLegalEntities**](LegalEntitiesApi.md#listLegalEntities) | **GET** /api/legalentities/{idTypeScope}/{idTypeCode} | [EARLY ACCESS] ListLegalEntities: List Legal Entities
+[**upsertLegalEntity**](LegalEntitiesApi.md#upsertLegalEntity) | **POST** /api/legalentities | [EARLY ACCESS] UpsertLegalEntity: Upsert Legal Entity
 
 
 <a name="deleteLegalEntity"></a>
 # **deleteLegalEntity**
 > DeletedEntityResponse deleteLegalEntity(idTypeScope, idTypeCode, code)
 
-[EARLY ACCESS] Delete Legal Entity
+[EARLY ACCESS] DeleteLegalEntity: Delete Legal Entity
 
 Delete a legal entity. Deletion will be valid from the legal entity&#39;s creation datetime.  This means that the legal entity will no longer exist at any effective datetime from the asAt datetime of deletion.
 
@@ -87,7 +87,7 @@ Name | Type | Description  | Notes
 # **getLegalEntity**
 > LegalEntity getLegalEntity(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt)
 
-[EARLY ACCESS] Get Legal Entity
+[EARLY ACCESS] GetLegalEntity: Get Legal Entity
 
 Retrieve the definition of a legal entity.
 
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 # **listLegalEntities**
 > PagedResourceListOfLegalEntity listLegalEntities(idTypeScope, idTypeCode, effectiveAt, asAt, page, limit, filter, propertyKeys)
 
-[EARLY ACCESS] List Legal Entities
+[EARLY ACCESS] ListLegalEntities: List Legal Entities
 
 List legal entities which has identifier of specific identifier type&#39;s scope and code, and satisfies filter criteria.
 
@@ -249,7 +249,7 @@ Name | Type | Description  | Notes
 # **upsertLegalEntity**
 > LegalEntity upsertLegalEntity(upsertLegalEntityRequest)
 
-[EARLY ACCESS] Upsert Legal Entity
+[EARLY ACCESS] UpsertLegalEntity: Upsert Legal Entity
 
 Create or update a legal entity
 

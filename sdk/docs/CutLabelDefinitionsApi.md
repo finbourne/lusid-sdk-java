@@ -4,18 +4,18 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createCutLabelDefinition**](CutLabelDefinitionsApi.md#createCutLabelDefinition) | **POST** /api/systemconfiguration/cutlabels | [EARLY ACCESS] Create a Cut Label
-[**deleteCutLabelDefinition**](CutLabelDefinitionsApi.md#deleteCutLabelDefinition) | **DELETE** /api/systemconfiguration/cutlabels/{code} | [EARLY ACCESS] Delete a Cut Label
-[**getCutLabelDefinition**](CutLabelDefinitionsApi.md#getCutLabelDefinition) | **GET** /api/systemconfiguration/cutlabels/{code} | [EARLY ACCESS] Get a Cut Label
-[**listCutLabelDefinitions**](CutLabelDefinitionsApi.md#listCutLabelDefinitions) | **GET** /api/systemconfiguration/cutlabels | [EARLY ACCESS] List Existing Cut Labels
-[**updateCutLabelDefinition**](CutLabelDefinitionsApi.md#updateCutLabelDefinition) | **PUT** /api/systemconfiguration/cutlabels/{code} | [EARLY ACCESS] Update a Cut Label
+[**createCutLabelDefinition**](CutLabelDefinitionsApi.md#createCutLabelDefinition) | **POST** /api/systemconfiguration/cutlabels | [EARLY ACCESS] CreateCutLabelDefinition: Create a Cut Label
+[**deleteCutLabelDefinition**](CutLabelDefinitionsApi.md#deleteCutLabelDefinition) | **DELETE** /api/systemconfiguration/cutlabels/{code} | [EARLY ACCESS] DeleteCutLabelDefinition: Delete a Cut Label
+[**getCutLabelDefinition**](CutLabelDefinitionsApi.md#getCutLabelDefinition) | **GET** /api/systemconfiguration/cutlabels/{code} | [EARLY ACCESS] GetCutLabelDefinition: Get a Cut Label
+[**listCutLabelDefinitions**](CutLabelDefinitionsApi.md#listCutLabelDefinitions) | **GET** /api/systemconfiguration/cutlabels | [EARLY ACCESS] ListCutLabelDefinitions: List Existing Cut Labels
+[**updateCutLabelDefinition**](CutLabelDefinitionsApi.md#updateCutLabelDefinition) | **PUT** /api/systemconfiguration/cutlabels/{code} | [EARLY ACCESS] UpdateCutLabelDefinition: Update a Cut Label
 
 
 <a name="createCutLabelDefinition"></a>
 # **createCutLabelDefinition**
 > CutLabelDefinition createCutLabelDefinition(createCutLabelDefinitionRequest)
 
-[EARLY ACCESS] Create a Cut Label
+[EARLY ACCESS] CreateCutLabelDefinition: Create a Cut Label
 
 Create a Cut Label valid in all scopes
 
@@ -84,7 +84,7 @@ Name | Type | Description  | Notes
 # **deleteCutLabelDefinition**
 > OffsetDateTime deleteCutLabelDefinition(code)
 
-[EARLY ACCESS] Delete a Cut Label
+[EARLY ACCESS] DeleteCutLabelDefinition: Delete a Cut Label
 
 Delete a specified cut label
 
@@ -153,7 +153,7 @@ Name | Type | Description  | Notes
 # **getCutLabelDefinition**
 > CutLabelDefinition getCutLabelDefinition(code, asAt)
 
-[EARLY ACCESS] Get a Cut Label
+[EARLY ACCESS] GetCutLabelDefinition: Get a Cut Label
 
 Get a specified cut label at a given time
 
@@ -224,7 +224,7 @@ Name | Type | Description  | Notes
 # **listCutLabelDefinitions**
 > PagedResourceListOfCutLabelDefinition listCutLabelDefinitions(asAt, sortBy, start, limit, filter, page)
 
-[EARLY ACCESS] List Existing Cut Labels
+[EARLY ACCESS] ListCutLabelDefinitions: List Existing Cut Labels
 
 List all the Cut Label Definitions that are valid at the given AsAt time
 
@@ -303,7 +303,7 @@ Name | Type | Description  | Notes
 # **updateCutLabelDefinition**
 > CutLabelDefinition updateCutLabelDefinition(code, updateCutLabelDefinitionRequest)
 
-[EARLY ACCESS] Update a Cut Label
+[EARLY ACCESS] UpdateCutLabelDefinition: Update a Cut Label
 
 Update a specified cut label
 

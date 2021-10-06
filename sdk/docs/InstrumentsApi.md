@@ -4,22 +4,22 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteInstrument**](InstrumentsApi.md#deleteInstrument) | **DELETE** /api/instruments/{identifierType}/{identifier} | [EARLY ACCESS] Delete instrument
-[**getInstrument**](InstrumentsApi.md#getInstrument) | **GET** /api/instruments/{identifierType}/{identifier} | Get instrument
-[**getInstrumentIdentifierTypes**](InstrumentsApi.md#getInstrumentIdentifierTypes) | **GET** /api/instruments/identifierTypes | [EARLY ACCESS] Get instrument identifier types
-[**getInstrumentPropertyTimeSeries**](InstrumentsApi.md#getInstrumentPropertyTimeSeries) | **GET** /api/instruments/{identifierType}/{identifier}/properties/time-series | [EARLY ACCESS] Get instrument property time series
-[**getInstruments**](InstrumentsApi.md#getInstruments) | **POST** /api/instruments/$get | Get instruments
-[**listInstruments**](InstrumentsApi.md#listInstruments) | **GET** /api/instruments | [EARLY ACCESS] List instruments
-[**updateInstrumentIdentifier**](InstrumentsApi.md#updateInstrumentIdentifier) | **POST** /api/instruments/{identifierType}/{identifier} | [EARLY ACCESS] Update instrument identifier
-[**upsertInstruments**](InstrumentsApi.md#upsertInstruments) | **POST** /api/instruments | Upsert instruments
-[**upsertInstrumentsProperties**](InstrumentsApi.md#upsertInstrumentsProperties) | **POST** /api/instruments/$upsertproperties | Upsert instruments properties
+[**deleteInstrument**](InstrumentsApi.md#deleteInstrument) | **DELETE** /api/instruments/{identifierType}/{identifier} | [EARLY ACCESS] DeleteInstrument: Delete instrument
+[**getInstrument**](InstrumentsApi.md#getInstrument) | **GET** /api/instruments/{identifierType}/{identifier} | GetInstrument: Get instrument
+[**getInstrumentIdentifierTypes**](InstrumentsApi.md#getInstrumentIdentifierTypes) | **GET** /api/instruments/identifierTypes | [EARLY ACCESS] GetInstrumentIdentifierTypes: Get instrument identifier types
+[**getInstrumentPropertyTimeSeries**](InstrumentsApi.md#getInstrumentPropertyTimeSeries) | **GET** /api/instruments/{identifierType}/{identifier}/properties/time-series | [EARLY ACCESS] GetInstrumentPropertyTimeSeries: Get instrument property time series
+[**getInstruments**](InstrumentsApi.md#getInstruments) | **POST** /api/instruments/$get | GetInstruments: Get instruments
+[**listInstruments**](InstrumentsApi.md#listInstruments) | **GET** /api/instruments | [EARLY ACCESS] ListInstruments: List instruments
+[**updateInstrumentIdentifier**](InstrumentsApi.md#updateInstrumentIdentifier) | **POST** /api/instruments/{identifierType}/{identifier} | [EARLY ACCESS] UpdateInstrumentIdentifier: Update instrument identifier
+[**upsertInstruments**](InstrumentsApi.md#upsertInstruments) | **POST** /api/instruments | UpsertInstruments: Upsert instruments
+[**upsertInstrumentsProperties**](InstrumentsApi.md#upsertInstrumentsProperties) | **POST** /api/instruments/$upsertproperties | UpsertInstrumentsProperties: Upsert instruments properties
 
 
 <a name="deleteInstrument"></a>
 # **deleteInstrument**
 > DeleteInstrumentResponse deleteInstrument(identifierType, identifier)
 
-[EARLY ACCESS] Delete instrument
+[EARLY ACCESS] DeleteInstrument: Delete instrument
 
 Delete a particular instrument, as identified by a particular instrument identifier.                Once deleted, an instrument is marked as inactive and can no longer be referenced when creating or updating  transactions or holdings. You can still query existing transactions and holdings related to the  deleted instrument.
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 # **getInstrument**
 > Instrument getInstrument(identifierType, identifier, effectiveAt, asAt, propertyKeys)
 
-Get instrument
+GetInstrument: Get instrument
 
 Retrieve the definition of a particular instrument, as identified by a particular unique identifier.
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 # **getInstrumentIdentifierTypes**
 > ResourceListOfInstrumentIdTypeDescriptor getInstrumentIdentifierTypes()
 
-[EARLY ACCESS] Get instrument identifier types
+[EARLY ACCESS] GetInstrumentIdentifierTypes: Get instrument identifier types
 
 Retrieve a list of all valid instrument identifier types and whether they are unique or not.                An instrument must have a value for at least one unique identifier type (it can have more than one unique type and value).  In addition, a value is automatically generated for a LUSID Instrument ID (LUID) unique type by the system.                An instrument can have values for multiple non-unique identifier types (or it can have zero non-unique types and values).
 
@@ -231,7 +231,7 @@ This endpoint does not need any parameter.
 # **getInstrumentPropertyTimeSeries**
 > ResourceListOfPropertyInterval getInstrumentPropertyTimeSeries(identifierType, identifier, propertyKey, identifierEffectiveAt, asAt, filter, page, limit)
 
-[EARLY ACCESS] Get instrument property time series
+[EARLY ACCESS] GetInstrumentPropertyTimeSeries: Get instrument property time series
 
 Retrieve the complete time series (history) for a particular property of an instrument.
 
@@ -314,7 +314,7 @@ Name | Type | Description  | Notes
 # **getInstruments**
 > GetInstrumentsResponse getInstruments(identifierType, requestBody, effectiveAt, asAt, propertyKeys)
 
-Get instruments
+GetInstruments: Get instruments
 
 Retrieve the definition of one or more instruments, as identified by a collection of unique identifiers.                Note that to retrieve all the instruments in the instrument master, use the List instruments endpoint instead.
 
@@ -391,7 +391,7 @@ Name | Type | Description  | Notes
 # **listInstruments**
 > PagedResourceListOfInstrument listInstruments(asAt, effectiveAt, page, sortBy, start, limit, filter, instrumentPropertyKeys)
 
-[EARLY ACCESS] List instruments
+[EARLY ACCESS] ListInstruments: List instruments
 
 List all the instruments in the instrument master.                To retrieve a particular set of instruments instead, use the Get instruments endpoint.  The maximum number of instruments that this method can list per request is 2,000.
 
@@ -474,7 +474,7 @@ Name | Type | Description  | Notes
 # **updateInstrumentIdentifier**
 > Instrument updateInstrumentIdentifier(identifierType, identifier, updateInstrumentIdentifierRequest)
 
-[EARLY ACCESS] Update instrument identifier
+[EARLY ACCESS] UpdateInstrumentIdentifier: Update instrument identifier
 
 Create, update or delete a particular instrument identifier for an instrument.                To delete the identifier, leave the value unspecified in the request. If not being deleted, the  identifier is updated if it exists and created if it does not.
 
@@ -547,7 +547,7 @@ Name | Type | Description  | Notes
 # **upsertInstruments**
 > UpsertInstrumentsResponse upsertInstruments(requestBody)
 
-Upsert instruments
+UpsertInstruments: Upsert instruments
 
 Create or update one or more instruments in the instrument master. An instrument is updated  if it already exists and created if it does not.                In the request, each instrument definition should be keyed by a unique correlation ID. This ID is ephemeral  and not stored by LUSID. It serves only to easily identify each instrument in the response.                Note that an instrument must have at least one unique identifier, which is a combination of a type  (such as &#39;Figi&#39;) and a value (such as &#39;BBG000BS1N49&#39;). In addition, a random value is automatically  generated for a LUSID Instrument ID (LUID) unique type by the system. For more information, see  https://support.lusid.com/knowledgebase/article/KA-01862.                The response returns both the collection of successfully created or updated instruments, as well as those  that failed. For each failure, a reason is provided. It is important to check the failed set for  unsuccessful results.  The maximum number of instruments that this method can upsert per request is 2,000.
 
@@ -616,7 +616,7 @@ Name | Type | Description  | Notes
 # **upsertInstrumentsProperties**
 > UpsertInstrumentPropertiesResponse upsertInstrumentsProperties(upsertInstrumentPropertyRequest)
 
-Upsert instruments properties
+UpsertInstrumentsProperties: Upsert instruments properties
 
 Create or update one or more properties for particular instruments.                Each instrument property is updated if it exists and created if it does not. For any failures, a reason  is provided.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime from which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 

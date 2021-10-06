@@ -4,14 +4,14 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getSamlIdentityProviderId**](LoginApi.md#getSamlIdentityProviderId) | **GET** /api/login/saml/{domain} | Get SAML Identity Provider
+[**getSamlIdentityProviderId**](LoginApi.md#getSamlIdentityProviderId) | **GET** /api/login/saml/{domain} | GetSamlIdentityProviderId: Get SAML Identity Provider
 
 
 <a name="getSamlIdentityProviderId"></a>
 # **getSamlIdentityProviderId**
 > String getSamlIdentityProviderId(domain)
 
-Get SAML Identity Provider
+GetSamlIdentityProviderId: Get SAML Identity Provider
 
 Get the unique identifier for the SAML 2.0 Identity Provider to be used for domain.
 

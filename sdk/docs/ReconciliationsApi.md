@@ -4,14 +4,14 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**reconcileHoldings**](ReconciliationsApi.md#reconcileHoldings) | **POST** /api/portfolios/$reconcileholdings | [EARLY ACCESS] Reconcile portfolio holdings
+[**reconcileHoldings**](ReconciliationsApi.md#reconcileHoldings) | **POST** /api/portfolios/$reconcileholdings | [EARLY ACCESS] ReconcileHoldings: Reconcile portfolio holdings
 
 
 <a name="reconcileHoldings"></a>
 # **reconcileHoldings**
 > ResourceListOfReconciliationBreak reconcileHoldings(sortBy, start, limit, filter, portfoliosReconciliationRequest)
 
-[EARLY ACCESS] Reconcile portfolio holdings
+[EARLY ACCESS] ReconcileHoldings: Reconcile portfolio holdings
 
 Reconcile the holdings of two portfolios.
 

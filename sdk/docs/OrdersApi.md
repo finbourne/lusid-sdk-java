@@ -4,17 +4,17 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteOrder**](OrdersApi.md#deleteOrder) | **DELETE** /api/orders/{scope}/{code} | [EARLY ACCESS] Delete order
-[**getOrder**](OrdersApi.md#getOrder) | **GET** /api/orders/{scope}/{code} | [EARLY ACCESS] Get Order
-[**listOrders**](OrdersApi.md#listOrders) | **GET** /api/orders | [EARLY ACCESS] List Orders
-[**upsertOrders**](OrdersApi.md#upsertOrders) | **POST** /api/orders | [EARLY ACCESS] Upsert Order
+[**deleteOrder**](OrdersApi.md#deleteOrder) | **DELETE** /api/orders/{scope}/{code} | [EARLY ACCESS] DeleteOrder: Delete order
+[**getOrder**](OrdersApi.md#getOrder) | **GET** /api/orders/{scope}/{code} | [EARLY ACCESS] GetOrder: Get Order
+[**listOrders**](OrdersApi.md#listOrders) | **GET** /api/orders | [EARLY ACCESS] ListOrders: List Orders
+[**upsertOrders**](OrdersApi.md#upsertOrders) | **POST** /api/orders | [EARLY ACCESS] UpsertOrders: Upsert Order
 
 
 <a name="deleteOrder"></a>
 # **deleteOrder**
 > DeletedEntityResponse deleteOrder(scope, code)
 
-[EARLY ACCESS] Delete order
+[EARLY ACCESS] DeleteOrder: Delete order
 
 Delete an order. Deletion will be valid from the order&#39;s creation datetime.  This means that the order will no longer exist at any effective datetime from the asAt datetime of deletion.
 
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 # **getOrder**
 > Order getOrder(scope, code, asAt, propertyKeys)
 
-[EARLY ACCESS] Get Order
+[EARLY ACCESS] GetOrder: Get Order
 
 Fetch an Order that matches the specified identifier
 
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 # **listOrders**
 > PagedResourceListOfOrder listOrders(asAt, page, sortBy, start, limit, filter, propertyKeys)
 
-[EARLY ACCESS] List Orders
+[EARLY ACCESS] ListOrders: List Orders
 
 Fetch the last pre-AsAt date version of each order in scope (does not fetch the entire history).
 
@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 # **upsertOrders**
 > ResourceListOfOrder upsertOrders(orderSetRequest)
 
-[EARLY ACCESS] Upsert Order
+[EARLY ACCESS] UpsertOrders: Upsert Order
 
 Upsert; update existing orders with given ids, or create new orders otherwise.
 

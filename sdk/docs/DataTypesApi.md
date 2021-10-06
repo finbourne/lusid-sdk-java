@@ -4,16 +4,16 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getDataType**](DataTypesApi.md#getDataType) | **GET** /api/datatypes/{scope}/{code} | [EARLY ACCESS] Get data type definition
-[**getUnitsFromDataType**](DataTypesApi.md#getUnitsFromDataType) | **GET** /api/datatypes/{scope}/{code}/units | [EARLY ACCESS] Get units from data type
-[**listDataTypes**](DataTypesApi.md#listDataTypes) | **GET** /api/datatypes/{scope} | [EARLY ACCESS] List data types
+[**getDataType**](DataTypesApi.md#getDataType) | **GET** /api/datatypes/{scope}/{code} | [EARLY ACCESS] GetDataType: Get data type definition
+[**getUnitsFromDataType**](DataTypesApi.md#getUnitsFromDataType) | **GET** /api/datatypes/{scope}/{code}/units | [EARLY ACCESS] GetUnitsFromDataType: Get units from data type
+[**listDataTypes**](DataTypesApi.md#listDataTypes) | **GET** /api/datatypes/{scope} | [EARLY ACCESS] ListDataTypes: List data types
 
 
 <a name="getDataType"></a>
 # **getDataType**
 > DataType getDataType(scope, code, asAt)
 
-[EARLY ACCESS] Get data type definition
+[EARLY ACCESS] GetDataType: Get data type definition
 
 Get the definition of a specified data type
 
@@ -86,7 +86,7 @@ Name | Type | Description  | Notes
 # **getUnitsFromDataType**
 > ResourceListOfIUnitDefinitionDto getUnitsFromDataType(scope, code, units, filter, asAt)
 
-[EARLY ACCESS] Get units from data type
+[EARLY ACCESS] GetUnitsFromDataType: Get units from data type
 
 Get the definitions of the specified units associated bound to a specific data type
 
@@ -163,7 +163,7 @@ Name | Type | Description  | Notes
 # **listDataTypes**
 > ResourceListOfDataType listDataTypes(scope, asAt, includeSystem, sortBy, start, limit, filter)
 
-[EARLY ACCESS] List data types
+[EARLY ACCESS] ListDataTypes: List data types
 
 List all data types in a specified scope
 

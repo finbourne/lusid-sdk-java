@@ -4,16 +4,16 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**searchPortfolioGroups**](SearchApi.md#searchPortfolioGroups) | **GET** /api/search/portfoliogroups | [EARLY ACCESS] Search Portfolio Groups
-[**searchPortfolios**](SearchApi.md#searchPortfolios) | **GET** /api/search/portfolios | [EARLY ACCESS] Search Portfolios
-[**searchProperties**](SearchApi.md#searchProperties) | **GET** /api/search/propertydefinitions | [EARLY ACCESS] Search Property Definitions
+[**searchPortfolioGroups**](SearchApi.md#searchPortfolioGroups) | **GET** /api/search/portfoliogroups | [EARLY ACCESS] SearchPortfolioGroups: Search Portfolio Groups
+[**searchPortfolios**](SearchApi.md#searchPortfolios) | **GET** /api/search/portfolios | [EARLY ACCESS] SearchPortfolios: Search Portfolios
+[**searchProperties**](SearchApi.md#searchProperties) | **GET** /api/search/propertydefinitions | [EARLY ACCESS] SearchProperties: Search Property Definitions
 
 
 <a name="searchPortfolioGroups"></a>
 # **searchPortfolioGroups**
 > PagedResourceListOfPortfolioGroupSearchResult searchPortfolioGroups(search, filter, sortBy, limit, page)
 
-[EARLY ACCESS] Search Portfolio Groups
+[EARLY ACCESS] SearchPortfolioGroups: Search Portfolio Groups
 
 Search through all portfolio groups
 
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 # **searchPortfolios**
 > PagedResourceListOfPortfolioSearchResult searchPortfolios(search, filter, sortBy, limit, page)
 
-[EARLY ACCESS] Search Portfolios
+[EARLY ACCESS] SearchPortfolios: Search Portfolios
 
 Search through all portfolios
 
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 # **searchProperties**
 > PagedResourceListOfPropertyDefinitionSearchResult searchProperties(search, filter, sortBy, limit, page)
 
-[EARLY ACCESS] Search Property Definitions
+[EARLY ACCESS] SearchProperties: Search Property Definitions
 
 Search through all Property Definitions
 
