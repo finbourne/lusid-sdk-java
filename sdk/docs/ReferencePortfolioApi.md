@@ -1,20 +1,20 @@
 # ReferencePortfolioApi
 
-All URIs are relative to *http://local-unit-test-server.lusid.com:37599*
+All URIs are relative to *http://local-unit-test-server.lusid.com:57003*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createReferencePortfolio**](ReferencePortfolioApi.md#createReferencePortfolio) | **POST** /api/referenceportfolios/{scope} | Create reference portfolio
-[**getReferencePortfolioConstituents**](ReferencePortfolioApi.md#getReferencePortfolioConstituents) | **GET** /api/referenceportfolios/{scope}/{code}/constituents | Get reference portfolio constituents
-[**listConstituentsAdjustments**](ReferencePortfolioApi.md#listConstituentsAdjustments) | **GET** /api/referenceportfolios/{scope}/{code}/constituentsadjustments | List constituents adjustments
-[**upsertReferencePortfolioConstituents**](ReferencePortfolioApi.md#upsertReferencePortfolioConstituents) | **POST** /api/referenceportfolios/{scope}/{code}/constituents | Upsert reference portfolio constituents
+[**createReferencePortfolio**](ReferencePortfolioApi.md#createReferencePortfolio) | **POST** /api/referenceportfolios/{scope} | CreateReferencePortfolio: Create reference portfolio
+[**getReferencePortfolioConstituents**](ReferencePortfolioApi.md#getReferencePortfolioConstituents) | **GET** /api/referenceportfolios/{scope}/{code}/constituents | GetReferencePortfolioConstituents: Get reference portfolio constituents
+[**listConstituentsAdjustments**](ReferencePortfolioApi.md#listConstituentsAdjustments) | **GET** /api/referenceportfolios/{scope}/{code}/constituentsadjustments | ListConstituentsAdjustments: List constituents adjustments
+[**upsertReferencePortfolioConstituents**](ReferencePortfolioApi.md#upsertReferencePortfolioConstituents) | **POST** /api/referenceportfolios/{scope}/{code}/constituents | UpsertReferencePortfolioConstituents: Upsert reference portfolio constituents
 
 
 <a name="createReferencePortfolio"></a>
 # **createReferencePortfolio**
 > Portfolio createReferencePortfolio(scope, createReferencePortfolioRequest)
 
-Create reference portfolio
+CreateReferencePortfolio: Create reference portfolio
 
 Create a reference portfolio in a particular scope.
 
@@ -31,7 +31,7 @@ import com.finbourne.lusid.api.ReferencePortfolioApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 # **getReferencePortfolioConstituents**
 > GetReferencePortfolioConstituentsResponse getReferencePortfolioConstituents(scope, code, effectiveAt, asAt, propertyKeys)
 
-Get reference portfolio constituents
+GetReferencePortfolioConstituents: Get reference portfolio constituents
 
 Get constituents from a reference portfolio at a particular effective time.
 
@@ -102,7 +102,7 @@ import com.finbourne.lusid.api.ReferencePortfolioApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -162,7 +162,7 @@ Name | Type | Description  | Notes
 # **listConstituentsAdjustments**
 > ResourceListOfConstituentsAdjustmentHeader listConstituentsAdjustments(scope, code, fromEffectiveAt, toEffectiveAt, asAtTime)
 
-List constituents adjustments
+ListConstituentsAdjustments: List constituents adjustments
 
 List adjustments made to constituents in a reference portfolio.
 
@@ -179,7 +179,7 @@ import com.finbourne.lusid.api.ReferencePortfolioApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 # **upsertReferencePortfolioConstituents**
 > UpsertReferencePortfolioConstituentsResponse upsertReferencePortfolioConstituents(scope, code, upsertReferencePortfolioConstituentsRequest)
 
-Upsert reference portfolio constituents
+UpsertReferencePortfolioConstituents: Upsert reference portfolio constituents
 
 Add constituents to a reference portfolio.
 
@@ -256,7 +256,7 @@ import com.finbourne.lusid.api.ReferencePortfolioApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");

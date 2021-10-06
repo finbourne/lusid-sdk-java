@@ -1,22 +1,22 @@
 # PropertyDefinitionsApi
 
-All URIs are relative to *http://local-unit-test-server.lusid.com:37599*
+All URIs are relative to *http://local-unit-test-server.lusid.com:57003*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createDerivedPropertyDefinition**](PropertyDefinitionsApi.md#createDerivedPropertyDefinition) | **POST** /api/propertydefinitions/derived | [EARLY ACCESS] Create derived property definition
-[**createPropertyDefinition**](PropertyDefinitionsApi.md#createPropertyDefinition) | **POST** /api/propertydefinitions | Create property definition
-[**deletePropertyDefinition**](PropertyDefinitionsApi.md#deletePropertyDefinition) | **DELETE** /api/propertydefinitions/{domain}/{scope}/{code} | Delete property definition
-[**getMultiplePropertyDefinitions**](PropertyDefinitionsApi.md#getMultiplePropertyDefinitions) | **GET** /api/propertydefinitions | Get multiple property definitions
-[**getPropertyDefinition**](PropertyDefinitionsApi.md#getPropertyDefinition) | **GET** /api/propertydefinitions/{domain}/{scope}/{code} | Get property definition
-[**updatePropertyDefinition**](PropertyDefinitionsApi.md#updatePropertyDefinition) | **PUT** /api/propertydefinitions/{domain}/{scope}/{code} | Update property definition
+[**createDerivedPropertyDefinition**](PropertyDefinitionsApi.md#createDerivedPropertyDefinition) | **POST** /api/propertydefinitions/derived | [EARLY ACCESS] CreateDerivedPropertyDefinition: Create derived property definition
+[**createPropertyDefinition**](PropertyDefinitionsApi.md#createPropertyDefinition) | **POST** /api/propertydefinitions | CreatePropertyDefinition: Create property definition
+[**deletePropertyDefinition**](PropertyDefinitionsApi.md#deletePropertyDefinition) | **DELETE** /api/propertydefinitions/{domain}/{scope}/{code} | DeletePropertyDefinition: Delete property definition
+[**getMultiplePropertyDefinitions**](PropertyDefinitionsApi.md#getMultiplePropertyDefinitions) | **GET** /api/propertydefinitions | GetMultiplePropertyDefinitions: Get multiple property definitions
+[**getPropertyDefinition**](PropertyDefinitionsApi.md#getPropertyDefinition) | **GET** /api/propertydefinitions/{domain}/{scope}/{code} | GetPropertyDefinition: Get property definition
+[**updatePropertyDefinition**](PropertyDefinitionsApi.md#updatePropertyDefinition) | **PUT** /api/propertydefinitions/{domain}/{scope}/{code} | UpdatePropertyDefinition: Update property definition
 
 
 <a name="createDerivedPropertyDefinition"></a>
 # **createDerivedPropertyDefinition**
 > PropertyDefinition createDerivedPropertyDefinition(createDerivedPropertyDefinitionRequest)
 
-[EARLY ACCESS] Create derived property definition
+[EARLY ACCESS] CreateDerivedPropertyDefinition: Create derived property definition
 
 Define a new derived property.
 
@@ -33,7 +33,7 @@ import com.finbourne.lusid.api.PropertyDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 # **createPropertyDefinition**
 > PropertyDefinition createPropertyDefinition(createPropertyDefinitionRequest)
 
-Create property definition
+CreatePropertyDefinition: Create property definition
 
 Define a new property.
 
@@ -102,7 +102,7 @@ import com.finbourne.lusid.api.PropertyDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -154,7 +154,7 @@ Name | Type | Description  | Notes
 # **deletePropertyDefinition**
 > DeletedEntityResponse deletePropertyDefinition(domain, scope, code)
 
-Delete property definition
+DeletePropertyDefinition: Delete property definition
 
 Delete the definition of the specified property.
 
@@ -171,7 +171,7 @@ import com.finbourne.lusid.api.PropertyDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -227,7 +227,7 @@ Name | Type | Description  | Notes
 # **getMultiplePropertyDefinitions**
 > ResourceListOfPropertyDefinition getMultiplePropertyDefinitions(propertyKeys, asAt, filter)
 
-Get multiple property definitions
+GetMultiplePropertyDefinitions: Get multiple property definitions
 
 Retrieve the definition of one or more specified properties.
 
@@ -244,7 +244,7 @@ import com.finbourne.lusid.api.PropertyDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -300,7 +300,7 @@ Name | Type | Description  | Notes
 # **getPropertyDefinition**
 > PropertyDefinition getPropertyDefinition(domain, scope, code, asAt)
 
-Get property definition
+GetPropertyDefinition: Get property definition
 
 Retrieve the definition of a specified property.
 
@@ -317,7 +317,7 @@ import com.finbourne.lusid.api.PropertyDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -375,7 +375,7 @@ Name | Type | Description  | Notes
 # **updatePropertyDefinition**
 > PropertyDefinition updatePropertyDefinition(domain, scope, code, updatePropertyDefinitionRequest)
 
-Update property definition
+UpdatePropertyDefinition: Update property definition
 
 Update the definition of a specified existing property. Not all elements within a property definition  are modifiable due to the potential implications for values already stored against the property.
 
@@ -392,7 +392,7 @@ import com.finbourne.lusid.api.PropertyDefinitionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");

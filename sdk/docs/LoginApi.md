@@ -1,17 +1,17 @@
 # LoginApi
 
-All URIs are relative to *http://local-unit-test-server.lusid.com:37599*
+All URIs are relative to *http://local-unit-test-server.lusid.com:57003*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getSamlIdentityProviderId**](LoginApi.md#getSamlIdentityProviderId) | **GET** /api/login/saml/{domain} | Get SAML Identity Provider
+[**getSamlIdentityProviderId**](LoginApi.md#getSamlIdentityProviderId) | **GET** /api/login/saml/{domain} | GetSamlIdentityProviderId: Get SAML Identity Provider
 
 
 <a name="getSamlIdentityProviderId"></a>
 # **getSamlIdentityProviderId**
 > String getSamlIdentityProviderId(domain)
 
-Get SAML Identity Provider
+GetSamlIdentityProviderId: Get SAML Identity Provider
 
 Get the unique identifier for the SAML 2.0 Identity Provider to be used for domain.
 
@@ -28,7 +28,7 @@ import com.finbourne.lusid.api.LoginApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");

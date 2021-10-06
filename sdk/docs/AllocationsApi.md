@@ -1,20 +1,20 @@
 # AllocationsApi
 
-All URIs are relative to *http://local-unit-test-server.lusid.com:37599*
+All URIs are relative to *http://local-unit-test-server.lusid.com:57003*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteAllocation**](AllocationsApi.md#deleteAllocation) | **DELETE** /api/allocations/{scope}/{code} | [EARLY ACCESS] Delete allocation
-[**getAllocation**](AllocationsApi.md#getAllocation) | **GET** /api/allocations/{scope}/{code} | [EARLY ACCESS] Get Allocation
-[**listAllocations**](AllocationsApi.md#listAllocations) | **GET** /api/allocations | [EARLY ACCESS] List Allocations
-[**upsertAllocations**](AllocationsApi.md#upsertAllocations) | **POST** /api/allocations | [EARLY ACCESS] Upsert Allocations
+[**deleteAllocation**](AllocationsApi.md#deleteAllocation) | **DELETE** /api/allocations/{scope}/{code} | [EARLY ACCESS] DeleteAllocation: Delete allocation
+[**getAllocation**](AllocationsApi.md#getAllocation) | **GET** /api/allocations/{scope}/{code} | [EARLY ACCESS] GetAllocation: Get Allocation
+[**listAllocations**](AllocationsApi.md#listAllocations) | **GET** /api/allocations | [EARLY ACCESS] ListAllocations: List Allocations
+[**upsertAllocations**](AllocationsApi.md#upsertAllocations) | **POST** /api/allocations | [EARLY ACCESS] UpsertAllocations: Upsert Allocations
 
 
 <a name="deleteAllocation"></a>
 # **deleteAllocation**
 > DeletedEntityResponse deleteAllocation(scope, code)
 
-[EARLY ACCESS] Delete allocation
+[EARLY ACCESS] DeleteAllocation: Delete allocation
 
 Delete an allocation. Deletion will be valid from the allocation&#39;s creation datetime.  This means that the allocation will no longer exist at any effective datetime from the asAt datetime of deletion.
 
@@ -31,7 +31,7 @@ import com.finbourne.lusid.api.AllocationsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -85,7 +85,7 @@ Name | Type | Description  | Notes
 # **getAllocation**
 > Allocation getAllocation(scope, code, asAt, propertyKeys)
 
-[EARLY ACCESS] Get Allocation
+[EARLY ACCESS] GetAllocation: Get Allocation
 
 Fetch an Allocation matching the provided identifier
 
@@ -102,7 +102,7 @@ import com.finbourne.lusid.api.AllocationsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -160,7 +160,7 @@ Name | Type | Description  | Notes
 # **listAllocations**
 > PagedResourceListOfAllocation listAllocations(asAt, page, sortBy, start, limit, filter, propertyKeys)
 
-[EARLY ACCESS] List Allocations
+[EARLY ACCESS] ListAllocations: List Allocations
 
 Fetch the last pre-AsAt date version of each allocation in scope (does not fetch the entire history).
 
@@ -177,7 +177,7 @@ import com.finbourne.lusid.api.AllocationsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 # **upsertAllocations**
 > ResourceListOfAllocation upsertAllocations(allocationSetRequest)
 
-[EARLY ACCESS] Upsert Allocations
+[EARLY ACCESS] UpsertAllocations: Upsert Allocations
 
 Upsert; update existing allocations with given ids, or create new allocations otherwise.
 
@@ -258,7 +258,7 @@ import com.finbourne.lusid.api.AllocationsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");

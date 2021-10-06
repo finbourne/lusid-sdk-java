@@ -1,17 +1,17 @@
 # ScopesApi
 
-All URIs are relative to *http://local-unit-test-server.lusid.com:37599*
+All URIs are relative to *http://local-unit-test-server.lusid.com:57003*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**listScopes**](ScopesApi.md#listScopes) | **GET** /api/scopes | [EARLY ACCESS] List Scopes
+[**listScopes**](ScopesApi.md#listScopes) | **GET** /api/scopes | [EARLY ACCESS] ListScopes: List Scopes
 
 
 <a name="listScopes"></a>
 # **listScopes**
 > ResourceListOfScopeDefinition listScopes(filter)
 
-[EARLY ACCESS] List Scopes
+[EARLY ACCESS] ListScopes: List Scopes
 
 List all the scopes that contain data.
 
@@ -28,7 +28,7 @@ import com.finbourne.lusid.api.ScopesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");

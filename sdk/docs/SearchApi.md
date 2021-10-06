@@ -1,19 +1,19 @@
 # SearchApi
 
-All URIs are relative to *http://local-unit-test-server.lusid.com:37599*
+All URIs are relative to *http://local-unit-test-server.lusid.com:57003*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**searchPortfolioGroups**](SearchApi.md#searchPortfolioGroups) | **GET** /api/search/portfoliogroups | [EARLY ACCESS] Search Portfolio Groups
-[**searchPortfolios**](SearchApi.md#searchPortfolios) | **GET** /api/search/portfolios | [EARLY ACCESS] Search Portfolios
-[**searchProperties**](SearchApi.md#searchProperties) | **GET** /api/search/propertydefinitions | [EARLY ACCESS] Search Property Definitions
+[**searchPortfolioGroups**](SearchApi.md#searchPortfolioGroups) | **GET** /api/search/portfoliogroups | [EARLY ACCESS] SearchPortfolioGroups: Search Portfolio Groups
+[**searchPortfolios**](SearchApi.md#searchPortfolios) | **GET** /api/search/portfolios | [EARLY ACCESS] SearchPortfolios: Search Portfolios
+[**searchProperties**](SearchApi.md#searchProperties) | **GET** /api/search/propertydefinitions | [EARLY ACCESS] SearchProperties: Search Property Definitions
 
 
 <a name="searchPortfolioGroups"></a>
 # **searchPortfolioGroups**
 > PagedResourceListOfPortfolioGroupSearchResult searchPortfolioGroups(search, filter, sortBy, limit, page)
 
-[EARLY ACCESS] Search Portfolio Groups
+[EARLY ACCESS] SearchPortfolioGroups: Search Portfolio Groups
 
 Search through all portfolio groups
 
@@ -30,7 +30,7 @@ import com.finbourne.lusid.api.SearchApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -90,7 +90,7 @@ Name | Type | Description  | Notes
 # **searchPortfolios**
 > PagedResourceListOfPortfolioSearchResult searchPortfolios(search, filter, sortBy, limit, page)
 
-[EARLY ACCESS] Search Portfolios
+[EARLY ACCESS] SearchPortfolios: Search Portfolios
 
 Search through all portfolios
 
@@ -107,7 +107,7 @@ import com.finbourne.lusid.api.SearchApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 # **searchProperties**
 > PagedResourceListOfPropertyDefinitionSearchResult searchProperties(search, filter, sortBy, limit, page)
 
-[EARLY ACCESS] Search Property Definitions
+[EARLY ACCESS] SearchProperties: Search Property Definitions
 
 Search through all Property Definitions
 
@@ -184,7 +184,7 @@ import com.finbourne.lusid.api.SearchApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");

@@ -1,18 +1,18 @@
 # DerivedTransactionPortfoliosApi
 
-All URIs are relative to *http://local-unit-test-server.lusid.com:37599*
+All URIs are relative to *http://local-unit-test-server.lusid.com:57003*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createDerivedPortfolio**](DerivedTransactionPortfoliosApi.md#createDerivedPortfolio) | **POST** /api/derivedtransactionportfolios/{scope} | [EARLY ACCESS] Create derived portfolio
-[**deleteDerivedPortfolioDetails**](DerivedTransactionPortfoliosApi.md#deleteDerivedPortfolioDetails) | **DELETE** /api/derivedtransactionportfolios/{scope}/{code}/details | [EARLY ACCESS] Delete derived portfolio details
+[**createDerivedPortfolio**](DerivedTransactionPortfoliosApi.md#createDerivedPortfolio) | **POST** /api/derivedtransactionportfolios/{scope} | [EARLY ACCESS] CreateDerivedPortfolio: Create derived portfolio
+[**deleteDerivedPortfolioDetails**](DerivedTransactionPortfoliosApi.md#deleteDerivedPortfolioDetails) | **DELETE** /api/derivedtransactionportfolios/{scope}/{code}/details | [EARLY ACCESS] DeleteDerivedPortfolioDetails: Delete derived portfolio details
 
 
 <a name="createDerivedPortfolio"></a>
 # **createDerivedPortfolio**
 > Portfolio createDerivedPortfolio(scope, createDerivedTransactionPortfolioRequest)
 
-[EARLY ACCESS] Create derived portfolio
+[EARLY ACCESS] CreateDerivedPortfolio: Create derived portfolio
 
 Create a derived transaction portfolio from a parent transaction portfolio (which may itself be derived).
 
@@ -29,7 +29,7 @@ import com.finbourne.lusid.api.DerivedTransactionPortfoliosApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 # **deleteDerivedPortfolioDetails**
 > DeletedEntityResponse deleteDerivedPortfolioDetails(scope, code, effectiveAt)
 
-[EARLY ACCESS] Delete derived portfolio details
+[EARLY ACCESS] DeleteDerivedPortfolioDetails: Delete derived portfolio details
 
 Delete all the portfolio details for a derived transaction portfolio.
 
@@ -100,7 +100,7 @@ import com.finbourne.lusid.api.DerivedTransactionPortfoliosApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:37599");
+    defaultClient.setBasePath("http://local-unit-test-server.lusid.com:57003");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
