@@ -271,12 +271,12 @@ info:
     | <a name="752">752</a>|Luminesce process returned an error.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3584
+  version: 0.11.3585
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: http://local-unit-test-server.lusid.com:32821
 security:
 - {}
 tags:
@@ -293,7 +293,7 @@ tags:
 - description: A Block represents a set of orders for the same instrument, intended
     to record for example a trader'saggregation of outstanding orders at a given time.
     Blocks are treated monotemporally; any updates are effectiveat the as-at time
-    of update, and its not possible to make retroactive (or forward) changes.
+    of update, and it's not possible to make retroactive (or forward) changes.
   name: Blocks
 - name: Calendars
 - description: Methods for the storage and retrieval of complex market data documents.
@@ -339,6 +339,11 @@ tags:
   name: Legal Entities
 - description: Methods to handle login
   name: Login
+- description: The order graph is a way of looking at orders with the various entities
+    relating to the order, such as blocks, orders, placements, allocations and executions
+    in one place. It also contains some state information which can not be obtained
+    any other way.
+  name: OrderGraph
 - description: Methods for handling order instructions.
   name: OrderInstructions
 - description: Methods for interacting with Orders. This is experimental functionality,
@@ -759,7 +764,7 @@ paths:
                         labelValue: XYZ000034567
                   placementIds:
                   - scope: MyScope
-                    code: A placement
+                    code: PLAC00000123
                   state: New
                   side: Buy
                   type: Limit
@@ -799,7 +804,7 @@ paths:
                         labelValue: XYZ000034567
                   placementIds:
                   - scope: MyScope
-                    code: A placement
+                    code: PLAC00000123
                   state: New
                   side: Buy
                   type: Limit
@@ -839,7 +844,7 @@ paths:
                         labelValue: XYZ000034567
                   placementIds:
                   - scope: MyScope
-                    code: A placement
+                    code: PLAC00000123
                   state: New
                   side: Buy
                   type: Limit
@@ -1042,7 +1047,7 @@ paths:
                       labelValue: XYZ000034567
                 placementIds:
                 - scope: MyScope
-                  code: A placement
+                  code: PLAC00000123
                 state: New
                 side: Buy
                 type: Limit
@@ -1080,7 +1085,7 @@ paths:
                       labelValue: XYZ000034567
                 placementIds:
                 - scope: MyScope
-                  code: A placement
+                  code: PLAC00000123
                 state: New
                 side: Buy
                 type: Limit
@@ -1118,7 +1123,7 @@ paths:
                       labelValue: XYZ000034567
                 placementIds:
                 - scope: MyScope
-                  code: A placement
+                  code: PLAC00000123
                 state: New
                 side: Buy
                 type: Limit
@@ -29047,7 +29052,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
@@ -29074,6 +29079,7 @@ x-tagGroups:
   - Instruments
   - Legal Entities
   - Login
+  - OrderGraph
   - OrderInstructions
   - Orders
   - Packages
