@@ -271,12 +271,12 @@ info:
     | <a name="752">752</a>|Luminesce process returned an error.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3596
+  version: 0.11.3597
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:60190
+- url: http://local-unit-test-server.lusid.com:53126
 security:
 - {}
 tags:
@@ -21121,7 +21121,7 @@ components:
             Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, CrossCurrencySwap, FxSwap,
-            ForwardRateAgreement, SimpleInstrument, Repo, Equity'
+            ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -21152,6 +21152,7 @@ components:
           - SimpleInstrument
           - Repo
           - Equity
+          - ExchangeTradedOption
           type: string
       required:
       - instrumentType
