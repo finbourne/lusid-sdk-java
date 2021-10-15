@@ -271,12 +271,12 @@ info:
     | <a name="752">752</a>|Luminesce process returned an error.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3613
+  version: 0.11.3614
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:55426
+- url: http://local-unit-test-server.lusid.com:48499
 security:
 - {}
 tags:
@@ -298,6 +298,8 @@ tags:
 - name: Calendars
 - description: Methods for the storage and retrieval of complex market data documents.
   name: Complex Market Data
+- description: Methods for storage and retrieval of Compliance runs
+  name: Compliance
 - description: Methods for the storage and retrieval of Configuration Recipe documents.
     Read more about these in the LUSID Knowledge Base here https://support.lusid.com/what-is-a-lusid-recipe-and-how-is-it-used.
   name: Configuration Recipe
@@ -9710,6 +9712,317 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-contentType: application/json-patch+json
       x-accepts: application/json
+  /api/portfolios/{scope}/{code}/returns/{returnScope}/{returnCode}/$aggregated:
+    post:
+      description: Aggregate Returns which are on the specified portfolio.
+      operationId: GetPortfolioAggregatedReturns
+      parameters:
+      - description: The scope of the Portfolio.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the Portfolio.
+          nullable: true
+          type: string
+        style: simple
+      - description: The code of the  Portfolio.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The code of the  Portfolio.
+          nullable: true
+          type: string
+        style: simple
+      - description: The scope of the Returns.
+        explode: false
+        in: path
+        name: returnScope
+        required: true
+        schema:
+          description: The scope of the Returns.
+          nullable: true
+          type: string
+        style: simple
+      - description: The code of the Returns.
+        explode: false
+        in: path
+        name: returnCode
+        required: true
+        schema:
+          description: The code of the Returns.
+          nullable: true
+          type: string
+        style: simple
+      - description: The start date from which to calculate the Returns.
+        explode: true
+        in: query
+        name: fromEffectiveAt
+        required: false
+        schema:
+          description: The start date from which to calculate the Returns.
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      - description: The end date for which to calculate the Returns.
+        explode: true
+        in: query
+        name: toEffectiveAt
+        required: false
+        schema:
+          description: The end date for which to calculate the Returns.
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve the Returns. Defaults
+          to the latest.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve the Returns. Defaults
+            to the latest.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              metrics:
+              - type: Return
+                window: 1Y
+                allowPartial: false
+                annualised: false
+                withFee: true
+                alias: 1M
+              recipeId:
+                scope: TestScope
+                code: default
+              compositeMethod: Asset
+              period: Daily
+              outputFrequency: Daily
+              alternativeInceptionDate: 2020-01-01
+            schema:
+              $ref: '#/components/schemas/AggregatedReturnsRequest'
+          application/json:
+            example:
+              metrics:
+              - type: Return
+                window: 1Y
+                allowPartial: false
+                annualised: false
+                withFee: true
+                alias: 1M
+              recipeId:
+                scope: TestScope
+                code: default
+              compositeMethod: Asset
+              period: Daily
+              outputFrequency: Daily
+              alternativeInceptionDate: 2020-01-01
+            schema:
+              $ref: '#/components/schemas/AggregatedReturnsRequest'
+          text/json:
+            example:
+              metrics:
+              - type: Return
+                window: 1Y
+                allowPartial: false
+                annualised: false
+                withFee: true
+                alias: 1M
+              recipeId:
+                scope: TestScope
+                code: default
+              compositeMethod: Asset
+              period: Daily
+              outputFrequency: Daily
+              alternativeInceptionDate: 2020-01-01
+            schema:
+              $ref: '#/components/schemas/AggregatedReturnsRequest'
+          application/*+json:
+            example:
+              metrics:
+              - type: Return
+                window: 1Y
+                allowPartial: false
+                annualised: false
+                withFee: true
+                alias: 1M
+              recipeId:
+                scope: TestScope
+                code: default
+              compositeMethod: Asset
+              period: Daily
+              outputFrequency: Daily
+              alternativeInceptionDate: 2020-01-01
+            schema:
+              $ref: '#/components/schemas/AggregatedReturnsRequest'
+        description: The request used in the AggregatedReturns.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfAggregatedReturn'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfAggregatedReturn'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfAggregatedReturn'
+          description: The aggregated returns.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetPortfolioAggregatedReturns: Aggregated Returns'
+      tags:
+      - Portfolios
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/portfolios/{scope}/{code}/returns/{returnScope}/{returnCode}/$delete:
+    delete:
+      description: Cancel one or more Returns which exist into the specified portfolio.
+      operationId: DeletePortfolioReturns
+      parameters:
+      - description: The scope of the Portfolio.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the Portfolio.
+          nullable: true
+          type: string
+        style: simple
+      - description: The code of the  Portfolio.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The code of the  Portfolio.
+          nullable: true
+          type: string
+        style: simple
+      - description: The scope of the Returns.
+        explode: false
+        in: path
+        name: returnScope
+        required: true
+        schema:
+          description: The scope of the Returns.
+          nullable: true
+          type: string
+        style: simple
+      - description: The code of the Returns.
+        explode: false
+        in: path
+        name: returnCode
+        required: true
+        schema:
+          description: The code of the Returns.
+          nullable: true
+          type: string
+        style: simple
+      - description: The start date from which to delete the Returns.
+        explode: true
+        in: query
+        name: fromEffectiveAt
+        required: true
+        schema:
+          description: The start date from which to delete the Returns.
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: The end date from which to delete the Returns.
+        explode: true
+        in: query
+        name: toEffectiveAt
+        required: true
+        schema:
+          description: The end date from which to delete the Returns.
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: The Period (Daily or Monthly) of the Returns to be deleted. Defaults
+          to Daily.
+        explode: true
+        in: query
+        name: period
+        required: false
+        schema:
+          description: The Period (Daily or Monthly) of the Returns to be deleted.
+            Defaults to Daily.
+          nullable: true
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The successfully deleted Returns data along with any failures
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] DeletePortfolioReturns: Delete Returns'
+      tags:
+      - Portfolios
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
   /api/propertydefinitions:
     get:
       description: Retrieve the definition of one or more specified properties.
@@ -18384,6 +18697,119 @@ components:
       - instrumentIdentifiers
       - taxLots
       type: object
+    AggregatedReturn:
+      additionalProperties: false
+      description: A list of Aggregated Returns.
+      example:
+        compositeMembers: 5
+        compositeMembersWithoutReturn:
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
+        openingMarketValue: 0.8008281904610115
+        metricsValue:
+          key: 1.4658129805029452
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        closingMarketValue: 6.027456183070403
+        frequency: frequency
+      properties:
+        effectiveAt:
+          description: The effectiveAt for the return.
+          format: date-time
+          type: string
+        openingMarketValue:
+          description: The opening market value.
+          format: double
+          nullable: true
+          type: number
+        closingMarketValue:
+          description: The closing market value.
+          format: double
+          nullable: true
+          type: number
+        metricsValue:
+          additionalProperties:
+            format: double
+            type: number
+          description: The value for the specified metric.
+          type: object
+        frequency:
+          description: Show the aggregated output returns on a Daily or Monthly period.
+          nullable: true
+          type: string
+        compositeMembers:
+          description: The number of members in the Composite on the given day.
+          format: int32
+          nullable: true
+          type: integer
+        compositeMembersWithoutReturn:
+          description: List containing Composite members which post no return on the
+            given day.
+          items:
+            $ref: '#/components/schemas/ResourceId'
+          nullable: true
+          type: array
+      required:
+      - effectiveAt
+      - metricsValue
+      type: object
+    AggregatedReturnsRequest:
+      additionalProperties: false
+      description: The request used in the AggregatedReturns.
+      example:
+        outputFrequency: outputFrequency
+        alternativeInceptionDate: alternativeInceptionDate
+        period: period
+        metrics:
+        - withFee: true
+          annualised: true
+          alias: alias
+          window: window
+          seedAmount: 0.8008281904610115
+          type: type
+          allowPartial: true
+        - withFee: true
+          annualised: true
+          alias: alias
+          window: window
+          seedAmount: 0.8008281904610115
+          type: type
+          allowPartial: true
+        recipeId:
+          code: code
+          scope: scope
+        compositeMethod: compositeMethod
+      properties:
+        metrics:
+          description: A list of metrics to calculate in the AggregatedReturns.
+          items:
+            $ref: '#/components/schemas/PerformanceReturnsMetric'
+          type: array
+        recipeId:
+          $ref: '#/components/schemas/ResourceId'
+        compositeMethod:
+          description: 'The method used to calculate the Portfolio performance: Equal/Asset.'
+          nullable: true
+          type: string
+        period:
+          description: 'The type of the returns used to calculate the aggregation
+            result: Daily/Monthly.'
+          nullable: true
+          type: string
+        outputFrequency:
+          description: 'The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly.'
+          nullable: true
+          type: string
+        alternativeInceptionDate:
+          description: Optional - either a date, or the key for a portfolio property
+            containing a date. If provided, the given date will override the inception
+            date for this request.
+          nullable: true
+          type: string
+      required:
+      - metrics
+      type: object
     Allocation:
       additionalProperties: false
       description: "An Allocation of a certain quantity of a specific instrument against\
@@ -22839,6 +23265,47 @@ components:
       - effectiveAt
       - rateOfReturn
       type: object
+    PerformanceReturnsMetric:
+      additionalProperties: false
+      description: The request used in the AggregatedReturns.
+      example:
+        withFee: true
+        annualised: true
+        alias: alias
+        window: window
+        seedAmount: 0.8008281904610115
+        type: type
+        allowPartial: true
+      properties:
+        type:
+          description: The type of the metric. Default to Return
+          nullable: true
+          type: string
+        window:
+          description: The given metric for the calculation i.e. 1Y, 1D.
+          nullable: true
+          type: string
+        allowPartial:
+          description: Bool if the metric is allowed partial results. Deafult to false.
+          type: boolean
+        annualised:
+          description: Bool if the metric is annualized. Default to false.
+          type: boolean
+        withFee:
+          description: Bool if the metric should consider the fees when is calculated.
+            Default to false.
+          type: boolean
+        seedAmount:
+          description: The given seed amount for the calculation of the indicative
+            amount metrics.
+          format: double
+          nullable: true
+          type: number
+        alias:
+          description: The alias for the metric.
+          nullable: true
+          type: string
+      type: object
     PerpetualProperty:
       additionalProperties: false
       example:
@@ -24898,6 +25365,75 @@ components:
           description: The resources to list.
           items:
             $ref: '#/components/schemas/AccessControlledResource'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
+    ResourceListOfAggregatedReturn:
+      additionalProperties: false
+      description: A collection of resources that can be returned from requests.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - compositeMembers: 5
+          compositeMembersWithoutReturn:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
+          openingMarketValue: 0.8008281904610115
+          metricsValue:
+            key: 1.4658129805029452
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          closingMarketValue: 6.027456183070403
+          frequency: frequency
+        - compositeMembers: 5
+          compositeMembersWithoutReturn:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
+          openingMarketValue: 0.8008281904610115
+          metricsValue:
+            key: 1.4658129805029452
+          effectiveAt: 2000-01-23T04:56:07.000+00:00
+          closingMarketValue: 6.027456183070403
+          frequency: frequency
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/AggregatedReturn'
           type: array
         href:
           description: The URI of the resource list.
@@ -29065,6 +29601,7 @@ x-tagGroups:
   - Blocks
   - Calendars
   - Complex Market Data
+  - Compliance
   - Configuration Recipe
   - Conventions
   - Corporate Action Sources
