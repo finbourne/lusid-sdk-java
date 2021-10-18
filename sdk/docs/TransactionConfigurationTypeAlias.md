@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **transactionClass** | **String** | Relates types of a similar class. E.g. Buy/Sell, StockIn/StockOut | 
 **transactionGroup** | **String** | Group is a set of codes related to a source, or sync | 
 **transactionRoles** | [**TransactionRolesEnum**](#TransactionRolesEnum) | . The available values are: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles | 
-**isDefault** | **Boolean** | IsDefault is a flag that denotes the default alias for a group |  [optional]
+**isDefault** | **Boolean** | IsDefault is a flag that denotes the default alias for a source. There can only be, at most, one per source. |  [optional]
 
 
 
