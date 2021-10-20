@@ -271,12 +271,12 @@ info:
     | <a name="752">752</a>|Luminesce process returned an error.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3626
+  version: 0.11.3627
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: http://local-unit-test-server.lusid.com:55270
 security:
 - {}
 tags:
@@ -20050,6 +20050,21 @@ components:
         acceptableValues:
         - acceptableValues
         - acceptableValues
+        referenceData:
+          values:
+          - fields:
+              key: fields
+            value: value
+          - fields:
+              key: fields
+            value: value
+          fieldDefinitions:
+          - isRequired: true
+            isUnique: true
+            key: key
+          - isRequired: true
+            isUnique: true
+            key: key
         acceptableUnits:
         - schema: NoUnits
           code: code
@@ -20138,6 +20153,8 @@ components:
             $ref: '#/components/schemas/IUnitDefinitionDto'
           nullable: true
           type: array
+        referenceData:
+          $ref: '#/components/schemas/ReferenceData'
         links:
           description: Collection of links.
           items:
@@ -20440,6 +20457,49 @@ components:
       required:
       - displayName
       - id
+      type: object
+    FieldDefinition:
+      additionalProperties: false
+      example:
+        isRequired: true
+        isUnique: true
+        key: key
+      properties:
+        key:
+          maxLength: 512
+          minLength: 1
+          pattern: ^[\s\S]*$
+          type: string
+        isRequired:
+          type: boolean
+        isUnique:
+          type: boolean
+      required:
+      - isRequired
+      - isUnique
+      - key
+      type: object
+    FieldValue:
+      additionalProperties: false
+      example:
+        fields:
+          key: fields
+        value: value
+      properties:
+        value:
+          maxLength: 512
+          minLength: 1
+          pattern: ^[\s\S]*$
+          type: string
+        fields:
+          additionalProperties:
+            type: string
+          maxLength: 10
+          minLength: 1
+          type: object
+      required:
+      - fields
+      - value
       type: object
     FileResponse:
       additionalProperties: false
@@ -24998,6 +25058,36 @@ components:
       - rightUnits
       - subHoldingKeys
       type: object
+    ReferenceData:
+      additionalProperties: false
+      example:
+        values:
+        - fields:
+            key: fields
+          value: value
+        - fields:
+            key: fields
+          value: value
+        fieldDefinitions:
+        - isRequired: true
+          isUnique: true
+          key: key
+        - isRequired: true
+          isUnique: true
+          key: key
+      properties:
+        fieldDefinitions:
+          items:
+            $ref: '#/components/schemas/FieldDefinition'
+          type: array
+        values:
+          items:
+            $ref: '#/components/schemas/FieldValue'
+          type: array
+      required:
+      - fieldDefinitions
+      - values
+      type: object
     ReferencePortfolioConstituent:
       additionalProperties: false
       example:
@@ -25772,6 +25862,21 @@ components:
         - acceptableValues:
           - acceptableValues
           - acceptableValues
+          referenceData:
+            values:
+            - fields:
+                key: fields
+              value: value
+            - fields:
+                key: fields
+              value: value
+            fieldDefinitions:
+            - isRequired: true
+              isUnique: true
+              key: key
+            - isRequired: true
+              isUnique: true
+              key: key
           acceptableUnits:
           - schema: NoUnits
             code: code
@@ -25802,6 +25907,21 @@ components:
         - acceptableValues:
           - acceptableValues
           - acceptableValues
+          referenceData:
+            values:
+            - fields:
+                key: fields
+              value: value
+            - fields:
+                key: fields
+              value: value
+            fieldDefinitions:
+            - isRequired: true
+              isUnique: true
+              key: key
+            - isRequired: true
+              isUnique: true
+              key: key
           acceptableUnits:
           - schema: NoUnits
             code: code
@@ -29590,7 +29710,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
