@@ -271,12 +271,12 @@ info:
     | <a name="752">752</a>|Luminesce process returned an error.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3651
+  version: 0.11.3652
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:31036
+- url: http://local-unit-test-server.lusid.com:48971
 security:
 - {}
 tags:
@@ -593,23 +593,23 @@ paths:
           application/json-patch+json:
             example:
               allocationRequests:
-              - properties:
+              - id:
+                  scope: MyScope
+                  code: ALLOC00000123
+                allocatedOrderId:
+                  scope: MyScope
+                  code: ORD00000123
+                portfolioId:
+                  scope: MyScope
+                  code: UK Equity
+                quantity: 100
+                instrumentIdentifiers:
+                  instrument/default/Currency: GBP
+                properties:
                   allocation/MyScope/SomeAllocationProperty:
                     key: Allocation/MyScope/SomeAllocationProperty
                     value:
                       labelValue: XYZ000034567
-                instrumentIdentifiers:
-                  instrument/default/Currency: GBP
-                quantity: 100
-                portfolioId:
-                  scope: MyScope
-                  code: UK Equity
-                allocatedOrderId:
-                  scope: MyScope
-                  code: ORD00000123
-                id:
-                  scope: MyScope
-                  code: ALLOC00000123
                 placementIds:
                 - scope: MyScope
                   code: A placement
@@ -629,23 +629,23 @@ paths:
           application/json:
             example:
               allocationRequests:
-              - properties:
+              - id:
+                  scope: MyScope
+                  code: ALLOC00000123
+                allocatedOrderId:
+                  scope: MyScope
+                  code: ORD00000123
+                portfolioId:
+                  scope: MyScope
+                  code: UK Equity
+                quantity: 100
+                instrumentIdentifiers:
+                  instrument/default/Currency: GBP
+                properties:
                   allocation/MyScope/SomeAllocationProperty:
                     key: Allocation/MyScope/SomeAllocationProperty
                     value:
                       labelValue: XYZ000034567
-                instrumentIdentifiers:
-                  instrument/default/Currency: GBP
-                quantity: 100
-                portfolioId:
-                  scope: MyScope
-                  code: UK Equity
-                allocatedOrderId:
-                  scope: MyScope
-                  code: ORD00000123
-                id:
-                  scope: MyScope
-                  code: ALLOC00000123
                 placementIds:
                 - scope: MyScope
                   code: A placement
@@ -665,23 +665,23 @@ paths:
           text/json:
             example:
               allocationRequests:
-              - properties:
+              - id:
+                  scope: MyScope
+                  code: ALLOC00000123
+                allocatedOrderId:
+                  scope: MyScope
+                  code: ORD00000123
+                portfolioId:
+                  scope: MyScope
+                  code: UK Equity
+                quantity: 100
+                instrumentIdentifiers:
+                  instrument/default/Currency: GBP
+                properties:
                   allocation/MyScope/SomeAllocationProperty:
                     key: Allocation/MyScope/SomeAllocationProperty
                     value:
                       labelValue: XYZ000034567
-                instrumentIdentifiers:
-                  instrument/default/Currency: GBP
-                quantity: 100
-                portfolioId:
-                  scope: MyScope
-                  code: UK Equity
-                allocatedOrderId:
-                  scope: MyScope
-                  code: ORD00000123
-                id:
-                  scope: MyScope
-                  code: ALLOC00000123
                 placementIds:
                 - scope: MyScope
                   code: A placement
@@ -701,23 +701,23 @@ paths:
           application/*+json:
             example:
               allocationRequests:
-              - properties:
+              - id:
+                  scope: MyScope
+                  code: ALLOC00000123
+                allocatedOrderId:
+                  scope: MyScope
+                  code: ORD00000123
+                portfolioId:
+                  scope: MyScope
+                  code: UK Equity
+                quantity: 100
+                instrumentIdentifiers:
+                  instrument/default/Currency: GBP
+                properties:
                   allocation/MyScope/SomeAllocationProperty:
                     key: Allocation/MyScope/SomeAllocationProperty
                     value:
                       labelValue: XYZ000034567
-                instrumentIdentifiers:
-                  instrument/default/Currency: GBP
-                quantity: 100
-                portfolioId:
-                  scope: MyScope
-                  code: UK Equity
-                allocatedOrderId:
-                  scope: MyScope
-                  code: ORD00000123
-                id:
-                  scope: MyScope
-                  code: ALLOC00000123
                 placementIds:
                 - scope: MyScope
                   code: A placement
@@ -19128,27 +19128,27 @@ components:
                 - values
             key: key
       properties:
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        allocatedOrderId:
+          $ref: '#/components/schemas/ResourceId'
+        portfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        quantity:
+          description: The quantity of given instrument allocated.
+          format: int32
+          type: integer
+        instrumentIdentifiers:
+          additionalProperties:
+            type: string
+          description: The instrument allocated.
+          type: object
         properties:
           additionalProperties:
             $ref: '#/components/schemas/PerpetualProperty'
           description: Client-defined properties associated with this allocation.
           nullable: true
           type: object
-        instrumentIdentifiers:
-          additionalProperties:
-            type: string
-          description: The instrument allocated.
-          type: object
-        quantity:
-          description: The quantity of given instrument allocated.
-          format: int32
-          type: integer
-        portfolioId:
-          $ref: '#/components/schemas/ResourceId'
-        allocatedOrderId:
-          $ref: '#/components/schemas/ResourceId'
-        id:
-          $ref: '#/components/schemas/ResourceId'
         placementIds:
           description: A placement - also known as an order placed in the market -
             associated with this allocation.
