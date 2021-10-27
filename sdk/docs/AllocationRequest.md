@@ -8,12 +8,12 @@ A request to create or update an Allocation.
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | [**ResourceId**](ResourceId.md) |  | 
-**allocatedOrderId** | [**ResourceId**](ResourceId.md) |  | 
-**portfolioId** | [**ResourceId**](ResourceId.md) |  | 
-**quantity** | **Integer** | The quantity of given instrument allocated. | 
-**instrumentIdentifiers** | **Map&lt;String, String&gt;** | The instrument allocated. | 
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this allocation. |  [optional]
+**instrumentIdentifiers** | **Map&lt;String, String&gt;** | The instrument allocated. | 
+**quantity** | **Integer** | The quantity of given instrument allocated. | 
+**portfolioId** | [**ResourceId**](ResourceId.md) |  | 
+**allocatedOrderId** | [**ResourceId**](ResourceId.md) |  | 
+**id** | [**ResourceId**](ResourceId.md) |  | 
 **placementIds** | [**List&lt;ResourceId&gt;**](ResourceId.md) | A placement - also known as an order placed in the market - associated with this allocation. |  [optional]
 **state** | **String** | The state of this allocation. |  [optional]
 **side** | **String** | The side of this allocation (examples: Buy, Sell, ...). |  [optional]

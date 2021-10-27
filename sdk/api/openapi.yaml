@@ -271,12 +271,12 @@ info:
     | <a name="752">752</a>|Luminesce process returned an error.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3652
+  version: 0.11.3653
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:48971
+- url: http://local-unit-test-server.lusid.com:31513
 security:
 - {}
 tags:
@@ -593,23 +593,23 @@ paths:
           application/json-patch+json:
             example:
               allocationRequests:
-              - id:
-                  scope: MyScope
-                  code: ALLOC00000123
-                allocatedOrderId:
-                  scope: MyScope
-                  code: ORD00000123
-                portfolioId:
-                  scope: MyScope
-                  code: UK Equity
-                quantity: 100
-                instrumentIdentifiers:
-                  instrument/default/Currency: GBP
-                properties:
+              - properties:
                   allocation/MyScope/SomeAllocationProperty:
                     key: Allocation/MyScope/SomeAllocationProperty
                     value:
                       labelValue: XYZ000034567
+                instrumentIdentifiers:
+                  instrument/default/Currency: GBP
+                quantity: 100
+                portfolioId:
+                  scope: MyScope
+                  code: UK Equity
+                allocatedOrderId:
+                  scope: MyScope
+                  code: ORD00000123
+                id:
+                  scope: MyScope
+                  code: ALLOC00000123
                 placementIds:
                 - scope: MyScope
                   code: A placement
@@ -629,23 +629,23 @@ paths:
           application/json:
             example:
               allocationRequests:
-              - id:
-                  scope: MyScope
-                  code: ALLOC00000123
-                allocatedOrderId:
-                  scope: MyScope
-                  code: ORD00000123
-                portfolioId:
-                  scope: MyScope
-                  code: UK Equity
-                quantity: 100
-                instrumentIdentifiers:
-                  instrument/default/Currency: GBP
-                properties:
+              - properties:
                   allocation/MyScope/SomeAllocationProperty:
                     key: Allocation/MyScope/SomeAllocationProperty
                     value:
                       labelValue: XYZ000034567
+                instrumentIdentifiers:
+                  instrument/default/Currency: GBP
+                quantity: 100
+                portfolioId:
+                  scope: MyScope
+                  code: UK Equity
+                allocatedOrderId:
+                  scope: MyScope
+                  code: ORD00000123
+                id:
+                  scope: MyScope
+                  code: ALLOC00000123
                 placementIds:
                 - scope: MyScope
                   code: A placement
@@ -665,23 +665,23 @@ paths:
           text/json:
             example:
               allocationRequests:
-              - id:
-                  scope: MyScope
-                  code: ALLOC00000123
-                allocatedOrderId:
-                  scope: MyScope
-                  code: ORD00000123
-                portfolioId:
-                  scope: MyScope
-                  code: UK Equity
-                quantity: 100
-                instrumentIdentifiers:
-                  instrument/default/Currency: GBP
-                properties:
+              - properties:
                   allocation/MyScope/SomeAllocationProperty:
                     key: Allocation/MyScope/SomeAllocationProperty
                     value:
                       labelValue: XYZ000034567
+                instrumentIdentifiers:
+                  instrument/default/Currency: GBP
+                quantity: 100
+                portfolioId:
+                  scope: MyScope
+                  code: UK Equity
+                allocatedOrderId:
+                  scope: MyScope
+                  code: ORD00000123
+                id:
+                  scope: MyScope
+                  code: ALLOC00000123
                 placementIds:
                 - scope: MyScope
                   code: A placement
@@ -701,23 +701,23 @@ paths:
           application/*+json:
             example:
               allocationRequests:
-              - id:
-                  scope: MyScope
-                  code: ALLOC00000123
-                allocatedOrderId:
-                  scope: MyScope
-                  code: ORD00000123
-                portfolioId:
-                  scope: MyScope
-                  code: UK Equity
-                quantity: 100
-                instrumentIdentifiers:
-                  instrument/default/Currency: GBP
-                properties:
+              - properties:
                   allocation/MyScope/SomeAllocationProperty:
                     key: Allocation/MyScope/SomeAllocationProperty
                     value:
                       labelValue: XYZ000034567
+                instrumentIdentifiers:
+                  instrument/default/Currency: GBP
+                quantity: 100
+                portfolioId:
+                  scope: MyScope
+                  code: UK Equity
+                allocatedOrderId:
+                  scope: MyScope
+                  code: ORD00000123
+                id:
+                  scope: MyScope
+                  code: ALLOC00000123
                 placementIds:
                 - scope: MyScope
                   code: A placement
@@ -19128,27 +19128,27 @@ components:
                 - values
             key: key
       properties:
-        id:
-          $ref: '#/components/schemas/ResourceId'
-        allocatedOrderId:
-          $ref: '#/components/schemas/ResourceId'
-        portfolioId:
-          $ref: '#/components/schemas/ResourceId'
-        quantity:
-          description: The quantity of given instrument allocated.
-          format: int32
-          type: integer
-        instrumentIdentifiers:
-          additionalProperties:
-            type: string
-          description: The instrument allocated.
-          type: object
         properties:
           additionalProperties:
             $ref: '#/components/schemas/PerpetualProperty'
           description: Client-defined properties associated with this allocation.
           nullable: true
           type: object
+        instrumentIdentifiers:
+          additionalProperties:
+            type: string
+          description: The instrument allocated.
+          type: object
+        quantity:
+          description: The quantity of given instrument allocated.
+          format: int32
+          type: integer
+        portfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        allocatedOrderId:
+          $ref: '#/components/schemas/ResourceId'
+        id:
+          $ref: '#/components/schemas/ResourceId'
         placementIds:
           description: A placement - also known as an order placed in the market -
             associated with this allocation.
@@ -27751,12 +27751,14 @@ components:
           transactionClass: transactionClass
           transactionGroup: transactionGroup
           description: description
+          source: source
           type: type
         - transactionRoles: None
           isDefault: true
           transactionClass: transactionClass
           transactionGroup: transactionGroup
           description: description
+          source: source
           type: type
         movements:
         - side: side
@@ -27848,12 +27850,14 @@ components:
           transactionClass: transactionClass
           transactionGroup: transactionGroup
           description: description
+          source: source
           type: type
         - transactionRoles: None
           isDefault: true
           transactionClass: transactionClass
           transactionGroup: transactionGroup
           description: description
+          source: source
           type: type
         movements:
         - side: side
@@ -28104,6 +28108,7 @@ components:
         transactionClass: transactionClass
         transactionGroup: transactionGroup
         description: description
+        source: source
         type: type
       properties:
         type:
@@ -28116,7 +28121,16 @@ components:
           description: Relates types of a similar class. E.g. Buy/Sell, StockIn/StockOut
           type: string
         transactionGroup:
-          description: Group is a set of codes related to a source, or sync
+          description: 'Group is a set of codes related to a source, or sync. DEPRECATED:
+            This field will be removed, use `Source` instead'
+          nullable: true
+          type: string
+        source:
+          description: Used to group a set of transaction types
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         transactionRoles:
           description: '. The available values are: None, LongLonger, LongShorter,
@@ -28138,7 +28152,6 @@ components:
       required:
       - description
       - transactionClass
-      - transactionGroup
       - transactionRoles
       - type
       type: object
@@ -28392,12 +28405,14 @@ components:
             transactionClass: transactionClass
             transactionGroup: transactionGroup
             description: description
+            source: source
             type: type
           - transactionRoles: None
             isDefault: true
             transactionClass: transactionClass
             transactionGroup: transactionGroup
             description: description
+            source: source
             type: type
           movements:
           - side: side
@@ -28464,12 +28479,14 @@ components:
             transactionClass: transactionClass
             transactionGroup: transactionGroup
             description: description
+            source: source
             type: type
           - transactionRoles: None
             isDefault: true
             transactionClass: transactionClass
             transactionGroup: transactionGroup
             description: description
+            source: source
             type: type
           movements:
           - side: side
