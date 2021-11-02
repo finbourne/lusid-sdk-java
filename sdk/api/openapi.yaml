@@ -271,12 +271,12 @@ info:
     | <a name="752">752</a>|Luminesce process returned an error.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3671
+  version: 0.11.3673
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: http://local-unit-test-server.lusid.com:35846
 security:
 - {}
 tags:
@@ -5602,7 +5602,7 @@ paths:
           type: string
         style: form
         x-nullable: true
-      - description: "Expression to filter the result set. \r\n             For example,\
+      - description: "Expression to filter the result set.\r\n             For example,\
           \ to filter on the User ID, use \"userId.id eq 'string'\"\r\n          \
           \  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
         explode: true
@@ -5610,9 +5610,9 @@ paths:
         name: filter
         required: false
         schema:
-          description: "Expression to filter the result set. \r\n             For\
-            \ example, to filter on the User ID, use \"userId.id eq 'string'\"\r\n\
-            \            Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          description: "Expression to filter the result set.\r\n             For example,\
+            \ to filter on the User ID, use \"userId.id eq 'string'\"\r\n        \
+            \    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
           nullable: true
           type: string
         style: form
@@ -6492,12 +6492,12 @@ paths:
         \ property will be updated if it\r\nalready exists and inserted if it does\
         \ not. All properties must be of the domain 'PortfolioGroup'.\r\n        \
         \    \r\nUpserting a property that exists for a group, with a null value,\
-        \ will delete the instance of the property for that group.\r\n\r\nProperties\
-        \ have an <i>effectiveFrom</i> datetime for which the property is valid, and\
-        \ an <i>effectiveUntil</i>\r\ndatetime until which the property is valid.\
-        \ Not supplying an <i>effectiveUntil</i> datetime results in the property\
-        \ being\r\nvalid indefinitely, or until the next <i>effectiveFrom</i> datetime\
-        \ of the property."
+        \ will delete the instance of the property for that group.\r\n           \
+        \ \r\nProperties have an <i>effectiveFrom</i> datetime for which the property\
+        \ is valid, and an <i>effectiveUntil</i>\r\ndatetime until which the property\
+        \ is valid. Not supplying an <i>effectiveUntil</i> datetime results in the\
+        \ property being\r\nvalid indefinitely, or until the next <i>effectiveFrom</i>\
+        \ datetime of the property."
       operationId: UpsertGroupProperties
       parameters:
       - description: The scope of the group to update or insert the properties onto.
@@ -7086,10 +7086,11 @@ paths:
   /api/portfoliogroups/{scope}/{code}/transactions:
     get:
       description: "Get transactions for transaction portfolios in a portfolio group\
-        \ over a given interval of effective time. \r\n\r\nWhen the specified portfolio\
-        \ in a portfolio group is a derived transaction portfolio, the returned set\
-        \ of transactions is the\r\nunion set of all transactions of the parent (and\
-        \ any grandparents etc.) and the specified derived transaction portfolio itself."
+        \ over a given interval of effective time.\r\n            \r\nWhen the specified\
+        \ portfolio in a portfolio group is a derived transaction portfolio, the returned\
+        \ set of transactions is the\r\nunion set of all transactions of the parent\
+        \ (and any grandparents etc.) and the specified derived transaction portfolio\
+        \ itself."
       operationId: GetTransactionsForPortfolioGroup
       parameters:
       - description: The scope of the portfolio group.
@@ -7106,14 +7107,14 @@ paths:
           type: string
         style: simple
       - description: "The code of the portfolio group. Together with the scope this\
-          \ uniquely identifies\r\n            the portfolio group."
+          \ uniquely identifies\r\n             the portfolio group."
         explode: false
         in: path
         name: code
         required: true
         schema:
           description: "The code of the portfolio group. Together with the scope this\
-            \ uniquely identifies\r\n            the portfolio group."
+            \ uniquely identifies\r\n             the portfolio group."
           maxLength: 64
           minLength: 1
           nullable: true
@@ -7121,7 +7122,7 @@ paths:
           type: string
         style: simple
       - description: "The lower bound effective datetime or cut label (inclusive)\
-          \ from which to retrieve the transactions.\r\n            There is no lower\
+          \ from which to retrieve the transactions.\r\n             There is no lower\
           \ bound if this is not specified."
         explode: true
         in: query
@@ -7129,14 +7130,14 @@ paths:
         required: false
         schema:
           description: "The lower bound effective datetime or cut label (inclusive)\
-            \ from which to retrieve the transactions.\r\n            There is no\
+            \ from which to retrieve the transactions.\r\n             There is no\
             \ lower bound if this is not specified."
           format: dateorcutlabel
           nullable: true
           type: string
         style: form
       - description: "The upper bound effective datetime or cut label (inclusive)\
-          \ from which to retrieve transactions.\r\n            There is no upper\
+          \ from which to retrieve transactions.\r\n             There is no upper\
           \ bound if this is not specified."
         explode: true
         in: query
@@ -7144,14 +7145,14 @@ paths:
         required: false
         schema:
           description: "The upper bound effective datetime or cut label (inclusive)\
-            \ from which to retrieve transactions.\r\n            There is no upper\
+            \ from which to retrieve transactions.\r\n             There is no upper\
             \ bound if this is not specified."
           format: dateorcutlabel
           nullable: true
           type: string
         style: form
       - description: "The asAt datetime at which to retrieve the transactions. Defaults\
-          \ to return the latest version\r\n            of each transaction if not\
+          \ to return the latest version\r\n             of each transaction if not\
           \ specified."
         explode: true
         in: query
@@ -7159,40 +7160,40 @@ paths:
         required: false
         schema:
           description: "The asAt datetime at which to retrieve the transactions. Defaults\
-            \ to return the latest version\r\n            of each transaction if not\
-            \ specified."
+            \ to return the latest version\r\n             of each transaction if\
+            \ not specified."
           format: date-time
           nullable: true
           type: string
         style: form
         x-nullable: true
-      - description: "Expression to filter the result set. \r\n            For example,\
+      - description: "Expression to filter the result set.\r\n             For example,\
           \ to filter on the Transaction Type, use \"type eq 'Buy'\"\r\n         \
-          \   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          \    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
         explode: true
         in: query
         name: filter
         required: false
         schema:
-          description: "Expression to filter the result set. \r\n            For example,\
+          description: "Expression to filter the result set.\r\n             For example,\
             \ to filter on the Transaction Type, use \"type eq 'Buy'\"\r\n       \
-            \     Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+            \      Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
           nullable: true
           type: string
         style: form
       - description: "A list of property keys from the \"Instrument\" or \"Transaction\"\
-          \ domain to decorate onto\r\n            the transactions. These take the\
+          \ domain to decorate onto\r\n             the transactions. These take the\
           \ format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or\r\n\
-          \            \"Transaction/strategy/quantsignal\"."
+          \             \"Transaction/strategy/quantsignal\"."
         explode: true
         in: query
         name: propertyKeys
         required: false
         schema:
           description: "A list of property keys from the \"Instrument\" or \"Transaction\"\
-            \ domain to decorate onto\r\n            the transactions. These take\
+            \ domain to decorate onto\r\n             the transactions. These take\
             \ the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or\r\
-            \n            \"Transaction/strategy/quantsignal\"."
+            \n             \"Transaction/strategy/quantsignal\"."
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
@@ -7381,10 +7382,11 @@ paths:
   /api/portfoliogroups/{scope}/{code}/transactions/$build:
     post:
       description: "Build transactions for transaction portfolios in a portfolio group\
-        \ over a given interval of effective time. \r\n\r\nWhen the specified portfolio\
-        \ in a portfolio group is a derived transaction portfolio, the returned set\
-        \ of transactions is the\r\nunion set of all transactions of the parent (and\
-        \ any grandparents etc.) and the specified derived transaction portfolio itself."
+        \ over a given interval of effective time.\r\n            \r\nWhen the specified\
+        \ portfolio in a portfolio group is a derived transaction portfolio, the returned\
+        \ set of transactions is the\r\nunion set of all transactions of the parent\
+        \ (and any grandparents etc.) and the specified derived transaction portfolio\
+        \ itself."
       operationId: BuildTransactionsForPortfolioGroup
       parameters:
       - description: The scope of the portfolio group.
@@ -7401,14 +7403,14 @@ paths:
           type: string
         style: simple
       - description: "The code of the portfolio group. Together with the scope this\
-          \ uniquely identifies\r\n            the portfolio group."
+          \ uniquely identifies\r\n             the portfolio group."
         explode: false
         in: path
         name: code
         required: true
         schema:
           description: "The code of the portfolio group. Together with the scope this\
-            \ uniquely identifies\r\n            the portfolio group."
+            \ uniquely identifies\r\n             the portfolio group."
           maxLength: 64
           minLength: 1
           nullable: true
@@ -7416,7 +7418,7 @@ paths:
           type: string
         style: simple
       - description: "The asAt datetime at which to build the transactions. Defaults\
-          \ to return the latest\r\n            version of each transaction if not\
+          \ to return the latest\r\n             version of each transaction if not\
           \ specified."
         explode: true
         in: query
@@ -7424,40 +7426,40 @@ paths:
         required: false
         schema:
           description: "The asAt datetime at which to build the transactions. Defaults\
-            \ to return the latest\r\n            version of each transaction if not\
-            \ specified."
+            \ to return the latest\r\n             version of each transaction if\
+            \ not specified."
           format: date-time
           nullable: true
           type: string
         style: form
         x-nullable: true
-      - description: "Expression to filter the result set.\r\n            For example,\
+      - description: "Expression to filter the result set.\r\n             For example,\
           \ to filter on the Transaction Type, use \"type eq 'Buy'\"\r\n         \
-          \   Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          \    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
         explode: true
         in: query
         name: filter
         required: false
         schema:
-          description: "Expression to filter the result set.\r\n            For example,\
+          description: "Expression to filter the result set.\r\n             For example,\
             \ to filter on the Transaction Type, use \"type eq 'Buy'\"\r\n       \
-            \     Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+            \      Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
           nullable: true
           type: string
         style: form
       - description: "A list of property keys from the \"Instrument\" or \"Transaction\"\
-          \ domain to decorate onto\r\n            the transactions. These take the\
+          \ domain to decorate onto\r\n             the transactions. These take the\
           \ format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or\r\n\
-          \            \"Transaction/strategy/quantsignal\"."
+          \             \"Transaction/strategy/quantsignal\"."
         explode: true
         in: query
         name: propertyKeys
         required: false
         schema:
           description: "A list of property keys from the \"Instrument\" or \"Transaction\"\
-            \ domain to decorate onto\r\n            the transactions. These take\
+            \ domain to decorate onto\r\n             the transactions. These take\
             \ the format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or\r\
-            \n            \"Transaction/strategy/quantsignal\"."
+            \n             \"Transaction/strategy/quantsignal\"."
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
@@ -13385,9 +13387,8 @@ paths:
   /api/transactionportfolios/{scope}/{code}/$resolve:
     post:
       description: "Try to resolve the instrument for transaction and holdings for\
-        \ a given instrument identifier and a specified  \r\nperiod of time. Also\
-        \ update the instrument identifiers with the given instrument identifiers\
-        \ collection."
+        \ a given instrument identifier and a specified\r\nperiod of time. Also update\
+        \ the instrument identifiers with the given instrument identifiers collection."
       operationId: ResolveInstrument
       parameters:
       - description: The scope of the transaction portfolio.
@@ -13459,7 +13460,7 @@ paths:
               additionalProperties:
                 type: string
               description: "The dictionary with the instrument identifiers to be updated\
-                \ on the \r\n           transaction and holdings."
+                \ on the\r\n           transaction and holdings."
               nullable: true
               type: object
           application/json:
@@ -13470,7 +13471,7 @@ paths:
               additionalProperties:
                 type: string
               description: "The dictionary with the instrument identifiers to be updated\
-                \ on the \r\n           transaction and holdings."
+                \ on the\r\n           transaction and holdings."
               nullable: true
               type: object
           text/json:
@@ -13481,7 +13482,7 @@ paths:
               additionalProperties:
                 type: string
               description: "The dictionary with the instrument identifiers to be updated\
-                \ on the \r\n           transaction and holdings."
+                \ on the\r\n           transaction and holdings."
               nullable: true
               type: object
           application/*+json:
@@ -13492,11 +13493,11 @@ paths:
               additionalProperties:
                 type: string
               description: "The dictionary with the instrument identifiers to be updated\
-                \ on the \r\n           transaction and holdings."
+                \ on the\r\n           transaction and holdings."
               nullable: true
               type: object
         description: "The dictionary with the instrument identifiers to be updated\
-          \ on the \r\n           transaction and holdings."
+          \ on the\r\n           transaction and holdings."
       responses:
         "200":
           content:
@@ -13614,7 +13615,7 @@ paths:
           type: string
         style: form
         x-nullable: true
-      - description: "Expression to filter the result set. \r\n            For example,\
+      - description: "Expression to filter the result set.\r\n            For example,\
           \ to return only transactions with a transaction type of 'Buy', specify\
           \ \"type eq 'Buy'\".\r\n            For more information about filtering\
           \ LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914."
@@ -13623,7 +13624,7 @@ paths:
         name: filter
         required: false
         schema:
-          description: "Expression to filter the result set. \r\n            For example,\
+          description: "Expression to filter the result set.\r\n            For example,\
             \ to return only transactions with a transaction type of 'Buy', specify\
             \ \"type eq 'Buy'\".\r\n            For more information about filtering\
             \ LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914."
@@ -16026,7 +16027,7 @@ paths:
           type: string
         style: form
         x-nullable: true
-      - description: "Expression to filter the result set. \r\n            For example,\
+      - description: "Expression to filter the result set.\r\n            For example,\
           \ to filter on the Holding Type, use \"holdingType eq 'p'\".\r\n       \
           \     For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914."
         explode: true
@@ -16034,7 +16035,7 @@ paths:
         name: filter
         required: false
         schema:
-          description: "Expression to filter the result set. \r\n            For example,\
+          description: "Expression to filter the result set.\r\n            For example,\
             \ to filter on the Holding Type, use \"holdingType eq 'p'\".\r\n     \
             \       For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914."
           nullable: true
@@ -17054,10 +17055,10 @@ paths:
       x-accepts: application/json
     get:
       description: "Retrieve all the transactions that occurred during a particular\
-        \ time interval. \r\n\r\nIf the portfolio is a derived transaction portfolio,\
-        \ the transactions returned are the\r\nunion set of all transactions of the\
-        \ parent (and any grandparents, etc.) as well as\r\nthose of the derived transaction\
-        \ portfolio itself."
+        \ time interval.\r\n            \r\nIf the portfolio is a derived transaction\
+        \ portfolio, the transactions returned are the\r\nunion set of all transactions\
+        \ of the parent (and any grandparents, etc.) as well as\r\nthose of the derived\
+        \ transaction portfolio itself."
       operationId: GetTransactions
       parameters:
       - description: The scope of the transaction portfolio.
@@ -17074,14 +17075,14 @@ paths:
           type: string
         style: simple
       - description: "The code of the transaction portfolio. Together with the scope\
-          \ this uniquely identifies\r\n            the transaction portfolio."
+          \ this uniquely identifies\r\n             the transaction portfolio."
         explode: false
         in: path
         name: code
         required: true
         schema:
           description: "The code of the transaction portfolio. Together with the scope\
-            \ this uniquely identifies\r\n            the transaction portfolio."
+            \ this uniquely identifies\r\n             the transaction portfolio."
           maxLength: 64
           minLength: 1
           nullable: true
@@ -17089,7 +17090,7 @@ paths:
           type: string
         style: simple
       - description: "The lower bound effective datetime or cut label (inclusive)\
-          \ from which to retrieve transactions.\r\n            There is no lower\
+          \ from which to retrieve transactions.\r\n             There is no lower\
           \ bound if this is not specified."
         explode: true
         in: query
@@ -17097,14 +17098,14 @@ paths:
         required: false
         schema:
           description: "The lower bound effective datetime or cut label (inclusive)\
-            \ from which to retrieve transactions.\r\n            There is no lower\
+            \ from which to retrieve transactions.\r\n             There is no lower\
             \ bound if this is not specified."
           format: dateorcutlabel
           nullable: true
           type: string
         style: form
       - description: "The upper bound effective datetime or cut label (inclusive)\
-          \ from which to retrieve transactions.\r\n            There is no upper\
+          \ from which to retrieve transactions.\r\n             There is no upper\
           \ bound if this is not specified."
         explode: true
         in: query
@@ -17112,14 +17113,14 @@ paths:
         required: false
         schema:
           description: "The upper bound effective datetime or cut label (inclusive)\
-            \ from which to retrieve transactions.\r\n            There is no upper\
+            \ from which to retrieve transactions.\r\n             There is no upper\
             \ bound if this is not specified."
           format: dateorcutlabel
           nullable: true
           type: string
         style: form
       - description: "The asAt datetime at which to retrieve transactions. Defaults\
-          \ to returning the latest version\r\n            of each transaction if\
+          \ to returning the latest version\r\n             of each transaction if\
           \ not specified."
         explode: true
         in: query
@@ -17127,42 +17128,42 @@ paths:
         required: false
         schema:
           description: "The asAt datetime at which to retrieve transactions. Defaults\
-            \ to returning the latest version\r\n            of each transaction if\
-            \ not specified."
+            \ to returning the latest version\r\n             of each transaction\
+            \ if not specified."
           format: date-time
           nullable: true
           type: string
         style: form
         x-nullable: true
-      - description: "Expression with which to filter the result set. \r\n       \
+      - description: "Expression with which to filter the result set.\r\n        \
           \     For example, to return only transactions with a transaction type of\
-          \ 'Buy', specify \"type eq 'Buy'\"\r\n            For more information about\
-          \ filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914."
+          \ 'Buy', specify \"type eq 'Buy'\"\r\n             For more information\
+          \ about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914."
         explode: true
         in: query
         name: filter
         required: false
         schema:
-          description: "Expression with which to filter the result set. \r\n     \
+          description: "Expression with which to filter the result set.\r\n      \
             \       For example, to return only transactions with a transaction type\
-            \ of 'Buy', specify \"type eq 'Buy'\"\r\n            For more information\
+            \ of 'Buy', specify \"type eq 'Buy'\"\r\n             For more information\
             \ about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914."
           nullable: true
           type: string
         style: form
       - description: "A list of property keys from the 'Instrument' or 'Transaction'\
-          \ domain to decorate onto\r\n            transactions. These must have the\
-          \ format {domain}/{scope}/{code}, for example 'Instrument/system/Name' or\r\
-          \n            'Transaction/strategy/quantsignal'."
+          \ domain to decorate onto\r\n             transactions. These must have\
+          \ the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'\
+          \ or\r\n             'Transaction/strategy/quantsignal'."
         explode: true
         in: query
         name: propertyKeys
         required: false
         schema:
           description: "A list of property keys from the 'Instrument' or 'Transaction'\
-            \ domain to decorate onto\r\n            transactions. These must have\
+            \ domain to decorate onto\r\n             transactions. These must have\
             \ the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'\
-            \ or\r\n            'Transaction/strategy/quantsignal'."
+            \ or\r\n             'Transaction/strategy/quantsignal'."
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
@@ -29870,7 +29871,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
