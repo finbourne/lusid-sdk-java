@@ -271,12 +271,12 @@ info:
     | <a name="752">752</a>|Luminesce process returned an error.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3671
+  version: 0.11.3670
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:43999
+- url: https://fbn-prd.lusid.com/api
 security:
 - {}
 tags:
@@ -3457,14 +3457,14 @@ paths:
           type: string
         style: form
       - description: When paginating, limit the number of returned results to this
-          many. Defaults to 100 if not specified.
+          many. Defaults to 65,535 if not specified.
         explode: true
         in: query
         name: limit
         required: false
         schema:
           description: When paginating, limit the number of returned results to this
-            many. Defaults to 100 if not specified.
+            many. Defaults to 65,535 if not specified.
           format: int32
           maximum: 5000
           minimum: 1
@@ -8101,14 +8101,14 @@ paths:
         style: form
         x-nullable: true
       - description: When paginating, limit the results to this number. Defaults to
-          100 if not specified.
+          65,535 if not specified.
         explode: true
         in: query
         name: limit
         required: false
         schema:
           description: When paginating, limit the results to this number. Defaults
-            to 100 if not specified.
+            to 65,535 if not specified.
           format: int32
           maximum: 5000
           minimum: 1
@@ -8462,14 +8462,14 @@ paths:
         style: form
         x-nullable: true
       - description: When paginating, limit the results to this number. Defaults to
-          100 if not specified.
+          65,535 if not specified.
         explode: true
         in: query
         name: limit
         required: false
         schema:
           description: When paginating, limit the results to this number. Defaults
-            to 100 if not specified.
+            to 65,535 if not specified.
           format: int32
           maximum: 5000
           minimum: 1
@@ -29870,7 +29870,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://dummyurl.lusid.com/
+          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
           scopes: {}
       type: oauth2
 x-tagGroups:
