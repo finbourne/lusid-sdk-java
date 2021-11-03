@@ -271,12 +271,12 @@ info:
     | <a name="752">752</a>|Luminesce process returned an error.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3677
+  version: 0.11.3678
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:33819
+- url: http://local-unit-test-server.lusid.com:48404
 security:
 - {}
 tags:
@@ -20668,6 +20668,7 @@ components:
             lookthroughPortfolio:
               code: code
               scope: scope
+            domCcy: domCcy
             identifiers:
               key: identifiers
             name: name
@@ -20682,6 +20683,7 @@ components:
               relation: relation
             href: https://openapi-generator.tech
             state: Active
+            assetClass: InterestRates
             instrumentDefinition:
               instrumentType: QuotedSecurity
             lusidInstrumentId: lusidInstrumentId
@@ -21346,6 +21348,7 @@ components:
         lookthroughPortfolio:
           code: code
           scope: scope
+        domCcy: domCcy
         identifiers:
           key: identifiers
         name: name
@@ -21360,6 +21363,7 @@ components:
           relation: relation
         href: https://openapi-generator.tech
         state: Active
+        assetClass: InterestRates
         instrumentDefinition:
           instrumentType: QuotedSecurity
         lusidInstrumentId: lusidInstrumentId
@@ -21429,6 +21433,25 @@ components:
           enum:
           - Active
           - Inactive
+          type: string
+        assetClass:
+          description: 'The nominal asset class of the instrument, e.g. InterestRates,
+            FX, Inflation, Equities, Credit, Commodities, etc. The available values
+            are: InterestRates, FX, Inflation, Equities, Credit, Commodities, Unknown'
+          enum:
+          - InterestRates
+          - FX
+          - Inflation
+          - Equities
+          - Credit
+          - Commodities
+          - Unknown
+          type: string
+        domCcy:
+          description: The domestic currency, meaning the currency in which the instrument
+            would typically be expected to pay cashflows, e.g. a share in AAPL being
+            USD.
+          nullable: true
           type: string
         links:
           description: Collection of links.
@@ -22645,6 +22668,7 @@ components:
         - lookthroughPortfolio:
             code: code
             scope: scope
+          domCcy: domCcy
           identifiers:
             key: identifiers
           name: name
@@ -22659,6 +22683,7 @@ components:
             relation: relation
           href: https://openapi-generator.tech
           state: Active
+          assetClass: InterestRates
           instrumentDefinition:
             instrumentType: QuotedSecurity
           lusidInstrumentId: lusidInstrumentId
@@ -22693,6 +22718,7 @@ components:
         - lookthroughPortfolio:
             code: code
             scope: scope
+          domCcy: domCcy
           identifiers:
             key: identifiers
           name: name
@@ -22707,6 +22733,7 @@ components:
             relation: relation
           href: https://openapi-generator.tech
           state: Active
+          assetClass: InterestRates
           instrumentDefinition:
             instrumentType: QuotedSecurity
           lusidInstrumentId: lusidInstrumentId
@@ -28754,6 +28781,7 @@ components:
             lookthroughPortfolio:
               code: code
               scope: scope
+            domCcy: domCcy
             identifiers:
               key: identifiers
             name: name
@@ -28768,6 +28796,7 @@ components:
               relation: relation
             href: https://openapi-generator.tech
             state: Active
+            assetClass: InterestRates
             instrumentDefinition:
               instrumentType: QuotedSecurity
             lusidInstrumentId: lusidInstrumentId
