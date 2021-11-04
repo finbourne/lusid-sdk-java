@@ -271,12 +271,12 @@ info:
     | <a name="752">752</a>|Luminesce process returned an error.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3683
+  version: 0.11.3684
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:46169
+- url: http://local-unit-test-server.lusid.com:56757
 security:
 - {}
 tags:
@@ -339,8 +339,6 @@ tags:
   name: Instruments
 - description: Endpoints for interacting with Legal Entities.
   name: Legal Entities
-- description: Methods to handle login
-  name: Login
 - description: The order graph is a way of looking at orders with the various entities
     relating to the order, such as blocks, orders, placements, allocations and executions
     in one place. It also contains some state information which can not be obtained
@@ -4108,60 +4106,6 @@ paths:
       tags:
       - Legal Entities
       x-fbn-apistatus: EarlyAccess
-      x-accepts: application/json
-  /api/login/saml/{domain}:
-    get:
-      description: Get the unique identifier for the SAML 2.0 Identity Provider to
-        be used for domain.
-      operationId: GetSamlIdentityProviderId
-      parameters:
-      - description: The domain that the user will be logging in to
-        explode: false
-        in: path
-        name: domain
-        required: true
-        schema:
-          description: The domain that the user will be logging in to
-          nullable: true
-          type: string
-        style: simple
-      responses:
-        "200":
-          content:
-            text/plain:
-              schema:
-                type: string
-            application/json:
-              schema:
-                type: string
-            text/json:
-              schema:
-                type: string
-          description: The ID of the SAML Identity Provider to be used (may be null)
-        "400":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/LusidValidationProblemDetails'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LusidValidationProblemDetails'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/LusidValidationProblemDetails'
-          description: The details of the input related failure
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LusidProblemDetails'
-          description: Error response
-      security:
-      - oauth2: []
-      summary: 'GetSamlIdentityProviderId: Get SAML Identity Provider'
-      tags:
-      - Login
-      x-fbn-apistatus: Stable
       x-accepts: application/json
   /api/metadata/access/resources:
     get:
@@ -29927,7 +29871,6 @@ x-tagGroups:
   - FeesAndCommissions
   - Instruments
   - Legal Entities
-  - Login
   - OrderGraph
   - OrderInstructions
   - Orders
