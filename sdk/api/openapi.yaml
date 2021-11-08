@@ -225,7 +225,9 @@ info:
     | <a name="654">654</a>|The Allocation requested was not found.|  |
     | <a name="655">655</a>|Cannot build the fx forward target with the given holdings.|  |
     | <a name="656">656</a>|Group does not contain expected entities.|  |
+    | <a name="665">665</a>|Destination directory not found|  |
     | <a name="667">667</a>|Relation definition already exists|  |
+    | <a name="672">672</a>|Could not retrieve file contents|  |
     | <a name="673">673</a>|Missing entitlements for entities in Group|  |
     | <a name="674">674</a>|Next Best Action not found|  |
     | <a name="676">676</a>|Relation definition not defined|  |
@@ -269,14 +271,16 @@ info:
     | <a name="746">746</a>|The provided sequence is not valid.|  |
     | <a name="751">751</a>|The type of the Custom Entity is different than the type provided in the definition.|  |
     | <a name="752">752</a>|Luminesce process returned an error.|  |
+    | <a name="753">753</a>|File name or content incompatible with operation.|  |
+    | <a name="755">755</a>|Schema of response from Drive is not as expected.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3694
+  version: 0.11.3695
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: http://local-unit-test-server.lusid.com:60764
 security:
 - {}
 tags:
@@ -29844,7 +29848,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
