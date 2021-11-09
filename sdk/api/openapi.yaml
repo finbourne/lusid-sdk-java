@@ -275,12 +275,12 @@ info:
     | <a name="755">755</a>|Schema of response from Drive is not as expected.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3700
+  version: 0.11.3701
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:57637
+- url: http://local-unit-test-server.lusid.com:42907
 security:
 - {}
 tags:
@@ -4184,7 +4184,10 @@ paths:
         required: false
         schema:
           description: The requested version of the Excel plugin
+          maxLength: 30
+          minLength: 1
           nullable: true
+          pattern: ^\d+\.\d+\.\d+(-[a-zA-Z0-9\.-]{1,30})?$
           type: string
         style: form
       responses:
