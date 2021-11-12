@@ -275,12 +275,12 @@ info:
     | <a name="755">755</a>|Schema of response from Drive is not as expected.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3712
+  version: 0.11.3713
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: http://local-unit-test-server.lusid.com:58922
 security:
 - {}
 tags:
@@ -17135,15 +17135,21 @@ paths:
           nullable: true
           type: string
         style: form
-      - description: When paginating, limit the number of returned results to this
-          many. Defaults to 100 if not specified.
+      - description: "When paginating, limit the number of returned results to this\
+          \ many. The current behaviour is\r\n             to return all transactions\
+          \ if possible, but this will change to defaulting to 1000 if not specified\
+          \ in the future. It is recommended\r\n             to populate this field\
+          \ to enable pagination."
         explode: true
         in: query
         name: limit
         required: false
         schema:
-          description: When paginating, limit the number of returned results to this
-            many. Defaults to 100 if not specified.
+          description: "When paginating, limit the number of returned results to this\
+            \ many. The current behaviour is\r\n             to return all transactions\
+            \ if possible, but this will change to defaulting to 1000 if not specified\
+            \ in the future. It is recommended\r\n             to populate this field\
+            \ to enable pagination."
           format: int32
           nullable: true
           type: integer
@@ -29851,7 +29857,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
