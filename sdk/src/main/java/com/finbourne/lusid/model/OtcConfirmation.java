@@ -15,8 +15,6 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.finbourne.lusid.model.LegalEntity;
-import com.finbourne.lusid.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,144 +23,34 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.net.URI;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * A paginated list of resource that can be returned from a request.
+ * For the storage of any information pertinent to the confirmation of an OTC trade. e.g the Counterparty Agreement Code
  */
-@ApiModel(description = "A paginated list of resource that can be returned from a request.")
+@ApiModel(description = "For the storage of any information pertinent to the confirmation of an OTC trade. e.g the Counterparty Agreement Code")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class PagedResourceListOfLegalEntity {
-  public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
-  @SerializedName(SERIALIZED_NAME_NEXT_PAGE)
-  private String nextPage;
-
-  public static final String SERIALIZED_NAME_PREVIOUS_PAGE = "previousPage";
-  @SerializedName(SERIALIZED_NAME_PREVIOUS_PAGE)
-  private String previousPage;
-
-  public static final String SERIALIZED_NAME_VALUES = "values";
-  @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<LegalEntity> values = new ArrayList<>();
-
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
-  private URI href;
-
-  public static final String SERIALIZED_NAME_LINKS = "links";
-  @SerializedName(SERIALIZED_NAME_LINKS)
-  private List<Link> links = null;
+public class OtcConfirmation {
+  public static final String SERIALIZED_NAME_COUNTERPARTY_AGREEMENT_CODE = "counterpartyAgreementCode";
+  @SerializedName(SERIALIZED_NAME_COUNTERPARTY_AGREEMENT_CODE)
+  private String counterpartyAgreementCode;
 
 
-  public PagedResourceListOfLegalEntity nextPage(String nextPage) {
-    this.nextPage = nextPage; 
+  public OtcConfirmation counterpartyAgreementCode(String counterpartyAgreementCode) {
+    this.counterpartyAgreementCode = counterpartyAgreementCode; 
     return this;
   }
 
    /**
-   * The next page of results.
-   * @return nextPage
+   * The counterparty party agreement code used to identify and retrieve the specific Counterparty Agreement that governs a transaction
+   * @return counterpartyAgreementCode
   **/
-  @ApiModelProperty(value = "The next page of results.")
-  public String getNextPage() {
-    return nextPage;
+  @ApiModelProperty(value = "The counterparty party agreement code used to identify and retrieve the specific Counterparty Agreement that governs a transaction")
+  public String getCounterpartyAgreementCode() {
+    return counterpartyAgreementCode;
   }
 
-  public void setNextPage(String nextPage) {
-    this.nextPage = nextPage;
-  }
-
-
-  public PagedResourceListOfLegalEntity previousPage(String previousPage) {
-    this.previousPage = previousPage; 
-    return this;
-  }
-
-   /**
-   * The previous page of results.
-   * @return previousPage
-  **/
-  @ApiModelProperty(value = "The previous page of results.")
-  public String getPreviousPage() {
-    return previousPage;
-  }
-
-  public void setPreviousPage(String previousPage) {
-    this.previousPage = previousPage;
-  }
-
-
-  public PagedResourceListOfLegalEntity values(List<LegalEntity> values) {
-    this.values = values; 
-    return this;
-  }
-
-  public PagedResourceListOfLegalEntity addValuesItem(LegalEntity valuesItem) {
-   
-    this.values.add(valuesItem);
-    return this;
-  }
-
-   /**
-   * The resources to list.
-   * @return values
-  **/
-  @ApiModelProperty(required = true, value = "The resources to list.")
-  public List<LegalEntity> getValues() {
-    return values;
-  }
-
-  public void setValues(List<LegalEntity> values) {
-    this.values = values;
-  }
-
-
-  public PagedResourceListOfLegalEntity href(URI href) {
-    this.href = href; 
-    return this;
-  }
-
-   /**
-   * The URI of the resource list.
-   * @return href
-  **/
-  @ApiModelProperty(value = "The URI of the resource list.")
-  public URI getHref() {
-    return href;
-  }
-
-  public void setHref(URI href) {
-    this.href = href;
-  }
-
-
-  public PagedResourceListOfLegalEntity links(List<Link> links) {
-    this.links = links; 
-    return this;
-  }
-
-  public PagedResourceListOfLegalEntity addLinksItem(Link linksItem) {
-   
-    if (this.links == null) {
-      this.links = new ArrayList<>();
-    }
-    this.links.add(linksItem);
-    return this;
-  }
-
-   /**
-   * Collection of links.
-   * @return links
-  **/
-  @ApiModelProperty(value = "Collection of links.")
-  public List<Link> getLinks() {
-    return links;
-  }
-
-  public void setLinks(List<Link> links) {
-    this.links = links;
+  public void setCounterpartyAgreementCode(String counterpartyAgreementCode) {
+    this.counterpartyAgreementCode = counterpartyAgreementCode;
   }
 
 
@@ -185,12 +73,8 @@ public class PagedResourceListOfLegalEntity {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PagedResourceListOfLegalEntity {\n");
-    sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
-    sb.append("    previousPage: ").append(toIndentedString(previousPage)).append("\n");
-    sb.append("    values: ").append(toIndentedString(values)).append("\n");
-    sb.append("    href: ").append(toIndentedString(href)).append("\n");
-    sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("class OtcConfirmation {\n");
+    sb.append("    counterpartyAgreementCode: ").append(toIndentedString(counterpartyAgreementCode)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -275,12 +275,12 @@ info:
     | <a name="755">755</a>|Schema of response from Drive is not as expected.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3720
+  version: 0.11.3721
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:32241
+- url: http://local-unit-test-server.lusid.com:53593
 security:
 - {}
 tags:
@@ -470,7 +470,10 @@ paths:
             \ the sortBy, filter, effectiveAt, and asAt fields\r\n            must\
             \ not have changed since the original request. Also, if set, a start value\
             \ cannot be provided."
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       - description: Allocation the results by these fields. Use use the '-' sign
@@ -526,7 +529,10 @@ paths:
           default: ""
           description: "Expression to filter the result set. Read more about filtering\
             \ results from LUSID here:\r\n            https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: "A list of property keys from the \"Allocations\" domain to decorate\
@@ -1260,7 +1266,7 @@ paths:
             \     For example, to filter on the Display Name, use \"displayName eq\
             \ 'string'\"\r\n            Read more about filtering results from LUSID\
             \ here https://support.lusid.com/filtering-results-from-lusid."
-          maxLength: 2147483647
+          maxLength: 16384
           minLength: 0
           nullable: true
           pattern: ^[\s\S]*$
@@ -1447,7 +1453,7 @@ paths:
           description: "Optional. Expression to filter the result set. \r\n      \
             \      For example, to filter on the Schema, use \"schema eq 'string'\"\
             \r\n            Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
-          maxLength: 2147483647
+          maxLength: 16384
           minLength: 0
           nullable: true
           pattern: ^[\s\S]*$
@@ -1863,7 +1869,10 @@ paths:
             \ and\r\n             <i>asAt</i> fields must not have changed since the\
             \ original request. Also, a <i>start</i> value cannot be\r\n         \
             \    provided. For more information, see https://support.lusid.com/knowledgebase/article/KA-01915."
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       - description: "Order results by particular fields. Use the '-' sign to denote\
@@ -2981,7 +2990,10 @@ paths:
         schema:
           description: "Expression to filter the results. For more information about\
             \ filtering,\r\n            see https://support.lusid.com/knowledgebase/article/KA-01914."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: "The pagination token to use to continue listing properties;\
@@ -2999,7 +3011,10 @@ paths:
             \ token is provided, the <i>filter</i>, <i>effectiveAt</i> and\r\n   \
             \         <i>asAt</i> fields must not have changed since the original\
             \ request. For more information, see\r\n            https://support.lusid.com/knowledgebase/article/KA-01915."
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       - description: When paginating, limit the results to this number.
@@ -3483,7 +3498,7 @@ paths:
         schema:
           description: "Expression to filter the result set. \r\n            Read\
             \ more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
-          maxLength: 2147483647
+          maxLength: 16384
           minLength: 0
           nullable: true
           pattern: ^[\s\S]*$
@@ -4129,7 +4144,10 @@ paths:
             \      For example, to filter on the Application, use \"application eq\
             \ 'string'\"\r\n            Read more about filtering results from LUSID\
             \ here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       responses:
@@ -4293,7 +4311,10 @@ paths:
             \ from the previous call. If a pagination token is provided the sortBy,\
             \ filter, effectiveAt, and asAt fields\r\n            must not have changed\
             \ since the original request. Also, if set, a start value cannot be provided."
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       - description: Order the results by these fields. Use use the '-' sign to denote
@@ -4349,7 +4370,10 @@ paths:
           default: ""
           description: "Expression to filter the result set. Read more about filtering\
             \ results from LUSID here:\r\n            https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: "A list of property keys from the \"Orders\" domain to decorate\
@@ -5041,7 +5065,10 @@ paths:
           description: "Expression to filter the result set.\r\n            For example,\
             \ to filter on the Display Name, use \"displayName eq 'string'\"\r\n \
             \           Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       responses:
@@ -5564,7 +5591,10 @@ paths:
           description: "Expression to filter the result set.\r\n             For example,\
             \ to filter on the User ID, use \"userId.id eq 'string'\"\r\n        \
             \    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       responses:
@@ -5800,7 +5830,10 @@ paths:
         schema:
           description: Expression to filter the result set. Read more about filtering
             results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: "A list of property keys from the \"Instrument\" or \"Holding\"\
@@ -6736,7 +6769,10 @@ paths:
         schema:
           description: Expression to filter the result set. Read more about filtering
             results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: "The pagination token to use to continue listing properties from\
@@ -6754,7 +6790,10 @@ paths:
             \ value is returned from the previous call. If a pagination token is provided\
             \ the filter, effectiveAt, and asAt fields\r\n            must not have\
             \ changed since the original request."
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       - description: When paginating, limit the number of returned results to this
@@ -7129,7 +7168,10 @@ paths:
           description: "Expression to filter the result set.\r\n             For example,\
             \ to filter on the Transaction Type, use \"type eq 'Buy'\"\r\n       \
             \      Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: "A list of property keys from the \"Instrument\" or \"Transaction\"\
@@ -7176,7 +7218,10 @@ paths:
         schema:
           description: The pagination token to use to continue listing transactions
             from a previous call to GetTransactions.
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       responses:
@@ -7395,7 +7440,10 @@ paths:
           description: "Expression to filter the result set.\r\n             For example,\
             \ to filter on the Transaction Type, use \"type eq 'Buy'\"\r\n       \
             \      Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: "A list of property keys from the \"Instrument\" or \"Transaction\"\
@@ -7442,7 +7490,10 @@ paths:
         schema:
           description: The pagination token to use to continue listing transactions
             from a previous call to BuildTransactions.
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       requestBody:
@@ -8038,7 +8089,10 @@ paths:
             \ token is provided, the filter, effectiveAt\r\n            and asAt fields\
             \ must not have changed since the original request. Also, if set, a start\
             \ value cannot be provided."
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       - description: When paginating, skip this number of results.
@@ -8080,7 +8134,10 @@ paths:
           description: "Expression to filter the results.\r\n            For example,\
             \ to filter on the transaction type, specify \"type eq 'Transaction'\"\
             . For more information about filtering\r\n            results, see https://support.lusid.com/knowledgebase/article/KA-01914."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: "Expression specifying the criteria that the returned portfolios\
@@ -8100,7 +8157,10 @@ paths:
             \ or a Figi of 'BBG000BLNNH6',\r\n            specify \"instrument.identifiers\
             \ in (('LusidInstrumentId', 'LUID_PPA8HI6M'), ('Figi', 'BBG000BLNNH6'))\"\
             ."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: "A list of property keys from the 'Portfolio' domain to decorate\
@@ -8219,7 +8279,10 @@ paths:
             \     For example, to filter on the left portfolio Code, use \"left.portfolioId.code\
             \ eq 'string'\"\r\n            Read more about filtering results from\
             \ LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       requestBody:
@@ -8399,7 +8462,10 @@ paths:
             \ is provided, the filter, effectiveAt\r\nand asAt fields must not have\
             \ changed since the original request. Also, if set, a start value cannot\
             \ be provided."
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       - description: When paginating, skip this number of results.
@@ -8443,7 +8509,10 @@ paths:
             \ to return only transactions with a transaction type of 'Buy', specify\
             \ \"type eq 'Buy'\".\r\n            For more information about filtering\
             \ results, see https://support.lusid.com/knowledgebase/article/KA-01914."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: "A list of property keys from the 'Portfolio' domain to decorate\
@@ -8885,7 +8954,10 @@ paths:
           description: "Expression to filter the results.\r\n            For example,\
             \ to filter on the User ID, specify \"userId.id eq 'string'\".\r\n   \
             \         For more information about filtering, see https://support.lusid.com/knowledgebase/article/KA-01914."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: The pagination token to use to continue listing commands; this
@@ -8897,7 +8969,10 @@ paths:
         schema:
           description: The pagination token to use to continue listing commands; this
             value is returned from the previous call.
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       - description: When paginating, limit the results to this number. Defaults to
@@ -10005,7 +10080,10 @@ paths:
           description: "Expression to filter the result set. \r\n            For example,\
             \ to filter on the Lifetime, use \"lifeTime eq 'Perpetual'\"\r\n     \
             \       Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: "One or more property keys which identify each property that\
@@ -10695,7 +10773,10 @@ paths:
             \ from the previous call. If a pagination token is provided the sortBy,\
             \ filter, effectiveAt, and asAt fields\r\n            must not have changed\
             \ since the original request. Also, if set, a start value cannot be provided."
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       - description: When paginating, skip this number of results.
@@ -10733,7 +10814,10 @@ paths:
         schema:
           description: "Expression to filter the result set.\r\n            Read more\
             \ about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       responses:
@@ -11174,7 +11258,10 @@ paths:
             \ from the previous call. If a pagination token is provided the sortBy,\
             \ filter, effectiveAt, and asAt fields\r\n            must not have changed\
             \ since the original request. Also, if set, a start value cannot be provided."
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       - description: When paginating, skip this number of results.
@@ -11212,7 +11299,10 @@ paths:
         schema:
           description: "Expression to filter the result set.\r\n            Read more\
             \ about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       responses:
@@ -11970,7 +12060,7 @@ paths:
           description: "Expression to filter the result set.\r\n            For example,\
             \ to filter on the Scope, use \"scope eq 'string'\"\r\n            Read\
             \ more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
-          maxLength: 2147483647
+          maxLength: 16384
           minLength: 0
           nullable: true
           pattern: ^[\s\S]*$
@@ -12044,7 +12134,10 @@ paths:
           description: "Expression to filter the result set. \r\nFor example, to filter\
             \ on the Scope, use \"id.scope eq 'string'\"\r\nRead more about filtering\
             \ results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: Order the results by these fields. Use use the '-' sign to denote
@@ -12058,7 +12151,10 @@ paths:
           description: Order the results by these fields. Use use the '-' sign to
             denote descending order e.g. -MyFieldName. Multiple fields can be denoted
             by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName
+          maxLength: 16384
+          minLength: 1
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: When paginating, only return this number of records
@@ -12083,7 +12179,10 @@ paths:
           description: Encoded page string returned from a previous search result
             that will retrieve the next page of data. When this field is supplied,
             filter, sortBy and search fields should not be supplied.
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       responses:
@@ -12205,7 +12304,10 @@ paths:
           description: "Expression to filter the result set. \r\nFor example, to filter\
             \ on the portfolio Type, use \"type eq 'Transaction'\"\r\nRead more about\
             \ filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: Order the results by these fields. Use use the '-' sign to denote
@@ -12219,7 +12321,10 @@ paths:
           description: Order the results by these fields. Use use the '-' sign to
             denote descending order e.g. -MyFieldName. Multiple fields can be denoted
             by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName
+          maxLength: 16384
+          minLength: 1
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: When paginating, only return this number of records
@@ -12244,7 +12349,10 @@ paths:
           description: Encoded page string returned from a previous search result
             that will retrieve the next page of data. When this field is supplied,
             filter, sortBy and search fields should not be supplied.
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       responses:
@@ -12381,7 +12489,10 @@ paths:
           description: "Expression to filter the result set. \r\nFor example, to filter\
             \ on the Value Type, use \"valueType eq 'string'\"\r\nRead more about\
             \ filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: Order the results by these fields. Use use the '-' sign to denote
@@ -12395,7 +12506,10 @@ paths:
           description: Order the results by these fields. Use use the '-' sign to
             denote descending order e.g. -MyFieldName. Multiple fields can be denoted
             by a comma e.g. -MyFieldName,AnotherFieldName,-AFurtherFieldName
+          maxLength: 16384
+          minLength: 1
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: When paginating, only return this number of records
@@ -12420,7 +12534,10 @@ paths:
           description: Encoded page string returned from a previous search result
             that will retrieve the next page of data. When this field is supplied,
             filter, sortBy and search fields should not be supplied.
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       responses:
@@ -12597,7 +12714,10 @@ paths:
           description: "Optional. Expression to filter the result set.\r\n       \
             \     For example, to filter on code, use \"code eq 'string'\"\r\n   \
             \         Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: "The pagination token to use to continue listing cut labels from\
@@ -12615,7 +12735,10 @@ paths:
             \nIf a pagination token is provided the sortBy, filter, and asAt fields\r\
             \nmust not have changed since the original request. Also, if set, a start\
             \ value cannot be provided."
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       responses:
@@ -13579,7 +13702,10 @@ paths:
             \ to return only transactions with a transaction type of 'Buy', specify\
             \ \"type eq 'Buy'\".\r\n            For more information about filtering\
             \ LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: The scope of the given recipeId
@@ -15989,7 +16115,10 @@ paths:
           description: "Expression to filter the result set.\r\n            For example,\
             \ to filter on the Holding Type, use \"holdingType eq 'p'\".\r\n     \
             \       For more information about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: "A list of property keys from the \"Instrument\" or \"Holding\"\
@@ -17099,7 +17228,10 @@ paths:
             \       For example, to return only transactions with a transaction type\
             \ of 'Buy', specify \"type eq 'Buy'\"\r\n             For more information\
             \ about filtering LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: "A list of property keys from the 'Instrument' or 'Transaction'\
@@ -17132,7 +17264,10 @@ paths:
         schema:
           description: The pagination token to use to continue listing transactions
             from a previous call to GetTransactions.
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       - description: "When paginating, limit the number of returned results to this\
@@ -17561,7 +17696,10 @@ paths:
             \ to return only transactions with a transaction type of 'Buy', specify\
             \ \"type eq 'Buy'\".\r\n            For more information about filtering\
             \ LUSID results, see https://support.lusid.com/knowledgebase/article/KA-01914."
+          maxLength: 16384
+          minLength: 0
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         style: form
       - description: "A list of property keys from the \"Instrument\" or \"Transaction\"\
@@ -17608,7 +17746,10 @@ paths:
         schema:
           description: The pagination token to use to continue listing transactions
             from a previous call to BuildTransactions.
+          maxLength: 500
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
       requestBody:
@@ -19564,9 +19705,11 @@ components:
         code:
           type: string
         displayName:
+          pattern: ^[\s\S]*$
           type: string
         description:
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         cutLocalTime:
           $ref: '#/components/schemas/CutLocalTime'
@@ -22183,6 +22326,19 @@ components:
           nullable: true
           type: array
       type: object
+    OtcConfirmation:
+      additionalProperties: false
+      description: For the storage of any information pertinent to the confirmation
+        of an OTC trade. e.g the Counterparty Agreement Code
+      example:
+        counterpartyAgreementCode: counterpartyAgreementCode
+      properties:
+        counterpartyAgreementCode:
+          description: The counterparty party agreement code used to identify and
+            retrieve the specific Counterparty Agreement that governs a transaction
+          nullable: true
+          type: string
+      type: object
     OutputTransaction:
       additionalProperties: false
       description: A list of output transactions.
@@ -23663,6 +23819,8 @@ components:
         effectiveDate: 2000-01-23T04:56:07.000+00:00
         transaction:
           transactionCurrency: transactionCurrency
+          otcConfirmation:
+            counterpartyAgreementCode: counterpartyAgreementCode
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
             price: 5.962133916683182
@@ -24076,6 +24234,8 @@ components:
             key: key
         transaction:
           transactionCurrency: transactionCurrency
+          otcConfirmation:
+            counterpartyAgreementCode: counterpartyAgreementCode
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
             price: 5.962133916683182
@@ -26668,6 +26828,8 @@ components:
           effectiveDate: 2000-01-23T04:56:07.000+00:00
           transaction:
             transactionCurrency: transactionCurrency
+            otcConfirmation:
+              counterpartyAgreementCode: counterpartyAgreementCode
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
               price: 5.962133916683182
@@ -26748,6 +26910,8 @@ components:
           effectiveDate: 2000-01-23T04:56:07.000+00:00
           transaction:
             transactionCurrency: transactionCurrency
+            otcConfirmation:
+              counterpartyAgreementCode: counterpartyAgreementCode
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
               price: 5.962133916683182
@@ -27619,6 +27783,8 @@ components:
       description: A list of transactions.
       example:
         transactionCurrency: transactionCurrency
+        otcConfirmation:
+          counterpartyAgreementCode: counterpartyAgreementCode
         entryDateTime: 2000-01-23T04:56:07.000+00:00
         transactionPrice:
           price: 5.962133916683182
@@ -27718,6 +27884,8 @@ components:
           description: The asAt datetime that the transaction was added to LUSID.
           format: date-time
           type: string
+        otcConfirmation:
+          $ref: '#/components/schemas/OtcConfirmation'
       required:
       - instrumentUid
       - settlementDate
@@ -28565,9 +28733,11 @@ components:
           minutes: 6
       properties:
         displayName:
+          pattern: ^[\s\S]*$
           type: string
         description:
           nullable: true
+          pattern: ^[\s\S]*$
           type: string
         cutLocalTime:
           $ref: '#/components/schemas/CutLocalTime'
@@ -29565,6 +29735,8 @@ components:
               key: key
           transaction:
             transactionCurrency: transactionCurrency
+            otcConfirmation:
+              counterpartyAgreementCode: counterpartyAgreementCode
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
               price: 5.962133916683182
@@ -29634,6 +29806,8 @@ components:
               key: key
           transaction:
             transactionCurrency: transactionCurrency
+            otcConfirmation:
+              counterpartyAgreementCode: counterpartyAgreementCode
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
               price: 5.962133916683182
@@ -29715,6 +29889,8 @@ components:
         nextPage: nextPage
         values:
         - transactionCurrency: transactionCurrency
+          otcConfirmation:
+            counterpartyAgreementCode: counterpartyAgreementCode
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
             price: 5.962133916683182
@@ -29746,6 +29922,8 @@ components:
                   - values
               key: key
         - transactionCurrency: transactionCurrency
+          otcConfirmation:
+            counterpartyAgreementCode: counterpartyAgreementCode
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
             price: 5.962133916683182
