@@ -275,12 +275,12 @@ info:
     | <a name="755">755</a>|Schema of response from Drive is not as expected.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3762
+  version: 0.11.3761
   x-logo:
     url: https://content.finbourne.com/LUSID-header.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:38884
+- url: https://fbn-prd.lusid.com/api
 security:
 - {}
 tags:
@@ -30098,7 +30098,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://dummyurl.lusid.com/
+          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
           scopes: {}
       type: oauth2
 x-tagGroups:
