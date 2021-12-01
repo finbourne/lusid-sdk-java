@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **lookthroughPortfolio** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **instrumentDefinition** | [**LusidInstrument**](LusidInstrument.md) |  |  [optional]
 **state** | [**StateEnum**](#StateEnum) | The state of of the instrument at the asAt datetime of this version of the instrument definition. The available values are: Active, Inactive | 
-**assetClass** | [**AssetClassEnum**](#AssetClassEnum) | The nominal asset class of the instrument, e.g. InterestRates, FX, Inflation, Equities, Credit, Commodities, etc. The available values are: InterestRates, FX, Inflation, Equities, Credit, Commodities, Unknown |  [optional]
+**assetClass** | [**AssetClassEnum**](#AssetClassEnum) | The nominal asset class of the instrument, e.g. InterestRates, FX, Inflation, Equities, Credit, Commodities, etc. The available values are: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown |  [optional]
 **domCcy** | **String** | The domestic currency, meaning the currency in which the instrument would typically be expected to pay cashflows, e.g. a share in AAPL being USD. |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
@@ -42,6 +42,7 @@ INFLATION | &quot;Inflation&quot;
 EQUITIES | &quot;Equities&quot;
 CREDIT | &quot;Credit&quot;
 COMMODITIES | &quot;Commodities&quot;
+MONEY | &quot;Money&quot;
 UNKNOWN | &quot;Unknown&quot;
 
 
