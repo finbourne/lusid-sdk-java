@@ -275,12 +275,12 @@ info:
     | <a name="755">755</a>|Schema of response from Drive is not as expected.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3798
+  version: 0.11.3799
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:64043
+- url: http://local-unit-test-server.lusid.com:58231
 security:
 - {}
 tags:
@@ -5026,7 +5026,10 @@ paths:
         required: true
         schema:
           description: The scope to list the portfolio groups in.
+          maxLength: 64
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
       - description: The effective datetime at which to list the portfolio groups.
@@ -5123,7 +5126,10 @@ paths:
         required: true
         schema:
           description: The scope that the portfolio group will be created in.
+          maxLength: 64
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
       requestBody:
@@ -5540,7 +5546,10 @@ paths:
         required: true
         schema:
           description: The scope of the portfolio group to retrieve the commands for.
+          maxLength: 64
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
       - description: The code of the portfolio group to retrieve the commands for.
@@ -5552,7 +5561,10 @@ paths:
         schema:
           description: The code of the portfolio group to retrieve the commands for.
             Together with the scope this uniquely identifies the portfolio group.
+          maxLength: 64
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
       - description: The lower bound asAt datetime (inclusive) from which to retrieve
@@ -6152,7 +6164,10 @@ paths:
         schema:
           description: The scope of the portfolio being removed from the portfolio
             group.
+          maxLength: 64
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
       - description: The code of the portfolio being removed from the portfolio group.
@@ -6165,7 +6180,10 @@ paths:
           description: The code of the portfolio being removed from the portfolio
             group. Together with the scope this uniquely identifies the portfolio
             to remove.
+          maxLength: 64
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
       - description: The effective datetime from which the portfolio will be removed
@@ -10792,7 +10810,10 @@ paths:
         required: true
         schema:
           description: The scope of the quotes to list.
+          maxLength: 64
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
       - description: The asAt datetime at which to list the quotes. Defaults to latest
@@ -11277,7 +11298,10 @@ paths:
         required: true
         schema:
           description: The scope of the quotes to list.
+          maxLength: 64
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
       - description: The asAt datetime at which to list the quotes. Defaults to latest
@@ -16115,7 +16139,10 @@ paths:
         required: true
         schema:
           description: The scope of the transaction portfolio.
+          maxLength: 64
+          minLength: 1
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
       - description: "The code of the transaction portfolio. Together with the scope\
