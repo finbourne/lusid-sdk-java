@@ -13,6 +13,7 @@ import static junit.framework.TestCase.assertEquals;
 
 public class TestDataUtilities {
 
+    public static String DefaultScope = "default";
     public static String TutorialScope = "Testdemo";
 
     public static final String LUSID_INSTRUMENT_IDENTIFIER = "Instrument/default/LusidInstrumentId";
