@@ -277,7 +277,7 @@ info:
     | <a name="758">758</a>|Luminesce timed out.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3831
+  version: 0.11.3832
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
