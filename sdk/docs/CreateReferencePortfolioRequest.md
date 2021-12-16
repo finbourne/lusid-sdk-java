@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **code** | **String** |  | 
 **created** | **OffsetDateTime** |  |  [optional]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | Portfolio properties to add to the portfolio |  [optional]
+**instrumentScopes** | **List&lt;String&gt;** |  |  [optional]
 
 
 

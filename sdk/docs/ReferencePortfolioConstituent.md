@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Properties associated with the constituent |  [optional]
 **weight** | **Double** |  | 
 **floatingWeight** | **Double** |  |  [optional]
+**instrumentScope** | **String** |  |  [optional]
 
 
 

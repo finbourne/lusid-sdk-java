@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **baseCurrency** | **String** | The base currency of the transaction portfolio. | 
 **corporateActionSourceId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **subHoldingKeys** | **List&lt;String&gt;** |  |  [optional]
+**instrumentScopes** | **List&lt;String&gt;** | The resolution strategy used to resolve instruments of transactions/holdings upserted to the transaction portfolio. |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 

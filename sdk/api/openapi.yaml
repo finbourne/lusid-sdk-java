@@ -277,12 +277,12 @@ info:
     | <a name="758">758</a>|Luminesce timed out.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3835
+  version: 0.11.3836
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: http://local-unit-test-server.lusid.com:30343
 security:
 - {}
 tags:
@@ -2537,6 +2537,22 @@ paths:
           type: array
         style: form
         x-nullable: true
+      - description: The scope in which the instrument lies. When not supplied the
+          scope is 'default'.
+        explode: true
+        in: query
+        name: scope
+        required: false
+        schema:
+          default: default
+          description: The scope in which the instrument lies. When not supplied the
+            scope is 'default'.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -2592,6 +2608,23 @@ paths:
         \ results.\n\nThe maximum number of instruments that this method can upsert\
         \ per request is 2,000."
       operationId: UpsertInstruments
+      parameters:
+      - description: The scope in which the instrument lies. When not supplied the
+          scope is 'default'.
+        explode: true
+        in: query
+        name: scope
+        required: false
+        schema:
+          default: default
+          description: The scope in which the instrument lies. When not supplied the
+            scope is 'default'.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
       requestBody:
         content:
           application/json-patch+json:
@@ -2919,6 +2952,22 @@ paths:
           type: array
         style: form
         x-nullable: true
+      - description: The scope in which the instrument lies. When not supplied the
+          scope is 'default'.
+        explode: true
+        in: query
+        name: scope
+        required: false
+        schema:
+          default: default
+          description: The scope in which the instrument lies. When not supplied the
+            scope is 'default'.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
       requestBody:
         content:
           application/json-patch+json:
@@ -3015,6 +3064,23 @@ paths:
         \ property being\r\nvalid indefinitely, or until the next <i>effectiveFrom</i>\
         \ datetime of the property."
       operationId: UpsertInstrumentsProperties
+      parameters:
+      - description: The scope in which the instrument lies. When not supplied the
+          scope is 'default'.
+        explode: true
+        in: query
+        name: scope
+        required: false
+        schema:
+          default: default
+          description: The scope in which the instrument lies. When not supplied the
+            scope is 'default'.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
       requestBody:
         content:
           application/json-patch+json:
@@ -3243,6 +3309,22 @@ paths:
           nullable: true
           type: string
         style: simple
+      - description: The scope in which the instrument lies. When not supplied the
+          scope is 'default'.
+        explode: true
+        in: query
+        name: scope
+        required: false
+        schema:
+          default: default
+          description: The scope in which the instrument lies. When not supplied the
+            scope is 'default'.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -3356,6 +3438,22 @@ paths:
           type: array
         style: form
         x-nullable: true
+      - description: The scope in which the instrument lies. When not supplied the
+          scope is 'default'.
+        explode: true
+        in: query
+        name: scope
+        required: false
+        schema:
+          default: default
+          description: The scope in which the instrument lies. When not supplied the
+            scope is 'default'.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -3423,6 +3521,22 @@ paths:
           nullable: true
           type: string
         style: simple
+      - description: The scope in which the instrument lies. When not supplied the
+          scope is 'default'.
+        explode: true
+        in: query
+        name: scope
+        required: false
+        schema:
+          default: default
+          description: The scope in which the instrument lies. When not supplied the
+            scope is 'default'.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
       requestBody:
         content:
           application/json-patch+json:
@@ -3617,6 +3731,22 @@ paths:
           type: integer
         style: form
         x-nullable: true
+      - description: The scope in which the instrument lies. When not supplied the
+          scope is 'default'.
+        explode: true
+        in: query
+        name: scope
+        required: false
+        schema:
+          default: default
+          description: The scope in which the instrument lies. When not supplied the
+            scope is 'default'.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
       responses:
         "200":
           content:
@@ -6477,7 +6607,8 @@ paths:
                   effectiveFrom: 2019-03-05T12:00:00.0000000+00:00
                   asAtDate: 2019-03-05T12:00:00.0000000+00:00
                 values:
-                - instrumentUid: LUID_XH4GNUEX
+                - instrumentScope: default
+                  instrumentUid: LUID_XH4GNUEX
                   subHoldingKeys:
                     transaction/Algo/Name:
                       key: Transaction/Algo/Name
@@ -6508,7 +6639,8 @@ paths:
                   effectiveFrom: 2019-03-05T12:00:00.0000000+00:00
                   asAtDate: 2019-03-05T12:00:00.0000000+00:00
                 values:
-                - instrumentUid: LUID_XH4GNUEX
+                - instrumentScope: default
+                  instrumentUid: LUID_XH4GNUEX
                   subHoldingKeys:
                     transaction/Algo/Name:
                       key: Transaction/Algo/Name
@@ -6539,7 +6671,8 @@ paths:
                   effectiveFrom: 2019-03-05T12:00:00.0000000+00:00
                   asAtDate: 2019-03-05T12:00:00.0000000+00:00
                 values:
-                - instrumentUid: LUID_XH4GNUEX
+                - instrumentScope: default
+                  instrumentUid: LUID_XH4GNUEX
                   subHoldingKeys:
                     transaction/Algo/Name:
                       key: Transaction/Algo/Name
@@ -7841,6 +7974,7 @@ paths:
                   type: Buy
                   instrumentIdentifiers:
                     instrument/default/RIC: RIC.L
+                  instrumentScope: default
                   instrumentUid: LUID_1C7YTL5M
                   transactionDate: 2018-08-04T00:00:00.0000000+00:00
                   settlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -7881,6 +8015,7 @@ paths:
                   type: Buy
                   instrumentIdentifiers:
                     instrument/default/RIC: RIC.L
+                  instrumentScope: default
                   instrumentUid: LUID_1C7YTL5M
                   transactionDate: 2018-08-04T00:00:00.0000000+00:00
                   settlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -7921,6 +8056,7 @@ paths:
                   type: Buy
                   instrumentIdentifiers:
                     instrument/default/RIC: RIC.L
+                  instrumentScope: default
                   instrumentUid: LUID_1C7YTL5M
                   transactionDate: 2018-08-04T00:00:00.0000000+00:00
                   settlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -8151,6 +8287,7 @@ paths:
                   description: Purchase
                   instrumentIdentifiers:
                     instrument/default/RIC: RIC.L
+                  instrumentScope: default
                   instrumentUid: LUID_JLH24106
                   transactionDate: 2018-08-04T00:00:00.0000000+00:00
                   settlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -8188,6 +8325,7 @@ paths:
                   description: Sale
                   instrumentIdentifiers:
                     instrument/default/ClientInternal: INT:00024106
+                  instrumentScope: default
                   instrumentUid: LUID_OI5JX1V7
                   transactionDate: 2018-08-07T00:00:00.0000000+00:00
                   settlementDate: 2018-08-10T00:00:00.0000000+00:00
@@ -8309,6 +8447,7 @@ paths:
                   description: Purchase
                   instrumentIdentifiers:
                     instrument/default/RIC: RIC.L
+                  instrumentScope: default
                   instrumentUid: LUID_JLH24106
                   transactionDate: 2018-08-04T00:00:00.0000000+00:00
                   settlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -8346,6 +8485,7 @@ paths:
                   description: Sale
                   instrumentIdentifiers:
                     instrument/default/ClientInternal: INT:00024106
+                  instrumentScope: default
                   instrumentUid: LUID_OI5JX1V7
                   transactionDate: 2018-08-07T00:00:00.0000000+00:00
                   settlementDate: 2018-08-10T00:00:00.0000000+00:00
@@ -8467,6 +8607,7 @@ paths:
                   description: Purchase
                   instrumentIdentifiers:
                     instrument/default/RIC: RIC.L
+                  instrumentScope: default
                   instrumentUid: LUID_JLH24106
                   transactionDate: 2018-08-04T00:00:00.0000000+00:00
                   settlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -8504,6 +8645,7 @@ paths:
                   description: Sale
                   instrumentIdentifiers:
                     instrument/default/ClientInternal: INT:00024106
+                  instrumentScope: default
                   instrumentUid: LUID_OI5JX1V7
                   transactionDate: 2018-08-07T00:00:00.0000000+00:00
                   settlementDate: 2018-08-10T00:00:00.0000000+00:00
@@ -12221,6 +12363,7 @@ paths:
               code: MyPortfolioCode
               created: 2018-03-05T00:00:00.0000000+00:00
               properties: {}
+              instrumentScopes: []
             schema:
               $ref: '#/components/schemas/CreateReferencePortfolioRequest'
           application/json:
@@ -12230,6 +12373,7 @@ paths:
               code: MyPortfolioCode
               created: 2018-03-05T00:00:00.0000000+00:00
               properties: {}
+              instrumentScopes: []
             schema:
               $ref: '#/components/schemas/CreateReferencePortfolioRequest'
           text/json:
@@ -12239,6 +12383,7 @@ paths:
               code: MyPortfolioCode
               created: 2018-03-05T00:00:00.0000000+00:00
               properties: {}
+              instrumentScopes: []
             schema:
               $ref: '#/components/schemas/CreateReferencePortfolioRequest'
           application/*+json:
@@ -12248,6 +12393,7 @@ paths:
               code: MyPortfolioCode
               created: 2018-03-05T00:00:00.0000000+00:00
               properties: {}
+              instrumentScopes: []
             schema:
               $ref: '#/components/schemas/CreateReferencePortfolioRequest'
         description: The definition of the reference portfolio.
@@ -13998,6 +14144,7 @@ paths:
                       value: 1628483
                       unit: NoUnits
                   effectiveFrom: 2018-03-05T12:00:00.0000000+00:00
+              instrumentScopes: []
             schema:
               $ref: '#/components/schemas/CreateTransactionPortfolioRequest'
           application/json:
@@ -14025,6 +14172,7 @@ paths:
                       value: 1628483
                       unit: NoUnits
                   effectiveFrom: 2018-03-05T12:00:00.0000000+00:00
+              instrumentScopes: []
             schema:
               $ref: '#/components/schemas/CreateTransactionPortfolioRequest'
           text/json:
@@ -14052,6 +14200,7 @@ paths:
                       value: 1628483
                       unit: NoUnits
                   effectiveFrom: 2018-03-05T12:00:00.0000000+00:00
+              instrumentScopes: []
             schema:
               $ref: '#/components/schemas/CreateTransactionPortfolioRequest'
           application/*+json:
@@ -14079,6 +14228,7 @@ paths:
                       value: 1628483
                       unit: NoUnits
                   effectiveFrom: 2018-03-05T12:00:00.0000000+00:00
+              instrumentScopes: []
             schema:
               $ref: '#/components/schemas/CreateTransactionPortfolioRequest'
         description: The definition of the transaction portfolio.
@@ -14466,6 +14616,7 @@ paths:
                     transactionId: tid_234942982496001
                     type: Buy
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-10T00:00:00.0000000+00:00
                     settlementDate: 2020-06-13T00:00:00.0000000+00:00
@@ -14515,6 +14666,7 @@ paths:
                     transactionId: tid_234295929052090
                     type: Buy
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-11T00:00:00.0000000+00:00
                     settlementDate: 2020-06-14T00:00:00.0000000+00:00
@@ -14564,6 +14716,7 @@ paths:
                     transactionId: tid_325452342424500
                     type: Dividend
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-15T00:00:00.0000000+00:00
                     settlementDate: 2020-06-15T00:00:00.0000000+00:00
@@ -14613,6 +14766,7 @@ paths:
                     transactionId: tid_329432525234324
                     type: Sell
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-17T00:00:00.0000000+00:00
                     settlementDate: 2020-06-20T00:00:00.0000000+00:00
@@ -14662,6 +14816,7 @@ paths:
                     transactionId: tid_329432525234323
                     type: Sell
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2019-06-17T00:00:00.0000000+00:00
                     settlementDate: 2019-06-20T00:00:00.0000000+00:00
@@ -14711,6 +14866,7 @@ paths:
                     transactionId: tid_124319009950924
                     type: Sell
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-18T00:00:00.0000000+00:00
                     settlementDate: 2020-06-21T00:00:00.0000000+00:00
@@ -14760,6 +14916,7 @@ paths:
                     transactionId: tid_121309590059995
                     type: Sell
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-18T00:00:00.0000000+00:00
                     settlementDate: 2020-06-21T00:00:00.0000000+00:00
@@ -14873,6 +15030,7 @@ paths:
                     transactionId: tid_124319009950924
                     type: Buy
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-10T00:00:00.0000000+00:00
                     settlementDate: 2020-06-13T00:00:00.0000000+00:00
@@ -14922,6 +15080,7 @@ paths:
                     transactionId: tid_121309590059995
                     type: Sell
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-15T00:00:00.0000000+00:00
                     settlementDate: 2020-06-18T00:00:00.0000000+00:00
@@ -15105,6 +15264,7 @@ paths:
                     transactionId: tid_234942982496001
                     type: Buy
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-10T00:00:00.0000000+00:00
                     settlementDate: 2020-06-13T00:00:00.0000000+00:00
@@ -15154,6 +15314,7 @@ paths:
                     transactionId: tid_234295929052090
                     type: Buy
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-11T00:00:00.0000000+00:00
                     settlementDate: 2020-06-14T00:00:00.0000000+00:00
@@ -15203,6 +15364,7 @@ paths:
                     transactionId: tid_325452342424500
                     type: Dividend
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-15T00:00:00.0000000+00:00
                     settlementDate: 2020-06-15T00:00:00.0000000+00:00
@@ -15252,6 +15414,7 @@ paths:
                     transactionId: tid_329432525234324
                     type: Sell
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-17T00:00:00.0000000+00:00
                     settlementDate: 2020-06-20T00:00:00.0000000+00:00
@@ -15301,6 +15464,7 @@ paths:
                     transactionId: tid_329432525234323
                     type: Sell
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2019-06-17T00:00:00.0000000+00:00
                     settlementDate: 2019-06-20T00:00:00.0000000+00:00
@@ -15350,6 +15514,7 @@ paths:
                     transactionId: tid_124319009950924
                     type: Sell
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-18T00:00:00.0000000+00:00
                     settlementDate: 2020-06-21T00:00:00.0000000+00:00
@@ -15399,6 +15564,7 @@ paths:
                     transactionId: tid_121309590059995
                     type: Sell
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-18T00:00:00.0000000+00:00
                     settlementDate: 2020-06-21T00:00:00.0000000+00:00
@@ -15512,6 +15678,7 @@ paths:
                     transactionId: tid_124319009950924
                     type: Buy
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-10T00:00:00.0000000+00:00
                     settlementDate: 2020-06-13T00:00:00.0000000+00:00
@@ -15561,6 +15728,7 @@ paths:
                     transactionId: tid_121309590059995
                     type: Sell
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-15T00:00:00.0000000+00:00
                     settlementDate: 2020-06-18T00:00:00.0000000+00:00
@@ -15744,6 +15912,7 @@ paths:
                     transactionId: tid_234942982496001
                     type: Buy
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-10T00:00:00.0000000+00:00
                     settlementDate: 2020-06-13T00:00:00.0000000+00:00
@@ -15793,6 +15962,7 @@ paths:
                     transactionId: tid_234295929052090
                     type: Buy
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-11T00:00:00.0000000+00:00
                     settlementDate: 2020-06-14T00:00:00.0000000+00:00
@@ -15842,6 +16012,7 @@ paths:
                     transactionId: tid_325452342424500
                     type: Dividend
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-15T00:00:00.0000000+00:00
                     settlementDate: 2020-06-15T00:00:00.0000000+00:00
@@ -15891,6 +16062,7 @@ paths:
                     transactionId: tid_329432525234324
                     type: Sell
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-17T00:00:00.0000000+00:00
                     settlementDate: 2020-06-20T00:00:00.0000000+00:00
@@ -15940,6 +16112,7 @@ paths:
                     transactionId: tid_329432525234323
                     type: Sell
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2019-06-17T00:00:00.0000000+00:00
                     settlementDate: 2019-06-20T00:00:00.0000000+00:00
@@ -15989,6 +16162,7 @@ paths:
                     transactionId: tid_124319009950924
                     type: Sell
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-18T00:00:00.0000000+00:00
                     settlementDate: 2020-06-21T00:00:00.0000000+00:00
@@ -16038,6 +16212,7 @@ paths:
                     transactionId: tid_121309590059995
                     type: Sell
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-18T00:00:00.0000000+00:00
                     settlementDate: 2020-06-21T00:00:00.0000000+00:00
@@ -16151,6 +16326,7 @@ paths:
                     transactionId: tid_124319009950924
                     type: Buy
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-10T00:00:00.0000000+00:00
                     settlementDate: 2020-06-13T00:00:00.0000000+00:00
@@ -16200,6 +16376,7 @@ paths:
                     transactionId: tid_121309590059995
                     type: Sell
                     instrumentIdentifiers: {}
+                    instrumentScope: default
                     instrumentUid: LUID_1C7YTL5M
                     transactionDate: 2020-06-15T00:00:00.0000000+00:00
                     settlementDate: 2020-06-18T00:00:00.0000000+00:00
@@ -16834,7 +17011,8 @@ paths:
                   effectiveFrom: 2019-03-05T12:00:00.0000000+00:00
                   asAtDate: 2019-03-05T12:00:00.0000000+00:00
                 values:
-                - instrumentUid: LUID_XH4GNUEX
+                - instrumentScope: default
+                  instrumentUid: LUID_XH4GNUEX
                   subHoldingKeys:
                     transaction/Algo/Name:
                       key: Transaction/Algo/Name
@@ -16865,7 +17043,8 @@ paths:
                   effectiveFrom: 2019-03-05T12:00:00.0000000+00:00
                   asAtDate: 2019-03-05T12:00:00.0000000+00:00
                 values:
-                - instrumentUid: LUID_XH4GNUEX
+                - instrumentScope: default
+                  instrumentUid: LUID_XH4GNUEX
                   subHoldingKeys:
                     transaction/Algo/Name:
                       key: Transaction/Algo/Name
@@ -16896,7 +17075,8 @@ paths:
                   effectiveFrom: 2019-03-05T12:00:00.0000000+00:00
                   asAtDate: 2019-03-05T12:00:00.0000000+00:00
                 values:
-                - instrumentUid: LUID_XH4GNUEX
+                - instrumentScope: default
+                  instrumentUid: LUID_XH4GNUEX
                   subHoldingKeys:
                     transaction/Algo/Name:
                       key: Transaction/Algo/Name
@@ -17607,6 +17787,7 @@ paths:
                   adjustments:
                   - instrumentIdentifiers:
                       instrument/default/ClientInternal: CLI-192836
+                    instrumentScope: default
                     instrumentUid: LUID_GNMKYXXK
                     subHoldingKeys: {}
                     properties: {}
@@ -17618,6 +17799,7 @@ paths:
                     currency: ZZZ
                   - instrumentIdentifiers:
                       instrument/default/ClientInternal: CLI-462810
+                    instrumentScope: default
                     instrumentUid: LUID_LE9E5SJE
                     subHoldingKeys: {}
                     properties: {}
@@ -17640,6 +17822,7 @@ paths:
                   adjustments:
                   - instrumentIdentifiers:
                       instrument/default/ClientInternal: CLI-192836
+                    instrumentScope: default
                     instrumentUid: LUID_GNMKYXXK
                     subHoldingKeys: {}
                     properties: {}
@@ -17651,6 +17834,7 @@ paths:
                     currency: ZZZ
                   - instrumentIdentifiers:
                       instrument/default/ClientInternal: CLI-462810
+                    instrumentScope: default
                     instrumentUid: LUID_LE9E5SJE
                     subHoldingKeys: {}
                     properties: {}
@@ -17673,6 +17857,7 @@ paths:
                   adjustments:
                   - instrumentIdentifiers:
                       instrument/default/ClientInternal: CLI-192836
+                    instrumentScope: default
                     instrumentUid: LUID_GNMKYXXK
                     subHoldingKeys: {}
                     properties: {}
@@ -17684,6 +17869,7 @@ paths:
                     currency: ZZZ
                   - instrumentIdentifiers:
                       instrument/default/ClientInternal: CLI-462810
+                    instrumentScope: default
                     instrumentUid: LUID_LE9E5SJE
                     subHoldingKeys: {}
                     properties: {}
@@ -17973,6 +18159,7 @@ paths:
                   type: Buy
                   instrumentIdentifiers:
                     instrument/default/RIC: RIC.L
+                  instrumentScope: default
                   instrumentUid: LUID_1C7YTL5M
                   transactionDate: 2018-08-04T00:00:00.0000000+00:00
                   settlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -18013,6 +18200,7 @@ paths:
                   type: Buy
                   instrumentIdentifiers:
                     instrument/default/RIC: RIC.L
+                  instrumentScope: default
                   instrumentUid: LUID_1C7YTL5M
                   transactionDate: 2018-08-04T00:00:00.0000000+00:00
                   settlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -18053,6 +18241,7 @@ paths:
                   type: Buy
                   instrumentIdentifiers:
                     instrument/default/RIC: RIC.L
+                  instrumentScope: default
                   instrumentUid: LUID_1C7YTL5M
                   transactionDate: 2018-08-04T00:00:00.0000000+00:00
                   settlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -18476,6 +18665,7 @@ paths:
                   description: Purchase
                   instrumentIdentifiers:
                     instrument/default/RIC: RIC.L
+                  instrumentScope: default
                   instrumentUid: LUID_JLH24106
                   transactionDate: 2018-08-04T00:00:00.0000000+00:00
                   settlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -18513,6 +18703,7 @@ paths:
                   description: Sale
                   instrumentIdentifiers:
                     instrument/default/ClientInternal: INT:00024106
+                  instrumentScope: default
                   instrumentUid: LUID_OI5JX1V7
                   transactionDate: 2018-08-07T00:00:00.0000000+00:00
                   settlementDate: 2018-08-10T00:00:00.0000000+00:00
@@ -18634,6 +18825,7 @@ paths:
                   description: Purchase
                   instrumentIdentifiers:
                     instrument/default/RIC: RIC.L
+                  instrumentScope: default
                   instrumentUid: LUID_JLH24106
                   transactionDate: 2018-08-04T00:00:00.0000000+00:00
                   settlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -18671,6 +18863,7 @@ paths:
                   description: Sale
                   instrumentIdentifiers:
                     instrument/default/ClientInternal: INT:00024106
+                  instrumentScope: default
                   instrumentUid: LUID_OI5JX1V7
                   transactionDate: 2018-08-07T00:00:00.0000000+00:00
                   settlementDate: 2018-08-10T00:00:00.0000000+00:00
@@ -18792,6 +18985,7 @@ paths:
                   description: Purchase
                   instrumentIdentifiers:
                     instrument/default/RIC: RIC.L
+                  instrumentScope: default
                   instrumentUid: LUID_JLH24106
                   transactionDate: 2018-08-04T00:00:00.0000000+00:00
                   settlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -18829,6 +19023,7 @@ paths:
                   description: Sale
                   instrumentIdentifiers:
                     instrument/default/ClientInternal: INT:00024106
+                  instrumentScope: default
                   instrumentUid: LUID_OI5JX1V7
                   transactionDate: 2018-08-07T00:00:00.0000000+00:00
                   settlementDate: 2018-08-10T00:00:00.0000000+00:00
@@ -20608,6 +20803,9 @@ components:
         code: code
         displayName: displayName
         created: 2000-01-23T04:56:07.000+00:00
+        instrumentScopes:
+        - instrumentScopes
+        - instrumentScopes
         description: description
         accountingMethod: Default
         corporateActionSourceId:
@@ -20618,17 +20816,21 @@ components:
           scope: scope
       properties:
         displayName:
+          description: The name of the derived transaction portfolio.
           maxLength: 512
           minLength: 1
           pattern: ^[\s\S]*$
           type: string
         description:
+          description: A description for the derived transaction portfolio.
           maxLength: 1024
           minLength: 0
           nullable: true
           pattern: ^[\s\S]*$
           type: string
         code:
+          description: The code of the derived transaction portfolio. Together with
+            the scope this uniquely identifies the derived transaction portfolio.
           maxLength: 64
           minLength: 1
           pattern: ^[a-zA-Z0-9\-_]+$
@@ -20636,14 +20838,19 @@ components:
         parentPortfolioId:
           $ref: '#/components/schemas/ResourceId'
         created:
+          description: The effective datetime at which to create the derived transaction
+            portfolio. No transactions can be added to the derived transaction portfolio
+            before this date. Defaults to the current LUSID system datetime if not
+            specified.
           format: date-time
           nullable: true
           type: string
         corporateActionSourceId:
           $ref: '#/components/schemas/ResourceId'
         accountingMethod:
-          description: 'The available values are: Default, AverageCost, FirstInFirstOut,
-            LastInFirstOut, HighestCostFirst, LowestCostFirst'
+          description: 'Determines the accounting treatment given to the transaction
+            portfolio''s tax lots. The available values are: Default, AverageCost,
+            FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst'
           enum:
           - Default
           - AverageCost
@@ -20653,10 +20860,25 @@ components:
           - LowestCostFirst
           type: string
         subHoldingKeys:
+          description: A set of unique transaction properties to group the derived
+            transaction portfolio's holdings by, perhaps for strategy tagging. Each
+            property must be from the 'Transaction' domain and identified by a key
+            in the format {domain}/{scope}/{code}, for example 'Transaction/strategies/quantsignal'.
+            Note that sub-holding keys cannot currently be added after the transaction
+            portfolio has been created; see https://support.lusid.com/knowledgebase/article/KA-01879/en-us
+            for more information.
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
             type: string
+          nullable: true
+          type: array
+        instrumentScopes:
+          description: The resolution strategy used to resolve instruments of transactions/holdings
+            upserted to this derived portfolio.
+          items:
+            type: string
+          maxLength: 1
           nullable: true
           type: array
       required:
@@ -20847,6 +21069,9 @@ components:
         code: code
         displayName: displayName
         created: 2000-01-23T04:56:07.000+00:00
+        instrumentScopes:
+        - instrumentScopes
+        - instrumentScopes
         description: description
         properties:
           key:
@@ -20880,6 +21105,12 @@ components:
           description: Portfolio properties to add to the portfolio
           nullable: true
           type: object
+        instrumentScopes:
+          items:
+            type: string
+          maxLength: 1
+          nullable: true
+          type: array
       required:
       - code
       - displayName
@@ -20893,6 +21124,9 @@ components:
         code: code
         displayName: displayName
         created: 2000-01-23T04:56:07.000+00:00
+        instrumentScopes:
+        - instrumentScopes
+        - instrumentScopes
         description: description
         accountingMethod: Default
         corporateActionSourceId:
@@ -20973,6 +21207,14 @@ components:
             for example 'Portfolio/Manager/Id'. Note these properties must be pre-defined.
           nullable: true
           type: object
+        instrumentScopes:
+          description: The resolution strategy used to resolve instruments of transactions/holdings
+            upserted to this portfolio.
+          items:
+            type: string
+          maxLength: 1
+          nullable: true
+          type: array
       required:
       - baseCurrency
       - code
@@ -21618,12 +21860,17 @@ components:
       example:
         values:
           key:
-            lookthroughPortfolio:
-              code: code
-              scope: scope
             domCcy: domCcy
             identifiers:
               key: identifiers
+            assetClass: InterestRates
+            version:
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            lookthroughPortfolio:
+              code: code
+              scope: scope
+            scope: scope
             name: name
             links:
             - method: method
@@ -21636,13 +21883,9 @@ components:
               relation: relation
             href: https://openapi-generator.tech
             state: Active
-            assetClass: InterestRates
             instrumentDefinition:
               instrumentType: QuotedSecurity
             lusidInstrumentId: lusidInstrumentId
-            version:
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              asAtDate: 2000-01-23T04:56:07.000+00:00
             properties:
             - effectiveUntil: 2000-01-23T04:56:07.000+00:00
               value:
@@ -21814,7 +22057,8 @@ components:
         href: https://openapi-generator.tech
         effectiveFrom: 2000-01-23T04:56:07.000+00:00
         constituents:
-        - instrumentUid: instrumentUid
+        - instrumentScope: instrumentScope
+          instrumentUid: instrumentUid
           weight: 6.027456183070403
           instrumentIdentifiers:
             key: instrumentIdentifiers
@@ -21832,7 +22076,8 @@ components:
                   - values
                   - values
               key: key
-        - instrumentUid: instrumentUid
+        - instrumentScope: instrumentScope
+          instrumentUid: instrumentUid
           weight: 6.027456183070403
           instrumentIdentifiers:
             key: instrumentIdentifiers
@@ -21914,6 +22159,7 @@ components:
                 - values
                 - values
             key: key
+        instrumentScope: instrumentScope
         taxLots:
         - purchaseDate: 2000-01-23T04:56:07.000+00:00
           cost:
@@ -21955,6 +22201,11 @@ components:
             adjustment to a unique instrument.
           nullable: true
           type: object
+        instrumentScope:
+          description: The scope of the instrument that the holding adjustment is
+            in.
+          nullable: true
+          type: string
         instrumentUid:
           description: The unqiue Lusid Instrument Id (LUID) of the instrument that
             the holding adjustment is in.
@@ -22007,6 +22258,7 @@ components:
                   - values
                   - values
               key: key
+          instrumentScope: instrumentScope
           taxLots:
           - purchaseDate: 2000-01-23T04:56:07.000+00:00
             cost:
@@ -22052,6 +22304,7 @@ components:
                   - values
                   - values
               key: key
+          instrumentScope: instrumentScope
           taxLots:
           - purchaseDate: 2000-01-23T04:56:07.000+00:00
             cost:
@@ -22298,12 +22551,17 @@ components:
       additionalProperties: false
       description: A list of instruments.
       example:
-        lookthroughPortfolio:
-          code: code
-          scope: scope
         domCcy: domCcy
         identifiers:
           key: identifiers
+        assetClass: InterestRates
+        version:
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        lookthroughPortfolio:
+          code: code
+          scope: scope
+        scope: scope
         name: name
         links:
         - method: method
@@ -22316,13 +22574,9 @@ components:
           relation: relation
         href: https://openapi-generator.tech
         state: Active
-        assetClass: InterestRates
         instrumentDefinition:
           instrumentType: QuotedSecurity
         lusidInstrumentId: lusidInstrumentId
-        version:
-          effectiveFrom: 2000-01-23T04:56:07.000+00:00
-          asAtDate: 2000-01-23T04:56:07.000+00:00
         properties:
         - effectiveUntil: 2000-01-23T04:56:07.000+00:00
           value:
@@ -22353,6 +22607,10 @@ components:
           description: The specific Uniform Resource Identifier (URI) for this resource
             at the requested effective and asAt datetime.
           format: uri
+          nullable: true
+          type: string
+        scope:
+          description: The scope in which the instrument lies.
           nullable: true
           type: string
         lusidInstrumentId:
@@ -23199,6 +23457,7 @@ components:
       description: A list of output transactions.
       example:
         transactionCurrency: transactionCurrency
+        instrumentScope: instrumentScope
         transactionStatus: Active
         entryDateTime: 2000-01-23T04:56:07.000+00:00
         transactionPrice:
@@ -23302,6 +23561,10 @@ components:
             to a unique instrument.
           nullable: true
           type: object
+        instrumentScope:
+          description: The unqiue Lusid Instrument Id (LUID) of the instrument that
+            the transaction is in.
+          type: string
         instrumentUid:
           description: The unqiue Lusid Instrument Id (LUID) of the instrument that
             the transaction is in.
@@ -23389,6 +23652,7 @@ components:
           nullable: true
           type: array
       required:
+      - instrumentScope
       - instrumentUid
       - settlementDate
       - transactionDate
@@ -23633,12 +23897,17 @@ components:
         previousPage: previousPage
         nextPage: nextPage
         values:
-        - lookthroughPortfolio:
-            code: code
-            scope: scope
-          domCcy: domCcy
+        - domCcy: domCcy
           identifiers:
             key: identifiers
+          assetClass: InterestRates
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          lookthroughPortfolio:
+            code: code
+            scope: scope
+          scope: scope
           name: name
           links:
           - method: method
@@ -23651,13 +23920,9 @@ components:
             relation: relation
           href: https://openapi-generator.tech
           state: Active
-          assetClass: InterestRates
           instrumentDefinition:
             instrumentType: QuotedSecurity
           lusidInstrumentId: lusidInstrumentId
-          version:
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
           properties:
           - effectiveUntil: 2000-01-23T04:56:07.000+00:00
             value:
@@ -23683,12 +23948,17 @@ components:
                 - values
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             key: key
-        - lookthroughPortfolio:
-            code: code
-            scope: scope
-          domCcy: domCcy
+        - domCcy: domCcy
           identifiers:
             key: identifiers
+          assetClass: InterestRates
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          lookthroughPortfolio:
+            code: code
+            scope: scope
+          scope: scope
           name: name
           links:
           - method: method
@@ -23701,13 +23971,9 @@ components:
             relation: relation
           href: https://openapi-generator.tech
           state: Active
-          assetClass: InterestRates
           instrumentDefinition:
             instrumentType: QuotedSecurity
           lusidInstrumentId: lusidInstrumentId
-          version:
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
           properties:
           - effectiveUntil: 2000-01-23T04:56:07.000+00:00
             value:
@@ -24523,7 +24789,18 @@ components:
         isDerived: true
         displayName: displayName
         created: 2000-01-23T04:56:07.000+00:00
+        instrumentScopes:
+        - instrumentScopes
+        - instrumentScopes
         description: description
+        parentPortfolioId:
+          code: code
+          scope: scope
+        type: Transaction
+        version:
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        baseCurrency: baseCurrency
         links:
         - method: method
           description: description
@@ -24537,14 +24814,6 @@ components:
         id:
           code: code
           scope: scope
-        parentPortfolioId:
-          code: code
-          scope: scope
-        type: Transaction
-        version:
-          effectiveFrom: 2000-01-23T04:56:07.000+00:00
-          asAtDate: 2000-01-23T04:56:07.000+00:00
-        baseCurrency: baseCurrency
         properties:
           key:
             effectiveUntil: 2000-01-23T04:56:07.000+00:00
@@ -24608,6 +24877,12 @@ components:
             'Portfolio' domain.
           nullable: true
           type: object
+        instrumentScopes:
+          description: The instrument scope resolution strategy of this portfolio.
+          items:
+            type: string
+          nullable: true
+          type: array
         links:
           description: Collection of links.
           items:
@@ -24676,6 +24951,7 @@ components:
           transactionCurrency: transactionCurrency
           otcConfirmation:
             counterpartyAgreementCode: counterpartyAgreementCode
+          instrumentScope: instrumentScope
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
             price: 5.962133916683182
@@ -24781,6 +25057,9 @@ components:
         subHoldingKeys:
         - subHoldingKeys
         - subHoldingKeys
+        instrumentScopes:
+        - instrumentScopes
+        - instrumentScopes
         originPortfolioId:
           code: code
           scope: scope
@@ -24821,6 +25100,13 @@ components:
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        instrumentScopes:
+          description: The resolution strategy used to resolve instruments of transactions/holdings
+            upserted to the transaction portfolio.
+          items:
             type: string
           nullable: true
           type: array
@@ -25065,6 +25351,7 @@ components:
         cost:
           amount: 1.4658129805029452
           currency: currency
+        instrumentScope: instrumentScope
         holdingType: holdingType
         instrumentUid: instrumentUid
         currency: currency
@@ -25091,6 +25378,7 @@ components:
           transactionCurrency: transactionCurrency
           otcConfirmation:
             counterpartyAgreementCode: counterpartyAgreementCode
+          instrumentScope: instrumentScope
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
             price: 5.962133916683182
@@ -25122,6 +25410,10 @@ components:
                   - values
               key: key
       properties:
+        instrumentScope:
+          description: The scope in which the holding's instrument is in.
+          nullable: true
+          type: string
         instrumentUid:
           description: The unique Lusid Instrument Id (LUID) of the instrument that
             the holding is in.
@@ -26228,6 +26520,7 @@ components:
     ReferencePortfolioConstituent:
       additionalProperties: false
       example:
+        instrumentScope: instrumentScope
         instrumentUid: instrumentUid
         weight: 6.027456183070403
         instrumentIdentifiers:
@@ -26272,6 +26565,9 @@ components:
           format: double
           nullable: true
           type: number
+        instrumentScope:
+          nullable: true
+          type: string
       required:
       - currency
       - instrumentUid
@@ -27513,7 +27809,18 @@ components:
         - isDerived: true
           displayName: displayName
           created: 2000-01-23T04:56:07.000+00:00
+          instrumentScopes:
+          - instrumentScopes
+          - instrumentScopes
           description: description
+          parentPortfolioId:
+            code: code
+            scope: scope
+          type: Transaction
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          baseCurrency: baseCurrency
           links:
           - method: method
             description: description
@@ -27527,14 +27834,6 @@ components:
           id:
             code: code
             scope: scope
-          parentPortfolioId:
-            code: code
-            scope: scope
-          type: Transaction
-          version:
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-          baseCurrency: baseCurrency
           properties:
             key:
               effectiveUntil: 2000-01-23T04:56:07.000+00:00
@@ -27552,7 +27851,18 @@ components:
         - isDerived: true
           displayName: displayName
           created: 2000-01-23T04:56:07.000+00:00
+          instrumentScopes:
+          - instrumentScopes
+          - instrumentScopes
           description: description
+          parentPortfolioId:
+            code: code
+            scope: scope
+          type: Transaction
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          baseCurrency: baseCurrency
           links:
           - method: method
             description: description
@@ -27566,14 +27876,6 @@ components:
           id:
             code: code
             scope: scope
-          parentPortfolioId:
-            code: code
-            scope: scope
-          type: Transaction
-          version:
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-          baseCurrency: baseCurrency
           properties:
             key:
               effectiveUntil: 2000-01-23T04:56:07.000+00:00
@@ -27685,6 +27987,7 @@ components:
             transactionCurrency: transactionCurrency
             otcConfirmation:
               counterpartyAgreementCode: counterpartyAgreementCode
+            instrumentScope: instrumentScope
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
               price: 5.962133916683182
@@ -27767,6 +28070,7 @@ components:
             transactionCurrency: transactionCurrency
             otcConfirmation:
               counterpartyAgreementCode: counterpartyAgreementCode
+            instrumentScope: instrumentScope
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
               price: 5.962133916683182
@@ -28640,6 +28944,7 @@ components:
         transactionCurrency: transactionCurrency
         otcConfirmation:
           counterpartyAgreementCode: counterpartyAgreementCode
+        instrumentScope: instrumentScope
         entryDateTime: 2000-01-23T04:56:07.000+00:00
         transactionPrice:
           price: 5.962133916683182
@@ -28686,6 +28991,10 @@ components:
             to a unique instrument.
           nullable: true
           type: object
+        instrumentScope:
+          description: The scope in which the transaction's instrument lies.
+          nullable: true
+          type: string
         instrumentUid:
           description: The unqiue Lusid Instrument Id (LUID) of the instrument that
             the transaction is in.
@@ -29781,12 +30090,17 @@ components:
       example:
         values:
           key:
-            lookthroughPortfolio:
-              code: code
-              scope: scope
             domCcy: domCcy
             identifiers:
               key: identifiers
+            assetClass: InterestRates
+            version:
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            lookthroughPortfolio:
+              code: code
+              scope: scope
+            scope: scope
             name: name
             links:
             - method: method
@@ -29799,13 +30113,9 @@ components:
               relation: relation
             href: https://openapi-generator.tech
             state: Active
-            assetClass: InterestRates
             instrumentDefinition:
               instrumentType: QuotedSecurity
             lusidInstrumentId: lusidInstrumentId
-            version:
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              asAtDate: 2000-01-23T04:56:07.000+00:00
             properties:
             - effectiveUntil: 2000-01-23T04:56:07.000+00:00
               value:
@@ -30409,6 +30719,7 @@ components:
         nextPage: nextPage
         values:
         - transactionCurrency: transactionCurrency
+          instrumentScope: instrumentScope
           transactionStatus: Active
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
@@ -30492,6 +30803,7 @@ components:
                   - values
               key: key
         - transactionCurrency: transactionCurrency
+          instrumentScope: instrumentScope
           transactionStatus: Active
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
@@ -30639,6 +30951,7 @@ components:
           cost:
             amount: 1.4658129805029452
             currency: currency
+          instrumentScope: instrumentScope
           holdingType: holdingType
           instrumentUid: instrumentUid
           currency: currency
@@ -30665,6 +30978,7 @@ components:
             transactionCurrency: transactionCurrency
             otcConfirmation:
               counterpartyAgreementCode: counterpartyAgreementCode
+            instrumentScope: instrumentScope
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
               price: 5.962133916683182
@@ -30710,6 +31024,7 @@ components:
           cost:
             amount: 1.4658129805029452
             currency: currency
+          instrumentScope: instrumentScope
           holdingType: holdingType
           instrumentUid: instrumentUid
           currency: currency
@@ -30736,6 +31051,7 @@ components:
             transactionCurrency: transactionCurrency
             otcConfirmation:
               counterpartyAgreementCode: counterpartyAgreementCode
+            instrumentScope: instrumentScope
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
               price: 5.962133916683182
@@ -30819,6 +31135,7 @@ components:
         - transactionCurrency: transactionCurrency
           otcConfirmation:
             counterpartyAgreementCode: counterpartyAgreementCode
+          instrumentScope: instrumentScope
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
             price: 5.962133916683182
@@ -30852,6 +31169,7 @@ components:
         - transactionCurrency: transactionCurrency
           otcConfirmation:
             counterpartyAgreementCode: counterpartyAgreementCode
+          instrumentScope: instrumentScope
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
             price: 5.962133916683182
@@ -30963,7 +31281,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
