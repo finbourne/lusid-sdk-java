@@ -277,12 +277,12 @@ info:
     | <a name="758">758</a>|Luminesce timed out.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3848
+  version: 0.11.3849
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:64099
+- url: http://local-unit-test-server.lusid.com:41824
 security:
 - {}
 tags:
@@ -4842,6 +4842,504 @@ paths:
       - Legal Entities
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
+  /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/metadata:
+    get:
+      description: Pass the Scope and Code of the Legal Entity identifier along with
+        the Legal Entity code parameter to retrieve the associated Access Metadata
+      operationId: GetAllLegalEntityAccessMetadata
+      parameters:
+      - description: Scope of the Legal Entity identifier.
+        explode: false
+        in: path
+        name: idTypeScope
+        required: true
+        schema:
+          description: Scope of the Legal Entity identifier.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the Legal Entity identifier.
+        explode: false
+        in: path
+        name: idTypeCode
+        required: true
+        schema:
+          description: Code of the Legal Entity identifier.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the Legal Entity under specified identifier type's scope
+          and code.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Code of the Legal Entity under specified identifier type's
+            scope and code.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The effectiveAt datetime at which to retrieve the Access Metadata
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effectiveAt datetime at which to retrieve the Access Metadata
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve the Access Metadata
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve the Access Metadata
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+            application/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+            text/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+          description: The access metadata for the Legal Entity or any failure.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetAllLegalEntityAccessMetadata: Get Access Metadata
+        rules for a Legal Entity'
+      tags:
+      - Legal Entities
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey}:
+    delete:
+      description: "Deletes the Legal Entity Access Metadata entry that exactly matches\
+        \ the provided identifier parts.\r\n\r\nIt is important to always check to\
+        \ verify success (or failure)."
+      operationId: DeleteLegalEntityAccessMetadata
+      parameters:
+      - description: Scope of the Legal Entity identifier.
+        explode: false
+        in: path
+        name: idTypeScope
+        required: true
+        schema:
+          description: Scope of the Legal Entity identifier.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the Legal Entity identifier.
+        explode: false
+        in: path
+        name: idTypeCode
+        required: true
+        schema:
+          description: Code of the Legal Entity identifier.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the Legal Entity under specified identifier type's scope
+          and code.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Code of the Legal Entity under specified identifier type's
+            scope and code.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Key of the metadata entry to retrieve
+        explode: false
+        in: path
+        name: metadataKey
+        required: true
+        schema:
+          description: Key of the metadata entry to retrieve
+          maxLength: 100
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The effective date to delete at, if this is not supplied, it
+          will delete all data found
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effective date to delete at, if this is not supplied, it
+            will delete all data found
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The Access Metadata with the given metadataKey has been deleted
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] DeleteLegalEntityAccessMetadata: Delete a Legal Entity
+        Access Metadata entry'
+      tags:
+      - Legal Entities
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    get:
+      description: "Get a specific Legal Entity Access Metadata by specifying the\
+        \ corresponding identifier parts and Legal Entity code\r\n            \r\n\
+        No matching will be performed through this endpoint. To retrieve an entry,\
+        \ it is necessary to specify, exactly, the identifier of the entry"
+      operationId: GetLegalEntityAccessMetadataByKey
+      parameters:
+      - description: Scope of the Legal Entity identifier.
+        explode: false
+        in: path
+        name: idTypeScope
+        required: true
+        schema:
+          description: Scope of the Legal Entity identifier.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the Legal Entity identifier.
+        explode: false
+        in: path
+        name: idTypeCode
+        required: true
+        schema:
+          description: Code of the Legal Entity identifier.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the Legal Entity under specified identifier type's scope
+          and code.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Code of the Legal Entity under specified identifier type's
+            scope and code.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Key of the metadata entry to retrieve
+        explode: false
+        in: path
+        name: metadataKey
+        required: true
+        schema:
+          description: Key of the metadata entry to retrieve
+          maxLength: 100
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The effectiveAt datetime at which to retrieve the Access Metadata
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effectiveAt datetime at which to retrieve the Access Metadata
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve the Access Metadata
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve the Access Metadata
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+          description: The successfully retrieved Legal Entity access metadata filtered
+            by metadataKey or any failure.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetLegalEntityAccessMetadataByKey: Get an entry identified
+        by a metadataKey in the Access Metadata of a Legal Entity'
+      tags:
+      - Legal Entities
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    put:
+      description: "Update or insert one Legal Entity Access Metadata entry in a single\
+        \ scope. An item will be updated if it already exists\r\nand inserted if it\
+        \ does not.\r\n            \r\nThe response will return the successfully updated\
+        \ or inserted Legal Entity Access Metadata rule or failure message if unsuccessful.\r\
+        \n            \r\nIt is important to always check to verify success (or failure).\r\
+        \n            \r\nMultiple rules for a metadataKey can exist with different\
+        \ effective at dates, when resources are accessed the rule that is active\
+        \ for the current time will be fetched."
+      operationId: UpsertLegalEntityAccessMetadata
+      parameters:
+      - description: Scope of the Legal Entity identifier.
+        explode: false
+        in: path
+        name: idTypeScope
+        required: true
+        schema:
+          description: Scope of the Legal Entity identifier.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the Legal Entity identifier.
+        explode: false
+        in: path
+        name: idTypeCode
+        required: true
+        schema:
+          description: Code of the Legal Entity identifier.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the Legal Entity under specified identifier type's scope
+          and code.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Code of the Legal Entity under specified identifier type's
+            scope and code.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Key of the metadata entry to retrieve
+        explode: false
+        in: path
+        name: metadataKey
+        required: true
+        schema:
+          description: Key of the metadata entry to retrieve
+          maxLength: 100
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The effectiveAt datetime at which to upsert the Access Metadata
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effectiveAt datetime at which to upsert the Access Metadata
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertLegalEntityAccessMetadataRequest'
+          application/json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertLegalEntityAccessMetadataRequest'
+          text/json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertLegalEntityAccessMetadataRequest'
+          application/*+json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertLegalEntityAccessMetadataRequest'
+        description: The Legal Entity Access Metadata entry to upsert
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfAccessMetadataValueOf'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfAccessMetadataValueOf'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfAccessMetadataValueOf'
+          description: The successfully updated or inserted item or any failure.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] UpsertLegalEntityAccessMetadata: Upsert a Legal Entity
+        Access Metadata entry associated with a specific metadataKey. This creates
+        or updates the data in LUSID.'
+      tags:
+      - Legal Entities
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
   /api/metadata/access/resources:
     get:
       description: Get the comprehensive set of resources that are available for access
@@ -5726,6 +6224,475 @@ paths:
       tags:
       - Orders
       x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata:
+    get:
+      description: Pass the Scope and Code of the Person identifier along with the
+        person code parameter to retrieve the associated Access Metadata
+      operationId: GetAllPersonAccessMetadata
+      parameters:
+      - description: Scope of the person identifier.
+        explode: false
+        in: path
+        name: idTypeScope
+        required: true
+        schema:
+          description: Scope of the person identifier.
+          type: string
+        style: simple
+      - description: Code of the person identifier.
+        explode: false
+        in: path
+        name: idTypeCode
+        required: true
+        schema:
+          description: Code of the person identifier.
+          type: string
+        style: simple
+      - description: Code of the person under specified identifier type's scope and
+          code.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Code of the person under specified identifier type's scope
+            and code.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The effectiveAt datetime at which to retrieve the Access Metadata
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effectiveAt datetime at which to retrieve the Access Metadata
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve the Access Metadata
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve the Access Metadata
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+            application/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+            text/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+          description: The access metadata for the Person or any failure.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetAllPersonAccessMetadata: Get Access Metadata rules
+        for a Person'
+      tags:
+      - Persons
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey}:
+    delete:
+      description: "Deletes the Person Access Metadata entry that exactly matches\
+        \ the provided identifier parts.\r\n\r\nIt is important to always check to\
+        \ verify success (or failure)."
+      operationId: DeletePersonAccessMetadata
+      parameters:
+      - description: Scope of the person identifier.
+        explode: false
+        in: path
+        name: idTypeScope
+        required: true
+        schema:
+          description: Scope of the person identifier.
+          type: string
+        style: simple
+      - description: Code of the person identifier.
+        explode: false
+        in: path
+        name: idTypeCode
+        required: true
+        schema:
+          description: Code of the person identifier.
+          type: string
+        style: simple
+      - description: Code of the person under specified identifier type's scope and
+          code.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Code of the person under specified identifier type's scope
+            and code.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Key of the metadata entry to retrieve
+        explode: false
+        in: path
+        name: metadataKey
+        required: true
+        schema:
+          description: Key of the metadata entry to retrieve
+          maxLength: 256
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The effective date to delete at, if this is not supplied, it
+          will delete all data found
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effective date to delete at, if this is not supplied, it
+            will delete all data found
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The Access Metadata with the given metadataKey has been deleted
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] DeletePersonAccessMetadata: Delete a Person Access
+        Metadata entry'
+      tags:
+      - Persons
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    get:
+      description: "Get a specific Person Access Metadata by specifying the corresponding\
+        \ identifier parts and Person code\r\n            \r\nNo matching will be\
+        \ performed through this endpoint. To retrieve an entry, it is necessary to\
+        \ specify, exactly, the identifier of the entry"
+      operationId: GetPersonAccessMetadataByKey
+      parameters:
+      - description: Scope of the person identifier.
+        explode: false
+        in: path
+        name: idTypeScope
+        required: true
+        schema:
+          description: Scope of the person identifier.
+          type: string
+        style: simple
+      - description: Code of the person identifier.
+        explode: false
+        in: path
+        name: idTypeCode
+        required: true
+        schema:
+          description: Code of the person identifier.
+          type: string
+        style: simple
+      - description: Code of the person under specified identifier type's scope and
+          code.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Code of the person under specified identifier type's scope
+            and code.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Key of the metadata entry to retrieve
+        explode: false
+        in: path
+        name: metadataKey
+        required: true
+        schema:
+          description: Key of the metadata entry to retrieve
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The effectiveAt datetime at which to retrieve the Access Metadata
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effectiveAt datetime at which to retrieve the Access Metadata
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve the Access Metadata
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve the Access Metadata
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+          description: The successfully retrieved Person access metadata filtered
+            by metadataKey or any failure.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetPersonAccessMetadataByKey: Get an entry identified
+        by a metadataKey in the Access Metadata of a Person'
+      tags:
+      - Persons
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    put:
+      description: "Update or insert one Person Access Metadata entry in a single\
+        \ scope. An item will be updated if it already exists\r\nand inserted if it\
+        \ does not.\r\n            \r\nThe response will return the successfully updated\
+        \ or inserted Person Access Metadata rule or failure message if unsuccessful.\r\
+        \n            \r\nIt is important to always check to verify success (or failure).\r\
+        \n            \r\nMultiple rules for a metadataKey can exist with different\
+        \ effective at dates, when resources are accessed the rule that is active\
+        \ for the current time will be fetched."
+      operationId: UpsertPersonAccessMetadata
+      parameters:
+      - description: Scope of the person identifier.
+        explode: false
+        in: path
+        name: idTypeScope
+        required: true
+        schema:
+          description: Scope of the person identifier.
+          type: string
+        style: simple
+      - description: Code of the person identifier.
+        explode: false
+        in: path
+        name: idTypeCode
+        required: true
+        schema:
+          description: Code of the person identifier.
+          type: string
+        style: simple
+      - description: Code of the person under specified identifier type's scope and
+          code.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Code of the person under specified identifier type's scope
+            and code.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Key of the metadata entry to retrieve
+        explode: false
+        in: path
+        name: metadataKey
+        required: true
+        schema:
+          description: Key of the metadata entry to retrieve
+          type: string
+        style: simple
+      - description: The effectiveAt datetime at which to upsert the Access Metadata
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effectiveAt datetime at which to upsert the Access Metadata
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertPersonAccessMetadataRequest'
+          application/json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertPersonAccessMetadataRequest'
+          text/json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertPersonAccessMetadataRequest'
+          application/*+json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertPersonAccessMetadataRequest'
+        description: The Person Access Metadata entry to upsert
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfAccessMetadataValueOf'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfAccessMetadataValueOf'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfAccessMetadataValueOf'
+          description: The successfully updated or inserted item or any failure.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] UpsertPersonAccessMetadata: Upsert a Person Access
+        Metadata entry associated with a specific metadataKey. This creates or updates
+        the data in LUSID.'
+      tags:
+      - Persons
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
       x-accepts: application/json
   /api/portfoliogroups/{scope}:
     get:
@@ -6724,6 +7691,445 @@ paths:
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/portfoliogroups/{scope}/{code}/metadata:
+    get:
+      description: Pass the scope and Portfolio Group code parameters to retrieve
+        the associated Access Metadata
+      operationId: GetPortfolioGroupMetadata
+      parameters:
+      - description: The scope of the Portfolio Group
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the Portfolio Group
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The Portfolio Group code
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The Portfolio Group code
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The effectiveAt datetime at which to retrieve the Access Metadata
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effectiveAt datetime at which to retrieve the Access Metadata
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve the Access Metadata
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve the Access Metadata
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+            application/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+            text/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+          description: The access metadata for the portfolio group or any failure.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetPortfolioGroupMetadata: Get Access Metadata rules
+        for Portfolio Group'
+      tags:
+      - Portfolio Groups
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/portfoliogroups/{scope}/{code}/metadata/{metadataKey}:
+    delete:
+      description: "Deletes the Portfolio Group Access Metadata entry that exactly\
+        \ matches the provided identifier parts.\r\n\r\nIt is important to always\
+        \ check to verify success (or failure)."
+      operationId: DeleteKeyFromPortfolioGroupAccessMetadata
+      parameters:
+      - description: The scope of the Portfolio Group
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the Portfolio Group
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The Portfolio Group code
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The Portfolio Group code
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Key of the Access Metadata entry to delete
+        explode: false
+        in: path
+        name: metadataKey
+        required: true
+        schema:
+          description: Key of the Access Metadata entry to delete
+          maxLength: 256
+          minLength: 1
+          type: string
+        style: simple
+      - description: The effective date to delete at, if this is not supplied, it
+          will delete all data found
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effective date to delete at, if this is not supplied, it
+            will delete all data found
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The has been deleted
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] DeleteKeyFromPortfolioGroupAccessMetadata: Delete a
+        Portfolio Group Access Metadata entry'
+      tags:
+      - Portfolio Groups
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    get:
+      description: "Get a specific Portfolio Group access metadata by specifying the\
+        \ corresponding identifier parts\r\n            \r\nNo matching will be performed\
+        \ through this endpoint. To retrieve a rule, it is necessary to specify, exactly,\
+        \ the identifier of the rule"
+      operationId: GetPortfolioGroupAccessMetadataByKey
+      parameters:
+      - description: The scope of the Portfolio Group
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the Portfolio Group
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The Portfolio Group code
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The Portfolio Group code
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Key of the metadata entry to retrieve
+        explode: false
+        in: path
+        name: metadataKey
+        required: true
+        schema:
+          description: Key of the metadata entry to retrieve
+          maxLength: 256
+          minLength: 1
+          type: string
+        style: simple
+      - description: The effectiveAt datetime at which to retrieve the access metadata
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effectiveAt datetime at which to retrieve the access metadata
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve the access metadata
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve the access metadata
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+          description: The successfully retrieved Portfolio group access metadata
+            filtered by metadataKey or any failure.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetPortfolioGroupAccessMetadataByKey: Get an entry
+        identified by a metadataKey in the Access Metadata of a Portfolio Group'
+      tags:
+      - Portfolio Groups
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    put:
+      description: "Update or insert one Portfolio Group Access Metadata Entry in\
+        \ a single scope. An item will be updated if it already exists\r\nand inserted\
+        \ if it does not.\r\n            \r\nThe response will return the successfully\
+        \ updated or inserted Portfolio Group Access Metadata rule or failure message\
+        \ if unsuccessful.\r\n            \r\nIt is important to always check to verify\
+        \ success (or failure).\r\n            \r\nMultiple rules for a metadataKey\
+        \ can exist with different effective at dates, when resources are accessed\
+        \ the rule that is active for the current time will be fetched."
+      operationId: UpsertPortfolioGroupAccessMetadata
+      parameters:
+      - description: The scope of the Portfolio Group
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the Portfolio Group
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The Portfolio Group code
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The Portfolio Group code
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Key of the access metadata entry to upsert
+        explode: false
+        in: path
+        name: metadataKey
+        required: true
+        schema:
+          description: Key of the access metadata entry to upsert
+          maxLength: 256
+          minLength: 1
+          type: string
+        style: simple
+      - description: The date this rule will be effective from
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The date this rule will be effective from
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertPortfolioGroupAccessMetadataRequest'
+          application/json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertPortfolioGroupAccessMetadataRequest'
+          text/json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertPortfolioGroupAccessMetadataRequest'
+          application/*+json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertPortfolioGroupAccessMetadataRequest'
+        description: The Portfolio Group Access Metadata rule to upsert
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfAccessMetadataValueOf'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfAccessMetadataValueOf'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfAccessMetadataValueOf'
+          description: The successfully updated or inserted item or any failure.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] UpsertPortfolioGroupAccessMetadata: Upsert a Portfolio
+        Group Access Metadata entry associated with a specific metadataKey. This creates
+        or updates the data in LUSID.'
+      tags:
+      - Portfolio Groups
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
       x-accepts: application/json
   /api/portfoliogroups/{scope}/{code}/portfolios:
     post:
@@ -9774,6 +11180,449 @@ paths:
       tags:
       - Portfolios
       x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/portfolios/{scope}/{code}/metadata:
+    get:
+      description: Pass the scope and portfolio code parameters to retrieve the AccessMetadata
+        associated with a portfolio
+      operationId: GetPortfolioMetadata
+      parameters:
+      - description: The scope of the Portfolio Access Metadata Rule to retrieve.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the Portfolio Access Metadata Rule to retrieve.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Portfolio code
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Portfolio code
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The effectiveAt datetime at which to retrieve the access metadata
+          rule.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effectiveAt datetime at which to retrieve the access metadata
+            rule.
+          nullable: true
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve the portfolio access metadata.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve the portfolio access
+            metadata.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+            application/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+            text/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+          description: The filtered list of results
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetPortfolioMetadata: Get access metadata rules for
+        a portfolio'
+      tags:
+      - Portfolios
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/portfolios/{scope}/{code}/metadata/{metadataKey}:
+    delete:
+      description: Delete the Portfolio Access Metadata Rule that exactly matches
+        the provided identifier parts
+      operationId: DeleteKeyFromPortfolioAccessMetadata
+      parameters:
+      - description: The scope of the Quote Access Metadata Rule to retrieve.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the Quote Access Metadata Rule to retrieve.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Portfolio code
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Portfolio code
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The metadataKey identifying the access metadata entry to delete
+        explode: false
+        in: path
+        name: metadataKey
+        required: true
+        schema:
+          description: The metadataKey identifying the access metadata entry to delete
+          maxLength: 256
+          minLength: 1
+          type: string
+        style: simple
+      - description: The effective date to delete at, if this is not supplied, it
+          will delete all data found
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effective date to delete at, if this is not supplied, it
+            will delete all data found
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The rule that has been deleted
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] DeleteKeyFromPortfolioAccessMetadata: Delete a Portfolio
+        Access Metadata Rule'
+      tags:
+      - Portfolios
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    get:
+      description: "Get a specific portfolio access metadata rule by specifying the\
+        \ corresponding identifier parts\r\n            \r\nNo matching will be performed\
+        \ through this endpoint. To retrieve a rule, it is necessary to specify, exactly,\
+        \ the identifier of the rule"
+      operationId: GetPortfoliosAccessMetadataByKey
+      parameters:
+      - description: The scope of the Portfolio Access Metadata Rule to retrieve.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the Portfolio Access Metadata Rule to retrieve.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The code of the portfolio
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The code of the portfolio
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Key of the metadata to retrieve
+        explode: false
+        in: path
+        name: metadataKey
+        required: true
+        schema:
+          description: Key of the metadata to retrieve
+          maxLength: 256
+          minLength: 1
+          type: string
+        style: simple
+      - description: The effective date of the rule
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effective date of the rule
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve the portfolio access metadata.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve the portfolio access
+            metadata.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+          description: The successfully retrieved Portfolio Access Metadata Rule or
+            any failure
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetPortfoliosAccessMetadataByKey: Get an entry identified
+        by a metadataKey in the access metadata object'
+      tags:
+      - Portfolios
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    put:
+      description: "Update or insert one Portfolio Access Metadata Rule in a single\
+        \ scope. An item will be updated if it already exists\r\nand inserted if it\
+        \ does not.\r\n\r\nThe response will return the successfully updated or inserted\
+        \ Portfolio Access Metadata Rule or failure message if unsuccessful\r\n\r\n\
+        It is important to always check to verify success (or failure).\r\n      \
+        \      \r\nMultiple rules for a metadataKey can exists with different effective\
+        \ at dates, when resources are accessed the rule that is active for the current\
+        \ time will be fetched"
+      operationId: UpsertPortfolioAccessMetadata
+      parameters:
+      - description: The scope to use when updating or inserting the Portfolio Access
+          Metadata Rule.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope to use when updating or inserting the Portfolio Access
+            Metadata Rule.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Portfolio code
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Portfolio code
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Key of the access metadata to upsert
+        explode: false
+        in: path
+        name: metadataKey
+        required: true
+        schema:
+          description: Key of the access metadata to upsert
+          maxLength: 256
+          minLength: 1
+          type: string
+        style: simple
+      - description: The date this rule will effective from
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The date this rule will effective from
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertPortfolioAccessMetadataRequest'
+          application/json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertPortfolioAccessMetadataRequest'
+          text/json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertPortfolioAccessMetadataRequest'
+          application/*+json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertPortfolioAccessMetadataRequest'
+        description: The Portfolio Access Metadata Rule to update or insert
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfAccessMetadataValueOf'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfAccessMetadataValueOf'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfAccessMetadataValueOf'
+          description: The successfully updated or inserted item or any failure
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] UpsertPortfolioAccessMetadata: Upsert a Portfolio Access
+        Metadata Rule associated with specific metadataKey. This creates or updates
+        the data in LUSID.'
+      tags:
+      - Portfolios
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
       x-accepts: application/json
   /api/portfolios/{scope}/{code}/properties:
     delete:
@@ -19652,6 +21501,27 @@ components:
       - actions
       - description
       type: object
+    AccessMetadataValue:
+      additionalProperties: false
+      description: "An access control value. Provider should only be used if you are\
+        \ a service provide licensing data. In that case\r\nthe provider value must\
+        \ match your domain."
+      example:
+        provider: provider
+        value: value
+      properties:
+        value:
+          maxLength: 2048
+          minLength: 0
+          type: string
+        provider:
+          maxLength: 50
+          minLength: 0
+          nullable: true
+          type: string
+      required:
+      - value
+      type: object
     ActionId:
       additionalProperties: false
       example:
@@ -26910,6 +28780,61 @@ components:
       required:
       - values
       type: object
+    ResourceListOfAccessMetadataValueOf:
+      additionalProperties: false
+      description: A collection of resources that can be returned from requests.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - - provider: provider
+            value: value
+          - provider: provider
+            value: value
+        - - provider: provider
+            value: value
+          - provider: provider
+            value: value
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          description: The resources to list.
+          items:
+            items:
+              $ref: '#/components/schemas/AccessMetadataValue'
+            type: array
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
     ResourceListOfAggregatedReturn:
       additionalProperties: false
       description: A collection of resources that can be returned from requests.
@@ -30185,6 +32110,23 @@ components:
           nullable: true
           type: array
       type: object
+    UpsertLegalEntityAccessMetadataRequest:
+      additionalProperties: false
+      example:
+        metadata:
+        - provider: provider
+          value: value
+        - provider: provider
+          value: value
+      properties:
+        metadata:
+          description: The access control metadata to assign to a Legal Entity that
+            matches the identifier
+          items:
+            $ref: '#/components/schemas/AccessMetadataValue'
+          nullable: true
+          type: array
+      type: object
     UpsertLegalEntityRequest:
       additionalProperties: false
       description: Request to create or update an legal entity
@@ -30262,6 +32204,59 @@ components:
       required:
       - displayName
       - identifiers
+      type: object
+    UpsertPersonAccessMetadataRequest:
+      additionalProperties: false
+      example:
+        metadata:
+        - provider: provider
+          value: value
+        - provider: provider
+          value: value
+      properties:
+        metadata:
+          description: The access control metadata to assign to a Person that matches
+            the identifier
+          items:
+            $ref: '#/components/schemas/AccessMetadataValue'
+          nullable: true
+          type: array
+      type: object
+    UpsertPortfolioAccessMetadataRequest:
+      additionalProperties: false
+      example:
+        metadata:
+        - provider: provider
+          value: value
+        - provider: provider
+          value: value
+      properties:
+        metadata:
+          description: The access control metadata to assign to portfolios that match
+            the identifier
+          items:
+            $ref: '#/components/schemas/AccessMetadataValue'
+          type: array
+      required:
+      - metadata
+      type: object
+    UpsertPortfolioGroupAccessMetadataRequest:
+      additionalProperties: false
+      example:
+        metadata:
+        - provider: provider
+          value: value
+        - provider: provider
+          value: value
+      properties:
+        metadata:
+          description: The access control metadata to assign to portfolio groups that
+            match the identifier
+          items:
+            $ref: '#/components/schemas/AccessMetadataValue'
+          type: array
+      required:
+      - metadata
       type: object
     UpsertPortfolioTransactionsResponse:
       additionalProperties: false
