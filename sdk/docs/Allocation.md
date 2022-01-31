@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **instrumentIdentifiers** | **Map&lt;String, String&gt;** | The instrument allocated. | 
 **version** | [**Version**](Version.md) |  |  [optional]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Client-defined properties associated with this allocation. |  [optional]
+**instrumentScope** | **String** | The scope in which the instrument lies |  [optional]
 **lusidInstrumentId** | **String** | The LUSID instrument id for the instrument allocated. | 
 **placementIds** | [**List&lt;ResourceId&gt;**](ResourceId.md) | A placement - also known as an order placed in the market - associated with this allocation. |  [optional]
 **state** | **String** | The state of this allocation. |  [optional]
