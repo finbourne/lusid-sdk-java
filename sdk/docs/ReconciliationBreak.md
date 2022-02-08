@@ -8,7 +8,6 @@ A reconciliation break
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**instrumentScope** | **String** | The scope in which the instrument lies. | 
 **instrumentUid** | **String** | Unique instrument identifier | 
 **subHoldingKeys** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Any other properties that comprise the Sub-Holding Key | 
 **leftUnits** | **Double** | Units from the left hand side | 
