@@ -141,7 +141,7 @@ public class Instruments {
 
 
     @Test
-    @LusidFeature("F22")
+    @LusidFeature("F20-1")
     public void lookup_instrument_by_unique_id() throws ApiException
     {
         /*
@@ -168,7 +168,7 @@ public class Instruments {
     }
 
     @Test
-    @LusidFeature("F23")
+    @LusidFeature("F20-2")
     public void list_available_identifiers() throws ApiException {
 
         //    Get the list of identifier schemes
@@ -184,7 +184,7 @@ public class Instruments {
     }
 
     @Test
-    @LusidFeature("F24")
+    @LusidFeature("F20-3")
     public void list_all_instruments() throws  ApiException {
 
         final int pageSize = 5;
@@ -196,7 +196,7 @@ public class Instruments {
     }
 
     @Test
-    @LusidFeature("F25")
+    @LusidFeature("F20-4")
     public void list_instruments_by_Identifier_type() throws ApiException {
 
         List<String>    figis = Arrays.asList("BBG000C6K6G9", "BBG000C04D57", "BBG000FV67Q4");
@@ -210,7 +210,7 @@ public class Instruments {
     }
 
     @Test
-    @LusidFeature("F26")
+    @LusidFeature("F4-4")
     public void edit_instrument_property() throws ApiException {
         String figi = "BBG000C6K6G9";
         //  Create the property value

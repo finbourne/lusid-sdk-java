@@ -48,7 +48,7 @@ public class Reconciliation {
     }
 
     @Test
-    @LusidFeature("F16")
+    @LusidFeature("F20-1")
     public void reconcile_portfolio() throws ApiException {
 
         //  Create the portfolio

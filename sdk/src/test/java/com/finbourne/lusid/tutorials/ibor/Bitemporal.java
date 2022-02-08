@@ -48,7 +48,7 @@ public class Bitemporal {
     }
 
     @Test
-    @LusidFeature("F1")
+    @LusidFeature("F13-7")
     public void apply_bitemporal_portfolio_change() throws Exception
     {
         String portfolioId = testDataUtilities.createTransactionPortfolio(TutorialScope);

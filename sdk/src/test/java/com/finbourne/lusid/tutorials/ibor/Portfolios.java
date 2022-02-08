@@ -52,7 +52,7 @@ public class Portfolios {
     }
 
     @Test
-    @LusidFeature("F8")
+    @LusidFeature("F1-4")
     public void create_transaction_portfolio() throws ApiException {
 
         String uuid = UUID.randomUUID().toString();
@@ -76,7 +76,7 @@ public class Portfolios {
     }
 
     @Test
-    @LusidFeature("F9")
+    @LusidFeature("F1-1")
     public void create_transaction_portfolio_with_property() throws Exception {
 
         String uuid = UUID.randomUUID().toString();
@@ -133,7 +133,7 @@ public class Portfolios {
     }
 
     @Test
-    @LusidFeature("F10")
+    @LusidFeature("F13-1")
     public void add_transactions_to_portfolio() throws ApiException{
 
         //    Effective date of the portfolio, this is the date the portfolio was created and became live.  All dates/times
@@ -176,7 +176,7 @@ public class Portfolios {
     }
 
     @Test
-    @LusidFeature("F11")
+    @LusidFeature("F13-4")
     public void add_transactions_to_portfolio_with_property() throws ApiException{
 
         String uuid = UUID.randomUUID().toString();
@@ -251,7 +251,7 @@ public class Portfolios {
 
     @Test
     @Ignore
-    @LusidFeature("F12")
+    @LusidFeature("F19-1")
     public void list_scopes() throws ApiException {
 
         //    Get the list of scopes across all entities
@@ -261,7 +261,7 @@ public class Portfolios {
     }
 
     @Test
-    @LusidFeature("F13")
+    @LusidFeature("F2-4")
     public void list_portfolios() throws ApiException {
 
         //    This defines the scope that the portfolios will be retrieved from
