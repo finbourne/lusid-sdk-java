@@ -278,12 +278,12 @@ info:
     | <a name="763">763</a>|Invalid Lusid Entity Identifier Unit|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3946
+  version: 0.11.3947
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:36748
+- url: http://local-unit-test-server.lusid.com:32224
 security:
 - {}
 tags:
@@ -19616,6 +19616,28 @@ paths:
           format: date-time
           nullable: true
           type: string
+        style: form
+        x-nullable: true
+      - description: "A list of property keys from the ‘Instrument' domain to decorate\
+          \ onto holdings adjustments.\r\n            These must have the format {domain}/{scope}/{code},\
+          \ for example 'Instrument/system/Name'.\r\n            Note that properties\
+          \ from the 'Holding’ domain are automatically returned."
+        explode: true
+        in: query
+        name: propertyKeys
+        required: false
+        schema:
+          description: "A list of property keys from the ‘Instrument' domain to decorate\
+            \ onto holdings adjustments.\r\n            These must have the format\
+            \ {domain}/{scope}/{code}, for example 'Instrument/system/Name'.\r\n \
+            \           Note that properties from the 'Holding’ domain are automatically\
+            \ returned."
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
         style: form
         x-nullable: true
       responses:
