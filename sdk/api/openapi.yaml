@@ -278,12 +278,12 @@ info:
     | <a name="763">763</a>|Invalid Lusid Entity Identifier Unit|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3945
+  version: 0.11.3946
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:56366
+- url: http://local-unit-test-server.lusid.com:36748
 security:
 - {}
 tags:
@@ -9770,7 +9770,8 @@ paths:
                   transactionStatus: Active
                   entryDateTime: 2018-08-07T10:30:12.0000000+00:00
                   realisedGainLoss:
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 4500
                     purchaseTradeDate: 2018-08-02T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-05T00:00:00.0000000+00:00
@@ -9793,7 +9794,8 @@ paths:
                     realisedCurrency:
                       amount: 3023.6
                       currency: GBP
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 4500
                     purchaseTradeDate: 2018-08-03T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -9816,7 +9818,8 @@ paths:
                     realisedCurrency:
                       amount: 2592.13
                       currency: GBP
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 1000
                     purchaseTradeDate: 2018-08-06T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-08T00:00:00.0000000+00:00
@@ -9930,7 +9933,8 @@ paths:
                   transactionStatus: Active
                   entryDateTime: 2018-08-07T10:30:12.0000000+00:00
                   realisedGainLoss:
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 4500
                     purchaseTradeDate: 2018-08-02T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-05T00:00:00.0000000+00:00
@@ -9953,7 +9957,8 @@ paths:
                     realisedCurrency:
                       amount: 3023.6
                       currency: GBP
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 4500
                     purchaseTradeDate: 2018-08-03T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -9976,7 +9981,8 @@ paths:
                     realisedCurrency:
                       amount: 2592.13
                       currency: GBP
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 1000
                     purchaseTradeDate: 2018-08-06T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-08T00:00:00.0000000+00:00
@@ -10090,7 +10096,8 @@ paths:
                   transactionStatus: Active
                   entryDateTime: 2018-08-07T10:30:12.0000000+00:00
                   realisedGainLoss:
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 4500
                     purchaseTradeDate: 2018-08-02T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-05T00:00:00.0000000+00:00
@@ -10113,7 +10120,8 @@ paths:
                     realisedCurrency:
                       amount: 3023.6
                       currency: GBP
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 4500
                     purchaseTradeDate: 2018-08-03T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -10136,7 +10144,8 @@ paths:
                     realisedCurrency:
                       amount: 2592.13
                       currency: GBP
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 1000
                     purchaseTradeDate: 2018-08-06T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-08T00:00:00.0000000+00:00
@@ -20577,7 +20586,8 @@ paths:
                   transactionStatus: Active
                   entryDateTime: 2018-08-07T10:30:12.0000000+00:00
                   realisedGainLoss:
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 4500
                     purchaseTradeDate: 2018-08-02T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-05T00:00:00.0000000+00:00
@@ -20600,7 +20610,8 @@ paths:
                     realisedCurrency:
                       amount: 3023.6
                       currency: GBP
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 4500
                     purchaseTradeDate: 2018-08-03T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -20623,7 +20634,8 @@ paths:
                     realisedCurrency:
                       amount: 2592.13
                       currency: GBP
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 1000
                     purchaseTradeDate: 2018-08-06T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-08T00:00:00.0000000+00:00
@@ -20737,7 +20749,8 @@ paths:
                   transactionStatus: Active
                   entryDateTime: 2018-08-07T10:30:12.0000000+00:00
                   realisedGainLoss:
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 4500
                     purchaseTradeDate: 2018-08-02T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-05T00:00:00.0000000+00:00
@@ -20760,7 +20773,8 @@ paths:
                     realisedCurrency:
                       amount: 3023.6
                       currency: GBP
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 4500
                     purchaseTradeDate: 2018-08-03T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -20783,7 +20797,8 @@ paths:
                     realisedCurrency:
                       amount: 2592.13
                       currency: GBP
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 1000
                     purchaseTradeDate: 2018-08-06T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-08T00:00:00.0000000+00:00
@@ -20897,7 +20912,8 @@ paths:
                   transactionStatus: Active
                   entryDateTime: 2018-08-07T10:30:12.0000000+00:00
                   realisedGainLoss:
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 4500
                     purchaseTradeDate: 2018-08-02T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-05T00:00:00.0000000+00:00
@@ -20920,7 +20936,8 @@ paths:
                     realisedCurrency:
                       amount: 3023.6
                       currency: GBP
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 4500
                     purchaseTradeDate: 2018-08-03T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-06T00:00:00.0000000+00:00
@@ -20943,7 +20960,8 @@ paths:
                     realisedCurrency:
                       amount: 2592.13
                       currency: GBP
-                  - instrumentUid: LUID_OI5JX1V7
+                  - instrumentScope: default
+                    instrumentUid: LUID_OI5JX1V7
                     units: 1000
                     purchaseTradeDate: 2018-08-06T00:00:00.0000000+00:00
                     purchaseSettlementDate: 2018-08-08T00:00:00.0000000+00:00
@@ -25361,6 +25379,7 @@ components:
           realisedTotal:
             amount: 1.4658129805029452
             currency: currency
+          instrumentScope: instrumentScope
           realisedMarket:
             amount: 1.4658129805029452
             currency: currency
@@ -25384,6 +25403,7 @@ components:
           realisedTotal:
             amount: 1.4658129805029452
             currency: currency
+          instrumentScope: instrumentScope
           realisedMarket:
             amount: 1.4658129805029452
             currency: currency
@@ -28199,6 +28219,7 @@ components:
         realisedTotal:
           amount: 1.4658129805029452
           currency: currency
+        instrumentScope: instrumentScope
         realisedMarket:
           amount: 1.4658129805029452
           currency: currency
@@ -28215,6 +28236,10 @@ components:
           amount: 1.4658129805029452
           currency: currency
       properties:
+        instrumentScope:
+          description: The scope in which the instrument lies.
+          nullable: true
+          type: string
         instrumentUid:
           description: The unqiue Lusid Instrument Id (LUID) of the instrument that
             this gain or loss is associated with.
@@ -28308,6 +28333,7 @@ components:
         leftCost:
           amount: 1.4658129805029452
           currency: currency
+        instrumentScope: instrumentScope
         instrumentUid: instrumentUid
         differenceCost:
           amount: 1.4658129805029452
@@ -28319,6 +28345,10 @@ components:
         leftUnits: 0.8008281904610115
         differenceUnits: 1.4658129805029452
       properties:
+        instrumentScope:
+          description: The scope in which the instrument lies.
+          nullable: true
+          type: string
         instrumentUid:
           description: Unique instrument identifier
           type: string
@@ -30532,6 +30562,7 @@ components:
           leftCost:
             amount: 1.4658129805029452
             currency: currency
+          instrumentScope: instrumentScope
           instrumentUid: instrumentUid
           differenceCost:
             amount: 1.4658129805029452
@@ -30582,6 +30613,7 @@ components:
           leftCost:
             amount: 1.4658129805029452
             currency: currency
+          instrumentScope: instrumentScope
           instrumentUid: instrumentUid
           differenceCost:
             amount: 1.4658129805029452
@@ -32755,6 +32787,7 @@ components:
             realisedTotal:
               amount: 1.4658129805029452
               currency: currency
+            instrumentScope: instrumentScope
             realisedMarket:
               amount: 1.4658129805029452
               currency: currency
@@ -32778,6 +32811,7 @@ components:
             realisedTotal:
               amount: 1.4658129805029452
               currency: currency
+            instrumentScope: instrumentScope
             realisedMarket:
               amount: 1.4658129805029452
               currency: currency
@@ -32839,6 +32873,7 @@ components:
             realisedTotal:
               amount: 1.4658129805029452
               currency: currency
+            instrumentScope: instrumentScope
             realisedMarket:
               amount: 1.4658129805029452
               currency: currency
@@ -32862,6 +32897,7 @@ components:
             realisedTotal:
               amount: 1.4658129805029452
               currency: currency
+            instrumentScope: instrumentScope
             realisedMarket:
               amount: 1.4658129805029452
               currency: currency
