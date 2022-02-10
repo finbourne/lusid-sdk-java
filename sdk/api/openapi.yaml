@@ -278,12 +278,12 @@ info:
     | <a name="763">763</a>|Invalid Lusid Entity Identifier Unit|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3949
+  version: 0.11.3952
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:33231
+- url: http://local-unit-test-server.lusid.com:44800
 security:
 - {}
 tags:
@@ -14209,6 +14209,7 @@ paths:
               created: 2018-03-05T00:00:00.0000000+00:00
               properties: {}
               instrumentScopes: []
+              baseCurrency: GBP
             schema:
               $ref: '#/components/schemas/CreateReferencePortfolioRequest'
           application/json:
@@ -14219,6 +14220,7 @@ paths:
               created: 2018-03-05T00:00:00.0000000+00:00
               properties: {}
               instrumentScopes: []
+              baseCurrency: GBP
             schema:
               $ref: '#/components/schemas/CreateReferencePortfolioRequest'
           text/json:
@@ -14229,6 +14231,7 @@ paths:
               created: 2018-03-05T00:00:00.0000000+00:00
               properties: {}
               instrumentScopes: []
+              baseCurrency: GBP
             schema:
               $ref: '#/components/schemas/CreateReferencePortfolioRequest'
           application/*+json:
@@ -14239,6 +14242,7 @@ paths:
               created: 2018-03-05T00:00:00.0000000+00:00
               properties: {}
               instrumentScopes: []
+              baseCurrency: GBP
             schema:
               $ref: '#/components/schemas/CreateReferencePortfolioRequest'
         description: The definition of the reference portfolio.
@@ -22994,30 +22998,42 @@ components:
                 - values
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             key: key
+        baseCurrency: baseCurrency
       properties:
         displayName:
+          description: The name of the reference portfolio.
           type: string
         description:
+          description: A long form text description of the portfolio.
           nullable: true
           type: string
         code:
+          description: Unique identifier for the portfolio.
           type: string
         created:
+          description: The original creation date, defaults to today if not specified
+            when creating a portfolio.
           format: date-time
           nullable: true
           type: string
         properties:
           additionalProperties:
             $ref: '#/components/schemas/Property'
-          description: Portfolio properties to add to the portfolio
+          description: Portfolio properties to add to the portfolio.
           nullable: true
           type: object
         instrumentScopes:
+          description: Instrument Scopes.
           items:
             type: string
           maxLength: 1
           nullable: true
           type: array
+        baseCurrency:
+          description: The base currency of the transaction portfolio in ISO 4217
+            currency code format.
+          nullable: true
+          type: string
       required:
       - code
       - displayName
