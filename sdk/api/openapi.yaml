@@ -278,12 +278,12 @@ info:
     | <a name="763">763</a>|Invalid Lusid Entity Identifier Unit|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3953
+  version: 0.11.3954
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:63663
+- url: http://local-unit-test-server.lusid.com:64666
 security:
 - {}
 tags:
@@ -26798,8 +26798,7 @@ components:
           description: Whether or not this is a derived portfolio.
           type: boolean
         baseCurrency:
-          description: The base currency of the portfolio. This will be an empty string
-            for reference portfolios.
+          description: The base currency of the portfolio.
           nullable: true
           type: string
         properties:
@@ -27560,8 +27559,7 @@ components:
         parentPortfolioId:
           $ref: '#/components/schemas/ResourceId'
         baseCurrency:
-          description: The base currency of the portfolio. This will be an empty string
-            for reference portfolios.
+          description: The base currency of the portfolio.
           nullable: true
           type: string
         properties:
