@@ -133,7 +133,7 @@ public class Portfolios {
     }
 
     @Test
-    @LusidFeature("F13-1")
+    @LusidFeature("F13-8")
     public void add_transactions_to_portfolio() throws ApiException{
 
         //    Effective date of the portfolio, this is the date the portfolio was created and became live.  All dates/times

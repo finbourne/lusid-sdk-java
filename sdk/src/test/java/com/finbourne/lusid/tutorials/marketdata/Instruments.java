@@ -141,7 +141,7 @@ public class Instruments {
 
 
     @Test
-    @LusidFeature("F20-1")
+    @LusidFeature("F21-1")
     public void lookup_instrument_by_unique_id() throws ApiException
     {
         /*

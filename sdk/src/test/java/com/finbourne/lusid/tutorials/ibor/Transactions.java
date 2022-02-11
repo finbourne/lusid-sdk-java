@@ -40,7 +40,7 @@ public class Transactions {
     }
 
     @Test
-    @LusidFeature("F13-1")
+    @LusidFeature("F13-9")
     public void load_listed_instrument_transaction() throws ApiException
     {
         String uuid = UUID.randomUUID().toString();
