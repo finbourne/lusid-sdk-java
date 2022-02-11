@@ -15,6 +15,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.finbourne.lusid.model.Property;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,230 +24,44 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
- * TransactionConfigurationTypeAlias
+ * SetLegalEntityPropertiesRequest
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class TransactionConfigurationTypeAlias {
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+public class SetLegalEntityPropertiesRequest {
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, Property> properties = null;
 
-  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
-  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
-  private String description;
 
-  public static final String SERIALIZED_NAME_TRANSACTION_CLASS = "transactionClass";
-  @SerializedName(SERIALIZED_NAME_TRANSACTION_CLASS)
-  private String transactionClass;
+  public SetLegalEntityPropertiesRequest properties(Map<String, Property> properties) {
+    this.properties = properties; 
+    return this;
+  }
 
-  public static final String SERIALIZED_NAME_TRANSACTION_GROUP = "transactionGroup";
-  @SerializedName(SERIALIZED_NAME_TRANSACTION_GROUP)
-  private String transactionGroup;
-
-  public static final String SERIALIZED_NAME_SOURCE = "source";
-  @SerializedName(SERIALIZED_NAME_SOURCE)
-  private String source;
-
-  /**
-   * . The available values are: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles
-   */
-  @JsonAdapter(TransactionRolesEnum.Adapter.class)
-  public enum TransactionRolesEnum {
-    NONE("None"),
-    
-    LONGLONGER("LongLonger"),
-    
-    LONGSHORTER("LongShorter"),
-    
-    SHORTSHORTER("ShortShorter"),
-    
-    SHORTER("Shorter"),
-    
-    SHORTLONGER("ShortLonger"),
-    
-    LONGER("Longer"),
-    
-    ALLROLES("AllRoles");
-
-    private String value;
-
-    TransactionRolesEnum(String value) {
-      this.value = value;
+  public SetLegalEntityPropertiesRequest putPropertiesItem(String key, Property propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
     }
-
-    public String getValue() {
-      return value;
-    }
-
-    @Override
-    public String toString() {
-      return String.valueOf(value);
-    }
-
-    public static TransactionRolesEnum fromValue(String value) {
-      for (TransactionRolesEnum b : TransactionRolesEnum.values()) {
-        if (b.value.equals(value)) {
-          return b;
-        }
-      }
-      throw new IllegalArgumentException("Unexpected value '" + value + "'");
-    }
-
-    public static class Adapter extends TypeAdapter<TransactionRolesEnum> {
-      @Override
-      public void write(final JsonWriter jsonWriter, final TransactionRolesEnum enumeration) throws IOException {
-        jsonWriter.value(enumeration.getValue());
-      }
-
-      @Override
-      public TransactionRolesEnum read(final JsonReader jsonReader) throws IOException {
-        String value =  jsonReader.nextString();
-        return TransactionRolesEnum.fromValue(value);
-      }
-    }
-  }
-
-  public static final String SERIALIZED_NAME_TRANSACTION_ROLES = "transactionRoles";
-  @SerializedName(SERIALIZED_NAME_TRANSACTION_ROLES)
-  private TransactionRolesEnum transactionRoles;
-
-  public static final String SERIALIZED_NAME_IS_DEFAULT = "isDefault";
-  @SerializedName(SERIALIZED_NAME_IS_DEFAULT)
-  private Boolean isDefault;
-
-
-  public TransactionConfigurationTypeAlias type(String type) {
-    this.type = type; 
+    this.properties.put(key, propertiesItem);
     return this;
   }
 
    /**
-   * The transaction type
-   * @return type
+   * Properties to set for a Legal Entity. All time-variant properties must have same EffectiveFrom date. Properties not included in the request will not be amended.
+   * @return properties
   **/
-  @ApiModelProperty(required = true, value = "The transaction type")
-  public String getType() {
-    return type;
+  @ApiModelProperty(value = "Properties to set for a Legal Entity. All time-variant properties must have same EffectiveFrom date. Properties not included in the request will not be amended.")
+  public Map<String, Property> getProperties() {
+    return properties;
   }
 
-  public void setType(String type) {
-    this.type = type;
-  }
-
-
-  public TransactionConfigurationTypeAlias description(String description) {
-    this.description = description; 
-    return this;
-  }
-
-   /**
-   * Brief description of the transaction
-   * @return description
-  **/
-  @ApiModelProperty(required = true, value = "Brief description of the transaction")
-  public String getDescription() {
-    return description;
-  }
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-  public TransactionConfigurationTypeAlias transactionClass(String transactionClass) {
-    this.transactionClass = transactionClass; 
-    return this;
-  }
-
-   /**
-   * Relates types of a similar class. E.g. Buy/Sell, StockIn/StockOut
-   * @return transactionClass
-  **/
-  @ApiModelProperty(required = true, value = "Relates types of a similar class. E.g. Buy/Sell, StockIn/StockOut")
-  public String getTransactionClass() {
-    return transactionClass;
-  }
-
-  public void setTransactionClass(String transactionClass) {
-    this.transactionClass = transactionClass;
-  }
-
-
-  public TransactionConfigurationTypeAlias transactionGroup(String transactionGroup) {
-    this.transactionGroup = transactionGroup; 
-    return this;
-  }
-
-   /**
-   * Group is a set of codes related to a source, or sync. DEPRECATED: This field will be removed, use &#x60;Source&#x60; instead
-   * @return transactionGroup
-  **/
-  @ApiModelProperty(value = "Group is a set of codes related to a source, or sync. DEPRECATED: This field will be removed, use `Source` instead")
-  public String getTransactionGroup() {
-    return transactionGroup;
-  }
-
-  public void setTransactionGroup(String transactionGroup) {
-    this.transactionGroup = transactionGroup;
-  }
-
-
-  public TransactionConfigurationTypeAlias source(String source) {
-    this.source = source; 
-    return this;
-  }
-
-   /**
-   * Used to group a set of transaction types
-   * @return source
-  **/
-  @ApiModelProperty(value = "Used to group a set of transaction types")
-  public String getSource() {
-    return source;
-  }
-
-  public void setSource(String source) {
-    this.source = source;
-  }
-
-
-  public TransactionConfigurationTypeAlias transactionRoles(TransactionRolesEnum transactionRoles) {
-    this.transactionRoles = transactionRoles; 
-    return this;
-  }
-
-   /**
-   * . The available values are: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles
-   * @return transactionRoles
-  **/
-  @ApiModelProperty(required = true, value = ". The available values are: None, LongLonger, LongShorter, ShortShorter, Shorter, ShortLonger, Longer, AllRoles")
-  public TransactionRolesEnum getTransactionRoles() {
-    return transactionRoles;
-  }
-
-  public void setTransactionRoles(TransactionRolesEnum transactionRoles) {
-    this.transactionRoles = transactionRoles;
-  }
-
-
-  public TransactionConfigurationTypeAlias isDefault(Boolean isDefault) {
-    this.isDefault = isDefault; 
-    return this;
-  }
-
-   /**
-   * IsDefault is a flag that denotes the default alias for a source. There can only be, at most, one per source.
-   * @return isDefault
-  **/
-  @ApiModelProperty(value = "IsDefault is a flag that denotes the default alias for a source. There can only be, at most, one per source.")
-  public Boolean getIsDefault() {
-    return isDefault;
-  }
-
-  public void setIsDefault(Boolean isDefault) {
-    this.isDefault = isDefault;
+  public void setProperties(Map<String, Property> properties) {
+    this.properties = properties;
   }
 
 
@@ -269,14 +84,8 @@ public class TransactionConfigurationTypeAlias {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class TransactionConfigurationTypeAlias {\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    transactionClass: ").append(toIndentedString(transactionClass)).append("\n");
-    sb.append("    transactionGroup: ").append(toIndentedString(transactionGroup)).append("\n");
-    sb.append("    source: ").append(toIndentedString(source)).append("\n");
-    sb.append("    transactionRoles: ").append(toIndentedString(transactionRoles)).append("\n");
-    sb.append("    isDefault: ").append(toIndentedString(isDefault)).append("\n");
+    sb.append("class SetLegalEntityPropertiesRequest {\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
