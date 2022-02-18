@@ -280,12 +280,12 @@ info:
     | <a name="769">769</a>|Cannot update the base currency of a portfolio with transactions loaded|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3983
+  version: 0.11.3984
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:64878
+- url: http://local-unit-test-server.lusid.com:44463
 security:
 - {}
 tags:
@@ -23420,9 +23420,8 @@ components:
             transaction portfolio's holdings by, perhaps for strategy tagging. Each
             property must be from the 'Transaction' domain and identified by a key
             in the format {domain}/{scope}/{code}, for example 'Transaction/strategies/quantsignal'.
-            Note that sub-holding keys cannot currently be added after the transaction
-            portfolio has been created; see https://support.lusid.com/knowledgebase/article/KA-01879/en-us
-            for more information.
+            See https://support.lusid.com/knowledgebase/article/KA-01879/en-us for
+            more information.
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
@@ -23757,9 +23756,8 @@ components:
             portfolio's holdings by, perhaps for strategy tagging. Each property must
             be from the 'Transaction' domain and identified by a key in the format
             {domain}/{scope}/{code}, for example 'Transaction/strategies/quantsignal'.
-            Note that sub-holding keys cannot currently be added after the transaction
-            portfolio has been created; see https://support.lusid.com/knowledgebase/article/KA-01879/en-us
-            for more information.
+            See https://support.lusid.com/knowledgebase/article/KA-01879/en-us for
+            more information.
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
@@ -27575,8 +27573,8 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/PerpetualProperty'
           description: The sub-holding properties which identify the holding. Each
-            property will be from the 'Transaction' domain. These are configured when
-            a transaction portfolio is created.
+            property will be from the 'Transaction' domain. These are configured on
+            a transaction portfolio.
           nullable: true
           type: object
         type:
@@ -27998,8 +27996,8 @@ components:
           additionalProperties:
             $ref: '#/components/schemas/PerpetualProperty'
           description: The sub-holding properties which identify the holding. Each
-            property will be from the 'Transaction' domain. These are configured when
-            a transaction portfolio is created.
+            property will be from the 'Transaction' domain. These are configured on
+            a transaction portfolio.
           nullable: true
           type: object
         properties:

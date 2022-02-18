@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **groupById** | **Integer** | The groupBy subHoldings and currency. | 
 **sequenceNumber** | **Integer** | Sequence number determining the order of the cash flow records. | 
 **effectiveDate** | **OffsetDateTime** | Indicates the date when the cash-flow settles. |  [optional]
-**subHoldingKeys** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | The sub-holding properties which identify the holding. Each property will be from the &#39;Transaction&#39; domain. These are configured when a transaction portfolio is created. |  [optional]
+**subHoldingKeys** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | The sub-holding properties which identify the holding. Each property will be from the &#39;Transaction&#39; domain. These are configured on a transaction portfolio. |  [optional]
 **type** | **String** | Indicates the record type (Closed, Open, Activity). | 
 **movementName** | **String** | Indicates the specific movement of the transaction that generated this cash flow. | 
 **cashflow** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
