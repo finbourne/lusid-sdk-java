@@ -280,12 +280,12 @@ info:
     | <a name="769">769</a>|Cannot update the base currency of a portfolio with transactions loaded|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3986
+  version: 0.11.3985
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:44556
+- url: https://fbn-prd.lusid.com/api
 security:
 - {}
 tags:
@@ -14036,7 +14036,7 @@ paths:
             Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition,
             Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData,
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
-            Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity'
+            Block, Participation, Package, OrderInstruction, CustomEntity'
           enum:
           - NotDefined
           - Transaction
@@ -14063,7 +14063,6 @@ paths:
           - Participation
           - Package
           - OrderInstruction
-          - NextBestAction
           - CustomEntity
           type: string
         style: simple
@@ -14147,7 +14146,7 @@ paths:
             Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition,
             Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData,
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
-            Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity'
+            Block, Participation, Package, OrderInstruction, CustomEntity'
           enum:
           - NotDefined
           - Transaction
@@ -14174,7 +14173,6 @@ paths:
           - Participation
           - Package
           - OrderInstruction
-          - NextBestAction
           - CustomEntity
           type: string
         style: simple
@@ -14276,7 +14274,7 @@ paths:
             Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition,
             Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData,
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
-            Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity'
+            Block, Participation, Package, OrderInstruction, CustomEntity'
           enum:
           - NotDefined
           - Transaction
@@ -14303,7 +14301,6 @@ paths:
           - Participation
           - Package
           - OrderInstruction
-          - NextBestAction
           - CustomEntity
           type: string
         style: simple
@@ -25127,7 +25124,7 @@ components:
             Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata,
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
             LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
-            NextBestAction, CustomEntity'
+            CustomEntity'
           enum:
           - NotDefined
           - Transaction
@@ -25154,7 +25151,6 @@ components:
           - Participation
           - Package
           - OrderInstruction
-          - NextBestAction
           - CustomEntity
           type: string
         scope:
@@ -25383,7 +25379,7 @@ components:
             Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata,
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
             LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
-            NextBestAction, CustomEntity'
+            CustomEntity'
           enum:
           - NotDefined
           - Transaction
@@ -25410,7 +25406,6 @@ components:
           - Participation
           - Package
           - OrderInstruction
-          - NextBestAction
           - CustomEntity
           type: string
         scope:
@@ -31162,7 +31157,7 @@ components:
             Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata,
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
             LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
-            NextBestAction, CustomEntity'
+            CustomEntity'
           enum:
           - NotDefined
           - Transaction
@@ -31189,7 +31184,6 @@ components:
           - Participation
           - Package
           - OrderInstruction
-          - NextBestAction
           - CustomEntity
           type: string
         scope:
@@ -31341,7 +31335,7 @@ components:
             Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata,
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
             LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
-            NextBestAction, CustomEntity'
+            CustomEntity'
           enum:
           - NotDefined
           - Transaction
@@ -31368,7 +31362,6 @@ components:
           - Participation
           - Package
           - OrderInstruction
-          - NextBestAction
           - CustomEntity
           type: string
         scope:
@@ -37757,7 +37750,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://dummyurl.lusid.com/
+          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
           scopes: {}
       type: oauth2
 x-tagGroups:
