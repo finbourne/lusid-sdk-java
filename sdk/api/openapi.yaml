@@ -280,12 +280,12 @@ info:
     | <a name="769">769</a>|Cannot update the base currency of a portfolio with transactions loaded|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.3998
+  version: 0.11.3996
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:44308
+- url: https://fbn-prd.lusid.com/api
 security:
 - {}
 tags:
@@ -18162,25 +18162,6 @@ paths:
           nullable: true
           type: string
         style: form
-      - description: "When set to true, instrument resolution will be attempted for\
-          \ all transactions and holdings for the given identifier and date range.\r\
-          \n            When set to false (default behaviour), instrument resolution\
-          \ will only be attempted for those transactions and holdings that were previously\
-          \ unresolved."
-        explode: true
-        in: query
-        name: reResolve
-        required: false
-        schema:
-          default: false
-          description: "When set to true, instrument resolution will be attempted\
-            \ for all transactions and holdings for the given identifier and date\
-            \ range.\r\n            When set to false (default behaviour), instrument\
-            \ resolution will only be attempted for those transactions and holdings\
-            \ that were previously unresolved."
-          type: boolean
-        style: form
-        x-nullable: true
       requestBody:
         content:
           application/json-patch+json:
@@ -37776,7 +37757,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://dummyurl.lusid.com/
+          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
           scopes: {}
       type: oauth2
 x-tagGroups:
