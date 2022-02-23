@@ -280,12 +280,12 @@ info:
     | <a name="769">769</a>|Cannot update the base currency of a portfolio with transactions loaded|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4001
+  version: 0.11.4002
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:31592
+- url: http://local-unit-test-server.lusid.com:48882
 security:
 - {}
 tags:
@@ -17402,10 +17402,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ListCutLabelDefinitions: List Existing Cut Labels'
+      summary: 'ListCutLabelDefinitions: List Existing Cut Labels'
       tags:
       - Cut Label Definitions
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Stable
       x-accepts: application/json
     post:
       description: Create a Cut Label valid in all scopes
@@ -17490,10 +17490,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] CreateCutLabelDefinition: Create a Cut Label'
+      summary: 'CreateCutLabelDefinition: Create a Cut Label'
       tags:
       - Cut Label Definitions
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Stable
       x-contentType: application/json-patch+json
       x-accepts: application/json
   /api/systemconfiguration/cutlabels/{code}:
@@ -17550,10 +17550,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] DeleteCutLabelDefinition: Delete a Cut Label'
+      summary: 'DeleteCutLabelDefinition: Delete a Cut Label'
       tags:
       - Cut Label Definitions
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Stable
       x-accepts: application/json
     get:
       description: Get a specified cut label at a given time
@@ -17617,10 +17617,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetCutLabelDefinition: Get a Cut Label'
+      summary: 'GetCutLabelDefinition: Get a Cut Label'
       tags:
       - Cut Label Definitions
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Stable
       x-accepts: application/json
     put:
       description: Update a specified cut label
@@ -17715,10 +17715,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] UpdateCutLabelDefinition: Update a Cut Label'
+      summary: 'UpdateCutLabelDefinition: Update a Cut Label'
       tags:
       - Cut Label Definitions
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Stable
       x-contentType: application/json-patch+json
       x-accepts: application/json
   /api/systemconfiguration/transactions:
