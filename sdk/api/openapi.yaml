@@ -280,12 +280,12 @@ info:
     | <a name="769">769</a>|Cannot update the base currency of a portfolio with transactions loaded|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4005
+  version: 0.11.4006
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:59505
+- url: http://local-unit-test-server.lusid.com:37514
 security:
 - {}
 tags:
@@ -16897,10 +16897,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] SearchPortfolioGroups: Search Portfolio Groups'
+      summary: 'SearchPortfolioGroups: Search Portfolio Groups'
       tags:
       - Search
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Stable
       x-accepts: application/json
   /api/search/portfolios:
     get:
@@ -17082,10 +17082,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] SearchPortfolios: Search Portfolios'
+      summary: 'SearchPortfolios: Search Portfolios'
       tags:
       - Search
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Stable
       x-accepts: application/json
   /api/search/propertydefinitions:
     get:
@@ -17267,10 +17267,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] SearchProperties: Search Property Definitions'
+      summary: 'SearchProperties: Search Property Definitions'
       tags:
       - Search
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Stable
       x-accepts: application/json
   /api/systemconfiguration/cutlabels:
     get:
@@ -18162,6 +18162,25 @@ paths:
           nullable: true
           type: string
         style: form
+      - description: "When set to true, instrument resolution will be attempted for\
+          \ all transactions and holdings for the given identifier and date range.\r\
+          \n            When set to false (default behaviour), instrument resolution\
+          \ will only be attempted for those transactions and holdings that were previously\
+          \ unresolved."
+        explode: true
+        in: query
+        name: reResolve
+        required: false
+        schema:
+          default: false
+          description: "When set to true, instrument resolution will be attempted\
+            \ for all transactions and holdings for the given identifier and date\
+            \ range.\r\n            When set to false (default behaviour), instrument\
+            \ resolution will only be attempted for those transactions and holdings\
+            \ that were previously unresolved."
+          type: boolean
+        style: form
+        x-nullable: true
       requestBody:
         content:
           application/json-patch+json:
