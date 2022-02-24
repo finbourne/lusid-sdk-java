@@ -280,12 +280,12 @@ info:
     | <a name="769">769</a>|Cannot update the base currency of a portfolio with transactions loaded|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4002
+  version: 0.11.4003
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:48882
+- url: http://local-unit-test-server.lusid.com:32485
 security:
 - {}
 tags:
@@ -16727,10 +16727,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ListScopes: List Scopes'
+      summary: 'ListScopes: List Scopes'
       tags:
       - Scopes
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Stable
       x-accepts: application/json
   /api/search/portfoliogroups:
     get:
