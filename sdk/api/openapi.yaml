@@ -280,12 +280,12 @@ info:
     | <a name="769">769</a>|Cannot update the base currency of a portfolio with transactions loaded|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4031
+  version: 0.11.4032
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:48328
+- url: http://local-unit-test-server.lusid.com:44111
 security:
 - {}
 tags:
@@ -7948,10 +7948,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] CreatePortfolioGroup: Create portfolio group'
+      summary: 'CreatePortfolioGroup: Create portfolio group'
       tags:
       - Portfolio Groups
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Stable
       x-contentType: application/json-patch+json
       x-accepts: application/json
   /api/portfoliogroups/{scope}/{code}:
@@ -8129,10 +8129,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetPortfolioGroup: Get portfolio group'
+      summary: 'GetPortfolioGroup: Get portfolio group'
       tags:
       - Portfolio Groups
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Stable
       x-accepts: application/json
     put:
       description: "Update the definition of a single portfolio group. Not all elements\
@@ -8357,10 +8357,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetPortfolioGroupCommands: Get portfolio group commands'
+      summary: 'GetPortfolioGroupCommands: Get portfolio group commands'
       tags:
       - Portfolio Groups
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Stable
       x-accepts: application/json
   /api/portfoliogroups/{scope}/{code}/expansion:
     get:
@@ -8718,11 +8718,11 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetHoldingsForPortfolioGroup: Get holdings for transaction
-        portfolios in portfolio group'
+      summary: 'GetHoldingsForPortfolioGroup: Get holdings for transaction portfolios
+        in portfolio group'
       tags:
       - Portfolio Groups
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Stable
       x-accepts: application/json
   /api/portfoliogroups/{scope}/{code}/metadata:
     get:
@@ -10547,11 +10547,11 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetTransactionsForPortfolioGroup: Get transactions
-        for transaction portfolios in a portfolio group'
+      summary: 'GetTransactionsForPortfolioGroup: Get transactions for transaction
+        portfolios in a portfolio group'
       tags:
       - Portfolio Groups
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Stable
       x-accepts: application/json
   /api/portfoliogroups/{scope}/{code}/transactions/$build:
     post:
@@ -11225,11 +11225,11 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] BuildTransactionsForPortfolioGroup: Build transactions
-        for transaction portfolios in a portfolio group'
+      summary: 'BuildTransactionsForPortfolioGroup: Build transactions for transaction
+        portfolios in a portfolio group'
       tags:
       - Portfolio Groups
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Stable
       x-contentType: application/json-patch+json
       x-accepts: application/json
   /api/portfolios:
