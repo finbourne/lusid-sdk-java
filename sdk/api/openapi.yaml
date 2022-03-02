@@ -280,12 +280,12 @@ info:
     | <a name="769">769</a>|Cannot update the base currency of a portfolio with transactions loaded|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4033
+  version: 0.11.4035
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: http://local-unit-test-server.lusid.com:32160
 security:
 - {}
 tags:
@@ -2608,10 +2608,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] CreateDerivedPortfolio: Create derived portfolio'
+      summary: 'CreateDerivedPortfolio: Create derived portfolio'
       tags:
       - Derived Transaction Portfolios
-      x-fbn-apistatus: EarlyAccess
+      x-fbn-apistatus: Stable
       x-contentType: application/json-patch+json
       x-accepts: application/json
   /api/derivedtransactionportfolios/{scope}/{code}/details:
@@ -38164,7 +38164,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
