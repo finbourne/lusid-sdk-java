@@ -278,15 +278,14 @@ info:
     | <a name="763">763</a>|Invalid Lusid Entity Identifier Unit|  |
     | <a name="768">768</a>|Fee rule not found.|  |
     | <a name="769">769</a>|Cannot update the base currency of a portfolio with transactions loaded|  |
-    | <a name="771">771</a>|Transaction configuration source not found|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4051
+  version: 0.11.4052
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:57018
+- url: http://local-unit-test-server.lusid.com:50481
 security:
 - {}
 tags:
@@ -430,12 +429,6 @@ tags:
     a fundamental building block of LUSID, and care should be exercised when changing
     them. For more information, see https://support.lusid.com/knowledgebase/article/KA-01872/.
   name: System Configuration
-- description: LUSID is a transaction-based system. Every transaction in a particular
-    instrument should belong to a transaction type in order that it might contribute
-    to measuring your holding (position) in that instrument. Transaction types are
-    a fundamental building block of LUSID, and care should be exercised when changing
-    them. For more information, see https://support.lusid.com/knowledgebase/article/KA-01872/.
-  name: Transaction Configuration
 - description: A transaction portfolio stores transactions and calculates instrument
     holdings and cash balances, enabling valuation, analytic, profit & loss, risk
     assessment and other operations to be performed. Note that a transaction portfolio
@@ -35304,20 +35297,20 @@ components:
             key: key
       properties:
         aliases:
-          description: List of transaction types that map to this specific transaction
-            configuration
+          description: List of transaction codes that map to this specific transaction
+            model
           items:
             $ref: '#/components/schemas/TransactionConfigurationTypeAlias'
           type: array
         movements:
-          description: Movement data for the transaction type
+          description: Movement data for the transaction code
           items:
             $ref: '#/components/schemas/TransactionConfigurationMovementData'
           type: array
         properties:
           additionalProperties:
             $ref: '#/components/schemas/PerpetualProperty'
-          description: Properties attached to the transaction type
+          description: Properties attached to the underlying holding.
           nullable: true
           type: object
       required:
@@ -35475,27 +35468,21 @@ components:
           - CarryAsPnl
           type: string
         side:
-          description: The Side determines which of the fields from our transaction
-            are used to generate the Movement. Side1 means the 'security' side of
-            the transaction, ie the Instrument and Units; Side2 means the 'cash' side,
-            ie the Total Consideration
+          description: The movement side
           type: string
         direction:
-          description: ' A multiplier to apply to Transaction amounts; the values
-            are -1 to indicate to reverse the signs and 1 to indicate to use the signed
-            values from the Transaction directly. For a typical Transaction with unsigned
-            values, 1 means increase, -1 means decrease'
+          description: The movement direction
           format: int32
           type: integer
         properties:
           additionalProperties:
             $ref: '#/components/schemas/PerpetualProperty'
-          description: The properties associated with the underlying Movement
+          description: The properties associated with the underlying Movement.
           nullable: true
           type: object
         mappings:
           description: This allows you to map a transaction property to a property
-            on the underlying holding
+            on the underlying holding.
           items:
             $ref: '#/components/schemas/TransactionPropertyMapping'
           nullable: true
@@ -35669,16 +35656,16 @@ components:
         mapFrom: mapFrom
       properties:
         propertyKey:
-          description: The key that uniquely identifies the property. It has the format
-            {domain}/{scope}/{code}
+          description: Uniquely identifies the property definiton and consists of
+            a Domain, Scope and Code.
           type: string
         mapFrom:
-          description: The Property Key of the Property to map from
+          description: The Property Key of the Property to map from.
           nullable: true
           type: string
         setTo:
           additionalProperties: false
-          description: A pointer to the Property being mapped from
+          description: A pointer to the Property being mapped from.
           nullable: true
           type: object
       required:
@@ -38227,7 +38214,6 @@ x-tagGroups:
   - Sequences
   - Structured Result Data
   - System Configuration
-  - Transaction Configuration
   - Transaction Portfolios
   - Translation
 
