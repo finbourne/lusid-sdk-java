@@ -278,14 +278,15 @@ info:
     | <a name="763">763</a>|Invalid Lusid Entity Identifier Unit|  |
     | <a name="768">768</a>|Fee rule not found.|  |
     | <a name="769">769</a>|Cannot update the base currency of a portfolio with transactions loaded|  |
+    | <a name="771">771</a>|Transaction configuration source not found|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4066
+  version: 0.11.4070
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: http://local-unit-test-server.lusid.com:33535
 security:
 - {}
 tags:
@@ -429,6 +430,12 @@ tags:
     a fundamental building block of LUSID, and care should be exercised when changing
     them. For more information, see https://support.lusid.com/knowledgebase/article/KA-01872/.
   name: System Configuration
+- description: LUSID is a transaction-based system. Every transaction in a particular
+    instrument should belong to a transaction type in order that it might contribute
+    to measuring your holding (position) in that instrument. Transaction types are
+    a fundamental building block of LUSID, and care should be exercised when changing
+    them. For more information, see https://support.lusid.com/knowledgebase/article/KA-01872/.
+  name: Transaction Configuration
 - description: Methods to retrieve applicable fees for a transaction, and manage the
     rules that defined them
   name: Transaction Fees
@@ -35301,20 +35308,20 @@ components:
             key: key
       properties:
         aliases:
-          description: List of transaction codes that map to this specific transaction
-            model
+          description: List of transaction types that map to this specific transaction
+            configuration
           items:
             $ref: '#/components/schemas/TransactionConfigurationTypeAlias'
           type: array
         movements:
-          description: Movement data for the transaction code
+          description: Movement data for the transaction type
           items:
             $ref: '#/components/schemas/TransactionConfigurationMovementData'
           type: array
         properties:
           additionalProperties:
             $ref: '#/components/schemas/PerpetualProperty'
-          description: Properties attached to the underlying holding.
+          description: Properties attached to the transaction type
           nullable: true
           type: object
       required:
@@ -35472,21 +35479,27 @@ components:
           - CarryAsPnl
           type: string
         side:
-          description: The movement side
+          description: The Side determines which of the fields from our transaction
+            are used to generate the Movement. Side1 means the 'security' side of
+            the transaction, ie the Instrument and Units; Side2 means the 'cash' side,
+            ie the Total Consideration
           type: string
         direction:
-          description: The movement direction
+          description: ' A multiplier to apply to Transaction amounts; the values
+            are -1 to indicate to reverse the signs and 1 to indicate to use the signed
+            values from the Transaction directly. For a typical Transaction with unsigned
+            values, 1 means increase, -1 means decrease'
           format: int32
           type: integer
         properties:
           additionalProperties:
             $ref: '#/components/schemas/PerpetualProperty'
-          description: The properties associated with the underlying Movement.
+          description: The properties associated with the underlying Movement
           nullable: true
           type: object
         mappings:
           description: This allows you to map a transaction property to a property
-            on the underlying holding.
+            on the underlying holding
           items:
             $ref: '#/components/schemas/TransactionPropertyMapping'
           nullable: true
@@ -35660,16 +35673,16 @@ components:
         mapFrom: mapFrom
       properties:
         propertyKey:
-          description: Uniquely identifies the property definiton and consists of
-            a Domain, Scope and Code.
+          description: The key that uniquely identifies the property. It has the format
+            {domain}/{scope}/{code}
           type: string
         mapFrom:
-          description: The Property Key of the Property to map from.
+          description: The Property Key of the Property to map from
           nullable: true
           type: string
         setTo:
           additionalProperties: false
-          description: A pointer to the Property being mapped from.
+          description: A pointer to the Property being mapped from
           nullable: true
           type: object
       required:
@@ -38168,7 +38181,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
@@ -38218,6 +38231,7 @@ x-tagGroups:
   - Sequences
   - Structured Result Data
   - System Configuration
+  - Transaction Configuration
   - Transaction Fees
   - Transaction Portfolios
   - Translation
