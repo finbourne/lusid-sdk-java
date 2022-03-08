@@ -7,7 +7,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**modelOptionsType** | [**ModelOptionsTypeEnum**](#ModelOptionsTypeEnum) | The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions | 
+**modelOptionsType** | [**ModelOptionsTypeEnum**](#ModelOptionsTypeEnum) | The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions | 
 
 
 
@@ -20,6 +20,7 @@ OPAQUEMODELOPTIONS | &quot;OpaqueModelOptions&quot;
 EMPTYMODELOPTIONS | &quot;EmptyModelOptions&quot;
 INDEXMODELOPTIONS | &quot;IndexModelOptions&quot;
 FXFORWARDMODELOPTIONS | &quot;FxForwardModelOptions&quot;
+FUNDINGLEGMODELOPTIONS | &quot;FundingLegModelOptions&quot;
 
 
 
