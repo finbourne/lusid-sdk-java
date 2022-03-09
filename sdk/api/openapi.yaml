@@ -281,7 +281,7 @@ info:
     | <a name="771">771</a>|Transaction configuration source not found|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4076
+  version: 0.11.4079
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -27932,7 +27932,7 @@ components:
             Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
-            SimpleInstrument, Repo, Equity, ExchangeTradedOption'
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -27963,6 +27963,7 @@ components:
           - Repo
           - Equity
           - ExchangeTradedOption
+          - ReferenceInstrument
           type: string
       required:
       - instrumentType
