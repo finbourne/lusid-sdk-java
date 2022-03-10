@@ -281,12 +281,12 @@ info:
     | <a name="771">771</a>|Transaction configuration source not found|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4079
+  version: 0.11.4080
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: http://local-unit-test-server.lusid.com:33316
 security:
 - {}
 tags:
@@ -24754,18 +24754,8 @@ components:
               library: Lusid
               model: SimpleStatic
           resultDataRules:
-          - documentCode: documentCode
-            quoteInterval: quoteInterval
-            resourceKey: resourceKey
-            supplier: supplier
-            asAt: 2000-01-23T04:56:07.000+00:00
-            dataScope: dataScope
-          - documentCode: documentCode
-            quoteInterval: quoteInterval
-            resourceKey: resourceKey
-            supplier: supplier
-            asAt: 2000-01-23T04:56:07.000+00:00
-            dataScope: dataScope
+          - resultKeyRuleType: Invalid
+          - resultKeyRuleType: Invalid
           options:
             enableUseOfCachedUnitResults: true
             windowValuationOnInstrumentStartEnd: true
@@ -24997,18 +24987,8 @@ components:
                 library: Lusid
                 model: SimpleStatic
             resultDataRules:
-            - documentCode: documentCode
-              quoteInterval: quoteInterval
-              resourceKey: resourceKey
-              supplier: supplier
-              asAt: 2000-01-23T04:56:07.000+00:00
-              dataScope: dataScope
-            - documentCode: documentCode
-              quoteInterval: quoteInterval
-              resourceKey: resourceKey
-              supplier: supplier
-              asAt: 2000-01-23T04:56:07.000+00:00
-              dataScope: dataScope
+            - resultKeyRuleType: Invalid
+            - resultKeyRuleType: Invalid
             options:
               enableUseOfCachedUnitResults: true
               windowValuationOnInstrumentStartEnd: true
@@ -26717,18 +26697,8 @@ components:
                 library: Lusid
                 model: SimpleStatic
             resultDataRules:
-            - documentCode: documentCode
-              quoteInterval: quoteInterval
-              resourceKey: resourceKey
-              supplier: supplier
-              asAt: 2000-01-23T04:56:07.000+00:00
-              dataScope: dataScope
-            - documentCode: documentCode
-              quoteInterval: quoteInterval
-              resourceKey: resourceKey
-              supplier: supplier
-              asAt: 2000-01-23T04:56:07.000+00:00
-              dataScope: dataScope
+            - resultKeyRuleType: Invalid
+            - resultKeyRuleType: Invalid
             options:
               enableUseOfCachedUnitResults: true
               windowValuationOnInstrumentStartEnd: true
@@ -31162,18 +31132,8 @@ components:
             library: Lusid
             model: SimpleStatic
         resultDataRules:
-        - documentCode: documentCode
-          quoteInterval: quoteInterval
-          resourceKey: resourceKey
-          supplier: supplier
-          asAt: 2000-01-23T04:56:07.000+00:00
-          dataScope: dataScope
-        - documentCode: documentCode
-          quoteInterval: quoteInterval
-          resourceKey: resourceKey
-          supplier: supplier
-          asAt: 2000-01-23T04:56:07.000+00:00
-          dataScope: dataScope
+        - resultKeyRuleType: Invalid
+        - resultKeyRuleType: Invalid
         options:
           enableUseOfCachedUnitResults: true
           windowValuationOnInstrumentStartEnd: true
@@ -31231,7 +31191,7 @@ components:
             \ value or simply disagrees with the\r\ncalculated result) and use that\
             \ in calculation of the dirty price."
           items:
-            $ref: '#/components/schemas/ResultDataKeyRule'
+            $ref: '#/components/schemas/ResultKeyRule'
           nullable: true
           type: array
       type: object
@@ -33239,18 +33199,8 @@ components:
                   library: Lusid
                   model: SimpleStatic
               resultDataRules:
-              - documentCode: documentCode
-                quoteInterval: quoteInterval
-                resourceKey: resourceKey
-                supplier: supplier
-                asAt: 2000-01-23T04:56:07.000+00:00
-                dataScope: dataScope
-              - documentCode: documentCode
-                quoteInterval: quoteInterval
-                resourceKey: resourceKey
-                supplier: supplier
-                asAt: 2000-01-23T04:56:07.000+00:00
-                dataScope: dataScope
+              - resultKeyRuleType: Invalid
+              - resultKeyRuleType: Invalid
               options:
                 enableUseOfCachedUnitResults: true
                 windowValuationOnInstrumentStartEnd: true
@@ -33370,18 +33320,8 @@ components:
                   library: Lusid
                   model: SimpleStatic
               resultDataRules:
-              - documentCode: documentCode
-                quoteInterval: quoteInterval
-                resourceKey: resourceKey
-                supplier: supplier
-                asAt: 2000-01-23T04:56:07.000+00:00
-                dataScope: dataScope
-              - documentCode: documentCode
-                quoteInterval: quoteInterval
-                resourceKey: resourceKey
-                supplier: supplier
-                asAt: 2000-01-23T04:56:07.000+00:00
-                dataScope: dataScope
+              - resultKeyRuleType: Invalid
+              - resultKeyRuleType: Invalid
               options:
                 enableUseOfCachedUnitResults: true
                 windowValuationOnInstrumentStartEnd: true
@@ -34776,59 +34716,6 @@ components:
       required:
       - values
       type: object
-    ResultDataKeyRule:
-      additionalProperties: false
-      description: A rule that describes how we resolve (unit) result data.
-      example:
-        documentCode: documentCode
-        quoteInterval: quoteInterval
-        resourceKey: resourceKey
-        supplier: supplier
-        asAt: 2000-01-23T04:56:07.000+00:00
-        dataScope: dataScope
-      properties:
-        resourceKey:
-          description: The result data key that identifies the address pattern that
-            this is a rule for
-          maxLength: 256
-          minLength: 0
-          type: string
-        supplier:
-          description: the result resource supplier (where the data comes from)
-          maxLength: 32
-          minLength: 0
-          type: string
-        dataScope:
-          description: which is the scope in which the data should be found
-          maxLength: 256
-          minLength: 1
-          pattern: ^[a-zA-Z0-9\-_]+$
-          type: string
-        documentCode:
-          description: document code that defines which document is desired
-          maxLength: 256
-          minLength: 1
-          type: string
-        quoteInterval:
-          description: "Shorthand for the time interval used to select result data.\
-            \ This must be a dot-separated string\r\n            specifying a start\
-            \ and end date, for example '5D.0D' to look back 5 days from today (0\
-            \ days ago)."
-          maxLength: 16
-          minLength: 0
-          nullable: true
-          type: string
-        asAt:
-          description: The AsAt predicate specification.
-          format: date-time
-          nullable: true
-          type: string
-      required:
-      - dataScope
-      - documentCode
-      - resourceKey
-      - supplier
-      type: object
     ResultDataSchema:
       additionalProperties: false
       example:
@@ -34861,6 +34748,24 @@ components:
             $ref: '#/components/schemas/FieldSchema'
           nullable: true
           type: object
+      type: object
+    ResultKeyRule:
+      additionalProperties: false
+      description: A rule that describes how we resolve (unit) result data.
+      discriminator:
+        propertyName: resultKeyRuleType
+      example:
+        resultKeyRuleType: Invalid
+      properties:
+        resultKeyRuleType:
+          description: 'The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule'
+          enum:
+          - Invalid
+          - ResultDataKeyRule
+          - PortfolioResultDataKeyRule
+          type: string
+      required:
+      - resultKeyRuleType
       type: object
     ScopeDefinition:
       additionalProperties: false
@@ -36737,18 +36642,8 @@ components:
                 library: Lusid
                 model: SimpleStatic
             resultDataRules:
-            - documentCode: documentCode
-              quoteInterval: quoteInterval
-              resourceKey: resourceKey
-              supplier: supplier
-              asAt: 2000-01-23T04:56:07.000+00:00
-              dataScope: dataScope
-            - documentCode: documentCode
-              quoteInterval: quoteInterval
-              resourceKey: resourceKey
-              supplier: supplier
-              asAt: 2000-01-23T04:56:07.000+00:00
-              dataScope: dataScope
+            - resultKeyRuleType: Invalid
+            - resultKeyRuleType: Invalid
             options:
               enableUseOfCachedUnitResults: true
               windowValuationOnInstrumentStartEnd: true
@@ -36903,18 +36798,8 @@ components:
                   library: Lusid
                   model: SimpleStatic
               resultDataRules:
-              - documentCode: documentCode
-                quoteInterval: quoteInterval
-                resourceKey: resourceKey
-                supplier: supplier
-                asAt: 2000-01-23T04:56:07.000+00:00
-                dataScope: dataScope
-              - documentCode: documentCode
-                quoteInterval: quoteInterval
-                resourceKey: resourceKey
-                supplier: supplier
-                asAt: 2000-01-23T04:56:07.000+00:00
-                dataScope: dataScope
+              - resultKeyRuleType: Invalid
+              - resultKeyRuleType: Invalid
               options:
                 enableUseOfCachedUnitResults: true
                 windowValuationOnInstrumentStartEnd: true
@@ -38182,7 +38067,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
