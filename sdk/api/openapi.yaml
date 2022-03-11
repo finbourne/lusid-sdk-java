@@ -96,6 +96,7 @@ info:
     | <a name="171">171</a>|Entity Already Exists In Group|  |
     | <a name="173">173</a>|Entity With Id Already Exists|  |
     | <a name="174">174</a>|Derived Portfolio Details Do Not Exist|  |
+    | <a name="175">175</a>|Entity Not In Group|  |
     | <a name="176">176</a>|Portfolio With Name Already Exists|  |
     | <a name="177">177</a>|Invalid Transactions|  |
     | <a name="178">178</a>|Reference Portfolio Not Found|  |
@@ -283,12 +284,12 @@ info:
     | <a name="775">775</a>|Fund accounting document cannot be processed.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4089
+  version: 0.11.4090
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:37484
+- url: http://local-unit-test-server.lusid.com:43923
 security:
 - {}
 tags:
