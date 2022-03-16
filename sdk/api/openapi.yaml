@@ -284,12 +284,12 @@ info:
     | <a name="775">775</a>|Fund accounting document cannot be processed.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4108
+  version: 0.11.4109
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:63618
+- url: http://local-unit-test-server.lusid.com:63112
 security:
 - {}
 tags:
@@ -17947,7 +17947,8 @@ paths:
               - type: Another-Sell
                 description: Sale
                 transactionClass: MyDefault
-                transactionGroup: MyGroup
+                transactionGroup: mysource
+                source: mysource
                 transactionRoles: LongShorter
                 isDefault: false
               movements:
@@ -17970,7 +17971,8 @@ paths:
               - type: Another-Sell
                 description: Sale
                 transactionClass: MyDefault
-                transactionGroup: MyGroup
+                transactionGroup: mysource
+                source: mysource
                 transactionRoles: LongShorter
                 isDefault: false
               movements:
@@ -17993,7 +17995,8 @@ paths:
               - type: Another-Sell
                 description: Sale
                 transactionClass: MyDefault
-                transactionGroup: MyGroup
+                transactionGroup: mysource
+                source: mysource
                 transactionRoles: LongShorter
                 isDefault: false
               movements:
@@ -18016,7 +18019,8 @@ paths:
               - type: Another-Sell
                 description: Sale
                 transactionClass: MyDefault
-                transactionGroup: MyGroup
+                transactionGroup: mysource
+                source: mysource
                 transactionRoles: LongShorter
                 isDefault: false
               movements:
