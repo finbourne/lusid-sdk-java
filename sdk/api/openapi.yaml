@@ -284,12 +284,12 @@ info:
     | <a name="775">775</a>|Fund accounting document cannot be processed.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4109
+  version: 0.11.4110
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:63112
+- url: http://local-unit-test-server.lusid.com:45372
 security:
 - {}
 tags:
@@ -38176,8 +38176,9 @@ components:
           $ref: '#/components/schemas/LusidInstrument'
       type: object
     MarketContext_suppliers:
-      description: It is possible to control which supplier is used for a given asset
-        class.
+      description: "It is possible to control which supplier is used for a given asset\
+        \ class.\r\nThis field is deprecated in favour of market data rules, which\
+        \ subsumes its functionality."
       example:
         Fx: Fx
         Rates: Rates
