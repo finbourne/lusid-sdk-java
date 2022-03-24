@@ -284,12 +284,12 @@ info:
     | <a name="775">775</a>|Fund accounting document cannot be processed.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4147
+  version: 0.11.4148
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:60530
+- url: http://local-unit-test-server.lusid.com:45042
 security:
 - {}
 tags:
@@ -13306,9 +13306,6 @@ paths:
                 annualised: false
                 withFee: true
                 alias: 1M
-              returnId:
-                scope: ReturnsScope
-                code: ReturnCode
               recipeId:
                 scope: TestScope
                 code: default
@@ -13327,9 +13324,6 @@ paths:
                 annualised: false
                 withFee: true
                 alias: 1M
-              returnId:
-                scope: ReturnsScope
-                code: ReturnCode
               recipeId:
                 scope: TestScope
                 code: default
@@ -13348,9 +13342,6 @@ paths:
                 annualised: false
                 withFee: true
                 alias: 1M
-              returnId:
-                scope: ReturnsScope
-                code: ReturnCode
               recipeId:
                 scope: TestScope
                 code: default
@@ -13369,9 +13360,6 @@ paths:
                 annualised: false
                 withFee: true
                 alias: 1M
-              returnId:
-                scope: ReturnsScope
-                code: ReturnCode
               recipeId:
                 scope: TestScope
                 code: default
@@ -13388,14 +13376,14 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResourceListOfAggregatedReturn'
+                $ref: '#/components/schemas/AggregatedReturnsResponse'
             application/json:
               schema:
-                $ref: '#/components/schemas/ResourceListOfAggregatedReturn'
+                $ref: '#/components/schemas/AggregatedReturnsResponse'
             text/json:
               schema:
-                $ref: '#/components/schemas/ResourceListOfAggregatedReturn'
-          description: The aggregated returns.
+                $ref: '#/components/schemas/AggregatedReturnsResponse'
+          description: The aggregated returns grouped by return stream.
         "400":
           content:
             text/plain:
@@ -23910,9 +23898,6 @@ components:
         outputFrequency: outputFrequency
         alternativeInceptionDate: alternativeInceptionDate
         period: period
-        returnId:
-          code: code
-          scope: scope
         metrics:
         - withFee: true
           annualised: true
@@ -23928,6 +23913,11 @@ components:
           seedAmount: seedAmount
           type: type
           allowPartial: true
+        returnIds:
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
         recipeId:
           code: code
           scope: scope
@@ -23938,8 +23928,12 @@ components:
           items:
             $ref: '#/components/schemas/PerformanceReturnsMetric'
           type: array
-        returnId:
-          $ref: '#/components/schemas/ResourceId'
+        returnIds:
+          description: The Scope and code of the returns.
+          items:
+            $ref: '#/components/schemas/ResourceId'
+          nullable: true
+          type: array
         recipeId:
           $ref: '#/components/schemas/ResourceId'
         compositeMethod:
@@ -23963,6 +23957,67 @@ components:
           type: string
       required:
       - metrics
+      type: object
+    AggregatedReturnsResponse:
+      additionalProperties: false
+      example:
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        results:
+          key:
+          - compositeMembers: 5
+            compositeMembersWithoutReturn:
+            - code: code
+              scope: scope
+            - code: code
+              scope: scope
+            openingMarketValue: 0.8008281904610115
+            metricsValue:
+              key: 1.4658129805029452
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            closingMarketValue: 6.027456183070403
+            frequency: frequency
+          - compositeMembers: 5
+            compositeMembersWithoutReturn:
+            - code: code
+              scope: scope
+            - code: code
+              scope: scope
+            openingMarketValue: 0.8008281904610115
+            metricsValue:
+              key: 1.4658129805029452
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            closingMarketValue: 6.027456183070403
+            frequency: frequency
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        results:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/AggregatedReturn'
+            type: array
+          description: Aggregated returns grouped by ReturnId
+          nullable: true
+          type: object
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
       type: object
     AggregateSpec:
       additionalProperties: false
@@ -32702,75 +32757,6 @@ components:
             items:
               $ref: '#/components/schemas/AccessMetadataValue'
             type: array
-          type: array
-        href:
-          description: The URI of the resource list.
-          format: uri
-          nullable: true
-          type: string
-        links:
-          description: Collection of links.
-          items:
-            $ref: '#/components/schemas/Link'
-          nullable: true
-          type: array
-        nextPage:
-          description: The next page of results.
-          nullable: true
-          type: string
-        previousPage:
-          description: The previous page of results.
-          nullable: true
-          type: string
-      required:
-      - values
-      type: object
-    ResourceListOfAggregatedReturn:
-      additionalProperties: false
-      description: A collection of resources that can be returned from requests.
-      example:
-        previousPage: previousPage
-        nextPage: nextPage
-        values:
-        - compositeMembers: 5
-          compositeMembersWithoutReturn:
-          - code: code
-            scope: scope
-          - code: code
-            scope: scope
-          openingMarketValue: 0.8008281904610115
-          metricsValue:
-            key: 1.4658129805029452
-          effectiveAt: 2000-01-23T04:56:07.000+00:00
-          closingMarketValue: 6.027456183070403
-          frequency: frequency
-        - compositeMembers: 5
-          compositeMembersWithoutReturn:
-          - code: code
-            scope: scope
-          - code: code
-            scope: scope
-          openingMarketValue: 0.8008281904610115
-          metricsValue:
-            key: 1.4658129805029452
-          effectiveAt: 2000-01-23T04:56:07.000+00:00
-          closingMarketValue: 6.027456183070403
-          frequency: frequency
-        links:
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        href: https://openapi-generator.tech
-      properties:
-        values:
-          description: The resources to list.
-          items:
-            $ref: '#/components/schemas/AggregatedReturn'
           type: array
         href:
           description: The URI of the resource list.
