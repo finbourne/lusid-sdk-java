@@ -20,6 +20,7 @@ Name | Type | Description | Notes
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | A list of unique transaction properties and associated values to store for the transaction. Each property must be from the &#39;Transaction&#39; domain. |  [optional]
 **counterpartyId** | **String** | The identifier for the counterparty of the transaction. |  [optional]
 **source** | **String** | The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration. |  [optional]
+**otcConfirmation** | [**OtcConfirmation**](OtcConfirmation.md) |  |  [optional]
 
 
 

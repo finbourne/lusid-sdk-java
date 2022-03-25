@@ -284,12 +284,12 @@ info:
     | <a name="775">775</a>|Fund accounting document cannot be processed.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4152
+  version: 0.11.4153
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:53480
+- url: http://local-unit-test-server.lusid.com:32342
 security:
 - {}
 tags:
@@ -22379,6 +22379,10 @@ paths:
                     labelValue: Algo1
               counterpartyId: CounterpartyId-118263
               source: ""
+              otcConfirmation:
+                counterpartyAgreementId:
+                  scope: someScope
+                  code: someCode
             schema:
               description: A list of transactions to be created or updated.
               items:
@@ -22408,6 +22412,10 @@ paths:
                     labelValue: Algo1
               counterpartyId: CounterpartyId-118263
               source: ""
+              otcConfirmation:
+                counterpartyAgreementId:
+                  scope: someScope
+                  code: someCode
             schema:
               description: A list of transactions to be created or updated.
               items:
@@ -22437,6 +22445,10 @@ paths:
                     labelValue: Algo1
               counterpartyId: CounterpartyId-118263
               source: ""
+              otcConfirmation:
+                counterpartyAgreementId:
+                  scope: someScope
+                  code: someCode
             schema:
               description: A list of transactions to be created or updated.
               items:
@@ -22466,6 +22478,10 @@ paths:
                     labelValue: Algo1
               counterpartyId: CounterpartyId-118263
               source: ""
+              otcConfirmation:
+                counterpartyAgreementId:
+                  scope: someScope
+                  code: someCode
             schema:
               description: A list of transactions to be created or updated.
               items:
@@ -29028,13 +29044,12 @@ components:
       description: For the storage of any information pertinent to the confirmation
         of an OTC trade. e.g the Counterparty Agreement Code
       example:
-        counterpartyAgreementCode: counterpartyAgreementCode
+        counterpartyAgreementId:
+          code: code
+          scope: scope
       properties:
-        counterpartyAgreementCode:
-          description: The counterparty party agreement code used to identify and
-            retrieve the specific Counterparty Agreement that governs a transaction
-          nullable: true
-          type: string
+        counterpartyAgreementId:
+          $ref: '#/components/schemas/ResourceId'
       type: object
     OutputTransaction:
       additionalProperties: false
@@ -30538,7 +30553,9 @@ components:
         transaction:
           transactionCurrency: transactionCurrency
           otcConfirmation:
-            counterpartyAgreementCode: counterpartyAgreementCode
+            counterpartyAgreementId:
+              code: code
+              scope: scope
           instrumentScope: instrumentScope
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
@@ -30996,7 +31013,9 @@ components:
         transaction:
           transactionCurrency: transactionCurrency
           otcConfirmation:
-            counterpartyAgreementCode: counterpartyAgreementCode
+            counterpartyAgreementId:
+              code: code
+              scope: scope
           instrumentScope: instrumentScope
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
@@ -34089,7 +34108,9 @@ components:
           transaction:
             transactionCurrency: transactionCurrency
             otcConfirmation:
-              counterpartyAgreementCode: counterpartyAgreementCode
+              counterpartyAgreementId:
+                code: code
+                scope: scope
             instrumentScope: instrumentScope
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
@@ -34172,7 +34193,9 @@ components:
           transaction:
             transactionCurrency: transactionCurrency
             otcConfirmation:
-              counterpartyAgreementCode: counterpartyAgreementCode
+              counterpartyAgreementId:
+                code: code
+                scope: scope
             instrumentScope: instrumentScope
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
@@ -35152,7 +35175,9 @@ components:
       example:
         transactionCurrency: transactionCurrency
         otcConfirmation:
-          counterpartyAgreementCode: counterpartyAgreementCode
+          counterpartyAgreementId:
+            code: code
+            scope: scope
         instrumentScope: instrumentScope
         entryDateTime: 2000-01-23T04:56:07.000+00:00
         transactionPrice:
@@ -35788,6 +35813,10 @@ components:
       additionalProperties: false
       example:
         transactionCurrency: transactionCurrency
+        otcConfirmation:
+          counterpartyAgreementId:
+            code: code
+            scope: scope
         transactionPrice:
           price: 5.962133916683182
           type: Price
@@ -35877,6 +35906,8 @@ components:
             appropriate transaction group set in the transaction type configuration.
           nullable: true
           type: string
+        otcConfirmation:
+          $ref: '#/components/schemas/OtcConfirmation'
       required:
       - instrumentIdentifiers
       - settlementDate
@@ -37843,7 +37874,9 @@ components:
           transaction:
             transactionCurrency: transactionCurrency
             otcConfirmation:
-              counterpartyAgreementCode: counterpartyAgreementCode
+              counterpartyAgreementId:
+                code: code
+                scope: scope
             instrumentScope: instrumentScope
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
@@ -37916,7 +37949,9 @@ components:
           transaction:
             transactionCurrency: transactionCurrency
             otcConfirmation:
-              counterpartyAgreementCode: counterpartyAgreementCode
+              counterpartyAgreementId:
+                code: code
+                scope: scope
             instrumentScope: instrumentScope
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
@@ -38000,7 +38035,9 @@ components:
         values:
         - transactionCurrency: transactionCurrency
           otcConfirmation:
-            counterpartyAgreementCode: counterpartyAgreementCode
+            counterpartyAgreementId:
+              code: code
+              scope: scope
           instrumentScope: instrumentScope
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
@@ -38034,7 +38071,9 @@ components:
               key: key
         - transactionCurrency: transactionCurrency
           otcConfirmation:
-            counterpartyAgreementCode: counterpartyAgreementCode
+            counterpartyAgreementId:
+              code: code
+              scope: scope
           instrumentScope: instrumentScope
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
