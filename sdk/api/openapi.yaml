@@ -284,12 +284,12 @@ info:
     | <a name="775">775</a>|Fund accounting document cannot be processed.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4159
+  version: 0.11.4158
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:33984
+- url: https://fbn-prd.lusid.com/api
 security:
 - {}
 tags:
@@ -15445,7 +15445,6 @@ paths:
                       options:
                         useAnsiLikeSyntax: false
                         allowPartialEntitlementSuccess: false
-                        applyIso4217Rounding: false
                     inheritedRecipes: []
                     description: ""
                     holding:
@@ -15491,7 +15490,6 @@ paths:
                       options:
                         useAnsiLikeSyntax: false
                         allowPartialEntitlementSuccess: false
-                        applyIso4217Rounding: false
                     inheritedRecipes: []
                     description: ""
                     holding:
@@ -15556,7 +15554,6 @@ paths:
                       options:
                         useAnsiLikeSyntax: false
                         allowPartialEntitlementSuccess: false
-                        applyIso4217Rounding: false
                     inheritedRecipes: []
                     description: ""
                     holding:
@@ -15602,7 +15599,6 @@ paths:
                       options:
                         useAnsiLikeSyntax: false
                         allowPartialEntitlementSuccess: false
-                        applyIso4217Rounding: false
                     inheritedRecipes: []
                     description: ""
                     holding:
@@ -15667,7 +15663,6 @@ paths:
                       options:
                         useAnsiLikeSyntax: false
                         allowPartialEntitlementSuccess: false
-                        applyIso4217Rounding: false
                     inheritedRecipes: []
                     description: ""
                     holding:
@@ -15713,7 +15708,6 @@ paths:
                       options:
                         useAnsiLikeSyntax: false
                         allowPartialEntitlementSuccess: false
-                        applyIso4217Rounding: false
                     inheritedRecipes: []
                     description: ""
                     holding:
@@ -15805,7 +15799,6 @@ paths:
                   options:
                     useAnsiLikeSyntax: false
                     allowPartialEntitlementSuccess: false
-                    applyIso4217Rounding: false
                 inheritedRecipes: []
                 description: ""
                 holding:
@@ -15855,7 +15848,6 @@ paths:
                   options:
                     useAnsiLikeSyntax: false
                     allowPartialEntitlementSuccess: false
-                    applyIso4217Rounding: false
                 inheritedRecipes: []
                 description: ""
                 holding:
@@ -15905,7 +15897,6 @@ paths:
                   options:
                     useAnsiLikeSyntax: false
                     allowPartialEntitlementSuccess: false
-                    applyIso4217Rounding: false
                 inheritedRecipes: []
                 description: ""
                 holding:
@@ -15955,7 +15946,6 @@ paths:
                   options:
                     useAnsiLikeSyntax: false
                     allowPartialEntitlementSuccess: false
-                    applyIso4217Rounding: false
                 inheritedRecipes: []
                 description: ""
                 holding:
@@ -16173,7 +16163,6 @@ paths:
                     options:
                       useAnsiLikeSyntax: false
                       allowPartialEntitlementSuccess: false
-                      applyIso4217Rounding: false
                   inheritedRecipes: []
                   description: ""
                   holding:
@@ -16230,7 +16219,6 @@ paths:
                     options:
                       useAnsiLikeSyntax: false
                       allowPartialEntitlementSuccess: false
-                      applyIso4217Rounding: false
                   inheritedRecipes: []
                   description: ""
                   holding:
@@ -16287,7 +16275,6 @@ paths:
                     options:
                       useAnsiLikeSyntax: false
                       allowPartialEntitlementSuccess: false
-                      applyIso4217Rounding: false
                   inheritedRecipes: []
                   description: ""
                   holding:
@@ -24102,7 +24089,6 @@ components:
       example:
         options:
           useAnsiLikeSyntax: true
-          applyIso4217Rounding: true
           allowPartialEntitlementSuccess: true
       properties:
         options:
@@ -24139,7 +24125,6 @@ components:
         aggregation.
       example:
         useAnsiLikeSyntax: true
-        applyIso4217Rounding: true
         allowPartialEntitlementSuccess: true
       properties:
         useAnsiLikeSyntax:
@@ -24152,11 +24137,6 @@ components:
           description: "In the case of valuing a portfolio group where some, but not\
             \ all entitlements fail, should the aggregation return the valuations\r\
             \napplied only to those portfolios where entitlements checks succeeded."
-          type: boolean
-        applyIso4217Rounding:
-          description: "Various results that are units of currency might need to be\
-            \ rounded.\r\nThis will round according to the ISO4217 standard number\
-            \ of decimal places for a currency."
           type: boolean
       type: object
     Allocation:
@@ -24985,7 +24965,6 @@ components:
         aggregation:
           options:
             useAnsiLikeSyntax: true
-            applyIso4217Rounding: true
             allowPartialEntitlementSuccess: true
         pricing:
           modelChoice:
@@ -25104,7 +25083,6 @@ components:
         code: code
         aggregationOptions:
           useAnsiLikeSyntax: true
-          applyIso4217Rounding: true
           allowPartialEntitlementSuccess: true
         pricingOptions:
           enableUseOfCachedUnitResults: true
@@ -25220,7 +25198,6 @@ components:
           aggregation:
             options:
               useAnsiLikeSyntax: true
-              applyIso4217Rounding: true
               allowPartialEntitlementSuccess: true
           pricing:
             modelChoice:
@@ -26931,7 +26908,6 @@ components:
           aggregation:
             options:
               useAnsiLikeSyntax: true
-              applyIso4217Rounding: true
               allowPartialEntitlementSuccess: true
           pricing:
             modelChoice:
@@ -33368,7 +33344,6 @@ components:
             aggregation:
               options:
                 useAnsiLikeSyntax: true
-                applyIso4217Rounding: true
                 allowPartialEntitlementSuccess: true
             pricing:
               modelChoice:
@@ -33490,7 +33465,6 @@ components:
             aggregation:
               options:
                 useAnsiLikeSyntax: true
-                applyIso4217Rounding: true
                 allowPartialEntitlementSuccess: true
             pricing:
               modelChoice:
@@ -36825,7 +36799,6 @@ components:
           aggregation:
             options:
               useAnsiLikeSyntax: true
-              applyIso4217Rounding: true
               allowPartialEntitlementSuccess: true
           pricing:
             modelChoice:
@@ -36867,7 +36840,6 @@ components:
           code: code
           aggregationOptions:
             useAnsiLikeSyntax: true
-            applyIso4217Rounding: true
             allowPartialEntitlementSuccess: true
           pricingOptions:
             enableUseOfCachedUnitResults: true
@@ -36983,7 +36955,6 @@ components:
             aggregation:
               options:
                 useAnsiLikeSyntax: true
-                applyIso4217Rounding: true
                 allowPartialEntitlementSuccess: true
             pricing:
               modelChoice:
@@ -38269,7 +38240,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://dummyurl.lusid.com/
+          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
           scopes: {}
       type: oauth2
 x-tagGroups:
