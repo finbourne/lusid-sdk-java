@@ -282,15 +282,14 @@ info:
     | <a name="771">771</a>|Transaction configuration source not found|  |
     | <a name="774">774</a>|Compliance rule not found.|  |
     | <a name="775">775</a>|Fund accounting document cannot be processed.|  |
-    | <a name="778">778</a>|Unable to look up FX rate from trade ccy to portfolio ccy for some of the trades.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4175
+  version: 0.11.4172
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:34703
+- url: https://fbn-prd.lusid.com/api
 security:
 - {}
 tags:
@@ -38270,7 +38269,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://dummyurl.lusid.com/
+          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
           scopes: {}
       type: oauth2
 x-tagGroups:
