@@ -10,7 +10,7 @@ import java.io.IOException;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
-public class ApiExceptionTests {
+public class ApiExceptionTest {
 
     @Test
     public void thrown_exception_tostring_contains_requestid() throws IOException, ApiException {

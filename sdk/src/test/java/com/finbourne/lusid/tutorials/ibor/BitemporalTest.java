@@ -26,7 +26,7 @@ import static com.finbourne.lusid.utilities.TestDataUtilities.TutorialScope;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-public class Bitemporal {
+public class BitemporalTest {
 
     private static List<String> instrumentIds;
 
