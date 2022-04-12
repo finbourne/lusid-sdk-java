@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity |  [optional]
 **scope** | **String** | The scope that the property exists in. |  [optional] [readonly]
 **code** | **String** | The code of the property. Together with the domain and scope this uniquely identifies the property. |  [optional] [readonly]
-**valueRequired** | **Boolean** | This field is not implemented and should be disregarded. |  [optional]
+**valueRequired** | **Boolean** | Whether or not a value is always required for this property. |  [optional]
 **lifeTime** | [**LifeTimeEnum**](#LifeTimeEnum) | Describes how the property&#39;s values can change over time. The available values are: Perpetual, TimeVariant |  [optional]
 **constraintStyle** | **String** | Describes the uniqueness and cardinality of the property for entity objects under the property domain specified in Key. |  [optional]
 **propertyDefinitionType** | [**PropertyDefinitionTypeEnum**](#PropertyDefinitionTypeEnum) | The definition type (DerivedDefinition or Definition). The available values are: ValueProperty, DerivedDefinition |  [optional]
