@@ -287,12 +287,12 @@ info:
     | <a name="783">783</a>|The Property definition domain is not supported for derived properties|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4213
+  version: 0.11.4214
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:63507
+- url: http://local-unit-test-server.lusid.com:53326
 security:
 - {}
 tags:
@@ -25741,7 +25741,7 @@ components:
             this uniquely identifies the property.
           type: string
         valueRequired:
-          description: Whether or not a value is always required for this property.
+          description: This field is not implemented and should be disregarded.
           type: boolean
         displayName:
           description: The display name of the property.
@@ -31728,7 +31728,7 @@ components:
           readOnly: true
           type: string
         valueRequired:
-          description: Whether or not a value is always required for this property.
+          description: This field is not implemented and should be disregarded.
           type: boolean
         lifeTime:
           description: 'Describes how the property''s values can change over time.
@@ -31907,7 +31907,7 @@ components:
           readOnly: true
           type: string
         valueRequired:
-          description: Whether or not a value is always required for this property.
+          description: This field is not implemented and should be disregarded.
           type: boolean
         lifeTime:
           description: 'Describes how the property''s values can change over time.
