@@ -42,15 +42,15 @@ public class AggregatedReturn {
 
   public static final String SERIALIZED_NAME_OPENING_MARKET_VALUE = "openingMarketValue";
   @SerializedName(SERIALIZED_NAME_OPENING_MARKET_VALUE)
-  private Double openingMarketValue;
+  private java.math.BigDecimal openingMarketValue;
 
   public static final String SERIALIZED_NAME_CLOSING_MARKET_VALUE = "closingMarketValue";
   @SerializedName(SERIALIZED_NAME_CLOSING_MARKET_VALUE)
-  private Double closingMarketValue;
+  private java.math.BigDecimal closingMarketValue;
 
   public static final String SERIALIZED_NAME_METRICS_VALUE = "metricsValue";
   @SerializedName(SERIALIZED_NAME_METRICS_VALUE)
-  private Map<String, Double> metricsValue = new HashMap<>();
+  private Map<String, java.math.BigDecimal> metricsValue = new HashMap<>();
 
   public static final String SERIALIZED_NAME_FREQUENCY = "frequency";
   @SerializedName(SERIALIZED_NAME_FREQUENCY)
@@ -84,7 +84,7 @@ public class AggregatedReturn {
   }
 
 
-  public AggregatedReturn openingMarketValue(Double openingMarketValue) {
+  public AggregatedReturn openingMarketValue(java.math.BigDecimal openingMarketValue) {
     this.openingMarketValue = openingMarketValue; 
     return this;
   }
@@ -94,16 +94,16 @@ public class AggregatedReturn {
    * @return openingMarketValue
   **/
   @ApiModelProperty(value = "The opening market value.")
-  public Double getOpeningMarketValue() {
+  public java.math.BigDecimal getOpeningMarketValue() {
     return openingMarketValue;
   }
 
-  public void setOpeningMarketValue(Double openingMarketValue) {
+  public void setOpeningMarketValue(java.math.BigDecimal openingMarketValue) {
     this.openingMarketValue = openingMarketValue;
   }
 
 
-  public AggregatedReturn closingMarketValue(Double closingMarketValue) {
+  public AggregatedReturn closingMarketValue(java.math.BigDecimal closingMarketValue) {
     this.closingMarketValue = closingMarketValue; 
     return this;
   }
@@ -113,21 +113,21 @@ public class AggregatedReturn {
    * @return closingMarketValue
   **/
   @ApiModelProperty(value = "The closing market value.")
-  public Double getClosingMarketValue() {
+  public java.math.BigDecimal getClosingMarketValue() {
     return closingMarketValue;
   }
 
-  public void setClosingMarketValue(Double closingMarketValue) {
+  public void setClosingMarketValue(java.math.BigDecimal closingMarketValue) {
     this.closingMarketValue = closingMarketValue;
   }
 
 
-  public AggregatedReturn metricsValue(Map<String, Double> metricsValue) {
+  public AggregatedReturn metricsValue(Map<String, java.math.BigDecimal> metricsValue) {
     this.metricsValue = metricsValue; 
     return this;
   }
 
-  public AggregatedReturn putMetricsValueItem(String key, Double metricsValueItem) {
+  public AggregatedReturn putMetricsValueItem(String key, java.math.BigDecimal metricsValueItem) {
     this.metricsValue.put(key, metricsValueItem);
     return this;
   }
@@ -137,11 +137,11 @@ public class AggregatedReturn {
    * @return metricsValue
   **/
   @ApiModelProperty(required = true, value = "The value for the specified metric.")
-  public Map<String, Double> getMetricsValue() {
+  public Map<String, java.math.BigDecimal> getMetricsValue() {
     return metricsValue;
   }
 
-  public void setMetricsValue(Map<String, Double> metricsValue) {
+  public void setMetricsValue(Map<String, java.math.BigDecimal> metricsValue) {
     this.metricsValue = metricsValue;
   }
 

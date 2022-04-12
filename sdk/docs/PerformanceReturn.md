@@ -9,9 +9,9 @@ A list of Returns.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **effectiveAt** | **OffsetDateTime** | The effectiveAt for the return. | 
-**rateOfReturn** | **Double** | The return number. | 
-**openingMarketValue** | **Double** | The opening market value. |  [optional]
-**closingMarketValue** | **Double** | The closing market value. |  [optional]
+**rateOfReturn** | **java.math.BigDecimal** | The return number. | 
+**openingMarketValue** | **java.math.BigDecimal** | The opening market value. |  [optional]
+**closingMarketValue** | **java.math.BigDecimal** | The closing market value. |  [optional]
 **period** | **String** | Upsert the returns on a Daily or Monthly period. Defaults to Daily. |  [optional]
 
 

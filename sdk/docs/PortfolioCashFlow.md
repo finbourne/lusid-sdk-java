@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **movementName** | **String** | Indicates the specific movement of the transaction that generated this cash flow. | 
 **cashflow** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
 **balance** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
-**fxRate** | **Double** | Exchange rate between the currency of this cash flow and the reporting currency. | 
+**fxRate** | **java.math.BigDecimal** | Exchange rate between the currency of this cash flow and the reporting currency. | 
 **cashflowReportingCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
 **balanceReportingCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
 **translationGainLoss** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 

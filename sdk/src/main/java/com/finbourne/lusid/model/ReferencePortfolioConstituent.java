@@ -51,11 +51,11 @@ public class ReferencePortfolioConstituent {
 
   public static final String SERIALIZED_NAME_WEIGHT = "weight";
   @SerializedName(SERIALIZED_NAME_WEIGHT)
-  private Double weight;
+  private java.math.BigDecimal weight;
 
   public static final String SERIALIZED_NAME_FLOATING_WEIGHT = "floatingWeight";
   @SerializedName(SERIALIZED_NAME_FLOATING_WEIGHT)
-  private Double floatingWeight;
+  private java.math.BigDecimal floatingWeight;
 
   public static final String SERIALIZED_NAME_INSTRUMENT_SCOPE = "instrumentScope";
   @SerializedName(SERIALIZED_NAME_INSTRUMENT_SCOPE)
@@ -154,7 +154,7 @@ public class ReferencePortfolioConstituent {
   }
 
 
-  public ReferencePortfolioConstituent weight(Double weight) {
+  public ReferencePortfolioConstituent weight(java.math.BigDecimal weight) {
     this.weight = weight; 
     return this;
   }
@@ -164,16 +164,16 @@ public class ReferencePortfolioConstituent {
    * @return weight
   **/
   @ApiModelProperty(required = true, value = "")
-  public Double getWeight() {
+  public java.math.BigDecimal getWeight() {
     return weight;
   }
 
-  public void setWeight(Double weight) {
+  public void setWeight(java.math.BigDecimal weight) {
     this.weight = weight;
   }
 
 
-  public ReferencePortfolioConstituent floatingWeight(Double floatingWeight) {
+  public ReferencePortfolioConstituent floatingWeight(java.math.BigDecimal floatingWeight) {
     this.floatingWeight = floatingWeight; 
     return this;
   }
@@ -183,11 +183,11 @@ public class ReferencePortfolioConstituent {
    * @return floatingWeight
   **/
   @ApiModelProperty(value = "")
-  public Double getFloatingWeight() {
+  public java.math.BigDecimal getFloatingWeight() {
     return floatingWeight;
   }
 
-  public void setFloatingWeight(Double floatingWeight) {
+  public void setFloatingWeight(java.math.BigDecimal floatingWeight) {
     this.floatingWeight = floatingWeight;
   }
 

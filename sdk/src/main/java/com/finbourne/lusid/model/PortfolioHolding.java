@@ -59,11 +59,11 @@ public class PortfolioHolding {
 
   public static final String SERIALIZED_NAME_UNITS = "units";
   @SerializedName(SERIALIZED_NAME_UNITS)
-  private Double units;
+  private java.math.BigDecimal units;
 
   public static final String SERIALIZED_NAME_SETTLED_UNITS = "settledUnits";
   @SerializedName(SERIALIZED_NAME_SETTLED_UNITS)
-  private Double settledUnits;
+  private java.math.BigDecimal settledUnits;
 
   public static final String SERIALIZED_NAME_COST = "cost";
   @SerializedName(SERIALIZED_NAME_COST)
@@ -193,7 +193,7 @@ public class PortfolioHolding {
   }
 
 
-  public PortfolioHolding units(Double units) {
+  public PortfolioHolding units(java.math.BigDecimal units) {
     this.units = units; 
     return this;
   }
@@ -203,16 +203,16 @@ public class PortfolioHolding {
    * @return units
   **/
   @ApiModelProperty(required = true, value = "The total number of units of the holding.")
-  public Double getUnits() {
+  public java.math.BigDecimal getUnits() {
     return units;
   }
 
-  public void setUnits(Double units) {
+  public void setUnits(java.math.BigDecimal units) {
     this.units = units;
   }
 
 
-  public PortfolioHolding settledUnits(Double settledUnits) {
+  public PortfolioHolding settledUnits(java.math.BigDecimal settledUnits) {
     this.settledUnits = settledUnits; 
     return this;
   }
@@ -222,11 +222,11 @@ public class PortfolioHolding {
    * @return settledUnits
   **/
   @ApiModelProperty(required = true, value = "The total number of settled units of the holding.")
-  public Double getSettledUnits() {
+  public java.math.BigDecimal getSettledUnits() {
     return settledUnits;
   }
 
-  public void setSettledUnits(Double settledUnits) {
+  public void setSettledUnits(java.math.BigDecimal settledUnits) {
     this.settledUnits = settledUnits;
   }
 

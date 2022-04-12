@@ -33,7 +33,7 @@ import java.io.IOException;
 public class WeightedInstrument {
   public static final String SERIALIZED_NAME_QUANTITY = "quantity";
   @SerializedName(SERIALIZED_NAME_QUANTITY)
-  private Double quantity;
+  private java.math.BigDecimal quantity;
 
   public static final String SERIALIZED_NAME_HOLDING_IDENTIFIER = "holdingIdentifier";
   @SerializedName(SERIALIZED_NAME_HOLDING_IDENTIFIER)
@@ -44,7 +44,7 @@ public class WeightedInstrument {
   private LusidInstrument instrument;
 
 
-  public WeightedInstrument quantity(Double quantity) {
+  public WeightedInstrument quantity(java.math.BigDecimal quantity) {
     this.quantity = quantity; 
     return this;
   }
@@ -54,11 +54,11 @@ public class WeightedInstrument {
    * @return quantity
   **/
   @ApiModelProperty(value = "The quantity of the instrument that is owned.")
-  public Double getQuantity() {
+  public java.math.BigDecimal getQuantity() {
     return quantity;
   }
 
-  public void setQuantity(Double quantity) {
+  public void setQuantity(java.math.BigDecimal quantity) {
     this.quantity = quantity;
   }
 

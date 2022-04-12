@@ -73,11 +73,11 @@ public class OutputTransaction {
 
   public static final String SERIALIZED_NAME_UNITS = "units";
   @SerializedName(SERIALIZED_NAME_UNITS)
-  private Double units;
+  private java.math.BigDecimal units;
 
   public static final String SERIALIZED_NAME_TRANSACTION_AMOUNT = "transactionAmount";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_AMOUNT)
-  private Double transactionAmount;
+  private java.math.BigDecimal transactionAmount;
 
   public static final String SERIALIZED_NAME_TRANSACTION_PRICE = "transactionPrice";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_PRICE)
@@ -89,11 +89,11 @@ public class OutputTransaction {
 
   public static final String SERIALIZED_NAME_EXCHANGE_RATE = "exchangeRate";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_RATE)
-  private Double exchangeRate;
+  private java.math.BigDecimal exchangeRate;
 
   public static final String SERIALIZED_NAME_TRANSACTION_TO_PORTFOLIO_RATE = "transactionToPortfolioRate";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_TO_PORTFOLIO_RATE)
-  private Double transactionToPortfolioRate;
+  private java.math.BigDecimal transactionToPortfolioRate;
 
   public static final String SERIALIZED_NAME_TRANSACTION_CURRENCY = "transactionCurrency";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_CURRENCY)
@@ -337,7 +337,7 @@ public class OutputTransaction {
   }
 
 
-  public OutputTransaction units(Double units) {
+  public OutputTransaction units(java.math.BigDecimal units) {
     this.units = units; 
     return this;
   }
@@ -347,16 +347,16 @@ public class OutputTransaction {
    * @return units
   **/
   @ApiModelProperty(required = true, value = "The number of units transacted in the associated instrument.")
-  public Double getUnits() {
+  public java.math.BigDecimal getUnits() {
     return units;
   }
 
-  public void setUnits(Double units) {
+  public void setUnits(java.math.BigDecimal units) {
     this.units = units;
   }
 
 
-  public OutputTransaction transactionAmount(Double transactionAmount) {
+  public OutputTransaction transactionAmount(java.math.BigDecimal transactionAmount) {
     this.transactionAmount = transactionAmount; 
     return this;
   }
@@ -366,11 +366,11 @@ public class OutputTransaction {
    * @return transactionAmount
   **/
   @ApiModelProperty(value = "The total value of the transaction in the transaction currency.")
-  public Double getTransactionAmount() {
+  public java.math.BigDecimal getTransactionAmount() {
     return transactionAmount;
   }
 
-  public void setTransactionAmount(Double transactionAmount) {
+  public void setTransactionAmount(java.math.BigDecimal transactionAmount) {
     this.transactionAmount = transactionAmount;
   }
 
@@ -413,7 +413,7 @@ public class OutputTransaction {
   }
 
 
-  public OutputTransaction exchangeRate(Double exchangeRate) {
+  public OutputTransaction exchangeRate(java.math.BigDecimal exchangeRate) {
     this.exchangeRate = exchangeRate; 
     return this;
   }
@@ -423,16 +423,16 @@ public class OutputTransaction {
    * @return exchangeRate
   **/
   @ApiModelProperty(value = "The exchange rate between the transaction and settlement currency (settlement currency being represented by the TotalConsideration.Currency). For example if the transaction currency is in USD and the settlement currency is in GBP this this the USD/GBP rate.")
-  public Double getExchangeRate() {
+  public java.math.BigDecimal getExchangeRate() {
     return exchangeRate;
   }
 
-  public void setExchangeRate(Double exchangeRate) {
+  public void setExchangeRate(java.math.BigDecimal exchangeRate) {
     this.exchangeRate = exchangeRate;
   }
 
 
-  public OutputTransaction transactionToPortfolioRate(Double transactionToPortfolioRate) {
+  public OutputTransaction transactionToPortfolioRate(java.math.BigDecimal transactionToPortfolioRate) {
     this.transactionToPortfolioRate = transactionToPortfolioRate; 
     return this;
   }
@@ -442,11 +442,11 @@ public class OutputTransaction {
    * @return transactionToPortfolioRate
   **/
   @ApiModelProperty(value = "The exchange rate between the transaction and portfolio currency. For example if the transaction currency is in USD and the portfolio currency is in GBP this this the USD/GBP rate.")
-  public Double getTransactionToPortfolioRate() {
+  public java.math.BigDecimal getTransactionToPortfolioRate() {
     return transactionToPortfolioRate;
   }
 
-  public void setTransactionToPortfolioRate(Double transactionToPortfolioRate) {
+  public void setTransactionToPortfolioRate(java.math.BigDecimal transactionToPortfolioRate) {
     this.transactionToPortfolioRate = transactionToPortfolioRate;
   }
 

@@ -31,7 +31,7 @@ import java.io.IOException;
 public class TransactionPrice {
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
-  private Double price;
+  private java.math.BigDecimal price;
 
   /**
    * The available values are: Price, Yield, Spread
@@ -87,7 +87,7 @@ public class TransactionPrice {
   private TypeEnum type;
 
 
-  public TransactionPrice price(Double price) {
+  public TransactionPrice price(java.math.BigDecimal price) {
     this.price = price; 
     return this;
   }
@@ -97,11 +97,11 @@ public class TransactionPrice {
    * @return price
   **/
   @ApiModelProperty(value = "")
-  public Double getPrice() {
+  public java.math.BigDecimal getPrice() {
     return price;
   }
 
-  public void setPrice(Double price) {
+  public void setPrice(java.math.BigDecimal price) {
     this.price = price;
   }
 

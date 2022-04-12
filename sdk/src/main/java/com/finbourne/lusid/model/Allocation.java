@@ -110,7 +110,7 @@ public class Allocation {
 
   public static final String SERIALIZED_NAME_SETTLEMENT_CURRENCY_FX_RATE = "settlementCurrencyFxRate";
   @SerializedName(SERIALIZED_NAME_SETTLEMENT_CURRENCY_FX_RATE)
-  private Double settlementCurrencyFxRate;
+  private java.math.BigDecimal settlementCurrencyFxRate;
 
   public static final String SERIALIZED_NAME_COUNTERPARTY = "counterparty";
   @SerializedName(SERIALIZED_NAME_COUNTERPARTY)
@@ -466,7 +466,7 @@ public class Allocation {
   }
 
 
-  public Allocation settlementCurrencyFxRate(Double settlementCurrencyFxRate) {
+  public Allocation settlementCurrencyFxRate(java.math.BigDecimal settlementCurrencyFxRate) {
     this.settlementCurrencyFxRate = settlementCurrencyFxRate; 
     return this;
   }
@@ -476,11 +476,11 @@ public class Allocation {
    * @return settlementCurrencyFxRate
   **/
   @ApiModelProperty(value = "The settlement currency to allocation currency FX rate.")
-  public Double getSettlementCurrencyFxRate() {
+  public java.math.BigDecimal getSettlementCurrencyFxRate() {
     return settlementCurrencyFxRate;
   }
 
-  public void setSettlementCurrencyFxRate(Double settlementCurrencyFxRate) {
+  public void setSettlementCurrencyFxRate(java.math.BigDecimal settlementCurrencyFxRate) {
     this.settlementCurrencyFxRate = settlementCurrencyFxRate;
   }
 

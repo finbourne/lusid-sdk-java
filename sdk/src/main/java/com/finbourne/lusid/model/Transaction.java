@@ -68,7 +68,7 @@ public class Transaction {
 
   public static final String SERIALIZED_NAME_UNITS = "units";
   @SerializedName(SERIALIZED_NAME_UNITS)
-  private Double units;
+  private java.math.BigDecimal units;
 
   public static final String SERIALIZED_NAME_TRANSACTION_PRICE = "transactionPrice";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_PRICE)
@@ -80,7 +80,7 @@ public class Transaction {
 
   public static final String SERIALIZED_NAME_EXCHANGE_RATE = "exchangeRate";
   @SerializedName(SERIALIZED_NAME_EXCHANGE_RATE)
-  private Double exchangeRate;
+  private java.math.BigDecimal exchangeRate;
 
   public static final String SERIALIZED_NAME_TRANSACTION_CURRENCY = "transactionCurrency";
   @SerializedName(SERIALIZED_NAME_TRANSACTION_CURRENCY)
@@ -248,7 +248,7 @@ public class Transaction {
   }
 
 
-  public Transaction units(Double units) {
+  public Transaction units(java.math.BigDecimal units) {
     this.units = units; 
     return this;
   }
@@ -258,11 +258,11 @@ public class Transaction {
    * @return units
   **/
   @ApiModelProperty(required = true, value = "The number of units transacted in the associated instrument.")
-  public Double getUnits() {
+  public java.math.BigDecimal getUnits() {
     return units;
   }
 
-  public void setUnits(Double units) {
+  public void setUnits(java.math.BigDecimal units) {
     this.units = units;
   }
 
@@ -305,7 +305,7 @@ public class Transaction {
   }
 
 
-  public Transaction exchangeRate(Double exchangeRate) {
+  public Transaction exchangeRate(java.math.BigDecimal exchangeRate) {
     this.exchangeRate = exchangeRate; 
     return this;
   }
@@ -315,11 +315,11 @@ public class Transaction {
    * @return exchangeRate
   **/
   @ApiModelProperty(value = "The exchange rate between the transaction and settlement currency (settlement currency being represented by the TotalConsideration.Currency). For example if the transaction currency is in USD and the settlement currency is in GBP this this the USD/GBP rate.")
-  public Double getExchangeRate() {
+  public java.math.BigDecimal getExchangeRate() {
     return exchangeRate;
   }
 
-  public void setExchangeRate(Double exchangeRate) {
+  public void setExchangeRate(java.math.BigDecimal exchangeRate) {
     this.exchangeRate = exchangeRate;
   }
 

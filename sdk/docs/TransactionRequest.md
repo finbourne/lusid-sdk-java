@@ -12,10 +12,10 @@ Name | Type | Description | Notes
 **instrumentIdentifiers** | **Map&lt;String, String&gt;** | A set of instrument identifiers that can resolve the transaction to a unique instrument. | 
 **transactionDate** | **String** | The date of the transaction. | 
 **settlementDate** | **String** | The settlement date of the transaction. | 
-**units** | **Double** | The number of units of the transacted instrument. | 
+**units** | **java.math.BigDecimal** | The number of units of the transacted instrument. | 
 **transactionPrice** | [**TransactionPrice**](TransactionPrice.md) |  |  [optional]
 **totalConsideration** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
-**exchangeRate** | **Double** | The exchange rate between the transaction and settlement currency (settlement currency being represented by TotalConsideration.Currency). For example, if the transaction currency is USD and the settlement currency is GBP, this would be the appropriate USD/GBP rate. |  [optional]
+**exchangeRate** | **java.math.BigDecimal** | The exchange rate between the transaction and settlement currency (settlement currency being represented by TotalConsideration.Currency). For example, if the transaction currency is USD and the settlement currency is GBP, this would be the appropriate USD/GBP rate. |  [optional]
 **transactionCurrency** | **String** | The transaction currency. |  [optional]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | A list of unique transaction properties and associated values to store for the transaction. Each property must be from the &#39;Transaction&#39; domain. |  [optional]
 **counterpartyId** | **String** | The identifier for the counterparty of the transaction. |  [optional]

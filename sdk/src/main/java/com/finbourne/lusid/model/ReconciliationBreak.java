@@ -51,15 +51,15 @@ public class ReconciliationBreak {
 
   public static final String SERIALIZED_NAME_LEFT_UNITS = "leftUnits";
   @SerializedName(SERIALIZED_NAME_LEFT_UNITS)
-  private Double leftUnits;
+  private java.math.BigDecimal leftUnits;
 
   public static final String SERIALIZED_NAME_RIGHT_UNITS = "rightUnits";
   @SerializedName(SERIALIZED_NAME_RIGHT_UNITS)
-  private Double rightUnits;
+  private java.math.BigDecimal rightUnits;
 
   public static final String SERIALIZED_NAME_DIFFERENCE_UNITS = "differenceUnits";
   @SerializedName(SERIALIZED_NAME_DIFFERENCE_UNITS)
-  private Double differenceUnits;
+  private java.math.BigDecimal differenceUnits;
 
   public static final String SERIALIZED_NAME_LEFT_COST = "leftCost";
   @SerializedName(SERIALIZED_NAME_LEFT_COST)
@@ -140,7 +140,7 @@ public class ReconciliationBreak {
   }
 
 
-  public ReconciliationBreak leftUnits(Double leftUnits) {
+  public ReconciliationBreak leftUnits(java.math.BigDecimal leftUnits) {
     this.leftUnits = leftUnits; 
     return this;
   }
@@ -150,16 +150,16 @@ public class ReconciliationBreak {
    * @return leftUnits
   **/
   @ApiModelProperty(required = true, value = "Units from the left hand side")
-  public Double getLeftUnits() {
+  public java.math.BigDecimal getLeftUnits() {
     return leftUnits;
   }
 
-  public void setLeftUnits(Double leftUnits) {
+  public void setLeftUnits(java.math.BigDecimal leftUnits) {
     this.leftUnits = leftUnits;
   }
 
 
-  public ReconciliationBreak rightUnits(Double rightUnits) {
+  public ReconciliationBreak rightUnits(java.math.BigDecimal rightUnits) {
     this.rightUnits = rightUnits; 
     return this;
   }
@@ -169,16 +169,16 @@ public class ReconciliationBreak {
    * @return rightUnits
   **/
   @ApiModelProperty(required = true, value = "Units from the right hand side")
-  public Double getRightUnits() {
+  public java.math.BigDecimal getRightUnits() {
     return rightUnits;
   }
 
-  public void setRightUnits(Double rightUnits) {
+  public void setRightUnits(java.math.BigDecimal rightUnits) {
     this.rightUnits = rightUnits;
   }
 
 
-  public ReconciliationBreak differenceUnits(Double differenceUnits) {
+  public ReconciliationBreak differenceUnits(java.math.BigDecimal differenceUnits) {
     this.differenceUnits = differenceUnits; 
     return this;
   }
@@ -188,11 +188,11 @@ public class ReconciliationBreak {
    * @return differenceUnits
   **/
   @ApiModelProperty(required = true, value = "Difference in units")
-  public Double getDifferenceUnits() {
+  public java.math.BigDecimal getDifferenceUnits() {
     return differenceUnits;
   }
 
-  public void setDifferenceUnits(Double differenceUnits) {
+  public void setDifferenceUnits(java.math.BigDecimal differenceUnits) {
     this.differenceUnits = differenceUnits;
   }
 

@@ -15,10 +15,10 @@ Name | Type | Description | Notes
 **instrumentUid** | **String** | The unqiue Lusid Instrument Id (LUID) of the instrument that the transaction is in. | 
 **transactionDate** | **OffsetDateTime** | The date of the transaction. | 
 **settlementDate** | **OffsetDateTime** | The settlement date of the transaction. | 
-**units** | **Double** | The number of units transacted in the associated instrument. | 
+**units** | **java.math.BigDecimal** | The number of units transacted in the associated instrument. | 
 **transactionPrice** | [**TransactionPrice**](TransactionPrice.md) |  |  [optional]
 **totalConsideration** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
-**exchangeRate** | **Double** | The exchange rate between the transaction and settlement currency (settlement currency being represented by the TotalConsideration.Currency). For example if the transaction currency is in USD and the settlement currency is in GBP this this the USD/GBP rate. |  [optional]
+**exchangeRate** | **java.math.BigDecimal** | The exchange rate between the transaction and settlement currency (settlement currency being represented by the TotalConsideration.Currency). For example if the transaction currency is in USD and the settlement currency is in GBP this this the USD/GBP rate. |  [optional]
 **transactionCurrency** | **String** | The transaction currency. |  [optional]
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Set of unique transaction properties and associated values to stored with the transaction. Each property will be from the &#39;Transaction&#39; domain. |  [optional]
 **counterpartyId** | **String** | The identifier for the counterparty of the transaction. |  [optional]

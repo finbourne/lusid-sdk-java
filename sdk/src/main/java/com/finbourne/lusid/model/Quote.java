@@ -59,7 +59,7 @@ public class Quote {
 
   public static final String SERIALIZED_NAME_SCALE_FACTOR = "scaleFactor";
   @SerializedName(SERIALIZED_NAME_SCALE_FACTOR)
-  private Double scaleFactor;
+  private java.math.BigDecimal scaleFactor;
 
 
   public Quote quoteId(QuoteId quoteId) {
@@ -176,7 +176,7 @@ public class Quote {
   }
 
 
-  public Quote scaleFactor(Double scaleFactor) {
+  public Quote scaleFactor(java.math.BigDecimal scaleFactor) {
     this.scaleFactor = scaleFactor; 
     return this;
   }
@@ -186,11 +186,11 @@ public class Quote {
    * @return scaleFactor
   **/
   @ApiModelProperty(value = "An optional scale factor for non-standard scaling of quotes against the instrument. For example, if you wish the quote's Value to be scaled down by a factor of 100, enter 100. If not supplied, the default ScaleFactor is 1.")
-  public Double getScaleFactor() {
+  public java.math.BigDecimal getScaleFactor() {
     return scaleFactor;
   }
 
-  public void setScaleFactor(Double scaleFactor) {
+  public void setScaleFactor(java.math.BigDecimal scaleFactor) {
     this.scaleFactor = scaleFactor;
   }
 

@@ -11,8 +11,8 @@ Name | Type | Description | Notes
 **instrumentUid** | **String** | LUSID&#39;s internal unique instrument identifier, resolved from the instrument identifiers | 
 **currency** | **String** |  | 
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | Properties associated with the constituent |  [optional]
-**weight** | **Double** |  | 
-**floatingWeight** | **Double** |  |  [optional]
+**weight** | **java.math.BigDecimal** |  | 
+**floatingWeight** | **java.math.BigDecimal** |  |  [optional]
 **instrumentScope** | **String** |  |  [optional]
 
 

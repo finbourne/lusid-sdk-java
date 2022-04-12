@@ -34,7 +34,7 @@ import java.time.OffsetDateTime;
 public class TargetTaxLot {
   public static final String SERIALIZED_NAME_UNITS = "units";
   @SerializedName(SERIALIZED_NAME_UNITS)
-  private Double units;
+  private java.math.BigDecimal units;
 
   public static final String SERIALIZED_NAME_COST = "cost";
   @SerializedName(SERIALIZED_NAME_COST)
@@ -42,11 +42,11 @@ public class TargetTaxLot {
 
   public static final String SERIALIZED_NAME_PORTFOLIO_COST = "portfolioCost";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_COST)
-  private Double portfolioCost;
+  private java.math.BigDecimal portfolioCost;
 
   public static final String SERIALIZED_NAME_PRICE = "price";
   @SerializedName(SERIALIZED_NAME_PRICE)
-  private Double price;
+  private java.math.BigDecimal price;
 
   public static final String SERIALIZED_NAME_PURCHASE_DATE = "purchaseDate";
   @SerializedName(SERIALIZED_NAME_PURCHASE_DATE)
@@ -57,7 +57,7 @@ public class TargetTaxLot {
   private OffsetDateTime settlementDate;
 
 
-  public TargetTaxLot units(Double units) {
+  public TargetTaxLot units(java.math.BigDecimal units) {
     this.units = units; 
     return this;
   }
@@ -67,11 +67,11 @@ public class TargetTaxLot {
    * @return units
   **/
   @ApiModelProperty(required = true, value = "The number of units of the instrument in this tax-lot.")
-  public Double getUnits() {
+  public java.math.BigDecimal getUnits() {
     return units;
   }
 
-  public void setUnits(Double units) {
+  public void setUnits(java.math.BigDecimal units) {
     this.units = units;
   }
 
@@ -95,7 +95,7 @@ public class TargetTaxLot {
   }
 
 
-  public TargetTaxLot portfolioCost(Double portfolioCost) {
+  public TargetTaxLot portfolioCost(java.math.BigDecimal portfolioCost) {
     this.portfolioCost = portfolioCost; 
     return this;
   }
@@ -105,16 +105,16 @@ public class TargetTaxLot {
    * @return portfolioCost
   **/
   @ApiModelProperty(value = "The total cost of the tax-lot in the transaction portfolio's base currency.")
-  public Double getPortfolioCost() {
+  public java.math.BigDecimal getPortfolioCost() {
     return portfolioCost;
   }
 
-  public void setPortfolioCost(Double portfolioCost) {
+  public void setPortfolioCost(java.math.BigDecimal portfolioCost) {
     this.portfolioCost = portfolioCost;
   }
 
 
-  public TargetTaxLot price(Double price) {
+  public TargetTaxLot price(java.math.BigDecimal price) {
     this.price = price; 
     return this;
   }
@@ -124,11 +124,11 @@ public class TargetTaxLot {
    * @return price
   **/
   @ApiModelProperty(value = "The purchase price of each unit of the instrument held in this tax-lot. This forms part of the unique key required for multiple tax-lots.")
-  public Double getPrice() {
+  public java.math.BigDecimal getPrice() {
     return price;
   }
 
-  public void setPrice(Double price) {
+  public void setPrice(java.math.BigDecimal price) {
     this.price = price;
   }
 

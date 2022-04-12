@@ -32,14 +32,14 @@ import java.io.IOException;
 public class CurrencyAndAmount {
   public static final String SERIALIZED_NAME_AMOUNT = "amount";
   @SerializedName(SERIALIZED_NAME_AMOUNT)
-  private Double amount;
+  private java.math.BigDecimal amount;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
 
-  public CurrencyAndAmount amount(Double amount) {
+  public CurrencyAndAmount amount(java.math.BigDecimal amount) {
     this.amount = amount; 
     return this;
   }
@@ -49,11 +49,11 @@ public class CurrencyAndAmount {
    * @return amount
   **/
   @ApiModelProperty(value = "")
-  public Double getAmount() {
+  public java.math.BigDecimal getAmount() {
     return amount;
   }
 
-  public void setAmount(Double amount) {
+  public void setAmount(java.math.BigDecimal amount) {
     this.amount = amount;
   }
 

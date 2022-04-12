@@ -31,14 +31,14 @@ import java.io.IOException;
 public class MetricValue {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
-  private Double value;
+  private java.math.BigDecimal value;
 
   public static final String SERIALIZED_NAME_UNIT = "unit";
   @SerializedName(SERIALIZED_NAME_UNIT)
   private String unit;
 
 
-  public MetricValue value(Double value) {
+  public MetricValue value(java.math.BigDecimal value) {
     this.value = value; 
     return this;
   }
@@ -48,11 +48,11 @@ public class MetricValue {
    * @return value
   **/
   @ApiModelProperty(value = "The numerical value of the property.")
-  public Double getValue() {
+  public java.math.BigDecimal getValue() {
     return value;
   }
 
-  public void setValue(Double value) {
+  public void setValue(java.math.BigDecimal value) {
     this.value = value;
   }
 

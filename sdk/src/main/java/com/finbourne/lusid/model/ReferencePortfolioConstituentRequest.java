@@ -43,7 +43,7 @@ public class ReferencePortfolioConstituentRequest {
 
   public static final String SERIALIZED_NAME_WEIGHT = "weight";
   @SerializedName(SERIALIZED_NAME_WEIGHT)
-  private Double weight;
+  private java.math.BigDecimal weight;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
@@ -101,7 +101,7 @@ public class ReferencePortfolioConstituentRequest {
   }
 
 
-  public ReferencePortfolioConstituentRequest weight(Double weight) {
+  public ReferencePortfolioConstituentRequest weight(java.math.BigDecimal weight) {
     this.weight = weight; 
     return this;
   }
@@ -111,11 +111,11 @@ public class ReferencePortfolioConstituentRequest {
    * @return weight
   **/
   @ApiModelProperty(required = true, value = "")
-  public Double getWeight() {
+  public java.math.BigDecimal getWeight() {
     return weight;
   }
 
-  public void setWeight(Double weight) {
+  public void setWeight(java.math.BigDecimal weight) {
     this.weight = weight;
   }
 

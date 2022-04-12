@@ -22,7 +22,7 @@ Name | Type | Description | Notes
 **date** | **OffsetDateTime** | The date of this allocation. |  [optional]
 **price** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
 **settlementCurrency** | **String** | The settlement currency of this allocation. |  [optional]
-**settlementCurrencyFxRate** | **Double** | The settlement currency to allocation currency FX rate. |  [optional]
+**settlementCurrencyFxRate** | **java.math.BigDecimal** | The settlement currency to allocation currency FX rate. |  [optional]
 **counterparty** | **String** | The counterparty for this allocation. |  [optional]
 
 

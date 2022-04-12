@@ -37,15 +37,15 @@ public class PerformanceReturn {
 
   public static final String SERIALIZED_NAME_RATE_OF_RETURN = "rateOfReturn";
   @SerializedName(SERIALIZED_NAME_RATE_OF_RETURN)
-  private Double rateOfReturn;
+  private java.math.BigDecimal rateOfReturn;
 
   public static final String SERIALIZED_NAME_OPENING_MARKET_VALUE = "openingMarketValue";
   @SerializedName(SERIALIZED_NAME_OPENING_MARKET_VALUE)
-  private Double openingMarketValue;
+  private java.math.BigDecimal openingMarketValue;
 
   public static final String SERIALIZED_NAME_CLOSING_MARKET_VALUE = "closingMarketValue";
   @SerializedName(SERIALIZED_NAME_CLOSING_MARKET_VALUE)
-  private Double closingMarketValue;
+  private java.math.BigDecimal closingMarketValue;
 
   public static final String SERIALIZED_NAME_PERIOD = "period";
   @SerializedName(SERIALIZED_NAME_PERIOD)
@@ -71,7 +71,7 @@ public class PerformanceReturn {
   }
 
 
-  public PerformanceReturn rateOfReturn(Double rateOfReturn) {
+  public PerformanceReturn rateOfReturn(java.math.BigDecimal rateOfReturn) {
     this.rateOfReturn = rateOfReturn; 
     return this;
   }
@@ -81,16 +81,16 @@ public class PerformanceReturn {
    * @return rateOfReturn
   **/
   @ApiModelProperty(required = true, value = "The return number.")
-  public Double getRateOfReturn() {
+  public java.math.BigDecimal getRateOfReturn() {
     return rateOfReturn;
   }
 
-  public void setRateOfReturn(Double rateOfReturn) {
+  public void setRateOfReturn(java.math.BigDecimal rateOfReturn) {
     this.rateOfReturn = rateOfReturn;
   }
 
 
-  public PerformanceReturn openingMarketValue(Double openingMarketValue) {
+  public PerformanceReturn openingMarketValue(java.math.BigDecimal openingMarketValue) {
     this.openingMarketValue = openingMarketValue; 
     return this;
   }
@@ -100,16 +100,16 @@ public class PerformanceReturn {
    * @return openingMarketValue
   **/
   @ApiModelProperty(value = "The opening market value.")
-  public Double getOpeningMarketValue() {
+  public java.math.BigDecimal getOpeningMarketValue() {
     return openingMarketValue;
   }
 
-  public void setOpeningMarketValue(Double openingMarketValue) {
+  public void setOpeningMarketValue(java.math.BigDecimal openingMarketValue) {
     this.openingMarketValue = openingMarketValue;
   }
 
 
-  public PerformanceReturn closingMarketValue(Double closingMarketValue) {
+  public PerformanceReturn closingMarketValue(java.math.BigDecimal closingMarketValue) {
     this.closingMarketValue = closingMarketValue; 
     return this;
   }
@@ -119,11 +119,11 @@ public class PerformanceReturn {
    * @return closingMarketValue
   **/
   @ApiModelProperty(value = "The closing market value.")
-  public Double getClosingMarketValue() {
+  public java.math.BigDecimal getClosingMarketValue() {
     return closingMarketValue;
   }
 
-  public void setClosingMarketValue(Double closingMarketValue) {
+  public void setClosingMarketValue(java.math.BigDecimal closingMarketValue) {
     this.closingMarketValue = closingMarketValue;
   }
 

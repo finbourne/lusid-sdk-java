@@ -7,7 +7,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | **Double** | The numerical value of the property. |  [optional]
+**value** | **java.math.BigDecimal** | The numerical value of the property. |  [optional]
 **unit** | **String** |  |  [optional]
 
 

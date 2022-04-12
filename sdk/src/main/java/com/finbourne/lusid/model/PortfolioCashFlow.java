@@ -73,7 +73,7 @@ public class PortfolioCashFlow {
 
   public static final String SERIALIZED_NAME_FX_RATE = "fxRate";
   @SerializedName(SERIALIZED_NAME_FX_RATE)
-  private Double fxRate;
+  private java.math.BigDecimal fxRate;
 
   public static final String SERIALIZED_NAME_CASHFLOW_REPORTING_CURRENCY = "cashflowReportingCurrency";
   @SerializedName(SERIALIZED_NAME_CASHFLOW_REPORTING_CURRENCY)
@@ -264,7 +264,7 @@ public class PortfolioCashFlow {
   }
 
 
-  public PortfolioCashFlow fxRate(Double fxRate) {
+  public PortfolioCashFlow fxRate(java.math.BigDecimal fxRate) {
     this.fxRate = fxRate; 
     return this;
   }
@@ -274,11 +274,11 @@ public class PortfolioCashFlow {
    * @return fxRate
   **/
   @ApiModelProperty(required = true, value = "Exchange rate between the currency of this cash flow and the reporting currency.")
-  public Double getFxRate() {
+  public java.math.BigDecimal getFxRate() {
     return fxRate;
   }
 
-  public void setFxRate(Double fxRate) {
+  public void setFxRate(java.math.BigDecimal fxRate) {
     this.fxRate = fxRate;
   }
 

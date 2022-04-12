@@ -41,7 +41,7 @@ public class RealisedGainLoss {
 
   public static final String SERIALIZED_NAME_UNITS = "units";
   @SerializedName(SERIALIZED_NAME_UNITS)
-  private Double units;
+  private java.math.BigDecimal units;
 
   public static final String SERIALIZED_NAME_PURCHASE_TRADE_DATE = "purchaseTradeDate";
   @SerializedName(SERIALIZED_NAME_PURCHASE_TRADE_DATE)
@@ -53,7 +53,7 @@ public class RealisedGainLoss {
 
   public static final String SERIALIZED_NAME_PURCHASE_PRICE = "purchasePrice";
   @SerializedName(SERIALIZED_NAME_PURCHASE_PRICE)
-  private Double purchasePrice;
+  private java.math.BigDecimal purchasePrice;
 
   public static final String SERIALIZED_NAME_COST_TRADE_CCY = "costTradeCcy";
   @SerializedName(SERIALIZED_NAME_COST_TRADE_CCY)
@@ -118,7 +118,7 @@ public class RealisedGainLoss {
   }
 
 
-  public RealisedGainLoss units(Double units) {
+  public RealisedGainLoss units(java.math.BigDecimal units) {
     this.units = units; 
     return this;
   }
@@ -128,11 +128,11 @@ public class RealisedGainLoss {
    * @return units
   **/
   @ApiModelProperty(required = true, value = "The number of units of the associated instrument against which the gain or loss has been realised.")
-  public Double getUnits() {
+  public java.math.BigDecimal getUnits() {
     return units;
   }
 
-  public void setUnits(Double units) {
+  public void setUnits(java.math.BigDecimal units) {
     this.units = units;
   }
 
@@ -159,7 +159,7 @@ public class RealisedGainLoss {
 
 
 
-  public RealisedGainLoss purchasePrice(Double purchasePrice) {
+  public RealisedGainLoss purchasePrice(java.math.BigDecimal purchasePrice) {
     this.purchasePrice = purchasePrice; 
     return this;
   }
@@ -169,11 +169,11 @@ public class RealisedGainLoss {
    * @return purchasePrice
   **/
   @ApiModelProperty(value = "The purchase price of each unit associated with this gain or loss.")
-  public Double getPurchasePrice() {
+  public java.math.BigDecimal getPurchasePrice() {
     return purchasePrice;
   }
 
-  public void setPurchasePrice(Double purchasePrice) {
+  public void setPurchasePrice(java.math.BigDecimal purchasePrice) {
     this.purchasePrice = purchasePrice;
   }
 
