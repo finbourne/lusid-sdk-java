@@ -4,6 +4,7 @@ import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.TransactionPortfoliosApi;
 import com.finbourne.lusid.model.*;
 
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.HashMap;
@@ -66,8 +67,8 @@ public class TestDataUtilities {
      */
     public TransactionRequest buildTransactionRequest(
             String instrumentId,
-            Double units,
-            Double price,
+            BigDecimal units,
+            BigDecimal price,
             String currency,
             OffsetDateTime tradeDate,
             String transactionType
@@ -77,7 +78,7 @@ public class TestDataUtilities {
                 .transactionId(UUID.randomUUID().toString())
                 .type(transactionType)
                 .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_INSTRUMENT_IDENTIFIER, instrumentId); }})
-                .totalConsideration(new CurrencyAndAmount().currency(currency).amount(units * price))
+                .totalConsideration(new CurrencyAndAmount().currency(currency).amount(units.multiply(price)))
                 .transactionDate(tradeDate.toString())
                 .settlementDate(tradeDate.toString())
                 .units(units)
@@ -95,7 +96,7 @@ public class TestDataUtilities {
      * @return
      */
     public TransactionRequest buildCashFundsInTransactionRequest(
-            Double units,
+            BigDecimal units,
             String currency,
             OffsetDateTime tradeDate
     )
@@ -104,7 +105,7 @@ public class TestDataUtilities {
                 .transactionId(UUID.randomUUID().toString())
                 .type("FundsIn")
                 .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_CASH_IDENTIFIER, currency); }})
-                .totalConsideration(new CurrencyAndAmount().currency(currency).amount(0.0))
+                .totalConsideration(new CurrencyAndAmount().currency(currency).amount(BigDecimal.valueOf(0.0)))
                 .transactionDate(tradeDate.toString())
                 .settlementDate(tradeDate.toString())
                 .units(units)

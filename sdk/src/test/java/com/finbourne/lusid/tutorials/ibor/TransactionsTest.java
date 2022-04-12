@@ -12,6 +12,7 @@ import com.finbourne.lusid.utilities.InstrumentLoader;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
@@ -68,11 +69,11 @@ public class TransactionsTest {
 
                 //  instruments must already exist in LUSID and have a valid LUSID instrument id
                 .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_INSTRUMENT_IDENTIFIER, instrumentIds.get(0)); }})
-                .totalConsideration(new CurrencyAndAmount().currency("GBP").amount(1230.0))
+                .totalConsideration(new CurrencyAndAmount().currency("GBP").amount(BigDecimal.valueOf(1230.0)))
                 .transactionDate(effectiveDate.toString())
                 .settlementDate(effectiveDate.toString())
-                .units(100.0)
-                .transactionPrice(new TransactionPrice().price(12.3))
+                .units(BigDecimal.valueOf(100.0))
+                .transactionPrice(new TransactionPrice().price(BigDecimal.valueOf(12.3)))
                 .source("Custodian");
 
         //  add the trade
@@ -115,10 +116,10 @@ public class TransactionsTest {
                 //  Cash instruments are identified using CCY_ followed by the ISO currency codes.
                 //  Cash instruments do not need to be created before use
                 .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_CASH_IDENTIFIER, "GBP"); }})
-                .totalConsideration(new CurrencyAndAmount().currency("GBP").amount(0.0))
+                .totalConsideration(new CurrencyAndAmount().currency("GBP").amount(BigDecimal.valueOf(0.0)))
                 .transactionDate(effectiveDate.toString())
                 .settlementDate(effectiveDate.toString())
-                .units(1000.0)
+                .units(BigDecimal.valueOf(1000.0))
                 .source("Custodian");
 
         //  add the trade

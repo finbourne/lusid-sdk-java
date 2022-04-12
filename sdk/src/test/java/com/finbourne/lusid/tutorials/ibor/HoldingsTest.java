@@ -13,6 +13,7 @@ import com.finbourne.lusid.utilities.TestDataUtilities;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.*;
@@ -21,6 +22,7 @@ import static com.finbourne.lusid.utilities.TestDataUtilities.*;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.comparesEqualTo;
 
 public class HoldingsTest {
 
@@ -59,16 +61,16 @@ public class HoldingsTest {
         List<TransactionRequest>    requests = new ArrayList<>();
 
         //  add starting cash
-        requests.add(testDataUtilities.buildCashFundsInTransactionRequest(100000.0, currency, day1));
+        requests.add(testDataUtilities.buildCashFundsInTransactionRequest(BigDecimal.valueOf(100000.0), currency, day1));
 
         //  add initial transactions
-        requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(0), 100.0, 101.0, currency, day1, "Buy"));
-        requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(1), 100.0, 102.0, currency, day1, "Buy"));
-        requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(2), 100.0, 103.0, currency, day1, "Buy"));
+        requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(0), BigDecimal.valueOf(100.0), BigDecimal.valueOf(101.0), currency, day1, "Buy"));
+        requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(1), BigDecimal.valueOf(100.0), BigDecimal.valueOf(102.0), currency, day1, "Buy"));
+        requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(2), BigDecimal.valueOf(100.0), BigDecimal.valueOf(103.0), currency, day1, "Buy"));
 
         //  on T+5, add a transaction in instrument 3 and increasing the amount of instrument 1
-        requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(1), 100.0, 104.0, currency, dayTPlus5, "Buy"));
-        requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(3), 100.0, 105.0, currency, dayTPlus5, "Buy"));
+        requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(1), BigDecimal.valueOf(100.0), BigDecimal.valueOf(104.0), currency, dayTPlus5, "Buy"));
+        requests.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(3), BigDecimal.valueOf(100.0), BigDecimal.valueOf(105.0), currency, dayTPlus5, "Buy"));
 
         //  upload the transactions to LUSID
         transactionPortfoliosApi.upsertTransactions(TutorialScope, portfolioCode, requests);
@@ -84,28 +86,28 @@ public class HoldingsTest {
         //  cash balance
         assertThat(holdings.getValues().get(0).getInstrumentUid(), is(equalTo("CCY_" + currency)));
         assertThat(holdings.getValues().get(0).getHoldingType(), is(equalTo("B")));    //  B = balance
-        assertThat(holdings.getValues().get(0).getUnits(), is(equalTo(48500.0)));
+        assertThat(holdings.getValues().get(0).getUnits(), comparesEqualTo(BigDecimal.valueOf(48500.0)));
 
         //  instrument holdings, holding type 'P' represents a position
         assertThat(holdings.getValues().get(1).getInstrumentUid(), is(equalTo(instrumentIds.get(0))));
         assertThat(holdings.getValues().get(1).getHoldingType(), is(equalTo("P")));
-        assertThat(holdings.getValues().get(1).getUnits(), is(equalTo(100.0)));
-        assertThat(holdings.getValues().get(1).getCost().getAmount(), is(equalTo(10100.0)));
+        assertThat(holdings.getValues().get(1).getUnits(), comparesEqualTo(BigDecimal.valueOf(100.0)));
+        assertThat(holdings.getValues().get(1).getCost().getAmount(), comparesEqualTo(BigDecimal.valueOf(10100.0)));
 
         assertThat(holdings.getValues().get(2).getInstrumentUid(), is(equalTo(instrumentIds.get(1))));
         assertThat(holdings.getValues().get(2).getHoldingType(), is(equalTo("P")));
-        assertThat(holdings.getValues().get(2).getUnits(), is(equalTo(200.0)));   //  2 transactions
-        assertThat(holdings.getValues().get(2).getCost().getAmount(), is(equalTo(20600.0)));
+        assertThat(holdings.getValues().get(2).getUnits(), comparesEqualTo(BigDecimal.valueOf(200.0)));   //  2 transactions
+        assertThat(holdings.getValues().get(2).getCost().getAmount(), comparesEqualTo(BigDecimal.valueOf(20600.0)));
 
         assertThat(holdings.getValues().get(3).getInstrumentUid(), is(equalTo(instrumentIds.get(2))));
         assertThat(holdings.getValues().get(3).getHoldingType(), is(equalTo("P")));
-        assertThat(holdings.getValues().get(3).getUnits(), is(equalTo(100.0)));
-        assertThat(holdings.getValues().get(3).getCost().getAmount(), is(equalTo(10300.0)));
+        assertThat(holdings.getValues().get(3).getUnits(), comparesEqualTo(BigDecimal.valueOf(100.0)));
+        assertThat(holdings.getValues().get(3).getCost().getAmount(), comparesEqualTo(BigDecimal.valueOf(10300.0)));
 
         assertThat(holdings.getValues().get(4).getInstrumentUid(), is(equalTo(instrumentIds.get(3))));
         assertThat(holdings.getValues().get(4).getHoldingType(), is(equalTo("P")));
-        assertThat(holdings.getValues().get(4).getUnits(), is(equalTo(100.0)));
-        assertThat(holdings.getValues().get(4).getCost().getAmount(), is(equalTo(10500.0)));
+        assertThat(holdings.getValues().get(4).getUnits(), comparesEqualTo(BigDecimal.valueOf(100.0)));
+        assertThat(holdings.getValues().get(4).getCost().getAmount(), comparesEqualTo(BigDecimal.valueOf(10500.0)));
 
     }
 
@@ -132,7 +134,7 @@ public class HoldingsTest {
                     .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_CASH_IDENTIFIER, currency); }})
                     .taxLots(Arrays.asList(
                             new TargetTaxLotRequest()
-                            .units(100000.0)))
+                            .units(BigDecimal.valueOf(100000.0))))
 
         );
 
@@ -142,10 +144,10 @@ public class HoldingsTest {
                     .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_INSTRUMENT_IDENTIFIER, instrument1); }})
                     .taxLots(Arrays.asList(
                             new TargetTaxLotRequest()
-                                    .units(100.0)
-                                    .price(101.0)
-                                    .cost(new CurrencyAndAmount().currency(currency).amount(10100.0))
-                                    .portfolioCost(10100.0)
+                                    .units(BigDecimal.valueOf(100.0))
+                                    .price(BigDecimal.valueOf(101.0))
+                                    .cost(new CurrencyAndAmount().currency(currency).amount(BigDecimal.valueOf(10100.0)))
+                                    .portfolioCost(BigDecimal.valueOf(10100.0))
                                     .purchaseDate(day1)
                                     .settlementDate(day1)))
         );
@@ -156,10 +158,10 @@ public class HoldingsTest {
                         .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_INSTRUMENT_IDENTIFIER, instrument2); }})
                         .taxLots(Arrays.asList(
                                 new TargetTaxLotRequest()
-                                        .units(100.0)
-                                        .price(102.0)
-                                        .cost(new CurrencyAndAmount().currency(currency).amount(10200.0))
-                                        .portfolioCost(10200.0)
+                                        .units(BigDecimal.valueOf(100.0))
+                                        .price(BigDecimal.valueOf(102.0))
+                                        .cost(new CurrencyAndAmount().currency(currency).amount(BigDecimal.valueOf(10200.0)))
+                                        .portfolioCost(BigDecimal.valueOf(10200.0))
                                         .purchaseDate(day1)
                                         .settlementDate(day1)))
         );
@@ -169,8 +171,8 @@ public class HoldingsTest {
 
         //  add subsequent transactions on day 2
         List<TransactionRequest>    requests = Arrays.asList(
-                testDataUtilities.buildTransactionRequest(instrument1, 100.0, 104.0, currency, day2, "Buy"),
-                testDataUtilities.buildTransactionRequest(instrument3, 100.0, 103.0, currency, day2, "Buy")
+                testDataUtilities.buildTransactionRequest(instrument1, BigDecimal.valueOf(100.0), BigDecimal.valueOf(104.0), currency, day2, "Buy"),
+                testDataUtilities.buildTransactionRequest(instrument3, BigDecimal.valueOf(100.0), BigDecimal.valueOf(103.0), currency, day2, "Buy")
         );
         transactionPortfoliosApi.upsertTransactions(TutorialScope, portfolioCode, requests);
 
@@ -189,22 +191,22 @@ public class HoldingsTest {
         final String currencyLuid = "CCY_" + currency;
 
         assertThat(holdings.getValues().get(0).getInstrumentUid(), is(equalTo(currencyLuid)));
-        assertThat(holdings.getValues().get(0).getUnits(), is(equalTo(79300.0)));
+        assertThat(holdings.getValues().get(0).getUnits(), comparesEqualTo(BigDecimal.valueOf(79300.0)));
 
         //  instrument1 - initial holding + transaction on day 2
         assertThat(holdings.getValues().get(1).getInstrumentUid(), is(equalTo(instrument1)));
-        assertThat(holdings.getValues().get(1).getUnits(), is(equalTo(200.0)));
-        assertThat(holdings.getValues().get(1).getCost().getAmount(), is(equalTo(20500.0)));
+        assertThat(holdings.getValues().get(1).getUnits(), comparesEqualTo(BigDecimal.valueOf(200.0)));
+        assertThat(holdings.getValues().get(1).getCost().getAmount(), comparesEqualTo(BigDecimal.valueOf(20500.0)));
 
         //  instrument2 - initial holding
         assertThat(holdings.getValues().get(2).getInstrumentUid(), is(equalTo(instrument2)));
-        assertThat(holdings.getValues().get(2).getUnits(), is(equalTo(100.0)));
-        assertThat(holdings.getValues().get(2).getCost().getAmount(), is(equalTo(10200.0)));
+        assertThat(holdings.getValues().get(2).getUnits(), comparesEqualTo(BigDecimal.valueOf(100.0)));
+        assertThat(holdings.getValues().get(2).getCost().getAmount(), comparesEqualTo(BigDecimal.valueOf(10200.0)));
 
         //  instrument3 - transaction on day 2
         assertThat(holdings.getValues().get(3).getInstrumentUid(), is(equalTo(instrument3)));
-        assertThat(holdings.getValues().get(3).getUnits(), is(equalTo(100.0)));
-        assertThat(holdings.getValues().get(3).getCost().getAmount(), is(equalTo(10300.0)));
+        assertThat(holdings.getValues().get(3).getUnits(), comparesEqualTo(BigDecimal.valueOf(100.0)));
+        assertThat(holdings.getValues().get(3).getCost().getAmount(), comparesEqualTo(BigDecimal.valueOf(10300.0)));
     }
 
 }

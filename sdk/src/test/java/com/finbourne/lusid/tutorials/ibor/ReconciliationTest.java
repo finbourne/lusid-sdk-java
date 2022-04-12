@@ -15,6 +15,7 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.Console;
+import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
 import java.util.ArrayList;
@@ -23,6 +24,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 import static com.finbourne.lusid.utilities.TestDataUtilities.TutorialScope;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.comparesEqualTo;
 import static org.junit.Assert.assertEquals;
 
 public class ReconciliationTest {
@@ -59,23 +62,23 @@ public class ReconciliationTest {
 
         //  Create transactions for yesterday
         List<TransactionRequest>    yesterdaysTransactions = new ArrayList<>();
-        yesterdaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(0), 1000.0, 100.0, "GBP", yesterday, "StockIn"));
-        yesterdaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(0), 2300.0, 101.0, "GBP", yesterday, "StockIn"));
-        yesterdaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(1), -1000.0, 102.0, "GBP", yesterday, "StockIn"));
-        yesterdaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(2), 1200.0, 103.0, "GBP", yesterday, "StockIn"));
-        yesterdaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(3), 2000.0, 103.0, "GBP", yesterday, "StockIn"));
+        yesterdaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(0), BigDecimal.valueOf(1000.0), BigDecimal.valueOf(100.0), "GBP", yesterday, "StockIn"));
+        yesterdaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(0), BigDecimal.valueOf(2300.0), BigDecimal.valueOf(101.0), "GBP", yesterday, "StockIn"));
+        yesterdaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(1), BigDecimal.valueOf(-1000.0), BigDecimal.valueOf(102.0), "GBP", yesterday, "StockIn"));
+        yesterdaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(2), BigDecimal.valueOf(1200.0), BigDecimal.valueOf(103.0), "GBP", yesterday, "StockIn"));
+        yesterdaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(3), BigDecimal.valueOf(2000.0), BigDecimal.valueOf(103.0), "GBP", yesterday, "StockIn"));
 
         //  Add the transactions to LUSID
         transactionPortfoliosApi.upsertTransactions(TutorialScope, portfolioCode, yesterdaysTransactions);
 
         //  Add transactions for today
         List<TransactionRequest> todaysTransactions = new ArrayList<>();
-        todaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(0), -3000.0, 101.78, "GBP", today.plusHours(8), "StockIn")); //net long 300
-        todaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(0), 1500.0, 101.78, "GBP", today.plusHours(12), "StockIn")); //net long 1800
-        todaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(1), 1000.0, 102.0, "GBP", today.plusHours(12), "StockIn"));  // flat
-        todaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(2), 1200.0, 103.0, "GBP", today.plusHours(16), "StockIn"));  // long 2400
-        todaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(3), 1000.0, 103.0, "GBP", today.plusHours(9), "StockIn"));   // long 3000
-        todaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(3), 2000.0, 103.0, "GBP", today.plusHours(20), "StockIn"));  // long 5000
+        todaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(0), BigDecimal.valueOf(-3000.0), BigDecimal.valueOf(101.78), "GBP", today.plusHours(8), "StockIn")); //net long 300
+        todaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(0), BigDecimal.valueOf(1500.0), BigDecimal.valueOf(101.78), "GBP", today.plusHours(12), "StockIn")); //net long 1800
+        todaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(1), BigDecimal.valueOf(1000.0), BigDecimal.valueOf(102.0), "GBP", today.plusHours(12), "StockIn"));  // flat
+        todaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(2), BigDecimal.valueOf(1200.0), BigDecimal.valueOf(103.0), "GBP", today.plusHours(16), "StockIn"));  // long 2400
+        todaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(3), BigDecimal.valueOf(1000.0), BigDecimal.valueOf(103.0), "GBP", today.plusHours(9), "StockIn"));   // long 3000
+        todaysTransactions.add(testDataUtilities.buildTransactionRequest(instrumentIds.get(3), BigDecimal.valueOf(2000.0), BigDecimal.valueOf(103.0), "GBP", today.plusHours(20), "StockIn"));  // long 5000
 
         //  Add the transactions to LUSID
         UpsertPortfolioTransactionsResponse upsertResult = transactionPortfoliosApi.upsertTransactions(TutorialScope, portfolioCode, todaysTransactions);
@@ -110,10 +113,9 @@ public class ReconciliationTest {
                 .stream()
                 .collect(Collectors.toMap(ReconciliationBreak::getInstrumentUid, b -> b));
 
-        double delta = 0.0001;
-        assertEquals(-1500.0, map.get(instrumentIds.get(0)).getDifferenceUnits(), delta);
-        assertEquals(1000.0, map.get(instrumentIds.get(3)).getDifferenceUnits(), delta);
-        assertEquals(1200.0, map.get(instrumentIds.get(2)).getDifferenceUnits(), delta);
-        assertEquals(1000.0, map.get(instrumentIds.get(1)).getDifferenceUnits(), delta);
+        assertThat(BigDecimal.valueOf(-1500.0), comparesEqualTo(map.get(instrumentIds.get(0)).getDifferenceUnits()));
+        assertThat(BigDecimal.valueOf(1000.0), comparesEqualTo(map.get(instrumentIds.get(3)).getDifferenceUnits()));
+        assertThat(BigDecimal.valueOf(1200.0), comparesEqualTo(map.get(instrumentIds.get(2)).getDifferenceUnits()));
+        assertThat(BigDecimal.valueOf(1000.0), comparesEqualTo(map.get(instrumentIds.get(1)).getDifferenceUnits()));
     }
 }
