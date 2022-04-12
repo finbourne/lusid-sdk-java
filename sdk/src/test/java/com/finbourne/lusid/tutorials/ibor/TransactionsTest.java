@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 import static com.finbourne.lusid.utilities.TestDataUtilities.*;
 import static org.junit.Assert.assertEquals;
 
-public class Transactions {
+public class TransactionsTest {
 
     private static InstrumentsApi instrumentsApi;
     private static TransactionPortfoliosApi transactionPortfoliosApi;

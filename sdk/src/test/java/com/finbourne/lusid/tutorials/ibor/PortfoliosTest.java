@@ -25,7 +25,7 @@ import static org.hamcrest.Matchers.greaterThan;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
 
-public class Portfolios {
+public class PortfoliosTest {
 
     private static List<String> instrumentIds;
 

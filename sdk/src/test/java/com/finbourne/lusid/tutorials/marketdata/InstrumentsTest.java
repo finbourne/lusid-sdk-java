@@ -20,7 +20,7 @@ import static com.finbourne.lusid.utilities.TestDataUtilities.*;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-public class Instruments {
+public class InstrumentsTest {
 
     private static final String FIGI_SCHEME = "Figi";
     private static final String CUSTOM_INTERNAL_SCHEME = "ClientInternal";
@@ -75,7 +75,7 @@ public class Instruments {
                         .name("VODAFONE GROUP PLC")
 
                         /*
-                            Instruments are created with a set of identifiers
+                            InstrumentsTest are created with a set of identifiers
                             each under a different scheme
                          */
                         .identifiers(new HashMap<String, InstrumentIdValue>() {
@@ -124,21 +124,21 @@ public class Instruments {
                 })},
 
                 {"correlationId5", new InstrumentDefinition()
-                        .name("TAYLOR WIMPEY PLC")
+                        .name("DIAGEO PLC")
                         .identifiers(new HashMap<String, InstrumentIdValue>() {
                     {
-                        put(FIGI_SCHEME, new InstrumentIdValue().value("BBG000BF4KL1"));
-                        put(CUSTOM_INTERNAL_SCHEME, new InstrumentIdValue().value("INTERNAL_ID_5"));
-                        put(ISIN_SCHEME, new InstrumentIdValue().value("GB0008782301"));
-                        put(SEDOL_SCHEME, new InstrumentIdValue().value("0878230"));
+                        put(FIGI_SCHEME, new InstrumentIdValue().value("BBG000BS69D5"));
+                        put(CUSTOM_INTERNAL_SCHEME, new InstrumentIdValue().value("INTERNAL_ID_6"));
+                        put(ISIN_SCHEME, new InstrumentIdValue().value("GB0002374006"));
+                        put(SEDOL_SCHEME, new InstrumentIdValue().value("237400"));
                     }
                 })}
+
             }).collect(Collectors.toMap(data -> (String)data[0], data -> (InstrumentDefinition)data[1])),
             DefaultScope);
 
         assertThat(upsertInstrumentsResponse.getValues().size(), is(equalTo(5)));
     }
-
 
     @Test
     @LusidFeature("F22")
