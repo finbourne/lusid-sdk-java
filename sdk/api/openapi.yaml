@@ -283,14 +283,16 @@ info:
     | <a name="774">774</a>|Compliance rule not found.|  |
     | <a name="775">775</a>|Fund accounting document cannot be processed.|  |
     | <a name="778">778</a>|Unable to look up FX rate from trade ccy to portfolio ccy for some of the trades.|  |
+    | <a name="782">782</a>|The Property definition dataType is not matching the derivation formula dataType|  |
+    | <a name="783">783</a>|The Property definition domain is not supported for derived properties|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4211
+  version: 0.11.4212
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:42158
+- url: http://local-unit-test-server.lusid.com:33572
 security:
 - {}
 tags:
