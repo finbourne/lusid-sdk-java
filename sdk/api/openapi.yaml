@@ -287,12 +287,12 @@ info:
     | <a name="783">783</a>|The Property definition domain is not supported for derived properties|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4223
+  version: 0.11.4224
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: http://local-unit-test-server.lusid.com:52735
 security:
 - {}
 tags:
@@ -2155,6 +2155,542 @@ paths:
       summary: '[EARLY ACCESS] GetComplexMarketData: Get complex market data'
       tags:
       - Complex Market Data
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/corporateactionsources:
+    get:
+      description: Gets a list of all corporate action sources
+      operationId: ListCorporateActionSources
+      parameters:
+      - description: Optional. The AsAt date of the data
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: Optional. The AsAt date of the data
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: Optional. Order the results by these fields. Use use the '-'
+          sign to denote descending order e.g. -MyFieldName
+        explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          description: Optional. Order the results by these fields. Use use the '-'
+            sign to denote descending order e.g. -MyFieldName
+          items:
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      - description: "Optional. When paginating, limit the number of returned results\
+          \ to this many. If not specified, a default\r\nof 100 is used."
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          default: 100
+          description: "Optional. When paginating, limit the number of returned results\
+            \ to this many. If not specified, a default\r\nof 100 is used."
+          format: int32
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      - description: "Optional. Expression to filter the result set. For example,\
+          \ to\r\nfilter on the Display Name, use \"displayName eq 'string'\"\r\n\
+          Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: "Optional. Expression to filter the result set. For example,\
+            \ to\r\nfilter on the Display Name, use \"displayName eq 'string'\"\r\n\
+            Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      - description: "Optional. The pagination token to use to continue listing items\
+          \ from a previous call. Page values are\r\nreturn from list calls, and must\
+          \ be supplied exactly as returned. Additionally, when specifying this\r\n\
+          value, the filter, asAt, and limit must not\r\nbe modified."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          description: "Optional. The pagination token to use to continue listing\
+            \ items from a previous call. Page values are\r\nreturn from list calls,\
+            \ and must be supplied exactly as returned. Additionally, when specifying\
+            \ this\r\nvalue, the filter, asAt, and limit must not\r\nbe modified."
+          maxLength: 500
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfCorporateActionSource'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfCorporateActionSource'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfCorporateActionSource'
+          description: All Existing Corporate Action Sources
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] ListCorporateActionSources: List corporate action sources'
+      tags:
+      - Corporate Action Sources
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    post:
+      description: Create a corporate action source.
+      operationId: CreateCorporateActionSource
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              scope: ExampleScope
+              code: ExampleCode
+              displayName: ExampleDisplayName
+              description: Example Description
+              instrumentScopes: []
+            schema:
+              $ref: '#/components/schemas/CreateCorporateActionSourceRequest'
+          application/json:
+            example:
+              scope: ExampleScope
+              code: ExampleCode
+              displayName: ExampleDisplayName
+              description: Example Description
+              instrumentScopes: []
+            schema:
+              $ref: '#/components/schemas/CreateCorporateActionSourceRequest'
+          text/json:
+            example:
+              scope: ExampleScope
+              code: ExampleCode
+              displayName: ExampleDisplayName
+              description: Example Description
+              instrumentScopes: []
+            schema:
+              $ref: '#/components/schemas/CreateCorporateActionSourceRequest'
+          application/*+json:
+            example:
+              scope: ExampleScope
+              code: ExampleCode
+              displayName: ExampleDisplayName
+              description: Example Description
+              instrumentScopes: []
+            schema:
+              $ref: '#/components/schemas/CreateCorporateActionSourceRequest'
+        description: The corporate action source definition
+        required: true
+      responses:
+        "201":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CorporateActionSource'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CorporateActionSource'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CorporateActionSource'
+          description: The created corporate action source
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] CreateCorporateActionSource: Create corporate action
+        source'
+      tags:
+      - Corporate Action Sources
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/corporateactionsources/{scope}/{code}/corporateactions:
+    get:
+      description: Get corporate actions from a particular corporate action source.
+      operationId: GetCorporateActions
+      parameters:
+      - description: The scope of the corporate action source.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the corporate action source.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The code of the corporate action source.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The code of the corporate action source.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Optional. The start effective date of the data range.
+        explode: true
+        in: query
+        name: fromEffectiveAt
+        required: false
+        schema:
+          description: Optional. The start effective date of the data range.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+        style: form
+      - description: Optional. The end effective date of the data range.
+        explode: true
+        in: query
+        name: toEffectiveAt
+        required: false
+        schema:
+          description: Optional. The end effective date of the data range.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+        style: form
+      - description: Optional. The AsAt date of the data.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: Optional. The AsAt date of the data.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: Optional. Order the results by these fields. Use use the '-'
+          sign to denote descending order e.g. -MyFieldName
+        explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          description: Optional. Order the results by these fields. Use use the '-'
+            sign to denote descending order e.g. -MyFieldName
+          items:
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      - description: Optional. When paginating, limit the results to this number.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: Optional. When paginating, limit the results to this number.
+          format: int32
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      - description: "Optional. Expression to filter the result set.\r\n         \
+          \   For example, to filter on the Announcement Date, use \"announcementDate\
+          \ eq '2020-03-06'\"\r\n            Read more about filtering results from\
+          \ LUSID here https://support.lusid.com/filtering-results-from-lusid."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: "Optional. Expression to filter the result set.\r\n       \
+            \     For example, to filter on the Announcement Date, use \"announcementDate\
+            \ eq '2020-03-06'\"\r\n            Read more about filtering results from\
+            \ LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfCorporateAction'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfCorporateAction'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfCorporateAction'
+          description: Corporate Actions
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetCorporateActions: Get corporate actions'
+      tags:
+      - Corporate Action Sources
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    post:
+      description: "Create or update one or more corporate actions in a particular\
+        \ corporate action source. Failures are identified in the body of the response.\r\
+        \n            \r\nIf a corporate action is upserted at exactly the same effective\
+        \ datetime as a transaction for the same instrument, the corporate action\
+        \ takes precedence. Depending on the nature of the corporate action, this\
+        \ may mean it affects the transaction."
+      operationId: BatchUpsertCorporateActions
+      parameters:
+      - description: The scope of corporate action source
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of corporate action source
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The code of the corporate action source
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The code of the corporate action source
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - corporateActionCode: MyStockSplitId
+              description: 2-for-1 stock split of instrument BBG001S6PJ31
+              announcementDate: 2018-03-01T00:00:00.0000000+00:00
+              exDate: 2018-06-01T00:00:00.0000000+00:00
+              recordDate: 2018-06-02T00:00:00.0000000+00:00
+              paymentDate: 2018-08-02T00:00:00.0000000+00:00
+              transitions:
+              - inputTransition:
+                  instrumentIdentifiers:
+                    instrument/default/Figi: BBG001S6PJ31
+                  unitsFactor: 1
+                  costFactor: 1
+                outputTransitions:
+                - instrumentIdentifiers:
+                    instrument/default/Figi: BBG001S6PJ31
+                  unitsFactor: 2
+                  costFactor: 1
+            schema:
+              description: The corporate action definitions
+              items:
+                $ref: '#/components/schemas/UpsertCorporateActionRequest'
+              nullable: true
+              type: array
+          application/json:
+            example:
+            - corporateActionCode: MyStockSplitId
+              description: 2-for-1 stock split of instrument BBG001S6PJ31
+              announcementDate: 2018-03-01T00:00:00.0000000+00:00
+              exDate: 2018-06-01T00:00:00.0000000+00:00
+              recordDate: 2018-06-02T00:00:00.0000000+00:00
+              paymentDate: 2018-08-02T00:00:00.0000000+00:00
+              transitions:
+              - inputTransition:
+                  instrumentIdentifiers:
+                    instrument/default/Figi: BBG001S6PJ31
+                  unitsFactor: 1
+                  costFactor: 1
+                outputTransitions:
+                - instrumentIdentifiers:
+                    instrument/default/Figi: BBG001S6PJ31
+                  unitsFactor: 2
+                  costFactor: 1
+            schema:
+              description: The corporate action definitions
+              items:
+                $ref: '#/components/schemas/UpsertCorporateActionRequest'
+              nullable: true
+              type: array
+          text/json:
+            example:
+            - corporateActionCode: MyStockSplitId
+              description: 2-for-1 stock split of instrument BBG001S6PJ31
+              announcementDate: 2018-03-01T00:00:00.0000000+00:00
+              exDate: 2018-06-01T00:00:00.0000000+00:00
+              recordDate: 2018-06-02T00:00:00.0000000+00:00
+              paymentDate: 2018-08-02T00:00:00.0000000+00:00
+              transitions:
+              - inputTransition:
+                  instrumentIdentifiers:
+                    instrument/default/Figi: BBG001S6PJ31
+                  unitsFactor: 1
+                  costFactor: 1
+                outputTransitions:
+                - instrumentIdentifiers:
+                    instrument/default/Figi: BBG001S6PJ31
+                  unitsFactor: 2
+                  costFactor: 1
+            schema:
+              description: The corporate action definitions
+              items:
+                $ref: '#/components/schemas/UpsertCorporateActionRequest'
+              nullable: true
+              type: array
+          application/*+json:
+            example:
+            - corporateActionCode: MyStockSplitId
+              description: 2-for-1 stock split of instrument BBG001S6PJ31
+              announcementDate: 2018-03-01T00:00:00.0000000+00:00
+              exDate: 2018-06-01T00:00:00.0000000+00:00
+              recordDate: 2018-06-02T00:00:00.0000000+00:00
+              paymentDate: 2018-08-02T00:00:00.0000000+00:00
+              transitions:
+              - inputTransition:
+                  instrumentIdentifiers:
+                    instrument/default/Figi: BBG001S6PJ31
+                  unitsFactor: 1
+                  costFactor: 1
+                outputTransitions:
+                - instrumentIdentifiers:
+                    instrument/default/Figi: BBG001S6PJ31
+                  unitsFactor: 2
+                  costFactor: 1
+            schema:
+              description: The corporate action definitions
+              items:
+                $ref: '#/components/schemas/UpsertCorporateActionRequest'
+              nullable: true
+              type: array
+        description: The corporate action definitions
+      responses:
+        "201":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/UpsertCorporateActionsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpsertCorporateActionsResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/UpsertCorporateActionsResponse'
+          description: The created corporate actions
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] BatchUpsertCorporateActions: Upsert corporate actions'
+      tags:
+      - Corporate Action Sources
       x-fbn-apistatus: EarlyAccess
       x-contentType: application/json-patch+json
       x-accepts: application/json
@@ -25355,6 +25891,279 @@ components:
           nullable: true
           type: array
       type: object
+    CorporateAction:
+      additionalProperties: false
+      description: A corporate action
+      example:
+        corporateActionCode: corporateActionCode
+        exDate: 2000-01-23T04:56:07.000+00:00
+        announcementDate: 2000-01-23T04:56:07.000+00:00
+        description: description
+        recordDate: 2000-01-23T04:56:07.000+00:00
+        paymentDate: 2000-01-23T04:56:07.000+00:00
+        transitions:
+        - inputTransition:
+            instrumentScope: instrumentScope
+            instrumentUid: instrumentUid
+            costFactor: 6.027456183070403
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            unitsFactor: 0.8008281904610115
+          outputTransitions:
+          - instrumentScope: instrumentScope
+            instrumentUid: instrumentUid
+            costFactor: 6.027456183070403
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            unitsFactor: 0.8008281904610115
+          - instrumentScope: instrumentScope
+            instrumentUid: instrumentUid
+            costFactor: 6.027456183070403
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            unitsFactor: 0.8008281904610115
+        - inputTransition:
+            instrumentScope: instrumentScope
+            instrumentUid: instrumentUid
+            costFactor: 6.027456183070403
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            unitsFactor: 0.8008281904610115
+          outputTransitions:
+          - instrumentScope: instrumentScope
+            instrumentUid: instrumentUid
+            costFactor: 6.027456183070403
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            unitsFactor: 0.8008281904610115
+          - instrumentScope: instrumentScope
+            instrumentUid: instrumentUid
+            costFactor: 6.027456183070403
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            unitsFactor: 0.8008281904610115
+      properties:
+        corporateActionCode:
+          description: The unique identifier of this corporate action
+          type: string
+        description:
+          description: The description of the corporate action.
+          nullable: true
+          type: string
+        announcementDate:
+          description: The announcement date of the corporate action
+          format: date-time
+          type: string
+        exDate:
+          description: The ex date of the corporate action
+          format: date-time
+          type: string
+        recordDate:
+          description: The record date of the corporate action
+          format: date-time
+          type: string
+        paymentDate:
+          description: The payment date of the corporate action
+          format: date-time
+          type: string
+        transitions:
+          description: The transitions that result from this corporate action
+          items:
+            $ref: '#/components/schemas/CorporateActionTransition'
+          nullable: true
+          type: array
+      required:
+      - corporateActionCode
+      type: object
+    CorporateActionSource:
+      additionalProperties: false
+      description: A corporate action source
+      example:
+        displayName: displayName
+        instrumentScopes:
+        - instrumentScopes
+        - instrumentScopes
+        description: description
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        id:
+          code: code
+          scope: scope
+        version:
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        version:
+          $ref: '#/components/schemas/Version'
+        displayName:
+          description: The name of the corporate action source
+          nullable: true
+          type: string
+        description:
+          description: The description of the corporate action source
+          nullable: true
+          type: string
+        instrumentScopes:
+          description: The list of instrument scopes used as the scope resolution
+            strategy when resolving instruments of upserted corporate actions.
+          items:
+            type: string
+          nullable: true
+          type: array
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      type: object
+    CorporateActionTransition:
+      additionalProperties: false
+      description: A 'transition' within a corporate action, representing a set of
+        output movements paired to a single input position
+      example:
+        inputTransition:
+          instrumentScope: instrumentScope
+          instrumentUid: instrumentUid
+          costFactor: 6.027456183070403
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          unitsFactor: 0.8008281904610115
+        outputTransitions:
+        - instrumentScope: instrumentScope
+          instrumentUid: instrumentUid
+          costFactor: 6.027456183070403
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          unitsFactor: 0.8008281904610115
+        - instrumentScope: instrumentScope
+          instrumentUid: instrumentUid
+          costFactor: 6.027456183070403
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          unitsFactor: 0.8008281904610115
+      properties:
+        inputTransition:
+          $ref: '#/components/schemas/CorporateActionTransitionComponent'
+        outputTransitions:
+          description: What will be generated relative to the input transition
+          items:
+            $ref: '#/components/schemas/CorporateActionTransitionComponent'
+          nullable: true
+          type: array
+      type: object
+    CorporateActionTransitionComponent:
+      additionalProperties: false
+      description: A single transition component, when grouped with other components
+        a corporate action transition is formed.
+      example:
+        instrumentScope: instrumentScope
+        instrumentUid: instrumentUid
+        costFactor: 6.027456183070403
+        instrumentIdentifiers:
+          key: instrumentIdentifiers
+        unitsFactor: 0.8008281904610115
+      properties:
+        instrumentScope:
+          description: The scope in which the instrument lies.
+          type: string
+        instrumentIdentifiers:
+          additionalProperties:
+            type: string
+          description: Unique instrument identifiers
+          type: object
+        instrumentUid:
+          description: LUSID's internal unique instrument identifier, resolved from
+            the instrument identifiers
+          type: string
+        unitsFactor:
+          description: The factor to scale units by
+          format: double
+          type: number
+        costFactor:
+          description: The factor to scale cost by
+          format: double
+          type: number
+      required:
+      - costFactor
+      - instrumentIdentifiers
+      - instrumentScope
+      - instrumentUid
+      - unitsFactor
+      type: object
+    CorporateActionTransitionComponentRequest:
+      additionalProperties: false
+      description: "A single transition component request, when grouped with other\
+        \ transition component requests a corporate action\r\ntransition request is\
+        \ formed."
+      example:
+        costFactor: 6.027456183070403
+        instrumentIdentifiers:
+          key: instrumentIdentifiers
+        unitsFactor: 0.8008281904610115
+      properties:
+        instrumentIdentifiers:
+          additionalProperties:
+            type: string
+          description: Unique instrument identifiers
+          type: object
+        unitsFactor:
+          description: The factor to scale units by
+          format: double
+          type: number
+        costFactor:
+          description: The factor to scale cost by
+          format: double
+          type: number
+      required:
+      - costFactor
+      - instrumentIdentifiers
+      - unitsFactor
+      type: object
+    CorporateActionTransitionRequest:
+      additionalProperties: false
+      description: A 'transition' within a corporate action, representing a set of
+        output movements paired to a single input position
+      example:
+        inputTransition:
+          costFactor: 6.027456183070403
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          unitsFactor: 0.8008281904610115
+        outputTransitions:
+        - costFactor: 6.027456183070403
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          unitsFactor: 0.8008281904610115
+        - costFactor: 6.027456183070403
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          unitsFactor: 0.8008281904610115
+      properties:
+        inputTransition:
+          $ref: '#/components/schemas/CorporateActionTransitionComponentRequest'
+        outputTransitions:
+          items:
+            $ref: '#/components/schemas/CorporateActionTransitionComponentRequest'
+          nullable: true
+          type: array
+      type: object
     CounterpartyRiskInformation:
       additionalProperties: false
       description: "In the event that the legal entity is a counterparty to an OTC\
@@ -25396,6 +26205,55 @@ components:
       - countryOfRisk
       - creditRatings
       - industryClassifiers
+      type: object
+    CreateCorporateActionSourceRequest:
+      additionalProperties: false
+      example:
+        code: code
+        displayName: displayName
+        instrumentScopes:
+        - instrumentScopes
+        - instrumentScopes
+        scope: scope
+        description: description
+      properties:
+        scope:
+          description: The scope of the corporate action source
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        code:
+          description: The code of the corporate action source
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        displayName:
+          description: The name of the corporate action source
+          maxLength: 512
+          minLength: 1
+          pattern: ^[\s\S]*$
+          type: string
+        description:
+          description: The description of the corporate action source
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        instrumentScopes:
+          description: The list of instrument scopes used as the scope resolution
+            strategy when resolving instruments of upserted corporate actions.
+          items:
+            type: string
+          maxLength: 1
+          nullable: true
+          type: array
+      required:
+      - code
+      - displayName
+      - scope
       type: object
     CreateCutLabelDefinitionRequest:
       additionalProperties: false
@@ -29449,6 +30307,93 @@ components:
       required:
       - values
       type: object
+    PagedResourceListOfCorporateActionSource:
+      additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - displayName: displayName
+          instrumentScopes:
+          - instrumentScopes
+          - instrumentScopes
+          description: description
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+        - displayName: displayName
+          instrumentScopes:
+          - instrumentScopes
+          - instrumentScopes
+          description: description
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/CorporateActionSource'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
     PagedResourceListOfCutLabelDefinition:
       additionalProperties: false
       description: A paginated list of resource that can be returned from a request.
@@ -33154,6 +34099,145 @@ components:
       required:
       - values
       type: object
+    ResourceListOfCorporateAction:
+      additionalProperties: false
+      description: A collection of resources that can be returned from requests.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - corporateActionCode: corporateActionCode
+          exDate: 2000-01-23T04:56:07.000+00:00
+          announcementDate: 2000-01-23T04:56:07.000+00:00
+          description: description
+          recordDate: 2000-01-23T04:56:07.000+00:00
+          paymentDate: 2000-01-23T04:56:07.000+00:00
+          transitions:
+          - inputTransition:
+              instrumentScope: instrumentScope
+              instrumentUid: instrumentUid
+              costFactor: 6.027456183070403
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
+              unitsFactor: 0.8008281904610115
+            outputTransitions:
+            - instrumentScope: instrumentScope
+              instrumentUid: instrumentUid
+              costFactor: 6.027456183070403
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
+              unitsFactor: 0.8008281904610115
+            - instrumentScope: instrumentScope
+              instrumentUid: instrumentUid
+              costFactor: 6.027456183070403
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
+              unitsFactor: 0.8008281904610115
+          - inputTransition:
+              instrumentScope: instrumentScope
+              instrumentUid: instrumentUid
+              costFactor: 6.027456183070403
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
+              unitsFactor: 0.8008281904610115
+            outputTransitions:
+            - instrumentScope: instrumentScope
+              instrumentUid: instrumentUid
+              costFactor: 6.027456183070403
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
+              unitsFactor: 0.8008281904610115
+            - instrumentScope: instrumentScope
+              instrumentUid: instrumentUid
+              costFactor: 6.027456183070403
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
+              unitsFactor: 0.8008281904610115
+        - corporateActionCode: corporateActionCode
+          exDate: 2000-01-23T04:56:07.000+00:00
+          announcementDate: 2000-01-23T04:56:07.000+00:00
+          description: description
+          recordDate: 2000-01-23T04:56:07.000+00:00
+          paymentDate: 2000-01-23T04:56:07.000+00:00
+          transitions:
+          - inputTransition:
+              instrumentScope: instrumentScope
+              instrumentUid: instrumentUid
+              costFactor: 6.027456183070403
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
+              unitsFactor: 0.8008281904610115
+            outputTransitions:
+            - instrumentScope: instrumentScope
+              instrumentUid: instrumentUid
+              costFactor: 6.027456183070403
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
+              unitsFactor: 0.8008281904610115
+            - instrumentScope: instrumentScope
+              instrumentUid: instrumentUid
+              costFactor: 6.027456183070403
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
+              unitsFactor: 0.8008281904610115
+          - inputTransition:
+              instrumentScope: instrumentScope
+              instrumentUid: instrumentUid
+              costFactor: 6.027456183070403
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
+              unitsFactor: 0.8008281904610115
+            outputTransitions:
+            - instrumentScope: instrumentScope
+              instrumentUid: instrumentUid
+              costFactor: 6.027456183070403
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
+              unitsFactor: 0.8008281904610115
+            - instrumentScope: instrumentScope
+              instrumentUid: instrumentUid
+              costFactor: 6.027456183070403
+              instrumentIdentifiers:
+                key: instrumentIdentifiers
+              unitsFactor: 0.8008281904610115
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/CorporateAction'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
     ResourceListOfDataType:
       additionalProperties: false
       description: A collection of resources that can be returned from requests.
@@ -36292,6 +37376,185 @@ components:
       - marketData
       - marketDataId
       type: object
+    UpsertCorporateActionRequest:
+      additionalProperties: false
+      example:
+        corporateActionCode: corporateActionCode
+        exDate: 2000-01-23T04:56:07.000+00:00
+        announcementDate: 2000-01-23T04:56:07.000+00:00
+        description: description
+        recordDate: 2000-01-23T04:56:07.000+00:00
+        paymentDate: 2000-01-23T04:56:07.000+00:00
+        transitions:
+        - inputTransition:
+            costFactor: 6.027456183070403
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            unitsFactor: 0.8008281904610115
+          outputTransitions:
+          - costFactor: 6.027456183070403
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            unitsFactor: 0.8008281904610115
+          - costFactor: 6.027456183070403
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            unitsFactor: 0.8008281904610115
+        - inputTransition:
+            costFactor: 6.027456183070403
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            unitsFactor: 0.8008281904610115
+          outputTransitions:
+          - costFactor: 6.027456183070403
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            unitsFactor: 0.8008281904610115
+          - costFactor: 6.027456183070403
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            unitsFactor: 0.8008281904610115
+      properties:
+        corporateActionCode:
+          description: The unique identifier of this corporate action
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        description:
+          description: The description of the corporate action.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        announcementDate:
+          description: The announcement date of the corporate action
+          format: date-time
+          type: string
+        exDate:
+          description: The ex date of the corporate action
+          format: date-time
+          type: string
+        recordDate:
+          description: The record date of the corporate action
+          format: date-time
+          type: string
+        paymentDate:
+          description: The payment date of the corporate action
+          format: date-time
+          type: string
+        transitions:
+          description: The transitions that result from this corporate action
+          items:
+            $ref: '#/components/schemas/CorporateActionTransitionRequest'
+          type: array
+      required:
+      - announcementDate
+      - corporateActionCode
+      - exDate
+      - paymentDate
+      - recordDate
+      - transitions
+      type: object
+    UpsertCorporateActionsResponse:
+      additionalProperties: false
+      example:
+        values:
+          key:
+            corporateActionCode: corporateActionCode
+            exDate: 2000-01-23T04:56:07.000+00:00
+            announcementDate: 2000-01-23T04:56:07.000+00:00
+            description: description
+            recordDate: 2000-01-23T04:56:07.000+00:00
+            paymentDate: 2000-01-23T04:56:07.000+00:00
+            transitions:
+            - inputTransition:
+                instrumentScope: instrumentScope
+                instrumentUid: instrumentUid
+                costFactor: 6.027456183070403
+                instrumentIdentifiers:
+                  key: instrumentIdentifiers
+                unitsFactor: 0.8008281904610115
+              outputTransitions:
+              - instrumentScope: instrumentScope
+                instrumentUid: instrumentUid
+                costFactor: 6.027456183070403
+                instrumentIdentifiers:
+                  key: instrumentIdentifiers
+                unitsFactor: 0.8008281904610115
+              - instrumentScope: instrumentScope
+                instrumentUid: instrumentUid
+                costFactor: 6.027456183070403
+                instrumentIdentifiers:
+                  key: instrumentIdentifiers
+                unitsFactor: 0.8008281904610115
+            - inputTransition:
+                instrumentScope: instrumentScope
+                instrumentUid: instrumentUid
+                costFactor: 6.027456183070403
+                instrumentIdentifiers:
+                  key: instrumentIdentifiers
+                unitsFactor: 0.8008281904610115
+              outputTransitions:
+              - instrumentScope: instrumentScope
+                instrumentUid: instrumentUid
+                costFactor: 6.027456183070403
+                instrumentIdentifiers:
+                  key: instrumentIdentifiers
+                unitsFactor: 0.8008281904610115
+              - instrumentScope: instrumentScope
+                instrumentUid: instrumentUid
+                costFactor: 6.027456183070403
+                instrumentIdentifiers:
+                  key: instrumentIdentifiers
+                unitsFactor: 0.8008281904610115
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        failed:
+          key:
+            id: id
+            detail: detail
+            type: type
+            errorDetails:
+            - key: errorDetails
+            - key: errorDetails
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        values:
+          additionalProperties:
+            $ref: '#/components/schemas/CorporateAction'
+          description: The corporate actions which have been successfully updated
+            or inserted.
+          nullable: true
+          type: object
+        failed:
+          additionalProperties:
+            $ref: '#/components/schemas/ErrorDetail'
+          description: The corporate actions that could not be updated or inserted
+            along with a reason for their failure.
+          nullable: true
+          type: object
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      type: object
     UpsertInstrumentPropertiesResponse:
       additionalProperties: false
       example:
@@ -38281,7 +39544,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
