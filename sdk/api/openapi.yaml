@@ -287,12 +287,12 @@ info:
     | <a name="783">783</a>|The Property definition domain is not supported for derived properties|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4240
+  version: 0.11.4241
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:41372
+- url: http://local-unit-test-server.lusid.com:37272
 security:
 - {}
 tags:
@@ -26300,12 +26300,13 @@ components:
           scope: scope
       properties:
         domain:
-          description: 'The domain that the property exists in. The available values
-            are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration,
-            Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata,
-            Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
-            LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
-            NextBestAction, CustomEntity'
+          description: 'The domain that the property exists in. Not all available
+            values are currently supported, please check the documentation: https://support.lusid.com/knowledgebase/article/KA-01719/.
+            The available values are: NotDefined, Transaction, Portfolio, Holding,
+            ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition,
+            Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData,
+            ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
+            Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity'
           enum:
           - NotDefined
           - Transaction
