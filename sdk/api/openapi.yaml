@@ -287,12 +287,12 @@ info:
     | <a name="783">783</a>|The Property definition domain is not supported for derived properties|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4246
+  version: 0.11.4248
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: http://local-unit-test-server.lusid.com:42547
 security:
 - {}
 tags:
@@ -36180,13 +36180,13 @@ components:
         canRead:
           readOnly: true
           type: boolean
-        canWrite:
-          readOnly: true
-          type: boolean
         canSeek:
           readOnly: true
           type: boolean
         canTimeout:
+          readOnly: true
+          type: boolean
+        canWrite:
           readOnly: true
           type: boolean
         length:
@@ -39545,7 +39545,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
