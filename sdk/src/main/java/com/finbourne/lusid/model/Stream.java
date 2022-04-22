@@ -33,6 +33,10 @@ public class Stream {
   @SerializedName(SERIALIZED_NAME_CAN_READ)
   private Boolean canRead;
 
+  public static final String SERIALIZED_NAME_CAN_WRITE = "canWrite";
+  @SerializedName(SERIALIZED_NAME_CAN_WRITE)
+  private Boolean canWrite;
+
   public static final String SERIALIZED_NAME_CAN_SEEK = "canSeek";
   @SerializedName(SERIALIZED_NAME_CAN_SEEK)
   private Boolean canSeek;
@@ -40,10 +44,6 @@ public class Stream {
   public static final String SERIALIZED_NAME_CAN_TIMEOUT = "canTimeout";
   @SerializedName(SERIALIZED_NAME_CAN_TIMEOUT)
   private Boolean canTimeout;
-
-  public static final String SERIALIZED_NAME_CAN_WRITE = "canWrite";
-  @SerializedName(SERIALIZED_NAME_CAN_WRITE)
-  private Boolean canWrite;
 
   public static final String SERIALIZED_NAME_LENGTH = "length";
   @SerializedName(SERIALIZED_NAME_LENGTH)
@@ -74,6 +74,17 @@ public class Stream {
 
 
    /**
+   * Get canWrite
+   * @return canWrite
+  **/
+  @ApiModelProperty(value = "")
+  public Boolean getCanWrite() {
+    return canWrite;
+  }
+
+
+
+   /**
    * Get canSeek
    * @return canSeek
   **/
@@ -91,17 +102,6 @@ public class Stream {
   @ApiModelProperty(value = "")
   public Boolean getCanTimeout() {
     return canTimeout;
-  }
-
-
-
-   /**
-   * Get canWrite
-   * @return canWrite
-  **/
-  @ApiModelProperty(value = "")
-  public Boolean getCanWrite() {
-    return canWrite;
   }
 
 
@@ -195,9 +195,9 @@ public class Stream {
     StringBuilder sb = new StringBuilder();
     sb.append("class Stream {\n");
     sb.append("    canRead: ").append(toIndentedString(canRead)).append("\n");
+    sb.append("    canWrite: ").append(toIndentedString(canWrite)).append("\n");
     sb.append("    canSeek: ").append(toIndentedString(canSeek)).append("\n");
     sb.append("    canTimeout: ").append(toIndentedString(canTimeout)).append("\n");
-    sb.append("    canWrite: ").append(toIndentedString(canWrite)).append("\n");
     sb.append("    length: ").append(toIndentedString(length)).append("\n");
     sb.append("    position: ").append(toIndentedString(position)).append("\n");
     sb.append("    readTimeout: ").append(toIndentedString(readTimeout)).append("\n");
