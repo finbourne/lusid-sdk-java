@@ -285,14 +285,15 @@ info:
     | <a name="778">778</a>|Unable to look up FX rate from trade ccy to portfolio ccy for some of the trades.|  |
     | <a name="782">782</a>|The Property definition dataType is not matching the derivation formula dataType|  |
     | <a name="783">783</a>|The Property definition domain is not supported for derived properties|  |
+    | <a name="788">788</a>|Compliance run not found failure.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4268
+  version: 0.11.4269
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:55600
+- url: http://local-unit-test-server.lusid.com:63119
 security:
 - {}
 tags:
