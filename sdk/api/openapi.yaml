@@ -288,12 +288,12 @@ info:
     | <a name="788">788</a>|Compliance run not found failure.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4309
+  version: 0.11.4310
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:39168
+- url: http://local-unit-test-server.lusid.com:38132
 security:
 - {}
 tags:
@@ -934,7 +934,6 @@ paths:
         name: filter
         required: false
         schema:
-          default: ""
           description: "Expression to filter the result set. Read more about filtering\
             \ results from LUSID here:\r\n            https://support.lusid.com/filtering-results-from-lusid."
           maxLength: 16384
@@ -7202,7 +7201,6 @@ paths:
         name: filter
         required: false
         schema:
-          default: ""
           description: "Expression to filter the result set. Read more about filtering\
             \ results from LUSID here:\r\n            https://support.lusid.com/filtering-results-from-lusid."
           maxLength: 16384
