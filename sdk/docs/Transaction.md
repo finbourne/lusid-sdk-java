@@ -25,6 +25,18 @@ Name | Type | Description | Notes
 **source** | **String** | The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration. |  [optional]
 **entryDateTime** | **OffsetDateTime** | The asAt datetime that the transaction was added to LUSID. |  [optional]
 **otcConfirmation** | [**OtcConfirmation**](OtcConfirmation.md) |  |  [optional]
+**transactionStatus** | [**TransactionStatusEnum**](#TransactionStatusEnum) | The status of the transaction. The available values are: Active, Amended, Cancelled |  [optional]
+**cancelDateTime** | **OffsetDateTime** | If the transaction has been cancelled, the asAt datetime that the transaction was cancelled. |  [optional]
+
+
+
+## Enum: TransactionStatusEnum
+
+Name | Value
+---- | -----
+ACTIVE | &quot;Active&quot;
+AMENDED | &quot;Amended&quot;
+CANCELLED | &quot;Cancelled&quot;
 
 
 

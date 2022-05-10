@@ -288,12 +288,12 @@ info:
     | <a name="788">788</a>|Compliance run not found failure.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4318
+  version: 0.11.4320
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:60340
+- url: http://local-unit-test-server.lusid.com:48796
 security:
 - {}
 tags:
@@ -11050,6 +11050,21 @@ paths:
           pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
+      - description: "Option to specify whether or not to include cancelled transactions,\r\
+          \n             including previous versions of transactions which have since\
+          \ been amended.\r\n             Defaults to False if not specified."
+        explode: true
+        in: query
+        name: showCancelledTransactions
+        required: false
+        schema:
+          description: "Option to specify whether or not to include cancelled transactions,\r\
+            \n             including previous versions of transactions which have\
+            \ since been amended.\r\n             Defaults to False if not specified."
+          nullable: true
+          type: boolean
+        style: form
+        x-nullable: true
       responses:
         "200":
           content:
@@ -11090,6 +11105,7 @@ paths:
                         labelValue: DEMO-SCOPE
                   source: ""
                   entryDateTime: 2018-03-04T23:50:00.0000000+00:00
+                  transactionStatus: Active
                 href: http://example.com
                 links: []
               schema:
@@ -11131,6 +11147,7 @@ paths:
                         labelValue: DEMO-SCOPE
                   source: ""
                   entryDateTime: 2018-03-04T23:50:00.0000000+00:00
+                  transactionStatus: Active
                 href: http://example.com
                 links: []
               schema:
@@ -11172,6 +11189,7 @@ paths:
                         labelValue: DEMO-SCOPE
                   source: ""
                   entryDateTime: 2018-03-04T23:50:00.0000000+00:00
+                  transactionStatus: Active
                 href: http://example.com
                 links: []
               schema:
@@ -19183,6 +19201,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -19233,6 +19252,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -19283,6 +19303,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -19333,6 +19354,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -19383,6 +19405,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -19433,6 +19456,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -19483,6 +19507,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -19597,6 +19622,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -19647,6 +19673,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -19831,6 +19858,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -19881,6 +19909,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -19931,6 +19960,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -19981,6 +20011,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -20031,6 +20062,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -20081,6 +20113,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -20131,6 +20164,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -20245,6 +20279,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -20295,6 +20330,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -20479,6 +20515,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -20529,6 +20566,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -20579,6 +20617,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -20629,6 +20668,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -20679,6 +20719,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -20729,6 +20770,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -20779,6 +20821,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -20893,6 +20936,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -20943,6 +20987,7 @@ paths:
                     properties: {}
                     source: ""
                     entryDateTime: 0001-01-01T00:00:00.0000000+00:00
+                    transactionStatus: Active
                   unrealisedGainLossReportingCurrency:
                     amount: 0
                     currency: USD
@@ -22721,6 +22766,21 @@ paths:
           type: integer
         style: form
         x-nullable: true
+      - description: "Option to specify whether or not to include cancelled transactions,\r\
+          \n             including previous versions of transactions which have since\
+          \ been amended.\r\n             Defaults to False if not specified."
+        explode: true
+        in: query
+        name: showCancelledTransactions
+        required: false
+        schema:
+          description: "Option to specify whether or not to include cancelled transactions,\r\
+            \n             including previous versions of transactions which have\
+            \ since been amended.\r\n             Defaults to False if not specified."
+          nullable: true
+          type: boolean
+        style: form
+        x-nullable: true
       responses:
         "200":
           content:
@@ -22761,6 +22821,7 @@ paths:
                         labelValue: DEMO-SCOPE
                   source: ""
                   entryDateTime: 2018-03-04T23:50:00.0000000+00:00
+                  transactionStatus: Active
                 href: http://example.com
                 links: []
               schema:
@@ -22802,6 +22863,7 @@ paths:
                         labelValue: DEMO-SCOPE
                   source: ""
                   entryDateTime: 2018-03-04T23:50:00.0000000+00:00
+                  transactionStatus: Active
                 href: http://example.com
                 links: []
               schema:
@@ -22843,6 +22905,7 @@ paths:
                         labelValue: DEMO-SCOPE
                   source: ""
                   entryDateTime: 2018-03-04T23:50:00.0000000+00:00
+                  transactionStatus: Active
                 href: http://example.com
                 links: []
               schema:
@@ -31552,6 +31615,7 @@ components:
               code: code
               scope: scope
           instrumentScope: instrumentScope
+          transactionStatus: Active
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
             price: 5.962133916683182
@@ -31561,6 +31625,7 @@ components:
           settlementDate: 2000-01-23T04:56:07.000+00:00
           units: 1.4658129805029452
           source: source
+          cancelDateTime: 2000-01-23T04:56:07.000+00:00
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
@@ -32012,6 +32077,7 @@ components:
               code: code
               scope: scope
           instrumentScope: instrumentScope
+          transactionStatus: Active
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
             price: 5.962133916683182
@@ -32021,6 +32087,7 @@ components:
           settlementDate: 2000-01-23T04:56:07.000+00:00
           units: 1.4658129805029452
           source: source
+          cancelDateTime: 2000-01-23T04:56:07.000+00:00
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
@@ -35248,6 +35315,7 @@ components:
                 code: code
                 scope: scope
             instrumentScope: instrumentScope
+            transactionStatus: Active
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
               price: 5.962133916683182
@@ -35257,6 +35325,7 @@ components:
             settlementDate: 2000-01-23T04:56:07.000+00:00
             units: 1.4658129805029452
             source: source
+            cancelDateTime: 2000-01-23T04:56:07.000+00:00
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
@@ -35333,6 +35402,7 @@ components:
                 code: code
                 scope: scope
             instrumentScope: instrumentScope
+            transactionStatus: Active
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
               price: 5.962133916683182
@@ -35342,6 +35412,7 @@ components:
             settlementDate: 2000-01-23T04:56:07.000+00:00
             units: 1.4658129805029452
             source: source
+            cancelDateTime: 2000-01-23T04:56:07.000+00:00
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
@@ -36315,6 +36386,7 @@ components:
             code: code
             scope: scope
         instrumentScope: instrumentScope
+        transactionStatus: Active
         entryDateTime: 2000-01-23T04:56:07.000+00:00
         transactionPrice:
           price: 5.962133916683182
@@ -36324,6 +36396,7 @@ components:
         settlementDate: 2000-01-23T04:56:07.000+00:00
         units: 1.4658129805029452
         source: source
+        cancelDateTime: 2000-01-23T04:56:07.000+00:00
         type: type
         transactionDate: 2000-01-23T04:56:07.000+00:00
         totalConsideration:
@@ -36420,6 +36493,20 @@ components:
           type: string
         otcConfirmation:
           $ref: '#/components/schemas/OtcConfirmation'
+        transactionStatus:
+          description: 'The status of the transaction. The available values are: Active,
+            Amended, Cancelled'
+          enum:
+          - Active
+          - Amended
+          - Cancelled
+          type: string
+        cancelDateTime:
+          description: If the transaction has been cancelled, the asAt datetime that
+            the transaction was cancelled.
+          format: date-time
+          nullable: true
+          type: string
       required:
       - instrumentUid
       - settlementDate
@@ -39196,6 +39283,7 @@ components:
                 code: code
                 scope: scope
             instrumentScope: instrumentScope
+            transactionStatus: Active
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
               price: 5.962133916683182
@@ -39205,6 +39293,7 @@ components:
             settlementDate: 2000-01-23T04:56:07.000+00:00
             units: 1.4658129805029452
             source: source
+            cancelDateTime: 2000-01-23T04:56:07.000+00:00
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
@@ -39271,6 +39360,7 @@ components:
                 code: code
                 scope: scope
             instrumentScope: instrumentScope
+            transactionStatus: Active
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
               price: 5.962133916683182
@@ -39280,6 +39370,7 @@ components:
             settlementDate: 2000-01-23T04:56:07.000+00:00
             units: 1.4658129805029452
             source: source
+            cancelDateTime: 2000-01-23T04:56:07.000+00:00
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
@@ -39357,6 +39448,7 @@ components:
               code: code
               scope: scope
           instrumentScope: instrumentScope
+          transactionStatus: Active
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
             price: 5.962133916683182
@@ -39366,6 +39458,7 @@ components:
           settlementDate: 2000-01-23T04:56:07.000+00:00
           units: 1.4658129805029452
           source: source
+          cancelDateTime: 2000-01-23T04:56:07.000+00:00
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
@@ -39393,6 +39486,7 @@ components:
               code: code
               scope: scope
           instrumentScope: instrumentScope
+          transactionStatus: Active
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
             price: 5.962133916683182
@@ -39402,6 +39496,7 @@ components:
           settlementDate: 2000-01-23T04:56:07.000+00:00
           units: 1.4658129805029452
           source: source
+          cancelDateTime: 2000-01-23T04:56:07.000+00:00
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
