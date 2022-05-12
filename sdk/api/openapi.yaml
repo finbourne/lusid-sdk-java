@@ -288,12 +288,12 @@ info:
     | <a name="788">788</a>|Compliance run not found failure.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4332
+  version: 0.11.4335
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: http://local-unit-test-server.lusid.com:41170
 security:
 - {}
 tags:
@@ -4899,7 +4899,7 @@ paths:
                 displayName: LegalEntity1DisplayName
                 description: LegalEntity1Description
                 href: https://example.com
-                lusidLegalEntityId: UniqueLusidLegalEntityId1
+                lusidLegalEntityId: LUID_00003D4V
                 identifiers:
                   legalEntity/ExternalIdentifier/LEI:
                     key: LegalEntity/ExternalIdentifier/LEI
@@ -4942,7 +4942,7 @@ paths:
                 displayName: LegalEntity1DisplayName
                 description: LegalEntity1Description
                 href: https://example.com
-                lusidLegalEntityId: UniqueLusidLegalEntityId1
+                lusidLegalEntityId: LUID_00003D4V
                 identifiers:
                   legalEntity/ExternalIdentifier/LEI:
                     key: LegalEntity/ExternalIdentifier/LEI
@@ -4985,7 +4985,7 @@ paths:
                 displayName: LegalEntity1DisplayName
                 description: LegalEntity1Description
                 href: https://example.com
-                lusidLegalEntityId: UniqueLusidLegalEntityId1
+                lusidLegalEntityId: LUID_00003D4V
                 identifiers:
                   legalEntity/ExternalIdentifier/LEI:
                     key: LegalEntity/ExternalIdentifier/LEI
@@ -5195,7 +5195,7 @@ paths:
                 - displayName: LegalEntity1DisplayName
                   description: LegalEntity1Description
                   href: https://example.com
-                  lusidLegalEntityId: UniqueLusidLegalEntityId1
+                  lusidLegalEntityId: LUID_00003D4V
                   identifiers:
                     legalEntity/ExternalIdentifier/LEI:
                       key: LegalEntity/ExternalIdentifier/LEI
@@ -5234,7 +5234,7 @@ paths:
                 - displayName: LegalEntity2DisplayName
                   description: LegalEntity2Description
                   href: https://example.com
-                  lusidLegalEntityId: UniqueLusidLegalEntityId2
+                  lusidLegalEntityId: LUID_00003D55
                   identifiers:
                     legalEntity/ExternalIdentifier/LEI:
                       key: LegalEntity/ExternalIdentifier/LEI
@@ -5272,7 +5272,7 @@ paths:
                 - displayName: LegalEntity1DisplayName
                   description: LegalEntity1Description
                   href: https://example.com
-                  lusidLegalEntityId: UniqueLusidLegalEntityId1
+                  lusidLegalEntityId: LUID_00003D4V
                   identifiers:
                     legalEntity/ExternalIdentifier/LEI:
                       key: LegalEntity/ExternalIdentifier/LEI
@@ -5311,7 +5311,7 @@ paths:
                 - displayName: LegalEntity2DisplayName
                   description: LegalEntity2Description
                   href: https://example.com
-                  lusidLegalEntityId: UniqueLusidLegalEntityId2
+                  lusidLegalEntityId: LUID_00003D55
                   identifiers:
                     legalEntity/ExternalIdentifier/LEI:
                       key: LegalEntity/ExternalIdentifier/LEI
@@ -5349,7 +5349,7 @@ paths:
                 - displayName: LegalEntity1DisplayName
                   description: LegalEntity1Description
                   href: https://example.com
-                  lusidLegalEntityId: UniqueLusidLegalEntityId1
+                  lusidLegalEntityId: LUID_00003D4V
                   identifiers:
                     legalEntity/ExternalIdentifier/LEI:
                       key: LegalEntity/ExternalIdentifier/LEI
@@ -5388,7 +5388,7 @@ paths:
                 - displayName: LegalEntity2DisplayName
                   description: LegalEntity2Description
                   href: https://example.com
-                  lusidLegalEntityId: UniqueLusidLegalEntityId2
+                  lusidLegalEntityId: LUID_00003D55
                   identifiers:
                     legalEntity/ExternalIdentifier/LEI:
                       key: LegalEntity/ExternalIdentifier/LEI
@@ -5637,7 +5637,7 @@ paths:
                 displayName: LegalEntity1DisplayName
                 description: LegalEntity1Description
                 href: https://example.com
-                lusidLegalEntityId: UniqueLusidLegalEntityId1
+                lusidLegalEntityId: LUID_00003D4V
                 identifiers:
                   legalEntity/ExternalIdentifier/LEI:
                     key: LegalEntity/ExternalIdentifier/LEI
@@ -5680,7 +5680,7 @@ paths:
                 displayName: LegalEntity1DisplayName
                 description: LegalEntity1Description
                 href: https://example.com
-                lusidLegalEntityId: UniqueLusidLegalEntityId1
+                lusidLegalEntityId: LUID_00003D4V
                 identifiers:
                   legalEntity/ExternalIdentifier/LEI:
                     key: LegalEntity/ExternalIdentifier/LEI
@@ -5723,7 +5723,7 @@ paths:
                 displayName: LegalEntity1DisplayName
                 description: LegalEntity1Description
                 href: https://example.com
-                lusidLegalEntityId: UniqueLusidLegalEntityId1
+                lusidLegalEntityId: LUID_00003D4V
                 identifiers:
                   legalEntity/ExternalIdentifier/LEI:
                     key: LegalEntity/ExternalIdentifier/LEI
@@ -6022,7 +6022,7 @@ paths:
                 displayName: LegalEntity1DisplayName
                 description: LegalEntity1Description
                 href: https://example.com
-                lusidLegalEntityId: UniqueLusidLegalEntityId1
+                lusidLegalEntityId: LUID_00003D4V
                 identifiers:
                   legalEntity/ExternalIdentifier/LEI:
                     key: LegalEntity/ExternalIdentifier/LEI
@@ -6065,7 +6065,7 @@ paths:
                 displayName: LegalEntity1DisplayName
                 description: LegalEntity1Description
                 href: https://example.com
-                lusidLegalEntityId: UniqueLusidLegalEntityId1
+                lusidLegalEntityId: LUID_00003D4V
                 identifiers:
                   legalEntity/ExternalIdentifier/LEI:
                     key: LegalEntity/ExternalIdentifier/LEI
@@ -6108,7 +6108,7 @@ paths:
                 displayName: LegalEntity1DisplayName
                 description: LegalEntity1Description
                 href: https://example.com
-                lusidLegalEntityId: UniqueLusidLegalEntityId1
+                lusidLegalEntityId: LUID_00003D4V
                 identifiers:
                   legalEntity/ExternalIdentifier/LEI:
                     key: LegalEntity/ExternalIdentifier/LEI
@@ -6823,7 +6823,7 @@ paths:
               example:
                 displayName: LegalEntity1Description
                 description: LegalEntity1DisplayName
-                lusidLegalEntityId: UniqueLusidLegalEntityId1
+                lusidLegalEntityId: LUID_00003D4V
                 identifiers:
                   legalEntity/ExternalIdentifier/LEI:
                     key: LegalEntity/ExternalIdentifier/LEI
@@ -6861,7 +6861,7 @@ paths:
               example:
                 displayName: LegalEntity1Description
                 description: LegalEntity1DisplayName
-                lusidLegalEntityId: UniqueLusidLegalEntityId1
+                lusidLegalEntityId: LUID_00003D4V
                 identifiers:
                   legalEntity/ExternalIdentifier/LEI:
                     key: LegalEntity/ExternalIdentifier/LEI
@@ -6899,7 +6899,7 @@ paths:
               example:
                 displayName: LegalEntity1Description
                 description: LegalEntity1DisplayName
-                lusidLegalEntityId: UniqueLusidLegalEntityId1
+                lusidLegalEntityId: LUID_00003D4V
                 identifiers:
                   legalEntity/ExternalIdentifier/LEI:
                     key: LegalEntity/ExternalIdentifier/LEI
@@ -28919,8 +28919,7 @@ components:
           nullable: true
           type: string
         lusidLegalEntityId:
-          description: The unique LUSID Legal Entity Identifier (LULEID) of the Legal
-            Entity. This field is not populated until further notice.
+          description: The unique LUSID Legal Entity Identifier of the Legal Entity.
           nullable: true
           type: string
         identifiers:
@@ -29652,7 +29651,8 @@ components:
           description: 'The available values are: SimpleStatic, Discounting, VendorDefault,
             BlackScholes, ConstantTimeValueOfMoney, Bachelier, ForwardWithPoints,
             ForwardWithPointsUndiscounted, ForwardSpecifiedRate, ForwardSpecifiedRateUndiscounted,
-            IndexNav, IndexPrice, InlinedIndex, ForwardFromCurve, ForwardFromCurveUndiscounted'
+            IndexNav, IndexPrice, InlinedIndex, ForwardFromCurve, ForwardFromCurveUndiscounted,
+            BlackScholesDigital, BjerksundStensland1993'
           enum:
           - SimpleStatic
           - Discounting
@@ -29669,6 +29669,8 @@ components:
           - InlinedIndex
           - ForwardFromCurve
           - ForwardFromCurveUndiscounted
+          - BlackScholesDigital
+          - BjerksundStensland1993
           type: string
       required:
       - library
@@ -39651,7 +39653,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
