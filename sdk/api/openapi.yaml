@@ -288,12 +288,12 @@ info:
     | <a name="788">788</a>|Compliance run not found failure.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4332
+  version: 0.11.4333
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:63389
+- url: http://local-unit-test-server.lusid.com:45189
 security:
 - {}
 tags:
@@ -29652,7 +29652,8 @@ components:
           description: 'The available values are: SimpleStatic, Discounting, VendorDefault,
             BlackScholes, ConstantTimeValueOfMoney, Bachelier, ForwardWithPoints,
             ForwardWithPointsUndiscounted, ForwardSpecifiedRate, ForwardSpecifiedRateUndiscounted,
-            IndexNav, IndexPrice, InlinedIndex, ForwardFromCurve, ForwardFromCurveUndiscounted'
+            IndexNav, IndexPrice, InlinedIndex, ForwardFromCurve, ForwardFromCurveUndiscounted,
+            BlackScholesDigital, BjerksundStensland1993'
           enum:
           - SimpleStatic
           - Discounting
@@ -29669,6 +29670,8 @@ components:
           - InlinedIndex
           - ForwardFromCurve
           - ForwardFromCurveUndiscounted
+          - BlackScholesDigital
+          - BjerksundStensland1993
           type: string
       required:
       - library
