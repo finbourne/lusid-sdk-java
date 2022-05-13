@@ -288,12 +288,12 @@ info:
     | <a name="788">788</a>|Compliance run not found failure.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4344
+  version: 0.11.4345
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:37772
+- url: http://local-unit-test-server.lusid.com:54896
 security:
 - {}
 tags:
@@ -25001,6 +25001,7 @@ components:
         settlementDate:
           description: The settlement date for this allocation.
           format: date-time
+          nullable: true
           type: string
         date:
           description: The date of this allocation.
@@ -25015,6 +25016,7 @@ components:
         settlementCurrencyFxRate:
           description: The settlement currency to allocation currency FX rate.
           format: double
+          nullable: true
           type: number
         counterparty:
           description: The counterparty for this allocation.
