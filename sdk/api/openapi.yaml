@@ -288,12 +288,12 @@ info:
     | <a name="788">788</a>|Compliance run not found failure.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4354
+  version: 0.11.4355
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:45636
+- url: http://local-unit-test-server.lusid.com:62885
 security:
 - {}
 tags:
@@ -17999,6 +17999,442 @@ paths:
       - Search
       x-fbn-apistatus: Stable
       x-accepts: application/json
+  /api/sequences:
+    get:
+      description: List sequences which satisfies filtering criteria.
+      operationId: ListSequences
+      parameters:
+      - description: "The pagination token to use to continue listing sequences from\
+          \ a previous call to list sequences. This\r\nvalue is returned from the\
+          \ previous call."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          description: "The pagination token to use to continue listing sequences\
+            \ from a previous call to list sequences. This\r\nvalue is returned from\
+            \ the previous call."
+          maxLength: 500
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
+          type: string
+        style: form
+      - description: When paginating, limit the number of returned results to this
+          many. Defaults to 500 if not specified.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: When paginating, limit the number of returned results to this
+            many. Defaults to 500 if not specified.
+          format: int32
+          maximum: 5000
+          minimum: 1
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      - description: "Expression to filter the result set. \r\n            Read more\
+          \ about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: "Expression to filter the result set. \r\n            Read\
+            \ more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfSequenceDefinition'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfSequenceDefinition'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfSequenceDefinition'
+          description: The sequences matching filtering criteria
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] ListSequences: List Sequences'
+      tags:
+      - Sequences
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/sequences/{scope}:
+    post:
+      description: Create a new sequence
+      operationId: CreateSequence
+      parameters:
+      - description: Scope of the sequence.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: Scope of the sequence.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              code: TestCode
+              increment: 1
+              minValue: 0
+              maxValue: 10
+              start: 0
+              cycle: false
+              pattern: TXN-{{seqValue}}
+            schema:
+              $ref: '#/components/schemas/CreateSequenceRequest'
+          application/json:
+            example:
+              code: TestCode
+              increment: 1
+              minValue: 0
+              maxValue: 10
+              start: 0
+              cycle: false
+              pattern: TXN-{{seqValue}}
+            schema:
+              $ref: '#/components/schemas/CreateSequenceRequest'
+          text/json:
+            example:
+              code: TestCode
+              increment: 1
+              minValue: 0
+              maxValue: 10
+              start: 0
+              cycle: false
+              pattern: TXN-{{seqValue}}
+            schema:
+              $ref: '#/components/schemas/CreateSequenceRequest'
+          application/*+json:
+            example:
+              code: TestCode
+              increment: 1
+              minValue: 0
+              maxValue: 10
+              start: 0
+              cycle: false
+              pattern: TXN-{{seqValue}}
+            schema:
+              $ref: '#/components/schemas/CreateSequenceRequest'
+        description: Request to create sequence
+        required: true
+      responses:
+        "201":
+          content:
+            text/plain:
+              example:
+                id:
+                  scope: TestScope
+                  code: TestCode
+                increment: 1
+                minValue: 0
+                maxValue: 10
+                start: 1
+                value: 3
+                cycle: false
+                pattern: TXN-{{seqValue}}
+              schema:
+                $ref: '#/components/schemas/SequenceDefinition'
+            application/json:
+              example:
+                id:
+                  scope: TestScope
+                  code: TestCode
+                increment: 1
+                minValue: 0
+                maxValue: 10
+                start: 1
+                value: 3
+                cycle: false
+                pattern: TXN-{{seqValue}}
+              schema:
+                $ref: '#/components/schemas/SequenceDefinition'
+            text/json:
+              example:
+                id:
+                  scope: TestScope
+                  code: TestCode
+                increment: 1
+                minValue: 0
+                maxValue: 10
+                start: 1
+                value: 3
+                cycle: false
+                pattern: TXN-{{seqValue}}
+              schema:
+                $ref: '#/components/schemas/SequenceDefinition'
+          description: The newly created Sequence
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] CreateSequence: Create a new sequence'
+      tags:
+      - Sequences
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/sequences/{scope}/{code}:
+    get:
+      description: Return the details of a specified sequence
+      operationId: GetSequence
+      parameters:
+      - description: Scope of the sequence.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: Scope of the sequence.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "Code of the sequence. This together with stated scope uniquely\r\
+          \n            identifies the sequence."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: "Code of the sequence. This together with stated scope uniquely\r\
+            \n            identifies the sequence."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                id:
+                  scope: TestScope
+                  code: TestCode
+                increment: 1
+                minValue: 0
+                maxValue: 10
+                start: 1
+                value: 3
+                cycle: false
+                pattern: TXN-{{seqValue}}
+              schema:
+                $ref: '#/components/schemas/SequenceDefinition'
+            application/json:
+              example:
+                id:
+                  scope: TestScope
+                  code: TestCode
+                increment: 1
+                minValue: 0
+                maxValue: 10
+                start: 1
+                value: 3
+                cycle: false
+                pattern: TXN-{{seqValue}}
+              schema:
+                $ref: '#/components/schemas/SequenceDefinition'
+            text/json:
+              example:
+                id:
+                  scope: TestScope
+                  code: TestCode
+                increment: 1
+                minValue: 0
+                maxValue: 10
+                start: 1
+                value: 3
+                cycle: false
+                pattern: TXN-{{seqValue}}
+              schema:
+                $ref: '#/components/schemas/SequenceDefinition'
+          description: The requested sequence
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetSequence: Get a specified sequence'
+      tags:
+      - Sequences
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/sequences/{scope}/{code}/next:
+    get:
+      description: Get the next set of values from a specified sequence
+      operationId: Next
+      parameters:
+      - description: Scope of the sequence.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: Scope of the sequence.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "Code of the sequence. This together with stated scope uniquely\r\
+          \n            identifies the sequence."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: "Code of the sequence. This together with stated scope uniquely\r\
+            \n            identifies the sequence."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Number of sequences items to return for the specified sequence.
+          Default to 1 if not specified.
+        explode: true
+        in: query
+        name: batch
+        required: false
+        schema:
+          description: Number of sequences items to return for the specified sequence.
+            Default to 1 if not specified.
+          format: int32
+          maximum: 5000
+          minimum: 1
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - TXN-0
+                - TXN-1
+                - TXN-2
+              schema:
+                $ref: '#/components/schemas/NextValueInSequenceResponse'
+            application/json:
+              example:
+                values:
+                - TXN-0
+                - TXN-1
+                - TXN-2
+              schema:
+                $ref: '#/components/schemas/NextValueInSequenceResponse'
+            text/json:
+              example:
+                values:
+                - TXN-0
+                - TXN-1
+                - TXN-2
+              schema:
+                $ref: '#/components/schemas/NextValueInSequenceResponse'
+          description: The response containing next available values in specified
+            sequence.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] Next: Get next values from sequence'
+      tags:
+      - Sequences
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
   /api/systemconfiguration/cutlabels:
     get:
       description: List all the Cut Label Definitions that are valid at the given
@@ -26768,6 +27204,58 @@ components:
       - code
       - displayName
       type: object
+    CreateSequenceRequest:
+      additionalProperties: false
+      example:
+        minValue: 6
+        code: code
+        maxValue: 1
+        start: 5
+        pattern: pattern
+        increment: 0
+        cycle: true
+      properties:
+        code:
+          description: The code of the sequence definition to create
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        increment:
+          description: The value to increment between each value in the sequence
+          format: int64
+          nullable: true
+          type: integer
+        minValue:
+          description: The minimum value of the sequence
+          format: int64
+          nullable: true
+          type: integer
+        maxValue:
+          description: The maximum value of the sequence
+          format: int64
+          nullable: true
+          type: integer
+        start:
+          description: The start value of the sequence
+          format: int64
+          nullable: true
+          type: integer
+        cycle:
+          description: Set to true to start the sequence over again when it reaches
+            the end. Defaults to false if not provided.
+          type: boolean
+        pattern:
+          description: The pattern to be used to generate next values in the sequence.
+            Defaults to null if not provided.
+          maxLength: 44
+          minLength: 1
+          nullable: true
+          pattern: ^[A-Za-z0-9_-]*\{\{seqValue\}\}[A-Za-z0-9_-]*$
+          type: string
+      required:
+      - code
+      type: object
     CreateTransactionPortfolioRequest:
       additionalProperties: false
       example:
@@ -29682,6 +30170,36 @@ components:
       - library
       - model
       type: object
+    NextValueInSequenceResponse:
+      additionalProperties: false
+      example:
+        values:
+        - values
+        - values
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+      properties:
+        values:
+          description: The next set of values for the specified Sequence.
+          items:
+            type: string
+          type: array
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
     Order:
       additionalProperties: false
       description: An Order for a certain quantity of a specific instrument
@@ -31335,6 +31853,89 @@ components:
           description: The resources to list.
           items:
             $ref: '#/components/schemas/PropertyDefinitionSearchResult'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
+    PagedResourceListOfSequenceDefinition:
+      additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - minValue: 6
+          maxValue: 1
+          start: 5
+          pattern: pattern
+          increment: 0
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          value: 5
+          cycle: true
+        - minValue: 6
+          maxValue: 1
+          start: 5
+          pattern: pattern
+          increment: 0
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          value: 5
+          cycle: true
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/SequenceDefinition'
           type: array
         href:
           description: The URI of the resource list.
@@ -36151,6 +36752,75 @@ components:
           type: string
       required:
       - scope
+      type: object
+    SequenceDefinition:
+      additionalProperties: false
+      example:
+        minValue: 6
+        maxValue: 1
+        start: 5
+        pattern: pattern
+        increment: 0
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        id:
+          code: code
+          scope: scope
+        value: 5
+        cycle: true
+      properties:
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        increment:
+          description: The Resource Id of the sequence definition
+          format: int64
+          type: integer
+        minValue:
+          description: The minimum value of the sequence
+          format: int64
+          type: integer
+        maxValue:
+          description: The maximum value of the sequence
+          format: int64
+          type: integer
+        start:
+          description: The start value of the sequence
+          format: int64
+          type: integer
+        value:
+          description: The last used value of the sequence
+          format: int64
+          nullable: true
+          type: integer
+        cycle:
+          description: Indicates if the sequence would start from minimun value once
+            it reaches maximum value. If set to false, a failure would return if the
+            sequence reaches maximum value.
+          type: boolean
+        pattern:
+          description: The pattern to be used to generate next values in the sequence.
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - cycle
+      - id
+      - increment
+      - maxValue
+      - minValue
+      - start
       type: object
     SetLegalEntityIdentifiersRequest:
       additionalProperties: false
