@@ -288,12 +288,12 @@ info:
     | <a name="788">788</a>|Compliance run not found failure.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4366
+  version: 0.11.4367
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:35037
+- url: http://local-unit-test-server.lusid.com:56085
 security:
 - {}
 tags:
