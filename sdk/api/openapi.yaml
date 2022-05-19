@@ -286,14 +286,15 @@ info:
     | <a name="782">782</a>|The Property definition dataType is not matching the derivation formula dataType|  |
     | <a name="783">783</a>|The Property definition domain is not supported for derived properties|  |
     | <a name="788">788</a>|Compliance run not found failure.|  |
+    | <a name="790">790</a>|Custom Entity has missing or invalid identifiers|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4370
+  version: 0.11.4380
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: http://local-unit-test-server.lusid.com:59998
 security:
 - {}
 tags:
@@ -25437,6 +25438,7 @@ components:
         settlementDate:
           description: The settlement date for this allocation.
           format: date-time
+          nullable: true
           type: string
         date:
           description: The date of this allocation.
@@ -25451,6 +25453,7 @@ components:
         settlementCurrencyFxRate:
           description: The settlement currency to allocation currency FX rate.
           format: double
+          nullable: true
           type: number
         counterparty:
           description: The counterparty for this allocation.
@@ -40333,7 +40336,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
