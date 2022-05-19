@@ -286,14 +286,15 @@ info:
     | <a name="782">782</a>|The Property definition dataType is not matching the derivation formula dataType|  |
     | <a name="783">783</a>|The Property definition domain is not supported for derived properties|  |
     | <a name="788">788</a>|Compliance run not found failure.|  |
+    | <a name="790">790</a>|Custom Entity has missing or invalid identifiers|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4375
+  version: 0.11.4376
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:38657
+- url: http://local-unit-test-server.lusid.com:32964
 security:
 - {}
 tags:
