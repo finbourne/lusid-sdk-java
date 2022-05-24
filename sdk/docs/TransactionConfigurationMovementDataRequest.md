@@ -7,7 +7,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**movementTypes** | [**MovementTypesEnum**](#MovementTypesEnum) | . The available values are: Settlement, Traded, StockMovement, FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment, CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, UnsettledCashTypes, Carry, CarryAsPnl | 
+**movementTypes** | [**MovementTypesEnum**](#MovementTypesEnum) | . The available values are: Settlement, Traded, StockMovement, FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment, CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, UnsettledCashTypes, Carry, CarryAsPnl, VariationMargin | 
 **side** | **String** | The movement side | 
 **direction** | **Integer** | The movement direction | 
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) | The properties associated with the underlying Movement. |  [optional]
@@ -37,6 +37,7 @@ CASHFXFORWARD | &quot;CashFxForward&quot;
 UNSETTLEDCASHTYPES | &quot;UnsettledCashTypes&quot;
 CARRY | &quot;Carry&quot;
 CARRYASPNL | &quot;CarryAsPnl&quot;
+VARIATIONMARGIN | &quot;VariationMargin&quot;
 
 
 

@@ -289,12 +289,12 @@ info:
     | <a name="790">790</a>|Custom Entity has missing or invalid identifiers|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4394
+  version: 0.11.4396
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: http://local-unit-test-server.lusid.com:36130
+- url: http://local-unit-test-server.lusid.com:42062
 security:
 - {}
 tags:
@@ -37428,7 +37428,7 @@ components:
           description: '. The available values are: Settlement, Traded, StockMovement,
             FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment,
             CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, UnsettledCashTypes,
-            Carry, CarryAsPnl'
+            Carry, CarryAsPnl, VariationMargin'
           enum:
           - Settlement
           - Traded
@@ -37447,6 +37447,7 @@ components:
           - UnsettledCashTypes
           - Carry
           - CarryAsPnl
+          - VariationMargin
           type: string
         side:
           description: The Side determines which of the fields from our transaction
@@ -37514,7 +37515,7 @@ components:
           description: '. The available values are: Settlement, Traded, StockMovement,
             FutureCash, Commitment, Receivable, CashSettlement, CashForward, CashCommitment,
             CashReceivable, Accrual, CashAccrual, ForwardFx, CashFxForward, UnsettledCashTypes,
-            Carry, CarryAsPnl'
+            Carry, CarryAsPnl, VariationMargin'
           enum:
           - Settlement
           - Traded
@@ -37533,6 +37534,7 @@ components:
           - UnsettledCashTypes
           - Carry
           - CarryAsPnl
+          - VariationMargin
           type: string
         side:
           description: The movement side
