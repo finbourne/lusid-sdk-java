@@ -20,8 +20,6 @@ Name | Type | Description | Notes
 **timeInForce** | **String** | The order&#39;s time in force (examples: Day, GoodTilCancel, ...) |  [optional]
 **date** | **OffsetDateTime** | The date on which the order was made |  [optional]
 **price** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
-**limitPrice** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
-**stopPrice** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
 **orderInstruction** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **_package** | [**ResourceId**](ResourceId.md) |  |  [optional]
 
