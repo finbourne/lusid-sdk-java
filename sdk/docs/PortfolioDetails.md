@@ -14,7 +14,21 @@ Name | Type | Description | Notes
 **corporateActionSourceId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **subHoldingKeys** | **List&lt;String&gt;** |  |  [optional]
 **instrumentScopes** | **List&lt;String&gt;** | The resolution strategy used to resolve instruments of transactions/holdings upserted to the transaction portfolio. |  [optional]
+**accountingMethod** | [**AccountingMethodEnum**](#AccountingMethodEnum) | . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+
+
+
+## Enum: AccountingMethodEnum
+
+Name | Value
+---- | -----
+DEFAULT | &quot;Default&quot;
+AVERAGECOST | &quot;AverageCost&quot;
+FIRSTINFIRSTOUT | &quot;FirstInFirstOut&quot;
+LASTINFIRSTOUT | &quot;LastInFirstOut&quot;
+HIGHESTCOSTFIRST | &quot;HighestCostFirst&quot;
+LOWESTCOSTFIRST | &quot;LowestCostFirst&quot;
 
 
 
