@@ -289,12 +289,12 @@ info:
     | <a name="790">790</a>|Custom Entity has missing or invalid identifiers|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4423
+  version: 0.11.4421
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://www.lusid.com/api
+- url: https://fbn-prd.lusid.com/api
 security:
 - {}
 tags:
@@ -25744,7 +25744,6 @@ paths:
                   code: Vendor1
                 subHoldingKeys:
                 - Portfolio/Client/AccountType
-                accountingMethod: Default
               schema:
                 $ref: '#/components/schemas/PortfolioDetails'
             application/json:
@@ -25758,7 +25757,6 @@ paths:
                   code: Vendor1
                 subHoldingKeys:
                 - Portfolio/Client/AccountType
-                accountingMethod: Default
               schema:
                 $ref: '#/components/schemas/PortfolioDetails'
             text/json:
@@ -25772,7 +25770,6 @@ paths:
                   code: Vendor1
                 subHoldingKeys:
                 - Portfolio/Client/AccountType
-                accountingMethod: Default
               schema:
                 $ref: '#/components/schemas/PortfolioDetails'
           description: The details of the specified transaction portfolio
@@ -25899,7 +25896,6 @@ paths:
                   code: Vendor1
                 subHoldingKeys:
                 - Portfolio/Client/AccountType
-                accountingMethod: Default
               schema:
                 $ref: '#/components/schemas/PortfolioDetails'
             application/json:
@@ -25913,7 +25909,6 @@ paths:
                   code: Vendor1
                 subHoldingKeys:
                 - Portfolio/Client/AccountType
-                accountingMethod: Default
               schema:
                 $ref: '#/components/schemas/PortfolioDetails'
             text/json:
@@ -25927,7 +25922,6 @@ paths:
                   code: Vendor1
                 subHoldingKeys:
                 - Portfolio/Client/AccountType
-                accountingMethod: Default
               schema:
                 $ref: '#/components/schemas/PortfolioDetails'
           description: The newly updated or inserted details
@@ -36634,7 +36628,6 @@ components:
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
           asAtDate: 2000-01-23T04:56:07.000+00:00
         baseCurrency: baseCurrency
-        accountingMethod: Default
         links:
         - method: method
           description: description
@@ -36716,17 +36709,6 @@ components:
             type: string
           nullable: true
           type: array
-        accountingMethod:
-          description: '. The available values are: Default, AverageCost, FirstInFirstOut,
-            LastInFirstOut, HighestCostFirst, LowestCostFirst'
-          enum:
-          - Default
-          - AverageCost
-          - FirstInFirstOut
-          - LastInFirstOut
-          - HighestCostFirst
-          - LowestCostFirst
-          type: string
         links:
           description: Collection of links.
           items:
@@ -36974,7 +36956,6 @@ components:
         originPortfolioId:
           code: code
           scope: scope
-        accountingMethod: Default
         corporateActionSourceId:
           code: code
           scope: scope
@@ -37022,17 +37003,6 @@ components:
             type: string
           nullable: true
           type: array
-        accountingMethod:
-          description: '. The available values are: Default, AverageCost, FirstInFirstOut,
-            LastInFirstOut, HighestCostFirst, LowestCostFirst'
-          enum:
-          - Default
-          - AverageCost
-          - FirstInFirstOut
-          - LastInFirstOut
-          - HighestCostFirst
-          - LowestCostFirst
-          type: string
         links:
           description: Collection of links.
           items:
@@ -40420,7 +40390,6 @@ components:
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
           baseCurrency: baseCurrency
-          accountingMethod: Default
           links:
           - method: method
             description: description
@@ -40463,7 +40432,6 @@ components:
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
           baseCurrency: baseCurrency
-          accountingMethod: Default
           links:
           - method: method
             description: description
@@ -45577,7 +45545,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://dummyurl.lusid.com/
+          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
           scopes: {}
       type: oauth2
 x-tagGroups:

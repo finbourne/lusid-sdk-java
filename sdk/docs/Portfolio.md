@@ -20,7 +20,6 @@ Name | Type | Description | Notes
 **baseCurrency** | **String** | The base currency of the portfolio. |  [optional]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | The requested portfolio properties. These will be from the &#39;Portfolio&#39; domain. |  [optional]
 **instrumentScopes** | **List&lt;String&gt;** | The instrument scope resolution strategy of this portfolio. |  [optional]
-**accountingMethod** | [**AccountingMethodEnum**](#AccountingMethodEnum) | . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 
@@ -32,19 +31,6 @@ Name | Value
 TRANSACTION | &quot;Transaction&quot;
 REFERENCE | &quot;Reference&quot;
 DERIVEDTRANSACTION | &quot;DerivedTransaction&quot;
-
-
-
-## Enum: AccountingMethodEnum
-
-Name | Value
----- | -----
-DEFAULT | &quot;Default&quot;
-AVERAGECOST | &quot;AverageCost&quot;
-FIRSTINFIRSTOUT | &quot;FirstInFirstOut&quot;
-LASTINFIRSTOUT | &quot;LastInFirstOut&quot;
-HIGHESTCOSTFIRST | &quot;HighestCostFirst&quot;
-LOWESTCOSTFIRST | &quot;LowestCostFirst&quot;
 
 
 
