@@ -287,9 +287,10 @@ info:
     | <a name="783">783</a>|The Property definition domain is not supported for derived properties|  |
     | <a name="788">788</a>|Compliance run not found failure.|  |
     | <a name="790">790</a>|Custom Entity has missing or invalid identifiers|  |
+    | <a name="791">791</a>|Custom Entity definition already exists|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4444
+  version: 0.11.4445
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
