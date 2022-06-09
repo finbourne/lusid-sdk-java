@@ -290,12 +290,12 @@ info:
     | <a name="791">791</a>|Custom Entity definition already exists|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4454
+  version: 0.11.4456
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -23342,6 +23342,7 @@ paths:
                       dividend: 0
                       estimated funding: 6700
                     close: 10510
+                  failed: {}
                 - currency: EUR
                   subHoldingKeys:
                     instrument/default/Strategy:
@@ -23370,6 +23371,7 @@ paths:
                       dividend: 5400
                       estimated funding: 0
                     close: 165900
+                  failed: {}
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfPortfolioCashLadder'
@@ -23418,6 +23420,7 @@ paths:
                       dividend: 0
                       estimated funding: 6700
                     close: 10510
+                  failed: {}
                 - currency: EUR
                   subHoldingKeys:
                     instrument/default/Strategy:
@@ -23446,6 +23449,7 @@ paths:
                       dividend: 5400
                       estimated funding: 0
                     close: 165900
+                  failed: {}
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfPortfolioCashLadder'
@@ -23494,6 +23498,7 @@ paths:
                       dividend: 0
                       estimated funding: 6700
                     close: 10510
+                  failed: {}
                 - currency: EUR
                   subHoldingKeys:
                     instrument/default/Strategy:
@@ -23522,6 +23527,7 @@ paths:
                       dividend: 5400
                       estimated funding: 0
                     close: 165900
+                  failed: {}
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfPortfolioCashLadder'
@@ -36936,6 +36942,14 @@ components:
           description: description
           href: https://openapi-generator.tech
           relation: relation
+        failed:
+          key:
+            id: id
+            detail: detail
+            type: type
+            errorDetails:
+            - key: errorDetails
+            - key: errorDetails
       properties:
         currency:
           description: The currency of the cash-flows.
@@ -36953,6 +36967,13 @@ components:
           items:
             $ref: '#/components/schemas/CashLadderRecord'
           type: array
+        failed:
+          additionalProperties:
+            $ref: '#/components/schemas/ErrorDetail'
+          description: The records that could not be returned along with a reason
+            for their failure.
+          nullable: true
+          type: object
         links:
           description: Collection of links.
           items:
@@ -40789,6 +40810,14 @@ components:
             description: description
             href: https://openapi-generator.tech
             relation: relation
+          failed:
+            key:
+              id: id
+              detail: detail
+              type: type
+              errorDetails:
+              - key: errorDetails
+              - key: errorDetails
         - subHoldingKeys:
             key:
               value:
@@ -40822,6 +40851,14 @@ components:
             description: description
             href: https://openapi-generator.tech
             relation: relation
+          failed:
+            key:
+              id: id
+              detail: detail
+              type: type
+              errorDetails:
+              - key: errorDetails
+              - key: errorDetails
         links:
         - method: method
           description: description
@@ -45578,7 +45615,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
