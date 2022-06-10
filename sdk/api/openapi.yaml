@@ -290,7 +290,7 @@ info:
     | <a name="791">791</a>|Custom Entity definition already exists|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4457
+  version: 0.11.4458
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -352,6 +352,8 @@ tags:
   name: Executions
 - description: Methods for storage and retrieval of Fees and Commissions rules
   name: FeesAndCommissions
+- description: Methods for querying for instrument events.
+  name: Instrument Events
 - description: An instrument represents a financial asset that an investor owns or
     has exposure to. Each transaction should be booked against an instrument stored
     in the LUSID instrument master. For more information, see https://support.lusid.com/knowledgebase/article/KA-01857.
@@ -45640,6 +45642,7 @@ x-tagGroups:
   - Entities
   - Executions
   - FeesAndCommissions
+  - Instrument Events
   - Instruments
   - Legal Entities
   - OrderGraph
