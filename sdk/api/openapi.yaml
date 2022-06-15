@@ -292,7 +292,7 @@ info:
     | <a name="793">793</a>|Compliance Criteria Value for matching is missing.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4476
+  version: 0.11.4477
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -34662,13 +34662,14 @@ components:
       properties:
         library:
           description: 'The available values are: Lusid, RefinitivQps, RefinitivTracsWeb,
-            VolMaster, IsdaCds'
+            VolMaster, IsdaCds, YieldBook'
           enum:
           - Lusid
           - RefinitivQps
           - RefinitivTracsWeb
           - VolMaster
           - IsdaCds
+          - YieldBook
           type: string
         model:
           description: 'The available values are: SimpleStatic, Discounting, VendorDefault,
@@ -44441,13 +44442,14 @@ components:
       properties:
         supplier:
           description: 'The available values are: Lusid, RefinitivQps, RefinitivTracsWeb,
-            VolMaster, IsdaCds'
+            VolMaster, IsdaCds, YieldBook'
           enum:
           - Lusid
           - RefinitivQps
           - RefinitivTracsWeb
           - VolMaster
           - IsdaCds
+          - YieldBook
           type: string
         modelName:
           description: The vendor library model name
