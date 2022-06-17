@@ -292,7 +292,7 @@ info:
     | <a name="793">793</a>|Compliance Criteria Value for matching is missing.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4486
+  version: 0.11.4487
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -14740,7 +14740,8 @@ paths:
             Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition,
             Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData,
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
-            Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity'
+            Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
+            InstrumentEvent'
           enum:
           - NotDefined
           - Transaction
@@ -14769,6 +14770,7 @@ paths:
           - OrderInstruction
           - NextBestAction
           - CustomEntity
+          - InstrumentEvent
           type: string
         style: simple
       - description: The scope of the property to be deleted.
@@ -14851,7 +14853,8 @@ paths:
             Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition,
             Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData,
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
-            Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity'
+            Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
+            InstrumentEvent'
           enum:
           - NotDefined
           - Transaction
@@ -14880,6 +14883,7 @@ paths:
           - OrderInstruction
           - NextBestAction
           - CustomEntity
+          - InstrumentEvent
           type: string
         style: simple
       - description: The scope of the specified property.
@@ -14980,7 +14984,8 @@ paths:
             Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition,
             Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData,
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
-            Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity'
+            Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
+            InstrumentEvent'
           enum:
           - NotDefined
           - Transaction
@@ -15009,6 +15014,7 @@ paths:
           - OrderInstruction
           - NextBestAction
           - CustomEntity
+          - InstrumentEvent
           type: string
         style: simple
       - description: The scope of the property being updated.
@@ -31342,7 +31348,8 @@ components:
             ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition,
             Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData,
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
-            Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity'
+            Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
+            InstrumentEvent'
           enum:
           - NotDefined
           - Transaction
@@ -31371,6 +31378,7 @@ components:
           - OrderInstruction
           - NextBestAction
           - CustomEntity
+          - InstrumentEvent
           type: string
         scope:
           description: The scope that the property exists in.
@@ -31598,7 +31606,7 @@ components:
             Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata,
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
             LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
-            NextBestAction, CustomEntity'
+            NextBestAction, CustomEntity, InstrumentEvent'
           enum:
           - NotDefined
           - Transaction
@@ -31627,6 +31635,7 @@ components:
           - OrderInstruction
           - NextBestAction
           - CustomEntity
+          - InstrumentEvent
           type: string
         scope:
           description: The scope that the property exists in.
@@ -37995,7 +38004,7 @@ components:
             Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata,
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
             LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
-            NextBestAction, CustomEntity'
+            NextBestAction, CustomEntity, InstrumentEvent'
           enum:
           - NotDefined
           - Transaction
@@ -38024,6 +38033,7 @@ components:
           - OrderInstruction
           - NextBestAction
           - CustomEntity
+          - InstrumentEvent
           type: string
         scope:
           description: The scope that the property exists in.
@@ -38174,7 +38184,7 @@ components:
             Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata,
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
             LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
-            NextBestAction, CustomEntity'
+            NextBestAction, CustomEntity, InstrumentEvent'
           enum:
           - NotDefined
           - Transaction
@@ -38203,6 +38213,7 @@ components:
           - OrderInstruction
           - NextBestAction
           - CustomEntity
+          - InstrumentEvent
           type: string
         scope:
           description: The scope that the property exists in.
