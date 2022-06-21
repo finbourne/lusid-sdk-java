@@ -296,7 +296,7 @@ info:
     | <a name="803">803</a>|The Instrument event could not be processed.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4502
+  version: 0.11.4503
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -4234,7 +4234,7 @@ paths:
       x-accepts: application/json
   /api/instruments/{identifierType}/{identifier}:
     delete:
-      description: "Delete a particular instrument, as identified by a particular\
+      description: "Soft delete a particular instrument, as identified by a particular\
         \ instrument identifier.\r\n            \r\nOnce deleted, an instrument is\
         \ marked as inactive and can no longer be referenced when creating or updating\r\
         \ntransactions or holdings. You can still query existing transactions and\
@@ -4312,7 +4312,7 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] DeleteInstrument: Delete instrument'
+      summary: '[EARLY ACCESS] DeleteInstrument: Soft delete a single instrument'
       tags:
       - Instruments
       x-fbn-apistatus: EarlyAccess
