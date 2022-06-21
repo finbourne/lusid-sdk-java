@@ -290,9 +290,13 @@ info:
     | <a name="791">791</a>|Custom Entity definition already exists|  |
     | <a name="792">792</a>|Compliance PropertyKey is missing.|  |
     | <a name="793">793</a>|Compliance Criteria Value for matching is missing.|  |
+    | <a name="800">800</a>|Can not upsert an instrument event of this type.|  |
+    | <a name="801">801</a>|The instrument event does not exist.|  |
+    | <a name="802">802</a>|The Instrument event is missing salient information.|  |
+    | <a name="803">803</a>|The Instrument event could not be processed.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4500
+  version: 0.11.4501
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -2520,7 +2524,8 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetCorporateActions: Get corporate actions'
+      summary: '[EARLY ACCESS] GetCorporateActions: List corporate actions (instrument
+        transition events) from the corporate action source.'
       tags:
       - Corporate Action Sources
       x-fbn-apistatus: EarlyAccess
@@ -2696,7 +2701,8 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] BatchUpsertCorporateActions: Upsert corporate actions'
+      summary: '[EARLY ACCESS] BatchUpsertCorporateActions: Batch upsert corporate
+        actions (instrument transition events) to corporate action source.'
       tags:
       - Corporate Action Sources
       x-fbn-apistatus: EarlyAccess
