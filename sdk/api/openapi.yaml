@@ -296,7 +296,7 @@ info:
     | <a name="803">803</a>|The Instrument event could not be processed.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4512
+  version: 0.11.4513
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -19415,12 +19415,51 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                version:
+                  effectiveFrom: 2018-03-05T11:32:15.0000000+00:00
+                  asAtDate: 2022-03-05T10:09:01.0000000+00:00
+                metadata:
+                  warnings:
+                  - type: TransactionTypesNotFound
+                    description: No transaction types could be found for the listed
+                      transactions
+                    identifierType: TransactionId
+                    identifiers:
+                    - Transaction-001
+                    - Transaction-123
               schema:
                 $ref: '#/components/schemas/UpsertPortfolioTransactionsResponse'
             application/json:
+              example:
+                version:
+                  effectiveFrom: 2018-03-05T11:32:15.0000000+00:00
+                  asAtDate: 2022-03-05T10:09:01.0000000+00:00
+                metadata:
+                  warnings:
+                  - type: TransactionTypesNotFound
+                    description: No transaction types could be found for the listed
+                      transactions
+                    identifierType: TransactionId
+                    identifiers:
+                    - Transaction-001
+                    - Transaction-123
               schema:
                 $ref: '#/components/schemas/UpsertPortfolioTransactionsResponse'
             text/json:
+              example:
+                version:
+                  effectiveFrom: 2018-03-05T11:32:15.0000000+00:00
+                  asAtDate: 2022-03-05T10:09:01.0000000+00:00
+                metadata:
+                  warnings:
+                  - type: TransactionTypesNotFound
+                    description: No transaction types could be found for the listed
+                      transactions
+                    identifierType: TransactionId
+                    identifiers:
+                    - Transaction-001
+                    - Transaction-123
               schema:
                 $ref: '#/components/schemas/UpsertPortfolioTransactionsResponse'
           description: The version of the transaction portfolio that contains the
@@ -27688,12 +27727,51 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                version:
+                  effectiveFrom: 2018-03-05T11:32:15.0000000+00:00
+                  asAtDate: 2022-03-05T10:09:01.0000000+00:00
+                metadata:
+                  warnings:
+                  - type: TransactionTypesNotFound
+                    description: No transaction types could be found for the listed
+                      transactions
+                    identifierType: TransactionId
+                    identifiers:
+                    - Transaction-001
+                    - Transaction-123
               schema:
                 $ref: '#/components/schemas/UpsertPortfolioTransactionsResponse'
             application/json:
+              example:
+                version:
+                  effectiveFrom: 2018-03-05T11:32:15.0000000+00:00
+                  asAtDate: 2022-03-05T10:09:01.0000000+00:00
+                metadata:
+                  warnings:
+                  - type: TransactionTypesNotFound
+                    description: No transaction types could be found for the listed
+                      transactions
+                    identifierType: TransactionId
+                    identifiers:
+                    - Transaction-001
+                    - Transaction-123
               schema:
                 $ref: '#/components/schemas/UpsertPortfolioTransactionsResponse'
             text/json:
+              example:
+                version:
+                  effectiveFrom: 2018-03-05T11:32:15.0000000+00:00
+                  asAtDate: 2022-03-05T10:09:01.0000000+00:00
+                metadata:
+                  warnings:
+                  - type: TransactionTypesNotFound
+                    description: No transaction types could be found for the listed
+                      transactions
+                    identifierType: TransactionId
+                    identifiers:
+                    - Transaction-001
+                    - Transaction-123
               schema:
                 $ref: '#/components/schemas/UpsertPortfolioTransactionsResponse'
           description: The version of the transaction portfolio that contains the
@@ -41524,6 +41602,37 @@ components:
       required:
       - values
       type: object
+    ResponseMetaData:
+      additionalProperties: false
+      description: Metadata related to an api response
+      example:
+        identifiers:
+        - identifiers
+        - identifiers
+        description: description
+        identifierType: identifierType
+        type: type
+      properties:
+        type:
+          description: The type of meta data information being provided
+          nullable: true
+          type: string
+        description:
+          description: The description of what occured for this specific piece of
+            meta data
+          nullable: true
+          type: string
+        identifierType:
+          description: The type of the listed identifiers
+          nullable: true
+          type: string
+        identifiers:
+          description: The related identifiers that were impacted by this event
+          items:
+            type: string
+          nullable: true
+          type: array
+      type: object
     ResultDataSchema:
       additionalProperties: false
       example:
@@ -43501,6 +43610,20 @@ components:
     UpsertPortfolioTransactionsResponse:
       additionalProperties: false
       example:
+        metadata:
+          key:
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
         links:
         - method: method
           description: description
@@ -43523,6 +43646,15 @@ components:
           format: uri
           nullable: true
           type: string
+        metadata:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/ResponseMetaData'
+            type: array
+          description: Contains warnings related to unresolved instruments or non-existent
+            transaction types for the upserted trades
+          nullable: true
+          type: object
         links:
           description: Collection of links.
           items:

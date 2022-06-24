@@ -15,7 +15,6 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import java.util.Arrays;
-import com.finbourne.lusid.model.AccessMetadataValue;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -28,40 +27,110 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * UpsertLegalEntityAccessMetadataRequest
+ * Metadata related to an api response
  */
+@ApiModel(description = "Metadata related to an api response")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class UpsertLegalEntityAccessMetadataRequest {
-  public static final String SERIALIZED_NAME_METADATA = "metadata";
-  @SerializedName(SERIALIZED_NAME_METADATA)
-  private List<AccessMetadataValue> metadata = null;
+public class ResponseMetaData {
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
+
+  public static final String SERIALIZED_NAME_IDENTIFIER_TYPE = "identifierType";
+  @SerializedName(SERIALIZED_NAME_IDENTIFIER_TYPE)
+  private String identifierType;
+
+  public static final String SERIALIZED_NAME_IDENTIFIERS = "identifiers";
+  @SerializedName(SERIALIZED_NAME_IDENTIFIERS)
+  private List<String> identifiers = null;
 
 
-  public UpsertLegalEntityAccessMetadataRequest metadata(List<AccessMetadataValue> metadata) {
-    this.metadata = metadata; 
-    return this;
-  }
-
-  public UpsertLegalEntityAccessMetadataRequest addMetadataItem(AccessMetadataValue metadataItem) {
-   
-    if (this.metadata == null) {
-      this.metadata = new ArrayList<>();
-    }
-    this.metadata.add(metadataItem);
+  public ResponseMetaData type(String type) {
+    this.type = type; 
     return this;
   }
 
    /**
-   * The access control metadata to assign to a Legal Entity that matches the identifier
-   * @return metadata
+   * The type of meta data information being provided
+   * @return type
   **/
-  @ApiModelProperty(value = "The access control metadata to assign to a Legal Entity that matches the identifier")
-  public List<AccessMetadataValue> getMetadata() {
-    return metadata;
+  @ApiModelProperty(value = "The type of meta data information being provided")
+  public String getType() {
+    return type;
   }
 
-  public void setMetadata(List<AccessMetadataValue> metadata) {
-    this.metadata = metadata;
+  public void setType(String type) {
+    this.type = type;
+  }
+
+
+  public ResponseMetaData description(String description) {
+    this.description = description; 
+    return this;
+  }
+
+   /**
+   * The description of what occured for this specific piece of meta data
+   * @return description
+  **/
+  @ApiModelProperty(value = "The description of what occured for this specific piece of meta data")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
+  public ResponseMetaData identifierType(String identifierType) {
+    this.identifierType = identifierType; 
+    return this;
+  }
+
+   /**
+   * The type of the listed identifiers
+   * @return identifierType
+  **/
+  @ApiModelProperty(value = "The type of the listed identifiers")
+  public String getIdentifierType() {
+    return identifierType;
+  }
+
+  public void setIdentifierType(String identifierType) {
+    this.identifierType = identifierType;
+  }
+
+
+  public ResponseMetaData identifiers(List<String> identifiers) {
+    this.identifiers = identifiers; 
+    return this;
+  }
+
+  public ResponseMetaData addIdentifiersItem(String identifiersItem) {
+   
+    if (this.identifiers == null) {
+      this.identifiers = new ArrayList<>();
+    }
+    this.identifiers.add(identifiersItem);
+    return this;
+  }
+
+   /**
+   * The related identifiers that were impacted by this event
+   * @return identifiers
+  **/
+  @ApiModelProperty(value = "The related identifiers that were impacted by this event")
+  public List<String> getIdentifiers() {
+    return identifiers;
+  }
+
+  public void setIdentifiers(List<String> identifiers) {
+    this.identifiers = identifiers;
   }
 
 
@@ -84,8 +153,11 @@ public class UpsertLegalEntityAccessMetadataRequest {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class UpsertLegalEntityAccessMetadataRequest {\n");
-    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
+    sb.append("class ResponseMetaData {\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    identifierType: ").append(toIndentedString(identifierType)).append("\n");
+    sb.append("    identifiers: ").append(toIndentedString(identifiers)).append("\n");
     sb.append("}");
     return sb.toString();
   }
