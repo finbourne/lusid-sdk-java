@@ -296,7 +296,7 @@ info:
     | <a name="803">803</a>|The Instrument event could not be processed.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4532
+  version: 0.11.4533
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -33766,10 +33766,11 @@ components:
         state:
           description: 'The state of of the instrument at the asAt datetime of this
             version of the instrument definition. The available values are: Active,
-            Inactive'
+            Inactive, Deleted'
           enum:
           - Active
           - Inactive
+          - Deleted
           type: string
         assetClass:
           description: 'The nominal asset class of the instrument, e.g. InterestRates,
