@@ -296,7 +296,7 @@ info:
     | <a name="803">803</a>|The Instrument event could not be processed.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4536
+  version: 0.11.4537
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -29943,7 +29943,7 @@ components:
       example:
         date: 2000-01-23T04:56:07.000+00:00
         side: side
-        quantity: 0
+        quantity: 0.8008281904610115
         settlementCurrencyFxRate: 6.027456183070403
         instrumentIdentifiers:
           key: instrumentIdentifiers
@@ -29995,8 +29995,8 @@ components:
           type: object
         quantity:
           description: The quantity of given instrument allocated.
-          format: int32
-          type: integer
+          format: double
+          type: number
         portfolioId:
           $ref: '#/components/schemas/ResourceId'
         allocatedOrderId:
@@ -30061,7 +30061,7 @@ components:
         allocationRequests:
         - date: 2000-01-23T04:56:07.000+00:00
           side: side
-          quantity: 0
+          quantity: 0.8008281904610115
           settlementCurrencyFxRate: 6.027456183070403
           instrumentIdentifiers:
             key: instrumentIdentifiers
@@ -30101,7 +30101,7 @@ components:
               key: key
         - date: 2000-01-23T04:56:07.000+00:00
           side: side
-          quantity: 0
+          quantity: 0.8008281904610115
           settlementCurrencyFxRate: 6.027456183070403
           instrumentIdentifiers:
             key: instrumentIdentifiers
@@ -34987,7 +34987,7 @@ components:
       example:
         date: 2000-01-23T04:56:07.000+00:00
         side: side
-        quantity: 0
+        quantity: 0.8008281904610115
         package:
           code: code
           scope: scope
@@ -35043,8 +35043,8 @@ components:
           type: object
         quantity:
           description: The quantity of given instrument ordered.
-          format: int32
-          type: integer
+          format: double
+          type: number
         side:
           description: The client's representation of the order's side (buy, sell,
             short, etc)
@@ -35096,7 +35096,7 @@ components:
         orderRequests:
         - date: 2000-01-23T04:56:07.000+00:00
           side: side
-          quantity: 0
+          quantity: 0.8008281904610115
           package:
             code: code
             scope: scope
@@ -35140,7 +35140,7 @@ components:
               key: key
         - date: 2000-01-23T04:56:07.000+00:00
           side: side
-          quantity: 0
+          quantity: 0.8008281904610115
           package:
             code: code
             scope: scope
