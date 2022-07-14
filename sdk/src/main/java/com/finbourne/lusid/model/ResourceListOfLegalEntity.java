@@ -15,6 +15,8 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.finbourne.lusid.model.LegalEntity;
+import com.finbourne.lusid.model.Link;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -23,224 +25,145 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.net.URI;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
- * A description of a problem that has arisen during the processing of a request.
+ * A collection of resources that can be returned from requests.
  */
-@ApiModel(description = "A description of a problem that has arisen during the processing of a request.")
+@ApiModel(description = "A collection of resources that can be returned from requests.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class LusidProblemDetails {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+public class ResourceListOfLegalEntity {
+  public static final String SERIALIZED_NAME_VALUES = "values";
+  @SerializedName(SERIALIZED_NAME_VALUES)
+  private List<LegalEntity> values = new ArrayList<>();
 
-  public static final String SERIALIZED_NAME_ERROR_DETAILS = "errorDetails";
-  @SerializedName(SERIALIZED_NAME_ERROR_DETAILS)
-  private List<Map<String, String>> errorDetails = null;
+  public static final String SERIALIZED_NAME_HREF = "href";
+  @SerializedName(SERIALIZED_NAME_HREF)
+  private URI href;
 
-  public static final String SERIALIZED_NAME_CODE = "code";
-  @SerializedName(SERIALIZED_NAME_CODE)
-  private Integer code;
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
+  private List<Link> links = null;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
+  public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
+  @SerializedName(SERIALIZED_NAME_NEXT_PAGE)
+  private String nextPage;
 
-  public static final String SERIALIZED_NAME_TITLE = "title";
-  @SerializedName(SERIALIZED_NAME_TITLE)
-  private String title;
-
-  public static final String SERIALIZED_NAME_STATUS = "status";
-  @SerializedName(SERIALIZED_NAME_STATUS)
-  private Integer status;
-
-  public static final String SERIALIZED_NAME_DETAIL = "detail";
-  @SerializedName(SERIALIZED_NAME_DETAIL)
-  private String detail;
-
-  public static final String SERIALIZED_NAME_INSTANCE = "instance";
-  @SerializedName(SERIALIZED_NAME_INSTANCE)
-  private String instance;
-
-  public static final String SERIALIZED_NAME_EXTENSIONS = "extensions";
-  @SerializedName(SERIALIZED_NAME_EXTENSIONS)
-  private Map<String, Object> extensions = null;
+  public static final String SERIALIZED_NAME_PREVIOUS_PAGE = "previousPage";
+  @SerializedName(SERIALIZED_NAME_PREVIOUS_PAGE)
+  private String previousPage;
 
 
-  public LusidProblemDetails name(String name) {
-    this.name = name; 
+  public ResourceListOfLegalEntity values(List<LegalEntity> values) {
+    this.values = values; 
     return this;
   }
 
-   /**
-   * The name of the error
-   * @return name
-  **/
-  @ApiModelProperty(required = true, value = "The name of the error")
-  public String getName() {
-    return name;
-  }
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public LusidProblemDetails errorDetails(List<Map<String, String>> errorDetails) {
-    this.errorDetails = errorDetails; 
-    return this;
-  }
-
-  public LusidProblemDetails addErrorDetailsItem(Map<String, String> errorDetailsItem) {
+  public ResourceListOfLegalEntity addValuesItem(LegalEntity valuesItem) {
    
-    if (this.errorDetails == null) {
-      this.errorDetails = new ArrayList<>();
+    this.values.add(valuesItem);
+    return this;
+  }
+
+   /**
+   * The resources to list.
+   * @return values
+  **/
+  @ApiModelProperty(required = true, value = "The resources to list.")
+  public List<LegalEntity> getValues() {
+    return values;
+  }
+
+  public void setValues(List<LegalEntity> values) {
+    this.values = values;
+  }
+
+
+  public ResourceListOfLegalEntity href(URI href) {
+    this.href = href; 
+    return this;
+  }
+
+   /**
+   * The URI of the resource list.
+   * @return href
+  **/
+  @ApiModelProperty(value = "The URI of the resource list.")
+  public URI getHref() {
+    return href;
+  }
+
+  public void setHref(URI href) {
+    this.href = href;
+  }
+
+
+  public ResourceListOfLegalEntity links(List<Link> links) {
+    this.links = links; 
+    return this;
+  }
+
+  public ResourceListOfLegalEntity addLinksItem(Link linksItem) {
+   
+    if (this.links == null) {
+      this.links = new ArrayList<>();
     }
-    this.errorDetails.add(errorDetailsItem);
+    this.links.add(linksItem);
     return this;
   }
 
    /**
-   * Any additional informational information available about the nature and detail of the problem
-   * @return errorDetails
+   * Collection of links.
+   * @return links
   **/
-  @ApiModelProperty(value = "Any additional informational information available about the nature and detail of the problem")
-  public List<Map<String, String>> getErrorDetails() {
-    return errorDetails;
+  @ApiModelProperty(value = "Collection of links.")
+  public List<Link> getLinks() {
+    return links;
   }
 
-  public void setErrorDetails(List<Map<String, String>> errorDetails) {
-    this.errorDetails = errorDetails;
+  public void setLinks(List<Link> links) {
+    this.links = links;
   }
 
 
-  public LusidProblemDetails code(Integer code) {
-    this.code = code; 
+  public ResourceListOfLegalEntity nextPage(String nextPage) {
+    this.nextPage = nextPage; 
     return this;
   }
 
    /**
-   * Get the error code of the response
-   * @return code
+   * The next page of results.
+   * @return nextPage
   **/
-  @ApiModelProperty(required = true, value = "Get the error code of the response")
-  public Integer getCode() {
-    return code;
+  @ApiModelProperty(value = "The next page of results.")
+  public String getNextPage() {
+    return nextPage;
   }
 
-  public void setCode(Integer code) {
-    this.code = code;
+  public void setNextPage(String nextPage) {
+    this.nextPage = nextPage;
   }
 
 
-  public LusidProblemDetails type(String type) {
-    this.type = type; 
+  public ResourceListOfLegalEntity previousPage(String previousPage) {
+    this.previousPage = previousPage; 
     return this;
   }
 
    /**
-   * Get type
-   * @return type
+   * The previous page of results.
+   * @return previousPage
   **/
-  @ApiModelProperty(value = "")
-  public String getType() {
-    return type;
+  @ApiModelProperty(value = "The previous page of results.")
+  public String getPreviousPage() {
+    return previousPage;
   }
 
-  public void setType(String type) {
-    this.type = type;
+  public void setPreviousPage(String previousPage) {
+    this.previousPage = previousPage;
   }
-
-
-  public LusidProblemDetails title(String title) {
-    this.title = title; 
-    return this;
-  }
-
-   /**
-   * Get title
-   * @return title
-  **/
-  @ApiModelProperty(value = "")
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-
-  public LusidProblemDetails status(Integer status) {
-    this.status = status; 
-    return this;
-  }
-
-   /**
-   * Get status
-   * @return status
-  **/
-  @ApiModelProperty(value = "")
-  public Integer getStatus() {
-    return status;
-  }
-
-  public void setStatus(Integer status) {
-    this.status = status;
-  }
-
-
-  public LusidProblemDetails detail(String detail) {
-    this.detail = detail; 
-    return this;
-  }
-
-   /**
-   * Get detail
-   * @return detail
-  **/
-  @ApiModelProperty(value = "")
-  public String getDetail() {
-    return detail;
-  }
-
-  public void setDetail(String detail) {
-    this.detail = detail;
-  }
-
-
-  public LusidProblemDetails instance(String instance) {
-    this.instance = instance; 
-    return this;
-  }
-
-   /**
-   * Get instance
-   * @return instance
-  **/
-  @ApiModelProperty(value = "")
-  public String getInstance() {
-    return instance;
-  }
-
-  public void setInstance(String instance) {
-    this.instance = instance;
-  }
-
-
-   /**
-   * Get extensions
-   * @return extensions
-  **/
-  @ApiModelProperty(value = "")
-  public Map<String, Object> getExtensions() {
-    return extensions;
-  }
-
 
 
   @Override
@@ -262,16 +185,12 @@ public class LusidProblemDetails {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class LusidProblemDetails {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
-    sb.append("    errorDetails: ").append(toIndentedString(errorDetails)).append("\n");
-    sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
-    sb.append("    title: ").append(toIndentedString(title)).append("\n");
-    sb.append("    status: ").append(toIndentedString(status)).append("\n");
-    sb.append("    detail: ").append(toIndentedString(detail)).append("\n");
-    sb.append("    instance: ").append(toIndentedString(instance)).append("\n");
-    sb.append("    extensions: ").append(toIndentedString(extensions)).append("\n");
+    sb.append("class ResourceListOfLegalEntity {\n");
+    sb.append("    values: ").append(toIndentedString(values)).append("\n");
+    sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
+    sb.append("    previousPage: ").append(toIndentedString(previousPage)).append("\n");
     sb.append("}");
     return sb.toString();
   }

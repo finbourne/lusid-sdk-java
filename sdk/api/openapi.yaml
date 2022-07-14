@@ -296,7 +296,7 @@ info:
     | <a name="803">803</a>|The Instrument event could not be processed.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4601
+  version: 0.11.4602
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -4741,6 +4741,374 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/legalentities:
+    get:
+      description: List all legal entities which the user is entitled to see.
+      operationId: ListAllLegalEntities
+      parameters:
+      - description: "The effective datetime or cut label at which to list the legal\
+          \ entities. Defaults to the current LUSID\r\n            system datetime\
+          \ if not specified."
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: "The effective datetime or cut label at which to list the legal\
+            \ entities. Defaults to the current LUSID\r\n            system datetime\
+            \ if not specified."
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      - description: "The asAt datetime at which to list the legal entities. Defaults\
+          \ to return the latest version\r\n            of each legal entities if\
+          \ not specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: "The asAt datetime at which to list the legal entities. Defaults\
+            \ to return the latest version\r\n            of each legal entities if\
+            \ not specified."
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: "The pagination token to use to continue listing legal entities\
+          \ from a previous call to list legal entities. This\r\nvalue is returned\
+          \ from the previous call. If a pagination token is provided the filter,\
+          \ effectiveAt\r\nand asAt fields must not have changed since the original\
+          \ request."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          description: "The pagination token to use to continue listing legal entities\
+            \ from a previous call to list legal entities. This\r\nvalue is returned\
+            \ from the previous call. If a pagination token is provided the filter,\
+            \ effectiveAt\r\nand asAt fields must not have changed since the original\
+            \ request."
+          maxLength: 500
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
+          type: string
+        style: form
+      - description: When paginating, limit the number of returned results to this
+          many. Defaults to 5000 if not specified.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: When paginating, limit the number of returned results to this
+            many. Defaults to 5000 if not specified.
+          format: int32
+          maximum: 5000
+          minimum: 1
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      - description: "Expression to filter the result set. \r\n            Read more\
+          \ about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: "Expression to filter the result set. \r\n            Read\
+            \ more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      - description: "A list of property keys or identifier types (as property keys)\
+          \ from the \"LegalEntity\" domain to include for each legal entity.\r\n\
+          \            These take the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\"\
+          ."
+        explode: true
+        in: query
+        name: propertyKeys
+        required: false
+        schema:
+          description: "A list of property keys or identifier types (as property keys)\
+            \ from the \"LegalEntity\" domain to include for each legal entity.\r\n\
+            \            These take the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\"\
+            ."
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - displayName: LegalEntity1DisplayName
+                  description: LegalEntity1Description
+                  href: https://example.com
+                  lusidLegalEntityId: LUID_00003D4V
+                  identifiers:
+                    legalEntity/ExternalIdentifier/LEI:
+                      key: LegalEntity/ExternalIdentifier/LEI
+                      value:
+                        labelValue: LEI_12345678
+                    legalEntity/InternalIdentifier/InternalLeiId:
+                      key: LegalEntity/InternalIdentifier/InternalLeiId
+                      value:
+                        labelValue: Internal_XHSP2038
+                  properties:
+                    legalEntity/Details/Name:
+                      key: LegalEntity/Details/Name
+                      value:
+                        labelValue: Legal Entity Inc.
+                    legalEntity/Details/Country:
+                      key: LegalEntity/Details/Country
+                      value:
+                        labelValue: United Kingdom
+                      effectiveFrom: 2016-01-01T00:00:00.0000000+00:00
+                    legalEntity/Status/Active:
+                      key: LegalEntity/Status/Active
+                      value:
+                        labelValue: Active
+                      effectiveFrom: 2016-07-01T00:00:00.0000000+00:00
+                  counterpartyRiskInformation:
+                    countryOfRisk: UnitedKingdom
+                    creditRatings:
+                    - ratingSource: StandardAndPoors
+                      rating: AA+
+                    industryClassifiers:
+                    - classificationSystemName: GICS2018
+                      classificationCode: "10101010"
+                  version:
+                    effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                    asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                - displayName: LegalEntity2DisplayName
+                  description: LegalEntity2Description
+                  href: https://example.com
+                  lusidLegalEntityId: LUID_00003D55
+                  identifiers:
+                    legalEntity/ExternalIdentifier/LEI:
+                      key: LegalEntity/ExternalIdentifier/LEI
+                      value:
+                        labelValue: LEI_22345678
+                    legalEntity/InternalIdentifier/InternalLeiId:
+                      key: LegalEntity/InternalIdentifier/InternalLeiId
+                      value:
+                        labelValue: Internal_XHSP2038
+                  properties:
+                    legalEntity/Details/Name:
+                      key: LegalEntity/Details/Name
+                      value:
+                        labelValue: Legal Entity 2 Inc.
+                    legalEntity/Details/Country:
+                      key: LegalEntity/Details/Country
+                      value:
+                        labelValue: Germany
+                      effectiveFrom: 2016-01-01T00:00:00.0000000+00:00
+                    legalEntity/Status/Active:
+                      key: LegalEntity/Status/Active
+                      value:
+                        labelValue: Active
+                      effectiveFrom: 2016-04-01T00:00:00.0000000+00:00
+                  version:
+                    effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                    asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                href: http://example.com
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfLegalEntity'
+            application/json:
+              example:
+                values:
+                - displayName: LegalEntity1DisplayName
+                  description: LegalEntity1Description
+                  href: https://example.com
+                  lusidLegalEntityId: LUID_00003D4V
+                  identifiers:
+                    legalEntity/ExternalIdentifier/LEI:
+                      key: LegalEntity/ExternalIdentifier/LEI
+                      value:
+                        labelValue: LEI_12345678
+                    legalEntity/InternalIdentifier/InternalLeiId:
+                      key: LegalEntity/InternalIdentifier/InternalLeiId
+                      value:
+                        labelValue: Internal_XHSP2038
+                  properties:
+                    legalEntity/Details/Name:
+                      key: LegalEntity/Details/Name
+                      value:
+                        labelValue: Legal Entity Inc.
+                    legalEntity/Details/Country:
+                      key: LegalEntity/Details/Country
+                      value:
+                        labelValue: United Kingdom
+                      effectiveFrom: 2016-01-01T00:00:00.0000000+00:00
+                    legalEntity/Status/Active:
+                      key: LegalEntity/Status/Active
+                      value:
+                        labelValue: Active
+                      effectiveFrom: 2016-07-01T00:00:00.0000000+00:00
+                  counterpartyRiskInformation:
+                    countryOfRisk: UnitedKingdom
+                    creditRatings:
+                    - ratingSource: StandardAndPoors
+                      rating: AA+
+                    industryClassifiers:
+                    - classificationSystemName: GICS2018
+                      classificationCode: "10101010"
+                  version:
+                    effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                    asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                - displayName: LegalEntity2DisplayName
+                  description: LegalEntity2Description
+                  href: https://example.com
+                  lusidLegalEntityId: LUID_00003D55
+                  identifiers:
+                    legalEntity/ExternalIdentifier/LEI:
+                      key: LegalEntity/ExternalIdentifier/LEI
+                      value:
+                        labelValue: LEI_22345678
+                    legalEntity/InternalIdentifier/InternalLeiId:
+                      key: LegalEntity/InternalIdentifier/InternalLeiId
+                      value:
+                        labelValue: Internal_XHSP2038
+                  properties:
+                    legalEntity/Details/Name:
+                      key: LegalEntity/Details/Name
+                      value:
+                        labelValue: Legal Entity 2 Inc.
+                    legalEntity/Details/Country:
+                      key: LegalEntity/Details/Country
+                      value:
+                        labelValue: Germany
+                      effectiveFrom: 2016-01-01T00:00:00.0000000+00:00
+                    legalEntity/Status/Active:
+                      key: LegalEntity/Status/Active
+                      value:
+                        labelValue: Active
+                      effectiveFrom: 2016-04-01T00:00:00.0000000+00:00
+                  version:
+                    effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                    asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                href: http://example.com
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfLegalEntity'
+            text/json:
+              example:
+                values:
+                - displayName: LegalEntity1DisplayName
+                  description: LegalEntity1Description
+                  href: https://example.com
+                  lusidLegalEntityId: LUID_00003D4V
+                  identifiers:
+                    legalEntity/ExternalIdentifier/LEI:
+                      key: LegalEntity/ExternalIdentifier/LEI
+                      value:
+                        labelValue: LEI_12345678
+                    legalEntity/InternalIdentifier/InternalLeiId:
+                      key: LegalEntity/InternalIdentifier/InternalLeiId
+                      value:
+                        labelValue: Internal_XHSP2038
+                  properties:
+                    legalEntity/Details/Name:
+                      key: LegalEntity/Details/Name
+                      value:
+                        labelValue: Legal Entity Inc.
+                    legalEntity/Details/Country:
+                      key: LegalEntity/Details/Country
+                      value:
+                        labelValue: United Kingdom
+                      effectiveFrom: 2016-01-01T00:00:00.0000000+00:00
+                    legalEntity/Status/Active:
+                      key: LegalEntity/Status/Active
+                      value:
+                        labelValue: Active
+                      effectiveFrom: 2016-07-01T00:00:00.0000000+00:00
+                  counterpartyRiskInformation:
+                    countryOfRisk: UnitedKingdom
+                    creditRatings:
+                    - ratingSource: StandardAndPoors
+                      rating: AA+
+                    industryClassifiers:
+                    - classificationSystemName: GICS2018
+                      classificationCode: "10101010"
+                  version:
+                    effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                    asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                - displayName: LegalEntity2DisplayName
+                  description: LegalEntity2Description
+                  href: https://example.com
+                  lusidLegalEntityId: LUID_00003D55
+                  identifiers:
+                    legalEntity/ExternalIdentifier/LEI:
+                      key: LegalEntity/ExternalIdentifier/LEI
+                      value:
+                        labelValue: LEI_22345678
+                    legalEntity/InternalIdentifier/InternalLeiId:
+                      key: LegalEntity/InternalIdentifier/InternalLeiId
+                      value:
+                        labelValue: Internal_XHSP2038
+                  properties:
+                    legalEntity/Details/Name:
+                      key: LegalEntity/Details/Name
+                      value:
+                        labelValue: Legal Entity 2 Inc.
+                    legalEntity/Details/Country:
+                      key: LegalEntity/Details/Country
+                      value:
+                        labelValue: Germany
+                      effectiveFrom: 2016-01-01T00:00:00.0000000+00:00
+                    legalEntity/Status/Active:
+                      key: LegalEntity/Status/Active
+                      value:
+                        labelValue: Active
+                      effectiveFrom: 2016-04-01T00:00:00.0000000+00:00
+                  version:
+                    effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                    asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                href: http://example.com
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfLegalEntity'
+          description: All existing Legal Entities
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] ListAllLegalEntities: List Legal Entities'
+      tags:
+      - Legal Entities
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
     post:
       description: Create or update a legal entity
       operationId: UpsertLegalEntity
@@ -40280,6 +40648,163 @@ components:
           description: The resources to list.
           items:
             $ref: '#/components/schemas/IUnitDefinitionDto'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
+    ResourceListOfLegalEntity:
+      additionalProperties: false
+      description: A collection of resources that can be returned from requests.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - lusidLegalEntityId: lusidLegalEntityId
+          counterpartyRiskInformation:
+            creditRatings:
+            - rating: rating
+              ratingSource: ratingSource
+            - rating: rating
+              ratingSource: ratingSource
+            industryClassifiers:
+            - classificationCode: classificationCode
+              classificationSystemName: classificationSystemName
+            - classificationCode: classificationCode
+              classificationSystemName: classificationSystemName
+            countryOfRisk: countryOfRisk
+          displayName: displayName
+          identifiers:
+            key:
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 6.027456183070403
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          description: description
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          properties:
+            key:
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 6.027456183070403
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        - lusidLegalEntityId: lusidLegalEntityId
+          counterpartyRiskInformation:
+            creditRatings:
+            - rating: rating
+              ratingSource: ratingSource
+            - rating: rating
+              ratingSource: ratingSource
+            industryClassifiers:
+            - classificationCode: classificationCode
+              classificationSystemName: classificationSystemName
+            - classificationCode: classificationCode
+              classificationSystemName: classificationSystemName
+            countryOfRisk: countryOfRisk
+          displayName: displayName
+          identifiers:
+            key:
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 6.027456183070403
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+          description: description
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          properties:
+            key:
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 6.027456183070403
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/LegalEntity'
           type: array
         href:
           description: The URI of the resource list.
