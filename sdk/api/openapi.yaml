@@ -296,12 +296,12 @@ info:
     | <a name="803">803</a>|The Instrument event could not be processed.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4619
+  version: 0.11.4620
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -4740,6 +4740,225 @@ paths:
       - Instruments
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
+  /api/instruments/{identifierType}/{identifier}/relationships:
+    get:
+      description: Get relationships for a particular Instrument.
+      operationId: GetInstrumentRelationships
+      parameters:
+      - description: An identifier type attached to the Instrument.
+        explode: false
+        in: path
+        name: identifierType
+        required: true
+        schema:
+          description: An identifier type attached to the Instrument.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The identifier value.
+        explode: false
+        in: path
+        name: identifier
+        required: true
+        schema:
+          description: The identifier value.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The effective datetime or cut label at which to get relationships.
+          Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effective datetime or cut label at which to get relationships.
+            Defaults to the current LUSID system datetime if not specified.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve relationships. Defaults
+          to return the latest LUSID AsAt time if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve relationships. Defaults
+            to return the latest LUSID AsAt time if not specified.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: Expression to filter relationships. Users should provide null
+          or empty string for this field until further notice.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: Expression to filter relationships. Users should provide null
+            or empty string for this field until further notice.
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      - description: "Identifier types (as property keys) used for referencing Persons\
+          \ or Legal Entities.\r\n            These can be specified from the 'Person'\
+          \ or 'LegalEntity' domains and have the format {domain}/{scope}/{code},\
+          \ for example\r\n            'Person/CompanyDetails/Role'. An Empty array\
+          \ may be used to return all related Entities."
+        explode: true
+        in: query
+        name: identifierTypes
+        required: false
+        schema:
+          description: "Identifier types (as property keys) used for referencing Persons\
+            \ or Legal Entities.\r\n            These can be specified from the 'Person'\
+            \ or 'LegalEntity' domains and have the format {domain}/{scope}/{code},\
+            \ for example\r\n            'Person/CompanyDetails/Role'. An Empty array\
+            \ may be used to return all related Entities."
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      - description: The entity scope in which the instrument lies. When not supplied
+          the scope is 'default'.
+        explode: true
+        in: query
+        name: scope
+        required: false
+        schema:
+          default: default
+          description: The entity scope in which the instrument lies. When not supplied
+            the scope is 'default'.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: securityReferenceData
+                    code: issuer
+                  relatedEntity:
+                    entityType: LegalEntity
+                    entityId:
+                      identifierScope: public
+                      identifierType: LEI
+                      identifierValue: HWUPKR0MPOU8FGXBT394
+                    displayName: APPLE INC
+                    properties: {}
+                    scope: uat
+                    identifiers:
+                    - identifierType: LEI
+                      identifierValue: HWUPKR0MPOU8FGXBT394
+                  traversalDirection: In
+                  traversalDescription: issued by
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+            application/json:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: securityReferenceData
+                    code: issuer
+                  relatedEntity:
+                    entityType: LegalEntity
+                    entityId:
+                      identifierScope: public
+                      identifierType: LEI
+                      identifierValue: HWUPKR0MPOU8FGXBT394
+                    displayName: APPLE INC
+                    properties: {}
+                    scope: uat
+                    identifiers:
+                    - identifierType: LEI
+                      identifierValue: HWUPKR0MPOU8FGXBT394
+                  traversalDirection: In
+                  traversalDescription: issued by
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+            text/json:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: securityReferenceData
+                    code: issuer
+                  relatedEntity:
+                    entityType: LegalEntity
+                    entityId:
+                      identifierScope: public
+                      identifierType: LEI
+                      identifierValue: HWUPKR0MPOU8FGXBT394
+                    displayName: APPLE INC
+                    properties: {}
+                    scope: uat
+                    identifiers:
+                    - identifierType: LEI
+                      identifierValue: HWUPKR0MPOU8FGXBT394
+                  traversalDirection: In
+                  traversalDescription: issued by
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+          description: The relationships for the specified instrument.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetInstrumentRelationships: Get Instrument relationships'
+      tags:
+      - Instruments
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
   /api/legalentities:
     get:
       description: List all legal entities which the user is entitled to see.
@@ -7337,6 +7556,230 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-contentType: application/json-patch+json
       x-accepts: application/json
+  /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/relationships:
+    get:
+      description: Get Relationships for the specified Legal Entity
+      operationId: GetLegalEntityRelationships
+      parameters:
+      - description: Scope of the legal entity's identifier type.
+        explode: false
+        in: path
+        name: idTypeScope
+        required: true
+        schema:
+          description: Scope of the legal entity's identifier type.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the legal entity's identifier type.
+        explode: false
+        in: path
+        name: idTypeCode
+        required: true
+        schema:
+          description: Code of the legal entity's identifier type.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "Code of the legal entity under specified identifier type's scope\
+          \ and code. This together with stated identifier type uniquely\r\n     \
+          \       identifies the legal entity."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: "Code of the legal entity under specified identifier type's\
+            \ scope and code. This together with stated identifier type uniquely\r\
+            \n            identifies the legal entity."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The effective datetime or cut label at which to get relationships.
+          Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effective datetime or cut label at which to get relationships.
+            Defaults to the current LUSID system datetime if not specified.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve relationships. Defaults
+          to return the latest LUSID AsAt time if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve relationships. Defaults
+            to return the latest LUSID AsAt time if not specified.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: Expression to filter relationships. Users should provide null
+          or empty string for this field until further notice.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: Expression to filter relationships. Users should provide null
+            or empty string for this field until further notice.
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      - description: "Identifier types (as property keys) used for referencing Persons\
+          \ or Legal Entities.\r\n            These can be specified from the 'Person'\
+          \ or 'LegalEntity' domains and have the format {domain}/{scope}/{code},\
+          \ for example\r\n            'Person/CompanyDetails/Role'. An Empty array\
+          \ may be used to return all related Entities."
+        explode: true
+        in: query
+        name: identifierTypes
+        required: false
+        schema:
+          description: "Identifier types (as property keys) used for referencing Persons\
+            \ or Legal Entities.\r\n            These can be specified from the 'Person'\
+            \ or 'LegalEntity' domains and have the format {domain}/{scope}/{code},\
+            \ for example\r\n            'Person/CompanyDetails/Role'. An Empty array\
+            \ may be used to return all related Entities."
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: PortfolioManagementTeam
+                    code: Traders
+                  relatedEntity:
+                    entityType: LegalEntity
+                    entityId:
+                      idTypeScope: HrSystem1
+                      idTypeCode: InternalId
+                      code: XY10001111
+                    displayName: James Smith
+                    properties: {}
+                    identifiers:
+                    - identifierScope: HrSystem1
+                      identifierType: InternalId
+                      identifierValue: XY10001111
+                  traversalDirection: Out
+                  traversalDescription: is legal representative for
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                href: https://example.com
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+            application/json:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: PortfolioManagementTeam
+                    code: Traders
+                  relatedEntity:
+                    entityType: LegalEntity
+                    entityId:
+                      idTypeScope: HrSystem1
+                      idTypeCode: InternalId
+                      code: XY10001111
+                    displayName: James Smith
+                    properties: {}
+                    identifiers:
+                    - identifierScope: HrSystem1
+                      identifierType: InternalId
+                      identifierValue: XY10001111
+                  traversalDirection: Out
+                  traversalDescription: is legal representative for
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                href: https://example.com
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+            text/json:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: PortfolioManagementTeam
+                    code: Traders
+                  relatedEntity:
+                    entityType: LegalEntity
+                    entityId:
+                      idTypeScope: HrSystem1
+                      idTypeCode: InternalId
+                      code: XY10001111
+                    displayName: James Smith
+                    properties: {}
+                    identifiers:
+                    - identifierScope: HrSystem1
+                      identifierType: InternalId
+                      identifierValue: XY10001111
+                  traversalDirection: Out
+                  traversalDescription: is legal representative for
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                href: https://example.com
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+          description: The relationships for the specified legal entity.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetLegalEntityRelationships: Get Relationships for
+        Legal Entity'
+      tags:
+      - Legal Entities
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
   /api/metadata/access/resources:
     get:
       description: Get the comprehensive set of resources that are available for access
@@ -8721,6 +9164,223 @@ paths:
       - Persons
       x-fbn-apistatus: EarlyAccess
       x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/persons/{idTypeScope}/{idTypeCode}/{code}/relationships:
+    get:
+      description: Get relationships for the specified person.
+      operationId: GetPersonRelationships
+      parameters:
+      - description: Scope of the person's identifier type.
+        explode: false
+        in: path
+        name: idTypeScope
+        required: true
+        schema:
+          description: Scope of the person's identifier type.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the person's identifier type.
+        explode: false
+        in: path
+        name: idTypeCode
+        required: true
+        schema:
+          description: Code of the person's identifier type.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "Code of the person under specified identifier type's scope and\
+          \ code. This together with stated identifier type uniquely\r\n         \
+          \   identifies the person."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: "Code of the person under specified identifier type's scope\
+            \ and code. This together with stated identifier type uniquely\r\n   \
+            \         identifies the person."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The effective datetime or cut label at which to get relationships.
+          Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effective datetime or cut label at which to get relationships.
+            Defaults to the current LUSID system datetime if not specified.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve relationships. Defaults
+          to return the latest LUSID AsAt time if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve relationships. Defaults
+            to return the latest LUSID AsAt time if not specified.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: Expression to filter relationships. Users should provide null
+          or empty string for this field until further notice.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: Expression to filter relationships. Users should provide null
+            or empty string for this field until further notice.
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      - description: "Identifier types (as property keys) used for referencing Persons\
+          \ or Legal Entities.\r\n            These can be specified from the 'Person'\
+          \ or 'LegalEntity' domains and have the format {domain}/{scope}/{code},\
+          \ for example\r\n            'Person/CompanyDetails/Role'. An Empty array\
+          \ may be used to return all related Entities."
+        explode: true
+        in: query
+        name: identifierTypes
+        required: false
+        schema:
+          description: "Identifier types (as property keys) used for referencing Persons\
+            \ or Legal Entities.\r\n            These can be specified from the 'Person'\
+            \ or 'LegalEntity' domains and have the format {domain}/{scope}/{code},\
+            \ for example\r\n            'Person/CompanyDetails/Role'. An Empty array\
+            \ may be used to return all related Entities."
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: PortfolioManagementTeam
+                    code: Traders
+                  relatedEntity:
+                    entityType: Person
+                    entityId:
+                      scope: UkPortfolio
+                      code: PortfolioId-148176
+                    displayName: James Smith
+                    properties: {}
+                    scope: UkPortfolio
+                    identifiers:
+                    - identifierType: code
+                      identifierValue: PortfolioId-148176
+                  traversalDirection: In
+                  traversalDescription: can trade with portfolio
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+            application/json:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: PortfolioManagementTeam
+                    code: Traders
+                  relatedEntity:
+                    entityType: Person
+                    entityId:
+                      scope: UkPortfolio
+                      code: PortfolioId-148176
+                    displayName: James Smith
+                    properties: {}
+                    scope: UkPortfolio
+                    identifiers:
+                    - identifierType: code
+                      identifierValue: PortfolioId-148176
+                  traversalDirection: In
+                  traversalDescription: can trade with portfolio
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+            text/json:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: PortfolioManagementTeam
+                    code: Traders
+                  relatedEntity:
+                    entityType: Person
+                    entityId:
+                      scope: UkPortfolio
+                      code: PortfolioId-148176
+                    displayName: James Smith
+                    properties: {}
+                    scope: UkPortfolio
+                    identifiers:
+                    - identifierType: code
+                      identifierValue: PortfolioId-148176
+                  traversalDirection: In
+                  traversalDescription: can trade with portfolio
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+          description: The relationships for the specified person.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetPersonRelationships: Get Relationships for Person'
+      tags:
+      - Persons
+      x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/portfoliogroups/{scope}:
     get:
@@ -11050,6 +11710,212 @@ paths:
       - oauth2: []
       summary: '[EARLY ACCESS] GetPortfolioGroupPropertyTimeSeries: Get the time series
         of a portfolio group property'
+      tags:
+      - Portfolio Groups
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/portfoliogroups/{scope}/{code}/relationships:
+    get:
+      description: Get relationships for the specified Portfolio Group
+      operationId: GetPortfolioGroupRelationships
+      parameters:
+      - description: The scope of the portfolio group.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the portfolio group.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "The code of the portfolio group. Together with the scope this\
+          \ uniquely identifies\r\n            the portfolio group."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: "The code of the portfolio group. Together with the scope this\
+            \ uniquely identifies\r\n            the portfolio group."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The effective datetime or cut label at which to retrieve relationship.
+          Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effective datetime or cut label at which to retrieve relationship.
+            Defaults to the current LUSID system datetime if not specified.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve relationships. Defaults
+          to return the latest LUSID AsAt time if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve relationships. Defaults
+            to return the latest LUSID AsAt time if not specified.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: Expression to filter relationships. Users should provide null
+          or empty string for this field until further notice.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: Expression to filter relationships. Users should provide null
+            or empty string for this field until further notice.
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      - description: "Identifier types (as property keys) used for referencing Persons\
+          \ or Legal Entities.\r\n            These can be specified from the 'Person'\
+          \ or 'LegalEntity' domains and have the format {domain}/{scope}/{code},\
+          \ for example\r\n            'Person/CompanyDetails/Role'. An Empty array\
+          \ may be used to return all related Entities."
+        explode: true
+        in: query
+        name: identifierTypes
+        required: false
+        schema:
+          description: "Identifier types (as property keys) used for referencing Persons\
+            \ or Legal Entities.\r\n            These can be specified from the 'Person'\
+            \ or 'LegalEntity' domains and have the format {domain}/{scope}/{code},\
+            \ for example\r\n            'Person/CompanyDetails/Role'. An Empty array\
+            \ may be used to return all related Entities."
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: PortfolioManagementTeam
+                    code: Traders
+                  relatedEntity:
+                    entityType: Person
+                    entityId:
+                      idTypeScope: HrSystem1
+                      idTypeCode: InternalId
+                      code: XY10001111
+                    displayName: James Smith
+                    properties: {}
+                    identifiers:
+                    - identifierScope: HrSystem1
+                      identifierType: InternalId
+                      identifierValue: XY10001111
+                  traversalDirection: Out
+                  traversalDescription: can be traded by
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+            application/json:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: PortfolioManagementTeam
+                    code: Traders
+                  relatedEntity:
+                    entityType: Person
+                    entityId:
+                      idTypeScope: HrSystem1
+                      idTypeCode: InternalId
+                      code: XY10001111
+                    displayName: James Smith
+                    properties: {}
+                    identifiers:
+                    - identifierScope: HrSystem1
+                      identifierType: InternalId
+                      identifierValue: XY10001111
+                  traversalDirection: Out
+                  traversalDescription: can be traded by
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+            text/json:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: PortfolioManagementTeam
+                    code: Traders
+                  relatedEntity:
+                    entityType: Person
+                    entityId:
+                      idTypeScope: HrSystem1
+                      idTypeCode: InternalId
+                      code: XY10001111
+                    displayName: James Smith
+                    properties: {}
+                    identifiers:
+                    - identifierScope: HrSystem1
+                      identifierType: InternalId
+                      identifierValue: XY10001111
+                  traversalDirection: Out
+                  traversalDescription: can be traded by
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+          description: The relationships for the specific portfolio group.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetPortfolioGroupRelationships: Get Relationships for
+        Portfolio Group'
       tags:
       - Portfolio Groups
       x-fbn-apistatus: EarlyAccess
@@ -14164,6 +15030,265 @@ paths:
       - Portfolios
       x-fbn-apistatus: Stable
       x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/portfolios/{scope}/{code}/relationships:
+    get:
+      description: Get relationships for a particular portfolio.
+      operationId: GetPortfolioRelationships
+      parameters:
+      - description: The scope of the portfolio.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the portfolio.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The code of the portfolio. Together with the scope this uniquely
+          identifies the portfolio.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The code of the portfolio. Together with the scope this uniquely
+            identifies the portfolio.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The effective datetime or cut label at which to retrieve relationships.
+          Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effective datetime or cut label at which to retrieve relationships.
+            Defaults to the current LUSID system datetime if not specified.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve relationships. Defaults
+          to returning the latest LUSID AsAt time if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve relationships. Defaults
+            to returning the latest LUSID AsAt time if not specified.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: Expression to filter the relationships. Provide a null or empty
+          string for this field until further notice.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: Expression to filter the relationships. Provide a null or empty
+            string for this field until further notice.
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      - description: "Identifier types (as property keys) used for referencing Persons\
+          \ or Legal Entities.\r\n            These can be specified from the 'Person'\
+          \ or 'LegalEntity' domains and have the format {domain}/{scope}/{code},\
+          \ for example\r\n            'Person/CompanyDetails/Role'. An Empty array\
+          \ may be used to return all related Entities."
+        explode: true
+        in: query
+        name: identifierTypes
+        required: false
+        schema:
+          description: "Identifier types (as property keys) used for referencing Persons\
+            \ or Legal Entities.\r\n            These can be specified from the 'Person'\
+            \ or 'LegalEntity' domains and have the format {domain}/{scope}/{code},\
+            \ for example\r\n            'Person/CompanyDetails/Role'. An Empty array\
+            \ may be used to return all related Entities."
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: PortfolioManagementTeam
+                    code: Traders
+                  relatedEntity:
+                    entityType: Person
+                    entityId:
+                      idTypeScope: HrSystem1
+                      idTypeCode: InternalId
+                      code: XY10001111
+                    displayName: James Smith
+                    properties: {}
+                    identifiers:
+                    - identifierScope: HrSystem1
+                      identifierType: InternalId
+                      identifierValue: XY10001111
+                  traversalDirection: Out
+                  traversalDescription: can be traded by
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                - relationshipDefinitionId:
+                    scope: PortfolioManagementTeam
+                    code: Traders
+                  relatedEntity:
+                    entityType: PortfolioGroup
+                    entityId:
+                      scope: PortfolioGroupEmea
+                      code: PortfolioGroupId-867312
+                    displayName: UK Portfolios
+                    properties: {}
+                    scope: PortfolioGroupEmea
+                    identifiers:
+                    - identifierType: code
+                      identifierValue: PortfolioGroupId-867312
+                  traversalDirection: In
+                  traversalDescription: can trade with portfolio
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+            application/json:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: PortfolioManagementTeam
+                    code: Traders
+                  relatedEntity:
+                    entityType: Person
+                    entityId:
+                      idTypeScope: HrSystem1
+                      idTypeCode: InternalId
+                      code: XY10001111
+                    displayName: James Smith
+                    properties: {}
+                    identifiers:
+                    - identifierScope: HrSystem1
+                      identifierType: InternalId
+                      identifierValue: XY10001111
+                  traversalDirection: Out
+                  traversalDescription: can be traded by
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                - relationshipDefinitionId:
+                    scope: PortfolioManagementTeam
+                    code: Traders
+                  relatedEntity:
+                    entityType: PortfolioGroup
+                    entityId:
+                      scope: PortfolioGroupEmea
+                      code: PortfolioGroupId-867312
+                    displayName: UK Portfolios
+                    properties: {}
+                    scope: PortfolioGroupEmea
+                    identifiers:
+                    - identifierType: code
+                      identifierValue: PortfolioGroupId-867312
+                  traversalDirection: In
+                  traversalDescription: can trade with portfolio
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+            text/json:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: PortfolioManagementTeam
+                    code: Traders
+                  relatedEntity:
+                    entityType: Person
+                    entityId:
+                      idTypeScope: HrSystem1
+                      idTypeCode: InternalId
+                      code: XY10001111
+                    displayName: James Smith
+                    properties: {}
+                    identifiers:
+                    - identifierScope: HrSystem1
+                      identifierType: InternalId
+                      identifierValue: XY10001111
+                  traversalDirection: Out
+                  traversalDescription: can be traded by
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                - relationshipDefinitionId:
+                    scope: PortfolioManagementTeam
+                    code: Traders
+                  relatedEntity:
+                    entityType: PortfolioGroup
+                    entityId:
+                      scope: PortfolioGroupEmea
+                      code: PortfolioGroupId-867312
+                    displayName: UK Portfolios
+                    properties: {}
+                    scope: PortfolioGroupEmea
+                    identifiers:
+                    - identifierType: code
+                      identifierValue: PortfolioGroupId-867312
+                  traversalDirection: In
+                  traversalDescription: can trade with portfolio
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+          description: The relationships for the specified portfolio.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetPortfolioRelationships: Get portfolio relationships'
+      tags:
+      - Portfolios
+      x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/portfolios/{scope}/{code}/returns/$aggregated:
     post:
@@ -32702,6 +33827,28 @@ components:
           nullable: true
           type: string
       type: object
+    EntityIdentifier:
+      additionalProperties: false
+      description: Dto to expose mapped keys to new standardised format
+      example:
+        identifierValue: identifierValue
+        identifierType: identifierType
+        identifierScope: identifierScope
+      properties:
+        identifierScope:
+          description: The scope of the identifier
+          nullable: true
+          type: string
+        identifierType:
+          description: The type of the identifier
+          type: string
+        identifierValue:
+          description: The value of the identifier
+          type: string
+      required:
+      - identifierType
+      - identifierValue
+      type: object
     ErrorDetail:
       additionalProperties: false
       example:
@@ -34640,6 +35787,23 @@ components:
       required:
       - code
       - name
+      type: object
+    LusidUniqueId:
+      additionalProperties: false
+      example:
+        type: type
+        value: value
+      properties:
+        type:
+          description: The type for the LUSID unique id, this will depend on the type
+            of entity found, for instance 'Instrument' would have a value of 'LusidInstrumentId'
+          type: string
+        value:
+          description: The value for the LUSID unique id
+          type: string
+      required:
+      - type
+      - value
       type: object
     LusidValidationProblemDetails:
       additionalProperties: false
@@ -39271,6 +40435,166 @@ components:
       - instrumentIdentifiers
       - weight
       type: object
+    RelatedEntity:
+      additionalProperties: false
+      description: Information about the other related entity in the relationship
+      example:
+        entityType: entityType
+        displayName: displayName
+        identifiers:
+        - identifierValue: identifierValue
+          identifierType: identifierType
+          identifierScope: identifierScope
+        - identifierValue: identifierValue
+          identifierType: identifierType
+          identifierScope: identifierScope
+        scope: scope
+        entityId:
+          key: entityId
+        lusidUniqueId:
+          type: type
+          value: value
+        href: https://openapi-generator.tech
+        properties:
+          key:
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 6.027456183070403
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+      properties:
+        entityType:
+          description: The type of the entity.
+          type: string
+        entityId:
+          additionalProperties:
+            type: string
+          description: The identifier of the other related entity in the relationship.
+            It contains 'scope' and 'code' as keys for identifiers of a Portfolio
+            or Portfolio Group, or 'idTypeScope', 'idTypeCode', 'code' as keys for
+            identifiers of a Person or Legal Entity.
+          type: object
+        displayName:
+          description: The display name of the entity.
+          type: string
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/Property'
+          description: The properties of the entity. This field is empty until further
+            notice.
+          nullable: true
+          type: object
+        scope:
+          description: The scope of the identifier
+          nullable: true
+          type: string
+        lusidUniqueId:
+          $ref: '#/components/schemas/LusidUniqueId'
+        identifiers:
+          description: The identifiers of the related entity in the relationship.
+          items:
+            $ref: '#/components/schemas/EntityIdentifier'
+          type: array
+        href:
+          description: The link to the entity.
+          format: uri
+          nullable: true
+          type: string
+      required:
+      - displayName
+      - entityId
+      - entityType
+      - identifiers
+      type: object
+    Relationship:
+      additionalProperties: false
+      description: Representation of a Relationship between a requested entity with
+        the stated entity as RelatedEntityId
+      example:
+        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+        traversalDirection: traversalDirection
+        relatedEntity:
+          entityType: entityType
+          displayName: displayName
+          identifiers:
+          - identifierValue: identifierValue
+            identifierType: identifierType
+            identifierScope: identifierScope
+          - identifierValue: identifierValue
+            identifierType: identifierType
+            identifierScope: identifierScope
+          scope: scope
+          entityId:
+            key: entityId
+          lusidUniqueId:
+            type: type
+            value: value
+          href: https://openapi-generator.tech
+          properties:
+            key:
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 6.027456183070403
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        version:
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        relationshipDefinitionId:
+          code: code
+          scope: scope
+        traversalDescription: traversalDescription
+      properties:
+        version:
+          $ref: '#/components/schemas/Version'
+        relationshipDefinitionId:
+          $ref: '#/components/schemas/ResourceId'
+        relatedEntity:
+          $ref: '#/components/schemas/RelatedEntity'
+        traversalDirection:
+          description: Direction of relationship betwen the requested entity and related
+            entity. This can be 'In' or 'Out'. Read more about relationships traversal
+            direction in LUSID Knowledge Base here https://support.lusid.com/relationships.
+          type: string
+        traversalDescription:
+          description: Description of the relationship based on relationship's traversal
+            direction. If 'TraversalDirection' is 'Out', this description would be
+            'OutwardDescription' from the associated relationship definition. If 'TraversalDirection'
+            is 'In', this description would be 'InwardDescription' from the associated
+            relationship definition.
+          type: string
+        effectiveFrom:
+          description: The effective datetime from which the relationship is valid.
+          format: date-time
+          type: string
+        effectiveUntil:
+          description: The effective datetime until which the relationship is valid.
+            If no future deletions are present or an effective until has not been
+            set for the relationship, this will be indefinite and represented by the
+            maximum date.
+          format: date-time
+          type: string
+      required:
+      - relatedEntity
+      - relationshipDefinitionId
+      - traversalDescription
+      - traversalDirection
+      type: object
     ResourceId:
       additionalProperties: false
       description: Identifiers of an entity
@@ -42058,6 +43382,133 @@ components:
           description: The resources to list.
           items:
             $ref: '#/components/schemas/ReconciliationBreak'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
+    ResourceListOfRelationship:
+      additionalProperties: false
+      description: A collection of resources that can be returned from requests.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          traversalDirection: traversalDirection
+          relatedEntity:
+            entityType: entityType
+            displayName: displayName
+            identifiers:
+            - identifierValue: identifierValue
+              identifierType: identifierType
+              identifierScope: identifierScope
+            - identifierValue: identifierValue
+              identifierType: identifierType
+              identifierScope: identifierScope
+            scope: scope
+            entityId:
+              key: entityId
+            lusidUniqueId:
+              type: type
+              value: value
+            href: https://openapi-generator.tech
+            properties:
+              key:
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 6.027456183070403
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          relationshipDefinitionId:
+            code: code
+            scope: scope
+          traversalDescription: traversalDescription
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          traversalDirection: traversalDirection
+          relatedEntity:
+            entityType: entityType
+            displayName: displayName
+            identifiers:
+            - identifierValue: identifierValue
+              identifierType: identifierType
+              identifierScope: identifierScope
+            - identifierValue: identifierValue
+              identifierType: identifierType
+              identifierScope: identifierScope
+            scope: scope
+            entityId:
+              key: entityId
+            lusidUniqueId:
+              type: type
+              value: value
+            href: https://openapi-generator.tech
+            properties:
+              key:
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 6.027456183070403
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          relationshipDefinitionId:
+            code: code
+            scope: scope
+          traversalDescription: traversalDescription
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/Relationship'
           type: array
         href:
           description: The URI of the resource list.
@@ -46316,7 +47767,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
