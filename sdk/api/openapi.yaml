@@ -296,7 +296,7 @@ info:
     | <a name="803">803</a>|The Instrument event could not be processed.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4627
+  version: 0.11.4628
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -18907,6 +18907,942 @@ paths:
       - Reference Portfolio
       x-fbn-apistatus: Stable
       x-accepts: application/json
+  /api/relationshipdefinitions:
+    get:
+      description: Retrieve one or more specified relationship definitions.
+      operationId: ListRelationshipDefinitions
+      parameters:
+      - description: "The asAt datetime at which to retrieve the relationship definitions.\
+          \ Defaults to return\r\n            the latest version of each definition\
+          \ if not specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: "The asAt datetime at which to retrieve the relationship definitions.\
+            \ Defaults to return\r\n            the latest version of each definition\
+            \ if not specified."
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: "The pagination token to use to continue listing relationship\
+          \ definitions from a previous call to list relationship definitions. This\r\
+          \nvalue is returned from the previous call. If a pagination token is provided\
+          \ the filter, asAt field\r\nmust not have changed since the original request."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          description: "The pagination token to use to continue listing relationship\
+            \ definitions from a previous call to list relationship definitions. This\r\
+            \nvalue is returned from the previous call. If a pagination token is provided\
+            \ the filter, asAt field\r\nmust not have changed since the original request."
+          maxLength: 500
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
+          type: string
+        style: form
+      - description: When paginating, limit the number of returned results to this
+          many. Defaults to 100 if not specified.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: When paginating, limit the number of returned results to this
+            many. Defaults to 100 if not specified.
+          format: int32
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      - description: "Expression to filter the result set.\r\n            For example,\
+          \ to filter on the Scope, use \"scope eq 'ExampleScope'\"\r\n          \
+          \  Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: "Expression to filter the result set.\r\n            For example,\
+            \ to filter on the Scope, use \"scope eq 'ExampleScope'\"\r\n        \
+            \    Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfRelationshipDefinition'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfRelationshipDefinition'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfRelationshipDefinition'
+          description: The requested relationship definitions
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] ListRelationshipDefinitions: List relationship definitions'
+      tags:
+      - Relationship Definitions
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    post:
+      description: Create a new relationship definition to be used for creating relationships
+        between entities.
+      operationId: CreateRelationshipDefinition
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              scope: PortfolioManagementTeam
+              code: Traders
+              sourceEntityType: Portfolio
+              targetEntityType: Person
+              displayName: 'Authorised traders to trade for specific portfolio '
+              outwardDescription: can be traded by
+              inwardDescription: can trade with portfolio
+              lifeTime: TimeVariant
+              relationshipCardinality: ManyToMany
+            schema:
+              $ref: '#/components/schemas/CreateRelationshipDefinitionRequest'
+          application/json:
+            example:
+              scope: PortfolioManagementTeam
+              code: Traders
+              sourceEntityType: Portfolio
+              targetEntityType: Person
+              displayName: 'Authorised traders to trade for specific portfolio '
+              outwardDescription: can be traded by
+              inwardDescription: can trade with portfolio
+              lifeTime: TimeVariant
+              relationshipCardinality: ManyToMany
+            schema:
+              $ref: '#/components/schemas/CreateRelationshipDefinitionRequest'
+          text/json:
+            example:
+              scope: PortfolioManagementTeam
+              code: Traders
+              sourceEntityType: Portfolio
+              targetEntityType: Person
+              displayName: 'Authorised traders to trade for specific portfolio '
+              outwardDescription: can be traded by
+              inwardDescription: can trade with portfolio
+              lifeTime: TimeVariant
+              relationshipCardinality: ManyToMany
+            schema:
+              $ref: '#/components/schemas/CreateRelationshipDefinitionRequest'
+          application/*+json:
+            example:
+              scope: PortfolioManagementTeam
+              code: Traders
+              sourceEntityType: Portfolio
+              targetEntityType: Person
+              displayName: 'Authorised traders to trade for specific portfolio '
+              outwardDescription: can be traded by
+              inwardDescription: can trade with portfolio
+              lifeTime: TimeVariant
+              relationshipCardinality: ManyToMany
+            schema:
+              $ref: '#/components/schemas/CreateRelationshipDefinitionRequest'
+        description: The definition of the new relationship.
+        required: true
+      responses:
+        "201":
+          content:
+            text/plain:
+              example:
+                version:
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                relationshipDefinitionId:
+                  scope: PortfolioManagementTeam
+                  code: Traders
+                sourceEntityType: Portfolio
+                targetEntityType: Person
+                displayName: 'Authorised traders to trade for specific portfolio '
+                outwardDescription: can be traded by
+                inwardDescription: can trade with portfolio
+                lifeTime: TimeVariant
+                relationshipCardinality: ManyToMany
+              schema:
+                $ref: '#/components/schemas/RelationshipDefinition'
+            application/json:
+              example:
+                version:
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                relationshipDefinitionId:
+                  scope: PortfolioManagementTeam
+                  code: Traders
+                sourceEntityType: Portfolio
+                targetEntityType: Person
+                displayName: 'Authorised traders to trade for specific portfolio '
+                outwardDescription: can be traded by
+                inwardDescription: can trade with portfolio
+                lifeTime: TimeVariant
+                relationshipCardinality: ManyToMany
+              schema:
+                $ref: '#/components/schemas/RelationshipDefinition'
+            text/json:
+              example:
+                version:
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                relationshipDefinitionId:
+                  scope: PortfolioManagementTeam
+                  code: Traders
+                sourceEntityType: Portfolio
+                targetEntityType: Person
+                displayName: 'Authorised traders to trade for specific portfolio '
+                outwardDescription: can be traded by
+                inwardDescription: can trade with portfolio
+                lifeTime: TimeVariant
+                relationshipCardinality: ManyToMany
+              schema:
+                $ref: '#/components/schemas/RelationshipDefinition'
+          description: The newly created relationship definition
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] CreateRelationshipDefinition: Create Relationship Definition'
+      tags:
+      - Relationship Definitions
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/relationshipdefinitions/{scope}/{code}:
+    delete:
+      description: Delete the definition of the specified relationship.
+      operationId: DeleteRelationshipDefinition
+      parameters:
+      - description: The scope of the relationship definition to be deleted.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the relationship definition to be deleted.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "The code of the relationship definition to be deleted. Together\
+          \ with the domain and scope this uniquely\r\n            identifies the\
+          \ relationship."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: "The code of the relationship definition to be deleted. Together\
+            \ with the domain and scope this uniquely\r\n            identifies the\
+            \ relationship."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The time that the relationship definition was deleted
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] DeleteRelationshipDefinition: Delete Relationship Definition'
+      tags:
+      - Relationship Definitions
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    get:
+      description: Retrieve the specified relationship definition
+      operationId: GetRelationshipDefinition
+      parameters:
+      - description: The scope of the specified relationship definition.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the specified relationship definition.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "The code of the specified relationship definition. Together\
+          \ with the domain and scope this uniquely\r\n            identifies the\
+          \ relationship definition."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: "The code of the specified relationship definition. Together\
+            \ with the domain and scope this uniquely\r\n            identifies the\
+            \ relationship definition."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "The asAt datetime at which to retrieve the relationship definition.\
+          \ Defaults to return\r\n            the latest version of the definition\
+          \ if not specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: "The asAt datetime at which to retrieve the relationship definition.\
+            \ Defaults to return\r\n            the latest version of the definition\
+            \ if not specified."
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                version:
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                relationshipDefinitionId:
+                  scope: PortfolioManagementTeam
+                  code: Traders
+                sourceEntityType: Portfolio
+                targetEntityType: Person
+                displayName: 'Authorised traders to trade for specific portfolio '
+                outwardDescription: can be traded by
+                inwardDescription: can trade with portfolio
+                lifeTime: TimeVariant
+                relationshipCardinality: ManyToMany
+              schema:
+                $ref: '#/components/schemas/RelationshipDefinition'
+            application/json:
+              example:
+                version:
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                relationshipDefinitionId:
+                  scope: PortfolioManagementTeam
+                  code: Traders
+                sourceEntityType: Portfolio
+                targetEntityType: Person
+                displayName: 'Authorised traders to trade for specific portfolio '
+                outwardDescription: can be traded by
+                inwardDescription: can trade with portfolio
+                lifeTime: TimeVariant
+                relationshipCardinality: ManyToMany
+              schema:
+                $ref: '#/components/schemas/RelationshipDefinition'
+            text/json:
+              example:
+                version:
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                relationshipDefinitionId:
+                  scope: PortfolioManagementTeam
+                  code: Traders
+                sourceEntityType: Portfolio
+                targetEntityType: Person
+                displayName: 'Authorised traders to trade for specific portfolio '
+                outwardDescription: can be traded by
+                inwardDescription: can trade with portfolio
+                lifeTime: TimeVariant
+                relationshipCardinality: ManyToMany
+              schema:
+                $ref: '#/components/schemas/RelationshipDefinition'
+          description: The requested relationship definition
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetRelationshipDefinition: Get relationship definition'
+      tags:
+      - Relationship Definitions
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    put:
+      description: "Update the definition of a specified existing relationship. Not\
+        \ all elements within a relationship definition\r\nare modifiable due to the\
+        \ potential implications for values already stored against the relationship."
+      operationId: UpdateRelationshipDefinition
+      parameters:
+      - description: The scope of the relationship definition being updated.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the relationship definition being updated.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "The code of the relationship definition being updated. Together\
+          \ with the scope this uniquely\r\n            identifies the relationship\
+          \ definition."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: "The code of the relationship definition being updated. Together\
+            \ with the scope this uniquely\r\n            identifies the relationship\
+            \ definition."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              displayName: 'Authorised traders to trade for specific portfolio '
+              outwardDescription: can be traded by
+              inwardDescription: can trade with portfolio
+            schema:
+              $ref: '#/components/schemas/UpdateRelationshipDefinitionRequest'
+          application/json:
+            example:
+              displayName: 'Authorised traders to trade for specific portfolio '
+              outwardDescription: can be traded by
+              inwardDescription: can trade with portfolio
+            schema:
+              $ref: '#/components/schemas/UpdateRelationshipDefinitionRequest'
+          text/json:
+            example:
+              displayName: 'Authorised traders to trade for specific portfolio '
+              outwardDescription: can be traded by
+              inwardDescription: can trade with portfolio
+            schema:
+              $ref: '#/components/schemas/UpdateRelationshipDefinitionRequest'
+          application/*+json:
+            example:
+              displayName: 'Authorised traders to trade for specific portfolio '
+              outwardDescription: can be traded by
+              inwardDescription: can trade with portfolio
+            schema:
+              $ref: '#/components/schemas/UpdateRelationshipDefinitionRequest'
+        description: The details of relationship definition to update.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                version:
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                relationshipDefinitionId:
+                  scope: PortfolioManagementTeam
+                  code: Traders
+                sourceEntityType: Portfolio
+                targetEntityType: Person
+                displayName: 'Authorised traders to trade for specific portfolio '
+                outwardDescription: can be traded by
+                inwardDescription: can trade with portfolio
+                lifeTime: TimeVariant
+                relationshipCardinality: ManyToMany
+              schema:
+                $ref: '#/components/schemas/RelationshipDefinition'
+            application/json:
+              example:
+                version:
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                relationshipDefinitionId:
+                  scope: PortfolioManagementTeam
+                  code: Traders
+                sourceEntityType: Portfolio
+                targetEntityType: Person
+                displayName: 'Authorised traders to trade for specific portfolio '
+                outwardDescription: can be traded by
+                inwardDescription: can trade with portfolio
+                lifeTime: TimeVariant
+                relationshipCardinality: ManyToMany
+              schema:
+                $ref: '#/components/schemas/RelationshipDefinition'
+            text/json:
+              example:
+                version:
+                  effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                  asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                relationshipDefinitionId:
+                  scope: PortfolioManagementTeam
+                  code: Traders
+                sourceEntityType: Portfolio
+                targetEntityType: Person
+                displayName: 'Authorised traders to trade for specific portfolio '
+                outwardDescription: can be traded by
+                inwardDescription: can trade with portfolio
+                lifeTime: TimeVariant
+                relationshipCardinality: ManyToMany
+              schema:
+                $ref: '#/components/schemas/RelationshipDefinition'
+          description: The updated relationship definition
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] UpdateRelationshipDefinition: Update Relationship Definition'
+      tags:
+      - Relationship Definitions
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/relationshipdefinitions/{scope}/{code}/relationships:
+    post:
+      description: Create a relationship between two entity objects by their identifiers
+      operationId: CreateRelationship
+      parameters:
+      - description: The scope of the relationship
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the relationship
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The code of the relationship
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The code of the relationship
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              sourceEntityId:
+                scope: UkPortfolio
+                code: PortfolioId-148176
+              targetEntityId:
+                idTypeScope: HrSystem1
+                idTypeCode: InternalId
+                code: XY10001111
+            schema:
+              $ref: '#/components/schemas/CreateRelationshipRequest'
+          application/json:
+            example:
+              sourceEntityId:
+                scope: UkPortfolio
+                code: PortfolioId-148176
+              targetEntityId:
+                idTypeScope: HrSystem1
+                idTypeCode: InternalId
+                code: XY10001111
+            schema:
+              $ref: '#/components/schemas/CreateRelationshipRequest'
+          text/json:
+            example:
+              sourceEntityId:
+                scope: UkPortfolio
+                code: PortfolioId-148176
+              targetEntityId:
+                idTypeScope: HrSystem1
+                idTypeCode: InternalId
+                code: XY10001111
+            schema:
+              $ref: '#/components/schemas/CreateRelationshipRequest'
+          application/*+json:
+            example:
+              sourceEntityId:
+                scope: UkPortfolio
+                code: PortfolioId-148176
+              targetEntityId:
+                idTypeScope: HrSystem1
+                idTypeCode: InternalId
+                code: XY10001111
+            schema:
+              $ref: '#/components/schemas/CreateRelationshipRequest'
+        description: The details of the relationship to create.
+        required: true
+      responses:
+        "201":
+          content:
+            text/plain:
+              example:
+                relationshipDefinitionId:
+                  scope: PortfolioManagementTeam
+                  code: Traders
+                sourceEntity:
+                  entityType: PortfolioGroup
+                  entityId:
+                    scope: UkPortfolio
+                    code: PortfolioId-148176
+                  displayName: UK Portfolios
+                  properties: {}
+                  scope: UkPortfolio
+                  identifiers:
+                  - identifierType: code
+                    identifierValue: PortfolioId-148176
+                targetEntity:
+                  entityType: Person
+                  entityId:
+                    idTypeScope: HrSystem1
+                    idTypeCode: InternalId
+                    code: XY10001111
+                  displayName: James Smith
+                  properties: {}
+                  identifiers:
+                  - identifierScope: HrSystem1
+                    identifierType: InternalId
+                    identifierValue: XY10001111
+                outwardDescription: can be traded by
+                inwardDescription: can trade with portfolio
+                effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                effectiveUntil: 2022-01-01T12:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/CompleteRelationship'
+            application/json:
+              example:
+                relationshipDefinitionId:
+                  scope: PortfolioManagementTeam
+                  code: Traders
+                sourceEntity:
+                  entityType: PortfolioGroup
+                  entityId:
+                    scope: UkPortfolio
+                    code: PortfolioId-148176
+                  displayName: UK Portfolios
+                  properties: {}
+                  scope: UkPortfolio
+                  identifiers:
+                  - identifierType: code
+                    identifierValue: PortfolioId-148176
+                targetEntity:
+                  entityType: Person
+                  entityId:
+                    idTypeScope: HrSystem1
+                    idTypeCode: InternalId
+                    code: XY10001111
+                  displayName: James Smith
+                  properties: {}
+                  identifiers:
+                  - identifierScope: HrSystem1
+                    identifierType: InternalId
+                    identifierValue: XY10001111
+                outwardDescription: can be traded by
+                inwardDescription: can trade with portfolio
+                effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                effectiveUntil: 2022-01-01T12:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/CompleteRelationship'
+            text/json:
+              example:
+                relationshipDefinitionId:
+                  scope: PortfolioManagementTeam
+                  code: Traders
+                sourceEntity:
+                  entityType: PortfolioGroup
+                  entityId:
+                    scope: UkPortfolio
+                    code: PortfolioId-148176
+                  displayName: UK Portfolios
+                  properties: {}
+                  scope: UkPortfolio
+                  identifiers:
+                  - identifierType: code
+                    identifierValue: PortfolioId-148176
+                targetEntity:
+                  entityType: Person
+                  entityId:
+                    idTypeScope: HrSystem1
+                    idTypeCode: InternalId
+                    code: XY10001111
+                  displayName: James Smith
+                  properties: {}
+                  identifiers:
+                  - identifierScope: HrSystem1
+                    identifierType: InternalId
+                    identifierValue: XY10001111
+                outwardDescription: can be traded by
+                inwardDescription: can trade with portfolio
+                effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
+                effectiveUntil: 2022-01-01T12:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/CompleteRelationship'
+          description: The newly created relationship.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] CreateRelationship: Create Relationship'
+      tags:
+      - Relationships
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/relationshipdefinitions/{scope}/{code}/relationships/$delete:
+    post:
+      description: Delete a relationship between two entity objects represented by
+        their identifiers
+      operationId: DeleteRelationship
+      parameters:
+      - description: The scope of the relationship
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the relationship
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The code of the relationship
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The code of the relationship
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              sourceEntityId:
+                scope: UkPortfolio
+                code: PortfolioId-148176
+              targetEntityId:
+                idTypeScope: HrSystem1
+                idTypeCode: InternalId
+                code: XY10001111
+              effectiveFrom: 2019-01-10T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/DeleteRelationshipRequest'
+          application/json:
+            example:
+              sourceEntityId:
+                scope: UkPortfolio
+                code: PortfolioId-148176
+              targetEntityId:
+                idTypeScope: HrSystem1
+                idTypeCode: InternalId
+                code: XY10001111
+              effectiveFrom: 2019-01-10T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/DeleteRelationshipRequest'
+          text/json:
+            example:
+              sourceEntityId:
+                scope: UkPortfolio
+                code: PortfolioId-148176
+              targetEntityId:
+                idTypeScope: HrSystem1
+                idTypeCode: InternalId
+                code: XY10001111
+              effectiveFrom: 2019-01-10T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/DeleteRelationshipRequest'
+          application/*+json:
+            example:
+              sourceEntityId:
+                scope: UkPortfolio
+                code: PortfolioId-148176
+              targetEntityId:
+                idTypeScope: HrSystem1
+                idTypeCode: InternalId
+                code: XY10001111
+              effectiveFrom: 2019-01-10T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/DeleteRelationshipRequest'
+        description: The details of the relationship to delete.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The datetime that the relationship is deleted
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] DeleteRelationship: Delete Relationship'
+      tags:
+      - Relationships
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
   /api/scopes:
     get:
       description: List all the scopes that contain data.
@@ -31984,6 +32920,122 @@ components:
       - id
       - version
       type: object
+    CompleteRelationship:
+      additionalProperties: false
+      description: Representation of a relationship containing details of source and
+        target entities, and both outward and inward descriptions.
+      example:
+        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+        outwardDescription: outwardDescription
+        sourceEntity:
+          entityType: entityType
+          displayName: displayName
+          identifiers:
+          - identifierValue: identifierValue
+            identifierType: identifierType
+            identifierScope: identifierScope
+          - identifierValue: identifierValue
+            identifierType: identifierType
+            identifierScope: identifierScope
+          scope: scope
+          entityId:
+            key: entityId
+          lusidUniqueId:
+            type: type
+            value: value
+          href: https://openapi-generator.tech
+          properties:
+            key:
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 6.027456183070403
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        targetEntity:
+          entityType: entityType
+          displayName: displayName
+          identifiers:
+          - identifierValue: identifierValue
+            identifierType: identifierType
+            identifierScope: identifierScope
+          - identifierValue: identifierValue
+            identifierType: identifierType
+            identifierScope: identifierScope
+          scope: scope
+          entityId:
+            key: entityId
+          lusidUniqueId:
+            type: type
+            value: value
+          href: https://openapi-generator.tech
+          properties:
+            key:
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 6.027456183070403
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+        inwardDescription: inwardDescription
+        href: https://openapi-generator.tech
+        version:
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        relationshipDefinitionId:
+          code: code
+          scope: scope
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        version:
+          $ref: '#/components/schemas/Version'
+        relationshipDefinitionId:
+          $ref: '#/components/schemas/ResourceId'
+        sourceEntity:
+          $ref: '#/components/schemas/RelatedEntity'
+        targetEntity:
+          $ref: '#/components/schemas/RelatedEntity'
+        outwardDescription:
+          description: Description of the relationship based on relationship definition's
+            outward description.
+          type: string
+        inwardDescription:
+          description: Description of the relationship based on relationship definition's
+            inward description.
+          type: string
+        effectiveFrom:
+          description: The effective datetime from which the relationship is valid.
+          format: date-time
+          type: string
+        effectiveUntil:
+          description: The effective datetime to which the relationship is valid until.
+          format: date-time
+          type: string
+      required:
+      - inwardDescription
+      - outwardDescription
+      - relationshipDefinitionId
+      - sourceEntity
+      - targetEntity
+      type: object
     ComplexMarketData:
       additionalProperties: false
       description: A base class for any form of market data with structure
@@ -33319,6 +34371,129 @@ components:
       - code
       - displayName
       type: object
+    CreateRelationshipDefinitionRequest:
+      additionalProperties: false
+      example:
+        sourceEntityType: sourceEntityType
+        outwardDescription: outwardDescription
+        code: code
+        targetEntityType: targetEntityType
+        displayName: displayName
+        inwardDescription: inwardDescription
+        scope: scope
+        relationshipCardinality: relationshipCardinality
+        lifeTime: lifeTime
+      properties:
+        scope:
+          description: The scope that the relationship definition exists in.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        code:
+          description: The code of the relationship definition. Together with the
+            scope this uniquely defines the relationship definition.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        sourceEntityType:
+          description: The entity type of the source entity object. Allowed values
+            are 'Portfolio', 'PortfolioGroup', 'Person', 'LegalEntity' or a custom
+            entity type prefixed with '~'.
+          maxLength: 64
+          minLength: 1
+          type: string
+        targetEntityType:
+          description: The entity type of the target entity object. Allowed values
+            are 'Portfolio', 'PortfolioGroup', 'Person', 'LegalEntity' or a custom
+            entity type prefixed with '~'.
+          maxLength: 64
+          minLength: 1
+          type: string
+        displayName:
+          description: The display name of the relationship definition.
+          maxLength: 512
+          minLength: 1
+          pattern: ^[\s\S]*$
+          type: string
+        outwardDescription:
+          description: The description to relate source entity object and target entity
+            object.
+          maxLength: 512
+          minLength: 1
+          pattern: ^[\s\S]*$
+          type: string
+        inwardDescription:
+          description: The description to relate target entity object and source entity
+            object.
+          maxLength: 512
+          minLength: 1
+          pattern: ^[\s\S]*$
+          type: string
+        lifeTime:
+          description: Describes how the relationships can change over time. Allowed
+            values are 'Perpetual' and 'TimeVariant', defaults to 'Perpetual' if not
+            specified.
+          nullable: true
+          type: string
+        relationshipCardinality:
+          description: Describes the cardinality of the relationship with a specific
+            source entity object and relationships under this definition. Allowed
+            values are 'ManyToMany' and 'ManyToOne', defaults to 'ManyToMany' if not
+            specified.
+          nullable: true
+          type: string
+      required:
+      - code
+      - displayName
+      - inwardDescription
+      - outwardDescription
+      - scope
+      - sourceEntityType
+      - targetEntityType
+      type: object
+    CreateRelationshipRequest:
+      additionalProperties: false
+      example:
+        targetEntityId:
+          key: targetEntityId
+        effectiveUntil: effectiveUntil
+        sourceEntityId:
+          key: sourceEntityId
+        effectiveFrom: effectiveFrom
+      properties:
+        sourceEntityId:
+          additionalProperties:
+            type: string
+          description: The identifier of the source entity.
+          type: object
+        targetEntityId:
+          additionalProperties:
+            type: string
+          description: The identifier of the target entity.
+          type: object
+        effectiveFrom:
+          description: The effective date of the relationship to be created
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+        effectiveUntil:
+          description: The effective datetime until which the relationship is valid.
+            If not supplied this will be valid indefinitely.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+      required:
+      - sourceEntityId
+      - targetEntityId
+      type: object
     CreateSequenceRequest:
       additionalProperties: false
       example:
@@ -33790,6 +34965,39 @@ components:
           type: array
       required:
       - asAt
+      type: object
+    DeleteRelationshipRequest:
+      additionalProperties: false
+      example:
+        targetEntityId:
+          key: targetEntityId
+        sourceEntityId:
+          key: sourceEntityId
+        effectiveFrom: effectiveFrom
+      properties:
+        sourceEntityId:
+          additionalProperties:
+            type: string
+          description: The identifier of the source entity of the relationship to
+            be deleted.
+          type: object
+        targetEntityId:
+          additionalProperties:
+            type: string
+          description: The identifier of the target entity of the relationship to
+            be deleted.
+          type: object
+        effectiveFrom:
+          description: The effective date of the relationship to be deleted
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+      required:
+      - sourceEntityId
+      - targetEntityId
       type: object
     DependencySourceFilter:
       additionalProperties: false
@@ -38068,6 +39276,95 @@ components:
       required:
       - values
       type: object
+    PagedResourceListOfRelationshipDefinition:
+      additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - sourceEntityType: sourceEntityType
+          outwardDescription: outwardDescription
+          targetEntityType: targetEntityType
+          displayName: displayName
+          inwardDescription: inwardDescription
+          relationshipCardinality: relationshipCardinality
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          lifeTime: lifeTime
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          relationshipDefinitionId:
+            code: code
+            scope: scope
+        - sourceEntityType: sourceEntityType
+          outwardDescription: outwardDescription
+          targetEntityType: targetEntityType
+          displayName: displayName
+          inwardDescription: inwardDescription
+          relationshipCardinality: relationshipCardinality
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          lifeTime: lifeTime
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          relationshipDefinitionId:
+            code: code
+            scope: scope
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/RelationshipDefinition'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
     PagedResourceListOfSequenceDefinition:
       additionalProperties: false
       description: A paginated list of resource that can be returned from a request.
@@ -40594,6 +41891,85 @@ components:
       - relationshipDefinitionId
       - traversalDescription
       - traversalDirection
+      type: object
+    RelationshipDefinition:
+      additionalProperties: false
+      example:
+        sourceEntityType: sourceEntityType
+        outwardDescription: outwardDescription
+        targetEntityType: targetEntityType
+        displayName: displayName
+        inwardDescription: inwardDescription
+        relationshipCardinality: relationshipCardinality
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        lifeTime: lifeTime
+        version:
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        relationshipDefinitionId:
+          code: code
+          scope: scope
+      properties:
+        version:
+          $ref: '#/components/schemas/Version'
+        relationshipDefinitionId:
+          $ref: '#/components/schemas/ResourceId'
+        sourceEntityType:
+          description: The entity type of the source entity object.
+          type: string
+        targetEntityType:
+          description: The entity type of the target entity object.
+          type: string
+        displayName:
+          description: The display name of the relationship.
+          maxLength: 512
+          minLength: 1
+          pattern: ^[\s\S]*$
+          type: string
+        outwardDescription:
+          description: The description to relate source entity object and target entity
+            object
+          maxLength: 512
+          minLength: 1
+          pattern: ^[\s\S]*$
+          type: string
+        inwardDescription:
+          description: The description to relate target entity object and source entity
+            object
+          maxLength: 512
+          minLength: 1
+          pattern: ^[\s\S]*$
+          type: string
+        lifeTime:
+          description: Describes how the relationships can change over time.
+          type: string
+        relationshipCardinality:
+          description: Describes the cardinality of the relationship between source
+            entity and target entity.
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - displayName
+      - inwardDescription
+      - lifeTime
+      - outwardDescription
+      - relationshipCardinality
+      - relationshipDefinitionId
+      - sourceEntityType
+      - targetEntityType
       type: object
     ResourceId:
       additionalProperties: false
@@ -45057,6 +46433,38 @@ components:
           type: string
       required:
       - displayName
+      type: object
+    UpdateRelationshipDefinitionRequest:
+      additionalProperties: false
+      example:
+        outwardDescription: outwardDescription
+        displayName: displayName
+        inwardDescription: inwardDescription
+      properties:
+        displayName:
+          description: The display name of the relation.
+          maxLength: 512
+          minLength: 1
+          pattern: ^[\s\S]*$
+          type: string
+        outwardDescription:
+          description: The description to relate source entity object and target entity
+            object.
+          maxLength: 512
+          minLength: 1
+          pattern: ^[\s\S]*$
+          type: string
+        inwardDescription:
+          description: The description to relate target entity object and source entity
+            object.
+          maxLength: 512
+          minLength: 1
+          pattern: ^[\s\S]*$
+          type: string
+      required:
+      - displayName
+      - inwardDescription
+      - outwardDescription
       type: object
     UpsertComplexMarketDataRequest:
       additionalProperties: false
