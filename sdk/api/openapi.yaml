@@ -294,9 +294,10 @@ info:
     | <a name="801">801</a>|The instrument event does not exist.|  |
     | <a name="802">802</a>|The Instrument event is missing salient information.|  |
     | <a name="803">803</a>|The Instrument event could not be processed.|  |
+    | <a name="804">804</a>|Some data requested does not follow the order graph assumptions.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4641
+  version: 0.11.4642
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
