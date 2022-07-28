@@ -297,7 +297,7 @@ info:
     | <a name="804">804</a>|Some data requested does not follow the order graph assumptions.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4650
+  version: 0.11.4651
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -36920,7 +36920,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond'
+            ComplexBond, InflationLinkedBond'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -36953,6 +36953,7 @@ components:
           - ExchangeTradedOption
           - ReferenceInstrument
           - ComplexBond
+          - InflationLinkedBond
           type: string
       required:
       - instrumentType
