@@ -297,7 +297,7 @@ info:
     | <a name="804">804</a>|Some data requested does not follow the order graph assumptions.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4656
+  version: 0.11.4657
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -34980,6 +34980,7 @@ components:
       example:
         targetEntityId:
           key: targetEntityId
+        effectiveUntil: effectiveUntil
         sourceEntityId:
           key: sourceEntityId
         effectiveFrom: effectiveFrom
@@ -34998,6 +34999,15 @@ components:
           type: object
         effectiveFrom:
           description: The effective date of the relationship to be deleted
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+        effectiveUntil:
+          description: The effective datetime until which the relationship will be
+            deleted. If not supplied the deletion will be permanent.
           format: dateorcutlabel
           maxLength: 256
           minLength: 0
