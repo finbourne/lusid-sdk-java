@@ -297,12 +297,12 @@ info:
     | <a name="804">804</a>|Some data requested does not follow the order graph assumptions.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4666
+  version: 0.11.4667
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -10277,6 +10277,7 @@ paths:
                         labelValue: Example Instrument 1
                       effectiveFrom: 2010-01-01T00:00:00.0000000+00:00
                   holdingType: P
+                  holdingTypeName: Position
                   units: 10
                   settledUnits: 10
                   cost:
@@ -10309,6 +10310,7 @@ paths:
                         labelValue: Example Instrument 1
                       effectiveFrom: 2010-01-01T00:00:00.0000000+00:00
                   holdingType: P
+                  holdingTypeName: Position
                   units: 10
                   settledUnits: 10
                   cost:
@@ -10341,6 +10343,7 @@ paths:
                         labelValue: Example Instrument 1
                       effectiveFrom: 2010-01-01T00:00:00.0000000+00:00
                   holdingType: P
+                  holdingTypeName: Position
                   units: 10
                   settledUnits: 10
                   cost:
@@ -28677,6 +28680,7 @@ paths:
                         labelValue: Example Instrument 1
                       effectiveFrom: 2010-01-01T00:00:00.0000000+00:00
                   holdingType: P
+                  holdingTypeName: Position
                   units: 10
                   settledUnits: 10
                   cost:
@@ -28709,6 +28713,7 @@ paths:
                         labelValue: Example Instrument 1
                       effectiveFrom: 2010-01-01T00:00:00.0000000+00:00
                   holdingType: P
+                  holdingTypeName: Position
                   units: 10
                   settledUnits: 10
                   cost:
@@ -28741,6 +28746,7 @@ paths:
                         labelValue: Example Instrument 1
                       effectiveFrom: 2010-01-01T00:00:00.0000000+00:00
                   holdingType: P
+                  holdingTypeName: Position
                   units: 10
                   settledUnits: 10
                   cost:
@@ -31337,8 +31343,7 @@ components:
         portfolioId:
           $ref: '#/components/schemas/ResourceId'
         holdingType:
-          description: The type of the holding e.g. Position, Balance, CashCommitment,
-            Receivable, ForwardFX etc.
+          description: The code for the type of the holding e.g. P, B, C, R, F etc.
           nullable: true
           type: string
         instrumentScope:
@@ -31493,8 +31498,7 @@ components:
         portfolioId:
           $ref: '#/components/schemas/ResourceId'
         holdingType:
-          description: The type of the holding e.g. Position, Balance, CashCommitment,
-            Receivable, ForwardFX etc.
+          description: The code for the type of the holding e.g. P, B, C, R, F etc.
           nullable: true
           type: string
         instrumentScope:
@@ -40281,6 +40285,7 @@ components:
         costPortfolioCcy:
           amount: 1.4658129805029452
           currency: currency
+        holdingTypeName: holdingTypeName
         settledUnits: 6.027456183070403
         properties:
           key:
@@ -40360,7 +40365,10 @@ components:
           nullable: true
           type: object
         holdingType:
-          description: The type of the holding e.g. Position, Balance, CashCommitment,
+          description: The code for the type of the holding e.g. P, B, C, R, F etc.
+          type: string
+        holdingTypeName:
+          description: The decoded type of the holding e.g. Position, Balance, CashCommitment,
             Receivable, ForwardFX etc.
           type: string
         units:
@@ -40385,6 +40393,7 @@ components:
       - cost
       - costPortfolioCcy
       - holdingType
+      - holdingTypeName
       - instrumentUid
       - settledUnits
       - units
@@ -48803,6 +48812,7 @@ components:
           costPortfolioCcy:
             amount: 1.4658129805029452
             currency: currency
+          holdingTypeName: holdingTypeName
           settledUnits: 6.027456183070403
           properties:
             key:
@@ -48880,6 +48890,7 @@ components:
           costPortfolioCcy:
             amount: 1.4658129805029452
             currency: currency
+          holdingTypeName: holdingTypeName
           settledUnits: 6.027456183070403
           properties:
             key:
@@ -49195,7 +49206,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
