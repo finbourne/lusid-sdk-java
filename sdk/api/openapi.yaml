@@ -297,7 +297,7 @@ info:
     | <a name="804">804</a>|Some data requested does not follow the order graph assumptions.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4686
+  version: 0.11.4687
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -40388,12 +40388,12 @@ components:
         holdingTypeName:
           description: The decoded type of the holding e.g. Position, Balance, CashCommitment,
             Receivable, ForwardFX etc.
+          nullable: true
           type: string
       required:
       - cost
       - costPortfolioCcy
       - holdingType
-      - holdingTypeName
       - instrumentUid
       - settledUnits
       - units
