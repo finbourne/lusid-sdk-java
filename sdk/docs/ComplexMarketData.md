@@ -8,7 +8,7 @@ A base class for any form of market data with structure
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**marketDataType** | [**MarketDataTypeEnum**](#MarketDataTypeEnum) | The available values are: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData | 
+**marketDataType** | [**MarketDataTypeEnum**](#MarketDataTypeEnum) | The available values are: DiscountFactorCurveData, EquityVolSurfaceData, FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData, FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData, FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData | 
 
 
 
@@ -28,6 +28,7 @@ FXFORWARDTENORCURVEDATA | &quot;FxForwardTenorCurveData&quot;
 FXFORWARDTENORPIPSCURVEDATA | &quot;FxForwardTenorPipsCurveData&quot;
 FXFORWARDCURVEBYQUOTEREFERENCE | &quot;FxForwardCurveByQuoteReference&quot;
 CREDITSPREADCURVEDATA | &quot;CreditSpreadCurveData&quot;
+EQUITYCURVEBYPRICESDATA | &quot;EquityCurveByPricesData&quot;
 
 
 
