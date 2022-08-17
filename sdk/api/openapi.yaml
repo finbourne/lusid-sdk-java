@@ -297,12 +297,12 @@ info:
     | <a name="804">804</a>|Some data requested does not follow the order graph assumptions.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4706
+  version: 0.11.4707
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -22134,6 +22134,7 @@ paths:
                       value:
                         labelValue: EUR
                   groupId: Grp1
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -22178,6 +22179,7 @@ paths:
                       value:
                         labelValue: GBP
                   groupId: Grp2
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -22229,6 +22231,7 @@ paths:
                       value:
                         labelValue: USD
                   groupId: Grp3
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -22283,6 +22286,7 @@ paths:
                       value:
                         labelValue: ZAR
                   groupId: Grp4
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -22372,6 +22376,7 @@ paths:
                       value:
                         labelValue: SAMPLE03
                   groupId: Grp5
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -22443,6 +22448,7 @@ paths:
                       value:
                         labelValue: SAMPLE05
                   groupId: Grp6
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -22532,6 +22538,7 @@ paths:
                       value:
                         labelValue: SAMPLE01
                   groupId: Grp7
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -22616,6 +22623,7 @@ paths:
                       value:
                         labelValue: SAMPLE10
                   groupId: Grp8
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -22678,6 +22686,7 @@ paths:
                       value:
                         labelValue: SAMPLE09
                   groupId: Grp9
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -22754,6 +22763,7 @@ paths:
                       value:
                         labelValue: SAMPLE04
                   groupId: Grp10
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -22843,6 +22853,7 @@ paths:
                       value:
                         labelValue: SAMPLE02
                   groupId: Grp11
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -22905,6 +22916,7 @@ paths:
                       value:
                         labelValue: SAMPLE07
                   groupId: Grp12
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -22981,6 +22993,7 @@ paths:
                       value:
                         labelValue: SAMPLE06
                   groupId: Grp13
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -23043,6 +23056,7 @@ paths:
                       value:
                         labelValue: SAMPLE08
                   groupId: Grp14
+                  errors: []
                 links: []
               schema:
                 $ref: '#/components/schemas/VersionedResourceListOfA2BDataRecord'
@@ -23118,6 +23132,7 @@ paths:
                       value:
                         labelValue: EUR
                   groupId: Grp1
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -23162,6 +23177,7 @@ paths:
                       value:
                         labelValue: GBP
                   groupId: Grp2
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -23213,6 +23229,7 @@ paths:
                       value:
                         labelValue: USD
                   groupId: Grp3
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -23267,6 +23284,7 @@ paths:
                       value:
                         labelValue: ZAR
                   groupId: Grp4
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -23356,6 +23374,7 @@ paths:
                       value:
                         labelValue: SAMPLE03
                   groupId: Grp5
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -23427,6 +23446,7 @@ paths:
                       value:
                         labelValue: SAMPLE05
                   groupId: Grp6
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -23516,6 +23536,7 @@ paths:
                       value:
                         labelValue: SAMPLE01
                   groupId: Grp7
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -23600,6 +23621,7 @@ paths:
                       value:
                         labelValue: SAMPLE10
                   groupId: Grp8
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -23662,6 +23684,7 @@ paths:
                       value:
                         labelValue: SAMPLE09
                   groupId: Grp9
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -23738,6 +23761,7 @@ paths:
                       value:
                         labelValue: SAMPLE04
                   groupId: Grp10
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -23827,6 +23851,7 @@ paths:
                       value:
                         labelValue: SAMPLE02
                   groupId: Grp11
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -23889,6 +23914,7 @@ paths:
                       value:
                         labelValue: SAMPLE07
                   groupId: Grp12
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -23965,6 +23991,7 @@ paths:
                       value:
                         labelValue: SAMPLE06
                   groupId: Grp13
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -24027,6 +24054,7 @@ paths:
                       value:
                         labelValue: SAMPLE08
                   groupId: Grp14
+                  errors: []
                 links: []
               schema:
                 $ref: '#/components/schemas/VersionedResourceListOfA2BDataRecord'
@@ -24102,6 +24130,7 @@ paths:
                       value:
                         labelValue: EUR
                   groupId: Grp1
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -24146,6 +24175,7 @@ paths:
                       value:
                         labelValue: GBP
                   groupId: Grp2
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -24197,6 +24227,7 @@ paths:
                       value:
                         labelValue: USD
                   groupId: Grp3
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -24251,6 +24282,7 @@ paths:
                       value:
                         labelValue: ZAR
                   groupId: Grp4
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -24340,6 +24372,7 @@ paths:
                       value:
                         labelValue: SAMPLE03
                   groupId: Grp5
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -24411,6 +24444,7 @@ paths:
                       value:
                         labelValue: SAMPLE05
                   groupId: Grp6
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -24500,6 +24534,7 @@ paths:
                       value:
                         labelValue: SAMPLE01
                   groupId: Grp7
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -24584,6 +24619,7 @@ paths:
                       value:
                         labelValue: SAMPLE10
                   groupId: Grp8
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -24646,6 +24682,7 @@ paths:
                       value:
                         labelValue: SAMPLE09
                   groupId: Grp9
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -24722,6 +24759,7 @@ paths:
                       value:
                         labelValue: SAMPLE04
                   groupId: Grp10
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -24811,6 +24849,7 @@ paths:
                       value:
                         labelValue: SAMPLE02
                   groupId: Grp11
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -24873,6 +24912,7 @@ paths:
                       value:
                         labelValue: SAMPLE07
                   groupId: Grp12
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -24949,6 +24989,7 @@ paths:
                       value:
                         labelValue: SAMPLE06
                   groupId: Grp13
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -25011,6 +25052,7 @@ paths:
                       value:
                         labelValue: SAMPLE08
                   groupId: Grp14
+                  errors: []
                 links: []
               schema:
                 $ref: '#/components/schemas/VersionedResourceListOfA2BDataRecord'
@@ -25222,6 +25264,7 @@ paths:
                       value:
                         labelValue: SAMPLE10
                   groupId: g1
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -25270,6 +25313,7 @@ paths:
                       value:
                         labelValue: SAMPLE10
                   groupId: g1
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -25320,6 +25364,7 @@ paths:
                       value:
                         labelValue: SAMPLE10
                   groupId: g1
+                  errors: []
                 links: []
               schema:
                 $ref: '#/components/schemas/VersionedResourceListOfA2BMovementRecord'
@@ -25367,6 +25412,7 @@ paths:
                       value:
                         labelValue: SAMPLE10
                   groupId: g1
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -25415,6 +25461,7 @@ paths:
                       value:
                         labelValue: SAMPLE10
                   groupId: g1
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -25465,6 +25512,7 @@ paths:
                       value:
                         labelValue: SAMPLE10
                   groupId: g1
+                  errors: []
                 links: []
               schema:
                 $ref: '#/components/schemas/VersionedResourceListOfA2BMovementRecord'
@@ -25512,6 +25560,7 @@ paths:
                       value:
                         labelValue: SAMPLE10
                   groupId: g1
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -25560,6 +25609,7 @@ paths:
                       value:
                         labelValue: SAMPLE10
                   groupId: g1
+                  errors: []
                 - portfolioId:
                     scope: Example
                     code: Portfolio
@@ -25610,6 +25660,7 @@ paths:
                       value:
                         labelValue: SAMPLE10
                   groupId: g1
+                  errors: []
                 links: []
               schema:
                 $ref: '#/components/schemas/VersionedResourceListOfA2BMovementRecord'
@@ -31335,6 +31386,19 @@ components:
                 - values
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             key: key
+        errors:
+        - identifiers:
+          - identifiers
+          - identifiers
+          description: description
+          identifierType: identifierType
+          type: type
+        - identifiers:
+          - identifiers
+          - identifiers
+          description: description
+          identifierType: identifierType
+          type: type
       properties:
         portfolioId:
           $ref: '#/components/schemas/ResourceId'
@@ -31391,6 +31455,12 @@ components:
             purely as a token. The content should not be relied upon.
           nullable: true
           type: string
+        errors:
+          description: Any errors with the record are reported here.
+          items:
+            $ref: '#/components/schemas/ResponseMetaData'
+          nullable: true
+          type: array
       type: object
     A2BMovementRecord:
       additionalProperties: false
@@ -31490,6 +31560,19 @@ components:
                 - values
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             key: key
+        errors:
+        - identifiers:
+          - identifiers
+          - identifiers
+          description: description
+          identifierType: identifierType
+          type: type
+        - identifiers:
+          - identifiers
+          - identifiers
+          description: description
+          identifierType: identifierType
+          type: type
       properties:
         portfolioId:
           $ref: '#/components/schemas/ResourceId'
@@ -31559,6 +31642,12 @@ components:
             purely as a token. The content should not be relied upon.
           nullable: true
           type: string
+        errors:
+          description: Any errors with the record are reported here.
+          items:
+            $ref: '#/components/schemas/ResponseMetaData'
+          nullable: true
+          type: array
       type: object
     AccessControlledAction:
       additionalProperties: false
@@ -48199,6 +48288,19 @@ components:
                   - values
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
+          errors:
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
         - subHoldingKeys:
             key:
               value:
@@ -48289,6 +48391,19 @@ components:
                   - values
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
+          errors:
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
         links:
         - method: method
           description: description
@@ -48432,6 +48547,19 @@ components:
                   - values
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
+          errors:
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
         - subHoldingKeys:
             key:
               value:
@@ -48525,6 +48653,19 @@ components:
                   - values
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
               key: key
+          errors:
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
         links:
         - method: method
           description: description
@@ -49214,7 +49355,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:

@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **end** | [**A2BCategory**](A2BCategory.md) |  |  [optional]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | The properties which have been requested to be decorated onto the holding. These will be from the &#39;Instrument&#39; domain. |  [optional]
 **groupId** | **String** | Arbitrary string that can be used to cross reference an entry in the A2B report with activity in the A2B-Movements. This should be used purely as a token. The content should not be relied upon. |  [optional]
+**errors** | [**List&lt;ResponseMetaData&gt;**](ResponseMetaData.md) | Any errors with the record are reported here. |  [optional]
 
 
 
