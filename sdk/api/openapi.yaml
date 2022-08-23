@@ -297,12 +297,12 @@ info:
     | <a name="804">804</a>|Some data requested does not follow the order graph assumptions.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4718
+  version: 0.11.4719
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -1585,6 +1585,1800 @@ paths:
       tags:
       - Allocations
       x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/calendars/businessday/{scope}/add:
+    post:
+      description: "A Business day is defined as a point in time that:\r\n    * Does\
+        \ not represent a day in the calendar's weekend\r\n    * Does not represent\
+        \ a day in the calendar's list of holidays (e.g. Christmas Day in the UK)\r\
+        \n             \r\nAll dates specified must be UTC and the upper bound of\
+        \ a calendar is not inclusive\r\n             \r\ne.g. From: 2020-12-24-00-00-00:\r\
+        \n     Adding 3 business days returns 2020-12-30, assuming Saturday and Sunday\
+        \ are weekends, and the 25th and 28th are holidays.\r\n     Adding -2 business\
+        \ days returns 2020-12-22 under the same assumptions.\r\n            \r\n\
+        If the provided number of days to add is zero, returns a failure."
+      operationId: AddBusinessDaysToDate
+      parameters:
+      - description: Scope within which to search for the calendars
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: Scope within which to search for the calendars
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              businessDayOffset: 5
+              holidayCodes:
+              - GBP
+              startDate: 2020-02-10T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/AddBusinessDaysToDateRequest'
+          application/json:
+            example:
+              businessDayOffset: 5
+              holidayCodes:
+              - GBP
+              startDate: 2020-02-10T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/AddBusinessDaysToDateRequest'
+          text/json:
+            example:
+              businessDayOffset: 5
+              holidayCodes:
+              - GBP
+              startDate: 2020-02-10T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/AddBusinessDaysToDateRequest'
+          application/*+json:
+            example:
+              businessDayOffset: 5
+              holidayCodes:
+              - GBP
+              startDate: 2020-02-10T00:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/AddBusinessDaysToDateRequest'
+        description: 'Request Details: start date, number of days to add (which can
+          be negative, but not zero), calendar codes and optionally an AsAt date for
+          searching the calendar store'
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                value: 2020-02-18T00:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/AddBusinessDaysToDateResponse'
+            application/json:
+              example:
+                value: 2020-02-18T00:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/AddBusinessDaysToDateResponse'
+            text/json:
+              example:
+                value: 2020-02-18T00:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/AddBusinessDaysToDateResponse'
+          description: The business day that is a number of business days after the
+            given date as determined by the given calendar codes
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] AddBusinessDaysToDate: Adds the requested number of
+        Business Days to the provided date.'
+      tags:
+      - Calendars
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/calendars/businessday/{scope}/{code}:
+    get:
+      description: "A Business DateTime is defined as a point in time that:\r\n  \
+        \  * Does not represent a day that overlaps with the calendars WeekendMask\r\
+        \n    * If the calendar is a \"Holiday Calendar\" Does not overlap with any\
+        \ dates in the calendar\r\n    * If the calendar is a \"TradingHours Calendar\"\
+        \ Does overlap with a date in the calendar\r\n            \r\nAll dates specified\
+        \ must be UTC and the upper bound of a calendar is not inclusive \r\ne.g.\
+        \ From: 2020-12-25-00-00-00 \r\n     To: 2020-12-26-00-00-00\r\nIsBusinessDay(2020-12-26-00-00-00)\
+        \ == false"
+      operationId: IsBusinessDateTime
+      parameters:
+      - description: DateTime to check - This DateTime must be UTC
+        explode: true
+        in: query
+        name: dateTime
+        required: true
+        schema:
+          description: DateTime to check - This DateTime must be UTC
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: Scope of the calendar
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: Scope of the calendar
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the calendar
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Code of the calendar
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: AsAt for the request
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: AsAt for the request
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                requestedDateTime: 2020-02-12T12:00:00.0000000+00:00
+                isBusinessDay: true
+              schema:
+                $ref: '#/components/schemas/IsBusinessDayResponse'
+            application/json:
+              example:
+                requestedDateTime: 2020-02-12T12:00:00.0000000+00:00
+                isBusinessDay: true
+              schema:
+                $ref: '#/components/schemas/IsBusinessDayResponse'
+            text/json:
+              example:
+                requestedDateTime: 2020-02-12T12:00:00.0000000+00:00
+                isBusinessDay: true
+              schema:
+                $ref: '#/components/schemas/IsBusinessDayResponse'
+          description: Whether or not the requested DateTime is a BusinessDay or not
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] IsBusinessDateTime: Check whether a DateTime is a "Business
+        DateTime"'
+      tags:
+      - Calendars
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/calendars/generic:
+    get:
+      description: List calendars at a point in AsAt time.
+      operationId: ListCalendars
+      parameters:
+      - description: The AsAt datetime at which to retrieve the calendars
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The AsAt datetime at which to retrieve the calendars
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: "The pagination token to use to continue listing calendars from\
+          \ a previous call to list calendars.\r\n            This value is returned\
+          \ from the previous call. If a pagination token is provided the sortBy,\
+          \ filter, and asAt fields\r\n            must not have changed since the\
+          \ original request. Also, if set, a start value cannot be provided."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          description: "The pagination token to use to continue listing calendars\
+            \ from a previous call to list calendars.\r\n            This value is\
+            \ returned from the previous call. If a pagination token is provided the\
+            \ sortBy, filter, and asAt fields\r\n            must not have changed\
+            \ since the original request. Also, if set, a start value cannot be provided."
+          maxLength: 500
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
+          type: string
+        style: form
+      - description: When paginating, limit the number of returned results to this
+          many.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: When paginating, limit the number of returned results to this
+            many.
+          format: int32
+          maximum: 5000
+          minimum: 1
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      - description: Expression to filter the result set. Read more about filtering
+          results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: Expression to filter the result set. Read more about filtering
+            results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                  id:
+                    scope: TestScope
+                    code: TestCode
+                  type: Holiday
+                  weekendMask:
+                    days:
+                    - Saturday
+                    - Sunday
+                    timeZone: UTC
+                  sourceProvider: Finbourne-Calendar-Service
+                  properties:
+                  - key: Calendar/HolidayType/Statutory
+                    value:
+                      labelValue: CBTR
+                - href: https://myco.lusid.com/api/api/calendar/testscope/testcode2
+                  id:
+                    scope: TestScope
+                    code: TestCode2
+                  type: Holiday
+                  weekendMask:
+                    days:
+                    - Saturday
+                    - Sunday
+                    timeZone: UTC
+                  sourceProvider: Finbourne-Calendar-Service
+                  properties:
+                  - key: Calendar/HolidayType/Statutory
+                    value:
+                      labelValue: CBTR
+                href: https://myco.lusid.com/api/api/calendar/testscope
+                links: []
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfCalendar'
+            application/json:
+              example:
+                values:
+                - href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                  id:
+                    scope: TestScope
+                    code: TestCode
+                  type: Holiday
+                  weekendMask:
+                    days:
+                    - Saturday
+                    - Sunday
+                    timeZone: UTC
+                  sourceProvider: Finbourne-Calendar-Service
+                  properties:
+                  - key: Calendar/HolidayType/Statutory
+                    value:
+                      labelValue: CBTR
+                - href: https://myco.lusid.com/api/api/calendar/testscope/testcode2
+                  id:
+                    scope: TestScope
+                    code: TestCode2
+                  type: Holiday
+                  weekendMask:
+                    days:
+                    - Saturday
+                    - Sunday
+                    timeZone: UTC
+                  sourceProvider: Finbourne-Calendar-Service
+                  properties:
+                  - key: Calendar/HolidayType/Statutory
+                    value:
+                      labelValue: CBTR
+                href: https://myco.lusid.com/api/api/calendar/testscope
+                links: []
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfCalendar'
+            text/json:
+              example:
+                values:
+                - href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                  id:
+                    scope: TestScope
+                    code: TestCode
+                  type: Holiday
+                  weekendMask:
+                    days:
+                    - Saturday
+                    - Sunday
+                    timeZone: UTC
+                  sourceProvider: Finbourne-Calendar-Service
+                  properties:
+                  - key: Calendar/HolidayType/Statutory
+                    value:
+                      labelValue: CBTR
+                - href: https://myco.lusid.com/api/api/calendar/testscope/testcode2
+                  id:
+                    scope: TestScope
+                    code: TestCode2
+                  type: Holiday
+                  weekendMask:
+                    days:
+                    - Saturday
+                    - Sunday
+                    timeZone: UTC
+                  sourceProvider: Finbourne-Calendar-Service
+                  properties:
+                  - key: Calendar/HolidayType/Statutory
+                    value:
+                      labelValue: CBTR
+                href: https://myco.lusid.com/api/api/calendar/testscope
+                links: []
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfCalendar'
+          description: List Calendars
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] ListCalendars: List Calendars'
+      tags:
+      - Calendars
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    post:
+      description: Create a calendar in a generic form which can be used to store
+        date events.
+      operationId: CreateCalendar
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              calendarId:
+                scope: TestScope
+                code: TestCode
+              calendarType: Holiday
+              weekendMask:
+                days:
+                - Saturday
+                - Sunday
+                timeZone: UTC
+              sourceProvider: Finbourne-Calendar-Service
+              properties:
+              - key: Calendar/HolidayType/Statutory
+                value:
+                  labelValue: CBTR
+            schema:
+              $ref: '#/components/schemas/CreateCalendarRequest'
+          application/json:
+            example:
+              calendarId:
+                scope: TestScope
+                code: TestCode
+              calendarType: Holiday
+              weekendMask:
+                days:
+                - Saturday
+                - Sunday
+                timeZone: UTC
+              sourceProvider: Finbourne-Calendar-Service
+              properties:
+              - key: Calendar/HolidayType/Statutory
+                value:
+                  labelValue: CBTR
+            schema:
+              $ref: '#/components/schemas/CreateCalendarRequest'
+          text/json:
+            example:
+              calendarId:
+                scope: TestScope
+                code: TestCode
+              calendarType: Holiday
+              weekendMask:
+                days:
+                - Saturday
+                - Sunday
+                timeZone: UTC
+              sourceProvider: Finbourne-Calendar-Service
+              properties:
+              - key: Calendar/HolidayType/Statutory
+                value:
+                  labelValue: CBTR
+            schema:
+              $ref: '#/components/schemas/CreateCalendarRequest'
+          application/*+json:
+            example:
+              calendarId:
+                scope: TestScope
+                code: TestCode
+              calendarType: Holiday
+              weekendMask:
+                days:
+                - Saturday
+                - Sunday
+                timeZone: UTC
+              sourceProvider: Finbourne-Calendar-Service
+              properties:
+              - key: Calendar/HolidayType/Statutory
+                value:
+                  labelValue: CBTR
+            schema:
+              $ref: '#/components/schemas/CreateCalendarRequest'
+        description: A request to create the calendar
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                id:
+                  scope: TestScope
+                  code: TestCode
+                type: Holiday
+                weekendMask:
+                  days:
+                  - Saturday
+                  - Sunday
+                  timeZone: UTC
+                sourceProvider: Finbourne-Calendar-Service
+                properties:
+                - key: Calendar/HolidayType/Statutory
+                  value:
+                    labelValue: CBTR
+              schema:
+                $ref: '#/components/schemas/Calendar'
+            application/json:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                id:
+                  scope: TestScope
+                  code: TestCode
+                type: Holiday
+                weekendMask:
+                  days:
+                  - Saturday
+                  - Sunday
+                  timeZone: UTC
+                sourceProvider: Finbourne-Calendar-Service
+                properties:
+                - key: Calendar/HolidayType/Statutory
+                  value:
+                    labelValue: CBTR
+              schema:
+                $ref: '#/components/schemas/Calendar'
+            text/json:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                id:
+                  scope: TestScope
+                  code: TestCode
+                type: Holiday
+                weekendMask:
+                  days:
+                  - Saturday
+                  - Sunday
+                  timeZone: UTC
+                sourceProvider: Finbourne-Calendar-Service
+                properties:
+                - key: Calendar/HolidayType/Statutory
+                  value:
+                    labelValue: CBTR
+              schema:
+                $ref: '#/components/schemas/Calendar'
+          description: The created calendar
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] CreateCalendar: Create a calendar in its generic form'
+      tags:
+      - Calendars
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/calendars/generic/{scope}:
+    get:
+      description: List calendars at a point in AsAt time.
+      operationId: ListCalendarsInScope
+      parameters:
+      - description: Scope of the calendars
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: Scope of the calendars
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The AsAt datetime at which to retrieve the calendars
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The AsAt datetime at which to retrieve the calendars
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: "The pagination token to use to continue listing calendars from\
+          \ a previous call to list calendars.\r\n            This value is returned\
+          \ from the previous call. If a pagination token is provided the sortBy,\
+          \ filter, and asAt fields\r\n            must not have changed since the\
+          \ original request. Also, if set, a start value cannot be provided."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          description: "The pagination token to use to continue listing calendars\
+            \ from a previous call to list calendars.\r\n            This value is\
+            \ returned from the previous call. If a pagination token is provided the\
+            \ sortBy, filter, and asAt fields\r\n            must not have changed\
+            \ since the original request. Also, if set, a start value cannot be provided."
+          maxLength: 500
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
+          type: string
+        style: form
+      - description: When paginating, skip this number of results.
+        explode: true
+        in: query
+        name: start
+        required: false
+        schema:
+          description: When paginating, skip this number of results.
+          format: int32
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      - description: When paginating, limit the number of returned results to this
+          many.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: When paginating, limit the number of returned results to this
+            many.
+          format: int32
+          maximum: 5000
+          minimum: 1
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      - description: Expression to filter the result set. Read more about filtering
+          results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: Expression to filter the result set. Read more about filtering
+            results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                  id:
+                    scope: TestScope
+                    code: TestCode
+                  type: Holiday
+                  weekendMask:
+                    days:
+                    - Saturday
+                    - Sunday
+                    timeZone: UTC
+                  sourceProvider: Finbourne-Calendar-Service
+                  properties:
+                  - key: Calendar/HolidayType/Statutory
+                    value:
+                      labelValue: CBTR
+                - href: https://myco.lusid.com/api/api/calendar/testscope/testcode2
+                  id:
+                    scope: TestScope
+                    code: TestCode2
+                  type: Holiday
+                  weekendMask:
+                    days:
+                    - Saturday
+                    - Sunday
+                    timeZone: UTC
+                  sourceProvider: Finbourne-Calendar-Service
+                  properties:
+                  - key: Calendar/HolidayType/Statutory
+                    value:
+                      labelValue: CBTR
+                href: https://myco.lusid.com/api/api/calendar/testscope
+                links: []
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfCalendar'
+            application/json:
+              example:
+                values:
+                - href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                  id:
+                    scope: TestScope
+                    code: TestCode
+                  type: Holiday
+                  weekendMask:
+                    days:
+                    - Saturday
+                    - Sunday
+                    timeZone: UTC
+                  sourceProvider: Finbourne-Calendar-Service
+                  properties:
+                  - key: Calendar/HolidayType/Statutory
+                    value:
+                      labelValue: CBTR
+                - href: https://myco.lusid.com/api/api/calendar/testscope/testcode2
+                  id:
+                    scope: TestScope
+                    code: TestCode2
+                  type: Holiday
+                  weekendMask:
+                    days:
+                    - Saturday
+                    - Sunday
+                    timeZone: UTC
+                  sourceProvider: Finbourne-Calendar-Service
+                  properties:
+                  - key: Calendar/HolidayType/Statutory
+                    value:
+                      labelValue: CBTR
+                href: https://myco.lusid.com/api/api/calendar/testscope
+                links: []
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfCalendar'
+            text/json:
+              example:
+                values:
+                - href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                  id:
+                    scope: TestScope
+                    code: TestCode
+                  type: Holiday
+                  weekendMask:
+                    days:
+                    - Saturday
+                    - Sunday
+                    timeZone: UTC
+                  sourceProvider: Finbourne-Calendar-Service
+                  properties:
+                  - key: Calendar/HolidayType/Statutory
+                    value:
+                      labelValue: CBTR
+                - href: https://myco.lusid.com/api/api/calendar/testscope/testcode2
+                  id:
+                    scope: TestScope
+                    code: TestCode2
+                  type: Holiday
+                  weekendMask:
+                    days:
+                    - Saturday
+                    - Sunday
+                    timeZone: UTC
+                  sourceProvider: Finbourne-Calendar-Service
+                  properties:
+                  - key: Calendar/HolidayType/Statutory
+                    value:
+                      labelValue: CBTR
+                href: https://myco.lusid.com/api/api/calendar/testscope
+                links: []
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfCalendar'
+          description: Calendars in the requested scope
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] ListCalendarsInScope: List all calenders in a specified
+        scope'
+      tags:
+      - Calendars
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/calendars/generic/{scope}/{code}:
+    delete:
+      description: Delete a calendar and all of its respective dates
+      operationId: DeleteCalendar
+      parameters:
+      - description: Scope of the calendar
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: Scope of the calendar
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the calendar
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Code of the calendar
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                id:
+                  scope: TestScope
+                  code: TestCode
+                type: Holiday
+                weekendMask:
+                  days:
+                  - Saturday
+                  - Sunday
+                  timeZone: UTC
+                sourceProvider: Finbourne-Calendar-Service
+                properties:
+                - key: Calendar/HolidayType/Statutory
+                  value:
+                    labelValue: CBTR
+              schema:
+                $ref: '#/components/schemas/Calendar'
+            application/json:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                id:
+                  scope: TestScope
+                  code: TestCode
+                type: Holiday
+                weekendMask:
+                  days:
+                  - Saturday
+                  - Sunday
+                  timeZone: UTC
+                sourceProvider: Finbourne-Calendar-Service
+                properties:
+                - key: Calendar/HolidayType/Statutory
+                  value:
+                    labelValue: CBTR
+              schema:
+                $ref: '#/components/schemas/Calendar'
+            text/json:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                id:
+                  scope: TestScope
+                  code: TestCode
+                type: Holiday
+                weekendMask:
+                  days:
+                  - Saturday
+                  - Sunday
+                  timeZone: UTC
+                sourceProvider: Finbourne-Calendar-Service
+                properties:
+                - key: Calendar/HolidayType/Statutory
+                  value:
+                    labelValue: CBTR
+              schema:
+                $ref: '#/components/schemas/Calendar'
+          description: The deleted calendar
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] DeleteCalendar: Delete a calendar'
+      tags:
+      - Calendars
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    get:
+      description: Retrieve a generic calendar by a specific ID at a point in AsAt
+        time
+      operationId: GetCalendar
+      parameters:
+      - description: Scope of the calendar identifier
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: Scope of the calendar identifier
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the calendar identifier
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Code of the calendar identifier
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The AsAt datetime at which to retrieve the calendar
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The AsAt datetime at which to retrieve the calendar
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                id:
+                  scope: TestScope
+                  code: TestCode
+                type: Holiday
+                weekendMask:
+                  days:
+                  - Saturday
+                  - Sunday
+                  timeZone: UTC
+                sourceProvider: Finbourne-Calendar-Service
+                properties:
+                - key: Calendar/HolidayType/Statutory
+                  value:
+                    labelValue: CBTR
+              schema:
+                $ref: '#/components/schemas/Calendar'
+            application/json:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                id:
+                  scope: TestScope
+                  code: TestCode
+                type: Holiday
+                weekendMask:
+                  days:
+                  - Saturday
+                  - Sunday
+                  timeZone: UTC
+                sourceProvider: Finbourne-Calendar-Service
+                properties:
+                - key: Calendar/HolidayType/Statutory
+                  value:
+                    labelValue: CBTR
+              schema:
+                $ref: '#/components/schemas/Calendar'
+            text/json:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                id:
+                  scope: TestScope
+                  code: TestCode
+                type: Holiday
+                weekendMask:
+                  days:
+                  - Saturday
+                  - Sunday
+                  timeZone: UTC
+                sourceProvider: Finbourne-Calendar-Service
+                properties:
+                - key: Calendar/HolidayType/Statutory
+                  value:
+                    labelValue: CBTR
+              schema:
+                $ref: '#/components/schemas/Calendar'
+          description: The requested calendar
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetCalendar: Get a calendar in its generic form'
+      tags:
+      - Calendars
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    post:
+      description: Update the calendars WeekendMask, SourceProvider or Properties
+      operationId: UpdateCalendar
+      parameters:
+      - description: Scope of the request
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: Scope of the request
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the request
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Code of the request
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              weekendMask:
+                days:
+                - Saturday
+                - Sunday
+                timeZone: UTC
+              sourceProvider: Finbourne-Calendar-Service
+              properties:
+              - key: Calendar/HolidayType/Statutory
+                value:
+                  labelValue: CBTR
+            schema:
+              $ref: '#/components/schemas/UpdateCalendarRequest'
+          application/json:
+            example:
+              weekendMask:
+                days:
+                - Saturday
+                - Sunday
+                timeZone: UTC
+              sourceProvider: Finbourne-Calendar-Service
+              properties:
+              - key: Calendar/HolidayType/Statutory
+                value:
+                  labelValue: CBTR
+            schema:
+              $ref: '#/components/schemas/UpdateCalendarRequest'
+          text/json:
+            example:
+              weekendMask:
+                days:
+                - Saturday
+                - Sunday
+                timeZone: UTC
+              sourceProvider: Finbourne-Calendar-Service
+              properties:
+              - key: Calendar/HolidayType/Statutory
+                value:
+                  labelValue: CBTR
+            schema:
+              $ref: '#/components/schemas/UpdateCalendarRequest'
+          application/*+json:
+            example:
+              weekendMask:
+                days:
+                - Saturday
+                - Sunday
+                timeZone: UTC
+              sourceProvider: Finbourne-Calendar-Service
+              properties:
+              - key: Calendar/HolidayType/Statutory
+                value:
+                  labelValue: CBTR
+            schema:
+              $ref: '#/components/schemas/UpdateCalendarRequest'
+        description: The new state of the calendar
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                id:
+                  scope: TestScope
+                  code: TestCode
+                type: Holiday
+                weekendMask:
+                  days:
+                  - Saturday
+                  - Sunday
+                  timeZone: UTC
+                sourceProvider: Finbourne-Calendar-Service
+                properties:
+                - key: Calendar/HolidayType/Statutory
+                  value:
+                    labelValue: CBTR
+              schema:
+                $ref: '#/components/schemas/Calendar'
+            application/json:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                id:
+                  scope: TestScope
+                  code: TestCode
+                type: Holiday
+                weekendMask:
+                  days:
+                  - Saturday
+                  - Sunday
+                  timeZone: UTC
+                sourceProvider: Finbourne-Calendar-Service
+                properties:
+                - key: Calendar/HolidayType/Statutory
+                  value:
+                    labelValue: CBTR
+              schema:
+                $ref: '#/components/schemas/Calendar'
+            text/json:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/testscope/testcode
+                id:
+                  scope: TestScope
+                  code: TestCode
+                type: Holiday
+                weekendMask:
+                  days:
+                  - Saturday
+                  - Sunday
+                  timeZone: UTC
+                sourceProvider: Finbourne-Calendar-Service
+                properties:
+                - key: Calendar/HolidayType/Statutory
+                  value:
+                    labelValue: CBTR
+              schema:
+                $ref: '#/components/schemas/Calendar'
+          description: The updated calendar
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] UpdateCalendar: Update a calendar'
+      tags:
+      - Calendars
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/calendars/generic/{scope}/{code}/dates:
+    get:
+      description: "Get dates from a specific calendar within a specific window of\
+        \ effective time, at a point in AsAt time.\r\nProviding an id filter can further\
+        \ refine the results."
+      operationId: GetDates
+      parameters:
+      - description: Scope of the calendar
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: Scope of the calendar
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the calendar
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Code of the calendar
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Where the effective window of dates should begin from
+        explode: true
+        in: query
+        name: fromEffectiveAt
+        required: false
+        schema:
+          description: Where the effective window of dates should begin from
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+        style: form
+      - description: Where the effective window of dates should end
+        explode: true
+        in: query
+        name: toEffectiveAt
+        required: false
+        schema:
+          description: Where the effective window of dates should end
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+        style: form
+      - description: AsAt the dates should be retrieved at
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: AsAt the dates should be retrieved at
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: An additional filter that will filter dates based on their identifer
+        explode: true
+        in: query
+        name: idFilter
+        required: false
+        schema:
+          description: An additional filter that will filter dates based on their
+            identifer
+          items:
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - href: https://myco.lusid.com/api/api/calendar/dates
+                  dateIdentifier: TestDate
+                  fromUtc: 2020-02-12T12:00:00.0000000+00:00
+                  toUtc: 2020-02-13T12:00:00.0000000+00:00
+                  localDate: 2020-02-02
+                  timezone: CET
+                  description: Chinese New year
+                  type: Holiday
+                  sourceData: {}
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfCalendarDate'
+            application/json:
+              example:
+                values:
+                - href: https://myco.lusid.com/api/api/calendar/dates
+                  dateIdentifier: TestDate
+                  fromUtc: 2020-02-12T12:00:00.0000000+00:00
+                  toUtc: 2020-02-13T12:00:00.0000000+00:00
+                  localDate: 2020-02-02
+                  timezone: CET
+                  description: Chinese New year
+                  type: Holiday
+                  sourceData: {}
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfCalendarDate'
+            text/json:
+              example:
+                values:
+                - href: https://myco.lusid.com/api/api/calendar/dates
+                  dateIdentifier: TestDate
+                  fromUtc: 2020-02-12T12:00:00.0000000+00:00
+                  toUtc: 2020-02-13T12:00:00.0000000+00:00
+                  localDate: 2020-02-02
+                  timezone: CET
+                  description: Chinese New year
+                  type: Holiday
+                  sourceData: {}
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfCalendarDate'
+          description: The requested date
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetDates: Get dates for a specific calendar'
+      tags:
+      - Calendars
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    put:
+      description: "Add an event to the calendar. These Events can be a maximum of\
+        \ 24 hours and must be specified in UTC.\r\nA local date will be calculated\
+        \ by the system and applied to the calendar before processing."
+      operationId: AddDateToCalendar
+      parameters:
+      - description: Scope of the calendar
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: Scope of the calendar
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the calendar
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Code of the calendar
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              dateId: TestDate
+              fromUtc: 2020-02-12T12:00:00.0000000+00:00
+              toUtc: 2020-02-13T12:00:00.0000000+00:00
+              timeZone: CET
+              description: Chinese New year
+              type: Holiday
+              sourceData: {}
+            schema:
+              $ref: '#/components/schemas/CreateDateRequest'
+          application/json:
+            example:
+              dateId: TestDate
+              fromUtc: 2020-02-12T12:00:00.0000000+00:00
+              toUtc: 2020-02-13T12:00:00.0000000+00:00
+              timeZone: CET
+              description: Chinese New year
+              type: Holiday
+              sourceData: {}
+            schema:
+              $ref: '#/components/schemas/CreateDateRequest'
+          text/json:
+            example:
+              dateId: TestDate
+              fromUtc: 2020-02-12T12:00:00.0000000+00:00
+              toUtc: 2020-02-13T12:00:00.0000000+00:00
+              timeZone: CET
+              description: Chinese New year
+              type: Holiday
+              sourceData: {}
+            schema:
+              $ref: '#/components/schemas/CreateDateRequest'
+          application/*+json:
+            example:
+              dateId: TestDate
+              fromUtc: 2020-02-12T12:00:00.0000000+00:00
+              toUtc: 2020-02-13T12:00:00.0000000+00:00
+              timeZone: CET
+              description: Chinese New year
+              type: Holiday
+              sourceData: {}
+            schema:
+              $ref: '#/components/schemas/CreateDateRequest'
+        description: Add date to calendar request
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/dates
+                dateIdentifier: TestDate
+                fromUtc: 2020-02-12T12:00:00.0000000+00:00
+                toUtc: 2020-02-13T12:00:00.0000000+00:00
+                localDate: 2020-02-02
+                timezone: CET
+                description: Chinese New year
+                type: Holiday
+                sourceData: {}
+              schema:
+                $ref: '#/components/schemas/CalendarDate'
+            application/json:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/dates
+                dateIdentifier: TestDate
+                fromUtc: 2020-02-12T12:00:00.0000000+00:00
+                toUtc: 2020-02-13T12:00:00.0000000+00:00
+                localDate: 2020-02-02
+                timezone: CET
+                description: Chinese New year
+                type: Holiday
+                sourceData: {}
+              schema:
+                $ref: '#/components/schemas/CalendarDate'
+            text/json:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/dates
+                dateIdentifier: TestDate
+                fromUtc: 2020-02-12T12:00:00.0000000+00:00
+                toUtc: 2020-02-13T12:00:00.0000000+00:00
+                localDate: 2020-02-02
+                timezone: CET
+                description: Chinese New year
+                type: Holiday
+                sourceData: {}
+              schema:
+                $ref: '#/components/schemas/CalendarDate'
+          description: The created date
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] AddDateToCalendar: Add a date to a calendar'
+      tags:
+      - Calendars
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/calendars/generic/{scope}/{code}/dates/{dateId}:
+    delete:
+      description: Remove a date from a calendar.
+      operationId: DeleteDateFromCalendar
+      parameters:
+      - description: Scope of the calendar
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: Scope of the calendar
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the calendar
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Code of the calendar
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Identifier of the date to be removed
+        explode: false
+        in: path
+        name: dateId
+        required: true
+        schema:
+          description: Identifier of the date to be removed
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/dates
+                dateIdentifier: TestDate
+                fromUtc: 2020-02-12T12:00:00.0000000+00:00
+                toUtc: 2020-02-13T12:00:00.0000000+00:00
+                localDate: 2020-02-02
+                timezone: CET
+                description: Chinese New year
+                type: Holiday
+                sourceData: {}
+              schema:
+                $ref: '#/components/schemas/CalendarDate'
+            application/json:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/dates
+                dateIdentifier: TestDate
+                fromUtc: 2020-02-12T12:00:00.0000000+00:00
+                toUtc: 2020-02-13T12:00:00.0000000+00:00
+                localDate: 2020-02-02
+                timezone: CET
+                description: Chinese New year
+                type: Holiday
+                sourceData: {}
+              schema:
+                $ref: '#/components/schemas/CalendarDate'
+            text/json:
+              example:
+                href: https://myco.lusid.com/api/api/calendar/dates
+                dateIdentifier: TestDate
+                fromUtc: 2020-02-12T12:00:00.0000000+00:00
+                toUtc: 2020-02-13T12:00:00.0000000+00:00
+                localDate: 2020-02-02
+                timezone: CET
+                description: Chinese New year
+                type: Holiday
+                sourceData: {}
+              schema:
+                $ref: '#/components/schemas/CalendarDate'
+          description: The deleted date
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] DeleteDateFromCalendar: Remove a date from a calendar'
+      tags:
+      - Calendars
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/calendars/schedule/{scope}:
+    post:
+      description: "Returns an ordered array of dates. The dates will only fall on\
+        \ business\r\ndays as defined by the scope and calendar codes in the valuation\
+        \ schedule.\r\n            \r\nValuations are made at a frequency defined\
+        \ by the valuation schedule's tenor, e.g. every day (\"1D\"),\r\nevery other\
+        \ week (\"2W\") etc. These dates will be adjusted onto business days as defined\
+        \ by the schedule's\r\nrollConvention."
+      operationId: GenerateSchedule
+      parameters:
+      - description: Scope of the calendars to use
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: Scope of the calendars to use
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Optional AsAt for searching the calendar store. Defaults to Latest.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: Optional AsAt for searching the calendar store. Defaults to
+            Latest.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              effectiveFrom: 2020-01-01
+              effectiveAt: 2021-01-01
+              tenor: 1M
+              rollConvention: F
+              holidayCalendars:
+              - GBP
+              - USD
+              valuationDateTimes: []
+            schema:
+              $ref: '#/components/schemas/ValuationSchedule'
+          application/json:
+            example:
+              effectiveFrom: 2020-01-01
+              effectiveAt: 2021-01-01
+              tenor: 1M
+              rollConvention: F
+              holidayCalendars:
+              - GBP
+              - USD
+              valuationDateTimes: []
+            schema:
+              $ref: '#/components/schemas/ValuationSchedule'
+          text/json:
+            example:
+              effectiveFrom: 2020-01-01
+              effectiveAt: 2021-01-01
+              tenor: 1M
+              rollConvention: F
+              holidayCalendars:
+              - GBP
+              - USD
+              valuationDateTimes: []
+            schema:
+              $ref: '#/components/schemas/ValuationSchedule'
+          application/*+json:
+            example:
+              effectiveFrom: 2020-01-01
+              effectiveAt: 2021-01-01
+              tenor: 1M
+              rollConvention: F
+              holidayCalendars:
+              - GBP
+              - USD
+              valuationDateTimes: []
+            schema:
+              $ref: '#/components/schemas/ValuationSchedule'
+        description: The ValuationSchedule to generate schedule dates from
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                items:
+                  format: date-time
+                  type: string
+                type: array
+            application/json:
+              schema:
+                items:
+                  format: date-time
+                  type: string
+                type: array
+            text/json:
+              schema:
+                items:
+                  format: date-time
+                  type: string
+                type: array
+          description: An array of dates in chronological order.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GenerateSchedule: Generate an ordered schedule of dates.'
+      tags:
+      - Calendars
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
       x-accepts: application/json
   /api/complexmarketdata/{scope}:
     post:
@@ -31912,6 +33706,47 @@ components:
       - entity
       - scope
       type: object
+    AddBusinessDaysToDateRequest:
+      additionalProperties: false
+      example:
+        asAt: 2000-01-23T04:56:07.000+00:00
+        businessDayOffset: 0
+        holidayCodes:
+        - holidayCodes
+        - holidayCodes
+        startDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        businessDayOffset:
+          format: int32
+          type: integer
+        holidayCodes:
+          items:
+            type: string
+          type: array
+        startDate:
+          format: date-time
+          type: string
+        asAt:
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - businessDayOffset
+      - holidayCodes
+      type: object
+    AddBusinessDaysToDateResponse:
+      additionalProperties: false
+      description: The date that is the requested number of business days after the
+        given start date
+      example:
+        value: 2000-01-23T04:56:07.000+00:00
+      properties:
+        value:
+          format: date-time
+          type: string
+      required:
+      - value
+      type: object
     AdjustHolding:
       additionalProperties: false
       example:
@@ -32814,6 +34649,128 @@ components:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
+      type: object
+    Calendar:
+      additionalProperties: false
+      example:
+        sourceProvider: sourceProvider
+        weekendMask:
+          days:
+          - null
+          - null
+          timeZone: timeZone
+        href: https://openapi-generator.tech
+        id:
+          code: code
+          scope: scope
+        type: type
+        properties:
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          value:
+            metricValue:
+              unit: unit
+              value: 6.027456183070403
+            labelValue: labelValue
+            labelValueSet:
+              values:
+              - values
+              - values
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          key: key
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          value:
+            metricValue:
+              unit: unit
+              value: 6.027456183070403
+            labelValue: labelValue
+            labelValueSet:
+              values:
+              - values
+              - values
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          key: key
+      properties:
+        href:
+          format: uri
+          nullable: true
+          type: string
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        type:
+          type: string
+        weekendMask:
+          $ref: '#/components/schemas/WeekendMask'
+        sourceProvider:
+          type: string
+        properties:
+          items:
+            $ref: '#/components/schemas/Property'
+          type: array
+      required:
+      - id
+      - properties
+      - sourceProvider
+      - type
+      - weekendMask
+      type: object
+    CalendarDate:
+      additionalProperties: false
+      example:
+        timezone: timezone
+        fromUtc: 2000-01-23T04:56:07.000+00:00
+        description: description
+        attributes:
+          lastOpen: lastOpen
+          lastClose: lastClose
+          firstOpen: firstOpen
+          activity: activity
+          firstClose: firstClose
+          irregularSession: true
+          irregular: true
+          newHours: true
+        href: https://openapi-generator.tech
+        dateIdentifier: dateIdentifier
+        localDate: localDate
+        type: type
+        sourceData:
+          key: sourceData
+        toUtc: 2000-01-23T04:56:07.000+00:00
+      properties:
+        href:
+          format: uri
+          nullable: true
+          type: string
+        dateIdentifier:
+          type: string
+        fromUtc:
+          format: date-time
+          type: string
+        toUtc:
+          format: date-time
+          type: string
+        localDate:
+          type: string
+        timezone:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+        attributes:
+          $ref: '#/components/schemas/DateAttributes'
+        sourceData:
+          additionalProperties:
+            type: string
+          nullable: true
+          type: object
+      required:
+      - dateIdentifier
+      - description
+      - fromUtc
+      - localDate
+      - timezone
+      - toUtc
+      - type
       type: object
     CashLadderRecord:
       additionalProperties: false
@@ -33981,6 +35938,70 @@ components:
       - creditRatings
       - industryClassifiers
       type: object
+    CreateCalendarRequest:
+      additionalProperties: false
+      example:
+        sourceProvider: sourceProvider
+        calendarType: calendarType
+        calendarId:
+          code: code
+          scope: scope
+        weekendMask:
+          days:
+          - null
+          - null
+          timeZone: timeZone
+        properties:
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          value:
+            metricValue:
+              unit: unit
+              value: 6.027456183070403
+            labelValue: labelValue
+            labelValueSet:
+              values:
+              - values
+              - values
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          key: key
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          value:
+            metricValue:
+              unit: unit
+              value: 6.027456183070403
+            labelValue: labelValue
+            labelValueSet:
+              values:
+              - values
+              - values
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          key: key
+      properties:
+        calendarId:
+          $ref: '#/components/schemas/ResourceId'
+        calendarType:
+          maxLength: 256
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        weekendMask:
+          $ref: '#/components/schemas/WeekendMask'
+        sourceProvider:
+          maxLength: 50
+          minLength: 0
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        properties:
+          items:
+            $ref: '#/components/schemas/Property'
+          nullable: true
+          type: array
+      required:
+      - calendarId
+      - calendarType
+      - sourceProvider
+      - weekendMask
+      type: object
     CreateCorporateActionSourceRequest:
       additionalProperties: false
       example:
@@ -34060,6 +36081,68 @@ components:
       - cutLocalTime
       - displayName
       - timeZone
+      type: object
+    CreateDateRequest:
+      additionalProperties: false
+      example:
+        dateId: dateId
+        fromUtc: 2000-01-23T04:56:07.000+00:00
+        timeZone: timeZone
+        description: description
+        attributes:
+          lastOpen: lastOpen
+          lastClose: lastClose
+          firstOpen: firstOpen
+          activity: activity
+          firstClose: firstClose
+          irregularSession: true
+          irregular: true
+          newHours: true
+        type: type
+        sourceData:
+          key: sourceData
+        toUtc: 2000-01-23T04:56:07.000+00:00
+      properties:
+        dateId:
+          maxLength: 256
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        fromUtc:
+          format: date-time
+          type: string
+        toUtc:
+          format: date-time
+          type: string
+        timeZone:
+          maxLength: 5
+          minLength: 0
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        description:
+          maxLength: 100
+          minLength: 0
+          pattern: ^[\s\S]*$
+          type: string
+        type:
+          maxLength: 10
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        attributes:
+          $ref: '#/components/schemas/DateAttributes'
+        sourceData:
+          additionalProperties:
+            type: string
+          nullable: true
+          type: object
+      required:
+      - dateId
+      - description
+      - fromUtc
+      - timeZone
+      - toUtc
       type: object
     CreateDerivedPropertyDefinitionRequest:
       additionalProperties: false
@@ -34977,6 +37060,59 @@ components:
       - typeValueRange
       - valueType
       type: object
+    DateAttributes:
+      additionalProperties: false
+      example:
+        lastOpen: lastOpen
+        lastClose: lastClose
+        firstOpen: firstOpen
+        activity: activity
+        firstClose: firstClose
+        irregularSession: true
+        irregular: true
+        newHours: true
+      properties:
+        irregular:
+          type: boolean
+        irregularSession:
+          type: boolean
+        newHours:
+          type: boolean
+        activity:
+          maxLength: 100
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        firstOpen:
+          maxLength: 100
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        lastOpen:
+          maxLength: 100
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        firstClose:
+          maxLength: 100
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        lastClose:
+          maxLength: 100
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+      required:
+      - irregular
+      - irregularSession
+      - newHours
+      type: object
     DateRange:
       additionalProperties: false
       example:
@@ -34993,6 +37129,16 @@ components:
       required:
       - fromDate
       type: object
+    DayOfWeek:
+      enum:
+      - Sunday
+      - Monday
+      - Tuesday
+      - Wednesday
+      - Thursday
+      - Friday
+      - Saturday
+      type: string
     DeletedEntityResponse:
       additionalProperties: false
       example:
@@ -36744,6 +38890,22 @@ components:
       required:
       - value
       type: object
+    IsBusinessDayResponse:
+      additionalProperties: false
+      description: Whether or not a DateTimeOffset is a business DateTime
+      example:
+        isBusinessDay: true
+        requestedDateTime: 2000-01-23T04:56:07.000+00:00
+      properties:
+        requestedDateTime:
+          format: date-time
+          type: string
+        isBusinessDay:
+          type: boolean
+      required:
+      - isBusinessDay
+      - requestedDateTime
+      type: object
     IUnitDefinitionDto:
       additionalProperties: false
       example:
@@ -38407,6 +40569,123 @@ components:
           description: The resources to list.
           items:
             $ref: '#/components/schemas/Allocation'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
+    PagedResourceListOfCalendar:
+      additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - sourceProvider: sourceProvider
+          weekendMask:
+            days:
+            - null
+            - null
+            timeZone: timeZone
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          type: type
+          properties:
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 6.027456183070403
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 6.027456183070403
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+        - sourceProvider: sourceProvider
+          weekendMask:
+            days:
+            - null
+            - null
+            timeZone: timeZone
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          type: type
+          properties:
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 6.027456183070403
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 6.027456183070403
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/Calendar'
           type: array
         href:
           description: The URI of the resource list.
@@ -42600,6 +44879,89 @@ components:
       required:
       - values
       type: object
+    ResourceListOfCalendarDate:
+      additionalProperties: false
+      description: A collection of resources that can be returned from requests.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - timezone: timezone
+          fromUtc: 2000-01-23T04:56:07.000+00:00
+          description: description
+          attributes:
+            lastOpen: lastOpen
+            lastClose: lastClose
+            firstOpen: firstOpen
+            activity: activity
+            firstClose: firstClose
+            irregularSession: true
+            irregular: true
+            newHours: true
+          href: https://openapi-generator.tech
+          dateIdentifier: dateIdentifier
+          localDate: localDate
+          type: type
+          sourceData:
+            key: sourceData
+          toUtc: 2000-01-23T04:56:07.000+00:00
+        - timezone: timezone
+          fromUtc: 2000-01-23T04:56:07.000+00:00
+          description: description
+          attributes:
+            lastOpen: lastOpen
+            lastClose: lastClose
+            firstOpen: firstOpen
+            activity: activity
+            firstClose: firstClose
+            irregularSession: true
+            irregular: true
+            newHours: true
+          href: https://openapi-generator.tech
+          dateIdentifier: dateIdentifier
+          localDate: localDate
+          type: type
+          sourceData:
+            key: sourceData
+          toUtc: 2000-01-23T04:56:07.000+00:00
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/CalendarDate'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
     ResourceListOfChange:
       additionalProperties: false
       description: A collection of resources that can be returned from requests.
@@ -46458,6 +48820,57 @@ components:
       required:
       - transactionConfigs
       type: object
+    UpdateCalendarRequest:
+      additionalProperties: false
+      example:
+        sourceProvider: sourceProvider
+        weekendMask:
+          days:
+          - null
+          - null
+          timeZone: timeZone
+        properties:
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          value:
+            metricValue:
+              unit: unit
+              value: 6.027456183070403
+            labelValue: labelValue
+            labelValueSet:
+              values:
+              - values
+              - values
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          key: key
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          value:
+            metricValue:
+              unit: unit
+              value: 6.027456183070403
+            labelValue: labelValue
+            labelValueSet:
+              values:
+              - values
+              - values
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          key: key
+      properties:
+        weekendMask:
+          $ref: '#/components/schemas/WeekendMask'
+        sourceProvider:
+          maxLength: 256
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        properties:
+          items:
+            $ref: '#/components/schemas/Property'
+          type: array
+      required:
+      - properties
+      - sourceProvider
+      - weekendMask
+      type: object
     UpdateCutLabelDefinitionRequest:
       additionalProperties: false
       description: This request specifies a new Cut Label Definition
@@ -49296,6 +51709,27 @@ components:
           nullable: true
           type: array
       type: object
+    WeekendMask:
+      additionalProperties: false
+      example:
+        days:
+        - null
+        - null
+        timeZone: timeZone
+      properties:
+        days:
+          items:
+            $ref: '#/components/schemas/DayOfWeek'
+          type: array
+        timeZone:
+          maxLength: 256
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+      required:
+      - days
+      - timeZone
+      type: object
     WeightedInstrument:
       additionalProperties: false
       description: Specification for a holding or quantity of (weight for) an instrument
@@ -49355,7 +51789,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
