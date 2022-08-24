@@ -297,12 +297,12 @@ info:
     | <a name="804">804</a>|Some data requested does not follow the order graph assumptions.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4724
+  version: 0.11.4726
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -4503,6 +4503,349 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-contentType: application/json-patch+json
       x-accepts: application/json
+  /api/datatypes:
+    get:
+      description: List all data type summaries
+      operationId: ListDataTypeSummaries
+      parameters:
+      - description: "The asAt datetime at which to list the data type summaries.\
+          \ Defaults to returning the latest version\r\n             of each summary\
+          \ if not specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: "The asAt datetime at which to list the data type summaries.\
+            \ Defaults to returning the latest version\r\n             of each summary\
+            \ if not specified."
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: "The pagination token to use to continue listing data type summaries.\
+          \ This\r\nvalue is returned from the previous call. If a pagination token\
+          \ is provided, the filter, effectiveAt\r\nand asAt fields must not have\
+          \ changed since the original request. Also, if set, a start value cannot\
+          \ be provided."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          description: "The pagination token to use to continue listing data type\
+            \ summaries. This\r\nvalue is returned from the previous call. If a pagination\
+            \ token is provided, the filter, effectiveAt\r\nand asAt fields must not\
+            \ have changed since the original request. Also, if set, a start value\
+            \ cannot be provided."
+          maxLength: 500
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
+          type: string
+        style: form
+      - description: When paginating, skip this number of results.
+        explode: true
+        in: query
+        name: start
+        required: false
+        schema:
+          description: When paginating, skip this number of results.
+          format: int32
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      - description: When paginating, limit the results to this number. Defaults to
+          100 if not specified.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: When paginating, limit the results to this number. Defaults
+            to 100 if not specified.
+          format: int32
+          maximum: 5000
+          minimum: 1
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      - description: "Optional. Expression to filter the result set. \r\n        \
+          \     For example, to filter on the Scope, use \"id.scope eq 'myscope'\"\
+          , to filter on Schema, use \"schema eq 'string'\",\r\n             to filter\
+          \ on AcceptableValues use \"acceptableValues any (~ eq 'value')\"\r\n  \
+          \           Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: "Optional. Expression to filter the result set. \r\n      \
+            \       For example, to filter on the Scope, use \"id.scope eq 'myscope'\"\
+            , to filter on Schema, use \"schema eq 'string'\",\r\n             to\
+            \ filter on AcceptableValues use \"acceptableValues any (~ eq 'value')\"\
+            \r\n             Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      - description: Sort the results by these fields. Use use the '-' sign to denote
+          descending allocation e.g. -MyFieldName.
+        explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          description: Sort the results by these fields. Use use the '-' sign to denote
+            descending allocation e.g. -MyFieldName.
+          items:
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfDataTypeSummary'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfDataTypeSummary'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfDataTypeSummary'
+          description: Success
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] ListDataTypeSummaries: List all data type summaries,
+        without the reference data'
+      tags:
+      - Data Types
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    post:
+      description: "Create a new data type definition\r\n\r\nData types cannot be\
+        \ created in either the \"default\" or \"system\" scopes."
+      operationId: CreateDataType
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              scope: TestScope
+              code: MyType
+              typeValueRange: Open
+              displayName: My data format
+              description: Data type description
+              valueType: String
+              unitSchema: Basic
+              acceptableUnits:
+              - code: Ap
+                displayName: Apples
+                description: A quantity of apples
+              - code: Bn
+                displayName: Bananas
+                description: A quantity of bananas
+              - code: Ch
+                displayName: Cherry
+                description: A quantity of cherries
+              referenceData:
+                fieldDefinitions:
+                - key: english_short_name
+                  isRequired: true
+                  isUnique: true
+                - key: continent
+                  isRequired: true
+                  isUnique: false
+                values:
+                - value: FRA
+                  fields:
+                    english_short_name: France
+                    continent: Europe
+                - value: DEU
+                  fields:
+                    english_short_name: Germany
+                    continent: Europe
+            schema:
+              $ref: '#/components/schemas/CreateDataTypeRequest'
+          application/json:
+            example:
+              scope: TestScope
+              code: MyType
+              typeValueRange: Open
+              displayName: My data format
+              description: Data type description
+              valueType: String
+              unitSchema: Basic
+              acceptableUnits:
+              - code: Ap
+                displayName: Apples
+                description: A quantity of apples
+              - code: Bn
+                displayName: Bananas
+                description: A quantity of bananas
+              - code: Ch
+                displayName: Cherry
+                description: A quantity of cherries
+              referenceData:
+                fieldDefinitions:
+                - key: english_short_name
+                  isRequired: true
+                  isUnique: true
+                - key: continent
+                  isRequired: true
+                  isUnique: false
+                values:
+                - value: FRA
+                  fields:
+                    english_short_name: France
+                    continent: Europe
+                - value: DEU
+                  fields:
+                    english_short_name: Germany
+                    continent: Europe
+            schema:
+              $ref: '#/components/schemas/CreateDataTypeRequest'
+          text/json:
+            example:
+              scope: TestScope
+              code: MyType
+              typeValueRange: Open
+              displayName: My data format
+              description: Data type description
+              valueType: String
+              unitSchema: Basic
+              acceptableUnits:
+              - code: Ap
+                displayName: Apples
+                description: A quantity of apples
+              - code: Bn
+                displayName: Bananas
+                description: A quantity of bananas
+              - code: Ch
+                displayName: Cherry
+                description: A quantity of cherries
+              referenceData:
+                fieldDefinitions:
+                - key: english_short_name
+                  isRequired: true
+                  isUnique: true
+                - key: continent
+                  isRequired: true
+                  isUnique: false
+                values:
+                - value: FRA
+                  fields:
+                    english_short_name: France
+                    continent: Europe
+                - value: DEU
+                  fields:
+                    english_short_name: Germany
+                    continent: Europe
+            schema:
+              $ref: '#/components/schemas/CreateDataTypeRequest'
+          application/*+json:
+            example:
+              scope: TestScope
+              code: MyType
+              typeValueRange: Open
+              displayName: My data format
+              description: Data type description
+              valueType: String
+              unitSchema: Basic
+              acceptableUnits:
+              - code: Ap
+                displayName: Apples
+                description: A quantity of apples
+              - code: Bn
+                displayName: Bananas
+                description: A quantity of bananas
+              - code: Ch
+                displayName: Cherry
+                description: A quantity of cherries
+              referenceData:
+                fieldDefinitions:
+                - key: english_short_name
+                  isRequired: true
+                  isUnique: true
+                - key: continent
+                  isRequired: true
+                  isUnique: false
+                values:
+                - value: FRA
+                  fields:
+                    english_short_name: France
+                    continent: Europe
+                - value: DEU
+                  fields:
+                    english_short_name: Germany
+                    continent: Europe
+            schema:
+              $ref: '#/components/schemas/CreateDataTypeRequest'
+        description: The definition of the new data type
+      responses:
+        "201":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DataType'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataType'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DataType'
+          description: Success
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] CreateDataType: Create data type definition'
+      tags:
+      - Data Types
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
   /api/datatypes/{scope}:
     get:
       description: List all data types in a specified scope
@@ -4727,6 +5070,248 @@ paths:
       tags:
       - Data Types
       x-fbn-apistatus: Stable
+      x-accepts: application/json
+    put:
+      description: "Update the definition of the specified existing data type\r\n\r\
+        \nNot all elements within a data type definition are modifiable due to the\
+        \ potential implications for data\r\nalready stored against the types"
+      operationId: UpdateDataType
+      parameters:
+      - description: The scope of the data type
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the data type
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The code of the data type
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The code of the data type
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              displayName: My data format
+              description: Data type description
+              acceptableValues:
+              - Apples, Bananas, Cherry
+            schema:
+              $ref: '#/components/schemas/UpdateDataTypeRequest'
+          application/json:
+            example:
+              displayName: My data format
+              description: Data type description
+              acceptableValues:
+              - Apples, Bananas, Cherry
+            schema:
+              $ref: '#/components/schemas/UpdateDataTypeRequest'
+          text/json:
+            example:
+              displayName: My data format
+              description: Data type description
+              acceptableValues:
+              - Apples, Bananas, Cherry
+            schema:
+              $ref: '#/components/schemas/UpdateDataTypeRequest'
+          application/*+json:
+            example:
+              displayName: My data format
+              description: Data type description
+              acceptableValues:
+              - Apples, Bananas, Cherry
+            schema:
+              $ref: '#/components/schemas/UpdateDataTypeRequest'
+        description: The updated definition of the data type
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DataType'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataType'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DataType'
+          description: Success
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] UpdateDataType: Update data type definition'
+      tags:
+      - Data Types
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/datatypes/{scope}/{code}/referencedatavalues:
+    put:
+      description: Replaces the whole set of reference values
+      operationId: UpdateReferenceValues
+      parameters:
+      - description: The scope of the data type
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the data type
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The code of the data type
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The code of the data type
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - value: FRA
+              fields:
+                english_short_name: France
+                continent: Europe
+            - value: DEU
+              fields:
+                english_short_name: Germany
+                continent: Europe
+            schema:
+              description: The updated reference values
+              items:
+                $ref: '#/components/schemas/FieldValue'
+              type: array
+          application/json:
+            example:
+            - value: FRA
+              fields:
+                english_short_name: France
+                continent: Europe
+            - value: DEU
+              fields:
+                english_short_name: Germany
+                continent: Europe
+            schema:
+              description: The updated reference values
+              items:
+                $ref: '#/components/schemas/FieldValue'
+              type: array
+          text/json:
+            example:
+            - value: FRA
+              fields:
+                english_short_name: France
+                continent: Europe
+            - value: DEU
+              fields:
+                english_short_name: Germany
+                continent: Europe
+            schema:
+              description: The updated reference values
+              items:
+                $ref: '#/components/schemas/FieldValue'
+              type: array
+          application/*+json:
+            example:
+            - value: FRA
+              fields:
+                english_short_name: France
+                continent: Europe
+            - value: DEU
+              fields:
+                english_short_name: Germany
+                continent: Europe
+            schema:
+              description: The updated reference values
+              items:
+                $ref: '#/components/schemas/FieldValue'
+              type: array
+        description: The updated reference values
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DataType'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DataType'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DataType'
+          description: Success
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] UpdateReferenceValues: Update reference data on a data
+        type'
+      tags:
+      - Data Types
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
       x-accepts: application/json
   /api/datatypes/{scope}/{code}/units:
     get:
@@ -36082,6 +36667,136 @@ components:
       - displayName
       - timeZone
       type: object
+    CreateDataTypeRequest:
+      additionalProperties: false
+      example:
+        acceptableValues:
+        - acceptableValues
+        - acceptableValues
+        referenceData:
+          values:
+          - fields:
+              key: fields
+            value: value
+          - fields:
+              key: fields
+            value: value
+          fieldDefinitions:
+          - isRequired: true
+            isUnique: true
+            key: key
+          - isRequired: true
+            isUnique: true
+            key: key
+        acceptableUnits:
+        - code: code
+          displayName: displayName
+          description: description
+          details:
+            key: details
+        - code: code
+          displayName: displayName
+          description: description
+          details:
+            key: details
+        code: code
+        displayName: displayName
+        scope: scope
+        valueType: String
+        description: description
+        unitSchema: NoUnits
+        typeValueRange: Open
+      properties:
+        scope:
+          description: The scope that the data type will be created in.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        code:
+          description: The code of the data type. Together with the scope this uniquely
+            defines the data type.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        typeValueRange:
+          description: 'Indicates the range of data acceptable by a data type. The
+            available values are: Open, Closed'
+          enum:
+          - Open
+          - Closed
+          type: string
+        displayName:
+          description: The display name of the data type.
+          maxLength: 512
+          minLength: 1
+          pattern: ^[\s\S]*$
+          type: string
+        description:
+          description: The description of the data type.
+          maxLength: 1024
+          minLength: 0
+          pattern: ^[\s\S]*$
+          type: string
+        valueType:
+          description: 'The expected type of the values. The available values are:
+            String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage,
+            Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId,
+            ResultValue, CutLocalTime, DateOrCutLabel'
+          enum:
+          - String
+          - Int
+          - Decimal
+          - DateTime
+          - Boolean
+          - Map
+          - List
+          - PropertyArray
+          - Percentage
+          - Code
+          - Id
+          - Uri
+          - CurrencyAndAmount
+          - TradePrice
+          - Currency
+          - MetricValue
+          - ResourceId
+          - ResultValue
+          - CutLocalTime
+          - DateOrCutLabel
+          type: string
+        acceptableValues:
+          description: The acceptable set of values for this data type. Only applies
+            to 'open' value type range.
+          items:
+            type: string
+          nullable: true
+          type: array
+        unitSchema:
+          description: 'The schema of the data type''s units. The available values
+            are: NoUnits, Basic, Iso4217Currency'
+          enum:
+          - NoUnits
+          - Basic
+          - Iso4217Currency
+          type: string
+        acceptableUnits:
+          description: The definitions of the acceptable units.
+          items:
+            $ref: '#/components/schemas/CreateUnitDefinition'
+          nullable: true
+          type: array
+        referenceData:
+          $ref: '#/components/schemas/ReferenceData'
+      required:
+      - code
+      - description
+      - displayName
+      - scope
+      - typeValueRange
+      - valueType
+      type: object
     CreateDateRequest:
       additionalProperties: false
       example:
@@ -36835,6 +37550,40 @@ components:
       - code
       - displayName
       type: object
+    CreateUnitDefinition:
+      additionalProperties: false
+      example:
+        code: code
+        displayName: displayName
+        description: description
+        details:
+          key: details
+      properties:
+        code:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        displayName:
+          maxLength: 512
+          minLength: 1
+          pattern: ^[\s\S]*$
+          type: string
+        description:
+          maxLength: 1024
+          minLength: 0
+          pattern: ^[\s\S]*$
+          type: string
+        details:
+          additionalProperties:
+            type: string
+          nullable: true
+          type: object
+      required:
+      - code
+      - description
+      - displayName
+      type: object
     CreditRating:
       additionalProperties: false
       description: "Object describing a credit rating,\r\nwhich assesses the stability\
@@ -37051,6 +37800,100 @@ components:
           description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - description
+      - displayName
+      - id
+      - typeValueRange
+      - valueType
+      type: object
+    DataTypeSummary:
+      additionalProperties: false
+      example:
+        acceptableValues:
+        - acceptableValues
+        - acceptableValues
+        acceptableUnits:
+        - schema: NoUnits
+          code: code
+          displayName: displayName
+          description: description
+        - schema: NoUnits
+          code: code
+          displayName: displayName
+          description: description
+        displayName: displayName
+        valueType: String
+        description: description
+        unitSchema: NoUnits
+        typeValueRange: Open
+        id:
+          code: code
+          scope: scope
+      properties:
+        typeValueRange:
+          description: 'Indicates the range of data acceptable by a data type. The
+            available values are: Open, Closed'
+          enum:
+          - Open
+          - Closed
+          type: string
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        displayName:
+          description: The display name of the data type.
+          type: string
+        description:
+          description: The description of the data type.
+          type: string
+        valueType:
+          description: 'The expected type of the values. The available values are:
+            String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage,
+            Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId,
+            ResultValue, CutLocalTime, DateOrCutLabel'
+          enum:
+          - String
+          - Int
+          - Decimal
+          - DateTime
+          - Boolean
+          - Map
+          - List
+          - PropertyArray
+          - Percentage
+          - Code
+          - Id
+          - Uri
+          - CurrencyAndAmount
+          - TradePrice
+          - Currency
+          - MetricValue
+          - ResourceId
+          - ResultValue
+          - CutLocalTime
+          - DateOrCutLabel
+          type: string
+        acceptableValues:
+          description: The acceptable set of values for this data type. Only applies
+            to 'open' value type range.
+          items:
+            type: string
+          nullable: true
+          type: array
+        unitSchema:
+          description: 'The schema of the data type''s units. The available values
+            are: NoUnits, Basic, Iso4217Currency'
+          enum:
+          - NoUnits
+          - Basic
+          - Iso4217Currency
+          type: string
+        acceptableUnits:
+          description: The definitions of the acceptable units.
+          items:
+            $ref: '#/components/schemas/IUnitDefinitionDto'
           nullable: true
           type: array
       required:
@@ -40852,6 +41695,91 @@ components:
           description: The resources to list.
           items:
             $ref: '#/components/schemas/CutLabelDefinition'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
+    PagedResourceListOfDataTypeSummary:
+      additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - acceptableValues:
+          - acceptableValues
+          - acceptableValues
+          acceptableUnits:
+          - schema: NoUnits
+            code: code
+            displayName: displayName
+            description: description
+          - schema: NoUnits
+            code: code
+            displayName: displayName
+            description: description
+          displayName: displayName
+          valueType: String
+          description: description
+          unitSchema: NoUnits
+          typeValueRange: Open
+          id:
+            code: code
+            scope: scope
+        - acceptableValues:
+          - acceptableValues
+          - acceptableValues
+          acceptableUnits:
+          - schema: NoUnits
+            code: code
+            displayName: displayName
+            description: description
+          - schema: NoUnits
+            code: code
+            displayName: displayName
+            description: description
+          displayName: displayName
+          valueType: String
+          description: description
+          unitSchema: NoUnits
+          typeValueRange: Open
+          id:
+            code: code
+            scope: scope
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/DataTypeSummary'
           type: array
         href:
           description: The URI of the resource list.
@@ -48898,6 +49826,50 @@ components:
       - displayName
       - timeZone
       type: object
+    UpdateDataTypeRequest:
+      additionalProperties: false
+      example:
+        acceptableValues:
+        - acceptableValues
+        - acceptableValues
+        acceptableUnits:
+        - code: code
+          displayName: displayName
+          description: description
+        - code: code
+          displayName: displayName
+          description: description
+        displayName: displayName
+        description: description
+      properties:
+        displayName:
+          description: The display name of the data type.
+          maxLength: 512
+          minLength: 1
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        description:
+          description: The description of the data type.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        acceptableValues:
+          description: The acceptable set of values for this data type. Only applies
+            to 'open' value type range.
+          items:
+            type: string
+          nullable: true
+          type: array
+        acceptableUnits:
+          description: The definitions of the acceptable units.
+          items:
+            $ref: '#/components/schemas/UpdateUnitRequest'
+          nullable: true
+          type: array
+      type: object
     UpdateInstrumentIdentifierRequest:
       additionalProperties: false
       example:
@@ -49004,6 +49976,32 @@ components:
       - displayName
       - inwardDescription
       - outwardDescription
+      type: object
+    UpdateUnitRequest:
+      additionalProperties: false
+      example:
+        code: code
+        displayName: displayName
+        description: description
+      properties:
+        code:
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        displayName:
+          maxLength: 512
+          minLength: 1
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        description:
+          maxLength: 512
+          minLength: 1
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
       type: object
     UpsertComplexMarketDataRequest:
       additionalProperties: false
@@ -51789,7 +52787,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
