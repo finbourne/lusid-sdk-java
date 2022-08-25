@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | The requested portfolio properties. These will be from the &#39;Portfolio&#39; domain. |  [optional]
 **instrumentScopes** | **List&lt;String&gt;** | The instrument scope resolution strategy of this portfolio. |  [optional]
 **accountingMethod** | [**AccountingMethodEnum**](#AccountingMethodEnum) | . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst |  [optional]
+**amortisationMethod** | **String** | The amortisation method the portfolio is using in the calculation. |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 
