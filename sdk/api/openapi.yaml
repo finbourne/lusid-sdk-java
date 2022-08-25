@@ -297,7 +297,7 @@ info:
     | <a name="804">804</a>|Some data requested does not follow the order graph assumptions.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4730
+  version: 0.11.4731
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -33357,6 +33357,103 @@ paths:
       x-fbn-apistatus: Stable
       x-contentType: application/json-patch+json
       x-accepts: application/json
+  /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/history:
+    get:
+      description: Get all of the changes that have happened to a transaction.
+      operationId: GetTransactionHistory
+      parameters:
+      - description: The scope of the transaction portfolio.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the transaction portfolio.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "The code of the transaction portfolio. Together with the scope\
+          \ this uniquely identifies\r\n            the transaction portfolio."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: "The code of the transaction portfolio. Together with the scope\
+            \ this uniquely identifies\r\n            the transaction portfolio."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The unique ID of the transaction to create or update.
+        explode: false
+        in: path
+        name: transactionId
+        required: true
+        schema:
+          description: The unique ID of the transaction to create or update.
+          nullable: true
+          type: string
+        style: simple
+      - description: "The asAt datetime at which to retrieve the history of the transaction.\
+          \ Defaults\r\n            to return the latest version if not specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: "The asAt datetime at which to retrieve the history of the\
+            \ transaction. Defaults\r\n            to return the latest version if\
+            \ not specified."
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfChangeHistory'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfChangeHistory'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfChangeHistory'
+          description: The history of the specified transaction (changes that have
+            been made to it).
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetTransactionHistory: Get the history of a transaction'
+      tags:
+      - Transaction Portfolios
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
   /api/transactionportfolios/{scope}/{code}/transactions/{transactionId}/properties:
     delete:
       description: Delete one or more properties from a single transaction in a transaction
@@ -35453,6 +35550,107 @@ components:
       - amended
       - corrected
       - entityId
+      type: object
+    ChangeHistory:
+      additionalProperties: false
+      description: A group of changes made by the same person at the same time.
+      example:
+        modifiedAsAt: 2000-01-23T04:56:07.000+00:00
+        requestId: requestId
+        changes:
+        - newValue: newValue
+          effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          fieldName: fieldName
+          previousValue: previousValue
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        - newValue: newValue
+          effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          fieldName: fieldName
+          previousValue: previousValue
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        action: Create
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        userId: userId
+      properties:
+        userId:
+          description: The unique identifier of the user that made the change.
+          type: string
+        modifiedAsAt:
+          description: The date/time of the change.
+          format: date-time
+          type: string
+        requestId:
+          description: The unique identifier of the request that the changes were
+            part of.
+          type: string
+        action:
+          description: 'The action performed on the transaction, either created, updated,
+            or deleted. The available values are: Create, Update, Delete'
+          enum:
+          - Create
+          - Update
+          - Delete
+          type: string
+        changes:
+          description: The collection of changes that were made.
+          items:
+            $ref: '#/components/schemas/ChangeItem'
+          type: array
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - action
+      - changes
+      - modifiedAsAt
+      - requestId
+      - userId
+      type: object
+    ChangeItem:
+      additionalProperties: false
+      description: "Information about a change to a field / property.\r\nAt least\
+        \ one of 'PreviousValue' or 'NewValue' will be set."
+      example:
+        newValue: newValue
+        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+        fieldName: fieldName
+        previousValue: previousValue
+        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+      properties:
+        fieldName:
+          description: The name of the field or property that has been changed.
+          type: string
+        previousValue:
+          description: The previous value for this field / property.
+          nullable: true
+          type: string
+        newValue:
+          description: The new value for this field / property.
+          nullable: true
+          type: string
+        effectiveFrom:
+          description: The market data time, i.e. the time to run the change from.
+          format: date-time
+          nullable: true
+          type: string
+        effectiveUntil:
+          description: The market data time, i.e. the time to run the change until.
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - fieldName
       type: object
     CompletePortfolio:
       additionalProperties: false
@@ -45978,6 +46176,99 @@ components:
           description: The resources to list.
           items:
             $ref: '#/components/schemas/Change'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
+    ResourceListOfChangeHistory:
+      additionalProperties: false
+      description: A collection of resources that can be returned from requests.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - modifiedAsAt: 2000-01-23T04:56:07.000+00:00
+          requestId: requestId
+          changes:
+          - newValue: newValue
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            fieldName: fieldName
+            previousValue: previousValue
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          - newValue: newValue
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            fieldName: fieldName
+            previousValue: previousValue
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          action: Create
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          userId: userId
+        - modifiedAsAt: 2000-01-23T04:56:07.000+00:00
+          requestId: requestId
+          changes:
+          - newValue: newValue
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            fieldName: fieldName
+            previousValue: previousValue
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          - newValue: newValue
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            fieldName: fieldName
+            previousValue: previousValue
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          action: Create
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          userId: userId
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/ChangeHistory'
           type: array
         href:
           description: The URI of the resource list.
