@@ -297,12 +297,12 @@ info:
     | <a name="804">804</a>|Some data requested does not follow the order graph assumptions.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4734
+  version: 0.11.4735
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -5727,6 +5727,678 @@ paths:
         in a scope.'
       tags:
       - Entities
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/executions:
+    get:
+      description: Fetch the last pre-AsAt date version of each execution in scope
+        (does not fetch the entire history).
+      operationId: ListExecutions
+      parameters:
+      - description: The asAt datetime at which to retrieve the execution. Defaults
+          to return the latest version of the execution if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve the execution. Defaults
+            to return the latest version of the execution if not specified.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: "The pagination token to use to continue listing execution from\
+          \ a previous call to list executions.\r\n            This value is returned\
+          \ from the previous call. If a pagination token is provided the sortBy,\
+          \ filter, effectiveAt, and asAt fields\r\n            must not have changed\
+          \ since the original request."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          description: "The pagination token to use to continue listing execution\
+            \ from a previous call to list executions.\r\n            This value is\
+            \ returned from the previous call. If a pagination token is provided the\
+            \ sortBy, filter, effectiveAt, and asAt fields\r\n            must not\
+            \ have changed since the original request."
+          maxLength: 500
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
+          type: string
+        style: form
+      - description: Order the results by these fields. Use use the '-' sign to denote
+          descending order e.g. -MyFieldName.
+        explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          description: Order the results by these fields. Use use the '-' sign to
+            denote descending order e.g. -MyFieldName.
+          items:
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      - description: When paginating, limit the number of returned results to this
+          many.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: When paginating, limit the number of returned results to this
+            many.
+          format: int32
+          maximum: 5000
+          minimum: 1
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      - description: "Expression to filter the result set. Read more about filtering\
+          \ results from LUSID here:\r\n            https://support.lusid.com/filtering-results-from-lusid."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: "Expression to filter the result set. Read more about filtering\
+            \ results from LUSID here:\r\n            https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      - description: "A list of property keys from the \"Execution\" domain to decorate\
+          \ onto each execution.\r\n                These take the format {domain}/{scope}/{code}\
+          \ e.g. \"Execution/system/Name\"."
+        explode: true
+        in: query
+        name: propertyKeys
+        required: false
+        schema:
+          description: "A list of property keys from the \"Execution\" domain to decorate\
+            \ onto each execution.\r\n                These take the format {domain}/{scope}/{code}\
+            \ e.g. \"Execution/system/Name\"."
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfExecution'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfExecution'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfExecution'
+          description: Executions in scope.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] ListExecutions: List Executions'
+      tags:
+      - Executions
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    post:
+      description: Upsert; update existing executions with given ids, or create new
+        executions otherwise.
+      operationId: UpsertExecutions
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              requests:
+              - id:
+                  scope: MyScope
+                  code: EXEC00000123
+                placementId:
+                  scope: MyScope
+                  code: PLAC00000123
+                properties:
+                  execution/MyScope/SomeExecutionProperty:
+                    key: Execution/MyScope/SomeExecutionProperty
+                    value:
+                      labelValue: XYZ000034567
+                instrumentIdentifiers:
+                  instrument/default/Currency: GBP
+                quantity: 100
+                state: New
+                side: Buy
+                type: Limit
+                createdDate: 2006-04-11T00:00:00.0000000+00:00
+                settlementDate: 2006-04-13T00:00:00.0000000+00:00
+                price:
+                  amount: 12413.33
+                  currency: USD
+                settlementCurrency: GBP
+                settlementCurrencyFxRate: 0.67
+                counterparty: SomeCounterparty
+                averagePrice: 12419.2
+            schema:
+              $ref: '#/components/schemas/ExecutionSetRequest'
+          application/json:
+            example:
+              requests:
+              - id:
+                  scope: MyScope
+                  code: EXEC00000123
+                placementId:
+                  scope: MyScope
+                  code: PLAC00000123
+                properties:
+                  execution/MyScope/SomeExecutionProperty:
+                    key: Execution/MyScope/SomeExecutionProperty
+                    value:
+                      labelValue: XYZ000034567
+                instrumentIdentifiers:
+                  instrument/default/Currency: GBP
+                quantity: 100
+                state: New
+                side: Buy
+                type: Limit
+                createdDate: 2006-04-11T00:00:00.0000000+00:00
+                settlementDate: 2006-04-13T00:00:00.0000000+00:00
+                price:
+                  amount: 12413.33
+                  currency: USD
+                settlementCurrency: GBP
+                settlementCurrencyFxRate: 0.67
+                counterparty: SomeCounterparty
+                averagePrice: 12419.2
+            schema:
+              $ref: '#/components/schemas/ExecutionSetRequest'
+          text/json:
+            example:
+              requests:
+              - id:
+                  scope: MyScope
+                  code: EXEC00000123
+                placementId:
+                  scope: MyScope
+                  code: PLAC00000123
+                properties:
+                  execution/MyScope/SomeExecutionProperty:
+                    key: Execution/MyScope/SomeExecutionProperty
+                    value:
+                      labelValue: XYZ000034567
+                instrumentIdentifiers:
+                  instrument/default/Currency: GBP
+                quantity: 100
+                state: New
+                side: Buy
+                type: Limit
+                createdDate: 2006-04-11T00:00:00.0000000+00:00
+                settlementDate: 2006-04-13T00:00:00.0000000+00:00
+                price:
+                  amount: 12413.33
+                  currency: USD
+                settlementCurrency: GBP
+                settlementCurrencyFxRate: 0.67
+                counterparty: SomeCounterparty
+                averagePrice: 12419.2
+            schema:
+              $ref: '#/components/schemas/ExecutionSetRequest'
+          application/*+json:
+            example:
+              requests:
+              - id:
+                  scope: MyScope
+                  code: EXEC00000123
+                placementId:
+                  scope: MyScope
+                  code: PLAC00000123
+                properties:
+                  execution/MyScope/SomeExecutionProperty:
+                    key: Execution/MyScope/SomeExecutionProperty
+                    value:
+                      labelValue: XYZ000034567
+                instrumentIdentifiers:
+                  instrument/default/Currency: GBP
+                quantity: 100
+                state: New
+                side: Buy
+                type: Limit
+                createdDate: 2006-04-11T00:00:00.0000000+00:00
+                settlementDate: 2006-04-13T00:00:00.0000000+00:00
+                price:
+                  amount: 12413.33
+                  currency: USD
+                settlementCurrency: GBP
+                settlementCurrencyFxRate: 0.67
+                counterparty: SomeCounterparty
+                averagePrice: 12419.2
+            schema:
+              $ref: '#/components/schemas/ExecutionSetRequest'
+        description: The collection of execution requests.
+      responses:
+        "201":
+          content:
+            text/plain:
+              example:
+                values:
+                - id:
+                    scope: MyScope
+                    code: EXEC0000123
+                  placementId:
+                    scope: MyScope
+                    code: PLAC00000123
+                  properties:
+                    allocation/MyScope/SomeAllocationProperty:
+                      key: Allocation/MyScope/SomeAllocationProperty
+                      value:
+                        labelValue: XYZ000034567
+                  instrumentIdentifiers:
+                    instrument/default/Currency: GBP
+                  quantity: 100.5
+                  state: New
+                  side: Buy
+                  type: Limit
+                  createdDate: 2006-04-11T00:00:00.0000000+00:00
+                  settlementDate: 2006-04-13T00:00:00.0000000+00:00
+                  price:
+                    amount: 12413.33
+                    currency: USD
+                  settlementCurrency: GBP
+                  settlementCurrencyFxRate: 0.67
+                  counterparty: SomeCounterparty
+                  averagePrice: 12419.2
+                  version:
+                    effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
+                    asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfExecution'
+            application/json:
+              example:
+                values:
+                - id:
+                    scope: MyScope
+                    code: EXEC0000123
+                  placementId:
+                    scope: MyScope
+                    code: PLAC00000123
+                  properties:
+                    allocation/MyScope/SomeAllocationProperty:
+                      key: Allocation/MyScope/SomeAllocationProperty
+                      value:
+                        labelValue: XYZ000034567
+                  instrumentIdentifiers:
+                    instrument/default/Currency: GBP
+                  quantity: 100.5
+                  state: New
+                  side: Buy
+                  type: Limit
+                  createdDate: 2006-04-11T00:00:00.0000000+00:00
+                  settlementDate: 2006-04-13T00:00:00.0000000+00:00
+                  price:
+                    amount: 12413.33
+                    currency: USD
+                  settlementCurrency: GBP
+                  settlementCurrencyFxRate: 0.67
+                  counterparty: SomeCounterparty
+                  averagePrice: 12419.2
+                  version:
+                    effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
+                    asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfExecution'
+            text/json:
+              example:
+                values:
+                - id:
+                    scope: MyScope
+                    code: EXEC0000123
+                  placementId:
+                    scope: MyScope
+                    code: PLAC00000123
+                  properties:
+                    allocation/MyScope/SomeAllocationProperty:
+                      key: Allocation/MyScope/SomeAllocationProperty
+                      value:
+                        labelValue: XYZ000034567
+                  instrumentIdentifiers:
+                    instrument/default/Currency: GBP
+                  quantity: 100.5
+                  state: New
+                  side: Buy
+                  type: Limit
+                  createdDate: 2006-04-11T00:00:00.0000000+00:00
+                  settlementDate: 2006-04-13T00:00:00.0000000+00:00
+                  price:
+                    amount: 12413.33
+                    currency: USD
+                  settlementCurrency: GBP
+                  settlementCurrencyFxRate: 0.67
+                  counterparty: SomeCounterparty
+                  averagePrice: 12419.2
+                  version:
+                    effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
+                    asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfExecution'
+          description: A collection of executions.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] UpsertExecutions: Upsert Execution'
+      tags:
+      - Executions
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/executions/{scope}/{code}:
+    delete:
+      description: "Delete an execution. Deletion will be valid from the execution's\
+        \ creation datetime.\r\nThis means that the execution will no longer exist\
+        \ at any effective datetime from the asAt datetime of deletion."
+      operationId: DeleteExecution
+      parameters:
+      - description: The execution scope.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The execution scope.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The execution's code. This, together with the scope uniquely
+          identifies the execution to delete.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The execution's code. This, together with the scope uniquely
+            identifies the execution to delete.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The response from deleting an execution.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] DeleteExecution: Delete execution'
+      tags:
+      - Executions
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    get:
+      description: Fetch a Execution that matches the specified identifier
+      operationId: GetExecution
+      parameters:
+      - description: The scope to which the execution belongs.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope to which the execution belongs.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The execution's unique identifier.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The execution's unique identifier.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The asAt datetime at which to retrieve the execution. Defaults
+          to return the latest version of the execution if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve the execution. Defaults
+            to return the latest version of the execution if not specified.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: "A list of property keys from the \"Execution\" domain to decorate\
+          \ onto the execution.\r\n            These take the format {domain}/{scope}/{code}\
+          \ e.g. \"Execution/system/Name\"."
+        explode: true
+        in: query
+        name: propertyKeys
+        required: false
+        schema:
+          description: "A list of property keys from the \"Execution\" domain to decorate\
+            \ onto the execution.\r\n            These take the format {domain}/{scope}/{code}\
+            \ e.g. \"Execution/system/Name\"."
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                id:
+                  scope: MyScope
+                  code: EXEC0000123
+                placementId:
+                  scope: MyScope
+                  code: PLAC00000123
+                properties:
+                  allocation/MyScope/SomeAllocationProperty:
+                    key: Allocation/MyScope/SomeAllocationProperty
+                    value:
+                      labelValue: XYZ000034567
+                instrumentIdentifiers:
+                  instrument/default/Currency: GBP
+                quantity: 100.5
+                state: New
+                side: Buy
+                type: Limit
+                createdDate: 2006-04-11T00:00:00.0000000+00:00
+                settlementDate: 2006-04-13T00:00:00.0000000+00:00
+                price:
+                  amount: 12413.33
+                  currency: USD
+                settlementCurrency: GBP
+                settlementCurrencyFxRate: 0.67
+                counterparty: SomeCounterparty
+                averagePrice: 12419.2
+                version:
+                  effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
+                  asAtDate: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/Execution'
+            application/json:
+              example:
+                id:
+                  scope: MyScope
+                  code: EXEC0000123
+                placementId:
+                  scope: MyScope
+                  code: PLAC00000123
+                properties:
+                  allocation/MyScope/SomeAllocationProperty:
+                    key: Allocation/MyScope/SomeAllocationProperty
+                    value:
+                      labelValue: XYZ000034567
+                instrumentIdentifiers:
+                  instrument/default/Currency: GBP
+                quantity: 100.5
+                state: New
+                side: Buy
+                type: Limit
+                createdDate: 2006-04-11T00:00:00.0000000+00:00
+                settlementDate: 2006-04-13T00:00:00.0000000+00:00
+                price:
+                  amount: 12413.33
+                  currency: USD
+                settlementCurrency: GBP
+                settlementCurrencyFxRate: 0.67
+                counterparty: SomeCounterparty
+                averagePrice: 12419.2
+                version:
+                  effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
+                  asAtDate: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/Execution'
+            text/json:
+              example:
+                id:
+                  scope: MyScope
+                  code: EXEC0000123
+                placementId:
+                  scope: MyScope
+                  code: PLAC00000123
+                properties:
+                  allocation/MyScope/SomeAllocationProperty:
+                    key: Allocation/MyScope/SomeAllocationProperty
+                    value:
+                      labelValue: XYZ000034567
+                instrumentIdentifiers:
+                  instrument/default/Currency: GBP
+                quantity: 100.5
+                state: New
+                side: Buy
+                type: Limit
+                createdDate: 2006-04-11T00:00:00.0000000+00:00
+                settlementDate: 2006-04-13T00:00:00.0000000+00:00
+                price:
+                  amount: 12413.33
+                  currency: USD
+                settlementCurrency: GBP
+                settlementCurrencyFxRate: 0.67
+                counterparty: SomeCounterparty
+                averagePrice: 12419.2
+                version:
+                  effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
+                  asAtDate: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/Execution'
+          description: The execution matching the given identifier.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetExecution: Get Execution'
+      tags:
+      - Executions
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/instruments:
@@ -38388,6 +39060,327 @@ components:
           nullable: true
           type: array
       type: object
+    Execution:
+      additionalProperties: false
+      description: "The record of a number of executions against a single Placement\
+        \ (directly analogous to\r\na partial or full fill against a street order)."
+      example:
+        side: side
+        quantity: 0.8008281904610115
+        placementId:
+          code: code
+          scope: scope
+        settlementCurrencyFxRate: 6.027456183070403
+        instrumentIdentifiers:
+          key: instrumentIdentifiers
+        settlementDate: 2000-01-23T04:56:07.000+00:00
+        type: type
+        version:
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        createdDate: 2000-01-23T04:56:07.000+00:00
+        settlementCurrency: settlementCurrency
+        price:
+          amount: 1.4658129805029452
+          currency: currency
+        counterparty: counterparty
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        id:
+          code: code
+          scope: scope
+        state: state
+        averagePrice: 1.4658129805029452
+        lusidInstrumentId: lusidInstrumentId
+        properties:
+          key:
+            value:
+              metricValue:
+                unit: unit
+                value: 6.027456183070403
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
+      properties:
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        placementId:
+          $ref: '#/components/schemas/ResourceId'
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          description: Client-defined properties associated with this execution.
+          nullable: true
+          type: object
+        instrumentIdentifiers:
+          additionalProperties:
+            type: string
+          description: The instrument ordered.
+          type: object
+        lusidInstrumentId:
+          description: The LUSID instrument id for the instrument execution.
+          type: string
+        quantity:
+          description: The quantity of given instrument ordered.
+          format: double
+          type: number
+        state:
+          description: The state of this execution (typically a FIX state; Open, Filled,
+            etc).
+          type: string
+        side:
+          description: The side (Buy, Sell, ...) of this execution.
+          type: string
+        type:
+          description: The type of this execution (Market, Limit, etc).
+          type: string
+        createdDate:
+          description: The active date of this execution.
+          format: date-time
+          type: string
+        settlementDate:
+          description: The (optional) settlement date for this execution
+          format: date-time
+          nullable: true
+          type: string
+        price:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        settlementCurrency:
+          description: The execution's settlement currency.
+          type: string
+        settlementCurrencyFxRate:
+          description: The exectuion's settlement currency rate.
+          format: double
+          type: number
+        counterparty:
+          description: The market entity this placement is placed with.
+          type: string
+        averagePrice:
+          description: The average price of all executions for a given placement at
+            the time of upsert
+          format: double
+          nullable: true
+          type: number
+        version:
+          $ref: '#/components/schemas/Version'
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - counterparty
+      - createdDate
+      - id
+      - instrumentIdentifiers
+      - lusidInstrumentId
+      - placementId
+      - price
+      - quantity
+      - settlementCurrency
+      - settlementCurrencyFxRate
+      - side
+      - state
+      - type
+      type: object
+    ExecutionRequest:
+      additionalProperties: false
+      description: A request to create or update a Execution.
+      example:
+        side: side
+        quantity: 0.8008281904610115
+        placementId:
+          code: code
+          scope: scope
+        settlementCurrencyFxRate: 6.027456183070403
+        instrumentIdentifiers:
+          key: instrumentIdentifiers
+        settlementDate: 2000-01-23T04:56:07.000+00:00
+        type: type
+        createdDate: 2000-01-23T04:56:07.000+00:00
+        settlementCurrency: settlementCurrency
+        price:
+          amount: 1.4658129805029452
+          currency: currency
+        counterparty: counterparty
+        id:
+          code: code
+          scope: scope
+        state: state
+        averagePrice: 1.4658129805029452
+        properties:
+          key:
+            value:
+              metricValue:
+                unit: unit
+                value: 6.027456183070403
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
+      properties:
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        placementId:
+          $ref: '#/components/schemas/ResourceId'
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          description: Client-defined properties associated with this execution.
+          nullable: true
+          type: object
+        instrumentIdentifiers:
+          additionalProperties:
+            type: string
+          description: The instrument ordered.
+          type: object
+        quantity:
+          description: The quantity of given instrument ordered.
+          format: double
+          type: number
+        state:
+          description: The state of this execution (typically a FIX state; Open, Filled,
+            etc).
+          type: string
+        side:
+          description: The side (Buy, Sell, ...) of this execution.
+          type: string
+        type:
+          description: The type of this execution (Market, Limit, etc).
+          type: string
+        createdDate:
+          description: The active date of this execution.
+          format: date-time
+          type: string
+        settlementDate:
+          description: The (optional) settlement date for this execution
+          format: date-time
+          nullable: true
+          type: string
+        price:
+          $ref: '#/components/schemas/CurrencyAndAmount'
+        settlementCurrency:
+          description: The execution's settlement currency.
+          type: string
+        settlementCurrencyFxRate:
+          description: The exectuion's settlement currency rate.
+          format: double
+          type: number
+        counterparty:
+          description: The market entity this placement is placed with.
+          type: string
+        averagePrice:
+          description: The average price of all executions for a given placement at
+            the time of upsert
+          format: double
+          nullable: true
+          type: number
+      required:
+      - counterparty
+      - createdDate
+      - id
+      - instrumentIdentifiers
+      - placementId
+      - price
+      - quantity
+      - settlementCurrency
+      - settlementCurrencyFxRate
+      - side
+      - state
+      - type
+      type: object
+    ExecutionSetRequest:
+      additionalProperties: false
+      description: A request to create or update multiple Executions.
+      example:
+        requests:
+        - side: side
+          quantity: 0.8008281904610115
+          placementId:
+            code: code
+            scope: scope
+          settlementCurrencyFxRate: 6.027456183070403
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          settlementDate: 2000-01-23T04:56:07.000+00:00
+          type: type
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          settlementCurrency: settlementCurrency
+          price:
+            amount: 1.4658129805029452
+            currency: currency
+          counterparty: counterparty
+          id:
+            code: code
+            scope: scope
+          state: state
+          averagePrice: 1.4658129805029452
+          properties:
+            key:
+              value:
+                metricValue:
+                  unit: unit
+                  value: 6.027456183070403
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+        - side: side
+          quantity: 0.8008281904610115
+          placementId:
+            code: code
+            scope: scope
+          settlementCurrencyFxRate: 6.027456183070403
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          settlementDate: 2000-01-23T04:56:07.000+00:00
+          type: type
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          settlementCurrency: settlementCurrency
+          price:
+            amount: 1.4658129805029452
+            currency: currency
+          counterparty: counterparty
+          id:
+            code: code
+            scope: scope
+          state: state
+          averagePrice: 1.4658129805029452
+          properties:
+            key:
+              value:
+                metricValue:
+                  unit: unit
+                  value: 6.027456183070403
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+      properties:
+        requests:
+          description: A collection of ExecutionRequests.
+          items:
+            $ref: '#/components/schemas/ExecutionRequest'
+          nullable: true
+          type: array
+      type: object
     ExpandedGroup:
       additionalProperties: false
       example:
@@ -41978,6 +42971,143 @@ components:
           description: The resources to list.
           items:
             $ref: '#/components/schemas/DataTypeSummary'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
+    PagedResourceListOfExecution:
+      additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - side: side
+          quantity: 0.8008281904610115
+          placementId:
+            code: code
+            scope: scope
+          settlementCurrencyFxRate: 6.027456183070403
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          settlementDate: 2000-01-23T04:56:07.000+00:00
+          type: type
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          settlementCurrency: settlementCurrency
+          price:
+            amount: 1.4658129805029452
+            currency: currency
+          counterparty: counterparty
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          state: state
+          averagePrice: 1.4658129805029452
+          lusidInstrumentId: lusidInstrumentId
+          properties:
+            key:
+              value:
+                metricValue:
+                  unit: unit
+                  value: 6.027456183070403
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+        - side: side
+          quantity: 0.8008281904610115
+          placementId:
+            code: code
+            scope: scope
+          settlementCurrencyFxRate: 6.027456183070403
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          settlementDate: 2000-01-23T04:56:07.000+00:00
+          type: type
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          settlementCurrency: settlementCurrency
+          price:
+            amount: 1.4658129805029452
+            currency: currency
+          counterparty: counterparty
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          state: state
+          averagePrice: 1.4658129805029452
+          lusidInstrumentId: lusidInstrumentId
+          properties:
+            key:
+              value:
+                metricValue:
+                  unit: unit
+                  value: 6.027456183070403
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/Execution'
           type: array
         href:
           description: The URI of the resource list.
@@ -46586,6 +47716,143 @@ components:
           description: The resources to list.
           items:
             $ref: '#/components/schemas/DataType'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
+    ResourceListOfExecution:
+      additionalProperties: false
+      description: A collection of resources that can be returned from requests.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - side: side
+          quantity: 0.8008281904610115
+          placementId:
+            code: code
+            scope: scope
+          settlementCurrencyFxRate: 6.027456183070403
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          settlementDate: 2000-01-23T04:56:07.000+00:00
+          type: type
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          settlementCurrency: settlementCurrency
+          price:
+            amount: 1.4658129805029452
+            currency: currency
+          counterparty: counterparty
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          state: state
+          averagePrice: 1.4658129805029452
+          lusidInstrumentId: lusidInstrumentId
+          properties:
+            key:
+              value:
+                metricValue:
+                  unit: unit
+                  value: 6.027456183070403
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+        - side: side
+          quantity: 0.8008281904610115
+          placementId:
+            code: code
+            scope: scope
+          settlementCurrencyFxRate: 6.027456183070403
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          settlementDate: 2000-01-23T04:56:07.000+00:00
+          type: type
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          createdDate: 2000-01-23T04:56:07.000+00:00
+          settlementCurrency: settlementCurrency
+          price:
+            amount: 1.4658129805029452
+            currency: currency
+          counterparty: counterparty
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          state: state
+          averagePrice: 1.4658129805029452
+          lusidInstrumentId: lusidInstrumentId
+          properties:
+            key:
+              value:
+                metricValue:
+                  unit: unit
+                  value: 6.027456183070403
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/Execution'
           type: array
         href:
           description: The URI of the resource list.
@@ -53078,7 +54345,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
