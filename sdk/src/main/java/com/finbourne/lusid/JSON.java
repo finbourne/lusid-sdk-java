@@ -53,11 +53,387 @@ public class JSON {
     @SuppressWarnings("unchecked")
     public static GsonBuilder createGson() {
         GsonFireBuilder fireBuilder = new GsonFireBuilder()
+                .registerTypeSelector(Basket.class, new TypeSelector<Basket>() {
+                    @Override
+                    public Class<? extends Basket> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("Basket", Basket.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(Bond.class, new TypeSelector<Bond>() {
+                    @Override
+                    public Class<? extends Bond> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("Bond", Bond.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(CapFloor.class, new TypeSelector<CapFloor>() {
+                    @Override
+                    public Class<? extends CapFloor> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("CapFloor", CapFloor.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(CashPerpetual.class, new TypeSelector<CashPerpetual>() {
+                    @Override
+                    public Class<? extends CashPerpetual> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("CashPerpetual", CashPerpetual.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(CdsIndex.class, new TypeSelector<CdsIndex>() {
+                    @Override
+                    public Class<? extends CdsIndex> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("CdsIndex", CdsIndex.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(ComplexBond.class, new TypeSelector<ComplexBond>() {
+                    @Override
+                    public Class<? extends ComplexBond> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("ComplexBond", ComplexBond.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
                 .registerTypeSelector(ComplexMarketData.class, new TypeSelector<ComplexMarketData>() {
                     @Override
                     public Class<? extends ComplexMarketData> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("CreditSpreadCurveData", CreditSpreadCurveData.class);
+                        classByDiscriminatorValue.put("DiscountFactorCurveData", DiscountFactorCurveData.class);
+                        classByDiscriminatorValue.put("EquityCurveByPricesData", EquityCurveByPricesData.class);
+                        classByDiscriminatorValue.put("EquityVolSurfaceData", EquityVolSurfaceData.class);
+                        classByDiscriminatorValue.put("FxForwardCurveByQuoteReference", FxForwardCurveByQuoteReference.class);
+                        classByDiscriminatorValue.put("FxForwardCurveData", FxForwardCurveData.class);
+                        classByDiscriminatorValue.put("FxForwardPipsCurveData", FxForwardPipsCurveData.class);
+                        classByDiscriminatorValue.put("FxForwardTenorCurveData", FxForwardTenorCurveData.class);
+                        classByDiscriminatorValue.put("FxForwardTenorPipsCurveData", FxForwardTenorPipsCurveData.class);
+                        classByDiscriminatorValue.put("FxVolSurfaceData", FxVolSurfaceData.class);
+                        classByDiscriminatorValue.put("IrVolCubeData", IrVolCubeData.class);
+                        classByDiscriminatorValue.put("OpaqueMarketData", OpaqueMarketData.class);
+                        classByDiscriminatorValue.put("YieldCurveData", YieldCurveData.class);
                         classByDiscriminatorValue.put("ComplexMarketData", ComplexMarketData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(ContractForDifference.class, new TypeSelector<ContractForDifference>() {
+                    @Override
+                    public Class<? extends ContractForDifference> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("ContractForDifference", ContractForDifference.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(CreditDefaultSwap.class, new TypeSelector<CreditDefaultSwap>() {
+                    @Override
+                    public Class<? extends CreditDefaultSwap> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("CreditDefaultSwap", CreditDefaultSwap.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(CreditSpreadCurveData.class, new TypeSelector<CreditSpreadCurveData>() {
+                    @Override
+                    public Class<? extends CreditSpreadCurveData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("CreditSpreadCurveData", CreditSpreadCurveData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(DiscountFactorCurveData.class, new TypeSelector<DiscountFactorCurveData>() {
+                    @Override
+                    public Class<? extends DiscountFactorCurveData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("DiscountFactorCurveData", DiscountFactorCurveData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(EmptyModelOptions.class, new TypeSelector<EmptyModelOptions>() {
+                    @Override
+                    public Class<? extends EmptyModelOptions> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("EmptyModelOptions", EmptyModelOptions.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "modelOptionsType"));
+                    }
+          })
+                .registerTypeSelector(Equity.class, new TypeSelector<Equity>() {
+                    @Override
+                    public Class<? extends Equity> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("Equity", Equity.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(EquityCurveByPricesData.class, new TypeSelector<EquityCurveByPricesData>() {
+                    @Override
+                    public Class<? extends EquityCurveByPricesData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("EquityCurveByPricesData", EquityCurveByPricesData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(EquityModelOptions.class, new TypeSelector<EquityModelOptions>() {
+                    @Override
+                    public Class<? extends EquityModelOptions> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("EquityModelOptions", EquityModelOptions.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "modelOptionsType"));
+                    }
+          })
+                .registerTypeSelector(EquityOption.class, new TypeSelector<EquityOption>() {
+                    @Override
+                    public Class<? extends EquityOption> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("EquityOption", EquityOption.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(EquitySwap.class, new TypeSelector<EquitySwap>() {
+                    @Override
+                    public Class<? extends EquitySwap> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("EquitySwap", EquitySwap.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(EquityVolSurfaceData.class, new TypeSelector<EquityVolSurfaceData>() {
+                    @Override
+                    public Class<? extends EquityVolSurfaceData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("EquityVolSurfaceData", EquityVolSurfaceData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(ExchangeTradedOption.class, new TypeSelector<ExchangeTradedOption>() {
+                    @Override
+                    public Class<? extends ExchangeTradedOption> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("ExchangeTradedOption", ExchangeTradedOption.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(ExoticInstrument.class, new TypeSelector<ExoticInstrument>() {
+                    @Override
+                    public Class<? extends ExoticInstrument> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("ExoticInstrument", ExoticInstrument.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(FixedLeg.class, new TypeSelector<FixedLeg>() {
+                    @Override
+                    public Class<? extends FixedLeg> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FixedLeg", FixedLeg.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(FloatingLeg.class, new TypeSelector<FloatingLeg>() {
+                    @Override
+                    public Class<? extends FloatingLeg> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FloatingLeg", FloatingLeg.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(ForwardRateAgreement.class, new TypeSelector<ForwardRateAgreement>() {
+                    @Override
+                    public Class<? extends ForwardRateAgreement> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("ForwardRateAgreement", ForwardRateAgreement.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(FundingLeg.class, new TypeSelector<FundingLeg>() {
+                    @Override
+                    public Class<? extends FundingLeg> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FundingLeg", FundingLeg.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(Future.class, new TypeSelector<Future>() {
+                    @Override
+                    public Class<? extends Future> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("Future", Future.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(FxForward.class, new TypeSelector<FxForward>() {
+                    @Override
+                    public Class<? extends FxForward> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FxForward", FxForward.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(FxForwardCurveByQuoteReference.class, new TypeSelector<FxForwardCurveByQuoteReference>() {
+                    @Override
+                    public Class<? extends FxForwardCurveByQuoteReference> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FxForwardCurveByQuoteReference", FxForwardCurveByQuoteReference.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(FxForwardCurveData.class, new TypeSelector<FxForwardCurveData>() {
+                    @Override
+                    public Class<? extends FxForwardCurveData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FxForwardCurveData", FxForwardCurveData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(FxForwardModelOptions.class, new TypeSelector<FxForwardModelOptions>() {
+                    @Override
+                    public Class<? extends FxForwardModelOptions> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FxForwardModelOptions", FxForwardModelOptions.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "modelOptionsType"));
+                    }
+          })
+                .registerTypeSelector(FxForwardPipsCurveData.class, new TypeSelector<FxForwardPipsCurveData>() {
+                    @Override
+                    public Class<? extends FxForwardPipsCurveData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FxForwardPipsCurveData", FxForwardPipsCurveData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(FxForwardTenorCurveData.class, new TypeSelector<FxForwardTenorCurveData>() {
+                    @Override
+                    public Class<? extends FxForwardTenorCurveData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FxForwardTenorCurveData", FxForwardTenorCurveData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(FxForwardTenorPipsCurveData.class, new TypeSelector<FxForwardTenorPipsCurveData>() {
+                    @Override
+                    public Class<? extends FxForwardTenorPipsCurveData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FxForwardTenorPipsCurveData", FxForwardTenorPipsCurveData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(FxOption.class, new TypeSelector<FxOption>() {
+                    @Override
+                    public Class<? extends FxOption> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FxOption", FxOption.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(FxSwap.class, new TypeSelector<FxSwap>() {
+                    @Override
+                    public Class<? extends FxSwap> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FxSwap", FxSwap.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(FxVolSurfaceData.class, new TypeSelector<FxVolSurfaceData>() {
+                    @Override
+                    public Class<? extends FxVolSurfaceData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FxVolSurfaceData", FxVolSurfaceData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(IndexModelOptions.class, new TypeSelector<IndexModelOptions>() {
+                    @Override
+                    public Class<? extends IndexModelOptions> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("IndexModelOptions", IndexModelOptions.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "modelOptionsType"));
+                    }
+          })
+                .registerTypeSelector(InflationLinkedBond.class, new TypeSelector<InflationLinkedBond>() {
+                    @Override
+                    public Class<? extends InflationLinkedBond> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("InflationLinkedBond", InflationLinkedBond.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(InstrumentLeg.class, new TypeSelector<InstrumentLeg>() {
+                    @Override
+                    public Class<? extends InstrumentLeg> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("FixedLeg", FixedLeg.class);
+                        classByDiscriminatorValue.put("FloatingLeg", FloatingLeg.class);
+                        classByDiscriminatorValue.put("FundingLeg", FundingLeg.class);
+                        classByDiscriminatorValue.put("InstrumentLeg", InstrumentLeg.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(InterestRateSwap.class, new TypeSelector<InterestRateSwap>() {
+                    @Override
+                    public Class<? extends InterestRateSwap> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("InterestRateSwap", InterestRateSwap.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(InterestRateSwaption.class, new TypeSelector<InterestRateSwaption>() {
+                    @Override
+                    public Class<? extends InterestRateSwaption> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("InterestRateSwaption", InterestRateSwaption.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(IrVolCubeData.class, new TypeSelector<IrVolCubeData>() {
+                    @Override
+                    public Class<? extends IrVolCubeData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("IrVolCubeData", IrVolCubeData.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "marketDataType"));
                     }
@@ -66,6 +442,35 @@ public class JSON {
                     @Override
                     public Class<? extends LusidInstrument> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("Basket", Basket.class);
+                        classByDiscriminatorValue.put("Bond", Bond.class);
+                        classByDiscriminatorValue.put("CapFloor", CapFloor.class);
+                        classByDiscriminatorValue.put("CashPerpetual", CashPerpetual.class);
+                        classByDiscriminatorValue.put("CdsIndex", CdsIndex.class);
+                        classByDiscriminatorValue.put("ComplexBond", ComplexBond.class);
+                        classByDiscriminatorValue.put("ContractForDifference", ContractForDifference.class);
+                        classByDiscriminatorValue.put("CreditDefaultSwap", CreditDefaultSwap.class);
+                        classByDiscriminatorValue.put("Equity", Equity.class);
+                        classByDiscriminatorValue.put("EquityOption", EquityOption.class);
+                        classByDiscriminatorValue.put("EquitySwap", EquitySwap.class);
+                        classByDiscriminatorValue.put("ExchangeTradedOption", ExchangeTradedOption.class);
+                        classByDiscriminatorValue.put("ExoticInstrument", ExoticInstrument.class);
+                        classByDiscriminatorValue.put("FixedLeg", FixedLeg.class);
+                        classByDiscriminatorValue.put("FloatingLeg", FloatingLeg.class);
+                        classByDiscriminatorValue.put("ForwardRateAgreement", ForwardRateAgreement.class);
+                        classByDiscriminatorValue.put("FundingLeg", FundingLeg.class);
+                        classByDiscriminatorValue.put("Future", Future.class);
+                        classByDiscriminatorValue.put("FxForward", FxForward.class);
+                        classByDiscriminatorValue.put("FxOption", FxOption.class);
+                        classByDiscriminatorValue.put("FxSwap", FxSwap.class);
+                        classByDiscriminatorValue.put("InflationLinkedBond", InflationLinkedBond.class);
+                        classByDiscriminatorValue.put("InstrumentLeg", InstrumentLeg.class);
+                        classByDiscriminatorValue.put("InterestRateSwap", InterestRateSwap.class);
+                        classByDiscriminatorValue.put("InterestRateSwaption", InterestRateSwaption.class);
+                        classByDiscriminatorValue.put("ReferenceInstrument", ReferenceInstrument.class);
+                        classByDiscriminatorValue.put("Repo", Repo.class);
+                        classByDiscriminatorValue.put("SimpleInstrument", SimpleInstrument.class);
+                        classByDiscriminatorValue.put("TermDeposit", TermDeposit.class);
                         classByDiscriminatorValue.put("LusidInstrument", LusidInstrument.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "instrumentType"));
@@ -75,18 +480,115 @@ public class JSON {
                     @Override
                     public Class<? extends ModelOptions> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("EmptyModelOptions", EmptyModelOptions.class);
+                        classByDiscriminatorValue.put("EquityModelOptions", EquityModelOptions.class);
+                        classByDiscriminatorValue.put("FxForwardModelOptions", FxForwardModelOptions.class);
+                        classByDiscriminatorValue.put("IndexModelOptions", IndexModelOptions.class);
+                        classByDiscriminatorValue.put("OpaqueModelOptions", OpaqueModelOptions.class);
                         classByDiscriminatorValue.put("ModelOptions", ModelOptions.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "modelOptionsType"));
+                    }
+          })
+                .registerTypeSelector(OpaqueMarketData.class, new TypeSelector<OpaqueMarketData>() {
+                    @Override
+                    public Class<? extends OpaqueMarketData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("OpaqueMarketData", OpaqueMarketData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
+                    }
+          })
+                .registerTypeSelector(OpaqueModelOptions.class, new TypeSelector<OpaqueModelOptions>() {
+                    @Override
+                    public Class<? extends OpaqueModelOptions> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("OpaqueModelOptions", OpaqueModelOptions.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "modelOptionsType"));
+                    }
+          })
+                .registerTypeSelector(PortfolioResultDataKeyRule.class, new TypeSelector<PortfolioResultDataKeyRule>() {
+                    @Override
+                    public Class<? extends PortfolioResultDataKeyRule> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("PortfolioResultDataKeyRule", PortfolioResultDataKeyRule.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "resultKeyRuleType"));
+                    }
+          })
+                .registerTypeSelector(ReferenceInstrument.class, new TypeSelector<ReferenceInstrument>() {
+                    @Override
+                    public Class<? extends ReferenceInstrument> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("ReferenceInstrument", ReferenceInstrument.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(Repo.class, new TypeSelector<Repo>() {
+                    @Override
+                    public Class<? extends Repo> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("Repo", Repo.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(ResultDataKeyRule.class, new TypeSelector<ResultDataKeyRule>() {
+                    @Override
+                    public Class<? extends ResultDataKeyRule> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("ResultDataKeyRule", ResultDataKeyRule.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "resultKeyRuleType"));
                     }
           })
                 .registerTypeSelector(ResultKeyRule.class, new TypeSelector<ResultKeyRule>() {
                     @Override
                     public Class<? extends ResultKeyRule> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("PortfolioResultDataKeyRule", PortfolioResultDataKeyRule.class);
+                        classByDiscriminatorValue.put("ResultDataKeyRule", ResultDataKeyRule.class);
                         classByDiscriminatorValue.put("ResultKeyRule", ResultKeyRule.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "resultKeyRuleType"));
+                    }
+          })
+                .registerTypeSelector(Schedule.class, new TypeSelector<Schedule>() {
+                    @Override
+                    public Class<? extends Schedule> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("Schedule", Schedule.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "scheduleType"));
+                    }
+          })
+                .registerTypeSelector(SimpleInstrument.class, new TypeSelector<SimpleInstrument>() {
+                    @Override
+                    public Class<? extends SimpleInstrument> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("SimpleInstrument", SimpleInstrument.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(TermDeposit.class, new TypeSelector<TermDeposit>() {
+                    @Override
+                    public Class<? extends TermDeposit> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("TermDeposit", TermDeposit.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "instrumentType"));
+                    }
+          })
+                .registerTypeSelector(YieldCurveData.class, new TypeSelector<YieldCurveData>() {
+                    @Override
+                    public Class<? extends YieldCurveData> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("YieldCurveData", YieldCurveData.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "marketDataType"));
                     }
           })
         ;

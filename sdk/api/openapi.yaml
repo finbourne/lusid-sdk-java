@@ -36012,6 +36012,66 @@ components:
           nullable: true
           type: array
       type: object
+    Barrier:
+      additionalProperties: false
+      description: Barrier class for exotic FxOption
+      properties:
+        direction:
+          description: 'Supported string (enumeration) values are: [Down, Up].'
+          type: string
+        level:
+          description: Trigger level, which the underlying should (or should not)
+            cross/touch.
+          format: double
+          type: number
+        monitoring:
+          description: 'Supported string (enumeration) values are: [European, Bermudan,
+            American].'
+          nullable: true
+          type: string
+        type:
+          description: 'Supported string (enumeration) values are: [Knockin, Knockout].'
+          type: string
+      required:
+      - direction
+      - level
+      - type
+      type: object
+    Basket:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/Basket_allOf'
+      description: LUSID representation of a basket of instruments.
+    BasketIdentifier:
+      additionalProperties: false
+      description: Descriptive information that describes a particular basket of instruments.
+        Most commonly required with a CDS Index or similarly defined instrument.
+      properties:
+        index:
+          description: Index set, e.g. iTraxx or CDX.
+          type: string
+        name:
+          description: The index name within the set, e.g. "MAIN" or "Crossover".
+          type: string
+        region:
+          description: Applicable geographic country or region. Typically something
+            like "Europe", "Asia ex-Japan", "Japan" or "Australia".
+          type: string
+        seriesId:
+          description: The series identifier.
+          format: int32
+          type: integer
+      required:
+      - index
+      - name
+      - region
+      - seriesId
+      type: object
+    Bond:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/Bond_allOf'
+      description: LUSID representation of a Vanilla Fixed Rate Bond.
     Calendar:
       additionalProperties: false
       example:
@@ -36134,6 +36194,11 @@ components:
       - toUtc
       - type
       type: object
+    CapFloor:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/CapFloor_allOf'
+      description: LUSID representation of Cap, Floor, or Collar.
     CashLadderRecord:
       additionalProperties: false
       example:
@@ -36161,6 +36226,135 @@ components:
       - activities
       - close
       - open
+      type: object
+    CashPerpetual:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/CashPerpetual_allOf'
+      description: LUSID representation of a Perpetual Cash Flow.
+    CdsFlowConventions:
+      additionalProperties: false
+      properties:
+        rollFrequency:
+          description: The frequency at which the reference bonds are updated, this
+            defaults to 6M, but can be 3M, exp for historically issued products
+          maxLength: 16
+          minLength: 0
+          nullable: true
+          type: string
+        currency:
+          description: Currency of the flow convention.
+          type: string
+        paymentFrequency:
+          description: "When generating a multiperiod flow, or when the maturity of\
+            \ the flow is not given but the start date is,\r\nthe tenor is the time-step\
+            \ from the anchor-date to the nominal maturity of the flow prior to any\
+            \ adjustment."
+          maxLength: 50
+          minLength: 0
+          type: string
+        dayCountConvention:
+          description: "when calculating the fraction of a year between two dates,\
+            \ what convention is used to represent the number of days in a year\r\n\
+            and difference between them.\r\nFor more information on day counts, see\
+            \ [knowledge base article KA-01798](https://support.lusid.com/knowledgebase/article/KA-01798)\r\
+            \n            \r\nSupported string (enumeration) values are: [Actual360,\
+            \ Act360, MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond,\
+            \ ThirtyE360, EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma,\
+            \ ActActIcma, OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252,\
+            \ NL360, NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda,\
+            \ ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM]."
+          maxLength: 50
+          minLength: 0
+          type: string
+        rollConvention:
+          description: "When generating a set of dates, what convention should be\
+            \ used for adjusting dates that coincide with a non-business day.\r\n\r\
+            \nSupported string (enumeration) values are: [NoAdjustment, None, Previous,\
+            \ P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, EndOfMonth,\
+            \ EOM, EndOfMonthPrevious, EOMP, EndOfMonthFollowing, EOMF, HalfMonthModifiedFollowing]."
+          maxLength: 50
+          minLength: 0
+          type: string
+        paymentCalendars:
+          description: An array of strings denoting holiday calendars that apply to
+            generation of payment schedules.
+          items:
+            type: string
+          type: array
+        resetCalendars:
+          description: An array of strings denoting holiday calendars that apply to
+            generation of reset schedules.
+          items:
+            type: string
+          type: array
+        settleDays:
+          description: Number of Good Business Days between the trade date and the
+            effective or settlement date of the instrument.
+          format: int32
+          type: integer
+        resetDays:
+          description: The number of Good Business Days between determination and
+            payment of reset.
+          format: int32
+          type: integer
+        scope:
+          description: The scope used when updating or inserting the convention.
+          maxLength: 256
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        code:
+          description: The code of the convention.
+          maxLength: 256
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+      required:
+      - currency
+      - dayCountConvention
+      - paymentCalendars
+      - paymentFrequency
+      - resetCalendars
+      - resetDays
+      - rollConvention
+      - settleDays
+      type: object
+    CdsIndex:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/CdsIndex_allOf'
+      description: LUSID representation of a Credit Default Swap Index (CDX).
+    CdsProtectionDetailSpecification:
+      additionalProperties: false
+      description: "CDSs generally conform to fairly standard definitions, but can\
+        \ be tweaked in a number of different ways.\r\nThis class gathers a number\
+        \ of common features which may deviate. These will default to the market standard\
+        \ when\r\nno overrides are provided."
+      properties:
+        seniority:
+          description: "The seniority level of the CDS.\r\n\r\nSupported string (enumeration)\
+            \ values are: [SNR, SUB, JRSUBUT2, PREFT1, SECDOM, SNRFOR, SUBLT2]."
+          type: string
+        restructuringType:
+          description: "The restructuring clause.\r\nSupported string (enumeration)\
+            \ values are: [CR, MR, MM, XR]."
+          type: string
+        protectStartDay:
+          description: Does the protection leg pay out in the case of default on the
+            start date.
+          type: boolean
+        payAccruedInterestOnDefault:
+          description: Should accrued interest on the premium leg be paid if a credit
+            event occurs.
+          type: boolean
+      required:
+      - payAccruedInterestOnDefault
+      - protectStartDay
+      - restructuringType
+      - seniority
       type: object
     Change:
       additionalProperties: false
@@ -36554,6 +36748,12 @@ components:
       - sourceEntity
       - targetEntity
       type: object
+    ComplexBond:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/ComplexBond_allOf'
+      description: "LUSID representation of a Complex Bond.\r\nIncluding Floating,\
+        \ Callable, Puttable, Sinkable, and Fixed-to-float."
     ComplexMarketData:
       additionalProperties: false
       description: "Base class for representing complex market data in LUSID.\r\n\
@@ -36637,6 +36837,39 @@ components:
           type: string
       required:
       - provider
+      type: object
+    Compounding:
+      additionalProperties: false
+      description: The compounding settings used on interest rate.
+      properties:
+        calculationShiftMethod:
+          description: "Defines which resets and day counts are used for the rate\
+            \ calculation\r\n\r\nSupported string (enumeration) values are: [Lookback,\
+            \ NoShift, ObservationPeriodShift, Lockout]."
+          nullable: true
+          type: string
+        compoundingMethod:
+          description: "If the interest rate is simple or compounded.\r\n\r\nSupported\
+            \ string (enumeration) values are: [Average, Compounded]."
+          type: string
+        resetFrequency:
+          description: The interest payment frequency.
+          type: string
+        shift:
+          description: Defines the number of days to lockout or shift observation
+            period by - should be a non-negative integer
+          format: int32
+          type: integer
+        spreadCompoundingMethod:
+          description: "Defines how the computed leg spread is applied to compounded\
+            \ rate.\r\nIt applies only when CompoundingMethod = ‘Compounded‘.\r\n\r\
+            \nSupported string (enumeration) values are: [Straight, IsdaCompounding,\
+            \ NoCompounding, SpreadExclusive, IsdaFlatCompounding, Flat, None]."
+          type: string
+      required:
+      - compoundingMethod
+      - resetFrequency
+      - spreadCompoundingMethod
       type: object
     ConfigurationRecipe:
       additionalProperties: false
@@ -37086,6 +37319,11 @@ components:
           nullable: true
           type: array
       type: object
+    ContractForDifference:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/ContractForDifference_allOf'
+      description: LUSID representation of a Contract for Difference.
     CorporateAction:
       additionalProperties: false
       description: A corporate action
@@ -38472,6 +38710,11 @@ components:
       - description
       - displayName
       type: object
+    CreditDefaultSwap:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/CreditDefaultSwap_allOf'
+      description: LUSID representation of a Credit Default Swap (CDS).
     CreditRating:
       additionalProperties: false
       description: "Object describing a credit rating,\r\nwhich assesses the stability\
@@ -38499,6 +38742,11 @@ components:
       - rating
       - ratingSource
       type: object
+    CreditSpreadCurveData:
+      allOf:
+      - $ref: '#/components/schemas/ComplexMarketData'
+      - $ref: '#/components/schemas/CreditSpreadCurveData_allOf'
+      description: A credit spread curve matching tenors against par spread quotes
     CurrencyAndAmount:
       additionalProperties: false
       description: An amount of a specific currency, specifying a value and an associated
@@ -39024,6 +39272,15 @@ components:
           nullable: true
           type: string
       type: object
+    DiscountFactorCurveData:
+      allOf:
+      - $ref: '#/components/schemas/ComplexMarketData'
+      - $ref: '#/components/schemas/DiscountFactorCurveData_allOf'
+      description: A curve containing discount factors and dates to which they apply
+    EmptyModelOptions:
+      allOf:
+      - $ref: '#/components/schemas/ModelOptions'
+      - $ref: '#/components/schemas/EmptyModelOptions_allOf'
     EntityIdentifier:
       additionalProperties: false
       description: Dto to expose mapped keys to new standardised format
@@ -39046,6 +39303,38 @@ components:
       - identifierType
       - identifierValue
       type: object
+    Equity:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/Equity_allOf'
+      description: LUSID representation of an Equity.
+    EquityCurveByPricesData:
+      allOf:
+      - $ref: '#/components/schemas/ComplexMarketData'
+      - $ref: '#/components/schemas/EquityCurveByPricesData_allOf'
+      description: Contains data (i.e. dates and prices + metadata) for building Equity
+        curves
+    EquityModelOptions:
+      allOf:
+      - $ref: '#/components/schemas/ModelOptions'
+      - $ref: '#/components/schemas/EquityModelOptions_allOf'
+      description: Model options for equity related pricing.
+    EquityOption:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/EquityOption_allOf'
+      description: LUSID representation of a plain vanilla OTC Equity Option.
+    EquitySwap:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/EquitySwap_allOf'
+      description: LUSID representation of an Equity Swap.
+    EquityVolSurfaceData:
+      allOf:
+      - $ref: '#/components/schemas/ComplexMarketData'
+      - $ref: '#/components/schemas/EquityVolSurfaceData_allOf'
+      description: Market Data for an equity vol surface, represented by a list of
+        instruments and corresponding market quotes
     ErrorDetail:
       additionalProperties: false
       example:
@@ -39077,6 +39366,88 @@ components:
             type: object
           nullable: true
           type: array
+      type: object
+    ExchangeTradedOption:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/ExchangeTradedOption_allOf'
+      description: "LUSID representation of an Exchange Traded Option.\r\nIncluding,\
+        \ but not limited to, Equity Options, Bond Options, Index Options, Future\
+        \ Options, and Interest Rate Options."
+    ExchangeTradedOptionContractDetails:
+      additionalProperties: false
+      description: "Most, if not all, information about contracts is standardised.\
+        \ See, e.g. https://www.cmegroup.com/ for\r\ncommon codes and similar data.\
+        \ This appears to be in common use by well known market information providers,\
+        \ e.g. Bloomberg and Refinitiv.\r\nThere is a lot of overlap with this and\
+        \ FuturesContractDetails but as that is an established DTO we must duplicate\
+        \ a number of fields here"
+      properties:
+        domCcy:
+          description: Currency in which the contract is paid.
+          type: string
+        strike:
+          description: The option strike, this can be negative for some options.
+          format: double
+          type: number
+        contractSize:
+          description: Size of a single contract. By default this should be set to
+            1000 if otherwise unknown and is defaulted to such.
+          format: double
+          type: number
+        country:
+          description: Country (code) for the exchange.
+          type: string
+        deliveryType:
+          description: "The delivery type, cash or physical. An option on a future\
+            \ is physically settled if upon exercising the\r\nholder receives a future.\r\
+            \n\r\nSupported string (enumeration) values are: [Cash, Physical]."
+          type: string
+        description:
+          description: Description of contract
+          type: string
+        exchangeCode:
+          description: "Exchange code for contract\r\n\r\nSupported string (enumeration)\
+            \ values are: [ASX, CBOT, CBF, CME, CMX, EOP, HKG, KFE, MFM, OSE, SGX,\
+            \ NYBOT, KCBT, MGE, MATIF, SFE, NYFE, NYM, LIFFE, EUREX, ICE, MSE, NASDAQ,\
+            \ EEX, LME, MIL, MEXDER]."
+          type: string
+        exerciseDate:
+          description: Exercise Date.
+          format: date-time
+          type: string
+        exerciseType:
+          description: "The exercise type, European, American or Bermudan.\r\n\r\n\
+            Supported string (enumeration) values are: [European, Bermudan, American]."
+          type: string
+        optionCode:
+          description: Option Contract Code, typically one or two letters, e.g. OG
+            => Option on Gold.
+          type: string
+        optionType:
+          description: "The option type, Call or Put.\r\n\r\nSupported string (enumeration)\
+            \ values are: [Call, Put]."
+          type: string
+        underlying:
+          $ref: '#/components/schemas/LusidInstrument'
+        underlyingCode:
+          description: Code of the underlying, for an option on futures this should
+            be the futures code.
+          type: string
+      required:
+      - contractSize
+      - country
+      - deliveryType
+      - description
+      - domCcy
+      - exchangeCode
+      - exerciseDate
+      - exerciseType
+      - optionCode
+      - optionType
+      - strike
+      - underlying
+      - underlyingCode
       type: object
     Execution:
       additionalProperties: false
@@ -39399,6 +39770,12 @@ components:
           nullable: true
           type: array
       type: object
+    ExoticInstrument:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/ExoticInstrument_allOf'
+      description: LUSID representation of a generic OTC Exotic Instrument that is
+        not fully defined within other LUSID models.
     ExpandedGroup:
       additionalProperties: false
       example:
@@ -39685,6 +40062,297 @@ components:
           nullable: true
           type: string
       type: object
+    FixedLeg:
+      allOf:
+      - $ref: '#/components/schemas/InstrumentLeg'
+      - $ref: '#/components/schemas/FixedLeg_allOf'
+      description: LUSID representation of a Fixed Rate Leg.
+    FloatingLeg:
+      allOf:
+      - $ref: '#/components/schemas/InstrumentLeg'
+      - $ref: '#/components/schemas/FloatingLeg_allOf'
+      description: LUSID representation of a Floating Rate Leg.
+    FlowConventionName:
+      additionalProperties: false
+      description: Representation of an abstract definition of a flow convention set
+        consisting of currency, tenor and an index name (arbitrary string but likely
+        something like "IBOR").
+      properties:
+        currency:
+          description: Currency of the flow convention name.
+          type: string
+        indexName:
+          description: The index, if present, that is required. e.g. "IBOR", "OIS"
+            or "SONIA".
+          nullable: true
+          type: string
+        tenor:
+          description: Tenor for the convention name.
+          type: string
+      required:
+      - currency
+      - tenor
+      type: object
+    FlowConventions:
+      additionalProperties: false
+      description: "A flow convention defines the specification for generation of\
+        \ the date schedule for a leg or set of cashflows.\r\nIt determines the tenor\
+        \ of these and, how to map the unadjusted set of dates to dates which are\
+        \ 'good business\r\ndays'. For example, if an unadjusted date falls on a Saturday\
+        \ or a bank holiday, should it be rolled forward\r\nor backward to obtain\
+        \ the adjusted date."
+      properties:
+        currency:
+          description: Currency of the flow convention.
+          type: string
+        paymentFrequency:
+          description: "When generating a multiperiod flow, or when the maturity of\
+            \ the flow is not given but the start date is,\r\nthe tenor is the time-step\
+            \ from the anchor-date to the nominal maturity of the flow prior to any\
+            \ adjustment."
+          maxLength: 50
+          minLength: 0
+          type: string
+        dayCountConvention:
+          description: "when calculating the fraction of a year between two dates,\
+            \ what convention is used to represent the number of days in a year\r\n\
+            and difference between them.\r\nFor more information on day counts, see\
+            \ [knowledge base article KA-01798](https://support.lusid.com/knowledgebase/article/KA-01798)\r\
+            \n            \r\nSupported string (enumeration) values are: [Actual360,\
+            \ Act360, MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond,\
+            \ ThirtyE360, EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma,\
+            \ ActActIcma, OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252,\
+            \ NL360, NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda,\
+            \ ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM]."
+          maxLength: 50
+          minLength: 0
+          type: string
+        rollConvention:
+          description: "When generating a set of dates, what convention should be\
+            \ used for adjusting dates that coincide with a non-business day.\r\n\r\
+            \nSupported string (enumeration) values are: [NoAdjustment, Previous,\
+            \ P, Following, F, ModifiedPrevious, MP, ModifiedFollowing, MF, HalfMonthModifiedFollowing]."
+          maxLength: 50
+          minLength: 0
+          type: string
+        paymentCalendars:
+          description: An array of strings denoting holiday calendars that apply to
+            generation of payment schedules.
+          items:
+            type: string
+          type: array
+        resetCalendars:
+          description: An array of strings denoting holiday calendars that apply to
+            generation of reset schedules.
+          items:
+            type: string
+          type: array
+        settleDays:
+          description: Number of Good Business Days between the trade date and the
+            effective or settlement date of the instrument.
+          format: int32
+          type: integer
+        resetDays:
+          description: The number of Good Business Days between determination and
+            payment of reset.
+          format: int32
+          type: integer
+        leapDaysIncluded:
+          description: "If this flag is set to true, the 29th of February is included\
+            \ in the date schedule when the business roll convention is applied.\r\
+            \nIf this flag is set to false, the business roll convention ignores February\
+            \ 29 for date schedules, cash flow payments etc.\r\nThis flag defaults\
+            \ to true if not specified, i.e., leap days are included in a date schedule\
+            \ generation."
+          nullable: true
+          type: boolean
+        scope:
+          description: The scope used when updating or inserting the convention.
+          maxLength: 256
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        code:
+          description: The code of the convention.
+          maxLength: 256
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+      required:
+      - currency
+      - dayCountConvention
+      - paymentCalendars
+      - paymentFrequency
+      - resetCalendars
+      - resetDays
+      - rollConvention
+      - settleDays
+      type: object
+    ForwardRateAgreement:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/ForwardRateAgreement_allOf'
+      description: LUSID representation of a Forward Rate Agreement.
+    FundingLeg:
+      allOf:
+      - $ref: '#/components/schemas/InstrumentLeg'
+      - $ref: '#/components/schemas/FundingLeg_allOf'
+      description: "LUSID representation of a Funding Leg with variable notional.\r\
+        \n\r\nThis Funding Leg is a hybrid between a single leg swap and a loan facility;\
+        \ the notional is not fixed and can vary within a reset period. \r\n     \
+        \       \r\nThe model can be used to represent the funding leg of a basket\
+        \ of instruments (e.g. equities) where the contents\r\nof the basket can change\
+        \ over time. The actual notional history is stored in the FundingLegHistory\
+        \ object. \r\n\r\nThe actual notional history is stored in the FundingLegHistory\
+        \ object.\r\n            \r\nThe main analytic calculated for this instrument\
+        \ is Accrual rather than PV."
+    Future:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/Future_allOf'
+      description: "LUSID representation of a Future.\r\nIncluding, but not limited\
+        \ to, Equity Futures, Bond Futures, Index Futures, Currency Futures, and Interest\
+        \ Rate Futures."
+    FuturesContractDetails:
+      additionalProperties: false
+      description: "Most, if not all, information about contracts is standardized.\
+        \ See, e.g. https://www.cmegroup.com/ for\r\ncommon codes and similar data.\
+        \ This appears to be in common use by well known market information providers,\
+        \ e.g. Bloomberg and Refinitiv."
+      properties:
+        domCcy:
+          description: Currency in which the contract is paid.
+          type: string
+        fgnCcy:
+          description: Currency of the underlying, for use with FX Futures
+          nullable: true
+          type: string
+        assetClass:
+          description: "The asset class of the underlying. Optional and will default\
+            \ to Unknown if not set.\r\n\r\nSupported string (enumeration) values\
+            \ are: [InterestRates, FX, Inflation, Equities, Credit, Commodities, Money]."
+          nullable: true
+          type: string
+        contractCode:
+          description: The contract code used by the exchange, e.g. “CL” for Crude
+            Oil, “ES” for E-mini SP 500, “FGBL” for Bund Futures, etc.
+          type: string
+        contractMonth:
+          description: "Which month does the contract trade for.\r\n\r\nSupported\
+            \ string (enumeration) values are: [F, G, H, J, K, M, N, Q, U, V, X, Z]."
+          type: string
+        contractSize:
+          description: Size of a single contract. By default this should be set to
+            1000 if otherwise unknown and is defaulted to such.
+          format: double
+          type: number
+        convention:
+          description: "If appropriate, the day count convention method used in pricing\
+            \ (rates futures).\r\nFor more information on day counts, see [knowledge\
+            \ base article KA-01798](https://support.lusid.com/knowledgebase/article/KA-01798)\r\
+            \n            \r\nSupported string (enumeration) values are: [Actual360,\
+            \ Act360, MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond,\
+            \ ThirtyE360, EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma,\
+            \ ActActIcma, OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252,\
+            \ NL360, NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda,\
+            \ ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM]."
+          type: string
+        country:
+          description: Country (code) for the exchange.
+          type: string
+        description:
+          description: Description of contract.
+          type: string
+        exchangeCode:
+          description: "Exchange code for contract\r\n\r\nSupported string (enumeration)\
+            \ values are: [ASX, CBOT, CBF, CME, CMX, EOP, HKG, KFE, MFM, OSE, SGX,\
+            \ NYBOT, KCBT, MGE, MATIF, SFE, NYFE, NYM, LIFFE, EUREX, ICE, MSE, NASDAQ,\
+            \ EEX, LME, MIL, MEXDER]."
+          type: string
+        exchangeName:
+          description: Exchange name (for when code is not automatically recognised).
+          type: string
+        tickerStep:
+          description: Minimal step size change in ticker.
+          format: double
+          type: number
+        unitValue:
+          description: The value in the currency of a 1 unit change in the contract
+            price.
+          format: double
+          type: number
+      required:
+      - contractCode
+      - contractMonth
+      - contractSize
+      - convention
+      - country
+      - description
+      - domCcy
+      - exchangeCode
+      - exchangeName
+      - tickerStep
+      - unitValue
+      type: object
+    FxForward:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/FxForward_allOf'
+      description: "LUSID representation of an FX Forward.\r\nIncluding FX Spot and\
+        \ Non-Deliverable Forwards."
+    FxForwardCurveByQuoteReference:
+      allOf:
+      - $ref: '#/components/schemas/ComplexMarketData'
+      - $ref: '#/components/schemas/FxForwardCurveByQuoteReference_allOf'
+      description: Contains data (i.e. tenors and rates + metadata) for building fx
+        forward curves (when combined with a date to build on)
+    FxForwardCurveData:
+      allOf:
+      - $ref: '#/components/schemas/ComplexMarketData'
+      - $ref: '#/components/schemas/FxForwardCurveData_allOf'
+      description: Contains data (i.e. dates and rates + metadata) for building fx
+        forward curves
+    FxForwardModelOptions:
+      allOf:
+      - $ref: '#/components/schemas/ModelOptions'
+      - $ref: '#/components/schemas/FxForwardModelOptions_allOf'
+    FxForwardPipsCurveData:
+      allOf:
+      - $ref: '#/components/schemas/ComplexMarketData'
+      - $ref: '#/components/schemas/FxForwardPipsCurveData_allOf'
+      description: Contains data (i.e. dates and pips + metadata) for building fx
+        forward curves (when combined with a spot rate to build on)
+    FxForwardTenorCurveData:
+      allOf:
+      - $ref: '#/components/schemas/ComplexMarketData'
+      - $ref: '#/components/schemas/FxForwardTenorCurveData_allOf'
+      description: Contains data (i.e. tenors and rates + metadata) for building fx
+        forward curves (when combined with a date to build on)
+    FxForwardTenorPipsCurveData:
+      allOf:
+      - $ref: '#/components/schemas/ComplexMarketData'
+      - $ref: '#/components/schemas/FxForwardTenorPipsCurveData_allOf'
+      description: Contains data (i.e. tenors and pips + metadata) for building fx
+        forward curves (when combined with a spot rate and a date to build on)
+    FxOption:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/FxOption_allOf'
+      description: "LUSID representation of an FX Option.\r\nIncluding Vanilla, American,\
+        \ European, and Digital (Binary) options."
+    FxSwap:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/FxSwap_allOf'
+      description: LUSID representation of an FX Swap. Composed of two FX Forwards.
+    FxVolSurfaceData:
+      allOf:
+      - $ref: '#/components/schemas/ComplexMarketData'
+      - $ref: '#/components/schemas/EquityVolSurfaceData_allOf'
+      description: Market Data for an fx vol surface, represented by a list of fx
+        options and corresponding market quotes
     GetComplexMarketDataResponse:
       additionalProperties: false
       example:
@@ -40557,6 +41225,78 @@ components:
       - actions
       - identifier
       type: object
+    IndexConvention:
+      additionalProperties: false
+      description: "A set of conventions that describe the conventions for calculation\
+        \ of payments made on rates interbank lending and similar.\r\nBased on ISDA\
+        \ 2006 conventions and similar documentation. Please see the knowledge base\
+        \ for further documentation."
+      properties:
+        fixingReference:
+          description: The reference rate name for fixings.
+          maxLength: 64
+          minLength: 0
+          type: string
+        publicationDayLag:
+          description: Number of days between spot and publication of the rate.
+          format: int32
+          type: integer
+        paymentTenor:
+          description: The tenor of the payment. For an OIS index this is always 1
+            day. For other indices, e.g. LIBOR it will have a variable tenor typically
+            between 1 day and 1 year.
+          maxLength: 32
+          minLength: 0
+          type: string
+        dayCountConvention:
+          description: "when calculating the fraction of a year between two dates,\
+            \ what convention is used to represent the number of days in a year\r\n\
+            and difference between them.\r\nFor more information on day counts, see\
+            \ [knowledge base article KA-01798](https://support.lusid.com/knowledgebase/article/KA-01798)\r\
+            \n            \r\nSupported string (enumeration) values are: [Actual360,\
+            \ Act360, MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond,\
+            \ ThirtyE360, EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma,\
+            \ ActActIcma, OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252,\
+            \ NL360, NL365]."
+          maxLength: 32
+          minLength: 0
+          type: string
+        currency:
+          description: Currency of the index convention.
+          type: string
+        indexName:
+          description: "The name of the index for which this represents the conventions\
+            \ of.\r\nFor instance, \"SOFR\", \"LIBOR\", \"EURIBOR\", etc.\r\nDefaults\
+            \ to \"INDEX\" if not specified."
+          maxLength: 16
+          minLength: 0
+          nullable: true
+          type: string
+        scope:
+          description: The scope used when updating or inserting the convention.
+          maxLength: 256
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        code:
+          description: The code of the convention.
+          maxLength: 256
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+      required:
+      - currency
+      - dayCountConvention
+      - fixingReference
+      - paymentTenor
+      - publicationDayLag
+      type: object
+    IndexModelOptions:
+      allOf:
+      - $ref: '#/components/schemas/ModelOptions'
+      - $ref: '#/components/schemas/IndexModelOptions_allOf'
     IndustryClassifier:
       additionalProperties: false
       description: "Object describing a particular industry classifier,\r\nwhich comprises\
@@ -40581,6 +41321,11 @@ components:
       - classificationCode
       - classificationSystemName
       type: object
+    InflationLinkedBond:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/InflationLinkedBond_allOf'
+      description: Inflation Linked Bond.
     InlineValuationRequest:
       additionalProperties: false
       description: Specification object for the parameters of an inline valuation
@@ -40903,6 +41648,30 @@ components:
       - identifiers
       - name
       type: object
+    InstrumentDefinitionFormat:
+      additionalProperties: false
+      description: "What is the provenance of an instrument. This defines who creates/owns\
+        \ it, what format it is in (e.g. a proprietary format or a common and known\
+        \ one)\r\n            and what the version of that is."
+      properties:
+        sourceSystem:
+          description: which source system does the format originate from
+          type: string
+        vendor:
+          description: "An instrument will potentially have been created by any number\
+            \ of different organisations. Some will be understood completely (e.g.\
+            \ LUSID's), some won't.\r\n            The provenance of an instrument\
+            \ indicates who \"owns\" the associated format."
+          type: string
+        version:
+          description: Version of the document. Would be preferable to avoid the need,
+            but LUSID will not control other organisations' trade formats.
+          type: string
+      required:
+      - sourceSystem
+      - vendor
+      - version
+      type: object
     InstrumentIdTypeDescriptor:
       additionalProperties: false
       description: The description of an allowable instrument identifier.
@@ -40942,6 +41711,36 @@ components:
       required:
       - value
       type: object
+    InstrumentLeg:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/InstrumentLeg_allOf'
+      description: "Base class for representing instrument legs in LUSID.\r\nAn instrument\
+        \ leg describes a set of cashflows that are paid at a set of points in time\
+        \ according to some set of conventions.\r\nThis base class should not be directly\
+        \ instantiated; only its inheritors should be used."
+      discriminator:
+        propertyName: instrumentType
+    InterestRateSwap:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/InterestRateSwap_allOf'
+      description: "LUSID representation of an Interest Rate Swap, including:\r\n\r\
+        \n  * Vanilla (single currency fixed-float non-amortising)\r\n  * CrossCurrency\
+        \ (>1 currency is used by the swap legs)\r\n  * Basis (single currency, floating-floating\
+        \ legs of different tenors)\r\n  * Amortising (the swap has 1+ leg with amortised\
+        \ notional)"
+    InterestRateSwaption:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/InterestRateSwaption_allOf'
+      description: LUSID representation of an Interest Rate Swaption.
+    IrVolCubeData:
+      allOf:
+      - $ref: '#/components/schemas/ComplexMarketData'
+      - $ref: '#/components/schemas/IrVolCubeData_allOf'
+      description: Market Data required to build a volatility cube for swaption pricing,  represented
+        by a list of instruments and corresponding market quotes
     IsBusinessDayResponse:
       additionalProperties: false
       description: Whether or not a DateTimeOffset is a business DateTime
@@ -41104,6 +41903,70 @@ components:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
+      type: object
+    LegDefinition:
+      additionalProperties: false
+      description: Definition of the set of flow and index conventions along with
+        other miscellaneous information required to generate an instrument leg.
+      properties:
+        conventionName:
+          $ref: '#/components/schemas/FlowConventionName'
+        conventions:
+          $ref: '#/components/schemas/FlowConventions'
+        indexConvention:
+          $ref: '#/components/schemas/IndexConvention'
+        indexConventionName:
+          $ref: '#/components/schemas/FlowConventionName'
+        notionalExchangeType:
+          description: "what type of notional exchange does the leg have\r\n\r\nSupported\
+            \ string (enumeration) values are: [None, Initial, Final, Both]."
+          type: string
+        payReceive:
+          description: "Is the leg to be paid or received\r\n\r\nSupported string\
+            \ (enumeration) values are: [Pay, Receive]."
+          type: string
+        rateOrSpread:
+          description: Is there either a fixed rate (non-zero) or spread to be paid
+            over the value of the leg.
+          format: double
+          type: number
+        resetConvention:
+          description: "Control how resets are generated relative to swap payment\
+            \ convention(s).\r\n\r\nSupported string (enumeration) values are: [InAdvance,\
+            \ InArrears]."
+          nullable: true
+          type: string
+        stubType:
+          description: "If a stub is required should it be at the front or back of\
+            \ the leg.\r\n\r\nSupported string (enumeration) values are: [None, ShortFront,\
+            \ ShortBack, LongBack, LongFront, Both]."
+          type: string
+        compounding:
+          $ref: '#/components/schemas/Compounding'
+        amortisation:
+          $ref: '#/components/schemas/StepSchedule'
+      required:
+      - notionalExchangeType
+      - payReceive
+      - rateOrSpread
+      - stubType
+      type: object
+    LevelStep:
+      additionalProperties: false
+      description: Item which is stepped in level/quantity.
+      properties:
+        date:
+          description: The date from which the level should apply.
+          format: date-time
+          type: string
+        quantity:
+          description: The quantity which is applied. This might be an absolute, percentage,
+            fractional or other value.
+          format: double
+          type: number
+      required:
+      - date
+      - quantity
       type: object
     Link:
       additionalProperties: false
@@ -41776,6 +42639,39 @@ components:
       required:
       - defaultScope
       type: object
+    MarketQuote:
+      additionalProperties: false
+      description: "The market quote for an observable which will be used to calibrate\
+        \ the market data,\r\nincluding the format of the quote.\r\ne.g. a volatility\
+        \ quote for a specific strike and expiry\r\nthe par rate of a swap\r\n   \
+        \         \r\nThis is a slimmed down version of a full Quote that can be stored\
+        \ in our QuoteStore to\r\nremove lineage, price source etc. for ease of use\
+        \ when creating complex market data."
+      properties:
+        quoteType:
+          description: 'The available values are: Price, Spread, Rate, LogNormalVol,
+            NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta'
+          enum:
+          - Price
+          - Spread
+          - Rate
+          - LogNormalVol
+          - NormalVol
+          - ParSpread
+          - IsdaSpread
+          - Upfront
+          - Index
+          - Ratio
+          - Delta
+          type: string
+        value:
+          description: Numeric value of the quote
+          format: double
+          type: number
+      required:
+      - quoteType
+      - value
+      type: object
     MetricValue:
       additionalProperties: false
       example:
@@ -41896,6 +42792,18 @@ components:
       required:
       - values
       type: object
+    OpaqueMarketData:
+      allOf:
+      - $ref: '#/components/schemas/ComplexMarketData'
+      - $ref: '#/components/schemas/OpaqueMarketData_allOf'
+      description: "A representation of an un-built piece of complex market data,\
+        \ to allow for passing through\r\nto the vendor library for building.\r\n\
+        The market data will usually be in some standard form such as XML or Json,\
+        \ representing a curve or surface."
+    OpaqueModelOptions:
+      allOf:
+      - $ref: '#/components/schemas/ModelOptions'
+      - $ref: '#/components/schemas/OpaqueModelOptions_allOf'
     Order:
       additionalProperties: false
       description: An Order for a certain quantity of a specific instrument
@@ -45132,6 +46040,10 @@ components:
       - effectiveAt
       - portfolioId
       type: object
+    PortfolioResultDataKeyRule:
+      allOf:
+      - $ref: '#/components/schemas/ResultKeyRule'
+      - $ref: '#/components/schemas/PortfolioResultDataKeyRule_allOf'
     PortfolioSearchResult:
       additionalProperties: false
       description: A list of portfolios.
@@ -45277,6 +46189,26 @@ components:
       - instrumentPropertyKeys
       - left
       - right
+      type: object
+    Premium:
+      additionalProperties: false
+      description: A class containing information for a given premium payment.
+      properties:
+        amount:
+          description: Premium amount.
+          format: double
+          type: number
+        currency:
+          description: Premium currency.
+          type: string
+        date:
+          description: Date when premium paid.
+          format: date-time
+          type: string
+      required:
+      - amount
+      - currency
+      - date
       type: object
     PricingContext:
       additionalProperties: false
@@ -46322,6 +47254,12 @@ components:
       - fieldDefinitions
       - values
       type: object
+    ReferenceInstrument:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/ReferenceInstrument_allOf'
+      description: LUSID representation of a reference to another instrument that
+        has already been loaded (e.g. a lookthrough to a portfolio).
     ReferencePortfolioConstituent:
       additionalProperties: false
       example:
@@ -46657,6 +47595,12 @@ components:
       - sourceEntityType
       - targetEntityType
       type: object
+    Repo:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/Repo_allOf'
+      description: LUSID representation of a sale and repurchase agreement, supporting
+        haircut, margin or repo rate methods.
     ResourceId:
       additionalProperties: false
       description: Identifiers of an entity
@@ -49987,6 +50931,10 @@ components:
           nullable: true
           type: array
       type: object
+    ResultDataKeyRule:
+      allOf:
+      - $ref: '#/components/schemas/ResultKeyRule'
+      - $ref: '#/components/schemas/ResultDataKeyRule_allOf'
     ResultDataSchema:
       additionalProperties: false
       example:
@@ -50040,6 +50988,28 @@ components:
           type: string
       required:
       - resultKeyRuleType
+      type: object
+    Schedule:
+      additionalProperties: false
+      description: "Base class for representing schedules in LUSID.\r\nThis base class\
+        \ should not be directly instantiated; each supported ScheduleType has a corresponding\
+        \ inherited class."
+      discriminator:
+        propertyName: scheduleType
+      properties:
+        scheduleType:
+          description: 'The available values are: Fixed, Float, Optionality, Step,
+            Exercise, Invalid'
+          enum:
+          - Fixed
+          - Float
+          - Optionality
+          - Step
+          - Exercise
+          - Invalid
+          type: string
+      required:
+      - scheduleType
       type: object
     ScopeDefinition:
       additionalProperties: false
@@ -50229,6 +51199,43 @@ components:
       - side
       - units
       type: object
+    SimpleInstrument:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/SimpleInstrument_allOf'
+      description: "LUSID representation of a Simple Instrument, used as a basic definition\
+        \ of a generic instrument.\r\nNo analytics can be obtained for this."
+    StepSchedule:
+      additionalProperties: false
+      description: "Schedule that steps at known dated points in time.\r\nUsed in\
+        \ representation of a sinking bond, also called amortisation, steps in coupons\
+        \ for fixed bonds and spreads for floating bonds."
+      properties:
+        levelType:
+          description: "The type of shift or adjustment that the quantity represents.\r\
+            \n\r\nSupported string (enumeration) values are: [Absolute, AbsoluteShift,\
+            \ Percentage, AbsolutePercentage]."
+          type: string
+        scheduleType:
+          description: "What type of schedule does this represent.\r\nSupported string\
+            \ (enumeration) values are: [Fixed, Float, Optionality, Step, Payment,\
+            \ Accrual]."
+          type: string
+        stepScheduleType:
+          description: "The type of step that this schedule is for.\r\nSupported string\
+            \ (enumeration) values are: [Coupon, Notional, Spread]."
+          type: string
+        steps:
+          description: The level steps which are applied.
+          items:
+            $ref: '#/components/schemas/LevelStep'
+          type: array
+      required:
+      - levelType
+      - scheduleType
+      - stepScheduleType
+      - steps
+      type: object
     Stream:
       additionalProperties: false
       example:
@@ -50355,6 +51362,36 @@ components:
           type: string
       required:
       - units
+      type: object
+    TermDeposit:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/TermDeposit_allOf'
+      description: LUSID representation of a Term Deposit.
+    Touch:
+      additionalProperties: false
+      description: Touch class for exotic FxOption
+      properties:
+        direction:
+          description: 'Supported string (enumeration) values are: [Down, Up].'
+          type: string
+        level:
+          description: Trigger level, which the underlying should (or should not)
+            cross/touch.
+          format: double
+          type: number
+        monitoring:
+          description: 'Supported string (enumeration) values are: [European, Bermudan,
+            American].'
+          nullable: true
+          type: string
+        type:
+          description: 'Supported string (enumeration) values are: [Touch, Notouch].'
+          type: string
+      required:
+      - direction
+      - level
+      - type
       type: object
     Transaction:
       additionalProperties: false
@@ -54347,6 +55384,2870 @@ components:
         instrument:
           $ref: '#/components/schemas/LusidInstrument'
       type: object
+    WeightedInstruments:
+      additionalProperties: false
+      description: Class that models a set of instruments of which each has some quantity
+        and can be identified by a unique label.
+      properties:
+        instruments:
+          description: The instruments that are held in the set.
+          items:
+            $ref: '#/components/schemas/WeightedInstrument'
+          type: array
+      required:
+      - instruments
+      type: object
+    YieldCurveData:
+      allOf:
+      - $ref: '#/components/schemas/ComplexMarketData'
+      - $ref: '#/components/schemas/YieldCurveData_allOf'
+      description: Market data for a yield curve,  represented by a list of instruments
+        and corresponding market quotes
+    Basket_allOf:
+      properties:
+        basketName:
+          $ref: '#/components/schemas/BasketIdentifier'
+        basketType:
+          description: "What contents does the basket have. The validation will check\
+            \ that the instrument types contained match those expected.\r\n\r\nSupported\
+            \ string (enumeration) values are: [Bonds, Credits, Equities, EquitySwap]."
+          type: string
+        weightedInstruments:
+          $ref: '#/components/schemas/WeightedInstruments'
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - basketName
+      - basketType
+      - instrumentType
+      - weightedInstruments
+      type: object
+    Bond_allOf:
+      properties:
+        startDate:
+          description: The start date of the bond's first coupon start date or accrual
+            state date (if settle days = 0)
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The final maturity date of the instrument. This means the\
+            \ last date on which the instruments makes a payment of any amount.\r\n\
+            For the avoidance of doubt, that is not necessarily prior to its last\
+            \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+            \nConstant Maturity Swaps (CMS) often have sensitivities to rates that\
+            \ may well be observed or set prior to the maturity date, but refer to\
+            \ a termination date beyond it."
+          format: date-time
+          type: string
+        domCcy:
+          description: The domestic currency of the instrument.
+          type: string
+        flowConventions:
+          $ref: '#/components/schemas/FlowConventions'
+        principal:
+          description: "The face-value or principal for the bond at outset.\r\nThis\
+            \ might be reduced through its lifetime in the event of amortisation or\
+            \ similar."
+          format: double
+          type: number
+        couponRate:
+          description: Simple coupon rate.
+          format: double
+          type: number
+        identifiers:
+          additionalProperties:
+            type: string
+          description: External market codes and identifiers for the bond, e.g. ISIN.
+          nullable: true
+          type: object
+        exDividendDays:
+          description: "Number of Good Business Days before the next coupon payment,\
+            \ in which the bond goes ex-dividend. This means that if the settlement\
+            \ date falls in the ex-dividend period\r\nthen the coupon paid is zero\
+            \ and the accrued interest is negative. The ex-dividend  period is (Next\
+            \ Coupon Payment Date - ExDividendDays, Next Coupon Payment Date)."
+          format: int32
+          nullable: true
+          type: integer
+        initialCouponDate:
+          description: "The initial coupon date applies to ex-dividends bonds with\
+            \ effectiveAt date before the initial accrual start date. In this case,\
+            \ the initial coupon date is used as an anchor to\r\ngenerate a bond schedule\
+            \ that allows the computation of the ex-dividend date and hence the right\
+            \ coupon amount and accrued interest."
+          format: date-time
+          nullable: true
+          type: string
+        firstCouponPayDate:
+          description: "The date that the first coupon of the bond is paid. This is\
+            \ required for bonds that have a long first coupon or short first coupon.\
+            \ The first coupon pay date is used\r\nas an anchor to compare with the\
+            \ start date and determine if this is a long/short coupon period."
+          format: date-time
+          nullable: true
+          type: string
+        calculationType:
+          description: "The calculation type applied to the bond coupon amount. This\
+            \ is required for bonds that have a particular type of computing the period\
+            \ coupon, such as simple compounding,\r\nirregular coupons etc.\r\nThe\
+            \ default CalculationType is `Standard`, which returns a coupon amount\
+            \ equal to Principal * Coupon Rate / Coupon Frequency. Coupon Frequency\
+            \ is 12M / Payment Frequency.\r\nPayment Frequency can be 1M, 3M, 6M,\
+            \ 12M etc. So Coupon Frequency can be 12, 4, 2, 1 respectively.\r\n\r\n\
+            Supported string (enumeration) values are: [Standard, DayCountCoupon,\
+            \ NoCalculationFloater, BrazilFixedCoupon]."
+          nullable: true
+          type: string
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - couponRate
+      - domCcy
+      - flowConventions
+      - instrumentType
+      - maturityDate
+      - principal
+      - startDate
+      type: object
+    CapFloor_allOf:
+      properties:
+        capFloorType:
+          description: "Determine if it's CAP, FLOOR, or COLLAR.\r\n\r\nSupported\
+            \ string (enumeration) values are: [Cap, Floor, Collar]."
+          type: string
+        capStrike:
+          description: Strike rate of the Cap.
+          format: double
+          type: number
+        floorStrike:
+          description: Strike rate of the Floor.
+          format: double
+          type: number
+        includeFirstCaplet:
+          description: Include first caplet flag.
+          type: boolean
+        underlyingFloatingLeg:
+          $ref: '#/components/schemas/FloatingLeg'
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - capFloorType
+      - capStrike
+      - floorStrike
+      - includeFirstCaplet
+      - instrumentType
+      - underlyingFloatingLeg
+      type: object
+    CashPerpetual_allOf:
+      properties:
+        startDate:
+          description: The start date of the instrument. This is normally synonymous
+            with the trade-date.
+          format: date-time
+          type: string
+        domCcy:
+          description: The domestic currency of the instrument.
+          type: string
+        principal:
+          description: The face-value or principal for the cash at outset.
+          format: double
+          type: number
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - domCcy
+      - instrumentType
+      - principal
+      - startDate
+      type: object
+    CdsIndex_allOf:
+      properties:
+        startDate:
+          description: The start date of the instrument. This is normally synonymous
+            with the trade-date.
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The final maturity date of the instrument. This means the\
+            \ last date on which the instruments makes a payment of any amount.\r\n\
+            For the avoidance of doubt, that is not necessarily prior to its last\
+            \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+            \nConstant Maturity Swaps (CMS) often have sensitivities to rates that\
+            \ may well be observed or set prior to the maturity date, but refer to\
+            \ a termination date beyond it."
+          format: date-time
+          type: string
+        flowConventions:
+          $ref: '#/components/schemas/CdsFlowConventions'
+        couponRate:
+          description: "The coupon rate paid on each payment date of the premium leg\
+            \ as a fraction of 100 percent, e.g. \"0.05\" meaning 500 basis points\
+            \ or 5%.\r\nFor a standard corporate CDS (North American) this must be\
+            \ either 100bps or 500bps."
+          format: double
+          type: number
+        identifiers:
+          additionalProperties:
+            type: string
+          description: external market codes and identifiers for the cds index, e.g.
+            a RED code, BBG ID or ICE code.
+          type: object
+        basket:
+          $ref: '#/components/schemas/Basket'
+        conventionName:
+          $ref: '#/components/schemas/FlowConventionName'
+        notional:
+          description: The notional quantity that applies to both the premium and
+            protection legs.
+          format: double
+          type: number
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - basket
+      - couponRate
+      - identifiers
+      - instrumentType
+      - maturityDate
+      - notional
+      - startDate
+      type: object
+    ComplexBond_allOf:
+      properties:
+        identifiers:
+          additionalProperties:
+            type: string
+          description: external market codes and identifiers for the bond, e.g. ISIN.
+          nullable: true
+          type: object
+        calculationType:
+          description: "The calculation type applied to the bond coupon amount. This\
+            \ is required for bonds that have a particular type of computing the period\
+            \ coupon, such as simple compounding,\r\nirregular coupons etc.\r\nThe\
+            \ default CalculationType is `Standard`, which returns a coupon amount\
+            \ equal to Principal * Coupon Rate / Coupon Frequency. Coupon Frequency\
+            \ is 12M / Payment Frequency.\r\nPayment Frequency can be 1M, 3M, 6M,\
+            \ 12M etc. So Coupon Frequency can be 12, 4, 2, 1 respectively.\r\n\r\n\
+            Supported string (enumeration) values are: [Standard, DayCountCoupon,\
+            \ NoCalculationFloater, BrazilFixedCoupon]."
+          nullable: true
+          type: string
+        schedules:
+          description: schedules.
+          items:
+            $ref: '#/components/schemas/Schedule'
+          nullable: true
+          type: array
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - instrumentType
+      type: object
+    ContractForDifference_allOf:
+      properties:
+        startDate:
+          description: The start date of the CFD.
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The maturity date for the CFD. If CFDType is Futures, this\
+            \ should be set to be the maturity date of the underlying\r\nfuture. If\
+            \ CFDType is Cash, this should not be set."
+          format: date-time
+          type: string
+        code:
+          description: The code of the underlying.
+          type: string
+        contractSize:
+          description: The size of the CFD contract, this should represent the total
+            number of stocks that the CFD represents.
+          format: double
+          type: number
+        payCcy:
+          description: The currency that this CFD pays out, this can be different
+            to the UnderlyingCcy.
+          type: string
+        referenceRate:
+          description: "The reference rate of the CFD, this can be set to 0 but not\
+            \ negative values.\r\nThis field is optional, if not set it will default\
+            \ to 0."
+          format: double
+          type: number
+        type:
+          description: "The type of CFD.\r\n\r\nSupported string (enumeration) values\
+            \ are: [Cash, Futures]."
+          type: string
+        underlyingCcy:
+          description: The currency of the underlying
+          type: string
+        underlyingIdentifier:
+          description: "external market codes and identifiers for the CFD, e.g. RIC.\r\
+            \n\r\nSupported string (enumeration) values are: [LusidInstrumentId, Isin,\
+            \ Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId,\
+            \ ICECode]."
+          type: string
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - code
+      - contractSize
+      - instrumentType
+      - payCcy
+      - startDate
+      - type
+      - underlyingCcy
+      - underlyingIdentifier
+      type: object
+    CreditDefaultSwap_allOf:
+      properties:
+        ticker:
+          description: A ticker to uniquely specify then entity against which the
+            cds is written.
+          type: string
+        startDate:
+          description: The start date of the instrument. This is normally synonymous
+            with the trade-date.
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The final maturity date of the instrument. This means the\
+            \ last date on which the instruments makes a payment of any amount.\r\n\
+            For the avoidance of doubt, that is not necessarily prior to its last\
+            \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+            \nConstant Maturity Swaps (CMS) often have sensitivities to rates that\
+            \ may well be observed or set prior to the maturity date, but refer to\
+            \ a termination date beyond it."
+          format: date-time
+          type: string
+        flowConventions:
+          $ref: '#/components/schemas/CdsFlowConventions'
+        couponRate:
+          description: "The coupon rate paid on each payment date of the premium leg\
+            \ as a fraction of 100 percent, e.g. \"0.05\" meaning 500 basis points\
+            \ or 5%.\r\nFor a standard corporate CDS (North American) this must be\
+            \ either 100bps or 500bps."
+          format: double
+          type: number
+        conventionName:
+          $ref: '#/components/schemas/FlowConventionName'
+        notional:
+          description: The notional protected by the Credit Default Swap
+          format: double
+          nullable: true
+          type: number
+        protectionDetailSpecification:
+          $ref: '#/components/schemas/CdsProtectionDetailSpecification'
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - couponRate
+      - instrumentType
+      - maturityDate
+      - protectionDetailSpecification
+      - startDate
+      - ticker
+      type: object
+    CreditSpreadCurveData_allOf:
+      properties:
+        baseDate:
+          description: EffectiveAt date of the quoted rates
+          format: date-time
+          type: string
+        domCcy:
+          description: Domestic currency of the curve
+          type: string
+        tenors:
+          description: The tenors for which the rates apply
+          items:
+            type: string
+          type: array
+        spreads:
+          description: Par spread quotes corresponding to the tenors.
+          items:
+            format: double
+            type: number
+          type: array
+        recoveryRate:
+          description: The recovery rate in default.
+          format: double
+          type: number
+        referenceDate:
+          description: "If tenors are provided, this is the date against which the\
+            \ tenors will be resolved.\r\nThis is of importance to CDX spread quotes,\
+            \ which are usually quoted in tenors relative to the CDX start date.\r\
+            \nIn this case, the ReferenceDate would be equal to the CDX start date,\
+            \ and the BaseDate would be the date for which the spreads are valid.\r\
+            \nIf not provided, this defaults to the BaseDate of the curve."
+          format: date-time
+          nullable: true
+          type: string
+        maturities:
+          description: "The maturity dates for which the rates apply.\r\nEither tenors\
+            \ or maturities should be provided, not both."
+          items:
+            format: date-time
+            type: string
+          nullable: true
+          type: array
+        lineage:
+          description: Description of the complex market data's lineage e.g. 'FundAccountant_GreenQuality'.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        marketDataType:
+          description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
+            FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
+            FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData,
+            FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData'
+          enum:
+          - DiscountFactorCurveData
+          - EquityVolSurfaceData
+          - FxVolSurfaceData
+          - IrVolCubeData
+          - OpaqueMarketData
+          - YieldCurveData
+          - FxForwardCurveData
+          - FxForwardPipsCurveData
+          - FxForwardTenorCurveData
+          - FxForwardTenorPipsCurveData
+          - FxForwardCurveByQuoteReference
+          - CreditSpreadCurveData
+          - EquityCurveByPricesData
+          type: string
+      required:
+      - baseDate
+      - domCcy
+      - marketDataType
+      - recoveryRate
+      - spreads
+      - tenors
+      type: object
+    DiscountFactorCurveData_allOf:
+      properties:
+        baseDate:
+          description: BaseDate for the Curve
+          format: date-time
+          type: string
+        dates:
+          description: Dates for which the discount factors apply
+          items:
+            format: date-time
+            type: string
+          type: array
+        discountFactors:
+          description: Discount factors to be applied to cashflow on the specified
+            dates
+          items:
+            format: double
+            type: number
+          type: array
+        lineage:
+          description: Description of the complex market data's lineage e.g. 'FundAccountant_GreenQuality'.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        marketDataType:
+          description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
+            FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
+            FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData,
+            FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData'
+          enum:
+          - DiscountFactorCurveData
+          - EquityVolSurfaceData
+          - FxVolSurfaceData
+          - IrVolCubeData
+          - OpaqueMarketData
+          - YieldCurveData
+          - FxForwardCurveData
+          - FxForwardPipsCurveData
+          - FxForwardTenorCurveData
+          - FxForwardTenorPipsCurveData
+          - FxForwardCurveByQuoteReference
+          - CreditSpreadCurveData
+          - EquityCurveByPricesData
+          type: string
+      required:
+      - baseDate
+      - dates
+      - discountFactors
+      - marketDataType
+      type: object
+    EmptyModelOptions_allOf:
+      properties:
+        modelOptionsType:
+          description: 'The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions,
+            IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions'
+          enum:
+          - Invalid
+          - OpaqueModelOptions
+          - EmptyModelOptions
+          - IndexModelOptions
+          - FxForwardModelOptions
+          - FundingLegModelOptions
+          - EquityModelOptions
+          type: string
+      required:
+      - modelOptionsType
+      type: object
+    Equity_allOf_identifiers:
+      description: external market codes and identifiers for the equity, e.g. IBM
+      nullable: true
+      properties:
+        LusidInstrumentId:
+          type: string
+        Isin:
+          type: string
+        Sedol:
+          type: string
+        Cusip:
+          type: string
+        ClientInternal:
+          type: string
+        Figi:
+          type: string
+        RIC:
+          type: string
+        QuotePermId:
+          type: string
+        REDCode:
+          type: string
+        BBGId:
+          type: string
+        ICECode:
+          type: string
+      type: object
+    Equity_allOf:
+      properties:
+        identifiers:
+          $ref: '#/components/schemas/Equity_allOf_identifiers'
+        domCcy:
+          description: The domestic currency of the instrument.
+          type: string
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - domCcy
+      - instrumentType
+      type: object
+    EquityCurveByPricesData_allOf:
+      properties:
+        baseDate:
+          description: EffectiveAt date of the provided prices
+          format: date-time
+          type: string
+        dates:
+          description: "Dates provided for the forward price of the Equity at the\
+            \ corresponding price in Prices.\r\nThese dates should be in the future\
+            \ with respect to the BaseDate."
+          items:
+            format: date-time
+            type: string
+          type: array
+        lineage:
+          description: Description of the complex market data's lineage e.g. 'FundAccountant_GreenQuality'.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        prices:
+          description: Prices provided for the forward price of the Equity at the
+            corresponding date in Dates.
+          items:
+            format: double
+            type: number
+          type: array
+        marketDataType:
+          description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
+            FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
+            FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData,
+            FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData'
+          enum:
+          - DiscountFactorCurveData
+          - EquityVolSurfaceData
+          - FxVolSurfaceData
+          - IrVolCubeData
+          - OpaqueMarketData
+          - YieldCurveData
+          - FxForwardCurveData
+          - FxForwardPipsCurveData
+          - FxForwardTenorCurveData
+          - FxForwardTenorPipsCurveData
+          - FxForwardCurveByQuoteReference
+          - CreditSpreadCurveData
+          - EquityCurveByPricesData
+          type: string
+      required:
+      - baseDate
+      - dates
+      - marketDataType
+      - prices
+      type: object
+    EquityModelOptions_allOf:
+      properties:
+        equityForwardProjectionType:
+          description: "Determines how forward equity prices should be projected.\r\
+            \n            \r\nSupported string (enumeration) values are: [FlatForwardCurveFromSpot,\
+            \ EquityCurveByPrices, ForwardProjectedFromRatesCurve]."
+          type: string
+        modelOptionsType:
+          description: 'The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions,
+            IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions'
+          enum:
+          - Invalid
+          - OpaqueModelOptions
+          - EmptyModelOptions
+          - IndexModelOptions
+          - FxForwardModelOptions
+          - FundingLegModelOptions
+          - EquityModelOptions
+          type: string
+      required:
+      - equityForwardProjectionType
+      - modelOptionsType
+      type: object
+    EquityOption_allOf:
+      properties:
+        startDate:
+          description: The start date of the instrument. This is normally synonymous
+            with the trade-date.
+          format: date-time
+          type: string
+        optionMaturityDate:
+          description: The maturity date of the option.
+          format: date-time
+          type: string
+        optionSettlementDate:
+          description: The settlement date of the option.
+          format: date-time
+          type: string
+        deliveryType:
+          description: "is the option cash settled or physical delivery of option\r\
+            \n\r\nSupported string (enumeration) values are: [Cash, Physical]."
+          type: string
+        optionType:
+          description: "Type of optionality for the option\r\n\r\nSupported string\
+            \ (enumeration) values are: [Call, Put]."
+          type: string
+        strike:
+          description: The strike of the option.
+          format: double
+          type: number
+        domCcy:
+          description: The domestic currency of the instrument.
+          type: string
+        underlyingIdentifier:
+          description: "The market identifier type of the underlying code, e.g RIC.\r\
+            \n\r\nSupported string (enumeration) values are: [LusidInstrumentId, Isin,\
+            \ Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId,\
+            \ ICECode]."
+          type: string
+        code:
+          description: The identifying code for the equity underlying, e.g. 'IBM.N'.
+          type: string
+        equityOptionType:
+          description: "Equity option types. E.g. Vanilla (default), RightsIssue,\
+            \ Warrant.\r\n\r\nSupported string (enumeration) values are: [Vanilla,\
+            \ RightsIssue, Warrant]."
+          nullable: true
+          type: string
+        numberOfShares:
+          description: The amount of shares to exchange if the option is exercised.
+          format: double
+          nullable: true
+          type: number
+        premium:
+          $ref: '#/components/schemas/Premium'
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - code
+      - deliveryType
+      - domCcy
+      - instrumentType
+      - optionMaturityDate
+      - optionSettlementDate
+      - optionType
+      - startDate
+      - strike
+      - underlyingIdentifier
+      type: object
+    EquitySwap_allOf:
+      properties:
+        startDate:
+          description: The start date of the EquitySwap.
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The final maturity date of the instrument. This means the\
+            \ last date on which the instruments makes a payment of any amount.\r\n\
+            For the avoidance of doubt, that is not necessarily prior to its last\
+            \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+            \nConstant Maturity Swaps (CMS) often have sensitivities to rates that\
+            \ may well be observed or set prior to the maturity date, but refer to\
+            \ a termination date beyond it."
+          format: date-time
+          type: string
+        code:
+          description: The code of the underlying.
+          type: string
+        equityFlowConventions:
+          $ref: '#/components/schemas/FlowConventions'
+        fundingLeg:
+          $ref: '#/components/schemas/InstrumentLeg'
+        includeDividends:
+          description: Dividend inclusion flag, if true dividends are included in
+            the equity leg (total return).
+          type: boolean
+        initialPrice:
+          description: The initial equity price of the Equity Swap.
+          format: double
+          type: number
+        notionalReset:
+          description: "Notional reset flag, if true the notional of the funding leg\
+            \ is reset at the start of every\r\ncoupon to match the value of the equity\
+            \ leg (equity price at start of coupon times quantity)."
+          type: boolean
+        quantity:
+          description: The quantity or number of shares in the Equity Swap.
+          format: double
+          type: number
+        underlyingIdentifier:
+          description: "external market codes and identifiers for the EquitySwap,\
+            \ e.g. RIC.\r\n\r\nSupported string (enumeration) values are: [LusidInstrumentId,\
+            \ Isin, Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode,\
+            \ BBGId, ICECode]."
+          type: string
+        equitySwapDividendPaymentTiming:
+          description: "Determines how the payment of dividends is handled for the\
+            \ equity swap.\r\nDefaults to paying at the next Equity coupon date.\r\
+            \n            \r\nSupported string (enumeration) values are: [PayAtNextEquityCouponDate,\
+            \ PayAtMaturityOfSwap, PayAtNextFundingLegCouponDate, PayAtPaymentDateOfDividendEvent]."
+          nullable: true
+          type: string
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - code
+      - equityFlowConventions
+      - fundingLeg
+      - includeDividends
+      - initialPrice
+      - instrumentType
+      - maturityDate
+      - notionalReset
+      - quantity
+      - startDate
+      - underlyingIdentifier
+      type: object
+    EquityVolSurfaceData_allOf:
+      properties:
+        baseDate:
+          description: Base date of the surface
+          format: date-time
+          type: string
+        instruments:
+          description: The set of instruments that define the surface.
+          items:
+            $ref: '#/components/schemas/LusidInstrument'
+          type: array
+        quotes:
+          description: The set of market quotes that define the surface, in NormalVol
+            or LogNormalVol terms.
+          items:
+            $ref: '#/components/schemas/MarketQuote'
+          type: array
+        lineage:
+          description: Description of the complex market data's lineage e.g. 'FundAccountant_GreenQuality'.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        marketDataType:
+          description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
+            FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
+            FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData,
+            FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData'
+          enum:
+          - DiscountFactorCurveData
+          - EquityVolSurfaceData
+          - FxVolSurfaceData
+          - IrVolCubeData
+          - OpaqueMarketData
+          - YieldCurveData
+          - FxForwardCurveData
+          - FxForwardPipsCurveData
+          - FxForwardTenorCurveData
+          - FxForwardTenorPipsCurveData
+          - FxForwardCurveByQuoteReference
+          - CreditSpreadCurveData
+          - EquityCurveByPricesData
+          type: string
+      required:
+      - baseDate
+      - instruments
+      - marketDataType
+      - quotes
+      type: object
+    ExchangeTradedOption_allOf:
+      properties:
+        startDate:
+          description: The start date of the instrument. This is normally synonymous
+            with the trade-date.
+          format: date-time
+          type: string
+        contractDetails:
+          $ref: '#/components/schemas/ExchangeTradedOptionContractDetails'
+        contracts:
+          description: The number of contracts held.
+          format: double
+          type: number
+        refSpotPrice:
+          description: The reference spot price for the option at which the contract
+            was entered into.
+          format: double
+          type: number
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - contractDetails
+      - contracts
+      - instrumentType
+      - refSpotPrice
+      - startDate
+      type: object
+    ExoticInstrument_allOf:
+      properties:
+        instrumentFormat:
+          $ref: '#/components/schemas/InstrumentDefinitionFormat'
+        content:
+          description: "The original document received into the system. This format\
+            \ could potentially be anything though is most likely to be either Json\
+            \ or Xml. In the case where no other\r\ninterface is supported it is possible\
+            \ to fall back onto this.\r\nFor example, a trade from an external client\
+            \ system. This may be recognized internally by Lusid or simply passed\
+            \ through to another vendor system."
+          type: string
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - content
+      - instrumentFormat
+      - instrumentType
+      type: object
+    FixedLeg_allOf_overrides:
+      description: "Any overriding data for notionals, spreads or rates that would\
+        \ affect generation of a leg.\r\nThis supports the case where an amortisation\
+        \ schedule is given but otherwise generation is allowed as usual."
+      nullable: true
+      properties:
+        Amortization:
+          items:
+            format: double
+            type: number
+          type: array
+        Spreads:
+          items:
+            format: double
+            type: number
+          type: array
+      type: object
+    FixedLeg_allOf:
+      properties:
+        startDate:
+          description: The start date of the instrument. This is normally synonymous
+            with the trade-date.
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The final maturity date of the instrument. This means the\
+            \ last date on which the instruments makes a payment of any amount.\r\n\
+            For the avoidance of doubt, that is not necessarily prior to its last\
+            \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+            \nConstant Maturity Swaps (CMS) often have sensitivities to rates that\
+            \ may well be observed or set prior to the maturity date, but refer to\
+            \ a termination date beyond it."
+          format: date-time
+          type: string
+        legDefinition:
+          $ref: '#/components/schemas/LegDefinition'
+        notional:
+          format: double
+          type: number
+        overrides:
+          $ref: '#/components/schemas/FixedLeg_allOf_overrides'
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - instrumentType
+      - legDefinition
+      - maturityDate
+      - notional
+      - startDate
+      type: object
+    FloatingLeg_allOf:
+      properties:
+        startDate:
+          description: The start date of the instrument. This is normally synonymous
+            with the trade-date.
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The final maturity date of the instrument. This means the\
+            \ last date on which the instruments makes a payment of any amount.\r\n\
+            For the avoidance of doubt, that is not necessarily prior to its last\
+            \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+            \nConstant Maturity Swaps (CMS) often have sensitivities to rates that\
+            \ may well be observed or set prior to the maturity date, but refer to\
+            \ a termination date beyond it."
+          format: date-time
+          type: string
+        legDefinition:
+          $ref: '#/components/schemas/LegDefinition'
+        notional:
+          description: Scaling factor to apply to leg quantities.
+          format: double
+          type: number
+        overrides:
+          $ref: '#/components/schemas/FixedLeg_allOf_overrides'
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - instrumentType
+      - legDefinition
+      - maturityDate
+      - notional
+      - startDate
+      type: object
+    ForwardRateAgreement_allOf:
+      properties:
+        startDate:
+          description: The settlement date of the FRA
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The final maturity date of the instrument. This means the\
+            \ last date on which the instruments makes a payment of any amount.\r\n\
+            For the avoidance of doubt, that is not necessarily prior to its last\
+            \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+            \nConstant Maturity Swaps (CMS) often have sensitivities to rates beyond\
+            \ their last payment date."
+          format: date-time
+          type: string
+        domCcy:
+          description: The domestic currency of the instrument.
+          type: string
+        fixingDate:
+          description: The date at which the rate to be paid, the reference rate,
+            is confirmed/observed.
+          format: date-time
+          type: string
+        fraRate:
+          description: The rate at which the FRA is traded.
+          format: double
+          type: number
+        notional:
+          description: The amount for which the FRA is traded.
+          format: double
+          type: number
+        indexConvention:
+          $ref: '#/components/schemas/IndexConvention'
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - domCcy
+      - fixingDate
+      - fraRate
+      - instrumentType
+      - maturityDate
+      - notional
+      - startDate
+      type: object
+    FundingLeg_allOf:
+      properties:
+        startDate:
+          description: The start date of the instrument. This is normally synonymous
+            with the trade-date.
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The final maturity date of the instrument. This means the\
+            \ last date on which the instruments makes a payment of any amount.\r\n\
+            For the avoidance of doubt, that is not necessarily prior to its last\
+            \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+            \nConstant Maturity Swaps (CMS) often have sensitivities to rates beyond\
+            \ their last payment date."
+          format: date-time
+          type: string
+        legDefinition:
+          $ref: '#/components/schemas/LegDefinition'
+        notional:
+          description: "The initial notional of the Funding Leg instrument.\r\nWhen\
+            \ \"RequiresFundingLegHistory\" property key is present in transaction\
+            \ key, during a GetValuation endpoint call (for instance),\r\nthis field\
+            \ would overriden by the Funding Leg history's notional and this notional\
+            \ field would not be used in the pricing and accrual calculations.\r\n\
+            As such, we recommend setting this to 0 or not setting it at all.\r\n\
+            Please see the following Notebook example and Knowledge Base article:\r\
+            \nNotebook: https://github.com/finbourne/sample-notebooks/blob/master/examples/use-cases/instruments/Funding%20Leg%20Swap.ipynb\r\
+            \nKnowledge Base article: https://support.lusid.com/knowledgebase/article/KA-01764/"
+          format: double
+          nullable: true
+          type: number
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - instrumentType
+      - legDefinition
+      - maturityDate
+      - startDate
+      type: object
+    Future_allOf:
+      properties:
+        startDate:
+          description: The start date of the instrument. This is normally synonymous
+            with the trade-date.
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The final maturity date of the instrument. This means the\
+            \ last date on which the instruments makes a payment of any amount.\r\n\
+            For the avoidance of doubt, that is not necessarily prior to its last\
+            \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+            \nConstant Maturity Swaps (CMS) often have sensitivities to rates that\
+            \ may well be observed or set prior to the maturity date, but refer to\
+            \ a termination date beyond it."
+          format: date-time
+          type: string
+        identifiers:
+          additionalProperties:
+            type: string
+          description: External market codes and identifiers for the bond, e.g. ISIN.
+          type: object
+        contractDetails:
+          $ref: '#/components/schemas/FuturesContractDetails'
+        contracts:
+          description: The number of contracts held.
+          format: double
+          type: number
+        refSpotPrice:
+          description: The reference spot price for the future at which the contract
+            was entered into.
+          format: double
+          type: number
+        underlying:
+          $ref: '#/components/schemas/LusidInstrument'
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - contractDetails
+      - identifiers
+      - instrumentType
+      - maturityDate
+      - startDate
+      type: object
+    FxForward_allOf:
+      properties:
+        startDate:
+          description: The start date of the instrument. This is normally synonymous
+            with the trade-date.
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The final maturity date of the instrument. This means the\
+            \ last date on which the instruments makes a payment of any amount.\r\n\
+            For the avoidance of doubt, that is not necessarily prior to its last\
+            \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+            \nConstant Maturity Swaps (CMS) often have sensitivities to rates that\
+            \ may well be observed or set prior to the maturity date, but refer to\
+            \ a termination date beyond it."
+          format: date-time
+          type: string
+        domAmount:
+          description: The amount that is to be paid in the domestic currency on the
+            maturity date.
+          format: double
+          type: number
+        domCcy:
+          description: The domestic currency of the instrument.
+          type: string
+        fgnAmount:
+          description: The amount that is to be paid in the foreign currency on the
+            maturity date.
+          format: double
+          type: number
+        fgnCcy:
+          description: "The foreign (other) currency of the instrument. In the NDF\
+            \ case, only payments are made in the domestic currency.\r\nFor the outright\
+            \ forward, currencies are exchanged. By domestic is then that of the portfolio."
+          type: string
+        refSpotRate:
+          description: The reference Fx Spot rate for currency pair Foreign-Domestic
+            that was seen on the trade start date (time).
+          format: double
+          type: number
+        isNdf:
+          description: "Is the contract an Fx-Forward of \"Non-Deliverable\" type,\
+            \ meaning a single payment in the domestic currency based on the change\
+            \ in fx-rate vs\r\na reference rate is used."
+          type: boolean
+        fixingDate:
+          description: The fixing date.
+          format: date-time
+          type: string
+        settlementCcy:
+          description: "The settlement currency.\r\nIf provided, present value will\
+            \ be calculated in settlement currency, otherwise the domestic currency.\
+            \ Applies only to non-deliverable FX Forwards."
+          nullable: true
+          type: string
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - domAmount
+      - domCcy
+      - fgnAmount
+      - fgnCcy
+      - instrumentType
+      - maturityDate
+      - startDate
+      type: object
+    FxForwardCurveByQuoteReference_allOf:
+      properties:
+        domCcy:
+          description: Domestic currency of the fx forward
+          type: string
+        fgnCcy:
+          description: Foreign currency of the fx forward
+          type: string
+        tenors:
+          description: Tenors for which the forward rates apply
+          items:
+            type: string
+          type: array
+        quoteReferences:
+          description: For each tenor, a list of identifiers. These will be looked
+            up in the quotes store to resolve the actual rates.
+          items:
+            additionalProperties:
+              type: string
+            type: object
+          type: array
+        lineage:
+          description: Description of the complex market data's lineage e.g. 'FundAccountant_GreenQuality'.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        marketDataType:
+          description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
+            FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
+            FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData,
+            FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData'
+          enum:
+          - DiscountFactorCurveData
+          - EquityVolSurfaceData
+          - FxVolSurfaceData
+          - IrVolCubeData
+          - OpaqueMarketData
+          - YieldCurveData
+          - FxForwardCurveData
+          - FxForwardPipsCurveData
+          - FxForwardTenorCurveData
+          - FxForwardTenorPipsCurveData
+          - FxForwardCurveByQuoteReference
+          - CreditSpreadCurveData
+          - EquityCurveByPricesData
+          type: string
+      required:
+      - domCcy
+      - fgnCcy
+      - marketDataType
+      - quoteReferences
+      - tenors
+      type: object
+    FxForwardCurveData_allOf:
+      properties:
+        baseDate:
+          description: EffectiveAt date of the quoted rates
+          format: date-time
+          type: string
+        domCcy:
+          description: Domestic currency of the fx forward
+          type: string
+        fgnCcy:
+          description: Foreign currency of the fx forward
+          type: string
+        dates:
+          description: Dates for which the forward rates apply
+          items:
+            format: date-time
+            type: string
+          type: array
+        rates:
+          description: Rates provided for the fx forward (price in FgnCcy per unit
+            of DomCcy)
+          items:
+            format: double
+            type: number
+          type: array
+        lineage:
+          description: Description of the complex market data's lineage e.g. 'FundAccountant_GreenQuality'.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        marketDataType:
+          description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
+            FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
+            FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData,
+            FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData'
+          enum:
+          - DiscountFactorCurveData
+          - EquityVolSurfaceData
+          - FxVolSurfaceData
+          - IrVolCubeData
+          - OpaqueMarketData
+          - YieldCurveData
+          - FxForwardCurveData
+          - FxForwardPipsCurveData
+          - FxForwardTenorCurveData
+          - FxForwardTenorPipsCurveData
+          - FxForwardCurveByQuoteReference
+          - CreditSpreadCurveData
+          - EquityCurveByPricesData
+          type: string
+      required:
+      - baseDate
+      - dates
+      - domCcy
+      - fgnCcy
+      - marketDataType
+      - rates
+      type: object
+    FxForwardModelOptions_allOf:
+      properties:
+        forwardRateObservableType:
+          description: 'The available values are: ForwardPoints, ForwardRate, RatesCurve,
+            FxForwardCurve, Invalid'
+          enum:
+          - ForwardPoints
+          - ForwardRate
+          - RatesCurve
+          - FxForwardCurve
+          - Invalid
+          type: string
+        discountingMethod:
+          description: 'The available values are: Standard, ConstantTimeValueOfMoney,
+            Invalid'
+          enum:
+          - Standard
+          - ConstantTimeValueOfMoney
+          - Invalid
+          type: string
+        convertToReportCcy:
+          description: "Convert all FX flows to the report currency\r\nBy setting\
+            \ this all FX forwards will be priced using Forward Curves that have Report\
+            \ Currency as the base."
+          type: boolean
+        modelOptionsType:
+          description: 'The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions,
+            IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions'
+          enum:
+          - Invalid
+          - OpaqueModelOptions
+          - EmptyModelOptions
+          - IndexModelOptions
+          - FxForwardModelOptions
+          - FundingLegModelOptions
+          - EquityModelOptions
+          type: string
+      required:
+      - convertToReportCcy
+      - discountingMethod
+      - forwardRateObservableType
+      - modelOptionsType
+      type: object
+    FxForwardPipsCurveData_allOf:
+      properties:
+        baseDate:
+          description: EffectiveAt date of the quoted pip rates
+          format: date-time
+          type: string
+        domCcy:
+          description: Domestic currency of the fx forward
+          type: string
+        fgnCcy:
+          description: Foreign currency of the fx forward
+          type: string
+        dates:
+          description: Dates for which the forward rates apply
+          items:
+            format: date-time
+            type: string
+          type: array
+        pipRates:
+          description: Rates provided for the fx forward (price in FgnCcy per unit
+            of DomCcy), expressed in pips
+          items:
+            format: double
+            type: number
+          type: array
+        lineage:
+          description: Description of the complex market data's lineage e.g. 'FundAccountant_GreenQuality'.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        marketDataType:
+          description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
+            FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
+            FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData,
+            FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData'
+          enum:
+          - DiscountFactorCurveData
+          - EquityVolSurfaceData
+          - FxVolSurfaceData
+          - IrVolCubeData
+          - OpaqueMarketData
+          - YieldCurveData
+          - FxForwardCurveData
+          - FxForwardPipsCurveData
+          - FxForwardTenorCurveData
+          - FxForwardTenorPipsCurveData
+          - FxForwardCurveByQuoteReference
+          - CreditSpreadCurveData
+          - EquityCurveByPricesData
+          type: string
+      required:
+      - baseDate
+      - dates
+      - domCcy
+      - fgnCcy
+      - marketDataType
+      - pipRates
+      type: object
+    FxForwardTenorCurveData_allOf:
+      properties:
+        baseDate:
+          description: EffectiveAt date of the quoted rates
+          format: date-time
+          type: string
+        domCcy:
+          description: Domestic currency of the fx forward
+          type: string
+        fgnCcy:
+          description: Foreign currency of the fx forward
+          type: string
+        tenors:
+          description: Tenors for which the forward rates apply
+          items:
+            type: string
+          type: array
+        rates:
+          description: Rates provided for the fx forward (price in FgnCcy per unit
+            of DomCcy)
+          items:
+            format: double
+            type: number
+          type: array
+        lineage:
+          description: Description of the complex market data's lineage e.g. 'FundAccountant_GreenQuality'.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        marketDataType:
+          description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
+            FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
+            FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData,
+            FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData'
+          enum:
+          - DiscountFactorCurveData
+          - EquityVolSurfaceData
+          - FxVolSurfaceData
+          - IrVolCubeData
+          - OpaqueMarketData
+          - YieldCurveData
+          - FxForwardCurveData
+          - FxForwardPipsCurveData
+          - FxForwardTenorCurveData
+          - FxForwardTenorPipsCurveData
+          - FxForwardCurveByQuoteReference
+          - CreditSpreadCurveData
+          - EquityCurveByPricesData
+          type: string
+      required:
+      - baseDate
+      - domCcy
+      - fgnCcy
+      - marketDataType
+      - rates
+      - tenors
+      type: object
+    FxForwardTenorPipsCurveData_allOf:
+      properties:
+        baseDate:
+          description: EffectiveAt date of the quoted pip rates
+          format: date-time
+          type: string
+        domCcy:
+          description: Domestic currency of the fx forward
+          type: string
+        fgnCcy:
+          description: Foreign currency of the fx forward
+          type: string
+        tenors:
+          description: Tenors for which the forward rates apply
+          items:
+            type: string
+          type: array
+        pipRates:
+          description: Rates provided for the fx forward (price in FgnCcy per unit
+            of DomCcy), expressed in pips
+          items:
+            format: double
+            type: number
+          type: array
+        lineage:
+          description: Description of the complex market data's lineage e.g. 'FundAccountant_GreenQuality'.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        marketDataType:
+          description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
+            FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
+            FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData,
+            FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData'
+          enum:
+          - DiscountFactorCurveData
+          - EquityVolSurfaceData
+          - FxVolSurfaceData
+          - IrVolCubeData
+          - OpaqueMarketData
+          - YieldCurveData
+          - FxForwardCurveData
+          - FxForwardPipsCurveData
+          - FxForwardTenorCurveData
+          - FxForwardTenorPipsCurveData
+          - FxForwardCurveByQuoteReference
+          - CreditSpreadCurveData
+          - EquityCurveByPricesData
+          type: string
+      required:
+      - baseDate
+      - domCcy
+      - fgnCcy
+      - marketDataType
+      - pipRates
+      - tenors
+      type: object
+    FxOption_allOf:
+      properties:
+        startDate:
+          description: The start date of the instrument. This is normally synonymous
+            with the trade-date.
+          format: date-time
+          type: string
+        domCcy:
+          description: The domestic currency of the instrument.
+          type: string
+        domAmount:
+          description: "The Amount of DomCcy that will be exchanged if the option\
+            \ is exercised.\r\nThis amount should be a positive number, with the Call/Put\
+            \ flag used to indicate direction.\r\nThe corresponding amount of FgnCcy\
+            \ that will be exchanged is this amount times the strike.\r\nNote there\
+            \ is no rounding performed on this computed value.\r\nThis is an optional\
+            \ field, if not set the option ContractSize will default to 1."
+          format: double
+          nullable: true
+          type: number
+        fgnCcy:
+          description: The foreign currency of the FX.
+          type: string
+        fgnAmount:
+          description: "For a vanilla FxOption contract, FgnAmount cannot be set.\r\
+            \nIn case of a digital FxOption (IsPayoffDigital==true)\r\na payoff (if\
+            \ the option is in the money) can be either\r\nin domestic or in foreign\
+            \ currency - for the latter\r\nFgnAmount must be set.\r\nNote: It is invalid\
+            \ to have FgnAmount and DomAmount\r\nat the same time."
+          format: double
+          nullable: true
+          type: number
+        strike:
+          description: The strike of the option.
+          format: double
+          nullable: true
+          type: number
+        barriers:
+          description: "For a barrier option the list should not be empty. Up to two\
+            \ barriers are supported.\r\nAn option cannot be at the same time barrier-\
+            \ and touch-option.\r\nOne (or both) of the lists must be empty."
+          items:
+            $ref: '#/components/schemas/Barrier'
+          nullable: true
+          type: array
+        exerciseType:
+          description: "Type of optionality that is present; European, Bermudan, American.\r\
+            \n\r\nSupported string (enumeration) values are: [European, Bermudan,\
+            \ American]."
+          nullable: true
+          type: string
+        isCallNotPut:
+          description: True if the option is a call, false if the option is a put.
+          type: boolean
+        isDeliveryNotCash:
+          description: True if the option is settled in cash, false if delivery.
+          type: boolean
+        isPayoffDigital:
+          description: "By default IsPayoffDigital is false. If IsPayoffDigital=true,\r\
+            \nthe option is 'digital', and the option payoff is 0 or 1 unit of currency,\r\
+            \ninstead of a vanilla CallPayoff=max(spot-strike,0) or PutPayoff=max(strike-spot,0)."
+          type: boolean
+        optionMaturityDate:
+          description: The maturity date of the option.
+          format: date-time
+          type: string
+        optionSettlementDate:
+          description: The settlement date of the option.
+          format: date-time
+          type: string
+        payoutStyle:
+          description: "PayoutStyle for touch options.\r\nFor options without touch\
+            \ optionality (IsTouch==false),\r\nPayoutStyle should not be set (ot it\
+            \ can be set to None)\r\nFor options with touch optionality (IsTouch==true),\r\
+            \nPayoutStyle cannot be None.\r\n\r\nSupported string (enumeration) values\
+            \ are: [Deferred, Immediate]."
+          nullable: true
+          type: string
+        premium:
+          $ref: '#/components/schemas/Premium'
+        touches:
+          description: "For a touch option the list should not be empty. Up to two\
+            \ touches are supported.\r\nAn option cannot be at the same time barrier-\
+            \ and touch-option.\r\nOne (or both) of the lists must be empty."
+          items:
+            $ref: '#/components/schemas/Touch'
+          nullable: true
+          type: array
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - domCcy
+      - fgnCcy
+      - instrumentType
+      - isCallNotPut
+      - isDeliveryNotCash
+      - optionMaturityDate
+      - optionSettlementDate
+      - startDate
+      type: object
+    FxSwap_allOf:
+      properties:
+        nearFxForward:
+          $ref: '#/components/schemas/FxForward'
+        farFxForward:
+          $ref: '#/components/schemas/FxForward'
+        notionalSymmetry:
+          description: "The NotionalSymmetry allows for even and uneven FxSwaps to\
+            \ be supported.\r\nAn even FxSwap is one where the near and far fx forwards\
+            \ have the same notional value on at least one of the\r\nlegs. An uneven\
+            \ FxSwap is one where near and far fx forwards don't have the same notional\
+            \ on both the\r\ndomestic and foreign legs.\r\nBy default NotionalSymmetry\
+            \ will be set as even.\r\n\r\nSupported string (enumeration) values are:\
+            \ [Even, Uneven]."
+          nullable: true
+          type: string
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - farFxForward
+      - instrumentType
+      - nearFxForward
+      type: object
+    IndexModelOptions_allOf:
+      properties:
+        portfolioScaling:
+          description: 'The available values are: Sum, AbsoluteSum, Unity'
+          enum:
+          - Sum
+          - AbsoluteSum
+          - Unity
+          type: string
+        modelOptionsType:
+          description: 'The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions,
+            IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions'
+          enum:
+          - Invalid
+          - OpaqueModelOptions
+          - EmptyModelOptions
+          - IndexModelOptions
+          - FxForwardModelOptions
+          - FundingLegModelOptions
+          - EquityModelOptions
+          type: string
+      required:
+      - modelOptionsType
+      - portfolioScaling
+      type: object
+    InflationLinkedBond_allOf:
+      properties:
+        startDate:
+          description: The start date of the bond.
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The final maturity date of the instrument. This means the\
+            \ last date on which the instruments makes a payment of any amount.\r\n\
+            For the avoidance of doubt, that is not necessarily prior to its last\
+            \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+            \nConstant Maturity Swaps (CMS) often have sensitivities to rates that\
+            \ may well be observed or set prior to the maturity date, but refer to\
+            \ a termination date beyond it."
+          format: date-time
+          type: string
+        flowConventions:
+          $ref: '#/components/schemas/FlowConventions'
+        couponRate:
+          description: Simple coupon rate.
+          format: double
+          type: number
+        identifiers:
+          additionalProperties:
+            type: string
+          description: External market codes and identifiers for the bond, e.g. ISIN.
+          nullable: true
+          type: object
+        domCcy:
+          description: The domestic currency of the instrument.
+          type: string
+        baseCPI:
+          description: "BaseCPI value. This is optional, if not provided the BaseCPI\
+            \ value will be calculated from the BaseCPIDate,\r\nIf that too is not\
+            \ present the StartDate will be used.\r\nNote that both BaseCPI and BaseCPIDate\
+            \ cannot be set.\r\nSome bonds are issued with a BaseCPI date that does\
+            \ not correspond to the StartDate CPI value, in this\r\ncase the value\
+            \ should be provided here or with the BaseCPIDate."
+          format: double
+          nullable: true
+          type: number
+        baseCPIDate:
+          description: "BaseCPIDate. This is optional, if not provided the BaseCPI\
+            \ value will taken from the BaseCPI property,\r\nif that too is not present\
+            \ than the StartDate will be used.\r\nIf present, the BaseCPI is calculated\
+            \ for this date, note this is an un-lagged date (similar to StartDate)\r\
+            \nso the Bond ObservationLag will be applied to this date when calculating\
+            \ the CPI.\r\nNote that both BaseCPI and BaseCPIDate cannot be set.\r\n\
+            Some bonds are issued with a BaseCPI date that does not correspond to\
+            \ the StartDate CPI value, in this\r\ncase the value should be provided\
+            \ here or with the actual BaseCPI."
+          format: date-time
+          nullable: true
+          type: string
+        calculationType:
+          description: "The calculation type applied to the bond coupon and principal\
+            \ amount.\r\nThe default CalculationType is `Standard` and currently this\
+            \ is the only value supported.\r\n\r\nSupported string (enumeration) values\
+            \ are: [Standard, Quarterly, Ratio]."
+          nullable: true
+          type: string
+        exDividendDays:
+          description: "Number of Good Business Days before the next coupon payment,\
+            \ in which the bond goes ex-dividend.\r\nThis is not common in inflation\
+            \ linked bonds but has been seen with (for example) bonds issued by\r\n\
+            the Bank of Thailand."
+          format: int32
+          nullable: true
+          type: integer
+        indexPrecision:
+          description: Number of decimal places used to round IndexRatio. This defaults
+            to 5 if not set.
+          format: int32
+          type: integer
+        inflationIndexName:
+          description: Name of the index, e.g. UKRPI.
+          type: string
+        inflationInterpolation:
+          description: "Inflation Interpolation. This is optional and defaults to\
+            \ Linear if not set.\r\n\r\nSupported string (enumeration) values are:\
+            \ [Linear, Flat]."
+          nullable: true
+          type: string
+        inflationRollDay:
+          description: "Day of the month that inflation rolls from one month to the\
+            \ next. This is optional and defaults to 1, which is\r\nthe typically\
+            \ value for the majority of inflation bonds (exceptions include Japan\
+            \ which rolls on the 10th\r\nand some LatAm bonds which roll on the 15th)."
+          format: int32
+          type: integer
+        observationLag:
+          description: "Observation lag. This is a Tenor that must have units of Month.\r\
+            \nThis field is typically 3 or 4 months, but can vary, older bonds have\
+            \ 8 months lag.\r\nFor Bonds with a calculation type of Ratio, this property,\
+            \ if set, must be 0Invalid."
+          nullable: true
+          type: string
+        principal:
+          description: The face-value or principal for the bond at outset.
+          format: double
+          type: number
+        principalProtection:
+          description: "If true then the principal is protected in that the redemption\
+            \ amount will be at least the face value (Principal).\r\nThis is typically\
+            \ set to true for inflation linked bonds issued by the United States and\
+            \ France (for example).\r\nThis is typically set to false for inflation\
+            \ linked bonds issued by the United Kingdom (post 2005).\r\nFor other\
+            \ sovereigns this can vary from issue to issue.\r\nIf not set this property\
+            \ defaults to true.\r\nThis is sometimes referred to as Deflation protection\
+            \ or an inflation floor of 0%."
+          type: boolean
+        stubType:
+          description: "StubType. Most Inflation linked bonds have a ShortFront stub\
+            \ type so this is the default, however in some cases\r\nwith a long front\
+            \ stub LongFront should be selected.\r\nStubType Both is not supported\
+            \ for InflationLinkedBonds.\r\n\r\nSupported string (enumeration) values\
+            \ are: [ShortFront, ShortBack, LongBack, LongFront, Both]."
+          nullable: true
+          type: string
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - couponRate
+      - domCcy
+      - flowConventions
+      - inflationIndexName
+      - instrumentType
+      - maturityDate
+      - principal
+      - startDate
+      type: object
+    InstrumentLeg_allOf:
+      properties:
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - instrumentType
+      type: object
+    InterestRateSwap_allOf:
+      properties:
+        startDate:
+          description: The start date of the instrument. This is normally synonymous
+            with the trade-date.
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The final maturity date of the instrument. This means the\
+            \ last date on which the instruments makes a payment of any amount.\r\n\
+            For the avoidance of doubt, that is not necessarily prior to its last\
+            \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+            \nConstant Maturity Swaps (CMS) often have sensitivities to rates that\
+            \ may well be observed or set prior to the maturity date, but refer to\
+            \ a termination date beyond it."
+          format: date-time
+          type: string
+        isNonDeliverable:
+          description: "Is the contract an IRS of \"Non-Deliverable\" type, meaning\
+            \ a single payment in the settlement currency based on the difference\
+            \ between\r\nthe fixed and floating rates."
+          type: boolean
+        legs:
+          description: The set of instrument legs that define the swap instrument,
+            these should be FloatingLeg or FixedLeg.
+          items:
+            $ref: '#/components/schemas/InstrumentLeg'
+          type: array
+        settlementCcy:
+          description: Settlement currency if IRS is non-deliverable.
+          nullable: true
+          type: string
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - instrumentType
+      - legs
+      - maturityDate
+      - startDate
+      type: object
+    InterestRateSwaption_allOf:
+      properties:
+        startDate:
+          description: The start date of the instrument. This is normally synonymous
+            with the trade-date.
+          format: date-time
+          type: string
+        payOrReceiveFixed:
+          description: "True if on exercise the holder of the option enters the swap\
+            \ paying fixed, false if floating.\r\n\r\nSupported string (enumeration)\
+            \ values are: [Pay, Receive]."
+          type: string
+        premium:
+          $ref: '#/components/schemas/Premium'
+        deliveryMethod:
+          description: "How does the option settle\r\n\r\nSupported string (enumeration)\
+            \ values are: [Cash, Physical]."
+          type: string
+        swap:
+          $ref: '#/components/schemas/InterestRateSwap'
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - deliveryMethod
+      - instrumentType
+      - payOrReceiveFixed
+      - startDate
+      - swap
+      type: object
+    IrVolCubeData_allOf:
+      properties:
+        baseDate:
+          description: Base date of the cube - this is the start date of the swaptions
+            on the cube.
+          format: date-time
+          type: string
+        instruments:
+          description: Retrieve the set of instruments that define the cube.
+          items:
+            $ref: '#/components/schemas/LusidInstrument'
+          type: array
+        quotes:
+          description: Access the set of quotes that define the cube.
+          items:
+            $ref: '#/components/schemas/MarketQuote'
+          type: array
+        lineage:
+          description: Description of the complex market data's lineage e.g. 'FundAccountant_GreenQuality'.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        marketDataType:
+          description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
+            FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
+            FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData,
+            FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData'
+          enum:
+          - DiscountFactorCurveData
+          - EquityVolSurfaceData
+          - FxVolSurfaceData
+          - IrVolCubeData
+          - OpaqueMarketData
+          - YieldCurveData
+          - FxForwardCurveData
+          - FxForwardPipsCurveData
+          - FxForwardTenorCurveData
+          - FxForwardTenorPipsCurveData
+          - FxForwardCurveByQuoteReference
+          - CreditSpreadCurveData
+          - EquityCurveByPricesData
+          type: string
+      required:
+      - baseDate
+      - instruments
+      - marketDataType
+      - quotes
+      type: object
     MarketContext_suppliers:
       description: "It is possible to control which supplier is used for a given asset\
         \ class.\r\nThis field is deprecated in favour of market data rules, which\
@@ -54369,6 +58270,617 @@ components:
           type: string
         Rates:
           type: string
+      type: object
+    OpaqueMarketData_allOf:
+      properties:
+        document:
+          description: The document as a string.
+          type: string
+        format:
+          description: "What format is the document stored in, e.g. Xml.\r\nSupported\
+            \ string (enumeration) values are: [Unknown, Xml, Json, Csv]."
+          type: string
+        name:
+          description: "Internal name of document. This is not used for search, it\
+            \ is simply a designator that helps identify the document\r\nand could\
+            \ be anything (filename, ftp address or similar)"
+          type: string
+        lineage:
+          description: Description of the complex market data's lineage e.g. 'FundAccountant_GreenQuality'.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        marketDataType:
+          description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
+            FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
+            FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData,
+            FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData'
+          enum:
+          - DiscountFactorCurveData
+          - EquityVolSurfaceData
+          - FxVolSurfaceData
+          - IrVolCubeData
+          - OpaqueMarketData
+          - YieldCurveData
+          - FxForwardCurveData
+          - FxForwardPipsCurveData
+          - FxForwardTenorCurveData
+          - FxForwardTenorPipsCurveData
+          - FxForwardCurveByQuoteReference
+          - CreditSpreadCurveData
+          - EquityCurveByPricesData
+          type: string
+      required:
+      - document
+      - format
+      - marketDataType
+      - name
+      type: object
+    OpaqueModelOptions_allOf:
+      properties:
+        data:
+          additionalProperties:
+            additionalProperties: false
+            type: object
+          type: object
+        modelOptionsType:
+          description: 'The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions,
+            IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions'
+          enum:
+          - Invalid
+          - OpaqueModelOptions
+          - EmptyModelOptions
+          - IndexModelOptions
+          - FxForwardModelOptions
+          - FundingLegModelOptions
+          - EquityModelOptions
+          type: string
+      required:
+      - data
+      - modelOptionsType
+      type: object
+    PortfolioResultDataKeyRule_allOf:
+      properties:
+        supplier:
+          description: the result resource supplier (where the data comes from)
+          maxLength: 32
+          minLength: 0
+          type: string
+        dataScope:
+          description: which is the scope in which the data should be found
+          maxLength: 256
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        documentCode:
+          description: document code that defines which document is desired
+          maxLength: 256
+          minLength: 1
+          type: string
+        quoteInterval:
+          description: "Shorthand for the time interval used to select result data.\
+            \ This must be a dot-separated string\r\n            specifying a start\
+            \ and end date, for example '5D.0D' to look back 5 days from today (0\
+            \ days ago)."
+          maxLength: 16
+          minLength: 0
+          nullable: true
+          type: string
+        asAt:
+          description: The AsAt predicate specification.
+          format: date-time
+          nullable: true
+          type: string
+        portfolioCode:
+          maxLength: 256
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        portfolioScope:
+          maxLength: 256
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        resultKeyRuleType:
+          description: 'The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule'
+          enum:
+          - Invalid
+          - ResultDataKeyRule
+          - PortfolioResultDataKeyRule
+          type: string
+      required:
+      - dataScope
+      - documentCode
+      - resultKeyRuleType
+      - supplier
+      type: object
+    ReferenceInstrument_allOf:
+      properties:
+        instrumentId:
+          description: The Identifier code
+          type: string
+        instrumentIdType:
+          description: the type of the instrument id e.g. LusidInstrument Id
+          type: string
+        scope:
+          description: (optional) Scope for the instrument
+          type: string
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - instrumentId
+      - instrumentIdType
+      - instrumentType
+      - scope
+      type: object
+    Repo_allOf:
+      properties:
+        startDate:
+          description: The start date of the instrument. This is normally synonymous
+            with the trade-date.
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The final maturity date of the instrument. This means the\
+            \ last date on which the instruments makes a payment of any amount.\r\n\
+            For the avoidance of doubt, that is not necessarily prior to its last\
+            \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+            \nConstant Maturity Swaps (CMS) often have sensitivities to rates that\
+            \ may well be observed or set prior to the maturity date, but refer to\
+            \ a termination date beyond it."
+          format: date-time
+          type: string
+        domCcy:
+          description: The domestic currency of the instrument.
+          type: string
+        accrualBasis:
+          description: "For calculation of interest, the accrual basis to be used.\r\
+            \nFor more information on day counts, see [knowledge base article KA-01798](https://support.lusid.com/knowledgebase/article/KA-01798)\r\
+            \n            \r\nSupported string (enumeration) values are: [Actual360,\
+            \ Act360, MoneyMarket, Actual365, Act365, Thirty360, ThirtyU360, Bond,\
+            \ ThirtyE360, EuroBond, ActualActual, ActAct, ActActIsda, ActActIsma,\
+            \ ActActIcma, OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252,\
+            \ NL360, NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda,\
+            \ ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM]."
+          type: string
+        collateral:
+          description: "The actual collateral in the Repo.\r\nThis property is for\
+            \ informational purposes only, Lusid pricing is not affected."
+          items:
+            $ref: '#/components/schemas/LusidInstrument'
+          nullable: true
+          type: array
+        collateralValue:
+          description: The full market value of the collateral in domestic currency,
+            before any margin or haircut is applied.
+          format: double
+          nullable: true
+          type: number
+        haircut:
+          description: "The haircut (or margin percentage) applied to the collateral,\
+            \ this should be a number between 0 and 1, i.e. for a 5% haircut this\
+            \ should be 0.05.\r\nThis is defined as (CollateralValue - PurchasePrice)\
+            \ / CollateralValue.\r\nIf this property is specified, so too must CollateralValue.\r\
+            \nWhile this property is optional, one, and only one, of PurchasePrice,\
+            \ Margin and Haircut must be specified."
+          format: double
+          nullable: true
+          type: number
+        margin:
+          description: "The initial margin (or margin ratio) applied to the collateral,\
+            \ this should be a number greater than or equal to 1.0,\r\ni.e. for a\
+            \ 102% margin this should be 1.02. A value of 1.0 means no margin (100%).\r\
+            \nThis is defined as CollateralValue / PurchasePrice.\r\nIf this property\
+            \ is specified, so too must CollateralValue.\r\nWhile this property is\
+            \ optional, one, and only one, of PurchasePrice, Margin and Haircut must\
+            \ be specified."
+          format: double
+          nullable: true
+          type: number
+        purchasePrice:
+          description: "The price the collateral is initially purchased for, this\
+            \ property can be used to explicitly set the purchase price and not require\r\
+            \ncollateral value and a margin or haircut.\r\nWhile this property is\
+            \ optional, one, and only one, of PurchasePrice, Margin and Haircut must\
+            \ be specified."
+          format: double
+          nullable: true
+          type: number
+        repoRate:
+          description: "the rate at which interest is to be accrue and be paid upon\
+            \ redemption of the collateral at maturity.\r\nThis field is used to calculate\
+            \ the Repurchase price.\r\nWhile this property is optional, one, and only\
+            \ one, of the RepoRate and RepurchasePrice must be specified."
+          format: double
+          nullable: true
+          type: number
+        repurchasePrice:
+          description: "The price at which the collateral is repurchased, this field\
+            \ is optional and can be explicitly set here or will be calculated\r\n\
+            from the PurchasePrice and RepoRate.\r\nOne, and only one, of the RepoRate\
+            \ and RepurchasePrice must be specified."
+          format: double
+          nullable: true
+          type: number
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - accrualBasis
+      - domCcy
+      - instrumentType
+      - maturityDate
+      - startDate
+      type: object
+    ResultDataKeyRule_allOf:
+      properties:
+        supplier:
+          description: the result resource supplier (where the data comes from)
+          maxLength: 32
+          minLength: 0
+          type: string
+        dataScope:
+          description: which is the scope in which the data should be found
+          maxLength: 256
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        documentCode:
+          description: document code that defines which document is desired
+          maxLength: 256
+          minLength: 1
+          type: string
+        quoteInterval:
+          description: "Shorthand for the time interval used to select result data.\
+            \ This must be a dot-separated string\r\n            specifying a start\
+            \ and end date, for example '5D.0D' to look back 5 days from today (0\
+            \ days ago)."
+          maxLength: 16
+          minLength: 0
+          nullable: true
+          type: string
+        asAt:
+          description: The AsAt predicate specification.
+          format: date-time
+          nullable: true
+          type: string
+        resourceKey:
+          description: The result data key that identifies the address pattern that
+            this is a rule for
+          maxLength: 256
+          minLength: 0
+          type: string
+        documentResultType:
+          type: string
+        resultKeyRuleType:
+          description: 'The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule'
+          enum:
+          - Invalid
+          - ResultDataKeyRule
+          - PortfolioResultDataKeyRule
+          type: string
+      required:
+      - dataScope
+      - documentCode
+      - documentResultType
+      - resourceKey
+      - resultKeyRuleType
+      - supplier
+      type: object
+    SimpleInstrument_allOf:
+      properties:
+        maturityDate:
+          description: "The final maturity date of the instrument. This means the\
+            \ last date on which the instruments makes a payment of any amount.\r\n\
+            For the avoidance of doubt, that is not necessarily prior to its last\
+            \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+            \nConstant Maturity Swaps (CMS) often have sensitivities to rates that\
+            \ may well be observed or set prior to the maturity date, but refer to\
+            \ a termination date beyond it."
+          format: date-time
+          type: string
+        domCcy:
+          description: The domestic currency.
+          type: string
+        assetClass:
+          description: 'The available values are: InterestRates, FX, Inflation, Equities,
+            Credit, Commodities, Money, Unknown'
+          enum:
+          - InterestRates
+          - FX
+          - Inflation
+          - Equities
+          - Credit
+          - Commodities
+          - Money
+          - Unknown
+          type: string
+        fgnCcys:
+          description: The set of foreign currencies, if any (optional).
+          items:
+            type: string
+          nullable: true
+          type: array
+        simpleInstrumentType:
+          description: The Instrument type of the simple instrument.
+          type: string
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - assetClass
+      - domCcy
+      - instrumentType
+      - simpleInstrumentType
+      type: object
+    TermDeposit_allOf:
+      properties:
+        startDate:
+          description: The start date of the instrument. This is normally synonymous
+            with the trade-date.
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The final maturity date of the instrument. This means the\
+            \ last date on which the instruments makes a payment of any amount.\r\n\
+            For the avoidance of doubt, that is not necessarily prior to its last\
+            \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+            \nConstant Maturity Swaps (CMS) often have sensitivities to rates that\
+            \ may well be observed or set prior to the maturity date, but refer to\
+            \ a termination date beyond it."
+          format: date-time
+          type: string
+        contractSize:
+          description: "With an OTC we have the problem of multiple ways of booking\
+            \ a quantity.\r\n            e.g.\r\n            If buying a swap do you\
+            \ have a holding of size 1 of 100,000,000 notional swap or a holding of\
+            \ 100,000,000 size of 1 notional swap, or any combination that multiplies\
+            \ to 10^8.\r\n            When you get for a price for a 'unit swap' what\
+            \ do you mean? The definition must be consistent across all quotes. This\
+            \ includes bonds which have a face value and\r\n            fx-forwards\
+            \ which often trade in standard contract sizes. When we look up a price,\
+            \ and there are no units, we are assuming it is a price for a contract\
+            \ size of 1.\r\n            The logical effect of this is that\r\n   \
+            \         instrument clean price = contract size * quoted unit price\r\
+            \n            holding clean price    = holding quantity * instrument clean\
+            \ price = holding quantity * contract size * quoted unit price\r\n   \
+            \         In calculating accrued interest the same should hold.\r\n  \
+            \          NB: The real problem is that people store \"prices\" without\
+            \ complete units. Everything should really be \"x ccy for n units\". Where\
+            \ the n is implicit the above has to hold."
+          format: double
+          type: number
+        flowConvention:
+          $ref: '#/components/schemas/FlowConventions'
+        rate:
+          description: The fixed rate for the term deposit. Specified as a decimal,
+            e.g 0.03 is meant to be 3% interest
+          format: double
+          type: number
+        domCcy:
+          description: DomCcy of the TermDeposit. If provided, must match the currency
+            of FlowConvention.
+          nullable: true
+          type: string
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          type: string
+      required:
+      - contractSize
+      - flowConvention
+      - instrumentType
+      - maturityDate
+      - rate
+      - startDate
+      type: object
+    YieldCurveData_allOf:
+      properties:
+        baseDate:
+          description: Base date
+          format: date-time
+          type: string
+        instruments:
+          description: The set of instruments that define the curve.
+          items:
+            $ref: '#/components/schemas/LusidInstrument'
+          type: array
+        quotes:
+          description: The market quotes corresponding to the the instruments used
+            to define the curve
+          items:
+            $ref: '#/components/schemas/MarketQuote'
+          type: array
+        lineage:
+          description: Description of the complex market data's lineage e.g. 'FundAccountant_GreenQuality'.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+        marketDataType:
+          description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
+            FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
+            FxForwardPipsCurveData, FxForwardTenorCurveData, FxForwardTenorPipsCurveData,
+            FxForwardCurveByQuoteReference, CreditSpreadCurveData, EquityCurveByPricesData'
+          enum:
+          - DiscountFactorCurveData
+          - EquityVolSurfaceData
+          - FxVolSurfaceData
+          - IrVolCubeData
+          - OpaqueMarketData
+          - YieldCurveData
+          - FxForwardCurveData
+          - FxForwardPipsCurveData
+          - FxForwardTenorCurveData
+          - FxForwardTenorPipsCurveData
+          - FxForwardCurveByQuoteReference
+          - CreditSpreadCurveData
+          - EquityCurveByPricesData
+          type: string
+      required:
+      - baseDate
+      - instruments
+      - marketDataType
+      - quotes
       type: object
   securitySchemes:
     oauth2:
