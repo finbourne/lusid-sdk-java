@@ -1708,7 +1708,7 @@ public class TransactionPortfoliosApi {
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
      * @param effectiveAt The effective datetime or cut label of the holdings adjustment. (required)
      * @param asAt The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest              version of the holdings adjustment if not specified. (optional)
-     * @param propertyKeys A list of property keys from the ‘Instrument&#39; domain to decorate onto holdings adjustments.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.              Note that properties from the &#39;Holding’ domain are automatically returned. (optional)
+     * @param propertyKeys A list of property keys from the â€˜Instrument&#39; domain to decorate onto holdings adjustments.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.              Note that properties from the &#39;Holdingâ€™ domain are automatically returned. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1794,7 +1794,7 @@ public class TransactionPortfoliosApi {
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
      * @param effectiveAt The effective datetime or cut label of the holdings adjustment. (required)
      * @param asAt The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest              version of the holdings adjustment if not specified. (optional)
-     * @param propertyKeys A list of property keys from the ‘Instrument&#39; domain to decorate onto holdings adjustments.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.              Note that properties from the &#39;Holding’ domain are automatically returned. (optional)
+     * @param propertyKeys A list of property keys from the â€˜Instrument&#39; domain to decorate onto holdings adjustments.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.              Note that properties from the &#39;Holdingâ€™ domain are automatically returned. (optional)
      * @return HoldingsAdjustment
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1817,7 +1817,7 @@ public class TransactionPortfoliosApi {
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
      * @param effectiveAt The effective datetime or cut label of the holdings adjustment. (required)
      * @param asAt The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest              version of the holdings adjustment if not specified. (optional)
-     * @param propertyKeys A list of property keys from the ‘Instrument&#39; domain to decorate onto holdings adjustments.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.              Note that properties from the &#39;Holding’ domain are automatically returned. (optional)
+     * @param propertyKeys A list of property keys from the â€˜Instrument&#39; domain to decorate onto holdings adjustments.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.              Note that properties from the &#39;Holdingâ€™ domain are automatically returned. (optional)
      * @return ApiResponse&lt;HoldingsAdjustment&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1841,7 +1841,7 @@ public class TransactionPortfoliosApi {
      * @param code The code of the transaction portfolio. Together with the scope this uniquely identifies              the transaction portfolio. (required)
      * @param effectiveAt The effective datetime or cut label of the holdings adjustment. (required)
      * @param asAt The asAt datetime at which to retrieve the holdings adjustment. Defaults to the return the latest              version of the holdings adjustment if not specified. (optional)
-     * @param propertyKeys A list of property keys from the ‘Instrument&#39; domain to decorate onto holdings adjustments.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.              Note that properties from the &#39;Holding’ domain are automatically returned. (optional)
+     * @param propertyKeys A list of property keys from the â€˜Instrument&#39; domain to decorate onto holdings adjustments.              These must have the format {domain}/{scope}/{code}, for example &#39;Instrument/system/Name&#39;.              Note that properties from the &#39;Holdingâ€™ domain are automatically returned. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object

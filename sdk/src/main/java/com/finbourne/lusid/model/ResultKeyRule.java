@@ -15,6 +15,8 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.finbourne.lusid.model.PortfolioResultDataKeyRule;
+import com.finbourne.lusid.model.ResultDataKeyRule;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;

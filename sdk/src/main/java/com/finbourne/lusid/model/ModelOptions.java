@@ -15,6 +15,11 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.finbourne.lusid.model.EmptyModelOptions;
+import com.finbourne.lusid.model.EquityModelOptions;
+import com.finbourne.lusid.model.FxForwardModelOptions;
+import com.finbourne.lusid.model.IndexModelOptions;
+import com.finbourne.lusid.model.OpaqueModelOptions;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
