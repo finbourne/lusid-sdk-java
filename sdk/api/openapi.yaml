@@ -297,12 +297,12 @@ info:
     | <a name="804">804</a>|Some data requested does not follow the order graph assumptions.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4755
+  version: 0.11.4757
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -22966,6 +22966,146 @@ paths:
       - Scopes
       x-fbn-apistatus: Stable
       x-accepts: application/json
+  /api/search/instruments:
+    post:
+      description: "Search across all instruments that have been mastered in LUSID.\
+        \ Optionally augment the results with instruments from an external symbology\
+        \ service,\r\ncurrently OpenFIGI."
+      operationId: InstrumentsSearch
+      parameters:
+      - description: "The effective datetime or cut label to use when searching mastered\
+          \ instruments. This parameter has no effect on instruments that\r\nhave\
+          \ not been mastered within LUSID. Defaults to the current LUSID system datetime\
+          \ if not specified."
+        explode: true
+        in: query
+        name: masteredEffectiveAt
+        required: false
+        schema:
+          description: "The effective datetime or cut label to use when searching\
+            \ mastered instruments. This parameter has no effect on instruments that\r\
+            \nhave not been mastered within LUSID. Defaults to the current LUSID system\
+            \ datetime if not specified."
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      - description: If set to true, only search over instruments that have been mastered
+          within LUSID. Defaults to false.
+        explode: true
+        in: query
+        name: masteredOnly
+        required: false
+        schema:
+          default: false
+          description: If set to true, only search over instruments that have been
+            mastered within LUSID. Defaults to false.
+          type: boolean
+        style: form
+        x-nullable: true
+      - description: The scope in which the instrument lies.
+        explode: true
+        in: query
+        name: scope
+        required: false
+        schema:
+          description: The scope in which the instrument lies.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - key: Instrument/default/Isin
+              value: US0378331005
+            schema:
+              description: "A collection of instrument properties to search for. LUSID\
+                \ will return instruments for any matched\r\n            properties."
+              items:
+                $ref: '#/components/schemas/InstrumentSearchProperty'
+              type: array
+          application/json:
+            example:
+            - key: Instrument/default/Isin
+              value: US0378331005
+            schema:
+              description: "A collection of instrument properties to search for. LUSID\
+                \ will return instruments for any matched\r\n            properties."
+              items:
+                $ref: '#/components/schemas/InstrumentSearchProperty'
+              type: array
+          text/json:
+            example:
+            - key: Instrument/default/Isin
+              value: US0378331005
+            schema:
+              description: "A collection of instrument properties to search for. LUSID\
+                \ will return instruments for any matched\r\n            properties."
+              items:
+                $ref: '#/components/schemas/InstrumentSearchProperty'
+              type: array
+          application/*+json:
+            example:
+            - key: Instrument/default/Isin
+              value: US0378331005
+            schema:
+              description: "A collection of instrument properties to search for. LUSID\
+                \ will return instruments for any matched\r\n            properties."
+              items:
+                $ref: '#/components/schemas/InstrumentSearchProperty'
+              type: array
+        description: "A collection of instrument properties to search for. LUSID will\
+          \ return instruments for any matched\r\n            properties."
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/InstrumentMatch'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/InstrumentMatch'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/InstrumentMatch'
+                type: array
+          description: The instruments found by the search
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] InstrumentsSearch: Instruments search'
+      tags:
+      - Search
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
   /api/search/portfoliogroups:
     get:
       description: Search through all portfolio groups
@@ -41721,6 +41861,186 @@ components:
         \ instantiated; only its inheritors should be used."
       discriminator:
         propertyName: instrumentType
+    InstrumentMatch:
+      additionalProperties: false
+      description: A collection of instrument search results
+      example:
+        externalInstruments:
+        - identifiers:
+            key:
+              effectiveAt: 2000-01-23T04:56:07.000+00:00
+              value: value
+          name: name
+          definition:
+            instrumentType: QuotedSecurity
+          properties:
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 6.027456183070403
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 6.027456183070403
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+          lookThroughPortfolioId:
+            code: code
+            scope: scope
+        - identifiers:
+            key:
+              effectiveAt: 2000-01-23T04:56:07.000+00:00
+              value: value
+          name: name
+          definition:
+            instrumentType: QuotedSecurity
+          properties:
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 6.027456183070403
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 6.027456183070403
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+          lookThroughPortfolioId:
+            code: code
+            scope: scope
+        masteredInstruments:
+        - identifiers:
+            key:
+              effectiveAt: 2000-01-23T04:56:07.000+00:00
+              value: value
+          name: name
+          definition:
+            instrumentType: QuotedSecurity
+          properties:
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 6.027456183070403
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 6.027456183070403
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+          lookThroughPortfolioId:
+            code: code
+            scope: scope
+        - identifiers:
+            key:
+              effectiveAt: 2000-01-23T04:56:07.000+00:00
+              value: value
+          name: name
+          definition:
+            instrumentType: QuotedSecurity
+          properties:
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 6.027456183070403
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 6.027456183070403
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+          lookThroughPortfolioId:
+            code: code
+            scope: scope
+      properties:
+        masteredInstruments:
+          description: The collection of instruments found by the search which have
+            been mastered within LUSID.
+          items:
+            $ref: '#/components/schemas/InstrumentDefinition'
+          nullable: true
+          type: array
+        externalInstruments:
+          description: The collection of instruments found by the search which have
+            not been mastered within LUSID and instead found via OpenFIGI.
+          items:
+            $ref: '#/components/schemas/InstrumentDefinition'
+          nullable: true
+          type: array
+      type: object
+    InstrumentSearchProperty:
+      additionalProperties: false
+      example:
+        value: value
+        key: key
+      properties:
+        key:
+          description: The property key of instrument property to search for. This
+            will be from the 'Instrument' domain and will take the format {domain}/{scope}/{code}
+            e.g. 'Instrument/system/Isin' or 'Instrument/MyScope/AssetClass'.
+          type: string
+        value:
+          description: The value of the property e.g. 'US0378331005' or 'Equity'.
+          type: string
+      required:
+      - key
+      - value
+      type: object
     InterestRateSwap:
       allOf:
       - $ref: '#/components/schemas/LusidInstrument'
@@ -58887,7 +59207,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
