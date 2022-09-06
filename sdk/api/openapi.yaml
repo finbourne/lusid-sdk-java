@@ -297,12 +297,12 @@ info:
     | <a name="804">804</a>|Some data requested does not follow the order graph assumptions.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4758
+  version: 0.11.4759
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -12954,6 +12954,1123 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-contentType: application/json-patch+json
       x-accepts: application/json
+  /api/portfoliogroups/{scope}/{code}/a2b:
+    get:
+      description: Get an A2B report for all Transaction Portfolios within the given
+        portfolio group.
+      operationId: GetA2BDataForPortfolioGroup
+      parameters:
+      - description: The scope of the group to retrieve the A2B report for.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the group to retrieve the A2B report for.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "The code of the group to retrieve the A2B report for. Together\
+          \ with the scope this\r\n            uniquely identifies the portfolio group."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: "The code of the group to retrieve the A2B report for. Together\
+            \ with the scope this\r\n            uniquely identifies the portfolio\
+            \ group."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "The lower bound effective datetime or cut label (inclusive)\
+          \ from which to retrieve the data.\r\n            There is no lower bound\
+          \ if this is not specified."
+        explode: true
+        in: query
+        name: fromEffectiveAt
+        required: true
+        schema:
+          description: "The lower bound effective datetime or cut label (inclusive)\
+            \ from which to retrieve the data.\r\n            There is no lower bound\
+            \ if this is not specified."
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: "The upper bound effective datetime or cut label (inclusive)\
+          \ from which to retrieve the data.\r\n            There is no upper bound\
+          \ if this is not specified."
+        explode: true
+        in: query
+        name: toEffectiveAt
+        required: true
+        schema:
+          description: "The upper bound effective datetime or cut label (inclusive)\
+            \ from which to retrieve the data.\r\n            There is no upper bound\
+            \ if this is not specified."
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: "The asAt datetime at which to retrieve the portfolio. Defaults\
+          \ to return the latest version\r\n            of each transaction if not\
+          \ specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: "The asAt datetime at which to retrieve the portfolio. Defaults\
+            \ to return the latest version\r\n            of each transaction if not\
+            \ specified."
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: The scope of the given recipeId
+        explode: true
+        in: query
+        name: recipeIdScope
+        required: false
+        schema:
+          description: The scope of the given recipeId
+          nullable: true
+          type: string
+        style: form
+      - description: The code of the given recipeId
+        explode: true
+        in: query
+        name: recipeIdCode
+        required: false
+        schema:
+          description: The code of the given recipeId
+          nullable: true
+          type: string
+        style: form
+      - description: "A list of property keys from the \"Instrument\" domain to decorate\
+          \ onto\r\n            the results. These take the format {domain}/{scope}/{code}\
+          \ e.g. \"Instrument/system/Name\"."
+        explode: true
+        in: query
+        name: propertyKeys
+        required: false
+        schema:
+          description: "A list of property keys from the \"Instrument\" domain to\
+            \ decorate onto\r\n            the results. These take the format {domain}/{scope}/{code}\
+            \ e.g. \"Instrument/system/Name\"."
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      - description: "Expression to filter the result set.\r\n            Read more\
+          \ about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: "Expression to filter the result set.\r\n            Read more\
+            \ about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                version:
+                  effectiveFrom: 2020-10-31T00:00:00.0000000+00:00
+                  asAtDate: 2021-10-31T00:00:00.0000000+00:00
+                values:
+                - portfolioId:
+                    scope: Example
+                    code: Portfolio
+                  holdingType: B
+                  instrumentScope: default
+                  instrumentUid: CCY_EUR
+                  subHoldingKeys:
+                    transaction/Algo/Name:
+                      key: Transaction/Algo/Name
+                      value:
+                        labelValue: CASH
+                  currency: EUR
+                  start:
+                    holdingCurrency:
+                      total: 20000
+                      currency: EUR
+                      components:
+                        cost: 20000
+                    portfolioCurrency:
+                      total: 17400
+                      currency: GBP
+                      components:
+                        cost: 16720
+                        currencyGain: 680
+                  flows:
+                    holdingCurrency:
+                      total: -10415
+                      currency: EUR
+                      components:
+                        in: 192548
+                        out: -202963
+                    portfolioCurrency:
+                      total: -9424.94
+                      currency: GBP
+                      components:
+                        in: 163473.25
+                        out: -172898.19
+                  gains:
+                    portfolioCurrency:
+                      total: -19.51
+                      currency: GBP
+                      components:
+                        realCurrencyGain: 830.88
+                        deltaCurrencyGain: -850.39
+                  end:
+                    holdingCurrency:
+                      total: 9585
+                      currency: EUR
+                      components:
+                        cost: 9585
+                    portfolioCurrency:
+                      total: 7955.55
+                      currency: GBP
+                      components:
+                        cost: 8125.94
+                        currencyGain: -170.39
+                  properties:
+                    instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: EURO
+                    instrument/default/Currency:
+                      key: Instrument/default/Currency
+                      value:
+                        labelValue: EUR
+                  groupId: Grp1
+                  errors: []
+                - portfolioId:
+                    scope: Example
+                    code: Portfolio
+                  holdingType: B
+                  instrumentScope: default
+                  instrumentUid: CCY_GBP
+                  subHoldingKeys:
+                    transaction/Algo/Name:
+                      key: Transaction/Algo/Name
+                      value:
+                        labelValue: CASH
+                  currency: GBP
+                  start:
+                    holdingCurrency:
+                      total: 50000
+                      currency: GBP
+                      components:
+                        cost: 50000
+                    portfolioCurrency:
+                      total: 50000
+                      currency: GBP
+                      components:
+                        cost: 50000
+                  end:
+                    holdingCurrency:
+                      total: 50000
+                      currency: GBP
+                      components:
+                        cost: 50000
+                    portfolioCurrency:
+                      total: 50000
+                      currency: GBP
+                      components:
+                        cost: 50000
+                  properties:
+                    instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: BRITISH POUND STERLING
+                    instrument/default/Currency:
+                      key: Instrument/default/Currency
+                      value:
+                        labelValue: GBP
+                  groupId: Grp2
+                  errors: []
+                - portfolioId:
+                    scope: Example
+                    code: Portfolio
+                  holdingType: B
+                  instrumentScope: default
+                  instrumentUid: CCY_USD
+                  subHoldingKeys:
+                    transaction/Algo/Name:
+                      key: Transaction/Algo/Name
+                      value:
+                        labelValue: CASH
+                  currency: USD
+                  flows:
+                    holdingCurrency:
+                      total: 3525865
+                      currency: USD
+                      components:
+                        in: 3525865
+                    portfolioCurrency:
+                      total: 2525548.82
+                      currency: GBP
+                      components:
+                        in: 2525548.82
+                  gains:
+                    portfolioCurrency:
+                      total: 13073.98
+                      currency: GBP
+                      components:
+                        deltaCurrencyGain: 13073.98
+                  end:
+                    holdingCurrency:
+                      total: 3525865
+                      currency: USD
+                      components:
+                        cost: 3525865
+                    portfolioCurrency:
+                      total: 2538622.8
+                      currency: GBP
+                      components:
+                        cost: 2525548.82
+                        currencyGain: 13073.98
+                  properties:
+                    instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: UNITED STATES DOLLAR
+                    instrument/default/Currency:
+                      key: Instrument/default/Currency
+                      value:
+                        labelValue: USD
+                  groupId: Grp3
+                  errors: []
+                - portfolioId:
+                    scope: AnotherExample
+                    code: AnotherPortfolio
+                  holdingType: B
+                  instrumentScope: default
+                  instrumentUid: CCY_ZAR
+                  subHoldingKeys:
+                    transaction/Algo/Name:
+                      key: Transaction/Algo/Name
+                      value:
+                        labelValue: CASH
+                  currency: ZAR
+                  flows:
+                    holdingCurrency:
+                      total: 454975.26
+                      currency: ZAR
+                      components:
+                        out: -1271770.65
+                        in: 1726745.91
+                    portfolioCurrency:
+                      total: 24155.02
+                      currency: GBP
+                      components:
+                        out: -66256.57
+                        in: 90411.59
+                  gains:
+                    portfolioCurrency:
+                      total: -951.28
+                      currency: GBP
+                      components:
+                        realCurrencyGain: -132.33
+                        deltaCurrencyGain: -818.95
+                  end:
+                    holdingCurrency:
+                      total: 454975.26
+                      currency: ZAR
+                      components:
+                        cost: 454975.26
+                    portfolioCurrency:
+                      total: 23203.74
+                      currency: GBP
+                      components:
+                        cost: 24022.69
+                        currencyGain: -818.95
+                  properties:
+                    instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: SOUTH AFRICAN RAND
+                    instrument/default/Currency:
+                      key: Instrument/default/Currency
+                      value:
+                        labelValue: ZAR
+                  groupId: Grp4
+                  errors: []
+                - portfolioId:
+                    scope: AnotherExample
+                    code: AnotherPortfolio
+                  holdingType: P
+                  instrumentScope: default
+                  instrumentUid: LUID_DF10C5QL
+                  subHoldingKeys:
+                    transaction/Algo/Name:
+                      key: Transaction/Algo/Name
+                      value:
+                        labelValue: Algo1
+                  currency: EUR
+                  start:
+                    holdingCurrency:
+                      total: -142482.23
+                      currency: EUR
+                      components:
+                        cost: -133842.94
+                        marketGain: -8639.29
+                    portfolioCurrency:
+                      total: -123959.54
+                      currency: GBP
+                      components:
+                        cost: -111625.01
+                        marketGain: -7516.18
+                        currencyGain: -4818.35
+                  flows:
+                    holdingCurrency:
+                      total: 41349.22
+                      currency: EUR
+                      components:
+                        in: 41349.22
+                    portfolioCurrency:
+                      total: 35436.28
+                      currency: GBP
+                      components:
+                        in: 35436.28
+                  gains:
+                    holdingCurrency:
+                      total: -12655.79
+                      currency: EUR
+                      components:
+                        realMarketGain: -4846.6
+                        carry: 144.22
+                        deltaMarketGain: -7953.41
+                    portfolioCurrency:
+                      total: -5917.55
+                      currency: GBP
+                      components:
+                        realMarketGain: -4153.54
+                        realCurrencyGain: -839.56
+                        carry: 123.6
+                        deltaMarketGain: -6255.76
+                        deltaCurrencyGain: 5207.71
+                  carry:
+                    holdingCurrency:
+                      total: -144.22
+                      currency: EUR
+                      components:
+                        coverWithCommission: -144.22
+                    portfolioCurrency:
+                      total: -123.6
+                      currency: GBP
+                      components:
+                        coverWithCommission: -123.6
+                  end:
+                    holdingCurrency:
+                      total: -113933.02
+                      currency: EUR
+                      components:
+                        cost: -97340.32
+                        marketGain: -16592.7
+                    portfolioCurrency:
+                      total: -94564.41
+                      currency: GBP
+                      components:
+                        cost: -81181.83
+                        marketGain: -13771.94
+                        currencyGain: 389.36
+                  properties:
+                    instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: 'Eur CFD #3'
+                    instrument/default/ClientInternal:
+                      key: Instrument/default/ClientInternal
+                      value:
+                        labelValue: SAMPLE03
+                  groupId: Grp5
+                  errors: []
+                links: []
+              schema:
+                $ref: '#/components/schemas/VersionedResourceListOfA2BDataRecord'
+            application/json:
+              example:
+                version:
+                  effectiveFrom: 2020-10-31T00:00:00.0000000+00:00
+                  asAtDate: 2021-10-31T00:00:00.0000000+00:00
+                values:
+                - portfolioId:
+                    scope: Example
+                    code: Portfolio
+                  holdingType: B
+                  instrumentScope: default
+                  instrumentUid: CCY_EUR
+                  subHoldingKeys:
+                    transaction/Algo/Name:
+                      key: Transaction/Algo/Name
+                      value:
+                        labelValue: CASH
+                  currency: EUR
+                  start:
+                    holdingCurrency:
+                      total: 20000
+                      currency: EUR
+                      components:
+                        cost: 20000
+                    portfolioCurrency:
+                      total: 17400
+                      currency: GBP
+                      components:
+                        cost: 16720
+                        currencyGain: 680
+                  flows:
+                    holdingCurrency:
+                      total: -10415
+                      currency: EUR
+                      components:
+                        in: 192548
+                        out: -202963
+                    portfolioCurrency:
+                      total: -9424.94
+                      currency: GBP
+                      components:
+                        in: 163473.25
+                        out: -172898.19
+                  gains:
+                    portfolioCurrency:
+                      total: -19.51
+                      currency: GBP
+                      components:
+                        realCurrencyGain: 830.88
+                        deltaCurrencyGain: -850.39
+                  end:
+                    holdingCurrency:
+                      total: 9585
+                      currency: EUR
+                      components:
+                        cost: 9585
+                    portfolioCurrency:
+                      total: 7955.55
+                      currency: GBP
+                      components:
+                        cost: 8125.94
+                        currencyGain: -170.39
+                  properties:
+                    instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: EURO
+                    instrument/default/Currency:
+                      key: Instrument/default/Currency
+                      value:
+                        labelValue: EUR
+                  groupId: Grp1
+                  errors: []
+                - portfolioId:
+                    scope: Example
+                    code: Portfolio
+                  holdingType: B
+                  instrumentScope: default
+                  instrumentUid: CCY_GBP
+                  subHoldingKeys:
+                    transaction/Algo/Name:
+                      key: Transaction/Algo/Name
+                      value:
+                        labelValue: CASH
+                  currency: GBP
+                  start:
+                    holdingCurrency:
+                      total: 50000
+                      currency: GBP
+                      components:
+                        cost: 50000
+                    portfolioCurrency:
+                      total: 50000
+                      currency: GBP
+                      components:
+                        cost: 50000
+                  end:
+                    holdingCurrency:
+                      total: 50000
+                      currency: GBP
+                      components:
+                        cost: 50000
+                    portfolioCurrency:
+                      total: 50000
+                      currency: GBP
+                      components:
+                        cost: 50000
+                  properties:
+                    instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: BRITISH POUND STERLING
+                    instrument/default/Currency:
+                      key: Instrument/default/Currency
+                      value:
+                        labelValue: GBP
+                  groupId: Grp2
+                  errors: []
+                - portfolioId:
+                    scope: Example
+                    code: Portfolio
+                  holdingType: B
+                  instrumentScope: default
+                  instrumentUid: CCY_USD
+                  subHoldingKeys:
+                    transaction/Algo/Name:
+                      key: Transaction/Algo/Name
+                      value:
+                        labelValue: CASH
+                  currency: USD
+                  flows:
+                    holdingCurrency:
+                      total: 3525865
+                      currency: USD
+                      components:
+                        in: 3525865
+                    portfolioCurrency:
+                      total: 2525548.82
+                      currency: GBP
+                      components:
+                        in: 2525548.82
+                  gains:
+                    portfolioCurrency:
+                      total: 13073.98
+                      currency: GBP
+                      components:
+                        deltaCurrencyGain: 13073.98
+                  end:
+                    holdingCurrency:
+                      total: 3525865
+                      currency: USD
+                      components:
+                        cost: 3525865
+                    portfolioCurrency:
+                      total: 2538622.8
+                      currency: GBP
+                      components:
+                        cost: 2525548.82
+                        currencyGain: 13073.98
+                  properties:
+                    instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: UNITED STATES DOLLAR
+                    instrument/default/Currency:
+                      key: Instrument/default/Currency
+                      value:
+                        labelValue: USD
+                  groupId: Grp3
+                  errors: []
+                - portfolioId:
+                    scope: AnotherExample
+                    code: AnotherPortfolio
+                  holdingType: B
+                  instrumentScope: default
+                  instrumentUid: CCY_ZAR
+                  subHoldingKeys:
+                    transaction/Algo/Name:
+                      key: Transaction/Algo/Name
+                      value:
+                        labelValue: CASH
+                  currency: ZAR
+                  flows:
+                    holdingCurrency:
+                      total: 454975.26
+                      currency: ZAR
+                      components:
+                        out: -1271770.65
+                        in: 1726745.91
+                    portfolioCurrency:
+                      total: 24155.02
+                      currency: GBP
+                      components:
+                        out: -66256.57
+                        in: 90411.59
+                  gains:
+                    portfolioCurrency:
+                      total: -951.28
+                      currency: GBP
+                      components:
+                        realCurrencyGain: -132.33
+                        deltaCurrencyGain: -818.95
+                  end:
+                    holdingCurrency:
+                      total: 454975.26
+                      currency: ZAR
+                      components:
+                        cost: 454975.26
+                    portfolioCurrency:
+                      total: 23203.74
+                      currency: GBP
+                      components:
+                        cost: 24022.69
+                        currencyGain: -818.95
+                  properties:
+                    instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: SOUTH AFRICAN RAND
+                    instrument/default/Currency:
+                      key: Instrument/default/Currency
+                      value:
+                        labelValue: ZAR
+                  groupId: Grp4
+                  errors: []
+                - portfolioId:
+                    scope: AnotherExample
+                    code: AnotherPortfolio
+                  holdingType: P
+                  instrumentScope: default
+                  instrumentUid: LUID_DF10C5QL
+                  subHoldingKeys:
+                    transaction/Algo/Name:
+                      key: Transaction/Algo/Name
+                      value:
+                        labelValue: Algo1
+                  currency: EUR
+                  start:
+                    holdingCurrency:
+                      total: -142482.23
+                      currency: EUR
+                      components:
+                        cost: -133842.94
+                        marketGain: -8639.29
+                    portfolioCurrency:
+                      total: -123959.54
+                      currency: GBP
+                      components:
+                        cost: -111625.01
+                        marketGain: -7516.18
+                        currencyGain: -4818.35
+                  flows:
+                    holdingCurrency:
+                      total: 41349.22
+                      currency: EUR
+                      components:
+                        in: 41349.22
+                    portfolioCurrency:
+                      total: 35436.28
+                      currency: GBP
+                      components:
+                        in: 35436.28
+                  gains:
+                    holdingCurrency:
+                      total: -12655.79
+                      currency: EUR
+                      components:
+                        realMarketGain: -4846.6
+                        carry: 144.22
+                        deltaMarketGain: -7953.41
+                    portfolioCurrency:
+                      total: -5917.55
+                      currency: GBP
+                      components:
+                        realMarketGain: -4153.54
+                        realCurrencyGain: -839.56
+                        carry: 123.6
+                        deltaMarketGain: -6255.76
+                        deltaCurrencyGain: 5207.71
+                  carry:
+                    holdingCurrency:
+                      total: -144.22
+                      currency: EUR
+                      components:
+                        coverWithCommission: -144.22
+                    portfolioCurrency:
+                      total: -123.6
+                      currency: GBP
+                      components:
+                        coverWithCommission: -123.6
+                  end:
+                    holdingCurrency:
+                      total: -113933.02
+                      currency: EUR
+                      components:
+                        cost: -97340.32
+                        marketGain: -16592.7
+                    portfolioCurrency:
+                      total: -94564.41
+                      currency: GBP
+                      components:
+                        cost: -81181.83
+                        marketGain: -13771.94
+                        currencyGain: 389.36
+                  properties:
+                    instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: 'Eur CFD #3'
+                    instrument/default/ClientInternal:
+                      key: Instrument/default/ClientInternal
+                      value:
+                        labelValue: SAMPLE03
+                  groupId: Grp5
+                  errors: []
+                links: []
+              schema:
+                $ref: '#/components/schemas/VersionedResourceListOfA2BDataRecord'
+            text/json:
+              example:
+                version:
+                  effectiveFrom: 2020-10-31T00:00:00.0000000+00:00
+                  asAtDate: 2021-10-31T00:00:00.0000000+00:00
+                values:
+                - portfolioId:
+                    scope: Example
+                    code: Portfolio
+                  holdingType: B
+                  instrumentScope: default
+                  instrumentUid: CCY_EUR
+                  subHoldingKeys:
+                    transaction/Algo/Name:
+                      key: Transaction/Algo/Name
+                      value:
+                        labelValue: CASH
+                  currency: EUR
+                  start:
+                    holdingCurrency:
+                      total: 20000
+                      currency: EUR
+                      components:
+                        cost: 20000
+                    portfolioCurrency:
+                      total: 17400
+                      currency: GBP
+                      components:
+                        cost: 16720
+                        currencyGain: 680
+                  flows:
+                    holdingCurrency:
+                      total: -10415
+                      currency: EUR
+                      components:
+                        in: 192548
+                        out: -202963
+                    portfolioCurrency:
+                      total: -9424.94
+                      currency: GBP
+                      components:
+                        in: 163473.25
+                        out: -172898.19
+                  gains:
+                    portfolioCurrency:
+                      total: -19.51
+                      currency: GBP
+                      components:
+                        realCurrencyGain: 830.88
+                        deltaCurrencyGain: -850.39
+                  end:
+                    holdingCurrency:
+                      total: 9585
+                      currency: EUR
+                      components:
+                        cost: 9585
+                    portfolioCurrency:
+                      total: 7955.55
+                      currency: GBP
+                      components:
+                        cost: 8125.94
+                        currencyGain: -170.39
+                  properties:
+                    instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: EURO
+                    instrument/default/Currency:
+                      key: Instrument/default/Currency
+                      value:
+                        labelValue: EUR
+                  groupId: Grp1
+                  errors: []
+                - portfolioId:
+                    scope: Example
+                    code: Portfolio
+                  holdingType: B
+                  instrumentScope: default
+                  instrumentUid: CCY_GBP
+                  subHoldingKeys:
+                    transaction/Algo/Name:
+                      key: Transaction/Algo/Name
+                      value:
+                        labelValue: CASH
+                  currency: GBP
+                  start:
+                    holdingCurrency:
+                      total: 50000
+                      currency: GBP
+                      components:
+                        cost: 50000
+                    portfolioCurrency:
+                      total: 50000
+                      currency: GBP
+                      components:
+                        cost: 50000
+                  end:
+                    holdingCurrency:
+                      total: 50000
+                      currency: GBP
+                      components:
+                        cost: 50000
+                    portfolioCurrency:
+                      total: 50000
+                      currency: GBP
+                      components:
+                        cost: 50000
+                  properties:
+                    instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: BRITISH POUND STERLING
+                    instrument/default/Currency:
+                      key: Instrument/default/Currency
+                      value:
+                        labelValue: GBP
+                  groupId: Grp2
+                  errors: []
+                - portfolioId:
+                    scope: Example
+                    code: Portfolio
+                  holdingType: B
+                  instrumentScope: default
+                  instrumentUid: CCY_USD
+                  subHoldingKeys:
+                    transaction/Algo/Name:
+                      key: Transaction/Algo/Name
+                      value:
+                        labelValue: CASH
+                  currency: USD
+                  flows:
+                    holdingCurrency:
+                      total: 3525865
+                      currency: USD
+                      components:
+                        in: 3525865
+                    portfolioCurrency:
+                      total: 2525548.82
+                      currency: GBP
+                      components:
+                        in: 2525548.82
+                  gains:
+                    portfolioCurrency:
+                      total: 13073.98
+                      currency: GBP
+                      components:
+                        deltaCurrencyGain: 13073.98
+                  end:
+                    holdingCurrency:
+                      total: 3525865
+                      currency: USD
+                      components:
+                        cost: 3525865
+                    portfolioCurrency:
+                      total: 2538622.8
+                      currency: GBP
+                      components:
+                        cost: 2525548.82
+                        currencyGain: 13073.98
+                  properties:
+                    instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: UNITED STATES DOLLAR
+                    instrument/default/Currency:
+                      key: Instrument/default/Currency
+                      value:
+                        labelValue: USD
+                  groupId: Grp3
+                  errors: []
+                - portfolioId:
+                    scope: AnotherExample
+                    code: AnotherPortfolio
+                  holdingType: B
+                  instrumentScope: default
+                  instrumentUid: CCY_ZAR
+                  subHoldingKeys:
+                    transaction/Algo/Name:
+                      key: Transaction/Algo/Name
+                      value:
+                        labelValue: CASH
+                  currency: ZAR
+                  flows:
+                    holdingCurrency:
+                      total: 454975.26
+                      currency: ZAR
+                      components:
+                        out: -1271770.65
+                        in: 1726745.91
+                    portfolioCurrency:
+                      total: 24155.02
+                      currency: GBP
+                      components:
+                        out: -66256.57
+                        in: 90411.59
+                  gains:
+                    portfolioCurrency:
+                      total: -951.28
+                      currency: GBP
+                      components:
+                        realCurrencyGain: -132.33
+                        deltaCurrencyGain: -818.95
+                  end:
+                    holdingCurrency:
+                      total: 454975.26
+                      currency: ZAR
+                      components:
+                        cost: 454975.26
+                    portfolioCurrency:
+                      total: 23203.74
+                      currency: GBP
+                      components:
+                        cost: 24022.69
+                        currencyGain: -818.95
+                  properties:
+                    instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: SOUTH AFRICAN RAND
+                    instrument/default/Currency:
+                      key: Instrument/default/Currency
+                      value:
+                        labelValue: ZAR
+                  groupId: Grp4
+                  errors: []
+                - portfolioId:
+                    scope: AnotherExample
+                    code: AnotherPortfolio
+                  holdingType: P
+                  instrumentScope: default
+                  instrumentUid: LUID_DF10C5QL
+                  subHoldingKeys:
+                    transaction/Algo/Name:
+                      key: Transaction/Algo/Name
+                      value:
+                        labelValue: Algo1
+                  currency: EUR
+                  start:
+                    holdingCurrency:
+                      total: -142482.23
+                      currency: EUR
+                      components:
+                        cost: -133842.94
+                        marketGain: -8639.29
+                    portfolioCurrency:
+                      total: -123959.54
+                      currency: GBP
+                      components:
+                        cost: -111625.01
+                        marketGain: -7516.18
+                        currencyGain: -4818.35
+                  flows:
+                    holdingCurrency:
+                      total: 41349.22
+                      currency: EUR
+                      components:
+                        in: 41349.22
+                    portfolioCurrency:
+                      total: 35436.28
+                      currency: GBP
+                      components:
+                        in: 35436.28
+                  gains:
+                    holdingCurrency:
+                      total: -12655.79
+                      currency: EUR
+                      components:
+                        realMarketGain: -4846.6
+                        carry: 144.22
+                        deltaMarketGain: -7953.41
+                    portfolioCurrency:
+                      total: -5917.55
+                      currency: GBP
+                      components:
+                        realMarketGain: -4153.54
+                        realCurrencyGain: -839.56
+                        carry: 123.6
+                        deltaMarketGain: -6255.76
+                        deltaCurrencyGain: 5207.71
+                  carry:
+                    holdingCurrency:
+                      total: -144.22
+                      currency: EUR
+                      components:
+                        coverWithCommission: -144.22
+                    portfolioCurrency:
+                      total: -123.6
+                      currency: GBP
+                      components:
+                        coverWithCommission: -123.6
+                  end:
+                    holdingCurrency:
+                      total: -113933.02
+                      currency: EUR
+                      components:
+                        cost: -97340.32
+                        marketGain: -16592.7
+                    portfolioCurrency:
+                      total: -94564.41
+                      currency: GBP
+                      components:
+                        cost: -81181.83
+                        marketGain: -13771.94
+                        currencyGain: 389.36
+                  properties:
+                    instrument/default/Name:
+                      key: Instrument/default/Name
+                      value:
+                        labelValue: 'Eur CFD #3'
+                    instrument/default/ClientInternal:
+                      key: Instrument/default/ClientInternal
+                      value:
+                        labelValue: SAMPLE03
+                  groupId: Grp5
+                  errors: []
+                links: []
+              schema:
+                $ref: '#/components/schemas/VersionedResourceListOfA2BDataRecord'
+          description: The requested group A2B data
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetA2BDataForPortfolioGroup: Get A2B data for a Portfolio
+        Group'
+      tags:
+      - Portfolio Groups
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
   /api/portfoliogroups/{scope}/{code}/commands:
     get:
       description: Gets all the commands that modified a single portfolio group.
@@ -16926,6 +18043,123 @@ paths:
       - Portfolios
       x-fbn-apistatus: Stable
       x-accepts: application/json
+    patch:
+      description: "Create or update certain fields for a particular  portfolio.\r\
+        \nThe behaviour is defined by the JSON Patch specification.\r\n          \
+        \  \r\nCurrently supported are: CreationDate."
+      operationId: PatchPortfolio
+      parameters:
+      - description: The scope of the portfolio.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the portfolio.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "The code of the portfolio. Together with the\r\n           \
+          \  scope this uniquely identifies the portfolio."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: "The code of the portfolio. Together with the\r\n         \
+            \    scope this uniquely identifies the portfolio."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - value: 2020-01-01
+              path: /creationDate
+              op: add
+            schema:
+              description: 'The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902.'
+              items:
+                $ref: '#/components/schemas/Operation'
+              type: array
+          application/json:
+            example:
+            - value: 2020-01-01
+              path: /creationDate
+              op: add
+            schema:
+              description: 'The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902.'
+              items:
+                $ref: '#/components/schemas/Operation'
+              type: array
+          text/json:
+            example:
+            - value: 2020-01-01
+              path: /creationDate
+              op: add
+            schema:
+              description: 'The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902.'
+              items:
+                $ref: '#/components/schemas/Operation'
+              type: array
+          application/*+json:
+            example:
+            - value: 2020-01-01
+              path: /creationDate
+              op: add
+            schema:
+              description: 'The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902.'
+              items:
+                $ref: '#/components/schemas/Operation'
+              type: array
+        description: 'The json patch document. For more check: https://datatracker.ietf.org/doc/html/rfc6902.'
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ActionResultOfPortfolio'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActionResultOfPortfolio'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ActionResultOfPortfolio'
+          description: The newly patched portfolio
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] PatchPortfolio: Patch portfolio.'
+      tags:
+      - Portfolios
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
     put:
       description: "Update the definition of a particular portfolio.\r\n         \
         \   \r\nNote that not all elements of a portfolio definition are\r\nmodifiable\
@@ -18085,6 +19319,169 @@ paths:
       - Portfolios
       x-fbn-apistatus: Stable
       x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/portfolios/{scope}/{code}/properties/list:
+    get:
+      description: List all the properties of a particular portfolio.
+      operationId: ListPortfolioProperties
+      parameters:
+      - description: The scope of the portfolio.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the portfolio.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The code of the portfolio. Together with the scope this uniquely
+          identifies the portfolio.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The code of the portfolio. Together with the scope this uniquely
+            identifies the portfolio.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The effective datetime or cut label at which to list the portfolio's
+          properties. Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effective datetime or cut label at which to list the portfolio's
+            properties. Defaults to the current LUSID system datetime if not specified.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+        style: form
+      - description: The asAt datetime at which to list the portfolio's properties.
+          Defaults to returning the latest version of each property if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to list the portfolio's properties.
+            Defaults to returning the latest version of each property if not specified.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: The pagination token to use to continue listing commands; this
+          value is returned from the previous call.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          description: The pagination token to use to continue listing commands; this
+            value is returned from the previous call.
+          maxLength: 500
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
+          type: string
+        style: form
+      - description: When paginating, limit the results per page to this number.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: When paginating, limit the results per page to this number.
+          format: int32
+          maximum: 5000
+          minimum: 1
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - key: Portfolio/MyScope/SomePortfolioProperty
+                  value:
+                    labelValue: XYZ000034567
+                  effectiveFrom: 2018-01-01T12:00:00.0000000+00:00
+                - key: Portfolio/MyScope/SomeOtherPortfolioProperty
+                  value:
+                    labelValue: XYZ00008910
+                  effectiveFrom: 2017-01-01T12:00:00.0000000+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfProperty'
+            application/json:
+              example:
+                values:
+                - key: Portfolio/MyScope/SomePortfolioProperty
+                  value:
+                    labelValue: XYZ000034567
+                  effectiveFrom: 2018-01-01T12:00:00.0000000+00:00
+                - key: Portfolio/MyScope/SomeOtherPortfolioProperty
+                  value:
+                    labelValue: XYZ00008910
+                  effectiveFrom: 2017-01-01T12:00:00.0000000+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfProperty'
+            text/json:
+              example:
+                values:
+                - key: Portfolio/MyScope/SomePortfolioProperty
+                  value:
+                    labelValue: XYZ000034567
+                  effectiveFrom: 2018-01-01T12:00:00.0000000+00:00
+                - key: Portfolio/MyScope/SomeOtherPortfolioProperty
+                  value:
+                    labelValue: XYZ00008910
+                  effectiveFrom: 2017-01-01T12:00:00.0000000+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfProperty'
+          description: The properties of the specified portfolio
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] ListPortfolioProperties: Get portfolio properties'
+      tags:
+      - Portfolios
+      x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/portfolios/{scope}/{code}/relationships:
     get:
@@ -35208,6 +36605,65 @@ components:
       - entity
       - scope
       type: object
+    ActionResult:
+      additionalProperties: false
+      type: object
+    ActionResultOfPortfolio:
+      additionalProperties: false
+      example:
+        result: '{}'
+        value:
+          isDerived: true
+          displayName: displayName
+          created: 2000-01-23T04:56:07.000+00:00
+          instrumentScopes:
+          - instrumentScopes
+          - instrumentScopes
+          description: description
+          parentPortfolioId:
+            code: code
+            scope: scope
+          type: Transaction
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          baseCurrency: baseCurrency
+          amortisationMethod: amortisationMethod
+          accountingMethod: Default
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          properties:
+            key:
+              effectiveUntil: 2000-01-23T04:56:07.000+00:00
+              value:
+                metricValue:
+                  unit: unit
+                  value: 6.027456183070403
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              key: key
+      properties:
+        result:
+          additionalProperties: false
+          type: object
+        value:
+          $ref: '#/components/schemas/Portfolio'
+      type: object
     AddBusinessDaysToDateRequest:
       additionalProperties: false
       example:
@@ -43124,6 +44580,28 @@ components:
       allOf:
       - $ref: '#/components/schemas/ModelOptions'
       - $ref: '#/components/schemas/OpaqueModelOptions_allOf'
+    Operation:
+      additionalProperties: false
+      example:
+        path: path
+        op: op
+        from: from
+        value: '{}'
+      properties:
+        value:
+          additionalProperties: false
+          nullable: true
+          type: object
+        path:
+          nullable: true
+          type: string
+        op:
+          nullable: true
+          type: string
+        from:
+          nullable: true
+          type: string
+      type: object
     Order:
       additionalProperties: false
       description: An Order for a certain quantity of a specific instrument
@@ -50621,6 +52099,75 @@ components:
           description: The resources to list.
           items:
             $ref: '#/components/schemas/ProcessedCommand'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
+    ResourceListOfProperty:
+      additionalProperties: false
+      description: A collection of resources that can be returned from requests.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          value:
+            metricValue:
+              unit: unit
+              value: 6.027456183070403
+            labelValue: labelValue
+            labelValueSet:
+              values:
+              - values
+              - values
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          key: key
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          value:
+            metricValue:
+              unit: unit
+              value: 6.027456183070403
+            labelValue: labelValue
+            labelValueSet:
+              values:
+              - values
+              - values
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          key: key
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/Property'
           type: array
         href:
           description: The URI of the resource list.
@@ -59207,7 +60754,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
