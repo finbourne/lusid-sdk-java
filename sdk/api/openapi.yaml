@@ -297,7 +297,7 @@ info:
     | <a name="804">804</a>|Some data requested does not follow the order graph assumptions.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4773
+  version: 0.11.4774
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -36708,6 +36708,20 @@ components:
     AdjustHolding:
       additionalProperties: false
       example:
+        metadata:
+          key:
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
+          - identifiers:
+            - identifiers
+            - identifiers
+            description: description
+            identifierType: identifierType
+            type: type
         links:
         - method: method
           description: description
@@ -36730,6 +36744,14 @@ components:
           type: string
         version:
           $ref: '#/components/schemas/Version'
+        metadata:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/ResponseMetaData'
+            type: array
+          description: Contains warnings related to unresolved instruments
+          nullable: true
+          type: object
         links:
           description: Collection of links.
           items:
