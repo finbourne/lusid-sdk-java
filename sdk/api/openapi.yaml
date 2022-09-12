@@ -297,12 +297,12 @@ info:
     | <a name="804">804</a>|Some data requested does not follow the order graph assumptions.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4777
+  version: 0.11.4778
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -35994,7 +35994,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -36071,7 +36071,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -36165,7 +36165,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -36245,7 +36245,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -36649,7 +36649,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -36772,7 +36772,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -36782,7 +36782,7 @@ components:
         taxLots:
         - purchaseDate: 2000-01-23T04:56:07.000+00:00
           cost:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           price: 1.4658129805029452
           units: 0.8008281904610115
@@ -36790,7 +36790,7 @@ components:
           portfolioCost: 6.027456183070403
         - purchaseDate: 2000-01-23T04:56:07.000+00:00
           cost:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           price: 1.4658129805029452
           units: 0.8008281904610115
@@ -36804,7 +36804,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -37140,7 +37140,7 @@ components:
         side: side
         quantity: 0.8008281904610115
         instrumentScope: instrumentScope
-        settlementCurrencyFxRate: 5.962133916683182
+        settlementCurrencyFxRate: 1.4658129805029452
         instrumentIdentifiers:
           key: instrumentIdentifiers
         placementIds:
@@ -37161,7 +37161,7 @@ components:
           scope: scope
         settlementCurrency: settlementCurrency
         price:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         counterparty: counterparty
         links:
@@ -37183,7 +37183,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -37304,7 +37304,7 @@ components:
           scope: scope
         settlementCurrency: settlementCurrency
         price:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         counterparty: counterparty
         id:
@@ -37316,7 +37316,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -37422,7 +37422,7 @@ components:
             scope: scope
           settlementCurrency: settlementCurrency
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           counterparty: counterparty
           id:
@@ -37434,7 +37434,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -37462,7 +37462,7 @@ components:
             scope: scope
           settlementCurrency: settlementCurrency
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           counterparty: counterparty
           id:
@@ -37474,7 +37474,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -37709,7 +37709,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -37721,7 +37721,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -38168,7 +38168,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -38180,7 +38180,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -38280,7 +38280,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -38311,7 +38311,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -39275,7 +39275,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -39287,7 +39287,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -39800,7 +39800,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -39962,7 +39962,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -40210,7 +40210,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -40370,7 +40370,7 @@ components:
       description: An amount of a specific currency, specifying a value and an associated
         unit
       example:
-        amount: 1.4658129805029452
+        amount: 6.027456183070403
         currency: currency
       properties:
         amount:
@@ -40895,6 +40895,89 @@ components:
       - $ref: '#/components/schemas/ComplexMarketData'
       - $ref: '#/components/schemas/DiscountFactorCurveData_allOf'
       description: A curve containing discount factors and dates to which they apply
+    EconomicDependency:
+      additionalProperties: false
+      description: "Base class for representing economic dependencies.\r\nEconomic\
+        \ dependencies are a way of indicating how one concept depends upon another.\r\
+        \nFor example, when pricing an instrument with a particular model,\r\nthat\
+        \ model will declare that it has an EconomicDependency for each bit of market\
+        \ data\r\nthat it needs to complete the calculation.\r\nConcretely, a pricing\
+        \ an FxForward will declare a dependency on the exchange rate between the\
+        \ two currencies\r\nat the forward date.\r\n            \r\nAnother example\
+        \ is when data is included in a data-structure only by reference.\r\nConcretely,\
+        \ an object depending on a FlowConvention that is referenced only semantically\
+        \ via a FlowConventionName\r\nwill declare a FlowConventionDependency\r\n\
+        so that the full data-structure of the referenced FlowConvention can be retrieved.\r\
+        \n            \r\nFor deserialization purposes,\r\nthis class contains a discriminator\
+        \ EconomicDependencyType to indicate the derived type."
+      discriminator:
+        propertyName: economicDependencyType
+      example:
+        dependencyType: Opaque
+      properties:
+        dependencyType:
+          description: 'The available values are: Opaque, Cash, Discounting, EquityCurve,
+            EquityVol, Fx, FxForwards, FxVol, IndexProjection, IrVol, Quote, Vendor'
+          enum:
+          - Opaque
+          - Cash
+          - Discounting
+          - EquityCurve
+          - EquityVol
+          - Fx
+          - FxForwards
+          - FxVol
+          - IndexProjection
+          - IrVol
+          - Quote
+          - Vendor
+          type: string
+      required:
+      - dependencyType
+      type: object
+    EconomicDependencyWithComplexMarketData:
+      additionalProperties: false
+      description: Container class pairing economic dependency and complex market
+        data (i.e. discounting curves, etc.)
+      example:
+        complexMarketData:
+          marketDataType: DiscountFactorCurveData
+        economicDependency:
+          dependencyType: Opaque
+      properties:
+        economicDependency:
+          $ref: '#/components/schemas/EconomicDependency'
+        complexMarketData:
+          $ref: '#/components/schemas/ComplexMarketData'
+      required:
+      - complexMarketData
+      - economicDependency
+      type: object
+    EconomicDependencyWithQuote:
+      additionalProperties: false
+      description: Container class pairing economic dependencies and quote data
+      example:
+        scaleFactor: 6.027456183070403
+        economicDependency:
+          dependencyType: Opaque
+        metricValue:
+          unit: unit
+          value: 0.8008281904610115
+      properties:
+        economicDependency:
+          $ref: '#/components/schemas/EconomicDependency'
+        metricValue:
+          $ref: '#/components/schemas/MetricValue'
+        scaleFactor:
+          description: Scale factor for the quote - this can be null, in which case
+            we default to 1.
+          format: double
+          nullable: true
+          type: number
+      required:
+      - economicDependency
+      - metricValue
+      type: object
     EmptyModelOptions:
       allOf:
       - $ref: '#/components/schemas/ModelOptions'
@@ -41088,7 +41171,7 @@ components:
         createdDate: 2000-01-23T04:56:07.000+00:00
         settlementCurrency: settlementCurrency
         price:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         counterparty: counterparty
         links:
@@ -41111,7 +41194,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -41218,7 +41301,7 @@ components:
         createdDate: 2000-01-23T04:56:07.000+00:00
         settlementCurrency: settlementCurrency
         price:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         counterparty: counterparty
         id:
@@ -41231,7 +41314,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -41327,7 +41410,7 @@ components:
           createdDate: 2000-01-23T04:56:07.000+00:00
           settlementCurrency: settlementCurrency
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           counterparty: counterparty
           id:
@@ -41340,7 +41423,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -41360,7 +41443,7 @@ components:
           createdDate: 2000-01-23T04:56:07.000+00:00
           settlementCurrency: settlementCurrency
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           counterparty: counterparty
           id:
@@ -41373,7 +41456,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -41428,7 +41511,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -41440,7 +41523,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -41478,7 +41561,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -41490,7 +41573,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -42058,7 +42141,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -42070,7 +42153,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -42134,7 +42217,7 @@ components:
             scaleFactor: 0.8008281904610115
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             asAt: 2000-01-23T04:56:07.000+00:00
             uploadedBy: uploadedBy
             quoteId:
@@ -42377,7 +42460,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -42396,7 +42479,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -42460,7 +42543,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -42471,7 +42554,7 @@ components:
         taxLots:
         - purchaseDate: 2000-01-23T04:56:07.000+00:00
           cost:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           price: 1.4658129805029452
           units: 0.8008281904610115
@@ -42479,7 +42562,7 @@ components:
           portfolioCost: 6.027456183070403
         - purchaseDate: 2000-01-23T04:56:07.000+00:00
           cost:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           price: 1.4658129805029452
           units: 0.8008281904610115
@@ -42494,7 +42577,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -42571,7 +42654,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -42582,7 +42665,7 @@ components:
           taxLots:
           - purchaseDate: 2000-01-23T04:56:07.000+00:00
             cost:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             price: 1.4658129805029452
             units: 0.8008281904610115
@@ -42590,7 +42673,7 @@ components:
             portfolioCost: 6.027456183070403
           - purchaseDate: 2000-01-23T04:56:07.000+00:00
             cost:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             price: 1.4658129805029452
             units: 0.8008281904610115
@@ -42605,7 +42688,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -42617,7 +42700,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -42628,7 +42711,7 @@ components:
           taxLots:
           - purchaseDate: 2000-01-23T04:56:07.000+00:00
             cost:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             price: 1.4658129805029452
             units: 0.8008281904610115
@@ -42636,7 +42719,7 @@ components:
             portfolioCost: 6.027456183070403
           - purchaseDate: 2000-01-23T04:56:07.000+00:00
             cost:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             price: 1.4658129805029452
             units: 0.8008281904610115
@@ -42651,7 +42734,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -42995,6 +43078,29 @@ components:
         recipeId:
           code: code
           scope: scope
+        marketDataOverrides:
+          complexMarketData:
+          - complexMarketData:
+              marketDataType: DiscountFactorCurveData
+            economicDependency:
+              dependencyType: Opaque
+          - complexMarketData:
+              marketDataType: DiscountFactorCurveData
+            economicDependency:
+              dependencyType: Opaque
+          quotes:
+          - scaleFactor: 6.027456183070403
+            economicDependency:
+              dependencyType: Opaque
+            metricValue:
+              unit: unit
+              value: 0.8008281904610115
+          - scaleFactor: 6.027456183070403
+            economicDependency:
+              dependencyType: Opaque
+            metricValue:
+              unit: unit
+              value: 0.8008281904610115
         equipWithSubtotals: true
       properties:
         recipeId:
@@ -43065,6 +43171,8 @@ components:
           items:
             $ref: '#/components/schemas/WeightedInstrument'
           type: array
+        marketDataOverrides:
+          $ref: '#/components/schemas/MarketDataOverrides'
       required:
       - instruments
       - metrics
@@ -43104,7 +43212,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -43116,7 +43224,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -43217,7 +43325,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -43229,7 +43337,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -43356,7 +43464,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -43368,7 +43476,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -43391,7 +43499,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -43403,7 +43511,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -43427,7 +43535,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -43439,7 +43547,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -43462,7 +43570,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -43474,7 +43582,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -43624,7 +43732,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -43652,7 +43760,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -44264,6 +44372,48 @@ components:
       - quoteType
       - supplier
       type: object
+    MarketDataOverrides:
+      additionalProperties: false
+      description: Class which holds market data overrides to be used in valuation
+      example:
+        complexMarketData:
+        - complexMarketData:
+            marketDataType: DiscountFactorCurveData
+          economicDependency:
+            dependencyType: Opaque
+        - complexMarketData:
+            marketDataType: DiscountFactorCurveData
+          economicDependency:
+            dependencyType: Opaque
+        quotes:
+        - scaleFactor: 6.027456183070403
+          economicDependency:
+            dependencyType: Opaque
+          metricValue:
+            unit: unit
+            value: 0.8008281904610115
+        - scaleFactor: 6.027456183070403
+          economicDependency:
+            dependencyType: Opaque
+          metricValue:
+            unit: unit
+            value: 0.8008281904610115
+      properties:
+        complexMarketData:
+          description: A list of EconomicDependency paired with quote data satisfying
+            that economic dependency
+          items:
+            $ref: '#/components/schemas/EconomicDependencyWithComplexMarketData'
+          nullable: true
+          type: array
+        quotes:
+          description: A list of EconomicDependency paired with a ComplexMarketData
+            satisfying that economic dependency
+          items:
+            $ref: '#/components/schemas/EconomicDependencyWithQuote'
+          nullable: true
+          type: array
+      type: object
     MarketDataSpecificRule:
       additionalProperties: false
       description: "Extends market data key rules to be able to catch dependencies\
@@ -44474,7 +44624,7 @@ components:
       additionalProperties: false
       example:
         unit: unit
-        value: 6.027456183070403
+        value: 0.8008281904610115
       properties:
         value:
           description: The numerical value of the property.
@@ -44632,7 +44782,7 @@ components:
         side: side
         quantity: 0.8008281904610115
         limitPrice:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         instrumentScope: instrumentScope
         packageId:
@@ -44645,7 +44795,7 @@ components:
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
           asAtDate: 2000-01-23T04:56:07.000+00:00
         stopPrice:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         portfolioId:
           code: code
@@ -44654,7 +44804,7 @@ components:
           code: code
           scope: scope
         price:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         links:
         - method: method
@@ -44676,7 +44826,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -44792,7 +44942,7 @@ components:
           code: code
           scope: scope
         limitPrice:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         orderInstruction:
           code: code
@@ -44801,7 +44951,7 @@ components:
           key: instrumentIdentifiers
         type: type
         stopPrice:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         portfolioId:
           code: code
@@ -44810,7 +44960,7 @@ components:
           code: code
           scope: scope
         price:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         id:
           code: code
@@ -44822,7 +44972,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -44901,7 +45051,7 @@ components:
             code: code
             scope: scope
           limitPrice:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           orderInstruction:
             code: code
@@ -44910,7 +45060,7 @@ components:
             key: instrumentIdentifiers
           type: type
           stopPrice:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           portfolioId:
             code: code
@@ -44919,7 +45069,7 @@ components:
             code: code
             scope: scope
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           id:
             code: code
@@ -44931,7 +45081,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -44945,7 +45095,7 @@ components:
             code: code
             scope: scope
           limitPrice:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           orderInstruction:
             code: code
@@ -44954,7 +45104,7 @@ components:
             key: instrumentIdentifiers
           type: type
           stopPrice:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           portfolioId:
             code: code
@@ -44963,7 +45113,7 @@ components:
             code: code
             scope: scope
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           id:
             code: code
@@ -44975,7 +45125,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -45023,7 +45173,7 @@ components:
         type: type
         transactionDate: 2000-01-23T04:56:07.000+00:00
         totalConsideration:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         transactionId: transactionId
         counterpartyId: counterpartyId
@@ -45035,57 +45185,57 @@ components:
         - purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
           purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
           realisedCurrency:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           realisedTotal:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           instrumentScope: instrumentScope
           realisedMarket:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           instrumentUid: instrumentUid
           costTradeCcy:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           units: 5.637376656633329
           purchasePrice: 2.3021358869347655
           costPortfolioCcy:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           realisedTradeCcy:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
         - purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
           purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
           realisedCurrency:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           realisedTotal:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           instrumentScope: instrumentScope
           realisedMarket:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           instrumentUid: instrumentUid
           costTradeCcy:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           units: 5.637376656633329
           purchasePrice: 2.3021358869347655
           costPortfolioCcy:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           realisedTradeCcy:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
         properties:
           key:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -45222,7 +45372,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           instrumentScope: instrumentScope
-          settlementCurrencyFxRate: 5.962133916683182
+          settlementCurrencyFxRate: 1.4658129805029452
           instrumentIdentifiers:
             key: instrumentIdentifiers
           placementIds:
@@ -45243,7 +45393,7 @@ components:
             scope: scope
           settlementCurrency: settlementCurrency
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           counterparty: counterparty
           links:
@@ -45265,7 +45415,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -45276,7 +45426,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           instrumentScope: instrumentScope
-          settlementCurrencyFxRate: 5.962133916683182
+          settlementCurrencyFxRate: 1.4658129805029452
           instrumentIdentifiers:
             key: instrumentIdentifiers
           placementIds:
@@ -45297,7 +45447,7 @@ components:
             scope: scope
           settlementCurrency: settlementCurrency
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           counterparty: counterparty
           links:
@@ -45319,7 +45469,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -45387,7 +45537,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -45399,7 +45549,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -45423,7 +45573,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -45435,7 +45585,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -45755,7 +45905,7 @@ components:
           createdDate: 2000-01-23T04:56:07.000+00:00
           settlementCurrency: settlementCurrency
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           counterparty: counterparty
           links:
@@ -45778,7 +45928,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -45801,7 +45951,7 @@ components:
           createdDate: 2000-01-23T04:56:07.000+00:00
           settlementCurrency: settlementCurrency
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           counterparty: counterparty
           links:
@@ -45824,7 +45974,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -45907,7 +46057,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -45919,7 +46069,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -45958,7 +46108,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -45970,7 +46120,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -46043,7 +46193,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -46071,7 +46221,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -46099,7 +46249,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -46127,7 +46277,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -46184,7 +46334,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           instrumentScope: instrumentScope
           packageId:
@@ -46197,7 +46347,7 @@ components:
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
           stopPrice:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           portfolioId:
             code: code
@@ -46206,7 +46356,7 @@ components:
             code: code
             scope: scope
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           links:
           - method: method
@@ -46228,7 +46378,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -46242,7 +46392,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           instrumentScope: instrumentScope
           packageId:
@@ -46255,7 +46405,7 @@ components:
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
           stopPrice:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           portfolioId:
             code: code
@@ -46264,7 +46414,7 @@ components:
             code: code
             scope: scope
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           links:
           - method: method
@@ -46286,7 +46436,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -46471,7 +46621,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -46483,7 +46633,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -46518,7 +46668,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -46530,7 +46680,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -46930,7 +47080,7 @@ components:
         value:
           metricValue:
             unit: unit
-            value: 6.027456183070403
+            value: 0.8008281904610115
           labelValue: labelValue
           labelValueSet:
             values:
@@ -46987,7 +47137,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -47086,7 +47236,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -47097,26 +47247,26 @@ components:
         movementName: movementName
         fxRate: 1.4658129805029452
         balanceReportingCurrency:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         translationGainLoss:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         unrealisedGainLossReportingCurrency:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         type: type
         balance:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         cashflowReportingCurrency:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         cashflow:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         costBasisReportingCurrency:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         links:
         - method: method
@@ -47149,7 +47299,7 @@ components:
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           transactionId: transactionId
           counterpartyId: counterpartyId
@@ -47160,7 +47310,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -47244,7 +47394,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -47533,7 +47683,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -47652,7 +47802,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -47660,7 +47810,7 @@ components:
                 - values
             key: key
         cost:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         instrumentScope: instrumentScope
         holdingType: holdingType
@@ -47668,7 +47818,7 @@ components:
         currency: currency
         units: 0.8008281904610115
         costPortfolioCcy:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         settledUnits: 6.027456183070403
         holdingTypeName: holdingTypeName
@@ -47678,7 +47828,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -47707,7 +47857,7 @@ components:
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           transactionId: transactionId
           counterpartyId: counterpartyId
@@ -47718,7 +47868,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -47805,7 +47955,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -47895,7 +48045,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -47907,7 +48057,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -48226,7 +48376,7 @@ components:
         value:
           metricValue:
             unit: unit
-            value: 6.027456183070403
+            value: 0.8008281904610115
           labelValue: labelValue
           labelValueSet:
             values:
@@ -48663,7 +48813,7 @@ components:
         value:
           metricValue:
             unit: unit
-            value: 6.027456183070403
+            value: 0.8008281904610115
           labelValue: labelValue
           labelValueSet:
             values:
@@ -48694,7 +48844,7 @@ components:
       example:
         metricValue:
           unit: unit
-          value: 6.027456183070403
+          value: 0.8008281904610115
         labelValue: labelValue
         labelValueSet:
           values:
@@ -48720,7 +48870,7 @@ components:
         scaleFactor: 0.8008281904610115
         metricValue:
           unit: unit
-          value: 6.027456183070403
+          value: 0.8008281904610115
         asAt: 2000-01-23T04:56:07.000+00:00
         uploadedBy: uploadedBy
         quoteId:
@@ -48867,26 +49017,26 @@ components:
         purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
         purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
         realisedCurrency:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         realisedTotal:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         instrumentScope: instrumentScope
         realisedMarket:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         instrumentUid: instrumentUid
         costTradeCcy:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         units: 5.637376656633329
         purchasePrice: 2.3021358869347655
         costPortfolioCcy:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         realisedTradeCcy:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
       properties:
         instrumentScope:
@@ -48951,7 +49101,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -48963,7 +49113,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -48976,7 +49126,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -48984,15 +49134,15 @@ components:
                 - values
             key: key
         leftCost:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         instrumentScope: instrumentScope
         instrumentUid: instrumentUid
         differenceCost:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         rightCost:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         rightUnits: 6.027456183070403
         leftUnits: 0.8008281904610115
@@ -49095,7 +49245,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -49148,7 +49298,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -49202,7 +49352,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -49284,7 +49434,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -49785,7 +49935,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           instrumentScope: instrumentScope
-          settlementCurrencyFxRate: 5.962133916683182
+          settlementCurrencyFxRate: 1.4658129805029452
           instrumentIdentifiers:
             key: instrumentIdentifiers
           placementIds:
@@ -49806,7 +49956,7 @@ components:
             scope: scope
           settlementCurrency: settlementCurrency
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           counterparty: counterparty
           links:
@@ -49828,7 +49978,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -49839,7 +49989,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           instrumentScope: instrumentScope
-          settlementCurrencyFxRate: 5.962133916683182
+          settlementCurrencyFxRate: 1.4658129805029452
           instrumentIdentifiers:
             key: instrumentIdentifiers
           placementIds:
@@ -49860,7 +50010,7 @@ components:
             scope: scope
           settlementCurrency: settlementCurrency
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           counterparty: counterparty
           links:
@@ -49882,7 +50032,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -50554,7 +50704,7 @@ components:
           createdDate: 2000-01-23T04:56:07.000+00:00
           settlementCurrency: settlementCurrency
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           counterparty: counterparty
           links:
@@ -50577,7 +50727,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -50600,7 +50750,7 @@ components:
           createdDate: 2000-01-23T04:56:07.000+00:00
           settlementCurrency: settlementCurrency
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           counterparty: counterparty
           links:
@@ -50623,7 +50773,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -51161,7 +51311,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -51189,7 +51339,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -51217,7 +51367,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -51245,7 +51395,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -51302,7 +51452,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           instrumentScope: instrumentScope
           packageId:
@@ -51315,7 +51465,7 @@ components:
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
           stopPrice:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           portfolioId:
             code: code
@@ -51324,7 +51474,7 @@ components:
             code: code
             scope: scope
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           links:
           - method: method
@@ -51346,7 +51496,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -51360,7 +51510,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           instrumentScope: instrumentScope
           packageId:
@@ -51373,7 +51523,7 @@ components:
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
           stopPrice:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           portfolioId:
             code: code
@@ -51382,7 +51532,7 @@ components:
             code: code
             scope: scope
           price:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           links:
           - method: method
@@ -51404,7 +51554,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -51550,7 +51700,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -51594,7 +51744,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -51653,7 +51803,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -51664,26 +51814,26 @@ components:
           movementName: movementName
           fxRate: 1.4658129805029452
           balanceReportingCurrency:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           translationGainLoss:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           unrealisedGainLossReportingCurrency:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           type: type
           balance:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           cashflowReportingCurrency:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           cashflow:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           costBasisReportingCurrency:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           links:
           - method: method
@@ -51716,7 +51866,7 @@ components:
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             transactionId: transactionId
             counterpartyId: counterpartyId
@@ -51727,7 +51877,7 @@ components:
                 value:
                   metricValue:
                     unit: unit
-                    value: 6.027456183070403
+                    value: 0.8008281904610115
                   labelValue: labelValue
                   labelValueSet:
                     values:
@@ -51740,7 +51890,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -51751,26 +51901,26 @@ components:
           movementName: movementName
           fxRate: 1.4658129805029452
           balanceReportingCurrency:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           translationGainLoss:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           unrealisedGainLossReportingCurrency:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           type: type
           balance:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           cashflowReportingCurrency:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           cashflow:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           costBasisReportingCurrency:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           links:
           - method: method
@@ -51803,7 +51953,7 @@ components:
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             transactionId: transactionId
             counterpartyId: counterpartyId
@@ -51814,7 +51964,7 @@ components:
                 value:
                   metricValue:
                     unit: unit
-                    value: 6.027456183070403
+                    value: 0.8008281904610115
                   labelValue: labelValue
                   labelValueSet:
                     values:
@@ -51871,7 +52021,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -51912,7 +52062,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -52155,7 +52305,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -52167,7 +52317,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -52328,7 +52478,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -52344,7 +52494,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -52400,7 +52550,7 @@ components:
           scaleFactor: 0.8008281904610115
           metricValue:
             unit: unit
-            value: 6.027456183070403
+            value: 0.8008281904610115
           asAt: 2000-01-23T04:56:07.000+00:00
           uploadedBy: uploadedBy
           quoteId:
@@ -52417,7 +52567,7 @@ components:
           scaleFactor: 0.8008281904610115
           metricValue:
             unit: unit
-            value: 6.027456183070403
+            value: 0.8008281904610115
           asAt: 2000-01-23T04:56:07.000+00:00
           uploadedBy: uploadedBy
           quoteId:
@@ -52480,7 +52630,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -52492,7 +52642,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -52505,7 +52655,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -52513,15 +52663,15 @@ components:
                   - values
               key: key
           leftCost:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           instrumentScope: instrumentScope
           instrumentUid: instrumentUid
           differenceCost:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           rightCost:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           rightUnits: 6.027456183070403
           leftUnits: 0.8008281904610115
@@ -52531,7 +52681,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -52543,7 +52693,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -52556,7 +52706,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -52564,15 +52714,15 @@ components:
                   - values
               key: key
           leftCost:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           instrumentScope: instrumentScope
           instrumentUid: instrumentUid
           differenceCost:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           rightCost:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           rightUnits: 6.027456183070403
           leftUnits: 0.8008281904610115
@@ -52647,7 +52797,7 @@ components:
                 value:
                   metricValue:
                     unit: unit
-                    value: 6.027456183070403
+                    value: 0.8008281904610115
                   labelValue: labelValue
                   labelValueSet:
                     values:
@@ -52688,7 +52838,7 @@ components:
                 value:
                   metricValue:
                     unit: unit
-                    value: 6.027456183070403
+                    value: 0.8008281904610115
                   labelValue: labelValue
                   labelValueSet:
                     values:
@@ -52990,7 +53140,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -53016,7 +53166,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -53169,7 +53319,7 @@ components:
       example:
         purchaseDate: 2000-01-23T04:56:07.000+00:00
         cost:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         price: 1.4658129805029452
         units: 0.8008281904610115
@@ -53213,7 +53363,7 @@ components:
       example:
         purchaseDate: 2000-01-23T04:56:07.000+00:00
         cost:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         price: 1.4658129805029452
         units: 0.8008281904610115
@@ -53306,7 +53456,7 @@ components:
         type: type
         transactionDate: 2000-01-23T04:56:07.000+00:00
         totalConsideration:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         transactionId: transactionId
         counterpartyId: counterpartyId
@@ -53317,7 +53467,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -53456,7 +53606,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -53479,7 +53629,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -53492,7 +53642,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -53555,7 +53705,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -53578,7 +53728,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -53591,7 +53741,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -53638,7 +53788,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -53725,7 +53875,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -53959,7 +54109,7 @@ components:
         type: type
         transactionDate: transactionDate
         totalConsideration:
-          amount: 1.4658129805029452
+          amount: 6.027456183070403
           currency: currency
         transactionId: transactionId
         counterpartyId: counterpartyId
@@ -53969,7 +54119,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -54124,7 +54274,7 @@ components:
                 value:
                   metricValue:
                     unit: unit
-                    value: 6.027456183070403
+                    value: 0.8008281904610115
                   labelValue: labelValue
                   labelValueSet:
                     values:
@@ -54147,7 +54297,7 @@ components:
                 value:
                   metricValue:
                     unit: unit
-                    value: 6.027456183070403
+                    value: 0.8008281904610115
                   labelValue: labelValue
                   labelValueSet:
                     values:
@@ -54160,7 +54310,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -54198,7 +54348,7 @@ components:
                 value:
                   metricValue:
                     unit: unit
-                    value: 6.027456183070403
+                    value: 0.8008281904610115
                   labelValue: labelValue
                   labelValueSet:
                     values:
@@ -54221,7 +54371,7 @@ components:
                 value:
                   metricValue:
                     unit: unit
-                    value: 6.027456183070403
+                    value: 0.8008281904610115
                   labelValue: labelValue
                   labelValueSet:
                     values:
@@ -54234,7 +54384,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -54276,7 +54426,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -54288,7 +54438,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -54754,7 +54904,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -54766,7 +54916,7 @@ components:
           value:
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             labelValue: labelValue
             labelValueSet:
               values:
@@ -54844,7 +54994,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -54856,7 +55006,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -54956,7 +55106,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -54972,7 +55122,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -55131,7 +55281,7 @@ components:
         scaleFactor: 0.8008281904610115
         metricValue:
           unit: unit
-          value: 6.027456183070403
+          value: 0.8008281904610115
         quoteId:
           quoteSeriesId:
             field: field
@@ -55170,7 +55320,7 @@ components:
             scaleFactor: 0.8008281904610115
             metricValue:
               unit: unit
-              value: 6.027456183070403
+              value: 0.8008281904610115
             asAt: 2000-01-23T04:56:07.000+00:00
             uploadedBy: uploadedBy
             quoteId:
@@ -55541,7 +55691,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -55557,7 +55707,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -55808,7 +55958,7 @@ components:
             value:
               metricValue:
                 unit: unit
-                value: 6.027456183070403
+                value: 0.8008281904610115
               labelValue: labelValue
               labelValueSet:
                 values:
@@ -55896,6 +56046,29 @@ components:
         recipeId:
           code: code
           scope: scope
+        marketDataOverrides:
+          complexMarketData:
+          - complexMarketData:
+              marketDataType: DiscountFactorCurveData
+            economicDependency:
+              dependencyType: Opaque
+          - complexMarketData:
+              marketDataType: DiscountFactorCurveData
+            economicDependency:
+              dependencyType: Opaque
+          quotes:
+          - scaleFactor: 6.027456183070403
+            economicDependency:
+              dependencyType: Opaque
+            metricValue:
+              unit: unit
+              value: 0.8008281904610115
+          - scaleFactor: 6.027456183070403
+            economicDependency:
+              dependencyType: Opaque
+            metricValue:
+              unit: unit
+              value: 0.8008281904610115
         equipWithSubtotals: true
       properties:
         recipeId:
@@ -55960,6 +56133,8 @@ components:
           type: array
         valuationSchedule:
           $ref: '#/components/schemas/ValuationSchedule'
+        marketDataOverrides:
+          $ref: '#/components/schemas/MarketDataOverrides'
       required:
       - metrics
       - portfolioEntityIds
@@ -56128,7 +56303,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -56205,7 +56380,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -56231,7 +56406,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -56308,7 +56483,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -56384,7 +56559,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -56464,7 +56639,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -56490,7 +56665,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -56570,7 +56745,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -56658,7 +56833,7 @@ components:
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           transactionId: transactionId
           counterpartyId: counterpartyId
@@ -56670,57 +56845,57 @@ components:
           - purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
             purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
             realisedCurrency:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             realisedTotal:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             instrumentScope: instrumentScope
             realisedMarket:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             instrumentUid: instrumentUid
             costTradeCcy:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             units: 5.637376656633329
             purchasePrice: 2.3021358869347655
             costPortfolioCcy:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             realisedTradeCcy:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
           - purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
             purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
             realisedCurrency:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             realisedTotal:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             instrumentScope: instrumentScope
             realisedMarket:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             instrumentUid: instrumentUid
             costTradeCcy:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             units: 5.637376656633329
             purchasePrice: 2.3021358869347655
             costPortfolioCcy:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             realisedTradeCcy:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
           properties:
             key:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -56744,7 +56919,7 @@ components:
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           transactionId: transactionId
           counterpartyId: counterpartyId
@@ -56756,57 +56931,57 @@ components:
           - purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
             purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
             realisedCurrency:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             realisedTotal:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             instrumentScope: instrumentScope
             realisedMarket:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             instrumentUid: instrumentUid
             costTradeCcy:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             units: 5.637376656633329
             purchasePrice: 2.3021358869347655
             costPortfolioCcy:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             realisedTradeCcy:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
           - purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
             purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
             realisedCurrency:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             realisedTotal:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             instrumentScope: instrumentScope
             realisedMarket:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             instrumentUid: instrumentUid
             costTradeCcy:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             units: 5.637376656633329
             purchasePrice: 2.3021358869347655
             costPortfolioCcy:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             realisedTradeCcy:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
           properties:
             key:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -56868,7 +57043,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -56876,7 +57051,7 @@ components:
                   - values
               key: key
           cost:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           instrumentScope: instrumentScope
           holdingType: holdingType
@@ -56884,7 +57059,7 @@ components:
           currency: currency
           units: 0.8008281904610115
           costPortfolioCcy:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           settledUnits: 6.027456183070403
           holdingTypeName: holdingTypeName
@@ -56894,7 +57069,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -56923,7 +57098,7 @@ components:
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             transactionId: transactionId
             counterpartyId: counterpartyId
@@ -56934,7 +57109,7 @@ components:
                 value:
                   metricValue:
                     unit: unit
-                    value: 6.027456183070403
+                    value: 0.8008281904610115
                   labelValue: labelValue
                   labelValueSet:
                     values:
@@ -56946,7 +57121,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -56954,7 +57129,7 @@ components:
                   - values
               key: key
           cost:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           instrumentScope: instrumentScope
           holdingType: holdingType
@@ -56962,7 +57137,7 @@ components:
           currency: currency
           units: 0.8008281904610115
           costPortfolioCcy:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           settledUnits: 6.027456183070403
           holdingTypeName: holdingTypeName
@@ -56972,7 +57147,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -57001,7 +57176,7 @@ components:
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
-              amount: 1.4658129805029452
+              amount: 6.027456183070403
               currency: currency
             transactionId: transactionId
             counterpartyId: counterpartyId
@@ -57012,7 +57187,7 @@ components:
                 value:
                   metricValue:
                     unit: unit
-                    value: 6.027456183070403
+                    value: 0.8008281904610115
                   labelValue: labelValue
                   labelValueSet:
                     values:
@@ -57089,7 +57264,7 @@ components:
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           transactionId: transactionId
           counterpartyId: counterpartyId
@@ -57100,7 +57275,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -57127,7 +57302,7 @@ components:
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
-            amount: 1.4658129805029452
+            amount: 6.027456183070403
             currency: currency
           transactionId: transactionId
           counterpartyId: counterpartyId
@@ -57138,7 +57313,7 @@ components:
               value:
                 metricValue:
                   unit: unit
-                  value: 6.027456183070403
+                  value: 0.8008281904610115
                 labelValue: labelValue
                 labelValueSet:
                   values:
@@ -60776,7 +60951,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
