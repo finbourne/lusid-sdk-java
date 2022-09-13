@@ -290,19 +290,24 @@ info:
     | <a name="791">791</a>|Custom Entity definition already exists|  |
     | <a name="792">792</a>|Compliance PropertyKey is missing.|  |
     | <a name="793">793</a>|Compliance Criteria Value for matching is missing.|  |
+    | <a name="795">795</a>|Cannot delete identifier definition|  |
+    | <a name="796">796</a>|Tax rule set not found.|  |
+    | <a name="797">797</a>|Multiple rule sets for the same property key are applicable.|  |
     | <a name="800">800</a>|Can not upsert an instrument event of this type.|  |
     | <a name="801">801</a>|The instrument event does not exist.|  |
     | <a name="802">802</a>|The Instrument event is missing salient information.|  |
     | <a name="803">803</a>|The Instrument event could not be processed.|  |
     | <a name="804">804</a>|Some data requested does not follow the order graph assumptions.|  |
+    | <a name="811">811</a>|A price could not be found for an order.|  |
+    | <a name="812">812</a>|A price could not be found for an allocation.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4785
+  version: 0.11.4786
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -20692,7 +20697,7 @@ paths:
             Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData,
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
-            InstrumentEvent'
+            InstrumentEvent, Account, ChartOfAccounts'
           enum:
           - NotDefined
           - Transaction
@@ -20722,6 +20727,8 @@ paths:
           - NextBestAction
           - CustomEntity
           - InstrumentEvent
+          - Account
+          - ChartOfAccounts
           type: string
         style: simple
       - description: The scope of the property to be deleted.
@@ -20805,7 +20812,7 @@ paths:
             Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData,
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
-            InstrumentEvent'
+            InstrumentEvent, Account, ChartOfAccounts'
           enum:
           - NotDefined
           - Transaction
@@ -20835,6 +20842,8 @@ paths:
           - NextBestAction
           - CustomEntity
           - InstrumentEvent
+          - Account
+          - ChartOfAccounts
           type: string
         style: simple
       - description: The scope of the specified property.
@@ -20936,7 +20945,7 @@ paths:
             Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData,
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
-            InstrumentEvent'
+            InstrumentEvent, Account, ChartOfAccounts'
           enum:
           - NotDefined
           - Transaction
@@ -20966,6 +20975,8 @@ paths:
           - NextBestAction
           - CustomEntity
           - InstrumentEvent
+          - Account
+          - ChartOfAccounts
           type: string
         style: simple
       - description: The scope of the property being updated.
@@ -39614,7 +39625,7 @@ components:
             Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData,
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
-            InstrumentEvent'
+            InstrumentEvent, Account, ChartOfAccounts'
           enum:
           - NotDefined
           - Transaction
@@ -39644,6 +39655,8 @@ components:
           - NextBestAction
           - CustomEntity
           - InstrumentEvent
+          - Account
+          - ChartOfAccounts
           type: string
         scope:
           description: The scope that the property exists in.
@@ -39874,7 +39887,7 @@ components:
             Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata,
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
             LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
-            NextBestAction, CustomEntity, InstrumentEvent'
+            NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts'
           enum:
           - NotDefined
           - Transaction
@@ -39904,6 +39917,8 @@ components:
           - NextBestAction
           - CustomEntity
           - InstrumentEvent
+          - Account
+          - ChartOfAccounts
           type: string
         scope:
           description: The scope that the property exists in.
@@ -48506,7 +48521,7 @@ components:
             Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata,
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
             LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
-            NextBestAction, CustomEntity, InstrumentEvent'
+            NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts'
           enum:
           - NotDefined
           - Transaction
@@ -48536,6 +48551,8 @@ components:
           - NextBestAction
           - CustomEntity
           - InstrumentEvent
+          - Account
+          - ChartOfAccounts
           type: string
         scope:
           description: The scope that the property exists in.
@@ -48686,7 +48703,7 @@ components:
             Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata,
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
             LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
-            NextBestAction, CustomEntity, InstrumentEvent'
+            NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts'
           enum:
           - NotDefined
           - Transaction
@@ -48716,6 +48733,8 @@ components:
           - NextBestAction
           - CustomEntity
           - InstrumentEvent
+          - Account
+          - ChartOfAccounts
           type: string
         scope:
           description: The scope that the property exists in.
@@ -60951,7 +60970,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
