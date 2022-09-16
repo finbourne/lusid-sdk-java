@@ -302,7 +302,7 @@ info:
     | <a name="812">812</a>|A price could not be found for an allocation.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4795
+  version: 0.11.4796
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
