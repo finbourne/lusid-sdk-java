@@ -302,7 +302,7 @@ info:
     | <a name="812">812</a>|A price could not be found for an allocation.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4816
+  version: 0.11.4817
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -372,7 +372,7 @@ tags:
   name: Legal Entities
 - description: The order graph is a way of looking at orders with the various entities
     relating to the order, such as blocks, orders, placements, allocations and executions
-    in one place. It also contains some state information which can not be obtained
+    in one place. It also contains some state information which cannot be obtained
     any other way.
   name: OrderGraph
 - description: Methods for handling order instructions.
