@@ -303,7 +303,7 @@ info:
     | <a name="812">812</a>|A price could not be found for an allocation.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4841
+  version: 0.11.4842
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -16527,12 +16527,6 @@ paths:
                   source: ""
                   entryDateTime: 2018-03-04T23:50:00.0000000+00:00
                   transactionStatus: Active
-                  orderId:
-                    scope: someScope
-                    code: ORD001
-                  allocationId:
-                    scope: someScope
-                    code: ALLOC001
                 href: http://example.com
                 links: []
               schema:
@@ -16575,12 +16569,6 @@ paths:
                   source: ""
                   entryDateTime: 2018-03-04T23:50:00.0000000+00:00
                   transactionStatus: Active
-                  orderId:
-                    scope: someScope
-                    code: ORD001
-                  allocationId:
-                    scope: someScope
-                    code: ALLOC001
                 href: http://example.com
                 links: []
               schema:
@@ -16623,12 +16611,6 @@ paths:
                   source: ""
                   entryDateTime: 2018-03-04T23:50:00.0000000+00:00
                   transactionStatus: Active
-                  orderId:
-                    scope: someScope
-                    code: ORD001
-                  allocationId:
-                    scope: someScope
-                    code: ALLOC001
                 href: http://example.com
                 links: []
               schema:
@@ -34555,12 +34537,6 @@ paths:
                   source: ""
                   entryDateTime: 2018-03-04T23:50:00.0000000+00:00
                   transactionStatus: Active
-                  orderId:
-                    scope: someScope
-                    code: ORD001
-                  allocationId:
-                    scope: someScope
-                    code: ALLOC001
                 href: http://example.com
                 links: []
               schema:
@@ -34603,12 +34579,6 @@ paths:
                   source: ""
                   entryDateTime: 2018-03-04T23:50:00.0000000+00:00
                   transactionStatus: Active
-                  orderId:
-                    scope: someScope
-                    code: ORD001
-                  allocationId:
-                    scope: someScope
-                    code: ALLOC001
                 href: http://example.com
                 links: []
               schema:
@@ -34651,12 +34621,6 @@ paths:
                   source: ""
                   entryDateTime: 2018-03-04T23:50:00.0000000+00:00
                   transactionStatus: Active
-                  orderId:
-                    scope: someScope
-                    code: ORD001
-                  allocationId:
-                    scope: someScope
-                    code: ALLOC001
                 href: http://example.com
                 links: []
               schema:
@@ -34752,12 +34716,6 @@ paths:
                 counterpartyAgreementId:
                   scope: someScope
                   code: someCode
-              orderId:
-                scope: someScope
-                code: ORD001
-              allocationId:
-                scope: someScope
-                code: ALLOC001
             schema:
               description: A list of transactions to be created or updated.
               items:
@@ -34791,12 +34749,6 @@ paths:
                 counterpartyAgreementId:
                   scope: someScope
                   code: someCode
-              orderId:
-                scope: someScope
-                code: ORD001
-              allocationId:
-                scope: someScope
-                code: ALLOC001
             schema:
               description: A list of transactions to be created or updated.
               items:
@@ -34830,12 +34782,6 @@ paths:
                 counterpartyAgreementId:
                   scope: someScope
                   code: someCode
-              orderId:
-                scope: someScope
-                code: ORD001
-              allocationId:
-                scope: someScope
-                code: ALLOC001
             schema:
               description: A list of transactions to be created or updated.
               items:
@@ -34869,12 +34815,6 @@ paths:
                 counterpartyAgreementId:
                   scope: someScope
                   code: someCode
-              orderId:
-                scope: someScope
-                code: ORD001
-              allocationId:
-                scope: someScope
-                code: ALLOC001
             schema:
               description: A list of transactions to be created or updated.
               items:
@@ -47365,18 +47305,12 @@ components:
               scope: scope
           instrumentScope: instrumentScope
           transactionStatus: Active
-          orderId:
-            code: code
-            scope: scope
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
             price: 5.962133916683182
             type: Price
           instrumentIdentifiers:
             key: instrumentIdentifiers
-          allocationId:
-            code: code
-            scope: scope
           settlementDate: 2000-01-23T04:56:07.000+00:00
           units: 1.4658129805029452
           source: source
@@ -47930,18 +47864,12 @@ components:
               scope: scope
           instrumentScope: instrumentScope
           transactionStatus: Active
-          orderId:
-            code: code
-            scope: scope
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
             price: 5.962133916683182
             type: Price
           instrumentIdentifiers:
             key: instrumentIdentifiers
-          allocationId:
-            code: code
-            scope: scope
           settlementDate: 2000-01-23T04:56:07.000+00:00
           units: 1.4658129805029452
           source: source
@@ -51949,18 +51877,12 @@ components:
                 scope: scope
             instrumentScope: instrumentScope
             transactionStatus: Active
-            orderId:
-              code: code
-              scope: scope
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
               price: 5.962133916683182
               type: Price
             instrumentIdentifiers:
               key: instrumentIdentifiers
-            allocationId:
-              code: code
-              scope: scope
             settlementDate: 2000-01-23T04:56:07.000+00:00
             units: 1.4658129805029452
             source: source
@@ -52042,18 +51964,12 @@ components:
                 scope: scope
             instrumentScope: instrumentScope
             transactionStatus: Active
-            orderId:
-              code: code
-              scope: scope
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
               price: 5.962133916683182
               type: Price
             instrumentIdentifiers:
               key: instrumentIdentifiers
-            allocationId:
-              code: code
-              scope: scope
             settlementDate: 2000-01-23T04:56:07.000+00:00
             units: 1.4658129805029452
             source: source
@@ -53552,18 +53468,12 @@ components:
             scope: scope
         instrumentScope: instrumentScope
         transactionStatus: Active
-        orderId:
-          code: code
-          scope: scope
         entryDateTime: 2000-01-23T04:56:07.000+00:00
         transactionPrice:
           price: 5.962133916683182
           type: Price
         instrumentIdentifiers:
           key: instrumentIdentifiers
-        allocationId:
-          code: code
-          scope: scope
         settlementDate: 2000-01-23T04:56:07.000+00:00
         units: 1.4658129805029452
         source: source
@@ -53678,10 +53588,6 @@ components:
           format: date-time
           nullable: true
           type: string
-        orderId:
-          $ref: '#/components/schemas/ResourceId'
-        allocationId:
-          $ref: '#/components/schemas/ResourceId'
       required:
       - instrumentUid
       - settlementDate
@@ -54217,17 +54123,11 @@ components:
           counterpartyAgreementId:
             code: code
             scope: scope
-        orderId:
-          code: code
-          scope: scope
         transactionPrice:
           price: 5.962133916683182
           type: Price
         instrumentIdentifiers:
           key: instrumentIdentifiers
-        allocationId:
-          code: code
-          scope: scope
         settlementDate: settlementDate
         units: 0.8008281904610115
         source: source
@@ -54314,10 +54214,6 @@ components:
           type: string
         otcConfirmation:
           $ref: '#/components/schemas/OtcConfirmation'
-        orderId:
-          $ref: '#/components/schemas/ResourceId'
-        allocationId:
-          $ref: '#/components/schemas/ResourceId'
       required:
       - instrumentIdentifiers
       - settlementDate
@@ -57214,18 +57110,12 @@ components:
                 scope: scope
             instrumentScope: instrumentScope
             transactionStatus: Active
-            orderId:
-              code: code
-              scope: scope
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
               price: 5.962133916683182
               type: Price
             instrumentIdentifiers:
               key: instrumentIdentifiers
-            allocationId:
-              code: code
-              scope: scope
             settlementDate: 2000-01-23T04:56:07.000+00:00
             units: 1.4658129805029452
             source: source
@@ -57298,18 +57188,12 @@ components:
                 scope: scope
             instrumentScope: instrumentScope
             transactionStatus: Active
-            orderId:
-              code: code
-              scope: scope
             entryDateTime: 2000-01-23T04:56:07.000+00:00
             transactionPrice:
               price: 5.962133916683182
               type: Price
             instrumentIdentifiers:
               key: instrumentIdentifiers
-            allocationId:
-              code: code
-              scope: scope
             settlementDate: 2000-01-23T04:56:07.000+00:00
             units: 1.4658129805029452
             source: source
@@ -57392,18 +57276,12 @@ components:
               scope: scope
           instrumentScope: instrumentScope
           transactionStatus: Active
-          orderId:
-            code: code
-            scope: scope
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
             price: 5.962133916683182
             type: Price
           instrumentIdentifiers:
             key: instrumentIdentifiers
-          allocationId:
-            code: code
-            scope: scope
           settlementDate: 2000-01-23T04:56:07.000+00:00
           units: 1.4658129805029452
           source: source
@@ -57436,18 +57314,12 @@ components:
               scope: scope
           instrumentScope: instrumentScope
           transactionStatus: Active
-          orderId:
-            code: code
-            scope: scope
           entryDateTime: 2000-01-23T04:56:07.000+00:00
           transactionPrice:
             price: 5.962133916683182
             type: Price
           instrumentIdentifiers:
             key: instrumentIdentifiers
-          allocationId:
-            code: code
-            scope: scope
           settlementDate: 2000-01-23T04:56:07.000+00:00
           units: 1.4658129805029452
           source: source

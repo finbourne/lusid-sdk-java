@@ -21,8 +21,6 @@ Name | Type | Description | Notes
 **counterpartyId** | **String** | The identifier for the counterparty of the transaction. |  [optional]
 **source** | **String** | The source of the transaction. This is used to look up the appropriate transaction group set in the transaction type configuration. |  [optional]
 **otcConfirmation** | [**OtcConfirmation**](OtcConfirmation.md) |  |  [optional]
-**orderId** | [**ResourceId**](ResourceId.md) |  |  [optional]
-**allocationId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 
 
 

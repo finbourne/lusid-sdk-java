@@ -27,8 +27,6 @@ Name | Type | Description | Notes
 **otcConfirmation** | [**OtcConfirmation**](OtcConfirmation.md) |  |  [optional]
 **transactionStatus** | [**TransactionStatusEnum**](#TransactionStatusEnum) | The status of the transaction. The available values are: Active, Amended, Cancelled |  [optional]
 **cancelDateTime** | **OffsetDateTime** | If the transaction has been cancelled, the asAt datetime that the transaction was cancelled. |  [optional]
-**orderId** | [**ResourceId**](ResourceId.md) |  |  [optional]
-**allocationId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 
 
 
