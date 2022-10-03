@@ -303,7 +303,7 @@ info:
     | <a name="812">812</a>|A price could not be found for an allocation.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4837
+  version: 0.11.4838
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -53058,13 +53058,14 @@ components:
       properties:
         scheduleType:
           description: 'The available values are: Fixed, Float, Optionality, Step,
-            Exercise, Invalid'
+            Exercise, FxRate, Invalid'
           enum:
           - Fixed
           - Float
           - Optionality
           - Step
           - Exercise
+          - FxRate
           - Invalid
           type: string
       required:

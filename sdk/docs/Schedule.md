@@ -8,7 +8,7 @@ Base class for representing schedules in LUSID.  This base class should not be d
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**scheduleType** | [**ScheduleTypeEnum**](#ScheduleTypeEnum) | The available values are: Fixed, Float, Optionality, Step, Exercise, Invalid | 
+**scheduleType** | [**ScheduleTypeEnum**](#ScheduleTypeEnum) | The available values are: Fixed, Float, Optionality, Step, Exercise, FxRate, Invalid | 
 
 
 
@@ -21,6 +21,7 @@ FLOAT | &quot;Float&quot;
 OPTIONALITY | &quot;Optionality&quot;
 STEP | &quot;Step&quot;
 EXERCISE | &quot;Exercise&quot;
+FXRATE | &quot;FxRate&quot;
 INVALID | &quot;Invalid&quot;
 
 
