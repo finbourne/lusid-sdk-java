@@ -301,9 +301,10 @@ info:
     | <a name="804">804</a>|Some data requested does not follow the order graph assumptions.|  |
     | <a name="811">811</a>|A price could not be found for an order.|  |
     | <a name="812">812</a>|A price could not be found for an allocation.|  |
+    | <a name="813">813</a>|Chart of Accounts not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4857
+  version: 0.11.4858
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
