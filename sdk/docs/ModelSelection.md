@@ -8,7 +8,7 @@ The combination of a library to use and a model in that library that defines whi
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**library** | [**LibraryEnum**](#LibraryEnum) | The available values are: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook | 
+**library** | [**LibraryEnum**](#LibraryEnum) | The available values are: Lusid, RefinitivQps, RefinitivTracsWeb, VolMaster, IsdaCds, YieldBook, LusidCalc | 
 **model** | [**ModelEnum**](#ModelEnum) | The available values are: SimpleStatic, Discounting, VendorDefault, BlackScholes, ConstantTimeValueOfMoney, Bachelier, ForwardWithPoints, ForwardWithPointsUndiscounted, ForwardSpecifiedRate, ForwardSpecifiedRateUndiscounted, IndexNav, IndexPrice, InlinedIndex, ForwardFromCurve, ForwardFromCurveUndiscounted, BlackScholesDigital, BjerksundStensland1993 | 
 
 
@@ -23,6 +23,7 @@ REFINITIVTRACSWEB | &quot;RefinitivTracsWeb&quot;
 VOLMASTER | &quot;VolMaster&quot;
 ISDACDS | &quot;IsdaCds&quot;
 YIELDBOOK | &quot;YieldBook&quot;
+LUSIDCALC | &quot;LusidCalc&quot;
 
 
 

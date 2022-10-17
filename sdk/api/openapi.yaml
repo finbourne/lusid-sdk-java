@@ -304,7 +304,7 @@ info:
     | <a name="813">813</a>|Chart of Accounts not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4873
+  version: 0.11.4874
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -44765,7 +44765,7 @@ components:
       properties:
         library:
           description: 'The available values are: Lusid, RefinitivQps, RefinitivTracsWeb,
-            VolMaster, IsdaCds, YieldBook'
+            VolMaster, IsdaCds, YieldBook, LusidCalc'
           enum:
           - Lusid
           - RefinitivQps
@@ -44773,6 +44773,7 @@ components:
           - VolMaster
           - IsdaCds
           - YieldBook
+          - LusidCalc
           type: string
         model:
           description: 'The available values are: SimpleStatic, Discounting, VendorDefault,
@@ -56374,7 +56375,7 @@ components:
       properties:
         supplier:
           description: 'The available values are: Lusid, RefinitivQps, RefinitivTracsWeb,
-            VolMaster, IsdaCds, YieldBook'
+            VolMaster, IsdaCds, YieldBook, LusidCalc'
           enum:
           - Lusid
           - RefinitivQps
@@ -56382,6 +56383,7 @@ components:
           - VolMaster
           - IsdaCds
           - YieldBook
+          - LusidCalc
           type: string
         modelName:
           description: The vendor library model name
