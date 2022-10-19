@@ -304,12 +304,12 @@ info:
     | <a name="813">813</a>|Chart of Accounts not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4878
+  version: 0.11.4879
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -38532,9 +38532,9 @@ components:
           description: The name of the market entity that the document represents
           maxLength: 32
           minLength: 0
-          nullable: true
           type: string
       required:
+      - marketAsset
       - provider
       type: object
     Compounding:
@@ -61126,7 +61126,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
