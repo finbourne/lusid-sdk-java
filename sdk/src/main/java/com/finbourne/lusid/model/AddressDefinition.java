@@ -23,35 +23,41 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.time.OffsetDateTime;
 
 /**
- * Base class for representing schedules in LUSID.  This base class should not be directly instantiated; each supported ScheduleType has a corresponding inherited class.
+ * AddressDefinition
  */
-@ApiModel(description = "Base class for representing schedules in LUSID.  This base class should not be directly instantiated; each supported ScheduleType has a corresponding inherited class.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class Schedule {
+public class AddressDefinition {
+  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  private String displayName;
+
   /**
-   * The available values are: Fixed, Float, Optionality, Step, Exercise, FxRate, Invalid
+   * The available values are: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Json
    */
-  @JsonAdapter(ScheduleTypeEnum.Adapter.class)
-  public enum ScheduleTypeEnum {
-    FIXED("Fixed"),
+  @JsonAdapter(TypeEnum.Adapter.class)
+  public enum TypeEnum {
+    STRING("String"),
     
-    FLOAT("Float"),
+    INT("Int"),
     
-    OPTIONALITY("Optionality"),
+    DECIMAL("Decimal"),
     
-    STEP("Step"),
+    DATETIME("DateTime"),
     
-    EXERCISE("Exercise"),
+    BOOLEAN("Boolean"),
     
-    FXRATE("FxRate"),
+    RESULTVALUE("ResultValue"),
     
-    INVALID("Invalid");
+    RESULT0D("Result0D"),
+    
+    JSON("Json");
 
     private String value;
 
-    ScheduleTypeEnum(String value) {
+    TypeEnum(String value) {
       this.value = value;
     }
 
@@ -64,8 +70,8 @@ public class Schedule {
       return String.valueOf(value);
     }
 
-    public static ScheduleTypeEnum fromValue(String value) {
-      for (ScheduleTypeEnum b : ScheduleTypeEnum.values()) {
+    public static TypeEnum fromValue(String value) {
+      for (TypeEnum b : TypeEnum.values()) {
         if (b.value.equals(value)) {
           return b;
         }
@@ -73,44 +79,152 @@ public class Schedule {
       throw new IllegalArgumentException("Unexpected value '" + value + "'");
     }
 
-    public static class Adapter extends TypeAdapter<ScheduleTypeEnum> {
+    public static class Adapter extends TypeAdapter<TypeEnum> {
       @Override
-      public void write(final JsonWriter jsonWriter, final ScheduleTypeEnum enumeration) throws IOException {
+      public void write(final JsonWriter jsonWriter, final TypeEnum enumeration) throws IOException {
         jsonWriter.value(enumeration.getValue());
       }
 
       @Override
-      public ScheduleTypeEnum read(final JsonReader jsonReader) throws IOException {
+      public TypeEnum read(final JsonReader jsonReader) throws IOException {
         String value =  jsonReader.nextString();
-        return ScheduleTypeEnum.fromValue(value);
+        return TypeEnum.fromValue(value);
       }
     }
   }
 
-  public static final String SERIALIZED_NAME_SCHEDULE_TYPE = "scheduleType";
-  @SerializedName(SERIALIZED_NAME_SCHEDULE_TYPE)
-  protected ScheduleTypeEnum scheduleType;
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private TypeEnum type;
 
-  public Schedule() {
-    //this.scheduleType = this.getClass().getSimpleName();
-  }
+  public static final String SERIALIZED_NAME_DESCRIPTION = "description";
+  @SerializedName(SERIALIZED_NAME_DESCRIPTION)
+  private String description;
 
-  public Schedule scheduleType(ScheduleTypeEnum scheduleType) {
-    this.scheduleType = scheduleType; 
+  public static final String SERIALIZED_NAME_LIFE_CYCLE_STATUS = "lifeCycleStatus";
+  @SerializedName(SERIALIZED_NAME_LIFE_CYCLE_STATUS)
+  private String lifeCycleStatus;
+
+  public static final String SERIALIZED_NAME_REMOVAL_DATE = "removalDate";
+  @SerializedName(SERIALIZED_NAME_REMOVAL_DATE)
+  private OffsetDateTime removalDate;
+
+  public static final String SERIALIZED_NAME_DOCUMENTATION_LINK = "documentationLink";
+  @SerializedName(SERIALIZED_NAME_DOCUMENTATION_LINK)
+  private String documentationLink;
+
+
+  public AddressDefinition displayName(String displayName) {
+    this.displayName = displayName; 
     return this;
   }
 
    /**
-   * The available values are: Fixed, Float, Optionality, Step, Exercise, FxRate, Invalid
-   * @return scheduleType
+   * The display name of the address key.
+   * @return displayName
   **/
-  @ApiModelProperty(required = true, value = "The available values are: Fixed, Float, Optionality, Step, Exercise, FxRate, Invalid")
-  public ScheduleTypeEnum getScheduleType() {
-    return scheduleType;
+  @ApiModelProperty(value = "The display name of the address key.")
+  public String getDisplayName() {
+    return displayName;
   }
 
-  public void setScheduleType(ScheduleTypeEnum scheduleType) {
-    this.scheduleType = scheduleType;
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
+  }
+
+
+  public AddressDefinition type(TypeEnum type) {
+    this.type = type; 
+    return this;
+  }
+
+   /**
+   * The available values are: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Json
+   * @return type
+  **/
+  @ApiModelProperty(value = "The available values are: String, Int, Decimal, DateTime, Boolean, ResultValue, Result0D, Json")
+  public TypeEnum getType() {
+    return type;
+  }
+
+  public void setType(TypeEnum type) {
+    this.type = type;
+  }
+
+
+  public AddressDefinition description(String description) {
+    this.description = description; 
+    return this;
+  }
+
+   /**
+   * The description for this result.
+   * @return description
+  **/
+  @ApiModelProperty(value = "The description for this result.")
+  public String getDescription() {
+    return description;
+  }
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
+  public AddressDefinition lifeCycleStatus(String lifeCycleStatus) {
+    this.lifeCycleStatus = lifeCycleStatus; 
+    return this;
+  }
+
+   /**
+   * What is the status of the address path. If it is not Production then it might be removed at some point in the future.  See the removal date for the likely timing of that if any.
+   * @return lifeCycleStatus
+  **/
+  @ApiModelProperty(value = "What is the status of the address path. If it is not Production then it might be removed at some point in the future.  See the removal date for the likely timing of that if any.")
+  public String getLifeCycleStatus() {
+    return lifeCycleStatus;
+  }
+
+  public void setLifeCycleStatus(String lifeCycleStatus) {
+    this.lifeCycleStatus = lifeCycleStatus;
+  }
+
+
+  public AddressDefinition removalDate(OffsetDateTime removalDate) {
+    this.removalDate = removalDate; 
+    return this;
+  }
+
+   /**
+   * If the life-cycle status of the address is Deprecated then this is the date at which support of the address will be suspended.  After that date it will be removed at the earliest possible point subject to any specific contractual support and development constraints.
+   * @return removalDate
+  **/
+  @ApiModelProperty(value = "If the life-cycle status of the address is Deprecated then this is the date at which support of the address will be suspended.  After that date it will be removed at the earliest possible point subject to any specific contractual support and development constraints.")
+  public OffsetDateTime getRemovalDate() {
+    return removalDate;
+  }
+
+  public void setRemovalDate(OffsetDateTime removalDate) {
+    this.removalDate = removalDate;
+  }
+
+
+  public AddressDefinition documentationLink(String documentationLink) {
+    this.documentationLink = documentationLink; 
+    return this;
+  }
+
+   /**
+   * Contains a link to the documentation for this AddressDefinition in KnowledgeBase.
+   * @return documentationLink
+  **/
+  @ApiModelProperty(value = "Contains a link to the documentation for this AddressDefinition in KnowledgeBase.")
+  public String getDocumentationLink() {
+    return documentationLink;
+  }
+
+  public void setDocumentationLink(String documentationLink) {
+    this.documentationLink = documentationLink;
   }
 
 
@@ -133,8 +247,13 @@ public class Schedule {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class Schedule {\n");
-    sb.append("    scheduleType: ").append(toIndentedString(scheduleType)).append("\n");
+    sb.append("class AddressDefinition {\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    description: ").append(toIndentedString(description)).append("\n");
+    sb.append("    lifeCycleStatus: ").append(toIndentedString(lifeCycleStatus)).append("\n");
+    sb.append("    removalDate: ").append(toIndentedString(removalDate)).append("\n");
+    sb.append("    documentationLink: ").append(toIndentedString(documentationLink)).append("\n");
     sb.append("}");
     return sb.toString();
   }

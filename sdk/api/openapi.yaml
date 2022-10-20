@@ -304,12 +304,12 @@ info:
     | <a name="813">813</a>|Chart of Accounts not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4881
+  version: 0.11.4883
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -36786,6 +36786,57 @@ components:
       required:
       - value
       type: object
+    AddressDefinition:
+      additionalProperties: false
+      example:
+        removalDate: 2000-01-23T04:56:07.000+00:00
+        displayName: displayName
+        description: description
+        documentationLink: documentationLink
+        type: String
+        lifeCycleStatus: lifeCycleStatus
+      properties:
+        displayName:
+          description: The display name of the address key.
+          nullable: true
+          type: string
+        type:
+          description: 'The available values are: String, Int, Decimal, DateTime,
+            Boolean, ResultValue, Result0D, Json'
+          enum:
+          - String
+          - Int
+          - Decimal
+          - DateTime
+          - Boolean
+          - ResultValue
+          - Result0D
+          - Json
+          type: string
+        description:
+          description: The description for this result.
+          nullable: true
+          type: string
+        lifeCycleStatus:
+          description: "What is the status of the address path. If it is not Production\
+            \ then it might be removed at some point in the future.\r\nSee the removal\
+            \ date for the likely timing of that if any."
+          nullable: true
+          type: string
+        removalDate:
+          description: "If the life-cycle status of the address is Deprecated then\
+            \ this is the date at which support of the address will be suspended.\r\
+            \nAfter that date it will be removed at the earliest possible point subject\
+            \ to any specific contractual support and development constraints."
+          format: date-time
+          nullable: true
+          type: string
+        documentationLink:
+          description: Contains a link to the documentation for this AddressDefinition
+            in KnowledgeBase.
+          nullable: true
+          type: string
+      type: object
     AdjustHolding:
       additionalProperties: false
       example:
@@ -44010,6 +44061,14 @@ components:
                 code: code
                 scope: scope
               type: String
+          addressSchema:
+            key:
+              removalDate: 2000-01-23T04:56:07.000+00:00
+              displayName: displayName
+              description: description
+              documentationLink: documentationLink
+              type: String
+              lifeCycleStatus: lifeCycleStatus
           propertySchema:
             key:
               displayName: displayName
@@ -44429,7 +44488,14 @@ components:
             \ This must be a dot-separated string\r\n            nominating a start\
             \ and end date, for example '5D.0D' to look back 5 days from today (0\
             \ days ago). The syntax\r\n            is <i>int</i><i>char</i>.<i>int</i><i>char</i>,\
-            \ where <i>char</i> is one of D(ay), W(eek), M(onth) or Y(ear)."
+            \ where <i>char</i> is one of\r\n            D(ay), Bd(business day),\
+            \ W(eek), M(onth) or Y(ear).\r\n            Business days are calculated\
+            \ using the calendars specified on the Valuation Request.\r\n        \
+            \    If no calendar is provided in the request, then it will default to\
+            \ only skipping weekends.\r\n            For example, if the valuation\
+            \ date is a Monday, then a quote interval of \"1Bd\" would behave as \"\
+            3D\",\r\n            looking back to the Friday. Data with effectiveAt\
+            \ on the weekend will still be found in that window."
           maxLength: 16
           minLength: 0
           nullable: true
@@ -53100,6 +53166,11 @@ components:
       - $ref: '#/components/schemas/ResultDataKeyRule_allOf'
     ResultDataSchema:
       additionalProperties: false
+      description: "The shape and type of the returned data. The AddressSchema gives\
+        \ information about the requested keys,\r\nincluding the return type, links\
+        \ to further documentation, lifecycle status and removal date if they are\r\
+        \ndeprecated.\r\n            \r\nNote: the NodeValueSchema and PropertySchema\
+        \ fields have been deprecated. Please use the AddressSchema instead."
       example:
         nodeValueSchema:
           key:
@@ -53110,6 +53181,14 @@ components:
               code: code
               scope: scope
             type: String
+        addressSchema:
+          key:
+            removalDate: 2000-01-23T04:56:07.000+00:00
+            displayName: displayName
+            description: description
+            documentationLink: documentationLink
+            type: String
+            lifeCycleStatus: lifeCycleStatus
         propertySchema:
           key:
             displayName: displayName
@@ -53123,11 +53202,18 @@ components:
         nodeValueSchema:
           additionalProperties:
             $ref: '#/components/schemas/FieldSchema'
+          description: This has been deprecated. Please use AddressSchema instead.
           nullable: true
           type: object
         propertySchema:
           additionalProperties:
             $ref: '#/components/schemas/FieldSchema'
+          description: This has been deprecated. Please use AddressSchema instead.
+          nullable: true
+          type: object
+        addressSchema:
+          additionalProperties:
+            $ref: '#/components/schemas/AddressDefinition'
           nullable: true
           type: object
       type: object
@@ -61126,7 +61212,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
