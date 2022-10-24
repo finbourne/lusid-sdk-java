@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **contractDetails** | [**ExchangeTradedOptionContractDetails**](ExchangeTradedOptionContractDetails.md) |  | 
 **contracts** | **java.math.BigDecimal** | The number of contracts held. | 
 **refSpotPrice** | **java.math.BigDecimal** | The reference spot price for the option at which the contract was entered into. | 
-**instrumentType** | [**InstrumentTypeEnum**](#InstrumentTypeEnum) | The available values are: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond | 
+**instrumentType** | [**InstrumentTypeEnum**](#InstrumentTypeEnum) | The available values are: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap | 
 
 
 
@@ -51,6 +51,7 @@ EXCHANGETRADEDOPTION | &quot;ExchangeTradedOption&quot;
 REFERENCEINSTRUMENT | &quot;ReferenceInstrument&quot;
 COMPLEXBOND | &quot;ComplexBond&quot;
 INFLATIONLINKEDBOND | &quot;InflationLinkedBond&quot;
+INFLATIONSWAP | &quot;InflationSwap&quot;
 
 
 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **flowConvention** | [**FlowConventions**](FlowConventions.md) |  | 
 **rate** | **java.math.BigDecimal** | The fixed rate for the term deposit. Specified as a decimal, e.g 0.03 is meant to be 3% interest | 
 **domCcy** | **String** | DomCcy of the TermDeposit. If provided, must match the currency of FlowConvention. |  [optional]
-**instrumentType** | [**InstrumentTypeEnum**](#InstrumentTypeEnum) | The available values are: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond | 
+**instrumentType** | [**InstrumentTypeEnum**](#InstrumentTypeEnum) | The available values are: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap | 
 
 
 
@@ -53,6 +53,7 @@ EXCHANGETRADEDOPTION | &quot;ExchangeTradedOption&quot;
 REFERENCEINSTRUMENT | &quot;ReferenceInstrument&quot;
 COMPLEXBOND | &quot;ComplexBond&quot;
 INFLATIONLINKEDBOND | &quot;InflationLinkedBond&quot;
+INFLATIONSWAP | &quot;InflationSwap&quot;
 
 
 

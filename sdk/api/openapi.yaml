@@ -304,7 +304,7 @@ info:
     | <a name="813">813</a>|Chart of Accounts not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4887
+  version: 0.11.4888
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -43165,6 +43165,14 @@ components:
       - $ref: '#/components/schemas/LusidInstrument'
       - $ref: '#/components/schemas/InflationLinkedBond_allOf'
       description: Inflation Linked Bond.
+    InflationSwap:
+      allOf:
+      - $ref: '#/components/schemas/LusidInstrument'
+      - $ref: '#/components/schemas/InflationSwap_allOf'
+      description: "LUSID representation of an Inflation Swap.\r\nThe implementation\
+        \ supports the following swap types:\r\n* Zero Coupon inflation swap, with\
+        \ a single payment at maturity.\r\n* LPI Swap (capped and floored)\r\n* Year\
+        \ on Year inflation swap"
     InlineValuationRequest:
       additionalProperties: false
       description: Specification object for the parameters of an inline valuation
@@ -44158,7 +44166,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -44192,6 +44200,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - instrumentType
@@ -57747,7 +57756,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -57781,6 +57790,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - basketName
@@ -57871,7 +57881,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -57905,6 +57915,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - couponRate
@@ -57941,7 +57952,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -57975,6 +57986,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - capFloorType
@@ -58005,7 +58017,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -58039,6 +58051,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - domCcy
@@ -58094,7 +58107,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -58128,6 +58141,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - basket
@@ -58171,7 +58185,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -58205,6 +58219,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - instrumentType
@@ -58259,7 +58274,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -58293,6 +58308,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - code
@@ -58350,7 +58366,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -58384,6 +58400,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - couponRate
@@ -58578,7 +58595,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -58612,6 +58629,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - domCcy
@@ -58752,7 +58770,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -58786,6 +58804,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - code
@@ -58859,7 +58878,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -58893,6 +58912,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - code
@@ -58981,7 +59001,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -59015,6 +59035,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - contractDetails
@@ -59042,7 +59063,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -59076,6 +59097,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - content
@@ -59130,7 +59152,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -59164,6 +59186,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - instrumentType
@@ -59204,7 +59227,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -59238,6 +59261,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - instrumentType
@@ -59286,7 +59310,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -59320,6 +59344,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - domCcy
@@ -59368,7 +59393,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -59402,6 +59427,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - instrumentType
@@ -59451,7 +59477,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -59485,6 +59511,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - contractDetails
@@ -59555,7 +59582,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -59589,6 +59616,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - domAmount
@@ -60024,7 +60052,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -60058,6 +60086,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - domCcy
@@ -60092,7 +60121,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -60126,6 +60155,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - farFxForward
@@ -60283,7 +60313,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -60317,6 +60347,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - couponRate
@@ -60328,8 +60359,76 @@ components:
       - principal
       - startDate
       type: object
-    InstrumentLeg_allOf:
+    InflationSwap_allOf:
       properties:
+        startDate:
+          description: The start date of the instrument. This is normally synonymous
+            with the trade-date.
+          format: date-time
+          type: string
+        maturityDate:
+          description: "The final maturity date of the instrument. This means the\
+            \ last date on which the instruments makes a payment of any amount.\r\n\
+            For the avoidance of doubt, that is not necessarily prior to its last\
+            \ sensitivity date for the purposes of risk; e.g. instruments such as\r\
+            \nConstant Maturity Swaps (CMS) often have sensitivities to rates that\
+            \ may well be observed or set prior to the maturity date, but refer to\
+            \ a termination date beyond it."
+          format: date-time
+          type: string
+        flowConventions:
+          $ref: '#/components/schemas/FlowConventions'
+        fixedRate:
+          description: Fixed Rate
+          format: double
+          type: number
+        inflationCap:
+          description: Optional cap, needed for LPI swaps. Should not be set for ZCIIS.
+          format: double
+          nullable: true
+          type: number
+        inflationFloor:
+          description: Optional floor, needed for LPI swaps. Should not be set for
+            ZCIIS.
+          format: double
+          nullable: true
+          type: number
+        inflationFrequency:
+          description: "Frequency of inflation updated. Optional and defaults to Monthly\
+            \ which is the most common.\r\nHowever both Australian and New Zealand\
+            \ inflation is published Quarterly. Only tenors of 1M or 3M are supported."
+          nullable: true
+          type: string
+        inflationIndexName:
+          description: Name
+          type: string
+        inflationInterpolation:
+          description: "silly flag for old swaps\r\n\r\nSupported string (enumeration)\
+            \ values are: [Linear, Flat]."
+          nullable: true
+          type: string
+        inflationRollDay:
+          description: "Day of the month that inflation rolls from one month to the\
+            \ next. This is optional and defaults to 1, which is\r\nthe typically\
+            \ value for the majority of inflation bonds (exceptions include Japan\
+            \ which rolls on the 10th\r\nand some LatAm bonds which roll on the 15th)."
+          format: int32
+          type: integer
+        notional:
+          description: The notional
+          format: double
+          type: number
+        observationLag:
+          description: Observation Lag, must be a number of Months, typically 3 or
+            4 but sometimes 8.
+          type: string
+        payReceive:
+          description: "PayReceive flag for the inflation leg.\r\nThis field is optional\
+            \ and defaults to Pay.\r\nIf set to Pay, this swap pays inflation and\
+            \ receives fixed.\r\n\r\nSupported string (enumeration) values are: [Pay,\
+            \ Receive]."
+          nullable: true
+          type: string
         instrumentType:
           description: 'The available values are: QuotedSecurity, InterestRateSwap,
             FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
@@ -60337,7 +60436,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -60371,6 +60470,62 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
+          type: string
+      required:
+      - fixedRate
+      - flowConventions
+      - inflationIndexName
+      - instrumentType
+      - maturityDate
+      - notional
+      - observationLag
+      - startDate
+      type: object
+    InstrumentLeg_allOf:
+      properties:
+        instrumentType:
+          description: 'The available values are: QuotedSecurity, InterestRateSwap,
+            FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
+            Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown,
+            TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
+            CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
+            SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
+            ComplexBond, InflationLinkedBond, InflationSwap'
+          enum:
+          - QuotedSecurity
+          - InterestRateSwap
+          - FxForward
+          - Future
+          - ExoticInstrument
+          - FxOption
+          - CreditDefaultSwap
+          - InterestRateSwaption
+          - Bond
+          - EquityOption
+          - FixedLeg
+          - FloatingLeg
+          - BespokeCashFlowsLeg
+          - Unknown
+          - TermDeposit
+          - ContractForDifference
+          - EquitySwap
+          - CashPerpetual
+          - CapFloor
+          - CashSettled
+          - CdsIndex
+          - Basket
+          - FundingLeg
+          - FxSwap
+          - ForwardRateAgreement
+          - SimpleInstrument
+          - Repo
+          - Equity
+          - ExchangeTradedOption
+          - ReferenceInstrument
+          - ComplexBond
+          - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - instrumentType
@@ -60414,7 +60569,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -60448,6 +60603,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - instrumentType
@@ -60482,7 +60638,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -60516,6 +60672,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - deliveryMethod
@@ -60740,7 +60897,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -60774,6 +60931,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - instrumentId
@@ -60877,7 +61035,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -60911,6 +61069,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - accrualBasis
@@ -61018,7 +61177,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -61052,6 +61211,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - assetClass
@@ -61115,7 +61275,7 @@ components:
             TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor,
             CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement,
             SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument,
-            ComplexBond, InflationLinkedBond'
+            ComplexBond, InflationLinkedBond, InflationSwap'
           enum:
           - QuotedSecurity
           - InterestRateSwap
@@ -61149,6 +61309,7 @@ components:
           - ReferenceInstrument
           - ComplexBond
           - InflationLinkedBond
+          - InflationSwap
           type: string
       required:
       - contractSize
