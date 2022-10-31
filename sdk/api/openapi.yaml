@@ -305,7 +305,7 @@ info:
     | <a name="814">814</a>|Account not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4901
+  version: 0.11.4902
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -20770,7 +20770,7 @@ paths:
           maxLength: 64
           minLength: 1
           nullable: true
-          pattern: ^[a-zA-Z0-9\-_]+$
+          pattern: ^[a-zA-Z0-9@+\-_&]+$
           type: string
         style: simple
       - description: "The code of the property to be deleted. Together with the domain\
@@ -20785,7 +20785,7 @@ paths:
           maxLength: 64
           minLength: 1
           nullable: true
-          pattern: ^[a-zA-Z0-9\-_]+$
+          pattern: ^[a-zA-Z0-9@+\-_&]+$
           type: string
         style: simple
       responses:
@@ -20885,7 +20885,7 @@ paths:
           maxLength: 64
           minLength: 1
           nullable: true
-          pattern: ^[a-zA-Z0-9\-_]+$
+          pattern: ^[a-zA-Z0-9@+\-_&]+$
           type: string
         style: simple
       - description: "The code of the specified property. Together with the domain\
@@ -20900,7 +20900,7 @@ paths:
           maxLength: 64
           minLength: 1
           nullable: true
-          pattern: ^[a-zA-Z0-9\-_]+$
+          pattern: ^[a-zA-Z0-9@+\-_&]+$
           type: string
         style: simple
       - description: "The asAt datetime at which to retrieve the property definition.\
@@ -21018,7 +21018,7 @@ paths:
           maxLength: 64
           minLength: 1
           nullable: true
-          pattern: ^[a-zA-Z0-9\-_]+$
+          pattern: ^[a-zA-Z0-9@+\-_&]+$
           type: string
         style: simple
       - description: "The code of the property being updated. Together with the domain\
@@ -21033,7 +21033,7 @@ paths:
           maxLength: 64
           minLength: 1
           nullable: true
-          pattern: ^[a-zA-Z0-9\-_]+$
+          pattern: ^[a-zA-Z0-9@+\-_&]+$
           type: string
         style: simple
       requestBody:
@@ -41247,10 +41247,8 @@ components:
           description: Description of contract
           type: string
         exchangeCode:
-          description: "Exchange code for contract\r\n\r\nSupported string (enumeration)\
-            \ values are: [ASX, CBOT, CBF, CME, CMX, EOP, HKG, KFE, MFM, OSE, SGX,\
-            \ NYBOT, KCBT, MGE, MATIF, SFE, NYFE, NYM, LIFFE, EUREX, ICE, MSE, NASDAQ,\
-            \ EEX, LME, MIL, MEXDER]."
+          description: Exchange code for contract. This can be any string to uniquely
+            identify the exchange (e.g. Exchange Name, MIC, BBG code).
           type: string
         exerciseDate:
           description: Exercise Date.
@@ -42106,10 +42104,8 @@ components:
           description: Description of contract.
           type: string
         exchangeCode:
-          description: "Exchange code for contract\r\n\r\nSupported string (enumeration)\
-            \ values are: [ASX, CBOT, CBF, CME, CMX, EOP, HKG, KFE, MFM, OSE, SGX,\
-            \ NYBOT, KCBT, MGE, MATIF, SFE, NYFE, NYM, LIFFE, EUREX, ICE, MSE, NASDAQ,\
-            \ EEX, LME, MIL, MEXDER]."
+          description: Exchange code for contract. This can be any string to uniquely
+            identify the exchange (e.g. Exchange Name, MIC, BBG code).
           type: string
         exchangeName:
           description: Exchange name (for when code is not automatically recognised).
