@@ -60,7 +60,7 @@ public class Example {
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio group to add a portfolio to.
     String code = "code_example"; // String | The code of the portfolio group to add a portfolio to. Together with the scope this uniquely identifies the portfolio group.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the portfolio will be added to the group.
+    OffsetDateTime effectiveAt = OffsetDateTime.now(); // OffsetDateTime | The effective datetime from which the portfolio will be added to the group.
     ResourceId resourceId = new ResourceId(); // ResourceId | The resource identifier of the portfolio to add to the portfolio group.
     try {
       PortfolioGroup result = apiInstance.addPortfolioToGroup(scope, code, effectiveAt, resourceId);
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio group to add a portfolio to. |
  **code** | **String**| The code of the portfolio group to add a portfolio to. Together with the scope this uniquely identifies the portfolio group. |
- **effectiveAt** | **String**| The effective datetime or cut label from which the portfolio will be added to the group. | [optional]
+ **effectiveAt** | **OffsetDateTime**| The effective datetime from which the portfolio will be added to the group. | [optional]
  **resourceId** | [**ResourceId**](ResourceId.md)| The resource identifier of the portfolio to add to the portfolio group. | [optional]
 
 ### Return type
@@ -135,7 +135,7 @@ public class Example {
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio group to add a portfolio group to.
     String code = "code_example"; // String | The code of the portfolio group to add a portfolio group to. Together with the scope this uniquely identifies the portfolio group.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the sub group will be added to the group.
+    OffsetDateTime effectiveAt = OffsetDateTime.now(); // OffsetDateTime | The effective datetime from which the sub group will be added to the group.
     ResourceId resourceId = new ResourceId(); // ResourceId | The resource identifier of the portfolio group to add to the portfolio group as a sub group.
     try {
       PortfolioGroup result = apiInstance.addSubGroupToGroup(scope, code, effectiveAt, resourceId);
@@ -157,7 +157,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio group to add a portfolio group to. |
  **code** | **String**| The code of the portfolio group to add a portfolio group to. Together with the scope this uniquely identifies the portfolio group. |
- **effectiveAt** | **String**| The effective datetime or cut label from which the sub group will be added to the group. | [optional]
+ **effectiveAt** | **OffsetDateTime**| The effective datetime from which the sub group will be added to the group. | [optional]
  **resourceId** | [**ResourceId**](ResourceId.md)| The resource identifier of the portfolio group to add to the portfolio group as a sub group. | [optional]
 
 ### Return type
@@ -518,7 +518,7 @@ public class Example {
     String code = "code_example"; // String | The code of the portfolio group to remove the portfolio from. Together with the scope this uniquely identifies the portfolio group.
     String portfolioScope = "portfolioScope_example"; // String | The scope of the portfolio being removed from the portfolio group.
     String portfolioCode = "portfolioCode_example"; // String | The code of the portfolio being removed from the portfolio group. Together with the scope this uniquely identifies the portfolio to remove.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the portfolio will be removed from the portfolio group.
+    OffsetDateTime effectiveAt = OffsetDateTime.now(); // OffsetDateTime | The effective datetime from which the portfolio will be removed from the portfolio group.
     try {
       PortfolioGroup result = apiInstance.deletePortfolioFromGroup(scope, code, portfolioScope, portfolioCode, effectiveAt);
       System.out.println(result);
@@ -541,7 +541,7 @@ Name | Type | Description  | Notes
  **code** | **String**| The code of the portfolio group to remove the portfolio from. Together with the scope this uniquely identifies the portfolio group. |
  **portfolioScope** | **String**| The scope of the portfolio being removed from the portfolio group. |
  **portfolioCode** | **String**| The code of the portfolio being removed from the portfolio group. Together with the scope this uniquely identifies the portfolio to remove. |
- **effectiveAt** | **String**| The effective datetime or cut label from which the portfolio will be removed from the portfolio group. | [optional]
+ **effectiveAt** | **OffsetDateTime**| The effective datetime from which the portfolio will be removed from the portfolio group. | [optional]
 
 ### Return type
 
@@ -666,7 +666,7 @@ public class Example {
     String code = "code_example"; // String | The code of the portfolio group to remove the sub group from. Together with the scope this uniquely identifies the portfolio group.
     String subgroupScope = "subgroupScope_example"; // String | The scope of the sub group to remove from the portfolio group.
     String subgroupCode = "subgroupCode_example"; // String | The code of the sub group to remove from the portfolio group. Together with the scope this uniquely identifies the sub group.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label from which the sub group will be removed from the portfolio group.
+    OffsetDateTime effectiveAt = OffsetDateTime.now(); // OffsetDateTime | The effective datetime from which the sub group will be removed from the portfolio group.
     try {
       PortfolioGroup result = apiInstance.deleteSubGroupFromGroup(scope, code, subgroupScope, subgroupCode, effectiveAt);
       System.out.println(result);
@@ -689,7 +689,7 @@ Name | Type | Description  | Notes
  **code** | **String**| The code of the portfolio group to remove the sub group from. Together with the scope this uniquely identifies the portfolio group. |
  **subgroupScope** | **String**| The scope of the sub group to remove from the portfolio group. |
  **subgroupCode** | **String**| The code of the sub group to remove from the portfolio group. Together with the scope this uniquely identifies the sub group. |
- **effectiveAt** | **String**| The effective datetime or cut label from which the sub group will be removed from the portfolio group. | [optional]
+ **effectiveAt** | **OffsetDateTime**| The effective datetime from which the sub group will be removed from the portfolio group. | [optional]
 
 ### Return type
 
@@ -982,7 +982,7 @@ public class Example {
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio group to retrieve the definition for.
     String code = "code_example"; // String | The code of the portfolio group to retrieve the definition for. Together with the scope              this uniquely identifies the portfolio group.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the portfolio group definition. Defaults to the current LUSID system datetime if not specified.
+    OffsetDateTime effectiveAt = OffsetDateTime.now(); // OffsetDateTime | The effective datetime at which to retrieve the portfolio group definition. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the portfolio group definition. Defaults to return              the latest version of the portfolio group definition if not specified.
     try {
       PortfolioGroup result = apiInstance.getPortfolioGroup(scope, code, effectiveAt, asAt);
@@ -1004,7 +1004,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio group to retrieve the definition for. |
  **code** | **String**| The code of the portfolio group to retrieve the definition for. Together with the scope              this uniquely identifies the portfolio group. |
- **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the portfolio group definition. Defaults to the current LUSID system datetime if not specified. | [optional]
+ **effectiveAt** | **OffsetDateTime**| The effective datetime at which to retrieve the portfolio group definition. Defaults to the current LUSID system datetime if not specified. | [optional]
  **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the portfolio group definition. Defaults to return              the latest version of the portfolio group definition if not specified. | [optional]
 
 ### Return type
@@ -1211,7 +1211,7 @@ public class Example {
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio group to expand.
     String code = "code_example"; // String | The code of the portfolio group to expand. Together with the scope this uniquely identifies the portfolio              group to expand.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to expand the portfolio group. Defaults to the current LUSID system datetime if not specified.
+    OffsetDateTime effectiveAt = OffsetDateTime.now(); // OffsetDateTime | The effective datetime at which to expand the portfolio group. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to expand the portfolio group. Defaults to return the latest version of each portfolio in the group if not specified.
     List<String> propertyFilter = Arrays.asList(); // List<String> | The restricted list of property keys from the \"Portfolio\" domain which will be decorated onto each portfolio. These take the format {domain}/{scope}/{code} e.g. \"Portfolio/Manager/Id\".
     try {
@@ -1234,7 +1234,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio group to expand. |
  **code** | **String**| The code of the portfolio group to expand. Together with the scope this uniquely identifies the portfolio              group to expand. |
- **effectiveAt** | **String**| The effective datetime or cut label at which to expand the portfolio group. Defaults to the current LUSID system datetime if not specified. | [optional]
+ **effectiveAt** | **OffsetDateTime**| The effective datetime at which to expand the portfolio group. Defaults to the current LUSID system datetime if not specified. | [optional]
  **asAt** | **OffsetDateTime**| The asAt datetime at which to expand the portfolio group. Defaults to return the latest version of each portfolio in the group if not specified. | [optional]
  **propertyFilter** | [**List&lt;String&gt;**](String.md)| The restricted list of property keys from the \&quot;Portfolio\&quot; domain which will be decorated onto each portfolio. These take the format {domain}/{scope}/{code} e.g. \&quot;Portfolio/Manager/Id\&quot;. | [optional]
 
@@ -1611,7 +1611,7 @@ public class Example {
 
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope to list the portfolio groups in.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the portfolio groups. Defaults to the current LUSID system datetime if not specified.
+    OffsetDateTime effectiveAt = OffsetDateTime.now(); // OffsetDateTime | The effective datetime at which to list the portfolio groups. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the portfolio groups. Defaults to return the latest version of each portfolio group if not specified.
     String filter = "filter_example"; // String | Expression to filter the result set.              For example, to filter on the Display Name, use \"displayName eq 'string'\"              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
     try {
@@ -1633,7 +1633,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope to list the portfolio groups in. |
- **effectiveAt** | **String**| The effective datetime or cut label at which to list the portfolio groups. Defaults to the current LUSID system datetime if not specified. | [optional]
+ **effectiveAt** | **OffsetDateTime**| The effective datetime at which to list the portfolio groups. Defaults to the current LUSID system datetime if not specified. | [optional]
  **asAt** | **OffsetDateTime**| The asAt datetime at which to list the portfolio groups. Defaults to return the latest version of each portfolio group if not specified. | [optional]
  **filter** | **String**| Expression to filter the result set.              For example, to filter on the Display Name, use \&quot;displayName eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
 
@@ -1687,7 +1687,7 @@ public class Example {
     PortfolioGroupsApi apiInstance = new PortfolioGroupsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the portfolio group to update the definition for.
     String code = "code_example"; // String | The code of the portfolio group to update the definition for. Together with the scope this uniquely identifies the portfolio group.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to update the definition.
+    OffsetDateTime effectiveAt = OffsetDateTime.now(); // OffsetDateTime | The effective datetime at which to update the definition.
     UpdatePortfolioGroupRequest updatePortfolioGroupRequest = new UpdatePortfolioGroupRequest(); // UpdatePortfolioGroupRequest | The updated portfolio group definition.
     try {
       PortfolioGroup result = apiInstance.updatePortfolioGroup(scope, code, effectiveAt, updatePortfolioGroupRequest);
@@ -1709,7 +1709,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the portfolio group to update the definition for. |
  **code** | **String**| The code of the portfolio group to update the definition for. Together with the scope this uniquely identifies the portfolio group. |
- **effectiveAt** | **String**| The effective datetime or cut label at which to update the definition. | [optional]
+ **effectiveAt** | **OffsetDateTime**| The effective datetime at which to update the definition. | [optional]
  **updatePortfolioGroupRequest** | [**UpdatePortfolioGroupRequest**](UpdatePortfolioGroupRequest.md)| The updated portfolio group definition. | [optional]
 
 ### Return type
