@@ -305,7 +305,7 @@ info:
     | <a name="814">814</a>|Account not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4921
+  version: 0.11.4922
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -12564,20 +12564,22 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
-      - description: The effective datetime at which to list the portfolio groups.
-          Defaults to the current LUSID system datetime if not specified.
+      - description: The effective datetime or cut label at which to list the portfolio
+          groups. Defaults to the current LUSID system datetime if not specified.
         explode: true
         in: query
         name: effectiveAt
         required: false
         schema:
-          description: The effective datetime at which to list the portfolio groups.
-            Defaults to the current LUSID system datetime if not specified.
-          format: date-time
+          description: The effective datetime or cut label at which to list the portfolio
+            groups. Defaults to the current LUSID system datetime if not specified.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
           type: string
         style: form
-        x-nullable: true
       - description: The asAt datetime at which to list the portfolio groups. Defaults
           to return the latest version of each portfolio group if not specified.
         explode: true
@@ -12886,20 +12888,24 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
-      - description: The effective datetime at which to retrieve the portfolio group
-          definition. Defaults to the current LUSID system datetime if not specified.
+      - description: The effective datetime or cut label at which to retrieve the
+          portfolio group definition. Defaults to the current LUSID system datetime
+          if not specified.
         explode: true
         in: query
         name: effectiveAt
         required: false
         schema:
-          description: The effective datetime at which to retrieve the portfolio group
-            definition. Defaults to the current LUSID system datetime if not specified.
-          format: date-time
+          description: The effective datetime or cut label at which to retrieve the
+            portfolio group definition. Defaults to the current LUSID system datetime
+            if not specified.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
           type: string
         style: form
-        x-nullable: true
       - description: "The asAt datetime at which to retrieve the portfolio group definition.\
           \ Defaults to return\r\n            the latest version of the portfolio\
           \ group definition if not specified."
@@ -12988,18 +12994,21 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
-      - description: The effective datetime at which to update the definition.
+      - description: The effective datetime or cut label at which to update the definition.
         explode: true
         in: query
         name: effectiveAt
         required: false
         schema:
-          description: The effective datetime at which to update the definition.
-          format: date-time
+          description: The effective datetime or cut label at which to update the
+            definition.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
           type: string
         style: form
-        x-nullable: true
       requestBody:
         content:
           application/json-patch+json:
@@ -14335,20 +14344,23 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
-      - description: The effective datetime at which to expand the portfolio group.
-          Defaults to the current LUSID system datetime if not specified.
+      - description: The effective datetime or cut label at which to expand the portfolio
+          group. Defaults to the current LUSID system datetime if not specified.
         explode: true
         in: query
         name: effectiveAt
         required: false
         schema:
-          description: The effective datetime at which to expand the portfolio group.
-            Defaults to the current LUSID system datetime if not specified.
-          format: date-time
+          description: The effective datetime or cut label at which to expand the
+            portfolio group. Defaults to the current LUSID system datetime if not
+            specified.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
           type: string
         style: form
-        x-nullable: true
       - description: The asAt datetime at which to expand the portfolio group. Defaults
           to return the latest version of each portfolio in the group if not specified.
         explode: true
@@ -15168,20 +15180,22 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
-      - description: The effective datetime from which the portfolio will be added
-          to the group.
+      - description: The effective datetime or cut label from which the portfolio
+          will be added to the group.
         explode: true
         in: query
         name: effectiveAt
         required: false
         schema:
-          description: The effective datetime from which the portfolio will be added
-            to the group.
-          format: date-time
+          description: The effective datetime or cut label from which the portfolio
+            will be added to the group.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
           type: string
         style: form
-        x-nullable: true
       requestBody:
         content:
           application/json-patch+json:
@@ -15312,20 +15326,22 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
-      - description: The effective datetime from which the portfolio will be removed
-          from the portfolio group.
+      - description: The effective datetime or cut label from which the portfolio
+          will be removed from the portfolio group.
         explode: true
         in: query
         name: effectiveAt
         required: false
         schema:
-          description: The effective datetime from which the portfolio will be removed
-            from the portfolio group.
-          format: date-time
+          description: The effective datetime or cut label from which the portfolio
+            will be removed from the portfolio group.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
           type: string
         style: form
-        x-nullable: true
       responses:
         "200":
           content:
@@ -16237,20 +16253,22 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
-      - description: The effective datetime from which the sub group will be added
-          to the group.
+      - description: The effective datetime or cut label from which the sub group
+          will be added to the group.
         explode: true
         in: query
         name: effectiveAt
         required: false
         schema:
-          description: The effective datetime from which the sub group will be added
-            to the group.
-          format: date-time
+          description: The effective datetime or cut label from which the sub group
+            will be added to the group.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
           type: string
         style: form
-        x-nullable: true
       requestBody:
         content:
           application/json-patch+json:
@@ -16374,20 +16392,22 @@ paths:
           nullable: true
           type: string
         style: simple
-      - description: The effective datetime from which the sub group will be removed
-          from the portfolio group.
+      - description: The effective datetime or cut label from which the sub group
+          will be removed from the portfolio group.
         explode: true
         in: query
         name: effectiveAt
         required: false
         schema:
-          description: The effective datetime from which the sub group will be removed
-            from the portfolio group.
-          format: date-time
+          description: The effective datetime or cut label from which the sub group
+            will be removed from the portfolio group.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
           nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
           type: string
         style: form
-        x-nullable: true
       responses:
         "200":
           content:
