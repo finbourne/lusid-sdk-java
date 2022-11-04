@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **isDerived** | **Boolean** | Whether or not this is a derived portfolio. |  [optional]
 **baseCurrency** | **String** | The base currency of the portfolio. |  [optional]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | The requested portfolio properties. These will be from the &#39;Portfolio&#39; domain. |  [optional]
+**relationships** | [**List&lt;Relationship&gt;**](Relationship.md) | A set of relationships associated to the portfolio. |  [optional]
 **instrumentScopes** | **List&lt;String&gt;** | The instrument scope resolution strategy of this portfolio. |  [optional]
 **accountingMethod** | [**AccountingMethodEnum**](#AccountingMethodEnum) | . The available values are: Default, AverageCost, FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst |  [optional]
 **amortisationMethod** | **String** | The amortisation method the portfolio is using in the calculation. This can be &#39;NoAmortisation&#39;, &#39;StraightLine&#39; or &#39;EffectiveYield&#39;. |  [optional]

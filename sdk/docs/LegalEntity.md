@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **lusidLegalEntityId** | **String** | The unique LUSID Legal Entity Identifier of the Legal Entity. |  [optional]
 **identifiers** | [**Map&lt;String, Property&gt;**](Property.md) | Unique client-defined identifiers of the Legal Entity. |  [optional]
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties associated to the Legal Entity. |  [optional]
+**relationships** | [**List&lt;Relationship&gt;**](Relationship.md) | A set of relationships associated to the Legal Entity. |  [optional]
 **counterpartyRiskInformation** | [**CounterpartyRiskInformation**](CounterpartyRiskInformation.md) |  |  [optional]
 **version** | [**Version**](Version.md) |  |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
