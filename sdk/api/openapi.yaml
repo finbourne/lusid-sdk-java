@@ -305,12 +305,12 @@ info:
     | <a name="814">814</a>|Account not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4956
+  version: 0.11.4957
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -17674,6 +17674,356 @@ paths:
       - Portfolios
       x-fbn-apistatus: Stable
       x-accepts: application/json
+  /api/portfolios/$reconcileGeneric:
+    post:
+      description: "Perform evaluation of one or two set of holdings (a portfolio\
+        \ of instruments) using one or two (potentially different) configuration recipes.\r\
+        \nProduce a breakdown of the resulting differences in evaluation that can\
+        \ be iterated through."
+      operationId: ReconcileGeneric
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              left:
+                recipeId:
+                  scope: MySourceScope
+                  code: MySourcePortfolioCode
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Sum
+                groupBy:
+                - Instrument/default/Name
+                sort: []
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                portfolioEntityIds:
+                - scope: PortfolioScope1
+                  code: MyPortfolioAbC
+                  portfolioEntityType: SinglePortfolio
+                - scope: PortfolioScope2
+                  code: MyPortfolioDeF
+                  portfolioEntityType: SinglePortfolio
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+              right:
+                recipeId:
+                  scope: MyTargetScope
+                  code: MyTargetPortfolioCode
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Sum
+                groupBy:
+                - Instrument/default/Name
+                sort: []
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                portfolioEntityIds:
+                - scope: PortfolioScope1
+                  code: MyPortfolioAbC
+                  portfolioEntityType: SinglePortfolio
+                - scope: PortfolioScope2
+                  code: MyPortfolioDeF
+                  portfolioEntityType: SinglePortfolio
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+              leftToRightMapping: []
+              comparisonRules:
+              - comparisonType: AbsoluteDifference
+                tolerance: 1.2345
+                appliesTo:
+                  key: Holding/default/PV
+                  op: Sum
+                ruleType: ReconcileNumericRule
+              preserveKeys:
+              - Instrument/default/Name
+            schema:
+              $ref: '#/components/schemas/ReconciliationRequest'
+          application/json:
+            example:
+              left:
+                recipeId:
+                  scope: MySourceScope
+                  code: MySourcePortfolioCode
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Sum
+                groupBy:
+                - Instrument/default/Name
+                sort: []
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                portfolioEntityIds:
+                - scope: PortfolioScope1
+                  code: MyPortfolioAbC
+                  portfolioEntityType: SinglePortfolio
+                - scope: PortfolioScope2
+                  code: MyPortfolioDeF
+                  portfolioEntityType: SinglePortfolio
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+              right:
+                recipeId:
+                  scope: MyTargetScope
+                  code: MyTargetPortfolioCode
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Sum
+                groupBy:
+                - Instrument/default/Name
+                sort: []
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                portfolioEntityIds:
+                - scope: PortfolioScope1
+                  code: MyPortfolioAbC
+                  portfolioEntityType: SinglePortfolio
+                - scope: PortfolioScope2
+                  code: MyPortfolioDeF
+                  portfolioEntityType: SinglePortfolio
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+              leftToRightMapping: []
+              comparisonRules:
+              - comparisonType: AbsoluteDifference
+                tolerance: 1.2345
+                appliesTo:
+                  key: Holding/default/PV
+                  op: Sum
+                ruleType: ReconcileNumericRule
+              preserveKeys:
+              - Instrument/default/Name
+            schema:
+              $ref: '#/components/schemas/ReconciliationRequest'
+          text/json:
+            example:
+              left:
+                recipeId:
+                  scope: MySourceScope
+                  code: MySourcePortfolioCode
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Sum
+                groupBy:
+                - Instrument/default/Name
+                sort: []
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                portfolioEntityIds:
+                - scope: PortfolioScope1
+                  code: MyPortfolioAbC
+                  portfolioEntityType: SinglePortfolio
+                - scope: PortfolioScope2
+                  code: MyPortfolioDeF
+                  portfolioEntityType: SinglePortfolio
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+              right:
+                recipeId:
+                  scope: MyTargetScope
+                  code: MyTargetPortfolioCode
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Sum
+                groupBy:
+                - Instrument/default/Name
+                sort: []
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                portfolioEntityIds:
+                - scope: PortfolioScope1
+                  code: MyPortfolioAbC
+                  portfolioEntityType: SinglePortfolio
+                - scope: PortfolioScope2
+                  code: MyPortfolioDeF
+                  portfolioEntityType: SinglePortfolio
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+              leftToRightMapping: []
+              comparisonRules:
+              - comparisonType: AbsoluteDifference
+                tolerance: 1.2345
+                appliesTo:
+                  key: Holding/default/PV
+                  op: Sum
+                ruleType: ReconcileNumericRule
+              preserveKeys:
+              - Instrument/default/Name
+            schema:
+              $ref: '#/components/schemas/ReconciliationRequest'
+          application/*+json:
+            example:
+              left:
+                recipeId:
+                  scope: MySourceScope
+                  code: MySourcePortfolioCode
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Sum
+                groupBy:
+                - Instrument/default/Name
+                sort: []
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                portfolioEntityIds:
+                - scope: PortfolioScope1
+                  code: MyPortfolioAbC
+                  portfolioEntityType: SinglePortfolio
+                - scope: PortfolioScope2
+                  code: MyPortfolioDeF
+                  portfolioEntityType: SinglePortfolio
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+              right:
+                recipeId:
+                  scope: MyTargetScope
+                  code: MyTargetPortfolioCode
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Sum
+                groupBy:
+                - Instrument/default/Name
+                sort: []
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                portfolioEntityIds:
+                - scope: PortfolioScope1
+                  code: MyPortfolioAbC
+                  portfolioEntityType: SinglePortfolio
+                - scope: PortfolioScope2
+                  code: MyPortfolioDeF
+                  portfolioEntityType: SinglePortfolio
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+              leftToRightMapping: []
+              comparisonRules:
+              - comparisonType: AbsoluteDifference
+                tolerance: 1.2345
+                appliesTo:
+                  key: Holding/default/PV
+                  op: Sum
+                ruleType: ReconcileNumericRule
+              preserveKeys:
+              - Instrument/default/Name
+            schema:
+              $ref: '#/components/schemas/ReconciliationRequest'
+        description: The specifications of the inputs to the reconciliation
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ReconciliationResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ReconciliationResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ReconciliationResponse'
+          description: The requested reconciliation
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: "ReconcileGeneric: Reconcile either holdings or valuations performed\
+        \ on one or two sets of holdings using one or two configuration recipes.\r\
+        \n            \r\nThe output is configurable for various types of comparisons,\
+        \ to allow tolerances on numerical and date-time data or case-insensitivity\
+        \ on strings,\r\nand elision of resulting differences where they are 'empty'\
+        \ or null or zero."
+      tags:
+      - Reconciliations
+      x-fbn-apistatus: Stable
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
   /api/portfolios/$reconcileholdings:
     post:
       description: Reconcile the holdings of two portfolios.
@@ -17851,6 +18201,684 @@ paths:
       tags:
       - Reconciliations
       x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/portfolios/$reconcileInline:
+    post:
+      description: Perform valuation of one or two set of inline instruments using
+        different one or two configuration recipes. Produce a breakdown of the resulting
+        differences in valuation.
+      operationId: ReconcileInline
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              left:
+                recipeId:
+                  scope: MyScope
+                  code: default
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Value
+                groupBy:
+                - Instrument/default/Name
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+                instruments:
+                - quantity: 10000
+                  holdingIdentifier: fx-fwd-GBPUSD
+                  instrument:
+                    startDate: 2018-03-01T00:00:00.0000000+00:00
+                    maturityDate: 2018-03-30T00:00:00.0000000+00:00
+                    domAmount: 100
+                    domCcy: GBP
+                    fgnAmount: -150
+                    fgnCcy: USD
+                    refSpotRate: 1.5
+                    isNdf: false
+                    fixingDate: 0001-01-01T00:00:00.0000000+00:00
+                    instrumentType: FxForward
+              right:
+                recipeId:
+                  scope: MyScope
+                  code: default
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Value
+                groupBy:
+                - Instrument/default/Name
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+                instruments:
+                - quantity: 10000
+                  holdingIdentifier: fx-fwd-GBPJPY
+                  instrument:
+                    startDate: 2018-03-01T00:00:00.0000000+00:00
+                    maturityDate: 2018-03-30T00:00:00.0000000+00:00
+                    domAmount: 100
+                    domCcy: GBP
+                    fgnAmount: -150
+                    fgnCcy: JPY
+                    refSpotRate: 132
+                    isNdf: false
+                    fixingDate: 0001-01-01T00:00:00.0000000+00:00
+                    instrumentType: FxForward
+              leftToRightMapping: []
+              preserveKeys: []
+            schema:
+              $ref: '#/components/schemas/InlineValuationsReconciliationRequest'
+          application/json:
+            example:
+              left:
+                recipeId:
+                  scope: MyScope
+                  code: default
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Value
+                groupBy:
+                - Instrument/default/Name
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+                instruments:
+                - quantity: 10000
+                  holdingIdentifier: fx-fwd-GBPUSD
+                  instrument:
+                    startDate: 2018-03-01T00:00:00.0000000+00:00
+                    maturityDate: 2018-03-30T00:00:00.0000000+00:00
+                    domAmount: 100
+                    domCcy: GBP
+                    fgnAmount: -150
+                    fgnCcy: USD
+                    refSpotRate: 1.5
+                    isNdf: false
+                    fixingDate: 0001-01-01T00:00:00.0000000+00:00
+                    instrumentType: FxForward
+              right:
+                recipeId:
+                  scope: MyScope
+                  code: default
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Value
+                groupBy:
+                - Instrument/default/Name
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+                instruments:
+                - quantity: 10000
+                  holdingIdentifier: fx-fwd-GBPJPY
+                  instrument:
+                    startDate: 2018-03-01T00:00:00.0000000+00:00
+                    maturityDate: 2018-03-30T00:00:00.0000000+00:00
+                    domAmount: 100
+                    domCcy: GBP
+                    fgnAmount: -150
+                    fgnCcy: JPY
+                    refSpotRate: 132
+                    isNdf: false
+                    fixingDate: 0001-01-01T00:00:00.0000000+00:00
+                    instrumentType: FxForward
+              leftToRightMapping: []
+              preserveKeys: []
+            schema:
+              $ref: '#/components/schemas/InlineValuationsReconciliationRequest'
+          text/json:
+            example:
+              left:
+                recipeId:
+                  scope: MyScope
+                  code: default
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Value
+                groupBy:
+                - Instrument/default/Name
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+                instruments:
+                - quantity: 10000
+                  holdingIdentifier: fx-fwd-GBPUSD
+                  instrument:
+                    startDate: 2018-03-01T00:00:00.0000000+00:00
+                    maturityDate: 2018-03-30T00:00:00.0000000+00:00
+                    domAmount: 100
+                    domCcy: GBP
+                    fgnAmount: -150
+                    fgnCcy: USD
+                    refSpotRate: 1.5
+                    isNdf: false
+                    fixingDate: 0001-01-01T00:00:00.0000000+00:00
+                    instrumentType: FxForward
+              right:
+                recipeId:
+                  scope: MyScope
+                  code: default
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Value
+                groupBy:
+                - Instrument/default/Name
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+                instruments:
+                - quantity: 10000
+                  holdingIdentifier: fx-fwd-GBPJPY
+                  instrument:
+                    startDate: 2018-03-01T00:00:00.0000000+00:00
+                    maturityDate: 2018-03-30T00:00:00.0000000+00:00
+                    domAmount: 100
+                    domCcy: GBP
+                    fgnAmount: -150
+                    fgnCcy: JPY
+                    refSpotRate: 132
+                    isNdf: false
+                    fixingDate: 0001-01-01T00:00:00.0000000+00:00
+                    instrumentType: FxForward
+              leftToRightMapping: []
+              preserveKeys: []
+            schema:
+              $ref: '#/components/schemas/InlineValuationsReconciliationRequest'
+          application/*+json:
+            example:
+              left:
+                recipeId:
+                  scope: MyScope
+                  code: default
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Value
+                groupBy:
+                - Instrument/default/Name
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+                instruments:
+                - quantity: 10000
+                  holdingIdentifier: fx-fwd-GBPUSD
+                  instrument:
+                    startDate: 2018-03-01T00:00:00.0000000+00:00
+                    maturityDate: 2018-03-30T00:00:00.0000000+00:00
+                    domAmount: 100
+                    domCcy: GBP
+                    fgnAmount: -150
+                    fgnCcy: USD
+                    refSpotRate: 1.5
+                    isNdf: false
+                    fixingDate: 0001-01-01T00:00:00.0000000+00:00
+                    instrumentType: FxForward
+              right:
+                recipeId:
+                  scope: MyScope
+                  code: default
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Value
+                groupBy:
+                - Instrument/default/Name
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+                instruments:
+                - quantity: 10000
+                  holdingIdentifier: fx-fwd-GBPJPY
+                  instrument:
+                    startDate: 2018-03-01T00:00:00.0000000+00:00
+                    maturityDate: 2018-03-30T00:00:00.0000000+00:00
+                    domAmount: 100
+                    domCcy: GBP
+                    fgnAmount: -150
+                    fgnCcy: JPY
+                    refSpotRate: 132
+                    isNdf: false
+                    fixingDate: 0001-01-01T00:00:00.0000000+00:00
+                    instrumentType: FxForward
+              leftToRightMapping: []
+              preserveKeys: []
+            schema:
+              $ref: '#/components/schemas/InlineValuationsReconciliationRequest'
+        description: The specifications of the inputs to the reconciliation
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ListAggregationReconciliation'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAggregationReconciliation'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ListAggregationReconciliation'
+          description: The requested reconciliation
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: 'ReconcileInline: Reconcile valuations performed on one or two sets
+        of inline instruments using one or two configuration recipes.'
+      tags:
+      - Reconciliations
+      x-fbn-apistatus: Stable
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/portfolios/$reconcileValuation:
+    post:
+      description: Perform valuation of one or two set of holdings using different
+        one or two configuration recipes. Produce a breakdown of the resulting differences
+        in valuation.
+      operationId: ReconcileValuation
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              left:
+                recipeId:
+                  scope: MySourceScope
+                  code: MySourcePortfolioCode
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Sum
+                groupBy:
+                - Instrument/default/Name
+                sort: []
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                portfolioEntityIds:
+                - scope: PortfolioScope1
+                  code: MyPortfolioAbC
+                  portfolioEntityType: SinglePortfolio
+                - scope: PortfolioScope2
+                  code: MyPortfolioDeF
+                  portfolioEntityType: SinglePortfolio
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+              right:
+                recipeId:
+                  scope: MyTargetScope
+                  code: MyTargetPortfolioCode
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Sum
+                groupBy:
+                - Instrument/default/Name
+                sort: []
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                portfolioEntityIds:
+                - scope: PortfolioScope1
+                  code: MyPortfolioAbC
+                  portfolioEntityType: SinglePortfolio
+                - scope: PortfolioScope2
+                  code: MyPortfolioDeF
+                  portfolioEntityType: SinglePortfolio
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+              leftToRightMapping: []
+              preserveKeys:
+              - Instrument/default/Name
+            schema:
+              $ref: '#/components/schemas/ValuationsReconciliationRequest'
+          application/json:
+            example:
+              left:
+                recipeId:
+                  scope: MySourceScope
+                  code: MySourcePortfolioCode
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Sum
+                groupBy:
+                - Instrument/default/Name
+                sort: []
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                portfolioEntityIds:
+                - scope: PortfolioScope1
+                  code: MyPortfolioAbC
+                  portfolioEntityType: SinglePortfolio
+                - scope: PortfolioScope2
+                  code: MyPortfolioDeF
+                  portfolioEntityType: SinglePortfolio
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+              right:
+                recipeId:
+                  scope: MyTargetScope
+                  code: MyTargetPortfolioCode
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Sum
+                groupBy:
+                - Instrument/default/Name
+                sort: []
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                portfolioEntityIds:
+                - scope: PortfolioScope1
+                  code: MyPortfolioAbC
+                  portfolioEntityType: SinglePortfolio
+                - scope: PortfolioScope2
+                  code: MyPortfolioDeF
+                  portfolioEntityType: SinglePortfolio
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+              leftToRightMapping: []
+              preserveKeys:
+              - Instrument/default/Name
+            schema:
+              $ref: '#/components/schemas/ValuationsReconciliationRequest'
+          text/json:
+            example:
+              left:
+                recipeId:
+                  scope: MySourceScope
+                  code: MySourcePortfolioCode
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Sum
+                groupBy:
+                - Instrument/default/Name
+                sort: []
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                portfolioEntityIds:
+                - scope: PortfolioScope1
+                  code: MyPortfolioAbC
+                  portfolioEntityType: SinglePortfolio
+                - scope: PortfolioScope2
+                  code: MyPortfolioDeF
+                  portfolioEntityType: SinglePortfolio
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+              right:
+                recipeId:
+                  scope: MyTargetScope
+                  code: MyTargetPortfolioCode
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Sum
+                groupBy:
+                - Instrument/default/Name
+                sort: []
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                portfolioEntityIds:
+                - scope: PortfolioScope1
+                  code: MyPortfolioAbC
+                  portfolioEntityType: SinglePortfolio
+                - scope: PortfolioScope2
+                  code: MyPortfolioDeF
+                  portfolioEntityType: SinglePortfolio
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+              leftToRightMapping: []
+              preserveKeys:
+              - Instrument/default/Name
+            schema:
+              $ref: '#/components/schemas/ValuationsReconciliationRequest'
+          application/*+json:
+            example:
+              left:
+                recipeId:
+                  scope: MySourceScope
+                  code: MySourcePortfolioCode
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Sum
+                groupBy:
+                - Instrument/default/Name
+                sort: []
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                portfolioEntityIds:
+                - scope: PortfolioScope1
+                  code: MyPortfolioAbC
+                  portfolioEntityType: SinglePortfolio
+                - scope: PortfolioScope2
+                  code: MyPortfolioDeF
+                  portfolioEntityType: SinglePortfolio
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+              right:
+                recipeId:
+                  scope: MyTargetScope
+                  code: MyTargetPortfolioCode
+                asAt: 2018-03-05T00:00:00.0000000+00:00
+                metrics:
+                - key: Instrument/default/Name
+                  op: Value
+                - key: Holding/default/PV
+                  op: Sum
+                groupBy:
+                - Instrument/default/Name
+                sort: []
+                reportCurrency: USD
+                equipWithSubtotals: false
+                returnResultAsExpandedTypes: false
+                portfolioEntityIds:
+                - scope: PortfolioScope1
+                  code: MyPortfolioAbC
+                  portfolioEntityType: SinglePortfolio
+                - scope: PortfolioScope2
+                  code: MyPortfolioDeF
+                  portfolioEntityType: SinglePortfolio
+                valuationSchedule:
+                  effectiveFrom: 2018-03-05T00:00:00.0000000+00:00
+                  effectiveAt: 2018-03-05T00:00:00.0000000+00:00
+                  tenor: 1D
+                  rollConvention: F
+                  holidayCalendars: []
+                  valuationDateTimes: []
+              leftToRightMapping: []
+              preserveKeys:
+              - Instrument/default/Name
+            schema:
+              $ref: '#/components/schemas/ValuationsReconciliationRequest'
+        description: The specifications of the inputs to the reconciliation
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ListAggregationReconciliation'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListAggregationReconciliation'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ListAggregationReconciliation'
+          description: The requested reconciliation
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: 'ReconcileValuation: Reconcile valuations performed on one or two sets
+        of holdings using one or two configuration recipes.'
+      tags:
+      - Reconciliations
+      x-fbn-apistatus: Stable
       x-contentType: application/json-patch+json
       x-accepts: application/json
   /api/portfolios/{scope}:
@@ -43753,6 +44781,193 @@ components:
       - instruments
       - metrics
       type: object
+    InlineValuationsReconciliationRequest:
+      additionalProperties: false
+      description: "Specification for the reconciliation request. Left and Right hand\
+        \ sides are constructed. Each consists of a valuation of a inline set of instruments\r\
+        \nusing an inline aggregation request. The results of this can then be compared\
+        \ to each other. The difference, which is effectively a risk based\r\ndifference\
+        \ allows comparison of the effects of changing a recipe, valuation date, or\
+        \ (though it may or may not make logical sense) a set of instruments."
+      example:
+        preserveKeys:
+        - preserveKeys
+        - preserveKeys
+        left:
+          reportCurrency: reportCurrency
+          instruments:
+          - quantity: 0.8008281904610115
+            holdingIdentifier: holdingIdentifier
+            instrument:
+              instrumentType: QuotedSecurity
+          - quantity: 0.8008281904610115
+            holdingIdentifier: holdingIdentifier
+            instrument:
+              instrumentType: QuotedSecurity
+          asAt: 2000-01-23T04:56:07.000+00:00
+          valuationSchedule:
+            valuationDateTimes:
+            - valuationDateTimes
+            - valuationDateTimes
+            tenor: tenor
+            holidayCalendars:
+            - holidayCalendars
+            - holidayCalendars
+            effectiveAt: effectiveAt
+            effectiveFrom: effectiveFrom
+            rollConvention: rollConvention
+          metrics:
+          - op: Sum
+            key: key
+          - op: Sum
+            key: key
+          groupBy:
+          - groupBy
+          - groupBy
+          filters:
+          - left: left
+            rightOperandType: Absolute
+            right: '{}'
+            operator: Equals
+          - left: left
+            rightOperandType: Absolute
+            right: '{}'
+            operator: Equals
+          sort:
+          - sortOrder: Ascending
+            key: key
+          - sortOrder: Ascending
+            key: key
+          returnResultAsExpandedTypes: true
+          recipeId:
+            code: code
+            scope: scope
+          marketDataOverrides:
+            complexMarketData:
+            - complexMarketData:
+                marketDataType: DiscountFactorCurveData
+              economicDependency:
+                dependencyType: Opaque
+            - complexMarketData:
+                marketDataType: DiscountFactorCurveData
+              economicDependency:
+                dependencyType: Opaque
+            quotes:
+            - scaleFactor: 6.027456183070403
+              economicDependency:
+                dependencyType: Opaque
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+            - scaleFactor: 6.027456183070403
+              economicDependency:
+                dependencyType: Opaque
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+          equipWithSubtotals: true
+        right:
+          reportCurrency: reportCurrency
+          instruments:
+          - quantity: 0.8008281904610115
+            holdingIdentifier: holdingIdentifier
+            instrument:
+              instrumentType: QuotedSecurity
+          - quantity: 0.8008281904610115
+            holdingIdentifier: holdingIdentifier
+            instrument:
+              instrumentType: QuotedSecurity
+          asAt: 2000-01-23T04:56:07.000+00:00
+          valuationSchedule:
+            valuationDateTimes:
+            - valuationDateTimes
+            - valuationDateTimes
+            tenor: tenor
+            holidayCalendars:
+            - holidayCalendars
+            - holidayCalendars
+            effectiveAt: effectiveAt
+            effectiveFrom: effectiveFrom
+            rollConvention: rollConvention
+          metrics:
+          - op: Sum
+            key: key
+          - op: Sum
+            key: key
+          groupBy:
+          - groupBy
+          - groupBy
+          filters:
+          - left: left
+            rightOperandType: Absolute
+            right: '{}'
+            operator: Equals
+          - left: left
+            rightOperandType: Absolute
+            right: '{}'
+            operator: Equals
+          sort:
+          - sortOrder: Ascending
+            key: key
+          - sortOrder: Ascending
+            key: key
+          returnResultAsExpandedTypes: true
+          recipeId:
+            code: code
+            scope: scope
+          marketDataOverrides:
+            complexMarketData:
+            - complexMarketData:
+                marketDataType: DiscountFactorCurveData
+              economicDependency:
+                dependencyType: Opaque
+            - complexMarketData:
+                marketDataType: DiscountFactorCurveData
+              economicDependency:
+                dependencyType: Opaque
+            quotes:
+            - scaleFactor: 6.027456183070403
+              economicDependency:
+                dependencyType: Opaque
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+            - scaleFactor: 6.027456183070403
+              economicDependency:
+                dependencyType: Opaque
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+          equipWithSubtotals: true
+        leftToRightMapping:
+        - left: left
+          right: right
+        - left: left
+          right: right
+      properties:
+        left:
+          $ref: '#/components/schemas/InlineValuationRequest'
+        right:
+          $ref: '#/components/schemas/InlineValuationRequest'
+        leftToRightMapping:
+          description: The mapping from property keys requested by left aggregation
+            to property keys on right hand side
+          items:
+            $ref: '#/components/schemas/ReconciliationLeftRightAddressKeyPair'
+          nullable: true
+          type: array
+        preserveKeys:
+          description: List of keys to preserve (from rhs) in the diff. Used in conjunction
+            with filtering/grouping
+          items:
+            description: The key that uniquely identifies a queryable address in Lusid.
+            type: string
+          nullable: true
+          type: array
+      required:
+      - left
+      - right
+      type: object
     Instrument:
       additionalProperties: false
       description: A list of instruments.
@@ -44655,6 +45870,165 @@ components:
       - href
       - method
       - relation
+      type: object
+    ListAggregationReconciliation:
+      additionalProperties: false
+      example:
+        dataSchema:
+          nodeValueSchema:
+            key:
+              displayName: displayName
+              displayOrder: 0
+              description: description
+              id:
+                code: code
+                scope: scope
+              type: String
+          addressSchema:
+            key:
+              removalDate: 2000-01-23T04:56:07.000+00:00
+              displayName: displayName
+              description: description
+              documentationLink: documentationLink
+              type: String
+              lifeCycleStatus: lifeCycleStatus
+          propertySchema:
+            key:
+              displayName: displayName
+              displayOrder: 0
+              description: description
+              id:
+                code: code
+                scope: scope
+              type: String
+        left:
+          aggregationCurrency: aggregationCurrency
+          aggregationAsAt: 2000-01-23T04:56:07.000+00:00
+          dataSchema:
+            nodeValueSchema:
+              key:
+                displayName: displayName
+                displayOrder: 0
+                description: description
+                id:
+                  code: code
+                  scope: scope
+                type: String
+            addressSchema:
+              key:
+                removalDate: 2000-01-23T04:56:07.000+00:00
+                displayName: displayName
+                description: description
+                documentationLink: documentationLink
+                type: String
+                lifeCycleStatus: lifeCycleStatus
+            propertySchema:
+              key:
+                displayName: displayName
+                displayOrder: 0
+                description: description
+                id:
+                  code: code
+                  scope: scope
+                type: String
+          data:
+          - key: '{}'
+          - key: '{}'
+          aggregationFailures:
+          - reason: reason
+            measure: measure
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            detail: detail
+          - reason: reason
+            measure: measure
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            detail: detail
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          aggregationEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          href: https://openapi-generator.tech
+        diff:
+        - key: '{}'
+        - key: '{}'
+        right:
+          aggregationCurrency: aggregationCurrency
+          aggregationAsAt: 2000-01-23T04:56:07.000+00:00
+          dataSchema:
+            nodeValueSchema:
+              key:
+                displayName: displayName
+                displayOrder: 0
+                description: description
+                id:
+                  code: code
+                  scope: scope
+                type: String
+            addressSchema:
+              key:
+                removalDate: 2000-01-23T04:56:07.000+00:00
+                displayName: displayName
+                description: description
+                documentationLink: documentationLink
+                type: String
+                lifeCycleStatus: lifeCycleStatus
+            propertySchema:
+              key:
+                displayName: displayName
+                displayOrder: 0
+                description: description
+                id:
+                  code: code
+                  scope: scope
+                type: String
+          data:
+          - key: '{}'
+          - key: '{}'
+          aggregationFailures:
+          - reason: reason
+            measure: measure
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            detail: detail
+          - reason: reason
+            measure: measure
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            id: id
+            detail: detail
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          aggregationEffectiveAt: 2000-01-23T04:56:07.000+00:00
+          href: https://openapi-generator.tech
+      properties:
+        left:
+          $ref: '#/components/schemas/ListAggregationResponse'
+        right:
+          $ref: '#/components/schemas/ListAggregationResponse'
+        diff:
+          items:
+            additionalProperties:
+              additionalProperties: false
+              type: object
+            type: object
+          nullable: true
+          type: array
+        dataSchema:
+          $ref: '#/components/schemas/ResultDataSchema'
       type: object
     ListAggregationResponse:
       additionalProperties: false
@@ -50492,6 +51866,358 @@ components:
       - rightCost
       - rightUnits
       - subHoldingKeys
+      type: object
+    ReconciliationLeftRightAddressKeyPair:
+      additionalProperties: false
+      example:
+        left: left
+        right: right
+      properties:
+        left:
+          description: Address key defined by the lhs aggregation
+          type: string
+        right:
+          description: Address key defined by the rhs aggregation
+          type: string
+      required:
+      - left
+      - right
+      type: object
+    ReconciliationLine:
+      additionalProperties: false
+      description: "In evaluating a left and right hand side holding or valuation\
+        \ set, two data records result. These are then compared based on a set of\r\
+        \nrules. This results in either a match or failure to match. If there is a\
+        \ match both left and right will be present, otherwise one will not.\r\nA\
+        \ difference will be present if a match was calculated.\r\nThe options used\
+        \ in comparison may result in elision of results where an exact or tolerable\
+        \ match is made."
+      example:
+        left:
+          key: '{}'
+        difference:
+          key: '{}'
+        right:
+          key: '{}'
+        resultComparison:
+          key: '{}'
+      properties:
+        left:
+          additionalProperties:
+            additionalProperties: false
+            type: object
+          description: Left hand side of the comparison
+          nullable: true
+          type: object
+        right:
+          additionalProperties:
+            additionalProperties: false
+            type: object
+          description: Right hand side of the comparison
+          nullable: true
+          type: object
+        difference:
+          additionalProperties:
+            additionalProperties: false
+            type: object
+          description: Difference between LHS and RHS of comparison
+          nullable: true
+          type: object
+        resultComparison:
+          additionalProperties:
+            additionalProperties: false
+            type: object
+          description: The logical or semantic description of the difference, e.g.
+            "Matches" or "MatchesWithTolerance" or "Failed".
+          nullable: true
+          type: object
+      type: object
+    ReconciliationRequest:
+      additionalProperties: false
+      description: "Specification for the reconciliation request. Left and Right hand\
+        \ sides are constructed. Each consists of a valuation of a portfolio\r\nusing\
+        \ an aggregation request. The results of this can then be compared to each\
+        \ other. The difference, which is effectively a risk based\r\ndifference allows\
+        \ comparison of the effects of changing a recipe, valuation date, or (though\
+        \ it may or may not make logical sense) a portfolio.\r\nFor instance, one\
+        \ might look at the difference in risk caused by the addition of transaction\
+        \ to a portfolio, or through changing the valuation\r\nmethodology or system."
+      example:
+        comparisonRules:
+        - ruleType: ReconcileNumericRule
+        - ruleType: ReconcileNumericRule
+        preserveKeys:
+        - preserveKeys
+        - preserveKeys
+        left:
+          reportCurrency: reportCurrency
+          portfolioEntityIds:
+          - code: code
+            scope: scope
+            portfolioEntityType: portfolioEntityType
+          - code: code
+            scope: scope
+            portfolioEntityType: portfolioEntityType
+          asAt: 2000-01-23T04:56:07.000+00:00
+          valuationSchedule:
+            valuationDateTimes:
+            - valuationDateTimes
+            - valuationDateTimes
+            tenor: tenor
+            holidayCalendars:
+            - holidayCalendars
+            - holidayCalendars
+            effectiveAt: effectiveAt
+            effectiveFrom: effectiveFrom
+            rollConvention: rollConvention
+          metrics:
+          - op: Sum
+            key: key
+          - op: Sum
+            key: key
+          groupBy:
+          - groupBy
+          - groupBy
+          filters:
+          - left: left
+            rightOperandType: Absolute
+            right: '{}'
+            operator: Equals
+          - left: left
+            rightOperandType: Absolute
+            right: '{}'
+            operator: Equals
+          sort:
+          - sortOrder: Ascending
+            key: key
+          - sortOrder: Ascending
+            key: key
+          returnResultAsExpandedTypes: true
+          recipeId:
+            code: code
+            scope: scope
+          marketDataOverrides:
+            complexMarketData:
+            - complexMarketData:
+                marketDataType: DiscountFactorCurveData
+              economicDependency:
+                dependencyType: Opaque
+            - complexMarketData:
+                marketDataType: DiscountFactorCurveData
+              economicDependency:
+                dependencyType: Opaque
+            quotes:
+            - scaleFactor: 6.027456183070403
+              economicDependency:
+                dependencyType: Opaque
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+            - scaleFactor: 6.027456183070403
+              economicDependency:
+                dependencyType: Opaque
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+          equipWithSubtotals: true
+        right:
+          reportCurrency: reportCurrency
+          portfolioEntityIds:
+          - code: code
+            scope: scope
+            portfolioEntityType: portfolioEntityType
+          - code: code
+            scope: scope
+            portfolioEntityType: portfolioEntityType
+          asAt: 2000-01-23T04:56:07.000+00:00
+          valuationSchedule:
+            valuationDateTimes:
+            - valuationDateTimes
+            - valuationDateTimes
+            tenor: tenor
+            holidayCalendars:
+            - holidayCalendars
+            - holidayCalendars
+            effectiveAt: effectiveAt
+            effectiveFrom: effectiveFrom
+            rollConvention: rollConvention
+          metrics:
+          - op: Sum
+            key: key
+          - op: Sum
+            key: key
+          groupBy:
+          - groupBy
+          - groupBy
+          filters:
+          - left: left
+            rightOperandType: Absolute
+            right: '{}'
+            operator: Equals
+          - left: left
+            rightOperandType: Absolute
+            right: '{}'
+            operator: Equals
+          sort:
+          - sortOrder: Ascending
+            key: key
+          - sortOrder: Ascending
+            key: key
+          returnResultAsExpandedTypes: true
+          recipeId:
+            code: code
+            scope: scope
+          marketDataOverrides:
+            complexMarketData:
+            - complexMarketData:
+                marketDataType: DiscountFactorCurveData
+              economicDependency:
+                dependencyType: Opaque
+            - complexMarketData:
+                marketDataType: DiscountFactorCurveData
+              economicDependency:
+                dependencyType: Opaque
+            quotes:
+            - scaleFactor: 6.027456183070403
+              economicDependency:
+                dependencyType: Opaque
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+            - scaleFactor: 6.027456183070403
+              economicDependency:
+                dependencyType: Opaque
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+          equipWithSubtotals: true
+        leftToRightMapping:
+        - left: left
+          right: right
+        - left: left
+          right: right
+      properties:
+        left:
+          $ref: '#/components/schemas/ValuationRequest'
+        right:
+          $ref: '#/components/schemas/ValuationRequest'
+        leftToRightMapping:
+          description: The mapping from property keys requested by left aggregation
+            to property keys on right hand side
+          items:
+            $ref: '#/components/schemas/ReconciliationLeftRightAddressKeyPair'
+          nullable: true
+          type: array
+        comparisonRules:
+          description: "The set of rules to be used in comparing values. These are\
+            \ the rules that determine what constitues a match.\r\nThe simplest is\
+            \ obviously an exact one-for-one comparison, but tolerances on numerical\
+            \ or date time values and\r\ncase-insensitive string comparison are supported\
+            \ amongst other types."
+          items:
+            $ref: '#/components/schemas/ReconciliationRule'
+          nullable: true
+          type: array
+        preserveKeys:
+          description: "List of keys to preserve (from rhs) in the diff. Used in conjunction\
+            \ with filtering/grouping.\r\nIf two values are equal, for a given key\
+            \ then the value is elided from the results. Setting it here\r\nwill preserve\
+            \ it (takes the values from the RHS and puts it into the line by line\
+            \ results)."
+          items:
+            description: The key that uniquely identifies a queryable address in Lusid.
+            type: string
+          nullable: true
+          type: array
+      required:
+      - left
+      - right
+      type: object
+    ReconciliationResponse:
+      additionalProperties: false
+      description: Class representing the set of comparisons that result from comparing
+        holdings and their valuations between two separate evaluations.
+      example:
+        dataSchema:
+          nodeValueSchema:
+            key:
+              displayName: displayName
+              displayOrder: 0
+              description: description
+              id:
+                code: code
+                scope: scope
+              type: String
+          addressSchema:
+            key:
+              removalDate: 2000-01-23T04:56:07.000+00:00
+              displayName: displayName
+              description: description
+              documentationLink: documentationLink
+              type: String
+              lifeCycleStatus: lifeCycleStatus
+          propertySchema:
+            key:
+              displayName: displayName
+              displayOrder: 0
+              description: description
+              id:
+                code: code
+                scope: scope
+              type: String
+        comparisons:
+        - left:
+            key: '{}'
+          difference:
+            key: '{}'
+          right:
+            key: '{}'
+          resultComparison:
+            key: '{}'
+        - left:
+            key: '{}'
+          difference:
+            key: '{}'
+          right:
+            key: '{}'
+          resultComparison:
+            key: '{}'
+      properties:
+        comparisons:
+          description: List of comparisons of left to right hand sides.
+          items:
+            $ref: '#/components/schemas/ReconciliationLine'
+          nullable: true
+          type: array
+        dataSchema:
+          $ref: '#/components/schemas/ResultDataSchema'
+      type: object
+    ReconciliationRule:
+      additionalProperties: false
+      description: "Base class for representing reconciliation rules in LUSID.\r\n\
+        Reconciliation rules describe how a comparison between two items in the reconciliation\
+        \ should be performed and what constitutes equality.\r\nThis does not influence\
+        \ WHAT constitutes a match, but only whether once a line has been matched\
+        \ whether an item within it matches another item.\r\nIf a rule is not given\
+        \ for an item, it will default to equality comparison.\r\nThis base class\
+        \ should not be directly instantiated; each supported ReconciliationRuleType\
+        \ has a corresponding inherited class."
+      discriminator:
+        propertyName: reconciliationRuleType
+      example:
+        ruleType: ReconcileNumericRule
+      properties:
+        ruleType:
+          description: 'The available values are: ReconcileNumericRule, ReconcileDateTimeRule,
+            ReconcileStringRule, ReconcileExact'
+          enum:
+          - ReconcileNumericRule
+          - ReconcileDateTimeRule
+          - ReconcileStringRule
+          - ReconcileExact
+          type: string
+      required:
+      - ruleType
       type: object
     ReferenceData:
       additionalProperties: false
@@ -58187,6 +59913,194 @@ components:
       required:
       - effectiveAt
       type: object
+    ValuationsReconciliationRequest:
+      additionalProperties: false
+      description: "Specification for the reconciliation request. Left and Right hand\
+        \ sides are constructed. Each consists of a valuation of a portfolio\r\nusing\
+        \ an aggregation request. The results of this can then be compared to each\
+        \ other. The difference, which is effectively a risk based\r\ndifference allows\
+        \ comparison of the effects of changing a recipe, valuation date, or (though\
+        \ it may or may not make logical sense) a portfolio.\r\nFor instance, one\
+        \ might look at the difference in risk caused by the addition of transaction\
+        \ to a portfolio, or through changing the valuation\r\nmethodology or system."
+      example:
+        preserveKeys:
+        - preserveKeys
+        - preserveKeys
+        left:
+          reportCurrency: reportCurrency
+          portfolioEntityIds:
+          - code: code
+            scope: scope
+            portfolioEntityType: portfolioEntityType
+          - code: code
+            scope: scope
+            portfolioEntityType: portfolioEntityType
+          asAt: 2000-01-23T04:56:07.000+00:00
+          valuationSchedule:
+            valuationDateTimes:
+            - valuationDateTimes
+            - valuationDateTimes
+            tenor: tenor
+            holidayCalendars:
+            - holidayCalendars
+            - holidayCalendars
+            effectiveAt: effectiveAt
+            effectiveFrom: effectiveFrom
+            rollConvention: rollConvention
+          metrics:
+          - op: Sum
+            key: key
+          - op: Sum
+            key: key
+          groupBy:
+          - groupBy
+          - groupBy
+          filters:
+          - left: left
+            rightOperandType: Absolute
+            right: '{}'
+            operator: Equals
+          - left: left
+            rightOperandType: Absolute
+            right: '{}'
+            operator: Equals
+          sort:
+          - sortOrder: Ascending
+            key: key
+          - sortOrder: Ascending
+            key: key
+          returnResultAsExpandedTypes: true
+          recipeId:
+            code: code
+            scope: scope
+          marketDataOverrides:
+            complexMarketData:
+            - complexMarketData:
+                marketDataType: DiscountFactorCurveData
+              economicDependency:
+                dependencyType: Opaque
+            - complexMarketData:
+                marketDataType: DiscountFactorCurveData
+              economicDependency:
+                dependencyType: Opaque
+            quotes:
+            - scaleFactor: 6.027456183070403
+              economicDependency:
+                dependencyType: Opaque
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+            - scaleFactor: 6.027456183070403
+              economicDependency:
+                dependencyType: Opaque
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+          equipWithSubtotals: true
+        right:
+          reportCurrency: reportCurrency
+          portfolioEntityIds:
+          - code: code
+            scope: scope
+            portfolioEntityType: portfolioEntityType
+          - code: code
+            scope: scope
+            portfolioEntityType: portfolioEntityType
+          asAt: 2000-01-23T04:56:07.000+00:00
+          valuationSchedule:
+            valuationDateTimes:
+            - valuationDateTimes
+            - valuationDateTimes
+            tenor: tenor
+            holidayCalendars:
+            - holidayCalendars
+            - holidayCalendars
+            effectiveAt: effectiveAt
+            effectiveFrom: effectiveFrom
+            rollConvention: rollConvention
+          metrics:
+          - op: Sum
+            key: key
+          - op: Sum
+            key: key
+          groupBy:
+          - groupBy
+          - groupBy
+          filters:
+          - left: left
+            rightOperandType: Absolute
+            right: '{}'
+            operator: Equals
+          - left: left
+            rightOperandType: Absolute
+            right: '{}'
+            operator: Equals
+          sort:
+          - sortOrder: Ascending
+            key: key
+          - sortOrder: Ascending
+            key: key
+          returnResultAsExpandedTypes: true
+          recipeId:
+            code: code
+            scope: scope
+          marketDataOverrides:
+            complexMarketData:
+            - complexMarketData:
+                marketDataType: DiscountFactorCurveData
+              economicDependency:
+                dependencyType: Opaque
+            - complexMarketData:
+                marketDataType: DiscountFactorCurveData
+              economicDependency:
+                dependencyType: Opaque
+            quotes:
+            - scaleFactor: 6.027456183070403
+              economicDependency:
+                dependencyType: Opaque
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+            - scaleFactor: 6.027456183070403
+              economicDependency:
+                dependencyType: Opaque
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+          equipWithSubtotals: true
+        leftToRightMapping:
+        - left: left
+          right: right
+        - left: left
+          right: right
+      properties:
+        left:
+          $ref: '#/components/schemas/ValuationRequest'
+        right:
+          $ref: '#/components/schemas/ValuationRequest'
+        leftToRightMapping:
+          description: The mapping from property keys requested by left aggregation
+            to property keys on right hand side
+          items:
+            $ref: '#/components/schemas/ReconciliationLeftRightAddressKeyPair'
+          nullable: true
+          type: array
+        preserveKeys:
+          description: "List of keys to preserve (from rhs) in the diff. Used in conjunction\
+            \ with filtering/grouping.\r\nIf two values are equal, for a given key\
+            \ then the value is elided from the results. Setting it here\r\nwill preserve\
+            \ it (takes the values from the RHS and puts it into the line by line\
+            \ results)."
+          items:
+            description: The key that uniquely identifies a queryable address in Lusid.
+            type: string
+          nullable: true
+          type: array
+      required:
+      - left
+      - right
+      type: object
     VendorModelRule:
       additionalProperties: false
       description: "A rule that identifies the set of preferences to be used for a\
@@ -63106,7 +65020,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
