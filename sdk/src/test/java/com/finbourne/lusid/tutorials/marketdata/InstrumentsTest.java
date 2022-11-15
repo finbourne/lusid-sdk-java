@@ -150,7 +150,7 @@ public class InstrumentsTest {
          */
 
         GetInstrumentsResponse lookedUpInstruments = instrumentsApi.getInstruments(FIGI_SCHEME, Arrays.asList("BBG000C6K6G9"),
-                null, null, Arrays.asList(ISIN_PROPERTY_KEY, SEDOL_PROPERTY_KEY), DefaultScope);
+                null, null, Arrays.asList(ISIN_PROPERTY_KEY, SEDOL_PROPERTY_KEY), DefaultScope, null);
 
         assertThat(lookedUpInstruments.getValues(), hasKey("BBG000C6K6G9"));
 
@@ -190,7 +190,7 @@ public class InstrumentsTest {
         final int pageSize = 5;
 
         //    List the instruments restricting, the number that are returned
-        PagedResourceListOfInstrument instruments = instrumentsApi.listInstruments(null, null, null, null, null, pageSize, null, null, DefaultScope);
+        PagedResourceListOfInstrument instruments = instrumentsApi.listInstruments(null, null, null, null, null, pageSize, null, null, DefaultScope, null);
 
         assertThat(instruments.getValues().size(), is(equalTo(pageSize)));
     }
@@ -202,7 +202,7 @@ public class InstrumentsTest {
         List<String>    figis = Arrays.asList("BBG000C6K6G9", "BBG000C04D57", "BBG000FV67Q4");
 
         //  Get a set of instruments querying by FIGIs
-        GetInstrumentsResponse instruments = instrumentsApi.getInstruments("Figi", figis, null, null, null, DefaultScope);
+        GetInstrumentsResponse instruments = instrumentsApi.getInstruments("Figi", figis, null, null, null, DefaultScope, null);
 
         for (String figi : figis) {
             assertThat(instruments.getValues(), hasKey(figi));
@@ -229,7 +229,8 @@ public class InstrumentsTest {
                 figi,
                 null, null,
                 Collections.singletonList(propertyKey),
-                DefaultScope
+                DefaultScope,
+                null
         );
 
         assertThat(instrument.getProperties(), hasSize(greaterThanOrEqualTo(1)));

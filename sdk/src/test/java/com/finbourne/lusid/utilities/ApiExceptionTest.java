@@ -20,7 +20,7 @@ public class ApiExceptionTest {
         PortfoliosApi portfoliosApi = new PortfoliosApi(apiClient);
 
         try {
-            portfoliosApi.getPortfolio("doesnt", "exist", null, null, null);
+            portfoliosApi.getPortfolio("doesnt", "exist", null, null, null, null);
         }
         catch (ApiException e) {
 
