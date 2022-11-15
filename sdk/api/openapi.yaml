@@ -305,7 +305,7 @@ info:
     | <a name="814">814</a>|Account not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4973
+  version: 0.11.4974
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -38359,9 +38359,9 @@ components:
         holidayCalendars:
           description: The holiday calendar(s) that should be used in determining
             the date schedule. Holiday calendar(s) are supplied by their codes, for
-            example, 'CoppClarke'. Note that when the calendars are not available
-            (e.g. when the user has insufficient permissions), a recipe setting will
-            be used to determine whether the whole batch should then fail or whether
+            example, 'CoppClark'. Note that when the calendars are not available (e.g.
+            when the user has insufficient permissions), a recipe setting will be
+            used to determine whether the whole batch should then fail or whether
             the calendar not being available should simply be ignored.
           items:
             type: string
@@ -59888,7 +59888,7 @@ components:
         holidayCalendars:
           description: "The holiday calendar(s) that should be used in determining\
             \ the date schedule.\r\nHoliday calendar(s) are supplied by their names,\
-            \ for example, \"CoppClarke\". \r\nNote that when the calendars are not\
+            \ for example, \"CoppClark\". \r\nNote that when the calendars are not\
             \ available (e.g. when the user has insufficient permissions), \r\na recipe\
             \ setting will be used to determine whether the whole batch should then\
             \ fail or whether the calendar not being available should simply be ignored."
