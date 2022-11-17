@@ -305,12 +305,12 @@ info:
     | <a name="814">814</a>|Account not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4975
+  version: 0.11.4976
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -454,6 +454,8 @@ tags:
     a fundamental building block of LUSID, and care should be exercised when changing
     them. For more information, see https://support.lusid.com/knowledgebase/article/KA-01872/.
   name: System Configuration
+- description: Methods to manage rule sets defining tax rates for transactions
+  name: Tax Rule Sets
 - description: LUSID is a transaction-based system. Every transaction in a particular
     instrument should belong to a transaction type in order that it might contribute
     to measuring your holding (position) in that instrument. Transaction types are
@@ -469,9 +471,6 @@ tags:
     is a type of portfolio, so endpoints in the Portfolios API can also be called.
     For more information, see https://support.lusid.com/knowledgebase/article/KA-01851.
   name: Transaction Portfolios
-- description: Methods to retrieve applicable rates for a transaction, and manage
-    the rules that defined them
-  name: Transaction Tax Rules
 - description: Methods for translating between dialects.
   name: Translation
 paths:
@@ -65014,7 +65013,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
@@ -65064,9 +65063,9 @@ x-tagGroups:
   - Sequences
   - Structured Result Data
   - System Configuration
+  - Tax Rule Sets
   - Transaction Configuration
   - Transaction Fees
   - Transaction Portfolios
-  - Transaction Tax Rules
   - Translation
 
