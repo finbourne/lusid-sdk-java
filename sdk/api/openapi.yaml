@@ -305,7 +305,7 @@ info:
     | <a name="814">814</a>|Account not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.4982
+  version: 0.11.4983
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -7318,16 +7318,18 @@ paths:
           type: string
         style: form
       - description: "A list of property keys from the 'Instrument' domain to decorate\
-          \ onto\r\n             instruments. These must have the format {domain}/{scope}/{code},\
-          \ for example 'Instrument/system/Name'."
+          \ onto\r\n             instruments, or from any domain that supports relationships\
+          \ to decorate onto related entities.\r\n             These must have the\
+          \ format {domain}/{scope}/{code}, for example 'Instrument/system/Name'."
         explode: true
         in: query
         name: instrumentPropertyKeys
         required: false
         schema:
           description: "A list of property keys from the 'Instrument' domain to decorate\
-            \ onto\r\n             instruments. These must have the format {domain}/{scope}/{code},\
-            \ for example 'Instrument/system/Name'."
+            \ onto\r\n             instruments, or from any domain that supports relationships\
+            \ to decorate onto related entities.\r\n             These must have the\
+            \ format {domain}/{scope}/{code}, for example 'Instrument/system/Name'."
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
@@ -7352,6 +7354,24 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: form
+      - description: "A list of relationship definitions that are used to decorate\
+          \ related entities\r\n             onto each instrument in the response.\
+          \ These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+        explode: true
+        in: query
+        name: relationshipDefinitionIds
+        required: false
+        schema:
+          description: "A list of relationship definitions that are used to decorate\
+            \ related entities\r\n             onto each instrument in the response.\
+            \ These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+          items:
+            description: Identifiers of an entity
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
       responses:
         "200":
           content:
@@ -7733,16 +7753,18 @@ paths:
         style: form
         x-nullable: true
       - description: "A list of property keys from the 'Instrument' domain to decorate\
-          \ onto the instrument.\r\n             These must have the format {domain}/{scope}/{code},\
-          \ for example 'Instrument/system/Name'."
+          \ onto\r\n             each instrument, or from any domain that supports\
+          \ relationships to decorate onto related entities.\r\n             These\
+          \ must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'."
         explode: true
         in: query
         name: propertyKeys
         required: false
         schema:
           description: "A list of property keys from the 'Instrument' domain to decorate\
-            \ onto the instrument.\r\n             These must have the format {domain}/{scope}/{code},\
-            \ for example 'Instrument/system/Name'."
+            \ onto\r\n             each instrument, or from any domain that supports\
+            \ relationships to decorate onto related entities.\r\n             These\
+            \ must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'."
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
@@ -7767,6 +7789,24 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: form
+      - description: "A list of relationship definitions that are used to decorate\
+          \ related entities\r\n             onto each instrument in the response.\
+          \ These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+        explode: true
+        in: query
+        name: relationshipDefinitionIds
+        required: false
+        schema:
+          description: "A list of relationship definitions that are used to decorate\
+            \ related entities\r\n             onto each instrument in the response.\
+            \ These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+          items:
+            description: Identifiers of an entity
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
       requestBody:
         content:
           application/json-patch+json:
@@ -8218,16 +8258,18 @@ paths:
         style: form
         x-nullable: true
       - description: "A list of property keys from the 'Instrument' domain to decorate\
-          \ onto the instrument.\r\n            These must have the format {domain}/{scope}/{code},\
-          \ for example 'Instrument/system/Name'."
+          \ onto\r\n            the instrument, or from any domain that supports relationships\
+          \ to decorate onto related entities.\r\n            These must have the\
+          \ format {domain}/{scope}/{code}, for example 'Instrument/system/Name'."
         explode: true
         in: query
         name: propertyKeys
         required: false
         schema:
           description: "A list of property keys from the 'Instrument' domain to decorate\
-            \ onto the instrument.\r\n            These must have the format {domain}/{scope}/{code},\
-            \ for example 'Instrument/system/Name'."
+            \ onto\r\n            the instrument, or from any domain that supports\
+            \ relationships to decorate onto related entities.\r\n            These\
+            \ must have the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'."
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
@@ -8252,6 +8294,24 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: form
+      - description: "A list of relationship definitions that are used to decorate\
+          \ related entities\r\n            onto the instrument in the response. These\
+          \ must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+        explode: true
+        in: query
+        name: relationshipDefinitionIds
+        required: false
+        schema:
+          description: "A list of relationship definitions that are used to decorate\
+            \ related entities\r\n            onto the instrument in the response.\
+            \ These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+          items:
+            description: Identifiers of an entity
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
       responses:
         "200":
           content:
@@ -8892,21 +8952,41 @@ paths:
           type: string
         style: form
       - description: "A list of property keys or identifier types (as property keys)\
-          \ from the \"LegalEntity\" domain to include for each legal entity.\r\n\
-          \            These take the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\"\
-          ."
+          \ from the \"LegalEntity\" domain\r\n            to include for each legal\
+          \ entity, or from any domain that supports relationships to decorate onto\
+          \ related entities.\r\n            These take the format {domain}/{scope}/{code}\
+          \ e.g. \"LegalEntity/ContactDetails/Address\"."
         explode: true
         in: query
         name: propertyKeys
         required: false
         schema:
           description: "A list of property keys or identifier types (as property keys)\
-            \ from the \"LegalEntity\" domain to include for each legal entity.\r\n\
-            \            These take the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\"\
-            ."
+            \ from the \"LegalEntity\" domain\r\n            to include for each legal\
+            \ entity, or from any domain that supports relationships to decorate onto\
+            \ related entities.\r\n            These take the format {domain}/{scope}/{code}\
+            \ e.g. \"LegalEntity/ContactDetails/Address\"."
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      - description: "A list of relationship definitions that are used to decorate\
+          \ related entities\r\n            onto each portfolio in the response. These\
+          \ must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+        explode: true
+        in: query
+        name: relationshipDefinitionIds
+        required: false
+        schema:
+          description: "A list of relationship definitions that are used to decorate\
+            \ related entities\r\n            onto each portfolio in the response.\
+            \ These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+          items:
+            description: Identifiers of an entity
             type: string
           nullable: true
           type: array
@@ -9615,21 +9695,41 @@ paths:
           type: string
         style: form
       - description: "A list of property keys or identifier types (as property keys)\
-          \ from the \"LegalEntity\" domain to include for each legal entity.\r\n\
-          \            These take the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\"\
-          ."
+          \ from the \"LegalEntity\" domain\r\n            to include for each legal\
+          \ entity, or from any domain that supports relationships to decorate onto\
+          \ related entities.\r\n            These take the format {domain}/{scope}/{code}\
+          \ e.g. \"LegalEntity/ContactDetails/Address\"."
         explode: true
         in: query
         name: propertyKeys
         required: false
         schema:
           description: "A list of property keys or identifier types (as property keys)\
-            \ from the \"LegalEntity\" domain to include for each legal entity.\r\n\
-            \            These take the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\"\
-            ."
+            \ from the \"LegalEntity\" domain\r\n            to include for each legal\
+            \ entity, or from any domain that supports relationships to decorate onto\
+            \ related entities.\r\n            These take the format {domain}/{scope}/{code}\
+            \ e.g. \"LegalEntity/ContactDetails/Address\"."
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      - description: "A list of relationship definitions that are used to decorate\
+          \ related entities\r\n            onto each portfolio in the response. These\
+          \ must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+        explode: true
+        in: query
+        name: relationshipDefinitionIds
+        required: false
+        schema:
+          description: "A list of relationship definitions that are used to decorate\
+            \ related entities\r\n            onto each portfolio in the response.\
+            \ These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+          items:
+            description: Identifiers of an entity
             type: string
           nullable: true
           type: array
@@ -10032,18 +10132,20 @@ paths:
           type: string
         style: simple
       - description: "A list of property keys or identifier types (as property keys)\
-          \ from the \"LegalEntity\" domain to include for found legal entity.\r\n\
-          \            These take the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\"\
-          ."
+          \ from the \"LegalEntity\" domain\r\n            to include for found legal\
+          \ entity, or from any domain that supports relationships to decorate onto\
+          \ related entities.\r\n            These take the format {domain}/{scope}/{code}\
+          \ e.g. \"LegalEntity/ContactDetails/Address\"."
         explode: true
         in: query
         name: propertyKeys
         required: false
         schema:
           description: "A list of property keys or identifier types (as property keys)\
-            \ from the \"LegalEntity\" domain to include for found legal entity.\r\
-            \n            These take the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\"\
-            ."
+            \ from the \"LegalEntity\" domain\r\n            to include for found\
+            \ legal entity, or from any domain that supports relationships to decorate\
+            \ onto related entities.\r\n            These take the format {domain}/{scope}/{code}\
+            \ e.g. \"LegalEntity/ContactDetails/Address\"."
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
@@ -10080,6 +10182,24 @@ paths:
           format: date-time
           nullable: true
           type: string
+        style: form
+        x-nullable: true
+      - description: "A list of relationship definitions that are used to decorate\
+          \ related entities\r\n            onto the legal entity in the response.\
+          \ These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+        explode: true
+        in: query
+        name: relationshipDefinitionIds
+        required: false
+        schema:
+          description: "A list of relationship definitions that are used to decorate\
+            \ related entities\r\n            onto the legal entity in the response.\
+            \ These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+          items:
+            description: Identifiers of an entity
+            type: string
+          nullable: true
+          type: array
         style: form
         x-nullable: true
       responses:
@@ -13309,6 +13429,43 @@ paths:
           pattern: ^[\s\S]*$
           type: string
         style: form
+      - description: "A list of property keys from any domain that supports relationships\r\
+          \n            to decorate onto related entities. These must take the format\
+          \ {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'."
+        explode: true
+        in: query
+        name: relatedEntityPropertyKeys
+        required: false
+        schema:
+          description: "A list of property keys from any domain that supports relationships\r\
+            \n            to decorate onto related entities. These must take the format\
+            \ {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'."
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      - description: "A list of relationship definitions that are used to decorate\
+          \ related entities\r\n            onto the portfolio groups in the response.\
+          \ These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+        explode: true
+        in: query
+        name: relationshipDefinitionIds
+        required: false
+        schema:
+          description: "A list of relationship definitions that are used to decorate\
+            \ related entities\r\n            onto the portfolio groups in the response.\
+            \ These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+          items:
+            description: Identifiers of an entity
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
       responses:
         "200":
           content:
@@ -13618,6 +13775,43 @@ paths:
           format: date-time
           nullable: true
           type: string
+        style: form
+        x-nullable: true
+      - description: "A list of property keys from any domain that supports relationships\r\
+          \n            to decorate onto related entities. These must take the format\
+          \ {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'."
+        explode: true
+        in: query
+        name: relatedEntityPropertyKeys
+        required: false
+        schema:
+          description: "A list of property keys from any domain that supports relationships\r\
+            \n            to decorate onto related entities. These must take the format\
+            \ {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'."
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      - description: "A list of relationship definitions that are used to decorate\
+          \ related entities\r\n            onto the portfolio group in the response.\
+          \ These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+        explode: true
+        in: query
+        name: relationshipDefinitionIds
+        required: false
+        schema:
+          description: "A list of relationship definitions that are used to decorate\
+            \ related entities\r\n            onto the portfolio group in the response.\
+            \ These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+          items:
+            description: Identifiers of an entity
+            type: string
+          nullable: true
+          type: array
         style: form
         x-nullable: true
       responses:
@@ -18289,19 +18483,39 @@ paths:
           type: string
         style: form
       - description: "A list of property keys from the 'Portfolio' domain to decorate\
-          \ onto each portfolio.\r\n            These must take the format {domain}/{scope}/{code},\
-          \ for example 'Portfolio/Manager/Id'."
+          \ onto each portfolio,\r\n            or from any domain that supports relationships\
+          \ to decorate onto related entities. These must take the\r\n           \
+          \ format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'."
         explode: true
         in: query
         name: propertyKeys
         required: false
         schema:
           description: "A list of property keys from the 'Portfolio' domain to decorate\
-            \ onto each portfolio.\r\n            These must take the format {domain}/{scope}/{code},\
-            \ for example 'Portfolio/Manager/Id'."
+            \ onto each portfolio,\r\n            or from any domain that supports\
+            \ relationships to decorate onto related entities. These must take the\r\
+            \n            format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'."
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      - description: "A list of relationship definitions that are used to decorate\
+          \ related entities\r\n            onto the portfolios in the response. These\
+          \ must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+        explode: true
+        in: query
+        name: relationshipDefinitionIds
+        required: false
+        schema:
+          description: "A list of relationship definitions that are used to decorate\
+            \ related entities\r\n            onto the portfolios in the response.\
+            \ These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+          items:
+            description: Identifiers of an entity
             type: string
           nullable: true
           type: array
@@ -19669,19 +19883,39 @@ paths:
           type: string
         style: form
       - description: "A list of property keys from the 'Portfolio' domain to decorate\
-          \ onto each portfolio.\r\n            These must take the format {domain}/{scope}/{code},\
-          \ for example 'Portfolio/Manager/Id'."
+          \ onto each portfolio,\r\n            or from any domain that supports relationships\
+          \ to decorate onto related entities. These must take the\r\n           \
+          \ format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'."
         explode: true
         in: query
         name: propertyKeys
         required: false
         schema:
           description: "A list of property keys from the 'Portfolio' domain to decorate\
-            \ onto each portfolio.\r\n            These must take the format {domain}/{scope}/{code},\
-            \ for example 'Portfolio/Manager/Id'."
+            \ onto each portfolio,\r\n            or from any domain that supports\
+            \ relationships to decorate onto related entities. These must take the\r\
+            \n            format {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'."
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      - description: "A list of relationship definitions that are used to decorate\
+          \ related entities\r\n            onto the portfolios in the response. These\
+          \ must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+        explode: true
+        in: query
+        name: relationshipDefinitionIds
+        required: false
+        schema:
+          description: "A list of relationship definitions that are used to decorate\
+            \ related entities\r\n            onto the portfolios in the response.\
+            \ These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+          items:
+            description: Identifiers of an entity
             type: string
           nullable: true
           type: array
@@ -19863,19 +20097,39 @@ paths:
         style: form
         x-nullable: true
       - description: "A list of property keys from the 'Portfolio' domain to decorate\
-          \ onto the portfolio.\r\n            These must take the format {domain}/{scope}/{code},\
-          \ for example 'Portfolio/Manager/Id'."
+          \ onto the portfolio,\r\n            or from any domain that supports relationships\
+          \ to decorate onto related entities. These must take the format\r\n    \
+          \        {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'."
         explode: true
         in: query
         name: propertyKeys
         required: false
         schema:
           description: "A list of property keys from the 'Portfolio' domain to decorate\
-            \ onto the portfolio.\r\n            These must take the format {domain}/{scope}/{code},\
-            \ for example 'Portfolio/Manager/Id'."
+            \ onto the portfolio,\r\n            or from any domain that supports\
+            \ relationships to decorate onto related entities. These must take the\
+            \ format\r\n            {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'."
           items:
             description: The key that uniquely identifies the property. It has the
               format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      - description: "A list of relationship definitions that are used to decorate\
+          \ related entities\r\n            onto the portfolio in the response. These\
+          \ must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+        explode: true
+        in: query
+        name: relationshipDefinitionIds
+        required: false
+        schema:
+          description: "A list of relationship definitions that are used to decorate\
+            \ related entities\r\n            onto the portfolio in the response.\
+            \ These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+          items:
+            description: Identifiers of an entity
             type: string
           nullable: true
           type: array
