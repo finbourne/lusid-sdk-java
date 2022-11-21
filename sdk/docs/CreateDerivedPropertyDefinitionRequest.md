@@ -7,7 +7,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. Not all available values are currently supported, please check the documentation: https://support.lusid.com/knowledgebase/article/KA-01719/. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts | 
+**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. Not all available values are currently supported, please check the documentation: https://support.lusid.com/knowledgebase/article/KA-01719/. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount | 
 **scope** | **String** | The scope that the property exists in. | 
 **code** | **String** | The code of the property. Together with the domain and scope this uniquely identifies the property. | 
 **displayName** | **String** | The display name of the property. | 
@@ -51,6 +51,7 @@ CUSTOMENTITY | &quot;CustomEntity&quot;
 INSTRUMENTEVENT | &quot;InstrumentEvent&quot;
 ACCOUNT | &quot;Account&quot;
 CHARTOFACCOUNTS | &quot;ChartOfAccounts&quot;
+CUSTODIANACCOUNT | &quot;CustodianAccount&quot;
 
 
 
