@@ -305,7 +305,7 @@ info:
     | <a name="814">814</a>|Account not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5004
+  version: 0.11.5005
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -1453,6 +1453,7 @@ paths:
             identifies the allocation to delete.
           maxLength: 64
           minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
       responses:
@@ -1506,6 +1507,7 @@ paths:
           description: The scope to which the allocation belongs.
           maxLength: 64
           minLength: 1
+          nullable: true
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
@@ -1518,6 +1520,8 @@ paths:
           description: The allocation's unique identifier.
           maxLength: 64
           minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
       - description: The asAt datetime at which to retrieve the allocation. Defaults
@@ -12395,6 +12399,7 @@ paths:
             the order to delete.
           maxLength: 64
           minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
       responses:
@@ -12448,6 +12453,7 @@ paths:
           description: The scope to which the order belongs.
           maxLength: 64
           minLength: 1
+          nullable: true
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
@@ -12460,6 +12466,8 @@ paths:
           description: The order's unique identifier.
           maxLength: 64
           minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
       - description: The asAt datetime at which to retrieve the order. Defaults to
