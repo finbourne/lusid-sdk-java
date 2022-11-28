@@ -9,6 +9,7 @@ A list of Aggregated Returns.
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **effectiveAt** | **OffsetDateTime** | The effectiveAt for the return. | 
+**endOfPeriod** | **OffsetDateTime** | The end of period date. For the monthly period this will be the Month End Date. | 
 **openingMarketValue** | **java.math.BigDecimal** | The opening market value. |  [optional]
 **closingMarketValue** | **java.math.BigDecimal** | The closing market value. |  [optional]
 **metricsValue** | **Map&lt;String, java.math.BigDecimal&gt;** | The value for the specified metric. | 
