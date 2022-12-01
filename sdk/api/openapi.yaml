@@ -305,7 +305,7 @@ info:
     | <a name="814">814</a>|Account not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5020
+  version: 0.11.5021
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -3892,15 +3892,19 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: simple
-      - description: The effective datetime at which to retrieve the complex market
-          data. Defaults to the current LUSID system datetime if not specified.
+      - description: "The effective datetime at which to retrieve the complex market\
+          \ data.\r\n             Defaults to the current LUSID system datetime if\
+          \ not specified.\r\n             Must match the Effective at of each ComplexMarketDataId\
+          \ given in the request body."
         explode: true
         in: query
         name: effectiveAt
         required: false
         schema:
-          description: The effective datetime at which to retrieve the complex market
-            data. Defaults to the current LUSID system datetime if not specified.
+          description: "The effective datetime at which to retrieve the complex market\
+            \ data.\r\n             Defaults to the current LUSID system datetime\
+            \ if not specified.\r\n             Must match the Effective at of each\
+            \ ComplexMarketDataId given in the request body."
           format: dateorcutlabel
           maxLength: 256
           minLength: 0
