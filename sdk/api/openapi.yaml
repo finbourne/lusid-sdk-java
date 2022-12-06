@@ -305,7 +305,7 @@ info:
     | <a name="814">814</a>|Account not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5036
+  version: 0.11.5037
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -8469,6 +8469,502 @@ paths:
       x-fbn-apistatus: Stable
       x-contentType: application/json-patch+json
       x-accepts: application/json
+  /api/instruments/{identifierType}/{identifier}/properties:
+    get:
+      description: List all the properties of a particular instrument, as identified
+        by a particular unique identifier.
+      operationId: GetInstrumentProperties
+      parameters:
+      - description: The unique identifier type to search, for example 'Figi'.
+        explode: false
+        in: path
+        name: identifierType
+        required: true
+        schema:
+          description: The unique identifier type to search, for example 'Figi'.
+          nullable: true
+          type: string
+        style: simple
+      - description: An <i>identifierType</i> value to use to identify the instrument,
+          for example 'BBG000BLNNV0'.
+        explode: false
+        in: path
+        name: identifier
+        required: true
+        schema:
+          description: An <i>identifierType</i> value to use to identify the instrument,
+            for example 'BBG000BLNNV0'.
+          nullable: true
+          type: string
+        style: simple
+      - description: "The effective datetime or cut label at which to list the instrument's\
+          \ properties.\r\n            Defaults to the current LUSID system datetime\
+          \ if not specified."
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: "The effective datetime or cut label at which to list the instrument's\
+            \ properties.\r\n            Defaults to the current LUSID system datetime\
+            \ if not specified."
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      - description: "The asAt datetime at which to list the instrument's properties.\
+          \ Defaults to returning\r\n            the latest version of each property\
+          \ if not specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: "The asAt datetime at which to list the instrument's properties.\
+            \ Defaults to returning\r\n            the latest version of each property\
+            \ if not specified."
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: The scope in which the instrument lies. When not supplied the
+          scope is 'default'.
+        explode: true
+        in: query
+        name: scope
+        required: false
+        schema:
+          default: default
+          description: The scope in which the instrument lies. When not supplied the
+            scope is 'default'.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                properties:
+                  instrument/MyScope/SomeInstrumentProperty:
+                    key: Instrument/MyScope/SomeInstrumentProperty
+                    value:
+                      labelValue: XYZ000034567
+                    effectiveFrom: 2018-01-01T12:00:00.0000000+00:00
+                  instrument/MyScope/SomeOtherInstrumentProperty:
+                    key: Instrument/MyScope/SomeOtherInstrumentProperty
+                    value:
+                      labelValue: XYZ00008910
+                    effectiveFrom: 2017-01-01T12:00:00.0000000+00:00
+                version:
+                  effectiveFrom: 2015-01-01T12:00:00.0000000+00:00
+                  asAtDate: 2020-01-01T12:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/InstrumentProperties'
+            application/json:
+              example:
+                properties:
+                  instrument/MyScope/SomeInstrumentProperty:
+                    key: Instrument/MyScope/SomeInstrumentProperty
+                    value:
+                      labelValue: XYZ000034567
+                    effectiveFrom: 2018-01-01T12:00:00.0000000+00:00
+                  instrument/MyScope/SomeOtherInstrumentProperty:
+                    key: Instrument/MyScope/SomeOtherInstrumentProperty
+                    value:
+                      labelValue: XYZ00008910
+                    effectiveFrom: 2017-01-01T12:00:00.0000000+00:00
+                version:
+                  effectiveFrom: 2015-01-01T12:00:00.0000000+00:00
+                  asAtDate: 2020-01-01T12:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/InstrumentProperties'
+            text/json:
+              example:
+                properties:
+                  instrument/MyScope/SomeInstrumentProperty:
+                    key: Instrument/MyScope/SomeInstrumentProperty
+                    value:
+                      labelValue: XYZ000034567
+                    effectiveFrom: 2018-01-01T12:00:00.0000000+00:00
+                  instrument/MyScope/SomeOtherInstrumentProperty:
+                    key: Instrument/MyScope/SomeOtherInstrumentProperty
+                    value:
+                      labelValue: XYZ00008910
+                    effectiveFrom: 2017-01-01T12:00:00.0000000+00:00
+                version:
+                  effectiveFrom: 2015-01-01T12:00:00.0000000+00:00
+                  asAtDate: 2020-01-01T12:00:00.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/InstrumentProperties'
+          description: The properties of the specified instrument
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetInstrumentProperties: Get instrument properties'
+      tags:
+      - Instruments
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/instruments/{identifierType}/{identifier}/properties/$delete:
+    post:
+      description: "Delete one or more properties from a particular instrument. If\
+        \ the properties are time-variant then an effective datetime from which\r\n\
+        to delete properties must be specified. If the properties are perpetual then\
+        \ it is invalid to specify an effective datetime for deletion."
+      operationId: DeleteInstrumentProperties
+      parameters:
+      - description: The unique identifier type to search, for example 'Figi'.
+        explode: false
+        in: path
+        name: identifierType
+        required: true
+        schema:
+          description: The unique identifier type to search, for example 'Figi'.
+          nullable: true
+          type: string
+        style: simple
+      - description: An <i>identifierType</i> value to use to identify the instrument,
+          for example 'BBG000BLNNV0'.
+        explode: false
+        in: path
+        name: identifier
+        required: true
+        schema:
+          description: An <i>identifierType</i> value to use to identify the instrument,
+            for example 'BBG000BLNNV0'.
+          nullable: true
+          type: string
+        style: simple
+      - description: "The effective datetime or cut label at which to delete time-variant\
+          \ properties from.\r\n            The property must exist at the specified\
+          \ 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is\r\n\
+          \            before the time-variant property exists then a failure is returned.\
+          \ Do not specify this parameter if any of\r\n            the properties\
+          \ to delete are perpetual."
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: "The effective datetime or cut label at which to delete time-variant\
+            \ properties from.\r\n            The property must exist at the specified\
+            \ 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is\r\
+            \n            before the time-variant property exists then a failure is\
+            \ returned. Do not specify this parameter if any of\r\n            the\
+            \ properties to delete are perpetual."
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      - description: The scope in which the instrument lies. When not supplied the
+          scope is 'default'.
+        explode: true
+        in: query
+        name: scope
+        required: false
+        schema:
+          default: default
+          description: The scope in which the instrument lies. When not supplied the
+            scope is 'default'.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+            - Instrument/scope/market-sector
+            - Instrument/scope/tenor
+            schema:
+              description: A list of property keys from the 'Instruments' domain whose
+                properties to delete.
+              items:
+                description: The key that uniquely identifies the property. It has
+                  the format {domain}/{scope}/{code}.
+                type: string
+              type: array
+          application/json:
+            example:
+            - Instrument/scope/market-sector
+            - Instrument/scope/tenor
+            schema:
+              description: A list of property keys from the 'Instruments' domain whose
+                properties to delete.
+              items:
+                description: The key that uniquely identifies the property. It has
+                  the format {domain}/{scope}/{code}.
+                type: string
+              type: array
+          text/json:
+            example:
+            - Instrument/scope/market-sector
+            - Instrument/scope/tenor
+            schema:
+              description: A list of property keys from the 'Instruments' domain whose
+                properties to delete.
+              items:
+                description: The key that uniquely identifies the property. It has
+                  the format {domain}/{scope}/{code}.
+                type: string
+              type: array
+          application/*+json:
+            example:
+            - Instrument/scope/market-sector
+            - Instrument/scope/tenor
+            schema:
+              description: A list of property keys from the 'Instruments' domain whose
+                properties to delete.
+              items:
+                description: The key that uniquely identifies the property. It has
+                  the format {domain}/{scope}/{code}.
+                type: string
+              type: array
+        description: A list of property keys from the 'Instruments' domain whose properties
+          to delete.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeleteInstrumentPropertiesResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeleteInstrumentPropertiesResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeleteInstrumentPropertiesResponse'
+          description: The asAt datetime at which properties were deleted.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] DeleteInstrumentProperties: Delete instrument properties'
+      tags:
+      - Instruments
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/instruments/{identifierType}/{identifier}/properties/list:
+    get:
+      description: List all the properties of a particular instrument, as identified
+        by a particular unique identifier.
+      operationId: ListInstrumentProperties
+      parameters:
+      - description: The unique identifier type to search, for example 'Figi'.
+        explode: false
+        in: path
+        name: identifierType
+        required: true
+        schema:
+          description: The unique identifier type to search, for example 'Figi'.
+          nullable: true
+          type: string
+        style: simple
+      - description: An <i>identifierType</i> value to use to identify the instrument,
+          for example 'BBG000BLNNV0'.
+        explode: false
+        in: path
+        name: identifier
+        required: true
+        schema:
+          description: An <i>identifierType</i> value to use to identify the instrument,
+            for example 'BBG000BLNNV0'.
+          nullable: true
+          type: string
+        style: simple
+      - description: "The effective datetime or cut label at which to list the instrument's\
+          \ properties.\r\n            Defaults to the current LUSID system datetime\
+          \ if not specified."
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: "The effective datetime or cut label at which to list the instrument's\
+            \ properties.\r\n            Defaults to the current LUSID system datetime\
+            \ if not specified."
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+        style: form
+      - description: "The asAt datetime at which to list the instrument's properties.\
+          \ Defaults to returning\r\n            the latest version of each property\
+          \ if not specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: "The asAt datetime at which to list the instrument's properties.\
+            \ Defaults to returning\r\n            the latest version of each property\
+            \ if not specified."
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: The pagination token to use to continue listing commands; this
+          value is returned from the previous call.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          description: The pagination token to use to continue listing commands; this
+            value is returned from the previous call.
+          maxLength: 500
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
+          type: string
+        style: form
+      - description: When paginating, limit the results per page to this number.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: When paginating, limit the results per page to this number.
+          format: int32
+          maximum: 5000
+          minimum: 1
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      - description: The scope in which the instrument lies. When not supplied the
+          scope is 'default'.
+        explode: true
+        in: query
+        name: scope
+        required: false
+        schema:
+          default: default
+          description: The scope in which the instrument lies. When not supplied the
+            scope is 'default'.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - key: Instrument/MyScope/SomeInstrumentProperty
+                  value:
+                    labelValue: XYZ000034567
+                  effectiveFrom: 2018-01-01T12:00:00.0000000+00:00
+                - key: Instrument/MyScope/SomeOtherInstrumentProperty
+                  value:
+                    labelValue: XYZ00008910
+                  effectiveFrom: 2017-01-01T12:00:00.0000000+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfProperty'
+            application/json:
+              example:
+                values:
+                - key: Instrument/MyScope/SomeInstrumentProperty
+                  value:
+                    labelValue: XYZ000034567
+                  effectiveFrom: 2018-01-01T12:00:00.0000000+00:00
+                - key: Instrument/MyScope/SomeOtherInstrumentProperty
+                  value:
+                    labelValue: XYZ00008910
+                  effectiveFrom: 2017-01-01T12:00:00.0000000+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfProperty'
+            text/json:
+              example:
+                values:
+                - key: Instrument/MyScope/SomeInstrumentProperty
+                  value:
+                    labelValue: XYZ000034567
+                  effectiveFrom: 2018-01-01T12:00:00.0000000+00:00
+                - key: Instrument/MyScope/SomeOtherInstrumentProperty
+                  value:
+                    labelValue: XYZ00008910
+                  effectiveFrom: 2017-01-01T12:00:00.0000000+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfProperty'
+          description: The properties of the specified instrument
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] ListInstrumentProperties: Get instrument properties
+        (with Pagination)'
+      tags:
+      - Instruments
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
   /api/instruments/{identifierType}/{identifier}/properties/time-series:
     get:
       description: Retrieve the complete time series (history) for a particular property
@@ -11281,6 +11777,133 @@ paths:
       x-contentType: application/json-patch+json
       x-accepts: application/json
   /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/properties:
+    delete:
+      description: Delete all properties that belong to the given property keys of
+        the legal entity.
+      operationId: DeleteLegalEntityProperties
+      parameters:
+      - description: Scope of the legal entity identifier type.
+        explode: false
+        in: path
+        name: idTypeScope
+        required: true
+        schema:
+          description: Scope of the legal entity identifier type.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the legal entity identifier type.
+        explode: false
+        in: path
+        name: idTypeCode
+        required: true
+        schema:
+          description: Code of the legal entity identifier type.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "Code of the legal entity under specified identifier type's scope\
+          \ and code. This together with stated identifier type uniquely\r\n     \
+          \       identifies the legal entity."
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: "Code of the legal entity under specified identifier type's\
+            \ scope and code. This together with stated identifier type uniquely\r\
+            \n            identifies the legal entity."
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          type: string
+        style: simple
+      - description: "The property keys of the legal entities properties to delete.\
+          \ These take the format\r\n            {domain}/{scope}/{code} e.g. \"LegalEntity/CompanyDetails/Role\"\
+          . Each property must be from the \"LegalEntity\" domain. Properties or identifiers\
+          \ not specified in request will not be changed."
+        explode: true
+        in: query
+        name: propertyKeys
+        required: true
+        schema:
+          description: "The property keys of the legal entities properties to delete.\
+            \ These take the format\r\n            {domain}/{scope}/{code} e.g. \"\
+            LegalEntity/CompanyDetails/Role\". Each property must be from the \"LegalEntity\"\
+            \ domain. Properties or identifiers not specified in request will not\
+            \ be changed."
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          type: array
+        style: form
+      - description: "The effective datetime or cut label at which to delete time-variant\
+          \ properties from.\r\n            The property must exist at the specified\
+          \ 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is\r\n\
+          \            before the time-variant property exists then a failure is returned.\
+          \ Do not specify this parameter if any of\r\n            the properties\
+          \ to delete are perpetual."
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: "The effective datetime or cut label at which to delete time-variant\
+            \ properties from.\r\n            The property must exist at the specified\
+            \ 'effectiveAt' datetime. If the 'effectiveAt' is not provided or is\r\
+            \n            before the time-variant property exists then a failure is\
+            \ returned. Do not specify this parameter if any of\r\n            the\
+            \ properties to delete are perpetual."
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The datetime that the properties were deleted from the specified
+            legal entity
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] DeleteLegalEntityProperties: Delete Legal Entity Properties'
+      tags:
+      - Legal Entities
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
     post:
       description: Set properties of the legal entity.
       operationId: SetLegalEntityProperties
@@ -11538,6 +12161,170 @@ paths:
       - Legal Entities
       x-fbn-apistatus: EarlyAccess
       x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/properties/time-series:
+    get:
+      description: List the complete time series of a legal entity property.
+      operationId: GetLegalEntityPropertyTimeSeries
+      parameters:
+      - description: Scope of the legal entity identifier type.
+        explode: false
+        in: path
+        name: idTypeScope
+        required: true
+        schema:
+          description: Scope of the legal entity identifier type.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the legal entity identifier type.
+        explode: false
+        in: path
+        name: idTypeCode
+        required: true
+        schema:
+          description: Code of the legal entity identifier type.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Code of the legal entity under specified identifier type's scope
+          and code. This together with stated identifier type uniquely identifies
+          the legal entity.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: Code of the legal entity under specified identifier type's
+            scope and code. This together with stated identifier type uniquely identifies
+            the legal entity.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          type: string
+        style: simple
+      - description: "The property key of the property that will have its history\
+          \ shown. These must be in the format {domain}/{scope}/{code} e.g. \"LegalEntity/ContactDetails/Address\"\
+          .\r\n            Each property must be from the \"LegalEntity\" domain."
+        explode: true
+        in: query
+        name: propertyKey
+        required: true
+        schema:
+          description: The key that uniquely identifies the property. It has the format
+            {domain}/{scope}/{code}.
+          type: string
+        style: form
+      - description: The asAt datetime at which to list the person's property history.
+          Defaults to return the current datetime if not supplied.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to list the person's property history.
+            Defaults to return the current datetime if not supplied.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: Expression to filter the result set. Read more about filtering
+          results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: Expression to filter the result set. Read more about filtering
+            results from LUSID here https://support.lusid.com/filtering-results-from-lusid.
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      - description: "The pagination token to use to continue listing properties from\
+          \ a previous call to get property time series.\r\n            This value\
+          \ is returned from the previous call. If a pagination token is provided\
+          \ the filter and asAt fields\r\n            must not have changed since\
+          \ the original request."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          description: "The pagination token to use to continue listing properties\
+            \ from a previous call to get property time series.\r\n            This\
+            \ value is returned from the previous call. If a pagination token is provided\
+            \ the filter and asAt fields\r\n            must not have changed since\
+            \ the original request."
+          maxLength: 500
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
+          type: string
+        style: form
+      - description: When paginating, limit the number of returned results to this
+          many.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: When paginating, limit the number of returned results to this
+            many.
+          format: int32
+          maximum: 5000
+          minimum: 1
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfPropertyInterval'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfPropertyInterval'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfPropertyInterval'
+          description: The time series of the property
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetLegalEntityPropertyTimeSeries: Get Legal Entity
+        Property Time Series'
+      tags:
+      - Legal Entities
+      x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/legalentities/{idTypeScope}/{idTypeCode}/{code}/relationships:
     get:
@@ -21605,6 +22392,165 @@ paths:
       security:
       - oauth2: []
       summary: '[EARLY ACCESS] ListPortfolioProperties: Get portfolio properties'
+      tags:
+      - Portfolios
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/portfolios/{scope}/{code}/properties/time-series:
+    get:
+      description: Show the complete time series (history) for a particular portfolio
+        property.
+      operationId: GetPortfolioPropertyTimeSeries
+      parameters:
+      - description: The scope of the portfolio.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          description: The scope of the portfolio.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The code of the portfolio. Together with the scope this uniquely
+          identifies the portfolio.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          description: The code of the portfolio. Together with the scope this uniquely
+            identifies the portfolio.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "The property key of the property whose history to show.\r\n\
+          \            This must be from the 'Portfolio' domain and in the format\
+          \ {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'."
+        explode: true
+        in: query
+        name: propertyKey
+        required: true
+        schema:
+          description: The key that uniquely identifies the property. It has the format
+            {domain}/{scope}/{code}.
+          type: string
+        style: form
+      - description: The effective datetime used to resolve the portfolio. Defaults
+          to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: portfolioEffectiveAt
+        required: false
+        schema:
+          description: The effective datetime used to resolve the portfolio. Defaults
+            to the current LUSID system datetime if not specified.
+          nullable: true
+          type: string
+        style: form
+      - description: The asAt datetime at which to show the history. Defaults to returning
+          the current datetime if not supplied.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to show the history. Defaults to
+            returning the current datetime if not supplied.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: "Expression to filter the results. For more information about\
+          \ filtering,\r\n            see https://support.lusid.com/knowledgebase/article/KA-01914."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: "Expression to filter the results. For more information about\
+            \ filtering,\r\n            see https://support.lusid.com/knowledgebase/article/KA-01914."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      - description: "The pagination token to use to continue listing properties;\
+          \ this value is returned from\r\n            the previous call. If a pagination\
+          \ token is provided, the filter, portfolioEffectiveAt, and asAt fields\r\
+          \n            must not have changed since the original request."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          description: "The pagination token to use to continue listing properties;\
+            \ this value is returned from\r\n            the previous call. If a pagination\
+            \ token is provided, the filter, portfolioEffectiveAt, and asAt fields\r\
+            \n            must not have changed since the original request."
+          maxLength: 500
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
+          type: string
+        style: form
+      - description: When paginating, limit the results to this number.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: When paginating, limit the results to this number.
+          format: int32
+          maximum: 5000
+          minimum: 1
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfPropertyInterval'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfPropertyInterval'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfPropertyInterval'
+          description: The time series of the property
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetPortfolioPropertyTimeSeries: Get portfolio property
+        time series'
       tags:
       - Portfolios
       x-fbn-apistatus: EarlyAccess
@@ -43942,6 +44888,33 @@ components:
       required:
       - asAt
       type: object
+    DeleteInstrumentPropertiesResponse:
+      additionalProperties: false
+      example:
+        asAt: 2000-01-23T04:56:07.000+00:00
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+      properties:
+        asAt:
+          description: The as-at datetime at which properties were deleted.
+          format: date-time
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - asAt
+      type: object
     DeleteInstrumentResponse:
       additionalProperties: false
       example:
@@ -47369,6 +48342,59 @@ components:
             not been mastered within LUSID and instead found via OpenFIGI.
           items:
             $ref: '#/components/schemas/InstrumentDefinition'
+          nullable: true
+          type: array
+      type: object
+    InstrumentProperties:
+      additionalProperties: false
+      example:
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        version:
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        properties:
+          key:
+            effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/Property'
+          description: The instrument properties. These will be from the 'Instrument'
+            domain.
+          nullable: true
+          type: object
+        version:
+          $ref: '#/components/schemas/Version'
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
           nullable: true
           type: array
       type: object
