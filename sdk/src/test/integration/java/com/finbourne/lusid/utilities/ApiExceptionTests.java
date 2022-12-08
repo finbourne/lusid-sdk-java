@@ -3,6 +3,7 @@ package com.finbourne.lusid.utilities;
 import com.finbourne.lusid.ApiClient;
 import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.PortfoliosApi;
+import com.finbourne.lusid.utilities.auth.LusidTokenException;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -10,12 +11,13 @@ import java.io.IOException;
 import static org.hamcrest.Matchers.*;
 import static org.junit.Assert.*;
 
-public class ApiExceptionTest {
+public class ApiExceptionTests {
 
     @Test
-    public void thrown_exception_tostring_contains_requestid() throws IOException, ApiException {
+    public void thrown_exception_tostring_contains_requestid() throws ApiConfigurationException, LusidTokenException {
 
-        ApiClient apiClient = new ApiClientBuilder().build(CredentialsSource.credentialsFile);
+        ApiConfiguration apiConfiguration = new ApiConfigurationBuilder().build(CredentialsSource.credentialsFile);
+        ApiClient apiClient = new ApiClientBuilder().build(apiConfiguration);
 
         PortfoliosApi portfoliosApi = new PortfoliosApi(apiClient);
 

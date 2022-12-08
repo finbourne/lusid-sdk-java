@@ -16,6 +16,7 @@ public class TestDataUtilities {
 
     public static String DefaultScope = "default";
     public static String TutorialScope = "Testdemo";
+    public static String MarketDataScope = "FinbourneMarketData";
 
     public static final String LUSID_INSTRUMENT_IDENTIFIER = "Instrument/default/LusidInstrumentId";
     public static final String LUSID_CASH_IDENTIFIER = "Instrument/default/Currency";
@@ -105,7 +106,7 @@ public class TestDataUtilities {
                 .transactionId(UUID.randomUUID().toString())
                 .type("FundsIn")
                 .instrumentIdentifiers(new HashMap<String, String>() {{ put(LUSID_CASH_IDENTIFIER, currency); }})
-                .totalConsideration(new CurrencyAndAmount().currency(currency).amount(BigDecimal.valueOf(0.0)))
+                .totalConsideration(new CurrencyAndAmount().currency(currency).amount(new BigDecimal(0.0)))
                 .transactionDate(tradeDate.toString())
                 .settlementDate(tradeDate.toString())
                 .units(units)
