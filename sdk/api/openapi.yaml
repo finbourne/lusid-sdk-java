@@ -307,7 +307,7 @@ info:
     | <a name="816">816</a>|Abor Configuration not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5052
+  version: 0.11.5053
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -45083,7 +45083,7 @@ components:
         \n            \r\nFor deserialization purposes,\r\nthis class contains a discriminator\
         \ EconomicDependencyType to indicate the derived type."
       discriminator:
-        propertyName: economicDependencyType
+        propertyName: dependencyType
       example:
         dependencyType: Opaque
       properties:
