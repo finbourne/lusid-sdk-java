@@ -307,12 +307,12 @@ info:
     | <a name="816">816</a>|Abor Configuration not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5054
+  version: 0.11.5058
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -46115,8 +46115,7 @@ components:
             \ string (enumeration) values are: [F, G, H, J, K, M, N, Q, U, V, X, Z]."
           type: string
         contractSize:
-          description: Size of a single contract. By default this should be set to
-            1000 if otherwise unknown and is defaulted to such.
+          description: Size of a single contract.
           format: double
           type: number
         convention:
@@ -46129,12 +46128,15 @@ components:
             \ ActActIcma, OneOne, Act364, Act365F, Act365L, Act365_25, Act252, Bus252,\
             \ NL360, NL365, ActActAFB, Act365Cad, ThirtyActIsda, Thirty365Isda, ThirtyEActIsda,\
             \ ThirtyE360Isda, ThirtyE365Isda, ThirtyU360EOM]."
+          nullable: true
           type: string
         country:
           description: Country (code) for the exchange.
+          nullable: true
           type: string
         description:
           description: Description of contract.
+          nullable: true
           type: string
         exchangeCode:
           description: Exchange code for contract. This can be any string to uniquely
@@ -46142,6 +46144,7 @@ components:
           type: string
         exchangeName:
           description: Exchange name (for when code is not automatically recognised).
+          nullable: true
           type: string
         tickerStep:
           description: Minimal step size change in ticker.
@@ -46156,14 +46159,8 @@ components:
       - contractCode
       - contractMonth
       - contractSize
-      - convention
-      - country
-      - description
       - domCcy
       - exchangeCode
-      - exchangeName
-      - tickerStep
-      - unitValue
       type: object
     FxForward:
       allOf:
@@ -68390,7 +68387,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
