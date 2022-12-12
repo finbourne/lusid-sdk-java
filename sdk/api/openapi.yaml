@@ -307,7 +307,7 @@ info:
     | <a name="816">816</a>|Abor Configuration not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5061
+  version: 0.11.5062
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -332,6 +332,8 @@ tags:
     of update, and it's not possible to make retroactive (or forward) changes.
   name: Blocks
 - name: Calendars
+- description: Methods to create and manage chart of accounts and accounts.
+  name: Chart Of Accounts
 - description: Methods for the storage and retrieval of complex market data documents.
   name: Complex Market Data
 - description: 'Methods for storage and retrieval of compliance data: rules and results.'
@@ -68398,6 +68400,7 @@ x-tagGroups:
   - Application Metadata
   - Blocks
   - Calendars
+  - Chart Of Accounts
   - Complex Market Data
   - Compliance
   - Configuration Recipe
