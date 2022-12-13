@@ -307,12 +307,12 @@ info:
     | <a name="816">816</a>|Abor Configuration not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5063
+  version: 0.11.5064
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -1145,7 +1145,7 @@ paths:
                 quantity: 100
                 portfolioId:
                   scope: MyScope
-                  code: UK Equity
+                  code: UKEquity
                 allocatedOrderId:
                   scope: MyScope
                   code: ORD00000123
@@ -1154,7 +1154,7 @@ paths:
                   code: ALLOC00000123
                 placementIds:
                 - scope: MyScope
-                  code: A placement
+                  code: SomePlacement
                 state: New
                 side: Buy
                 type: Limit
@@ -1181,7 +1181,7 @@ paths:
                 quantity: 100
                 portfolioId:
                   scope: MyScope
-                  code: UK Equity
+                  code: UKEquity
                 allocatedOrderId:
                   scope: MyScope
                   code: ORD00000123
@@ -1190,7 +1190,7 @@ paths:
                   code: ALLOC00000123
                 placementIds:
                 - scope: MyScope
-                  code: A placement
+                  code: SomePlacement
                 state: New
                 side: Buy
                 type: Limit
@@ -1217,7 +1217,7 @@ paths:
                 quantity: 100
                 portfolioId:
                   scope: MyScope
-                  code: UK Equity
+                  code: UKEquity
                 allocatedOrderId:
                   scope: MyScope
                   code: ORD00000123
@@ -1226,7 +1226,7 @@ paths:
                   code: ALLOC00000123
                 placementIds:
                 - scope: MyScope
-                  code: A placement
+                  code: SomePlacement
                 state: New
                 side: Buy
                 type: Limit
@@ -1253,7 +1253,7 @@ paths:
                 quantity: 100
                 portfolioId:
                   scope: MyScope
-                  code: UK Equity
+                  code: UKEquity
                 allocatedOrderId:
                   scope: MyScope
                   code: ORD00000123
@@ -1262,7 +1262,7 @@ paths:
                   code: ALLOC00000123
                 placementIds:
                 - scope: MyScope
-                  code: A placement
+                  code: SomePlacement
                 state: New
                 side: Buy
                 type: Limit
@@ -12879,10 +12879,10 @@ paths:
                 side: Buy
                 orderBookId:
                   scope: MyScope
-                  code: UKEQ Orders
+                  code: UKEQ-Orders
                 portfolioId:
                   scope: MyScope
-                  code: UK Equity
+                  code: UK-Equity
                 id:
                   scope: MyScope
                   code: ORD00000123
@@ -12898,7 +12898,7 @@ paths:
                   code: Instruction-06
                 package:
                   scope: MyScope
-                  code: UKEQ Package
+                  code: UKEQ-Package
             schema:
               $ref: '#/components/schemas/OrderSetRequest'
           application/json:
@@ -12915,10 +12915,10 @@ paths:
                 side: Buy
                 orderBookId:
                   scope: MyScope
-                  code: UKEQ Orders
+                  code: UKEQ-Orders
                 portfolioId:
                   scope: MyScope
-                  code: UK Equity
+                  code: UK-Equity
                 id:
                   scope: MyScope
                   code: ORD00000123
@@ -12934,7 +12934,7 @@ paths:
                   code: Instruction-06
                 package:
                   scope: MyScope
-                  code: UKEQ Package
+                  code: UKEQ-Package
             schema:
               $ref: '#/components/schemas/OrderSetRequest'
           text/json:
@@ -12951,10 +12951,10 @@ paths:
                 side: Buy
                 orderBookId:
                   scope: MyScope
-                  code: UKEQ Orders
+                  code: UKEQ-Orders
                 portfolioId:
                   scope: MyScope
-                  code: UK Equity
+                  code: UK-Equity
                 id:
                   scope: MyScope
                   code: ORD00000123
@@ -12970,7 +12970,7 @@ paths:
                   code: Instruction-06
                 package:
                   scope: MyScope
-                  code: UKEQ Package
+                  code: UKEQ-Package
             schema:
               $ref: '#/components/schemas/OrderSetRequest'
           application/*+json:
@@ -12987,10 +12987,10 @@ paths:
                 side: Buy
                 orderBookId:
                   scope: MyScope
-                  code: UKEQ Orders
+                  code: UKEQ-Orders
                 portfolioId:
                   scope: MyScope
-                  code: UK Equity
+                  code: UK-Equity
                 id:
                   scope: MyScope
                   code: ORD00000123
@@ -13006,7 +13006,7 @@ paths:
                   code: Instruction-06
                 package:
                   scope: MyScope
-                  code: UKEQ Package
+                  code: UKEQ-Package
             schema:
               $ref: '#/components/schemas/OrderSetRequest'
         description: The collection of order requests.
@@ -13030,7 +13030,7 @@ paths:
                   side: Buy
                   orderBookId:
                     scope: MyScope
-                    code: UKEQ Orders
+                    code: UKEQ-Orders
                   portfolioId:
                     scope: MyScope
                     code: testPortfolio
@@ -13049,7 +13049,7 @@ paths:
                     code: Instruction-06
                   packageId:
                     scope: MyScope
-                    code: UKEQ Package
+                    code: UKEQ-Package
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfOrder'
@@ -13070,7 +13070,7 @@ paths:
                   side: Buy
                   orderBookId:
                     scope: MyScope
-                    code: UKEQ Orders
+                    code: UKEQ-Orders
                   portfolioId:
                     scope: MyScope
                     code: testPortfolio
@@ -13089,7 +13089,7 @@ paths:
                     code: Instruction-06
                   packageId:
                     scope: MyScope
-                    code: UKEQ Package
+                    code: UKEQ-Package
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfOrder'
@@ -13110,7 +13110,7 @@ paths:
                   side: Buy
                   orderBookId:
                     scope: MyScope
-                    code: UKEQ Orders
+                    code: UKEQ-Orders
                   portfolioId:
                     scope: MyScope
                     code: testPortfolio
@@ -13129,7 +13129,7 @@ paths:
                     code: Instruction-06
                   packageId:
                     scope: MyScope
-                    code: UKEQ Package
+                    code: UKEQ-Package
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfOrder'
@@ -13309,7 +13309,7 @@ paths:
                 side: Buy
                 orderBookId:
                   scope: MyScope
-                  code: UKEQ Orders
+                  code: UKEQ-Orders
                 portfolioId:
                   scope: MyScope
                   code: testPortfolio
@@ -13328,7 +13328,7 @@ paths:
                   code: Instruction-06
                 packageId:
                   scope: MyScope
-                  code: UKEQ Package
+                  code: UKEQ-Package
               schema:
                 $ref: '#/components/schemas/Order'
             application/json:
@@ -13347,7 +13347,7 @@ paths:
                 side: Buy
                 orderBookId:
                   scope: MyScope
-                  code: UKEQ Orders
+                  code: UKEQ-Orders
                 portfolioId:
                   scope: MyScope
                   code: testPortfolio
@@ -13366,7 +13366,7 @@ paths:
                   code: Instruction-06
                 packageId:
                   scope: MyScope
-                  code: UKEQ Package
+                  code: UKEQ-Package
               schema:
                 $ref: '#/components/schemas/Order'
             text/json:
@@ -13385,7 +13385,7 @@ paths:
                 side: Buy
                 orderBookId:
                   scope: MyScope
-                  code: UKEQ Orders
+                  code: UKEQ-Orders
                 portfolioId:
                   scope: MyScope
                   code: testPortfolio
@@ -13404,7 +13404,7 @@ paths:
                   code: Instruction-06
                 packageId:
                   scope: MyScope
-                  code: UKEQ Package
+                  code: UKEQ-Package
               schema:
                 $ref: '#/components/schemas/Order'
           description: The order matching the given identifier.
@@ -68389,7 +68389,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
