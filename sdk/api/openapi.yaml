@@ -307,7 +307,7 @@ info:
     | <a name="816">816</a>|Abor Configuration not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5066
+  version: 0.11.5067
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -37021,9 +37021,11 @@ paths:
         \ to the provided targets. LUSID will\r\nautomatically construct adjustment\
         \ transactions to ensure that the holdings which have been adjusted are\r\n\
         always set to the provided targets for the specified effective datetime in\
-        \ each request.\r\nNote: If using partial failure modes, then it is important\
-        \ to check the response body for failures as any failures will still return\
-        \ a 200 status code"
+        \ each request.\r\n            \r\nEach request must be keyed by a unique\
+        \ correlation id. This id is ephemeral and is not stored by LUSID.\r\nIt serves\
+        \ only as a way to easily identify each adjustment in the response.\r\n\r\n\
+        Note: If using partial failure modes, then it is important to check the response\
+        \ body for failures as any failures will still return a 200 status code"
       operationId: BatchAdjustHoldings
       parameters:
       - description: The scope of the transaction portfolio.
@@ -37040,14 +37042,14 @@ paths:
           type: string
         style: simple
       - description: "The code of the transaction portfolio. Together with the scope\
-          \ this uniquely identifies\r\n            the transaction portfolio."
+          \ this uniquely identifies\r\n             the transaction portfolio."
         explode: false
         in: path
         name: code
         required: true
         schema:
           description: "The code of the transaction portfolio. Together with the scope\
-            \ this uniquely identifies\r\n            the transaction portfolio."
+            \ this uniquely identifies\r\n             the transaction portfolio."
           maxLength: 64
           minLength: 1
           nullable: true
@@ -37141,7 +37143,7 @@ paths:
               additionalProperties:
                 $ref: '#/components/schemas/AdjustHoldingForDateRequest'
               description: "The selected set of holdings to adjust to the provided\
-                \ targets for the\r\n            transaction portfolio."
+                \ targets for the\r\n             transaction portfolio."
               type: object
           application/json:
             example:
@@ -37199,7 +37201,7 @@ paths:
               additionalProperties:
                 $ref: '#/components/schemas/AdjustHoldingForDateRequest'
               description: "The selected set of holdings to adjust to the provided\
-                \ targets for the\r\n            transaction portfolio."
+                \ targets for the\r\n             transaction portfolio."
               type: object
           text/json:
             example:
@@ -37257,7 +37259,7 @@ paths:
               additionalProperties:
                 $ref: '#/components/schemas/AdjustHoldingForDateRequest'
               description: "The selected set of holdings to adjust to the provided\
-                \ targets for the\r\n            transaction portfolio."
+                \ targets for the\r\n             transaction portfolio."
               type: object
           application/*+json:
             example:
@@ -37315,10 +37317,10 @@ paths:
               additionalProperties:
                 $ref: '#/components/schemas/AdjustHoldingForDateRequest'
               description: "The selected set of holdings to adjust to the provided\
-                \ targets for the\r\n            transaction portfolio."
+                \ targets for the\r\n             transaction portfolio."
               type: object
         description: "The selected set of holdings to adjust to the provided targets\
-          \ for the\r\n            transaction portfolio."
+          \ for the\r\n             transaction portfolio."
         required: true
       responses:
         "200":
