@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **sort** | [**List&lt;OrderBySpec&gt;**](OrderBySpec.md) | A (possibly empty/null) set of specifications for how to order the results. |  [optional]
 **reportCurrency** | **String** | Three letter ISO currency string indicating what currency to report in for ReportCurrency denominated queries.  If not present, then the currency of the relevant portfolio will be used in its place. |  [optional]
 **equipWithSubtotals** | **Boolean** | Flag directing the Valuation call to populate the results with subtotals of aggregates. |  [optional]
-**returnResultAsExpandedTypes** | **Boolean** | For complex results or financially meaningful results,  there is a need for a result to contain metadata about its currency and/or units  or to have a more complicated 1D or 2D structure |  [optional]
+**returnResultAsExpandedTypes** | **Boolean** | Financially meaningful results can be presented as either simple flat types or more complex expanded types.  For example, the present value (PV) of a holding could be represented either as a simple decimal (with currency implied)  or as a decimal-currency pair. This flag allows either representation to be returned. In the PV example,  the returned value would be the decimal-currency pair if this flag is true, or the decimal only if this flag is false. |  [optional]
 **portfolioEntityIds** | [**List&lt;PortfolioEntityId&gt;**](PortfolioEntityId.md) | The set of portfolio or portfolio group identifier(s) that is to be valued. | 
 **valuationSchedule** | [**ValuationSchedule**](ValuationSchedule.md) |  | 
 **marketDataOverrides** | [**MarketDataOverrides**](MarketDataOverrides.md) |  |  [optional]
