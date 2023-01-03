@@ -15,8 +15,10 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import java.util.Arrays;
+import com.finbourne.lusid.model.ErrorDetail;
 import com.finbourne.lusid.model.Link;
-import com.finbourne.lusid.model.Order;
+import com.finbourne.lusid.model.ResponseMetaData;
+import com.finbourne.lusid.model.Transaction;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -25,87 +27,120 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
-import java.net.URI;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
- * A collection of resources that can be returned from requests.
+ * BatchUpsertPortfolioTransactionsResponse
  */
-@ApiModel(description = "A collection of resources that can be returned from requests.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class ResourceListOfOrder {
+public class BatchUpsertPortfolioTransactionsResponse {
   public static final String SERIALIZED_NAME_VALUES = "values";
   @SerializedName(SERIALIZED_NAME_VALUES)
-  private List<Order> values = new ArrayList<>();
+  private Map<String, Transaction> values = null;
 
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
-  private URI href;
+  public static final String SERIALIZED_NAME_FAILED = "failed";
+  @SerializedName(SERIALIZED_NAME_FAILED)
+  private Map<String, ErrorDetail> failed = null;
+
+  public static final String SERIALIZED_NAME_METADATA = "metadata";
+  @SerializedName(SERIALIZED_NAME_METADATA)
+  private Map<String, List<ResponseMetaData>> metadata = null;
 
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links = null;
 
-  public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
-  @SerializedName(SERIALIZED_NAME_NEXT_PAGE)
-  private String nextPage;
 
-  public static final String SERIALIZED_NAME_PREVIOUS_PAGE = "previousPage";
-  @SerializedName(SERIALIZED_NAME_PREVIOUS_PAGE)
-  private String previousPage;
-
-
-  public ResourceListOfOrder values(List<Order> values) {
+  public BatchUpsertPortfolioTransactionsResponse values(Map<String, Transaction> values) {
     this.values = values; 
     return this;
   }
 
-  public ResourceListOfOrder addValuesItem(Order valuesItem) {
-   
-    this.values.add(valuesItem);
+  public BatchUpsertPortfolioTransactionsResponse putValuesItem(String key, Transaction valuesItem) {
+    if (this.values == null) {
+      this.values = new HashMap<>();
+    }
+    this.values.put(key, valuesItem);
     return this;
   }
 
    /**
-   * The resources to list.
+   * The transactions which have been successfully upserted.
    * @return values
   **/
-  @ApiModelProperty(required = true, value = "The resources to list.")
-  public List<Order> getValues() {
+  @ApiModelProperty(value = "The transactions which have been successfully upserted.")
+  public Map<String, Transaction> getValues() {
     return values;
   }
 
-  public void setValues(List<Order> values) {
+  public void setValues(Map<String, Transaction> values) {
     this.values = values;
   }
 
 
-  public ResourceListOfOrder href(URI href) {
-    this.href = href; 
+  public BatchUpsertPortfolioTransactionsResponse failed(Map<String, ErrorDetail> failed) {
+    this.failed = failed; 
+    return this;
+  }
+
+  public BatchUpsertPortfolioTransactionsResponse putFailedItem(String key, ErrorDetail failedItem) {
+    if (this.failed == null) {
+      this.failed = new HashMap<>();
+    }
+    this.failed.put(key, failedItem);
     return this;
   }
 
    /**
-   * The URI of the resource list.
-   * @return href
+   * The transactions that could not be upserted along with a reason for their failure.
+   * @return failed
   **/
-  @ApiModelProperty(value = "The URI of the resource list.")
-  public URI getHref() {
-    return href;
+  @ApiModelProperty(value = "The transactions that could not be upserted along with a reason for their failure.")
+  public Map<String, ErrorDetail> getFailed() {
+    return failed;
   }
 
-  public void setHref(URI href) {
-    this.href = href;
+  public void setFailed(Map<String, ErrorDetail> failed) {
+    this.failed = failed;
   }
 
 
-  public ResourceListOfOrder links(List<Link> links) {
+  public BatchUpsertPortfolioTransactionsResponse metadata(Map<String, List<ResponseMetaData>> metadata) {
+    this.metadata = metadata; 
+    return this;
+  }
+
+  public BatchUpsertPortfolioTransactionsResponse putMetadataItem(String key, List<ResponseMetaData> metadataItem) {
+    if (this.metadata == null) {
+      this.metadata = new HashMap<>();
+    }
+    this.metadata.put(key, metadataItem);
+    return this;
+  }
+
+   /**
+   * Contains warnings related to unresolved instruments or non-existent transaction types for the upserted trades
+   * @return metadata
+  **/
+  @ApiModelProperty(value = "Contains warnings related to unresolved instruments or non-existent transaction types for the upserted trades")
+  public Map<String, List<ResponseMetaData>> getMetadata() {
+    return metadata;
+  }
+
+  public void setMetadata(Map<String, List<ResponseMetaData>> metadata) {
+    this.metadata = metadata;
+  }
+
+
+  public BatchUpsertPortfolioTransactionsResponse links(List<Link> links) {
     this.links = links; 
     return this;
   }
 
-  public ResourceListOfOrder addLinksItem(Link linksItem) {
+  public BatchUpsertPortfolioTransactionsResponse addLinksItem(Link linksItem) {
    
     if (this.links == null) {
       this.links = new ArrayList<>();
@@ -128,44 +163,6 @@ public class ResourceListOfOrder {
   }
 
 
-  public ResourceListOfOrder nextPage(String nextPage) {
-    this.nextPage = nextPage; 
-    return this;
-  }
-
-   /**
-   * The next page of results.
-   * @return nextPage
-  **/
-  @ApiModelProperty(value = "The next page of results.")
-  public String getNextPage() {
-    return nextPage;
-  }
-
-  public void setNextPage(String nextPage) {
-    this.nextPage = nextPage;
-  }
-
-
-  public ResourceListOfOrder previousPage(String previousPage) {
-    this.previousPage = previousPage; 
-    return this;
-  }
-
-   /**
-   * The previous page of results.
-   * @return previousPage
-  **/
-  @ApiModelProperty(value = "The previous page of results.")
-  public String getPreviousPage() {
-    return previousPage;
-  }
-
-  public void setPreviousPage(String previousPage) {
-    this.previousPage = previousPage;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -185,12 +182,11 @@ public class ResourceListOfOrder {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class ResourceListOfOrder {\n");
+    sb.append("class BatchUpsertPortfolioTransactionsResponse {\n");
     sb.append("    values: ").append(toIndentedString(values)).append("\n");
-    sb.append("    href: ").append(toIndentedString(href)).append("\n");
+    sb.append("    failed: ").append(toIndentedString(failed)).append("\n");
+    sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
-    sb.append("    nextPage: ").append(toIndentedString(nextPage)).append("\n");
-    sb.append("    previousPage: ").append(toIndentedString(previousPage)).append("\n");
     sb.append("}");
     return sb.toString();
   }
