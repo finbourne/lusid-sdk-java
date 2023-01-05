@@ -308,7 +308,7 @@ info:
     | <a name="817">817</a>|Reconciliation mapping not found|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5117
+  version: 0.11.5118
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
