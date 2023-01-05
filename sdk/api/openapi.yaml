@@ -305,14 +305,15 @@ info:
     | <a name="814">814</a>|Account not found.|  |
     | <a name="815">815</a>|Abor not found.|  |
     | <a name="816">816</a>|Abor Configuration not found.|  |
+    | <a name="817">817</a>|Reconciliation mapping not found|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5114
+  version: 0.11.5117
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -69065,7 +69066,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
