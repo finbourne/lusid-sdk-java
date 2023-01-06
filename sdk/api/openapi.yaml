@@ -308,12 +308,12 @@ info:
     | <a name="817">817</a>|Reconciliation mapping not found|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5122
+  version: 0.11.5123
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -5298,6 +5298,1601 @@ paths:
       summary: '[EARLY ACCESS] GetCreditSupportAnnex: Get Credit Support Annex'
       tags:
       - Counterparties
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/customentities/entitytypes:
+    get:
+      description: List all Custom Entity type definitions matching particular criteria.
+      operationId: ListCustomEntityDefinitions
+      parameters:
+      - description: "The asAt datetime at which to list the entities. Defaults to\
+          \ returning the latest version\r\n            of each portfolio if not specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: "The asAt datetime at which to list the entities. Defaults\
+            \ to returning the latest version\r\n            of each portfolio if\
+            \ not specified."
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: When paginating, limit the results to this number. Defaults to
+          100 if not specified.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: When paginating, limit the results to this number. Defaults
+            to 100 if not specified.
+          format: int32
+          maximum: 5000
+          minimum: 1
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      - description: "Expression to filter the results. For more information about\
+          \ filtering\r\n            results, see https://support.lusid.com/knowledgebase/article/KA-01914."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: "Expression to filter the results. For more information about\
+            \ filtering\r\n            results, see https://support.lusid.com/knowledgebase/article/KA-01914."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      - description: "The pagination token to use to continue listing entities; this\r\
+          \n            value is returned from the previous call. If a pagination\
+          \ token is provided, the filter, limit\r\n            and asAt fields must\
+          \ not have changed since the original request."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          description: "The pagination token to use to continue listing entities;\
+            \ this\r\n            value is returned from the previous call. If a pagination\
+            \ token is provided, the filter, limit\r\n            and asAt fields\
+            \ must not have changed since the original request."
+          maxLength: 500
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfCustomEntityDefinition'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfCustomEntityDefinition'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfCustomEntityDefinition'
+          description: List Custom Entity type definitions.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] ListCustomEntityDefinitions: List the Custom Entity
+        type definitions'
+      tags:
+      - CustomEntityDefinitions
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    post:
+      description: The API will return a Bad Request if the Custom Entity type already
+        exists.
+      operationId: CreateCustomEntityDefinition
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              entityTypeName: SupportTicket
+              displayName: Support Ticket
+              description: Support Ticket
+              fieldSchema:
+              - name: clientId
+                lifetime: Perpetual
+                type: String
+                required: true
+              - name: issueDescription
+                lifetime: TimeVariant
+                type: String
+                required: true
+              - name: internalNotes
+                lifetime: TimeVariant
+                type: String
+                required: false
+              - name: isResolved
+                lifetime: TimeVariant
+                type: Boolean
+                required: false
+            schema:
+              $ref: '#/components/schemas/CustomEntityDefinitionRequest'
+          application/json:
+            example:
+              entityTypeName: SupportTicket
+              displayName: Support Ticket
+              description: Support Ticket
+              fieldSchema:
+              - name: clientId
+                lifetime: Perpetual
+                type: String
+                required: true
+              - name: issueDescription
+                lifetime: TimeVariant
+                type: String
+                required: true
+              - name: internalNotes
+                lifetime: TimeVariant
+                type: String
+                required: false
+              - name: isResolved
+                lifetime: TimeVariant
+                type: Boolean
+                required: false
+            schema:
+              $ref: '#/components/schemas/CustomEntityDefinitionRequest'
+          text/json:
+            example:
+              entityTypeName: SupportTicket
+              displayName: Support Ticket
+              description: Support Ticket
+              fieldSchema:
+              - name: clientId
+                lifetime: Perpetual
+                type: String
+                required: true
+              - name: issueDescription
+                lifetime: TimeVariant
+                type: String
+                required: true
+              - name: internalNotes
+                lifetime: TimeVariant
+                type: String
+                required: false
+              - name: isResolved
+                lifetime: TimeVariant
+                type: Boolean
+                required: false
+            schema:
+              $ref: '#/components/schemas/CustomEntityDefinitionRequest'
+          application/*+json:
+            example:
+              entityTypeName: SupportTicket
+              displayName: Support Ticket
+              description: Support Ticket
+              fieldSchema:
+              - name: clientId
+                lifetime: Perpetual
+                type: String
+                required: true
+              - name: issueDescription
+                lifetime: TimeVariant
+                type: String
+                required: true
+              - name: internalNotes
+                lifetime: TimeVariant
+                type: String
+                required: false
+              - name: isResolved
+                lifetime: TimeVariant
+                type: Boolean
+                required: false
+            schema:
+              $ref: '#/components/schemas/CustomEntityDefinitionRequest'
+        description: The payload containing the description of the Custom Entity type.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: https://myco.lusid.com/api/customentities/entitytypes/~SupportTicket?asAt=2022-02-28T14:27:01.2728000+00:00
+                entityTypeName: SupportTicket
+                displayName: Support Ticket
+                description: Support Ticket
+                entityType: ~SupportTicket
+                fieldSchema:
+                - name: clientId
+                  lifetime: Perpetual
+                  type: String
+                  required: true
+                - name: issueDescription
+                  lifetime: TimeVariant
+                  type: String
+                  required: true
+                - name: internalNotes
+                  lifetime: TimeVariant
+                  type: String
+                  required: false
+                - name: isResolved
+                  lifetime: TimeVariant
+                  type: Boolean
+                  required: false
+              schema:
+                $ref: '#/components/schemas/CustomEntityDefinition'
+            application/json:
+              example:
+                href: https://myco.lusid.com/api/customentities/entitytypes/~SupportTicket?asAt=2022-02-28T14:27:01.2728000+00:00
+                entityTypeName: SupportTicket
+                displayName: Support Ticket
+                description: Support Ticket
+                entityType: ~SupportTicket
+                fieldSchema:
+                - name: clientId
+                  lifetime: Perpetual
+                  type: String
+                  required: true
+                - name: issueDescription
+                  lifetime: TimeVariant
+                  type: String
+                  required: true
+                - name: internalNotes
+                  lifetime: TimeVariant
+                  type: String
+                  required: false
+                - name: isResolved
+                  lifetime: TimeVariant
+                  type: Boolean
+                  required: false
+              schema:
+                $ref: '#/components/schemas/CustomEntityDefinition'
+            text/json:
+              example:
+                href: https://myco.lusid.com/api/customentities/entitytypes/~SupportTicket?asAt=2022-02-28T14:27:01.2728000+00:00
+                entityTypeName: SupportTicket
+                displayName: Support Ticket
+                description: Support Ticket
+                entityType: ~SupportTicket
+                fieldSchema:
+                - name: clientId
+                  lifetime: Perpetual
+                  type: String
+                  required: true
+                - name: issueDescription
+                  lifetime: TimeVariant
+                  type: String
+                  required: true
+                - name: internalNotes
+                  lifetime: TimeVariant
+                  type: String
+                  required: false
+                - name: isResolved
+                  lifetime: TimeVariant
+                  type: Boolean
+                  required: false
+              schema:
+                $ref: '#/components/schemas/CustomEntityDefinition'
+          description: The created Custom Entity type.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] CreateCustomEntityDefinition: Define a new Custom Entity
+        type.'
+      tags:
+      - CustomEntityDefinitions
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/customentities/entitytypes/{entityType}:
+    get:
+      description: Retrieve a CustomEntityDefinition by a specific entityType at a
+        point in AsAt time
+      operationId: GetDefinition
+      parameters:
+      - description: The identifier for the Custom Entity type, derived from the "entityTypeName"
+          provided on creation.
+        explode: false
+        in: path
+        name: entityType
+        required: true
+        schema:
+          description: The identifier for the Custom Entity type, derived from the
+            "entityTypeName" provided on creation.
+          maxLength: 64
+          minLength: 1
+          type: string
+        style: simple
+      - description: The AsAt datetime at which to retrieve the definition.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The AsAt datetime at which to retrieve the definition.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: https://myco.lusid.com/api/customentities/entitytypes/~SupportTicket?asAt=2022-02-28T14:27:01.2728000+00:00
+                entityTypeName: SupportTicket
+                displayName: Support Ticket
+                description: Support Ticket
+                entityType: ~SupportTicket
+                fieldSchema:
+                - name: clientId
+                  lifetime: Perpetual
+                  type: String
+                  required: true
+                - name: issueDescription
+                  lifetime: TimeVariant
+                  type: String
+                  required: true
+                - name: internalNotes
+                  lifetime: TimeVariant
+                  type: String
+                  required: false
+                - name: isResolved
+                  lifetime: TimeVariant
+                  type: Boolean
+                  required: false
+              schema:
+                $ref: '#/components/schemas/CustomEntityDefinition'
+            application/json:
+              example:
+                href: https://myco.lusid.com/api/customentities/entitytypes/~SupportTicket?asAt=2022-02-28T14:27:01.2728000+00:00
+                entityTypeName: SupportTicket
+                displayName: Support Ticket
+                description: Support Ticket
+                entityType: ~SupportTicket
+                fieldSchema:
+                - name: clientId
+                  lifetime: Perpetual
+                  type: String
+                  required: true
+                - name: issueDescription
+                  lifetime: TimeVariant
+                  type: String
+                  required: true
+                - name: internalNotes
+                  lifetime: TimeVariant
+                  type: String
+                  required: false
+                - name: isResolved
+                  lifetime: TimeVariant
+                  type: Boolean
+                  required: false
+              schema:
+                $ref: '#/components/schemas/CustomEntityDefinition'
+            text/json:
+              example:
+                href: https://myco.lusid.com/api/customentities/entitytypes/~SupportTicket?asAt=2022-02-28T14:27:01.2728000+00:00
+                entityTypeName: SupportTicket
+                displayName: Support Ticket
+                description: Support Ticket
+                entityType: ~SupportTicket
+                fieldSchema:
+                - name: clientId
+                  lifetime: Perpetual
+                  type: String
+                  required: true
+                - name: issueDescription
+                  lifetime: TimeVariant
+                  type: String
+                  required: true
+                - name: internalNotes
+                  lifetime: TimeVariant
+                  type: String
+                  required: false
+                - name: isResolved
+                  lifetime: TimeVariant
+                  type: Boolean
+                  required: false
+              schema:
+                $ref: '#/components/schemas/CustomEntityDefinition'
+          description: The requested Custom Entity definition.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetDefinition: Get a Custom Entity type definition.'
+      tags:
+      - CustomEntityDefinitions
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    put:
+      description: The API will return a Bad Request if the Custom Entity type does
+        not exist.
+      operationId: UpdateCustomEntityDefinition
+      parameters:
+      - description: The identifier for the Custom Entity type, derived from the "entityTypeName"
+          provided on creation.
+        explode: false
+        in: path
+        name: entityType
+        required: true
+        schema:
+          description: The identifier for the Custom Entity type, derived from the
+            "entityTypeName" provided on creation.
+          maxLength: 64
+          minLength: 1
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              displayName: Support Ticket
+              description: Support Ticket
+              fieldSchema:
+              - name: clientId
+                lifetime: Perpetual
+                type: String
+                required: true
+              - name: issueDescription
+                lifetime: TimeVariant
+                type: String
+                required: true
+              - name: internalNotes
+                lifetime: TimeVariant
+                type: String
+                required: false
+              - name: isResolved
+                lifetime: TimeVariant
+                type: Boolean
+                required: false
+            schema:
+              $ref: '#/components/schemas/UpdateCustomEntityDefinitionRequest'
+          application/json:
+            example:
+              displayName: Support Ticket
+              description: Support Ticket
+              fieldSchema:
+              - name: clientId
+                lifetime: Perpetual
+                type: String
+                required: true
+              - name: issueDescription
+                lifetime: TimeVariant
+                type: String
+                required: true
+              - name: internalNotes
+                lifetime: TimeVariant
+                type: String
+                required: false
+              - name: isResolved
+                lifetime: TimeVariant
+                type: Boolean
+                required: false
+            schema:
+              $ref: '#/components/schemas/UpdateCustomEntityDefinitionRequest'
+          text/json:
+            example:
+              displayName: Support Ticket
+              description: Support Ticket
+              fieldSchema:
+              - name: clientId
+                lifetime: Perpetual
+                type: String
+                required: true
+              - name: issueDescription
+                lifetime: TimeVariant
+                type: String
+                required: true
+              - name: internalNotes
+                lifetime: TimeVariant
+                type: String
+                required: false
+              - name: isResolved
+                lifetime: TimeVariant
+                type: Boolean
+                required: false
+            schema:
+              $ref: '#/components/schemas/UpdateCustomEntityDefinitionRequest'
+          application/*+json:
+            example:
+              displayName: Support Ticket
+              description: Support Ticket
+              fieldSchema:
+              - name: clientId
+                lifetime: Perpetual
+                type: String
+                required: true
+              - name: issueDescription
+                lifetime: TimeVariant
+                type: String
+                required: true
+              - name: internalNotes
+                lifetime: TimeVariant
+                type: String
+                required: false
+              - name: isResolved
+                lifetime: TimeVariant
+                type: Boolean
+                required: false
+            schema:
+              $ref: '#/components/schemas/UpdateCustomEntityDefinitionRequest'
+        description: The payload containing the description of the Custom Entity type.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: https://myco.lusid.com/api/customentities/entitytypes/~SupportTicket?asAt=2022-02-28T14:27:01.2728000+00:00
+                entityTypeName: SupportTicket
+                displayName: Support Ticket
+                description: Support Ticket
+                entityType: ~SupportTicket
+                fieldSchema:
+                - name: clientId
+                  lifetime: Perpetual
+                  type: String
+                  required: true
+                - name: issueDescription
+                  lifetime: TimeVariant
+                  type: String
+                  required: true
+                - name: internalNotes
+                  lifetime: TimeVariant
+                  type: String
+                  required: false
+                - name: isResolved
+                  lifetime: TimeVariant
+                  type: Boolean
+                  required: false
+              schema:
+                $ref: '#/components/schemas/CustomEntityDefinition'
+            application/json:
+              example:
+                href: https://myco.lusid.com/api/customentities/entitytypes/~SupportTicket?asAt=2022-02-28T14:27:01.2728000+00:00
+                entityTypeName: SupportTicket
+                displayName: Support Ticket
+                description: Support Ticket
+                entityType: ~SupportTicket
+                fieldSchema:
+                - name: clientId
+                  lifetime: Perpetual
+                  type: String
+                  required: true
+                - name: issueDescription
+                  lifetime: TimeVariant
+                  type: String
+                  required: true
+                - name: internalNotes
+                  lifetime: TimeVariant
+                  type: String
+                  required: false
+                - name: isResolved
+                  lifetime: TimeVariant
+                  type: Boolean
+                  required: false
+              schema:
+                $ref: '#/components/schemas/CustomEntityDefinition'
+            text/json:
+              example:
+                href: https://myco.lusid.com/api/customentities/entitytypes/~SupportTicket?asAt=2022-02-28T14:27:01.2728000+00:00
+                entityTypeName: SupportTicket
+                displayName: Support Ticket
+                description: Support Ticket
+                entityType: ~SupportTicket
+                fieldSchema:
+                - name: clientId
+                  lifetime: Perpetual
+                  type: String
+                  required: true
+                - name: issueDescription
+                  lifetime: TimeVariant
+                  type: String
+                  required: true
+                - name: internalNotes
+                  lifetime: TimeVariant
+                  type: String
+                  required: false
+                - name: isResolved
+                  lifetime: TimeVariant
+                  type: Boolean
+                  required: false
+              schema:
+                $ref: '#/components/schemas/CustomEntityDefinition'
+          description: The updated Custom Entity type.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] UpdateCustomEntityDefinition: Modify an existing Custom
+        Entity type.'
+      tags:
+      - CustomEntityDefinitions
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/customentities/{entityType}:
+    get:
+      description: List all the Custom Entities matching particular criteria.
+      operationId: ListCustomEntities
+      parameters:
+      - description: The type of Custom Entity to list.
+        explode: false
+        in: path
+        name: entityType
+        required: true
+        schema:
+          description: The type of Custom Entity to list.
+          maxLength: 64
+          minLength: 1
+          type: string
+        style: simple
+      - description: "The effective datetime or cut label at which to list the entities.\
+          \ Defaults to the current LUSID\r\n            system datetime if not specified."
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: "The effective datetime or cut label at which to list the entities.\
+            \ Defaults to the current LUSID\r\n            system datetime if not\
+            \ specified."
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      - description: "The asAt datetime at which to list the entities. Defaults to\
+          \ returning the latest version\r\n            of each portfolio if not specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: "The asAt datetime at which to list the entities. Defaults\
+            \ to returning the latest version\r\n            of each portfolio if\
+            \ not specified."
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: When paginating, limit the results to this number. Defaults to
+          100 if not specified.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          description: When paginating, limit the results to this number. Defaults
+            to 100 if not specified.
+          format: int32
+          maximum: 5000
+          minimum: 1
+          nullable: true
+          type: integer
+        style: form
+        x-nullable: true
+      - description: "Expression to filter the results. For more information about\
+          \ filtering\r\n            results, see https://support.lusid.com/knowledgebase/article/KA-01914."
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: "Expression to filter the results. For more information about\
+            \ filtering\r\n            results, see https://support.lusid.com/knowledgebase/article/KA-01914."
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      - description: "The pagination token to use to continue listing entities; this\r\
+          \n            value is returned from the previous call. If a pagination\
+          \ token is provided, the filter, effectiveAt\r\n            and asAt fields\
+          \ must not have changed since the original request."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          description: "The pagination token to use to continue listing entities;\
+            \ this\r\n            value is returned from the previous call. If a pagination\
+            \ token is provided, the filter, effectiveAt\r\n            and asAt fields\
+            \ must not have changed since the original request."
+          maxLength: 500
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
+          type: string
+        style: form
+      - description: "A list of property keys from any domain that supports relationships\r\
+          \n            to decorate onto related entities. These must take the format\
+          \ {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'."
+        explode: true
+        in: query
+        name: relatedEntityPropertyKeys
+        required: false
+        schema:
+          description: "A list of property keys from any domain that supports relationships\r\
+            \n            to decorate onto related entities. These must take the format\
+            \ {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'."
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      - description: "A list of relationship definitions that are used to decorate\
+          \ related entities\r\n            onto the entities in the response. These\
+          \ must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+        explode: true
+        in: query
+        name: relationshipDefinitionIds
+        required: false
+        schema:
+          description: "A list of relationship definitions that are used to decorate\
+            \ related entities\r\n            onto the entities in the response. These\
+            \ must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+          items:
+            description: Identifiers of an entity
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfCustomEntityResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfCustomEntityResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfCustomEntityResponse'
+          description: List custom entities of the specified entityType.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] ListCustomEntities: List Custom Entities of the specified
+        entityType.'
+      tags:
+      - CustomEntities
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    post:
+      description: Insert the Custom Entity if it does not exist or update the Custom
+        Entity with the supplied state if it does exist.
+      operationId: UpsertCustomEntity
+      parameters:
+      - description: The type of the Custom Entity to be created. An entityType can
+          be created using the "CreateCustomEntityDefinition" endpoint for CustomEntityDefinitions.
+        explode: false
+        in: path
+        name: entityType
+        required: true
+        schema:
+          description: The type of the Custom Entity to be created. An entityType
+            can be created using the "CreateCustomEntityDefinition" endpoint for CustomEntityDefinitions.
+          maxLength: 64
+          minLength: 1
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              displayName: Portfolio Access Denied
+              description: User cannot access the portfolio
+              identifiers:
+              - identifierScope: someScope
+                identifierType: supportTicketId
+                identifierValue: xyz123pqr
+              fields:
+              - name: clientId
+                value: AcmeLtd
+              - name: issueDescription
+                value: I can't access this portfolio
+                effectiveFrom: 2023-03-03T09:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/CustomEntityRequest'
+          application/json:
+            example:
+              displayName: Portfolio Access Denied
+              description: User cannot access the portfolio
+              identifiers:
+              - identifierScope: someScope
+                identifierType: supportTicketId
+                identifierValue: xyz123pqr
+              fields:
+              - name: clientId
+                value: AcmeLtd
+              - name: issueDescription
+                value: I can't access this portfolio
+                effectiveFrom: 2023-03-03T09:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/CustomEntityRequest'
+          text/json:
+            example:
+              displayName: Portfolio Access Denied
+              description: User cannot access the portfolio
+              identifiers:
+              - identifierScope: someScope
+                identifierType: supportTicketId
+                identifierValue: xyz123pqr
+              fields:
+              - name: clientId
+                value: AcmeLtd
+              - name: issueDescription
+                value: I can't access this portfolio
+                effectiveFrom: 2023-03-03T09:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/CustomEntityRequest'
+          application/*+json:
+            example:
+              displayName: Portfolio Access Denied
+              description: User cannot access the portfolio
+              identifiers:
+              - identifierScope: someScope
+                identifierType: supportTicketId
+                identifierValue: xyz123pqr
+              fields:
+              - name: clientId
+                value: AcmeLtd
+              - name: issueDescription
+                value: I can't access this portfolio
+                effectiveFrom: 2023-03-03T09:00:00.0000000+00:00
+            schema:
+              $ref: '#/components/schemas/CustomEntityRequest'
+        description: The payload describing the Custom Entity instance.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: https://myco.lusid.com/api/api/customentities/~SupportTicket
+                entityType: ~SupportTicket
+                version:
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  asAtDate: 2022-03-02T09:00:00.0000000+00:00
+                displayName: Portfolio Access Denied
+                description: User cannot access the portfolio
+                identifiers:
+                - identifierScope: someScope
+                  identifierType: supportTicketId
+                  identifierValue: xyz123pqr
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                fields:
+                - name: clientId
+                  value: AcmeLtd
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                - name: issueDescription
+                  value: I can't access this portfolio
+                  effectiveFrom: 2022-03-03T09:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                relationships: []
+              schema:
+                $ref: '#/components/schemas/CustomEntityResponse'
+            application/json:
+              example:
+                href: https://myco.lusid.com/api/api/customentities/~SupportTicket
+                entityType: ~SupportTicket
+                version:
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  asAtDate: 2022-03-02T09:00:00.0000000+00:00
+                displayName: Portfolio Access Denied
+                description: User cannot access the portfolio
+                identifiers:
+                - identifierScope: someScope
+                  identifierType: supportTicketId
+                  identifierValue: xyz123pqr
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                fields:
+                - name: clientId
+                  value: AcmeLtd
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                - name: issueDescription
+                  value: I can't access this portfolio
+                  effectiveFrom: 2022-03-03T09:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                relationships: []
+              schema:
+                $ref: '#/components/schemas/CustomEntityResponse'
+            text/json:
+              example:
+                href: https://myco.lusid.com/api/api/customentities/~SupportTicket
+                entityType: ~SupportTicket
+                version:
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  asAtDate: 2022-03-02T09:00:00.0000000+00:00
+                displayName: Portfolio Access Denied
+                description: User cannot access the portfolio
+                identifiers:
+                - identifierScope: someScope
+                  identifierType: supportTicketId
+                  identifierValue: xyz123pqr
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                fields:
+                - name: clientId
+                  value: AcmeLtd
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                - name: issueDescription
+                  value: I can't access this portfolio
+                  effectiveFrom: 2022-03-03T09:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                relationships: []
+              schema:
+                $ref: '#/components/schemas/CustomEntityResponse'
+          description: The upserted custom entity instance
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] UpsertCustomEntity: Upsert a Custom Entity instance'
+      tags:
+      - CustomEntities
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/customentities/{entityType}/{identifierType}/{identifierValue}:
+    delete:
+      description: Delete a Custom Entity instance by a specific entity type.
+      operationId: DeleteCustomEntity
+      parameters:
+      - description: The type of Custom Entity to remove.
+        explode: false
+        in: path
+        name: entityType
+        required: true
+        schema:
+          description: The type of Custom Entity to remove.
+          maxLength: 64
+          minLength: 1
+          type: string
+        style: simple
+      - description: An identifier type attached to the Custom Entity instance.
+        explode: false
+        in: path
+        name: identifierType
+        required: true
+        schema:
+          description: An identifier type attached to the Custom Entity instance.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The identifier value.
+        explode: false
+        in: path
+        name: identifierValue
+        required: true
+        schema:
+          description: The identifier value.
+          maxLength: 1024
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The identifier scope.
+        explode: true
+        in: query
+        name: identifierScope
+        required: true
+        schema:
+          description: The identifier scope.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: Delete a Custom Entity instance.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] DeleteCustomEntity: Delete a Custom Entity instance.'
+      tags:
+      - CustomEntities
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    get:
+      description: Retrieve a Custom Entity instance by a specific entity type at
+        a point in AsAt time.
+      operationId: GetCustomEntity
+      parameters:
+      - description: The type of Custom Entity to retrieve. An entityType can be created
+          using the "CreateCustomEntityDefinition" endpoint for CustomEntityDefinitions.
+        explode: false
+        in: path
+        name: entityType
+        required: true
+        schema:
+          description: The type of Custom Entity to retrieve. An entityType can be
+            created using the "CreateCustomEntityDefinition" endpoint for CustomEntityDefinitions.
+          maxLength: 64
+          minLength: 1
+          type: string
+        style: simple
+      - description: An identifier type attached to the Custom Entity instance.
+        explode: false
+        in: path
+        name: identifierType
+        required: true
+        schema:
+          description: An identifier type attached to the Custom Entity instance.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The identifier value.
+        explode: false
+        in: path
+        name: identifierValue
+        required: true
+        schema:
+          description: The identifier value.
+          maxLength: 1024
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The identifier scope.
+        explode: true
+        in: query
+        name: identifierScope
+        required: true
+        schema:
+          description: The identifier scope.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      - description: The AsAt datetime at which to retrieve the Custom Entity instance.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The AsAt datetime at which to retrieve the Custom Entity instance.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: The effective datetime or cut label at which to get the Custom
+          Entity instance. Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effective datetime or cut label at which to get the Custom
+            Entity instance. Defaults to the current LUSID system datetime if not
+            specified.
+          format: dateorcutlabel
+          nullable: true
+          type: string
+        style: form
+      - description: "A list of property keys from any domain that supports relationships\r\
+          \n            to decorate onto related entities. These must take the format\
+          \ {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'."
+        explode: true
+        in: query
+        name: relatedEntityPropertyKeys
+        required: false
+        schema:
+          description: "A list of property keys from any domain that supports relationships\r\
+            \n            to decorate onto related entities. These must take the format\
+            \ {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'."
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      - description: "A list of relationship definitions that are used to decorate\
+          \ related entities\r\n            onto the entity in the response. These\
+          \ must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+        explode: true
+        in: query
+        name: relationshipDefinitionIds
+        required: false
+        schema:
+          description: "A list of relationship definitions that are used to decorate\
+            \ related entities\r\n            onto the entity in the response. These\
+            \ must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}."
+          items:
+            description: Identifiers of an entity
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: https://myco.lusid.com/api/api/customentities/~SupportTicket
+                entityType: ~SupportTicket
+                version:
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  asAtDate: 2022-03-02T09:00:00.0000000+00:00
+                displayName: Portfolio Access Denied
+                description: User cannot access the portfolio
+                identifiers:
+                - identifierScope: someScope
+                  identifierType: supportTicketId
+                  identifierValue: xyz123pqr
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                fields:
+                - name: clientId
+                  value: AcmeLtd
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                - name: issueDescription
+                  value: I can't access this portfolio
+                  effectiveFrom: 2022-03-03T09:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                relationships: []
+              schema:
+                $ref: '#/components/schemas/CustomEntityResponse'
+            application/json:
+              example:
+                href: https://myco.lusid.com/api/api/customentities/~SupportTicket
+                entityType: ~SupportTicket
+                version:
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  asAtDate: 2022-03-02T09:00:00.0000000+00:00
+                displayName: Portfolio Access Denied
+                description: User cannot access the portfolio
+                identifiers:
+                - identifierScope: someScope
+                  identifierType: supportTicketId
+                  identifierValue: xyz123pqr
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                fields:
+                - name: clientId
+                  value: AcmeLtd
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                - name: issueDescription
+                  value: I can't access this portfolio
+                  effectiveFrom: 2022-03-03T09:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                relationships: []
+              schema:
+                $ref: '#/components/schemas/CustomEntityResponse'
+            text/json:
+              example:
+                href: https://myco.lusid.com/api/api/customentities/~SupportTicket
+                entityType: ~SupportTicket
+                version:
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  asAtDate: 2022-03-02T09:00:00.0000000+00:00
+                displayName: Portfolio Access Denied
+                description: User cannot access the portfolio
+                identifiers:
+                - identifierScope: someScope
+                  identifierType: supportTicketId
+                  identifierValue: xyz123pqr
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                fields:
+                - name: clientId
+                  value: AcmeLtd
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                - name: issueDescription
+                  value: I can't access this portfolio
+                  effectiveFrom: 2022-03-03T09:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                relationships: []
+              schema:
+                $ref: '#/components/schemas/CustomEntityResponse'
+          description: Get a custom entity instance.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetCustomEntity: Get a Custom Entity instance.'
+      tags:
+      - CustomEntities
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/customentities/{entityType}/{identifierType}/{identifierValue}/relationships:
+    get:
+      description: Get relationships for the specified Custom Entity.
+      operationId: GetCustomEntityRelationships
+      parameters:
+      - description: The type of entity get relationships for.
+        explode: false
+        in: path
+        name: entityType
+        required: true
+        schema:
+          description: The type of entity get relationships for.
+          maxLength: 64
+          minLength: 1
+          type: string
+        style: simple
+      - description: The identifier scope.
+        explode: true
+        in: query
+        name: identifierScope
+        required: true
+        schema:
+          description: The identifier scope.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      - description: An identifier type attached to the Custom Entity.
+        explode: false
+        in: path
+        name: identifierType
+        required: true
+        schema:
+          description: An identifier type attached to the Custom Entity.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The identifier value.
+        explode: false
+        in: path
+        name: identifierValue
+        required: true
+        schema:
+          description: The identifier value.
+          maxLength: 1024
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The effective datetime or cut label at which to get relationships.
+          Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          description: The effective datetime or cut label at which to get relationships.
+            Defaults to the current LUSID system datetime if not specified.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve relationships. Defaults
+          to return the latest LUSID AsAt time if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          description: The asAt datetime at which to retrieve relationships. Defaults
+            to return the latest LUSID AsAt time if not specified.
+          format: date-time
+          nullable: true
+          type: string
+        style: form
+        x-nullable: true
+      - description: Expression to filter relationships. Users should provide null
+          or empty string for this field until further notice.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          description: Expression to filter relationships. Users should provide null
+            or empty string for this field until further notice.
+          maxLength: 16384
+          minLength: 0
+          nullable: true
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      - description: "Identifiers types (as property keys) used for referencing Persons\
+          \ or Legal Entities. These take the format\r\n            {domain}/{scope}/{code}\
+          \ e.g. \"Person/CompanyDetails/Role\". They must be from the \"Person\"\
+          \ or \"LegalEntity\" domain.\r\n            Only identifier types stated\
+          \ will be used to look up relevant entities in relationships. If not applicable,\
+          \ provide an empty array."
+        explode: true
+        in: query
+        name: identifierTypes
+        required: false
+        schema:
+          description: "Identifiers types (as property keys) used for referencing\
+            \ Persons or Legal Entities. These take the format\r\n            {domain}/{scope}/{code}\
+            \ e.g. \"Person/CompanyDetails/Role\". They must be from the \"Person\"\
+            \ or \"LegalEntity\" domain.\r\n            Only identifier types stated\
+            \ will be used to look up relevant entities in relationships. If not applicable,\
+            \ provide an empty array."
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: relationshipDefinitionScope
+                    code: relationshipDefinitionCode
+                  relatedEntity:
+                    entityType: ~entityType
+                    entityId:
+                      identifierScope: idScope
+                      identifierType: idType
+                      identifierValue: idValue
+                    displayName: RelatedEntityDisplayName
+                    properties: {}
+                    identifiers:
+                    - identifierScope: idScope
+                      identifierType: idType
+                      identifierValue: idValue
+                  traversalDirection: Out
+                  traversalDescription: Outward relationship description
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+            application/json:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: relationshipDefinitionScope
+                    code: relationshipDefinitionCode
+                  relatedEntity:
+                    entityType: ~entityType
+                    entityId:
+                      identifierScope: idScope
+                      identifierType: idType
+                      identifierValue: idValue
+                    displayName: RelatedEntityDisplayName
+                    properties: {}
+                    identifiers:
+                    - identifierScope: idScope
+                      identifierType: idType
+                      identifierValue: idValue
+                  traversalDirection: Out
+                  traversalDescription: Outward relationship description
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+            text/json:
+              example:
+                values:
+                - relationshipDefinitionId:
+                    scope: relationshipDefinitionScope
+                    code: relationshipDefinitionCode
+                  relatedEntity:
+                    entityType: ~entityType
+                    entityId:
+                      identifierScope: idScope
+                      identifierType: idType
+                      identifierValue: idValue
+                    displayName: RelatedEntityDisplayName
+                    properties: {}
+                    identifiers:
+                    - identifierScope: idScope
+                      identifierType: idType
+                      identifierValue: idValue
+                  traversalDirection: Out
+                  traversalDescription: Outward relationship description
+                  effectiveFrom: 0001-01-01T00:00:00.0000000+00:00
+                  effectiveUntil: 9999-12-31T23:59:59.9999999+00:00
+                links: []
+              schema:
+                $ref: '#/components/schemas/ResourceListOfRelationship'
+          description: The relationships for the specified custom entity.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetCustomEntityRelationships: Get Relationships for
+        Custom Entity'
+      tags:
+      - CustomEntities
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/datatypes:
@@ -45050,6 +46645,444 @@ components:
           nullable: true
           type: string
       type: object
+    CustomEntityDefinition:
+      additionalProperties: false
+      description: Representation of Custom Entity Definition on LUSID API
+      example:
+        displayName: displayName
+        entityType: entityType
+        entityTypeName: entityTypeName
+        description: description
+        fieldSchema:
+        - collectionType: collectionType
+          name: name
+          lifetime: lifetime
+          description: description
+          type: type
+          required: true
+        - collectionType: collectionType
+          name: name
+          lifetime: lifetime
+          description: description
+          type: type
+          required: true
+        href: https://openapi-generator.tech
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        entityTypeName:
+          description: The name provided when the custom entity type was created.
+            This has been prefixed with “~” and returned as “entityType”, which is
+            the identifier for the custom entity type.
+          type: string
+        displayName:
+          description: A display label for the custom entity type.
+          type: string
+        description:
+          description: A description for the custom entity type.
+          nullable: true
+          type: string
+        entityType:
+          description: The identifier for the custom entity type, derived from the
+            “entityTypeName” provided on creation.
+          type: string
+        fieldSchema:
+          description: The description of the fields on the custom entity type.
+          items:
+            $ref: '#/components/schemas/CustomEntityFieldDefinition'
+          type: array
+      required:
+      - displayName
+      - entityType
+      - entityTypeName
+      - fieldSchema
+      type: object
+    CustomEntityDefinitionRequest:
+      additionalProperties: false
+      example:
+        displayName: displayName
+        entityTypeName: entityTypeName
+        description: description
+        fieldSchema:
+        - collectionType: collectionType
+          name: name
+          lifetime: lifetime
+          description: description
+          type: type
+          required: true
+        - collectionType: collectionType
+          name: name
+          lifetime: lifetime
+          description: description
+          type: type
+          required: true
+      properties:
+        entityTypeName:
+          description: A name for the custom entity type. This will be prefixed with
+            “~” and returned as “entityType”, which is the identifier for the custom
+            entity type.
+          maxLength: 64
+          minLength: 1
+          type: string
+        displayName:
+          description: A display label for the custom entity type.
+          pattern: ^[\s\S]*$
+          type: string
+        description:
+          description: A description for the custom entity type.
+          pattern: ^[\s\S]*$
+          type: string
+        fieldSchema:
+          description: The description of the fields on the custom entity type.
+          items:
+            $ref: '#/components/schemas/CustomEntityFieldDefinition'
+          type: array
+      required:
+      - description
+      - displayName
+      - entityTypeName
+      - fieldSchema
+      type: object
+    CustomEntityField:
+      additionalProperties: false
+      example:
+        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+        name: name
+        value: '{}'
+        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+      properties:
+        name:
+          description: The name of the field in the custom entity type definition.
+          type: string
+        value:
+          additionalProperties: false
+          description: The value for the field.
+          type: object
+        effectiveFrom:
+          description: The effective datetime from which the field's value is valid.
+            For timeVariant fields, this defaults to the beginning of time.
+          format: date-time
+          nullable: true
+          type: string
+        effectiveUntil:
+          description: The effective datetime until which the field's value is valid.
+            If not supplied, the value will be valid indefinitely or until the next
+            “effectiveFrom” date of the field.
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - name
+      - value
+      type: object
+    CustomEntityFieldDefinition:
+      additionalProperties: false
+      example:
+        collectionType: collectionType
+        name: name
+        lifetime: lifetime
+        description: description
+        type: type
+        required: true
+      properties:
+        name:
+          description: The name of the field.
+          type: string
+        lifetime:
+          description: 'Describes how the field’s values can change over time. The
+            available values are: “Perpetual”, “TimeVariant”.'
+          type: string
+        type:
+          description: 'The value type for the field. Available values are: “String”,
+            “Boolean”, “DateTime”, “Decimal”.'
+          type: string
+        collectionType:
+          description: 'The collection type for the field. Available values are: “Single”,
+            “Array”. Null value defaults to “Single”'
+          nullable: true
+          type: string
+        required:
+          description: Whether the field is required or not.
+          type: boolean
+        description:
+          description: An optional description for the field.
+          maxLength: 512
+          nullable: true
+          type: string
+      required:
+      - lifetime
+      - name
+      - required
+      - type
+      type: object
+    CustomEntityId:
+      additionalProperties: false
+      example:
+        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+        identifierValue: identifierValue
+        identifierType: identifierType
+        identifierScope: identifierScope
+        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+      properties:
+        identifierScope:
+          description: The scope the identifier resides in (the scope of the identifier
+            property definition).
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        identifierType:
+          description: What the identifier represents (the code of the identifier
+            property definition).
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        identifierValue:
+          description: The value of the identifier for this entity.
+          maxLength: 1024
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        effectiveFrom:
+          description: The effective datetime from which the identifier is valid.
+          format: date-time
+          nullable: true
+          type: string
+        effectiveUntil:
+          description: The effective datetime until which the identifier is valid.
+            If not supplied this will be valid indefinitely, or until the next 'effectiveFrom'
+            datetime of the identifier.
+          format: date-time
+          nullable: true
+          type: string
+      required:
+      - identifierScope
+      - identifierType
+      - identifierValue
+      type: object
+    CustomEntityRequest:
+      additionalProperties: false
+      example:
+        displayName: displayName
+        identifiers:
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          identifierValue: identifierValue
+          identifierType: identifierType
+          identifierScope: identifierScope
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          identifierValue: identifierValue
+          identifierType: identifierType
+          identifierScope: identifierScope
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        description: description
+        fields:
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          name: name
+          value: '{}'
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          name: name
+          value: '{}'
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+      properties:
+        displayName:
+          description: A display label for the custom entity.
+          type: string
+        description:
+          description: A description of the custom entity.
+          type: string
+        identifiers:
+          description: The identifiers the custom entity will be upserted with.
+          items:
+            $ref: '#/components/schemas/CustomEntityId'
+          type: array
+        fields:
+          description: The fields that decorate the custom entity.
+          items:
+            $ref: '#/components/schemas/CustomEntityField'
+          nullable: true
+          type: array
+      required:
+      - description
+      - displayName
+      - identifiers
+      type: object
+    CustomEntityResponse:
+      additionalProperties: false
+      example:
+        relationships:
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          traversalDirection: traversalDirection
+          relatedEntity:
+            entityType: entityType
+            displayName: displayName
+            identifiers:
+            - identifierValue: identifierValue
+              identifierType: identifierType
+              identifierScope: identifierScope
+            - identifierValue: identifierValue
+              identifierType: identifierType
+              identifierScope: identifierScope
+            scope: scope
+            entityId:
+              key: entityId
+            lusidUniqueId:
+              type: type
+              value: value
+            href: https://openapi-generator.tech
+            properties:
+              key:
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          relationshipDefinitionId:
+            code: code
+            scope: scope
+          traversalDescription: traversalDescription
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          traversalDirection: traversalDirection
+          relatedEntity:
+            entityType: entityType
+            displayName: displayName
+            identifiers:
+            - identifierValue: identifierValue
+              identifierType: identifierType
+              identifierScope: identifierScope
+            - identifierValue: identifierValue
+              identifierType: identifierType
+              identifierScope: identifierScope
+            scope: scope
+            entityId:
+              key: entityId
+            lusidUniqueId:
+              type: type
+              value: value
+            href: https://openapi-generator.tech
+            properties:
+              key:
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          relationshipDefinitionId:
+            code: code
+            scope: scope
+          traversalDescription: traversalDescription
+        entityType: entityType
+        displayName: displayName
+        identifiers:
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          identifierValue: identifierValue
+          identifierType: identifierType
+          identifierScope: identifierScope
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          identifierValue: identifierValue
+          identifierType: identifierType
+          identifierScope: identifierScope
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        description: description
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        fields:
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          name: name
+          value: '{}'
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+          name: name
+          value: '{}'
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+        version:
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        entityType:
+          description: The type of custom entity this is.
+          type: string
+        version:
+          $ref: '#/components/schemas/Version'
+        displayName:
+          description: A display label for the custom entity.
+          type: string
+        description:
+          description: A description of the custom entity.
+          nullable: true
+          type: string
+        identifiers:
+          description: The identifiers the custom entity will be upserted with.
+          items:
+            $ref: '#/components/schemas/CustomEntityId'
+          type: array
+        fields:
+          description: The fields that decorate the custom entity.
+          items:
+            $ref: '#/components/schemas/CustomEntityField'
+          type: array
+        relationships:
+          description: A set of relationships associated to the custom entity.
+          items:
+            $ref: '#/components/schemas/Relationship'
+          type: array
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - displayName
+      - entityType
+      - fields
+      - identifiers
+      - relationships
+      - version
+      type: object
     CutLabelDefinition:
       additionalProperties: false
       example:
@@ -51348,6 +53381,370 @@ components:
           description: The resources to list.
           items:
             $ref: '#/components/schemas/CorporateActionSource'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
+    PagedResourceListOfCustomEntityDefinition:
+      additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - displayName: displayName
+          entityType: entityType
+          entityTypeName: entityTypeName
+          description: description
+          fieldSchema:
+          - collectionType: collectionType
+            name: name
+            lifetime: lifetime
+            description: description
+            type: type
+            required: true
+          - collectionType: collectionType
+            name: name
+            lifetime: lifetime
+            description: description
+            type: type
+            required: true
+          href: https://openapi-generator.tech
+        - displayName: displayName
+          entityType: entityType
+          entityTypeName: entityTypeName
+          description: description
+          fieldSchema:
+          - collectionType: collectionType
+            name: name
+            lifetime: lifetime
+            description: description
+            type: type
+            required: true
+          - collectionType: collectionType
+            name: name
+            lifetime: lifetime
+            description: description
+            type: type
+            required: true
+          href: https://openapi-generator.tech
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/CustomEntityDefinition'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
+    PagedResourceListOfCustomEntityResponse:
+      additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - relationships:
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            traversalDirection: traversalDirection
+            relatedEntity:
+              entityType: entityType
+              displayName: displayName
+              identifiers:
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              scope: scope
+              entityId:
+                key: entityId
+              lusidUniqueId:
+                type: type
+                value: value
+              href: https://openapi-generator.tech
+              properties:
+                key:
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            version:
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            relationshipDefinitionId:
+              code: code
+              scope: scope
+            traversalDescription: traversalDescription
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            traversalDirection: traversalDirection
+            relatedEntity:
+              entityType: entityType
+              displayName: displayName
+              identifiers:
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              scope: scope
+              entityId:
+                key: entityId
+              lusidUniqueId:
+                type: type
+                value: value
+              href: https://openapi-generator.tech
+              properties:
+                key:
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            version:
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            relationshipDefinitionId:
+              code: code
+              scope: scope
+            traversalDescription: traversalDescription
+          entityType: entityType
+          displayName: displayName
+          identifiers:
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            identifierValue: identifierValue
+            identifierType: identifierType
+            identifierScope: identifierScope
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            identifierValue: identifierValue
+            identifierType: identifierType
+            identifierScope: identifierScope
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          description: description
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          fields:
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            name: name
+            value: '{}'
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            name: name
+            value: '{}'
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+        - relationships:
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            traversalDirection: traversalDirection
+            relatedEntity:
+              entityType: entityType
+              displayName: displayName
+              identifiers:
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              scope: scope
+              entityId:
+                key: entityId
+              lusidUniqueId:
+                type: type
+                value: value
+              href: https://openapi-generator.tech
+              properties:
+                key:
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            version:
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            relationshipDefinitionId:
+              code: code
+              scope: scope
+            traversalDescription: traversalDescription
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            traversalDirection: traversalDirection
+            relatedEntity:
+              entityType: entityType
+              displayName: displayName
+              identifiers:
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              scope: scope
+              entityId:
+                key: entityId
+              lusidUniqueId:
+                type: type
+                value: value
+              href: https://openapi-generator.tech
+              properties:
+                key:
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            version:
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            relationshipDefinitionId:
+              code: code
+              scope: scope
+            traversalDescription: traversalDescription
+          entityType: entityType
+          displayName: displayName
+          identifiers:
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            identifierValue: identifierValue
+            identifierType: identifierType
+            identifierScope: identifierScope
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            identifierValue: identifierValue
+            identifierType: identifierType
+            identifierScope: identifierScope
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          description: description
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          fields:
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            name: name
+            value: '{}'
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            name: name
+            value: '{}'
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          version:
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/CustomEntityResponse'
           type: array
         href:
           description: The URI of the resource list.
@@ -61928,6 +64325,43 @@ components:
       - sourceProvider
       - weekendMask
       type: object
+    UpdateCustomEntityDefinitionRequest:
+      additionalProperties: false
+      example:
+        displayName: displayName
+        description: description
+        fieldSchema:
+        - collectionType: collectionType
+          name: name
+          lifetime: lifetime
+          description: description
+          type: type
+          required: true
+        - collectionType: collectionType
+          name: name
+          lifetime: lifetime
+          description: description
+          type: type
+          required: true
+      properties:
+        displayName:
+          description: A display label for the custom entity type.
+          pattern: ^[\s\S]*$
+          type: string
+        description:
+          description: A description for the custom entity type.
+          pattern: ^[\s\S]*$
+          type: string
+        fieldSchema:
+          description: The description of the fields on the custom entity type.
+          items:
+            $ref: '#/components/schemas/CustomEntityFieldDefinition'
+          type: array
+      required:
+      - description
+      - displayName
+      - fieldSchema
+      type: object
     UpdateCutLabelDefinitionRequest:
       additionalProperties: false
       description: This request specifies a new Cut Label Definition
@@ -69066,7 +71500,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
