@@ -309,7 +309,7 @@ info:
     | <a name="818">818</a>|Attribute type could not be deleted because it doesn't exist.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5127
+  version: 0.11.5128
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
