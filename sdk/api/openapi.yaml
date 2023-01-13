@@ -307,9 +307,11 @@ info:
     | <a name="816">816</a>|Abor Configuration not found.|  |
     | <a name="817">817</a>|Reconciliation mapping not found|  |
     | <a name="818">818</a>|Attribute type could not be deleted because it doesn't exist.|  |
+    | <a name="819">819</a>|Reconciliation not found.|  |
+    | <a name="820">820</a>|Custodian Account not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5141
+  version: 0.11.5142
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
