@@ -29,9 +29,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * A description of a problem that has arisen during the processing of a request.
+ * LusidProblemDetails
  */
-@ApiModel(description = "A description of a problem that has arisen during the processing of a request.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class LusidProblemDetails {
   public static final String SERIALIZED_NAME_NAME = "name";
@@ -77,10 +76,10 @@ public class LusidProblemDetails {
   }
 
    /**
-   * The name of the error
+   * Get name
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The name of the error")
+  @ApiModelProperty(required = true, value = "")
   public String getName() {
     return name;
   }
@@ -105,10 +104,10 @@ public class LusidProblemDetails {
   }
 
    /**
-   * Any additional informational information available about the nature and detail of the problem
+   * Get errorDetails
    * @return errorDetails
   **/
-  @ApiModelProperty(value = "Any additional informational information available about the nature and detail of the problem")
+  @ApiModelProperty(value = "")
   public List<Map<String, String>> getErrorDetails() {
     return errorDetails;
   }
@@ -124,10 +123,10 @@ public class LusidProblemDetails {
   }
 
    /**
-   * Get the error code of the response
+   * Get code
    * @return code
   **/
-  @ApiModelProperty(required = true, value = "Get the error code of the response")
+  @ApiModelProperty(required = true, value = "")
   public Integer getCode() {
     return code;
   }
