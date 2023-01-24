@@ -311,7 +311,7 @@ info:
     | <a name="820">820</a>|Custodian Account not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5171
+  version: 0.11.5172
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -53608,6 +53608,24 @@ components:
           nullable: true
           type: array
       type: object
+    EventDateRange:
+      additionalProperties: false
+      description: "A standard representation of the effective date range for the\
+        \ event, used for display, filtering and windowing use cases.\r\nThe start\
+        \ and end values for the eventDateRange are mapped from the particular dates\
+        \ contained within the specific\r\nInstrumentEvent schema.  Note that the\
+        \ start and end values may be identical for some types of events."
+      example:
+        start: 2000-01-23T04:56:07.000+00:00
+        end: 2000-01-23T04:56:07.000+00:00
+      properties:
+        start:
+          format: date-time
+          type: string
+        end:
+          format: date-time
+          type: string
+      type: object
     ExchangeTradedOption:
       allOf:
       - $ref: '#/components/schemas/LusidInstrument'
@@ -56617,6 +56635,9 @@ components:
       additionalProperties: false
       description: An instrument event equipped with additional metadata.
       example:
+        eventDateRange:
+          start: 2000-01-23T04:56:07.000+00:00
+          end: 2000-01-23T04:56:07.000+00:00
         instrumentScope: instrumentScope
         instrumentEventId: instrumentEventId
         instrumentEvent:
@@ -56676,6 +56697,8 @@ components:
           minLength: 0
           pattern: ^[\s\S]*$
           type: string
+        eventDateRange:
+          $ref: '#/components/schemas/EventDateRange'
         instrumentEvent:
           $ref: '#/components/schemas/InstrumentEvent'
         properties:
@@ -56686,6 +56709,7 @@ components:
           type: array
       required:
       - description
+      - eventDateRange
       - instrumentEvent
       - instrumentEventId
       - instrumentIdentifiers
@@ -60553,7 +60577,10 @@ components:
         previousPage: previousPage
         nextPage: nextPage
         values:
-        - instrumentScope: instrumentScope
+        - eventDateRange:
+            start: 2000-01-23T04:56:07.000+00:00
+            end: 2000-01-23T04:56:07.000+00:00
+          instrumentScope: instrumentScope
           instrumentEventId: instrumentEventId
           instrumentEvent:
             instrumentEventType: TransitionEvent
@@ -60585,7 +60612,10 @@ components:
                 - values
                 - values
             key: key
-        - instrumentScope: instrumentScope
+        - eventDateRange:
+            start: 2000-01-23T04:56:07.000+00:00
+            end: 2000-01-23T04:56:07.000+00:00
+          instrumentScope: instrumentScope
           instrumentEventId: instrumentEventId
           instrumentEvent:
             instrumentEventType: TransitionEvent
@@ -72790,6 +72820,9 @@ components:
       example:
         values:
           key:
+            eventDateRange:
+              start: 2000-01-23T04:56:07.000+00:00
+              end: 2000-01-23T04:56:07.000+00:00
             instrumentScope: instrumentScope
             instrumentEventId: instrumentEventId
             instrumentEvent:
