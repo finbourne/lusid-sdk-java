@@ -61,7 +61,7 @@ import com.finbourne.lusid.auth.OAuthFlow;
 
 public class ApiClient {
 
-    private String basePath = "https://www.lusid.com/api";
+    private String basePath = "https://fbn-prd.lusid.com/api";
     private boolean debugging = false;
     private Map<String, String> defaultHeaderMap = new HashMap<String, String>();
     private Map<String, String> defaultCookieMap = new HashMap<String, String>();
@@ -199,7 +199,7 @@ public class ApiClient {
     /**
      * Set base path
      *
-     * @param basePath Base path of the URL (e.g https://www.lusid.com/api
+     * @param basePath Base path of the URL (e.g https://fbn-prd.lusid.com/api
      * @return An instance of OkHttpClient
      */
     public ApiClient setBasePath(String basePath) {
