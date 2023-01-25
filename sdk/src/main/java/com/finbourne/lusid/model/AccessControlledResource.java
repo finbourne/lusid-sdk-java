@@ -30,9 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A resource to which access can be controlled
+ * AccessControlledResource
  */
-@ApiModel(description = "A resource to which access can be controlled")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AccessControlledResource {
   public static final String SERIALIZED_NAME_APPLICATION = "application";
@@ -66,10 +65,10 @@ public class AccessControlledResource {
   }
 
    /**
-   * The application to which this resource belongs
+   * Get application
    * @return application
   **/
-  @ApiModelProperty(value = "The application to which this resource belongs")
+  @ApiModelProperty(value = "")
   public String getApplication() {
     return application;
   }
@@ -85,10 +84,10 @@ public class AccessControlledResource {
   }
 
    /**
-   * The display name of the resource
+   * Get name
    * @return name
   **/
-  @ApiModelProperty(value = "The display name of the resource")
+  @ApiModelProperty(value = "")
   public String getName() {
     return name;
   }
@@ -104,10 +103,10 @@ public class AccessControlledResource {
   }
 
    /**
-   * The description of the resource
+   * Get description
    * @return description
   **/
-  @ApiModelProperty(required = true, value = "The description of the resource")
+  @ApiModelProperty(required = true, value = "")
   public String getDescription() {
     return description;
   }
@@ -129,10 +128,10 @@ public class AccessControlledResource {
   }
 
    /**
-   * The actions acceptable for this type of resource
+   * Get actions
    * @return actions
   **/
-  @ApiModelProperty(required = true, value = "The actions acceptable for this type of resource")
+  @ApiModelProperty(required = true, value = "")
   public List<AccessControlledAction> getActions() {
     return actions;
   }
@@ -157,10 +156,10 @@ public class AccessControlledResource {
   }
 
    /**
-   * The constituent parts of a valid identifier for this resource
+   * Get identifierParts
    * @return identifierParts
   **/
-  @ApiModelProperty(value = "The constituent parts of a valid identifier for this resource")
+  @ApiModelProperty(value = "")
   public List<IdentifierPartSchema> getIdentifierParts() {
     return identifierParts;
   }
@@ -185,10 +184,10 @@ public class AccessControlledResource {
   }
 
    /**
-   * Collection of links.
+   * Get links
    * @return links
   **/
-  @ApiModelProperty(value = "Collection of links.")
+  @ApiModelProperty(value = "")
   public List<Link> getLinks() {
     return links;
   }
