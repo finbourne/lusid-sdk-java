@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **lusidInstrumentId** | **String** | The LUID for the instrument. | 
 **instrumentScope** | **String** | The scope of the instrument. | 
 **description** | **String** | The description of the instrument event. | 
+**eventDateRange** | [**EventDateRange**](EventDateRange.md) |  | 
 **instrumentEvent** | [**InstrumentEvent**](InstrumentEvent.md) |  | 
 **properties** | [**List&lt;PerpetualProperty&gt;**](PerpetualProperty.md) | The properties attached to this instrument event. |  [optional]
 
