@@ -311,7 +311,7 @@ info:
     | <a name="820">820</a>|Custodian Account not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5189
+  version: 0.11.5190
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -27577,7 +27577,7 @@ paths:
     patch:
       description: "Create or update certain fields for a particular  portfolio.\r\
         \nThe behaviour is defined by the JSON Patch specification.\r\n          \
-        \  \r\nCurrently supported are: CreationDate."
+        \  \r\nCurrently supported are: CreationDate, InstrumentScopes."
       operationId: PatchPortfolio
       parameters:
       - description: The scope of the portfolio.
