@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **displayName** | **String** | The name of the corporate action source |  [optional]
 **description** | **String** | The description of the corporate action source |  [optional]
 **instrumentScopes** | **List&lt;String&gt;** | The list of instrument scopes used as the scope resolution strategy when resolving instruments of upserted corporate actions. |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 
 
