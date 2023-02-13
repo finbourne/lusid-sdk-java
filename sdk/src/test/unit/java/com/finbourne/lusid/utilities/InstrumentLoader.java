@@ -51,19 +51,4 @@ public class InstrumentLoader {
                 .map(inst -> inst.getLusidInstrumentId())
                 .collect(Collectors.toList());
     }
-
-    public void deleteInstruments() throws ApiException
-    {
-        List<String>    ids = Arrays.asList(
-                "BBG000C6K6G9",
-                "BBG000C04D57",
-                "BBG000FV67Q4",
-                "BBG000BF0KW3",
-                "BBG000BF4KL1"
-        );
-
-        for (String id : ids) {
-            instrumentsApi.deleteInstrument("Figi", id, DefaultScope);
-        }
-    }
 }

@@ -1,91 +1,121 @@
 package com.finbourne.lusid.utilities;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.finbourne.lusid.ApiClient;
-import okhttp3.*;
-
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.Proxy;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.Map;
+import com.finbourne.lusid.utilities.auth.HttpLusidTokenProvider;
+import com.finbourne.lusid.utilities.auth.LusidToken;
+import com.finbourne.lusid.utilities.auth.LusidTokenException;
+import com.finbourne.lusid.utilities.auth.RefreshingTokenProvider;
+import okhttp3.OkHttpClient;
 
 /**
  * Utility class to build an ApiClient from a set of configuration
  */
 public class ApiClientBuilder {
 
-    private static final MediaType FORM = MediaType.parse("application/x-www-form-urlencoded");
+    private static final int DEFAULT_TIMEOUT_SECONDS = 10;
 
-    public ApiClient build(String apiSecretsFilename) throws IOException
-    {
-        ApiConfiguration    apiConfiguration = new ApiConfigurationBuilder().build(apiSecretsFilename);
+    /**
+     * Builds an ApiClient implementation configured against a secrets file. Typically used
+     * for communicating with LUSID via the APIs (e.g. {@link com.finbourne.lusid.api.TransactionPortfoliosApi}, {@link com.finbourne.lusid.api.QuotesApi}.
+     *
+     * ApiClient implementation enables use of REFRESH tokens (see https://support.finbourne.com/using-a-refresh-token)
+     * and automatically handles token refreshing on expiry.
+     *
+     * @param apiConfiguration configuration to connect to LUSID API
+     * @return
+     *
+     * @throws LusidTokenException on failing to authenticate and retrieve an initial {@link LusidToken}
+     */
+    public ApiClient build(ApiConfiguration apiConfiguration) throws LusidTokenException {
 
-        //  request body
-        final String    tokenRequestBody = String.format("grant_type=password&username=%s&password=%s&scope=openid client groups&client_id=%s&client_secret=%s",
-                apiConfiguration.getUsername(),
-                URLEncoder.encode(apiConfiguration.getPassword(), StandardCharsets.UTF_8.toString()),
-                apiConfiguration.getClientId(),
-                URLEncoder.encode(apiConfiguration.getClientSecret(), StandardCharsets.UTF_8.toString()));
+        return this.build(apiConfiguration, DEFAULT_TIMEOUT_SECONDS, DEFAULT_TIMEOUT_SECONDS, DEFAULT_TIMEOUT_SECONDS);
+    }
 
-        final OkHttpClient    httpClient;
+    /**
+     * Builds an ApiClient implementation configured against a secrets file. Typically used
+     * for communicating with LUSID via the APIs
+     *
+     * ApiClient implementation enables use of REFRESH tokens (see https://support.finbourne.com/using-a-refresh-token)
+     * and automatically handles token refreshing on expiry.
+     *
+     * @param apiConfiguration configuration to connect to {{application_camel}} API
+     * @param readTimeout read timeout in seconds
+     * @param writeTimeout write timeout in seconds
+     * @return
+     *
+     * @throws LusidTokenException on failing to authenticate and retrieve an initial {@link LusidTokenException}
+     */
+    public ApiClient build(ApiConfiguration apiConfiguration, int readTimeout, int writeTimeout) throws LusidTokenException {
+        return this.build(apiConfiguration, readTimeout, writeTimeout, DEFAULT_TIMEOUT_SECONDS);
+    }
 
-        //  use a proxy if given
-        if (apiConfiguration.getProxyAddress() != null) {
+    /**
+     * Builds an ApiClient implementation configured against a secrets file. Typically used
+     * for communicating with LUSID via the APIs
+     *
+     * ApiClient implementation enables use of REFRESH tokens (see https://support.finbourne.com/using-a-refresh-token)
+     * and automatically handles token refreshing on expiry.
+     *
+     * @param apiConfiguration configuration to connect to {{application_camel}} API
+     * @param readTimeout read timeout in seconds
+     * @param writeTimeout write timeout in seconds
+     * @param connectTimeout connection timeout in seconds
+     * @return
+     *
+     * @throws LusidTokenException on failing to authenticate and retrieve an initial {@link LusidTokenException}
+     */
+    public ApiClient build(ApiConfiguration apiConfiguration, int readTimeout, int writeTimeout, int connectTimeout) throws LusidTokenException {
 
-            InetSocketAddress proxy = new InetSocketAddress(apiConfiguration.getProxyAddress(), apiConfiguration.getProxyPort());
+        // http client to use for api and auth calls
+        OkHttpClient httpClient = createHttpClient(apiConfiguration, readTimeout, writeTimeout, connectTimeout);
 
-            httpClient = new OkHttpClient.Builder()
-                    .proxy(new Proxy(Proxy.Type.HTTP, proxy))
-                    .proxyAuthenticator((route, response) -> {
-                        String credential = Credentials.basic(apiConfiguration.getProxyUsername(), apiConfiguration.getProxyPassword());
-                        return response.request().newBuilder()
-                                .header("Proxy-Authorization", credential)
-                                .build();
-                    })
-                    .build();
+        if (apiConfiguration.getPersonalAccessToken() != null && apiConfiguration.getApiUrl() != null) {
+
+            //  use Personal Access Token
+            LusidToken lusidToken = new LusidToken(apiConfiguration.getPersonalAccessToken(), null, null);
+            ApiClient defaultApiClient = createDefaultApiClient(apiConfiguration, httpClient, lusidToken);
+
+            return defaultApiClient;
+
         }
         else {
-            httpClient = new OkHttpClient();
+
+            // token provider to keep client authenticated with automated token refreshing
+            RefreshingTokenProvider refreshingTokenProvider = new RefreshingTokenProvider(new HttpLusidTokenProvider(apiConfiguration, httpClient));
+            LusidToken lusidToken = refreshingTokenProvider.get();
+
+            // setup api client that managed submissions with the latest token
+            ApiClient defaultApiClient = createDefaultApiClient(apiConfiguration, httpClient, lusidToken);
+            return new RefreshingTokenApiClient(defaultApiClient, refreshingTokenProvider);
+        }
+    }
+
+    ApiClient createDefaultApiClient(ApiConfiguration apiConfiguration, OkHttpClient httpClient, LusidToken lusidToken) throws LusidTokenException {
+        ApiClient apiClient = createApiClient();
+
+        apiClient.setHttpClient(httpClient);
+
+        if (lusidToken.getAccessToken() == null) {
+            throw new LusidTokenException("Cannot construct an API client with a null authorisation header. Ensure " +
+                    "lusid token generated is valid");
+        } else {
+            apiClient.setAccessToken(lusidToken.getAccessToken());
         }
 
-        final RequestBody body = RequestBody.create(FORM, tokenRequestBody);
-        final Request request = new Request.Builder()
-                .url(apiConfiguration.getTokenUrl())
-                .header("Accept", "application/json")
-                .post(body)
-                .build();
-
-        Response response = httpClient.newCall(request).execute();
-
-        if (response.code() != 200) {
-            throw new IOException(response.toString());
+        if (apiConfiguration.getApplicationName() != null) {
+            apiClient.addDefaultHeader("X-LUSID-Application", apiConfiguration.getApplicationName());
         }
-
-        final String    content = response.body().string();
-        final ObjectMapper mapper = new ObjectMapper();
-
-        //  map json response
-        final Map bodyValues = mapper.readValue(content, Map.class);
-
-        if (!bodyValues.containsKey("access_token")) {
-            throw new IOException("missing access_token");
-        }
-
-        //  get access token
-        final String apiToken = (String)bodyValues.get("access_token");
-
-        ApiClient   apiClient = new ApiClient();
-
-        if (apiConfiguration.getProxyAddress() != null) {
-            apiClient.setHttpClient(httpClient);
-        }
-
-        apiClient.addDefaultHeader("Authorization", "Bearer " + apiToken);
-        apiClient.addDefaultHeader("X-LUSID-Application", apiConfiguration.getApplicationName());
         apiClient.setBasePath(apiConfiguration.getApiUrl());
 
-        return apiClient;
+        return  apiClient;
+    }
+
+    private OkHttpClient createHttpClient(ApiConfiguration apiConfiguration, int readTimeout, int writeTimeout, int connectTimeout){
+        return new HttpClientFactory().build(apiConfiguration, readTimeout, writeTimeout, connectTimeout);
+    }
+
+    // allows us to mock out api client for testing purposes
+    ApiClient createApiClient(){
+        return new ApiClient();
     }
 }
