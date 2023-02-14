@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **typeValueRange** | [**TypeValueRangeEnum**](#TypeValueRangeEnum) | Indicates the range of data acceptable by a data type. The available values are: Open, Closed | 
 **displayName** | **String** | The display name of the data type. | 
 **description** | **String** | The description of the data type. | 
-**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) | The expected type of the values. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText | 
+**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) | The expected type of the values. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel | 
 **acceptableValues** | **List&lt;String&gt;** | The acceptable set of values for this data type. Only applies to &#39;open&#39; value type range. |  [optional]
 **unitSchema** | [**UnitSchemaEnum**](#UnitSchemaEnum) | The schema of the data type&#39;s units. The available values are: NoUnits, Basic, Iso4217Currency |  [optional]
 **acceptableUnits** | [**List&lt;CreateUnitDefinition&gt;**](CreateUnitDefinition.md) | The definitions of the acceptable units. |  [optional]
@@ -53,7 +53,6 @@ RESOURCEID | &quot;ResourceId&quot;
 RESULTVALUE | &quot;ResultValue&quot;
 CUTLOCALTIME | &quot;CutLocalTime&quot;
 DATEORCUTLABEL | &quot;DateOrCutLabel&quot;
-UNINDEXEDTEXT | &quot;UnindexedText&quot;
 
 
 

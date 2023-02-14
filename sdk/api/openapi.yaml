@@ -311,7 +311,7 @@ info:
     | <a name="820">820</a>|Custodian Account not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5236
+  version: 0.11.5237
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -7736,6 +7736,695 @@ paths:
       tags:
       - CustomEntities
       x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata:
+    get:
+      description: Get all the Custom Entity access metadata for the specified identifier
+        scope, code and value
+      operationId: GetAllCustomEntityAccessMetadata
+      parameters:
+      - description: The type of the Custom Entity.
+        explode: false
+        in: path
+        name: entityType
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^~[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: An identifier type attached to the Custom Entity instance.
+        explode: false
+        in: path
+        name: identifierType
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The identifier value.
+        explode: false
+        in: path
+        name: identifierValue
+        required: true
+        schema:
+          maxLength: 1024
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The identifier scope.
+        explode: true
+        in: query
+        name: identifierScope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      - description: The effective datetime or cut label at which to get the entities.
+          Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve the Access Metadata. Defaults
+          to returning the latest version of the metadata if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+            application/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+            text/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+          description: The access metadata for the CustomEntity or any failure.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetAllCustomEntityAccessMetadata: Get all the Access
+        Metadata rules for a Custom Entity'
+      tags:
+      - CustomEntities
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    patch:
+      description: "Patch Custom Entity Access Metadata Rules in a single scope.\r\
+        \nThe behaviour is defined by the JSON Patch specification.\r\n          \
+        \  \r\nCurrently only 'add' is a supported operation on the patch document\r\
+        \n\r\nCurrently only valid metadata keys are supported paths on the patch\
+        \ document\r\n            \r\nThe response will return any affected Custom\
+        \ Entity Access Metadata rules or a failure message if unsuccessful.\r\n \
+        \           \r\nIt is important to always check to verify success (or failure).\r\
+        \n            \r\nMultiple rules for a metadataKey can exist with different\
+        \ effective at dates, when resources are accessed the rule that is active\
+        \ for the current time will be fetched."
+      operationId: PatchCustomEntityAccessMetadata
+      parameters:
+      - description: The type of the Custom Entity.
+        explode: false
+        in: path
+        name: entityType
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^~[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: An identifier type attached to the Custom Entity instance.
+        explode: false
+        in: path
+        name: identifierType
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The identifier value.
+        explode: false
+        in: path
+        name: identifierValue
+        required: true
+        schema:
+          maxLength: 1024
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The identifier scope.
+        explode: true
+        in: query
+        name: identifierScope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      - description: The effectiveAt datetime at which to retrieve the Access Metadata
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: The effective datetime until which the Access Metadata is valid.
+          If not supplied this will be valid indefinitely, or until the next 'effectiveAt'
+          datetime of the Access Metadata
+        explode: true
+        in: query
+        name: effectiveUntil
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              items:
+                $ref: '#/components/schemas/AccessMetadataOperation'
+              type: array
+          application/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/AccessMetadataOperation'
+              type: array
+          text/json:
+            schema:
+              items:
+                $ref: '#/components/schemas/AccessMetadataOperation'
+              type: array
+          application/*+json:
+            schema:
+              items:
+                $ref: '#/components/schemas/AccessMetadataOperation'
+              type: array
+        description: The Json Patch document
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+            application/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+            text/json:
+              schema:
+                additionalProperties:
+                  items:
+                    $ref: '#/components/schemas/AccessMetadataValue'
+                  type: array
+                type: object
+          description: The access metadata for the CustomEntity or any failure.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] PatchCustomEntityAccessMetadata: Patch Access Metadata
+        rules for a Custom Entity.'
+      tags:
+      - CustomEntities
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata/{metadataKey}:
+    delete:
+      description: "Deletes the Custom Entity Access Metadata entry that exactly matches\
+        \ the provided identifier parts.\r\n\r\nIt is important to always check to\
+        \ verify success (or failure)."
+      operationId: DeleteCustomEntityAccessMetadata
+      parameters:
+      - description: The type of the Custom Entity.
+        explode: false
+        in: path
+        name: entityType
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^~[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: An identifier type attached to the Custom Entity instance.
+        explode: false
+        in: path
+        name: identifierType
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The identifier value.
+        explode: false
+        in: path
+        name: identifierValue
+        required: true
+        schema:
+          maxLength: 1024
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Key of the metadata entry to delete.
+        explode: false
+        in: path
+        name: metadataKey
+        required: true
+        schema:
+          maxLength: 100
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The identifier scope.
+        explode: true
+        in: query
+        name: identifierScope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      - description: The effectiveAt datetime at which to retrieve the Access Metadata.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: The effective datetime until which the Access Metadata is valid.
+          If not supplied this will be valid indefinitely, or until the next 'effectiveAt'
+          datetime of the Access Metadata.
+        explode: true
+        in: query
+        name: effectiveUntil
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: The access metadata for the CustomEntity or any failure.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] DeleteCustomEntityAccessMetadata: Delete a Custom Entity
+        Access Metadata entry'
+      tags:
+      - CustomEntities
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    get:
+      description: Get Custom Entity access metadata for the specified metadata key
+      operationId: GetCustomEntityAccessMetadataByKey
+      parameters:
+      - description: The type of the Custom Entity.
+        explode: false
+        in: path
+        name: entityType
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^~[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: An identifier type attached to the Custom Entity instance.
+        explode: false
+        in: path
+        name: identifierType
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The identifier value.
+        explode: false
+        in: path
+        name: identifierValue
+        required: true
+        schema:
+          maxLength: 1024
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Key of the metadata entry to retrieve
+        explode: false
+        in: path
+        name: metadataKey
+        required: true
+        schema:
+          maxLength: 100
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The identifier scope.
+        explode: true
+        in: query
+        name: identifierScope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      - description: The effective datetime or cut label at which to get the entities.
+          Defaults to the current LUSID system datetime if not specified.
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: The asAt datetime at which to retrieve the Access Metadata. Defaults
+          to returning the latest version of the metadata if not specified.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+          description: The access metadata for the CustomEntity or any failure.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetCustomEntityAccessMetadataByKey: Get an entry identified
+        by a metadataKey in the Access Metadata of a Custom Entity'
+      tags:
+      - CustomEntities
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    put:
+      description: "Update or insert one Custom Entity Access Metadata entry in a\
+        \ single scope. An item will be updated if it already exists\r\nand inserted\
+        \ if it does not.\r\n            \r\nThe response will return the successfully\
+        \ updated or inserted Custom Entity Access Metadata rule or failure message\
+        \ if unsuccessful.\r\n            \r\nIt is important to always check to verify\
+        \ success (or failure).\r\n            \r\nMultiple rules for a metadataKey\
+        \ can exist with different effective at dates, when resources are accessed\
+        \ the rule that is active for the current time will be fetched."
+      operationId: UpsertCustomEntityAccessMetadata
+      parameters:
+      - description: The type of the Custom Entity.
+        explode: false
+        in: path
+        name: entityType
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^~[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: An identifier type attached to the Custom Entity instance.
+        explode: false
+        in: path
+        name: identifierType
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The identifier value.
+        explode: false
+        in: path
+        name: identifierValue
+        required: true
+        schema:
+          maxLength: 1024
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Key of the metadata entry to retrieve
+        explode: false
+        in: path
+        name: metadataKey
+        required: true
+        schema:
+          maxLength: 100
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The identifier scope.
+        explode: true
+        in: query
+        name: identifierScope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      - description: The effectiveAt datetime at which to retrieve the Access Metadata
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: The effective datetime until which the Access Metadata is valid.
+          If not supplied this will be valid indefinitely, or until the next 'effectiveAt'
+          datetime of the Access Metadata
+        explode: true
+        in: query
+        name: effectiveUntil
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertCustomEntityAccessMetadataRequest'
+          application/json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertCustomEntityAccessMetadataRequest'
+          text/json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertCustomEntityAccessMetadataRequest'
+          application/*+json:
+            example:
+              metadata:
+              - value: SilverLicence
+                provider: TestDataProvider
+            schema:
+              $ref: '#/components/schemas/UpsertCustomEntityAccessMetadataRequest'
+        description: The Custom Entity Access Metadata entry to upsert
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+            application/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+            text/json:
+              schema:
+                items:
+                  $ref: '#/components/schemas/AccessMetadataValue'
+                type: array
+          description: The access metadata for the CustomEntity or any failure.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] UpsertCustomEntityAccessMetadata: Upsert a Custom Entity
+        Access Metadata entry associated with a specific metadataKey. This creates
+        or updates the data in LUSID.'
+      tags:
+      - CustomEntities
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
       x-accepts: application/json
   /api/customentities/{entityType}/{identifierType}/{identifierValue}/relationships:
     get:
@@ -48742,7 +49431,7 @@ components:
           description: 'The expected type of the values. The available values are:
             String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage,
             Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId,
-            ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText'
+            ResultValue, CutLocalTime, DateOrCutLabel'
           enum:
           - String
           - Int
@@ -48764,7 +49453,6 @@ components:
           - ResultValue
           - CutLocalTime
           - DateOrCutLabel
-          - UnindexedText
           type: string
         acceptableValues:
           description: The acceptable set of values for this data type. Only applies
@@ -50346,7 +51034,7 @@ components:
           description: 'The available values are: String, Int, Decimal, DateTime,
             Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount,
             TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime,
-            DateOrCutLabel, UnindexedText'
+            DateOrCutLabel'
           enum:
           - String
           - Int
@@ -50368,7 +51056,6 @@ components:
           - ResultValue
           - CutLocalTime
           - DateOrCutLabel
-          - UnindexedText
           type: string
         acceptableValues:
           items:
@@ -50447,7 +51134,7 @@ components:
           description: 'The expected type of the values. The available values are:
             String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage,
             Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId,
-            ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText'
+            ResultValue, CutLocalTime, DateOrCutLabel'
           enum:
           - String
           - Int
@@ -50469,7 +51156,6 @@ components:
           - ResultValue
           - CutLocalTime
           - DateOrCutLabel
-          - UnindexedText
           type: string
         acceptableValues:
           description: The acceptable set of values for this data type. Only applies
@@ -51652,7 +52338,7 @@ components:
           description: 'The available values are: String, Int, Decimal, DateTime,
             Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount,
             TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime,
-            DateOrCutLabel, UnindexedText'
+            DateOrCutLabel'
           enum:
           - String
           - Int
@@ -51674,7 +52360,6 @@ components:
           - ResultValue
           - CutLocalTime
           - DateOrCutLabel
-          - UnindexedText
           type: string
         displayOrder:
           format: int32
@@ -61770,7 +62455,7 @@ components:
             This is defined by the property''s data type. The available values are:
             String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage,
             Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId,
-            ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText'
+            ResultValue, CutLocalTime, DateOrCutLabel'
           enum:
           - String
           - Int
@@ -61792,7 +62477,6 @@ components:
           - ResultValue
           - CutLocalTime
           - DateOrCutLabel
-          - UnindexedText
           type: string
         displayName:
           description: The display name of the property.
@@ -61958,7 +62642,7 @@ components:
             This is defined by the property''s data type. The available values are:
             String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage,
             Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId,
-            ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText'
+            ResultValue, CutLocalTime, DateOrCutLabel'
           enum:
           - String
           - Int
@@ -61980,7 +62664,6 @@ components:
           - ResultValue
           - CutLocalTime
           - DateOrCutLabel
-          - UnindexedText
           type: string
         displayName:
           description: The display name of the property.
@@ -70818,6 +71501,23 @@ components:
           description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      type: object
+    UpsertCustomEntityAccessMetadataRequest:
+      additionalProperties: false
+      example:
+        metadata:
+        - provider: provider
+          value: value
+        - provider: provider
+          value: value
+      properties:
+        metadata:
+          description: The access control metadata to assign to a CustomEntity that
+            matches the identifier
+          items:
+            $ref: '#/components/schemas/AccessMetadataValue'
           nullable: true
           type: array
       type: object
