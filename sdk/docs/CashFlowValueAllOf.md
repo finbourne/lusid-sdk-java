@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **cashFlowLineage** | [**CashFlowLineage**](CashFlowLineage.md) |  |  [optional]
 **paymentAmount** | **java.math.BigDecimal** | The amount paid or received | 
 **paymentCcy** | **String** | The currency of the transaction | 
-**resultValueType** | [**ResultValueTypeEnum**](#ResultValueTypeEnum) | The available values are: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset | 
+**resultValueType** | [**ResultValueTypeEnum**](#ResultValueTypeEnum) | The available values are: ResultValue, ResultValueDictionary, ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString, ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset | 
 
 
 
@@ -26,6 +26,8 @@ RESULTVALUE0D | &quot;ResultValue0D&quot;
 RESULTVALUEDECIMAL | &quot;ResultValueDecimal&quot;
 RESULTVALUEINT | &quot;ResultValueInt&quot;
 RESULTVALUESTRING | &quot;ResultValueString&quot;
+RESULTVALUEBOOL | &quot;ResultValueBool&quot;
+RESULTVALUECURRENCY | &quot;ResultValueCurrency&quot;
 CASHFLOWVALUE | &quot;CashFlowValue&quot;
 CASHFLOWVALUESET | &quot;CashFlowValueSet&quot;
 RESULTVALUELIFECYCLEEVENTVALUE | &quot;ResultValueLifeCycleEventValue&quot;

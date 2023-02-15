@@ -311,7 +311,7 @@ info:
     | <a name="820">820</a>|Custodian Account not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5238
+  version: 0.11.5239
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -69116,7 +69116,8 @@ components:
         resultValueType:
           description: 'The available values are: ResultValue, ResultValueDictionary,
             ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString,
-            CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset'
+            ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet,
+            ResultValueLifeCycleEventValue, ResultValueDateTimeOffset'
           enum:
           - ResultValue
           - ResultValueDictionary
@@ -69124,6 +69125,8 @@ components:
           - ResultValueDecimal
           - ResultValueInt
           - ResultValueString
+          - ResultValueBool
+          - ResultValueCurrency
           - CashFlowValue
           - CashFlowValueSet
           - ResultValueLifeCycleEventValue
@@ -75231,7 +75234,8 @@ components:
         resultValueType:
           description: 'The available values are: ResultValue, ResultValueDictionary,
             ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString,
-            CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset'
+            ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet,
+            ResultValueLifeCycleEventValue, ResultValueDateTimeOffset'
           enum:
           - ResultValue
           - ResultValueDictionary
@@ -75239,6 +75243,8 @@ components:
           - ResultValueDecimal
           - ResultValueInt
           - ResultValueString
+          - ResultValueBool
+          - ResultValueCurrency
           - CashFlowValue
           - CashFlowValueSet
           - ResultValueLifeCycleEventValue
@@ -78208,7 +78214,8 @@ components:
         resultValueType:
           description: 'The available values are: ResultValue, ResultValueDictionary,
             ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString,
-            CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset'
+            ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet,
+            ResultValueLifeCycleEventValue, ResultValueDateTimeOffset'
           enum:
           - ResultValue
           - ResultValueDictionary
@@ -78216,6 +78223,8 @@ components:
           - ResultValueDecimal
           - ResultValueInt
           - ResultValueString
+          - ResultValueBool
+          - ResultValueCurrency
           - CashFlowValue
           - CashFlowValueSet
           - ResultValueLifeCycleEventValue
@@ -78885,7 +78894,8 @@ components:
         resultValueType:
           description: 'The available values are: ResultValue, ResultValueDictionary,
             ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString,
-            CashFlowValue, CashFlowValueSet, ResultValueLifeCycleEventValue, ResultValueDateTimeOffset'
+            ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet,
+            ResultValueLifeCycleEventValue, ResultValueDateTimeOffset'
           enum:
           - ResultValue
           - ResultValueDictionary
@@ -78893,6 +78903,8 @@ components:
           - ResultValueDecimal
           - ResultValueInt
           - ResultValueString
+          - ResultValueBool
+          - ResultValueCurrency
           - CashFlowValue
           - CashFlowValueSet
           - ResultValueLifeCycleEventValue
