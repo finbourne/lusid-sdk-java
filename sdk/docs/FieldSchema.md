@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **id** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **displayName** | **String** |  |  [optional]
 **description** | **String** |  |  [optional]
-**type** | [**TypeEnum**](#TypeEnum) | The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel |  [optional]
+**type** | [**TypeEnum**](#TypeEnum) | The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText |  [optional]
 **displayOrder** | **Integer** |  |  [optional]
 
 
@@ -39,6 +39,7 @@ RESOURCEID | &quot;ResourceId&quot;
 RESULTVALUE | &quot;ResultValue&quot;
 CUTLOCALTIME | &quot;CutLocalTime&quot;
 DATEORCUTLABEL | &quot;DateOrCutLabel&quot;
+UNINDEXEDTEXT | &quot;UnindexedText&quot;
 
 
 
