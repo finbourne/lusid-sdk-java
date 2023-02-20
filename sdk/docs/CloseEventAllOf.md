@@ -7,7 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**anchorDate** | **OffsetDateTime** | The date on which the instrument closes/matures |  [optional]
+**startDate** | **OffsetDateTime** | The first date on which the instrument could close |  [optional]
+**endDate** | **OffsetDateTime** | The last date on which the instrument could close |  [optional]
 **instrumentEventType** | [**InstrumentEventTypeEnum**](#InstrumentEventTypeEnum) | The Type of Event. The available values are: TransitionEvent, InformationalEvent, OpenEvent, CloseEvent, StockSplitEvent, BondDefaultEvent, CashDividendEvent, AmortisationEvent, CashFlowEvent, ExerciseEvent, ResetEvent, TriggerEvent, RawVendorEvent, InformationalErrorEvent | 
 
 
