@@ -29,7 +29,6 @@ Name | Type | Description | Notes
 **cancelDateTime** | **OffsetDateTime** | If the transaction has been cancelled, the asAt datetime that the transaction was cancelled. |  [optional]
 **orderId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **allocationId** | [**ResourceId**](ResourceId.md) |  |  [optional]
-**custodianAccount** | [**CustodianAccount**](CustodianAccount.md) |  |  [optional]
 
 
 
