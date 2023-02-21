@@ -311,7 +311,7 @@ info:
     | <a name="820">820</a>|Custodian Account not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5260
+  version: 0.11.5261
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -12629,6 +12629,11 @@ paths:
                   version:
                     effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                     asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                    asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                    userIdCreated: UserId1
+                    asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                    userIdModified: UserId2
+                    asAtVersionNumber: 3
                 - displayName: LegalEntity2DisplayName
                   description: LegalEntity2Description
                   href: https://example.com
@@ -12661,6 +12666,11 @@ paths:
                   version:
                     effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                     asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                    asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                    userIdCreated: UserId1
+                    asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                    userIdModified: UserId2
+                    asAtVersionNumber: 3
                 href: http://example.com
                 links: []
               schema:
@@ -12708,6 +12718,11 @@ paths:
                   version:
                     effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                     asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                    asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                    userIdCreated: UserId1
+                    asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                    userIdModified: UserId2
+                    asAtVersionNumber: 3
                 - displayName: LegalEntity2DisplayName
                   description: LegalEntity2Description
                   href: https://example.com
@@ -12740,6 +12755,11 @@ paths:
                   version:
                     effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                     asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                    asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                    userIdCreated: UserId1
+                    asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                    userIdModified: UserId2
+                    asAtVersionNumber: 3
                 href: http://example.com
                 links: []
               schema:
@@ -12787,6 +12807,11 @@ paths:
                   version:
                     effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                     asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                    asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                    userIdCreated: UserId1
+                    asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                    userIdModified: UserId2
+                    asAtVersionNumber: 3
                 - displayName: LegalEntity2DisplayName
                   description: LegalEntity2Description
                   href: https://example.com
@@ -12819,6 +12844,11 @@ paths:
                   version:
                     effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                     asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                    asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                    userIdCreated: UserId1
+                    asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                    userIdModified: UserId2
+                    asAtVersionNumber: 3
                 href: http://example.com
                 links: []
               schema:
@@ -13053,6 +13083,11 @@ paths:
                 version:
                   effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                   asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                  asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                  userIdCreated: UserId1
+                  asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                  userIdModified: UserId2
+                  asAtVersionNumber: 3
               schema:
                 $ref: '#/components/schemas/LegalEntity'
             application/json:
@@ -13097,6 +13132,11 @@ paths:
                 version:
                   effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                   asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                  asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                  userIdCreated: UserId1
+                  asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                  userIdModified: UserId2
+                  asAtVersionNumber: 3
               schema:
                 $ref: '#/components/schemas/LegalEntity'
             text/json:
@@ -13141,6 +13181,11 @@ paths:
                 version:
                   effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                   asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                  asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                  userIdCreated: UserId1
+                  asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                  userIdModified: UserId2
+                  asAtVersionNumber: 3
               schema:
                 $ref: '#/components/schemas/LegalEntity'
           description: The newly created or updated legal entity
@@ -13339,6 +13384,11 @@ paths:
                   version:
                     effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                     asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                    asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                    userIdCreated: UserId1
+                    asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                    userIdModified: UserId2
+                    asAtVersionNumber: 3
                 - displayName: LegalEntity2DisplayName
                   description: LegalEntity2Description
                   href: https://example.com
@@ -13371,6 +13421,11 @@ paths:
                   version:
                     effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                     asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                    asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                    userIdCreated: UserId1
+                    asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                    userIdModified: UserId2
+                    asAtVersionNumber: 3
                 href: http://example.com
                 links: []
               schema:
@@ -13418,6 +13473,11 @@ paths:
                   version:
                     effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                     asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                    asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                    userIdCreated: UserId1
+                    asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                    userIdModified: UserId2
+                    asAtVersionNumber: 3
                 - displayName: LegalEntity2DisplayName
                   description: LegalEntity2Description
                   href: https://example.com
@@ -13450,6 +13510,11 @@ paths:
                   version:
                     effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                     asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                    asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                    userIdCreated: UserId1
+                    asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                    userIdModified: UserId2
+                    asAtVersionNumber: 3
                 href: http://example.com
                 links: []
               schema:
@@ -13497,6 +13562,11 @@ paths:
                   version:
                     effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                     asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                    asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                    userIdCreated: UserId1
+                    asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                    userIdModified: UserId2
+                    asAtVersionNumber: 3
                 - displayName: LegalEntity2DisplayName
                   description: LegalEntity2Description
                   href: https://example.com
@@ -13529,6 +13599,11 @@ paths:
                   version:
                     effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                     asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                    asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                    userIdCreated: UserId1
+                    asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                    userIdModified: UserId2
+                    asAtVersionNumber: 3
                 href: http://example.com
                 links: []
               schema:
@@ -13776,6 +13851,11 @@ paths:
                 version:
                   effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                   asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                  asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                  userIdCreated: UserId1
+                  asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                  userIdModified: UserId2
+                  asAtVersionNumber: 3
               schema:
                 $ref: '#/components/schemas/LegalEntity'
             application/json:
@@ -13820,6 +13900,11 @@ paths:
                 version:
                   effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                   asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                  asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                  userIdCreated: UserId1
+                  asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                  userIdModified: UserId2
+                  asAtVersionNumber: 3
               schema:
                 $ref: '#/components/schemas/LegalEntity'
             text/json:
@@ -13864,6 +13949,11 @@ paths:
                 version:
                   effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                   asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                  asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                  userIdCreated: UserId1
+                  asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                  userIdModified: UserId2
+                  asAtVersionNumber: 3
               schema:
                 $ref: '#/components/schemas/LegalEntity'
           description: The requested legal entity
@@ -14137,6 +14227,11 @@ paths:
                 version:
                   effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                   asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                  asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                  userIdCreated: UserId1
+                  asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                  userIdModified: UserId2
+                  asAtVersionNumber: 3
               schema:
                 $ref: '#/components/schemas/LegalEntity'
             application/json:
@@ -14181,6 +14276,11 @@ paths:
                 version:
                   effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                   asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                  asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                  userIdCreated: UserId1
+                  asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                  userIdModified: UserId2
+                  asAtVersionNumber: 3
               schema:
                 $ref: '#/components/schemas/LegalEntity'
             text/json:
@@ -14225,6 +14325,11 @@ paths:
                 version:
                   effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                   asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                  asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                  userIdCreated: UserId1
+                  asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                  userIdModified: UserId2
+                  asAtVersionNumber: 3
               schema:
                 $ref: '#/components/schemas/LegalEntity'
           description: The Legal Entity with updated identifiers
@@ -15163,6 +15268,11 @@ paths:
                 version:
                   effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                   asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                  asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                  userIdCreated: UserId1
+                  asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                  userIdModified: UserId2
+                  asAtVersionNumber: 3
               schema:
                 $ref: '#/components/schemas/LegalEntity'
             application/json:
@@ -15202,6 +15312,11 @@ paths:
                 version:
                   effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                   asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                  asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                  userIdCreated: UserId1
+                  asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                  userIdModified: UserId2
+                  asAtVersionNumber: 3
               schema:
                 $ref: '#/components/schemas/LegalEntity'
             text/json:
@@ -15241,6 +15356,11 @@ paths:
                 version:
                   effectiveFrom: 2019-01-01T12:00:00.0000000+00:00
                   asAtDate: 2019-01-01T12:00:00.0100000+00:00
+                  asAtCreated: 2019-01-01T12:00:00.0000000+00:00
+                  userIdCreated: UserId1
+                  asAtModified: 2019-01-01T12:00:00.0100000+00:00
+                  userIdModified: UserId2
+                  asAtVersionNumber: 3
               schema:
                 $ref: '#/components/schemas/LegalEntity'
           description: The Legal Entity with updated properties
