@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **otcConfirmation** | [**OtcConfirmation**](OtcConfirmation.md) |  |  [optional]
 **orderId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **allocationId** | [**ResourceId**](ResourceId.md) |  |  [optional]
+**custodianAccountId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 
 
 
