@@ -8,7 +8,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **key** | **String** | The key that uniquely identifies a queryable address in Lusid. | 
-**op** | [**OpEnum**](#OpEnum) | The available values are: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues | 
+**op** | [**OpEnum**](#OpEnum) | The available values are: Sum, Proportion, Average, Count, Min, Max, Value, SumOfPositiveValues, SumOfNegativeValues, SumOfAbsoluteValues, ProportionOfAbsoluteValues, SumCumulativeInAdvance, SumCumulativeInArrears | 
 
 
 
@@ -27,6 +27,8 @@ SUMOFPOSITIVEVALUES | &quot;SumOfPositiveValues&quot;
 SUMOFNEGATIVEVALUES | &quot;SumOfNegativeValues&quot;
 SUMOFABSOLUTEVALUES | &quot;SumOfAbsoluteValues&quot;
 PROPORTIONOFABSOLUTEVALUES | &quot;ProportionOfAbsoluteValues&quot;
+SUMCUMULATIVEINADVANCE | &quot;SumCumulativeInAdvance&quot;
+SUMCUMULATIVEINARREARS | &quot;SumCumulativeInArrears&quot;
 
 
 
