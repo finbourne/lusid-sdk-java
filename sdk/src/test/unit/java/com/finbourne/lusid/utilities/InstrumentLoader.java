@@ -35,11 +35,11 @@ public class InstrumentLoader {
     public List<String> loadInstruments() throws ApiException {
 
         UpsertInstrumentsResponse instrumentsResponse = instrumentsApi.upsertInstruments(Stream.of(new Object[][] {
-                { "request1", new InstrumentDefinition().name("ASTRAZENECA PLC").identifiers(new HashMap<String, InstrumentIdValue>() {{ put("Figi", new InstrumentIdValue().value("BBG000C0YGH4")); }}) },
-                { "request2", new InstrumentDefinition().name("CENTRICA PLC").identifiers(new HashMap<String, InstrumentIdValue>() {{ put("Figi", new InstrumentIdValue().value("BBG000BPFPZ1")); }}) },
-                { "request3", new InstrumentDefinition().name("DIAGEO PLC").identifiers(new HashMap<String, InstrumentIdValue>() {{ put("Figi", new InstrumentIdValue().value("BBG000BS69D5")); }}) },
-                { "request4", new InstrumentDefinition().name("GLAXOSMITHKLINE PLC").identifiers(new HashMap<String, InstrumentIdValue>() {{ put("Figi", new InstrumentIdValue().value("BBG000CT5GJ1")); }}) },
-                { "request5", new InstrumentDefinition().name("MARKS & SPENCER GROUP PLC").identifiers(new HashMap<String, InstrumentIdValue>() {{ put("Figi", new InstrumentIdValue().value("BBG000BDTRV3")); }}) }
+                        { "request1", new InstrumentDefinition().name("Anglo American plc").identifiers(new HashMap<String, InstrumentIdValue>() {{ put("Figi", new InstrumentIdValue().value("BBG000BBLDF4")); }}) },
+                        { "request2", new InstrumentDefinition().name("Avast").identifiers(new HashMap<String, InstrumentIdValue>() {{ put("Figi", new InstrumentIdValue().value("BBG00KW3SK62")); }}) },
+                        { "request3", new InstrumentDefinition().name("Berkeley Group Holdings").identifiers(new HashMap<String, InstrumentIdValue>() {{ put("Figi", new InstrumentIdValue().value("BBG000H6ZKT3")); }}) },
+                        { "request4", new InstrumentDefinition().name("Croda International").identifiers(new HashMap<String, InstrumentIdValue>() {{ put("Figi", new InstrumentIdValue().value("BBG000BDCLS8")); }}) },
+                        { "request5", new InstrumentDefinition().name("Experian").identifiers(new HashMap<String, InstrumentIdValue>() {{ put("Figi", new InstrumentIdValue().value("BBG000BKFZN3")); }}) }
             }).collect(Collectors.toMap(data -> (String)data[0], data -> (InstrumentDefinition)data[1])),
             DefaultScope);
 
