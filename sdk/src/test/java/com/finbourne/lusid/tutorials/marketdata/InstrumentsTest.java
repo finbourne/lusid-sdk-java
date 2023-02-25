@@ -148,22 +148,22 @@ public class InstrumentsTest {
             unique id, in this case an OpenFigi, and also return a list of aliases
          */
 
-        GetInstrumentsResponse lookedUpInstruments = instrumentsApi.getInstruments(FIGI_SCHEME, Arrays.asList("BBG000C6K6G9"),
+        GetInstrumentsResponse lookedUpInstruments = instrumentsApi.getInstruments(FIGI_SCHEME, Arrays.asList("BBG000BBLDF4"),
                 null, null, Arrays.asList(ISIN_PROPERTY_KEY, SEDOL_PROPERTY_KEY), DefaultScope, null);
 
-        assertThat(lookedUpInstruments.getValues(), hasKey("BBG000C6K6G9"));
+        assertThat(lookedUpInstruments.getValues(), hasKey("BBG000BBLDF4"));
 
-        Instrument instrument = lookedUpInstruments.getValues().get("BBG000C6K6G9");
+        Instrument instrument = lookedUpInstruments.getValues().get("BBG000BBLDF4");
 
-        assertThat(instrument.getName(), is(equalTo("VODAFONE GROUP PLC")));
+        assertThat(instrument.getName(), is(equalTo("Anglo American plc")));
 
         List<Property>  identifiers = instrument.getProperties();
         identifiers.sort(Comparator.comparing(Property::getKey));
 
         assertThat(identifiers.get(0).getKey(), equalTo(ISIN_PROPERTY_KEY));
-        assertThat(identifiers.get(0).getValue().getLabelValue(), equalTo("GB00BH4HKS39"));
+        assertThat(identifiers.get(0).getValue().getLabelValue(), equalTo("GB00B1XZS820"));
         assertThat(identifiers.get(1).getKey(), equalTo(SEDOL_PROPERTY_KEY));
-        assertThat(identifiers.get(1).getValue().getLabelValue(), equalTo("BH4HKS3"));
+        assertThat(identifiers.get(1).getValue().getLabelValue(), equalTo("B1XZS82"));
     }
 
     @Test
@@ -198,7 +198,7 @@ public class InstrumentsTest {
     @LusidFeature("F25")
     public void list_instruments_by_Identifier_type() throws ApiException {
 
-        List<String>    figis = Arrays.asList("BBG000C6K6G9", "BBG000C04D57", "BBG000FV67Q4");
+        List<String>    figis = Arrays.asList("BBG000BBLDF4", "BBG00KW3SK62", "BBG000H6ZKT3");
 
         //  Get a set of instruments querying by FIGIs
         GetInstrumentsResponse instruments = instrumentsApi.getInstruments("Figi", figis, null, null, null, DefaultScope, null);
@@ -211,7 +211,7 @@ public class InstrumentsTest {
     @Test
     @LusidFeature("F26")
     public void edit_instrument_property() throws ApiException {
-        String figi = "BBG000C6K6G9";
+        String figi = "BBG000BBLDF4";
         //  Create the property value
         PropertyValue   propertyValue = new PropertyValue().labelValue("Telecoms");
         String propertyKey = String.format("Instrument/%s/CustomSector", TutorialScope);
