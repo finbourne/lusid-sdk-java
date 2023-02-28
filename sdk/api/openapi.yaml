@@ -311,7 +311,7 @@ info:
     | <a name="820">820</a>|Custodian Account not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5282
+  version: 0.11.5283
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -26182,6 +26182,469 @@ paths:
       x-fbn-apistatus: Stable
       x-contentType: application/json-patch+json
       x-accepts: application/json
+  /api/portfolios/$reconcileTransactions:
+    post:
+      description: "Evaluates two sets of transactions to determine which transactions\
+        \ from each set likely match\r\nusing the rules of a specified mapping."
+      operationId: ReconcileTransactions
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              leftPortfolioId:
+                scope: street
+                code: Global-Equity
+              rightPortfolioId:
+                scope: custodian
+                code: Global-Equity
+              fromTransactionDate: 2019-04-01T12:00:00.0000000+00:00
+              toTransactionDate: 2019-05-01T12:00:00.0000000+00:00
+              propertyKeys:
+              - Instrument/default/Name
+              - Transaction/common/Strategy
+            schema:
+              $ref: '#/components/schemas/TransactionReconciliationRequest'
+          application/json:
+            example:
+              leftPortfolioId:
+                scope: street
+                code: Global-Equity
+              rightPortfolioId:
+                scope: custodian
+                code: Global-Equity
+              fromTransactionDate: 2019-04-01T12:00:00.0000000+00:00
+              toTransactionDate: 2019-05-01T12:00:00.0000000+00:00
+              propertyKeys:
+              - Instrument/default/Name
+              - Transaction/common/Strategy
+            schema:
+              $ref: '#/components/schemas/TransactionReconciliationRequest'
+          text/json:
+            example:
+              leftPortfolioId:
+                scope: street
+                code: Global-Equity
+              rightPortfolioId:
+                scope: custodian
+                code: Global-Equity
+              fromTransactionDate: 2019-04-01T12:00:00.0000000+00:00
+              toTransactionDate: 2019-05-01T12:00:00.0000000+00:00
+              propertyKeys:
+              - Instrument/default/Name
+              - Transaction/common/Strategy
+            schema:
+              $ref: '#/components/schemas/TransactionReconciliationRequest'
+          application/*+json:
+            example:
+              leftPortfolioId:
+                scope: street
+                code: Global-Equity
+              rightPortfolioId:
+                scope: custodian
+                code: Global-Equity
+              fromTransactionDate: 2019-04-01T12:00:00.0000000+00:00
+              toTransactionDate: 2019-05-01T12:00:00.0000000+00:00
+              propertyKeys:
+              - Instrument/default/Name
+              - Transaction/common/Strategy
+            schema:
+              $ref: '#/components/schemas/TransactionReconciliationRequest'
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                mapping:
+                  scope: default
+                  code: TransactionReconciliationMapping
+                  name: Mapping Name
+                  reconciliationType: Transaction
+                  rules:
+                  - left: TransactionId
+                    right: TransactionId
+                    comparisonType: Equals
+                    weight: 10
+                    isCaseSensitive: false
+                  - left: InstrumentUid
+                    right: InstrumentUid
+                    comparisonType: Equals
+                    weight: 5
+                    isCaseSensitive: false
+                  - left: TransactionPrice
+                    right: TransactionPrice
+                    comparisonType: Equals
+                    weight: 1
+                    isCaseSensitive: false
+                  - left: TransactionCurrency
+                    right: TransactionCurrency
+                    comparisonType: Equals
+                    weight: 1
+                    isCaseSensitive: false
+                  - left: TransactionDate
+                    right: TransactionDate
+                    comparisonType: SameDate
+                    weight: 1
+                    isCaseSensitive: false
+                  - left: SettlementDate
+                    right: SettlementDate
+                    comparisonType: SameDate
+                    weight: 1
+                    isCaseSensitive: false
+                  - left: CounterpartyId
+                    right: CounterpartyId
+                    comparisonType: Equals
+                    weight: 1
+                    isCaseSensitive: false
+                  - left: ExchangeRate
+                    right: ExchangeRate
+                    comparisonType: WithinPercentage
+                    comparisonValue: 0.5
+                    weight: 1
+                    isCaseSensitive: false
+                data:
+                - left:
+                    transactionId: TXN-001
+                    type: BUY
+                    instrumentIdentifiers:
+                      Instrument/default/Figi: BBG000B9XRY4
+                    instrumentScope: default
+                    instrumentUid: LUID_008XGQ1D
+                    transactionDate: 2019-04-02T12:00:00.0000000+00:00
+                    settlementDate: 2019-04-05T12:00:00.0000000+00:00
+                    units: 100
+                    transactionPrice:
+                      price: 199.23
+                      type: Price
+                    totalConsideration:
+                      amount: 20000
+                      currency: USD
+                    exchangeRate: 1.31
+                    transactionCurrency: USD
+                    properties:
+                      Instrument/default/Name:
+                        key: Instrument/default/Name
+                        value:
+                          labelValue: APPLE INC
+                      Transaction/common/Strategy:
+                        key: Transaction/common/Strategy
+                        value:
+                          labelValue: Strategy 1
+                    source: ""
+                    entryDateTime: 2019-04-02T16:30:15.0000000+00:00
+                    transactionStatus: Active
+                  right:
+                    transactionId: TXN-001
+                    type: BUY
+                    instrumentIdentifiers:
+                      Instrument/default/Figi: BBG000B9XRY4
+                    instrumentScope: default
+                    instrumentUid: LUID_008XGQ1D
+                    transactionDate: 2019-04-02T12:00:00.0000000+00:00
+                    settlementDate: 2019-04-05T12:00:00.0000000+00:00
+                    units: 100
+                    transactionPrice:
+                      price: 199.23
+                      type: Price
+                    totalConsideration:
+                      amount: 20000
+                      currency: USD
+                    exchangeRate: 1.31
+                    transactionCurrency: USD
+                    properties:
+                      Instrument/default/Name:
+                        key: Instrument/default/Name
+                        value:
+                          labelValue: APPLE INC
+                      Transaction/common/Strategy:
+                        key: Transaction/common/Strategy
+                        value:
+                          labelValue: Strategy 1
+                    source: custodian file /var/data/xyz
+                    entryDateTime: 2019-04-02T16:30:15.0000000+00:00
+                    transactionStatus: Active
+                  percentageMatch: 100
+                  mappingRuleSetResults:
+                  - true
+                  - true
+                  - true
+                  - true
+                  - true
+                  - true
+                  - true
+                  - true
+              schema:
+                $ref: '#/components/schemas/TransactionsReconciliationsResponse'
+            application/json:
+              example:
+                mapping:
+                  scope: default
+                  code: TransactionReconciliationMapping
+                  name: Mapping Name
+                  reconciliationType: Transaction
+                  rules:
+                  - left: TransactionId
+                    right: TransactionId
+                    comparisonType: Equals
+                    weight: 10
+                    isCaseSensitive: false
+                  - left: InstrumentUid
+                    right: InstrumentUid
+                    comparisonType: Equals
+                    weight: 5
+                    isCaseSensitive: false
+                  - left: TransactionPrice
+                    right: TransactionPrice
+                    comparisonType: Equals
+                    weight: 1
+                    isCaseSensitive: false
+                  - left: TransactionCurrency
+                    right: TransactionCurrency
+                    comparisonType: Equals
+                    weight: 1
+                    isCaseSensitive: false
+                  - left: TransactionDate
+                    right: TransactionDate
+                    comparisonType: SameDate
+                    weight: 1
+                    isCaseSensitive: false
+                  - left: SettlementDate
+                    right: SettlementDate
+                    comparisonType: SameDate
+                    weight: 1
+                    isCaseSensitive: false
+                  - left: CounterpartyId
+                    right: CounterpartyId
+                    comparisonType: Equals
+                    weight: 1
+                    isCaseSensitive: false
+                  - left: ExchangeRate
+                    right: ExchangeRate
+                    comparisonType: WithinPercentage
+                    comparisonValue: 0.5
+                    weight: 1
+                    isCaseSensitive: false
+                data:
+                - left:
+                    transactionId: TXN-001
+                    type: BUY
+                    instrumentIdentifiers:
+                      Instrument/default/Figi: BBG000B9XRY4
+                    instrumentScope: default
+                    instrumentUid: LUID_008XGQ1D
+                    transactionDate: 2019-04-02T12:00:00.0000000+00:00
+                    settlementDate: 2019-04-05T12:00:00.0000000+00:00
+                    units: 100
+                    transactionPrice:
+                      price: 199.23
+                      type: Price
+                    totalConsideration:
+                      amount: 20000
+                      currency: USD
+                    exchangeRate: 1.31
+                    transactionCurrency: USD
+                    properties:
+                      Instrument/default/Name:
+                        key: Instrument/default/Name
+                        value:
+                          labelValue: APPLE INC
+                      Transaction/common/Strategy:
+                        key: Transaction/common/Strategy
+                        value:
+                          labelValue: Strategy 1
+                    source: ""
+                    entryDateTime: 2019-04-02T16:30:15.0000000+00:00
+                    transactionStatus: Active
+                  right:
+                    transactionId: TXN-001
+                    type: BUY
+                    instrumentIdentifiers:
+                      Instrument/default/Figi: BBG000B9XRY4
+                    instrumentScope: default
+                    instrumentUid: LUID_008XGQ1D
+                    transactionDate: 2019-04-02T12:00:00.0000000+00:00
+                    settlementDate: 2019-04-05T12:00:00.0000000+00:00
+                    units: 100
+                    transactionPrice:
+                      price: 199.23
+                      type: Price
+                    totalConsideration:
+                      amount: 20000
+                      currency: USD
+                    exchangeRate: 1.31
+                    transactionCurrency: USD
+                    properties:
+                      Instrument/default/Name:
+                        key: Instrument/default/Name
+                        value:
+                          labelValue: APPLE INC
+                      Transaction/common/Strategy:
+                        key: Transaction/common/Strategy
+                        value:
+                          labelValue: Strategy 1
+                    source: custodian file /var/data/xyz
+                    entryDateTime: 2019-04-02T16:30:15.0000000+00:00
+                    transactionStatus: Active
+                  percentageMatch: 100
+                  mappingRuleSetResults:
+                  - true
+                  - true
+                  - true
+                  - true
+                  - true
+                  - true
+                  - true
+                  - true
+              schema:
+                $ref: '#/components/schemas/TransactionsReconciliationsResponse'
+            text/json:
+              example:
+                mapping:
+                  scope: default
+                  code: TransactionReconciliationMapping
+                  name: Mapping Name
+                  reconciliationType: Transaction
+                  rules:
+                  - left: TransactionId
+                    right: TransactionId
+                    comparisonType: Equals
+                    weight: 10
+                    isCaseSensitive: false
+                  - left: InstrumentUid
+                    right: InstrumentUid
+                    comparisonType: Equals
+                    weight: 5
+                    isCaseSensitive: false
+                  - left: TransactionPrice
+                    right: TransactionPrice
+                    comparisonType: Equals
+                    weight: 1
+                    isCaseSensitive: false
+                  - left: TransactionCurrency
+                    right: TransactionCurrency
+                    comparisonType: Equals
+                    weight: 1
+                    isCaseSensitive: false
+                  - left: TransactionDate
+                    right: TransactionDate
+                    comparisonType: SameDate
+                    weight: 1
+                    isCaseSensitive: false
+                  - left: SettlementDate
+                    right: SettlementDate
+                    comparisonType: SameDate
+                    weight: 1
+                    isCaseSensitive: false
+                  - left: CounterpartyId
+                    right: CounterpartyId
+                    comparisonType: Equals
+                    weight: 1
+                    isCaseSensitive: false
+                  - left: ExchangeRate
+                    right: ExchangeRate
+                    comparisonType: WithinPercentage
+                    comparisonValue: 0.5
+                    weight: 1
+                    isCaseSensitive: false
+                data:
+                - left:
+                    transactionId: TXN-001
+                    type: BUY
+                    instrumentIdentifiers:
+                      Instrument/default/Figi: BBG000B9XRY4
+                    instrumentScope: default
+                    instrumentUid: LUID_008XGQ1D
+                    transactionDate: 2019-04-02T12:00:00.0000000+00:00
+                    settlementDate: 2019-04-05T12:00:00.0000000+00:00
+                    units: 100
+                    transactionPrice:
+                      price: 199.23
+                      type: Price
+                    totalConsideration:
+                      amount: 20000
+                      currency: USD
+                    exchangeRate: 1.31
+                    transactionCurrency: USD
+                    properties:
+                      Instrument/default/Name:
+                        key: Instrument/default/Name
+                        value:
+                          labelValue: APPLE INC
+                      Transaction/common/Strategy:
+                        key: Transaction/common/Strategy
+                        value:
+                          labelValue: Strategy 1
+                    source: ""
+                    entryDateTime: 2019-04-02T16:30:15.0000000+00:00
+                    transactionStatus: Active
+                  right:
+                    transactionId: TXN-001
+                    type: BUY
+                    instrumentIdentifiers:
+                      Instrument/default/Figi: BBG000B9XRY4
+                    instrumentScope: default
+                    instrumentUid: LUID_008XGQ1D
+                    transactionDate: 2019-04-02T12:00:00.0000000+00:00
+                    settlementDate: 2019-04-05T12:00:00.0000000+00:00
+                    units: 100
+                    transactionPrice:
+                      price: 199.23
+                      type: Price
+                    totalConsideration:
+                      amount: 20000
+                      currency: USD
+                    exchangeRate: 1.31
+                    transactionCurrency: USD
+                    properties:
+                      Instrument/default/Name:
+                        key: Instrument/default/Name
+                        value:
+                          labelValue: APPLE INC
+                      Transaction/common/Strategy:
+                        key: Transaction/common/Strategy
+                        value:
+                          labelValue: Strategy 1
+                    source: custodian file /var/data/xyz
+                    entryDateTime: 2019-04-02T16:30:15.0000000+00:00
+                    transactionStatus: Active
+                  percentageMatch: 100
+                  mappingRuleSetResults:
+                  - true
+                  - true
+                  - true
+                  - true
+                  - true
+                  - true
+                  - true
+                  - true
+              schema:
+                $ref: '#/components/schemas/TransactionsReconciliationsResponse'
+          description: The transaction reconciliation data for the supplied portfolios.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] ReconcileTransactions: Perform a Transactions Reconciliation.'
+      tags:
+      - Reconciliations
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
   /api/portfolios/$reconcileValuation:
     post:
       description: Perform valuation of one or two set of holdings using different
@@ -26514,6 +26977,816 @@ paths:
       - Reconciliations
       x-fbn-apistatus: Stable
       x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/portfolios/mapping:
+    get:
+      description: Lists all mappings this user is entitled to see
+      operationId: ListReconciliationMappings
+      parameters:
+      - description: "Optional parameter to specify which type of mappings should\
+          \ be returned.\r\nDefaults to Transaction if not provided."
+        explode: true
+        in: query
+        name: reconciliationType
+        required: false
+        schema:
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfMapping'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfMapping'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/ResourceListOfMapping'
+          description: The mappings that the caller has access to.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] ListReconciliationMappings: List the reconciliation
+        mappings'
+      tags:
+      - Reconciliations
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    post:
+      description: "If no mapping exists with the specified scope and code will create\
+        \ a new one.\r\nElse will update the existing mapping"
+      operationId: UpsertReconciliationMapping
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              scope: default
+              code: TransactionReconciliationMapping
+              name: Mapping Name
+              reconciliationType: Transaction
+              rules:
+              - left: TransactionId
+                right: TransactionId
+                comparisonType: Equals
+                weight: 10
+                isCaseSensitive: false
+              - left: InstrumentUid
+                right: InstrumentUid
+                comparisonType: Equals
+                weight: 5
+                isCaseSensitive: false
+              - left: TransactionPrice
+                right: TransactionPrice
+                comparisonType: Equals
+                weight: 1
+                isCaseSensitive: false
+              - left: TransactionCurrency
+                right: TransactionCurrency
+                comparisonType: Equals
+                weight: 1
+                isCaseSensitive: false
+              - left: TransactionDate
+                right: TransactionDate
+                comparisonType: SameDate
+                weight: 1
+                isCaseSensitive: false
+              - left: SettlementDate
+                right: SettlementDate
+                comparisonType: SameDate
+                weight: 1
+                isCaseSensitive: false
+              - left: CounterpartyId
+                right: CounterpartyId
+                comparisonType: Equals
+                weight: 1
+                isCaseSensitive: false
+              - left: ExchangeRate
+                right: ExchangeRate
+                comparisonType: WithinPercentage
+                comparisonValue: 0.5
+                weight: 1
+                isCaseSensitive: false
+              - left: Type
+                right: Type
+                comparisonType: MappedString
+                weight: 1
+                mappedStrings:
+                - leftValue: Buy
+                  rightValue: Purchase
+                  mappingDirection: BothWays
+                  isCaseSensitive: false
+                isCaseSensitive: false
+            schema:
+              $ref: '#/components/schemas/Mapping'
+          application/json:
+            example:
+              scope: default
+              code: TransactionReconciliationMapping
+              name: Mapping Name
+              reconciliationType: Transaction
+              rules:
+              - left: TransactionId
+                right: TransactionId
+                comparisonType: Equals
+                weight: 10
+                isCaseSensitive: false
+              - left: InstrumentUid
+                right: InstrumentUid
+                comparisonType: Equals
+                weight: 5
+                isCaseSensitive: false
+              - left: TransactionPrice
+                right: TransactionPrice
+                comparisonType: Equals
+                weight: 1
+                isCaseSensitive: false
+              - left: TransactionCurrency
+                right: TransactionCurrency
+                comparisonType: Equals
+                weight: 1
+                isCaseSensitive: false
+              - left: TransactionDate
+                right: TransactionDate
+                comparisonType: SameDate
+                weight: 1
+                isCaseSensitive: false
+              - left: SettlementDate
+                right: SettlementDate
+                comparisonType: SameDate
+                weight: 1
+                isCaseSensitive: false
+              - left: CounterpartyId
+                right: CounterpartyId
+                comparisonType: Equals
+                weight: 1
+                isCaseSensitive: false
+              - left: ExchangeRate
+                right: ExchangeRate
+                comparisonType: WithinPercentage
+                comparisonValue: 0.5
+                weight: 1
+                isCaseSensitive: false
+              - left: Type
+                right: Type
+                comparisonType: MappedString
+                weight: 1
+                mappedStrings:
+                - leftValue: Buy
+                  rightValue: Purchase
+                  mappingDirection: BothWays
+                  isCaseSensitive: false
+                isCaseSensitive: false
+            schema:
+              $ref: '#/components/schemas/Mapping'
+          text/json:
+            example:
+              scope: default
+              code: TransactionReconciliationMapping
+              name: Mapping Name
+              reconciliationType: Transaction
+              rules:
+              - left: TransactionId
+                right: TransactionId
+                comparisonType: Equals
+                weight: 10
+                isCaseSensitive: false
+              - left: InstrumentUid
+                right: InstrumentUid
+                comparisonType: Equals
+                weight: 5
+                isCaseSensitive: false
+              - left: TransactionPrice
+                right: TransactionPrice
+                comparisonType: Equals
+                weight: 1
+                isCaseSensitive: false
+              - left: TransactionCurrency
+                right: TransactionCurrency
+                comparisonType: Equals
+                weight: 1
+                isCaseSensitive: false
+              - left: TransactionDate
+                right: TransactionDate
+                comparisonType: SameDate
+                weight: 1
+                isCaseSensitive: false
+              - left: SettlementDate
+                right: SettlementDate
+                comparisonType: SameDate
+                weight: 1
+                isCaseSensitive: false
+              - left: CounterpartyId
+                right: CounterpartyId
+                comparisonType: Equals
+                weight: 1
+                isCaseSensitive: false
+              - left: ExchangeRate
+                right: ExchangeRate
+                comparisonType: WithinPercentage
+                comparisonValue: 0.5
+                weight: 1
+                isCaseSensitive: false
+              - left: Type
+                right: Type
+                comparisonType: MappedString
+                weight: 1
+                mappedStrings:
+                - leftValue: Buy
+                  rightValue: Purchase
+                  mappingDirection: BothWays
+                  isCaseSensitive: false
+                isCaseSensitive: false
+            schema:
+              $ref: '#/components/schemas/Mapping'
+          application/*+json:
+            example:
+              scope: default
+              code: TransactionReconciliationMapping
+              name: Mapping Name
+              reconciliationType: Transaction
+              rules:
+              - left: TransactionId
+                right: TransactionId
+                comparisonType: Equals
+                weight: 10
+                isCaseSensitive: false
+              - left: InstrumentUid
+                right: InstrumentUid
+                comparisonType: Equals
+                weight: 5
+                isCaseSensitive: false
+              - left: TransactionPrice
+                right: TransactionPrice
+                comparisonType: Equals
+                weight: 1
+                isCaseSensitive: false
+              - left: TransactionCurrency
+                right: TransactionCurrency
+                comparisonType: Equals
+                weight: 1
+                isCaseSensitive: false
+              - left: TransactionDate
+                right: TransactionDate
+                comparisonType: SameDate
+                weight: 1
+                isCaseSensitive: false
+              - left: SettlementDate
+                right: SettlementDate
+                comparisonType: SameDate
+                weight: 1
+                isCaseSensitive: false
+              - left: CounterpartyId
+                right: CounterpartyId
+                comparisonType: Equals
+                weight: 1
+                isCaseSensitive: false
+              - left: ExchangeRate
+                right: ExchangeRate
+                comparisonType: WithinPercentage
+                comparisonValue: 0.5
+                weight: 1
+                isCaseSensitive: false
+              - left: Type
+                right: Type
+                comparisonType: MappedString
+                weight: 1
+                mappedStrings:
+                - leftValue: Buy
+                  rightValue: Purchase
+                  mappingDirection: BothWays
+                  isCaseSensitive: false
+                isCaseSensitive: false
+            schema:
+              $ref: '#/components/schemas/Mapping'
+        description: The mapping to be created / updated.
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                scope: default
+                code: TransactionReconciliationMapping
+                name: Mapping Name
+                reconciliationType: Transaction
+                rules:
+                - left: TransactionId
+                  right: TransactionId
+                  comparisonType: Equals
+                  weight: 10
+                  isCaseSensitive: false
+                - left: InstrumentUid
+                  right: InstrumentUid
+                  comparisonType: Equals
+                  weight: 5
+                  isCaseSensitive: false
+                - left: TransactionPrice
+                  right: TransactionPrice
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: TransactionCurrency
+                  right: TransactionCurrency
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: TransactionDate
+                  right: TransactionDate
+                  comparisonType: SameDate
+                  weight: 1
+                  isCaseSensitive: false
+                - left: SettlementDate
+                  right: SettlementDate
+                  comparisonType: SameDate
+                  weight: 1
+                  isCaseSensitive: false
+                - left: CounterpartyId
+                  right: CounterpartyId
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: ExchangeRate
+                  right: ExchangeRate
+                  comparisonType: WithinPercentage
+                  comparisonValue: 0.5
+                  weight: 1
+                  isCaseSensitive: false
+                - left: Type
+                  right: Type
+                  comparisonType: MappedString
+                  weight: 1
+                  mappedStrings:
+                  - leftValue: Buy
+                    rightValue: Purchase
+                    mappingDirection: BothWays
+                    isCaseSensitive: false
+                  isCaseSensitive: false
+              schema:
+                $ref: '#/components/schemas/Mapping'
+            application/json:
+              example:
+                scope: default
+                code: TransactionReconciliationMapping
+                name: Mapping Name
+                reconciliationType: Transaction
+                rules:
+                - left: TransactionId
+                  right: TransactionId
+                  comparisonType: Equals
+                  weight: 10
+                  isCaseSensitive: false
+                - left: InstrumentUid
+                  right: InstrumentUid
+                  comparisonType: Equals
+                  weight: 5
+                  isCaseSensitive: false
+                - left: TransactionPrice
+                  right: TransactionPrice
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: TransactionCurrency
+                  right: TransactionCurrency
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: TransactionDate
+                  right: TransactionDate
+                  comparisonType: SameDate
+                  weight: 1
+                  isCaseSensitive: false
+                - left: SettlementDate
+                  right: SettlementDate
+                  comparisonType: SameDate
+                  weight: 1
+                  isCaseSensitive: false
+                - left: CounterpartyId
+                  right: CounterpartyId
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: ExchangeRate
+                  right: ExchangeRate
+                  comparisonType: WithinPercentage
+                  comparisonValue: 0.5
+                  weight: 1
+                  isCaseSensitive: false
+                - left: Type
+                  right: Type
+                  comparisonType: MappedString
+                  weight: 1
+                  mappedStrings:
+                  - leftValue: Buy
+                    rightValue: Purchase
+                    mappingDirection: BothWays
+                    isCaseSensitive: false
+                  isCaseSensitive: false
+              schema:
+                $ref: '#/components/schemas/Mapping'
+            text/json:
+              example:
+                scope: default
+                code: TransactionReconciliationMapping
+                name: Mapping Name
+                reconciliationType: Transaction
+                rules:
+                - left: TransactionId
+                  right: TransactionId
+                  comparisonType: Equals
+                  weight: 10
+                  isCaseSensitive: false
+                - left: InstrumentUid
+                  right: InstrumentUid
+                  comparisonType: Equals
+                  weight: 5
+                  isCaseSensitive: false
+                - left: TransactionPrice
+                  right: TransactionPrice
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: TransactionCurrency
+                  right: TransactionCurrency
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: TransactionDate
+                  right: TransactionDate
+                  comparisonType: SameDate
+                  weight: 1
+                  isCaseSensitive: false
+                - left: SettlementDate
+                  right: SettlementDate
+                  comparisonType: SameDate
+                  weight: 1
+                  isCaseSensitive: false
+                - left: CounterpartyId
+                  right: CounterpartyId
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: ExchangeRate
+                  right: ExchangeRate
+                  comparisonType: WithinPercentage
+                  comparisonValue: 0.5
+                  weight: 1
+                  isCaseSensitive: false
+                - left: Type
+                  right: Type
+                  comparisonType: MappedString
+                  weight: 1
+                  mappedStrings:
+                  - leftValue: Buy
+                    rightValue: Purchase
+                    mappingDirection: BothWays
+                    isCaseSensitive: false
+                  isCaseSensitive: false
+              schema:
+                $ref: '#/components/schemas/Mapping'
+          description: The created / updated mapping.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] UpsertReconciliationMapping: Create or update a mapping'
+      tags:
+      - Reconciliations
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/portfolios/mapping/{scope}/{code}:
+    delete:
+      description: Deletes the mapping identified by the scope and code
+      operationId: DeleteReconciliationMapping
+      parameters:
+      - description: The scope of the mapping.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The code fof the mapping.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                type: string
+            application/json:
+              schema:
+                type: string
+            text/json:
+              schema:
+                type: string
+          description: A string specifying the scope and code that were deleted
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] DeleteReconciliationMapping: Delete a mapping'
+      tags:
+      - Reconciliations
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    get:
+      description: Gets a mapping identified by the given scope and code
+      operationId: GetReconciliationMapping
+      parameters:
+      - description: The scope of the mapping.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The code fof the mapping.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                scope: default
+                code: TransactionReconciliationMapping
+                name: Mapping Name
+                reconciliationType: Transaction
+                rules:
+                - left: TransactionId
+                  right: TransactionId
+                  comparisonType: Equals
+                  weight: 10
+                  isCaseSensitive: false
+                - left: InstrumentUid
+                  right: InstrumentUid
+                  comparisonType: Equals
+                  weight: 5
+                  isCaseSensitive: false
+                - left: TransactionPrice
+                  right: TransactionPrice
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: TransactionCurrency
+                  right: TransactionCurrency
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: TransactionDate
+                  right: TransactionDate
+                  comparisonType: SameDate
+                  weight: 1
+                  isCaseSensitive: false
+                - left: SettlementDate
+                  right: SettlementDate
+                  comparisonType: SameDate
+                  weight: 1
+                  isCaseSensitive: false
+                - left: CounterpartyId
+                  right: CounterpartyId
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: ExchangeRate
+                  right: ExchangeRate
+                  comparisonType: WithinPercentage
+                  comparisonValue: 0.5
+                  weight: 1
+                  isCaseSensitive: false
+                - left: Type
+                  right: Type
+                  comparisonType: MappedString
+                  weight: 1
+                  mappedStrings:
+                  - leftValue: Buy
+                    rightValue: Purchase
+                    mappingDirection: BothWays
+                    isCaseSensitive: false
+                  isCaseSensitive: false
+              schema:
+                $ref: '#/components/schemas/Mapping'
+            application/json:
+              example:
+                scope: default
+                code: TransactionReconciliationMapping
+                name: Mapping Name
+                reconciliationType: Transaction
+                rules:
+                - left: TransactionId
+                  right: TransactionId
+                  comparisonType: Equals
+                  weight: 10
+                  isCaseSensitive: false
+                - left: InstrumentUid
+                  right: InstrumentUid
+                  comparisonType: Equals
+                  weight: 5
+                  isCaseSensitive: false
+                - left: TransactionPrice
+                  right: TransactionPrice
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: TransactionCurrency
+                  right: TransactionCurrency
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: TransactionDate
+                  right: TransactionDate
+                  comparisonType: SameDate
+                  weight: 1
+                  isCaseSensitive: false
+                - left: SettlementDate
+                  right: SettlementDate
+                  comparisonType: SameDate
+                  weight: 1
+                  isCaseSensitive: false
+                - left: CounterpartyId
+                  right: CounterpartyId
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: ExchangeRate
+                  right: ExchangeRate
+                  comparisonType: WithinPercentage
+                  comparisonValue: 0.5
+                  weight: 1
+                  isCaseSensitive: false
+                - left: Type
+                  right: Type
+                  comparisonType: MappedString
+                  weight: 1
+                  mappedStrings:
+                  - leftValue: Buy
+                    rightValue: Purchase
+                    mappingDirection: BothWays
+                    isCaseSensitive: false
+                  isCaseSensitive: false
+              schema:
+                $ref: '#/components/schemas/Mapping'
+            text/json:
+              example:
+                scope: default
+                code: TransactionReconciliationMapping
+                name: Mapping Name
+                reconciliationType: Transaction
+                rules:
+                - left: TransactionId
+                  right: TransactionId
+                  comparisonType: Equals
+                  weight: 10
+                  isCaseSensitive: false
+                - left: InstrumentUid
+                  right: InstrumentUid
+                  comparisonType: Equals
+                  weight: 5
+                  isCaseSensitive: false
+                - left: TransactionPrice
+                  right: TransactionPrice
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: TransactionCurrency
+                  right: TransactionCurrency
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: TransactionDate
+                  right: TransactionDate
+                  comparisonType: SameDate
+                  weight: 1
+                  isCaseSensitive: false
+                - left: SettlementDate
+                  right: SettlementDate
+                  comparisonType: SameDate
+                  weight: 1
+                  isCaseSensitive: false
+                - left: CounterpartyId
+                  right: CounterpartyId
+                  comparisonType: Equals
+                  weight: 1
+                  isCaseSensitive: false
+                - left: ExchangeRate
+                  right: ExchangeRate
+                  comparisonType: WithinPercentage
+                  comparisonValue: 0.5
+                  weight: 1
+                  isCaseSensitive: false
+                - left: Type
+                  right: Type
+                  comparisonType: MappedString
+                  weight: 1
+                  mappedStrings:
+                  - leftValue: Buy
+                    rightValue: Purchase
+                    mappingDirection: BothWays
+                    isCaseSensitive: false
+                  isCaseSensitive: false
+              schema:
+                $ref: '#/components/schemas/Mapping'
+          description: The mapping with the specified scope/code.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetReconciliationMapping: Get a mapping'
+      tags:
+      - Reconciliations
+      x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/portfolios/{scope}:
     get:
@@ -57240,6 +58513,156 @@ components:
       - code
       - name
       type: object
+    MappedString:
+      additionalProperties: false
+      example:
+        isCaseSensitive: true
+        leftValue: leftValue
+        rightValue: rightValue
+        mappingDirection: mappingDirection
+      properties:
+        leftValue:
+          nullable: true
+          type: string
+        rightValue:
+          nullable: true
+          type: string
+        mappingDirection:
+          nullable: true
+          type: string
+        isCaseSensitive:
+          type: boolean
+      type: object
+    Mapping:
+      additionalProperties: false
+      description: Defines the rule set to be used to determine if entries should
+        be considered as a match.
+      example:
+        code: code
+        reconciliationType: reconciliationType
+        scope: scope
+        name: name
+        rules:
+        - mappedStrings:
+          - isCaseSensitive: true
+            leftValue: leftValue
+            rightValue: rightValue
+            mappingDirection: mappingDirection
+          - isCaseSensitive: true
+            leftValue: leftValue
+            rightValue: rightValue
+            mappingDirection: mappingDirection
+          isCaseSensitive: true
+          left: left
+          comparisonValue: 0.8008281904610115
+          comparisonType: comparisonType
+          weight: 6.027456183070403
+          right: right
+        - mappedStrings:
+          - isCaseSensitive: true
+            leftValue: leftValue
+            rightValue: rightValue
+            mappingDirection: mappingDirection
+          - isCaseSensitive: true
+            leftValue: leftValue
+            rightValue: rightValue
+            mappingDirection: mappingDirection
+          isCaseSensitive: true
+          left: left
+          comparisonValue: 0.8008281904610115
+          comparisonType: comparisonType
+          weight: 6.027456183070403
+          right: right
+      properties:
+        scope:
+          description: The scope for this mapping.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        code:
+          description: The code for this mapping.
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        name:
+          description: The mapping name
+          minLength: 1
+          pattern: ^[\s\S]*$
+          type: string
+        reconciliationType:
+          description: What type of reconciliation this mapping is for
+          minLength: 1
+          type: string
+        rules:
+          description: The rules in this mapping, keyed by the left field/property
+            name
+          items:
+            $ref: '#/components/schemas/MappingRule'
+          nullable: true
+          type: array
+      required:
+      - code
+      - name
+      - reconciliationType
+      - scope
+      type: object
+    MappingRule:
+      additionalProperties: false
+      description: An individual mapping rule, for mapping between a left and right
+        field/property.
+      example:
+        mappedStrings:
+        - isCaseSensitive: true
+          leftValue: leftValue
+          rightValue: rightValue
+          mappingDirection: mappingDirection
+        - isCaseSensitive: true
+          leftValue: leftValue
+          rightValue: rightValue
+          mappingDirection: mappingDirection
+        isCaseSensitive: true
+        left: left
+        comparisonValue: 0.8008281904610115
+        comparisonType: comparisonType
+        weight: 6.027456183070403
+        right: right
+      properties:
+        left:
+          description: The name of the field/property in the left resource (e.g. a
+            transaction)
+          nullable: true
+          type: string
+        right:
+          description: The name of the field/property in the right resource (e.g.
+            a transaction)
+          nullable: true
+          type: string
+        comparisonType:
+          description: The type of comparison to be performed
+          nullable: true
+          type: string
+        comparisonValue:
+          description: The (optional) value used with Finbourne.WebApi.Interface.Dto.Mappings.MappingRule.ComparisonType
+          format: double
+          nullable: true
+          type: number
+        weight:
+          description: A factor used to influence the importance of this item.
+          format: double
+          type: number
+        mappedStrings:
+          description: The (optional) value used to map string values.
+          items:
+            $ref: '#/components/schemas/MappedString'
+          nullable: true
+          type: array
+        isCaseSensitive:
+          description: Should string comparisons take case into account, defaults
+            to `false`.
+          type: boolean
+      type: object
     MarketContext:
       additionalProperties: false
       description: "Market context node. This defines how LUSID processes parts of\
@@ -64792,6 +66215,482 @@ components:
       - $ref: '#/components/schemas/ReconciliationRule'
       - $ref: '#/components/schemas/ReconcileDateTimeRule_allOf'
       description: Comparison of date time values
+    ReconciledTransaction:
+      additionalProperties: false
+      description: "Information about reconciled transactions.\r\nAt least one of\
+        \ Finbourne.WebApi.Interface.Dto.Reconciliation.ReconciledTransaction.Left\
+        \ and Finbourne.WebApi.Interface.Dto.Reconciliation.ReconciledTransaction.Right\
+        \ will be populated."
+      example:
+        left:
+          transactionCurrency: transactionCurrency
+          otcConfirmation:
+            counterpartyAgreementId:
+              code: code
+              scope: scope
+          instrumentScope: instrumentScope
+          transactionStatus: Active
+          orderId:
+            code: code
+            scope: scope
+          entryDateTime: 2000-01-23T04:56:07.000+00:00
+          transactionPrice:
+            price: 5.962133916683182
+            type: Price
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          allocationId:
+            code: code
+            scope: scope
+          settlementDate: 2000-01-23T04:56:07.000+00:00
+          units: 1.4658129805029452
+          source: source
+          cancelDateTime: 2000-01-23T04:56:07.000+00:00
+          type: type
+          transactionDate: 2000-01-23T04:56:07.000+00:00
+          totalConsideration:
+            amount: 1.4658129805029452
+            currency: currency
+          transactionId: transactionId
+          counterpartyId: counterpartyId
+          exchangeRate: 5.637376656633329
+          instrumentUid: instrumentUid
+          custodianAccount:
+            custodian:
+              relationships:
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                traversalDirection: traversalDirection
+                relatedEntity:
+                  entityType: entityType
+                  displayName: displayName
+                  identifiers:
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  scope: scope
+                  entityId:
+                    key: entityId
+                  lusidUniqueId:
+                    type: type
+                    value: value
+                  href: https://openapi-generator.tech
+                  properties:
+                    key:
+                      effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                      value:
+                        metricValue:
+                          unit: unit
+                          value: 0.8008281904610115
+                        labelValue: labelValue
+                        labelValueSet:
+                          values:
+                          - values
+                          - values
+                      effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                      key: key
+                version:
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 6
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                relationshipDefinitionId:
+                  code: code
+                  scope: scope
+                traversalDescription: traversalDescription
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                traversalDirection: traversalDirection
+                relatedEntity:
+                  entityType: entityType
+                  displayName: displayName
+                  identifiers:
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  scope: scope
+                  entityId:
+                    key: entityId
+                  lusidUniqueId:
+                    type: type
+                    value: value
+                  href: https://openapi-generator.tech
+                  properties:
+                    key:
+                      effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                      value:
+                        metricValue:
+                          unit: unit
+                          value: 0.8008281904610115
+                        labelValue: labelValue
+                        labelValueSet:
+                          values:
+                          - values
+                          - values
+                      effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                      key: key
+                version:
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 6
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                relationshipDefinitionId:
+                  code: code
+                  scope: scope
+                traversalDescription: traversalDescription
+              lusidLegalEntityId: lusidLegalEntityId
+              counterpartyRiskInformation:
+                creditRatings:
+                - rating: rating
+                  ratingSource: ratingSource
+                - rating: rating
+                  ratingSource: ratingSource
+                industryClassifiers:
+                - classificationCode: classificationCode
+                  classificationSystemName: classificationSystemName
+                - classificationCode: classificationCode
+                  classificationSystemName: classificationSystemName
+                countryOfRisk: countryOfRisk
+              displayName: displayName
+              identifiers:
+                key:
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+              description: description
+              links:
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              href: https://openapi-generator.tech
+              version:
+                asAtModified: 2000-01-23T04:56:07.000+00:00
+                userIdModified: userIdModified
+                asAtVersionNumber: 6
+                asAtCreated: 2000-01-23T04:56:07.000+00:00
+                userIdCreated: userIdCreated
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                asAtDate: 2000-01-23T04:56:07.000+00:00
+              properties:
+                key:
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            accountName: accountName
+            accountingMethod: accountingMethod
+            currency: currency
+            accountNumber: accountNumber
+            custodianAccountId:
+              code: code
+              scope: scope
+            properties:
+              key:
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+            status: status
+          properties:
+            key:
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+        percentageMatch: 1.4658129805029452
+        mappingRuleSetResults:
+        - true
+        - true
+        right:
+          transactionCurrency: transactionCurrency
+          otcConfirmation:
+            counterpartyAgreementId:
+              code: code
+              scope: scope
+          instrumentScope: instrumentScope
+          transactionStatus: Active
+          orderId:
+            code: code
+            scope: scope
+          entryDateTime: 2000-01-23T04:56:07.000+00:00
+          transactionPrice:
+            price: 5.962133916683182
+            type: Price
+          instrumentIdentifiers:
+            key: instrumentIdentifiers
+          allocationId:
+            code: code
+            scope: scope
+          settlementDate: 2000-01-23T04:56:07.000+00:00
+          units: 1.4658129805029452
+          source: source
+          cancelDateTime: 2000-01-23T04:56:07.000+00:00
+          type: type
+          transactionDate: 2000-01-23T04:56:07.000+00:00
+          totalConsideration:
+            amount: 1.4658129805029452
+            currency: currency
+          transactionId: transactionId
+          counterpartyId: counterpartyId
+          exchangeRate: 5.637376656633329
+          instrumentUid: instrumentUid
+          custodianAccount:
+            custodian:
+              relationships:
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                traversalDirection: traversalDirection
+                relatedEntity:
+                  entityType: entityType
+                  displayName: displayName
+                  identifiers:
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  scope: scope
+                  entityId:
+                    key: entityId
+                  lusidUniqueId:
+                    type: type
+                    value: value
+                  href: https://openapi-generator.tech
+                  properties:
+                    key:
+                      effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                      value:
+                        metricValue:
+                          unit: unit
+                          value: 0.8008281904610115
+                        labelValue: labelValue
+                        labelValueSet:
+                          values:
+                          - values
+                          - values
+                      effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                      key: key
+                version:
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 6
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                relationshipDefinitionId:
+                  code: code
+                  scope: scope
+                traversalDescription: traversalDescription
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                traversalDirection: traversalDirection
+                relatedEntity:
+                  entityType: entityType
+                  displayName: displayName
+                  identifiers:
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  - identifierValue: identifierValue
+                    identifierType: identifierType
+                    identifierScope: identifierScope
+                  scope: scope
+                  entityId:
+                    key: entityId
+                  lusidUniqueId:
+                    type: type
+                    value: value
+                  href: https://openapi-generator.tech
+                  properties:
+                    key:
+                      effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                      value:
+                        metricValue:
+                          unit: unit
+                          value: 0.8008281904610115
+                        labelValue: labelValue
+                        labelValueSet:
+                          values:
+                          - values
+                          - values
+                      effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                      key: key
+                version:
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 6
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                relationshipDefinitionId:
+                  code: code
+                  scope: scope
+                traversalDescription: traversalDescription
+              lusidLegalEntityId: lusidLegalEntityId
+              counterpartyRiskInformation:
+                creditRatings:
+                - rating: rating
+                  ratingSource: ratingSource
+                - rating: rating
+                  ratingSource: ratingSource
+                industryClassifiers:
+                - classificationCode: classificationCode
+                  classificationSystemName: classificationSystemName
+                - classificationCode: classificationCode
+                  classificationSystemName: classificationSystemName
+                countryOfRisk: countryOfRisk
+              displayName: displayName
+              identifiers:
+                key:
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+              description: description
+              links:
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              - method: method
+                description: description
+                href: https://openapi-generator.tech
+                relation: relation
+              href: https://openapi-generator.tech
+              version:
+                asAtModified: 2000-01-23T04:56:07.000+00:00
+                userIdModified: userIdModified
+                asAtVersionNumber: 6
+                asAtCreated: 2000-01-23T04:56:07.000+00:00
+                userIdCreated: userIdCreated
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                asAtDate: 2000-01-23T04:56:07.000+00:00
+              properties:
+                key:
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            accountName: accountName
+            accountingMethod: accountingMethod
+            currency: currency
+            accountNumber: accountNumber
+            custodianAccountId:
+              code: code
+              scope: scope
+            properties:
+              key:
+                effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+            status: status
+          properties:
+            key:
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+      properties:
+        left:
+          $ref: '#/components/schemas/Transaction'
+        right:
+          $ref: '#/components/schemas/Transaction'
+        percentageMatch:
+          description: How good a match this is considered to be.
+          format: double
+          type: number
+        mappingRuleSetResults:
+          description: "The result of each individual mapping rule result.\r\nWill\
+            \ only be present if both Finbourne.WebApi.Interface.Dto.Reconciliation.ReconciledTransaction.Left\
+            \ and Finbourne.WebApi.Interface.Dto.Reconciliation.ReconciledTransaction.Right\
+            \ are populated."
+          items:
+            type: boolean
+          nullable: true
+          type: array
+      type: object
     ReconcileNumericRule:
       allOf:
       - $ref: '#/components/schemas/ReconciliationRule'
@@ -68267,6 +70166,121 @@ components:
           description: The resources to list.
           items:
             $ref: '#/components/schemas/LegalEntity'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+      required:
+      - values
+      type: object
+    ResourceListOfMapping:
+      additionalProperties: false
+      description: A collection of resources that can be returned from requests.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - code: code
+          reconciliationType: reconciliationType
+          scope: scope
+          name: name
+          rules:
+          - mappedStrings:
+            - isCaseSensitive: true
+              leftValue: leftValue
+              rightValue: rightValue
+              mappingDirection: mappingDirection
+            - isCaseSensitive: true
+              leftValue: leftValue
+              rightValue: rightValue
+              mappingDirection: mappingDirection
+            isCaseSensitive: true
+            left: left
+            comparisonValue: 0.8008281904610115
+            comparisonType: comparisonType
+            weight: 6.027456183070403
+            right: right
+          - mappedStrings:
+            - isCaseSensitive: true
+              leftValue: leftValue
+              rightValue: rightValue
+              mappingDirection: mappingDirection
+            - isCaseSensitive: true
+              leftValue: leftValue
+              rightValue: rightValue
+              mappingDirection: mappingDirection
+            isCaseSensitive: true
+            left: left
+            comparisonValue: 0.8008281904610115
+            comparisonType: comparisonType
+            weight: 6.027456183070403
+            right: right
+        - code: code
+          reconciliationType: reconciliationType
+          scope: scope
+          name: name
+          rules:
+          - mappedStrings:
+            - isCaseSensitive: true
+              leftValue: leftValue
+              rightValue: rightValue
+              mappingDirection: mappingDirection
+            - isCaseSensitive: true
+              leftValue: leftValue
+              rightValue: rightValue
+              mappingDirection: mappingDirection
+            isCaseSensitive: true
+            left: left
+            comparisonValue: 0.8008281904610115
+            comparisonType: comparisonType
+            weight: 6.027456183070403
+            right: right
+          - mappedStrings:
+            - isCaseSensitive: true
+              leftValue: leftValue
+              rightValue: rightValue
+              mappingDirection: mappingDirection
+            - isCaseSensitive: true
+              leftValue: leftValue
+              rightValue: rightValue
+              mappingDirection: mappingDirection
+            isCaseSensitive: true
+            left: left
+            comparisonValue: 0.8008281904610115
+            comparisonType: comparisonType
+            weight: 6.027456183070403
+            right: right
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/Mapping'
           type: array
         href:
           description: The URI of the resource list.
@@ -72744,6 +74758,56 @@ components:
       - endDate
       - startDate
       type: object
+    TransactionReconciliationRequest:
+      additionalProperties: false
+      description: Specifies the parameter to be use when performing a Transaction
+        Reconciliation.
+      example:
+        mappingId:
+          code: code
+          scope: scope
+        leftPortfolioId:
+          code: code
+          scope: scope
+        rightPortfolioId:
+          code: code
+          scope: scope
+        asAt: 2000-01-23T04:56:07.000+00:00
+        toTransactionDate: 2000-01-23T04:56:07.000+00:00
+        fromTransactionDate: 2000-01-23T04:56:07.000+00:00
+        propertyKeys:
+        - propertyKeys
+        - propertyKeys
+      properties:
+        leftPortfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        rightPortfolioId:
+          $ref: '#/components/schemas/ResourceId'
+        mappingId:
+          $ref: '#/components/schemas/ResourceId'
+        fromTransactionDate:
+          format: date-time
+          type: string
+        toTransactionDate:
+          format: date-time
+          type: string
+        asAt:
+          format: date-time
+          nullable: true
+          type: string
+        propertyKeys:
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          nullable: true
+          type: array
+      required:
+      - fromTransactionDate
+      - leftPortfolioId
+      - rightPortfolioId
+      - toTransactionDate
+      type: object
     TransactionRequest:
       additionalProperties: false
       example:
@@ -73096,6 +75160,956 @@ components:
           type: array
       required:
       - transactionConfigs
+      type: object
+    TransactionsReconciliationsResponse:
+      additionalProperties: false
+      example:
+        mapping:
+          code: code
+          reconciliationType: reconciliationType
+          scope: scope
+          name: name
+          rules:
+          - mappedStrings:
+            - isCaseSensitive: true
+              leftValue: leftValue
+              rightValue: rightValue
+              mappingDirection: mappingDirection
+            - isCaseSensitive: true
+              leftValue: leftValue
+              rightValue: rightValue
+              mappingDirection: mappingDirection
+            isCaseSensitive: true
+            left: left
+            comparisonValue: 0.8008281904610115
+            comparisonType: comparisonType
+            weight: 6.027456183070403
+            right: right
+          - mappedStrings:
+            - isCaseSensitive: true
+              leftValue: leftValue
+              rightValue: rightValue
+              mappingDirection: mappingDirection
+            - isCaseSensitive: true
+              leftValue: leftValue
+              rightValue: rightValue
+              mappingDirection: mappingDirection
+            isCaseSensitive: true
+            left: left
+            comparisonValue: 0.8008281904610115
+            comparisonType: comparisonType
+            weight: 6.027456183070403
+            right: right
+        data:
+        - left:
+            transactionCurrency: transactionCurrency
+            otcConfirmation:
+              counterpartyAgreementId:
+                code: code
+                scope: scope
+            instrumentScope: instrumentScope
+            transactionStatus: Active
+            orderId:
+              code: code
+              scope: scope
+            entryDateTime: 2000-01-23T04:56:07.000+00:00
+            transactionPrice:
+              price: 5.962133916683182
+              type: Price
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            allocationId:
+              code: code
+              scope: scope
+            settlementDate: 2000-01-23T04:56:07.000+00:00
+            units: 1.4658129805029452
+            source: source
+            cancelDateTime: 2000-01-23T04:56:07.000+00:00
+            type: type
+            transactionDate: 2000-01-23T04:56:07.000+00:00
+            totalConsideration:
+              amount: 1.4658129805029452
+              currency: currency
+            transactionId: transactionId
+            counterpartyId: counterpartyId
+            exchangeRate: 5.637376656633329
+            instrumentUid: instrumentUid
+            custodianAccount:
+              custodian:
+                relationships:
+                - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  traversalDirection: traversalDirection
+                  relatedEntity:
+                    entityType: entityType
+                    displayName: displayName
+                    identifiers:
+                    - identifierValue: identifierValue
+                      identifierType: identifierType
+                      identifierScope: identifierScope
+                    - identifierValue: identifierValue
+                      identifierType: identifierType
+                      identifierScope: identifierScope
+                    scope: scope
+                    entityId:
+                      key: entityId
+                    lusidUniqueId:
+                      type: type
+                      value: value
+                    href: https://openapi-generator.tech
+                    properties:
+                      key:
+                        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                        value:
+                          metricValue:
+                            unit: unit
+                            value: 0.8008281904610115
+                          labelValue: labelValue
+                          labelValueSet:
+                            values:
+                            - values
+                            - values
+                        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                        key: key
+                  version:
+                    asAtModified: 2000-01-23T04:56:07.000+00:00
+                    userIdModified: userIdModified
+                    asAtVersionNumber: 6
+                    asAtCreated: 2000-01-23T04:56:07.000+00:00
+                    userIdCreated: userIdCreated
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    asAtDate: 2000-01-23T04:56:07.000+00:00
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  relationshipDefinitionId:
+                    code: code
+                    scope: scope
+                  traversalDescription: traversalDescription
+                - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  traversalDirection: traversalDirection
+                  relatedEntity:
+                    entityType: entityType
+                    displayName: displayName
+                    identifiers:
+                    - identifierValue: identifierValue
+                      identifierType: identifierType
+                      identifierScope: identifierScope
+                    - identifierValue: identifierValue
+                      identifierType: identifierType
+                      identifierScope: identifierScope
+                    scope: scope
+                    entityId:
+                      key: entityId
+                    lusidUniqueId:
+                      type: type
+                      value: value
+                    href: https://openapi-generator.tech
+                    properties:
+                      key:
+                        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                        value:
+                          metricValue:
+                            unit: unit
+                            value: 0.8008281904610115
+                          labelValue: labelValue
+                          labelValueSet:
+                            values:
+                            - values
+                            - values
+                        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                        key: key
+                  version:
+                    asAtModified: 2000-01-23T04:56:07.000+00:00
+                    userIdModified: userIdModified
+                    asAtVersionNumber: 6
+                    asAtCreated: 2000-01-23T04:56:07.000+00:00
+                    userIdCreated: userIdCreated
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    asAtDate: 2000-01-23T04:56:07.000+00:00
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  relationshipDefinitionId:
+                    code: code
+                    scope: scope
+                  traversalDescription: traversalDescription
+                lusidLegalEntityId: lusidLegalEntityId
+                counterpartyRiskInformation:
+                  creditRatings:
+                  - rating: rating
+                    ratingSource: ratingSource
+                  - rating: rating
+                    ratingSource: ratingSource
+                  industryClassifiers:
+                  - classificationCode: classificationCode
+                    classificationSystemName: classificationSystemName
+                  - classificationCode: classificationCode
+                    classificationSystemName: classificationSystemName
+                  countryOfRisk: countryOfRisk
+                displayName: displayName
+                identifiers:
+                  key:
+                    effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    key: key
+                description: description
+                links:
+                - method: method
+                  description: description
+                  href: https://openapi-generator.tech
+                  relation: relation
+                - method: method
+                  description: description
+                  href: https://openapi-generator.tech
+                  relation: relation
+                href: https://openapi-generator.tech
+                version:
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 6
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                properties:
+                  key:
+                    effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    key: key
+              accountName: accountName
+              accountingMethod: accountingMethod
+              currency: currency
+              accountNumber: accountNumber
+              custodianAccountId:
+                code: code
+                scope: scope
+              properties:
+                key:
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+              status: status
+            properties:
+              key:
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
+          percentageMatch: 1.4658129805029452
+          mappingRuleSetResults:
+          - true
+          - true
+          right:
+            transactionCurrency: transactionCurrency
+            otcConfirmation:
+              counterpartyAgreementId:
+                code: code
+                scope: scope
+            instrumentScope: instrumentScope
+            transactionStatus: Active
+            orderId:
+              code: code
+              scope: scope
+            entryDateTime: 2000-01-23T04:56:07.000+00:00
+            transactionPrice:
+              price: 5.962133916683182
+              type: Price
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            allocationId:
+              code: code
+              scope: scope
+            settlementDate: 2000-01-23T04:56:07.000+00:00
+            units: 1.4658129805029452
+            source: source
+            cancelDateTime: 2000-01-23T04:56:07.000+00:00
+            type: type
+            transactionDate: 2000-01-23T04:56:07.000+00:00
+            totalConsideration:
+              amount: 1.4658129805029452
+              currency: currency
+            transactionId: transactionId
+            counterpartyId: counterpartyId
+            exchangeRate: 5.637376656633329
+            instrumentUid: instrumentUid
+            custodianAccount:
+              custodian:
+                relationships:
+                - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  traversalDirection: traversalDirection
+                  relatedEntity:
+                    entityType: entityType
+                    displayName: displayName
+                    identifiers:
+                    - identifierValue: identifierValue
+                      identifierType: identifierType
+                      identifierScope: identifierScope
+                    - identifierValue: identifierValue
+                      identifierType: identifierType
+                      identifierScope: identifierScope
+                    scope: scope
+                    entityId:
+                      key: entityId
+                    lusidUniqueId:
+                      type: type
+                      value: value
+                    href: https://openapi-generator.tech
+                    properties:
+                      key:
+                        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                        value:
+                          metricValue:
+                            unit: unit
+                            value: 0.8008281904610115
+                          labelValue: labelValue
+                          labelValueSet:
+                            values:
+                            - values
+                            - values
+                        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                        key: key
+                  version:
+                    asAtModified: 2000-01-23T04:56:07.000+00:00
+                    userIdModified: userIdModified
+                    asAtVersionNumber: 6
+                    asAtCreated: 2000-01-23T04:56:07.000+00:00
+                    userIdCreated: userIdCreated
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    asAtDate: 2000-01-23T04:56:07.000+00:00
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  relationshipDefinitionId:
+                    code: code
+                    scope: scope
+                  traversalDescription: traversalDescription
+                - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  traversalDirection: traversalDirection
+                  relatedEntity:
+                    entityType: entityType
+                    displayName: displayName
+                    identifiers:
+                    - identifierValue: identifierValue
+                      identifierType: identifierType
+                      identifierScope: identifierScope
+                    - identifierValue: identifierValue
+                      identifierType: identifierType
+                      identifierScope: identifierScope
+                    scope: scope
+                    entityId:
+                      key: entityId
+                    lusidUniqueId:
+                      type: type
+                      value: value
+                    href: https://openapi-generator.tech
+                    properties:
+                      key:
+                        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                        value:
+                          metricValue:
+                            unit: unit
+                            value: 0.8008281904610115
+                          labelValue: labelValue
+                          labelValueSet:
+                            values:
+                            - values
+                            - values
+                        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                        key: key
+                  version:
+                    asAtModified: 2000-01-23T04:56:07.000+00:00
+                    userIdModified: userIdModified
+                    asAtVersionNumber: 6
+                    asAtCreated: 2000-01-23T04:56:07.000+00:00
+                    userIdCreated: userIdCreated
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    asAtDate: 2000-01-23T04:56:07.000+00:00
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  relationshipDefinitionId:
+                    code: code
+                    scope: scope
+                  traversalDescription: traversalDescription
+                lusidLegalEntityId: lusidLegalEntityId
+                counterpartyRiskInformation:
+                  creditRatings:
+                  - rating: rating
+                    ratingSource: ratingSource
+                  - rating: rating
+                    ratingSource: ratingSource
+                  industryClassifiers:
+                  - classificationCode: classificationCode
+                    classificationSystemName: classificationSystemName
+                  - classificationCode: classificationCode
+                    classificationSystemName: classificationSystemName
+                  countryOfRisk: countryOfRisk
+                displayName: displayName
+                identifiers:
+                  key:
+                    effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    key: key
+                description: description
+                links:
+                - method: method
+                  description: description
+                  href: https://openapi-generator.tech
+                  relation: relation
+                - method: method
+                  description: description
+                  href: https://openapi-generator.tech
+                  relation: relation
+                href: https://openapi-generator.tech
+                version:
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 6
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                properties:
+                  key:
+                    effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    key: key
+              accountName: accountName
+              accountingMethod: accountingMethod
+              currency: currency
+              accountNumber: accountNumber
+              custodianAccountId:
+                code: code
+                scope: scope
+              properties:
+                key:
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+              status: status
+            properties:
+              key:
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
+        - left:
+            transactionCurrency: transactionCurrency
+            otcConfirmation:
+              counterpartyAgreementId:
+                code: code
+                scope: scope
+            instrumentScope: instrumentScope
+            transactionStatus: Active
+            orderId:
+              code: code
+              scope: scope
+            entryDateTime: 2000-01-23T04:56:07.000+00:00
+            transactionPrice:
+              price: 5.962133916683182
+              type: Price
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            allocationId:
+              code: code
+              scope: scope
+            settlementDate: 2000-01-23T04:56:07.000+00:00
+            units: 1.4658129805029452
+            source: source
+            cancelDateTime: 2000-01-23T04:56:07.000+00:00
+            type: type
+            transactionDate: 2000-01-23T04:56:07.000+00:00
+            totalConsideration:
+              amount: 1.4658129805029452
+              currency: currency
+            transactionId: transactionId
+            counterpartyId: counterpartyId
+            exchangeRate: 5.637376656633329
+            instrumentUid: instrumentUid
+            custodianAccount:
+              custodian:
+                relationships:
+                - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  traversalDirection: traversalDirection
+                  relatedEntity:
+                    entityType: entityType
+                    displayName: displayName
+                    identifiers:
+                    - identifierValue: identifierValue
+                      identifierType: identifierType
+                      identifierScope: identifierScope
+                    - identifierValue: identifierValue
+                      identifierType: identifierType
+                      identifierScope: identifierScope
+                    scope: scope
+                    entityId:
+                      key: entityId
+                    lusidUniqueId:
+                      type: type
+                      value: value
+                    href: https://openapi-generator.tech
+                    properties:
+                      key:
+                        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                        value:
+                          metricValue:
+                            unit: unit
+                            value: 0.8008281904610115
+                          labelValue: labelValue
+                          labelValueSet:
+                            values:
+                            - values
+                            - values
+                        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                        key: key
+                  version:
+                    asAtModified: 2000-01-23T04:56:07.000+00:00
+                    userIdModified: userIdModified
+                    asAtVersionNumber: 6
+                    asAtCreated: 2000-01-23T04:56:07.000+00:00
+                    userIdCreated: userIdCreated
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    asAtDate: 2000-01-23T04:56:07.000+00:00
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  relationshipDefinitionId:
+                    code: code
+                    scope: scope
+                  traversalDescription: traversalDescription
+                - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  traversalDirection: traversalDirection
+                  relatedEntity:
+                    entityType: entityType
+                    displayName: displayName
+                    identifiers:
+                    - identifierValue: identifierValue
+                      identifierType: identifierType
+                      identifierScope: identifierScope
+                    - identifierValue: identifierValue
+                      identifierType: identifierType
+                      identifierScope: identifierScope
+                    scope: scope
+                    entityId:
+                      key: entityId
+                    lusidUniqueId:
+                      type: type
+                      value: value
+                    href: https://openapi-generator.tech
+                    properties:
+                      key:
+                        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                        value:
+                          metricValue:
+                            unit: unit
+                            value: 0.8008281904610115
+                          labelValue: labelValue
+                          labelValueSet:
+                            values:
+                            - values
+                            - values
+                        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                        key: key
+                  version:
+                    asAtModified: 2000-01-23T04:56:07.000+00:00
+                    userIdModified: userIdModified
+                    asAtVersionNumber: 6
+                    asAtCreated: 2000-01-23T04:56:07.000+00:00
+                    userIdCreated: userIdCreated
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    asAtDate: 2000-01-23T04:56:07.000+00:00
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  relationshipDefinitionId:
+                    code: code
+                    scope: scope
+                  traversalDescription: traversalDescription
+                lusidLegalEntityId: lusidLegalEntityId
+                counterpartyRiskInformation:
+                  creditRatings:
+                  - rating: rating
+                    ratingSource: ratingSource
+                  - rating: rating
+                    ratingSource: ratingSource
+                  industryClassifiers:
+                  - classificationCode: classificationCode
+                    classificationSystemName: classificationSystemName
+                  - classificationCode: classificationCode
+                    classificationSystemName: classificationSystemName
+                  countryOfRisk: countryOfRisk
+                displayName: displayName
+                identifiers:
+                  key:
+                    effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    key: key
+                description: description
+                links:
+                - method: method
+                  description: description
+                  href: https://openapi-generator.tech
+                  relation: relation
+                - method: method
+                  description: description
+                  href: https://openapi-generator.tech
+                  relation: relation
+                href: https://openapi-generator.tech
+                version:
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 6
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                properties:
+                  key:
+                    effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    key: key
+              accountName: accountName
+              accountingMethod: accountingMethod
+              currency: currency
+              accountNumber: accountNumber
+              custodianAccountId:
+                code: code
+                scope: scope
+              properties:
+                key:
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+              status: status
+            properties:
+              key:
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
+          percentageMatch: 1.4658129805029452
+          mappingRuleSetResults:
+          - true
+          - true
+          right:
+            transactionCurrency: transactionCurrency
+            otcConfirmation:
+              counterpartyAgreementId:
+                code: code
+                scope: scope
+            instrumentScope: instrumentScope
+            transactionStatus: Active
+            orderId:
+              code: code
+              scope: scope
+            entryDateTime: 2000-01-23T04:56:07.000+00:00
+            transactionPrice:
+              price: 5.962133916683182
+              type: Price
+            instrumentIdentifiers:
+              key: instrumentIdentifiers
+            allocationId:
+              code: code
+              scope: scope
+            settlementDate: 2000-01-23T04:56:07.000+00:00
+            units: 1.4658129805029452
+            source: source
+            cancelDateTime: 2000-01-23T04:56:07.000+00:00
+            type: type
+            transactionDate: 2000-01-23T04:56:07.000+00:00
+            totalConsideration:
+              amount: 1.4658129805029452
+              currency: currency
+            transactionId: transactionId
+            counterpartyId: counterpartyId
+            exchangeRate: 5.637376656633329
+            instrumentUid: instrumentUid
+            custodianAccount:
+              custodian:
+                relationships:
+                - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  traversalDirection: traversalDirection
+                  relatedEntity:
+                    entityType: entityType
+                    displayName: displayName
+                    identifiers:
+                    - identifierValue: identifierValue
+                      identifierType: identifierType
+                      identifierScope: identifierScope
+                    - identifierValue: identifierValue
+                      identifierType: identifierType
+                      identifierScope: identifierScope
+                    scope: scope
+                    entityId:
+                      key: entityId
+                    lusidUniqueId:
+                      type: type
+                      value: value
+                    href: https://openapi-generator.tech
+                    properties:
+                      key:
+                        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                        value:
+                          metricValue:
+                            unit: unit
+                            value: 0.8008281904610115
+                          labelValue: labelValue
+                          labelValueSet:
+                            values:
+                            - values
+                            - values
+                        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                        key: key
+                  version:
+                    asAtModified: 2000-01-23T04:56:07.000+00:00
+                    userIdModified: userIdModified
+                    asAtVersionNumber: 6
+                    asAtCreated: 2000-01-23T04:56:07.000+00:00
+                    userIdCreated: userIdCreated
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    asAtDate: 2000-01-23T04:56:07.000+00:00
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  relationshipDefinitionId:
+                    code: code
+                    scope: scope
+                  traversalDescription: traversalDescription
+                - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  traversalDirection: traversalDirection
+                  relatedEntity:
+                    entityType: entityType
+                    displayName: displayName
+                    identifiers:
+                    - identifierValue: identifierValue
+                      identifierType: identifierType
+                      identifierScope: identifierScope
+                    - identifierValue: identifierValue
+                      identifierType: identifierType
+                      identifierScope: identifierScope
+                    scope: scope
+                    entityId:
+                      key: entityId
+                    lusidUniqueId:
+                      type: type
+                      value: value
+                    href: https://openapi-generator.tech
+                    properties:
+                      key:
+                        effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                        value:
+                          metricValue:
+                            unit: unit
+                            value: 0.8008281904610115
+                          labelValue: labelValue
+                          labelValueSet:
+                            values:
+                            - values
+                            - values
+                        effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                        key: key
+                  version:
+                    asAtModified: 2000-01-23T04:56:07.000+00:00
+                    userIdModified: userIdModified
+                    asAtVersionNumber: 6
+                    asAtCreated: 2000-01-23T04:56:07.000+00:00
+                    userIdCreated: userIdCreated
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    asAtDate: 2000-01-23T04:56:07.000+00:00
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  relationshipDefinitionId:
+                    code: code
+                    scope: scope
+                  traversalDescription: traversalDescription
+                lusidLegalEntityId: lusidLegalEntityId
+                counterpartyRiskInformation:
+                  creditRatings:
+                  - rating: rating
+                    ratingSource: ratingSource
+                  - rating: rating
+                    ratingSource: ratingSource
+                  industryClassifiers:
+                  - classificationCode: classificationCode
+                    classificationSystemName: classificationSystemName
+                  - classificationCode: classificationCode
+                    classificationSystemName: classificationSystemName
+                  countryOfRisk: countryOfRisk
+                displayName: displayName
+                identifiers:
+                  key:
+                    effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    key: key
+                description: description
+                links:
+                - method: method
+                  description: description
+                  href: https://openapi-generator.tech
+                  relation: relation
+                - method: method
+                  description: description
+                  href: https://openapi-generator.tech
+                  relation: relation
+                href: https://openapi-generator.tech
+                version:
+                  asAtModified: 2000-01-23T04:56:07.000+00:00
+                  userIdModified: userIdModified
+                  asAtVersionNumber: 6
+                  asAtCreated: 2000-01-23T04:56:07.000+00:00
+                  userIdCreated: userIdCreated
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  asAtDate: 2000-01-23T04:56:07.000+00:00
+                properties:
+                  key:
+                    effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                    value:
+                      metricValue:
+                        unit: unit
+                        value: 0.8008281904610115
+                      labelValue: labelValue
+                      labelValueSet:
+                        values:
+                        - values
+                        - values
+                    effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                    key: key
+              accountName: accountName
+              accountingMethod: accountingMethod
+              currency: currency
+              accountNumber: accountNumber
+              custodianAccountId:
+                code: code
+                scope: scope
+              properties:
+                key:
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+              status: status
+            properties:
+              key:
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                key: key
+      properties:
+        mapping:
+          $ref: '#/components/schemas/Mapping'
+        data:
+          description: The result of this reconciliation
+          items:
+            $ref: '#/components/schemas/ReconciledTransaction'
+          nullable: true
+          type: array
       type: object
     TransitionEvent:
       allOf:
