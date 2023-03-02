@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **currency** | **String** | The Currency for the Account | 
 **properties** | [**Map&lt;String, Property&gt;**](Property.md) | Set of unique Custodian Account properties and associated values to store with the Custodian Account. Each property must be from the &#39;CustodianAccount&#39; domain. |  [optional]
 **custodian** | [**LegalEntity**](LegalEntity.md) |  | 
+**accountType** | **String** | The Type of the Custodian Account. Can be Margin, Cash or Swap. Defaults to Margin. | 
 
 
 
