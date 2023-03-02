@@ -309,9 +309,10 @@ info:
     | <a name="818">818</a>|Attribute type could not be deleted because it doesn't exist.|  |
     | <a name="819">819</a>|Reconciliation not found.|  |
     | <a name="820">820</a>|Custodian Account not found.|  |
+    | <a name="821">821</a>|Allocation Failure|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5295
+  version: 0.11.5296
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
