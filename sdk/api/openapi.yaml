@@ -312,7 +312,7 @@ info:
     | <a name="821">821</a>|Allocation Failure|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5299
+  version: 0.11.5300
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
