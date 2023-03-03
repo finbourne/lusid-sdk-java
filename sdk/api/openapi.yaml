@@ -312,7 +312,7 @@ info:
     | <a name="821">821</a>|Allocation Failure|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5298
+  version: 0.11.5299
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -321,6 +321,8 @@ servers:
 security:
 - {}
 tags:
+- description: Methods to create and manage abor.
+  name: Abor
 - description: Methods to create and manage abor configuration.
   name: AborConfiguration
 - description: Methods for accessing aggregated data
@@ -85302,6 +85304,7 @@ components:
 x-tagGroups:
   name: API
   tags:
+  - Abor
   - AborConfiguration
   - Aggregation
   - Allocations
