@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **stopPrice** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
 **orderInstructionId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **packageId** | [**ResourceId**](ResourceId.md) |  |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
 
