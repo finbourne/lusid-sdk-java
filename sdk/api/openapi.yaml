@@ -312,7 +312,7 @@ info:
     | <a name="821">821</a>|Allocation Failure|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5301
+  version: 0.11.5302
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -1291,6 +1291,11 @@ paths:
                   version:
                     effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                     asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                    asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                    userIdCreated: AllocationUser1
+                    asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                    userIdModified: AllocationUser2
+                    asAtVersionNumber: 2
                   properties:
                     Allocation/MyScope/SomeAllocationProperty:
                       key: Allocation/MyScope/SomeAllocationProperty
@@ -1334,6 +1339,11 @@ paths:
                   version:
                     effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                     asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                    asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                    userIdCreated: AllocationUser1
+                    asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                    userIdModified: AllocationUser2
+                    asAtVersionNumber: 2
                   properties:
                     Allocation/MyScope/SomeAllocationProperty:
                       key: Allocation/MyScope/SomeAllocationProperty
@@ -1377,6 +1387,11 @@ paths:
                   version:
                     effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                     asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                    asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                    userIdCreated: AllocationUser1
+                    asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                    userIdModified: AllocationUser2
+                    asAtVersionNumber: 2
                   properties:
                     Allocation/MyScope/SomeAllocationProperty:
                       key: Allocation/MyScope/SomeAllocationProperty
@@ -1567,6 +1582,11 @@ paths:
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: AllocationUser1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: AllocationUser2
+                  asAtVersionNumber: 2
                 properties:
                   Allocation/MyScope/SomeAllocationProperty:
                     key: Allocation/MyScope/SomeAllocationProperty
@@ -1608,6 +1628,11 @@ paths:
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: AllocationUser1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: AllocationUser2
+                  asAtVersionNumber: 2
                 properties:
                   Allocation/MyScope/SomeAllocationProperty:
                     key: Allocation/MyScope/SomeAllocationProperty
@@ -1649,6 +1674,11 @@ paths:
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: AllocationUser1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: AllocationUser2
+                  asAtVersionNumber: 2
                 properties:
                   Allocation/MyScope/SomeAllocationProperty:
                     key: Allocation/MyScope/SomeAllocationProperty
@@ -1978,6 +2008,11 @@ paths:
                   version:
                     effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                     asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                    asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                    userIdCreated: BlockUser1
+                    asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                    userIdModified: BlockUser2
+                    asAtVersionNumber: 2
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfBlock'
@@ -2012,6 +2047,11 @@ paths:
                   version:
                     effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                     asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                    asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                    userIdCreated: BlockUser1
+                    asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                    userIdModified: BlockUser2
+                    asAtVersionNumber: 2
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfBlock'
@@ -2046,6 +2086,11 @@ paths:
                   version:
                     effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                     asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                    asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                    userIdCreated: BlockUser1
+                    asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                    userIdModified: BlockUser2
+                    asAtVersionNumber: 2
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfBlock'
@@ -2227,6 +2272,11 @@ paths:
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: BlockUser1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: BlockUser2
+                  asAtVersionNumber: 2
               schema:
                 $ref: '#/components/schemas/Block'
             application/json:
@@ -2259,6 +2309,11 @@ paths:
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: BlockUser1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: BlockUser2
+                  asAtVersionNumber: 2
               schema:
                 $ref: '#/components/schemas/Block'
             text/json:
@@ -2291,6 +2346,11 @@ paths:
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: BlockUser1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: BlockUser2
+                  asAtVersionNumber: 2
               schema:
                 $ref: '#/components/schemas/Block'
           description: The block matching the given identifier.
@@ -10221,6 +10281,11 @@ paths:
                   version:
                     effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                     asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                    asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                    userIdCreated: ExecutionUser1
+                    asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                    userIdModified: ExecutionUser2
+                    asAtVersionNumber: 2
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfExecution'
@@ -10256,6 +10321,11 @@ paths:
                   version:
                     effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                     asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                    asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                    userIdCreated: ExecutionUser1
+                    asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                    userIdModified: ExecutionUser2
+                    asAtVersionNumber: 2
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfExecution'
@@ -10291,6 +10361,11 @@ paths:
                   version:
                     effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                     asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                    asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                    userIdCreated: ExecutionUser1
+                    asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                    userIdModified: ExecutionUser2
+                    asAtVersionNumber: 2
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfExecution'
@@ -10473,6 +10548,11 @@ paths:
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: ExecutionUser1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: ExecutionUser2
+                  asAtVersionNumber: 2
               schema:
                 $ref: '#/components/schemas/Execution'
             application/json:
@@ -10506,6 +10586,11 @@ paths:
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: ExecutionUser1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: ExecutionUser2
+                  asAtVersionNumber: 2
               schema:
                 $ref: '#/components/schemas/Execution'
             text/json:
@@ -10539,6 +10624,11 @@ paths:
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: ExecutionUser1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: ExecutionUser2
+                  asAtVersionNumber: 2
               schema:
                 $ref: '#/components/schemas/Execution'
           description: The execution matching the given identifier.
@@ -16567,6 +16657,11 @@ paths:
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: OrderUser1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: OrderUser2
+                  asAtVersionNumber: 2
                 instrumentIdentifiers:
                   Instrument/default/Currency: GBP
                 quantity: 100
@@ -16605,6 +16700,11 @@ paths:
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: OrderUser1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: OrderUser2
+                  asAtVersionNumber: 2
                 instrumentIdentifiers:
                   Instrument/default/Currency: GBP
                 quantity: 100
@@ -16643,6 +16743,11 @@ paths:
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: OrderUser1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: OrderUser2
+                  asAtVersionNumber: 2
                 instrumentIdentifiers:
                   Instrument/default/Currency: GBP
                 quantity: 100
@@ -16900,6 +17005,11 @@ paths:
                   version:
                     effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                     asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                    asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                    userIdCreated: ParticipationUser1
+                    asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                    userIdModified: ParticipationUser2
+                    asAtVersionNumber: 2
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfParticipation'
@@ -16918,6 +17028,11 @@ paths:
                   version:
                     effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                     asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                    asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                    userIdCreated: ParticipationUser1
+                    asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                    userIdModified: ParticipationUser2
+                    asAtVersionNumber: 2
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfParticipation'
@@ -16936,6 +17051,11 @@ paths:
                   version:
                     effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                     asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                    asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                    userIdCreated: ParticipationUser1
+                    asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                    userIdModified: ParticipationUser2
+                    asAtVersionNumber: 2
                 links: []
               schema:
                 $ref: '#/components/schemas/ResourceListOfParticipation'
@@ -17101,6 +17221,11 @@ paths:
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: ParticipationUser1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: ParticipationUser2
+                  asAtVersionNumber: 2
               schema:
                 $ref: '#/components/schemas/Participation'
             application/json:
@@ -17117,6 +17242,11 @@ paths:
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: ParticipationUser1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: ParticipationUser2
+                  asAtVersionNumber: 2
               schema:
                 $ref: '#/components/schemas/Participation'
             text/json:
@@ -17133,6 +17263,11 @@ paths:
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: ParticipationUser1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: ParticipationUser2
+                  asAtVersionNumber: 2
               schema:
                 $ref: '#/components/schemas/Participation'
           description: The participation matching the given identifier.
