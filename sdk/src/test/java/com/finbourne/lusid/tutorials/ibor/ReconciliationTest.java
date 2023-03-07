@@ -36,7 +36,7 @@ public class ReconciliationTest {
     @BeforeClass
     public static void setUp() throws Exception {
         ApiConfiguration apiConfiguration = new ApiConfigurationBuilder().build(CredentialsSource.credentialsFile);
-        ApiClient apiClient = new ApiClientBuilder().build(apiConfiguration);
+        ApiClient apiClient = new ApiClientBuilder().build(apiConfiguration, 30, 30);
 
         transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
         reconciliationsApi = new ReconciliationsApi(apiClient);
