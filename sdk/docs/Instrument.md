@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **assetClass** | [**AssetClassEnum**](#AssetClassEnum) | The nominal asset class of the instrument, e.g. InterestRates, FX, Inflation, Equities, Credit, Commodities, etc. The available values are: InterestRates, FX, Inflation, Equities, Credit, Commodities, Money, Unknown |  [optional]
 **domCcy** | **String** | The domestic currency, meaning the currency in which the instrument would typically be expected to pay cashflows, e.g. a share in AAPL being USD. |  [optional]
 **relationships** | [**List&lt;Relationship&gt;**](Relationship.md) | A set of relationships associated to the instrument. |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 
 
