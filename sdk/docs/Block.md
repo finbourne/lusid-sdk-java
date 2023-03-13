@@ -21,7 +21,7 @@ Name | Type | Description | Notes
 **limitPrice** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
 **stopPrice** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
 **version** | [**Version**](Version.md) |  |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
 
