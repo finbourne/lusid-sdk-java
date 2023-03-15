@@ -312,7 +312,7 @@ info:
     | <a name="821">821</a>|Allocation Failure|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 0.11.5324
+  version: 0.11.5325
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -32087,6 +32087,7 @@ paths:
                         modelOptions:
                           modelOptionsType: EmptyModelOptions
                         instrumentId: ""
+                        addressKeyFilters: []
                       modelChoice: {}
                       options:
                         modelSelection:
@@ -32202,6 +32203,7 @@ paths:
                         modelOptions:
                           modelOptionsType: EmptyModelOptions
                         instrumentId: ""
+                        addressKeyFilters: []
                       modelChoice: {}
                       options:
                         modelSelection:
@@ -32317,6 +32319,7 @@ paths:
                         modelOptions:
                           modelOptionsType: EmptyModelOptions
                         instrumentId: ""
+                        addressKeyFilters: []
                       modelChoice: {}
                       options:
                         modelSelection:
@@ -32828,6 +32831,7 @@ paths:
                       modelOptions:
                         modelOptionsType: EmptyModelOptions
                       instrumentId: ""
+                      addressKeyFilters: []
                     modelChoice: {}
                     options:
                       modelSelection:
@@ -32887,6 +32891,7 @@ paths:
                       modelOptions:
                         modelOptionsType: EmptyModelOptions
                       instrumentId: ""
+                      addressKeyFilters: []
                     modelChoice: {}
                     options:
                       modelSelection:
@@ -32946,6 +32951,7 @@ paths:
                       modelOptions:
                         modelOptionsType: EmptyModelOptions
                       instrumentId: ""
+                      addressKeyFilters: []
                     modelChoice: {}
                     options:
                       modelSelection:
@@ -47706,6 +47712,28 @@ components:
           nullable: true
           type: string
       type: object
+    AddressKeyFilter:
+      additionalProperties: false
+      description: Class specifying a filtering operation
+      example:
+        left: left
+        right:
+          resultValueType: ResultValue
+        operator: operator
+      properties:
+        left:
+          description: Address for the value in the row
+          nullable: true
+          type: string
+        operator:
+          description: What sort of comparison is the filter preforming
+          maxLength: 2
+          minLength: 0
+          nullable: true
+          type: string
+        right:
+          $ref: '#/components/schemas/ResultValue'
+      type: object
     AdjustHolding:
       additionalProperties: false
       example:
@@ -49941,6 +49969,11 @@ components:
       - $ref: '#/components/schemas/ResultValue'
       - $ref: '#/components/schemas/CashFlowValue_allOf'
       description: Result class for a cash flow value
+    CashFlowValueSet:
+      allOf:
+      - $ref: '#/components/schemas/ResultValue'
+      - $ref: '#/components/schemas/CashFlowValueSet_allOf'
+      description: Result value for a collection of cash flow values
     CashLadderRecord:
       additionalProperties: false
       example:
@@ -50754,6 +50787,15 @@ components:
             instrumentType: instrumentType
             instrumentId: instrumentId
             supplier: Lusid
+            addressKeyFilters:
+            - left: left
+              right:
+                resultValueType: ResultValue
+              operator: operator
+            - left: left
+              right:
+                resultValueType: ResultValue
+              operator: operator
             parameters: parameters
             modelOptions:
               modelOptionsType: Invalid
@@ -50761,6 +50803,15 @@ components:
             instrumentType: instrumentType
             instrumentId: instrumentId
             supplier: Lusid
+            addressKeyFilters:
+            - left: left
+              right:
+                resultValueType: ResultValue
+              operator: operator
+            - left: left
+              right:
+                resultValueType: ResultValue
+              operator: operator
             parameters: parameters
             modelOptions:
               modelOptionsType: Invalid
@@ -50997,6 +51048,15 @@ components:
               instrumentType: instrumentType
               instrumentId: instrumentId
               supplier: Lusid
+              addressKeyFilters:
+              - left: left
+                right:
+                  resultValueType: ResultValue
+                operator: operator
+              - left: left
+                right:
+                  resultValueType: ResultValue
+                operator: operator
               parameters: parameters
               modelOptions:
                 modelOptionsType: Invalid
@@ -51004,6 +51064,15 @@ components:
               instrumentType: instrumentType
               instrumentId: instrumentId
               supplier: Lusid
+              addressKeyFilters:
+              - left: left
+                right:
+                  resultValueType: ResultValue
+                operator: operator
+              - left: left
+                right:
+                  resultValueType: ResultValue
+                operator: operator
               parameters: parameters
               modelOptions:
                 modelOptionsType: Invalid
@@ -51012,6 +51081,15 @@ components:
           instrumentType: instrumentType
           instrumentId: instrumentId
           supplier: Lusid
+          addressKeyFilters:
+          - left: left
+            right:
+              resultValueType: ResultValue
+            operator: operator
+          - left: left
+            right:
+              resultValueType: ResultValue
+            operator: operator
           parameters: parameters
           modelOptions:
             modelOptionsType: Invalid
@@ -51019,6 +51097,15 @@ components:
           instrumentType: instrumentType
           instrumentId: instrumentId
           supplier: Lusid
+          addressKeyFilters:
+          - left: left
+            right:
+              resultValueType: ResultValue
+            operator: operator
+          - left: left
+            right:
+              resultValueType: ResultValue
+            operator: operator
           parameters: parameters
           modelOptions:
             modelOptionsType: Invalid
@@ -55808,6 +55895,15 @@ components:
               instrumentType: instrumentType
               instrumentId: instrumentId
               supplier: Lusid
+              addressKeyFilters:
+              - left: left
+                right:
+                  resultValueType: ResultValue
+                operator: operator
+              - left: left
+                right:
+                  resultValueType: ResultValue
+                operator: operator
               parameters: parameters
               modelOptions:
                 modelOptionsType: Invalid
@@ -55815,6 +55911,15 @@ components:
               instrumentType: instrumentType
               instrumentId: instrumentId
               supplier: Lusid
+              addressKeyFilters:
+              - left: left
+                right:
+                  resultValueType: ResultValue
+                operator: operator
+              - left: left
+                right:
+                  resultValueType: ResultValue
+                operator: operator
               parameters: parameters
               modelOptions:
                 modelOptionsType: Invalid
@@ -65265,6 +65370,15 @@ components:
           instrumentType: instrumentType
           instrumentId: instrumentId
           supplier: Lusid
+          addressKeyFilters:
+          - left: left
+            right:
+              resultValueType: ResultValue
+            operator: operator
+          - left: left
+            right:
+              resultValueType: ResultValue
+            operator: operator
           parameters: parameters
           modelOptions:
             modelOptionsType: Invalid
@@ -65272,6 +65386,15 @@ components:
           instrumentType: instrumentType
           instrumentId: instrumentId
           supplier: Lusid
+          addressKeyFilters:
+          - left: left
+            right:
+              resultValueType: ResultValue
+            operator: operator
+          - left: left
+            right:
+              resultValueType: ResultValue
+            operator: operator
           parameters: parameters
           modelOptions:
             modelOptionsType: Invalid
@@ -69462,6 +69585,15 @@ components:
                 instrumentType: instrumentType
                 instrumentId: instrumentId
                 supplier: Lusid
+                addressKeyFilters:
+                - left: left
+                  right:
+                    resultValueType: ResultValue
+                  operator: operator
+                - left: left
+                  right:
+                    resultValueType: ResultValue
+                  operator: operator
                 parameters: parameters
                 modelOptions:
                   modelOptionsType: Invalid
@@ -69469,6 +69601,15 @@ components:
                 instrumentType: instrumentType
                 instrumentId: instrumentId
                 supplier: Lusid
+                addressKeyFilters:
+                - left: left
+                  right:
+                    resultValueType: ResultValue
+                  operator: operator
+                - left: left
+                  right:
+                    resultValueType: ResultValue
+                  operator: operator
                 parameters: parameters
                 modelOptions:
                   modelOptionsType: Invalid
@@ -69589,6 +69730,15 @@ components:
                 instrumentType: instrumentType
                 instrumentId: instrumentId
                 supplier: Lusid
+                addressKeyFilters:
+                - left: left
+                  right:
+                    resultValueType: ResultValue
+                  operator: operator
+                - left: left
+                  right:
+                    resultValueType: ResultValue
+                  operator: operator
                 parameters: parameters
                 modelOptions:
                   modelOptionsType: Invalid
@@ -69596,6 +69746,15 @@ components:
                 instrumentType: instrumentType
                 instrumentId: instrumentId
                 supplier: Lusid
+                addressKeyFilters:
+                - left: left
+                  right:
+                    resultValueType: ResultValue
+                  operator: operator
+                - left: left
+                  right:
+                    resultValueType: ResultValue
+                  operator: operator
                 parameters: parameters
                 modelOptions:
                   modelOptionsType: Invalid
@@ -73267,6 +73426,8 @@ components:
         \ has a corresponding inherited class."
       discriminator:
         propertyName: resultValueType
+      example:
+        resultValueType: ResultValue
       properties:
         resultValueType:
           description: 'The available values are: ResultValue, ResultValueDictionary,
@@ -73290,12 +73451,48 @@ components:
       required:
       - resultValueType
       type: object
+    ResultValue0D:
+      allOf:
+      - $ref: '#/components/schemas/ResultValue'
+      - $ref: '#/components/schemas/ResultValue0D_allOf'
+      description: Result value representing a 0D result. These results can be equipped
+        with a unit
+    ResultValueBool:
+      allOf:
+      - $ref: '#/components/schemas/ResultValue'
+      - $ref: '#/components/schemas/ResultValueBool_allOf'
+      description: A simple result for a boolean value
+    ResultValueCurrency:
+      allOf:
+      - $ref: '#/components/schemas/ResultValue'
+      - $ref: '#/components/schemas/ResultValueCurrency_allOf'
+      description: A simple result for a currency value
+    ResultValueDateTimeOffset:
+      allOf:
+      - $ref: '#/components/schemas/ResultValue'
+      - $ref: '#/components/schemas/ResultValueDateTimeOffset_allOf'
+      description: A simple result for a date time value
+    ResultValueDecimal:
+      allOf:
+      - $ref: '#/components/schemas/ResultValue'
+      - $ref: '#/components/schemas/ResultValueDecimal_allOf'
+      description: A simple result for a decimal value
     ResultValueDictionary:
       allOf:
       - $ref: '#/components/schemas/ResultValue'
       - $ref: '#/components/schemas/ResultValueDictionary_allOf'
       description: Result value for a collection of key-value pairs. Used for diagnostics
         associated to a cash flow, etc.
+    ResultValueInt:
+      allOf:
+      - $ref: '#/components/schemas/ResultValue'
+      - $ref: '#/components/schemas/ResultValueInt_allOf'
+      description: A simple result type which holds an integer
+    ResultValueString:
+      allOf:
+      - $ref: '#/components/schemas/ResultValue'
+      - $ref: '#/components/schemas/ResultValueString_allOf'
+      description: A simple result value holding a string
     Schedule:
       additionalProperties: false
       description: "Base class for representing schedules in LUSID.\r\nThis base class\
@@ -77825,6 +78022,15 @@ components:
               instrumentType: instrumentType
               instrumentId: instrumentId
               supplier: Lusid
+              addressKeyFilters:
+              - left: left
+                right:
+                  resultValueType: ResultValue
+                operator: operator
+              - left: left
+                right:
+                  resultValueType: ResultValue
+                operator: operator
               parameters: parameters
               modelOptions:
                 modelOptionsType: Invalid
@@ -77832,6 +78038,15 @@ components:
               instrumentType: instrumentType
               instrumentId: instrumentId
               supplier: Lusid
+              addressKeyFilters:
+              - left: left
+                right:
+                  resultValueType: ResultValue
+                operator: operator
+              - left: left
+                right:
+                  resultValueType: ResultValue
+                operator: operator
               parameters: parameters
               modelOptions:
                 modelOptionsType: Invalid
@@ -77991,6 +78206,15 @@ components:
                 instrumentType: instrumentType
                 instrumentId: instrumentId
                 supplier: Lusid
+                addressKeyFilters:
+                - left: left
+                  right:
+                    resultValueType: ResultValue
+                  operator: operator
+                - left: left
+                  right:
+                    resultValueType: ResultValue
+                  operator: operator
                 parameters: parameters
                 modelOptions:
                   modelOptionsType: Invalid
@@ -77998,6 +78222,15 @@ components:
                 instrumentType: instrumentType
                 instrumentId: instrumentId
                 supplier: Lusid
+                addressKeyFilters:
+                - left: left
+                  right:
+                    resultValueType: ResultValue
+                  operator: operator
+                - left: left
+                  right:
+                    resultValueType: ResultValue
+                  operator: operator
                 parameters: parameters
                 modelOptions:
                   modelOptionsType: Invalid
@@ -78006,6 +78239,15 @@ components:
             instrumentType: instrumentType
             instrumentId: instrumentId
             supplier: Lusid
+            addressKeyFilters:
+            - left: left
+              right:
+                resultValueType: ResultValue
+              operator: operator
+            - left: left
+              right:
+                resultValueType: ResultValue
+              operator: operator
             parameters: parameters
             modelOptions:
               modelOptionsType: Invalid
@@ -78013,6 +78255,15 @@ components:
             instrumentType: instrumentType
             instrumentId: instrumentId
             supplier: Lusid
+            addressKeyFilters:
+            - left: left
+              right:
+                resultValueType: ResultValue
+              operator: operator
+            - left: left
+              right:
+                resultValueType: ResultValue
+              operator: operator
             parameters: parameters
             modelOptions:
               modelOptionsType: Invalid
@@ -78807,6 +79058,15 @@ components:
         instrumentType: instrumentType
         instrumentId: instrumentId
         supplier: Lusid
+        addressKeyFilters:
+        - left: left
+          right:
+            resultValueType: ResultValue
+          operator: operator
+        - left: left
+          right:
+            resultValueType: ResultValue
+          operator: operator
         parameters: parameters
         modelOptions:
           modelOptionsType: Invalid
@@ -78857,6 +79117,13 @@ components:
             \ desired in general."
           nullable: true
           type: string
+        addressKeyFilters:
+          description: Condition for model selection. If a condition is satisfied
+            the default model for valuation is overridden (for that instrument).
+          items:
+            $ref: '#/components/schemas/AddressKeyFilter'
+          nullable: true
+          type: array
       required:
       - instrumentType
       - modelName
@@ -81351,6 +81618,36 @@ components:
       - paymentAmount
       - paymentCcy
       - paymentDate
+      - resultValueType
+      type: object
+    CashFlowValueSet_allOf:
+      properties:
+        cashflows:
+          description: The set of cash flows in the result
+          items:
+            $ref: '#/components/schemas/CashFlowValue'
+          nullable: true
+          type: array
+        resultValueType:
+          description: 'The available values are: ResultValue, ResultValueDictionary,
+            ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString,
+            ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet,
+            ResultValueLifeCycleEventValue, ResultValueDateTimeOffset'
+          enum:
+          - ResultValue
+          - ResultValueDictionary
+          - ResultValue0D
+          - ResultValueDecimal
+          - ResultValueInt
+          - ResultValueString
+          - ResultValueBool
+          - ResultValueCurrency
+          - CashFlowValue
+          - CashFlowValueSet
+          - ResultValueLifeCycleEventValue
+          - ResultValueDateTimeOffset
+          type: string
+      required:
       - resultValueType
       type: object
     CashPerpetual_allOf:
@@ -84989,6 +85286,170 @@ components:
       - resultKeyRuleType
       - supplier
       type: object
+    ResultValue0D_allOf:
+      properties:
+        units:
+          description: Unit of the result
+          nullable: true
+          type: string
+        value:
+          description: The value of the result
+          format: double
+          type: number
+        dimension:
+          description: "The dimension of the result. Can be null if there is no sensible\
+            \ way of defining the dimension. This field should not be\r\npopulate\
+            \ by the user on upsertion."
+          format: int32
+          nullable: true
+          type: integer
+        resultValueType:
+          description: 'The available values are: ResultValue, ResultValueDictionary,
+            ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString,
+            ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet,
+            ResultValueLifeCycleEventValue, ResultValueDateTimeOffset'
+          enum:
+          - ResultValue
+          - ResultValueDictionary
+          - ResultValue0D
+          - ResultValueDecimal
+          - ResultValueInt
+          - ResultValueString
+          - ResultValueBool
+          - ResultValueCurrency
+          - CashFlowValue
+          - CashFlowValueSet
+          - ResultValueLifeCycleEventValue
+          - ResultValueDateTimeOffset
+          type: string
+      required:
+      - resultValueType
+      type: object
+    ResultValueBool_allOf:
+      properties:
+        value:
+          description: The value itself
+          type: boolean
+        resultValueType:
+          description: 'The available values are: ResultValue, ResultValueDictionary,
+            ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString,
+            ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet,
+            ResultValueLifeCycleEventValue, ResultValueDateTimeOffset'
+          enum:
+          - ResultValue
+          - ResultValueDictionary
+          - ResultValue0D
+          - ResultValueDecimal
+          - ResultValueInt
+          - ResultValueString
+          - ResultValueBool
+          - ResultValueCurrency
+          - CashFlowValue
+          - CashFlowValueSet
+          - ResultValueLifeCycleEventValue
+          - ResultValueDateTimeOffset
+          type: string
+      required:
+      - resultValueType
+      type: object
+    ResultValueCurrency_allOf:
+      properties:
+        value:
+          description: The value itself
+          nullable: true
+          type: string
+        resultValueType:
+          description: 'The available values are: ResultValue, ResultValueDictionary,
+            ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString,
+            ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet,
+            ResultValueLifeCycleEventValue, ResultValueDateTimeOffset'
+          enum:
+          - ResultValue
+          - ResultValueDictionary
+          - ResultValue0D
+          - ResultValueDecimal
+          - ResultValueInt
+          - ResultValueString
+          - ResultValueBool
+          - ResultValueCurrency
+          - CashFlowValue
+          - CashFlowValueSet
+          - ResultValueLifeCycleEventValue
+          - ResultValueDateTimeOffset
+          type: string
+      required:
+      - resultValueType
+      type: object
+    ResultValueDateTimeOffset_allOf:
+      properties:
+        value:
+          description: The value itself
+          format: date-time
+          type: string
+        dimension:
+          description: "The dimension of the result. Can be null if there is no sensible\
+            \ way of defining the dimension. This field should not be\r\npopulate\
+            \ by the user on upsertion."
+          format: int32
+          nullable: true
+          type: integer
+        resultValueType:
+          description: 'The available values are: ResultValue, ResultValueDictionary,
+            ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString,
+            ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet,
+            ResultValueLifeCycleEventValue, ResultValueDateTimeOffset'
+          enum:
+          - ResultValue
+          - ResultValueDictionary
+          - ResultValue0D
+          - ResultValueDecimal
+          - ResultValueInt
+          - ResultValueString
+          - ResultValueBool
+          - ResultValueCurrency
+          - CashFlowValue
+          - CashFlowValueSet
+          - ResultValueLifeCycleEventValue
+          - ResultValueDateTimeOffset
+          type: string
+      required:
+      - resultValueType
+      type: object
+    ResultValueDecimal_allOf:
+      properties:
+        value:
+          description: The value itself
+          format: double
+          type: number
+        dimension:
+          description: "The dimension of the result. Can be null if there is no sensible\
+            \ way of defining the dimension. This field should not be\r\npopulate\
+            \ by the user on upsertion."
+          format: int32
+          nullable: true
+          type: integer
+        resultValueType:
+          description: 'The available values are: ResultValue, ResultValueDictionary,
+            ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString,
+            ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet,
+            ResultValueLifeCycleEventValue, ResultValueDateTimeOffset'
+          enum:
+          - ResultValue
+          - ResultValueDictionary
+          - ResultValue0D
+          - ResultValueDecimal
+          - ResultValueInt
+          - ResultValueString
+          - ResultValueBool
+          - ResultValueCurrency
+          - CashFlowValue
+          - CashFlowValueSet
+          - ResultValueLifeCycleEventValue
+          - ResultValueDateTimeOffset
+          type: string
+      required:
+      - resultValueType
+      type: object
     ResultValueDictionary_allOf:
       properties:
         elements:
@@ -84997,6 +85458,69 @@ components:
           description: The dictionary elements
           nullable: true
           type: object
+        resultValueType:
+          description: 'The available values are: ResultValue, ResultValueDictionary,
+            ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString,
+            ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet,
+            ResultValueLifeCycleEventValue, ResultValueDateTimeOffset'
+          enum:
+          - ResultValue
+          - ResultValueDictionary
+          - ResultValue0D
+          - ResultValueDecimal
+          - ResultValueInt
+          - ResultValueString
+          - ResultValueBool
+          - ResultValueCurrency
+          - CashFlowValue
+          - CashFlowValueSet
+          - ResultValueLifeCycleEventValue
+          - ResultValueDateTimeOffset
+          type: string
+      required:
+      - resultValueType
+      type: object
+    ResultValueInt_allOf:
+      properties:
+        value:
+          description: The value itself
+          format: int32
+          type: integer
+        dimension:
+          description: "The dimension of the result. Can be null if there is no sensible\
+            \ way of defining the dimension. This field should not be\r\npopulate\
+            \ by the user on upsertion."
+          format: int32
+          nullable: true
+          type: integer
+        resultValueType:
+          description: 'The available values are: ResultValue, ResultValueDictionary,
+            ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString,
+            ResultValueBool, ResultValueCurrency, CashFlowValue, CashFlowValueSet,
+            ResultValueLifeCycleEventValue, ResultValueDateTimeOffset'
+          enum:
+          - ResultValue
+          - ResultValueDictionary
+          - ResultValue0D
+          - ResultValueDecimal
+          - ResultValueInt
+          - ResultValueString
+          - ResultValueBool
+          - ResultValueCurrency
+          - CashFlowValue
+          - CashFlowValueSet
+          - ResultValueLifeCycleEventValue
+          - ResultValueDateTimeOffset
+          type: string
+      required:
+      - resultValueType
+      type: object
+    ResultValueString_allOf:
+      properties:
+        value:
+          description: the value itself
+          nullable: true
+          type: string
         resultValueType:
           description: 'The available values are: ResultValue, ResultValueDictionary,
             ResultValue0D, ResultValueDecimal, ResultValueInt, ResultValueString,
