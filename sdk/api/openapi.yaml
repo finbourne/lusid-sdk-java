@@ -312,12 +312,12 @@ info:
     | <a name="821">821</a>|Allocation Failure|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.12
+  version: 1.0.13
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
 servers:
-- url: https://fbn-prd.lusid.com/api
+- url: https://www.lusid.com/api
 security:
 - {}
 tags:
@@ -47829,6 +47829,7 @@ components:
       type: object
     AccessControlledAction:
       additionalProperties: false
+      description: An action that can be access controlled
       example:
         limitedSet:
         - identifier:
@@ -47869,16 +47870,21 @@ components:
           relation: relation
       properties:
         description:
+          description: The description of the action
           minLength: 1
           type: string
         action:
           $ref: '#/components/schemas/ActionId'
         limitedSet:
+          description: "When populated, the provided values are the limited set of\
+            \ resources that are allowed to be specified for\r\naccess control for\
+            \ this action"
           items:
             $ref: '#/components/schemas/IdSelectorDefinition'
           nullable: true
           type: array
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -47889,6 +47895,7 @@ components:
       type: object
     AccessControlledResource:
       additionalProperties: false
+      description: A resource to which access can be controlled
       example:
         application: application
         name: name
@@ -48008,24 +48015,30 @@ components:
           required: true
       properties:
         application:
+          description: The application to which this resource belongs
           nullable: true
           type: string
         name:
+          description: The display name of the resource
           nullable: true
           type: string
         description:
+          description: The description of the resource
           minLength: 1
           type: string
         actions:
+          description: The actions acceptable for this type of resource
           items:
             $ref: '#/components/schemas/AccessControlledAction'
           type: array
         identifierParts:
+          description: The constituent parts of a valid identifier for this resource
           items:
             $ref: '#/components/schemas/IdentifierPartSchema'
           nullable: true
           type: array
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -48478,6 +48491,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -48867,6 +48881,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -48999,6 +49014,7 @@ components:
           nullable: true
           type: array
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -49344,6 +49360,7 @@ components:
           nullable: true
           type: array
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -49639,6 +49656,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -49673,6 +49691,7 @@ components:
           format: date-time
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -49726,6 +49745,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -49894,6 +49914,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -50182,6 +50203,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -50295,6 +50317,7 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -50892,6 +50915,7 @@ components:
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -50957,6 +50981,7 @@ components:
             $ref: '#/components/schemas/ChangeItem'
           type: array
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -51121,6 +51146,7 @@ components:
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -51892,6 +51918,7 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -52043,6 +52070,7 @@ components:
           nullable: true
           type: array
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -54211,6 +54239,7 @@ components:
             $ref: '#/components/schemas/Relationship'
           type: array
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -54263,6 +54292,7 @@ components:
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -54396,6 +54426,7 @@ components:
         referenceData:
           $ref: '#/components/schemas/ReferenceData'
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -54616,6 +54647,7 @@ components:
           format: date-time
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -54642,6 +54674,7 @@ components:
           format: date-time
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -54675,6 +54708,7 @@ components:
           format: date-time
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -54708,6 +54742,7 @@ components:
           format: date-time
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -55202,6 +55237,7 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -55599,6 +55635,7 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -56062,6 +56099,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -56121,6 +56159,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -56179,6 +56218,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -56379,6 +56419,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -56459,6 +56500,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -56622,6 +56664,7 @@ components:
         value:
           $ref: '#/components/schemas/ConfigurationRecipe'
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -56721,6 +56764,7 @@ components:
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -57082,6 +57126,7 @@ components:
             $ref: '#/components/schemas/HoldingAdjustment'
           type: array
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -57135,6 +57180,7 @@ components:
           - KeepTheSame
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -57156,6 +57202,7 @@ components:
       type: object
     IdentifierPartSchema:
       additionalProperties: false
+      description: The schema of an contributing part of a valid LUSID resource identifier
       example:
         displayName: displayName
         name: name
@@ -57173,20 +57220,27 @@ components:
         required: true
       properties:
         index:
+          description: The typical index in the identifier in which this part appears
           format: int32
           type: integer
         name:
+          description: The name of the identifier part that can/should be provided
+            for this resource type
           minLength: 1
           type: string
         displayName:
+          description: The display name of the identifier part
           minLength: 1
           type: string
         description:
+          description: A brief description of the point of this identifier part
           minLength: 1
           type: string
         required:
+          description: Whether a value is required to be provided
           type: boolean
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -57962,6 +58016,7 @@ components:
           nullable: true
           type: array
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -58452,6 +58507,7 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -58757,6 +58813,7 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -58861,6 +58918,7 @@ components:
       description: The instrument life cycle event result value type
     Link:
       additionalProperties: false
+      description: Link class.
       example:
         method: method
         description: description
@@ -58868,14 +58926,18 @@ components:
         relation: relation
       properties:
         relation:
+          description: Relation of link.
           type: string
         href:
+          description: Href of link.
           format: uri
           type: string
         description:
+          description: Description of link.
           nullable: true
           type: string
         method:
+          description: Http method of link.
           type: string
       required:
       - href
@@ -59128,6 +59190,7 @@ components:
           nullable: true
           type: array
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -59193,11 +59256,16 @@ components:
       type: object
     LusidProblemDetails:
       additionalProperties: false
+      description: A description of a problem that has arisen during the processing
+        of a request.
       properties:
         name:
+          description: The name of the error
           minLength: 1
           type: string
         errorDetails:
+          description: Any additional informational information available about the
+            nature and detail of the problem
           items:
             additionalProperties:
               type: string
@@ -59205,6 +59273,7 @@ components:
           nullable: true
           type: array
         code:
+          description: Get the error code of the response
           format: int32
           type: integer
         type:
@@ -59248,11 +59317,16 @@ components:
       type: object
     LusidValidationProblemDetails:
       additionalProperties: false
+      description: A description of a problem that has arisen whilst validating a
+        request
       properties:
         name:
+          description: The name of the error
           minLength: 1
           type: string
         errorDetails:
+          description: Any additional informational information available about the
+            nature and detail of the problem
           items:
             additionalProperties:
               type: string
@@ -59260,6 +59334,7 @@ components:
           nullable: true
           type: array
         code:
+          description: Get the error code of the response
           format: int32
           type: integer
         errors:
@@ -60046,6 +60121,7 @@ components:
             type: string
           type: array
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -60222,6 +60298,7 @@ components:
         packageId:
           $ref: '#/components/schemas/ResourceId'
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -60725,6 +60802,7 @@ components:
       type: object
     PagedResourceListOfAllocation:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -60869,20 +60947,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Allocation'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -60892,6 +60975,7 @@ components:
       type: object
     PagedResourceListOfBlock:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -61010,20 +61094,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Block'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -61033,6 +61122,7 @@ components:
       type: object
     PagedResourceListOfCalendar:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -61121,20 +61211,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Calendar'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -61144,6 +61239,7 @@ components:
       type: object
     PagedResourceListOfCorporateActionSource:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -61212,20 +61308,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/CorporateActionSource'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -61235,6 +61336,7 @@ components:
       type: object
     PagedResourceListOfCustomEntityDefinition:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -61287,20 +61389,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/CustomEntityDefinition'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -61310,6 +61417,7 @@ components:
       type: object
     PagedResourceListOfCustomEntityResponse:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -61594,20 +61702,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/CustomEntityResponse'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -61617,6 +61730,7 @@ components:
       type: object
     PagedResourceListOfCutLabelDefinition:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -61667,20 +61781,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/CutLabelDefinition'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -61690,6 +61809,7 @@ components:
       type: object
     PagedResourceListOfDataTypeSummary:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -61746,20 +61866,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/DataTypeSummary'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -61769,6 +61894,7 @@ components:
       type: object
     PagedResourceListOfExecution:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -61887,20 +62013,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Execution'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -61910,6 +62041,7 @@ components:
       type: object
     PagedResourceListOfInstrument:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -62224,20 +62356,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Instrument'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -62247,6 +62384,7 @@ components:
       type: object
     PagedResourceListOfInstrumentEventHolder:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -62333,20 +62471,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/InstrumentEventHolder'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -62356,6 +62499,7 @@ components:
       type: object
     PagedResourceListOfLegalEntity:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -62680,20 +62824,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/LegalEntity'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -62703,6 +62852,7 @@ components:
       type: object
     PagedResourceListOfOrder:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -62845,20 +62995,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Order'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -62868,6 +63023,7 @@ components:
       type: object
     PagedResourceListOfParticipation:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -62936,20 +63092,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Participation'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -62959,6 +63120,7 @@ components:
       type: object
     PagedResourceListOfPerson:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -63241,20 +63403,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Person'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -63264,6 +63431,7 @@ components:
       type: object
     PagedResourceListOfPortfolioGroupSearchResult:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -63348,20 +63516,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/PortfolioGroupSearchResult'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -63371,6 +63544,7 @@ components:
       type: object
     PagedResourceListOfPortfolioSearchResult:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -63481,20 +63655,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/PortfolioSearchResult'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -63504,6 +63683,7 @@ components:
       type: object
     PagedResourceListOfPropertyDefinitionSearchResult:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -63574,20 +63754,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/PropertyDefinitionSearchResult'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -63597,6 +63782,7 @@ components:
       type: object
     PagedResourceListOfRelationshipDefinition:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -63667,20 +63853,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/RelationshipDefinition'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -63690,6 +63881,7 @@ components:
       type: object
     PagedResourceListOfSequenceDefinition:
       additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -63744,20 +63936,25 @@ components:
         href: https://openapi-generator.tech
       properties:
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/SequenceDefinition'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -63805,6 +64002,7 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -64397,6 +64595,7 @@ components:
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -64735,6 +64934,7 @@ components:
         unrealisedGainLossReportingCurrency:
           $ref: '#/components/schemas/CurrencyAndAmount'
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -64822,6 +65022,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -64913,6 +65114,7 @@ components:
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -65128,6 +65330,7 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -65188,6 +65391,7 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -65269,6 +65473,7 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -65656,6 +65861,7 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -65790,6 +65996,7 @@ components:
           nullable: true
           type: array
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -66299,6 +66506,7 @@ components:
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -66486,6 +66694,7 @@ components:
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -66595,6 +66804,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -68253,6 +68463,7 @@ components:
           minLength: 1
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -68303,6 +68514,7 @@ components:
       type: object
     ResourceListOfAccessControlledResource:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -68551,22 +68763,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/AccessControlledResource'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -68574,6 +68791,7 @@ components:
       type: object
     ResourceListOfAccessMetadataValueOf:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -68598,24 +68816,29 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             items:
               $ref: '#/components/schemas/AccessMetadataValue'
             type: array
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -68623,6 +68846,7 @@ components:
       type: object
     ResourceListOfAggregationQuery:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -68675,22 +68899,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/AggregationQuery'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -68698,6 +68927,7 @@ components:
       type: object
     ResourceListOfAllocation:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -68842,22 +69072,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Allocation'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -68865,6 +69100,7 @@ components:
       type: object
     ResourceListOfBlock:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -68983,22 +69219,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Block'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -69006,6 +69247,7 @@ components:
       type: object
     ResourceListOfCalendarDate:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -69060,22 +69302,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/CalendarDate'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -69083,6 +69330,7 @@ components:
       type: object
     ResourceListOfChange:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -69137,22 +69385,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Change'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -69160,6 +69413,7 @@ components:
       type: object
     ResourceListOfChangeHistory:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -69224,22 +69478,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/ChangeHistory'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -69247,6 +69506,7 @@ components:
       type: object
     ResourceListOfConstituentsAdjustmentHeader:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -69299,22 +69559,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/ConstituentsAdjustmentHeader'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -69322,6 +69587,7 @@ components:
       type: object
     ResourceListOfCorporateAction:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -69432,22 +69698,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/CorporateAction'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -69455,6 +69726,7 @@ components:
       type: object
     ResourceListOfDataType:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -69561,22 +69833,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/DataType'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -69584,6 +69861,7 @@ components:
       type: object
     ResourceListOfExecution:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -69702,22 +69980,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Execution'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -69725,6 +70008,7 @@ components:
       type: object
     ResourceListOfGetCounterpartyAgreementResponse:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -69809,22 +70093,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/GetCounterpartyAgreementResponse'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -69832,6 +70121,7 @@ components:
       type: object
     ResourceListOfGetCreditSupportAnnexResponse:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -69914,22 +70204,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/GetCreditSupportAnnexResponse'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -69937,6 +70232,7 @@ components:
       type: object
     ResourceListOfGetRecipeResponse:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -70243,22 +70539,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/GetRecipeResponse'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -70266,6 +70567,7 @@ components:
       type: object
     ResourceListOfHoldingsAdjustmentHeader:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -70320,22 +70622,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/HoldingsAdjustmentHeader'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -70343,6 +70650,7 @@ components:
       type: object
     ResourceListOfInstrumentIdTypeDescriptor:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -70365,22 +70673,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/InstrumentIdTypeDescriptor'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -70388,6 +70701,7 @@ components:
       type: object
     ResourceListOfIUnitDefinitionDto:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -70412,22 +70726,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/IUnitDefinitionDto'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -70435,6 +70754,7 @@ components:
       type: object
     ResourceListOfLegalEntity:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -70759,22 +71079,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/LegalEntity'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -70782,6 +71107,7 @@ components:
       type: object
     ResourceListOfMapping:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -70868,22 +71194,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Mapping'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -70891,6 +71222,7 @@ components:
       type: object
     ResourceListOfOrder:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -71033,22 +71365,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Order'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -71056,6 +71393,7 @@ components:
       type: object
     ResourceListOfParticipation:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -71124,22 +71462,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Participation'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -71147,6 +71490,7 @@ components:
       type: object
     ResourceListOfPerformanceReturn:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -71173,22 +71517,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/PerformanceReturn'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -71196,6 +71545,7 @@ components:
       type: object
     ResourceListOfPerson:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -71478,22 +71828,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Person'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -71501,6 +71856,7 @@ components:
       type: object
     ResourceListOfPortfolio:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -71801,22 +72157,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Portfolio'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -71824,6 +72185,7 @@ components:
       type: object
     ResourceListOfPortfolioCashFlow:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -72384,22 +72746,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/PortfolioCashFlow'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -72407,6 +72774,7 @@ components:
       type: object
     ResourceListOfPortfolioCashLadder:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -72505,22 +72873,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/PortfolioCashLadder'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -72528,6 +72901,7 @@ components:
       type: object
     ResourceListOfPortfolioGroup:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -72798,22 +73172,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/PortfolioGroup'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -72821,6 +73200,7 @@ components:
       type: object
     ResourceListOfProcessedCommand:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -72847,22 +73227,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/ProcessedCommand'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -72870,6 +73255,7 @@ components:
       type: object
     ResourceListOfProperty:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -72910,22 +73296,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Property'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -72933,6 +73324,7 @@ components:
       type: object
     ResourceListOfPropertyDefinition:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -73003,22 +73395,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/PropertyDefinition'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -73026,6 +73423,7 @@ components:
       type: object
     ResourceListOfPropertyInterval:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -73074,22 +73472,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/PropertyInterval'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -73097,6 +73500,7 @@ components:
       type: object
     ResourceListOfQuote:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -73147,22 +73551,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Quote'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -73170,6 +73579,7 @@ components:
       type: object
     ResourceListOfReconciliationBreak:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -73288,22 +73698,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/ReconciliationBreak'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -73311,6 +73726,7 @@ components:
       type: object
     ResourceListOfRelation:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -73359,22 +73775,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Relation'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -73382,6 +73803,7 @@ components:
       type: object
     ResourceListOfRelationship:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -73490,22 +73912,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Relationship'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -73513,6 +73940,7 @@ components:
       type: object
     ResourceListOfScopeDefinition:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -73531,22 +73959,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/ScopeDefinition'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -73554,6 +73987,7 @@ components:
       type: object
     ResourceListOfString:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -73572,22 +74006,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             type: string
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -73595,6 +74034,7 @@ components:
       type: object
     ResourceListOfValueType:
       additionalProperties: false
+      description: A collection of resources that can be returned from requests.
       example:
         previousPage: previousPage
         nextPage: nextPage
@@ -73613,22 +74053,27 @@ components:
         href: https://openapi-generator.tech
       properties:
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/ValueType'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
       required:
@@ -73877,6 +74322,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -73951,6 +74397,7 @@ components:
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -74117,6 +74564,7 @@ components:
           minLength: 1
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -75635,6 +76083,7 @@ components:
           nullable: true
           type: array
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -77143,6 +77592,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -77378,6 +77828,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -77544,6 +77995,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -77568,6 +78020,7 @@ components:
           format: date-time
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -77842,6 +78295,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -78046,6 +78500,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -78315,6 +78770,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -78422,6 +78878,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -78897,6 +79354,7 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -78970,6 +79428,7 @@ components:
           nullable: true
           type: array
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -79004,6 +79463,7 @@ components:
           format: date-time
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -79055,6 +79515,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -79108,6 +79569,7 @@ components:
           nullable: true
           type: object
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -79944,20 +80406,25 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/A2BDataRecord'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -80206,20 +80673,25 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/A2BMovementRecord'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -80428,20 +80900,25 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/OutputTransaction'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -81004,20 +81481,25 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/PortfolioHolding'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -81500,20 +81982,25 @@ components:
         version:
           $ref: '#/components/schemas/Version'
         values:
+          description: The resources to list.
           items:
             $ref: '#/components/schemas/Transaction'
           type: array
         href:
+          description: The URI of the resource list.
           format: uri
           nullable: true
           type: string
         nextPage:
+          description: The next page of results.
           nullable: true
           type: string
         previousPage:
+          description: The previous page of results.
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -81548,6 +82035,7 @@ components:
           nullable: true
           type: string
         links:
+          description: Collection of links.
           items:
             $ref: '#/components/schemas/Link'
           nullable: true
@@ -86464,7 +86952,7 @@ components:
       description: OAuth2 Implicit Grant
       flows:
         implicit:
-          authorizationUrl: https://lusid.okta.com/oauth2/default/v1/authorize
+          authorizationUrl: https://dummyurl.lusid.com/
           scopes: {}
       type: oauth2
 x-tagGroups:
