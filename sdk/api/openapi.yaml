@@ -312,7 +312,7 @@ info:
     | <a name="821">821</a>|Allocation Failure|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.31
+  version: 1.0.32
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -31437,12 +31437,72 @@ paths:
         "201":
           content:
             text/plain:
+              example:
+                href: https://example.lusid.com/api/properties/demo-scope/demo-code
+                key: Instrument/default/MyDerivedPropertyName
+                valueType: String
+                displayName: Value
+                dataTypeId:
+                  scope: system
+                  code: number
+                type: Label
+                unitSchema: NoUnits
+                domain: Instrument
+                scope: default
+                code: MyDerivedPropertyName
+                valueRequired: true
+                lifeTime: Perpetual
+                constraintStyle: Property
+                propertyDefinitionType: ValueProperty
+                propertyDescription: A demonstration property definition
+                derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                  / Properties[Instrument/default/Shares]
               schema:
                 $ref: '#/components/schemas/PropertyDefinition'
             application/json:
+              example:
+                href: https://example.lusid.com/api/properties/demo-scope/demo-code
+                key: Instrument/default/MyDerivedPropertyName
+                valueType: String
+                displayName: Value
+                dataTypeId:
+                  scope: system
+                  code: number
+                type: Label
+                unitSchema: NoUnits
+                domain: Instrument
+                scope: default
+                code: MyDerivedPropertyName
+                valueRequired: true
+                lifeTime: Perpetual
+                constraintStyle: Property
+                propertyDefinitionType: ValueProperty
+                propertyDescription: A demonstration property definition
+                derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                  / Properties[Instrument/default/Shares]
               schema:
                 $ref: '#/components/schemas/PropertyDefinition'
             text/json:
+              example:
+                href: https://example.lusid.com/api/properties/demo-scope/demo-code
+                key: Instrument/default/MyDerivedPropertyName
+                valueType: String
+                displayName: Value
+                dataTypeId:
+                  scope: system
+                  code: number
+                type: Label
+                unitSchema: NoUnits
+                domain: Instrument
+                scope: default
+                code: MyDerivedPropertyName
+                valueRequired: true
+                lifeTime: Perpetual
+                constraintStyle: Property
+                propertyDefinitionType: ValueProperty
+                propertyDescription: A demonstration property definition
+                derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                  / Properties[Instrument/default/Shares]
               schema:
                 $ref: '#/components/schemas/PropertyDefinition'
           description: The newly created property definition
@@ -31486,7 +31546,7 @@ paths:
               displayName: My Property Display Name
               dataTypeId:
                 scope: system
-                code: string
+                code: number
               propertyDescription: My Property Description
               derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
                 / Properties[Instrument/default/Shares]
@@ -31500,7 +31560,7 @@ paths:
               displayName: My Property Display Name
               dataTypeId:
                 scope: system
-                code: string
+                code: number
               propertyDescription: My Property Description
               derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
                 / Properties[Instrument/default/Shares]
@@ -31514,7 +31574,7 @@ paths:
               displayName: My Property Display Name
               dataTypeId:
                 scope: system
-                code: string
+                code: number
               propertyDescription: My Property Description
               derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
                 / Properties[Instrument/default/Shares]
@@ -31528,7 +31588,7 @@ paths:
               displayName: My Property Display Name
               dataTypeId:
                 scope: system
-                code: string
+                code: number
               propertyDescription: My Property Description
               derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
                 / Properties[Instrument/default/Shares]
@@ -31540,12 +31600,72 @@ paths:
         "201":
           content:
             text/plain:
+              example:
+                href: https://example.lusid.com/api/properties/demo-scope/demo-code
+                key: Instrument/default/MyDerivedPropertyName
+                valueType: String
+                displayName: Value
+                dataTypeId:
+                  scope: system
+                  code: number
+                type: Label
+                unitSchema: NoUnits
+                domain: Instrument
+                scope: default
+                code: MyDerivedPropertyName
+                valueRequired: true
+                lifeTime: Perpetual
+                constraintStyle: Property
+                propertyDefinitionType: ValueProperty
+                propertyDescription: A demonstration property definition
+                derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                  / Properties[Instrument/default/Shares]
               schema:
                 $ref: '#/components/schemas/PropertyDefinition'
             application/json:
+              example:
+                href: https://example.lusid.com/api/properties/demo-scope/demo-code
+                key: Instrument/default/MyDerivedPropertyName
+                valueType: String
+                displayName: Value
+                dataTypeId:
+                  scope: system
+                  code: number
+                type: Label
+                unitSchema: NoUnits
+                domain: Instrument
+                scope: default
+                code: MyDerivedPropertyName
+                valueRequired: true
+                lifeTime: Perpetual
+                constraintStyle: Property
+                propertyDefinitionType: ValueProperty
+                propertyDescription: A demonstration property definition
+                derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                  / Properties[Instrument/default/Shares]
               schema:
                 $ref: '#/components/schemas/PropertyDefinition'
             text/json:
+              example:
+                href: https://example.lusid.com/api/properties/demo-scope/demo-code
+                key: Instrument/default/MyDerivedPropertyName
+                valueType: String
+                displayName: Value
+                dataTypeId:
+                  scope: system
+                  code: number
+                type: Label
+                unitSchema: NoUnits
+                domain: Instrument
+                scope: default
+                code: MyDerivedPropertyName
+                valueRequired: true
+                lifeTime: Perpetual
+                constraintStyle: Property
+                propertyDefinitionType: ValueProperty
+                propertyDescription: A demonstration property definition
+                derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                  / Properties[Instrument/default/Shares]
               schema:
                 $ref: '#/components/schemas/PropertyDefinition'
           description: The newly created derived property definition
@@ -31571,6 +31691,231 @@ paths:
       - oauth2: []
       summary: '[EARLY ACCESS] CreateDerivedPropertyDefinition: Create derived property
         definition'
+      tags:
+      - Property Definitions
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/propertydefinitions/derived/{domain}/{scope}/{code}:
+    put:
+      description: This will fail if the property definition already exists
+      operationId: UpdateDerivedPropertyDefinition
+      parameters:
+      - description: Domain of the property definition
+        explode: false
+        in: path
+        name: domain
+        required: true
+        schema:
+          description: 'The available values are: NotDefined, Transaction, Portfolio,
+            Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition,
+            Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData,
+            ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
+            Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
+            InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration,
+            Reconciliation'
+          enum:
+          - NotDefined
+          - Transaction
+          - Portfolio
+          - Holding
+          - ReferenceHolding
+          - TransactionConfiguration
+          - Instrument
+          - CutLabelDefinition
+          - Analytic
+          - PortfolioGroup
+          - Person
+          - AccessMetadata
+          - Order
+          - UnitResult
+          - MarketData
+          - ConfigurationRecipe
+          - Allocation
+          - Calendar
+          - LegalEntity
+          - Placement
+          - Execution
+          - Block
+          - Participation
+          - Package
+          - OrderInstruction
+          - NextBestAction
+          - CustomEntity
+          - InstrumentEvent
+          - Account
+          - ChartOfAccounts
+          - CustodianAccount
+          - Abor
+          - AborConfiguration
+          - Reconciliation
+          type: string
+        style: simple
+      - description: Scope of the property definition
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9@+\-_&]+$
+          type: string
+        style: simple
+      - description: Code of the property definition
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9@+\-_&]+$
+          type: string
+        style: simple
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              displayName: My Property Display Name
+              dataTypeId:
+                scope: system
+                code: number
+              propertyDescription: My Property Description
+              derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                / Properties[Instrument/default/Shares]
+            schema:
+              $ref: '#/components/schemas/UpdateDerivedPropertyDefinitionRequest'
+          application/json:
+            example:
+              displayName: My Property Display Name
+              dataTypeId:
+                scope: system
+                code: number
+              propertyDescription: My Property Description
+              derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                / Properties[Instrument/default/Shares]
+            schema:
+              $ref: '#/components/schemas/UpdateDerivedPropertyDefinitionRequest'
+          text/json:
+            example:
+              displayName: My Property Display Name
+              dataTypeId:
+                scope: system
+                code: number
+              propertyDescription: My Property Description
+              derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                / Properties[Instrument/default/Shares]
+            schema:
+              $ref: '#/components/schemas/UpdateDerivedPropertyDefinitionRequest'
+          application/*+json:
+            example:
+              displayName: My Property Display Name
+              dataTypeId:
+                scope: system
+                code: number
+              propertyDescription: My Property Description
+              derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                / Properties[Instrument/default/Shares]
+            schema:
+              $ref: '#/components/schemas/UpdateDerivedPropertyDefinitionRequest'
+        description: Information about the derived property definition being updated
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                href: https://example.lusid.com/api/properties/demo-scope/demo-code
+                key: Instrument/default/MyDerivedPropertyName
+                valueType: String
+                displayName: Value
+                dataTypeId:
+                  scope: system
+                  code: number
+                type: Label
+                unitSchema: NoUnits
+                domain: Instrument
+                scope: default
+                code: MyDerivedPropertyName
+                valueRequired: true
+                lifeTime: Perpetual
+                constraintStyle: Property
+                propertyDefinitionType: ValueProperty
+                propertyDescription: A demonstration property definition
+                derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                  / Properties[Instrument/default/Shares]
+              schema:
+                $ref: '#/components/schemas/PropertyDefinition'
+            application/json:
+              example:
+                href: https://example.lusid.com/api/properties/demo-scope/demo-code
+                key: Instrument/default/MyDerivedPropertyName
+                valueType: String
+                displayName: Value
+                dataTypeId:
+                  scope: system
+                  code: number
+                type: Label
+                unitSchema: NoUnits
+                domain: Instrument
+                scope: default
+                code: MyDerivedPropertyName
+                valueRequired: true
+                lifeTime: Perpetual
+                constraintStyle: Property
+                propertyDefinitionType: ValueProperty
+                propertyDescription: A demonstration property definition
+                derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                  / Properties[Instrument/default/Shares]
+              schema:
+                $ref: '#/components/schemas/PropertyDefinition'
+            text/json:
+              example:
+                href: https://example.lusid.com/api/properties/demo-scope/demo-code
+                key: Instrument/default/MyDerivedPropertyName
+                valueType: String
+                displayName: Value
+                dataTypeId:
+                  scope: system
+                  code: number
+                type: Label
+                unitSchema: NoUnits
+                domain: Instrument
+                scope: default
+                code: MyDerivedPropertyName
+                valueRequired: true
+                lifeTime: Perpetual
+                constraintStyle: Property
+                propertyDefinitionType: ValueProperty
+                propertyDescription: A demonstration property definition
+                derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                  / Properties[Instrument/default/Shares]
+              schema:
+                $ref: '#/components/schemas/PropertyDefinition'
+          description: The updated derived property definition
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] UpdateDerivedPropertyDefinition: Update a pre-existing
+        derived property definition'
       tags:
       - Property Definitions
       x-fbn-apistatus: EarlyAccess
@@ -31785,12 +32130,72 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                href: https://example.lusid.com/api/properties/demo-scope/demo-code
+                key: Instrument/default/MyDerivedPropertyName
+                valueType: String
+                displayName: Value
+                dataTypeId:
+                  scope: system
+                  code: number
+                type: Label
+                unitSchema: NoUnits
+                domain: Instrument
+                scope: default
+                code: MyDerivedPropertyName
+                valueRequired: true
+                lifeTime: Perpetual
+                constraintStyle: Property
+                propertyDefinitionType: ValueProperty
+                propertyDescription: A demonstration property definition
+                derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                  / Properties[Instrument/default/Shares]
               schema:
                 $ref: '#/components/schemas/PropertyDefinition'
             application/json:
+              example:
+                href: https://example.lusid.com/api/properties/demo-scope/demo-code
+                key: Instrument/default/MyDerivedPropertyName
+                valueType: String
+                displayName: Value
+                dataTypeId:
+                  scope: system
+                  code: number
+                type: Label
+                unitSchema: NoUnits
+                domain: Instrument
+                scope: default
+                code: MyDerivedPropertyName
+                valueRequired: true
+                lifeTime: Perpetual
+                constraintStyle: Property
+                propertyDefinitionType: ValueProperty
+                propertyDescription: A demonstration property definition
+                derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                  / Properties[Instrument/default/Shares]
               schema:
                 $ref: '#/components/schemas/PropertyDefinition'
             text/json:
+              example:
+                href: https://example.lusid.com/api/properties/demo-scope/demo-code
+                key: Instrument/default/MyDerivedPropertyName
+                valueType: String
+                displayName: Value
+                dataTypeId:
+                  scope: system
+                  code: number
+                type: Label
+                unitSchema: NoUnits
+                domain: Instrument
+                scope: default
+                code: MyDerivedPropertyName
+                valueRequired: true
+                lifeTime: Perpetual
+                constraintStyle: Property
+                propertyDefinitionType: ValueProperty
+                propertyDescription: A demonstration property definition
+                derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                  / Properties[Instrument/default/Shares]
               schema:
                 $ref: '#/components/schemas/PropertyDefinition'
           description: The requested property definition
@@ -31930,12 +32335,72 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                href: https://example.lusid.com/api/properties/demo-scope/demo-code
+                key: Instrument/default/MyDerivedPropertyName
+                valueType: String
+                displayName: Value
+                dataTypeId:
+                  scope: system
+                  code: number
+                type: Label
+                unitSchema: NoUnits
+                domain: Instrument
+                scope: default
+                code: MyDerivedPropertyName
+                valueRequired: true
+                lifeTime: Perpetual
+                constraintStyle: Property
+                propertyDefinitionType: ValueProperty
+                propertyDescription: A demonstration property definition
+                derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                  / Properties[Instrument/default/Shares]
               schema:
                 $ref: '#/components/schemas/PropertyDefinition'
             application/json:
+              example:
+                href: https://example.lusid.com/api/properties/demo-scope/demo-code
+                key: Instrument/default/MyDerivedPropertyName
+                valueType: String
+                displayName: Value
+                dataTypeId:
+                  scope: system
+                  code: number
+                type: Label
+                unitSchema: NoUnits
+                domain: Instrument
+                scope: default
+                code: MyDerivedPropertyName
+                valueRequired: true
+                lifeTime: Perpetual
+                constraintStyle: Property
+                propertyDefinitionType: ValueProperty
+                propertyDescription: A demonstration property definition
+                derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                  / Properties[Instrument/default/Shares]
               schema:
                 $ref: '#/components/schemas/PropertyDefinition'
             text/json:
+              example:
+                href: https://example.lusid.com/api/properties/demo-scope/demo-code
+                key: Instrument/default/MyDerivedPropertyName
+                valueType: String
+                displayName: Value
+                dataTypeId:
+                  scope: system
+                  code: number
+                type: Label
+                unitSchema: NoUnits
+                domain: Instrument
+                scope: default
+                code: MyDerivedPropertyName
+                valueRequired: true
+                lifeTime: Perpetual
+                constraintStyle: Property
+                propertyDefinitionType: ValueProperty
+                propertyDescription: A demonstration property definition
+                derivationFormula: (Properties[Instrument/default/Price] * Properties[Instrument/default/Cost])
+                  / Properties[Instrument/default/Shares]
               schema:
                 $ref: '#/components/schemas/PropertyDefinition'
           description: The updated property definition
@@ -77268,6 +77733,36 @@ components:
             $ref: '#/components/schemas/UpdateUnitRequest'
           nullable: true
           type: array
+      type: object
+    UpdateDerivedPropertyDefinitionRequest:
+      additionalProperties: false
+      example:
+        derivationFormula: derivationFormula
+        propertyDescription: propertyDescription
+        displayName: displayName
+        dataTypeId:
+          code: code
+          scope: scope
+      properties:
+        displayName:
+          description: The display name of the property.
+          minLength: 1
+          type: string
+        dataTypeId:
+          $ref: '#/components/schemas/ResourceId'
+        propertyDescription:
+          description: Describes the property
+          maxLength: 512
+          nullable: true
+          type: string
+        derivationFormula:
+          description: The rule that defines how data is composed for a derived property.
+          minLength: 1
+          type: string
+      required:
+      - dataTypeId
+      - derivationFormula
+      - displayName
       type: object
     UpdateInstrumentIdentifierRequest:
       additionalProperties: false
