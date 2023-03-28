@@ -23,7 +23,7 @@ Name | Type | Description | Notes
 **costBasisReportingCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
 **transaction** | [**Transaction**](Transaction.md) |  |  [optional]
 **unrealisedGainLossReportingCurrency** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  | 
-**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
 
