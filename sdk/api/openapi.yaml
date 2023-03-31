@@ -315,7 +315,7 @@ info:
     | <a name="824">824</a>|Entity link type could not be deleted because it doesn't exist.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.35
+  version: 1.0.36
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -12721,6 +12721,142 @@ paths:
       tags:
       - Instruments
       x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/instruments/{identifier}/models:
+    get:
+      description: Get the supported pricing models of a single instrument.
+      operationId: GetExistingInstrumentModels
+      parameters:
+      - description: A lusid instrument id identifying the instrument.
+        explode: false
+        in: path
+        name: identifier
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: "The effective datetime or cut label at which to retrieve the\
+          \ instrument.\r\n            Defaults to the current LUSID system datetime\
+          \ if not specified."
+        explode: true
+        in: query
+        name: effectiveAt
+        required: false
+        schema:
+          format: dateorcutlabel
+          type: string
+        style: form
+      - description: "The asAt datetime at which to retrieve the instrument. Defaults\
+          \ to\r\n            returning the latest version if not specified."
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: The scope in which the instrument lies. When not supplied the
+          scope is 'default'.
+        explode: true
+        in: query
+        name: instrumentScope
+        required: false
+        schema:
+          default: default
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      - description: The scope in which the recipe lies. When not supplied the scope
+          is 'default'.
+        explode: true
+        in: query
+        name: recipeScope
+        required: false
+        schema:
+          default: default
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      - description: A unique identifier for an entity, used to obtain configuration
+          recipe details. Default configuration recipe is used if not provided.
+        explode: true
+        in: query
+        name: recipeCode
+        required: false
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                instrumentId: LUID_00003D4X
+                supportedModels:
+                - SimpleStatic
+                - Discounting
+                - VendorDefault
+                - ConstantTimeValueOfMoney
+              schema:
+                $ref: '#/components/schemas/InstrumentModels'
+            application/json:
+              example:
+                instrumentId: LUID_00003D4X
+                supportedModels:
+                - SimpleStatic
+                - Discounting
+                - VendorDefault
+                - ConstantTimeValueOfMoney
+              schema:
+                $ref: '#/components/schemas/InstrumentModels'
+            text/json:
+              example:
+                instrumentId: LUID_00003D4X
+                supportedModels:
+                - SimpleStatic
+                - Discounting
+                - VendorDefault
+                - ConstantTimeValueOfMoney
+              schema:
+                $ref: '#/components/schemas/InstrumentModels'
+          description: Models which can be used to value a given instrument.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: 'GetExistingInstrumentModels: Retrieve supported pricing models for
+        an existing instrument identified by LUID.'
+      tags:
+      - Instruments
+      x-fbn-apistatus: Stable
       x-accepts: application/json
   /api/legalentities:
     get:
@@ -58928,6 +59064,41 @@ components:
             not been mastered within LUSID and instead found via OpenFIGI.
           items:
             $ref: '#/components/schemas/InstrumentDefinition'
+          nullable: true
+          type: array
+      type: object
+    InstrumentModels:
+      additionalProperties: false
+      description: Supported pricing models for an instrument.
+      example:
+        instrumentId: instrumentId
+        supportedModels:
+        - supportedModels
+        - supportedModels
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+      properties:
+        instrumentId:
+          description: The unique LUSID Instrument Identifier (LUID) of the instrument.
+          nullable: true
+          type: string
+        supportedModels:
+          description: The pricing models supported by the instrument e.g. 'Discounting'.
+          items:
+            type: string
+          nullable: true
+          type: array
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
           nullable: true
           type: array
       type: object
