@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. | 
 **side** | **String** | The client&#39;s representation of the order&#39;s side (buy, sell, short, etc) | 
 **orderBookId** | [**ResourceId**](ResourceId.md) |  |  [optional]
-**portfolioId** | [**ResourceId**](ResourceId.md) |  | 
+**portfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **id** | [**ResourceId**](ResourceId.md) |  | 
 **instrumentScope** | **String** | The scope in which the instrument lies |  [optional]
 **lusidInstrumentId** | **String** | The LUSID instrument id for the instrument ordered. | 
@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **stopPrice** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  [optional]
 **orderInstructionId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **packageId** | [**ResourceId**](ResourceId.md) |  |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 
 
