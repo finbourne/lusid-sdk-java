@@ -315,7 +315,7 @@ info:
     | <a name="824">824</a>|Entity link type could not be deleted because it doesn't exist.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.45
+  version: 1.0.46
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -60396,6 +60396,25 @@ components:
       - quoteType
       - supplier
       type: object
+    MarketDataOptions:
+      additionalProperties: false
+      description: "Base class for representing market data options in LUSID.\r\n\
+        Abstractly, these are any options that one should be able to specify for ComplexMarketData\
+        \ entities.\r\nFor example, CurveOptions allows one to decide how the data\
+        \ provided in a discountFactorCurve is interpolated.\r\nThis base class should\
+        \ not be directly instantiated;\r\neach supported MarketDataOptionsType has\
+        \ a corresponding inherited class."
+      discriminator:
+        propertyName: marketDataOptionsType
+      properties:
+        marketDataOptionsType:
+          description: 'The available values are: CurveOptions'
+          enum:
+          - CurveOptions
+          type: string
+      required:
+      - marketDataOptionsType
+      type: object
     MarketDataOverrides:
       additionalProperties: false
       description: Class which holds market data overrides to be used in valuation
@@ -83811,6 +83830,8 @@ components:
           minLength: 0
           nullable: true
           type: string
+        marketDataOptions:
+          $ref: '#/components/schemas/MarketDataOptions'
         marketDataType:
           description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
             FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
@@ -83864,6 +83885,8 @@ components:
           minLength: 0
           nullable: true
           type: string
+        marketDataOptions:
+          $ref: '#/components/schemas/MarketDataOptions'
         marketDataType:
           description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
             FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
@@ -84015,6 +84038,8 @@ components:
             format: double
             type: number
           type: array
+        marketDataOptions:
+          $ref: '#/components/schemas/MarketDataOptions'
         marketDataType:
           description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
             FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
@@ -85088,6 +85113,8 @@ components:
           minLength: 0
           nullable: true
           type: string
+        marketDataOptions:
+          $ref: '#/components/schemas/MarketDataOptions'
         marketDataType:
           description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
             FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
@@ -85146,6 +85173,8 @@ components:
           minLength: 0
           nullable: true
           type: string
+        marketDataOptions:
+          $ref: '#/components/schemas/MarketDataOptions'
         marketDataType:
           description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
             FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
@@ -85248,6 +85277,8 @@ components:
           minLength: 0
           nullable: true
           type: string
+        marketDataOptions:
+          $ref: '#/components/schemas/MarketDataOptions'
         marketDataType:
           description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
             FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
@@ -85306,6 +85337,8 @@ components:
           minLength: 0
           nullable: true
           type: string
+        marketDataOptions:
+          $ref: '#/components/schemas/MarketDataOptions'
         marketDataType:
           description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
             FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
@@ -85364,6 +85397,8 @@ components:
           minLength: 0
           nullable: true
           type: string
+        marketDataOptions:
+          $ref: '#/components/schemas/MarketDataOptions'
         marketDataType:
           description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
             FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
@@ -87596,6 +87631,8 @@ components:
           minLength: 0
           nullable: true
           type: string
+        marketDataOptions:
+          $ref: '#/components/schemas/MarketDataOptions'
         marketDataType:
           description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
             FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
