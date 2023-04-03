@@ -315,7 +315,7 @@ info:
     | <a name="824">824</a>|Entity link type could not be deleted because it doesn't exist.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.47
+  version: 1.0.48
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -29041,36 +29041,36 @@ paths:
         content:
           application/json-patch+json:
             example:
-            - op: add
+            - value: 2020-01-01
               path: /creationDate
-              value: 2020-01-01
+              op: add
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
               type: array
           application/json:
             example:
-            - op: add
+            - value: 2020-01-01
               path: /creationDate
-              value: 2020-01-01
+              op: add
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
               type: array
           text/json:
             example:
-            - op: add
+            - value: 2020-01-01
               path: /creationDate
-              value: 2020-01-01
+              op: add
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
               type: array
           application/*+json:
             example:
-            - op: add
+            - value: 2020-01-01
               path: /creationDate
-              value: 2020-01-01
+              op: add
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
@@ -44391,52 +44391,52 @@ paths:
         content:
           application/json-patch+json:
             example:
-            - op: add
-              path: /subHoldingKeys
-              value:
+            - value:
               - Transaction/Client/AccountType
-            - op: add
+              path: /subHoldingKeys
+              op: add
+            - value: GBP
               path: /baseCurrency
-              value: GBP
+              op: add
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
               type: array
           application/json:
             example:
-            - op: add
-              path: /subHoldingKeys
-              value:
+            - value:
               - Transaction/Client/AccountType
-            - op: add
+              path: /subHoldingKeys
+              op: add
+            - value: GBP
               path: /baseCurrency
-              value: GBP
+              op: add
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
               type: array
           text/json:
             example:
-            - op: add
-              path: /subHoldingKeys
-              value:
+            - value:
               - Transaction/Client/AccountType
-            - op: add
+              path: /subHoldingKeys
+              op: add
+            - value: GBP
               path: /baseCurrency
-              value: GBP
+              op: add
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
               type: array
           application/*+json:
             example:
-            - op: add
-              path: /subHoldingKeys
-              value:
+            - value:
               - Transaction/Client/AccountType
-            - op: add
+              path: /subHoldingKeys
+              op: add
+            - value: GBP
               path: /baseCurrency
-              value: GBP
+              op: add
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
@@ -60815,30 +60815,22 @@ components:
     Operation:
       additionalProperties: false
       example:
-        op: add
         path: path
+        op: op
         from: from
         value: ""
       properties:
-        op:
-          description: 'The available values are: add'
-          enum:
-          - add
-          type: string
-        path:
-          maxLength: 6000
-          minLength: 0
-          type: string
         value:
           nullable: true
-        from:
-          maxLength: 6000
-          minLength: 0
+        path:
           nullable: true
           type: string
-      required:
-      - op
-      - path
+        op:
+          nullable: true
+          type: string
+        from:
+          nullable: true
+          type: string
       type: object
     Order:
       additionalProperties: false
