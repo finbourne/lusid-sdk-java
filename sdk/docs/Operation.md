@@ -7,10 +7,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**op** | [**OpEnum**](#OpEnum) | The available values are: add | 
+**path** | **String** |  | 
 **value** | **Object** |  |  [optional]
-**path** | **String** |  |  [optional]
-**op** | **String** |  |  [optional]
 **from** | **String** |  |  [optional]
+
+
+
+## Enum: OpEnum
+
+Name | Value
+---- | -----
+ADD | &quot;add&quot;
 
 
 

@@ -315,7 +315,7 @@ info:
     | <a name="824">824</a>|Entity link type could not be deleted because it doesn't exist.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.46
+  version: 1.0.47
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -29041,36 +29041,36 @@ paths:
         content:
           application/json-patch+json:
             example:
-            - value: 2020-01-01
+            - op: add
               path: /creationDate
-              op: add
+              value: 2020-01-01
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
               type: array
           application/json:
             example:
-            - value: 2020-01-01
+            - op: add
               path: /creationDate
-              op: add
+              value: 2020-01-01
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
               type: array
           text/json:
             example:
-            - value: 2020-01-01
+            - op: add
               path: /creationDate
-              op: add
+              value: 2020-01-01
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
               type: array
           application/*+json:
             example:
-            - value: 2020-01-01
+            - op: add
               path: /creationDate
-              op: add
+              value: 2020-01-01
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
@@ -44391,52 +44391,52 @@ paths:
         content:
           application/json-patch+json:
             example:
-            - value:
-              - Transaction/Client/AccountType
+            - op: add
               path: /subHoldingKeys
-              op: add
-            - value: GBP
+              value:
+              - Transaction/Client/AccountType
+            - op: add
               path: /baseCurrency
-              op: add
+              value: GBP
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
               type: array
           application/json:
             example:
-            - value:
-              - Transaction/Client/AccountType
+            - op: add
               path: /subHoldingKeys
-              op: add
-            - value: GBP
+              value:
+              - Transaction/Client/AccountType
+            - op: add
               path: /baseCurrency
-              op: add
+              value: GBP
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
               type: array
           text/json:
             example:
-            - value:
-              - Transaction/Client/AccountType
+            - op: add
               path: /subHoldingKeys
-              op: add
-            - value: GBP
+              value:
+              - Transaction/Client/AccountType
+            - op: add
               path: /baseCurrency
-              op: add
+              value: GBP
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
               type: array
           application/*+json:
             example:
-            - value:
-              - Transaction/Client/AccountType
+            - op: add
               path: /subHoldingKeys
-              op: add
-            - value: GBP
+              value:
+              - Transaction/Client/AccountType
+            - op: add
               path: /baseCurrency
-              op: add
+              value: GBP
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
@@ -60815,22 +60815,30 @@ components:
     Operation:
       additionalProperties: false
       example:
+        op: add
         path: path
-        op: op
         from: from
         value: ""
       properties:
+        op:
+          description: 'The available values are: add'
+          enum:
+          - add
+          type: string
+        path:
+          maxLength: 6000
+          minLength: 0
+          type: string
         value:
           nullable: true
-        path:
-          nullable: true
-          type: string
-        op:
-          nullable: true
-          type: string
         from:
+          maxLength: 6000
+          minLength: 0
           nullable: true
           type: string
+      required:
+      - op
+      - path
       type: object
     Order:
       additionalProperties: false
