@@ -30,9 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * An action that can be access controlled
+ * AccessControlledAction
  */
-@ApiModel(description = "An action that can be access controlled")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class AccessControlledAction {
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
@@ -58,10 +57,10 @@ public class AccessControlledAction {
   }
 
    /**
-   * The description of the action
+   * Get description
    * @return description
   **/
-  @ApiModelProperty(required = true, value = "The description of the action")
+  @ApiModelProperty(required = true, value = "")
   public String getDescription() {
     return description;
   }
@@ -105,10 +104,10 @@ public class AccessControlledAction {
   }
 
    /**
-   * When populated, the provided values are the limited set of resources that are allowed to be specified for  access control for this action
+   * Get limitedSet
    * @return limitedSet
   **/
-  @ApiModelProperty(value = "When populated, the provided values are the limited set of resources that are allowed to be specified for  access control for this action")
+  @ApiModelProperty(value = "")
   public List<IdSelectorDefinition> getLimitedSet() {
     return limitedSet;
   }
@@ -133,10 +132,10 @@ public class AccessControlledAction {
   }
 
    /**
-   * Collection of links.
+   * Get links
    * @return links
   **/
-  @ApiModelProperty(value = "Collection of links.")
+  @ApiModelProperty(value = "")
   public List<Link> getLinks() {
     return links;
   }
