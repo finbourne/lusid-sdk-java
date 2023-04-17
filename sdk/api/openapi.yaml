@@ -315,7 +315,7 @@ info:
     | <a name="824">824</a>|Entity link type could not be deleted because it doesn't exist.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.74
+  version: 1.0.75
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -25766,10 +25766,11 @@ paths:
           pattern: ^[\s\S]*$
           type: string
         style: form
-      - description: "A list of property keys from the \"Instrument\" or \"Transaction\"\
-          \ domain to decorate onto\r\n             the transactions. These take the\
-          \ format {domain}/{scope}/{code} e.g. \"Instrument/system/Name\" or\r\n\
-          \             \"Transaction/strategy/quantsignal\"."
+      - description: "A list of property keys from the \"Instrument\", \"Transaction\"\
+          , \"LegalEntity\" or \"CustodianAccount\" domain to decorate onto\r\n  \
+          \           the transactions. These take the format {domain}/{scope}/{code}\
+          \ e.g. \"Instrument/system/Name\" or\r\n             \"Transaction/strategy/quantsignal\"\
+          ."
         explode: true
         in: query
         name: propertyKeys
@@ -46836,10 +46837,10 @@ paths:
           pattern: ^[\s\S]*$
           type: string
         style: form
-      - description: "A list of property keys from the 'Instrument' or 'Transaction'\
-          \ domain to decorate onto\r\n             transactions. These must have\
-          \ the format {domain}/{scope}/{code}, for example 'Instrument/system/Name'\
-          \ or\r\n             'Transaction/strategy/quantsignal'."
+      - description: "A list of property keys from the 'Instrument', 'Transaction',\
+          \ \"LegalEntity\" or \"CustodianAccount\" domain to decorate onto\r\n  \
+          \           transactions. These must have the format {domain}/{scope}/{code},\
+          \ for example 'Instrument/system/Name' or\r\n             'Transaction/strategy/quantsignal'."
         explode: true
         in: query
         name: propertyKeys
