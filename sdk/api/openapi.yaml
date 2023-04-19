@@ -315,7 +315,7 @@ info:
     | <a name="824">824</a>|Entity link type could not be deleted because it doesn't exist.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.84
+  version: 1.0.85
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -330,6 +330,8 @@ tags:
   name: AborConfiguration
 - description: Methods for accessing aggregated data
   name: Aggregation
+- description: Methods for interacting with the Allocation Service
+  name: Allocation Service
 - description: Methods for interacting with Allocations. An Allocation represents
     the redistribution of market Executions against an originating Order. Allocations
     are treated monotemporally; any updates are effective at the as-at time of update,
@@ -89167,6 +89169,7 @@ x-tagGroups:
   - Abor
   - AborConfiguration
   - Aggregation
+  - Allocation Service
   - Allocations
   - Application Metadata
   - Blocks
