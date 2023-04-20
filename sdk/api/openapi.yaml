@@ -315,7 +315,7 @@ info:
     | <a name="824">824</a>|Entity link type could not be deleted because it doesn't exist.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.89
+  version: 1.0.90
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -54077,9 +54077,8 @@ components:
         corporateActionSourceId:
           $ref: '#/components/schemas/ResourceId'
         accountingMethod:
-          description: 'Determines the accounting treatment given to the transaction
-            portfolio''s tax lots. The available values are: Default, AverageCost,
-            FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst'
+          description: '. The available values are: Default, AverageCost, FirstInFirstOut,
+            LastInFirstOut, HighestCostFirst, LowestCostFirst'
           enum:
           - Default
           - AverageCost
@@ -54608,9 +54607,8 @@ components:
         corporateActionSourceId:
           $ref: '#/components/schemas/ResourceId'
         accountingMethod:
-          description: 'Determines the accounting treatment given to the transaction
-            portfolio''s tax lots. The available values are: Default, AverageCost,
-            FirstInFirstOut, LastInFirstOut, HighestCostFirst, LowestCostFirst'
+          description: '. The available values are: Default, AverageCost, FirstInFirstOut,
+            LastInFirstOut, HighestCostFirst, LowestCostFirst'
           enum:
           - Default
           - AverageCost
