@@ -115,7 +115,7 @@ public class Example {
 
     ReconciliationsApi apiInstance = new ReconciliationsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the mapping.
-    String code = "code_example"; // String | The code fof the mapping.
+    String code = "code_example"; // String | The code of the mapping.
     try {
       Mapping result = apiInstance.getReconciliationMapping(scope, code);
       System.out.println(result);
@@ -135,7 +135,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **scope** | **String**| The scope of the mapping. |
- **code** | **String**| The code fof the mapping. |
+ **code** | **String**| The code of the mapping. |
 
 ### Return type
 
