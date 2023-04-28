@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **startDate** | **OffsetDateTime** | The Start date of the bond, this is normally when accrual of the first coupon begins. | 
 **maturityDate** | **OffsetDateTime** | The Maturity date of the bond, this is when the last coupon accrual period ends.  Note that while most bonds have their last payment on this date there are some cases where the final payment is the next working day. | 
-**domCcy** | **String** | The domestic currency of the instrument. | 
+**domCcy** | **String** | The domestic currency of the instrument. This should be the same as the Currency set on the FlowConventions. | 
 **flowConventions** | [**FlowConventions**](FlowConventions.md) |  | 
 **principal** | **java.math.BigDecimal** | The face-value or principal for the bond at outset.  This might be reduced through its lifetime in the event of amortisation or similar. | 
 **couponRate** | **java.math.BigDecimal** | Simple coupon rate. | 
