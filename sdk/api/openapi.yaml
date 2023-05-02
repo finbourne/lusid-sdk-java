@@ -315,7 +315,7 @@ info:
     | <a name="824">824</a>|Entity link type could not be deleted because it doesn't exist.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.129
+  version: 1.0.130
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -57127,12 +57127,12 @@ components:
           description: "DEPRECATED\r\nNumber of Good Business Days between the trade\
             \ date and the effective or settlement date of the instrument.\r\nThis\
             \ field is now deprecated and not picked up in schedule generation or\
-            \ adjustment to bond accrual start date. Default to 0."
+            \ adjustment to bond accrual start date. Defaulted to 0 if not set."
           format: int32
           type: integer
         resetDays:
           description: The number of Good Business Days between determination and
-            payment of reset.
+            payment of reset. Defaulted to 0 if not set.
           format: int32
           type: integer
         leapDaysIncluded:
@@ -57172,9 +57172,7 @@ components:
       - paymentCalendars
       - paymentFrequency
       - resetCalendars
-      - resetDays
       - rollConvention
-      - settleDays
       type: object
     ForwardRateAgreement:
       allOf:
