@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **counterparty** | **String** | The market entity this placement is placed with. | 
 **averagePrice** | **java.math.BigDecimal** | The average price of all executions for a given placement at the time of upsert |  [optional]
 **version** | [**Version**](Version.md) |  |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
 
