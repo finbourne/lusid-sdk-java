@@ -315,7 +315,7 @@ info:
     | <a name="824">824</a>|Entity link type could not be deleted because it doesn't exist.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.134
+  version: 1.0.135
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -31696,6 +31696,146 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-contentType: application/json-patch+json
       x-accepts: application/json
+  /api/portfolios/{scope}/{code}/returns/dispersion/$aggregated:
+    post:
+      description: "Calculate the dispersion metric with the Aggregate Returns which\
+        \ are on the specified portfolio.\r\n           This works only for composites\
+        \ which have at least 6 constituents for a full year in."
+      operationId: GetAggregatedReturnsDispersionMetrics
+      parameters:
+      - description: The scope of the Portfolio.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The code of the  Portfolio.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The asAt datetime at which to retrieve the Returns. Defaults
+          to the latest.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              toEffectiveAt: 2023-01-01
+              yearsCount: 10
+              returnIds:
+              - scope: TestScope
+                code: default
+              recipeId:
+                scope: ReturnsScope
+                code: ReturnCode
+              compositeMethod: Asset
+              alternativeInceptionDate: 2020-01-01
+            schema:
+              $ref: '#/components/schemas/AggregatedReturnsDispersionRequest'
+          application/json:
+            example:
+              toEffectiveAt: 2023-01-01
+              yearsCount: 10
+              returnIds:
+              - scope: TestScope
+                code: default
+              recipeId:
+                scope: ReturnsScope
+                code: ReturnCode
+              compositeMethod: Asset
+              alternativeInceptionDate: 2020-01-01
+            schema:
+              $ref: '#/components/schemas/AggregatedReturnsDispersionRequest'
+          text/json:
+            example:
+              toEffectiveAt: 2023-01-01
+              yearsCount: 10
+              returnIds:
+              - scope: TestScope
+                code: default
+              recipeId:
+                scope: ReturnsScope
+                code: ReturnCode
+              compositeMethod: Asset
+              alternativeInceptionDate: 2020-01-01
+            schema:
+              $ref: '#/components/schemas/AggregatedReturnsDispersionRequest'
+          application/*+json:
+            example:
+              toEffectiveAt: 2023-01-01
+              yearsCount: 10
+              returnIds:
+              - scope: TestScope
+                code: default
+              recipeId:
+                scope: ReturnsScope
+                code: ReturnCode
+              compositeMethod: Asset
+              alternativeInceptionDate: 2020-01-01
+            schema:
+              $ref: '#/components/schemas/AggregatedReturnsDispersionRequest'
+        description: The request used in the AggregatedReturnsDispersionMetric.
+        required: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CompositeDispersionResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompositeDispersionResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CompositeDispersionResponse'
+          description: The aggregated returns grouped by return stream.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetAggregatedReturnsDispersionMetrics: Get the Aggregated
+        Returns Dispersion metric'
+      tags:
+      - Portfolios
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
   /api/portfolios/{scope}/{code}/returns/{returnScope}/{returnCode}:
     get:
       description: Get Returns which are on the specified portfolio.
@@ -50014,6 +50154,57 @@ components:
       - endOfPeriod
       - metricsValue
       type: object
+    AggregatedReturnsDispersionRequest:
+      additionalProperties: false
+      description: The request used in the AggregatedReturnsDispersionMetric.
+      example:
+        alternativeInceptionDate: alternativeInceptionDate
+        yearsCount: 0
+        returnIds:
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
+        toEffectiveAt: toEffectiveAt
+        recipeId:
+          code: code
+          scope: scope
+        compositeMethod: compositeMethod
+      properties:
+        toEffectiveAt:
+          description: The end date for when the you want the dispersion to be calculated.
+          format: dateorcutlabel
+          maxLength: 256
+          minLength: 0
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_\+:\.]+$
+          type: string
+        yearsCount:
+          description: For how many years to calculate the dispersion. Default to
+            10.
+          format: int32
+          type: integer
+        returnIds:
+          description: The Scope and code of the returns.
+          items:
+            $ref: '#/components/schemas/ResourceId'
+          nullable: true
+          type: array
+        recipeId:
+          $ref: '#/components/schemas/ResourceId'
+        compositeMethod:
+          description: 'The method used to calculate the Portfolio performance: Equal/Asset.'
+          nullable: true
+          type: string
+        alternativeInceptionDate:
+          description: Optional - either a date, or the key for a portfolio property
+            containing a date. If provided, the given date will override the inception
+            date for this request.
+          maxLength: 1024
+          minLength: 0
+          nullable: true
+          type: string
+      type: object
     AggregatedReturnsRequest:
       additionalProperties: false
       description: The request used in the AggregatedReturns.
@@ -52638,6 +52829,145 @@ components:
       required:
       - marketAsset
       - provider
+      type: object
+    CompositeDispersion:
+      additionalProperties: false
+      description: A list of Dispersion calculations for the given years.
+      example:
+        dispersionCalculation: 0.8008281904610115
+        variance: 6.027456183070403
+        firstQuartile: 1.4658129805029452
+        effectiveAt: 2000-01-23T04:56:07.000+00:00
+        thirdQuartile: 5.962133916683182
+        range: 5.637376656633329
+        constituentsInScope:
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
+        constituentsExcluded:
+        - code: code
+          scope: scope
+        - code: code
+          scope: scope
+      properties:
+        effectiveAt:
+          description: The date for which dipsersion calculation has been done. This
+            should be 31 Dec for each given year.
+          format: date-time
+          type: string
+        dispersionCalculation:
+          description: The result for the dispersion calculation on the given effectiveAt.
+          format: double
+          type: number
+        variance:
+          description: The variance on the given effectiveAt.
+          format: double
+          type: number
+        firstQuartile:
+          description: First Quartile (Q1) =  (lower quartile) = the middle of the
+            bottom half of the returns.
+          format: double
+          type: number
+        thirdQuartile:
+          description: Third Quartile (Q3) =  (higher quartile) = the middle of the
+            top half of the returns.
+          format: double
+          type: number
+        range:
+          description: Highest return - Lowest return.
+          format: double
+          type: number
+        constituentsInScope:
+          description: List containing Composite members which are part of the dispersion
+            calcualtion.
+          items:
+            $ref: '#/components/schemas/ResourceId'
+          nullable: true
+          type: array
+        constituentsExcluded:
+          description: List containing the Composite members which are not part of
+            the dispersion calculation
+          items:
+            $ref: '#/components/schemas/ResourceId'
+          nullable: true
+          type: array
+      required:
+      - dispersionCalculation
+      - effectiveAt
+      - firstQuartile
+      - range
+      - thirdQuartile
+      - variance
+      type: object
+    CompositeDispersionResponse:
+      additionalProperties: false
+      example:
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+        results:
+          key:
+          - dispersionCalculation: 0.8008281904610115
+            variance: 6.027456183070403
+            firstQuartile: 1.4658129805029452
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            thirdQuartile: 5.962133916683182
+            range: 5.637376656633329
+            constituentsInScope:
+            - code: code
+              scope: scope
+            - code: code
+              scope: scope
+            constituentsExcluded:
+            - code: code
+              scope: scope
+            - code: code
+              scope: scope
+          - dispersionCalculation: 0.8008281904610115
+            variance: 6.027456183070403
+            firstQuartile: 1.4658129805029452
+            effectiveAt: 2000-01-23T04:56:07.000+00:00
+            thirdQuartile: 5.962133916683182
+            range: 5.637376656633329
+            constituentsInScope:
+            - code: code
+              scope: scope
+            - code: code
+              scope: scope
+            constituentsExcluded:
+            - code: code
+              scope: scope
+            - code: code
+              scope: scope
+      properties:
+        href:
+          description: The specific Uniform Resource Identifier (URI) for this resource
+            at the requested effective and asAt datetime.
+          format: uri
+          nullable: true
+          type: string
+        results:
+          additionalProperties:
+            items:
+              $ref: '#/components/schemas/CompositeDispersion'
+            type: array
+          description: Dispersion returns calculation grouped by ReturnId
+          nullable: true
+          type: object
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
       type: object
     Compounding:
       additionalProperties: false
