@@ -315,7 +315,7 @@ info:
     | <a name="824">824</a>|Entity link type could not be deleted because it doesn't exist.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.144
+  version: 1.0.145
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -4263,8 +4263,6 @@ paths:
                   - 260.1475
                   - 453.2625
                   lineage: ""
-                  calendars: []
-                  spotDaysCalculationType: SingleCalendar
                   marketDataType: FxForwardTenorPipsCurveData
             schema:
               additionalProperties:
@@ -4330,8 +4328,6 @@ paths:
                   - 260.1475
                   - 453.2625
                   lineage: ""
-                  calendars: []
-                  spotDaysCalculationType: SingleCalendar
                   marketDataType: FxForwardTenorPipsCurveData
             schema:
               additionalProperties:
@@ -4397,8 +4393,6 @@ paths:
                   - 260.1475
                   - 453.2625
                   lineage: ""
-                  calendars: []
-                  spotDaysCalculationType: SingleCalendar
                   marketDataType: FxForwardTenorPipsCurveData
             schema:
               additionalProperties:
@@ -4464,8 +4458,6 @@ paths:
                   - 260.1475
                   - 453.2625
                   lineage: ""
-                  calendars: []
-                  spotDaysCalculationType: SingleCalendar
                   marketDataType: FxForwardTenorPipsCurveData
             schema:
               additionalProperties:
@@ -57712,27 +57704,6 @@ components:
       - $ref: '#/components/schemas/LusidInstrument'
       - $ref: '#/components/schemas/FxSwap_allOf'
       description: LUSID representation of an FX Swap. Composed of two FX Forwards.
-    FxTenorConvention:
-      additionalProperties: false
-      description: "A wrapper of conventions that should be used when interpreting\
-        \ tenors in the context of FX.\r\nFor instance, can be used to control how\
-        \ tenors are interpreted on an FxForwardTenorCurveData instance."
-      properties:
-        calendarCode:
-          description: The code of the holiday calendar that should be used when interpreting
-            FX tenors.
-          maxLength: 64
-          minLength: 0
-          type: string
-        spotDays:
-          description: The minimum number of business days that must pass within this
-            calendar when calculating the spot date.
-          format: int32
-          type: integer
-      required:
-      - calendarCode
-      - spotDays
-      type: object
     FxVolSurfaceData:
       allOf:
       - $ref: '#/components/schemas/ComplexMarketData'
@@ -86972,18 +86943,6 @@ components:
           type: string
         marketDataOptions:
           $ref: '#/components/schemas/MarketDataOptions'
-        calendars:
-          description: The list of conventions that should be used when interpreting
-            tenors as dates.
-          items:
-            $ref: '#/components/schemas/FxTenorConvention'
-          nullable: true
-          type: array
-        spotDaysCalculationType:
-          description: Configures how to calculate the spot date from the build date
-            using the Calendars provided.
-          nullable: true
-          type: string
         marketDataType:
           description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
             FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
@@ -87208,18 +87167,6 @@ components:
           type: string
         marketDataOptions:
           $ref: '#/components/schemas/MarketDataOptions'
-        calendars:
-          description: The list of conventions that should be used when interpreting
-            tenors as dates.
-          items:
-            $ref: '#/components/schemas/FxTenorConvention'
-          nullable: true
-          type: array
-        spotDaysCalculationType:
-          description: Configures how to calculate the spot date from the build date
-            using the Calendars provided.
-          nullable: true
-          type: string
         marketDataType:
           description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
             FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
@@ -87280,18 +87227,6 @@ components:
           type: string
         marketDataOptions:
           $ref: '#/components/schemas/MarketDataOptions'
-        calendars:
-          description: The list of conventions that should be used when interpreting
-            tenors as dates.
-          items:
-            $ref: '#/components/schemas/FxTenorConvention'
-          nullable: true
-          type: array
-        spotDaysCalculationType:
-          description: Configures how to calculate the spot date from the build date
-            using the Calendars provided.
-          nullable: true
-          type: string
         marketDataType:
           description: 'The available values are: DiscountFactorCurveData, EquityVolSurfaceData,
             FxVolSurfaceData, IrVolCubeData, OpaqueMarketData, YieldCurveData, FxForwardCurveData,
