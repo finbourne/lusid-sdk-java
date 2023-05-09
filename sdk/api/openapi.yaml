@@ -315,7 +315,7 @@ info:
     | <a name="824">824</a>|Entity link type could not be deleted because it doesn't exist.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.146
+  version: 1.0.147
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -38567,6 +38567,7 @@ paths:
                   effectiveFrom: 2018-03-05T12:00:00.0000000+00:00
               instrumentScopes: []
               amortisationMethod: NoAmortisation
+              transactionTypeScope: SomeScope
             schema:
               $ref: '#/components/schemas/CreateTransactionPortfolioRequest'
           application/json:
@@ -38596,6 +38597,7 @@ paths:
                   effectiveFrom: 2018-03-05T12:00:00.0000000+00:00
               instrumentScopes: []
               amortisationMethod: NoAmortisation
+              transactionTypeScope: SomeScope
             schema:
               $ref: '#/components/schemas/CreateTransactionPortfolioRequest'
           text/json:
@@ -38625,6 +38627,7 @@ paths:
                   effectiveFrom: 2018-03-05T12:00:00.0000000+00:00
               instrumentScopes: []
               amortisationMethod: NoAmortisation
+              transactionTypeScope: SomeScope
             schema:
               $ref: '#/components/schemas/CreateTransactionPortfolioRequest'
           application/*+json:
@@ -38654,6 +38657,7 @@ paths:
                   effectiveFrom: 2018-03-05T12:00:00.0000000+00:00
               instrumentScopes: []
               amortisationMethod: NoAmortisation
+              transactionTypeScope: SomeScope
             schema:
               $ref: '#/components/schemas/CreateTransactionPortfolioRequest'
         description: The definition of the transaction portfolio.
@@ -49610,6 +49614,7 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
+          transactionTypeScope: transactionTypeScope
           baseCurrency: baseCurrency
           relationships:
           - effectiveUntil: 2000-01-23T04:56:07.000+00:00
@@ -54420,6 +54425,7 @@ components:
         parentPortfolioId:
           code: code
           scope: scope
+        transactionTypeScope: transactionTypeScope
       properties:
         displayName:
           description: The name of the derived transaction portfolio.
@@ -54487,6 +54493,13 @@ components:
           description: The amortisation method the portfolio is using in the calculation.
             This can be 'NoAmortisation', 'StraightLine' or 'EffectiveYield'.
           nullable: true
+          type: string
+        transactionTypeScope:
+          description: The scope of the transaction types.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
           type: string
       required:
       - code
@@ -54940,6 +54953,7 @@ components:
         corporateActionSourceId:
           code: code
           scope: scope
+        transactionTypeScope: transactionTypeScope
         baseCurrency: baseCurrency
         properties:
           key:
@@ -55027,6 +55041,13 @@ components:
           description: The amortisation method the portfolio is using in the calculation.
             This can be 'NoAmortisation', 'StraightLine' or 'EffectiveYield'.
           nullable: true
+          type: string
+        transactionTypeScope:
+          description: The scope of the transaction types.
+          maxLength: 64
+          minLength: 1
+          nullable: true
+          pattern: ^[a-zA-Z0-9\-_]+$
           type: string
       required:
       - baseCurrency
@@ -66654,6 +66675,7 @@ components:
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
           asAtDate: 2000-01-23T04:56:07.000+00:00
+        transactionTypeScope: transactionTypeScope
         baseCurrency: baseCurrency
         relationships:
         - effectiveUntil: 2000-01-23T04:56:07.000+00:00
@@ -66852,6 +66874,10 @@ components:
         amortisationMethod:
           description: The amortisation method the portfolio is using in the calculation.
             This can be 'NoAmortisation', 'StraightLine' or 'EffectiveYield'.
+          nullable: true
+          type: string
+        transactionTypeScope:
+          description: The scope of the transaction types.
           nullable: true
           type: string
         links:
@@ -74301,6 +74327,7 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
+          transactionTypeScope: transactionTypeScope
           baseCurrency: baseCurrency
           relationships:
           - effectiveUntil: 2000-01-23T04:56:07.000+00:00
@@ -74443,6 +74470,7 @@ components:
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
+          transactionTypeScope: transactionTypeScope
           baseCurrency: baseCurrency
           relationships:
           - effectiveUntil: 2000-01-23T04:56:07.000+00:00
