@@ -315,7 +315,7 @@ info:
     | <a name="824">824</a>|Entity link type could not be deleted because it doesn't exist.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.152
+  version: 1.0.153
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -32327,17 +32327,6 @@ paths:
             type: string
           type: array
         style: form
-      - description: "The effective datetime or cut label at which to list properties\
-          \ attached to the Property Definition.\r\n            Defaults to the current\
-          \ LUSID system datetime if not specified."
-        explode: true
-        in: query
-        name: effectiveAt
-        required: false
-        schema:
-          format: dateorcutlabel
-          type: string
-        style: form
       responses:
         "200":
           content:
@@ -32723,7 +32712,7 @@ paths:
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
             InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration,
-            Reconciliation, PropertyDefinition'
+            Reconciliation'
           enum:
           - NotDefined
           - Transaction
@@ -32759,7 +32748,6 @@ paths:
           - Abor
           - AborConfiguration
           - Reconciliation
-          - PropertyDefinition
           type: string
         style: simple
       - description: Scope of the property definition
@@ -32949,7 +32937,7 @@ paths:
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
             InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration,
-            Reconciliation, PropertyDefinition'
+            Reconciliation'
           enum:
           - NotDefined
           - Transaction
@@ -32985,7 +32973,6 @@ paths:
           - Abor
           - AborConfiguration
           - Reconciliation
-          - PropertyDefinition
           type: string
         style: simple
       - description: The scope of the property to be deleted.
@@ -33065,7 +33052,7 @@ paths:
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
             InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration,
-            Reconciliation, PropertyDefinition'
+            Reconciliation'
           enum:
           - NotDefined
           - Transaction
@@ -33101,7 +33088,6 @@ paths:
           - Abor
           - AborConfiguration
           - Reconciliation
-          - PropertyDefinition
           type: string
         style: simple
       - description: The scope of the specified property.
@@ -33139,17 +33125,6 @@ paths:
           type: string
         style: form
         x-nullable: true
-      - description: "The effective datetime or cut label at which to list properties\
-          \ attached to the Property Definition.\r\n            Defaults to the current\
-          \ LUSID system datetime if not specified."
-        explode: true
-        in: query
-        name: effectiveAt
-        required: false
-        schema:
-          format: dateorcutlabel
-          type: string
-        style: form
       responses:
         "200":
           content:
@@ -33266,7 +33241,7 @@ paths:
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
             InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration,
-            Reconciliation, PropertyDefinition'
+            Reconciliation'
           enum:
           - NotDefined
           - Transaction
@@ -33302,7 +33277,6 @@ paths:
           - Abor
           - AborConfiguration
           - Reconciliation
-          - PropertyDefinition
           type: string
         style: simple
       - description: The scope of the property being updated.
@@ -54372,7 +54346,7 @@ components:
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
             InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration,
-            Reconciliation, PropertyDefinition'
+            Reconciliation'
           enum:
           - NotDefined
           - Transaction
@@ -54408,7 +54382,6 @@ components:
           - Abor
           - AborConfiguration
           - Reconciliation
-          - PropertyDefinition
           type: string
         scope:
           description: The scope that the property exists in.
@@ -54650,7 +54623,7 @@ components:
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
             LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
             NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,
-            CustodianAccount, Abor, AborConfiguration, Reconciliation, PropertyDefinition'
+            CustodianAccount, Abor, AborConfiguration, Reconciliation'
           enum:
           - NotDefined
           - Transaction
@@ -54686,7 +54659,6 @@ components:
           - Abor
           - AborConfiguration
           - Reconciliation
-          - PropertyDefinition
           type: string
         scope:
           description: The scope that the property exists in.
@@ -68697,20 +68669,6 @@ components:
         lifeTime: Perpetual
         valueRequired: true
         key: key
-        properties:
-          key:
-            effectiveUntil: 2000-01-23T04:56:07.000+00:00
-            value:
-              metricValue:
-                unit: unit
-                value: 0.8008281904610115
-              labelValue: labelValue
-              labelValueSet:
-                values:
-                - values
-                - values
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            key: key
         propertyDefinitionType: ValueProperty
       properties:
         href:
@@ -68783,7 +68741,7 @@ components:
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
             LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
             NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,
-            CustodianAccount, Abor, AborConfiguration, Reconciliation, PropertyDefinition'
+            CustodianAccount, Abor, AborConfiguration, Reconciliation'
           enum:
           - NotDefined
           - Transaction
@@ -68819,7 +68777,6 @@ components:
           - Abor
           - AborConfiguration
           - Reconciliation
-          - PropertyDefinition
           type: string
         scope:
           description: The scope that the property exists in.
@@ -68863,14 +68820,6 @@ components:
           description: The rule that defines how data is composed for a derived property.
           nullable: true
           type: string
-        properties:
-          additionalProperties:
-            $ref: '#/components/schemas/Property'
-          description: Set of unique property definition properties and associated
-            values to store with the property definition. Each property must be from
-            the 'PropertyDefinition' domain.
-          nullable: true
-          type: object
         links:
           description: Collection of links.
           items:
@@ -68980,7 +68929,7 @@ components:
             Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar,
             LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
             NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,
-            CustodianAccount, Abor, AborConfiguration, Reconciliation, PropertyDefinition'
+            CustodianAccount, Abor, AborConfiguration, Reconciliation'
           enum:
           - NotDefined
           - Transaction
@@ -69016,7 +68965,6 @@ components:
           - Abor
           - AborConfiguration
           - Reconciliation
-          - PropertyDefinition
           type: string
         scope:
           description: The scope that the property exists in.
@@ -75885,20 +75833,6 @@ components:
           lifeTime: Perpetual
           valueRequired: true
           key: key
-          properties:
-            key:
-              effectiveUntil: 2000-01-23T04:56:07.000+00:00
-              value:
-                metricValue:
-                  unit: unit
-                  value: 0.8008281904610115
-                labelValue: labelValue
-                labelValueSet:
-                  values:
-                  - values
-                  - values
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              key: key
           propertyDefinitionType: ValueProperty
         - derivationFormula: derivationFormula
           code: code
@@ -75926,20 +75860,6 @@ components:
           lifeTime: Perpetual
           valueRequired: true
           key: key
-          properties:
-            key:
-              effectiveUntil: 2000-01-23T04:56:07.000+00:00
-              value:
-                metricValue:
-                  unit: unit
-                  value: 0.8008281904610115
-                labelValue: labelValue
-                labelValueSet:
-                  values:
-                  - values
-                  - values
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              key: key
           propertyDefinitionType: ValueProperty
         links:
         - method: method
