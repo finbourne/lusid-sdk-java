@@ -47,7 +47,7 @@ public class InstrumentsTest {
 
     private static void ensurePropertyDefinition(String code) throws ApiException {
         try {
-            propertyDefinitionsApi.getPropertyDefinition("Instrument", TestDataUtilities.TutorialScope, code, null);
+            propertyDefinitionsApi.getPropertyDefinition("Instrument", TestDataUtilities.TutorialScope, code, null, null);
         } catch (ApiException e) {
 
             //  Property definition doesn't exist (returns 404), so create one
