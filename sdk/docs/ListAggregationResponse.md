@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **aggregationCurrency** | **String** |  |  [optional]
 **dataSchema** | [**ResultDataSchema**](ResultDataSchema.md) |  |  [optional]
 **aggregationFailures** | [**List&lt;AggregationMeasureFailureDetail&gt;**](AggregationMeasureFailureDetail.md) |  |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
 
