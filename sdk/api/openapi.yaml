@@ -313,9 +313,12 @@ info:
     | <a name="822">822</a>|Reconciliation run not found|  |
     | <a name="823">823</a>|Reconciliation break not found|  |
     | <a name="824">824</a>|Entity link type could not be deleted because it doesn't exist.|  |
+    | <a name="828">828</a>|Address key definition not found.|  |
+    | <a name="829">829</a>|Compliance template not found.|  |
+    | <a name="830">830</a>|Action not supported|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.171
+  version: 1.0.172
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
