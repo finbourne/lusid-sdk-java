@@ -318,7 +318,7 @@ info:
     | <a name="830">830</a>|Action not supported|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.178
+  version: 1.0.179
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
