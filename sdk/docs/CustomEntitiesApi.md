@@ -615,7 +615,7 @@ public class Example {
     String identifierValue = "identifierValue_example"; // String | The identifier value.
     String identifierScope = "identifierScope_example"; // String | The identifier scope.
     List<AccessMetadataOperation> accessMetadataOperation = Arrays.asList(); // List<AccessMetadataOperation> | The Json Patch document
-    String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the Access Metadata
+    String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which the Access Metadata will be effective from
     OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' datetime of the Access Metadata
     try {
       Map<String, List<AccessMetadataValue>> result = apiInstance.patchCustomEntityAccessMetadata(entityType, identifierType, identifierValue, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil);
@@ -640,7 +640,7 @@ Name | Type | Description  | Notes
  **identifierValue** | **String**| The identifier value. |
  **identifierScope** | **String**| The identifier scope. |
  **accessMetadataOperation** | [**List&lt;AccessMetadataOperation&gt;**](AccessMetadataOperation.md)| The Json Patch document |
- **effectiveAt** | **String**| The effectiveAt datetime at which to retrieve the Access Metadata | [optional]
+ **effectiveAt** | **String**| The effectiveAt datetime at which the Access Metadata will be effective from | [optional]
  **effectiveUntil** | **OffsetDateTime**| The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata | [optional]
 
 ### Return type
@@ -841,7 +841,7 @@ public class Example {
     String metadataKey = "metadataKey_example"; // String | Key of the metadata entry to retrieve
     String identifierScope = "identifierScope_example"; // String | The identifier scope.
     UpsertCustomEntityAccessMetadataRequest upsertCustomEntityAccessMetadataRequest = new UpsertCustomEntityAccessMetadataRequest(); // UpsertCustomEntityAccessMetadataRequest | The Custom Entity Access Metadata entry to upsert
-    String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the Access Metadata
+    String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which the Access Metadata will be effective from
     OffsetDateTime effectiveUntil = OffsetDateTime.now(); // OffsetDateTime | The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next 'effectiveAt' datetime of the Access Metadata
     try {
       List<AccessMetadataValue> result = apiInstance.upsertCustomEntityAccessMetadata(entityType, identifierType, identifierValue, metadataKey, identifierScope, upsertCustomEntityAccessMetadataRequest, effectiveAt, effectiveUntil);
@@ -867,7 +867,7 @@ Name | Type | Description  | Notes
  **metadataKey** | **String**| Key of the metadata entry to retrieve |
  **identifierScope** | **String**| The identifier scope. |
  **upsertCustomEntityAccessMetadataRequest** | [**UpsertCustomEntityAccessMetadataRequest**](UpsertCustomEntityAccessMetadataRequest.md)| The Custom Entity Access Metadata entry to upsert |
- **effectiveAt** | **String**| The effectiveAt datetime at which to retrieve the Access Metadata | [optional]
+ **effectiveAt** | **String**| The effectiveAt datetime at which the Access Metadata will be effective from | [optional]
  **effectiveUntil** | **OffsetDateTime**| The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata | [optional]
 
 ### Return type
