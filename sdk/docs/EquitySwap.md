@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **initialPrice** | **java.math.BigDecimal** | The initial equity price of the Equity Swap. | 
 **notionalReset** | **Boolean** | Notional reset flag, if true the notional of the funding leg is reset at the start of every  coupon to match the value of the equity leg (equity price at start of coupon times quantity). | 
 **quantity** | **java.math.BigDecimal** | The quantity or number of shares in the Equity Swap. | 
-**underlyingIdentifier** | **String** | external market codes and identifiers for the EquitySwap, e.g. RIC.    Supported string (enumeration) values are: [LusidInstrumentId, Isin, Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId, ICECode]. | 
+**underlyingIdentifier** | **String** | External market codes and identifiers for the EquitySwap, e.g. RIC.    Supported string (enumeration) values are: [LusidInstrumentId, Isin, Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId, ICECode]. | 
 **equitySwapDividendPaymentTiming** | **String** | Determines how the payment of dividends is handled for the equity swap.  Defaults to paying at the next Equity coupon date.                Supported string (enumeration) values are: [PayAtNextEquityCouponDate, PayAtMaturityOfSwap, PayAtNextFundingLegCouponDate, PayAtPaymentDateOfDividendEvent]. |  [optional]
 
 

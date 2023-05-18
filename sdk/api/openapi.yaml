@@ -318,7 +318,7 @@ info:
     | <a name="830">830</a>|Action not supported|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.181
+  version: 1.0.182
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -85409,7 +85409,7 @@ components:
         identifiers:
           additionalProperties:
             type: string
-          description: external market codes and identifiers for the cds index, e.g.
+          description: External market codes and identifiers for the cds index, e.g.
             a RED code, BBG ID or ICE code.
           type: object
         basket:
@@ -85513,7 +85513,7 @@ components:
         identifiers:
           additionalProperties:
             type: string
-          description: external market codes and identifiers for the bond, e.g. ISIN.
+          description: External market codes and identifiers for the bond, e.g. ISIN.
           nullable: true
           type: object
         calculationType:
@@ -85627,7 +85627,7 @@ components:
           description: The currency of the underlying
           type: string
         underlyingIdentifier:
-          description: "external market codes and identifiers for the CFD, e.g. RIC.\r\
+          description: "External market codes and identifiers for the CFD, e.g. RIC.\r\
             \n\r\nSupported string (enumeration) values are: [LusidInstrumentId, Isin,\
             \ Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId,\
             \ ICECode]."
@@ -85928,7 +85928,7 @@ components:
       - modelOptionsType
       type: object
     Equity_allOf_identifiers:
-      description: external market codes and identifiers for the equity, e.g. IBM
+      description: External market codes and identifiers for the equity, e.g. IBM
       nullable: true
       properties:
         LusidInstrumentId:
@@ -86104,7 +86104,7 @@ components:
           format: date-time
           type: string
         deliveryType:
-          description: "is the option cash settled or physical delivery of option\r\
+          description: "Is the option cash settled or physical delivery of option\r\
             \n\r\nSupported string (enumeration) values are: [Cash, Physical]."
           minLength: 1
           type: string
@@ -86247,7 +86247,7 @@ components:
           format: double
           type: number
         underlyingIdentifier:
-          description: "external market codes and identifiers for the EquitySwap,\
+          description: "External market codes and identifiers for the EquitySwap,\
             \ e.g. RIC.\r\n\r\nSupported string (enumeration) values are: [LusidInstrumentId,\
             \ Isin, Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode,\
             \ BBGId, ICECode]."
@@ -87930,12 +87930,13 @@ components:
           nullable: true
           type: string
         inflationIndexName:
-          description: Name
+          description: Name of the Inflation Index
           minLength: 1
           type: string
         inflationInterpolation:
-          description: "silly flag for old swaps\r\n\r\nSupported string (enumeration)\
-            \ values are: [Linear, Flat]."
+          description: "Inflation Interpolation flag, defaults to Linear but some\
+            \ older swaps require Flat.\r\n\r\nSupported string (enumeration) values\
+            \ are: [Linear, Flat]."
           nullable: true
           type: string
         inflationRollDay:
@@ -88742,11 +88743,11 @@ components:
           minLength: 1
           type: string
         instrumentIdType:
-          description: the type of the instrument id e.g. LusidInstrument Id
+          description: The type of the instrument id e.g. LusidInstrument Id
           minLength: 1
           type: string
         scope:
-          description: (optional) Scope for the instrument
+          description: Scope for the instrument (optional)
           minLength: 1
           type: string
         instrumentType:
@@ -88874,7 +88875,7 @@ components:
           nullable: true
           type: number
         repoRate:
-          description: "the rate at which interest is to be accrue and be paid upon\
+          description: "The rate at which interest is to be accrue and be paid upon\
             \ redemption of the collateral at maturity.\r\nThis field is used to calculate\
             \ the Repurchase price.\r\nWhile this property is optional, one, and only\
             \ one, of the RepoRate and RepurchasePrice must be specified."
