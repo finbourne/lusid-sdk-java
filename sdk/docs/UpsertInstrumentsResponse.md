@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **values** | [**Map&lt;String, Instrument&gt;**](Instrument.md) | The instruments which have been successfully updated or created. |  [optional]
 **failed** | [**Map&lt;String, ErrorDetail&gt;**](ErrorDetail.md) | The instruments that could not be updated or created or were left unchanged without error along with a reason for their failure. |  [optional]
 **metadata** | **Map&lt;String, List&lt;ResponseMetaData&gt;&gt;** | Meta data associated with the upsert event. |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
 

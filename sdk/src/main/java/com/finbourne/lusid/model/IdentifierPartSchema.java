@@ -28,9 +28,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * The schema of an contributing part of a valid LUSID resource identifier
+ * IdentifierPartSchema
  */
-@ApiModel(description = "The schema of an contributing part of a valid LUSID resource identifier")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class IdentifierPartSchema {
   public static final String SERIALIZED_NAME_INDEX = "index";
@@ -64,10 +63,10 @@ public class IdentifierPartSchema {
   }
 
    /**
-   * The typical index in the identifier in which this part appears
+   * Get index
    * @return index
   **/
-  @ApiModelProperty(required = true, value = "The typical index in the identifier in which this part appears")
+  @ApiModelProperty(required = true, value = "")
   public Integer getIndex() {
     return index;
   }
@@ -83,10 +82,10 @@ public class IdentifierPartSchema {
   }
 
    /**
-   * The name of the identifier part that can/should be provided for this resource type
+   * Get name
    * @return name
   **/
-  @ApiModelProperty(required = true, value = "The name of the identifier part that can/should be provided for this resource type")
+  @ApiModelProperty(required = true, value = "")
   public String getName() {
     return name;
   }
@@ -102,10 +101,10 @@ public class IdentifierPartSchema {
   }
 
    /**
-   * The display name of the identifier part
+   * Get displayName
    * @return displayName
   **/
-  @ApiModelProperty(required = true, value = "The display name of the identifier part")
+  @ApiModelProperty(required = true, value = "")
   public String getDisplayName() {
     return displayName;
   }
@@ -121,10 +120,10 @@ public class IdentifierPartSchema {
   }
 
    /**
-   * A brief description of the point of this identifier part
+   * Get description
    * @return description
   **/
-  @ApiModelProperty(required = true, value = "A brief description of the point of this identifier part")
+  @ApiModelProperty(required = true, value = "")
   public String getDescription() {
     return description;
   }
@@ -140,10 +139,10 @@ public class IdentifierPartSchema {
   }
 
    /**
-   * Whether a value is required to be provided
+   * Get required
    * @return required
   **/
-  @ApiModelProperty(required = true, value = "Whether a value is required to be provided")
+  @ApiModelProperty(required = true, value = "")
   public Boolean getRequired() {
     return required;
   }
@@ -168,10 +167,10 @@ public class IdentifierPartSchema {
   }
 
    /**
-   * Collection of links.
+   * Get links
    * @return links
   **/
-  @ApiModelProperty(value = "Collection of links.")
+  @ApiModelProperty(value = "")
   public List<Link> getLinks() {
     return links;
   }
