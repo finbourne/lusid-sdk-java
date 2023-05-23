@@ -318,7 +318,7 @@ info:
     | <a name="830">830</a>|Action not supported|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.189
+  version: 1.0.190
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -8214,7 +8214,8 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: form
-      - description: The effectiveAt datetime at which to retrieve the Access Metadata
+      - description: The effectiveAt datetime at which the Access Metadata will be
+          effective from
         explode: true
         in: query
         name: effectiveAt
@@ -8624,7 +8625,8 @@ paths:
           pattern: ^[a-zA-Z0-9\-_]+$
           type: string
         style: form
-      - description: The effectiveAt datetime at which to retrieve the Access Metadata
+      - description: The effectiveAt datetime at which the Access Metadata will be
+          effective from
         explode: true
         in: query
         name: effectiveAt
