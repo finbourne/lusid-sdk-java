@@ -30,9 +30,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * A paginated list of resource that can be returned from a request.
+ * PagedResourceListOfOrder
  */
-@ApiModel(description = "A paginated list of resource that can be returned from a request.")
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PagedResourceListOfOrder {
   public static final String SERIALIZED_NAME_NEXT_PAGE = "nextPage";
@@ -62,10 +61,10 @@ public class PagedResourceListOfOrder {
   }
 
    /**
-   * The next page of results.
+   * Get nextPage
    * @return nextPage
   **/
-  @ApiModelProperty(value = "The next page of results.")
+  @ApiModelProperty(value = "")
   public String getNextPage() {
     return nextPage;
   }
@@ -81,10 +80,10 @@ public class PagedResourceListOfOrder {
   }
 
    /**
-   * The previous page of results.
+   * Get previousPage
    * @return previousPage
   **/
-  @ApiModelProperty(value = "The previous page of results.")
+  @ApiModelProperty(value = "")
   public String getPreviousPage() {
     return previousPage;
   }
@@ -106,10 +105,10 @@ public class PagedResourceListOfOrder {
   }
 
    /**
-   * The resources to list.
+   * Get values
    * @return values
   **/
-  @ApiModelProperty(required = true, value = "The resources to list.")
+  @ApiModelProperty(required = true, value = "")
   public List<Order> getValues() {
     return values;
   }
@@ -125,10 +124,10 @@ public class PagedResourceListOfOrder {
   }
 
    /**
-   * The URI of the resource list.
+   * Get href
    * @return href
   **/
-  @ApiModelProperty(value = "The URI of the resource list.")
+  @ApiModelProperty(value = "")
   public URI getHref() {
     return href;
   }
@@ -153,10 +152,10 @@ public class PagedResourceListOfOrder {
   }
 
    /**
-   * Collection of links.
+   * Get links
    * @return links
   **/
-  @ApiModelProperty(value = "Collection of links.")
+  @ApiModelProperty(value = "")
   public List<Link> getLinks() {
     return links;
   }
