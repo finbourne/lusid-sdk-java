@@ -318,7 +318,7 @@ info:
     | <a name="830">830</a>|Action not supported|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.197
+  version: 1.0.198
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -45566,6 +45566,9 @@ paths:
             - value: GBP
               path: /baseCurrency
               op: add
+            - value: newscope
+              path: /transactiontypescope
+              op: add
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
@@ -45578,6 +45581,9 @@ paths:
               op: add
             - value: GBP
               path: /baseCurrency
+              op: add
+            - value: newscope
+              path: /transactiontypescope
               op: add
             schema:
               items:
@@ -45592,6 +45598,9 @@ paths:
             - value: GBP
               path: /baseCurrency
               op: add
+            - value: newscope
+              path: /transactiontypescope
+              op: add
             schema:
               items:
                 $ref: '#/components/schemas/Operation'
@@ -45604,6 +45613,9 @@ paths:
               op: add
             - value: GBP
               path: /baseCurrency
+              op: add
+            - value: newscope
+              path: /transactiontypescope
               op: add
             schema:
               items:
