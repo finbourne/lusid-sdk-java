@@ -318,7 +318,7 @@ info:
     | <a name="830">830</a>|Action not supported|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.195
+  version: 1.0.196
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -87767,8 +87767,9 @@ components:
           nullable: true
           type: array
         spotDaysCalculationType:
-          description: Configures how to calculate the spot date from the build date
-            using the Calendars provided.
+          description: "Configures how to calculate the spot date from the build date\
+            \ using the Calendars provided.\r\nSupported string (enumeration) values\
+            \ are: [ SingleCalendar, UnionCalendars ]"
           nullable: true
           type: string
         marketDataType:
@@ -88052,8 +88053,9 @@ components:
           nullable: true
           type: array
         spotDaysCalculationType:
-          description: Configures how to calculate the spot date from the build date
-            using the Calendars provided.
+          description: "Configures how to calculate the spot date from the build date\
+            \ using the Calendars provided.\r\nSupported string (enumeration) values\
+            \ are: [ SingleCalendar, UnionCalendars ]"
           nullable: true
           type: string
         marketDataType:
@@ -88124,8 +88126,9 @@ components:
           nullable: true
           type: array
         spotDaysCalculationType:
-          description: Configures how to calculate the spot date from the build date
-            using the Calendars provided.
+          description: "Configures how to calculate the spot date from the build date\
+            \ using the Calendars provided.\r\nSupported string (enumeration) values\
+            \ are: [ SingleCalendar, UnionCalendars ]"
           nullable: true
           type: string
         marketDataType:
