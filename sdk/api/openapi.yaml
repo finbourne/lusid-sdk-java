@@ -317,9 +317,10 @@ info:
     | <a name="829">829</a>|Compliance template not found.|  |
     | <a name="830">830</a>|Action not supported|  |
     | <a name="831">831</a>|Reference list not found.|  |
+    | <a name="832">832</a>|Posting Module not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.205
+  version: 1.0.206
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
