@@ -319,7 +319,7 @@ info:
     | <a name="831">831</a>|Reference list not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.204
+  version: 1.0.205
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
