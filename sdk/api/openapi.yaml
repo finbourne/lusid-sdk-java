@@ -320,7 +320,7 @@ info:
     | <a name="832">832</a>|Posting Module not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.212
+  version: 1.0.214
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
