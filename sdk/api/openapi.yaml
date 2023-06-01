@@ -321,7 +321,7 @@ info:
     | <a name="833">833</a>|The type of parameter provided did not match that required by the compliance rule.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.221
+  version: 1.0.222
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -68268,6 +68268,7 @@ components:
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
           asAtDate: 2000-01-23T04:56:07.000+00:00
+        transactionTypeScope: transactionTypeScope
         baseCurrency: baseCurrency
       properties:
         href:
@@ -68313,6 +68314,10 @@ components:
         amortisationMethod:
           description: The amortisation method the portfolio is using in the calculation.
             This can be 'NoAmortisation', 'StraightLine' or 'EffectiveYield'.
+          nullable: true
+          type: string
+        transactionTypeScope:
+          description: The scope of the transaction types.
           nullable: true
           type: string
         links:
