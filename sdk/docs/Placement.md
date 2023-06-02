@@ -26,7 +26,7 @@ Name | Type | Description | Notes
 **executionSystem** | **String** | Optionally specifies the execution system in use. |  [optional]
 **entryType** | **String** | Optionally specifies the entry type of this placement. |  [optional]
 **version** | [**Version**](Version.md) |  |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
 
