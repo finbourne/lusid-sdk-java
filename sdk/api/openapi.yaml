@@ -321,7 +321,7 @@ info:
     | <a name="833">833</a>|The type of parameter provided did not match that required by the compliance rule.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.226
+  version: 1.0.227
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -334,10 +334,6 @@ tags:
   name: Abor
 - description: Methods to create and manage abor configuration.
   name: AborConfiguration
-- description: An address key definition contains an address key and a type. Globally
-    defined address key definitions can be used to enhance the functionality of documents
-    in the structured results store.
-  name: AddressKeyDefinition
 - description: Methods for accessing aggregated data
   name: Aggregation
 - description: Methods for interacting with the Allocation Service
@@ -499,314 +495,6 @@ tags:
 - description: Methods for translating between dialects.
   name: Translation
 paths:
-  /api/addresskeydefinitions:
-    get:
-      description: Fetch the last pre-AsAt date version of each address key definition.
-      operationId: ListAddressKeyDefinitions
-      parameters:
-      - description: "The asAt datetime at which to retrieve the address key definition.\r\
-          \n            Defaults to return the latest version of the address key definition\
-          \ if not specified."
-        explode: true
-        in: query
-        name: asAt
-        required: false
-        schema:
-          format: date-time
-          type: string
-        style: form
-        x-nullable: true
-      - description: "The pagination token to use to continue listing address key\
-          \ definitions from a previous call to list address key definitions.\r\n\
-          \            This value is returned from the previous call. If a pagination\
-          \ token is provided the sortBy, filter, effectiveAt, and asAt fields\r\n\
-          \            must not have changed since the original request."
-        explode: true
-        in: query
-        name: page
-        required: false
-        schema:
-          maxLength: 500
-          minLength: 1
-          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
-          type: string
-        style: form
-      - description: When paginating, limit the number of returned results to this
-          many.
-        explode: true
-        in: query
-        name: limit
-        required: false
-        schema:
-          format: int32
-          maximum: 5000
-          minimum: 1
-          type: integer
-        style: form
-        x-nullable: true
-      - description: "Expression to filter the result set. Read more about filtering\
-          \ results from LUSID here:\r\n            https://support.lusid.com/filtering-results-from-lusid."
-        explode: true
-        in: query
-        name: filter
-        required: false
-        schema:
-          maxLength: 16384
-          minLength: 0
-          pattern: ^[\s\S]*$
-          type: string
-        style: form
-      responses:
-        "200":
-          content:
-            text/plain:
-              example:
-                values:
-                - addressKey: Instrument/default/LusidInstrumentId
-                  type: Text
-                  version:
-                    effectiveFrom: 2020-01-01T00:00:00.0000000+00:00
-                    asAtDate: 2023-01-01T00:00:00.0000000+00:00
-                - addressKey: Holding/default/PortfolioCost
-                  type: Decimal
-                  version:
-                    effectiveFrom: 2020-01-01T00:00:00.0000000+00:00
-                    asAtDate: 2023-01-01T00:00:00.0000000+00:00
-                href: http://example.com
-                links: []
-              schema:
-                $ref: '#/components/schemas/PagedResourceListOfAddressKeyDefinition'
-            application/json:
-              example:
-                values:
-                - addressKey: Instrument/default/LusidInstrumentId
-                  type: Text
-                  version:
-                    effectiveFrom: 2020-01-01T00:00:00.0000000+00:00
-                    asAtDate: 2023-01-01T00:00:00.0000000+00:00
-                - addressKey: Holding/default/PortfolioCost
-                  type: Decimal
-                  version:
-                    effectiveFrom: 2020-01-01T00:00:00.0000000+00:00
-                    asAtDate: 2023-01-01T00:00:00.0000000+00:00
-                href: http://example.com
-                links: []
-              schema:
-                $ref: '#/components/schemas/PagedResourceListOfAddressKeyDefinition'
-            text/json:
-              example:
-                values:
-                - addressKey: Instrument/default/LusidInstrumentId
-                  type: Text
-                  version:
-                    effectiveFrom: 2020-01-01T00:00:00.0000000+00:00
-                    asAtDate: 2023-01-01T00:00:00.0000000+00:00
-                - addressKey: Holding/default/PortfolioCost
-                  type: Decimal
-                  version:
-                    effectiveFrom: 2020-01-01T00:00:00.0000000+00:00
-                    asAtDate: 2023-01-01T00:00:00.0000000+00:00
-                href: http://example.com
-                links: []
-              schema:
-                $ref: '#/components/schemas/PagedResourceListOfAddressKeyDefinition'
-          description: A collection of address key definitions.
-        "400":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/LusidValidationProblemDetails'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LusidValidationProblemDetails'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/LusidValidationProblemDetails'
-          description: The details of the input related failure
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LusidProblemDetails'
-          description: Error response
-      security:
-      - oauth2: []
-      summary: '[EARLY ACCESS] ListAddressKeyDefinitions: List AddressKeyDefinitions.'
-      tags:
-      - AddressKeyDefinition
-      x-fbn-apistatus: EarlyAccess
-      x-accepts: application/json
-    post:
-      description: Create the given address key definition.
-      operationId: CreateAddressKeyDefinition
-      requestBody:
-        content:
-          application/json-patch+json:
-            example:
-              addressKey: Instrument/default/LusidInstrumentId
-              type: Text
-            schema:
-              $ref: '#/components/schemas/CreateAddressKeyDefinitionRequest'
-          application/json:
-            example:
-              addressKey: Instrument/default/LusidInstrumentId
-              type: Text
-            schema:
-              $ref: '#/components/schemas/CreateAddressKeyDefinitionRequest'
-          text/json:
-            example:
-              addressKey: Instrument/default/LusidInstrumentId
-              type: Text
-            schema:
-              $ref: '#/components/schemas/CreateAddressKeyDefinitionRequest'
-          application/*+json:
-            example:
-              addressKey: Instrument/default/LusidInstrumentId
-              type: Text
-            schema:
-              $ref: '#/components/schemas/CreateAddressKeyDefinitionRequest'
-        description: The request used to create the address key definition.
-        required: true
-      responses:
-        "201":
-          content:
-            text/plain:
-              example:
-                addressKey: Instrument/default/LusidInstrumentId
-                type: Text
-                version:
-                  effectiveFrom: 2020-01-01T00:00:00.0000000+00:00
-                  asAtDate: 2023-01-01T00:00:00.0000000+00:00
-              schema:
-                $ref: '#/components/schemas/AddressKeyDefinition'
-            application/json:
-              example:
-                addressKey: Instrument/default/LusidInstrumentId
-                type: Text
-                version:
-                  effectiveFrom: 2020-01-01T00:00:00.0000000+00:00
-                  asAtDate: 2023-01-01T00:00:00.0000000+00:00
-              schema:
-                $ref: '#/components/schemas/AddressKeyDefinition'
-            text/json:
-              example:
-                addressKey: Instrument/default/LusidInstrumentId
-                type: Text
-                version:
-                  effectiveFrom: 2020-01-01T00:00:00.0000000+00:00
-                  asAtDate: 2023-01-01T00:00:00.0000000+00:00
-              schema:
-                $ref: '#/components/schemas/AddressKeyDefinition'
-          description: The newly created address key definition.
-        "400":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/LusidValidationProblemDetails'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LusidValidationProblemDetails'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/LusidValidationProblemDetails'
-          description: The details of the input related failure
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LusidProblemDetails'
-          description: Error response
-      security:
-      - oauth2: []
-      summary: '[EARLY ACCESS] CreateAddressKeyDefinition: Create an AddressKeyDefinition.'
-      tags:
-      - AddressKeyDefinition
-      x-fbn-apistatus: EarlyAccess
-      x-contentType: application/json-patch+json
-      x-accepts: application/json
-  /api/addresskeydefinitions/{key}:
-    get:
-      description: Get the address key definition with the given address key at the
-        specific asAt time.
-      operationId: GetAddressKeyDefinition
-      parameters:
-      - description: The address key of the address key definition.
-        explode: false
-        in: path
-        name: key
-        required: true
-        schema:
-          description: The key that uniquely identifies a queryable address in Lusid.
-          type: string
-        style: simple
-      - description: The asAt datetime at which to retrieve the address key definition.
-          Defaults to return the latest version of the address key definition if not
-          specified.
-        explode: true
-        in: query
-        name: asAt
-        required: false
-        schema:
-          format: date-time
-          type: string
-        style: form
-        x-nullable: true
-      responses:
-        "200":
-          content:
-            text/plain:
-              example:
-                addressKey: Instrument/default/LusidInstrumentId
-                type: Text
-                version:
-                  effectiveFrom: 2020-01-01T00:00:00.0000000+00:00
-                  asAtDate: 2023-01-01T00:00:00.0000000+00:00
-              schema:
-                $ref: '#/components/schemas/AddressKeyDefinition'
-            application/json:
-              example:
-                addressKey: Instrument/default/LusidInstrumentId
-                type: Text
-                version:
-                  effectiveFrom: 2020-01-01T00:00:00.0000000+00:00
-                  asAtDate: 2023-01-01T00:00:00.0000000+00:00
-              schema:
-                $ref: '#/components/schemas/AddressKeyDefinition'
-            text/json:
-              example:
-                addressKey: Instrument/default/LusidInstrumentId
-                type: Text
-                version:
-                  effectiveFrom: 2020-01-01T00:00:00.0000000+00:00
-                  asAtDate: 2023-01-01T00:00:00.0000000+00:00
-              schema:
-                $ref: '#/components/schemas/AddressKeyDefinition'
-          description: The address key definition with the given address key.
-        "400":
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/LusidValidationProblemDetails'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LusidValidationProblemDetails'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/LusidValidationProblemDetails'
-          description: The details of the input related failure
-        default:
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/LusidProblemDetails'
-          description: Error response
-      security:
-      - oauth2: []
-      summary: '[EARLY ACCESS] GetAddressKeyDefinition: Get an AddressKeyDefinition.'
-      tags:
-      - AddressKeyDefinition
-      x-fbn-apistatus: EarlyAccess
-      x-accepts: application/json
   /api/aggregation/$valuation:
     post:
       description: Perform valuation on specified list of portfolio and/or portfolio
@@ -50620,7 +50308,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -50664,7 +50352,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -50710,7 +50398,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -50848,48 +50536,6 @@ components:
           nullable: true
           type: string
       type: object
-    AddressKeyDefinition:
-      additionalProperties: false
-      example:
-        addressKey: addressKey
-        links:
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        type: type
-        version:
-          asAtModified: 2000-01-23T04:56:07.000+00:00
-          userIdModified: userIdModified
-          asAtVersionNumber: 0
-          asAtCreated: 2000-01-23T04:56:07.000+00:00
-          userIdCreated: userIdCreated
-          effectiveFrom: 2000-01-23T04:56:07.000+00:00
-          asAtDate: 2000-01-23T04:56:07.000+00:00
-      properties:
-        addressKey:
-          description: The address key of the address key definition.
-          type: string
-        type:
-          description: The type of the address key definition
-          minLength: 1
-          type: string
-        version:
-          $ref: '#/components/schemas/Version'
-        links:
-          description: Collection of links.
-          items:
-            $ref: '#/components/schemas/Link'
-          nullable: true
-          type: array
-      required:
-      - addressKey
-      - type
-      type: object
     AddressKeyFilter:
       additionalProperties: false
       description: Class specifying a filtering operation
@@ -50982,7 +50628,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -51034,7 +50680,7 @@ components:
         taxLots:
         - purchaseDate: 2000-01-23T04:56:07.000+00:00
           cost:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           price: 1.4658129805029452
           units: 0.8008281904610115
@@ -51042,7 +50688,7 @@ components:
           portfolioCost: 6.027456183070403
         - purchaseDate: 2000-01-23T04:56:07.000+00:00
           cost:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           price: 1.4658129805029452
           units: 0.8008281904610115
@@ -51128,7 +50774,7 @@ components:
         taxLots:
         - purchaseDate: 2000-01-23T04:56:07.000+00:00
           cost:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           price: 1.4658129805029452
           units: 0.8008281904610115
@@ -51136,7 +50782,7 @@ components:
           portfolioCost: 6.027456183070403
         - purchaseDate: 2000-01-23T04:56:07.000+00:00
           cost:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           price: 1.4658129805029452
           units: 0.8008281904610115
@@ -51782,7 +51428,7 @@ components:
         side: side
         quantity: 0.8008281904610115
         instrumentScope: instrumentScope
-        settlementCurrencyFxRate: 1.4658129805029452
+        settlementCurrencyFxRate: 5.962133916683182
         instrumentIdentifiers:
           key: instrumentIdentifiers
         placementIds:
@@ -51795,7 +51441,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -51813,7 +51459,7 @@ components:
         - code: code
           scope: scope
         price:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         counterparty: counterparty
         links:
@@ -51968,7 +51614,7 @@ components:
         - code: code
           scope: scope
         price:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         counterparty: counterparty
         id:
@@ -52097,7 +51743,7 @@ components:
           - code: code
             scope: scope
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           counterparty: counterparty
           id:
@@ -52142,7 +51788,7 @@ components:
           - code: code
             scope: scope
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           counterparty: counterparty
           id:
@@ -52408,7 +52054,7 @@ components:
             taxLots:
             - purchaseDate: 2000-01-23T04:56:07.000+00:00
               cost:
-                amount: 6.027456183070403
+                amount: 1.4658129805029452
                 currency: currency
               price: 1.4658129805029452
               units: 0.8008281904610115
@@ -52416,7 +52062,7 @@ components:
               portfolioCost: 6.027456183070403
             - purchaseDate: 2000-01-23T04:56:07.000+00:00
               cost:
-                amount: 6.027456183070403
+                amount: 1.4658129805029452
                 currency: currency
               price: 1.4658129805029452
               units: 0.8008281904610115
@@ -52530,7 +52176,7 @@ components:
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             transactionId: transactionId
             counterpartyId: counterpartyId
@@ -52575,7 +52221,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -52621,7 +52267,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -52673,7 +52319,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -52844,7 +52490,7 @@ components:
         side: side
         quantity: 0.8008281904610115
         limitPrice:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         instrumentIdentifiers:
           key: instrumentIdentifiers
@@ -52852,13 +52498,13 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
           asAtDate: 2000-01-23T04:56:07.000+00:00
         stopPrice:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         createdDate: 2000-01-23T04:56:07.000+00:00
         links:
@@ -52966,12 +52612,12 @@ components:
       example:
         side: side
         stopPrice:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         quantity: 0.8008281904610115
         createdDate: 2000-01-23T04:56:07.000+00:00
         limitPrice:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         instrumentIdentifiers:
           key: instrumentIdentifiers
@@ -53059,12 +52705,12 @@ components:
         requests:
         - side: side
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           quantity: 0.8008281904610115
           createdDate: 2000-01-23T04:56:07.000+00:00
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentIdentifiers:
             key: instrumentIdentifiers
@@ -53092,12 +52738,12 @@ components:
               key: key
         - side: side
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           quantity: 0.8008281904610115
           createdDate: 2000-01-23T04:56:07.000+00:00
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentIdentifiers:
             key: instrumentIdentifiers
@@ -53696,7 +53342,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -53862,7 +53508,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -54676,7 +54322,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -54810,7 +54456,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -55098,23 +54744,6 @@ components:
       required:
       - legalEntityIdentifier
       - name
-      type: object
-    CreateAddressKeyDefinitionRequest:
-      additionalProperties: false
-      example:
-        addressKey: addressKey
-        type: type
-      properties:
-        addressKey:
-          description: The address key of the address key definition.
-          type: string
-        type:
-          description: The type of the address key definition
-          minLength: 1
-          type: string
-      required:
-      - addressKey
-      - type
       type: object
     CreateCalendarRequest:
       additionalProperties: false
@@ -56360,7 +55989,7 @@ components:
       description: An amount of a specific currency, specifying a value and an associated
         unit
       example:
-        amount: 6.027456183070403
+        amount: 1.4658129805029452
         currency: currency
       properties:
         amount:
@@ -56411,7 +56040,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -56457,7 +56086,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -56509,7 +56138,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -56917,7 +56546,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -56963,7 +56592,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -57009,7 +56638,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -57969,7 +57598,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -57977,7 +57606,7 @@ components:
         createdDate: 2000-01-23T04:56:07.000+00:00
         settlementCurrency: settlementCurrency
         price:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         counterparty: counterparty
         links:
@@ -58112,7 +57741,7 @@ components:
         createdDate: 2000-01-23T04:56:07.000+00:00
         settlementCurrency: settlementCurrency
         price:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         counterparty: counterparty
         id:
@@ -58225,7 +57854,7 @@ components:
           createdDate: 2000-01-23T04:56:07.000+00:00
           settlementCurrency: settlementCurrency
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           counterparty: counterparty
           id:
@@ -58258,7 +57887,7 @@ components:
           createdDate: 2000-01-23T04:56:07.000+00:00
           settlementCurrency: settlementCurrency
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           counterparty: counterparty
           id:
@@ -58328,7 +57957,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -58383,7 +58012,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -58434,7 +58063,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -59138,7 +58767,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -59180,7 +58809,7 @@ components:
               version:
                 asAtModified: 2000-01-23T04:56:07.000+00:00
                 userIdModified: userIdModified
-                asAtVersionNumber: 0
+                asAtVersionNumber: 6
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -59226,7 +58855,7 @@ components:
               version:
                 asAtModified: 2000-01-23T04:56:07.000+00:00
                 userIdModified: userIdModified
-                asAtVersionNumber: 0
+                asAtVersionNumber: 6
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -59696,7 +59325,7 @@ components:
         taxLots:
         - purchaseDate: 2000-01-23T04:56:07.000+00:00
           cost:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           price: 1.4658129805029452
           units: 0.8008281904610115
@@ -59704,7 +59333,7 @@ components:
           portfolioCost: 6.027456183070403
         - purchaseDate: 2000-01-23T04:56:07.000+00:00
           cost:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           price: 1.4658129805029452
           units: 0.8008281904610115
@@ -59792,7 +59421,7 @@ components:
         taxLots:
         - purchaseDate: 2000-01-23T04:56:07.000+00:00
           cost:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           price: 1.4658129805029452
           units: 0.8008281904610115
@@ -59800,7 +59429,7 @@ components:
           portfolioCost: 6.027456183070403
         - purchaseDate: 2000-01-23T04:56:07.000+00:00
           cost:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           price: 1.4658129805029452
           units: 0.8008281904610115
@@ -59909,7 +59538,7 @@ components:
           taxLots:
           - purchaseDate: 2000-01-23T04:56:07.000+00:00
             cost:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             price: 1.4658129805029452
             units: 0.8008281904610115
@@ -59917,7 +59546,7 @@ components:
             portfolioCost: 6.027456183070403
           - purchaseDate: 2000-01-23T04:56:07.000+00:00
             cost:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             price: 1.4658129805029452
             units: 0.8008281904610115
@@ -59955,7 +59584,7 @@ components:
           taxLots:
           - purchaseDate: 2000-01-23T04:56:07.000+00:00
             cost:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             price: 1.4658129805029452
             units: 0.8008281904610115
@@ -59963,7 +59592,7 @@ components:
             portfolioCost: 6.027456183070403
           - purchaseDate: 2000-01-23T04:56:07.000+00:00
             cost:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             price: 1.4658129805029452
             units: 0.8008281904610115
@@ -59998,7 +59627,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -60057,7 +59686,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -60710,7 +60339,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -60752,7 +60381,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -60798,7 +60427,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -61416,7 +61045,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -61606,7 +61235,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -61652,7 +61281,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -61704,7 +61333,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -63216,7 +62845,7 @@ components:
         side: side
         quantity: 0.8008281904610115
         limitPrice:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         instrumentScope: instrumentScope
         packageId:
@@ -63228,13 +62857,13 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
           asAtDate: 2000-01-23T04:56:07.000+00:00
         stopPrice:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         portfolioId:
           code: code
@@ -63243,7 +62872,7 @@ components:
           code: code
           scope: scope
         price:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         links:
         - method: method
@@ -63382,7 +63011,7 @@ components:
           code: code
           scope: scope
         limitPrice:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         orderInstruction:
           code: code
@@ -63391,7 +63020,7 @@ components:
           key: instrumentIdentifiers
         type: type
         stopPrice:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         portfolioId:
           code: code
@@ -63400,7 +63029,7 @@ components:
           code: code
           scope: scope
         price:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         id:
           code: code
@@ -63491,7 +63120,7 @@ components:
             code: code
             scope: scope
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           orderInstruction:
             code: code
@@ -63500,7 +63129,7 @@ components:
             key: instrumentIdentifiers
           type: type
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           portfolioId:
             code: code
@@ -63509,7 +63138,7 @@ components:
             code: code
             scope: scope
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           id:
             code: code
@@ -63535,7 +63164,7 @@ components:
             code: code
             scope: scope
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           orderInstruction:
             code: code
@@ -63544,7 +63173,7 @@ components:
             key: instrumentIdentifiers
           type: type
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           portfolioId:
             code: code
@@ -63553,7 +63182,7 @@ components:
             code: code
             scope: scope
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           id:
             code: code
@@ -63613,7 +63242,7 @@ components:
         type: type
         transactionDate: 2000-01-23T04:56:07.000+00:00
         totalConsideration:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         transactionId: transactionId
         counterpartyId: counterpartyId
@@ -63625,50 +63254,50 @@ components:
         - purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
           purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
           realisedCurrency:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           realisedTotal:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentScope: instrumentScope
           realisedMarket:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentUid: instrumentUid
           costTradeCcy:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           units: 5.637376656633329
           purchasePrice: 2.3021358869347655
           costPortfolioCcy:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           realisedTradeCcy:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
         - purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
           purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
           realisedCurrency:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           realisedTotal:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentScope: instrumentScope
           realisedMarket:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentUid: instrumentUid
           costTradeCcy:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           units: 5.637376656633329
           purchasePrice: 2.3021358869347655
           costPortfolioCcy:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           realisedTradeCcy:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
         properties:
           key:
@@ -63840,89 +63469,6 @@ components:
       - lusidInstrumentId
       - unitsFactor
       type: object
-    PagedResourceListOfAddressKeyDefinition:
-      additionalProperties: false
-      description: A paginated list of resource that can be returned from a request.
-      example:
-        previousPage: previousPage
-        nextPage: nextPage
-        values:
-        - addressKey: addressKey
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          type: type
-          version:
-            asAtModified: 2000-01-23T04:56:07.000+00:00
-            userIdModified: userIdModified
-            asAtVersionNumber: 0
-            asAtCreated: 2000-01-23T04:56:07.000+00:00
-            userIdCreated: userIdCreated
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-        - addressKey: addressKey
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          type: type
-          version:
-            asAtModified: 2000-01-23T04:56:07.000+00:00
-            userIdModified: userIdModified
-            asAtVersionNumber: 0
-            asAtCreated: 2000-01-23T04:56:07.000+00:00
-            userIdCreated: userIdCreated
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-        links:
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        href: https://openapi-generator.tech
-      properties:
-        nextPage:
-          description: The next page of results.
-          nullable: true
-          type: string
-        previousPage:
-          description: The previous page of results.
-          nullable: true
-          type: string
-        values:
-          description: The resources to list.
-          items:
-            $ref: '#/components/schemas/AddressKeyDefinition'
-          type: array
-        href:
-          description: The URI of the resource list.
-          format: uri
-          nullable: true
-          type: string
-        links:
-          description: Collection of links.
-          items:
-            $ref: '#/components/schemas/Link'
-          nullable: true
-          type: array
-      required:
-      - values
-      type: object
     PagedResourceListOfAllocation:
       additionalProperties: false
       description: A paginated list of resource that can be returned from a request.
@@ -63934,7 +63480,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           instrumentScope: instrumentScope
-          settlementCurrencyFxRate: 1.4658129805029452
+          settlementCurrencyFxRate: 5.962133916683182
           instrumentIdentifiers:
             key: instrumentIdentifiers
           placementIds:
@@ -63947,7 +63493,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -63965,7 +63511,7 @@ components:
           - code: code
             scope: scope
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           counterparty: counterparty
           links:
@@ -63998,7 +63544,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           instrumentScope: instrumentScope
-          settlementCurrencyFxRate: 1.4658129805029452
+          settlementCurrencyFxRate: 5.962133916683182
           instrumentIdentifiers:
             key: instrumentIdentifiers
           placementIds:
@@ -64011,7 +63557,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -64029,7 +63575,7 @@ components:
           - code: code
             scope: scope
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           counterparty: counterparty
           links:
@@ -64106,7 +63652,7 @@ components:
         - side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentIdentifiers:
             key: instrumentIdentifiers
@@ -64114,13 +63660,13 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           createdDate: 2000-01-23T04:56:07.000+00:00
           links:
@@ -64157,7 +63703,7 @@ components:
         - side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentIdentifiers:
             key: instrumentIdentifiers
@@ -64165,13 +63711,13 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           createdDate: 2000-01-23T04:56:07.000+00:00
           links:
@@ -64388,7 +63934,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -64414,7 +63960,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -64582,7 +64128,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -64628,7 +64174,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -64674,7 +64220,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -64716,7 +64262,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -64762,7 +64308,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -64808,7 +64354,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -65035,7 +64581,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -65043,7 +64589,7 @@ components:
           createdDate: 2000-01-23T04:56:07.000+00:00
           settlementCurrency: settlementCurrency
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           counterparty: counterparty
           links:
@@ -65086,7 +64632,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -65094,7 +64640,7 @@ components:
           createdDate: 2000-01-23T04:56:07.000+00:00
           settlementCurrency: settlementCurrency
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           counterparty: counterparty
           links:
@@ -65176,7 +64722,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -65218,7 +64764,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -65264,7 +64810,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -65325,7 +64871,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -65367,7 +64913,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -65413,7 +64959,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -65664,7 +65210,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -65710,7 +65256,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -65762,7 +65308,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -65818,7 +65364,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -65864,7 +65410,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -65916,7 +65462,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -65984,7 +65530,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentScope: instrumentScope
           packageId:
@@ -65996,13 +65542,13 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           portfolioId:
             code: code
@@ -66011,7 +65557,7 @@ components:
             code: code
             scope: scope
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           links:
           - method: method
@@ -66047,7 +65593,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentScope: instrumentScope
           packageId:
@@ -66059,13 +65605,13 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           portfolioId:
             code: code
@@ -66074,7 +65620,7 @@ components:
             code: code
             scope: scope
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           links:
           - method: method
@@ -66172,7 +65718,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -66198,7 +65744,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -66285,7 +65831,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -66331,7 +65877,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -66362,7 +65908,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -66418,7 +65964,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -66464,7 +66010,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -66495,7 +66041,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -66563,7 +66109,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           blockIds:
           - code: code
@@ -66576,7 +66122,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -66585,7 +66131,7 @@ components:
             code: code
             scope: scope
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           createdDate: 2000-01-23T04:56:07.000+00:00
           counterparty: counterparty
@@ -66621,7 +66167,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           blockIds:
           - code: code
@@ -66634,7 +66180,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -66643,7 +66189,7 @@ components:
             code: code
             scope: scope
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           createdDate: 2000-01-23T04:56:07.000+00:00
           counterparty: counterparty
@@ -66749,7 +66295,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -66783,7 +66329,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -67090,7 +66636,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -67117,7 +66663,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -67271,7 +66817,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -67312,7 +66858,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -67348,7 +66894,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -67365,7 +66911,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -67518,7 +67064,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -67564,7 +67110,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -67595,7 +67141,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -67664,7 +67210,7 @@ components:
         side: side
         quantity: 0.8008281904610115
         limitPrice:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         blockIds:
         - code: code
@@ -67677,7 +67223,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -67686,7 +67232,7 @@ components:
           code: code
           scope: scope
         stopPrice:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         createdDate: 2000-01-23T04:56:07.000+00:00
         counterparty: counterparty
@@ -67814,7 +67360,7 @@ components:
         side: side
         quantity: 0.8008281904610115
         limitPrice:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         blockIds:
         - code: code
@@ -67828,7 +67374,7 @@ components:
           code: code
           scope: scope
         stopPrice:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         createdDate: 2000-01-23T04:56:07.000+00:00
         counterparty: counterparty
@@ -67938,7 +67484,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           blockIds:
           - code: code
@@ -67952,7 +67498,7 @@ components:
             code: code
             scope: scope
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           createdDate: 2000-01-23T04:56:07.000+00:00
           counterparty: counterparty
@@ -67978,7 +67524,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           blockIds:
           - code: code
@@ -67992,7 +67538,7 @@ components:
             code: code
             scope: scope
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           createdDate: 2000-01-23T04:56:07.000+00:00
           counterparty: counterparty
@@ -68040,7 +67586,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -68084,7 +67630,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -68130,7 +67676,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -68283,26 +67829,26 @@ components:
         movementName: movementName
         fxRate: 1.4658129805029452
         balanceReportingCurrency:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         translationGainLoss:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         unrealisedGainLossReportingCurrency:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         type: type
         balance:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         cashflowReportingCurrency:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         cashflow:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         costBasisReportingCurrency:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         links:
         - method: method
@@ -68341,7 +67887,7 @@ components:
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           transactionId: transactionId
           counterpartyId: counterpartyId
@@ -68386,7 +67932,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -68432,7 +67978,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -68484,7 +68030,7 @@ components:
               version:
                 asAtModified: 2000-01-23T04:56:07.000+00:00
                 userIdModified: userIdModified
-                asAtVersionNumber: 0
+                asAtVersionNumber: 6
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -68717,7 +68263,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -68856,7 +68402,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -68902,7 +68448,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -68941,7 +68487,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -69016,7 +68562,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -69090,7 +68636,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -69160,7 +68706,7 @@ components:
                 - values
             key: key
         cost:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         instrumentScope: instrumentScope
         holdingType: holdingType
@@ -69168,7 +68714,7 @@ components:
         currency: currency
         units: 0.8008281904610115
         costPortfolioCcy:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         settledUnits: 6.027456183070403
         holdingTypeName: holdingTypeName
@@ -69213,7 +68759,7 @@ components:
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           transactionId: transactionId
           counterpartyId: counterpartyId
@@ -69258,7 +68804,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -69304,7 +68850,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -69356,7 +68902,7 @@ components:
               version:
                 asAtModified: 2000-01-23T04:56:07.000+00:00
                 userIdModified: userIdModified
-                asAtVersionNumber: 0
+                asAtVersionNumber: 6
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -69486,7 +69032,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -70709,26 +70255,26 @@ components:
         purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
         purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
         realisedCurrency:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         realisedTotal:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         instrumentScope: instrumentScope
         realisedMarket:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         instrumentUid: instrumentUid
         costTradeCcy:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         units: 5.637376656633329
         purchasePrice: 2.3021358869347655
         costPortfolioCcy:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         realisedTradeCcy:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
       properties:
         instrumentScope:
@@ -70824,7 +70370,7 @@ components:
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           transactionId: transactionId
           counterpartyId: counterpartyId
@@ -70869,7 +70415,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -70915,7 +70461,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -70967,7 +70513,7 @@ components:
               version:
                 asAtModified: 2000-01-23T04:56:07.000+00:00
                 userIdModified: userIdModified
-                asAtVersionNumber: 0
+                asAtVersionNumber: 6
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -71052,7 +70598,7 @@ components:
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           transactionId: transactionId
           counterpartyId: counterpartyId
@@ -71097,7 +70643,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -71143,7 +70689,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -71195,7 +70741,7 @@ components:
               version:
                 asAtModified: 2000-01-23T04:56:07.000+00:00
                 userIdModified: userIdModified
-                asAtVersionNumber: 0
+                asAtVersionNumber: 6
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -71319,15 +70865,15 @@ components:
                 - values
             key: key
         leftCost:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         instrumentScope: instrumentScope
         instrumentUid: instrumentUid
         differenceCost:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         rightCost:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         rightUnits: 6.027456183070403
         leftUnits: 0.8008281904610115
@@ -71967,7 +71513,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -72039,7 +71585,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -72109,7 +71655,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -72633,7 +72179,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           instrumentScope: instrumentScope
-          settlementCurrencyFxRate: 1.4658129805029452
+          settlementCurrencyFxRate: 5.962133916683182
           instrumentIdentifiers:
             key: instrumentIdentifiers
           placementIds:
@@ -72646,7 +72192,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -72664,7 +72210,7 @@ components:
           - code: code
             scope: scope
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           counterparty: counterparty
           links:
@@ -72697,7 +72243,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           instrumentScope: instrumentScope
-          settlementCurrencyFxRate: 1.4658129805029452
+          settlementCurrencyFxRate: 5.962133916683182
           instrumentIdentifiers:
             key: instrumentIdentifiers
           placementIds:
@@ -72710,7 +72256,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -72728,7 +72274,7 @@ components:
           - code: code
             scope: scope
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           counterparty: counterparty
           links:
@@ -72805,7 +72351,7 @@ components:
         - side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentIdentifiers:
             key: instrumentIdentifiers
@@ -72813,13 +72359,13 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           createdDate: 2000-01-23T04:56:07.000+00:00
           links:
@@ -72856,7 +72402,7 @@ components:
         - side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentIdentifiers:
             key: instrumentIdentifiers
@@ -72864,13 +72410,13 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           createdDate: 2000-01-23T04:56:07.000+00:00
           links:
@@ -73221,7 +72767,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -73239,7 +72785,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -73576,7 +73122,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -73584,7 +73130,7 @@ components:
           createdDate: 2000-01-23T04:56:07.000+00:00
           settlementCurrency: settlementCurrency
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           counterparty: counterparty
           links:
@@ -73627,7 +73173,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -73635,7 +73181,7 @@ components:
           createdDate: 2000-01-23T04:56:07.000+00:00
           settlementCurrency: settlementCurrency
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           counterparty: counterparty
           links:
@@ -74283,7 +73829,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -74302,7 +73848,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -74493,7 +74039,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -74539,7 +74085,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -74591,7 +74137,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -74647,7 +74193,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -74693,7 +74239,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -74745,7 +74291,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -74928,7 +74474,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentScope: instrumentScope
           packageId:
@@ -74940,13 +74486,13 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           portfolioId:
             code: code
@@ -74955,7 +74501,7 @@ components:
             code: code
             scope: scope
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           links:
           - method: method
@@ -74991,7 +74537,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentScope: instrumentScope
           packageId:
@@ -75003,13 +74549,13 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
             asAtDate: 2000-01-23T04:56:07.000+00:00
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           portfolioId:
             code: code
@@ -75018,7 +74564,7 @@ components:
             code: code
             scope: scope
           price:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           links:
           - method: method
@@ -75116,7 +74662,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -75142,7 +74688,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -75284,7 +74830,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -75330,7 +74876,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -75361,7 +74907,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -75417,7 +74963,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -75463,7 +75009,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -75494,7 +75040,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -75562,7 +75108,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           blockIds:
           - code: code
@@ -75575,7 +75121,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -75584,7 +75130,7 @@ components:
             code: code
             scope: scope
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           createdDate: 2000-01-23T04:56:07.000+00:00
           counterparty: counterparty
@@ -75620,7 +75166,7 @@ components:
           side: side
           quantity: 0.8008281904610115
           limitPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           blockIds:
           - code: code
@@ -75633,7 +75179,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -75642,7 +75188,7 @@ components:
             code: code
             scope: scope
           stopPrice:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           createdDate: 2000-01-23T04:56:07.000+00:00
           counterparty: counterparty
@@ -75733,7 +75279,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -75777,7 +75323,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -75823,7 +75369,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -75876,7 +75422,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -75920,7 +75466,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -75966,7 +75512,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -76067,26 +75613,26 @@ components:
           movementName: movementName
           fxRate: 1.4658129805029452
           balanceReportingCurrency:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           translationGainLoss:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           unrealisedGainLossReportingCurrency:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           type: type
           balance:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           cashflowReportingCurrency:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           cashflow:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           costBasisReportingCurrency:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           links:
           - method: method
@@ -76125,7 +75671,7 @@ components:
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             transactionId: transactionId
             counterpartyId: counterpartyId
@@ -76170,7 +75716,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -76216,7 +75762,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -76268,7 +75814,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -76339,26 +75885,26 @@ components:
           movementName: movementName
           fxRate: 1.4658129805029452
           balanceReportingCurrency:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           translationGainLoss:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           unrealisedGainLossReportingCurrency:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           type: type
           balance:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           cashflowReportingCurrency:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           cashflow:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           costBasisReportingCurrency:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           links:
           - method: method
@@ -76397,7 +75943,7 @@ components:
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             transactionId: transactionId
             counterpartyId: counterpartyId
@@ -76442,7 +75988,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -76488,7 +76034,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -76540,7 +76086,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -76803,7 +76349,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -76849,7 +76395,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -76888,7 +76434,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -76930,7 +76476,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -76976,7 +76522,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -77015,7 +76561,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -77510,15 +77056,15 @@ components:
                   - values
               key: key
           leftCost:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentScope: instrumentScope
           instrumentUid: instrumentUid
           differenceCost:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           rightCost:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           rightUnits: 6.027456183070403
           leftUnits: 0.8008281904610115
@@ -77561,15 +77107,15 @@ components:
                   - values
               key: key
           leftCost:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentScope: instrumentScope
           instrumentUid: instrumentUid
           differenceCost:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           rightCost:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           rightUnits: 6.027456183070403
           leftUnits: 0.8008281904610115
@@ -77628,7 +77174,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -77644,7 +77190,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -77732,7 +77278,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -77778,7 +77324,7 @@ components:
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
-            asAtVersionNumber: 0
+            asAtVersionNumber: 6
             asAtCreated: 2000-01-23T04:56:07.000+00:00
             userIdCreated: userIdCreated
             effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -78607,7 +78153,7 @@ components:
       example:
         purchaseDate: 2000-01-23T04:56:07.000+00:00
         cost:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         price: 1.4658129805029452
         units: 0.8008281904610115
@@ -78651,7 +78197,7 @@ components:
       example:
         purchaseDate: 2000-01-23T04:56:07.000+00:00
         cost:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         price: 1.4658129805029452
         units: 0.8008281904610115
@@ -78752,7 +78298,7 @@ components:
         type: type
         transactionDate: 2000-01-23T04:56:07.000+00:00
         totalConsideration:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         transactionId: transactionId
         counterpartyId: counterpartyId
@@ -78797,7 +78343,7 @@ components:
               version:
                 asAtModified: 2000-01-23T04:56:07.000+00:00
                 userIdModified: userIdModified
-                asAtVersionNumber: 0
+                asAtVersionNumber: 6
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -78843,7 +78389,7 @@ components:
               version:
                 asAtModified: 2000-01-23T04:56:07.000+00:00
                 userIdModified: userIdModified
-                asAtVersionNumber: 0
+                asAtVersionNumber: 6
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -78895,7 +78441,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -79690,7 +79236,7 @@ components:
         type: type
         transactionDate: transactionDate
         totalConsideration:
-          amount: 6.027456183070403
+          amount: 1.4658129805029452
           currency: currency
         custodianAccountId:
           code: code
@@ -80085,7 +79631,7 @@ components:
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             transactionId: transactionId
             counterpartyId: counterpartyId
@@ -80130,7 +79676,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -80176,7 +79722,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -80228,7 +79774,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -80313,7 +79859,7 @@ components:
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             transactionId: transactionId
             counterpartyId: counterpartyId
@@ -80358,7 +79904,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -80404,7 +79950,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -80456,7 +80002,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -80537,7 +80083,7 @@ components:
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             transactionId: transactionId
             counterpartyId: counterpartyId
@@ -80582,7 +80128,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -80628,7 +80174,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -80680,7 +80226,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -80765,7 +80311,7 @@ components:
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             transactionId: transactionId
             counterpartyId: counterpartyId
@@ -80810,7 +80356,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -80856,7 +80402,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -80908,7 +80454,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -81648,7 +81194,7 @@ components:
               version:
                 asAtModified: 2000-01-23T04:56:07.000+00:00
                 userIdModified: userIdModified
-                asAtVersionNumber: 0
+                asAtVersionNumber: 6
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -81694,7 +81240,7 @@ components:
               version:
                 asAtModified: 2000-01-23T04:56:07.000+00:00
                 userIdModified: userIdModified
-                asAtVersionNumber: 0
+                asAtVersionNumber: 6
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -81740,7 +81286,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -82063,7 +81609,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -82105,7 +81651,7 @@ components:
               version:
                 asAtModified: 2000-01-23T04:56:07.000+00:00
                 userIdModified: userIdModified
-                asAtVersionNumber: 0
+                asAtVersionNumber: 6
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -82151,7 +81697,7 @@ components:
               version:
                 asAtModified: 2000-01-23T04:56:07.000+00:00
                 userIdModified: userIdModified
-                asAtVersionNumber: 0
+                asAtVersionNumber: 6
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -82300,7 +81846,7 @@ components:
               version:
                 asAtModified: 2000-01-23T04:56:07.000+00:00
                 userIdModified: userIdModified
-                asAtVersionNumber: 0
+                asAtVersionNumber: 6
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -82346,7 +81892,7 @@ components:
               version:
                 asAtModified: 2000-01-23T04:56:07.000+00:00
                 userIdModified: userIdModified
-                asAtVersionNumber: 0
+                asAtVersionNumber: 6
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -82398,7 +81944,7 @@ components:
             version:
               asAtModified: 2000-01-23T04:56:07.000+00:00
               userIdModified: userIdModified
-              asAtVersionNumber: 0
+              asAtVersionNumber: 6
               asAtCreated: 2000-01-23T04:56:07.000+00:00
               userIdCreated: userIdCreated
               effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -82703,7 +82249,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -83298,7 +82844,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -83352,7 +82898,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -83494,7 +83040,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -84078,7 +83624,7 @@ components:
       example:
         asAtModified: 2000-01-23T04:56:07.000+00:00
         userIdModified: userIdModified
-        asAtVersionNumber: 0
+        asAtVersionNumber: 6
         asAtCreated: 2000-01-23T04:56:07.000+00:00
         userIdCreated: userIdCreated
         effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -84354,7 +83900,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -84621,7 +84167,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -84680,7 +84226,7 @@ components:
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           transactionId: transactionId
           counterpartyId: counterpartyId
@@ -84692,50 +84238,50 @@ components:
           - purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
             purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
             realisedCurrency:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             realisedTotal:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             instrumentScope: instrumentScope
             realisedMarket:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             instrumentUid: instrumentUid
             costTradeCcy:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             units: 5.637376656633329
             purchasePrice: 2.3021358869347655
             costPortfolioCcy:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             realisedTradeCcy:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
           - purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
             purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
             realisedCurrency:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             realisedTotal:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             instrumentScope: instrumentScope
             realisedMarket:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             instrumentUid: instrumentUid
             costTradeCcy:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             units: 5.637376656633329
             purchasePrice: 2.3021358869347655
             costPortfolioCcy:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             realisedTradeCcy:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
           properties:
             key:
@@ -84766,7 +84312,7 @@ components:
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           transactionId: transactionId
           counterpartyId: counterpartyId
@@ -84778,50 +84324,50 @@ components:
           - purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
             purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
             realisedCurrency:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             realisedTotal:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             instrumentScope: instrumentScope
             realisedMarket:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             instrumentUid: instrumentUid
             costTradeCcy:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             units: 5.637376656633329
             purchasePrice: 2.3021358869347655
             costPortfolioCcy:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             realisedTradeCcy:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
           - purchaseTradeDate: 2000-01-23T04:56:07.000+00:00
             purchaseSettlementDate: 2000-01-23T04:56:07.000+00:00
             realisedCurrency:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             realisedTotal:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             instrumentScope: instrumentScope
             realisedMarket:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             instrumentUid: instrumentUid
             costTradeCcy:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             units: 5.637376656633329
             purchasePrice: 2.3021358869347655
             costPortfolioCcy:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             realisedTradeCcy:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
           properties:
             key:
@@ -84848,7 +84394,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -84903,7 +84449,7 @@ components:
                   - values
               key: key
           cost:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentScope: instrumentScope
           holdingType: holdingType
@@ -84911,7 +84457,7 @@ components:
           currency: currency
           units: 0.8008281904610115
           costPortfolioCcy:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           settledUnits: 6.027456183070403
           holdingTypeName: holdingTypeName
@@ -84956,7 +84502,7 @@ components:
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             transactionId: transactionId
             counterpartyId: counterpartyId
@@ -85001,7 +84547,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -85047,7 +84593,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -85099,7 +84645,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -85166,7 +84712,7 @@ components:
                   - values
               key: key
           cost:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           instrumentScope: instrumentScope
           holdingType: holdingType
@@ -85174,7 +84720,7 @@ components:
           currency: currency
           units: 0.8008281904610115
           costPortfolioCcy:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           settledUnits: 6.027456183070403
           holdingTypeName: holdingTypeName
@@ -85219,7 +84765,7 @@ components:
             type: type
             transactionDate: 2000-01-23T04:56:07.000+00:00
             totalConsideration:
-              amount: 6.027456183070403
+              amount: 1.4658129805029452
               currency: currency
             transactionId: transactionId
             counterpartyId: counterpartyId
@@ -85264,7 +84810,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -85310,7 +84856,7 @@ components:
                   version:
                     asAtModified: 2000-01-23T04:56:07.000+00:00
                     userIdModified: userIdModified
-                    asAtVersionNumber: 0
+                    asAtVersionNumber: 6
                     asAtCreated: 2000-01-23T04:56:07.000+00:00
                     userIdCreated: userIdCreated
                     effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -85362,7 +84908,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -85429,7 +84975,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -85497,7 +85043,7 @@ components:
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           transactionId: transactionId
           counterpartyId: counterpartyId
@@ -85542,7 +85088,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -85588,7 +85134,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -85640,7 +85186,7 @@ components:
               version:
                 asAtModified: 2000-01-23T04:56:07.000+00:00
                 userIdModified: userIdModified
-                asAtVersionNumber: 0
+                asAtVersionNumber: 6
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -85720,7 +85266,7 @@ components:
           type: type
           transactionDate: 2000-01-23T04:56:07.000+00:00
           totalConsideration:
-            amount: 6.027456183070403
+            amount: 1.4658129805029452
             currency: currency
           transactionId: transactionId
           counterpartyId: counterpartyId
@@ -85765,7 +85311,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -85811,7 +85357,7 @@ components:
                 version:
                   asAtModified: 2000-01-23T04:56:07.000+00:00
                   userIdModified: userIdModified
-                  asAtVersionNumber: 0
+                  asAtVersionNumber: 6
                   asAtCreated: 2000-01-23T04:56:07.000+00:00
                   userIdCreated: userIdCreated
                   effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -85863,7 +85409,7 @@ components:
               version:
                 asAtModified: 2000-01-23T04:56:07.000+00:00
                 userIdModified: userIdModified
-                asAtVersionNumber: 0
+                asAtVersionNumber: 6
                 asAtCreated: 2000-01-23T04:56:07.000+00:00
                 userIdCreated: userIdCreated
                 effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -85930,7 +85476,7 @@ components:
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
-          asAtVersionNumber: 0
+          asAtVersionNumber: 6
           asAtCreated: 2000-01-23T04:56:07.000+00:00
           userIdCreated: userIdCreated
           effectiveFrom: 2000-01-23T04:56:07.000+00:00
@@ -91570,7 +91116,6 @@ x-tagGroups:
   tags:
   - Abor
   - AborConfiguration
-  - AddressKeyDefinition
   - Aggregation
   - Allocation Service
   - Allocations
