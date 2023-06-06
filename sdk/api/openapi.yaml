@@ -321,7 +321,7 @@ info:
     | <a name="833">833</a>|The type of parameter provided did not match that required by the compliance rule.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.234
+  version: 1.0.235
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -6051,7 +6051,7 @@ paths:
               type: array
         description: The instrument event definitions.
       responses:
-        "200":
+        "201":
           content:
             text/plain:
               schema:
@@ -63818,19 +63818,17 @@ components:
         lusidInstrumentId:
           description: LUSID's internal unique instrument identifier, resolved from
             the instrument identifiers
-          minLength: 1
+          nullable: true
           readOnly: true
           type: string
         instrumentScope:
           description: The scope in which the instrument lies.
-          minLength: 1
+          nullable: true
           readOnly: true
           type: string
       required:
       - costFactor
       - instrumentIdentifiers
-      - instrumentScope
-      - lusidInstrumentId
       - unitsFactor
       type: object
     PagedResourceListOfAddressKeyDefinition:
