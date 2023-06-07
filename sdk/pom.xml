@@ -5,7 +5,7 @@
     <artifactId>lusid-sdk</artifactId>
     <packaging>jar</packaging>
     <name>lusid-sdk</name>
-    <version>1.0.242</version>
+    <version>1.0.243</version>
     <url>https://github.com/finbourne/lusid-sdk-java</url>
     <description>LUSID Java SDK</description>
     <scm>
