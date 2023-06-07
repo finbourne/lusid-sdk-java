@@ -321,7 +321,7 @@ info:
     | <a name="833">833</a>|The type of parameter provided did not match that required by the compliance rule.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.240
+  version: 1.0.241
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -51693,7 +51693,7 @@ components:
       example:
         op: Sum
         options:
-          key: ""
+          key: '{}'
         key: key
       properties:
         key:
@@ -51719,7 +51719,9 @@ components:
           - SumCumulativeInArrears
           type: string
         options:
-          additionalProperties: {}
+          additionalProperties:
+            additionalProperties: false
+            type: object
           description: "Additional options to apply when performing computations.\
             \ Options that do not apply to the Key will be\r\nignored. Option values\
             \ can be boolean, numeric, string or date-time."
@@ -60762,11 +60764,11 @@ components:
         metrics:
         - op: Sum
           options:
-            key: ""
+            key: '{}'
           key: key
         - op: Sum
           options:
-            key: ""
+            key: '{}'
           key: key
         groupBy:
         - groupBy
@@ -60935,11 +60937,11 @@ components:
           metrics:
           - op: Sum
             options:
-              key: ""
+              key: '{}'
             key: key
           - op: Sum
             options:
-              key: ""
+              key: '{}'
             key: key
           groupBy:
           - groupBy
@@ -61012,11 +61014,11 @@ components:
           metrics:
           - op: Sum
             options:
-              key: ""
+              key: '{}'
             key: key
           - op: Sum
             options:
-              key: ""
+              key: '{}'
             key: key
           groupBy:
           - groupBy
@@ -62407,8 +62409,8 @@ components:
                   scope: scope
                 type: String
           data:
-          - key: ""
-          - key: ""
+          - key: '{}'
+          - key: '{}'
           aggregationFailures:
           - reason: reason
             measure: measure
@@ -62432,8 +62434,8 @@ components:
           aggregationEffectiveAt: 2000-01-23T04:56:07.000+00:00
           href: https://openapi-generator.tech
         diff:
-        - key: ""
-        - key: ""
+        - key: '{}'
+        - key: '{}'
         right:
           aggregationCurrency: aggregationCurrency
           aggregationAsAt: 2000-01-23T04:56:07.000+00:00
@@ -62465,8 +62467,8 @@ components:
                   scope: scope
                 type: String
           data:
-          - key: ""
-          - key: ""
+          - key: '{}'
+          - key: '{}'
           aggregationFailures:
           - reason: reason
             measure: measure
@@ -62496,7 +62498,9 @@ components:
           $ref: '#/components/schemas/ListAggregationResponse'
         diff:
           items:
-            additionalProperties: {}
+            additionalProperties:
+              additionalProperties: false
+              type: object
             type: object
           nullable: true
           type: array
@@ -62536,8 +62540,8 @@ components:
                 scope: scope
               type: String
         data:
-        - key: ""
-        - key: ""
+        - key: '{}'
+        - key: '{}'
         aggregationFailures:
         - reason: reason
           measure: measure
@@ -62573,7 +62577,9 @@ components:
           type: string
         data:
           items:
-            additionalProperties: {}
+            additionalProperties:
+              additionalProperties: false
+              type: object
             type: object
           nullable: true
           type: array
@@ -71898,31 +71904,39 @@ components:
         \ match is made."
       example:
         left:
-          key: ""
+          key: '{}'
         difference:
-          key: ""
+          key: '{}'
         right:
-          key: ""
+          key: '{}'
         resultComparison:
-          key: ""
+          key: '{}'
       properties:
         left:
-          additionalProperties: {}
+          additionalProperties:
+            additionalProperties: false
+            type: object
           description: Left hand side of the comparison
           nullable: true
           type: object
         right:
-          additionalProperties: {}
+          additionalProperties:
+            additionalProperties: false
+            type: object
           description: Right hand side of the comparison
           nullable: true
           type: object
         difference:
-          additionalProperties: {}
+          additionalProperties:
+            additionalProperties: false
+            type: object
           description: Difference between LHS and RHS of comparison
           nullable: true
           type: object
         resultComparison:
-          additionalProperties: {}
+          additionalProperties:
+            additionalProperties: false
+            type: object
           description: The logical or semantic description of the difference, e.g.
             "Matches" or "MatchesWithTolerance" or "Failed".
           nullable: true
@@ -71969,11 +71983,11 @@ components:
           metrics:
           - op: Sum
             options:
-              key: ""
+              key: '{}'
             key: key
           - op: Sum
             options:
-              key: ""
+              key: '{}'
             key: key
           groupBy:
           - groupBy
@@ -72044,11 +72058,11 @@ components:
           metrics:
           - op: Sum
             options:
-              key: ""
+              key: '{}'
             key: key
           - op: Sum
             options:
-              key: ""
+              key: '{}'
             key: key
           groupBy:
           - groupBy
@@ -72171,21 +72185,21 @@ components:
               type: String
         comparisons:
         - left:
-            key: ""
+            key: '{}'
           difference:
-            key: ""
+            key: '{}'
           right:
-            key: ""
+            key: '{}'
           resultComparison:
-            key: ""
+            key: '{}'
         - left:
-            key: ""
+            key: '{}'
           difference:
-            key: ""
+            key: '{}'
           right:
-            key: ""
+            key: '{}'
           resultComparison:
-            key: ""
+            key: '{}'
       properties:
         comparisons:
           description: List of comparisons of left to right hand sides.
@@ -84053,11 +84067,11 @@ components:
         metrics:
         - op: Sum
           options:
-            key: ""
+            key: '{}'
           key: key
         - op: Sum
           options:
-            key: ""
+            key: '{}'
           key: key
         groupBy:
         - groupBy
@@ -84290,11 +84304,11 @@ components:
           metrics:
           - op: Sum
             options:
-              key: ""
+              key: '{}'
             key: key
           - op: Sum
             options:
-              key: ""
+              key: '{}'
             key: key
           groupBy:
           - groupBy
@@ -84365,11 +84379,11 @@ components:
           metrics:
           - op: Sum
             options:
-              key: ""
+              key: '{}'
             key: key
           - op: Sum
             options:
-              key: ""
+              key: '{}'
             key: key
           groupBy:
           - groupBy
@@ -90673,7 +90687,9 @@ components:
     OpaqueModelOptions_allOf:
       properties:
         data:
-          additionalProperties: {}
+          additionalProperties:
+            additionalProperties: false
+            type: object
           type: object
         modelOptionsType:
           description: 'The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions,
