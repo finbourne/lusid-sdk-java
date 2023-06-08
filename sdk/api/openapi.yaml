@@ -322,7 +322,7 @@ info:
     | <a name="834">834</a>|The parameters provided by a rule did not match those required by its template.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.247
+  version: 1.0.248
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
