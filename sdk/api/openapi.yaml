@@ -321,7 +321,7 @@ info:
     | <a name="833">833</a>|The type of parameter provided did not match that required by the compliance rule.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.244
+  version: 1.0.245
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -59248,6 +59248,13 @@ components:
             price.
           format: double
           type: number
+        calendars:
+          description: Holiday calendars that apply to yield-to-price conversions
+            (i.e. for BRL futures).
+          items:
+            type: string
+          nullable: true
+          type: array
       required:
       - contractCode
       - contractMonth
@@ -88886,7 +88893,7 @@ components:
             \ bond (20 coupons) @ 6%.\r\n- [ASX_20Year] Used for “LT” on ASX. 20yr\
             \ semi-annual bond (40 coupons) @ 4%.\r\n\r\nSupported string (enumeration)\
             \ values are: [Standard, ASX_BankBills, ASX_3Year, ASX_5Year, ASX_10Year,\
-            \ ASX_20Year]."
+            \ ASX_20Year, B3_DI1]."
           nullable: true
           type: string
         instrumentType:
