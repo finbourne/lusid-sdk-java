@@ -21,6 +21,7 @@ Name | Type | Description | Notes
 **exchangeName** | **String** | Exchange name (for when code is not automatically recognised). |  [optional]
 **tickerStep** | **java.math.BigDecimal** | Minimal step size change in ticker. |  [optional]
 **unitValue** | **java.math.BigDecimal** | The value in the currency of a 1 unit change in the contract price. |  [optional]
+**calendars** | **List&lt;String&gt;** | Holiday calendars that apply to yield-to-price conversions (i.e. for BRL futures). |  [optional]
 
 
 
