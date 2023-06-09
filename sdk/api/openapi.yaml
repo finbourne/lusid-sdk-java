@@ -323,7 +323,7 @@ info:
     | <a name="835">835</a>|PostingModuleRule has a not allowed Property Domain.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.249
+  version: 1.0.250
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -11471,8 +11471,8 @@ paths:
           pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
-      - description: "Order results by particular fields. Use the '-' sign to denote\
-          \ descending order, for\r\n             example '-MyFieldName'."
+      - description: A list of field names or properties to sort by, each suffixed
+          by " ASC" or " DESC"
         explode: true
         in: query
         name: sortBy
