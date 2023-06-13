@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **value** | **Long** | The last used value of the sequence |  [optional]
 **cycle** | **Boolean** | Indicates if the sequence would start from minimun value once it reaches maximum value. If set to false, a failure would return if the sequence reaches maximum value. | 
 **pattern** | **String** | The pattern to be used to generate next values in the sequence. |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
 
