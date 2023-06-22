@@ -5,8 +5,7 @@ All URIs are relative to *https://www.lusid.com/api*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**createCustomEntityDefinition**](CustomEntityDefinitionsApi.md#createCustomEntityDefinition) | **POST** /api/customentities/entitytypes | [EARLY ACCESS] CreateCustomEntityDefinition: Define a new Custom Entity type.
-[**getCustomEntityDefinition**](CustomEntityDefinitionsApi.md#getCustomEntityDefinition) | **GET** /api/customentities/entitytypes/{entityType} | [EARLY ACCESS] GetCustomEntityDefinition: Get a Custom Entity type definition.
-[**getDefinition**](CustomEntityDefinitionsApi.md#getDefinition) | **GET** /api/customentities/entitytypes/{entityType}/$deprecated | [DEPRECATED] GetDefinition: Get a Custom Entity type definition.
+[**getDefinition**](CustomEntityDefinitionsApi.md#getDefinition) | **GET** /api/customentities/entitytypes/{entityType} | [EARLY ACCESS] GetDefinition: Get a Custom Entity type definition.
 [**listCustomEntityDefinitions**](CustomEntityDefinitionsApi.md#listCustomEntityDefinitions) | **GET** /api/customentities/entitytypes | [EARLY ACCESS] ListCustomEntityDefinitions: List the Custom Entity type definitions
 [**updateCustomEntityDefinition**](CustomEntityDefinitionsApi.md#updateCustomEntityDefinition) | **PUT** /api/customentities/entitytypes/{entityType} | [EARLY ACCESS] UpdateCustomEntityDefinition: Modify an existing Custom Entity type.
 
@@ -80,82 +79,11 @@ Name | Type | Description  | Notes
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
-<a name="getCustomEntityDefinition"></a>
-# **getCustomEntityDefinition**
-> CustomEntityDefinition getCustomEntityDefinition(entityType, asAt)
-
-[EARLY ACCESS] GetCustomEntityDefinition: Get a Custom Entity type definition.
-
-Retrieve a CustomEntityDefinition by a specific entityType at a point in AsAt time
-
-### Example
-```java
-// Import classes:
-import com.finbourne.lusid.ApiClient;
-import com.finbourne.lusid.ApiException;
-import com.finbourne.lusid.Configuration;
-import com.finbourne.lusid.auth.*;
-import com.finbourne.lusid.models.*;
-import com.finbourne.lusid.api.CustomEntityDefinitionsApi;
-
-public class Example {
-  public static void main(String[] args) {
-    ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://www.lusid.com/api");
-    
-    // Configure OAuth2 access token for authorization: oauth2
-    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
-    oauth2.setAccessToken("YOUR ACCESS TOKEN");
-
-    CustomEntityDefinitionsApi apiInstance = new CustomEntityDefinitionsApi(defaultClient);
-    String entityType = "entityType_example"; // String | The identifier for the Custom Entity type, derived from the \"entityTypeName\" provided on creation.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The AsAt datetime at which to retrieve the definition.
-    try {
-      CustomEntityDefinition result = apiInstance.getCustomEntityDefinition(entityType, asAt);
-      System.out.println(result);
-    } catch (ApiException e) {
-      System.err.println("Exception when calling CustomEntityDefinitionsApi#getCustomEntityDefinition");
-      System.err.println("Status code: " + e.getCode());
-      System.err.println("Reason: " + e.getResponseBody());
-      System.err.println("Response headers: " + e.getResponseHeaders());
-      e.printStackTrace();
-    }
-  }
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entityType** | **String**| The identifier for the Custom Entity type, derived from the \&quot;entityTypeName\&quot; provided on creation. |
- **asAt** | **OffsetDateTime**| The AsAt datetime at which to retrieve the definition. | [optional]
-
-### Return type
-
-[**CustomEntityDefinition**](CustomEntityDefinition.md)
-
-### Authorization
-
-[oauth2](../README.md#oauth2)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: text/plain, application/json, text/json
-
-### HTTP response details
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | The requested Custom Entity definition. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
-
 <a name="getDefinition"></a>
 # **getDefinition**
 > CustomEntityDefinition getDefinition(entityType, asAt)
 
-[DEPRECATED] GetDefinition: Get a Custom Entity type definition.
+[EARLY ACCESS] GetDefinition: Get a Custom Entity type definition.
 
 Retrieve a CustomEntityDefinition by a specific entityType at a point in AsAt time
 
