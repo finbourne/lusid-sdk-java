@@ -4,9 +4,157 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**deleteComplianceRule2**](ComplianceGenericApi.md#deleteComplianceRule2) | **DELETE** /api/compliance/generic/rules/{scope}/{code} | [EARLY ACCESS] DeleteComplianceRule2: Get compliance rule.
+[**getComplianceRule2**](ComplianceGenericApi.md#getComplianceRule2) | **GET** /api/compliance/generic/rules/{scope}/{code} | [EARLY ACCESS] GetComplianceRule2: Get compliance rule.
 [**getComplianceTemplate**](ComplianceGenericApi.md#getComplianceTemplate) | **GET** /api/compliance/templates/{scope}/{code} | [EARLY ACCESS] GetComplianceTemplate: Get the requested compliance template.
+[**listComplianceRules2**](ComplianceGenericApi.md#listComplianceRules2) | **GET** /api/compliance/generic/rules | [EARLY ACCESS] ListComplianceRules2: List compliance rules.
 [**listComplianceTemplates**](ComplianceGenericApi.md#listComplianceTemplates) | **GET** /api/compliance/templates | [EARLY ACCESS] ListComplianceTemplates: Get a specific compliance template
+[**upsertComplianceRule**](ComplianceGenericApi.md#upsertComplianceRule) | **POST** /api/compliance/generic/rules | [EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule.
 
+
+<a name="deleteComplianceRule2"></a>
+# **deleteComplianceRule2**
+> DeletedEntityResponse deleteComplianceRule2(scope, code)
+
+[EARLY ACCESS] DeleteComplianceRule2: Get compliance rule.
+
+PLEASE NOTE: loopback EarlyAccess endpoint for discussion only.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ComplianceGenericApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ComplianceGenericApi apiInstance = new ComplianceGenericApi(defaultClient);
+    String scope = "scope_example"; // String | The compliance rule's scope.
+    String code = "code_example"; // String | The compliance rule's code.
+    try {
+      DeletedEntityResponse result = apiInstance.deleteComplianceRule2(scope, code);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ComplianceGenericApi#deleteComplianceRule2");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scope** | **String**| The compliance rule&#39;s scope. |
+ **code** | **String**| The compliance rule&#39;s code. |
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | Success |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
+<a name="getComplianceRule2"></a>
+# **getComplianceRule2**
+> ComplianceRuleResponse getComplianceRule2(scope, code, asAt)
+
+[EARLY ACCESS] GetComplianceRule2: Get compliance rule.
+
+PLEASE NOTE: loopback EarlyAccess endpoint for discussion only.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ComplianceGenericApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ComplianceGenericApi apiInstance = new ComplianceGenericApi(defaultClient);
+    String scope = "scope_example"; // String | The compliance rule's scope.
+    String code = "code_example"; // String | The compliance rule's code.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. Asat time for query.
+    try {
+      ComplianceRuleResponse result = apiInstance.getComplianceRule2(scope, code, asAt);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ComplianceGenericApi#getComplianceRule2");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **scope** | **String**| The compliance rule&#39;s scope. |
+ **code** | **String**| The compliance rule&#39;s code. |
+ **asAt** | **OffsetDateTime**| Optional. Asat time for query. | [optional]
+
+### Return type
+
+[**ComplianceRuleResponse**](ComplianceRuleResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The requested compliance rule. |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
 
 <a name="getComplianceTemplate"></a>
 # **getComplianceTemplate**
@@ -78,6 +226,83 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The requested compliance template. |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
+<a name="listComplianceRules2"></a>
+# **listComplianceRules2**
+> PagedResourceListOfComplianceRuleResponse listComplianceRules2(asAt, page, start, limit, filter)
+
+[EARLY ACCESS] ListComplianceRules2: List compliance rules.
+
+PLEASE NOTE: loopback EarlyAccess endpoint for discussion only.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ComplianceGenericApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ComplianceGenericApi apiInstance = new ComplianceGenericApi(defaultClient);
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. Asat time.
+    String page = "page_example"; // String | Optional. Pagination token.
+    Integer start = 56; // Integer | Optional. Entry at which to start.
+    Integer limit = 56; // Integer | Optional. Entries per page.
+    String filter = "filter_example"; // String | Optional. Filter.
+    try {
+      PagedResourceListOfComplianceRuleResponse result = apiInstance.listComplianceRules2(asAt, page, start, limit, filter);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ComplianceGenericApi#listComplianceRules2");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **asAt** | **OffsetDateTime**| Optional. Asat time. | [optional]
+ **page** | **String**| Optional. Pagination token. | [optional]
+ **start** | **Integer**| Optional. Entry at which to start. | [optional]
+ **limit** | **Integer**| Optional. Entries per page. | [optional]
+ **filter** | **String**| Optional. Filter. | [optional]
+
+### Return type
+
+[**PagedResourceListOfComplianceRuleResponse**](PagedResourceListOfComplianceRuleResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The list of compliance rules. |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 
@@ -155,6 +380,75 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | The list of compliance templates available. |  -  |
+**400** | The details of the input related failure |  -  |
+**0** | Error response |  -  |
+
+<a name="upsertComplianceRule"></a>
+# **upsertComplianceRule**
+> ComplianceRuleResponse upsertComplianceRule(upsertComplianceRuleRequest)
+
+[EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule.
+
+PLEASE NOTE: loopback EarlyAccess endpoint for discussion only.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ComplianceGenericApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ComplianceGenericApi apiInstance = new ComplianceGenericApi(defaultClient);
+    UpsertComplianceRuleRequest upsertComplianceRuleRequest = new UpsertComplianceRuleRequest(); // UpsertComplianceRuleRequest | 
+    try {
+      ComplianceRuleResponse result = apiInstance.upsertComplianceRule(upsertComplianceRuleRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ComplianceGenericApi#upsertComplianceRule");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **upsertComplianceRuleRequest** | [**UpsertComplianceRuleRequest**](UpsertComplianceRuleRequest.md)|  | [optional]
+
+### Return type
+
+[**ComplianceRuleResponse**](ComplianceRuleResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | The upserted compliance rule. |  -  |
 **400** | The details of the input related failure |  -  |
 **0** | Error response |  -  |
 

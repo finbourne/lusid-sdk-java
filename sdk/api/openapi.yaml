@@ -323,7 +323,7 @@ info:
     | <a name="835">835</a>|PostingModuleRule has a not allowed Property Domain.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.281
+  version: 1.0.282
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -1729,12 +1729,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The response from deleting an allocation.
@@ -2406,12 +2412,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The response from deleting an block.
@@ -5080,6 +5092,654 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-contentType: application/json-patch+json
       x-accepts: application/json
+  /api/compliance/generic/rules:
+    get:
+      description: 'PLEASE NOTE: loopback EarlyAccess endpoint for discussion only.'
+      operationId: ListComplianceRules2
+      parameters:
+      - description: Optional. Asat time.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      - description: Optional. Pagination token.
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          maxLength: 500
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
+          type: string
+        style: form
+      - description: Optional. Entry at which to start.
+        explode: true
+        in: query
+        name: start
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: true
+      - description: Optional. Entries per page.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          maximum: 5000
+          minimum: 1
+          type: integer
+        style: form
+        x-nullable: true
+      - description: Optional. Filter.
+        explode: true
+        in: query
+        name: filter
+        required: false
+        schema:
+          maxLength: 16384
+          minLength: 0
+          pattern: ^[\s\S]*$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                values:
+                - id:
+                    scope: examples
+                    code: exampleRule
+                  name: A friendly example rule name.
+                  description: An friendly description example.
+                  active: true
+                  templateId:
+                    scope: live
+                    code: exampleTemplate
+                  variation: Single
+                  parameters:
+                    UpperBound:
+                      parameterType: Decimal
+                      value: 30
+                  properties:
+                    Compliance/MyScope/SomeOrderProperty:
+                      key: Compliance/MyScope/SomeOrderProperty
+                      value:
+                        labelValue: XYZ000034567
+                  version:
+                    effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
+                    asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                    asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                    userIdCreated: User1
+                    asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                    userIdModified: User2
+                    asAtVersionNumber: 2
+                  links: []
+                href: https://myco.lusid.com/api/api/compliance/generic/rules
+                links: []
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfComplianceRuleResponse'
+            application/json:
+              example:
+                values:
+                - id:
+                    scope: examples
+                    code: exampleRule
+                  name: A friendly example rule name.
+                  description: An friendly description example.
+                  active: true
+                  templateId:
+                    scope: live
+                    code: exampleTemplate
+                  variation: Single
+                  parameters:
+                    UpperBound:
+                      parameterType: Decimal
+                      value: 30
+                  properties:
+                    Compliance/MyScope/SomeOrderProperty:
+                      key: Compliance/MyScope/SomeOrderProperty
+                      value:
+                        labelValue: XYZ000034567
+                  version:
+                    effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
+                    asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                    asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                    userIdCreated: User1
+                    asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                    userIdModified: User2
+                    asAtVersionNumber: 2
+                  links: []
+                href: https://myco.lusid.com/api/api/compliance/generic/rules
+                links: []
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfComplianceRuleResponse'
+            text/json:
+              example:
+                values:
+                - id:
+                    scope: examples
+                    code: exampleRule
+                  name: A friendly example rule name.
+                  description: An friendly description example.
+                  active: true
+                  templateId:
+                    scope: live
+                    code: exampleTemplate
+                  variation: Single
+                  parameters:
+                    UpperBound:
+                      parameterType: Decimal
+                      value: 30
+                  properties:
+                    Compliance/MyScope/SomeOrderProperty:
+                      key: Compliance/MyScope/SomeOrderProperty
+                      value:
+                        labelValue: XYZ000034567
+                  version:
+                    effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
+                    asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                    asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                    userIdCreated: User1
+                    asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                    userIdModified: User2
+                    asAtVersionNumber: 2
+                  links: []
+                href: https://myco.lusid.com/api/api/compliance/generic/rules
+                links: []
+              schema:
+                $ref: '#/components/schemas/PagedResourceListOfComplianceRuleResponse'
+          description: The list of compliance rules.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] ListComplianceRules2: List compliance rules.'
+      tags:
+      - Compliance - Generic
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    post:
+      description: 'PLEASE NOTE: loopback EarlyAccess endpoint for discussion only.'
+      operationId: UpsertComplianceRule
+      requestBody:
+        content:
+          application/json-patch+json:
+            example:
+              id:
+                scope: live
+                code: exampleRule
+              name: A friendly name.
+              description: A friendly description.
+              active: true
+              templateId:
+                scope: live
+                code: exampleTemplate
+              variation: Single
+              parameters:
+                UpperBound:
+                  parameterType: Decimal
+                  value: 15
+              properties:
+                Compliance/MyScope/SomeRuleProperty:
+                  key: Compliance/MyScope/SomeRuleProperty
+                  value:
+                    labelValue: XYZ000034567
+            schema:
+              $ref: '#/components/schemas/UpsertComplianceRuleRequest'
+          application/json:
+            example:
+              id:
+                scope: live
+                code: exampleRule
+              name: A friendly name.
+              description: A friendly description.
+              active: true
+              templateId:
+                scope: live
+                code: exampleTemplate
+              variation: Single
+              parameters:
+                UpperBound:
+                  parameterType: Decimal
+                  value: 15
+              properties:
+                Compliance/MyScope/SomeRuleProperty:
+                  key: Compliance/MyScope/SomeRuleProperty
+                  value:
+                    labelValue: XYZ000034567
+            schema:
+              $ref: '#/components/schemas/UpsertComplianceRuleRequest'
+          text/json:
+            example:
+              id:
+                scope: live
+                code: exampleRule
+              name: A friendly name.
+              description: A friendly description.
+              active: true
+              templateId:
+                scope: live
+                code: exampleTemplate
+              variation: Single
+              parameters:
+                UpperBound:
+                  parameterType: Decimal
+                  value: 15
+              properties:
+                Compliance/MyScope/SomeRuleProperty:
+                  key: Compliance/MyScope/SomeRuleProperty
+                  value:
+                    labelValue: XYZ000034567
+            schema:
+              $ref: '#/components/schemas/UpsertComplianceRuleRequest'
+          application/*+json:
+            example:
+              id:
+                scope: live
+                code: exampleRule
+              name: A friendly name.
+              description: A friendly description.
+              active: true
+              templateId:
+                scope: live
+                code: exampleTemplate
+              variation: Single
+              parameters:
+                UpperBound:
+                  parameterType: Decimal
+                  value: 15
+              properties:
+                Compliance/MyScope/SomeRuleProperty:
+                  key: Compliance/MyScope/SomeRuleProperty
+                  value:
+                    labelValue: XYZ000034567
+            schema:
+              $ref: '#/components/schemas/UpsertComplianceRuleRequest'
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                id:
+                  scope: examples
+                  code: exampleRule
+                name: A friendly example rule name.
+                description: An friendly description example.
+                active: true
+                templateId:
+                  scope: live
+                  code: exampleTemplate
+                variation: Single
+                parameters:
+                  UpperBound:
+                    parameterType: Decimal
+                    value: 30
+                properties:
+                  Compliance/MyScope/SomeOrderProperty:
+                    key: Compliance/MyScope/SomeOrderProperty
+                    value:
+                      labelValue: XYZ000034567
+                version:
+                  effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
+                  asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: User1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: User2
+                  asAtVersionNumber: 2
+                links: []
+              schema:
+                $ref: '#/components/schemas/ComplianceRuleResponse'
+            application/json:
+              example:
+                id:
+                  scope: examples
+                  code: exampleRule
+                name: A friendly example rule name.
+                description: An friendly description example.
+                active: true
+                templateId:
+                  scope: live
+                  code: exampleTemplate
+                variation: Single
+                parameters:
+                  UpperBound:
+                    parameterType: Decimal
+                    value: 30
+                properties:
+                  Compliance/MyScope/SomeOrderProperty:
+                    key: Compliance/MyScope/SomeOrderProperty
+                    value:
+                      labelValue: XYZ000034567
+                version:
+                  effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
+                  asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: User1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: User2
+                  asAtVersionNumber: 2
+                links: []
+              schema:
+                $ref: '#/components/schemas/ComplianceRuleResponse'
+            text/json:
+              example:
+                id:
+                  scope: examples
+                  code: exampleRule
+                name: A friendly example rule name.
+                description: An friendly description example.
+                active: true
+                templateId:
+                  scope: live
+                  code: exampleTemplate
+                variation: Single
+                parameters:
+                  UpperBound:
+                    parameterType: Decimal
+                    value: 30
+                properties:
+                  Compliance/MyScope/SomeOrderProperty:
+                    key: Compliance/MyScope/SomeOrderProperty
+                    value:
+                      labelValue: XYZ000034567
+                version:
+                  effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
+                  asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: User1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: User2
+                  asAtVersionNumber: 2
+                links: []
+              schema:
+                $ref: '#/components/schemas/ComplianceRuleResponse'
+          description: The upserted compliance rule.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule.'
+      tags:
+      - Compliance - Generic
+      x-fbn-apistatus: EarlyAccess
+      x-contentType: application/json-patch+json
+      x-accepts: application/json
+  /api/compliance/generic/rules/{scope}/{code}:
+    delete:
+      description: 'PLEASE NOTE: loopback EarlyAccess endpoint for discussion only.'
+      operationId: DeleteComplianceRule2
+      parameters:
+      - description: The compliance rule's scope.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The compliance rule's code.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+            text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
+              schema:
+                $ref: '#/components/schemas/DeletedEntityResponse'
+          description: Success
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] DeleteComplianceRule2: Get compliance rule.'
+      tags:
+      - Compliance - Generic
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+    get:
+      description: 'PLEASE NOTE: loopback EarlyAccess endpoint for discussion only.'
+      operationId: GetComplianceRule2
+      parameters:
+      - description: The compliance rule's scope.
+        explode: false
+        in: path
+        name: scope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: The compliance rule's code.
+        explode: false
+        in: path
+        name: code
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: simple
+      - description: Optional. Asat time for query.
+        explode: true
+        in: query
+        name: asAt
+        required: false
+        schema:
+          format: date-time
+          type: string
+        style: form
+        x-nullable: true
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                id:
+                  scope: examples
+                  code: exampleRule
+                name: A friendly example rule name.
+                description: An friendly description example.
+                active: true
+                templateId:
+                  scope: live
+                  code: exampleTemplate
+                variation: Single
+                parameters:
+                  UpperBound:
+                    parameterType: Decimal
+                    value: 30
+                properties:
+                  Compliance/MyScope/SomeOrderProperty:
+                    key: Compliance/MyScope/SomeOrderProperty
+                    value:
+                      labelValue: XYZ000034567
+                version:
+                  effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
+                  asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: User1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: User2
+                  asAtVersionNumber: 2
+                links: []
+              schema:
+                $ref: '#/components/schemas/ComplianceRuleResponse'
+            application/json:
+              example:
+                id:
+                  scope: examples
+                  code: exampleRule
+                name: A friendly example rule name.
+                description: An friendly description example.
+                active: true
+                templateId:
+                  scope: live
+                  code: exampleTemplate
+                variation: Single
+                parameters:
+                  UpperBound:
+                    parameterType: Decimal
+                    value: 30
+                properties:
+                  Compliance/MyScope/SomeOrderProperty:
+                    key: Compliance/MyScope/SomeOrderProperty
+                    value:
+                      labelValue: XYZ000034567
+                version:
+                  effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
+                  asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: User1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: User2
+                  asAtVersionNumber: 2
+                links: []
+              schema:
+                $ref: '#/components/schemas/ComplianceRuleResponse'
+            text/json:
+              example:
+                id:
+                  scope: examples
+                  code: exampleRule
+                name: A friendly example rule name.
+                description: An friendly description example.
+                active: true
+                templateId:
+                  scope: live
+                  code: exampleTemplate
+                variation: Single
+                parameters:
+                  UpperBound:
+                    parameterType: Decimal
+                    value: 30
+                properties:
+                  Compliance/MyScope/SomeOrderProperty:
+                    key: Compliance/MyScope/SomeOrderProperty
+                    value:
+                      labelValue: XYZ000034567
+                version:
+                  effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
+                  asAtDate: 2018-03-05T10:10:10.0000000+00:00
+                  asAtCreated: 2018-03-05T10:10:10.0000000+00:00
+                  userIdCreated: User1
+                  asAtModified: 2018-03-08T10:10:10.0000000+00:00
+                  userIdModified: User2
+                  asAtVersionNumber: 2
+                links: []
+              schema:
+                $ref: '#/components/schemas/ComplianceRuleResponse'
+          description: The requested compliance rule.
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] GetComplianceRule2: Get compliance rule.'
+      tags:
+      - Compliance - Generic
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
   /api/compliance/templates:
     get:
       description: Use this endpoint to fetch a list of all available compliance template
@@ -5679,12 +6339,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: Corporate Actions Deleted
@@ -6056,12 +6722,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: Instrument Events Deleted
@@ -8391,12 +9063,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: Delete a Custom Entity instance.
@@ -8997,12 +9675,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The access metadata for the CustomEntity or any failure.
@@ -10554,12 +11238,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: Success
@@ -11106,12 +11796,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The response from deleting an execution.
@@ -15331,12 +16027,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The response from deleting legal entity.
@@ -15704,12 +16406,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The datetime that the identifiers were deleted from the specified
@@ -16367,12 +17075,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The Access Metadata with the given metadataKey has been deleted
@@ -16742,12 +17456,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The datetime that the properties were deleted from the specified
@@ -17992,12 +18712,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The response from deleting an order.
@@ -18552,12 +19278,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The response from deleting an participation.
@@ -19864,12 +20596,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The response from deleting person.
@@ -20210,12 +20948,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The datetime that the identifiers were deleted from the specified
@@ -20795,12 +21539,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The Access Metadata with the given metadataKey has been deleted
@@ -21154,12 +21904,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The datetime that the properties were deleted from the specified
@@ -22330,12 +23086,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The response from deleting an placement.
@@ -22841,12 +23603,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The datetime that the portfolio group was deleted
@@ -24940,12 +25708,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The has been deleted
@@ -25608,12 +26382,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The datetime that the properties were deleted from the specified
@@ -30203,12 +30983,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The datetime that the portfolio was deleted
@@ -31013,12 +31799,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The rule that has been deleted
@@ -31353,12 +32145,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The datetime that the properties were deleted from the specified
@@ -32876,12 +33674,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The successfully deleted Returns data along with any failures
@@ -33644,12 +34448,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The time that the property definition was deleted
@@ -34481,12 +35291,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The datetime that the properties were deleted from the specified
@@ -37042,12 +37858,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The deleted reference list response.
@@ -37901,12 +38723,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The time that the relationship definition was deleted
@@ -38497,12 +39325,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The datetime that the relationship is deleted
@@ -47600,12 +48434,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The datetime that the holding adjustments were cancelled
@@ -48953,12 +49793,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The datetime that the transactions were cancelled
@@ -50728,12 +51574,18 @@ paths:
         "200":
           content:
             text/plain:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             application/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
             text/json:
+              example:
+                asAt: 2018-03-05T10:10:10.0000000+00:00
               schema:
                 $ref: '#/components/schemas/DeletedEntityResponse'
           description: The datetime that the property was deleted
@@ -54914,6 +55766,102 @@ components:
       required:
       - marketAsset
       - provider
+      type: object
+    ComplianceParameter:
+      additionalProperties: false
+      example:
+        parameterType: parameterType
+        value: ""
+      properties:
+        parameterType:
+          description: The parameter type.
+          minLength: 1
+          type: string
+        value:
+          description: The parameter value.
+      required:
+      - parameterType
+      - value
+      type: object
+    ComplianceRuleResponse:
+      additionalProperties: false
+      example:
+        name: name
+        description: description
+        active: true
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        id:
+          code: code
+          scope: scope
+        templateId:
+          code: code
+          scope: scope
+        parameters:
+          key:
+            parameterType: parameterType
+            value: ""
+        version:
+          asAtModified: 2000-01-23T04:56:07.000+00:00
+          userIdModified: userIdModified
+          asAtVersionNumber: 0
+          asAtCreated: 2000-01-23T04:56:07.000+00:00
+          userIdCreated: userIdCreated
+          effectiveFrom: 2000-01-23T04:56:07.000+00:00
+          asAtDate: 2000-01-23T04:56:07.000+00:00
+        variation: variation
+        properties:
+          key:
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
+      properties:
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        name:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        active:
+          type: boolean
+        templateId:
+          $ref: '#/components/schemas/ResourceId'
+        variation:
+          nullable: true
+          type: string
+        parameters:
+          additionalProperties:
+            $ref: '#/components/schemas/ComplianceParameter'
+          nullable: true
+          type: object
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          nullable: true
+          type: object
+        version:
+          $ref: '#/components/schemas/Version'
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
       type: object
     ComplianceTemplate:
       additionalProperties: false
@@ -65361,6 +66309,131 @@ components:
         values:
           items:
             $ref: '#/components/schemas/Calendar'
+          type: array
+        href:
+          format: uri
+          nullable: true
+          type: string
+        links:
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
+    PagedResourceListOfComplianceRuleResponse:
+      additionalProperties: false
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - name: name
+          description: description
+          active: true
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          templateId:
+            code: code
+            scope: scope
+          parameters:
+            key:
+              parameterType: parameterType
+              value: ""
+          version:
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 0
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          variation: variation
+          properties:
+            key:
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+        - name: name
+          description: description
+          active: true
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          id:
+            code: code
+            scope: scope
+          templateId:
+            code: code
+            scope: scope
+          parameters:
+            key:
+              parameterType: parameterType
+              value: ""
+          version:
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 0
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+          variation: variation
+          properties:
+            key:
+              value:
+                metricValue:
+                  unit: unit
+                  value: 0.8008281904610115
+                labelValue: labelValue
+                labelValueSet:
+                  values:
+                  - values
+                  - values
+              key: key
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        nextPage:
+          nullable: true
+          type: string
+        previousPage:
+          nullable: true
+          type: string
+        values:
+          items:
+            $ref: '#/components/schemas/ComplianceRuleResponse'
           type: array
         href:
           format: uri
@@ -82372,6 +83445,66 @@ components:
       required:
       - marketData
       - marketDataId
+      type: object
+    UpsertComplianceRuleRequest:
+      additionalProperties: false
+      example:
+        name: name
+        description: description
+        active: true
+        id:
+          code: code
+          scope: scope
+        templateId:
+          code: code
+          scope: scope
+        parameters:
+          key:
+            parameterType: parameterType
+            value: ""
+        variation: variation
+        properties:
+          key:
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            key: key
+      properties:
+        id:
+          $ref: '#/components/schemas/ResourceId'
+        name:
+          nullable: true
+          type: string
+        description:
+          nullable: true
+          type: string
+        active:
+          type: boolean
+        templateId:
+          $ref: '#/components/schemas/ResourceId'
+        variation:
+          minLength: 1
+          type: string
+        parameters:
+          additionalProperties:
+            $ref: '#/components/schemas/ComplianceParameter'
+          type: object
+        properties:
+          additionalProperties:
+            $ref: '#/components/schemas/PerpetualProperty'
+          type: object
+      required:
+      - id
+      - parameters
+      - properties
+      - templateId
+      - variation
       type: object
     UpsertCorporateActionRequest:
       additionalProperties: false
