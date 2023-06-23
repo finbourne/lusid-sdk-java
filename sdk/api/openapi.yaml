@@ -323,7 +323,7 @@ info:
     | <a name="835">835</a>|PostingModuleRule has a not allowed Property Domain.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.283
+  version: 1.0.284
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
