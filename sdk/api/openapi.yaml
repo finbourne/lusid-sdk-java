@@ -325,7 +325,7 @@ info:
     | <a name="836">836</a>|Structured result data not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.287
+  version: 1.0.288
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
