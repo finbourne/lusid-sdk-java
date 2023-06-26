@@ -94,6 +94,7 @@ info:
     | <a name="169">169</a>|Invalid Alternate Id|  |
     | <a name="170">170</a>|Cannot Add Source Portfolio Property Explicitly|  |
     | <a name="171">171</a>|Entity Already Exists In Group|  |
+    | <a name="172">172</a>|Entity With Id Does Not Exist|  |
     | <a name="173">173</a>|Entity With Id Already Exists|  |
     | <a name="174">174</a>|Derived Portfolio Details Do Not Exist|  |
     | <a name="175">175</a>|Entity Not In Group|  |
@@ -321,9 +322,10 @@ info:
     | <a name="833">833</a>|The type of parameter provided did not match that required by the compliance rule.|  |
     | <a name="834">834</a>|The parameters provided by a rule did not match those required by its template.|  |
     | <a name="835">835</a>|PostingModuleRule has a not allowed Property Domain.|  |
+    | <a name="836">836</a>|Structured result data not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.285
+  version: 1.0.286
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -92157,6 +92159,12 @@ components:
             \ are: [ShortFront, ShortBack, LongBack, LongFront, Both]."
           nullable: true
           type: string
+        roundingConventions:
+          description: Rounding conventions for analytics, if any.
+          items:
+            $ref: '#/components/schemas/RoundingConvention'
+          nullable: true
+          type: array
         instrumentType:
           description: 'The available values are: QuotedSecurity, InterestRateSwap,
             FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
