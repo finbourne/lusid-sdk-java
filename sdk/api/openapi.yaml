@@ -325,7 +325,7 @@ info:
     | <a name="836">836</a>|Structured result data not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.289
+  version: 1.0.290
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -5169,6 +5169,9 @@ paths:
                     scope: live
                     code: exampleTemplate
                   variation: Single
+                  portfolioGroupId:
+                    scope: examples
+                    code: examplePortfolioGroup
                   parameters:
                     UpperBound:
                       parameterType: Decimal
@@ -5204,6 +5207,9 @@ paths:
                     scope: live
                     code: exampleTemplate
                   variation: Single
+                  portfolioGroupId:
+                    scope: examples
+                    code: examplePortfolioGroup
                   parameters:
                     UpperBound:
                       parameterType: Decimal
@@ -5239,6 +5245,9 @@ paths:
                     scope: live
                     code: exampleTemplate
                   variation: Single
+                  portfolioGroupId:
+                    scope: examples
+                    code: examplePortfolioGroup
                   parameters:
                     UpperBound:
                       parameterType: Decimal
@@ -5304,6 +5313,9 @@ paths:
                 scope: live
                 code: exampleTemplate
               variation: Single
+              portfolioGroupId:
+                scope: examples
+                code: examplePortfolioGroup
               parameters:
                 UpperBound:
                   parameterType: Decimal
@@ -5327,6 +5339,9 @@ paths:
                 scope: live
                 code: exampleTemplate
               variation: Single
+              portfolioGroupId:
+                scope: examples
+                code: examplePortfolioGroup
               parameters:
                 UpperBound:
                   parameterType: Decimal
@@ -5350,6 +5365,9 @@ paths:
                 scope: live
                 code: exampleTemplate
               variation: Single
+              portfolioGroupId:
+                scope: examples
+                code: examplePortfolioGroup
               parameters:
                 UpperBound:
                   parameterType: Decimal
@@ -5373,6 +5391,9 @@ paths:
                 scope: live
                 code: exampleTemplate
               variation: Single
+              portfolioGroupId:
+                scope: examples
+                code: examplePortfolioGroup
               parameters:
                 UpperBound:
                   parameterType: Decimal
@@ -5399,6 +5420,9 @@ paths:
                   scope: live
                   code: exampleTemplate
                 variation: Single
+                portfolioGroupId:
+                  scope: examples
+                  code: examplePortfolioGroup
                 parameters:
                   UpperBound:
                     parameterType: Decimal
@@ -5431,6 +5455,9 @@ paths:
                   scope: live
                   code: exampleTemplate
                 variation: Single
+                portfolioGroupId:
+                  scope: examples
+                  code: examplePortfolioGroup
                 parameters:
                   UpperBound:
                     parameterType: Decimal
@@ -5463,6 +5490,9 @@ paths:
                   scope: live
                   code: exampleTemplate
                 variation: Single
+                portfolioGroupId:
+                  scope: examples
+                  code: examplePortfolioGroup
                 parameters:
                   UpperBound:
                     parameterType: Decimal
@@ -5632,6 +5662,9 @@ paths:
                   scope: live
                   code: exampleTemplate
                 variation: Single
+                portfolioGroupId:
+                  scope: examples
+                  code: examplePortfolioGroup
                 parameters:
                   UpperBound:
                     parameterType: Decimal
@@ -5664,6 +5697,9 @@ paths:
                   scope: live
                   code: exampleTemplate
                 variation: Single
+                portfolioGroupId:
+                  scope: examples
+                  code: examplePortfolioGroup
                 parameters:
                   UpperBound:
                     parameterType: Decimal
@@ -5696,6 +5732,9 @@ paths:
                   scope: live
                   code: exampleTemplate
                 variation: Single
+                portfolioGroupId:
+                  scope: examples
+                  code: examplePortfolioGroup
                 parameters:
                   UpperBound:
                     parameterType: Decimal
@@ -55859,6 +55898,9 @@ components:
                 - values
                 - values
             key: key
+        portfolioGroupId:
+          code: code
+          scope: scope
       properties:
         id:
           $ref: '#/components/schemas/ResourceId'
@@ -55875,6 +55917,8 @@ components:
         variation:
           nullable: true
           type: string
+        portfolioGroupId:
+          $ref: '#/components/schemas/ResourceId'
         parameters:
           additionalProperties:
             $ref: '#/components/schemas/ComplianceParameter'
@@ -66530,6 +66574,9 @@ components:
                   - values
                   - values
               key: key
+          portfolioGroupId:
+            code: code
+            scope: scope
         - name: name
           description: description
           active: true
@@ -66573,6 +66620,9 @@ components:
                   - values
                   - values
               key: key
+          portfolioGroupId:
+            code: code
+            scope: scope
         links:
         - method: method
           description: description
@@ -84019,6 +84069,9 @@ components:
                 - values
                 - values
             key: key
+        portfolioGroupId:
+          code: code
+          scope: scope
       properties:
         id:
           $ref: '#/components/schemas/ResourceId'
@@ -84035,6 +84088,8 @@ components:
         variation:
           minLength: 1
           type: string
+        portfolioGroupId:
+          $ref: '#/components/schemas/ResourceId'
         parameters:
           additionalProperties:
             $ref: '#/components/schemas/ComplianceParameter'

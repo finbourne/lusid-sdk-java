@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **active** | **Boolean** |  |  [optional]
 **templateId** | [**ResourceId**](ResourceId.md) |  | 
 **variation** | **String** |  | 
+**portfolioGroupId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **parameters** | [**Map&lt;String, ComplianceParameter&gt;**](ComplianceParameter.md) |  | 
 **properties** | [**Map&lt;String, PerpetualProperty&gt;**](PerpetualProperty.md) |  | 
 
