@@ -325,7 +325,7 @@ info:
     | <a name="836">836</a>|Structured result data not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.296
+  version: 1.0.297
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -6374,6 +6374,7 @@ paths:
         schema:
           items:
             type: string
+          maxItems: 1000
           type: array
         style: form
       responses:
@@ -6610,6 +6611,7 @@ paths:
             schema:
               items:
                 $ref: '#/components/schemas/UpsertCorporateActionRequest'
+              maxItems: 10000
               type: array
           application/json:
             example:
@@ -6633,6 +6635,7 @@ paths:
             schema:
               items:
                 $ref: '#/components/schemas/UpsertCorporateActionRequest'
+              maxItems: 10000
               type: array
           text/json:
             example:
@@ -6656,6 +6659,7 @@ paths:
             schema:
               items:
                 $ref: '#/components/schemas/UpsertCorporateActionRequest'
+              maxItems: 10000
               type: array
           application/*+json:
             example:
@@ -6679,6 +6683,7 @@ paths:
             schema:
               items:
                 $ref: '#/components/schemas/UpsertCorporateActionRequest'
+              maxItems: 10000
               type: array
         description: The corporate action definitions
       responses:
@@ -6757,6 +6762,7 @@ paths:
         schema:
           items:
             type: string
+          maxItems: 1000
           type: array
         style: form
       responses:
@@ -6969,6 +6975,7 @@ paths:
             schema:
               items:
                 $ref: '#/components/schemas/UpsertInstrumentEventRequest'
+              maxItems: 10000
               type: array
           application/json:
             example:
@@ -6994,6 +7001,7 @@ paths:
             schema:
               items:
                 $ref: '#/components/schemas/UpsertInstrumentEventRequest'
+              maxItems: 10000
               type: array
           text/json:
             example:
@@ -7019,6 +7027,7 @@ paths:
             schema:
               items:
                 $ref: '#/components/schemas/UpsertInstrumentEventRequest'
+              maxItems: 10000
               type: array
           application/*+json:
             example:
@@ -7044,6 +7053,7 @@ paths:
             schema:
               items:
                 $ref: '#/components/schemas/UpsertInstrumentEventRequest'
+              maxItems: 10000
               type: array
         description: The instrument event definitions.
       responses:
