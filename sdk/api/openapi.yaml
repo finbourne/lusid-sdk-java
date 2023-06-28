@@ -325,7 +325,7 @@ info:
     | <a name="836">836</a>|Structured result data not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.297
+  version: 1.0.298
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -5777,6 +5777,126 @@ paths:
       security:
       - oauth2: []
       summary: '[EARLY ACCESS] GetComplianceRule2: Get compliance rule.'
+      tags:
+      - Compliance - Generic
+      x-fbn-apistatus: EarlyAccess
+      x-accepts: application/json
+  /api/compliance/generic/runs:
+    post:
+      description: Use this endpoint to fetch the start a compliance run, based on
+        a pre-set mapping file.
+      operationId: RunGenericCompliance
+      parameters:
+      - description: 'Required: Scope to save the run results in.'
+        explode: true
+        in: query
+        name: runScope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      - description: 'Required: Scope from which to select rules to be run.'
+        explode: true
+        in: query
+        name: ruleScope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      - description: 'Required: Boolean flag indicating if a run should be PreTrade
+          (Including orders). For post-trade only, set to false'
+        explode: true
+        in: query
+        name: isPreTrade
+        required: true
+        schema:
+          type: boolean
+        style: form
+      - description: 'Required: the scope of the recipe to be used'
+        explode: true
+        in: query
+        name: recipeIdScope
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      - description: 'Required: The code of the recipe to be used. If left blank,
+          the default recipe will be used.'
+        explode: true
+        in: query
+        name: recipeIdCode
+        required: true
+        schema:
+          maxLength: 64
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        style: form
+      responses:
+        "200":
+          content:
+            text/plain:
+              example:
+                runId:
+                  scope: SomeScope
+                  code: run-1
+                instigatedAt: 2020-01-05T00:00:00.0000000+00:00
+                completedAt: 2020-01-05T00:00:01.0000000+00:00
+                schedule: PostTrade
+              schema:
+                $ref: '#/components/schemas/ComplianceRunInfoV2'
+            application/json:
+              example:
+                runId:
+                  scope: SomeScope
+                  code: run-1
+                instigatedAt: 2020-01-05T00:00:00.0000000+00:00
+                completedAt: 2020-01-05T00:00:01.0000000+00:00
+                schedule: PostTrade
+              schema:
+                $ref: '#/components/schemas/ComplianceRunInfoV2'
+            text/json:
+              example:
+                runId:
+                  scope: SomeScope
+                  code: run-1
+                instigatedAt: 2020-01-05T00:00:00.0000000+00:00
+                completedAt: 2020-01-05T00:00:01.0000000+00:00
+                schedule: PostTrade
+              schema:
+                $ref: '#/components/schemas/ComplianceRunInfoV2'
+          description: The identifying information of a compliance run
+        "400":
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/LusidValidationProblemDetails'
+          description: The details of the input related failure
+        default:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LusidProblemDetails'
+          description: Error response
+      security:
+      - oauth2: []
+      summary: '[EARLY ACCESS] RunGenericCompliance: Kick off the compliance check
+        process'
       tags:
       - Compliance - Generic
       x-fbn-apistatus: EarlyAccess
@@ -56102,6 +56222,33 @@ components:
             $ref: '#/components/schemas/Link'
           nullable: true
           type: array
+      type: object
+    ComplianceRunInfoV2:
+      additionalProperties: false
+      example:
+        schedule: schedule
+        completedAt: 2000-01-23T04:56:07.000+00:00
+        runId:
+          code: code
+          scope: scope
+        instigatedAt: 2000-01-23T04:56:07.000+00:00
+      properties:
+        runId:
+          $ref: '#/components/schemas/ResourceId'
+        instigatedAt:
+          format: date-time
+          type: string
+        completedAt:
+          format: date-time
+          type: string
+        schedule:
+          minLength: 1
+          type: string
+      required:
+      - completedAt
+      - instigatedAt
+      - runId
+      - schedule
       type: object
     ComplianceTemplate:
       additionalProperties: false
