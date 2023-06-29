@@ -325,7 +325,7 @@ info:
     | <a name="836">836</a>|Structured result data not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.300
+  version: 1.0.301
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -22979,6 +22979,7 @@ paths:
                   amount: 124335.33
                   currency: USD
                 counterparty: SomeCounterparty
+                entryType: Manual
             schema:
               $ref: '#/components/schemas/PlacementSetRequest'
           application/json:
@@ -23010,6 +23011,7 @@ paths:
                   amount: 124335.33
                   currency: USD
                 counterparty: SomeCounterparty
+                entryType: Manual
             schema:
               $ref: '#/components/schemas/PlacementSetRequest'
           text/json:
@@ -23041,6 +23043,7 @@ paths:
                   amount: 124335.33
                   currency: USD
                 counterparty: SomeCounterparty
+                entryType: Manual
             schema:
               $ref: '#/components/schemas/PlacementSetRequest'
           application/*+json:
@@ -23072,6 +23075,7 @@ paths:
                   amount: 124335.33
                   currency: USD
                 counterparty: SomeCounterparty
+                entryType: Manual
             schema:
               $ref: '#/components/schemas/PlacementSetRequest'
         description: The collection of placement requests.
@@ -23107,6 +23111,7 @@ paths:
                     amount: 51244.33
                     currency: USD
                   counterparty: SomeCounterparty
+                  entryType: Manual
                   version:
                     effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                     asAtDate: 2018-03-05T10:10:10.0000000+00:00
@@ -23147,6 +23152,7 @@ paths:
                     amount: 51244.33
                     currency: USD
                   counterparty: SomeCounterparty
+                  entryType: Manual
                   version:
                     effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                     asAtDate: 2018-03-05T10:10:10.0000000+00:00
@@ -23187,6 +23193,7 @@ paths:
                     amount: 51244.33
                     currency: USD
                   counterparty: SomeCounterparty
+                  entryType: Manual
                   version:
                     effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                     asAtDate: 2018-03-05T10:10:10.0000000+00:00
@@ -23380,6 +23387,7 @@ paths:
                   amount: 51244.33
                   currency: USD
                 counterparty: SomeCounterparty
+                entryType: Manual
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
@@ -23418,6 +23426,7 @@ paths:
                   amount: 51244.33
                   currency: USD
                 counterparty: SomeCounterparty
+                entryType: Manual
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
@@ -23456,6 +23465,7 @@ paths:
                   amount: 51244.33
                   currency: USD
                 counterparty: SomeCounterparty
+                entryType: Manual
                 version:
                   effectiveFrom: 2018-03-05T10:10:10.0000000+00:00
                   asAtDate: 2018-03-05T10:10:10.0000000+00:00
