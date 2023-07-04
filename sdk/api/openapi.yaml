@@ -323,9 +323,12 @@ info:
     | <a name="834">834</a>|The parameters provided by a rule did not match those required by its template.|  |
     | <a name="835">835</a>|PostingModuleRule has a not allowed Property Domain.|  |
     | <a name="836">836</a>|Structured result data not found.|  |
+    | <a name="837">837</a>|Diary entry not found.|  |
+    | <a name="838">838</a>|Diary entry could not be created.|  |
+    | <a name="839">839</a>|Diary entry already exists.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.307
+  version: 1.0.308
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
