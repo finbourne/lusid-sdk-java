@@ -328,7 +328,7 @@ info:
     | <a name="839">839</a>|Diary entry already exists.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.311
+  version: 1.0.312
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -7264,6 +7264,9 @@ paths:
                     Instrument/default/Figi: BBG001S6PJ31
                   unitsFactor: 2
                   costFactor: 1
+                  rounding:
+                    stockUnits:
+                      roundingType: NearestRoundHalfAwayFromZero
                 instrumentEventType: TransitionEvent
               properties: []
             schema:
@@ -7290,6 +7293,9 @@ paths:
                     Instrument/default/Figi: BBG001S6PJ31
                   unitsFactor: 2
                   costFactor: 1
+                  rounding:
+                    stockUnits:
+                      roundingType: NearestRoundHalfAwayFromZero
                 instrumentEventType: TransitionEvent
               properties: []
             schema:
@@ -7316,6 +7322,9 @@ paths:
                     Instrument/default/Figi: BBG001S6PJ31
                   unitsFactor: 2
                   costFactor: 1
+                  rounding:
+                    stockUnits:
+                      roundingType: NearestRoundHalfAwayFromZero
                 instrumentEventType: TransitionEvent
               properties: []
             schema:
@@ -7342,6 +7351,9 @@ paths:
                     Instrument/default/Figi: BBG001S6PJ31
                   unitsFactor: 2
                   costFactor: 1
+                  rounding:
+                    stockUnits:
+                      roundingType: NearestRoundHalfAwayFromZero
                 instrumentEventType: TransitionEvent
               properties: []
             schema:
@@ -66721,6 +66733,8 @@ components:
           nullable: true
           readOnly: true
           type: string
+        rounding:
+          $ref: '#/components/schemas/RoundingConfiguration'
       required:
       - costFactor
       - instrumentIdentifiers
@@ -81655,6 +81669,22 @@ components:
       - $ref: '#/components/schemas/ResultValue'
       - $ref: '#/components/schemas/ResultValueString_allOf'
       description: A simple result value holding a string
+    RoundingConfiguration:
+      additionalProperties: false
+      properties:
+        stockUnits:
+          $ref: '#/components/schemas/RoundingConfigurationComponent'
+      type: object
+    RoundingConfigurationComponent:
+      additionalProperties: false
+      properties:
+        roundingType:
+          description: 'The type of rounding that should be used, eg: Up, Down, NearestRoundHalfAwayFromZero'
+          minLength: 1
+          type: string
+      required:
+      - roundingType
+      type: object
     RoundingConvention:
       additionalProperties: false
       description: "Certain bonds will follow certain rounding conventions.\r\nFor\
