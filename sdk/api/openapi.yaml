@@ -328,7 +328,7 @@ info:
     | <a name="839">839</a>|Diary entry already exists.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.312
+  version: 1.0.313
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -6634,8 +6634,9 @@ paths:
       x-accepts: application/json
   /api/corporateactionsources/{scope}/{code}/corporateactions:
     delete:
-      description: Delete one or more corporate actions from a particular corporate
-        action source.
+      description: "Delete one or more corporate actions from a particular corporate\
+        \ action source.\r\n            \r\nThe maximum number of corporate actions\
+        \ that this method can delete per request is 1,000."
       operationId: DeleteCorporateActions
       parameters:
       - description: The scope of the corporate action source
@@ -6856,7 +6857,8 @@ paths:
         \n            \r\nIf a corporate action is upserted at exactly the same effective\
         \ datetime as a transaction for the same instrument, the corporate action\
         \ takes precedence. Depending on the nature of the corporate action, this\
-        \ may mean it affects the transaction."
+        \ may mean it affects the transaction.\r\n            \r\nThe maximum number\
+        \ of corporate actions that this method can upsert per request is 10,000."
       operationId: BatchUpsertCorporateActions
       parameters:
       - description: The scope of corporate action source
@@ -7022,8 +7024,9 @@ paths:
       x-accepts: application/json
   /api/corporateactionsources/{scope}/{code}/instrumentevents:
     delete:
-      description: Delete one or more corporate actions from a particular corporate
-        action source.
+      description: "Delete one or more corporate actions from a particular corporate\
+        \ action source.\r\n            \r\nThe maximum number of instrument events\
+        \ that this method can delete per request is 1,000."
       operationId: DeleteInstrumentEvents
       parameters:
       - description: The scope of the corporate action source
@@ -7218,7 +7221,9 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
     post:
-      description: Batch upsert instrument events to corporate action sources.
+      description: "Batch upsert instrument events to corporate action sources.\r\n\
+        \            \r\nThe maximum number of instrument events that this method\
+        \ can upsert per request is 10,000."
       operationId: UpsertInstrumentEvents
       parameters:
       - description: The scope of the corporate action source.
