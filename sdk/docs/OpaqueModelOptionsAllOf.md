@@ -8,7 +8,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **data** | **Map&lt;String, Object&gt;** |  | 
-**modelOptionsType** | [**ModelOptionsTypeEnum**](#ModelOptionsTypeEnum) | The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions | 
+**modelOptionsType** | [**ModelOptionsTypeEnum**](#ModelOptionsTypeEnum) | The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, LookUpPricingModelOptions | 
 
 
 
@@ -23,6 +23,7 @@ INDEXMODELOPTIONS | &quot;IndexModelOptions&quot;
 FXFORWARDMODELOPTIONS | &quot;FxForwardModelOptions&quot;
 FUNDINGLEGMODELOPTIONS | &quot;FundingLegModelOptions&quot;
 EQUITYMODELOPTIONS | &quot;EquityModelOptions&quot;
+LOOKUPPRICINGMODELOPTIONS | &quot;LookUpPricingModelOptions&quot;
 
 
 

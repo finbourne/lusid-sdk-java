@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **forwardRateObservableType** | [**ForwardRateObservableTypeEnum**](#ForwardRateObservableTypeEnum) | The available values are: ForwardPoints, ForwardRate, RatesCurve, FxForwardCurve, Invalid | 
 **discountingMethod** | [**DiscountingMethodEnum**](#DiscountingMethodEnum) | The available values are: Standard, ConstantTimeValueOfMoney, Invalid | 
 **convertToReportCcy** | **Boolean** | Convert all FX flows to the report currency  By setting this all FX forwards will be priced using Forward Curves that have Report Currency as the base. | 
-**modelOptionsType** | [**ModelOptionsTypeEnum**](#ModelOptionsTypeEnum) | The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions | 
+**modelOptionsType** | [**ModelOptionsTypeEnum**](#ModelOptionsTypeEnum) | The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, LookUpPricingModelOptions | 
 
 
 
@@ -47,6 +47,7 @@ INDEXMODELOPTIONS | &quot;IndexModelOptions&quot;
 FXFORWARDMODELOPTIONS | &quot;FxForwardModelOptions&quot;
 FUNDINGLEGMODELOPTIONS | &quot;FundingLegModelOptions&quot;
 EQUITYMODELOPTIONS | &quot;EquityModelOptions&quot;
+LOOKUPPRICINGMODELOPTIONS | &quot;LookUpPricingModelOptions&quot;
 
 
 
