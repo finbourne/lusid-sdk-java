@@ -328,7 +328,7 @@ info:
     | <a name="839">839</a>|Diary entry already exists.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.327
+  version: 1.0.328
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -34529,7 +34529,7 @@ paths:
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
             InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration,
-            Reconciliation, PropertyDefinition, Compliance'
+            Reconciliation, PropertyDefinition, Compliance, DiaryEntry'
           enum:
           - NotDefined
           - Transaction
@@ -34567,6 +34567,7 @@ paths:
           - Reconciliation
           - PropertyDefinition
           - Compliance
+          - DiaryEntry
           type: string
         style: simple
       - description: Scope of the property definition
@@ -34756,7 +34757,7 @@ paths:
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
             InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration,
-            Reconciliation, PropertyDefinition, Compliance'
+            Reconciliation, PropertyDefinition, Compliance, DiaryEntry'
           enum:
           - NotDefined
           - Transaction
@@ -34794,6 +34795,7 @@ paths:
           - Reconciliation
           - PropertyDefinition
           - Compliance
+          - DiaryEntry
           type: string
         style: simple
       - description: The scope of the property to be deleted.
@@ -34879,7 +34881,7 @@ paths:
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
             InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration,
-            Reconciliation, PropertyDefinition, Compliance'
+            Reconciliation, PropertyDefinition, Compliance, DiaryEntry'
           enum:
           - NotDefined
           - Transaction
@@ -34917,6 +34919,7 @@ paths:
           - Reconciliation
           - PropertyDefinition
           - Compliance
+          - DiaryEntry
           type: string
         style: simple
       - description: The scope of the specified property.
@@ -35081,7 +35084,7 @@ paths:
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
             InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration,
-            Reconciliation, PropertyDefinition, Compliance'
+            Reconciliation, PropertyDefinition, Compliance, DiaryEntry'
           enum:
           - NotDefined
           - Transaction
@@ -35119,6 +35122,7 @@ paths:
           - Reconciliation
           - PropertyDefinition
           - Compliance
+          - DiaryEntry
           type: string
         style: simple
       - description: The scope of the property being updated.
@@ -35288,7 +35292,7 @@ paths:
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
             InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration,
-            Reconciliation, PropertyDefinition, Compliance'
+            Reconciliation, PropertyDefinition, Compliance, DiaryEntry'
           enum:
           - NotDefined
           - Transaction
@@ -35326,6 +35330,7 @@ paths:
           - Reconciliation
           - PropertyDefinition
           - Compliance
+          - DiaryEntry
           type: string
         style: simple
       - description: The scope of the specified property.
@@ -35541,7 +35546,7 @@ paths:
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
             InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration,
-            Reconciliation, PropertyDefinition, Compliance'
+            Reconciliation, PropertyDefinition, Compliance, DiaryEntry'
           enum:
           - NotDefined
           - Transaction
@@ -35579,6 +35584,7 @@ paths:
           - Reconciliation
           - PropertyDefinition
           - Compliance
+          - DiaryEntry
           type: string
         style: simple
       - description: The scope of the property definition to delete properties from.
@@ -35727,7 +35733,7 @@ paths:
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
             InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration,
-            Reconciliation, PropertyDefinition, Compliance'
+            Reconciliation, PropertyDefinition, Compliance, DiaryEntry'
           enum:
           - NotDefined
           - Transaction
@@ -35765,6 +35771,7 @@ paths:
           - Reconciliation
           - PropertyDefinition
           - Compliance
+          - DiaryEntry
           type: string
         style: simple
       - description: The scope of the property definition to which the property is
@@ -58286,7 +58293,7 @@ components:
             ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution,
             Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity,
             InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration,
-            Reconciliation, PropertyDefinition, Compliance'
+            Reconciliation, PropertyDefinition, Compliance, DiaryEntry'
           enum:
           - NotDefined
           - Transaction
@@ -58324,6 +58331,7 @@ components:
           - Reconciliation
           - PropertyDefinition
           - Compliance
+          - DiaryEntry
           type: string
         scope:
           description: The scope that the property exists in.
@@ -58566,7 +58574,7 @@ components:
             LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
             NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,
             CustodianAccount, Abor, AborConfiguration, Reconciliation, PropertyDefinition,
-            Compliance'
+            Compliance, DiaryEntry'
           enum:
           - NotDefined
           - Transaction
@@ -58604,6 +58612,7 @@ components:
           - Reconciliation
           - PropertyDefinition
           - Compliance
+          - DiaryEntry
           type: string
         scope:
           description: The scope that the property exists in.
@@ -73189,7 +73198,7 @@ components:
             LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
             NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,
             CustodianAccount, Abor, AborConfiguration, Reconciliation, PropertyDefinition,
-            Compliance'
+            Compliance, DiaryEntry'
           enum:
           - NotDefined
           - Transaction
@@ -73227,6 +73236,7 @@ components:
           - Reconciliation
           - PropertyDefinition
           - Compliance
+          - DiaryEntry
           type: string
         scope:
           description: The scope that the property exists in.
@@ -73387,7 +73397,7 @@ components:
             LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction,
             NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts,
             CustodianAccount, Abor, AborConfiguration, Reconciliation, PropertyDefinition,
-            Compliance'
+            Compliance, DiaryEntry'
           enum:
           - NotDefined
           - Transaction
@@ -73425,6 +73435,7 @@ components:
           - Reconciliation
           - PropertyDefinition
           - Compliance
+          - DiaryEntry
           type: string
         scope:
           description: The scope that the property exists in.
