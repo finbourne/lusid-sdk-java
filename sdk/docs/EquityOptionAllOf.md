@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **startDate** | **OffsetDateTime** | The start date of the instrument. This is normally synonymous with the trade-date. | 
 **optionMaturityDate** | **OffsetDateTime** | The maturity date of the option. | 
 **optionSettlementDate** | **OffsetDateTime** | The settlement date of the option. | 
-**deliveryType** | **String** | is the option cash settled or physical delivery of option    Supported string (enumeration) values are: [Cash, Physical]. | 
+**deliveryType** | **String** | Is the option cash settled or physical delivery of option    Supported string (enumeration) values are: [Cash, Physical]. | 
 **optionType** | **String** | Type of optionality for the option    Supported string (enumeration) values are: [Call, Put]. | 
 **strike** | **java.math.BigDecimal** | The strike of the option. | 
 **domCcy** | **String** | The domestic currency of the instrument. | 
@@ -19,7 +19,8 @@ Name | Type | Description | Notes
 **equityOptionType** | **String** | Equity option types. E.g. Vanilla (default), RightsIssue, Warrant.    Supported string (enumeration) values are: [Vanilla, RightsIssue, Warrant]. |  [optional]
 **numberOfShares** | **java.math.BigDecimal** | The amount of shares to exchange if the option is exercised. |  [optional]
 **premium** | [**Premium**](Premium.md) |  |  [optional]
-**instrumentType** | [**InstrumentTypeEnum**](#InstrumentTypeEnum) | The available values are: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap | 
+**exerciseType** | **String** | Type of optionality that is present; European, American.    Supported string (enumeration) values are: [European, American]. |  [optional]
+**instrumentType** | [**InstrumentTypeEnum**](#InstrumentTypeEnum) | The available values are: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan | 
 
 
 
@@ -60,6 +61,7 @@ REFERENCEINSTRUMENT | &quot;ReferenceInstrument&quot;
 COMPLEXBOND | &quot;ComplexBond&quot;
 INFLATIONLINKEDBOND | &quot;InflationLinkedBond&quot;
 INFLATIONSWAP | &quot;InflationSwap&quot;
+SIMPLECASHFLOWLOAN | &quot;SimpleCashFlowLoan&quot;
 
 
 

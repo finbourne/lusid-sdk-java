@@ -8,7 +8,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **equityForwardProjectionType** | **String** | Determines how forward equity prices should be projected.                Supported string (enumeration) values are: [FlatForwardCurveFromSpot, EquityCurveByPrices, ForwardProjectedFromRatesCurve]. | 
-**modelOptionsType** | [**ModelOptionsTypeEnum**](#ModelOptionsTypeEnum) | The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions | 
+**modelOptionsType** | [**ModelOptionsTypeEnum**](#ModelOptionsTypeEnum) | The available values are: Invalid, OpaqueModelOptions, EmptyModelOptions, IndexModelOptions, FxForwardModelOptions, FundingLegModelOptions, EquityModelOptions, LookUpPricingModelOptions | 
 
 
 
@@ -23,6 +23,7 @@ INDEXMODELOPTIONS | &quot;IndexModelOptions&quot;
 FXFORWARDMODELOPTIONS | &quot;FxForwardModelOptions&quot;
 FUNDINGLEGMODELOPTIONS | &quot;FundingLegModelOptions&quot;
 EQUITYMODELOPTIONS | &quot;EquityModelOptions&quot;
+LOOKUPPRICINGMODELOPTIONS | &quot;LookUpPricingModelOptions&quot;
 
 
 

@@ -27,6 +27,7 @@ Name | Type | Description | Notes
 **settlementCurrency** | **String** | The settlement currency of this allocation. |  [optional]
 **settlementCurrencyFxRate** | **java.math.BigDecimal** | The settlement currency to allocation currency FX rate. |  [optional]
 **counterparty** | **String** | The counterparty for this allocation. |  [optional]
+**executionIds** | [**List&lt;ResourceId&gt;**](ResourceId.md) | The executions associated with this allocation |  [optional]
 **links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 

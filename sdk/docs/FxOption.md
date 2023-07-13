@@ -17,11 +17,11 @@ Name | Type | Description | Notes
 **barriers** | [**List&lt;Barrier&gt;**](Barrier.md) | For a barrier option the list should not be empty. Up to two barriers are supported.  An option cannot be at the same time barrier- and touch-option.  One (or both) of the lists must be empty. |  [optional]
 **exerciseType** | **String** | Type of optionality that is present; European, American.    Supported string (enumeration) values are: [European, American]. |  [optional]
 **isCallNotPut** | **Boolean** | True if the option is a call, false if the option is a put. | 
-**isDeliveryNotCash** | **Boolean** | True if the option is settled in cash, false if delivery. | 
+**isDeliveryNotCash** | **Boolean** | True if the option delivers the FX underlying, False if the option is settled in cash. | 
 **isPayoffDigital** | **Boolean** | By default IsPayoffDigital is false. If IsPayoffDigital&#x3D;true,  the option is &#39;digital&#39;, and the option payoff is 0 or 1 unit of currency,  instead of a vanilla CallPayoff&#x3D;max(spot-strike,0) or PutPayoff&#x3D;max(strike-spot,0). |  [optional]
 **optionMaturityDate** | **OffsetDateTime** | The maturity date of the option. | 
 **optionSettlementDate** | **OffsetDateTime** | The settlement date of the option. | 
-**payoutStyle** | **String** | PayoutStyle for touch options.  For options without touch optionality (IsTouch&#x3D;&#x3D;false),  PayoutStyle should not be set (ot it can be set to None)  For options with touch optionality (IsTouch&#x3D;&#x3D;true),  PayoutStyle cannot be None.    Supported string (enumeration) values are: [Deferred, Immediate]. |  [optional]
+**payoutStyle** | **String** | PayoutStyle for touch options.                For options without touch optionality, payoutStyle should not be set.  For options with touch optionality (where the touches data has been set), payoutStyle must be defined and cannot be None.    Supported string (enumeration) values are: [Deferred, Immediate]. |  [optional]
 **premium** | [**Premium**](Premium.md) |  |  [optional]
 **touches** | [**List&lt;Touch&gt;**](Touch.md) | For a touch option the list should not be empty. Up to two touches are supported.  An option cannot be at the same time barrier- and touch-option.  One (or both) of the lists must be empty. |  [optional]
 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **quantity** | **java.math.BigDecimal** | The quantity of given instrument ordered. | 
 **side** | **String** | The client&#39;s representation of the order&#39;s side (buy, sell, short, etc) | 
 **orderBookId** | [**ResourceId**](ResourceId.md) |  |  [optional]
-**portfolioId** | [**ResourceId**](ResourceId.md) |  | 
+**portfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **id** | [**ResourceId**](ResourceId.md) |  | 
 **state** | **String** | The order&#39;s state (examples: New, PartiallyFilled, ...) |  [optional]
 **type** | **String** | The order&#39;s type (examples: Limit, Market, ...) |  [optional]

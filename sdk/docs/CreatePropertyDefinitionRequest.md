@@ -7,7 +7,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts | 
+**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration, Reconciliation, PropertyDefinition, Compliance, DiaryEntry | 
 **scope** | **String** | The scope that the property exists in. | 
 **code** | **String** | The code of the property. Together with the domain and scope this uniquely identifies the property. | 
 **valueRequired** | **Boolean** | This field is not implemented and should be disregarded. |  [optional]
@@ -53,6 +53,13 @@ CUSTOMENTITY | &quot;CustomEntity&quot;
 INSTRUMENTEVENT | &quot;InstrumentEvent&quot;
 ACCOUNT | &quot;Account&quot;
 CHARTOFACCOUNTS | &quot;ChartOfAccounts&quot;
+CUSTODIANACCOUNT | &quot;CustodianAccount&quot;
+ABOR | &quot;Abor&quot;
+ABORCONFIGURATION | &quot;AborConfiguration&quot;
+RECONCILIATION | &quot;Reconciliation&quot;
+PROPERTYDEFINITION | &quot;PropertyDefinition&quot;
+COMPLIANCE | &quot;Compliance&quot;
+DIARYENTRY | &quot;DiaryEntry&quot;
 
 
 

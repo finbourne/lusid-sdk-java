@@ -6,10 +6,7 @@ import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.InstrumentsApi;
 import com.finbourne.lusid.api.TransactionPortfoliosApi;
 import com.finbourne.lusid.model.*;
-import com.finbourne.lusid.utilities.ApiClientBuilder;
-import com.finbourne.lusid.utilities.CredentialsSource;
-import com.finbourne.lusid.utilities.InstrumentLoader;
-import com.finbourne.lusid.utilities.TestDataUtilities;
+import com.finbourne.lusid.utilities.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
@@ -34,7 +31,8 @@ public class HoldingsTest {
     @BeforeClass
     public static void setUp() throws Exception {
 
-        ApiClient apiClient = new ApiClientBuilder().build(CredentialsSource.credentialsFile);
+        ApiConfiguration apiConfiguration = new ApiConfigurationBuilder().build(CredentialsSource.credentialsFile);
+        ApiClient apiClient = new ApiClientBuilder().build(apiConfiguration, 30, 30);
         transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
 
         testDataUtilities = new TestDataUtilities(transactionPortfoliosApi);

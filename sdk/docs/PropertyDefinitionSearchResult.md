@@ -10,12 +10,12 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **href** | **URI** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional]
 **key** | **String** | The property key which uniquely identifies the property. The format for the property key is {domain}/{scope}/{code}, e.g. &#39;Portfolio/Manager/Id&#39;. |  [optional]
-**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) | The type of values that can be associated with this property. This is defined by the property&#39;s data type. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel |  [optional]
+**valueType** | [**ValueTypeEnum**](#ValueTypeEnum) | The type of values that can be associated with this property. This is defined by the property&#39;s data type. The available values are: String, Int, Decimal, DateTime, Boolean, Map, List, PropertyArray, Percentage, Code, Id, Uri, CurrencyAndAmount, TradePrice, Currency, MetricValue, ResourceId, ResultValue, CutLocalTime, DateOrCutLabel, UnindexedText |  [optional]
 **displayName** | **String** | The display name of the property. |  [optional]
 **dataTypeId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **type** | [**TypeEnum**](#TypeEnum) | The type of the property. The available values are: Label, Metric, Information |  [optional]
 **unitSchema** | [**UnitSchemaEnum**](#UnitSchemaEnum) | The units that can be associated with the property&#39;s values. This is defined by the property&#39;s data type. The available values are: NoUnits, Basic, Iso4217Currency |  [optional]
-**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts |  [optional]
+**domain** | [**DomainEnum**](#DomainEnum) | The domain that the property exists in. The available values are: NotDefined, Transaction, Portfolio, Holding, ReferenceHolding, TransactionConfiguration, Instrument, CutLabelDefinition, Analytic, PortfolioGroup, Person, AccessMetadata, Order, UnitResult, MarketData, ConfigurationRecipe, Allocation, Calendar, LegalEntity, Placement, Execution, Block, Participation, Package, OrderInstruction, NextBestAction, CustomEntity, InstrumentEvent, Account, ChartOfAccounts, CustodianAccount, Abor, AborConfiguration, Reconciliation, PropertyDefinition, Compliance, DiaryEntry |  [optional]
 **scope** | **String** | The scope that the property exists in. |  [optional] [readonly]
 **code** | **String** | The code of the property. Together with the domain and scope this uniquely identifies the property. |  [optional] [readonly]
 **valueRequired** | **Boolean** | This field is not implemented and should be disregarded. |  [optional]
@@ -52,6 +52,7 @@ RESOURCEID | &quot;ResourceId&quot;
 RESULTVALUE | &quot;ResultValue&quot;
 CUTLOCALTIME | &quot;CutLocalTime&quot;
 DATEORCUTLABEL | &quot;DateOrCutLabel&quot;
+UNINDEXEDTEXT | &quot;UnindexedText&quot;
 
 
 
@@ -109,6 +110,13 @@ CUSTOMENTITY | &quot;CustomEntity&quot;
 INSTRUMENTEVENT | &quot;InstrumentEvent&quot;
 ACCOUNT | &quot;Account&quot;
 CHARTOFACCOUNTS | &quot;ChartOfAccounts&quot;
+CUSTODIANACCOUNT | &quot;CustodianAccount&quot;
+ABOR | &quot;Abor&quot;
+ABORCONFIGURATION | &quot;AborConfiguration&quot;
+RECONCILIATION | &quot;Reconciliation&quot;
+PROPERTYDEFINITION | &quot;PropertyDefinition&quot;
+COMPLIANCE | &quot;Compliance&quot;
+DIARYENTRY | &quot;DiaryEntry&quot;
 
 
 

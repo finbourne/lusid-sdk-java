@@ -8,8 +8,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **value** | **Object** |  |  [optional]
-**path** | **String** |  |  [optional]
-**op** | **String** |  |  [optional]
+**path** | **String** |  | 
+**op** | **String** |  | 
 **from** | **String** |  |  [optional]
 
 

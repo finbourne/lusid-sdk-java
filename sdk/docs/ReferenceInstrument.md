@@ -9,8 +9,8 @@ LUSID representation of a reference to another instrument that has already been 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **instrumentId** | **String** | The Identifier code | 
-**instrumentIdType** | **String** | the type of the instrument id e.g. LusidInstrument Id | 
-**scope** | **String** | (optional) Scope for the instrument | 
+**instrumentIdType** | **String** | The type of the instrument id e.g. LusidInstrument Id | 
+**scope** | **String** | Scope for the instrument (optional) | 
 
 
 

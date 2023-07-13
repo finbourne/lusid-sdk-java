@@ -5,10 +5,7 @@ import com.finbourne.lusid.ApiClient;
 import com.finbourne.lusid.ApiException;
 import com.finbourne.lusid.api.*;
 import com.finbourne.lusid.model.*;
-import com.finbourne.lusid.utilities.ApiClientBuilder;
-import com.finbourne.lusid.utilities.CredentialsSource;
-import com.finbourne.lusid.utilities.InstrumentLoader;
-import com.finbourne.lusid.utilities.TestDataUtilities;
+import com.finbourne.lusid.utilities.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.Ignore;
@@ -38,7 +35,8 @@ public class PortfoliosTest {
 
     @BeforeClass
     public static void setUp() throws Exception {
-        ApiClient apiClient = new ApiClientBuilder().build(CredentialsSource.credentialsFile);
+        ApiConfiguration apiConfiguration = new ApiConfigurationBuilder().build(CredentialsSource.credentialsFile);
+        ApiClient apiClient = new ApiClientBuilder().build(apiConfiguration, 30, 30);
 
         transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
         scopesApi = new ScopesApi(apiClient);
@@ -273,7 +271,7 @@ public class PortfoliosTest {
         }
 
         //    Retrieve the list of portfolios from a given scope
-        ResourceListOfPortfolio portfolios = portfoliosApi.listPortfoliosForScope(scope, null, null, null, null, null, null, null);
+        ResourceListOfPortfolio portfolios = portfoliosApi.listPortfoliosForScope(scope, null, null, null, null, null, null, null, null);
 
         assertThat(portfolios.getValues().size(), is(equalTo(10)));
     }

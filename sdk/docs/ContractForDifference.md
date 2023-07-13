@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **referenceRate** | **java.math.BigDecimal** | The reference rate of the CFD, this can be set to 0 but not negative values.  This field is optional, if not set it will default to 0. |  [optional]
 **type** | **String** | The type of CFD.    Supported string (enumeration) values are: [Cash, Futures]. | 
 **underlyingCcy** | **String** | The currency of the underlying | 
-**underlyingIdentifier** | **String** | external market codes and identifiers for the CFD, e.g. RIC.    Supported string (enumeration) values are: [LusidInstrumentId, Isin, Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId, ICECode]. | 
+**underlyingIdentifier** | **String** | External market codes and identifiers for the CFD, e.g. RIC.    Supported string (enumeration) values are: [LusidInstrumentId, Isin, Sedol, Cusip, ClientInternal, Figi, RIC, QuotePermId, REDCode, BBGId, ICECode]. | 
 
 
 
