@@ -328,7 +328,7 @@ info:
     | <a name="839">839</a>|Diary entry already exists.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.336
+  version: 1.0.337
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
