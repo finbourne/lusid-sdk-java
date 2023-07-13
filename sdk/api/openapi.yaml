@@ -328,7 +328,7 @@ info:
     | <a name="839">839</a>|Diary entry already exists.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.340
+  version: 1.0.341
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -8789,6 +8789,18 @@ paths:
           pattern: ^[\s\S]*$
           type: string
         style: form
+      - description: A list of field names or properties to sort by, each suffixed
+          by " ASC" or " DESC"
+        explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
       - description: "The pagination token to use to continue listing entities; this\r\
           \n            value is returned from the previous call. If a pagination\
           \ token is provided, the filter, effectiveAt\r\n            and asAt fields\
