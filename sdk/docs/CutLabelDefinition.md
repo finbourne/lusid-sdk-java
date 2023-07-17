@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **cutLocalTime** | [**CutLocalTime**](CutLocalTime.md) |  |  [optional]
 **timeZone** | **String** |  |  [optional]
 **href** | **URI** |  |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
 
