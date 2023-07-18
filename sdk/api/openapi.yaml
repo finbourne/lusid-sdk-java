@@ -328,7 +328,7 @@ info:
     | <a name="839">839</a>|Diary entry already exists.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.348
+  version: 1.0.349
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -28574,6 +28574,18 @@ paths:
           pattern: ^[\s\S]*$
           type: string
         style: form
+      - description: A list of field names or properties to sort by, each suffixed
+          by " ASC" or " DESC"
+        explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
       - description: "Expression specifying the criteria that the returned portfolios\
           \ must meet. For example, to see which\r\n            portfolios have holdings\
           \ in instruments with a LusidInstrumentId (LUID) of 'LUID_PPA8HI6M' or a\
@@ -31267,6 +31279,18 @@ paths:
           pattern: ^[\s\S]*$
           type: string
         style: form
+      - description: A list of field names or properties to sort by, each suffixed
+          by " ASC" or " DESC"
+        explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
       - description: "A list of property keys from the 'Portfolio' domain to decorate\
           \ onto each portfolio,\r\n            or from any domain that supports relationships\
           \ to decorate onto related entities. These must take the\r\n           \
