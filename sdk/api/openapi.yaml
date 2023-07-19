@@ -326,9 +326,10 @@ info:
     | <a name="837">837</a>|Diary entry not found.|  |
     | <a name="838">838</a>|Diary entry could not be created.|  |
     | <a name="839">839</a>|Diary entry already exists.|  |
+    | <a name="861">861</a>|Compliance run summary not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.356
+  version: 1.0.357
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -5857,6 +5858,7 @@ paths:
                 instigatedAt: 2020-01-05T00:00:00.0000000+00:00
                 completedAt: 2020-01-05T00:00:01.0000000+00:00
                 schedule: PostTrade
+                instigatedBy: UserId
               schema:
                 $ref: '#/components/schemas/ComplianceRunInfoV2'
             application/json:
@@ -5867,6 +5869,7 @@ paths:
                 instigatedAt: 2020-01-05T00:00:00.0000000+00:00
                 completedAt: 2020-01-05T00:00:01.0000000+00:00
                 schedule: PostTrade
+                instigatedBy: UserId
               schema:
                 $ref: '#/components/schemas/ComplianceRunInfoV2'
             text/json:
@@ -5877,6 +5880,7 @@ paths:
                 instigatedAt: 2020-01-05T00:00:00.0000000+00:00
                 completedAt: 2020-01-05T00:00:01.0000000+00:00
                 schedule: PostTrade
+                instigatedBy: UserId
               schema:
                 $ref: '#/components/schemas/ComplianceRunInfoV2'
           description: The identifying information of a compliance run
@@ -5967,7 +5971,10 @@ paths:
                         Valuation/PV: 650
                         Exposure/PV: 650
                       propertiesUsed:
-                        Instrument/data/Issuer: ABC
+                        Instrument/data/Issuer:
+                        - key: Instrument/data/Issuer
+                          value:
+                            labelValue: ABC
                       parametersUsed:
                         UpperBound: "30"
                         LowerBound: "0"
@@ -6005,7 +6012,10 @@ paths:
                         Valuation/PV: 650
                         Exposure/PV: 650
                       propertiesUsed:
-                        Instrument/data/Issuer: ABC
+                        Instrument/data/Issuer:
+                        - key: Instrument/data/Issuer
+                          value:
+                            labelValue: ABC
                       parametersUsed:
                         UpperBound: "30"
                         LowerBound: "0"
@@ -6043,7 +6053,10 @@ paths:
                         Valuation/PV: 650
                         Exposure/PV: 650
                       propertiesUsed:
-                        Instrument/data/Issuer: ABC
+                        Instrument/data/Issuer:
+                        - key: Instrument/data/Issuer
+                          value:
+                            labelValue: ABC
                       parametersUsed:
                         UpperBound: "30"
                         LowerBound: "0"
@@ -56380,7 +56393,31 @@ components:
         - missingDataInformation
         - missingDataInformation
         propertiesUsed:
-          key: propertiesUsed
+          key:
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            value:
+              metricValue:
+                unit: unit
+                value: 0.8008281904610115
+              labelValue: labelValue
+              labelValueSet:
+                values:
+                - values
+                - values
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            key: key
         groupStatus: groupStatus
         resultsUsed:
           key: 0.8008281904610115
@@ -56397,7 +56434,9 @@ components:
           type: object
         propertiesUsed:
           additionalProperties:
-            type: string
+            items:
+              $ref: '#/components/schemas/Property'
+            type: array
           type: object
         parametersUsed:
           additionalProperties:
@@ -56505,6 +56544,7 @@ components:
       example:
         schedule: schedule
         completedAt: 2000-01-23T04:56:07.000+00:00
+        instigatedBy: instigatedBy
         runId:
           code: code
           scope: scope
@@ -56521,9 +56561,13 @@ components:
         schedule:
           minLength: 1
           type: string
+        instigatedBy:
+          minLength: 1
+          type: string
       required:
       - completedAt
       - instigatedAt
+      - instigatedBy
       - runId
       - schedule
       type: object
@@ -56542,7 +56586,31 @@ components:
               - missingDataInformation
               - missingDataInformation
               propertiesUsed:
-                key: propertiesUsed
+                key:
+                - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+                - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
               groupStatus: groupStatus
               resultsUsed:
                 key: 0.8008281904610115
@@ -56572,7 +56640,31 @@ components:
               - missingDataInformation
               - missingDataInformation
               propertiesUsed:
-                key: propertiesUsed
+                key:
+                - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+                - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
               groupStatus: groupStatus
               resultsUsed:
                 key: 0.8008281904610115
@@ -56629,7 +56721,31 @@ components:
             - missingDataInformation
             - missingDataInformation
             propertiesUsed:
-              key: propertiesUsed
+              key:
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
+              - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                value:
+                  metricValue:
+                    unit: unit
+                    value: 0.8008281904610115
+                  labelValue: labelValue
+                  labelValueSet:
+                    values:
+                    - values
+                    - values
+                effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                key: key
             groupStatus: groupStatus
             resultsUsed:
               key: 0.8008281904610115
