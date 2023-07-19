@@ -328,7 +328,7 @@ info:
     | <a name="839">839</a>|Diary entry already exists.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.355
+  version: 1.0.356
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -81763,15 +81763,15 @@ components:
         propertyName: scheduleType
       properties:
         scheduleType:
-          description: 'The available values are: Fixed, Float, Optionality, Step,
-            Exercise, FxRate, Invalid'
+          description: 'The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule,
+            StepSchedule, Exercise, FxRateSchedule, Invalid'
           enum:
-          - Fixed
-          - Float
-          - Optionality
-          - Step
+          - FixedSchedule
+          - FloatSchedule
+          - OptionalitySchedule
+          - StepSchedule
           - Exercise
-          - FxRate
+          - FxRateSchedule
           - Invalid
           type: string
       required:
@@ -94957,15 +94957,15 @@ components:
             $ref: '#/components/schemas/LevelStep'
           type: array
         scheduleType:
-          description: 'The available values are: Fixed, Float, Optionality, Step,
-            Exercise, FxRate, Invalid'
+          description: 'The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule,
+            StepSchedule, Exercise, FxRateSchedule, Invalid'
           enum:
-          - Fixed
-          - Float
-          - Optionality
-          - Step
+          - FixedSchedule
+          - FloatSchedule
+          - OptionalitySchedule
+          - StepSchedule
           - Exercise
-          - FxRate
+          - FxRateSchedule
           - Invalid
           type: string
       required:
