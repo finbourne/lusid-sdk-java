@@ -4,7 +4,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteComplianceRule2**](ComplianceGenericApi.md#deleteComplianceRule2) | **DELETE** /api/compliance/generic/rules/{scope}/{code} | [EARLY ACCESS] DeleteComplianceRule2: Get compliance rule.
+[**deleteComplianceRule2**](ComplianceGenericApi.md#deleteComplianceRule2) | **DELETE** /api/compliance/generic/rules/{scope}/{code} | [EARLY ACCESS] DeleteComplianceRule2: Delete compliance rule.
 [**getComplianceRule2**](ComplianceGenericApi.md#getComplianceRule2) | **GET** /api/compliance/generic/rules/{scope}/{code} | [EARLY ACCESS] GetComplianceRule2: Get compliance rule.
 [**getComplianceRunSummary**](ComplianceGenericApi.md#getComplianceRunSummary) | **GET** /api/compliance/generic/runs/summary/{scope}/{code} | [EARLY ACCESS] GetComplianceRunSummary: Get compliance summary results.
 [**getComplianceTemplate**](ComplianceGenericApi.md#getComplianceTemplate) | **GET** /api/compliance/templates/{scope}/{code} | [EARLY ACCESS] GetComplianceTemplate: Get the requested compliance template.
@@ -18,9 +18,9 @@ Method | HTTP request | Description
 # **deleteComplianceRule2**
 > DeletedEntityResponse deleteComplianceRule2(scope, code)
 
-[EARLY ACCESS] DeleteComplianceRule2: Get compliance rule.
+[EARLY ACCESS] DeleteComplianceRule2: Delete compliance rule.
 
-PLEASE NOTE: loopback EarlyAccess endpoint for discussion only.
+Use this endpoint to delete a compliance rule. The rule will be recoverable for asat times earlier than the  delete time, but will otherwise appear to have never existed.
 
 ### Example
 ```java
@@ -87,11 +87,11 @@ Name | Type | Description  | Notes
 
 <a name="getComplianceRule2"></a>
 # **getComplianceRule2**
-> ComplianceRuleResponse getComplianceRule2(scope, code, asAt)
+> ComplianceRuleResponse getComplianceRule2(scope, code, asAt, propertyKeys)
 
 [EARLY ACCESS] GetComplianceRule2: Get compliance rule.
 
-PLEASE NOTE: loopback EarlyAccess endpoint for discussion only.
+Use this endpoint to retrieve a single compliance rule.
 
 ### Example
 ```java
@@ -116,8 +116,9 @@ public class Example {
     String scope = "scope_example"; // String | The compliance rule's scope.
     String code = "code_example"; // String | The compliance rule's code.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. Asat time for query.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Compliance' domain to decorate onto the rule.              These must take the format {domain}/{scope}/{code}, for example 'Compliance/live/UCITS'. If not provided will return all the entitled properties for that rule.
     try {
-      ComplianceRuleResponse result = apiInstance.getComplianceRule2(scope, code, asAt);
+      ComplianceRuleResponse result = apiInstance.getComplianceRule2(scope, code, asAt, propertyKeys);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ComplianceGenericApi#getComplianceRule2");
@@ -137,6 +138,7 @@ Name | Type | Description  | Notes
  **scope** | **String**| The compliance rule&#39;s scope. |
  **code** | **String**| The compliance rule&#39;s code. |
  **asAt** | **OffsetDateTime**| Optional. Asat time for query. | [optional]
+ **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Compliance&#39; domain to decorate onto the rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for that rule. | [optional]
 
 ### Return type
 
@@ -304,11 +306,11 @@ Name | Type | Description  | Notes
 
 <a name="listComplianceRules2"></a>
 # **listComplianceRules2**
-> PagedResourceListOfComplianceRuleResponse listComplianceRules2(asAt, page, start, limit, filter)
+> PagedResourceListOfComplianceRuleResponse listComplianceRules2(asAt, page, limit, filter, propertyKeys)
 
 [EARLY ACCESS] ListComplianceRules2: List compliance rules.
 
-PLEASE NOTE: loopback EarlyAccess endpoint for discussion only.
+Use this endpoint to retrieve all compliance rules, or a collection defined by an optional filter.
 
 ### Example
 ```java
@@ -332,11 +334,11 @@ public class Example {
     ComplianceGenericApi apiInstance = new ComplianceGenericApi(defaultClient);
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | Optional. Asat time.
     String page = "page_example"; // String | Optional. Pagination token.
-    Integer start = 56; // Integer | Optional. Entry at which to start.
     Integer limit = 56; // Integer | Optional. Entries per page.
     String filter = "filter_example"; // String | Optional. Filter.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'Compliance' domain to decorate onto each rule.              These must take the format {domain}/{scope}/{code}, for example 'Compliance/live/UCITS'. If not provided will return all the entitled properties for each rule.
     try {
-      PagedResourceListOfComplianceRuleResponse result = apiInstance.listComplianceRules2(asAt, page, start, limit, filter);
+      PagedResourceListOfComplianceRuleResponse result = apiInstance.listComplianceRules2(asAt, page, limit, filter, propertyKeys);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ComplianceGenericApi#listComplianceRules2");
@@ -355,9 +357,9 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **asAt** | **OffsetDateTime**| Optional. Asat time. | [optional]
  **page** | **String**| Optional. Pagination token. | [optional]
- **start** | **Integer**| Optional. Entry at which to start. | [optional]
  **limit** | **Integer**| Optional. Entries per page. | [optional]
  **filter** | **String**| Optional. Filter. | [optional]
+ **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for each rule. | [optional]
 
 ### Return type
 
@@ -539,7 +541,7 @@ Name | Type | Description  | Notes
 
 [EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule.
 
-PLEASE NOTE: loopback EarlyAccess endpoint for discussion only.
+Use this endpoint to upsert a single compliance rule. The template and variation specified must already  exist. The parameters passed must match those required by the template.
 
 ### Example
 ```java

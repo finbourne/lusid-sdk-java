@@ -329,7 +329,7 @@ info:
     | <a name="861">861</a>|Compliance run summary not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.359
+  version: 1.0.360
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -5102,7 +5102,8 @@ paths:
       x-accepts: application/json
   /api/compliance/generic/rules:
     get:
-      description: 'PLEASE NOTE: loopback EarlyAccess endpoint for discussion only.'
+      description: Use this endpoint to retrieve all compliance rules, or a collection
+        defined by an optional filter.
       operationId: ListComplianceRules2
       parameters:
       - description: Optional. Asat time.
@@ -5126,16 +5127,6 @@ paths:
           pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
-      - description: Optional. Entry at which to start.
-        explode: true
-        in: query
-        name: start
-        required: false
-        schema:
-          format: int32
-          type: integer
-        style: form
-        x-nullable: true
       - description: Optional. Entries per page.
         explode: true
         in: query
@@ -5159,6 +5150,22 @@ paths:
           pattern: ^[\s\S]*$
           type: string
         style: form
+      - description: "A list of property keys from the 'Compliance' domain to decorate\
+          \ onto each rule.\r\n            These must take the format {domain}/{scope}/{code},\
+          \ for example 'Compliance/live/UCITS'. If not provided will return all the\
+          \ entitled properties for each rule."
+        explode: true
+        in: query
+        name: propertyKeys
+        required: false
+        schema:
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          type: array
+        style: form
+        x-nullable: true
       responses:
         "200":
           content:
@@ -5180,8 +5187,8 @@ paths:
                     code: examplePortfolioGroup
                   parameters:
                     UpperBound:
-                      parameterType: Decimal
                       value: 30
+                      parameterType: DecimalComplianceParameter
                   properties:
                     Compliance/MyScope/SomeOrderProperty:
                       key: Compliance/MyScope/SomeOrderProperty
@@ -5218,8 +5225,8 @@ paths:
                     code: examplePortfolioGroup
                   parameters:
                     UpperBound:
-                      parameterType: Decimal
                       value: 30
+                      parameterType: DecimalComplianceParameter
                   properties:
                     Compliance/MyScope/SomeOrderProperty:
                       key: Compliance/MyScope/SomeOrderProperty
@@ -5256,8 +5263,8 @@ paths:
                     code: examplePortfolioGroup
                   parameters:
                     UpperBound:
-                      parameterType: Decimal
                       value: 30
+                      parameterType: DecimalComplianceParameter
                   properties:
                     Compliance/MyScope/SomeOrderProperty:
                       key: Compliance/MyScope/SomeOrderProperty
@@ -5303,7 +5310,9 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
     post:
-      description: 'PLEASE NOTE: loopback EarlyAccess endpoint for discussion only.'
+      description: "Use this endpoint to upsert a single compliance rule. The template\
+        \ and variation specified must already\r\nexist. The parameters passed must\
+        \ match those required by the template."
       operationId: UpsertComplianceRule
       requestBody:
         content:
@@ -5316,16 +5325,33 @@ paths:
               description: A friendly description.
               active: true
               templateId:
-                scope: live
-                code: exampleTemplate
-              variation: Single
+                scope: system
+                code: PortfolioLuidMetricCheck
+              variation: standard
               portfolioGroupId:
                 scope: examples
                 code: examplePortfolioGroup
               parameters:
                 UpperBound:
-                  parameterType: Decimal
                   value: 15
+                  parameterType: DecimalComplianceParameter
+                LowerBound:
+                  value: 0
+                  parameterType: DecimalComplianceParameter
+                UpperWarning:
+                  value: 15
+                  parameterType: DecimalComplianceParameter
+                LowerWarning:
+                  value: 0
+                  parameterType: DecimalComplianceParameter
+                Metric:
+                  value: Valuation/PvInReportCcy
+                  parameterType: AddressKeyComplianceParameter
+                Excludes:
+                  value:
+                    scope: testscope
+                    code: testcode
+                  parameterType: PortfolioIdListComplianceParameter
               properties:
                 Compliance/MyScope/SomeRuleProperty:
                   key: Compliance/MyScope/SomeRuleProperty
@@ -5342,16 +5368,33 @@ paths:
               description: A friendly description.
               active: true
               templateId:
-                scope: live
-                code: exampleTemplate
-              variation: Single
+                scope: system
+                code: PortfolioLuidMetricCheck
+              variation: standard
               portfolioGroupId:
                 scope: examples
                 code: examplePortfolioGroup
               parameters:
                 UpperBound:
-                  parameterType: Decimal
                   value: 15
+                  parameterType: DecimalComplianceParameter
+                LowerBound:
+                  value: 0
+                  parameterType: DecimalComplianceParameter
+                UpperWarning:
+                  value: 15
+                  parameterType: DecimalComplianceParameter
+                LowerWarning:
+                  value: 0
+                  parameterType: DecimalComplianceParameter
+                Metric:
+                  value: Valuation/PvInReportCcy
+                  parameterType: AddressKeyComplianceParameter
+                Excludes:
+                  value:
+                    scope: testscope
+                    code: testcode
+                  parameterType: PortfolioIdListComplianceParameter
               properties:
                 Compliance/MyScope/SomeRuleProperty:
                   key: Compliance/MyScope/SomeRuleProperty
@@ -5368,16 +5411,33 @@ paths:
               description: A friendly description.
               active: true
               templateId:
-                scope: live
-                code: exampleTemplate
-              variation: Single
+                scope: system
+                code: PortfolioLuidMetricCheck
+              variation: standard
               portfolioGroupId:
                 scope: examples
                 code: examplePortfolioGroup
               parameters:
                 UpperBound:
-                  parameterType: Decimal
                   value: 15
+                  parameterType: DecimalComplianceParameter
+                LowerBound:
+                  value: 0
+                  parameterType: DecimalComplianceParameter
+                UpperWarning:
+                  value: 15
+                  parameterType: DecimalComplianceParameter
+                LowerWarning:
+                  value: 0
+                  parameterType: DecimalComplianceParameter
+                Metric:
+                  value: Valuation/PvInReportCcy
+                  parameterType: AddressKeyComplianceParameter
+                Excludes:
+                  value:
+                    scope: testscope
+                    code: testcode
+                  parameterType: PortfolioIdListComplianceParameter
               properties:
                 Compliance/MyScope/SomeRuleProperty:
                   key: Compliance/MyScope/SomeRuleProperty
@@ -5394,16 +5454,33 @@ paths:
               description: A friendly description.
               active: true
               templateId:
-                scope: live
-                code: exampleTemplate
-              variation: Single
+                scope: system
+                code: PortfolioLuidMetricCheck
+              variation: standard
               portfolioGroupId:
                 scope: examples
                 code: examplePortfolioGroup
               parameters:
                 UpperBound:
-                  parameterType: Decimal
                   value: 15
+                  parameterType: DecimalComplianceParameter
+                LowerBound:
+                  value: 0
+                  parameterType: DecimalComplianceParameter
+                UpperWarning:
+                  value: 15
+                  parameterType: DecimalComplianceParameter
+                LowerWarning:
+                  value: 0
+                  parameterType: DecimalComplianceParameter
+                Metric:
+                  value: Valuation/PvInReportCcy
+                  parameterType: AddressKeyComplianceParameter
+                Excludes:
+                  value:
+                    scope: testscope
+                    code: testcode
+                  parameterType: PortfolioIdListComplianceParameter
               properties:
                 Compliance/MyScope/SomeRuleProperty:
                   key: Compliance/MyScope/SomeRuleProperty
@@ -5431,8 +5508,8 @@ paths:
                   code: examplePortfolioGroup
                 parameters:
                   UpperBound:
-                    parameterType: Decimal
                     value: 30
+                    parameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
                     key: Compliance/MyScope/SomeOrderProperty
@@ -5466,8 +5543,8 @@ paths:
                   code: examplePortfolioGroup
                 parameters:
                   UpperBound:
-                    parameterType: Decimal
                     value: 30
+                    parameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
                     key: Compliance/MyScope/SomeOrderProperty
@@ -5501,8 +5578,8 @@ paths:
                   code: examplePortfolioGroup
                 parameters:
                   UpperBound:
-                    parameterType: Decimal
                     value: 30
+                    parameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
                     key: Compliance/MyScope/SomeOrderProperty
@@ -5548,7 +5625,9 @@ paths:
       x-accepts: application/json
   /api/compliance/generic/rules/{scope}/{code}:
     delete:
-      description: 'PLEASE NOTE: loopback EarlyAccess endpoint for discussion only.'
+      description: "Use this endpoint to delete a compliance rule. The rule will be\
+        \ recoverable for asat times earlier than the\r\ndelete time, but will otherwise\
+        \ appear to have never existed."
       operationId: DeleteComplianceRule2
       parameters:
       - description: The compliance rule's scope.
@@ -5612,13 +5691,13 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] DeleteComplianceRule2: Get compliance rule.'
+      summary: '[EARLY ACCESS] DeleteComplianceRule2: Delete compliance rule.'
       tags:
       - Compliance - Generic
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
     get:
-      description: 'PLEASE NOTE: loopback EarlyAccess endpoint for discussion only.'
+      description: Use this endpoint to retrieve a single compliance rule.
       operationId: GetComplianceRule2
       parameters:
       - description: The compliance rule's scope.
@@ -5653,6 +5732,22 @@ paths:
           type: string
         style: form
         x-nullable: true
+      - description: "A list of property keys from the 'Compliance' domain to decorate\
+          \ onto the rule.\r\n            These must take the format {domain}/{scope}/{code},\
+          \ for example 'Compliance/live/UCITS'. If not provided will return all the\
+          \ entitled properties for that rule."
+        explode: true
+        in: query
+        name: propertyKeys
+        required: false
+        schema:
+          items:
+            description: The key that uniquely identifies the property. It has the
+              format {domain}/{scope}/{code}.
+            type: string
+          type: array
+        style: form
+        x-nullable: true
       responses:
         "200":
           content:
@@ -5673,8 +5768,8 @@ paths:
                   code: examplePortfolioGroup
                 parameters:
                   UpperBound:
-                    parameterType: Decimal
                     value: 30
+                    parameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
                     key: Compliance/MyScope/SomeOrderProperty
@@ -5708,8 +5803,8 @@ paths:
                   code: examplePortfolioGroup
                 parameters:
                   UpperBound:
-                    parameterType: Decimal
                     value: 30
+                    parameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
                     key: Compliance/MyScope/SomeOrderProperty
@@ -5743,8 +5838,8 @@ paths:
                   code: examplePortfolioGroup
                 parameters:
                   UpperBound:
-                    parameterType: Decimal
                     value: 30
+                    parameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
                     key: Compliance/MyScope/SomeOrderProperty
@@ -56373,18 +56468,36 @@ components:
     ComplianceParameter:
       additionalProperties: false
       example:
-        parameterType: parameterType
-        value: ""
+        parameterType: BoolComplianceParameter
       properties:
         parameterType:
-          description: The parameter type.
-          minLength: 1
+          description: 'The parameter type. The available values are: BoolComplianceParameter,
+            StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter,
+            PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter,
+            PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter,
+            DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter,
+            AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter,
+            PortfolioGroupIdListComplianceParameter'
+          enum:
+          - BoolComplianceParameter
+          - StringComplianceParameter
+          - DecimalComplianceParameter
+          - DateTimeComplianceParameter
+          - PropertyKeyComplianceParameter
+          - AddressKeyComplianceParameter
+          - PortfolioIdComplianceParameter
+          - PortfolioGroupIdComplianceParameter
+          - StringListComplianceParameter
+          - BoolListComplianceParameter
+          - DateTimeListComplianceParameter
+          - DecimalListComplianceParameter
+          - PropertyKeyListComplianceParameter
+          - AddressKeyListComplianceParameter
+          - PortfolioIdListComplianceParameter
+          - PortfolioGroupIdListComplianceParameter
           type: string
-        value:
-          description: The parameter value.
       required:
       - parameterType
-      - value
       type: object
     ComplianceRuleBreakdown:
       additionalProperties: false
@@ -56476,8 +56589,7 @@ components:
           scope: scope
         parameters:
           key:
-            parameterType: parameterType
-            value: ""
+            parameterType: BoolComplianceParameter
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
@@ -67437,8 +67549,7 @@ components:
             scope: scope
           parameters:
             key:
-              parameterType: parameterType
-              value: ""
+              parameterType: BoolComplianceParameter
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
@@ -67483,8 +67594,7 @@ components:
             scope: scope
           parameters:
             key:
-              parameterType: parameterType
-              value: ""
+              parameterType: BoolComplianceParameter
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
@@ -85041,8 +85151,7 @@ components:
           scope: scope
         parameters:
           key:
-            parameterType: parameterType
-            value: ""
+            parameterType: BoolComplianceParameter
         variation: variation
         properties:
           key:
@@ -89792,7 +89901,7 @@ components:
             description: The key that uniquely identifies a queryable address in Lusid.
             type: string
           maxItems: 100
-          minItems: 1
+          minItems: 0
           type: array
         referenceListType:
           description: 'The reference list values. The available values are: PortfolioGroupIdList,
@@ -90925,7 +91034,7 @@ components:
             format: double
             type: number
           maxItems: 100
-          minItems: 1
+          minItems: 0
           type: array
         referenceListType:
           description: 'The reference list values. The available values are: PortfolioGroupIdList,
@@ -93570,7 +93679,7 @@ components:
           items:
             type: string
           maxItems: 100
-          minItems: 1
+          minItems: 0
           type: array
         referenceListType:
           description: 'The reference list values. The available values are: PortfolioGroupIdList,
