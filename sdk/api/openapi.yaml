@@ -329,7 +329,7 @@ info:
     | <a name="861">861</a>|Compliance run summary not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.362
+  version: 1.0.363
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -5188,7 +5188,7 @@ paths:
                   parameters:
                     UpperBound:
                       value: 30
-                      parameterType: DecimalComplianceParameter
+                      complianceParameterType: DecimalComplianceParameter
                   properties:
                     Compliance/MyScope/SomeOrderProperty:
                       key: Compliance/MyScope/SomeOrderProperty
@@ -5226,7 +5226,7 @@ paths:
                   parameters:
                     UpperBound:
                       value: 30
-                      parameterType: DecimalComplianceParameter
+                      complianceParameterType: DecimalComplianceParameter
                   properties:
                     Compliance/MyScope/SomeOrderProperty:
                       key: Compliance/MyScope/SomeOrderProperty
@@ -5264,7 +5264,7 @@ paths:
                   parameters:
                     UpperBound:
                       value: 30
-                      parameterType: DecimalComplianceParameter
+                      complianceParameterType: DecimalComplianceParameter
                   properties:
                     Compliance/MyScope/SomeOrderProperty:
                       key: Compliance/MyScope/SomeOrderProperty
@@ -5317,175 +5317,539 @@ paths:
       requestBody:
         content:
           application/json-patch+json:
-            example:
-              id:
-                scope: live
-                code: exampleRule
-              name: A friendly name.
-              description: A friendly description.
-              active: true
-              templateId:
-                scope: system
-                code: PortfolioLuidMetricCheck
-              variation: standard
-              portfolioGroupId:
-                scope: examples
-                code: examplePortfolioGroup
-              parameters:
-                UpperBound:
-                  value: 15
-                  parameterType: DecimalComplianceParameter
-                LowerBound:
-                  value: 0
-                  parameterType: DecimalComplianceParameter
-                UpperWarning:
-                  value: 15
-                  parameterType: DecimalComplianceParameter
-                LowerWarning:
-                  value: 0
-                  parameterType: DecimalComplianceParameter
-                Metric:
-                  value: Valuation/PvInReportCcy
-                  parameterType: AddressKeyComplianceParameter
-                Excludes:
-                  value:
-                    scope: testscope
-                    code: testcode
-                  parameterType: PortfolioIdListComplianceParameter
-              properties:
-                Compliance/MyScope/SomeRuleProperty:
-                  key: Compliance/MyScope/SomeRuleProperty
-                  value:
-                    labelValue: XYZ000034567
+            examples:
+              Example with all parameter types:
+                value:
+                  id:
+                    scope: live
+                    code: exampleRule
+                  name: A friendly name.
+                  description: A friendly description.
+                  active: true
+                  templateId:
+                    scope: system
+                    code: PortfolioLuidMetricCheck
+                  variation: standard
+                  portfolioGroupId:
+                    scope: examples
+                    code: examplePortfolioGroup
+                  parameters:
+                    BoolParameter:
+                      value: true
+                      complianceParameterType: BoolComplianceParameter
+                    DecimalParameter:
+                      value: 0
+                      complianceParameterType: DecimalComplianceParameter
+                    StringParameter:
+                      value: An example string parameter
+                      complianceParameterType: StringComplianceParameter
+                    DateTimeParameter:
+                      value: 2023-06-06T00:00:00.0000000+00:00
+                      complianceParameterType: DateTimeComplianceParameter
+                    PropertyKeyParameter:
+                      value: Compliance/live/RuleGroup
+                      complianceParameterType: PropertyKeyComplianceParameter
+                    AddressKeyParameter:
+                      value: Valuation/PvInReportCcy
+                      complianceParameterType: AddressKeyComplianceParameter
+                    PortfolioIdParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioIdComplianceParameter
+                    PortfolioGroupIdParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioGroupIdComplianceParameter
+                    DecimalListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: DecimalListComplianceParameter
+                    AddressKeyListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: AddressKeyListComplianceParameter
+                    BoolListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: BoolListComplianceParameter
+                    StringListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: StringListComplianceParameter
+                    DateTimeListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: DateTimeListComplianceParameter
+                    PropertyKeyListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PropertyKeyListComplianceParameter
+                    PortfolioIdListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioIdListComplianceParameter
+                    PortfolioGroupIdListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioGroupIdListComplianceParameter
+                  properties:
+                    Compliance/MyScope/SomeRuleProperty:
+                      key: Compliance/MyScope/SomeRuleProperty
+                      value:
+                        labelValue: XYZ000034567
+              PortfolioLuidMetricCheck example:
+                value:
+                  id:
+                    scope: live
+                    code: exampleRule
+                  name: A friendly name.
+                  description: A friendly description.
+                  active: true
+                  templateId:
+                    scope: system
+                    code: PortfolioLuidMetricCheck
+                  variation: standard
+                  portfolioGroupId:
+                    scope: examples
+                    code: examplePortfolioGroup
+                  parameters:
+                    UpperBound:
+                      value: 15
+                      complianceParameterType: DecimalComplianceParameter
+                    LowerBound:
+                      value: 0
+                      complianceParameterType: DecimalComplianceParameter
+                    UpperWarning:
+                      value: 15
+                      complianceParameterType: DecimalComplianceParameter
+                    LowerWarning:
+                      value: 0
+                      complianceParameterType: DecimalComplianceParameter
+                    Metric:
+                      value: Valuation/PvInReportCcy
+                      complianceParameterType: AddressKeyComplianceParameter
+                    Excludes:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioIdListComplianceParameter
+                  properties:
+                    Compliance/MyScope/SomeRuleProperty:
+                      key: Compliance/MyScope/SomeRuleProperty
+                      value:
+                        labelValue: XYZ000034567
             schema:
               $ref: '#/components/schemas/UpsertComplianceRuleRequest'
           application/json:
-            example:
-              id:
-                scope: live
-                code: exampleRule
-              name: A friendly name.
-              description: A friendly description.
-              active: true
-              templateId:
-                scope: system
-                code: PortfolioLuidMetricCheck
-              variation: standard
-              portfolioGroupId:
-                scope: examples
-                code: examplePortfolioGroup
-              parameters:
-                UpperBound:
-                  value: 15
-                  parameterType: DecimalComplianceParameter
-                LowerBound:
-                  value: 0
-                  parameterType: DecimalComplianceParameter
-                UpperWarning:
-                  value: 15
-                  parameterType: DecimalComplianceParameter
-                LowerWarning:
-                  value: 0
-                  parameterType: DecimalComplianceParameter
-                Metric:
-                  value: Valuation/PvInReportCcy
-                  parameterType: AddressKeyComplianceParameter
-                Excludes:
-                  value:
-                    scope: testscope
-                    code: testcode
-                  parameterType: PortfolioIdListComplianceParameter
-              properties:
-                Compliance/MyScope/SomeRuleProperty:
-                  key: Compliance/MyScope/SomeRuleProperty
-                  value:
-                    labelValue: XYZ000034567
+            examples:
+              Example with all parameter types:
+                value:
+                  id:
+                    scope: live
+                    code: exampleRule
+                  name: A friendly name.
+                  description: A friendly description.
+                  active: true
+                  templateId:
+                    scope: system
+                    code: PortfolioLuidMetricCheck
+                  variation: standard
+                  portfolioGroupId:
+                    scope: examples
+                    code: examplePortfolioGroup
+                  parameters:
+                    BoolParameter:
+                      value: true
+                      complianceParameterType: BoolComplianceParameter
+                    DecimalParameter:
+                      value: 0
+                      complianceParameterType: DecimalComplianceParameter
+                    StringParameter:
+                      value: An example string parameter
+                      complianceParameterType: StringComplianceParameter
+                    DateTimeParameter:
+                      value: 2023-06-06T00:00:00.0000000+00:00
+                      complianceParameterType: DateTimeComplianceParameter
+                    PropertyKeyParameter:
+                      value: Compliance/live/RuleGroup
+                      complianceParameterType: PropertyKeyComplianceParameter
+                    AddressKeyParameter:
+                      value: Valuation/PvInReportCcy
+                      complianceParameterType: AddressKeyComplianceParameter
+                    PortfolioIdParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioIdComplianceParameter
+                    PortfolioGroupIdParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioGroupIdComplianceParameter
+                    DecimalListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: DecimalListComplianceParameter
+                    AddressKeyListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: AddressKeyListComplianceParameter
+                    BoolListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: BoolListComplianceParameter
+                    StringListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: StringListComplianceParameter
+                    DateTimeListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: DateTimeListComplianceParameter
+                    PropertyKeyListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PropertyKeyListComplianceParameter
+                    PortfolioIdListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioIdListComplianceParameter
+                    PortfolioGroupIdListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioGroupIdListComplianceParameter
+                  properties:
+                    Compliance/MyScope/SomeRuleProperty:
+                      key: Compliance/MyScope/SomeRuleProperty
+                      value:
+                        labelValue: XYZ000034567
+              PortfolioLuidMetricCheck example:
+                value:
+                  id:
+                    scope: live
+                    code: exampleRule
+                  name: A friendly name.
+                  description: A friendly description.
+                  active: true
+                  templateId:
+                    scope: system
+                    code: PortfolioLuidMetricCheck
+                  variation: standard
+                  portfolioGroupId:
+                    scope: examples
+                    code: examplePortfolioGroup
+                  parameters:
+                    UpperBound:
+                      value: 15
+                      complianceParameterType: DecimalComplianceParameter
+                    LowerBound:
+                      value: 0
+                      complianceParameterType: DecimalComplianceParameter
+                    UpperWarning:
+                      value: 15
+                      complianceParameterType: DecimalComplianceParameter
+                    LowerWarning:
+                      value: 0
+                      complianceParameterType: DecimalComplianceParameter
+                    Metric:
+                      value: Valuation/PvInReportCcy
+                      complianceParameterType: AddressKeyComplianceParameter
+                    Excludes:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioIdListComplianceParameter
+                  properties:
+                    Compliance/MyScope/SomeRuleProperty:
+                      key: Compliance/MyScope/SomeRuleProperty
+                      value:
+                        labelValue: XYZ000034567
             schema:
               $ref: '#/components/schemas/UpsertComplianceRuleRequest'
           text/json:
-            example:
-              id:
-                scope: live
-                code: exampleRule
-              name: A friendly name.
-              description: A friendly description.
-              active: true
-              templateId:
-                scope: system
-                code: PortfolioLuidMetricCheck
-              variation: standard
-              portfolioGroupId:
-                scope: examples
-                code: examplePortfolioGroup
-              parameters:
-                UpperBound:
-                  value: 15
-                  parameterType: DecimalComplianceParameter
-                LowerBound:
-                  value: 0
-                  parameterType: DecimalComplianceParameter
-                UpperWarning:
-                  value: 15
-                  parameterType: DecimalComplianceParameter
-                LowerWarning:
-                  value: 0
-                  parameterType: DecimalComplianceParameter
-                Metric:
-                  value: Valuation/PvInReportCcy
-                  parameterType: AddressKeyComplianceParameter
-                Excludes:
-                  value:
-                    scope: testscope
-                    code: testcode
-                  parameterType: PortfolioIdListComplianceParameter
-              properties:
-                Compliance/MyScope/SomeRuleProperty:
-                  key: Compliance/MyScope/SomeRuleProperty
-                  value:
-                    labelValue: XYZ000034567
+            examples:
+              Example with all parameter types:
+                value:
+                  id:
+                    scope: live
+                    code: exampleRule
+                  name: A friendly name.
+                  description: A friendly description.
+                  active: true
+                  templateId:
+                    scope: system
+                    code: PortfolioLuidMetricCheck
+                  variation: standard
+                  portfolioGroupId:
+                    scope: examples
+                    code: examplePortfolioGroup
+                  parameters:
+                    BoolParameter:
+                      value: true
+                      complianceParameterType: BoolComplianceParameter
+                    DecimalParameter:
+                      value: 0
+                      complianceParameterType: DecimalComplianceParameter
+                    StringParameter:
+                      value: An example string parameter
+                      complianceParameterType: StringComplianceParameter
+                    DateTimeParameter:
+                      value: 2023-06-06T00:00:00.0000000+00:00
+                      complianceParameterType: DateTimeComplianceParameter
+                    PropertyKeyParameter:
+                      value: Compliance/live/RuleGroup
+                      complianceParameterType: PropertyKeyComplianceParameter
+                    AddressKeyParameter:
+                      value: Valuation/PvInReportCcy
+                      complianceParameterType: AddressKeyComplianceParameter
+                    PortfolioIdParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioIdComplianceParameter
+                    PortfolioGroupIdParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioGroupIdComplianceParameter
+                    DecimalListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: DecimalListComplianceParameter
+                    AddressKeyListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: AddressKeyListComplianceParameter
+                    BoolListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: BoolListComplianceParameter
+                    StringListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: StringListComplianceParameter
+                    DateTimeListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: DateTimeListComplianceParameter
+                    PropertyKeyListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PropertyKeyListComplianceParameter
+                    PortfolioIdListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioIdListComplianceParameter
+                    PortfolioGroupIdListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioGroupIdListComplianceParameter
+                  properties:
+                    Compliance/MyScope/SomeRuleProperty:
+                      key: Compliance/MyScope/SomeRuleProperty
+                      value:
+                        labelValue: XYZ000034567
+              PortfolioLuidMetricCheck example:
+                value:
+                  id:
+                    scope: live
+                    code: exampleRule
+                  name: A friendly name.
+                  description: A friendly description.
+                  active: true
+                  templateId:
+                    scope: system
+                    code: PortfolioLuidMetricCheck
+                  variation: standard
+                  portfolioGroupId:
+                    scope: examples
+                    code: examplePortfolioGroup
+                  parameters:
+                    UpperBound:
+                      value: 15
+                      complianceParameterType: DecimalComplianceParameter
+                    LowerBound:
+                      value: 0
+                      complianceParameterType: DecimalComplianceParameter
+                    UpperWarning:
+                      value: 15
+                      complianceParameterType: DecimalComplianceParameter
+                    LowerWarning:
+                      value: 0
+                      complianceParameterType: DecimalComplianceParameter
+                    Metric:
+                      value: Valuation/PvInReportCcy
+                      complianceParameterType: AddressKeyComplianceParameter
+                    Excludes:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioIdListComplianceParameter
+                  properties:
+                    Compliance/MyScope/SomeRuleProperty:
+                      key: Compliance/MyScope/SomeRuleProperty
+                      value:
+                        labelValue: XYZ000034567
             schema:
               $ref: '#/components/schemas/UpsertComplianceRuleRequest'
           application/*+json:
-            example:
-              id:
-                scope: live
-                code: exampleRule
-              name: A friendly name.
-              description: A friendly description.
-              active: true
-              templateId:
-                scope: system
-                code: PortfolioLuidMetricCheck
-              variation: standard
-              portfolioGroupId:
-                scope: examples
-                code: examplePortfolioGroup
-              parameters:
-                UpperBound:
-                  value: 15
-                  parameterType: DecimalComplianceParameter
-                LowerBound:
-                  value: 0
-                  parameterType: DecimalComplianceParameter
-                UpperWarning:
-                  value: 15
-                  parameterType: DecimalComplianceParameter
-                LowerWarning:
-                  value: 0
-                  parameterType: DecimalComplianceParameter
-                Metric:
-                  value: Valuation/PvInReportCcy
-                  parameterType: AddressKeyComplianceParameter
-                Excludes:
-                  value:
-                    scope: testscope
-                    code: testcode
-                  parameterType: PortfolioIdListComplianceParameter
-              properties:
-                Compliance/MyScope/SomeRuleProperty:
-                  key: Compliance/MyScope/SomeRuleProperty
-                  value:
-                    labelValue: XYZ000034567
+            examples:
+              Example with all parameter types:
+                value:
+                  id:
+                    scope: live
+                    code: exampleRule
+                  name: A friendly name.
+                  description: A friendly description.
+                  active: true
+                  templateId:
+                    scope: system
+                    code: PortfolioLuidMetricCheck
+                  variation: standard
+                  portfolioGroupId:
+                    scope: examples
+                    code: examplePortfolioGroup
+                  parameters:
+                    BoolParameter:
+                      value: true
+                      complianceParameterType: BoolComplianceParameter
+                    DecimalParameter:
+                      value: 0
+                      complianceParameterType: DecimalComplianceParameter
+                    StringParameter:
+                      value: An example string parameter
+                      complianceParameterType: StringComplianceParameter
+                    DateTimeParameter:
+                      value: 2023-06-06T00:00:00.0000000+00:00
+                      complianceParameterType: DateTimeComplianceParameter
+                    PropertyKeyParameter:
+                      value: Compliance/live/RuleGroup
+                      complianceParameterType: PropertyKeyComplianceParameter
+                    AddressKeyParameter:
+                      value: Valuation/PvInReportCcy
+                      complianceParameterType: AddressKeyComplianceParameter
+                    PortfolioIdParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioIdComplianceParameter
+                    PortfolioGroupIdParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioGroupIdComplianceParameter
+                    DecimalListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: DecimalListComplianceParameter
+                    AddressKeyListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: AddressKeyListComplianceParameter
+                    BoolListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: BoolListComplianceParameter
+                    StringListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: StringListComplianceParameter
+                    DateTimeListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: DateTimeListComplianceParameter
+                    PropertyKeyListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PropertyKeyListComplianceParameter
+                    PortfolioIdListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioIdListComplianceParameter
+                    PortfolioGroupIdListParameter:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioGroupIdListComplianceParameter
+                  properties:
+                    Compliance/MyScope/SomeRuleProperty:
+                      key: Compliance/MyScope/SomeRuleProperty
+                      value:
+                        labelValue: XYZ000034567
+              PortfolioLuidMetricCheck example:
+                value:
+                  id:
+                    scope: live
+                    code: exampleRule
+                  name: A friendly name.
+                  description: A friendly description.
+                  active: true
+                  templateId:
+                    scope: system
+                    code: PortfolioLuidMetricCheck
+                  variation: standard
+                  portfolioGroupId:
+                    scope: examples
+                    code: examplePortfolioGroup
+                  parameters:
+                    UpperBound:
+                      value: 15
+                      complianceParameterType: DecimalComplianceParameter
+                    LowerBound:
+                      value: 0
+                      complianceParameterType: DecimalComplianceParameter
+                    UpperWarning:
+                      value: 15
+                      complianceParameterType: DecimalComplianceParameter
+                    LowerWarning:
+                      value: 0
+                      complianceParameterType: DecimalComplianceParameter
+                    Metric:
+                      value: Valuation/PvInReportCcy
+                      complianceParameterType: AddressKeyComplianceParameter
+                    Excludes:
+                      value:
+                        scope: testscope
+                        code: testcode
+                      complianceParameterType: PortfolioIdListComplianceParameter
+                  properties:
+                    Compliance/MyScope/SomeRuleProperty:
+                      key: Compliance/MyScope/SomeRuleProperty
+                      value:
+                        labelValue: XYZ000034567
             schema:
               $ref: '#/components/schemas/UpsertComplianceRuleRequest'
       responses:
@@ -5509,7 +5873,7 @@ paths:
                 parameters:
                   UpperBound:
                     value: 30
-                    parameterType: DecimalComplianceParameter
+                    complianceParameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
                     key: Compliance/MyScope/SomeOrderProperty
@@ -5544,7 +5908,7 @@ paths:
                 parameters:
                   UpperBound:
                     value: 30
-                    parameterType: DecimalComplianceParameter
+                    complianceParameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
                     key: Compliance/MyScope/SomeOrderProperty
@@ -5579,7 +5943,7 @@ paths:
                 parameters:
                   UpperBound:
                     value: 30
-                    parameterType: DecimalComplianceParameter
+                    complianceParameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
                     key: Compliance/MyScope/SomeOrderProperty
@@ -5769,7 +6133,7 @@ paths:
                 parameters:
                   UpperBound:
                     value: 30
-                    parameterType: DecimalComplianceParameter
+                    complianceParameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
                     key: Compliance/MyScope/SomeOrderProperty
@@ -5804,7 +6168,7 @@ paths:
                 parameters:
                   UpperBound:
                     value: 30
-                    parameterType: DecimalComplianceParameter
+                    complianceParameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
                     key: Compliance/MyScope/SomeOrderProperty
@@ -5839,7 +6203,7 @@ paths:
                 parameters:
                   UpperBound:
                     value: 30
-                    parameterType: DecimalComplianceParameter
+                    complianceParameterType: DecimalComplianceParameter
                 properties:
                   Compliance/MyScope/SomeOrderProperty:
                     key: Compliance/MyScope/SomeOrderProperty
@@ -53384,6 +53748,10 @@ components:
           nullable: true
           type: string
       type: object
+    AddressKeyComplianceParameter:
+      allOf:
+      - $ref: '#/components/schemas/ComplianceParameter'
+      - $ref: '#/components/schemas/AddressKeyComplianceParameter_allOf'
     AddressKeyDefinition:
       additionalProperties: false
       example:
@@ -53453,6 +53821,10 @@ components:
       allOf:
       - $ref: '#/components/schemas/ReferenceList'
       - $ref: '#/components/schemas/AddressKeyList_allOf'
+    AddressKeyListComplianceParameter:
+      allOf:
+      - $ref: '#/components/schemas/ComplianceParameter'
+      - $ref: '#/components/schemas/AddressKeyListComplianceParameter_allOf'
     AddressKeyOptionDefinition:
       additionalProperties: false
       description: The definition of an Address Key Option
@@ -55592,6 +55964,14 @@ components:
       - $ref: '#/components/schemas/BondDefaultEvent_allOf'
       description: Indicates when an issuer has defaulted on an obligation due to
         technical default, missed payments, or bankruptcy filing.
+    BoolComplianceParameter:
+      allOf:
+      - $ref: '#/components/schemas/ComplianceParameter'
+      - $ref: '#/components/schemas/BoolComplianceParameter_allOf'
+    BoolListComplianceParameter:
+      allOf:
+      - $ref: '#/components/schemas/ComplianceParameter'
+      - $ref: '#/components/schemas/AddressKeyListComplianceParameter_allOf'
     Calendar:
       additionalProperties: false
       example:
@@ -56467,10 +56847,12 @@ components:
       type: object
     ComplianceParameter:
       additionalProperties: false
+      discriminator:
+        propertyName: complianceParameterType
       example:
-        parameterType: BoolComplianceParameter
+        complianceParameterType: BoolComplianceParameter
       properties:
-        parameterType:
+        complianceParameterType:
           description: 'The parameter type. The available values are: BoolComplianceParameter,
             StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter,
             PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter,
@@ -56497,7 +56879,7 @@ components:
           - PortfolioGroupIdListComplianceParameter
           type: string
       required:
-      - parameterType
+      - complianceParameterType
       type: object
     ComplianceRuleBreakdown:
       additionalProperties: false
@@ -56589,7 +56971,7 @@ components:
           scope: scope
         parameters:
           key:
-            parameterType: BoolComplianceParameter
+            complianceParameterType: BoolComplianceParameter
         version:
           asAtModified: 2000-01-23T04:56:07.000+00:00
           userIdModified: userIdModified
@@ -60506,6 +60888,14 @@ components:
       required:
       - fromDate
       type: object
+    DateTimeComplianceParameter:
+      allOf:
+      - $ref: '#/components/schemas/ComplianceParameter'
+      - $ref: '#/components/schemas/DateTimeComplianceParameter_allOf'
+    DateTimeListComplianceParameter:
+      allOf:
+      - $ref: '#/components/schemas/ComplianceParameter'
+      - $ref: '#/components/schemas/AddressKeyListComplianceParameter_allOf'
     DayOfWeek:
       enum:
       - Sunday
@@ -60516,10 +60906,18 @@ components:
       - Friday
       - Saturday
       type: string
+    DecimalComplianceParameter:
+      allOf:
+      - $ref: '#/components/schemas/ComplianceParameter'
+      - $ref: '#/components/schemas/DecimalComplianceParameter_allOf'
     DecimalList:
       allOf:
       - $ref: '#/components/schemas/ReferenceList'
       - $ref: '#/components/schemas/DecimalList_allOf'
+    DecimalListComplianceParameter:
+      allOf:
+      - $ref: '#/components/schemas/ComplianceParameter'
+      - $ref: '#/components/schemas/AddressKeyListComplianceParameter_allOf'
     DeletedEntityResponse:
       additionalProperties: false
       example:
@@ -67549,7 +67947,7 @@ components:
             scope: scope
           parameters:
             key:
-              parameterType: BoolComplianceParameter
+              complianceParameterType: BoolComplianceParameter
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
@@ -67594,7 +67992,7 @@ components:
             scope: scope
           parameters:
             key:
-              parameterType: BoolComplianceParameter
+              complianceParameterType: BoolComplianceParameter
           version:
             asAtModified: 2000-01-23T04:56:07.000+00:00
             userIdModified: userIdModified
@@ -72567,10 +72965,18 @@ components:
       - displayName
       - id
       type: object
+    PortfolioGroupIdComplianceParameter:
+      allOf:
+      - $ref: '#/components/schemas/ComplianceParameter'
+      - $ref: '#/components/schemas/AddressKeyListComplianceParameter_allOf'
     PortfolioGroupIdList:
       allOf:
       - $ref: '#/components/schemas/ReferenceList'
       - $ref: '#/components/schemas/PortfolioGroupIdList_allOf'
+    PortfolioGroupIdListComplianceParameter:
+      allOf:
+      - $ref: '#/components/schemas/ComplianceParameter'
+      - $ref: '#/components/schemas/AddressKeyListComplianceParameter_allOf'
     PortfolioGroupProperties:
       additionalProperties: false
       example:
@@ -73041,10 +73447,18 @@ components:
       - settledUnits
       - units
       type: object
+    PortfolioIdComplianceParameter:
+      allOf:
+      - $ref: '#/components/schemas/ComplianceParameter'
+      - $ref: '#/components/schemas/AddressKeyListComplianceParameter_allOf'
     PortfolioIdList:
       allOf:
       - $ref: '#/components/schemas/ReferenceList'
       - $ref: '#/components/schemas/PortfolioGroupIdList_allOf'
+    PortfolioIdListComplianceParameter:
+      allOf:
+      - $ref: '#/components/schemas/ComplianceParameter'
+      - $ref: '#/components/schemas/AddressKeyListComplianceParameter_allOf'
     PortfolioProperties:
       additionalProperties: false
       example:
@@ -74037,6 +74451,14 @@ components:
       - status
       - value
       type: object
+    PropertyKeyComplianceParameter:
+      allOf:
+      - $ref: '#/components/schemas/ComplianceParameter'
+      - $ref: '#/components/schemas/PropertyKeyComplianceParameter_allOf'
+    PropertyKeyListComplianceParameter:
+      allOf:
+      - $ref: '#/components/schemas/ComplianceParameter'
+      - $ref: '#/components/schemas/AddressKeyListComplianceParameter_allOf'
     PropertySchema:
       additionalProperties: false
       example:
@@ -82358,10 +82780,18 @@ components:
           format: int32
           type: integer
       type: object
+    StringComplianceParameter:
+      allOf:
+      - $ref: '#/components/schemas/ComplianceParameter'
+      - $ref: '#/components/schemas/StringComplianceParameter_allOf'
     StringList:
       allOf:
       - $ref: '#/components/schemas/ReferenceList'
       - $ref: '#/components/schemas/InstrumentList_allOf'
+    StringListComplianceParameter:
+      allOf:
+      - $ref: '#/components/schemas/ComplianceParameter'
+      - $ref: '#/components/schemas/AddressKeyListComplianceParameter_allOf'
     TargetTaxLot:
       additionalProperties: false
       description: Used to specify holdings target amounts at the tax-lot level
@@ -85151,7 +85581,7 @@ components:
           scope: scope
         parameters:
           key:
-            parameterType: BoolComplianceParameter
+            complianceParameterType: BoolComplianceParameter
         variation: variation
         properties:
           key:
@@ -89894,6 +90324,42 @@ components:
       - $ref: '#/components/schemas/YieldCurveData_allOf'
       description: Market data for a yield curve,  represented by a list of instruments
         and corresponding market quotes
+    AddressKeyComplianceParameter_allOf:
+      properties:
+        value:
+          description: The key that uniquely identifies a queryable address in Lusid.
+          pattern: ^[a-zA-Z0-9\-_]+$
+          type: string
+        complianceParameterType:
+          description: 'The parameter type. The available values are: BoolComplianceParameter,
+            StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter,
+            PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter,
+            PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter,
+            DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter,
+            AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter,
+            PortfolioGroupIdListComplianceParameter'
+          enum:
+          - BoolComplianceParameter
+          - StringComplianceParameter
+          - DecimalComplianceParameter
+          - DateTimeComplianceParameter
+          - PropertyKeyComplianceParameter
+          - AddressKeyComplianceParameter
+          - PortfolioIdComplianceParameter
+          - PortfolioGroupIdComplianceParameter
+          - StringListComplianceParameter
+          - BoolListComplianceParameter
+          - DateTimeListComplianceParameter
+          - DecimalListComplianceParameter
+          - PropertyKeyListComplianceParameter
+          - AddressKeyListComplianceParameter
+          - PortfolioIdListComplianceParameter
+          - PortfolioGroupIdListComplianceParameter
+          type: string
+      required:
+      - complianceParameterType
+      - value
+      type: object
     AddressKeyList_allOf:
       properties:
         values:
@@ -89917,6 +90383,40 @@ components:
       required:
       - referenceListType
       - values
+      type: object
+    AddressKeyListComplianceParameter_allOf:
+      properties:
+        value:
+          $ref: '#/components/schemas/ResourceId'
+        complianceParameterType:
+          description: 'The parameter type. The available values are: BoolComplianceParameter,
+            StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter,
+            PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter,
+            PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter,
+            DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter,
+            AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter,
+            PortfolioGroupIdListComplianceParameter'
+          enum:
+          - BoolComplianceParameter
+          - StringComplianceParameter
+          - DecimalComplianceParameter
+          - DateTimeComplianceParameter
+          - PropertyKeyComplianceParameter
+          - AddressKeyComplianceParameter
+          - PortfolioIdComplianceParameter
+          - PortfolioGroupIdComplianceParameter
+          - StringListComplianceParameter
+          - BoolListComplianceParameter
+          - DateTimeListComplianceParameter
+          - DecimalListComplianceParameter
+          - PropertyKeyListComplianceParameter
+          - AddressKeyListComplianceParameter
+          - PortfolioIdListComplianceParameter
+          - PortfolioGroupIdListComplianceParameter
+          type: string
+      required:
+      - complianceParameterType
+      - value
       type: object
     AmortisationEvent_allOf:
       properties:
@@ -90222,6 +90722,40 @@ components:
       - graceEndDate
       - instrumentEventType
       - paymentDate
+      type: object
+    BoolComplianceParameter_allOf:
+      properties:
+        value:
+          type: boolean
+        complianceParameterType:
+          description: 'The parameter type. The available values are: BoolComplianceParameter,
+            StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter,
+            PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter,
+            PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter,
+            DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter,
+            AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter,
+            PortfolioGroupIdListComplianceParameter'
+          enum:
+          - BoolComplianceParameter
+          - StringComplianceParameter
+          - DecimalComplianceParameter
+          - DateTimeComplianceParameter
+          - PropertyKeyComplianceParameter
+          - AddressKeyComplianceParameter
+          - PortfolioIdComplianceParameter
+          - PortfolioGroupIdComplianceParameter
+          - StringListComplianceParameter
+          - BoolListComplianceParameter
+          - DateTimeListComplianceParameter
+          - DecimalListComplianceParameter
+          - PropertyKeyListComplianceParameter
+          - AddressKeyListComplianceParameter
+          - PortfolioIdListComplianceParameter
+          - PortfolioGroupIdListComplianceParameter
+          type: string
+      required:
+      - complianceParameterType
+      - value
       type: object
     CapFloor_allOf:
       properties:
@@ -91026,6 +91560,76 @@ components:
       - recoveryRate
       - spreads
       - tenors
+      type: object
+    DateTimeComplianceParameter_allOf:
+      properties:
+        value:
+          format: date-time
+          type: string
+        complianceParameterType:
+          description: 'The parameter type. The available values are: BoolComplianceParameter,
+            StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter,
+            PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter,
+            PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter,
+            DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter,
+            AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter,
+            PortfolioGroupIdListComplianceParameter'
+          enum:
+          - BoolComplianceParameter
+          - StringComplianceParameter
+          - DecimalComplianceParameter
+          - DateTimeComplianceParameter
+          - PropertyKeyComplianceParameter
+          - AddressKeyComplianceParameter
+          - PortfolioIdComplianceParameter
+          - PortfolioGroupIdComplianceParameter
+          - StringListComplianceParameter
+          - BoolListComplianceParameter
+          - DateTimeListComplianceParameter
+          - DecimalListComplianceParameter
+          - PropertyKeyListComplianceParameter
+          - AddressKeyListComplianceParameter
+          - PortfolioIdListComplianceParameter
+          - PortfolioGroupIdListComplianceParameter
+          type: string
+      required:
+      - complianceParameterType
+      - value
+      type: object
+    DecimalComplianceParameter_allOf:
+      properties:
+        value:
+          format: double
+          type: number
+        complianceParameterType:
+          description: 'The parameter type. The available values are: BoolComplianceParameter,
+            StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter,
+            PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter,
+            PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter,
+            DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter,
+            AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter,
+            PortfolioGroupIdListComplianceParameter'
+          enum:
+          - BoolComplianceParameter
+          - StringComplianceParameter
+          - DecimalComplianceParameter
+          - DateTimeComplianceParameter
+          - PropertyKeyComplianceParameter
+          - AddressKeyComplianceParameter
+          - PortfolioIdComplianceParameter
+          - PortfolioGroupIdComplianceParameter
+          - StringListComplianceParameter
+          - BoolListComplianceParameter
+          - DateTimeListComplianceParameter
+          - DecimalListComplianceParameter
+          - PropertyKeyListComplianceParameter
+          - AddressKeyListComplianceParameter
+          - PortfolioIdListComplianceParameter
+          - PortfolioGroupIdListComplianceParameter
+          type: string
+      required:
+      - complianceParameterType
+      - value
       type: object
     DecimalList_allOf:
       properties:
@@ -94231,6 +94835,43 @@ components:
       - resultKeyRuleType
       - supplier
       type: object
+    PropertyKeyComplianceParameter_allOf:
+      properties:
+        value:
+          description: The key that uniquely identifies the property. It has the format
+            {domain}/{scope}/{code}.
+          pattern: ^[a-zA-Z0-9@+\-_&]+$
+          type: string
+        complianceParameterType:
+          description: 'The parameter type. The available values are: BoolComplianceParameter,
+            StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter,
+            PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter,
+            PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter,
+            DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter,
+            AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter,
+            PortfolioGroupIdListComplianceParameter'
+          enum:
+          - BoolComplianceParameter
+          - StringComplianceParameter
+          - DecimalComplianceParameter
+          - DateTimeComplianceParameter
+          - PropertyKeyComplianceParameter
+          - AddressKeyComplianceParameter
+          - PortfolioIdComplianceParameter
+          - PortfolioGroupIdComplianceParameter
+          - StringListComplianceParameter
+          - BoolListComplianceParameter
+          - DateTimeListComplianceParameter
+          - DecimalListComplianceParameter
+          - PropertyKeyListComplianceParameter
+          - AddressKeyListComplianceParameter
+          - PortfolioIdListComplianceParameter
+          - PortfolioGroupIdListComplianceParameter
+          type: string
+      required:
+      - complianceParameterType
+      - value
+      type: object
     QuoteDependency_allOf:
       properties:
         marketIdentifier:
@@ -95242,6 +95883,41 @@ components:
       - instrumentEventType
       - paymentDate
       - recordDate
+      type: object
+    StringComplianceParameter_allOf:
+      properties:
+        value:
+          minLength: 1
+          type: string
+        complianceParameterType:
+          description: 'The parameter type. The available values are: BoolComplianceParameter,
+            StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter,
+            PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter,
+            PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter,
+            DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter,
+            AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter,
+            PortfolioGroupIdListComplianceParameter'
+          enum:
+          - BoolComplianceParameter
+          - StringComplianceParameter
+          - DecimalComplianceParameter
+          - DateTimeComplianceParameter
+          - PropertyKeyComplianceParameter
+          - AddressKeyComplianceParameter
+          - PortfolioIdComplianceParameter
+          - PortfolioGroupIdComplianceParameter
+          - StringListComplianceParameter
+          - BoolListComplianceParameter
+          - DateTimeListComplianceParameter
+          - DecimalListComplianceParameter
+          - PropertyKeyListComplianceParameter
+          - AddressKeyListComplianceParameter
+          - PortfolioIdListComplianceParameter
+          - PortfolioGroupIdListComplianceParameter
+          type: string
+      required:
+      - complianceParameterType
+      - value
       type: object
     TermDeposit_allOf:
       properties:
