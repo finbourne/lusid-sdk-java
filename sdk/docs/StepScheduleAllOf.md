@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **levelType** | **String** | The type of shift or adjustment that the quantity represents.    Supported string (enumeration) values are: [Absolute, AbsoluteShift, Percentage, AbsolutePercentage]. | 
 **stepScheduleType** | **String** | The type of step that this schedule is for.  Supported string (enumeration) values are: [Coupon, Notional, Spread]. | 
 **steps** | [**List&lt;LevelStep&gt;**](LevelStep.md) | The level steps which are applied. | 
-**scheduleType** | [**ScheduleTypeEnum**](#ScheduleTypeEnum) | The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, Invalid | 
+**scheduleType** | [**ScheduleTypeEnum**](#ScheduleTypeEnum) | The available values are: Fixed, Float, Optionality, Step, Exercise, FxRate, Invalid | 
 
 
 
@@ -18,12 +18,12 @@ Name | Type | Description | Notes
 
 Name | Value
 ---- | -----
-FIXEDSCHEDULE | &quot;FixedSchedule&quot;
-FLOATSCHEDULE | &quot;FloatSchedule&quot;
-OPTIONALITYSCHEDULE | &quot;OptionalitySchedule&quot;
-STEPSCHEDULE | &quot;StepSchedule&quot;
+FIXED | &quot;Fixed&quot;
+FLOAT | &quot;Float&quot;
+OPTIONALITY | &quot;Optionality&quot;
+STEP | &quot;Step&quot;
 EXERCISE | &quot;Exercise&quot;
-FXRATESCHEDULE | &quot;FxRateSchedule&quot;
+FXRATE | &quot;FxRate&quot;
 INVALID | &quot;Invalid&quot;
 
 
