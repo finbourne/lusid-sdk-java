@@ -329,7 +329,7 @@ info:
     | <a name="861">861</a>|Compliance run summary not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.363
+  version: 1.0.364
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -6636,11 +6636,9 @@ paths:
                     - name: Param1Name
                       description: Parameter 1 Description
                       type: string
-                      isCheckingParameter: true
                     - name: Param2Name
                       description: Parameter 2 Description
                       type: addressKey
-                      isCheckingParameter: false
                     properties:
                       Compliance/system/ResultStructure:
                         key: Compliance/system/ResultStructure
@@ -6672,11 +6670,9 @@ paths:
                     - name: Param1Name
                       description: Parameter 1 Description
                       type: string
-                      isCheckingParameter: true
                     - name: Param2Name
                       description: Parameter 2 Description
                       type: addressKey
-                      isCheckingParameter: false
                     properties:
                       Compliance/system/ResultStructure:
                         key: Compliance/system/ResultStructure
@@ -6708,11 +6704,9 @@ paths:
                     - name: Param1Name
                       description: Parameter 1 Description
                       type: string
-                      isCheckingParameter: true
                     - name: Param2Name
                       description: Parameter 2 Description
                       type: addressKey
-                      isCheckingParameter: false
                     properties:
                       Compliance/system/ResultStructure:
                         key: Compliance/system/ResultStructure
@@ -6810,11 +6804,9 @@ paths:
                   - name: Param1Name
                     description: Parameter 1 Description
                     type: string
-                    isCheckingParameter: true
                   - name: Param2Name
                     description: Parameter 2 Description
                     type: addressKey
-                    isCheckingParameter: false
                   properties:
                     Compliance/system/ResultStructure:
                       key: Compliance/system/ResultStructure
@@ -6843,11 +6835,9 @@ paths:
                   - name: Param1Name
                     description: Parameter 1 Description
                     type: string
-                    isCheckingParameter: true
                   - name: Param2Name
                     description: Parameter 2 Description
                     type: addressKey
-                    isCheckingParameter: false
                   properties:
                     Compliance/system/ResultStructure:
                       key: Compliance/system/ResultStructure
@@ -6876,11 +6866,9 @@ paths:
                   - name: Param1Name
                     description: Parameter 1 Description
                     type: string
-                    isCheckingParameter: true
                   - name: Param2Name
                     description: Parameter 2 Description
                     type: addressKey
-                    isCheckingParameter: false
                   properties:
                     Compliance/system/ResultStructure:
                       key: Compliance/system/ResultStructure
@@ -57303,11 +57291,9 @@ components:
           - name: name
             description: description
             type: type
-            isCheckingParameter: true
           - name: name
             description: description
             type: type
-            isCheckingParameter: true
           description: description
           label: label
           properties:
@@ -57326,11 +57312,9 @@ components:
           - name: name
             description: description
             type: type
-            isCheckingParameter: true
           - name: name
             description: description
             type: type
-            isCheckingParameter: true
           description: description
           label: label
           properties:
@@ -57396,7 +57380,6 @@ components:
         name: name
         description: description
         type: type
-        isCheckingParameter: true
       properties:
         name:
           description: The name for the required Compliance Template Parameter
@@ -57410,13 +57393,8 @@ components:
           description: The type for the required Compliance Template Parameter
           minLength: 1
           type: string
-        isCheckingParameter:
-          description: Indicates whether this is the Compliance Template Parameter
-            that will be used in the final check process
-          type: boolean
       required:
       - description
-      - isCheckingParameter
       - name
       - type
       type: object
@@ -57427,11 +57405,9 @@ components:
         - name: name
           description: description
           type: type
-          isCheckingParameter: true
         - name: name
           description: description
           type: type
-          isCheckingParameter: true
         description: description
         label: label
         properties:
@@ -68067,11 +68043,9 @@ components:
             - name: name
               description: description
               type: type
-              isCheckingParameter: true
             - name: name
               description: description
               type: type
-              isCheckingParameter: true
             description: description
             label: label
             properties:
@@ -68090,11 +68064,9 @@ components:
             - name: name
               description: description
               type: type
-              isCheckingParameter: true
             - name: name
               description: description
               type: type
-              isCheckingParameter: true
             description: description
             label: label
             properties:
@@ -68130,11 +68102,9 @@ components:
             - name: name
               description: description
               type: type
-              isCheckingParameter: true
             - name: name
               description: description
               type: type
-              isCheckingParameter: true
             description: description
             label: label
             properties:
@@ -68153,11 +68123,9 @@ components:
             - name: name
               description: description
               type: type
-              isCheckingParameter: true
             - name: name
               description: description
               type: type
-              isCheckingParameter: true
             description: description
             label: label
             properties:
