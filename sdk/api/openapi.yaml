@@ -329,7 +329,7 @@ info:
     | <a name="861">861</a>|Compliance run summary not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.376
+  version: 1.0.377
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -31515,12 +31515,21 @@ paths:
         "200":
           content:
             text/plain:
+              example: function Translate(input){ const fxfwd = JSON.parse(input);  fxfwd["endDate"]
+                = fxfwd["maturityDate"];  delete fxfwd["maturityDate"];  return JSON.stringify(fxfwd);
+                }
               schema:
                 type: string
             application/json:
+              example: function Translate(input){ const fxfwd = JSON.parse(input);  fxfwd["endDate"]
+                = fxfwd["maturityDate"];  delete fxfwd["maturityDate"];  return JSON.stringify(fxfwd);
+                }
               schema:
                 type: string
             text/json:
+              example: function Translate(input){ const fxfwd = JSON.parse(input);  fxfwd["endDate"]
+                = fxfwd["maturityDate"];  delete fxfwd["maturityDate"];  return JSON.stringify(fxfwd);
+                }
               schema:
                 type: string
           description: A string specifying the scope and code that were deleted
