@@ -17,7 +17,7 @@ Name | Type | Description | Notes
 **relationships** | [**List&lt;Relationship&gt;**](Relationship.md) | A set of relationships associated to the Legal Entity. |  [optional]
 **counterpartyRiskInformation** | [**CounterpartyRiskInformation**](CounterpartyRiskInformation.md) |  |  [optional]
 **version** | [**Version**](Version.md) |  |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 
 
