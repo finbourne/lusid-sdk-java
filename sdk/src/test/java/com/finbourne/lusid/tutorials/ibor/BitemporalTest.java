@@ -36,7 +36,7 @@ public class BitemporalTest {
         ApiConfiguration apiConfiguration = new ApiConfigurationBuilder().build(CredentialsSource.credentialsFile);
         ApiClient apiClient = new ApiClientBuilder().build(apiConfiguration);
 
-        transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient);
+        transactionPortfoliosApi = new TransactionPortfoliosApi(apiClient, 30, 30);
 
         testDataUtilities = new TestDataUtilities(transactionPortfoliosApi);
 
