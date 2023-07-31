@@ -329,7 +329,7 @@ info:
     | <a name="861">861</a>|Compliance run summary not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.392
+  version: 1.0.393
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -15967,8 +15967,8 @@ paths:
       - description: "The pagination token to use to continue listing legal entities\
           \ from a previous call to list legal entities. This\r\nvalue is returned\
           \ from the previous call. If a pagination token is provided the filter,\
-          \ effectiveAt\r\nand asAt fields must not have changed since the original\
-          \ request."
+          \ effectiveAt, sortBy\r\nand asAt fields must not have changed since the\
+          \ original request."
         explode: true
         in: query
         name: page
@@ -17330,8 +17330,8 @@ paths:
       - description: "The pagination token to use to continue listing legal entities\
           \ from a previous call to list legal entities. This\r\nvalue is returned\
           \ from the previous call. If a pagination token is provided the filter,\
-          \ effectiveAt\r\nand asAt fields must not have changed since the original\
-          \ request."
+          \ effectiveAt, sortBy\r\nand asAt fields must not have changed since the\
+          \ original request."
         explode: true
         in: query
         name: page
@@ -25094,6 +25094,34 @@ paths:
           type: string
         style: form
         x-nullable: true
+      - description: "The pagination token to use to continue listing portfolio groups\
+          \ from a previous call to list portfolio groups. This\r\nvalue is returned\
+          \ from the previous call. If a pagination token is provided the filter,\
+          \ effectiveAt, sortBy\r\nand asAt fields must not have changed since the\
+          \ original request."
+        explode: true
+        in: query
+        name: page
+        required: false
+        schema:
+          maxLength: 500
+          minLength: 1
+          pattern: ^[a-zA-Z0-9\+/]*={0,3}$
+          type: string
+        style: form
+      - description: When paginating, limit the number of returned results to this
+          many. Defaults to no limit if not specified.
+        explode: true
+        in: query
+        name: limit
+        required: false
+        schema:
+          format: int32
+          maximum: 5000
+          minimum: 1
+          type: integer
+        style: form
+        x-nullable: true
       - description: "Expression to filter the result set.\r\n            For example,\
           \ to filter on the Display Name, use \"displayName eq 'string'\"\r\n   \
           \         Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid."
@@ -25107,6 +25135,18 @@ paths:
           pattern: ^[\s\S]*$
           type: string
         style: form
+      - description: A list of field names to sort by, each suffixed by " ASC" or
+          " DESC"
+        explode: true
+        in: query
+        name: sortBy
+        required: false
+        schema:
+          items:
+            type: string
+          type: array
+        style: form
+        x-nullable: true
       - description: "A list of property keys from any domain that supports relationships\r\
           \n            to decorate onto related entities. These must take the format\
           \ {domain}/{scope}/{code}, for example 'Portfolio/Manager/Id'."
@@ -25141,13 +25181,13 @@ paths:
           content:
             text/plain:
               schema:
-                $ref: '#/components/schemas/ResourceListOfPortfolioGroup'
+                $ref: '#/components/schemas/PagedResourceListOfPortfolioGroup'
             application/json:
               schema:
-                $ref: '#/components/schemas/ResourceListOfPortfolioGroup'
+                $ref: '#/components/schemas/PagedResourceListOfPortfolioGroup'
             text/json:
               schema:
-                $ref: '#/components/schemas/ResourceListOfPortfolioGroup'
+                $ref: '#/components/schemas/PagedResourceListOfPortfolioGroup'
           description: The portfolio groups in the specified scope
         "400":
           content:
@@ -71690,6 +71730,305 @@ components:
       required:
       - values
       type: object
+    PagedResourceListOfPortfolioGroup:
+      additionalProperties: false
+      description: A paginated list of resource that can be returned from a request.
+      example:
+        previousPage: previousPage
+        nextPage: nextPage
+        values:
+        - relationships:
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            traversalDirection: traversalDirection
+            relatedEntity:
+              entityType: entityType
+              displayName: displayName
+              identifiers:
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              scope: scope
+              entityId:
+                key: entityId
+              lusidUniqueId:
+                type: type
+                value: value
+              href: https://openapi-generator.tech
+              properties:
+                key:
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            version:
+              asAtModified: 2000-01-23T04:56:07.000+00:00
+              userIdModified: userIdModified
+              asAtVersionNumber: 0
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              userIdCreated: userIdCreated
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            relationshipDefinitionId:
+              code: code
+              scope: scope
+            traversalDescription: traversalDescription
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            traversalDirection: traversalDirection
+            relatedEntity:
+              entityType: entityType
+              displayName: displayName
+              identifiers:
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              scope: scope
+              entityId:
+                key: entityId
+              lusidUniqueId:
+                type: type
+                value: value
+              href: https://openapi-generator.tech
+              properties:
+                key:
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            version:
+              asAtModified: 2000-01-23T04:56:07.000+00:00
+              userIdModified: userIdModified
+              asAtVersionNumber: 0
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              userIdCreated: userIdCreated
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            relationshipDefinitionId:
+              code: code
+              scope: scope
+            traversalDescription: traversalDescription
+          displayName: displayName
+          created: 2000-01-23T04:56:07.000+00:00
+          portfolios:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
+          subGroups:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
+          description: description
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          version:
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 0
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+        - relationships:
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            traversalDirection: traversalDirection
+            relatedEntity:
+              entityType: entityType
+              displayName: displayName
+              identifiers:
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              scope: scope
+              entityId:
+                key: entityId
+              lusidUniqueId:
+                type: type
+                value: value
+              href: https://openapi-generator.tech
+              properties:
+                key:
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            version:
+              asAtModified: 2000-01-23T04:56:07.000+00:00
+              userIdModified: userIdModified
+              asAtVersionNumber: 0
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              userIdCreated: userIdCreated
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            relationshipDefinitionId:
+              code: code
+              scope: scope
+            traversalDescription: traversalDescription
+          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
+            traversalDirection: traversalDirection
+            relatedEntity:
+              entityType: entityType
+              displayName: displayName
+              identifiers:
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              - identifierValue: identifierValue
+                identifierType: identifierType
+                identifierScope: identifierScope
+              scope: scope
+              entityId:
+                key: entityId
+              lusidUniqueId:
+                type: type
+                value: value
+              href: https://openapi-generator.tech
+              properties:
+                key:
+                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
+                  value:
+                    metricValue:
+                      unit: unit
+                      value: 0.8008281904610115
+                    labelValue: labelValue
+                    labelValueSet:
+                      values:
+                      - values
+                      - values
+                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
+                  key: key
+            version:
+              asAtModified: 2000-01-23T04:56:07.000+00:00
+              userIdModified: userIdModified
+              asAtVersionNumber: 0
+              asAtCreated: 2000-01-23T04:56:07.000+00:00
+              userIdCreated: userIdCreated
+              effectiveFrom: 2000-01-23T04:56:07.000+00:00
+              asAtDate: 2000-01-23T04:56:07.000+00:00
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            relationshipDefinitionId:
+              code: code
+              scope: scope
+            traversalDescription: traversalDescription
+          displayName: displayName
+          created: 2000-01-23T04:56:07.000+00:00
+          portfolios:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
+          subGroups:
+          - code: code
+            scope: scope
+          - code: code
+            scope: scope
+          description: description
+          links:
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          - method: method
+            description: description
+            href: https://openapi-generator.tech
+            relation: relation
+          href: https://openapi-generator.tech
+          id:
+            code: code
+            scope: scope
+          version:
+            asAtModified: 2000-01-23T04:56:07.000+00:00
+            userIdModified: userIdModified
+            asAtVersionNumber: 0
+            asAtCreated: 2000-01-23T04:56:07.000+00:00
+            userIdCreated: userIdCreated
+            effectiveFrom: 2000-01-23T04:56:07.000+00:00
+            asAtDate: 2000-01-23T04:56:07.000+00:00
+        links:
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        - method: method
+          description: description
+          href: https://openapi-generator.tech
+          relation: relation
+        href: https://openapi-generator.tech
+      properties:
+        nextPage:
+          description: The next page of results.
+          nullable: true
+          type: string
+        previousPage:
+          description: The previous page of results.
+          nullable: true
+          type: string
+        values:
+          description: The resources to list.
+          items:
+            $ref: '#/components/schemas/PortfolioGroup'
+          type: array
+        href:
+          description: The URI of the resource list.
+          format: uri
+          nullable: true
+          type: string
+        links:
+          description: Collection of links.
+          items:
+            $ref: '#/components/schemas/Link'
+          nullable: true
+          type: array
+      required:
+      - values
+      type: object
     PagedResourceListOfPortfolioGroupSearchResult:
       additionalProperties: false
       description: A paginated list of resource that can be returned from a request.
@@ -82050,305 +82389,6 @@ components:
           description: The resources to list.
           items:
             $ref: '#/components/schemas/PortfolioCashLadder'
-          type: array
-        href:
-          description: The URI of the resource list.
-          format: uri
-          nullable: true
-          type: string
-        links:
-          description: Collection of links.
-          items:
-            $ref: '#/components/schemas/Link'
-          nullable: true
-          type: array
-        nextPage:
-          description: The next page of results.
-          nullable: true
-          type: string
-        previousPage:
-          description: The previous page of results.
-          nullable: true
-          type: string
-      required:
-      - values
-      type: object
-    ResourceListOfPortfolioGroup:
-      additionalProperties: false
-      description: A collection of resources that can be returned from requests.
-      example:
-        previousPage: previousPage
-        nextPage: nextPage
-        values:
-        - relationships:
-          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
-            traversalDirection: traversalDirection
-            relatedEntity:
-              entityType: entityType
-              displayName: displayName
-              identifiers:
-              - identifierValue: identifierValue
-                identifierType: identifierType
-                identifierScope: identifierScope
-              - identifierValue: identifierValue
-                identifierType: identifierType
-                identifierScope: identifierScope
-              scope: scope
-              entityId:
-                key: entityId
-              lusidUniqueId:
-                type: type
-                value: value
-              href: https://openapi-generator.tech
-              properties:
-                key:
-                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                  value:
-                    metricValue:
-                      unit: unit
-                      value: 0.8008281904610115
-                    labelValue: labelValue
-                    labelValueSet:
-                      values:
-                      - values
-                      - values
-                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                  key: key
-            version:
-              asAtModified: 2000-01-23T04:56:07.000+00:00
-              userIdModified: userIdModified
-              asAtVersionNumber: 0
-              asAtCreated: 2000-01-23T04:56:07.000+00:00
-              userIdCreated: userIdCreated
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              asAtDate: 2000-01-23T04:56:07.000+00:00
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            relationshipDefinitionId:
-              code: code
-              scope: scope
-            traversalDescription: traversalDescription
-          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
-            traversalDirection: traversalDirection
-            relatedEntity:
-              entityType: entityType
-              displayName: displayName
-              identifiers:
-              - identifierValue: identifierValue
-                identifierType: identifierType
-                identifierScope: identifierScope
-              - identifierValue: identifierValue
-                identifierType: identifierType
-                identifierScope: identifierScope
-              scope: scope
-              entityId:
-                key: entityId
-              lusidUniqueId:
-                type: type
-                value: value
-              href: https://openapi-generator.tech
-              properties:
-                key:
-                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                  value:
-                    metricValue:
-                      unit: unit
-                      value: 0.8008281904610115
-                    labelValue: labelValue
-                    labelValueSet:
-                      values:
-                      - values
-                      - values
-                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                  key: key
-            version:
-              asAtModified: 2000-01-23T04:56:07.000+00:00
-              userIdModified: userIdModified
-              asAtVersionNumber: 0
-              asAtCreated: 2000-01-23T04:56:07.000+00:00
-              userIdCreated: userIdCreated
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              asAtDate: 2000-01-23T04:56:07.000+00:00
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            relationshipDefinitionId:
-              code: code
-              scope: scope
-            traversalDescription: traversalDescription
-          displayName: displayName
-          created: 2000-01-23T04:56:07.000+00:00
-          portfolios:
-          - code: code
-            scope: scope
-          - code: code
-            scope: scope
-          subGroups:
-          - code: code
-            scope: scope
-          - code: code
-            scope: scope
-          description: description
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          href: https://openapi-generator.tech
-          id:
-            code: code
-            scope: scope
-          version:
-            asAtModified: 2000-01-23T04:56:07.000+00:00
-            userIdModified: userIdModified
-            asAtVersionNumber: 0
-            asAtCreated: 2000-01-23T04:56:07.000+00:00
-            userIdCreated: userIdCreated
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-        - relationships:
-          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
-            traversalDirection: traversalDirection
-            relatedEntity:
-              entityType: entityType
-              displayName: displayName
-              identifiers:
-              - identifierValue: identifierValue
-                identifierType: identifierType
-                identifierScope: identifierScope
-              - identifierValue: identifierValue
-                identifierType: identifierType
-                identifierScope: identifierScope
-              scope: scope
-              entityId:
-                key: entityId
-              lusidUniqueId:
-                type: type
-                value: value
-              href: https://openapi-generator.tech
-              properties:
-                key:
-                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                  value:
-                    metricValue:
-                      unit: unit
-                      value: 0.8008281904610115
-                    labelValue: labelValue
-                    labelValueSet:
-                      values:
-                      - values
-                      - values
-                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                  key: key
-            version:
-              asAtModified: 2000-01-23T04:56:07.000+00:00
-              userIdModified: userIdModified
-              asAtVersionNumber: 0
-              asAtCreated: 2000-01-23T04:56:07.000+00:00
-              userIdCreated: userIdCreated
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              asAtDate: 2000-01-23T04:56:07.000+00:00
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            relationshipDefinitionId:
-              code: code
-              scope: scope
-            traversalDescription: traversalDescription
-          - effectiveUntil: 2000-01-23T04:56:07.000+00:00
-            traversalDirection: traversalDirection
-            relatedEntity:
-              entityType: entityType
-              displayName: displayName
-              identifiers:
-              - identifierValue: identifierValue
-                identifierType: identifierType
-                identifierScope: identifierScope
-              - identifierValue: identifierValue
-                identifierType: identifierType
-                identifierScope: identifierScope
-              scope: scope
-              entityId:
-                key: entityId
-              lusidUniqueId:
-                type: type
-                value: value
-              href: https://openapi-generator.tech
-              properties:
-                key:
-                  effectiveUntil: 2000-01-23T04:56:07.000+00:00
-                  value:
-                    metricValue:
-                      unit: unit
-                      value: 0.8008281904610115
-                    labelValue: labelValue
-                    labelValueSet:
-                      values:
-                      - values
-                      - values
-                  effectiveFrom: 2000-01-23T04:56:07.000+00:00
-                  key: key
-            version:
-              asAtModified: 2000-01-23T04:56:07.000+00:00
-              userIdModified: userIdModified
-              asAtVersionNumber: 0
-              asAtCreated: 2000-01-23T04:56:07.000+00:00
-              userIdCreated: userIdCreated
-              effectiveFrom: 2000-01-23T04:56:07.000+00:00
-              asAtDate: 2000-01-23T04:56:07.000+00:00
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            relationshipDefinitionId:
-              code: code
-              scope: scope
-            traversalDescription: traversalDescription
-          displayName: displayName
-          created: 2000-01-23T04:56:07.000+00:00
-          portfolios:
-          - code: code
-            scope: scope
-          - code: code
-            scope: scope
-          subGroups:
-          - code: code
-            scope: scope
-          - code: code
-            scope: scope
-          description: description
-          links:
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          - method: method
-            description: description
-            href: https://openapi-generator.tech
-            relation: relation
-          href: https://openapi-generator.tech
-          id:
-            code: code
-            scope: scope
-          version:
-            asAtModified: 2000-01-23T04:56:07.000+00:00
-            userIdModified: userIdModified
-            asAtVersionNumber: 0
-            asAtCreated: 2000-01-23T04:56:07.000+00:00
-            userIdCreated: userIdCreated
-            effectiveFrom: 2000-01-23T04:56:07.000+00:00
-            asAtDate: 2000-01-23T04:56:07.000+00:00
-        links:
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        - method: method
-          description: description
-          href: https://openapi-generator.tech
-          relation: relation
-        href: https://openapi-generator.tech
-      properties:
-        values:
-          description: The resources to list.
-          items:
-            $ref: '#/components/schemas/PortfolioGroup'
           type: array
         href:
           description: The URI of the resource list.
