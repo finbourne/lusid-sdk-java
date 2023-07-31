@@ -26,27 +26,31 @@ public class ApiClientBuilderTests {
     public ExpectedException thrown = ExpectedException.none();
 
     @Before
-    public void setUp(){
+    public void setUp() {
         apiClientBuilder = new ApiClientBuilder();
     }
 
     @Test
-    public void build_OnValidConfigurationFile_ShouldBuildKeepLiveApiClient() throws ApiConfigurationException, LusidTokenException {
-        // This test assumes default secrets file is valid without a PAT. Same assertion as all other integration tests.
+    public void build_OnValidConfigurationFile_ShouldBuildKeepLiveApiClient()
+            throws ApiConfigurationException, LusidTokenException {
+        // This test assumes default secrets file is valid without a PAT. Same assertion
+        // as all other integration tests.
         ApiConfiguration apiConfiguration = new ApiConfigurationBuilder().build(CredentialsSource.credentialsFile);
         ApiClient apiClient = new ApiClientBuilder().build(apiConfiguration);
-        // running with no exceptions ensures client built correctly with no configuration or token creation exceptions
-        assertThat("Unexpected extended implementation of ApiClient for default build." ,
+        // running with no exceptions ensures client built correctly with no
+        // configuration or token creation exceptions
+        assertThat("Unexpected extended implementation of ApiClient for default build.",
                 apiClient, instanceOf(RefreshingTokenApiClient.class));
     }
 
     @Test
-    public void build_WithValidPAT_ShouldBuildKeepLiveApiClient() throws ApiConfigurationException, LusidTokenException {
+    public void build_WithValidPAT_ShouldBuildKeepLiveApiClient()
+            throws ApiConfigurationException, LusidTokenException {
 
         ApiConfiguration apiConfiguration = new ApiConfigurationBuilder().build("secrets-pat.json");
         ApiClient apiClient = new ApiClientBuilder().build(apiConfiguration);
 
-        OAuth auth = (OAuth)apiClient.getAuthentication("oauth2");
+        OAuth auth = (OAuth) apiClient.getAuthentication("oauth2");
 
         assertThat(auth.getAccessToken(), equalTo(apiConfiguration.getPersonalAccessToken()));
     }
@@ -58,7 +62,7 @@ public class ApiClientBuilderTests {
         ApiClient apiClient = new ApiClientBuilder().build(apiConfiguration);
     }
 
-    private ApiConfiguration getBadTokenConfiguration(){
+    private ApiConfiguration getBadTokenConfiguration() {
         return new ApiConfiguration(
                 "https://some-non-existing-test-instance.doesnotexist.com/oauth2/doesnotexist/v1/token",
                 "test.testing@finbourne.com",
@@ -68,8 +72,7 @@ public class ApiClientBuilderTests {
                 "https://some-non-existing-test-instance.lusid.com/api",
                 "non-existent",
                 // proxy strs
-                "",8888,"",""
-        );
+                "", 8888, "", "");
     }
 
     @Test
@@ -78,7 +81,8 @@ public class ApiClientBuilderTests {
         int timeoutInSeconds = 20;
         int defaultTimeout = 10;
         ApiConfiguration apiConfiguration = new ApiConfigurationBuilder().build(CredentialsSource.credentialsFile);
-        ApiClient apiClient = new ApiClientBuilder().build(apiConfiguration, timeoutInSeconds, timeoutInSeconds, timeoutInSeconds);
+        ApiClient apiClient = new ApiClientBuilder().build(apiConfiguration, timeoutInSeconds, timeoutInSeconds,
+                timeoutInSeconds, 3);
 
         ScopesApi scopesApi = new ScopesApi(apiClient);
         Instant start = Instant.now();
@@ -87,13 +91,12 @@ public class ApiClientBuilderTests {
             start = Instant.now();
             ResourceListOfScopeDefinition scopes = scopesApi.listScopes(null);
 
-            //  successful call within timeout
-        }
-        catch (Exception ex) {
+            // successful call within timeout
+        } catch (Exception ex) {
             Instant finish = Instant.now();
             long elapsed = Duration.between(start, finish).toMillis() / 1000;
 
-            assertThat(elapsed, greaterThanOrEqualTo((long)defaultTimeout));
+            assertThat(elapsed, greaterThanOrEqualTo((long) defaultTimeout));
         }
     }
 

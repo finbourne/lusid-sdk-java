@@ -15,7 +15,7 @@ public class ApiClientBuilderTest {
 
     private ApiClientBuilder apiClientBuilder;
 
-    //mock dependencies
+    // mock dependencies
     private ApiClient apiClient;
     private OkHttpClient httpClient;
     private ApiConfiguration apiConfiguration;
@@ -26,7 +26,7 @@ public class ApiClientBuilderTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Before
-    public void setUp(){
+    public void setUp() {
         httpClient = mock(OkHttpClient.class);
         apiConfiguration = mock(ApiConfiguration.class);
         lusidToken = mock(LusidToken.class);
@@ -34,7 +34,7 @@ public class ApiClientBuilderTest {
         apiClientBuilder = spy(new ApiClientBuilder());
 
         // mock creation of default api client
-        doReturn(apiClient).when(apiClientBuilder).createApiClient();
+        doReturn(apiClient).when(apiClientBuilder).createApiClient(any(Integer.class));
         // mock default well formed lusid token
         doReturn("access_token_01").when(lusidToken).getAccessToken();
     }
@@ -50,7 +50,7 @@ public class ApiClientBuilderTest {
     public void createApiClient_OnNoApplicationName_ShouldNotSetApplicationHeader() throws LusidTokenException {
         doReturn(null).when(apiConfiguration).getApplicationName();
         apiClientBuilder.createDefaultApiClient(apiConfiguration, httpClient, lusidToken);
-        verify(apiClient,times(0)).addDefaultHeader(eq("X-LUSID-Application"), any());
+        verify(apiClient, times(0)).addDefaultHeader(eq("X-LUSID-Application"), any());
     }
 
     @Test
