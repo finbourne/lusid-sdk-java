@@ -329,7 +329,7 @@ info:
     | <a name="861">861</a>|Compliance run summary not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.393
+  version: 1.0.394
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -365,8 +365,10 @@ tags:
   name: Chart Of Accounts
 - description: Methods for the storage and retrieval of complex market data documents.
   name: Complex Market Data
-- description: Methods for storage and retrieval of generic compliance data
+- description: 'Methods for storage and retrieval of compliance data: rules and results.'
   name: Compliance
+- description: 'Methods for storage and retrieval of generic compliance data: templates'
+  name: Compliance - Generic
 - description: Methods for the storage and retrieval of Configuration Recipe documents.
     Read more about these in the LUSID Knowledge Base here https://support.lusid.com/what-is-a-lusid-recipe-and-how-is-it-used.
   name: Configuration Recipe
@@ -5099,11 +5101,11 @@ paths:
       x-fbn-apistatus: EarlyAccess
       x-contentType: application/json-patch+json
       x-accepts: application/json
-  /api/compliance/rules:
+  /api/compliance/generic/rules:
     get:
-      description: Use this endpoint to retrieve all compliance rules, or a subset
+      description: Use this endpoint to retrieve all compliance rules, or a collection
         defined by an optional filter.
-      operationId: ListComplianceRules
+      operationId: ListComplianceRules2
       parameters:
       - description: Optional. Asat time.
         explode: true
@@ -5303,15 +5305,15 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ListComplianceRules: List compliance rules.'
+      summary: '[EARLY ACCESS] ListComplianceRules2: List compliance rules.'
       tags:
-      - Compliance
+      - Compliance - Generic
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
     post:
       description: "Use this endpoint to upsert a single compliance rule. The template\
-        \ and variation specified must already\r\nexist, as must the portfolio group.\
-        \ The parameters passed must match those required by the template variation."
+        \ and variation specified must already\r\nexist. The parameters passed must\
+        \ match those required by the template."
       operationId: UpsertComplianceRule
       requestBody:
         content:
@@ -5982,16 +5984,16 @@ paths:
       - oauth2: []
       summary: '[EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule.'
       tags:
-      - Compliance
+      - Compliance - Generic
       x-fbn-apistatus: EarlyAccess
       x-contentType: application/json-patch+json
       x-accepts: application/json
-  /api/compliance/rules/{scope}/{code}:
+  /api/compliance/generic/rules/{scope}/{code}:
     delete:
       description: "Use this endpoint to delete a compliance rule. The rule will be\
         \ recoverable for asat times earlier than the\r\ndelete time, but will otherwise\
         \ appear to have never existed."
-      operationId: DeleteComplianceRule
+      operationId: DeleteComplianceRule2
       parameters:
       - description: The compliance rule's scope.
         explode: false
@@ -6054,14 +6056,14 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] DeleteComplianceRule: Delete compliance rule.'
+      summary: '[EARLY ACCESS] DeleteComplianceRule2: Delete compliance rule.'
       tags:
-      - Compliance
+      - Compliance - Generic
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
     get:
       description: Use this endpoint to retrieve a single compliance rule.
-      operationId: GetComplianceRule
+      operationId: GetComplianceRule2
       parameters:
       - description: The compliance rule's scope.
         explode: false
@@ -6240,14 +6242,14 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetComplianceRule: Get compliance rule.'
+      summary: '[EARLY ACCESS] GetComplianceRule2: Get compliance rule.'
       tags:
-      - Compliance
+      - Compliance - Generic
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
-  /api/compliance/runs:
+  /api/compliance/generic/runs:
     get:
-      description: Lists RunIds of prior compliance runs, or a subset with a filter.
+      description: Lists out all RunIds of prior compliance runs.
       operationId: ListComplianceRuns
       parameters:
       - description: 'Optional. The time at which to get results from. Default : latest'
@@ -6275,6 +6277,16 @@ paths:
           pattern: ^[a-zA-Z0-9\+/]*={0,3}$
           type: string
         style: form
+      - description: Optional. When paginating, skip this number of results.
+        explode: true
+        in: query
+        name: start
+        required: false
+        schema:
+          format: int32
+          type: integer
+        style: form
+        x-nullable: true
       - description: Optional. When paginating, limit the number of returned results
           to this many.
         explode: true
@@ -6378,16 +6390,15 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ListComplianceRuns: List historical compliance run
-        identifiers.'
+      summary: '[EARLY ACCESS] ListComplianceRuns: List historical Compliance RunIds'
       tags:
-      - Compliance
+      - Compliance - Generic
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
     post:
-      description: Use this endpoint to run a compliance check using rules from a
-        specific scope.
-      operationId: RunCompliance
+      description: Use this endpoint to fetch the start a compliance run, based on
+        a pre-set mapping file.
+      operationId: RunGenericCompliance
       parameters:
       - description: 'Required: Scope to save the run results in.'
         explode: true
@@ -6500,12 +6511,13 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] RunCompliance: Run a compliance check.'
+      summary: '[EARLY ACCESS] RunGenericCompliance: Kick off the compliance check
+        process'
       tags:
-      - Compliance
+      - Compliance - Generic
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
-  /api/compliance/runs/summary/{scope}/{code}:
+  /api/compliance/generic/runs/summary/{scope}/{code}:
     get:
       description: Specify a run scope and code from a previously run compliance check
         to get summarised results.
@@ -6680,16 +6692,15 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] GetComplianceRunSummary: Get summary results for a
-        specific compliance run.'
+      summary: '[EARLY ACCESS] GetComplianceRunSummary: Get compliance summary results.'
       tags:
-      - Compliance
+      - Compliance - Generic
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/compliance/templates:
     get:
       description: Use this endpoint to fetch a list of all available compliance template
-        ids, or a subset using a filter.
+        ids.
       operationId: ListComplianceTemplates
       parameters:
       - description: 'Optional. The time at which to get results from. Default : latest'
@@ -6878,9 +6889,10 @@ paths:
           description: Error response
       security:
       - oauth2: []
-      summary: '[EARLY ACCESS] ListComplianceTemplates: List compliance templates.'
+      summary: '[EARLY ACCESS] ListComplianceTemplates: Get a specific compliance
+        template'
       tags:
-      - Compliance
+      - Compliance - Generic
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/compliance/templates/{scope}/{code}:
@@ -7040,7 +7052,7 @@ paths:
       summary: '[EARLY ACCESS] GetComplianceTemplate: Get the requested compliance
         template.'
       tags:
-      - Compliance
+      - Compliance - Generic
       x-fbn-apistatus: EarlyAccess
       x-accepts: application/json
   /api/corporateactionsources:
@@ -97385,6 +97397,7 @@ x-tagGroups:
   - Chart Of Accounts
   - Complex Market Data
   - Compliance
+  - Compliance - Generic
   - Configuration Recipe
   - Conventions
   - Corporate Action Sources
