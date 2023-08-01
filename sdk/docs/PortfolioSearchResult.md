@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **parentPortfolioId** | [**ResourceId**](ResourceId.md) |  |  [optional]
 **baseCurrency** | **String** | The base currency of the portfolio. |  [optional]
 **properties** | [**List&lt;Property&gt;**](Property.md) | The requested portfolio properties. These will be from the &#39;Portfolio&#39; domain. |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 
 
