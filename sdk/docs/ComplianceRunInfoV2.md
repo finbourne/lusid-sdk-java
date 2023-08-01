@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **instigatedAt** | **OffsetDateTime** |  | 
 **completedAt** | **OffsetDateTime** |  | 
 **schedule** | **String** |  | 
+**instigatedBy** | **String** |  | 
 
 
 
