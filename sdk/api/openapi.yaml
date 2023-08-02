@@ -329,7 +329,7 @@ info:
     | <a name="861">861</a>|Compliance run summary not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.401
+  version: 1.0.402
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -67653,7 +67653,7 @@ components:
           type: string
         quoteType:
           description: 'The available values are: Price, Spread, Rate, LogNormalVol,
-            NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta'
+            NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor'
           enum:
           - Price
           - Spread
@@ -67666,6 +67666,7 @@ components:
           - Index
           - Ratio
           - Delta
+          - PoolFactor
           type: string
         field:
           description: "The conceptual qualification for the field, typically 'bid',\
@@ -67844,7 +67845,7 @@ components:
           type: string
         quoteType:
           description: 'The available values are: Price, Spread, Rate, LogNormalVol,
-            NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta'
+            NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor'
           enum:
           - Price
           - Spread
@@ -67857,6 +67858,7 @@ components:
           - Index
           - Ratio
           - Delta
+          - PoolFactor
           type: string
         field:
           description: "The conceptual qualification for the field, such as bid, mid,\
@@ -67993,7 +67995,7 @@ components:
       properties:
         quoteType:
           description: 'The available values are: Price, Spread, Rate, LogNormalVol,
-            NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta'
+            NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor'
           enum:
           - Price
           - Spread
@@ -68006,6 +68008,7 @@ components:
           - Index
           - Ratio
           - Delta
+          - PoolFactor
           type: string
         value:
           description: Numeric value of the quote
@@ -76591,7 +76594,7 @@ components:
           description: 'The type of the quote. This allows for quotes other than prices
             e.g. rates or spreads to be used. The available values are: Price, Spread,
             Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index,
-            Ratio, Delta'
+            Ratio, Delta, PoolFactor'
           enum:
           - Price
           - Spread
@@ -76604,6 +76607,7 @@ components:
           - Index
           - Ratio
           - Delta
+          - PoolFactor
           nullable: true
           type: string
         field:
@@ -87273,9 +87277,13 @@ components:
         id:
           $ref: '#/components/schemas/ResourceId'
         name:
+          maxLength: 6000
+          minLength: 0
           nullable: true
           type: string
         description:
+          maxLength: 6000
+          minLength: 0
           nullable: true
           type: string
         active:
@@ -87283,6 +87291,7 @@ components:
         templateId:
           $ref: '#/components/schemas/ResourceId'
         variation:
+          maxLength: 256
           minLength: 1
           type: string
         portfolioGroupId:
