@@ -271,7 +271,7 @@ public class PortfoliosTest {
         }
 
         //    Retrieve the list of portfolios from a given scope
-        ResourceListOfPortfolio portfolios = portfoliosApi.listPortfoliosForScope(scope, null, null, null, null, null, null, null, null);
+        ResourceListOfPortfolio portfolios = portfoliosApi.listPortfoliosForScope(scope, null, null, null, null, null, null, null, null, null);
 
         assertThat(portfolios.getValues().size(), is(equalTo(10)));
     }
