@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **requestId** | **String** | The unique identifier of the request that the changes were part of. | 
 **action** | [**ActionEnum**](#ActionEnum) | The action performed on the transaction, either created, updated, or deleted. The available values are: Create, Update, Delete | 
 **changes** | [**List&lt;ChangeItem&gt;**](ChangeItem.md) | The collection of changes that were made. | 
-**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
 
