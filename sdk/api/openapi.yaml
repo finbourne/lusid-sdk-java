@@ -329,7 +329,7 @@ info:
     | <a name="861">861</a>|Compliance run summary not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.408
+  version: 1.0.409
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -11957,9 +11957,8 @@ paths:
         x-nullable: true
       - description: "The pagination token to use to continue listing data type summaries.\
           \ This\r\nvalue is returned from the previous call. If a pagination token\
-          \ is provided, the filter, effectiveAt\r\nand asAt fields must not have\
-          \ changed since the original request. Also, if set, a start value cannot\
-          \ be provided."
+          \ is provided, the filter, sortBy\r\nand asAt fields must not have changed\
+          \ since the original request. Also, if set, a start value cannot be provided."
         explode: true
         in: query
         name: page
@@ -12008,8 +12007,8 @@ paths:
           pattern: ^[\s\S]*$
           type: string
         style: form
-      - description: Sort the results by these fields. Use use the '-' sign to denote
-          descending allocation e.g. -MyFieldName.
+      - description: A list of field names to sort by, each suffixed by " ASC" or
+          " DESC"
         explode: true
         in: query
         name: sortBy
