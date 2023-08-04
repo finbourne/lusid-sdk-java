@@ -13,6 +13,8 @@ Name | Type | Description | Notes
 **legDefinition** | [**LegDefinition**](LegDefinition.md) |  | 
 **notional** | **java.math.BigDecimal** | Scaling factor to apply to leg quantities. | 
 **overrides** | [**FixedLegAllOfOverrides**](FixedLegAllOfOverrides.md) |  |  [optional]
+**capRate** | **java.math.BigDecimal** | The maximum floating rate which a cashflow can accrue. |  [optional]
+**floorRate** | **java.math.BigDecimal** | The minimum floating rate which a cashflow can accrue. |  [optional]
 
 
 

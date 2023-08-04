@@ -12,6 +12,8 @@ Name | Type | Description | Notes
 **legDefinition** | [**LegDefinition**](LegDefinition.md) |  | 
 **notional** | **java.math.BigDecimal** | Scaling factor to apply to leg quantities. | 
 **overrides** | [**FixedLegAllOfOverrides**](FixedLegAllOfOverrides.md) |  |  [optional]
+**capRate** | **java.math.BigDecimal** | The maximum floating rate which a cashflow can accrue. |  [optional]
+**floorRate** | **java.math.BigDecimal** | The minimum floating rate which a cashflow can accrue. |  [optional]
 **instrumentType** | [**InstrumentTypeEnum**](#InstrumentTypeEnum) | The available values are: QuotedSecurity, InterestRateSwap, FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption, Bond, EquityOption, FixedLeg, FloatingLeg, BespokeCashFlowsLeg, Unknown, TermDeposit, ContractForDifference, EquitySwap, CashPerpetual, CapFloor, CashSettled, CdsIndex, Basket, FundingLeg, FxSwap, ForwardRateAgreement, SimpleInstrument, Repo, Equity, ExchangeTradedOption, ReferenceInstrument, ComplexBond, InflationLinkedBond, InflationSwap, SimpleCashFlowLoan | 
 
 

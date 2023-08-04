@@ -329,7 +329,7 @@ info:
     | <a name="861">861</a>|Compliance run summary not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.414
+  version: 1.0.415
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -94302,6 +94302,16 @@ components:
           type: number
         overrides:
           $ref: '#/components/schemas/FixedLeg_allOf_overrides'
+        capRate:
+          description: The maximum floating rate which a cashflow can accrue.
+          format: double
+          nullable: true
+          type: number
+        floorRate:
+          description: The minimum floating rate which a cashflow can accrue.
+          format: double
+          nullable: true
+          type: number
         instrumentType:
           description: 'The available values are: QuotedSecurity, InterestRateSwap,
             FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
