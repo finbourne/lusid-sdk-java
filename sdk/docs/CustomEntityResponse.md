@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **identifiers** | [**List&lt;CustomEntityId&gt;**](CustomEntityId.md) | The identifiers the custom entity will be upserted with. | 
 **fields** | [**List&lt;CustomEntityField&gt;**](CustomEntityField.md) | The fields that decorate the custom entity. | 
 **relationships** | [**List&lt;Relationship&gt;**](Relationship.md) | A set of relationships associated to the custom entity. | 
-**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 
 
