@@ -329,7 +329,7 @@ info:
     | <a name="861">861</a>|Compliance run summary not found.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.423
+  version: 1.0.424
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -96554,7 +96554,6 @@ components:
         value:
           description: The key that uniquely identifies the property. It has the format
             {domain}/{scope}/{code}.
-          pattern: ^[a-zA-Z0-9@+\-_&]+$
           type: string
         complianceParameterType:
           description: 'The parameter type. The available values are: BoolComplianceParameter,
