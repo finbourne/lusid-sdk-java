@@ -2,16 +2,16 @@
 
 All URIs are relative to *https://fbn-prd.lusid.com/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createRelationshipDefinition**](RelationshipDefinitionsApi.md#createRelationshipDefinition) | **POST** /api/relationshipdefinitions | [EARLY ACCESS] CreateRelationshipDefinition: Create Relationship Definition
-[**deleteRelationshipDefinition**](RelationshipDefinitionsApi.md#deleteRelationshipDefinition) | **DELETE** /api/relationshipdefinitions/{scope}/{code} | [EARLY ACCESS] DeleteRelationshipDefinition: Delete Relationship Definition
-[**getRelationshipDefinition**](RelationshipDefinitionsApi.md#getRelationshipDefinition) | **GET** /api/relationshipdefinitions/{scope}/{code} | [EARLY ACCESS] GetRelationshipDefinition: Get relationship definition
-[**listRelationshipDefinitions**](RelationshipDefinitionsApi.md#listRelationshipDefinitions) | **GET** /api/relationshipdefinitions | [EARLY ACCESS] ListRelationshipDefinitions: List relationship definitions
-[**updateRelationshipDefinition**](RelationshipDefinitionsApi.md#updateRelationshipDefinition) | **PUT** /api/relationshipdefinitions/{scope}/{code} | [EARLY ACCESS] UpdateRelationshipDefinition: Update Relationship Definition
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**createRelationshipDefinition**](RelationshipDefinitionsApi.md#createRelationshipDefinition) | **POST** /api/relationshipdefinitions | [EARLY ACCESS] CreateRelationshipDefinition: Create Relationship Definition |
+| [**deleteRelationshipDefinition**](RelationshipDefinitionsApi.md#deleteRelationshipDefinition) | **DELETE** /api/relationshipdefinitions/{scope}/{code} | [EARLY ACCESS] DeleteRelationshipDefinition: Delete Relationship Definition |
+| [**getRelationshipDefinition**](RelationshipDefinitionsApi.md#getRelationshipDefinition) | **GET** /api/relationshipdefinitions/{scope}/{code} | [EARLY ACCESS] GetRelationshipDefinition: Get relationship definition |
+| [**listRelationshipDefinitions**](RelationshipDefinitionsApi.md#listRelationshipDefinitions) | **GET** /api/relationshipdefinitions | [EARLY ACCESS] ListRelationshipDefinitions: List relationship definitions |
+| [**updateRelationshipDefinition**](RelationshipDefinitionsApi.md#updateRelationshipDefinition) | **PUT** /api/relationshipdefinitions/{scope}/{code} | [EARLY ACCESS] UpdateRelationshipDefinition: Update Relationship Definition |
 
 
-<a name="createRelationshipDefinition"></a>
+<a id="createRelationshipDefinition"></a>
 # **createRelationshipDefinition**
 > RelationshipDefinition createRelationshipDefinition(createRelationshipDefinitionRequest)
 
@@ -56,9 +56,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createRelationshipDefinitionRequest** | [**CreateRelationshipDefinitionRequest**](CreateRelationshipDefinitionRequest.md)| The definition of the new relationship. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createRelationshipDefinitionRequest** | [**CreateRelationshipDefinitionRequest**](CreateRelationshipDefinitionRequest.md)| The definition of the new relationship. | |
 
 ### Return type
 
@@ -70,17 +70,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | The newly created relationship definition |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **201** | The newly created relationship definition |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="deleteRelationshipDefinition"></a>
+<a id="deleteRelationshipDefinition"></a>
 # **deleteRelationshipDefinition**
 > DeletedEntityResponse deleteRelationshipDefinition(scope, code)
 
@@ -126,10 +126,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the relationship definition to be deleted. |
- **code** | **String**| The code of the relationship definition to be deleted. Together with the domain and scope this uniquely              identifies the relationship. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the relationship definition to be deleted. | |
+| **code** | **String**| The code of the relationship definition to be deleted. Together with the domain and scope this uniquely              identifies the relationship. | |
 
 ### Return type
 
@@ -147,11 +147,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The time that the relationship definition was deleted |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The time that the relationship definition was deleted |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getRelationshipDefinition"></a>
+<a id="getRelationshipDefinition"></a>
 # **getRelationshipDefinition**
 > RelationshipDefinition getRelationshipDefinition(scope, code, asAt)
 
@@ -198,11 +198,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the specified relationship definition. |
- **code** | **String**| The code of the specified relationship definition. Together with the domain and scope this uniquely              identifies the relationship definition. |
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the relationship definition. Defaults to return              the latest version of the definition if not specified. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the specified relationship definition. | |
+| **code** | **String**| The code of the specified relationship definition. Together with the domain and scope this uniquely              identifies the relationship definition. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the relationship definition. Defaults to return              the latest version of the definition if not specified. | [optional] |
 
 ### Return type
 
@@ -220,11 +220,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The requested relationship definition |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The requested relationship definition |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="listRelationshipDefinitions"></a>
+<a id="listRelationshipDefinitions"></a>
 # **listRelationshipDefinitions**
 > PagedResourceListOfRelationshipDefinition listRelationshipDefinitions(asAt, page, limit, filter)
 
@@ -272,12 +272,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the relationship definitions. Defaults to return              the latest version of each definition if not specified. | [optional]
- **page** | **String**| The pagination token to use to continue listing relationship definitions from a previous call to list relationship definitions. This  value is returned from the previous call. If a pagination token is provided the filter, asAt field  must not have changed since the original request. | [optional]
- **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional]
- **filter** | **String**| Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the relationship definitions. Defaults to return              the latest version of each definition if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing relationship definitions from a previous call to list relationship definitions. This  value is returned from the previous call. If a pagination token is provided the filter, asAt field  must not have changed since the original request. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;ExampleScope&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -295,11 +295,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The requested relationship definitions |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The requested relationship definitions |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="updateRelationshipDefinition"></a>
+<a id="updateRelationshipDefinition"></a>
 # **updateRelationshipDefinition**
 > RelationshipDefinition updateRelationshipDefinition(scope, code, updateRelationshipDefinitionRequest)
 
@@ -346,11 +346,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the relationship definition being updated. |
- **code** | **String**| The code of the relationship definition being updated. Together with the scope this uniquely              identifies the relationship definition. |
- **updateRelationshipDefinitionRequest** | [**UpdateRelationshipDefinitionRequest**](UpdateRelationshipDefinitionRequest.md)| The details of relationship definition to update. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the relationship definition being updated. | |
+| **code** | **String**| The code of the relationship definition being updated. Together with the scope this uniquely              identifies the relationship definition. | |
+| **updateRelationshipDefinitionRequest** | [**UpdateRelationshipDefinitionRequest**](UpdateRelationshipDefinitionRequest.md)| The details of relationship definition to update. | |
 
 ### Return type
 
@@ -362,13 +362,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The updated relationship definition |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The updated relationship definition |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 

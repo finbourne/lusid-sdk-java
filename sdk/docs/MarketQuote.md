@@ -6,28 +6,29 @@ The market quote for an observable which will be used to calibrate the market da
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**quoteType** | [**QuoteTypeEnum**](#QuoteTypeEnum) | The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta | 
-**value** | **java.math.BigDecimal** | Numeric value of the quote | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**quoteType** | [**QuoteTypeEnum**](#QuoteTypeEnum) | The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor |  |
+|**value** | **java.math.BigDecimal** | Numeric value of the quote |  |
 
 
 
 ## Enum: QuoteTypeEnum
 
-Name | Value
----- | -----
-PRICE | &quot;Price&quot;
-SPREAD | &quot;Spread&quot;
-RATE | &quot;Rate&quot;
-LOGNORMALVOL | &quot;LogNormalVol&quot;
-NORMALVOL | &quot;NormalVol&quot;
-PARSPREAD | &quot;ParSpread&quot;
-ISDASPREAD | &quot;IsdaSpread&quot;
-UPFRONT | &quot;Upfront&quot;
-INDEX | &quot;Index&quot;
-RATIO | &quot;Ratio&quot;
-DELTA | &quot;Delta&quot;
+| Name | Value |
+|---- | -----|
+| PRICE | &quot;Price&quot; |
+| SPREAD | &quot;Spread&quot; |
+| RATE | &quot;Rate&quot; |
+| LOGNORMALVOL | &quot;LogNormalVol&quot; |
+| NORMALVOL | &quot;NormalVol&quot; |
+| PARSPREAD | &quot;ParSpread&quot; |
+| ISDASPREAD | &quot;IsdaSpread&quot; |
+| UPFRONT | &quot;Upfront&quot; |
+| INDEX | &quot;Index&quot; |
+| RATIO | &quot;Ratio&quot; |
+| DELTA | &quot;Delta&quot; |
+| POOLFACTOR | &quot;PoolFactor&quot; |
 
 
 

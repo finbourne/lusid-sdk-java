@@ -6,19 +6,19 @@ Base class for representing result key rules in LUSID, which describe how to res
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**resultKeyRuleType** | [**ResultKeyRuleTypeEnum**](#ResultKeyRuleTypeEnum) | The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**resultKeyRuleType** | [**ResultKeyRuleTypeEnum**](#ResultKeyRuleTypeEnum) | The available values are: Invalid, ResultDataKeyRule, PortfolioResultDataKeyRule |  |
 
 
 
 ## Enum: ResultKeyRuleTypeEnum
 
-Name | Value
----- | -----
-INVALID | &quot;Invalid&quot;
-RESULTDATAKEYRULE | &quot;ResultDataKeyRule&quot;
-PORTFOLIORESULTDATAKEYRULE | &quot;PortfolioResultDataKeyRule&quot;
+| Name | Value |
+|---- | -----|
+| INVALID | &quot;Invalid&quot; |
+| RESULTDATAKEYRULE | &quot;ResultDataKeyRule&quot; |
+| PORTFOLIORESULTDATAKEYRULE | &quot;PortfolioResultDataKeyRule&quot; |
 
 
 

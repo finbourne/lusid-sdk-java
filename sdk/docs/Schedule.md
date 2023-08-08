@@ -6,23 +6,23 @@ Base class for representing schedules in LUSID.  This base class should not be d
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**scheduleType** | [**ScheduleTypeEnum**](#ScheduleTypeEnum) | The available values are: Fixed, Float, Optionality, Step, Exercise, FxRate, Invalid | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**scheduleType** | [**ScheduleTypeEnum**](#ScheduleTypeEnum) | The available values are: FixedSchedule, FloatSchedule, OptionalitySchedule, StepSchedule, Exercise, FxRateSchedule, Invalid |  |
 
 
 
 ## Enum: ScheduleTypeEnum
 
-Name | Value
----- | -----
-FIXED | &quot;Fixed&quot;
-FLOAT | &quot;Float&quot;
-OPTIONALITY | &quot;Optionality&quot;
-STEP | &quot;Step&quot;
-EXERCISE | &quot;Exercise&quot;
-FXRATE | &quot;FxRate&quot;
-INVALID | &quot;Invalid&quot;
+| Name | Value |
+|---- | -----|
+| FIXEDSCHEDULE | &quot;FixedSchedule&quot; |
+| FLOATSCHEDULE | &quot;FloatSchedule&quot; |
+| OPTIONALITYSCHEDULE | &quot;OptionalitySchedule&quot; |
+| STEPSCHEDULE | &quot;StepSchedule&quot; |
+| EXERCISE | &quot;Exercise&quot; |
+| FXRATESCHEDULE | &quot;FxRateSchedule&quot; |
+| INVALID | &quot;Invalid&quot; |
 
 
 

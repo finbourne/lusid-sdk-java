@@ -2,18 +2,18 @@
 
 All URIs are relative to *https://fbn-prd.lusid.com/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getPortfolioChanges**](EntitiesApi.md#getPortfolioChanges) | **GET** /api/entities/changes/portfolios | [EARLY ACCESS] GetPortfolioChanges: Get the next change to each portfolio in a scope.
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**getPortfolioChanges**](EntitiesApi.md#getPortfolioChanges) | **GET** /api/entities/changes/portfolios | [EARLY ACCESS] GetPortfolioChanges: Get the next change to each portfolio in a scope. |
 
 
-<a name="getPortfolioChanges"></a>
+<a id="getPortfolioChanges"></a>
 # **getPortfolioChanges**
 > ResourceListOfChange getPortfolioChanges(scope, effectiveAt, asAt)
 
 [EARLY ACCESS] GetPortfolioChanges: Get the next change to each portfolio in a scope.
 
-Gets the time of the next (earliest effective at) modification (correction and/or amendment) to each portfolio in a scope relative to a point in bitemporal time.  Includes changes from parent portfolios in different scopes.  Excludes changes from subcriptions (e.g corporate actions).
+Gets the time of the next (earliest effective at) modification (correction and/or amendment) to each portfolio in a scope relative to a point in bitemporal time.  Includes changes from parent portfolios in different scopes.  Excludes changes from subscriptions (e.g corporate actions).
 
 ### Example
 ```java
@@ -54,11 +54,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope |
- **effectiveAt** | **String**| The effective date of the origin. |
- **asAt** | **OffsetDateTime**| The as-at date of the origin. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope | |
+| **effectiveAt** | **String**| The effective date of the origin. | |
+| **asAt** | **OffsetDateTime**| The as-at date of the origin. | [optional] |
 
 ### Return type
 
@@ -76,7 +76,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**400** | The details of the input related failure |  -  |
-**200** | A list of portfolio changes in the requested scope relative to the specified time. |  -  |
-**0** | Error response |  -  |
+| **400** | The details of the input related failure |  -  |
+| **200** | A list of portfolio changes in the requested scope relative to the specified time. |  -  |
+| **0** | Error response |  -  |
 

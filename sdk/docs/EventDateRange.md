@@ -6,10 +6,10 @@ A standard representation of the effective date range for the event, used for di
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**start** | **OffsetDateTime** |  |  [optional]
-**end** | **OffsetDateTime** |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**start** | **OffsetDateTime** |  |  [optional] |
+|**end** | **OffsetDateTime** |  |  [optional] |
 
 
 

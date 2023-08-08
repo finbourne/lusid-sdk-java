@@ -2,14 +2,14 @@
 
 All URIs are relative to *https://fbn-prd.lusid.com/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getExcelAddin**](ApplicationMetadataApi.md#getExcelAddin) | **GET** /api/metadata/downloads/exceladdin | GetExcelAddin: Download Excel Addin
-[**getLusidVersions**](ApplicationMetadataApi.md#getLusidVersions) | **GET** /api/metadata/versions | GetLusidVersions: Get LUSID versions
-[**listAccessControlledResources**](ApplicationMetadataApi.md#listAccessControlledResources) | **GET** /api/metadata/access/resources | ListAccessControlledResources: Get resources available for access control
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**getExcelAddin**](ApplicationMetadataApi.md#getExcelAddin) | **GET** /api/metadata/downloads/exceladdin | GetExcelAddin: Download Excel Addin |
+| [**getLusidVersions**](ApplicationMetadataApi.md#getLusidVersions) | **GET** /api/metadata/versions | GetLusidVersions: Get LUSID versions |
+| [**listAccessControlledResources**](ApplicationMetadataApi.md#listAccessControlledResources) | **GET** /api/metadata/access/resources | ListAccessControlledResources: Get resources available for access control |
 
 
-<a name="getExcelAddin"></a>
+<a id="getExcelAddin"></a>
 # **getExcelAddin**
 > FileResponse getExcelAddin(version)
 
@@ -54,9 +54,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **version** | **String**| The requested version of the Excel plugin | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **version** | **String**| The requested version of the Excel plugin | [optional] |
 
 ### Return type
 
@@ -74,11 +74,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | Success |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getLusidVersions"></a>
+<a id="getLusidVersions"></a>
 # **getLusidVersions**
 > VersionSummaryDto getLusidVersions()
 
@@ -139,10 +139,10 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Collection of versions associated with LUSID |  -  |
-**0** | Error response |  -  |
+| **200** | Collection of versions associated with LUSID |  -  |
+| **0** | Error response |  -  |
 
-<a name="listAccessControlledResources"></a>
+<a id="listAccessControlledResources"></a>
 # **listAccessControlledResources**
 > ResourceListOfAccessControlledResource listAccessControlledResources(filter)
 
@@ -187,9 +187,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filter** | **String**| Optional. Expression to filter the result set.               For example, to filter on the Application, use \&quot;application eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **filter** | **String**| Optional. Expression to filter the result set.               For example, to filter on the Application, use \&quot;application eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -207,7 +207,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | Success |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 

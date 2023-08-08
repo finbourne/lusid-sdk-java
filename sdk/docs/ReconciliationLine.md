@@ -6,12 +6,12 @@ In evaluating a left and right hand side holding or valuation set, two data reco
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**left** | **Map&lt;String, Object&gt;** | Left hand side of the comparison |  [optional]
-**right** | **Map&lt;String, Object&gt;** | Right hand side of the comparison |  [optional]
-**difference** | **Map&lt;String, Object&gt;** | Difference between LHS and RHS of comparison |  [optional]
-**resultComparison** | **Map&lt;String, Object&gt;** | The logical or semantic description of the difference, e.g. \&quot;Matches\&quot; or \&quot;MatchesWithTolerance\&quot; or \&quot;Failed\&quot;. |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**left** | **Map&lt;String, Object&gt;** | Left hand side of the comparison |  [optional] |
+|**right** | **Map&lt;String, Object&gt;** | Right hand side of the comparison |  [optional] |
+|**difference** | **Map&lt;String, Object&gt;** | Difference between LHS and RHS of comparison |  [optional] |
+|**resultComparison** | **Map&lt;String, Object&gt;** | The logical or semantic description of the difference, e.g. \&quot;Matches\&quot; or \&quot;MatchesWithTolerance\&quot; or \&quot;Failed\&quot;. |  [optional] |
 
 
 

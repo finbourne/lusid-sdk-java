@@ -2,15 +2,15 @@
 
 All URIs are relative to *https://fbn-prd.lusid.com/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getEntitySchema**](SchemasApi.md#getEntitySchema) | **GET** /api/schemas/entities/{entity} | [EARLY ACCESS] GetEntitySchema: Get schema
-[**getPropertySchema**](SchemasApi.md#getPropertySchema) | **GET** /api/schemas/properties | [EARLY ACCESS] GetPropertySchema: Get property schema
-[**getValueTypes**](SchemasApi.md#getValueTypes) | **GET** /api/schemas/types | [EARLY ACCESS] GetValueTypes: Get value types
-[**listEntities**](SchemasApi.md#listEntities) | **GET** /api/schemas/entities | [EARLY ACCESS] ListEntities: List entities
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**getEntitySchema**](SchemasApi.md#getEntitySchema) | **GET** /api/schemas/entities/{entity} | [EARLY ACCESS] GetEntitySchema: Get schema |
+| [**getPropertySchema**](SchemasApi.md#getPropertySchema) | **GET** /api/schemas/properties | [EARLY ACCESS] GetPropertySchema: Get property schema |
+| [**getValueTypes**](SchemasApi.md#getValueTypes) | **GET** /api/schemas/types | [EARLY ACCESS] GetValueTypes: Get value types |
+| [**listEntities**](SchemasApi.md#listEntities) | **GET** /api/schemas/entities | [EARLY ACCESS] ListEntities: List entities |
 
 
-<a name="getEntitySchema"></a>
+<a id="getEntitySchema"></a>
 # **getEntitySchema**
 > Schema getEntitySchema(entity)
 
@@ -55,9 +55,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entity** | **String**| The name of a valid entity |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entity** | **String**| The name of a valid entity | |
 
 ### Return type
 
@@ -75,11 +75,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | Success |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getPropertySchema"></a>
+<a id="getPropertySchema"></a>
 # **getPropertySchema**
 > PropertySchema getPropertySchema(propertyKeys, asAt)
 
@@ -125,10 +125,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **propertyKeys** | [**List&lt;String&gt;**](String.md)| One or more property keys for which the schema is requested | [optional]
- **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| One or more property keys for which the schema is requested | [optional] |
+| **asAt** | **OffsetDateTime**| Optional. The AsAt date of the data | [optional] |
 
 ### Return type
 
@@ -146,11 +146,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | Success |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getValueTypes"></a>
+<a id="getValueTypes"></a>
 # **getValueTypes**
 > ResourceListOfValueType getValueTypes(sortBy, start, limit)
 
@@ -197,11 +197,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional]
- **start** | **Integer**| Optional. When paginating, skip this number of results | [optional]
- **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. Order the results by these fields. Use use the &#39;-&#39; sign to denote descending order e.g. -MyFieldName | [optional] |
+| **start** | **Integer**| Optional. When paginating, skip this number of results | [optional] |
+| **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
 
 ### Return type
 
@@ -219,11 +219,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | Success |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="listEntities"></a>
+<a id="listEntities"></a>
 # **listEntities**
 > ResourceListOfString listEntities()
 
@@ -284,6 +284,6 @@ This endpoint does not need any parameter.
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**0** | Error response |  -  |
+| **200** | Success |  -  |
+| **0** | Error response |  -  |
 

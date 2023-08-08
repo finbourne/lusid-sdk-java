@@ -6,11 +6,11 @@ For indicating a dependency on an fx rate.  For example domestic-foreign for USD
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**domesticCurrency** | **String** | DomesticCurrency is the first currency in a currency pair quote e.g. eur-gbp, eur is the domestic currency. | 
-**foreignCurrency** | **String** | ForeignCurrency is the second currency in a currency pair quote e.g. eur-gbp, gbp is the foreign currency. | 
-**date** | **OffsetDateTime** | The effectiveAt of the fx rate. | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**domesticCurrency** | **String** | DomesticCurrency is the first currency in a currency pair quote e.g. eur-gbp, eur is the domestic currency. |  |
+|**foreignCurrency** | **String** | ForeignCurrency is the second currency in a currency pair quote e.g. eur-gbp, gbp is the foreign currency. |  |
+|**date** | **OffsetDateTime** | The effectiveAt of the fx rate. |  |
 
 
 

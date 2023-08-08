@@ -6,8 +6,8 @@ Represents a dependency that could not be understood as an externally exposed de
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
 
 
 

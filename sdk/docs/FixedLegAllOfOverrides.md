@@ -6,10 +6,10 @@ Any overriding data for notionals, spreads or rates that would affect generation
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**amortization** | **List&lt;java.math.BigDecimal&gt;** |  |  [optional]
-**spreads** | **List&lt;java.math.BigDecimal&gt;** |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**amortization** | **List&lt;java.math.BigDecimal&gt;** |  |  [optional] |
+|**spreads** | **List&lt;java.math.BigDecimal&gt;** |  |  [optional] |
 
 
 

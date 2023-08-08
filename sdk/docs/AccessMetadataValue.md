@@ -6,10 +6,10 @@ An access control value. Provider should only be used if you are a service provi
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**value** | **String** |  | 
-**provider** | **String** |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**value** | **String** |  |  |
+|**provider** | **String** |  |  [optional] |
 
 
 

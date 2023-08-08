@@ -6,11 +6,11 @@ LUSID representation of a reference to another instrument that has already been 
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**instrumentId** | **String** | The Identifier code | 
-**instrumentIdType** | **String** | The type of the instrument id e.g. LusidInstrument Id | 
-**scope** | **String** | Scope for the instrument (optional) | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**instrumentId** | **String** | The Identifier code |  |
+|**instrumentIdType** | **String** | The type of the instrument id e.g. LusidInstrument Id |  |
+|**scope** | **String** | Scope for the instrument (optional) |  |
 
 
 

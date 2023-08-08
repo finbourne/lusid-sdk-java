@@ -2,12 +2,12 @@
 
 All URIs are relative to *https://fbn-prd.lusid.com/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**listScopes**](ScopesApi.md#listScopes) | **GET** /api/scopes | ListScopes: List Scopes
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**listScopes**](ScopesApi.md#listScopes) | **GET** /api/scopes | ListScopes: List Scopes |
 
 
-<a name="listScopes"></a>
+<a id="listScopes"></a>
 # **listScopes**
 > ResourceListOfScopeDefinition listScopes(filter)
 
@@ -52,9 +52,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **filter** | **String**| Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **filter** | **String**| Expression to filter the result set.              For example, to filter on the Scope, use \&quot;scope eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -72,7 +72,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | A list of scopes |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | A list of scopes |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 

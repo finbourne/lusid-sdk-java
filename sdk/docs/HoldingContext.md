@@ -6,9 +6,9 @@ Holding context node.  Contains settings that control how LUSID handles holdings
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**taxLotLevelHoldings** | **Boolean** | Whether or not to expand the holdings to return the underlying tax-lots. Defaults to True. |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**taxLotLevelHoldings** | **Boolean** | Whether or not to expand the holdings to return the underlying tax-lots. Defaults to True. |  [optional] |
 
 
 

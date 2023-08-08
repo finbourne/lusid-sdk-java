@@ -6,9 +6,9 @@ For the storage of any information pertinent to the confirmation of an OTC trade
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**counterpartyAgreementId** | [**ResourceId**](ResourceId.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**counterpartyAgreementId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
 
 
 

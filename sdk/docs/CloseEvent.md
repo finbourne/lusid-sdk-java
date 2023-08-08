@@ -6,10 +6,10 @@ The termination of an instrument.  In some cases termination can happen over a r
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**startDate** | **OffsetDateTime** | The first date on which the instrument could close |  [optional]
-**endDate** | **OffsetDateTime** | The last date on which the instrument could close |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**startDate** | **OffsetDateTime** | The first date on which the instrument could close |  [optional] |
+|**endDate** | **OffsetDateTime** | The last date on which the instrument could close |  [optional] |
 
 
 

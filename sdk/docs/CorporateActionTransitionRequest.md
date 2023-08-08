@@ -6,10 +6,10 @@ A 'transition' within a corporate action, representing a set of output movements
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**inputTransition** | [**CorporateActionTransitionComponentRequest**](CorporateActionTransitionComponentRequest.md) |  |  [optional]
-**outputTransitions** | [**List&lt;CorporateActionTransitionComponentRequest&gt;**](CorporateActionTransitionComponentRequest.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**inputTransition** | [**CorporateActionTransitionComponentRequest**](CorporateActionTransitionComponentRequest.md) |  |  [optional] |
+|**outputTransitions** | [**List&lt;CorporateActionTransitionComponentRequest&gt;**](CorporateActionTransitionComponentRequest.md) |  |  [optional] |
 
 
 

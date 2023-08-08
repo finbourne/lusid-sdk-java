@@ -6,10 +6,10 @@ For indicating a dependency on discounting for a given currency.  E.g Valuing a 
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**currency** | **String** | The currency that needs to be discounted. | 
-**date** | **OffsetDateTime** | The effectiveDate of the entity that this is a dependency for.  Unless there is an obvious date this should be, like for a historic reset, then this is the valuation date. | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**currency** | **String** | The currency that needs to be discounted. |  |
+|**date** | **OffsetDateTime** | The effectiveDate of the entity that this is a dependency for.  Unless there is an obvious date this should be, like for a historic reset, then this is the valuation date. |  |
 
 
 

@@ -6,9 +6,9 @@ Credit Support Annex information. The interaction in terms of margining requirem
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**creditSupportAnnex** | [**CreditSupportAnnex**](CreditSupportAnnex.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**creditSupportAnnex** | [**CreditSupportAnnex**](CreditSupportAnnex.md) |  |  [optional] |
 
 
 
