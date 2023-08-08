@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **tags** | **List&lt;String&gt;** | The tags associated with the reference list. |  [optional]
 **referenceList** | [**ReferenceList**](ReferenceList.md) |  | 
 **version** | [**Version**](Version.md) |  | 
-**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
 
 
 
