@@ -330,7 +330,7 @@ info:
     | <a name="869">869</a>|Conflicting instrument properties in batch.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.433
+  version: 1.0.434
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
