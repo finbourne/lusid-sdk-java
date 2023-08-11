@@ -330,7 +330,7 @@ info:
     | <a name="869">869</a>|Conflicting instrument properties in batch.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.435
+  version: 1.0.436
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -40647,8 +40647,7 @@ paths:
       - description: "The pagination token to use to continue listing relationship\
           \ definitions from a previous call to list relationship definitions. This\r\
           \nvalue is returned from the previous call. If a pagination token is provided\
-          \ the filter, sortBy and asAt field\r\nmust not have changed since the original\
-          \ request."
+          \ the filter, asAt field\r\nmust not have changed since the original request."
         explode: true
         in: query
         name: page
@@ -40683,18 +40682,6 @@ paths:
           pattern: ^[\s\S]*$
           type: string
         style: form
-      - description: A list of field names to sort by, each suffixed by " ASC" or
-          " DESC"
-        explode: true
-        in: query
-        name: sortBy
-        required: false
-        schema:
-          items:
-            type: string
-          type: array
-        style: form
-        x-nullable: true
       responses:
         "200":
           content:
