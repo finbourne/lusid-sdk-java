@@ -30,7 +30,7 @@ info:
     | Access        | Access control for LUSID (in conjunction with Identity)                           | [Swagger](../../../access/swagger/index.html)        |
     | Drive         | Secure file repository and manager for collaboration.                             | [Swagger](../../../drive/swagger/index.html)         |
     | Luminesce     | Data virtualisation service (query data from multiple providers, including LUSID) | [Swagger](../../../honeycomb/swagger/index.html)     |
-    | Notification  | Notification service.                                                             | [Swagger](../../../notifications/swagger/index.html) |
+    | Notification  | Notification service.                                                             | [Swagger](../../../notification/swagger/index.html)  |
     | Configuration | File store for secrets and other sensitive information.                           | [Swagger](../../../configuration/swagger/index.html) |
 
 
@@ -330,7 +330,7 @@ info:
     | <a name="869">869</a>|Conflicting instrument properties in batch.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.450
+  version: 1.0.451
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
