@@ -330,7 +330,7 @@ info:
     | <a name="869">869</a>|Conflicting instrument properties in batch.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.453
+  version: 1.0.454
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -35076,6 +35076,7 @@ paths:
               outputFrequency: Daily
               alternativeInceptionDate: 2020-01-01
               holidayCalendars: []
+              currency: USD
             schema:
               $ref: '#/components/schemas/AggregatedReturnsRequest'
           application/json:
@@ -35098,6 +35099,7 @@ paths:
               outputFrequency: Daily
               alternativeInceptionDate: 2020-01-01
               holidayCalendars: []
+              currency: USD
             schema:
               $ref: '#/components/schemas/AggregatedReturnsRequest'
           text/json:
@@ -35120,6 +35122,7 @@ paths:
               outputFrequency: Daily
               alternativeInceptionDate: 2020-01-01
               holidayCalendars: []
+              currency: USD
             schema:
               $ref: '#/components/schemas/AggregatedReturnsRequest'
           application/*+json:
@@ -35142,6 +35145,7 @@ paths:
               outputFrequency: Daily
               alternativeInceptionDate: 2020-01-01
               holidayCalendars: []
+              currency: USD
             schema:
               $ref: '#/components/schemas/AggregatedReturnsRequest'
         description: The request used in the AggregatedReturns.
@@ -55535,6 +55539,7 @@ components:
         holidayCalendars:
         - holidayCalendars
         - holidayCalendars
+        currency: currency
         metrics:
         - withFee: true
           annualised: true
@@ -55603,6 +55608,13 @@ components:
             type: string
           nullable: true
           type: array
+        currency:
+          description: Optional - either a string or a property. If provided, the
+            results will be converted to the specified currency
+          maxLength: 6000
+          minLength: 0
+          nullable: true
+          type: string
       required:
       - metrics
       type: object
@@ -58917,6 +58929,7 @@ components:
         holidayCalendars:
         - holidayCalendars
         - holidayCalendars
+        currency: currency
         returnIds:
         - code: code
           scope: scope
@@ -58955,6 +58968,13 @@ components:
             type: string
           nullable: true
           type: array
+        currency:
+          description: Optional - either a string or a property. If provided, the
+            results will be converted to the specified currency
+          maxLength: 6000
+          minLength: 0
+          nullable: true
+          type: string
       type: object
     CompositeBreakdownResponse:
       additionalProperties: false
