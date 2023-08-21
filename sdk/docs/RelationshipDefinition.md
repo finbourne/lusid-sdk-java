@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **inwardDescription** | **String** | The description to relate target entity object and source entity object | 
 **lifeTime** | **String** | Describes how the relationships can change over time. | 
 **relationshipCardinality** | **String** | Describes the cardinality of the relationship between source entity and target entity. | 
-**links** | [**List&lt;Link&gt;**](Link.md) | Collection of links. |  [optional]
+**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
 
 
 
