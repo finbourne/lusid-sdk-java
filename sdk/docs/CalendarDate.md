@@ -11,7 +11,7 @@
 |**dateIdentifier** | **String** |  |  |
 |**fromUtc** | **OffsetDateTime** |  |  |
 |**toUtc** | **OffsetDateTime** |  |  |
-|**localDate** | **String** |  |  |
+|**_localDate** | **String** |  |  |
 |**timezone** | **String** |  |  |
 |**description** | **String** |  |  |
 |**type** | **String** |  |  |

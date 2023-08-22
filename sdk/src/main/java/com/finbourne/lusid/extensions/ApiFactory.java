@@ -46,6 +46,7 @@ public class ApiFactory {
     * if the class has no constructor that accepts an {@link ApiClient} parameter.
     */
     public synchronized <T> T build(Class<T> apiClass) {
+        @SuppressWarnings (value="unchecked")
         T apiInstance = (T) initialisedApis.get(apiClass);
         if (apiInstance == null) {
             checkIsSupportedApiClass(apiClass);

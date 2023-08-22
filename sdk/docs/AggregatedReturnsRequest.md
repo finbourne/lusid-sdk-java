@@ -16,6 +16,7 @@ The request used in the AggregatedReturns.
 |**outputFrequency** | **String** | The type of calculated output: Daily/Weekly/Monthly/Quarterly/Half-Yearly/Yearly. |  [optional] |
 |**alternativeInceptionDate** | **String** | Optional - either a date, or the key for a portfolio property containing a date. If provided, the given date will override the inception date for this request. |  [optional] |
 |**holidayCalendars** | **List&lt;String&gt;** | The holiday calendar(s) that should be used in determining the date schedule. Holiday calendar(s) are supplied by their codes, for example, &#39;CoppClark&#39;. Note that when the calendars are not available (e.g. when the user has insufficient permissions), a recipe setting will be used to determine whether the whole batch should then fail or whether the calendar not being available should simply be ignored. |  [optional] |
+|**currency** | **String** | Optional - either a string or a property. If provided, the results will be converted to the specified currency |  [optional] |
 
 
 

@@ -26,10 +26,10 @@ public class HttpFinbourneTokenProvider {
 
     private static final MediaType FORM = MediaType.parse("application/x-www-form-urlencoded");
 
-    /** configuration parameters to connect to  */
+    /** configuration parameters to connect to lusid */
     private final ApiConfiguration apiConfiguration;
 
-    /** client to make http calls to  */
+    /** client to make http calls to lusid */
     private final OkHttpClient httpClient;
 
     public HttpFinbourneTokenProvider(ApiConfiguration apiConfiguration, OkHttpClient httpClient) {
@@ -38,7 +38,7 @@ public class HttpFinbourneTokenProvider {
     }
 
     /**
-     * Retrieves a {@link FinbourneToken} via an authentication call to .
+     * Retrieves a {@link FinbourneToken} via an authentication call to lusid.
      *
      * Will make a complete authentication call (with username and password) if no refresh token
      * is available. Otherwise will attempt to refresh the token.
@@ -121,7 +121,7 @@ public class HttpFinbourneTokenProvider {
             throw new FinbourneTokenException("Failed to encode parameters from the API Configuration. Ensure your secrets files is properly setup.", e);
         }
 
-        final RequestBody body = RequestBody.create(FORM, tokenRequestBody);
+        final RequestBody body = RequestBody.create(tokenRequestBody, FORM);
         final Request.Builder requestBuilder = new Request.Builder()
                 .url(apiConfiguration.getTokenUrl())
                 .header("Accept", "application/json")

@@ -1,0 +1,18 @@
+
+
+# DiaryEntryRequest
+
+The request to add a diary entry
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**name** | **String** | The name of the diary entry. |  [optional] |
+|**status** | **String** | The status of the diary entry. Defaults to &#39;Undefined&#39;. |  [optional] |
+|**effectiveAt** | **OffsetDateTime** | The effective time of the diary entry. |  |
+|**queryAsAt** | **OffsetDateTime** | The query time of the diary entry. Defaults to latest. |  [optional] |
+|**properties** | [**Map&lt;String, Property&gt;**](Property.md) | Properties to add to the diary entry. |  [optional] |
+
+
+

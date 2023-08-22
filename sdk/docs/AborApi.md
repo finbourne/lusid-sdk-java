@@ -1,16 +1,93 @@
 # AborApi
 
-All URIs are relative to *https://fbn-prd.lusid.com/api*
+All URIs are relative to *https://example.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
+| [**addDiaryEntry**](AborApi.md#addDiaryEntry) | **POST** /api/abor/{scope}/{code}/accountingdiary/{diaryEntryCode} | [EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor. |
 | [**createAbor**](AborApi.md#createAbor) | **POST** /api/abor/{scope} | [EXPERIMENTAL] CreateAbor: Create an Abor. |
 | [**deleteAbor**](AborApi.md#deleteAbor) | **DELETE** /api/abor/{scope}/{code} | [EXPERIMENTAL] DeleteAbor: Delete an Abor. |
 | [**getAbor**](AborApi.md#getAbor) | **GET** /api/abor/{scope}/{code} | [EXPERIMENTAL] GetAbor: Get Abor. |
 | [**getJELines**](AborApi.md#getJELines) | **POST** /api/abor/{scope}/{code}/JELines/$query | [EXPERIMENTAL] GetJELines: Get the JELines for the given Abor. |
 | [**listAbors**](AborApi.md#listAbors) | **GET** /api/abor | [EXPERIMENTAL] ListAbors: List Abors. |
+| [**listDiaryEntries**](AborApi.md#listDiaryEntries) | **GET** /api/abor/{scope}/{code}/accountingdiary | [EXPERIMENTAL] ListDiaryEntries: List diary entries. |
 | [**upsertAborProperties**](AborApi.md#upsertAborProperties) | **POST** /api/abor/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertAborProperties: Upsert Abor properties |
 
+
+<a id="addDiaryEntry"></a>
+# **addDiaryEntry**
+> DiaryEntry addDiaryEntry(scope, code, diaryEntryCode, diaryEntryRequest)
+
+[EXPERIMENTAL] AddDiaryEntry: Add a diary entry to the specified Abor.
+
+Adds a new diary entry to the specified Abor
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.AborApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://example.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    AborApi apiInstance = new AborApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Abor.
+    String code = "code_example"; // String | The code of the Abor.
+    String diaryEntryCode = "diaryEntryCode_example"; // String | Diary entry code
+    DiaryEntryRequest diaryEntryRequest = new DiaryEntryRequest(); // DiaryEntryRequest | The diary entry to add.
+    try {
+      DiaryEntry result = apiInstance.addDiaryEntry(scope, code, diaryEntryCode, diaryEntryRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AborApi#addDiaryEntry");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Abor. | |
+| **code** | **String**| The code of the Abor. | |
+| **diaryEntryCode** | **String**| Diary entry code | |
+| **diaryEntryRequest** | [**DiaryEntryRequest**](DiaryEntryRequest.md)| The diary entry to add. | |
+
+### Return type
+
+[**DiaryEntry**](DiaryEntry.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The newly added diary entry. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
 <a id="createAbor"></a>
 # **createAbor**
@@ -33,7 +110,7 @@ import com.finbourne.lusid.api.AborApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://example.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -104,7 +181,7 @@ import com.finbourne.lusid.api.AborApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://example.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -175,7 +252,7 @@ import com.finbourne.lusid.api.AborApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://example.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -252,7 +329,7 @@ import com.finbourne.lusid.api.AborApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://example.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -331,7 +408,7 @@ import com.finbourne.lusid.api.AborApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://example.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -391,6 +468,89 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
+<a id="listDiaryEntries"></a>
+# **listDiaryEntries**
+> PagedResourceListOfDiaryEntry listDiaryEntries(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys)
+
+[EXPERIMENTAL] ListDiaryEntries: List diary entries.
+
+List all the diary entries matching particular criteria.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.AborApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://example.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    AborApi apiInstance = new AborApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Abor.
+    String code = "code_example"; // String | The code of the Abor.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the Diary Entries. Defaults to the current LUSID              system datetime if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the DiaryEntry. Defaults to returning the latest version of each DiaryEntry if not specified.
+    String page = "page_example"; // String | The pagination token to use to continue listing diary entries; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
+    Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
+    String filter = "filter_example"; // String | Expression to filter the results.              For example, to filter on the DiaryEntry type, specify \"type eq 'PeriodBoundary'\". For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'DiaryEntry' domain to decorate onto each DiaryEntry.              These must take the format {domain}/{scope}/{code}, for example 'DiaryEntry/Report/Id'.
+    try {
+      PagedResourceListOfDiaryEntry result = apiInstance.listDiaryEntries(scope, code, effectiveAt, asAt, page, limit, filter, propertyKeys);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AborApi#listDiaryEntries");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Abor. | |
+| **code** | **String**| The code of the Abor. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the Diary Entries. Defaults to the current LUSID              system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the DiaryEntry. Defaults to returning the latest version of each DiaryEntry if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing diary entries; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the results.              For example, to filter on the DiaryEntry type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;DiaryEntry&#39; domain to decorate onto each DiaryEntry.              These must take the format {domain}/{scope}/{code}, for example &#39;DiaryEntry/Report/Id&#39;. | [optional] |
+
+### Return type
+
+[**PagedResourceListOfDiaryEntry**](PagedResourceListOfDiaryEntry.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested diary entries. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
 <a id="upsertAborProperties"></a>
 # **upsertAborProperties**
 > AborProperties upsertAborProperties(scope, code, requestBody)
@@ -412,7 +572,7 @@ import com.finbourne.lusid.api.AborApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://example.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");

@@ -1,6 +1,6 @@
 # ComplianceApi
 
-All URIs are relative to *https://fbn-prd.lusid.com/api*
+All URIs are relative to *https://example.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
@@ -13,6 +13,7 @@ All URIs are relative to *https://fbn-prd.lusid.com/api*
 | [**listComplianceTemplates**](ComplianceApi.md#listComplianceTemplates) | **GET** /api/compliance/templates | [EARLY ACCESS] ListComplianceTemplates: List compliance templates. |
 | [**runCompliance**](ComplianceApi.md#runCompliance) | **POST** /api/compliance/runs | [EARLY ACCESS] RunCompliance: Run a compliance check. |
 | [**upsertComplianceRule**](ComplianceApi.md#upsertComplianceRule) | **POST** /api/compliance/rules | [EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule. |
+| [**upsertComplianceRunSummary**](ComplianceApi.md#upsertComplianceRunSummary) | **POST** /api/compliance/runs/summary | [EARLY ACCESS] UpsertComplianceRunSummary: Upsert a compliance run summary. |
 
 
 <a id="deleteComplianceRule"></a>
@@ -36,7 +37,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://example.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -107,7 +108,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://example.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -182,7 +183,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://example.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -253,7 +254,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://example.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -326,7 +327,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://example.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -403,7 +404,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://example.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -480,7 +481,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://example.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -557,7 +558,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://example.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -634,7 +635,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://example.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -679,6 +680,75 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The upserted compliance rule. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="upsertComplianceRunSummary"></a>
+# **upsertComplianceRunSummary**
+> ComplianceRunSummary upsertComplianceRunSummary(upsertComplianceRunSummaryRequest)
+
+[EARLY ACCESS] UpsertComplianceRunSummary: Upsert a compliance run summary.
+
+Use this endpoint to upsert a compliance run result summary.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ComplianceApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://example.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ComplianceApi apiInstance = new ComplianceApi(defaultClient);
+    UpsertComplianceRunSummaryRequest upsertComplianceRunSummaryRequest = new UpsertComplianceRunSummaryRequest(); // UpsertComplianceRunSummaryRequest | 
+    try {
+      ComplianceRunSummary result = apiInstance.upsertComplianceRunSummary(upsertComplianceRunSummaryRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ComplianceApi#upsertComplianceRunSummary");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **upsertComplianceRunSummaryRequest** | [**UpsertComplianceRunSummaryRequest**](UpsertComplianceRunSummaryRequest.md)|  | [optional] |
+
+### Return type
+
+[**ComplianceRunSummary**](ComplianceRunSummary.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The upserted compliance run summary. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
