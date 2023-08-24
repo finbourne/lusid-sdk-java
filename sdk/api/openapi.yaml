@@ -331,7 +331,7 @@ info:
     | <a name="870">870</a>|Compliance run summary already exists.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.459
+  version: 1.0.460
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -88051,6 +88051,32 @@ components:
           pattern: ^[\s\S]*$
           type: string
       type: object
+    UpFrontPayment:
+      additionalProperties: false
+      description: Record describing an upfront payment entity.
+      properties:
+        amount:
+          description: The upfront amount.
+          format: double
+          type: number
+        currency:
+          description: The upfront currency.
+          type: string
+        payDate:
+          description: Date when the upfront is paid.
+          format: date-time
+          type: string
+        payReceive:
+          description: "Is it pay or receive.\r\n\r\nSupported string (enumeration)\
+            \ values are: [Pay, Receive]."
+          minLength: 1
+          type: string
+      required:
+      - amount
+      - currency
+      - payDate
+      - payReceive
+      type: object
     UpsertComplexMarketDataRequest:
       additionalProperties: false
       description: The details of the complex market data item to upsert into Lusid.
@@ -96996,6 +97022,8 @@ components:
           description: Settlement currency if IRS is non-deliverable.
           nullable: true
           type: string
+        upFrontPayment:
+          $ref: '#/components/schemas/UpFrontPayment'
         instrumentType:
           description: 'The available values are: QuotedSecurity, InterestRateSwap,
             FxForward, Future, ExoticInstrument, FxOption, CreditDefaultSwap, InterestRateSwaption,
