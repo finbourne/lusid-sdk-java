@@ -6,10 +6,10 @@ A wrapper of conventions that should be used when interpreting tenors in the con
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**calendarCode** | **String** | The code of the holiday calendar that should be used when interpreting FX tenors. | 
-**spotDays** | **Integer** | The minimum number of business days that must pass within this calendar when calculating the spot date. | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**calendarCode** | **String** | The code of the holiday calendar that should be used when interpreting FX tenors. |  |
+|**spotDays** | **Integer** | The minimum number of business days that must pass within this calendar when calculating the spot date. |  |
 
 
 

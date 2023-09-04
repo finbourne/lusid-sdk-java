@@ -5,11 +5,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**key** | **String** |  | 
-**isRequired** | **Boolean** |  | 
-**isUnique** | **Boolean** |  | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**key** | **String** |  |  |
+|**isRequired** | **Boolean** |  |  |
+|**isUnique** | **Boolean** |  |  |
 
 
 

@@ -6,9 +6,9 @@ Counterparty Agreement that is to be stored in the convention data store.  There
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**counterpartyAgreement** | [**CounterpartyAgreement**](CounterpartyAgreement.md) |  | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**counterpartyAgreement** | [**CounterpartyAgreement**](CounterpartyAgreement.md) |  |  |
 
 
 

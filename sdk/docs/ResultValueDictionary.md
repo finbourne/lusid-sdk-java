@@ -6,9 +6,9 @@ Result value for a collection of key-value pairs. Used for diagnostics associate
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**elements** | [**Map&lt;String, ResultValue&gt;**](ResultValue.md) | The dictionary elements |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**elements** | [**Map&lt;String, ResultValue&gt;**](ResultValue.md) | The dictionary elements |  [optional] |
 
 
 

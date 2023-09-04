@@ -1,29 +1,29 @@
 # PersonsApi
 
-All URIs are relative to *https://fbn-prd.lusid.com/api*
+All URIs are relative to *https://www.lusid.com/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deletePerson**](PersonsApi.md#deletePerson) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] DeletePerson: Delete person
-[**deletePersonAccessMetadata**](PersonsApi.md#deletePersonAccessMetadata) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | [EARLY ACCESS] DeletePersonAccessMetadata: Delete a Person Access Metadata entry
-[**deletePersonIdentifiers**](PersonsApi.md#deletePersonIdentifiers) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code}/identifiers | [EARLY ACCESS] DeletePersonIdentifiers: Delete Person Identifiers
-[**deletePersonProperties**](PersonsApi.md#deletePersonProperties) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code}/properties | [EARLY ACCESS] DeletePersonProperties: Delete Person Properties
-[**getAllPersonAccessMetadata**](PersonsApi.md#getAllPersonAccessMetadata) | **GET** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata | [EARLY ACCESS] GetAllPersonAccessMetadata: Get Access Metadata rules for a Person
-[**getPerson**](PersonsApi.md#getPerson) | **GET** /api/persons/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] GetPerson: Get Person
-[**getPersonAccessMetadataByKey**](PersonsApi.md#getPersonAccessMetadataByKey) | **GET** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | [EARLY ACCESS] GetPersonAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Person
-[**getPersonPropertyTimeSeries**](PersonsApi.md#getPersonPropertyTimeSeries) | **GET** /api/persons/{idTypeScope}/{idTypeCode}/{code}/properties/time-series | [EARLY ACCESS] GetPersonPropertyTimeSeries: Get Person Property Time Series
-[**getPersonRelations**](PersonsApi.md#getPersonRelations) | **GET** /api/persons/{idTypeScope}/{idTypeCode}/{code}/relations | [EARLY ACCESS] GetPersonRelations: Get Relations for Person
-[**getPersonRelationships**](PersonsApi.md#getPersonRelationships) | **GET** /api/persons/{idTypeScope}/{idTypeCode}/{code}/relationships | [EARLY ACCESS] GetPersonRelationships: Get Relationships for Person
-[**listAllPersons**](PersonsApi.md#listAllPersons) | **GET** /api/persons | [EARLY ACCESS] ListAllPersons: List All Persons
-[**listPersons**](PersonsApi.md#listPersons) | **GET** /api/persons/{idTypeScope}/{idTypeCode} | [EARLY ACCESS] ListPersons: List Persons
-[**patchPersonAccessMetadata**](PersonsApi.md#patchPersonAccessMetadata) | **PATCH** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata | [EARLY ACCESS] PatchPersonAccessMetadata: Patch Access Metadata rules for a Person.
-[**setPersonIdentifiers**](PersonsApi.md#setPersonIdentifiers) | **POST** /api/persons/{idTypeScope}/{idTypeCode}/{code}/identifiers | [EARLY ACCESS] SetPersonIdentifiers: Set Person Identifiers
-[**setPersonProperties**](PersonsApi.md#setPersonProperties) | **POST** /api/persons/{idTypeScope}/{idTypeCode}/{code}/properties | [EARLY ACCESS] SetPersonProperties: Set Person Properties
-[**upsertPerson**](PersonsApi.md#upsertPerson) | **POST** /api/persons | [EARLY ACCESS] UpsertPerson: Upsert Person
-[**upsertPersonAccessMetadata**](PersonsApi.md#upsertPersonAccessMetadata) | **PUT** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | [EARLY ACCESS] UpsertPersonAccessMetadata: Upsert a Person Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**deletePerson**](PersonsApi.md#deletePerson) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] DeletePerson: Delete person |
+| [**deletePersonAccessMetadata**](PersonsApi.md#deletePersonAccessMetadata) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | [EARLY ACCESS] DeletePersonAccessMetadata: Delete a Person Access Metadata entry |
+| [**deletePersonIdentifiers**](PersonsApi.md#deletePersonIdentifiers) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code}/identifiers | [EARLY ACCESS] DeletePersonIdentifiers: Delete Person Identifiers |
+| [**deletePersonProperties**](PersonsApi.md#deletePersonProperties) | **DELETE** /api/persons/{idTypeScope}/{idTypeCode}/{code}/properties | [EARLY ACCESS] DeletePersonProperties: Delete Person Properties |
+| [**getAllPersonAccessMetadata**](PersonsApi.md#getAllPersonAccessMetadata) | **GET** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata | [EARLY ACCESS] GetAllPersonAccessMetadata: Get Access Metadata rules for a Person |
+| [**getPerson**](PersonsApi.md#getPerson) | **GET** /api/persons/{idTypeScope}/{idTypeCode}/{code} | [EARLY ACCESS] GetPerson: Get Person |
+| [**getPersonAccessMetadataByKey**](PersonsApi.md#getPersonAccessMetadataByKey) | **GET** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | [EARLY ACCESS] GetPersonAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Person |
+| [**getPersonPropertyTimeSeries**](PersonsApi.md#getPersonPropertyTimeSeries) | **GET** /api/persons/{idTypeScope}/{idTypeCode}/{code}/properties/time-series | [EARLY ACCESS] GetPersonPropertyTimeSeries: Get Person Property Time Series |
+| [**getPersonRelations**](PersonsApi.md#getPersonRelations) | **GET** /api/persons/{idTypeScope}/{idTypeCode}/{code}/relations | [EARLY ACCESS] GetPersonRelations: Get Relations for Person |
+| [**getPersonRelationships**](PersonsApi.md#getPersonRelationships) | **GET** /api/persons/{idTypeScope}/{idTypeCode}/{code}/relationships | [EARLY ACCESS] GetPersonRelationships: Get Relationships for Person |
+| [**listAllPersons**](PersonsApi.md#listAllPersons) | **GET** /api/persons | [EARLY ACCESS] ListAllPersons: List All Persons |
+| [**listPersons**](PersonsApi.md#listPersons) | **GET** /api/persons/{idTypeScope}/{idTypeCode} | [EARLY ACCESS] ListPersons: List Persons |
+| [**patchPersonAccessMetadata**](PersonsApi.md#patchPersonAccessMetadata) | **PATCH** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata | [EARLY ACCESS] PatchPersonAccessMetadata: Patch Access Metadata rules for a Person. |
+| [**setPersonIdentifiers**](PersonsApi.md#setPersonIdentifiers) | **POST** /api/persons/{idTypeScope}/{idTypeCode}/{code}/identifiers | [EARLY ACCESS] SetPersonIdentifiers: Set Person Identifiers |
+| [**setPersonProperties**](PersonsApi.md#setPersonProperties) | **POST** /api/persons/{idTypeScope}/{idTypeCode}/{code}/properties | [EARLY ACCESS] SetPersonProperties: Set Person Properties |
+| [**upsertPerson**](PersonsApi.md#upsertPerson) | **POST** /api/persons | [EARLY ACCESS] UpsertPerson: Upsert Person |
+| [**upsertPersonAccessMetadata**](PersonsApi.md#upsertPersonAccessMetadata) | **PUT** /api/persons/{idTypeScope}/{idTypeCode}/{code}/metadata/{metadataKey} | [EARLY ACCESS] UpsertPersonAccessMetadata: Upsert a Person Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID. |
 
 
-<a name="deletePerson"></a>
+<a id="deletePerson"></a>
 # **deletePerson**
 > DeletedEntityResponse deletePerson(idTypeScope, idTypeCode, code)
 
@@ -44,7 +44,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -70,11 +70,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idTypeScope** | **String**| The scope of the person identifier type. |
- **idTypeCode** | **String**| The code of the person identifier type. |
- **code** | **String**| Code of the person under specified identifier type scope and code. This together with defined              identifier type uniquely identifies the person to delete. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idTypeScope** | **String**| The scope of the person identifier type. | |
+| **idTypeCode** | **String**| The code of the person identifier type. | |
+| **code** | **String**| Code of the person under specified identifier type scope and code. This together with defined              identifier type uniquely identifies the person to delete. | |
 
 ### Return type
 
@@ -92,11 +92,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The response from deleting person. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The response from deleting person. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="deletePersonAccessMetadata"></a>
+<a id="deletePersonAccessMetadata"></a>
 # **deletePersonAccessMetadata**
 > DeletedEntityResponse deletePersonAccessMetadata(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, effectiveUntil)
 
@@ -117,7 +117,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -146,14 +146,14 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idTypeScope** | **String**| Scope of the person identifier. |
- **idTypeCode** | **String**| Code of the person identifier. |
- **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. |
- **metadataKey** | **String**| Key of the metadata entry to retrieve |
- **effectiveAt** | **String**| The effective date to delete at, if this is not supplied, it will delete all data found | [optional]
- **effectiveUntil** | **OffsetDateTime**| The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idTypeScope** | **String**| Scope of the person identifier. | |
+| **idTypeCode** | **String**| Code of the person identifier. | |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. | |
+| **metadataKey** | **String**| Key of the metadata entry to retrieve | |
+| **effectiveAt** | **String**| The effective date to delete at, if this is not supplied, it will delete all data found | [optional] |
+| **effectiveUntil** | **OffsetDateTime**| The effective date until which the delete is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; date of the Access Metadata | [optional] |
 
 ### Return type
 
@@ -171,11 +171,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The Access Metadata with the given metadataKey has been deleted |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The Access Metadata with the given metadataKey has been deleted |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="deletePersonIdentifiers"></a>
+<a id="deletePersonIdentifiers"></a>
 # **deletePersonIdentifiers**
 > DeletedEntityResponse deletePersonIdentifiers(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt)
 
@@ -196,7 +196,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -224,13 +224,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idTypeScope** | **String**| Scope of the person identifier type. |
- **idTypeCode** | **String**| Code of the person identifier type. |
- **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. |
- **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the identifiers to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Identifiers or identifiers not specified in request will not be changed. |
- **effectiveAt** | **String**| The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.              Must not include an effective datetime if identifiers are perpetual. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idTypeScope** | **String**| Scope of the person identifier type. | |
+| **idTypeCode** | **String**| Code of the person identifier type. | |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. | |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the identifiers to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Identifiers or identifiers not specified in request will not be changed. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to delete the identifiers. Defaults to the current LUSID system datetime if not specified.              Must not include an effective datetime if identifiers are perpetual. | [optional] |
 
 ### Return type
 
@@ -248,11 +248,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The datetime that the identifiers were deleted from the specified person |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The datetime that the identifiers were deleted from the specified person |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="deletePersonProperties"></a>
+<a id="deletePersonProperties"></a>
 # **deletePersonProperties**
 > DeletedEntityResponse deletePersonProperties(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt)
 
@@ -273,7 +273,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -301,13 +301,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idTypeScope** | **String**| Scope of the person identifier type. |
- **idTypeCode** | **String**| Code of the person identifier type. |
- **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. |
- **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the person&#39;s properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Properties or identifiers not specified in request will not be changed. |
- **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idTypeScope** | **String**| Scope of the person identifier type. | |
+| **idTypeCode** | **String**| Code of the person identifier type. | |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. | |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| The property keys of the person&#39;s properties to delete. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. Each property must be from the \&quot;Person\&quot; domain. Properties or identifiers not specified in request will not be changed. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to delete time-variant properties from.              The property must exist at the specified &#39;effectiveAt&#39; datetime. If the &#39;effectiveAt&#39; is not provided or is              before the time-variant property exists then a failure is returned. Do not specify this parameter if any of              the properties to delete are perpetual. | [optional] |
 
 ### Return type
 
@@ -325,11 +325,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The datetime that the properties were deleted from the specified person |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The datetime that the properties were deleted from the specified person |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getAllPersonAccessMetadata"></a>
+<a id="getAllPersonAccessMetadata"></a>
 # **getAllPersonAccessMetadata**
 > Map&lt;String, List&lt;AccessMetadataValue&gt;&gt; getAllPersonAccessMetadata(idTypeScope, idTypeCode, code, effectiveAt, asAt)
 
@@ -350,7 +350,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -378,13 +378,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idTypeScope** | **String**| Scope of the person identifier. |
- **idTypeCode** | **String**| Code of the person identifier. |
- **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. |
- **effectiveAt** | **String**| The effectiveAt datetime at which to retrieve the Access Metadata | [optional]
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Access Metadata | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idTypeScope** | **String**| Scope of the person identifier. | |
+| **idTypeCode** | **String**| Code of the person identifier. | |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. | |
+| **effectiveAt** | **String**| The effectiveAt datetime at which to retrieve the Access Metadata | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Access Metadata | [optional] |
 
 ### Return type
 
@@ -402,11 +402,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The access metadata for the Person or any failure. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The access metadata for the Person or any failure. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getPerson"></a>
+<a id="getPerson"></a>
 # **getPerson**
 > Person getPerson(idTypeScope, idTypeCode, code, propertyKeys, effectiveAt, asAt, relationshipDefinitionIds)
 
@@ -427,7 +427,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -457,15 +457,15 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idTypeScope** | **String**| Scope of the person identifier type. |
- **idTypeCode** | **String**| Code of the person identifier type. |
- **code** | **String**| Code of the person under specified scope and code. This together with stated identifier type uniquely              identifies the person. |
- **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Person\&quot; domain to decorate onto the person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. | [optional]
- **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the person. Defaults to the current LUSID system datetime if not specified. | [optional]
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the person. Defaults to return the latest version of the person if not specified. | [optional]
- **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities              onto the person in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idTypeScope** | **String**| Scope of the person identifier type. | |
+| **idTypeCode** | **String**| Code of the person identifier type. | |
+| **code** | **String**| Code of the person under specified scope and code. This together with stated identifier type uniquely              identifies the person. | |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Person\&quot; domain to decorate onto the person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the person. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the person. Defaults to return the latest version of the person if not specified. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities              onto the person in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -483,11 +483,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The requested person definition |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The requested person definition |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getPersonAccessMetadataByKey"></a>
+<a id="getPersonAccessMetadataByKey"></a>
 # **getPersonAccessMetadataByKey**
 > List&lt;AccessMetadataValue&gt; getPersonAccessMetadataByKey(idTypeScope, idTypeCode, code, metadataKey, effectiveAt, asAt)
 
@@ -508,7 +508,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -537,14 +537,14 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idTypeScope** | **String**| Scope of the person identifier. |
- **idTypeCode** | **String**| Code of the person identifier. |
- **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. |
- **metadataKey** | **String**| Key of the metadata entry to retrieve |
- **effectiveAt** | **String**| The effectiveAt datetime at which to retrieve the Access Metadata | [optional]
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Access Metadata | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idTypeScope** | **String**| Scope of the person identifier. | |
+| **idTypeCode** | **String**| Code of the person identifier. | |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. | |
+| **metadataKey** | **String**| Key of the metadata entry to retrieve | |
+| **effectiveAt** | **String**| The effectiveAt datetime at which to retrieve the Access Metadata | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Access Metadata | [optional] |
 
 ### Return type
 
@@ -562,11 +562,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The successfully retrieved Person access metadata filtered by metadataKey or any failure. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The successfully retrieved Person access metadata filtered by metadataKey or any failure. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getPersonPropertyTimeSeries"></a>
+<a id="getPersonPropertyTimeSeries"></a>
 # **getPersonPropertyTimeSeries**
 > ResourceListOfPropertyInterval getPersonPropertyTimeSeries(idTypeScope, idTypeCode, code, propertyKey, asAt, filter, page, limit)
 
@@ -587,7 +587,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -618,16 +618,16 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idTypeScope** | **String**| Scope of the person identifier type. |
- **idTypeCode** | **String**| Code of the person identifier type. |
- **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely identifies the person. |
- **propertyKey** | **String**| The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;.              Each property must be from the \&quot;Person\&quot; domain. |
- **asAt** | **OffsetDateTime**| The asAt datetime at which to list the person&#39;s property history. Defaults to return the current datetime if not supplied. | [optional]
- **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
- **page** | **String**| The pagination token to use to continue listing properties from a previous call to get property time series.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request. | [optional]
- **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idTypeScope** | **String**| Scope of the person identifier type. | |
+| **idTypeCode** | **String**| Code of the person identifier type. | |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely identifies the person. | |
+| **propertyKey** | **String**| The property key of the property that will have its history shown. These must be in the format {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;.              Each property must be from the \&quot;Person\&quot; domain. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the person&#39;s property history. Defaults to return the current datetime if not supplied. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing properties from a previous call to get property time series.              This value is returned from the previous call. If a pagination token is provided the filter and asAt fields              must not have changed since the original request. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
 
 ### Return type
 
@@ -645,11 +645,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The time series of the property |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The time series of the property |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getPersonRelations"></a>
+<a id="getPersonRelations"></a>
 # **getPersonRelations**
 > ResourceListOfRelation getPersonRelations(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes)
 
@@ -670,7 +670,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -700,15 +700,15 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idTypeScope** | **String**| Scope of the person identifier type. |
- **idTypeCode** | **String**| Code of the person identifier type. |
- **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. |
- **effectiveAt** | **String**| The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified. | [optional]
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the person&#39;s relations. Defaults to return the latest LUSID AsAt time if not specified. | [optional]
- **filter** | **String**| Expression to filter the relations. Users should provide null or empty string for this field until further notice. | [optional]
- **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idTypeScope** | **String**| Scope of the person identifier type. | |
+| **idTypeCode** | **String**| Code of the person identifier type. | |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to get relations. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the person&#39;s relations. Defaults to return the latest LUSID AsAt time if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the relations. Users should provide null or empty string for this field until further notice. | [optional] |
+| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relations. If not applicable, provide an empty array. | [optional] |
 
 ### Return type
 
@@ -726,11 +726,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The relations for the specified person. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The relations for the specified person. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getPersonRelationships"></a>
+<a id="getPersonRelationships"></a>
 # **getPersonRelationships**
 > ResourceListOfRelationship getPersonRelationships(idTypeScope, idTypeCode, code, effectiveAt, asAt, filter, identifierTypes)
 
@@ -751,7 +751,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -781,15 +781,15 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idTypeScope** | **String**| Scope of the person&#39;s identifier type. |
- **idTypeCode** | **String**| Code of the person&#39;s identifier type. |
- **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. |
- **effectiveAt** | **String**| The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. | [optional]
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. | [optional]
- **filter** | **String**| Expression to filter relationships. Users should provide null or empty string for this field until further notice. | [optional]
- **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idTypeScope** | **String**| Scope of the person&#39;s identifier type. | |
+| **idTypeCode** | **String**| Code of the person&#39;s identifier type. | |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. | [optional] |
+| **filter** | **String**| Expression to filter relationships. Users should provide null or empty string for this field until further notice. | [optional] |
+| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifier types (as property keys) used for referencing Persons or Legal Entities.              These can be specified from the &#39;Person&#39; or &#39;LegalEntity&#39; domains and have the format {domain}/{scope}/{code}, for example              &#39;Person/CompanyDetails/Role&#39;. An Empty array may be used to return all related Entities. | [optional] |
 
 ### Return type
 
@@ -807,11 +807,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The relationships for the specified person. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The relationships for the specified person. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="listAllPersons"></a>
+<a id="listAllPersons"></a>
 # **listAllPersons**
 > ResourceListOfPerson listAllPersons(effectiveAt, asAt, page, limit, filter, propertyKeys, relationshipDefinitionIds)
 
@@ -832,7 +832,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -862,15 +862,15 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **effectiveAt** | **String**| The effective datetime or cut label at which to list the people. Defaults to the current LUSID              system datetime if not specified. | [optional]
- **asAt** | **OffsetDateTime**| The asAt datetime at which to list the people. Defaults to return the latest version              of each people if not specified. | [optional]
- **page** | **String**| The pagination token to use to continue listing persons from a previous call to list persons. This              value is returned from the previous call. If a pagination token is provided the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional]
- **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. | [optional]
- **filter** | **String**| Expression to filter the result set.               For example, to filter on the display name, use \&quot;displayName eq &#39;John&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
- **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. | [optional]
- **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities              onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the people. Defaults to the current LUSID              system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the people. Defaults to return the latest version              of each people if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing persons from a previous call to list persons. This              value is returned from the previous call. If a pagination token is provided the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 5000 if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the result set.               For example, to filter on the display name, use \&quot;displayName eq &#39;John&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities              onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -888,11 +888,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Existing people |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | Existing people |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="listPersons"></a>
+<a id="listPersons"></a>
 # **listPersons**
 > PagedResourceListOfPerson listPersons(idTypeScope, idTypeCode, effectiveAt, asAt, page, start, limit, filter, propertyKeys, relationshipDefinitionIds)
 
@@ -913,7 +913,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -946,18 +946,18 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idTypeScope** | **String**| Scope of the person identifier type. |
- **idTypeCode** | **String**| Code of the person identifier type. |
- **effectiveAt** | **String**| The effective datetime or cut label at which to list the people. Defaults to the current LUSID              system datetime if not specified. | [optional]
- **asAt** | **OffsetDateTime**| The asAt datetime at which to list the people. Defaults to return the latest version              of each people if not specified. | [optional]
- **page** | **String**| The pagination token to use to continue listing persons from a previous call to list persons. This              value is returned from the previous call. If a pagination token is provided the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional]
- **start** | **Integer**| When paginating, skip this number of results. | [optional]
- **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional]
- **filter** | **String**| Expression to filter the result set.               For example, to filter on the LUPID, use \&quot;lusidPersonId eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
- **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. | [optional]
- **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities              onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idTypeScope** | **String**| Scope of the person identifier type. | |
+| **idTypeCode** | **String**| Code of the person identifier type. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the people. Defaults to the current LUSID              system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the people. Defaults to return the latest version              of each people if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing persons from a previous call to list persons. This              value is returned from the previous call. If a pagination token is provided the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **start** | **Integer**| When paginating, skip this number of results. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the result set.               For example, to filter on the LUPID, use \&quot;lusidPersonId eq &#39;string&#39;\&quot;              Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Person\&quot; domain to decorate onto each person,               or from any domain that supports relationships to decorate onto related entities.              These take the format {domain}/{scope}/{code} e.g. \&quot;Person/ContactDetails/Address\&quot;. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities              onto the persons in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -975,11 +975,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | People in specified scope |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | People in specified scope |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="patchPersonAccessMetadata"></a>
+<a id="patchPersonAccessMetadata"></a>
 # **patchPersonAccessMetadata**
 > Map&lt;String, List&lt;AccessMetadataValue&gt;&gt; patchPersonAccessMetadata(idTypeScope, idTypeCode, code, accessMetadataOperation, effectiveAt, effectiveUntil)
 
@@ -1000,7 +1000,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -1029,14 +1029,14 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idTypeScope** | **String**| Scope of the person identifier. |
- **idTypeCode** | **String**| Code of the person identifier. |
- **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. |
- **accessMetadataOperation** | [**List&lt;AccessMetadataOperation&gt;**](AccessMetadataOperation.md)| The Json Patch document |
- **effectiveAt** | **String**| The effectiveAt datetime at which to upsert the Access Metadata | [optional]
- **effectiveUntil** | **OffsetDateTime**| The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idTypeScope** | **String**| Scope of the person identifier. | |
+| **idTypeCode** | **String**| Code of the person identifier. | |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. | |
+| **accessMetadataOperation** | [**List&lt;AccessMetadataOperation&gt;**](AccessMetadataOperation.md)| The Json Patch document | |
+| **effectiveAt** | **String**| The effectiveAt datetime at which to upsert the Access Metadata | [optional] |
+| **effectiveUntil** | **OffsetDateTime**| The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata | [optional] |
 
 ### Return type
 
@@ -1048,17 +1048,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The successfully patched items. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The successfully patched items. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="setPersonIdentifiers"></a>
+<a id="setPersonIdentifiers"></a>
 # **setPersonIdentifiers**
 > Person setPersonIdentifiers(idTypeScope, idTypeCode, code, setPersonIdentifiersRequest)
 
@@ -1079,7 +1079,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -1106,12 +1106,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idTypeScope** | **String**| Scope of the person identifier type. |
- **idTypeCode** | **String**| Code of the person identifier type. |
- **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. |
- **setPersonIdentifiersRequest** | [**SetPersonIdentifiersRequest**](SetPersonIdentifiersRequest.md)| Request containing identifiers to set for the person. Identifiers not specified in request will not be changed. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idTypeScope** | **String**| Scope of the person identifier type. | |
+| **idTypeCode** | **String**| Code of the person identifier type. | |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. | |
+| **setPersonIdentifiersRequest** | [**SetPersonIdentifiersRequest**](SetPersonIdentifiersRequest.md)| Request containing identifiers to set for the person. Identifiers not specified in request will not be changed. | |
 
 ### Return type
 
@@ -1123,17 +1123,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The Person with updated identifiers. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The Person with updated identifiers. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="setPersonProperties"></a>
+<a id="setPersonProperties"></a>
 # **setPersonProperties**
 > Person setPersonProperties(idTypeScope, idTypeCode, code, setPersonPropertiesRequest)
 
@@ -1154,7 +1154,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -1181,12 +1181,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idTypeScope** | **String**| Scope of the person identifier type. |
- **idTypeCode** | **String**| Code of the person identifier type. |
- **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. |
- **setPersonPropertiesRequest** | [**SetPersonPropertiesRequest**](SetPersonPropertiesRequest.md)| Request containing properties to set for the person. Properties not specified in request will not be changed. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idTypeScope** | **String**| Scope of the person identifier type. | |
+| **idTypeCode** | **String**| Code of the person identifier type. | |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. This together with stated identifier type uniquely              identifies the person. | |
+| **setPersonPropertiesRequest** | [**SetPersonPropertiesRequest**](SetPersonPropertiesRequest.md)| Request containing properties to set for the person. Properties not specified in request will not be changed. | |
 
 ### Return type
 
@@ -1198,17 +1198,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The Person with updated properties or identifiers. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The Person with updated properties or identifiers. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="upsertPerson"></a>
+<a id="upsertPerson"></a>
 # **upsertPerson**
 > Person upsertPerson(upsertPersonRequest)
 
@@ -1229,7 +1229,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -1253,9 +1253,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **upsertPersonRequest** | [**UpsertPersonRequest**](UpsertPersonRequest.md)| Request to create or update a person. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **upsertPersonRequest** | [**UpsertPersonRequest**](UpsertPersonRequest.md)| Request to create or update a person. | |
 
 ### Return type
 
@@ -1267,17 +1267,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | The newly created or updated person |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **201** | The newly created or updated person |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="upsertPersonAccessMetadata"></a>
+<a id="upsertPersonAccessMetadata"></a>
 # **upsertPersonAccessMetadata**
 > ResourceListOfAccessMetadataValueOf upsertPersonAccessMetadata(idTypeScope, idTypeCode, code, metadataKey, upsertPersonAccessMetadataRequest, effectiveAt, effectiveUntil)
 
@@ -1298,7 +1298,7 @@ import com.finbourne.lusid.api.PersonsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -1328,15 +1328,15 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **idTypeScope** | **String**| Scope of the person identifier. |
- **idTypeCode** | **String**| Code of the person identifier. |
- **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. |
- **metadataKey** | **String**| Key of the metadata entry to retrieve |
- **upsertPersonAccessMetadataRequest** | [**UpsertPersonAccessMetadataRequest**](UpsertPersonAccessMetadataRequest.md)| The Person Access Metadata entry to upsert |
- **effectiveAt** | **String**| The effectiveAt datetime at which to upsert the Access Metadata | [optional]
- **effectiveUntil** | **OffsetDateTime**| The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **idTypeScope** | **String**| Scope of the person identifier. | |
+| **idTypeCode** | **String**| Code of the person identifier. | |
+| **code** | **String**| Code of the person under specified identifier type&#39;s scope and code. | |
+| **metadataKey** | **String**| Key of the metadata entry to retrieve | |
+| **upsertPersonAccessMetadataRequest** | [**UpsertPersonAccessMetadataRequest**](UpsertPersonAccessMetadataRequest.md)| The Person Access Metadata entry to upsert | |
+| **effectiveAt** | **String**| The effectiveAt datetime at which to upsert the Access Metadata | [optional] |
+| **effectiveUntil** | **OffsetDateTime**| The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata | [optional] |
 
 ### Return type
 
@@ -1348,13 +1348,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The successfully updated or inserted item or any failure. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The successfully updated or inserted item or any failure. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 

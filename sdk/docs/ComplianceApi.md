@@ -1,22 +1,22 @@
 # ComplianceApi
 
-All URIs are relative to *https://fbn-prd.lusid.com/api*
+All URIs are relative to *https://www.lusid.com/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteComplianceRule**](ComplianceApi.md#deleteComplianceRule) | **DELETE** /api/compliance/rules/{scope}/{code} | [EARLY ACCESS] DeleteComplianceRule: Delete compliance rule.
-[**getComplianceRule**](ComplianceApi.md#getComplianceRule) | **GET** /api/compliance/rules/{scope}/{code} | [EARLY ACCESS] GetComplianceRule: Get compliance rule.
-[**getComplianceRunSummary**](ComplianceApi.md#getComplianceRunSummary) | **GET** /api/compliance/runs/summary/{scope}/{code} | [EARLY ACCESS] GetComplianceRunSummary: Get summary results for a specific compliance run.
-[**getComplianceTemplate**](ComplianceApi.md#getComplianceTemplate) | **GET** /api/compliance/templates/{scope}/{code} | [EARLY ACCESS] GetComplianceTemplate: Get the requested compliance template.
-[**listComplianceRules**](ComplianceApi.md#listComplianceRules) | **GET** /api/compliance/rules | [EARLY ACCESS] ListComplianceRules: List compliance rules.
-[**listComplianceRuns**](ComplianceApi.md#listComplianceRuns) | **GET** /api/compliance/runs | [EARLY ACCESS] ListComplianceRuns: List historical compliance run identifiers.
-[**listComplianceTemplates**](ComplianceApi.md#listComplianceTemplates) | **GET** /api/compliance/templates | [EARLY ACCESS] ListComplianceTemplates: List compliance templates.
-[**runCompliance**](ComplianceApi.md#runCompliance) | **POST** /api/compliance/runs | [EARLY ACCESS] RunCompliance: Run a compliance check.
-[**upsertComplianceRule**](ComplianceApi.md#upsertComplianceRule) | **POST** /api/compliance/rules | [EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule.
-[**upsertComplianceRunSummary**](ComplianceApi.md#upsertComplianceRunSummary) | **POST** /api/compliance/runs/summary | [EARLY ACCESS] UpsertComplianceRunSummary: Upsert a compliance run summary.
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**deleteComplianceRule**](ComplianceApi.md#deleteComplianceRule) | **DELETE** /api/compliance/rules/{scope}/{code} | [EARLY ACCESS] DeleteComplianceRule: Delete compliance rule. |
+| [**getComplianceRule**](ComplianceApi.md#getComplianceRule) | **GET** /api/compliance/rules/{scope}/{code} | [EARLY ACCESS] GetComplianceRule: Get compliance rule. |
+| [**getComplianceRunSummary**](ComplianceApi.md#getComplianceRunSummary) | **GET** /api/compliance/runs/summary/{scope}/{code} | [EARLY ACCESS] GetComplianceRunSummary: Get summary results for a specific compliance run. |
+| [**getComplianceTemplate**](ComplianceApi.md#getComplianceTemplate) | **GET** /api/compliance/templates/{scope}/{code} | [EARLY ACCESS] GetComplianceTemplate: Get the requested compliance template. |
+| [**listComplianceRules**](ComplianceApi.md#listComplianceRules) | **GET** /api/compliance/rules | [EARLY ACCESS] ListComplianceRules: List compliance rules. |
+| [**listComplianceRuns**](ComplianceApi.md#listComplianceRuns) | **GET** /api/compliance/runs | [EARLY ACCESS] ListComplianceRuns: List historical compliance run identifiers. |
+| [**listComplianceTemplates**](ComplianceApi.md#listComplianceTemplates) | **GET** /api/compliance/templates | [EARLY ACCESS] ListComplianceTemplates: List compliance templates. |
+| [**runCompliance**](ComplianceApi.md#runCompliance) | **POST** /api/compliance/runs | [EARLY ACCESS] RunCompliance: Run a compliance check. |
+| [**upsertComplianceRule**](ComplianceApi.md#upsertComplianceRule) | **POST** /api/compliance/rules | [EARLY ACCESS] UpsertComplianceRule: Upsert a compliance rule. |
+| [**upsertComplianceRunSummary**](ComplianceApi.md#upsertComplianceRunSummary) | **POST** /api/compliance/runs/summary | [EARLY ACCESS] UpsertComplianceRunSummary: Upsert a compliance run summary. |
 
 
-<a name="deleteComplianceRule"></a>
+<a id="deleteComplianceRule"></a>
 # **deleteComplianceRule**
 > DeletedEntityResponse deleteComplianceRule(scope, code)
 
@@ -37,7 +37,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -62,10 +62,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The compliance rule&#39;s scope. |
- **code** | **String**| The compliance rule&#39;s code. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The compliance rule&#39;s scope. | |
+| **code** | **String**| The compliance rule&#39;s code. | |
 
 ### Return type
 
@@ -83,11 +83,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Success |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | Success |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getComplianceRule"></a>
+<a id="getComplianceRule"></a>
 # **getComplianceRule**
 > ComplianceRuleResponse getComplianceRule(scope, code, asAt, propertyKeys)
 
@@ -108,7 +108,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -135,12 +135,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The compliance rule&#39;s scope. |
- **code** | **String**| The compliance rule&#39;s code. |
- **asAt** | **OffsetDateTime**| Optional. Asat time for query. | [optional]
- **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Compliance&#39; domain to decorate onto the rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The compliance rule&#39;s scope. | |
+| **code** | **String**| The compliance rule&#39;s code. | |
+| **asAt** | **OffsetDateTime**| Optional. Asat time for query. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Compliance&#39; domain to decorate onto the rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. | [optional] |
 
 ### Return type
 
@@ -158,11 +158,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The requested compliance rule. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The requested compliance rule. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getComplianceRunSummary"></a>
+<a id="getComplianceRunSummary"></a>
 # **getComplianceRunSummary**
 > ComplianceRunSummary getComplianceRunSummary(scope, code)
 
@@ -183,7 +183,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -208,10 +208,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| Required: Run Scope. |
- **code** | **String**| Required: Run Code. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| Required: Run Scope. | |
+| **code** | **String**| Required: Run Code. | |
 
 ### Return type
 
@@ -229,11 +229,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | The requested compliance run summary. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **201** | The requested compliance run summary. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getComplianceTemplate"></a>
+<a id="getComplianceTemplate"></a>
 # **getComplianceTemplate**
 > ComplianceTemplate getComplianceTemplate(scope, code, asAt)
 
@@ -254,7 +254,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -280,11 +280,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| Scope of TemplateID |
- **code** | **String**| Code of TemplateID |
- **asAt** | **OffsetDateTime**| Optional. The time at which to get results from. Default : latest | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| Scope of TemplateID | |
+| **code** | **String**| Code of TemplateID | |
+| **asAt** | **OffsetDateTime**| Optional. The time at which to get results from. Default : latest | [optional] |
 
 ### Return type
 
@@ -302,11 +302,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The requested compliance template. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The requested compliance template. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="listComplianceRules"></a>
+<a id="listComplianceRules"></a>
 # **listComplianceRules**
 > PagedResourceListOfComplianceRuleResponse listComplianceRules(asAt, page, limit, filter, propertyKeys)
 
@@ -327,7 +327,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -355,13 +355,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **asAt** | **OffsetDateTime**| Optional. Asat time. | [optional]
- **page** | **String**| Optional. Pagination token. | [optional]
- **limit** | **Integer**| Optional. Entries per page. | [optional]
- **filter** | **String**| Optional. Filter. | [optional]
- **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for each rule. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asAt** | **OffsetDateTime**| Optional. Asat time. | [optional] |
+| **page** | **String**| Optional. Pagination token. | [optional] |
+| **limit** | **Integer**| Optional. Entries per page. | [optional] |
+| **filter** | **String**| Optional. Filter. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;Compliance&#39; domain to decorate onto each rule.              These must take the format {domain}/{scope}/{code}, for example &#39;Compliance/live/UCITS&#39;. If not provided will return all the entitled properties for each rule. | [optional] |
 
 ### Return type
 
@@ -379,11 +379,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The list of compliance rules. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The list of compliance rules. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="listComplianceRuns"></a>
+<a id="listComplianceRuns"></a>
 # **listComplianceRuns**
 > PagedResourceListOfComplianceRunInfoV2 listComplianceRuns(asAt, page, limit, filter, sortBy)
 
@@ -404,7 +404,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -432,13 +432,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **asAt** | **OffsetDateTime**| Optional. The time at which to get results from. Default : latest | [optional]
- **page** | **String**| Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional]
- **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
- **filter** | **String**| Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
- **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asAt** | **OffsetDateTime**| Optional. The time at which to get results from. Default : latest | [optional] |
+| **page** | **String**| Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
+| **filter** | **String**| Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| Optional. A list of field names to sort by, each suffixed by \&quot;ASC\&quot; or \&quot;DESC\&quot; | [optional] |
 
 ### Return type
 
@@ -456,11 +456,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List of previous compliance RunIds |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | List of previous compliance RunIds |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="listComplianceTemplates"></a>
+<a id="listComplianceTemplates"></a>
 # **listComplianceTemplates**
 > PagedResourceListOfComplianceTemplate listComplianceTemplates(asAt, page, start, limit, filter)
 
@@ -481,7 +481,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -509,13 +509,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **asAt** | **OffsetDateTime**| Optional. The time at which to get results from. Default : latest | [optional]
- **page** | **String**| Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional]
- **start** | **Integer**| Optional. When paginating, skip this number of results. | [optional]
- **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional]
- **filter** | **String**| Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asAt** | **OffsetDateTime**| Optional. The time at which to get results from. Default : latest | [optional] |
+| **page** | **String**| Optional. The pagination token to use to continue listing compliance runs from a previous call to list compliance runs.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, and asAt fields              must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **start** | **Integer**| Optional. When paginating, skip this number of results. | [optional] |
+| **limit** | **Integer**| Optional. When paginating, limit the number of returned results to this many. | [optional] |
+| **filter** | **String**| Optional. Expression to filter the result set. Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -533,11 +533,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The list of compliance templates available. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The list of compliance templates available. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="runCompliance"></a>
+<a id="runCompliance"></a>
 # **runCompliance**
 > ComplianceRunInfoV2 runCompliance(runScope, ruleScope, isPreTrade, recipeIdScope, recipeIdCode)
 
@@ -558,7 +558,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -586,13 +586,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **runScope** | **String**| Required: Scope to save the run results in. |
- **ruleScope** | **String**| Required: Scope from which to select rules to be run. |
- **isPreTrade** | **Boolean**| Required: Boolean flag indicating if a run should be PreTrade (Including orders). For post-trade only, set to false |
- **recipeIdScope** | **String**| Required: the scope of the recipe to be used |
- **recipeIdCode** | **String**| Required: The code of the recipe to be used. If left blank, the default recipe will be used. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **runScope** | **String**| Required: Scope to save the run results in. | |
+| **ruleScope** | **String**| Required: Scope from which to select rules to be run. | |
+| **isPreTrade** | **Boolean**| Required: Boolean flag indicating if a run should be PreTrade (Including orders). For post-trade only, set to false | |
+| **recipeIdScope** | **String**| Required: the scope of the recipe to be used | |
+| **recipeIdCode** | **String**| Required: The code of the recipe to be used. If left blank, the default recipe will be used. | |
 
 ### Return type
 
@@ -610,11 +610,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The identifying information of a compliance run |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The identifying information of a compliance run |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="upsertComplianceRule"></a>
+<a id="upsertComplianceRule"></a>
 # **upsertComplianceRule**
 > ComplianceRuleResponse upsertComplianceRule(upsertComplianceRuleRequest)
 
@@ -635,7 +635,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -659,9 +659,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **upsertComplianceRuleRequest** | [**UpsertComplianceRuleRequest**](UpsertComplianceRuleRequest.md)|  | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **upsertComplianceRuleRequest** | [**UpsertComplianceRuleRequest**](UpsertComplianceRuleRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -673,17 +673,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The upserted compliance rule. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The upserted compliance rule. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="upsertComplianceRunSummary"></a>
+<a id="upsertComplianceRunSummary"></a>
 # **upsertComplianceRunSummary**
 > ComplianceRunSummary upsertComplianceRunSummary(upsertComplianceRunSummaryRequest)
 
@@ -704,7 +704,7 @@ import com.finbourne.lusid.api.ComplianceApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -728,9 +728,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **upsertComplianceRunSummaryRequest** | [**UpsertComplianceRunSummaryRequest**](UpsertComplianceRunSummaryRequest.md)|  | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **upsertComplianceRunSummaryRequest** | [**UpsertComplianceRunSummaryRequest**](UpsertComplianceRunSummaryRequest.md)|  | [optional] |
 
 ### Return type
 
@@ -742,13 +742,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The upserted compliance run summary. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The upserted compliance run summary. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 

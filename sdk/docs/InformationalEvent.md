@@ -6,13 +6,13 @@ A generic event derived from the economic definition of an instrument. This shou
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**eventType** | **String** | What type of internal event does this represent; reset, exercise, amortisation etc. |  [readonly]
-**eventStatus** | **String** | What is the event status, is it a known (ie historic) or unknown (ie projected) event? | 
-**anchorDate** | **OffsetDateTime** | In the case of a point event, the single date on which the event occurs. In the case of an event which is  spread over a window, e.g. a barrier or American option, the start of that window. | 
-**eventWindowEnd** | **OffsetDateTime** | In the case of a point event this is identical to the anchor date. In the case of an event that is spread over a window,  this is the end of that window. |  [optional] [readonly]
-**diagnostics** | [**ResultValueDictionary**](ResultValueDictionary.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**eventType** | **String** | What type of internal event does this represent; reset, exercise, amortisation etc. |  [readonly] |
+|**eventStatus** | **String** | What is the event status, is it a known (ie historic) or unknown (ie projected) event? |  |
+|**anchorDate** | **OffsetDateTime** | In the case of a point event, the single date on which the event occurs. In the case of an event which is  spread over a window, e.g. a barrier or American option, the start of that window. |  |
+|**eventWindowEnd** | **OffsetDateTime** | In the case of a point event this is identical to the anchor date. In the case of an event that is spread over a window,  this is the end of that window. |  [optional] [readonly] |
+|**diagnostics** | [**ResultValueDictionary**](ResultValueDictionary.md) |  |  [optional] |
 
 
 

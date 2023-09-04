@@ -1,20 +1,20 @@
 # CounterpartiesApi
 
-All URIs are relative to *https://fbn-prd.lusid.com/api*
+All URIs are relative to *https://www.lusid.com/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteCounterpartyAgreement**](CounterpartiesApi.md#deleteCounterpartyAgreement) | **DELETE** /api/counterparties/counterpartyagreements/{scope}/{code} | [EARLY ACCESS] DeleteCounterpartyAgreement: Delete the Counterparty Agreement of given scope and code
-[**deleteCreditSupportAnnex**](CounterpartiesApi.md#deleteCreditSupportAnnex) | **DELETE** /api/counterparties/creditsupportannexes/{scope}/{code} | [EARLY ACCESS] DeleteCreditSupportAnnex: Delete the Credit Support Annex of given scope and code
-[**getCounterpartyAgreement**](CounterpartiesApi.md#getCounterpartyAgreement) | **GET** /api/counterparties/counterpartyagreements/{scope}/{code} | [EARLY ACCESS] GetCounterpartyAgreement: Get Counterparty Agreement
-[**getCreditSupportAnnex**](CounterpartiesApi.md#getCreditSupportAnnex) | **GET** /api/counterparties/creditsupportannexes/{scope}/{code} | [EARLY ACCESS] GetCreditSupportAnnex: Get Credit Support Annex
-[**listCounterpartyAgreements**](CounterpartiesApi.md#listCounterpartyAgreements) | **GET** /api/counterparties/counterpartyagreements | [EARLY ACCESS] ListCounterpartyAgreements: List the set of Counterparty Agreements
-[**listCreditSupportAnnexes**](CounterpartiesApi.md#listCreditSupportAnnexes) | **GET** /api/counterparties/creditsupportannexes | [EARLY ACCESS] ListCreditSupportAnnexes: List the set of Credit Support Annexes
-[**upsertCounterpartyAgreement**](CounterpartiesApi.md#upsertCounterpartyAgreement) | **POST** /api/counterparties/counterpartyagreements | [EARLY ACCESS] UpsertCounterpartyAgreement: Upsert Counterparty Agreement
-[**upsertCreditSupportAnnex**](CounterpartiesApi.md#upsertCreditSupportAnnex) | **POST** /api/counterparties/creditsupportannexes | [EARLY ACCESS] UpsertCreditSupportAnnex: Upsert Credit Support Annex
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**deleteCounterpartyAgreement**](CounterpartiesApi.md#deleteCounterpartyAgreement) | **DELETE** /api/counterparties/counterpartyagreements/{scope}/{code} | [EARLY ACCESS] DeleteCounterpartyAgreement: Delete the Counterparty Agreement of given scope and code |
+| [**deleteCreditSupportAnnex**](CounterpartiesApi.md#deleteCreditSupportAnnex) | **DELETE** /api/counterparties/creditsupportannexes/{scope}/{code} | [EARLY ACCESS] DeleteCreditSupportAnnex: Delete the Credit Support Annex of given scope and code |
+| [**getCounterpartyAgreement**](CounterpartiesApi.md#getCounterpartyAgreement) | **GET** /api/counterparties/counterpartyagreements/{scope}/{code} | [EARLY ACCESS] GetCounterpartyAgreement: Get Counterparty Agreement |
+| [**getCreditSupportAnnex**](CounterpartiesApi.md#getCreditSupportAnnex) | **GET** /api/counterparties/creditsupportannexes/{scope}/{code} | [EARLY ACCESS] GetCreditSupportAnnex: Get Credit Support Annex |
+| [**listCounterpartyAgreements**](CounterpartiesApi.md#listCounterpartyAgreements) | **GET** /api/counterparties/counterpartyagreements | [EARLY ACCESS] ListCounterpartyAgreements: List the set of Counterparty Agreements |
+| [**listCreditSupportAnnexes**](CounterpartiesApi.md#listCreditSupportAnnexes) | **GET** /api/counterparties/creditsupportannexes | [EARLY ACCESS] ListCreditSupportAnnexes: List the set of Credit Support Annexes |
+| [**upsertCounterpartyAgreement**](CounterpartiesApi.md#upsertCounterpartyAgreement) | **POST** /api/counterparties/counterpartyagreements | [EARLY ACCESS] UpsertCounterpartyAgreement: Upsert Counterparty Agreement |
+| [**upsertCreditSupportAnnex**](CounterpartiesApi.md#upsertCreditSupportAnnex) | **POST** /api/counterparties/creditsupportannexes | [EARLY ACCESS] UpsertCreditSupportAnnex: Upsert Credit Support Annex |
 
 
-<a name="deleteCounterpartyAgreement"></a>
+<a id="deleteCounterpartyAgreement"></a>
 # **deleteCounterpartyAgreement**
 > AnnulSingleStructuredDataResponse deleteCounterpartyAgreement(scope, code)
 
@@ -35,7 +35,7 @@ import com.finbourne.lusid.api.CounterpartiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -60,10 +60,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the Counterparty Agreement to delete. |
- **code** | **String**| The Counterparty Agreement to delete. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Counterparty Agreement to delete. | |
+| **code** | **String**| The Counterparty Agreement to delete. | |
 
 ### Return type
 
@@ -81,11 +81,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The AsAt of deletion or failure |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The AsAt of deletion or failure |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="deleteCreditSupportAnnex"></a>
+<a id="deleteCreditSupportAnnex"></a>
 # **deleteCreditSupportAnnex**
 > AnnulSingleStructuredDataResponse deleteCreditSupportAnnex(scope, code)
 
@@ -106,7 +106,7 @@ import com.finbourne.lusid.api.CounterpartiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -131,10 +131,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the Credit Support Annex to delete. |
- **code** | **String**| The Credit Support Annex to delete. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Credit Support Annex to delete. | |
+| **code** | **String**| The Credit Support Annex to delete. | |
 
 ### Return type
 
@@ -152,11 +152,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The AsAt of deletion or failure |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The AsAt of deletion or failure |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getCounterpartyAgreement"></a>
+<a id="getCounterpartyAgreement"></a>
 # **getCounterpartyAgreement**
 > GetCounterpartyAgreementResponse getCounterpartyAgreement(scope, code, asAt)
 
@@ -177,7 +177,7 @@ import com.finbourne.lusid.api.CounterpartiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -203,11 +203,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the Counterparty Agreement to retrieve. |
- **code** | **String**| The name of the Counterparty Agreement to retrieve the data for. |
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Counterparty Agreement. Defaults to return the latest version if not specified. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Counterparty Agreement to retrieve. | |
+| **code** | **String**| The name of the Counterparty Agreement to retrieve the data for. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Counterparty Agreement. Defaults to return the latest version if not specified. | [optional] |
 
 ### Return type
 
@@ -225,11 +225,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The successfully retrieved Counterparty Agreement or any failure |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The successfully retrieved Counterparty Agreement or any failure |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getCreditSupportAnnex"></a>
+<a id="getCreditSupportAnnex"></a>
 # **getCreditSupportAnnex**
 > GetCreditSupportAnnexResponse getCreditSupportAnnex(scope, code, asAt)
 
@@ -250,7 +250,7 @@ import com.finbourne.lusid.api.CounterpartiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -276,11 +276,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the Credit Support Annex to retrieve. |
- **code** | **String**| The name of the Credit Support Annex to retrieve the data for. |
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Credit Support Annex . Defaults to return the latest version if not specified. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Credit Support Annex to retrieve. | |
+| **code** | **String**| The name of the Credit Support Annex to retrieve the data for. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Credit Support Annex . Defaults to return the latest version if not specified. | [optional] |
 
 ### Return type
 
@@ -298,11 +298,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The successfully retrieved credit support annexes or any failure |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The successfully retrieved credit support annexes or any failure |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="listCounterpartyAgreements"></a>
+<a id="listCounterpartyAgreements"></a>
 # **listCounterpartyAgreements**
 > ResourceListOfGetCounterpartyAgreementResponse listCounterpartyAgreements(asAt)
 
@@ -323,7 +323,7 @@ import com.finbourne.lusid.api.CounterpartiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -347,9 +347,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Counterparty Agreements. Defaults to latest if not specified. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Counterparty Agreements. Defaults to latest if not specified. | [optional] |
 
 ### Return type
 
@@ -367,11 +367,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The requested Counterparty Agreements |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The requested Counterparty Agreements |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="listCreditSupportAnnexes"></a>
+<a id="listCreditSupportAnnexes"></a>
 # **listCreditSupportAnnexes**
 > ResourceListOfGetCreditSupportAnnexResponse listCreditSupportAnnexes(asAt)
 
@@ -392,7 +392,7 @@ import com.finbourne.lusid.api.CounterpartiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -416,9 +416,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Credit Support Annexes. Defaults to latest if not specified. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the Credit Support Annexes. Defaults to latest if not specified. | [optional] |
 
 ### Return type
 
@@ -436,11 +436,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The requested Credit Support Annexes |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The requested Credit Support Annexes |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="upsertCounterpartyAgreement"></a>
+<a id="upsertCounterpartyAgreement"></a>
 # **upsertCounterpartyAgreement**
 > UpsertSingleStructuredDataResponse upsertCounterpartyAgreement(upsertCounterpartyAgreementRequest)
 
@@ -461,7 +461,7 @@ import com.finbourne.lusid.api.CounterpartiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -485,9 +485,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **upsertCounterpartyAgreementRequest** | [**UpsertCounterpartyAgreementRequest**](UpsertCounterpartyAgreementRequest.md)| The Counterparty Agreement to update or insert |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **upsertCounterpartyAgreementRequest** | [**UpsertCounterpartyAgreementRequest**](UpsertCounterpartyAgreementRequest.md)| The Counterparty Agreement to update or insert | |
 
 ### Return type
 
@@ -499,17 +499,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The successfully updated or inserted Counterparty Agreement or any failure |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The successfully updated or inserted Counterparty Agreement or any failure |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="upsertCreditSupportAnnex"></a>
+<a id="upsertCreditSupportAnnex"></a>
 # **upsertCreditSupportAnnex**
 > UpsertSingleStructuredDataResponse upsertCreditSupportAnnex(upsertCreditSupportAnnexRequest)
 
@@ -530,7 +530,7 @@ import com.finbourne.lusid.api.CounterpartiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -554,9 +554,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **upsertCreditSupportAnnexRequest** | [**UpsertCreditSupportAnnexRequest**](UpsertCreditSupportAnnexRequest.md)| The Credit Support Annex to update or insert |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **upsertCreditSupportAnnexRequest** | [**UpsertCreditSupportAnnexRequest**](UpsertCreditSupportAnnexRequest.md)| The Credit Support Annex to update or insert | |
 
 ### Return type
 
@@ -568,13 +568,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The successfully updated or inserted item or any failure |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The successfully updated or inserted item or any failure |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 

@@ -6,8 +6,8 @@ Base class for representing instrument legs in LUSID.  An instrument leg describ
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
 
 
 

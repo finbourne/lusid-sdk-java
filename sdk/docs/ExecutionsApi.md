@@ -1,16 +1,16 @@
 # ExecutionsApi
 
-All URIs are relative to *https://fbn-prd.lusid.com/api*
+All URIs are relative to *https://www.lusid.com/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteExecution**](ExecutionsApi.md#deleteExecution) | **DELETE** /api/executions/{scope}/{code} | [EARLY ACCESS] DeleteExecution: Delete execution
-[**getExecution**](ExecutionsApi.md#getExecution) | **GET** /api/executions/{scope}/{code} | [EARLY ACCESS] GetExecution: Get Execution
-[**listExecutions**](ExecutionsApi.md#listExecutions) | **GET** /api/executions | [EARLY ACCESS] ListExecutions: List Executions
-[**upsertExecutions**](ExecutionsApi.md#upsertExecutions) | **POST** /api/executions | [EARLY ACCESS] UpsertExecutions: Upsert Execution
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**deleteExecution**](ExecutionsApi.md#deleteExecution) | **DELETE** /api/executions/{scope}/{code} | [EARLY ACCESS] DeleteExecution: Delete execution |
+| [**getExecution**](ExecutionsApi.md#getExecution) | **GET** /api/executions/{scope}/{code} | [EARLY ACCESS] GetExecution: Get Execution |
+| [**listExecutions**](ExecutionsApi.md#listExecutions) | **GET** /api/executions | [EARLY ACCESS] ListExecutions: List Executions |
+| [**upsertExecutions**](ExecutionsApi.md#upsertExecutions) | **POST** /api/executions | [EARLY ACCESS] UpsertExecutions: Upsert Execution |
 
 
-<a name="deleteExecution"></a>
+<a id="deleteExecution"></a>
 # **deleteExecution**
 > DeletedEntityResponse deleteExecution(scope, code)
 
@@ -31,7 +31,7 @@ import com.finbourne.lusid.api.ExecutionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -56,10 +56,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The execution scope. |
- **code** | **String**| The execution&#39;s code. This, together with the scope uniquely identifies the execution to delete. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The execution scope. | |
+| **code** | **String**| The execution&#39;s code. This, together with the scope uniquely identifies the execution to delete. | |
 
 ### Return type
 
@@ -77,11 +77,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The response from deleting an execution. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The response from deleting an execution. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getExecution"></a>
+<a id="getExecution"></a>
 # **getExecution**
 > Execution getExecution(scope, code, asAt, propertyKeys)
 
@@ -102,7 +102,7 @@ import com.finbourne.lusid.api.ExecutionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -129,12 +129,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope to which the execution belongs. |
- **code** | **String**| The execution&#39;s unique identifier. |
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the execution. Defaults to return the latest version of the execution if not specified. | [optional]
- **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Execution\&quot; domain to decorate onto the execution.              These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope to which the execution belongs. | |
+| **code** | **String**| The execution&#39;s unique identifier. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the execution. Defaults to return the latest version of the execution if not specified. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Execution\&quot; domain to decorate onto the execution.              These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -152,11 +152,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The execution matching the given identifier. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The execution matching the given identifier. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="listExecutions"></a>
+<a id="listExecutions"></a>
 # **listExecutions**
 > PagedResourceListOfExecution listExecutions(asAt, page, sortBy, limit, filter, propertyKeys)
 
@@ -177,7 +177,7 @@ import com.finbourne.lusid.api.ExecutionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -206,14 +206,14 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the execution. Defaults to return the latest version of the execution if not specified. | [optional]
- **page** | **String**| The pagination token to use to continue listing execution from a previous call to list executions.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. | [optional]
- **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional]
- **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional]
- **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional]
- **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Execution\&quot; domain to decorate onto each execution.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the execution. Defaults to return the latest version of the execution if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing execution from a previous call to list executions.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Execution\&quot; domain to decorate onto each execution.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Execution/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -231,11 +231,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Executions in scope. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | Executions in scope. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="upsertExecutions"></a>
+<a id="upsertExecutions"></a>
 # **upsertExecutions**
 > ResourceListOfExecution upsertExecutions(executionSetRequest)
 
@@ -256,7 +256,7 @@ import com.finbourne.lusid.api.ExecutionsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -280,9 +280,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **executionSetRequest** | [**ExecutionSetRequest**](ExecutionSetRequest.md)| The collection of execution requests. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **executionSetRequest** | [**ExecutionSetRequest**](ExecutionSetRequest.md)| The collection of execution requests. | [optional] |
 
 ### Return type
 
@@ -294,13 +294,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | A collection of executions. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **201** | A collection of executions. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 

@@ -6,20 +6,20 @@ Base class for representing reconciliation rules in LUSID.  Reconciliation rules
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**ruleType** | [**RuleTypeEnum**](#RuleTypeEnum) | The available values are: ReconcileNumericRule, ReconcileDateTimeRule, ReconcileStringRule, ReconcileExact | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**ruleType** | [**RuleTypeEnum**](#RuleTypeEnum) | The available values are: ReconcileNumericRule, ReconcileDateTimeRule, ReconcileStringRule, ReconcileExact |  |
 
 
 
 ## Enum: RuleTypeEnum
 
-Name | Value
----- | -----
-RECONCILENUMERICRULE | &quot;ReconcileNumericRule&quot;
-RECONCILEDATETIMERULE | &quot;ReconcileDateTimeRule&quot;
-RECONCILESTRINGRULE | &quot;ReconcileStringRule&quot;
-RECONCILEEXACT | &quot;ReconcileExact&quot;
+| Name | Value |
+|---- | -----|
+| RECONCILENUMERICRULE | &quot;ReconcileNumericRule&quot; |
+| RECONCILEDATETIMERULE | &quot;ReconcileDateTimeRule&quot; |
+| RECONCILESTRINGRULE | &quot;ReconcileStringRule&quot; |
+| RECONCILEEXACT | &quot;ReconcileExact&quot; |
 
 
 

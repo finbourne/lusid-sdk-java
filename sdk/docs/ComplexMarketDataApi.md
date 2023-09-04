@@ -1,15 +1,16 @@
 # ComplexMarketDataApi
 
-All URIs are relative to *https://fbn-prd.lusid.com/api*
+All URIs are relative to *https://www.lusid.com/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteComplexMarketData**](ComplexMarketDataApi.md#deleteComplexMarketData) | **POST** /api/complexmarketdata/{scope}/$delete | [EARLY ACCESS] DeleteComplexMarketData: Delete one or more items of complex market data, assuming they are present.
-[**getComplexMarketData**](ComplexMarketDataApi.md#getComplexMarketData) | **POST** /api/complexmarketdata/{scope}/$get | [EARLY ACCESS] GetComplexMarketData: Get complex market data
-[**upsertComplexMarketData**](ComplexMarketDataApi.md#upsertComplexMarketData) | **POST** /api/complexmarketdata/{scope} | [EARLY ACCESS] UpsertComplexMarketData: Upsert a set of complex market data items. This creates or updates the data in Lusid.
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**deleteComplexMarketData**](ComplexMarketDataApi.md#deleteComplexMarketData) | **POST** /api/complexmarketdata/{scope}/$delete | [EARLY ACCESS] DeleteComplexMarketData: Delete one or more items of complex market data, assuming they are present. |
+| [**getComplexMarketData**](ComplexMarketDataApi.md#getComplexMarketData) | **POST** /api/complexmarketdata/{scope}/$get | [EARLY ACCESS] GetComplexMarketData: Get complex market data |
+| [**listComplexMarketData**](ComplexMarketDataApi.md#listComplexMarketData) | **GET** /api/complexmarketdata | [EXPERIMENTAL] ListComplexMarketData: List the set of ComplexMarketData |
+| [**upsertComplexMarketData**](ComplexMarketDataApi.md#upsertComplexMarketData) | **POST** /api/complexmarketdata/{scope} | [EARLY ACCESS] UpsertComplexMarketData: Upsert a set of complex market data items. This creates or updates the data in Lusid. |
 
 
-<a name="deleteComplexMarketData"></a>
+<a id="deleteComplexMarketData"></a>
 # **deleteComplexMarketData**
 > AnnulStructuredDataResponse deleteComplexMarketData(scope, requestBody)
 
@@ -30,7 +31,7 @@ import com.finbourne.lusid.api.ComplexMarketDataApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -55,10 +56,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the complex market data to delete. |
- **requestBody** | [**Map&lt;String, ComplexMarketDataId&gt;**](ComplexMarketDataId.md)| The complex market data Ids to delete, each keyed by a unique correlation id. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the complex market data to delete. | |
+| **requestBody** | [**Map&lt;String, ComplexMarketDataId&gt;**](ComplexMarketDataId.md)| The complex market data Ids to delete, each keyed by a unique correlation id. | |
 
 ### Return type
 
@@ -70,17 +71,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The successfully deleted ComplexMarketData along with any failures |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The successfully deleted ComplexMarketData along with any failures |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getComplexMarketData"></a>
+<a id="getComplexMarketData"></a>
 # **getComplexMarketData**
 > GetComplexMarketDataResponse getComplexMarketData(scope, requestBody, effectiveAt, asAt, maxAge)
 
@@ -101,7 +102,7 @@ import com.finbourne.lusid.api.ComplexMarketDataApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -129,13 +130,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope of the complex market data to retrieve. |
- **requestBody** | [**Map&lt;String, ComplexMarketDataId&gt;**](ComplexMarketDataId.md)| The time invariant set of complex data identifiers to retrieve the data for. These need to be               keyed by a unique correlation id allowing the retrieved item to be identified in the response. |
- **effectiveAt** | **String**| The effective datetime at which to retrieve the complex market data.               Defaults to the current LUSID system datetime if not specified.               Must match the Effective at of each ComplexMarketDataId given in the request body. | [optional]
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified. | [optional]
- **maxAge** | **String**| The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a complex market data item must exist to be retrieved. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the complex market data to retrieve. | |
+| **requestBody** | [**Map&lt;String, ComplexMarketDataId&gt;**](ComplexMarketDataId.md)| The time invariant set of complex data identifiers to retrieve the data for. These need to be               keyed by a unique correlation id allowing the retrieved item to be identified in the response. | |
+| **effectiveAt** | **String**| The effective datetime at which to retrieve the complex market data.               Defaults to the current LUSID system datetime if not specified.               Must match the Effective at of each ComplexMarketDataId given in the request body. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the complex market data. Defaults to return the latest version if not specified. | [optional] |
+| **maxAge** | **String**| The duration of the look back window in an ISO8601 time interval format e.g. P1Y2M3DT4H30M (1 year, 2 months, 3 days, 4 hours and 30 minutes).               This is subtracted from the provided effectiveAt datetime to generate a effective datetime window inside which a complex market data item must exist to be retrieved. | [optional] |
 
 ### Return type
 
@@ -147,17 +148,86 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The successfully retrieved complex market data along with any failures |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The successfully retrieved complex market data along with any failures |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="upsertComplexMarketData"></a>
+<a id="listComplexMarketData"></a>
+# **listComplexMarketData**
+> ResourceListOfListComplexMarketDataWithMetaDataResponse listComplexMarketData(asAt)
+
+[EXPERIMENTAL] ListComplexMarketData: List the set of ComplexMarketData
+
+List the set of ComplexMarketData at the specified date/time,  along with the scope the data was stored in and its identifier in that scope.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ComplexMarketDataApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ComplexMarketDataApi apiInstance = new ComplexMarketDataApi(defaultClient);
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified.
+    try {
+      ResourceListOfListComplexMarketDataWithMetaDataResponse result = apiInstance.listComplexMarketData(asAt);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ComplexMarketDataApi#listComplexMarketData");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the ComplexMarketData. Defaults to latest if not specified. | [optional] |
+
+### Return type
+
+[**ResourceListOfListComplexMarketDataWithMetaDataResponse**](ResourceListOfListComplexMarketDataWithMetaDataResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested ComplexMarketData |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="upsertComplexMarketData"></a>
 # **upsertComplexMarketData**
 > UpsertStructuredDataResponse upsertComplexMarketData(scope, requestBody)
 
@@ -178,7 +248,7 @@ import com.finbourne.lusid.api.ComplexMarketDataApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -203,10 +273,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope to use when updating or inserting the complex market data. |
- **requestBody** | [**Map&lt;String, UpsertComplexMarketDataRequest&gt;**](UpsertComplexMarketDataRequest.md)| The set of complex market data items to update or insert keyed by a unique correlation id. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope to use when updating or inserting the complex market data. | |
+| **requestBody** | [**Map&lt;String, UpsertComplexMarketDataRequest&gt;**](UpsertComplexMarketDataRequest.md)| The set of complex market data items to update or insert keyed by a unique correlation id. | |
 
 ### Return type
 
@@ -218,13 +288,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The successfully updated or inserted ComplexMarketData along with any failures |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The successfully updated or inserted ComplexMarketData along with any failures |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 

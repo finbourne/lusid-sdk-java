@@ -1,16 +1,16 @@
 # ReferenceListsApi
 
-All URIs are relative to *https://fbn-prd.lusid.com/api*
+All URIs are relative to *https://www.lusid.com/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteReferenceList**](ReferenceListsApi.md#deleteReferenceList) | **DELETE** /api/referencelists/{scope}/{code} | [EARLY ACCESS] DeleteReferenceList: Delete Reference List
-[**getReferenceList**](ReferenceListsApi.md#getReferenceList) | **GET** /api/referencelists/{scope}/{code} | [EARLY ACCESS] GetReferenceList: Get Reference List
-[**listReferenceLists**](ReferenceListsApi.md#listReferenceLists) | **GET** /api/referencelists | [EARLY ACCESS] ListReferenceLists: List Reference Lists
-[**upsertReferenceList**](ReferenceListsApi.md#upsertReferenceList) | **POST** /api/referencelists | [EARLY ACCESS] UpsertReferenceList: Upsert Reference List
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**deleteReferenceList**](ReferenceListsApi.md#deleteReferenceList) | **DELETE** /api/referencelists/{scope}/{code} | [EARLY ACCESS] DeleteReferenceList: Delete Reference List |
+| [**getReferenceList**](ReferenceListsApi.md#getReferenceList) | **GET** /api/referencelists/{scope}/{code} | [EARLY ACCESS] GetReferenceList: Get Reference List |
+| [**listReferenceLists**](ReferenceListsApi.md#listReferenceLists) | **GET** /api/referencelists | [EARLY ACCESS] ListReferenceLists: List Reference Lists |
+| [**upsertReferenceList**](ReferenceListsApi.md#upsertReferenceList) | **POST** /api/referencelists | [EARLY ACCESS] UpsertReferenceList: Upsert Reference List |
 
 
-<a name="deleteReferenceList"></a>
+<a id="deleteReferenceList"></a>
 # **deleteReferenceList**
 > DeletedEntityResponse deleteReferenceList(scope, code)
 
@@ -31,7 +31,7 @@ import com.finbourne.lusid.api.ReferenceListsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -56,10 +56,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope to which the Reference List belongs. |
- **code** | **String**| The Reference List&#39;s unique identifier. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope to which the Reference List belongs. | |
+| **code** | **String**| The Reference List&#39;s unique identifier. | |
 
 ### Return type
 
@@ -77,11 +77,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The deleted reference list response. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The deleted reference list response. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getReferenceList"></a>
+<a id="getReferenceList"></a>
 # **getReferenceList**
 > ReferenceListResponse getReferenceList(scope, code, asAt)
 
@@ -102,7 +102,7 @@ import com.finbourne.lusid.api.ReferenceListsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -128,11 +128,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope to which the Reference List belongs. |
- **code** | **String**| The Reference List&#39;s unique identifier. |
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Reference List. Defaults to return the latest version of the Reference List if not specified. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope to which the Reference List belongs. | |
+| **code** | **String**| The Reference List&#39;s unique identifier. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Reference List. Defaults to return the latest version of the Reference List if not specified. | [optional] |
 
 ### Return type
 
@@ -150,11 +150,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The Reference List matching the requested identifier. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The Reference List matching the requested identifier. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="listReferenceLists"></a>
+<a id="listReferenceLists"></a>
 # **listReferenceLists**
 > PagedResourceListOfReferenceListResponse listReferenceLists(asAt, page, limit, filter)
 
@@ -175,7 +175,7 @@ import com.finbourne.lusid.api.ReferenceListsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -202,12 +202,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **asAt** | **OffsetDateTime**| The asAt datetime at which to list Reference Lists. Defaults to return the latest version of Reference Lists if not specified. | [optional]
- **page** | **String**| The pagination token to use to continue listing Reference Lists from a previous call to list Reference Lists.              This value is returned from the previous call. If a pagination token is provided, the filter, limit and asAt fields              must not have changed since the original request. | [optional]
- **limit** | **Integer**| When paginating, limit the number of returned results to this number. Defaults to 100 if not specified. | [optional]
- **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list Reference Lists. Defaults to return the latest version of Reference Lists if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing Reference Lists from a previous call to list Reference Lists.              This value is returned from the previous call. If a pagination token is provided, the filter, limit and asAt fields              must not have changed since the original request. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this number. Defaults to 100 if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -225,11 +225,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | A collection of Reference Lists. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | A collection of Reference Lists. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="upsertReferenceList"></a>
+<a id="upsertReferenceList"></a>
 # **upsertReferenceList**
 > ReferenceListResponse upsertReferenceList(referenceListRequest)
 
@@ -250,7 +250,7 @@ import com.finbourne.lusid.api.ReferenceListsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -274,9 +274,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **referenceListRequest** | [**ReferenceListRequest**](ReferenceListRequest.md)| The payload describing the Reference List instance. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **referenceListRequest** | [**ReferenceListRequest**](ReferenceListRequest.md)| The payload describing the Reference List instance. | [optional] |
 
 ### Return type
 
@@ -288,13 +288,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The upserted Reference List instance. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The upserted Reference List instance. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 

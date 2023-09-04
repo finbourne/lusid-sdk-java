@@ -6,9 +6,9 @@ The date that is the requested number of business days after the given start dat
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**value** | **OffsetDateTime** |  | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**value** | **OffsetDateTime** |  |  |
 
 
 

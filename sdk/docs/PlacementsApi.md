@@ -1,16 +1,16 @@
 # PlacementsApi
 
-All URIs are relative to *https://fbn-prd.lusid.com/api*
+All URIs are relative to *https://www.lusid.com/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deletePlacement**](PlacementsApi.md#deletePlacement) | **DELETE** /api/placements/{scope}/{code} | [EARLY ACCESS] DeletePlacement: Delete placement
-[**getPlacement**](PlacementsApi.md#getPlacement) | **GET** /api/placements/{scope}/{code} | [EARLY ACCESS] GetPlacement: Get Placement
-[**listPlacements**](PlacementsApi.md#listPlacements) | **GET** /api/placements | [EARLY ACCESS] ListPlacements: List Placements
-[**upsertPlacements**](PlacementsApi.md#upsertPlacements) | **POST** /api/placements | [EARLY ACCESS] UpsertPlacements: Upsert Placement
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**deletePlacement**](PlacementsApi.md#deletePlacement) | **DELETE** /api/placements/{scope}/{code} | [EARLY ACCESS] DeletePlacement: Delete placement |
+| [**getPlacement**](PlacementsApi.md#getPlacement) | **GET** /api/placements/{scope}/{code} | [EARLY ACCESS] GetPlacement: Get Placement |
+| [**listPlacements**](PlacementsApi.md#listPlacements) | **GET** /api/placements | [EARLY ACCESS] ListPlacements: List Placements |
+| [**upsertPlacements**](PlacementsApi.md#upsertPlacements) | **POST** /api/placements | [EARLY ACCESS] UpsertPlacements: Upsert Placement |
 
 
-<a name="deletePlacement"></a>
+<a id="deletePlacement"></a>
 # **deletePlacement**
 > DeletedEntityResponse deletePlacement(scope, code)
 
@@ -31,7 +31,7 @@ import com.finbourne.lusid.api.PlacementsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -56,10 +56,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The placement scope. |
- **code** | **String**| The placement&#39;s code. This, together with the scope uniquely identifies the placement to delete. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The placement scope. | |
+| **code** | **String**| The placement&#39;s code. This, together with the scope uniquely identifies the placement to delete. | |
 
 ### Return type
 
@@ -77,11 +77,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The response from deleting an placement. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The response from deleting an placement. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getPlacement"></a>
+<a id="getPlacement"></a>
 # **getPlacement**
 > Placement getPlacement(scope, code, asAt, propertyKeys)
 
@@ -102,7 +102,7 @@ import com.finbourne.lusid.api.PlacementsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -129,12 +129,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| The scope to which the placement belongs. |
- **code** | **String**| The placement&#39;s unique identifier. |
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. | [optional]
- **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement.              These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope to which the placement belongs. | |
+| **code** | **String**| The placement&#39;s unique identifier. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Placement\&quot; domain to decorate onto the placement.              These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -152,11 +152,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The placement matching the given identifier. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The placement matching the given identifier. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="listPlacements"></a>
+<a id="listPlacements"></a>
 # **listPlacements**
 > PagedResourceListOfPlacement listPlacements(asAt, page, sortBy, limit, filter, propertyKeys)
 
@@ -177,7 +177,7 @@ import com.finbourne.lusid.api.PlacementsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -206,14 +206,14 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. | [optional]
- **page** | **String**| The pagination token to use to continue listing placements from a previous call to list placements.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. | [optional]
- **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional]
- **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional]
- **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional]
- **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Placement\&quot; domain to decorate onto each placement.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the placement. Defaults to return the latest version of the placement if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing placements from a previous call to list placements.              This value is returned from the previous call. If a pagination token is provided the sortBy, filter, effectiveAt, and asAt fields              must not have changed since the original request. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:              https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the \&quot;Placement\&quot; domain to decorate onto each placement.                  These take the format {domain}/{scope}/{code} e.g. \&quot;Placement/system/Name\&quot;. | [optional] |
 
 ### Return type
 
@@ -231,11 +231,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Placements in scope. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | Placements in scope. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="upsertPlacements"></a>
+<a id="upsertPlacements"></a>
 # **upsertPlacements**
 > ResourceListOfPlacement upsertPlacements(placementSetRequest)
 
@@ -256,7 +256,7 @@ import com.finbourne.lusid.api.PlacementsApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -280,9 +280,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **placementSetRequest** | [**PlacementSetRequest**](PlacementSetRequest.md)| The collection of placement requests. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **placementSetRequest** | [**PlacementSetRequest**](PlacementSetRequest.md)| The collection of placement requests. | [optional] |
 
 ### Return type
 
@@ -294,13 +294,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | A collection of placements. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **201** | A collection of placements. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 

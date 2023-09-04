@@ -6,17 +6,17 @@ Base class for representing market data options in LUSID.  Abstractly, these are
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**marketDataOptionsType** | [**MarketDataOptionsTypeEnum**](#MarketDataOptionsTypeEnum) | The available values are: CurveOptions | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**marketDataOptionsType** | [**MarketDataOptionsTypeEnum**](#MarketDataOptionsTypeEnum) | The available values are: CurveOptions |  |
 
 
 
 ## Enum: MarketDataOptionsTypeEnum
 
-Name | Value
----- | -----
-CURVEOPTIONS | &quot;CurveOptions&quot;
+| Name | Value |
+|---- | -----|
+| CURVEOPTIONS | &quot;CurveOptions&quot; |
 
 
 

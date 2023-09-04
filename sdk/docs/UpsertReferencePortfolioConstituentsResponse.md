@@ -5,11 +5,11 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**href** | **URI** |  |  [optional]
-**version** | [**Version**](Version.md) |  |  [optional]
-**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**href** | **URI** |  |  [optional] |
+|**version** | [**Version**](Version.md) |  |  [optional] |
+|**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 
 
 

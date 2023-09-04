@@ -1,16 +1,16 @@
 # CustomEntityTypesApi
 
-All URIs are relative to *https://fbn-prd.lusid.com/api*
+All URIs are relative to *https://www.lusid.com/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createCustomEntityType**](CustomEntityTypesApi.md#createCustomEntityType) | **POST** /api/customentitytypes | [EARLY ACCESS] CreateCustomEntityType: Define a new Custom Entity Type.
-[**getCustomEntityType**](CustomEntityTypesApi.md#getCustomEntityType) | **GET** /api/customentitytypes/{entityType} | [EARLY ACCESS] GetCustomEntityType: Get a Custom Entity Type.
-[**listCustomEntityTypes**](CustomEntityTypesApi.md#listCustomEntityTypes) | **GET** /api/customentitytypes | [EARLY ACCESS] ListCustomEntityTypes: List Custom Entity Types.
-[**updateCustomEntityType**](CustomEntityTypesApi.md#updateCustomEntityType) | **PUT** /api/customentitytypes/{entityType} | [EARLY ACCESS] UpdateCustomEntityType: Modify an existing Custom Entity Type.
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**createCustomEntityType**](CustomEntityTypesApi.md#createCustomEntityType) | **POST** /api/customentitytypes | [EARLY ACCESS] CreateCustomEntityType: Define a new Custom Entity Type. |
+| [**getCustomEntityType**](CustomEntityTypesApi.md#getCustomEntityType) | **GET** /api/customentitytypes/{entityType} | [EARLY ACCESS] GetCustomEntityType: Get a Custom Entity Type. |
+| [**listCustomEntityTypes**](CustomEntityTypesApi.md#listCustomEntityTypes) | **GET** /api/customentitytypes | [EARLY ACCESS] ListCustomEntityTypes: List Custom Entity Types. |
+| [**updateCustomEntityType**](CustomEntityTypesApi.md#updateCustomEntityType) | **PUT** /api/customentitytypes/{entityType} | [EARLY ACCESS] UpdateCustomEntityType: Modify an existing Custom Entity Type. |
 
 
-<a name="createCustomEntityType"></a>
+<a id="createCustomEntityType"></a>
 # **createCustomEntityType**
 > CustomEntityType createCustomEntityType(createCustomEntityTypeRequest)
 
@@ -31,7 +31,7 @@ import com.finbourne.lusid.api.CustomEntityTypesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -55,9 +55,9 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **createCustomEntityTypeRequest** | [**CreateCustomEntityTypeRequest**](CreateCustomEntityTypeRequest.md)| The payload containing the description of the Custom Entity Type. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **createCustomEntityTypeRequest** | [**CreateCustomEntityTypeRequest**](CreateCustomEntityTypeRequest.md)| The payload containing the description of the Custom Entity Type. | |
 
 ### Return type
 
@@ -69,17 +69,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The created Custom Entity Type. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The created Custom Entity Type. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getCustomEntityType"></a>
+<a id="getCustomEntityType"></a>
 # **getCustomEntityType**
 > CustomEntityType getCustomEntityType(entityType, asAt)
 
@@ -100,7 +100,7 @@ import com.finbourne.lusid.api.CustomEntityTypesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -125,10 +125,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entityType** | **String**| The identifier for the Custom Entity Type, derived from the \&quot;entityTypeName\&quot; provided on creation. |
- **asAt** | **OffsetDateTime**| The AsAt datetime at which to retrieve the definition. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The identifier for the Custom Entity Type, derived from the \&quot;entityTypeName\&quot; provided on creation. | |
+| **asAt** | **OffsetDateTime**| The AsAt datetime at which to retrieve the definition. | [optional] |
 
 ### Return type
 
@@ -146,11 +146,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The requested Custom Entity Type. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The requested Custom Entity Type. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="listCustomEntityTypes"></a>
+<a id="listCustomEntityTypes"></a>
 # **listCustomEntityTypes**
 > PagedResourceListOfCustomEntityType listCustomEntityTypes(asAt, limit, filter, sortBy, page)
 
@@ -171,7 +171,7 @@ import com.finbourne.lusid.api.CustomEntityTypesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -199,13 +199,13 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **asAt** | **OffsetDateTime**| The asAt datetime at which to list the entities. Defaults to returning the latest version              of each Custom Entity Type if not specified. | [optional]
- **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional]
- **filter** | **String**| Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional]
- **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional]
- **page** | **String**| The pagination token to use to continue listing entities; this              value is returned from the previous call. If a pagination token is provided, the filter, limit, sortBy,              and asAt fields must not have changed since the original request. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the entities. Defaults to returning the latest version              of each Custom Entity Type if not specified. | [optional] |
+| **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
+| **page** | **String**| The pagination token to use to continue listing entities; this              value is returned from the previous call. If a pagination token is provided, the filter, limit, sortBy,              and asAt fields must not have changed since the original request. | [optional] |
 
 ### Return type
 
@@ -223,11 +223,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List Custom Entity Types. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | List Custom Entity Types. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="updateCustomEntityType"></a>
+<a id="updateCustomEntityType"></a>
 # **updateCustomEntityType**
 > CustomEntityType updateCustomEntityType(entityType, updateCustomEntityTypeRequest)
 
@@ -248,7 +248,7 @@ import com.finbourne.lusid.api.CustomEntityTypesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -273,10 +273,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entityType** | **String**| The identifier for the Custom Entity Type, derived from the \&quot;entityTypeName\&quot; provided on creation. |
- **updateCustomEntityTypeRequest** | [**UpdateCustomEntityTypeRequest**](UpdateCustomEntityTypeRequest.md)| The payload containing the description of the Custom Entity Type. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The identifier for the Custom Entity Type, derived from the \&quot;entityTypeName\&quot; provided on creation. | |
+| **updateCustomEntityTypeRequest** | [**UpdateCustomEntityTypeRequest**](UpdateCustomEntityTypeRequest.md)| The payload containing the description of the Custom Entity Type. | |
 
 ### Return type
 
@@ -288,13 +288,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The updated Custom Entity Type. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The updated Custom Entity Type. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 

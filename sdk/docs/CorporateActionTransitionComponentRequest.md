@@ -6,11 +6,11 @@ A single transition component request, when grouped with other transition compon
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**instrumentIdentifiers** | **Map&lt;String, String&gt;** | Unique instrument identifiers | 
-**unitsFactor** | **java.math.BigDecimal** | The factor to scale units by | 
-**costFactor** | **java.math.BigDecimal** | The factor to scale cost by | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**instrumentIdentifiers** | **Map&lt;String, String&gt;** | Unique instrument identifiers |  |
+|**unitsFactor** | **java.math.BigDecimal** | The factor to scale units by |  |
+|**costFactor** | **java.math.BigDecimal** | The factor to scale cost by |  |
 
 
 

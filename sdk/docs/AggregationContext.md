@@ -6,9 +6,9 @@ Aggregation context node. Whilst the market and pricing nodes concern themselves
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**options** | [**AggregationOptions**](AggregationOptions.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**options** | [**AggregationOptions**](AggregationOptions.md) |  |  [optional] |
 
 
 

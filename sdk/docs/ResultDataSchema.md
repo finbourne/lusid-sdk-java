@@ -6,11 +6,11 @@ The shape and type of the returned data. The AddressSchema gives information abo
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**nodeValueSchema** | [**Map&lt;String, FieldSchema&gt;**](FieldSchema.md) | This has been deprecated. Please use AddressSchema instead. |  [optional]
-**propertySchema** | [**Map&lt;String, FieldSchema&gt;**](FieldSchema.md) | This has been deprecated. Please use AddressSchema instead. |  [optional]
-**addressSchema** | [**Map&lt;String, AddressDefinition&gt;**](AddressDefinition.md) |  |  [optional]
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**nodeValueSchema** | [**Map&lt;String, FieldSchema&gt;**](FieldSchema.md) | This has been deprecated. Please use AddressSchema instead. |  [optional] |
+|**propertySchema** | [**Map&lt;String, FieldSchema&gt;**](FieldSchema.md) | This has been deprecated. Please use AddressSchema instead. |  [optional] |
+|**addressSchema** | [**Map&lt;String, AddressDefinition&gt;**](AddressDefinition.md) |  |  [optional] |
 
 
 

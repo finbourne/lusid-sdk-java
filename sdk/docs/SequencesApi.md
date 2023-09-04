@@ -1,16 +1,16 @@
 # SequencesApi
 
-All URIs are relative to *https://fbn-prd.lusid.com/api*
+All URIs are relative to *https://www.lusid.com/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createSequence**](SequencesApi.md#createSequence) | **POST** /api/sequences/{scope} | [EARLY ACCESS] CreateSequence: Create a new sequence
-[**getSequence**](SequencesApi.md#getSequence) | **GET** /api/sequences/{scope}/{code} | [EARLY ACCESS] GetSequence: Get a specified sequence
-[**listSequences**](SequencesApi.md#listSequences) | **GET** /api/sequences | [EARLY ACCESS] ListSequences: List Sequences
-[**next**](SequencesApi.md#next) | **GET** /api/sequences/{scope}/{code}/next | [EARLY ACCESS] Next: Get next values from sequence
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**createSequence**](SequencesApi.md#createSequence) | **POST** /api/sequences/{scope} | [EARLY ACCESS] CreateSequence: Create a new sequence |
+| [**getSequence**](SequencesApi.md#getSequence) | **GET** /api/sequences/{scope}/{code} | [EARLY ACCESS] GetSequence: Get a specified sequence |
+| [**listSequences**](SequencesApi.md#listSequences) | **GET** /api/sequences | [EARLY ACCESS] ListSequences: List Sequences |
+| [**next**](SequencesApi.md#next) | **GET** /api/sequences/{scope}/{code}/next | [EARLY ACCESS] Next: Get next values from sequence |
 
 
-<a name="createSequence"></a>
+<a id="createSequence"></a>
 # **createSequence**
 > SequenceDefinition createSequence(scope, createSequenceRequest)
 
@@ -31,7 +31,7 @@ import com.finbourne.lusid.api.SequencesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -56,10 +56,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| Scope of the sequence. |
- **createSequenceRequest** | [**CreateSequenceRequest**](CreateSequenceRequest.md)| Request to create sequence |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| Scope of the sequence. | |
+| **createSequenceRequest** | [**CreateSequenceRequest**](CreateSequenceRequest.md)| Request to create sequence | |
 
 ### Return type
 
@@ -71,17 +71,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**201** | The newly created Sequence |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **201** | The newly created Sequence |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getSequence"></a>
+<a id="getSequence"></a>
 # **getSequence**
 > SequenceDefinition getSequence(scope, code)
 
@@ -102,7 +102,7 @@ import com.finbourne.lusid.api.SequencesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -127,10 +127,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| Scope of the sequence. |
- **code** | **String**| Code of the sequence. This together with stated scope uniquely              identifies the sequence. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| Scope of the sequence. | |
+| **code** | **String**| Code of the sequence. This together with stated scope uniquely              identifies the sequence. | |
 
 ### Return type
 
@@ -148,11 +148,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The requested sequence |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The requested sequence |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="listSequences"></a>
+<a id="listSequences"></a>
 # **listSequences**
 > PagedResourceListOfSequenceDefinition listSequences(page, limit, filter)
 
@@ -173,7 +173,7 @@ import com.finbourne.lusid.api.SequencesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -199,11 +199,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **page** | **String**| The pagination token to use to continue listing sequences from a previous call to list sequences. This  value is returned from the previous call. | [optional]
- **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 500 if not specified. | [optional]
- **filter** | **String**| Expression to filter the result set.               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **page** | **String**| The pagination token to use to continue listing sequences from a previous call to list sequences. This  value is returned from the previous call. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 500 if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the result set.               Read more about filtering results from LUSID here https://support.lusid.com/filtering-results-from-lusid. | [optional] |
 
 ### Return type
 
@@ -221,11 +221,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The sequences matching filtering criteria |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The sequences matching filtering criteria |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="next"></a>
+<a id="next"></a>
 # **next**
 > NextValueInSequenceResponse next(scope, code, batch)
 
@@ -246,7 +246,7 @@ import com.finbourne.lusid.api.SequencesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -272,11 +272,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **scope** | **String**| Scope of the sequence. |
- **code** | **String**| Code of the sequence. This together with stated scope uniquely              identifies the sequence. |
- **batch** | **Integer**| Number of sequences items to return for the specified sequence. Default to 1 if not specified. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| Scope of the sequence. | |
+| **code** | **String**| Code of the sequence. This together with stated scope uniquely              identifies the sequence. | |
+| **batch** | **Integer**| Number of sequences items to return for the specified sequence. Default to 1 if not specified. | [optional] |
 
 ### Return type
 
@@ -294,7 +294,7 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The response containing next available values in specified sequence. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The response containing next available values in specified sequence. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 

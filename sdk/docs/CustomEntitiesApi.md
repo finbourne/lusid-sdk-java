@@ -1,23 +1,23 @@
 # CustomEntitiesApi
 
-All URIs are relative to *https://fbn-prd.lusid.com/api*
+All URIs are relative to *https://www.lusid.com/api*
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteCustomEntity**](CustomEntitiesApi.md#deleteCustomEntity) | **DELETE** /api/customentities/{entityType}/{identifierType}/{identifierValue} | [EARLY ACCESS] DeleteCustomEntity: Delete a Custom Entity instance.
-[**deleteCustomEntityAccessMetadata**](CustomEntitiesApi.md#deleteCustomEntityAccessMetadata) | **DELETE** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata/{metadataKey} | [EARLY ACCESS] DeleteCustomEntityAccessMetadata: Delete a Custom Entity Access Metadata entry
-[**getAllCustomEntityAccessMetadata**](CustomEntitiesApi.md#getAllCustomEntityAccessMetadata) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata | [EARLY ACCESS] GetAllCustomEntityAccessMetadata: Get all the Access Metadata rules for a Custom Entity
-[**getCustomEntity**](CustomEntitiesApi.md#getCustomEntity) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue} | [EARLY ACCESS] GetCustomEntity: Get a Custom Entity instance.
-[**getCustomEntityAccessMetadataByKey**](CustomEntitiesApi.md#getCustomEntityAccessMetadataByKey) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata/{metadataKey} | [EARLY ACCESS] GetCustomEntityAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Custom Entity
-[**getCustomEntityRelationships**](CustomEntitiesApi.md#getCustomEntityRelationships) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue}/relationships | [EARLY ACCESS] GetCustomEntityRelationships: Get Relationships for Custom Entity
-[**listCustomEntities**](CustomEntitiesApi.md#listCustomEntities) | **GET** /api/customentities/{entityType} | [EARLY ACCESS] ListCustomEntities: List Custom Entities of the specified entityType.
-[**patchCustomEntityAccessMetadata**](CustomEntitiesApi.md#patchCustomEntityAccessMetadata) | **PATCH** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata | [EARLY ACCESS] PatchCustomEntityAccessMetadata: Patch Access Metadata rules for a Custom Entity.
-[**upsertCustomEntities**](CustomEntitiesApi.md#upsertCustomEntities) | **POST** /api/customentities/{entityType}/$batchUpsert | [EARLY ACCESS] UpsertCustomEntities: Batch upsert instances of Custom Entities
-[**upsertCustomEntity**](CustomEntitiesApi.md#upsertCustomEntity) | **POST** /api/customentities/{entityType} | [EARLY ACCESS] UpsertCustomEntity: Upsert a Custom Entity instance
-[**upsertCustomEntityAccessMetadata**](CustomEntitiesApi.md#upsertCustomEntityAccessMetadata) | **PUT** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata/{metadataKey} | [EARLY ACCESS] UpsertCustomEntityAccessMetadata: Upsert a Custom Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID.
+| Method | HTTP request | Description |
+|------------- | ------------- | -------------|
+| [**deleteCustomEntity**](CustomEntitiesApi.md#deleteCustomEntity) | **DELETE** /api/customentities/{entityType}/{identifierType}/{identifierValue} | [EARLY ACCESS] DeleteCustomEntity: Delete a Custom Entity instance. |
+| [**deleteCustomEntityAccessMetadata**](CustomEntitiesApi.md#deleteCustomEntityAccessMetadata) | **DELETE** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata/{metadataKey} | [EARLY ACCESS] DeleteCustomEntityAccessMetadata: Delete a Custom Entity Access Metadata entry |
+| [**getAllCustomEntityAccessMetadata**](CustomEntitiesApi.md#getAllCustomEntityAccessMetadata) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata | [EARLY ACCESS] GetAllCustomEntityAccessMetadata: Get all the Access Metadata rules for a Custom Entity |
+| [**getCustomEntity**](CustomEntitiesApi.md#getCustomEntity) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue} | [EARLY ACCESS] GetCustomEntity: Get a Custom Entity instance. |
+| [**getCustomEntityAccessMetadataByKey**](CustomEntitiesApi.md#getCustomEntityAccessMetadataByKey) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata/{metadataKey} | [EARLY ACCESS] GetCustomEntityAccessMetadataByKey: Get an entry identified by a metadataKey in the Access Metadata of a Custom Entity |
+| [**getCustomEntityRelationships**](CustomEntitiesApi.md#getCustomEntityRelationships) | **GET** /api/customentities/{entityType}/{identifierType}/{identifierValue}/relationships | [EARLY ACCESS] GetCustomEntityRelationships: Get Relationships for Custom Entity |
+| [**listCustomEntities**](CustomEntitiesApi.md#listCustomEntities) | **GET** /api/customentities/{entityType} | [EARLY ACCESS] ListCustomEntities: List Custom Entities of the specified entityType. |
+| [**patchCustomEntityAccessMetadata**](CustomEntitiesApi.md#patchCustomEntityAccessMetadata) | **PATCH** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata | [EARLY ACCESS] PatchCustomEntityAccessMetadata: Patch Access Metadata rules for a Custom Entity. |
+| [**upsertCustomEntities**](CustomEntitiesApi.md#upsertCustomEntities) | **POST** /api/customentities/{entityType}/$batchUpsert | [EARLY ACCESS] UpsertCustomEntities: Batch upsert instances of Custom Entities |
+| [**upsertCustomEntity**](CustomEntitiesApi.md#upsertCustomEntity) | **POST** /api/customentities/{entityType} | [EARLY ACCESS] UpsertCustomEntity: Upsert a Custom Entity instance |
+| [**upsertCustomEntityAccessMetadata**](CustomEntitiesApi.md#upsertCustomEntityAccessMetadata) | **PUT** /api/customentities/{entityType}/{identifierType}/{identifierValue}/metadata/{metadataKey} | [EARLY ACCESS] UpsertCustomEntityAccessMetadata: Upsert a Custom Entity Access Metadata entry associated with a specific metadataKey. This creates or updates the data in LUSID. |
 
 
-<a name="deleteCustomEntity"></a>
+<a id="deleteCustomEntity"></a>
 # **deleteCustomEntity**
 > DeletedEntityResponse deleteCustomEntity(entityType, identifierType, identifierValue, identifierScope)
 
@@ -38,7 +38,7 @@ import com.finbourne.lusid.api.CustomEntitiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -65,12 +65,12 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entityType** | **String**| The type of Custom Entity to remove. |
- **identifierType** | **String**| An identifier type attached to the Custom Entity instance. |
- **identifierValue** | **String**| The identifier value. |
- **identifierScope** | **String**| The identifier scope. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The type of Custom Entity to remove. | |
+| **identifierType** | **String**| An identifier type attached to the Custom Entity instance. | |
+| **identifierValue** | **String**| The identifier value. | |
+| **identifierScope** | **String**| The identifier scope. | |
 
 ### Return type
 
@@ -88,11 +88,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Delete a Custom Entity instance. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | Delete a Custom Entity instance. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="deleteCustomEntityAccessMetadata"></a>
+<a id="deleteCustomEntityAccessMetadata"></a>
 # **deleteCustomEntityAccessMetadata**
 > DeletedEntityResponse deleteCustomEntityAccessMetadata(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, effectiveUntil)
 
@@ -113,7 +113,7 @@ import com.finbourne.lusid.api.CustomEntitiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -143,15 +143,15 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entityType** | **String**| The type of the Custom Entity. |
- **identifierType** | **String**| An identifier type attached to the Custom Entity instance. |
- **identifierValue** | **String**| The identifier value. |
- **metadataKey** | **String**| Key of the metadata entry to delete. |
- **identifierScope** | **String**| The identifier scope. |
- **effectiveAt** | **String**| The effectiveAt datetime at which to retrieve the Access Metadata. | [optional]
- **effectiveUntil** | **OffsetDateTime**| The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The type of the Custom Entity. | |
+| **identifierType** | **String**| An identifier type attached to the Custom Entity instance. | |
+| **identifierValue** | **String**| The identifier value. | |
+| **metadataKey** | **String**| Key of the metadata entry to delete. | |
+| **identifierScope** | **String**| The identifier scope. | |
+| **effectiveAt** | **String**| The effectiveAt datetime at which to retrieve the Access Metadata. | [optional] |
+| **effectiveUntil** | **OffsetDateTime**| The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata. | [optional] |
 
 ### Return type
 
@@ -169,11 +169,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The access metadata for the CustomEntity or any failure. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The access metadata for the CustomEntity or any failure. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getAllCustomEntityAccessMetadata"></a>
+<a id="getAllCustomEntityAccessMetadata"></a>
 # **getAllCustomEntityAccessMetadata**
 > Map&lt;String, List&lt;AccessMetadataValue&gt;&gt; getAllCustomEntityAccessMetadata(entityType, identifierType, identifierValue, identifierScope, effectiveAt, asAt)
 
@@ -194,7 +194,7 @@ import com.finbourne.lusid.api.CustomEntitiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -223,14 +223,14 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entityType** | **String**| The type of the Custom Entity. |
- **identifierType** | **String**| An identifier type attached to the Custom Entity instance. |
- **identifierValue** | **String**| The identifier value. |
- **identifierScope** | **String**| The identifier scope. |
- **effectiveAt** | **String**| The effective datetime or cut label at which to get the entities. Defaults to the current LUSID system datetime if not specified. | [optional]
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Access Metadata. Defaults to returning the latest version of the metadata if not specified. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The type of the Custom Entity. | |
+| **identifierType** | **String**| An identifier type attached to the Custom Entity instance. | |
+| **identifierValue** | **String**| The identifier value. | |
+| **identifierScope** | **String**| The identifier scope. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to get the entities. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Access Metadata. Defaults to returning the latest version of the metadata if not specified. | [optional] |
 
 ### Return type
 
@@ -248,11 +248,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The access metadata for the CustomEntity or any failure. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The access metadata for the CustomEntity or any failure. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getCustomEntity"></a>
+<a id="getCustomEntity"></a>
 # **getCustomEntity**
 > CustomEntityResponse getCustomEntity(entityType, identifierType, identifierValue, identifierScope, asAt, effectiveAt, relatedEntityPropertyKeys, relationshipDefinitionIds)
 
@@ -273,7 +273,7 @@ import com.finbourne.lusid.api.CustomEntitiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -304,16 +304,16 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entityType** | **String**| The type of Custom Entity to retrieve. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. |
- **identifierType** | **String**| An identifier type attached to the Custom Entity instance. |
- **identifierValue** | **String**| The identifier value. |
- **identifierScope** | **String**| The identifier scope. |
- **asAt** | **OffsetDateTime**| The AsAt datetime at which to retrieve the Custom Entity instance. | [optional]
- **effectiveAt** | **String**| The effective datetime or cut label at which to get the Custom Entity instance. Defaults to the current LUSID system datetime if not specified. | [optional]
- **relatedEntityPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional]
- **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities              onto the entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The type of Custom Entity to retrieve. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. | |
+| **identifierType** | **String**| An identifier type attached to the Custom Entity instance. | |
+| **identifierValue** | **String**| The identifier value. | |
+| **identifierScope** | **String**| The identifier scope. | |
+| **asAt** | **OffsetDateTime**| The AsAt datetime at which to retrieve the Custom Entity instance. | [optional] |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to get the Custom Entity instance. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **relatedEntityPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities              onto the entity in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -331,11 +331,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | Get a custom entity instance. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | Get a custom entity instance. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getCustomEntityAccessMetadataByKey"></a>
+<a id="getCustomEntityAccessMetadataByKey"></a>
 # **getCustomEntityAccessMetadataByKey**
 > List&lt;AccessMetadataValue&gt; getCustomEntityAccessMetadataByKey(entityType, identifierType, identifierValue, metadataKey, identifierScope, effectiveAt, asAt)
 
@@ -356,7 +356,7 @@ import com.finbourne.lusid.api.CustomEntitiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -386,15 +386,15 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entityType** | **String**| The type of the Custom Entity. |
- **identifierType** | **String**| An identifier type attached to the Custom Entity instance. |
- **identifierValue** | **String**| The identifier value. |
- **metadataKey** | **String**| Key of the metadata entry to retrieve |
- **identifierScope** | **String**| The identifier scope. |
- **effectiveAt** | **String**| The effective datetime or cut label at which to get the entities. Defaults to the current LUSID system datetime if not specified. | [optional]
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Access Metadata. Defaults to returning the latest version of the metadata if not specified. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The type of the Custom Entity. | |
+| **identifierType** | **String**| An identifier type attached to the Custom Entity instance. | |
+| **identifierValue** | **String**| The identifier value. | |
+| **metadataKey** | **String**| Key of the metadata entry to retrieve | |
+| **identifierScope** | **String**| The identifier scope. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to get the entities. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Access Metadata. Defaults to returning the latest version of the metadata if not specified. | [optional] |
 
 ### Return type
 
@@ -412,11 +412,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The access metadata for the CustomEntity or any failure. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The access metadata for the CustomEntity or any failure. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="getCustomEntityRelationships"></a>
+<a id="getCustomEntityRelationships"></a>
 # **getCustomEntityRelationships**
 > ResourceListOfRelationship getCustomEntityRelationships(entityType, identifierScope, identifierType, identifierValue, effectiveAt, asAt, filter, identifierTypes)
 
@@ -437,7 +437,7 @@ import com.finbourne.lusid.api.CustomEntitiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -468,16 +468,16 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entityType** | **String**| The type of entity get relationships for. |
- **identifierScope** | **String**| The identifier scope. |
- **identifierType** | **String**| An identifier type attached to the Custom Entity. |
- **identifierValue** | **String**| The identifier value. |
- **effectiveAt** | **String**| The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. | [optional]
- **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. | [optional]
- **filter** | **String**| Expression to filter relationships. Users should provide null or empty string for this field until further notice. | [optional]
- **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relationships. If not applicable, provide an empty array. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The type of entity get relationships for. | |
+| **identifierScope** | **String**| The identifier scope. | |
+| **identifierType** | **String**| An identifier type attached to the Custom Entity. | |
+| **identifierValue** | **String**| The identifier value. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to get relationships. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve relationships. Defaults to return the latest LUSID AsAt time if not specified. | [optional] |
+| **filter** | **String**| Expression to filter relationships. Users should provide null or empty string for this field until further notice. | [optional] |
+| **identifierTypes** | [**List&lt;String&gt;**](String.md)| Identifiers types (as property keys) used for referencing Persons or Legal Entities. These take the format              {domain}/{scope}/{code} e.g. \&quot;Person/CompanyDetails/Role\&quot;. They must be from the \&quot;Person\&quot; or \&quot;LegalEntity\&quot; domain.              Only identifier types stated will be used to look up relevant entities in relationships. If not applicable, provide an empty array. | [optional] |
 
 ### Return type
 
@@ -495,11 +495,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The relationships for the specified custom entity. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The relationships for the specified custom entity. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="listCustomEntities"></a>
+<a id="listCustomEntities"></a>
 # **listCustomEntities**
 > PagedResourceListOfCustomEntityResponse listCustomEntities(entityType, effectiveAt, asAt, limit, filter, sortBy, page, relatedEntityPropertyKeys, relationshipDefinitionIds)
 
@@ -520,7 +520,7 @@ import com.finbourne.lusid.api.CustomEntitiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -552,17 +552,17 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entityType** | **String**| The type of Custom Entity to list. |
- **effectiveAt** | **String**| The effective datetime or cut label at which to list the entities. Defaults to the current LUSID              system datetime if not specified. | [optional]
- **asAt** | **OffsetDateTime**| The asAt datetime at which to list the entities. Defaults to returning the latest version              of each portfolio if not specified. | [optional]
- **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional]
- **filter** | **String**| Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional]
- **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional]
- **page** | **String**| The pagination token to use to continue listing entities; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. | [optional]
- **relatedEntityPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional]
- **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities              onto the entities in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The type of Custom Entity to list. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to list the entities. Defaults to the current LUSID              system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the entities. Defaults to returning the latest version              of each portfolio if not specified. | [optional] |
+| **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the results. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **sortBy** | [**List&lt;String&gt;**](String.md)| A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; | [optional] |
+| **page** | **String**| The pagination token to use to continue listing entities; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. | [optional] |
+| **relatedEntityPropertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from any domain that supports relationships              to decorate onto related entities. These must take the format {domain}/{scope}/{code}, for example &#39;Portfolio/Manager/Id&#39;. | [optional] |
+| **relationshipDefinitionIds** | [**List&lt;String&gt;**](String.md)| A list of relationship definitions that are used to decorate related entities              onto the entities in the response. These must take the form {relationshipDefinitionScope}/{relationshipDefinitionCode}. | [optional] |
 
 ### Return type
 
@@ -580,11 +580,11 @@ Name | Type | Description  | Notes
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | List custom entities of the specified entityType. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | List custom entities of the specified entityType. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="patchCustomEntityAccessMetadata"></a>
+<a id="patchCustomEntityAccessMetadata"></a>
 # **patchCustomEntityAccessMetadata**
 > Map&lt;String, List&lt;AccessMetadataValue&gt;&gt; patchCustomEntityAccessMetadata(entityType, identifierType, identifierValue, identifierScope, accessMetadataOperation, effectiveAt, effectiveUntil)
 
@@ -605,7 +605,7 @@ import com.finbourne.lusid.api.CustomEntitiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -635,15 +635,15 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entityType** | **String**| The type of the Custom Entity. |
- **identifierType** | **String**| An identifier type attached to the Custom Entity instance. |
- **identifierValue** | **String**| The identifier value. |
- **identifierScope** | **String**| The identifier scope. |
- **accessMetadataOperation** | [**List&lt;AccessMetadataOperation&gt;**](AccessMetadataOperation.md)| The Json Patch document |
- **effectiveAt** | **String**| The effectiveAt datetime at which the Access Metadata will be effective from | [optional]
- **effectiveUntil** | **OffsetDateTime**| The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The type of the Custom Entity. | |
+| **identifierType** | **String**| An identifier type attached to the Custom Entity instance. | |
+| **identifierValue** | **String**| The identifier value. | |
+| **identifierScope** | **String**| The identifier scope. | |
+| **accessMetadataOperation** | [**List&lt;AccessMetadataOperation&gt;**](AccessMetadataOperation.md)| The Json Patch document | |
+| **effectiveAt** | **String**| The effectiveAt datetime at which the Access Metadata will be effective from | [optional] |
+| **effectiveUntil** | **OffsetDateTime**| The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata | [optional] |
 
 ### Return type
 
@@ -655,17 +655,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The access metadata for the CustomEntity or any failure. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The access metadata for the CustomEntity or any failure. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="upsertCustomEntities"></a>
+<a id="upsertCustomEntities"></a>
 # **upsertCustomEntities**
 > UpsertCustomEntitiesResponse upsertCustomEntities(entityType, successMode, requestBody)
 
@@ -686,7 +686,7 @@ import com.finbourne.lusid.api.CustomEntitiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -712,11 +712,11 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entityType** | **String**| The type of the Custom Entity to be created. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. |
- **successMode** | **String**| Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial |
- **requestBody** | [**Map&lt;String, CustomEntityRequest&gt;**](CustomEntityRequest.md)| The payload describing the Custom Entity instances |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The type of the Custom Entity to be created. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. | |
+| **successMode** | **String**| Whether the batch request should fail Atomically or in a Partial fashion - Allowed Values: Atomic, Partial | |
+| **requestBody** | [**Map&lt;String, CustomEntityRequest&gt;**](CustomEntityRequest.md)| The payload describing the Custom Entity instances | |
 
 ### Return type
 
@@ -728,17 +728,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The upserted custom entity instance |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The upserted custom entity instance |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="upsertCustomEntity"></a>
+<a id="upsertCustomEntity"></a>
 # **upsertCustomEntity**
 > CustomEntityResponse upsertCustomEntity(entityType, customEntityRequest)
 
@@ -759,7 +759,7 @@ import com.finbourne.lusid.api.CustomEntitiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -784,10 +784,10 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entityType** | **String**| The type of the Custom Entity to be created. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. |
- **customEntityRequest** | [**CustomEntityRequest**](CustomEntityRequest.md)| The payload describing the Custom Entity instance. |
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The type of the Custom Entity to be created. An entityType can be created using the \&quot;CreateCustomEntityDefinition\&quot; endpoint for CustomEntityDefinitions. | |
+| **customEntityRequest** | [**CustomEntityRequest**](CustomEntityRequest.md)| The payload describing the Custom Entity instance. | |
 
 ### Return type
 
@@ -799,17 +799,17 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The upserted custom entity instance |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The upserted custom entity instance |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 
-<a name="upsertCustomEntityAccessMetadata"></a>
+<a id="upsertCustomEntityAccessMetadata"></a>
 # **upsertCustomEntityAccessMetadata**
 > List&lt;AccessMetadataValue&gt; upsertCustomEntityAccessMetadata(entityType, identifierType, identifierValue, metadataKey, identifierScope, upsertCustomEntityAccessMetadataRequest, effectiveAt, effectiveUntil)
 
@@ -830,7 +830,7 @@ import com.finbourne.lusid.api.CustomEntitiesApi;
 public class Example {
   public static void main(String[] args) {
     ApiClient defaultClient = Configuration.getDefaultApiClient();
-    defaultClient.setBasePath("https://fbn-prd.lusid.com/api");
+    defaultClient.setBasePath("https://www.lusid.com/api");
     
     // Configure OAuth2 access token for authorization: oauth2
     OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
@@ -861,16 +861,16 @@ public class Example {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **entityType** | **String**| The type of the Custom Entity. |
- **identifierType** | **String**| An identifier type attached to the Custom Entity instance. |
- **identifierValue** | **String**| The identifier value. |
- **metadataKey** | **String**| Key of the metadata entry to retrieve |
- **identifierScope** | **String**| The identifier scope. |
- **upsertCustomEntityAccessMetadataRequest** | [**UpsertCustomEntityAccessMetadataRequest**](UpsertCustomEntityAccessMetadataRequest.md)| The Custom Entity Access Metadata entry to upsert |
- **effectiveAt** | **String**| The effectiveAt datetime at which the Access Metadata will be effective from | [optional]
- **effectiveUntil** | **OffsetDateTime**| The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata | [optional]
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **entityType** | **String**| The type of the Custom Entity. | |
+| **identifierType** | **String**| An identifier type attached to the Custom Entity instance. | |
+| **identifierValue** | **String**| The identifier value. | |
+| **metadataKey** | **String**| Key of the metadata entry to retrieve | |
+| **identifierScope** | **String**| The identifier scope. | |
+| **upsertCustomEntityAccessMetadataRequest** | [**UpsertCustomEntityAccessMetadataRequest**](UpsertCustomEntityAccessMetadataRequest.md)| The Custom Entity Access Metadata entry to upsert | |
+| **effectiveAt** | **String**| The effectiveAt datetime at which the Access Metadata will be effective from | [optional] |
+| **effectiveUntil** | **OffsetDateTime**| The effective datetime until which the Access Metadata is valid. If not supplied this will be valid indefinitely, or until the next &#39;effectiveAt&#39; datetime of the Access Metadata | [optional] |
 
 ### Return type
 
@@ -882,13 +882,13 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json-patch+json, application/json, text/json, application/_*+json
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
  - **Accept**: text/plain, application/json, text/json
 
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-**200** | The access metadata for the CustomEntity or any failure. |  -  |
-**400** | The details of the input related failure |  -  |
-**0** | Error response |  -  |
+| **200** | The access metadata for the CustomEntity or any failure. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
 

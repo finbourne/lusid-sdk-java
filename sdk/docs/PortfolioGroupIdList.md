@@ -5,9 +5,9 @@
 
 ## Properties
 
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**values** | [**List&lt;ResourceId&gt;**](ResourceId.md) |  | 
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**values** | [**List&lt;ResourceId&gt;**](ResourceId.md) |  |  |
 
 
 
