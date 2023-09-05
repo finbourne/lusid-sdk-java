@@ -61,17 +61,21 @@ public class AborRequest {
   @SerializedName(SERIALIZED_NAME_CODE)
   private String code;
 
-  public static final String SERIALIZED_NAME_PORTFOLIO_IDS = "portfolioIds";
-  @SerializedName(SERIALIZED_NAME_PORTFOLIO_IDS)
-  private List<PortfolioEntityId> portfolioIds = new ArrayList<>();
+  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  private String displayName;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_ABOR_CONFIG = "aborConfig";
-  @SerializedName(SERIALIZED_NAME_ABOR_CONFIG)
-  private ResourceId aborConfig;
+  public static final String SERIALIZED_NAME_PORTFOLIO_IDS = "portfolioIds";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_IDS)
+  private List<PortfolioEntityId> portfolioIds = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_ABOR_CONFIGURATION_ID = "aborConfigurationId";
+  @SerializedName(SERIALIZED_NAME_ABOR_CONFIGURATION_ID)
+  private ResourceId aborConfigurationId;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -98,6 +102,48 @@ public class AborRequest {
 
   public void setCode(String code) {
     this.code = code;
+  }
+
+
+  public AborRequest displayName(String displayName) {
+    
+    this.displayName = displayName;
+    return this;
+  }
+
+   /**
+   * The given name for the Abor.
+   * @return displayName
+  **/
+  @jakarta.annotation.Nonnull
+  public String getDisplayName() {
+    return displayName;
+  }
+
+
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
+  }
+
+
+  public AborRequest description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * The description for the Abor.
+   * @return description
+  **/
+  @jakarta.annotation.Nullable
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
   }
 
 
@@ -130,45 +176,24 @@ public class AborRequest {
   }
 
 
-  public AborRequest description(String description) {
+  public AborRequest aborConfigurationId(ResourceId aborConfigurationId) {
     
-    this.description = description;
+    this.aborConfigurationId = aborConfigurationId;
     return this;
   }
 
    /**
-   * The description for the Abor.
-   * @return description
-  **/
-  @jakarta.annotation.Nullable
-  public String getDescription() {
-    return description;
-  }
-
-
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-  public AborRequest aborConfig(ResourceId aborConfig) {
-    
-    this.aborConfig = aborConfig;
-    return this;
-  }
-
-   /**
-   * Get aborConfig
-   * @return aborConfig
+   * Get aborConfigurationId
+   * @return aborConfigurationId
   **/
   @jakarta.annotation.Nonnull
-  public ResourceId getAborConfig() {
-    return aborConfig;
+  public ResourceId getAborConfigurationId() {
+    return aborConfigurationId;
   }
 
 
-  public void setAborConfig(ResourceId aborConfig) {
-    this.aborConfig = aborConfig;
+  public void setAborConfigurationId(ResourceId aborConfigurationId) {
+    this.aborConfigurationId = aborConfigurationId;
   }
 
 
@@ -212,9 +237,10 @@ public class AborRequest {
     }
     AborRequest aborRequest = (AborRequest) o;
     return Objects.equals(this.code, aborRequest.code) &&
-        Objects.equals(this.portfolioIds, aborRequest.portfolioIds) &&
+        Objects.equals(this.displayName, aborRequest.displayName) &&
         Objects.equals(this.description, aborRequest.description) &&
-        Objects.equals(this.aborConfig, aborRequest.aborConfig) &&
+        Objects.equals(this.portfolioIds, aborRequest.portfolioIds) &&
+        Objects.equals(this.aborConfigurationId, aborRequest.aborConfigurationId) &&
         Objects.equals(this.properties, aborRequest.properties);
   }
 
@@ -224,7 +250,7 @@ public class AborRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, portfolioIds, description, aborConfig, properties);
+    return Objects.hash(code, displayName, description, portfolioIds, aborConfigurationId, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -239,9 +265,10 @@ public class AborRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class AborRequest {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    portfolioIds: ").append(toIndentedString(portfolioIds)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    aborConfig: ").append(toIndentedString(aborConfig)).append("\n");
+    sb.append("    portfolioIds: ").append(toIndentedString(portfolioIds)).append("\n");
+    sb.append("    aborConfigurationId: ").append(toIndentedString(aborConfigurationId)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -266,16 +293,18 @@ public class AborRequest {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("code");
-    openapiFields.add("portfolioIds");
+    openapiFields.add("displayName");
     openapiFields.add("description");
-    openapiFields.add("aborConfig");
+    openapiFields.add("portfolioIds");
+    openapiFields.add("aborConfigurationId");
     openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("code");
+    openapiRequiredFields.add("displayName");
     openapiRequiredFields.add("portfolioIds");
-    openapiRequiredFields.add("aborConfig");
+    openapiRequiredFields.add("aborConfigurationId");
   }
 
  /**
@@ -308,6 +337,12 @@ public class AborRequest {
       if (!jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
+      if (!jsonObj.get("displayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
       // ensure the json data is an array
       if (!jsonObj.get("portfolioIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `portfolioIds` to be an array in the JSON string but got `%s`", jsonObj.get("portfolioIds").toString()));
@@ -318,11 +353,8 @@ public class AborRequest {
       for (int i = 0; i < jsonArrayportfolioIds.size(); i++) {
         PortfolioEntityId.validateJsonObject(jsonArrayportfolioIds.get(i).getAsJsonObject());
       };
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      // validate the required field `aborConfig`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("aborConfig"));
+      // validate the required field `aborConfigurationId`
+      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("aborConfigurationId"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

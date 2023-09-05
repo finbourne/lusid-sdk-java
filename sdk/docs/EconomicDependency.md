@@ -8,7 +8,7 @@ Base class for representing economic dependencies.  Economic dependencies are a 
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**dependencyType** | [**DependencyTypeEnum**](#DependencyTypeEnum) | The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor |  |
+|**dependencyType** | [**DependencyTypeEnum**](#DependencyTypeEnum) | The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, VendorDependency |  |
 
 
 
@@ -27,7 +27,7 @@ Base class for representing economic dependencies.  Economic dependencies are a 
 | INDEXPROJECTIONDEPENDENCY | &quot;IndexProjectionDependency&quot; |
 | IRVOLDEPENDENCY | &quot;IrVolDependency&quot; |
 | QUOTEDEPENDENCY | &quot;QuoteDependency&quot; |
-| VENDOR | &quot;Vendor&quot; |
+| VENDORDEPENDENCY | &quot;VendorDependency&quot; |
 
 
 

@@ -67,6 +67,10 @@ public class Version {
   @SerializedName(SERIALIZED_NAME_USER_ID_CREATED)
   private String userIdCreated;
 
+  public static final String SERIALIZED_NAME_REQUEST_ID_CREATED = "requestIdCreated";
+  @SerializedName(SERIALIZED_NAME_REQUEST_ID_CREATED)
+  private String requestIdCreated;
+
   public static final String SERIALIZED_NAME_AS_AT_MODIFIED = "asAtModified";
   @SerializedName(SERIALIZED_NAME_AS_AT_MODIFIED)
   private OffsetDateTime asAtModified;
@@ -74,6 +78,10 @@ public class Version {
   public static final String SERIALIZED_NAME_USER_ID_MODIFIED = "userIdModified";
   @SerializedName(SERIALIZED_NAME_USER_ID_MODIFIED)
   private String userIdModified;
+
+  public static final String SERIALIZED_NAME_REQUEST_ID_MODIFIED = "requestIdModified";
+  @SerializedName(SERIALIZED_NAME_REQUEST_ID_MODIFIED)
+  private String requestIdModified;
 
   public static final String SERIALIZED_NAME_AS_AT_VERSION_NUMBER = "asAtVersionNumber";
   @SerializedName(SERIALIZED_NAME_AS_AT_VERSION_NUMBER)
@@ -86,15 +94,19 @@ public class Version {
   public Version(
      OffsetDateTime asAtCreated, 
      String userIdCreated, 
+     String requestIdCreated, 
      OffsetDateTime asAtModified, 
      String userIdModified, 
+     String requestIdModified, 
      Integer asAtVersionNumber
   ) {
     this();
     this.asAtCreated = asAtCreated;
     this.userIdCreated = userIdCreated;
+    this.requestIdCreated = requestIdCreated;
     this.asAtModified = asAtModified;
     this.userIdModified = userIdModified;
+    this.requestIdModified = requestIdModified;
     this.asAtVersionNumber = asAtVersionNumber;
   }
 
@@ -165,6 +177,18 @@ public class Version {
 
 
    /**
+   * The unique request id of the command that created the entity.
+   * @return requestIdCreated
+  **/
+  @jakarta.annotation.Nullable
+  public String getRequestIdCreated() {
+    return requestIdCreated;
+  }
+
+
+
+
+   /**
    * The asAt datetime at which the entity (including its properties) was last updated in LUSID.
    * @return asAtModified
   **/
@@ -183,6 +207,18 @@ public class Version {
   @jakarta.annotation.Nullable
   public String getUserIdModified() {
     return userIdModified;
+  }
+
+
+
+
+   /**
+   * The unique request id of the command that last updated the entity (including its properties) in LUSID.
+   * @return requestIdModified
+  **/
+  @jakarta.annotation.Nullable
+  public String getRequestIdModified() {
+    return requestIdModified;
   }
 
 
@@ -214,8 +250,10 @@ public class Version {
         Objects.equals(this.asAtDate, version.asAtDate) &&
         Objects.equals(this.asAtCreated, version.asAtCreated) &&
         Objects.equals(this.userIdCreated, version.userIdCreated) &&
+        Objects.equals(this.requestIdCreated, version.requestIdCreated) &&
         Objects.equals(this.asAtModified, version.asAtModified) &&
         Objects.equals(this.userIdModified, version.userIdModified) &&
+        Objects.equals(this.requestIdModified, version.requestIdModified) &&
         Objects.equals(this.asAtVersionNumber, version.asAtVersionNumber);
   }
 
@@ -225,7 +263,7 @@ public class Version {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveFrom, asAtDate, asAtCreated, userIdCreated, asAtModified, userIdModified, asAtVersionNumber);
+    return Objects.hash(effectiveFrom, asAtDate, asAtCreated, userIdCreated, requestIdCreated, asAtModified, userIdModified, requestIdModified, asAtVersionNumber);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -243,8 +281,10 @@ public class Version {
     sb.append("    asAtDate: ").append(toIndentedString(asAtDate)).append("\n");
     sb.append("    asAtCreated: ").append(toIndentedString(asAtCreated)).append("\n");
     sb.append("    userIdCreated: ").append(toIndentedString(userIdCreated)).append("\n");
+    sb.append("    requestIdCreated: ").append(toIndentedString(requestIdCreated)).append("\n");
     sb.append("    asAtModified: ").append(toIndentedString(asAtModified)).append("\n");
     sb.append("    userIdModified: ").append(toIndentedString(userIdModified)).append("\n");
+    sb.append("    requestIdModified: ").append(toIndentedString(requestIdModified)).append("\n");
     sb.append("    asAtVersionNumber: ").append(toIndentedString(asAtVersionNumber)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -272,8 +312,10 @@ public class Version {
     openapiFields.add("asAtDate");
     openapiFields.add("asAtCreated");
     openapiFields.add("userIdCreated");
+    openapiFields.add("requestIdCreated");
     openapiFields.add("asAtModified");
     openapiFields.add("userIdModified");
+    openapiFields.add("requestIdModified");
     openapiFields.add("asAtVersionNumber");
 
     // a set of required properties/fields (JSON key names)
@@ -312,8 +354,14 @@ public class Version {
       if ((jsonObj.get("userIdCreated") != null && !jsonObj.get("userIdCreated").isJsonNull()) && !jsonObj.get("userIdCreated").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `userIdCreated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userIdCreated").toString()));
       }
+      if ((jsonObj.get("requestIdCreated") != null && !jsonObj.get("requestIdCreated").isJsonNull()) && !jsonObj.get("requestIdCreated").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `requestIdCreated` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestIdCreated").toString()));
+      }
       if ((jsonObj.get("userIdModified") != null && !jsonObj.get("userIdModified").isJsonNull()) && !jsonObj.get("userIdModified").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `userIdModified` to be a primitive type in the JSON string but got `%s`", jsonObj.get("userIdModified").toString()));
+      }
+      if ((jsonObj.get("requestIdModified") != null && !jsonObj.get("requestIdModified").isJsonNull()) && !jsonObj.get("requestIdModified").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `requestIdModified` to be a primitive type in the JSON string but got `%s`", jsonObj.get("requestIdModified").toString()));
       }
   }
 

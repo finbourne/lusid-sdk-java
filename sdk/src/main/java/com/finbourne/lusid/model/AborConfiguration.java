@@ -67,13 +67,13 @@ public class AborConfiguration {
   @SerializedName(SERIALIZED_NAME_ID)
   private ResourceId id;
 
+  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  private String displayName;
+
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
-
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
 
   public static final String SERIALIZED_NAME_RECIPE_ID = "recipeId";
   @SerializedName(SERIALIZED_NAME_RECIPE_ID)
@@ -144,6 +144,27 @@ public class AborConfiguration {
   }
 
 
+  public AborConfiguration displayName(String displayName) {
+    
+    this.displayName = displayName;
+    return this;
+  }
+
+   /**
+   * The given name for the AborConfiguration.
+   * @return displayName
+  **/
+  @jakarta.annotation.Nullable
+  public String getDisplayName() {
+    return displayName;
+  }
+
+
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
+  }
+
+
   public AborConfiguration description(String description) {
     
     this.description = description;
@@ -162,27 +183,6 @@ public class AborConfiguration {
 
   public void setDescription(String description) {
     this.description = description;
-  }
-
-
-  public AborConfiguration name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * The given name for the AborConfiguration.
-   * @return name
-  **/
-  @jakarta.annotation.Nullable
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
   }
 
 
@@ -348,8 +348,8 @@ public class AborConfiguration {
     AborConfiguration aborConfiguration = (AborConfiguration) o;
     return Objects.equals(this.href, aborConfiguration.href) &&
         Objects.equals(this.id, aborConfiguration.id) &&
+        Objects.equals(this.displayName, aborConfiguration.displayName) &&
         Objects.equals(this.description, aborConfiguration.description) &&
-        Objects.equals(this.name, aborConfiguration.name) &&
         Objects.equals(this.recipeId, aborConfiguration.recipeId) &&
         Objects.equals(this.chartOfAccountsId, aborConfiguration.chartOfAccountsId) &&
         Objects.equals(this.postingModuleIds, aborConfiguration.postingModuleIds) &&
@@ -364,7 +364,7 @@ public class AborConfiguration {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, description, name, recipeId, chartOfAccountsId, postingModuleIds, properties, version, links);
+    return Objects.hash(href, id, displayName, description, recipeId, chartOfAccountsId, postingModuleIds, properties, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -380,8 +380,8 @@ public class AborConfiguration {
     sb.append("class AborConfiguration {\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    recipeId: ").append(toIndentedString(recipeId)).append("\n");
     sb.append("    chartOfAccountsId: ").append(toIndentedString(chartOfAccountsId)).append("\n");
     sb.append("    postingModuleIds: ").append(toIndentedString(postingModuleIds)).append("\n");
@@ -412,8 +412,8 @@ public class AborConfiguration {
     openapiFields = new HashSet<String>();
     openapiFields.add("href");
     openapiFields.add("id");
+    openapiFields.add("displayName");
     openapiFields.add("description");
-    openapiFields.add("name");
     openapiFields.add("recipeId");
     openapiFields.add("chartOfAccountsId");
     openapiFields.add("postingModuleIds");
@@ -459,11 +459,11 @@ public class AborConfiguration {
       }
       // validate the required field `id`
       ResourceId.validateJsonObject(jsonObj.getAsJsonObject("id"));
+      if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
+      }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      if ((jsonObj.get("name") != null && !jsonObj.get("name").isJsonNull()) && !jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
       }
       // validate the optional field `recipeId`
       if (jsonObj.get("recipeId") != null && !jsonObj.get("recipeId").isJsonNull()) {

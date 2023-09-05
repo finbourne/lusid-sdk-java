@@ -9,7 +9,7 @@ A posting Module request definition
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**chartOfAccountsId** | [**ResourceId**](ResourceId.md) |  |  |
-|**name** | **String** | The name to identify the Posting Module by |  |
+|**displayName** | **String** | The name to identify the Posting Module by |  |
 |**description** | **String** | The description for the Posting Module |  [optional] |
 |**status** | **String** | The Posting Module status. Can be Active, Inactive or Deleted. Defaults to Active. |  |
 

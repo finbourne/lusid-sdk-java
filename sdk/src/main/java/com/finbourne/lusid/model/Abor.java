@@ -68,17 +68,21 @@ public class Abor {
   @SerializedName(SERIALIZED_NAME_ID)
   private ResourceId id;
 
-  public static final String SERIALIZED_NAME_PORTFOLIO_IDS = "portfolioIds";
-  @SerializedName(SERIALIZED_NAME_PORTFOLIO_IDS)
-  private List<PortfolioEntityId> portfolioIds = new ArrayList<>();
+  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  private String displayName;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_ABOR_CONFIG = "aborConfig";
-  @SerializedName(SERIALIZED_NAME_ABOR_CONFIG)
-  private ResourceId aborConfig;
+  public static final String SERIALIZED_NAME_PORTFOLIO_IDS = "portfolioIds";
+  @SerializedName(SERIALIZED_NAME_PORTFOLIO_IDS)
+  private List<PortfolioEntityId> portfolioIds = new ArrayList<>();
+
+  public static final String SERIALIZED_NAME_ABOR_CONFIGURATION_ID = "aborConfigurationId";
+  @SerializedName(SERIALIZED_NAME_ABOR_CONFIGURATION_ID)
+  private ResourceId aborConfigurationId;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -137,6 +141,48 @@ public class Abor {
   }
 
 
+  public Abor displayName(String displayName) {
+    
+    this.displayName = displayName;
+    return this;
+  }
+
+   /**
+   * The given name for the Abor.
+   * @return displayName
+  **/
+  @jakarta.annotation.Nullable
+  public String getDisplayName() {
+    return displayName;
+  }
+
+
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
+  }
+
+
+  public Abor description(String description) {
+    
+    this.description = description;
+    return this;
+  }
+
+   /**
+   * The description for the Abor.
+   * @return description
+  **/
+  @jakarta.annotation.Nullable
+  public String getDescription() {
+    return description;
+  }
+
+
+  public void setDescription(String description) {
+    this.description = description;
+  }
+
+
   public Abor portfolioIds(List<PortfolioEntityId> portfolioIds) {
     
     this.portfolioIds = portfolioIds;
@@ -166,45 +212,24 @@ public class Abor {
   }
 
 
-  public Abor description(String description) {
+  public Abor aborConfigurationId(ResourceId aborConfigurationId) {
     
-    this.description = description;
+    this.aborConfigurationId = aborConfigurationId;
     return this;
   }
 
    /**
-   * The description for the Abor.
-   * @return description
+   * Get aborConfigurationId
+   * @return aborConfigurationId
   **/
   @jakarta.annotation.Nullable
-  public String getDescription() {
-    return description;
+  public ResourceId getAborConfigurationId() {
+    return aborConfigurationId;
   }
 
 
-  public void setDescription(String description) {
-    this.description = description;
-  }
-
-
-  public Abor aborConfig(ResourceId aborConfig) {
-    
-    this.aborConfig = aborConfig;
-    return this;
-  }
-
-   /**
-   * Get aborConfig
-   * @return aborConfig
-  **/
-  @jakarta.annotation.Nullable
-  public ResourceId getAborConfig() {
-    return aborConfig;
-  }
-
-
-  public void setAborConfig(ResourceId aborConfig) {
-    this.aborConfig = aborConfig;
+  public void setAborConfigurationId(ResourceId aborConfigurationId) {
+    this.aborConfigurationId = aborConfigurationId;
   }
 
 
@@ -299,9 +324,10 @@ public class Abor {
     Abor abor = (Abor) o;
     return Objects.equals(this.href, abor.href) &&
         Objects.equals(this.id, abor.id) &&
-        Objects.equals(this.portfolioIds, abor.portfolioIds) &&
+        Objects.equals(this.displayName, abor.displayName) &&
         Objects.equals(this.description, abor.description) &&
-        Objects.equals(this.aborConfig, abor.aborConfig) &&
+        Objects.equals(this.portfolioIds, abor.portfolioIds) &&
+        Objects.equals(this.aborConfigurationId, abor.aborConfigurationId) &&
         Objects.equals(this.properties, abor.properties) &&
         Objects.equals(this.version, abor.version) &&
         Objects.equals(this.links, abor.links);
@@ -313,7 +339,7 @@ public class Abor {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, portfolioIds, description, aborConfig, properties, version, links);
+    return Objects.hash(href, id, displayName, description, portfolioIds, aborConfigurationId, properties, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -329,9 +355,10 @@ public class Abor {
     sb.append("class Abor {\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
-    sb.append("    portfolioIds: ").append(toIndentedString(portfolioIds)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    aborConfig: ").append(toIndentedString(aborConfig)).append("\n");
+    sb.append("    portfolioIds: ").append(toIndentedString(portfolioIds)).append("\n");
+    sb.append("    aborConfigurationId: ").append(toIndentedString(aborConfigurationId)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -359,9 +386,10 @@ public class Abor {
     openapiFields = new HashSet<String>();
     openapiFields.add("href");
     openapiFields.add("id");
-    openapiFields.add("portfolioIds");
+    openapiFields.add("displayName");
     openapiFields.add("description");
-    openapiFields.add("aborConfig");
+    openapiFields.add("portfolioIds");
+    openapiFields.add("aborConfigurationId");
     openapiFields.add("properties");
     openapiFields.add("version");
     openapiFields.add("links");
@@ -404,6 +432,12 @@ public class Abor {
       }
       // validate the required field `id`
       ResourceId.validateJsonObject(jsonObj.getAsJsonObject("id"));
+      if ((jsonObj.get("displayName") != null && !jsonObj.get("displayName").isJsonNull()) && !jsonObj.get("displayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
+      }
+      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
       // ensure the json data is an array
       if (!jsonObj.get("portfolioIds").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `portfolioIds` to be an array in the JSON string but got `%s`", jsonObj.get("portfolioIds").toString()));
@@ -414,12 +448,9 @@ public class Abor {
       for (int i = 0; i < jsonArrayportfolioIds.size(); i++) {
         PortfolioEntityId.validateJsonObject(jsonArrayportfolioIds.get(i).getAsJsonObject());
       };
-      if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
-      }
-      // validate the optional field `aborConfig`
-      if (jsonObj.get("aborConfig") != null && !jsonObj.get("aborConfig").isJsonNull()) {
-        ResourceId.validateJsonObject(jsonObj.getAsJsonObject("aborConfig"));
+      // validate the optional field `aborConfigurationId`
+      if (jsonObj.get("aborConfigurationId") != null && !jsonObj.get("aborConfigurationId").isJsonNull()) {
+        ResourceId.validateJsonObject(jsonObj.getAsJsonObject("aborConfigurationId"));
       }
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {

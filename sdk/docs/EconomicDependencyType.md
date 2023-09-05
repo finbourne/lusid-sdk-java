@@ -27,7 +27,7 @@
 
 * `QUOTEDEPENDENCY` (value: `"QuoteDependency"`)
 
-* `VENDOR` (value: `"Vendor"`)
+* `VENDORDEPENDENCY` (value: `"VendorDependency"`)
 
 
 

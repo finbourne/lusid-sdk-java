@@ -62,9 +62,9 @@ public class PostingModuleRequest {
   @SerializedName(SERIALIZED_NAME_CHART_OF_ACCOUNTS_ID)
   private ResourceId chartOfAccountsId;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  private String displayName;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -119,24 +119,24 @@ public class PostingModuleRequest {
   }
 
 
-  public PostingModuleRequest name(String name) {
+  public PostingModuleRequest displayName(String displayName) {
     
-    this.name = name;
+    this.displayName = displayName;
     return this;
   }
 
    /**
    * The name to identify the Posting Module by
-   * @return name
+   * @return displayName
   **/
   @jakarta.annotation.Nonnull
-  public String getName() {
-    return name;
+  public String getDisplayName() {
+    return displayName;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
   }
 
 
@@ -202,7 +202,7 @@ public class PostingModuleRequest {
     PostingModuleRequest postingModuleRequest = (PostingModuleRequest) o;
     return Objects.equals(this.code, postingModuleRequest.code) &&
         Objects.equals(this.chartOfAccountsId, postingModuleRequest.chartOfAccountsId) &&
-        Objects.equals(this.name, postingModuleRequest.name) &&
+        Objects.equals(this.displayName, postingModuleRequest.displayName) &&
         Objects.equals(this.description, postingModuleRequest.description) &&
         Objects.equals(this.rules, postingModuleRequest.rules);
   }
@@ -213,7 +213,7 @@ public class PostingModuleRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, chartOfAccountsId, name, description, rules);
+    return Objects.hash(code, chartOfAccountsId, displayName, description, rules);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -229,7 +229,7 @@ public class PostingModuleRequest {
     sb.append("class PostingModuleRequest {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
     sb.append("    chartOfAccountsId: ").append(toIndentedString(chartOfAccountsId)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    rules: ").append(toIndentedString(rules)).append("\n");
     sb.append("}");
@@ -256,7 +256,7 @@ public class PostingModuleRequest {
     openapiFields = new HashSet<String>();
     openapiFields.add("code");
     openapiFields.add("chartOfAccountsId");
-    openapiFields.add("name");
+    openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("rules");
 
@@ -264,7 +264,7 @@ public class PostingModuleRequest {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("code");
     openapiRequiredFields.add("chartOfAccountsId");
-    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("displayName");
   }
 
  /**
@@ -299,8 +299,8 @@ public class PostingModuleRequest {
       }
       // validate the required field `chartOfAccountsId`
       ResourceId.validateJsonObject(jsonObj.getAsJsonObject("chartOfAccountsId"));
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if (!jsonObj.get("displayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));

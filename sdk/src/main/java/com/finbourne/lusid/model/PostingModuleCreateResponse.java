@@ -57,6 +57,10 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PostingModuleCreateResponse {
+  public static final String SERIALIZED_NAME_HREF = "href";
+  @SerializedName(SERIALIZED_NAME_HREF)
+  private URI href;
+
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private ResourceId id;
@@ -65,9 +69,9 @@ public class PostingModuleCreateResponse {
   @SerializedName(SERIALIZED_NAME_CHART_OF_ACCOUNTS_ID)
   private ResourceId chartOfAccountsId;
 
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
+  public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
+  @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
+  private String displayName;
 
   public static final String SERIALIZED_NAME_DESCRIPTION = "description";
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
@@ -85,16 +89,33 @@ public class PostingModuleCreateResponse {
   @SerializedName(SERIALIZED_NAME_VERSION)
   private Version version;
 
-  public static final String SERIALIZED_NAME_HREF = "href";
-  @SerializedName(SERIALIZED_NAME_HREF)
-  private URI href;
-
   public static final String SERIALIZED_NAME_LINKS = "links";
   @SerializedName(SERIALIZED_NAME_LINKS)
   private List<Link> links;
 
   public PostingModuleCreateResponse() {
   }
+
+  public PostingModuleCreateResponse href(URI href) {
+    
+    this.href = href;
+    return this;
+  }
+
+   /**
+   * The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
+   * @return href
+  **/
+  @jakarta.annotation.Nullable
+  public URI getHref() {
+    return href;
+  }
+
+
+  public void setHref(URI href) {
+    this.href = href;
+  }
+
 
   public PostingModuleCreateResponse id(ResourceId id) {
     
@@ -138,24 +159,24 @@ public class PostingModuleCreateResponse {
   }
 
 
-  public PostingModuleCreateResponse name(String name) {
+  public PostingModuleCreateResponse displayName(String displayName) {
     
-    this.name = name;
+    this.displayName = displayName;
     return this;
   }
 
    /**
    * The name to identify the Posting Module by
-   * @return name
+   * @return displayName
   **/
   @jakarta.annotation.Nonnull
-  public String getName() {
-    return name;
+  public String getDisplayName() {
+    return displayName;
   }
 
 
-  public void setName(String name) {
-    this.name = name;
+  public void setDisplayName(String displayName) {
+    this.displayName = displayName;
   }
 
 
@@ -251,27 +272,6 @@ public class PostingModuleCreateResponse {
   }
 
 
-  public PostingModuleCreateResponse href(URI href) {
-    
-    this.href = href;
-    return this;
-  }
-
-   /**
-   * The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime.
-   * @return href
-  **/
-  @jakarta.annotation.Nullable
-  public URI getHref() {
-    return href;
-  }
-
-
-  public void setHref(URI href) {
-    this.href = href;
-  }
-
-
   public PostingModuleCreateResponse links(List<Link> links) {
     
     this.links = links;
@@ -311,14 +311,14 @@ public class PostingModuleCreateResponse {
       return false;
     }
     PostingModuleCreateResponse postingModuleCreateResponse = (PostingModuleCreateResponse) o;
-    return Objects.equals(this.id, postingModuleCreateResponse.id) &&
+    return Objects.equals(this.href, postingModuleCreateResponse.href) &&
+        Objects.equals(this.id, postingModuleCreateResponse.id) &&
         Objects.equals(this.chartOfAccountsId, postingModuleCreateResponse.chartOfAccountsId) &&
-        Objects.equals(this.name, postingModuleCreateResponse.name) &&
+        Objects.equals(this.displayName, postingModuleCreateResponse.displayName) &&
         Objects.equals(this.description, postingModuleCreateResponse.description) &&
         Objects.equals(this.rules, postingModuleCreateResponse.rules) &&
         Objects.equals(this.status, postingModuleCreateResponse.status) &&
         Objects.equals(this.version, postingModuleCreateResponse.version) &&
-        Objects.equals(this.href, postingModuleCreateResponse.href) &&
         Objects.equals(this.links, postingModuleCreateResponse.links);
   }
 
@@ -328,7 +328,7 @@ public class PostingModuleCreateResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, chartOfAccountsId, name, description, rules, status, version, href, links);
+    return Objects.hash(href, id, chartOfAccountsId, displayName, description, rules, status, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -342,14 +342,14 @@ public class PostingModuleCreateResponse {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostingModuleCreateResponse {\n");
+    sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    chartOfAccountsId: ").append(toIndentedString(chartOfAccountsId)).append("\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    rules: ").append(toIndentedString(rules)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
-    sb.append("    href: ").append(toIndentedString(href)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -373,21 +373,21 @@ public class PostingModuleCreateResponse {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("href");
     openapiFields.add("id");
     openapiFields.add("chartOfAccountsId");
-    openapiFields.add("name");
+    openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("rules");
     openapiFields.add("status");
     openapiFields.add("version");
-    openapiFields.add("href");
     openapiFields.add("links");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
     openapiRequiredFields.add("chartOfAccountsId");
-    openapiRequiredFields.add("name");
+    openapiRequiredFields.add("displayName");
     openapiRequiredFields.add("status");
   }
 
@@ -418,12 +418,15 @@ public class PostingModuleCreateResponse {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
+      }
       // validate the required field `id`
       ResourceId.validateJsonObject(jsonObj.getAsJsonObject("id"));
       // validate the required field `chartOfAccountsId`
       ResourceId.validateJsonObject(jsonObj.getAsJsonObject("chartOfAccountsId"));
-      if (!jsonObj.get("name").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `name` to be a primitive type in the JSON string but got `%s`", jsonObj.get("name").toString()));
+      if (!jsonObj.get("displayName").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
@@ -448,9 +451,6 @@ public class PostingModuleCreateResponse {
       // validate the optional field `version`
       if (jsonObj.get("version") != null && !jsonObj.get("version").isJsonNull()) {
         Version.validateJsonObject(jsonObj.getAsJsonObject("version"));
-      }
-      if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
-        throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
       if (jsonObj.get("links") != null && !jsonObj.get("links").isJsonNull()) {
         JsonArray jsonArraylinks = jsonObj.getAsJsonArray("links");

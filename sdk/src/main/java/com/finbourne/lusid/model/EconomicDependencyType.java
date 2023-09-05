@@ -47,7 +47,7 @@ public enum EconomicDependencyType {
   
   QUOTEDEPENDENCY("QuoteDependency"),
   
-  VENDOR("Vendor");
+  VENDORDEPENDENCY("VendorDependency");
 
   private String value;
 
