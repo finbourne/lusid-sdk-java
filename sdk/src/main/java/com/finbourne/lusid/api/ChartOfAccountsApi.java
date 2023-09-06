@@ -92,7 +92,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created chart of accounts. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created Chart of Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -166,7 +166,7 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts
-     * Create the given chart of accounts.
+     * Create the given Chart of Accounts.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param chartOfAccountsRequest The definition of the Chart of Accounts. (required)
      * @return ChartOfAccounts
@@ -174,7 +174,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created chart of accounts. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created Chart of Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -186,7 +186,7 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts
-     * Create the given chart of accounts.
+     * Create the given Chart of Accounts.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param chartOfAccountsRequest The definition of the Chart of Accounts. (required)
      * @return ApiResponse&lt;ChartOfAccounts&gt;
@@ -194,7 +194,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created chart of accounts. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created Chart of Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -207,7 +207,7 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts (asynchronously)
-     * Create the given chart of accounts.
+     * Create the given Chart of Accounts.
      * @param scope The scope of the Chart of Accounts. (required)
      * @param chartOfAccountsRequest The definition of the Chart of Accounts. (required)
      * @param _callback The callback to be executed when the API call finishes
@@ -216,7 +216,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created chart of accounts. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created Chart of Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -230,8 +230,8 @@ public class ChartOfAccountsApi {
     }
     /**
      * Build call for deleteAccounts
-     * @param scope The scope of the chart of accounts. (required)
-     * @param code The code of the chart of accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
      * @param requestBody The codes of the accounts to delete. (required)
      * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
      * @param _callback Callback for upload/download progress
@@ -240,7 +240,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the accounts were deleted. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Accounts were deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -324,9 +324,9 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts
-     * Delete one or more account from the chart of accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
-     * @param scope The scope of the chart of accounts. (required)
-     * @param code The code of the chart of accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
+     * Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
      * @param requestBody The codes of the accounts to delete. (required)
      * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
      * @return DeleteAccountsResponse
@@ -334,7 +334,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the accounts were deleted. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Accounts were deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -346,9 +346,9 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts
-     * Delete one or more account from the chart of accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
-     * @param scope The scope of the chart of accounts. (required)
-     * @param code The code of the chart of accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
+     * Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
      * @param requestBody The codes of the accounts to delete. (required)
      * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
      * @return ApiResponse&lt;DeleteAccountsResponse&gt;
@@ -356,7 +356,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the accounts were deleted. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Accounts were deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -369,9 +369,9 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts (asynchronously)
-     * Delete one or more account from the chart of accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
-     * @param scope The scope of the chart of accounts. (required)
-     * @param code The code of the chart of accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
+     * Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
      * @param requestBody The codes of the accounts to delete. (required)
      * @param deleteMode The delete mode to use (defaults to &#39;Soft&#39;). (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -380,7 +380,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the accounts were deleted. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Accounts were deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -395,14 +395,14 @@ public class ChartOfAccountsApi {
     /**
      * Build call for deleteChartOfAccounts
      * @param scope The scope of the Chart of Accounts to be deleted. (required)
-     * @param code The code of the Chart of Accounts to be deleted.Together with the scope this uniquely identifies the chart of accounts. (required)
+     * @param code The code of the Chart of Accounts to be deleted. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the chart of accounts was deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Chart of Accounts was deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -473,15 +473,15 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts
-     * Delete the given chart of accounts.
+     * Delete the given Chart of Accounts.
      * @param scope The scope of the Chart of Accounts to be deleted. (required)
-     * @param code The code of the Chart of Accounts to be deleted.Together with the scope this uniquely identifies the chart of accounts. (required)
+     * @param code The code of the Chart of Accounts to be deleted. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @return DeletedEntityResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the chart of accounts was deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Chart of Accounts was deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -493,15 +493,15 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts
-     * Delete the given chart of accounts.
+     * Delete the given Chart of Accounts.
      * @param scope The scope of the Chart of Accounts to be deleted. (required)
-     * @param code The code of the Chart of Accounts to be deleted.Together with the scope this uniquely identifies the chart of accounts. (required)
+     * @param code The code of the Chart of Accounts to be deleted. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @return ApiResponse&lt;DeletedEntityResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the chart of accounts was deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Chart of Accounts was deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -514,16 +514,16 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts (asynchronously)
-     * Delete the given chart of accounts.
+     * Delete the given Chart of Accounts.
      * @param scope The scope of the Chart of Accounts to be deleted. (required)
-     * @param code The code of the Chart of Accounts to be deleted.Together with the scope this uniquely identifies the chart of accounts. (required)
+     * @param code The code of the Chart of Accounts to be deleted. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the chart of accounts was deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Chart of Accounts was deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -537,8 +537,8 @@ public class ChartOfAccountsApi {
     }
     /**
      * Build call for getAccount
-     * @param scope The scope of the ChartOfAccounts. (required)
-     * @param code The code of the ChartOfAccounts. Together with the scope this uniquely identifies the ChartOfAccounts. (required)
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param accountCode The code of the Account. (required)
      * @param effectiveAt The effective datetime or cut label at which to retrieve the Account properties. Defaults to the current LUSID system datetime if not specified. (optional)
      * @param asAt The asAt datetime at which to retrieve the Account definition. Defaults to returning the latest version of the Account definition if not specified. (optional)
@@ -549,7 +549,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Account definition </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Account definition. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -639,8 +639,8 @@ public class ChartOfAccountsApi {
     /**
      * [EXPERIMENTAL] GetAccount: Get Account
      * Retrieve the definition of a particular Account which is part of a Chart of Accounts.
-     * @param scope The scope of the ChartOfAccounts. (required)
-     * @param code The code of the ChartOfAccounts. Together with the scope this uniquely identifies the ChartOfAccounts. (required)
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param accountCode The code of the Account. (required)
      * @param effectiveAt The effective datetime or cut label at which to retrieve the Account properties. Defaults to the current LUSID system datetime if not specified. (optional)
      * @param asAt The asAt datetime at which to retrieve the Account definition. Defaults to returning the latest version of the Account definition if not specified. (optional)
@@ -650,7 +650,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Account definition </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Account definition. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -663,8 +663,8 @@ public class ChartOfAccountsApi {
     /**
      * [EXPERIMENTAL] GetAccount: Get Account
      * Retrieve the definition of a particular Account which is part of a Chart of Accounts.
-     * @param scope The scope of the ChartOfAccounts. (required)
-     * @param code The code of the ChartOfAccounts. Together with the scope this uniquely identifies the ChartOfAccounts. (required)
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param accountCode The code of the Account. (required)
      * @param effectiveAt The effective datetime or cut label at which to retrieve the Account properties. Defaults to the current LUSID system datetime if not specified. (optional)
      * @param asAt The asAt datetime at which to retrieve the Account definition. Defaults to returning the latest version of the Account definition if not specified. (optional)
@@ -674,7 +674,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Account definition </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Account definition. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -688,8 +688,8 @@ public class ChartOfAccountsApi {
     /**
      * [EXPERIMENTAL] GetAccount: Get Account (asynchronously)
      * Retrieve the definition of a particular Account which is part of a Chart of Accounts.
-     * @param scope The scope of the ChartOfAccounts. (required)
-     * @param code The code of the ChartOfAccounts. Together with the scope this uniquely identifies the ChartOfAccounts. (required)
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param accountCode The code of the Account. (required)
      * @param effectiveAt The effective datetime or cut label at which to retrieve the Account properties. Defaults to the current LUSID system datetime if not specified. (optional)
      * @param asAt The asAt datetime at which to retrieve the Account definition. Defaults to returning the latest version of the Account definition if not specified. (optional)
@@ -700,7 +700,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Account definition </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Account definition. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -714,18 +714,18 @@ public class ChartOfAccountsApi {
     }
     /**
      * Build call for getChartOfAccounts
-     * @param scope The scope of the ChartOfAccounts. (required)
-     * @param code The code of the ChartOfAccounts. Together with the scope this uniquely identifies the ChartOfAccounts. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the ChartOfAccounts properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the ChartOfAccounts definition. Defaults to returning the latest version of the ChartOfAccounts definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the ChartOfAccounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If not provided will return all the entitled properties for that ChartOfAccounts. (optional)
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param effectiveAt The effective datetime or cut label at which to retrieve the Chart of Accounts properties. Defaults to the current LUSID system datetime if not specified. (optional)
+     * @param asAt The asAt datetime at which to retrieve the Chart of Accounts definition. Defaults to returning the latest version of the Chart of Accounts definition if not specified. (optional)
+     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If not provided will return all the entitled properties for that Chart of Accounts. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested ChartOfAccounts definition </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Chart Of Accounts definition. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -808,18 +808,18 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts
-     * Retrieve the definition of a particular ChartOfAccounts.
-     * @param scope The scope of the ChartOfAccounts. (required)
-     * @param code The code of the ChartOfAccounts. Together with the scope this uniquely identifies the ChartOfAccounts. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the ChartOfAccounts properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the ChartOfAccounts definition. Defaults to returning the latest version of the ChartOfAccounts definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the ChartOfAccounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If not provided will return all the entitled properties for that ChartOfAccounts. (optional)
+     * Retrieve the definition of a particular Chart of Accounts.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param effectiveAt The effective datetime or cut label at which to retrieve the Chart of Accounts properties. Defaults to the current LUSID system datetime if not specified. (optional)
+     * @param asAt The asAt datetime at which to retrieve the Chart of Accounts definition. Defaults to returning the latest version of the Chart of Accounts definition if not specified. (optional)
+     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If not provided will return all the entitled properties for that Chart of Accounts. (optional)
      * @return ChartOfAccounts
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested ChartOfAccounts definition </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Chart Of Accounts definition. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -831,18 +831,18 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts
-     * Retrieve the definition of a particular ChartOfAccounts.
-     * @param scope The scope of the ChartOfAccounts. (required)
-     * @param code The code of the ChartOfAccounts. Together with the scope this uniquely identifies the ChartOfAccounts. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the ChartOfAccounts properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the ChartOfAccounts definition. Defaults to returning the latest version of the ChartOfAccounts definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the ChartOfAccounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If not provided will return all the entitled properties for that ChartOfAccounts. (optional)
+     * Retrieve the definition of a particular Chart of Accounts.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param effectiveAt The effective datetime or cut label at which to retrieve the Chart of Accounts properties. Defaults to the current LUSID system datetime if not specified. (optional)
+     * @param asAt The asAt datetime at which to retrieve the Chart of Accounts definition. Defaults to returning the latest version of the Chart of Accounts definition if not specified. (optional)
+     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If not provided will return all the entitled properties for that Chart of Accounts. (optional)
      * @return ApiResponse&lt;ChartOfAccounts&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested ChartOfAccounts definition </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Chart Of Accounts definition. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -855,19 +855,19 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts (asynchronously)
-     * Retrieve the definition of a particular ChartOfAccounts.
-     * @param scope The scope of the ChartOfAccounts. (required)
-     * @param code The code of the ChartOfAccounts. Together with the scope this uniquely identifies the ChartOfAccounts. (required)
-     * @param effectiveAt The effective datetime or cut label at which to retrieve the ChartOfAccounts properties. Defaults to the current LUSID system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to retrieve the ChartOfAccounts definition. Defaults to returning the latest version of the ChartOfAccounts definition if not specified. (optional)
-     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the ChartOfAccounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If not provided will return all the entitled properties for that ChartOfAccounts. (optional)
+     * Retrieve the definition of a particular Chart of Accounts.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param effectiveAt The effective datetime or cut label at which to retrieve the Chart of Accounts properties. Defaults to the current LUSID system datetime if not specified. (optional)
+     * @param asAt The asAt datetime at which to retrieve the Chart of Accounts definition. Defaults to returning the latest version of the Chart of Accounts definition if not specified. (optional)
+     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If not provided will return all the entitled properties for that Chart of Accounts. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested ChartOfAccounts definition </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Chart Of Accounts definition. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -881,8 +881,8 @@ public class ChartOfAccountsApi {
     }
     /**
      * Build call for listAccounts
-     * @param scope The scope of the chart of accounts. (required)
-     * @param code The code of the chart of accounts. Together with the scope this uniquely identifies              the chart of accounts. (required)
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
      * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
      * @param asAt The asAt datetime at which to retrieve the Accounts. Defaults to              returning the latest version if not specified. (optional)
      * @param page The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
@@ -896,7 +896,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The accounts in the given chart of accounts. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Accounts in the given Chart of Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -995,9 +995,9 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] ListAccounts: List Accounts
-     * List the accounts in a chart of accounts
-     * @param scope The scope of the chart of accounts. (required)
-     * @param code The code of the chart of accounts. Together with the scope this uniquely identifies              the chart of accounts. (required)
+     * List the accounts in a Chart of Accounts
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
      * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
      * @param asAt The asAt datetime at which to retrieve the Accounts. Defaults to              returning the latest version if not specified. (optional)
      * @param page The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
@@ -1010,7 +1010,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The accounts in the given chart of accounts. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Accounts in the given Chart of Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1022,9 +1022,9 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] ListAccounts: List Accounts
-     * List the accounts in a chart of accounts
-     * @param scope The scope of the chart of accounts. (required)
-     * @param code The code of the chart of accounts. Together with the scope this uniquely identifies              the chart of accounts. (required)
+     * List the accounts in a Chart of Accounts
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
      * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
      * @param asAt The asAt datetime at which to retrieve the Accounts. Defaults to              returning the latest version if not specified. (optional)
      * @param page The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
@@ -1037,7 +1037,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The accounts in the given chart of accounts. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Accounts in the given Chart of Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1050,9 +1050,9 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] ListAccounts: List Accounts (asynchronously)
-     * List the accounts in a chart of accounts
-     * @param scope The scope of the chart of accounts. (required)
-     * @param code The code of the chart of accounts. Together with the scope this uniquely identifies              the chart of accounts. (required)
+     * List the accounts in a Chart of Accounts
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
      * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties decorated on Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
      * @param asAt The asAt datetime at which to retrieve the Accounts. Defaults to              returning the latest version if not specified. (optional)
      * @param page The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
@@ -1066,7 +1066,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The accounts in the given chart of accounts. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Accounts in the given Chart of Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1081,19 +1081,19 @@ public class ChartOfAccountsApi {
     /**
      * Build call for listChartsOfAccounts
      * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Chart Of Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version              of each chart of accounts if not specified. (optional)
+     * @param asAt The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version              of each Chart of Accounts if not specified. (optional)
      * @param page The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
      * @param start When paginating, skip this number of results. (optional)
      * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the ChartOfAccounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each chart of accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. (optional)
+     * @param filter Expression to filter the results.              For example, to filter on the Chart of Accounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested charts of accounts </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Charts of Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1179,21 +1179,21 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListChartsOfAccounts: List chart of accounts
-     * List all the charts of accounts matching particular criteria.
+     * [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts
+     * List all the Charts of Accounts matching particular criteria.
      * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Chart Of Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version              of each chart of accounts if not specified. (optional)
+     * @param asAt The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version              of each Chart of Accounts if not specified. (optional)
      * @param page The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
      * @param start When paginating, skip this number of results. (optional)
      * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the ChartOfAccounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each chart of accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. (optional)
+     * @param filter Expression to filter the results.              For example, to filter on the Chart of Accounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. (optional)
      * @return PagedResourceListOfChartOfAccounts
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested charts of accounts </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Charts of Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1204,21 +1204,21 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListChartsOfAccounts: List chart of accounts
-     * List all the charts of accounts matching particular criteria.
+     * [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts
+     * List all the Charts of Accounts matching particular criteria.
      * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Chart Of Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version              of each chart of accounts if not specified. (optional)
+     * @param asAt The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version              of each Chart of Accounts if not specified. (optional)
      * @param page The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
      * @param start When paginating, skip this number of results. (optional)
      * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the ChartOfAccounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each chart of accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. (optional)
+     * @param filter Expression to filter the results.              For example, to filter on the Chart of Accounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. (optional)
      * @return ApiResponse&lt;PagedResourceListOfChartOfAccounts&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested charts of accounts </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Charts of Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1230,22 +1230,22 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListChartsOfAccounts: List chart of accounts (asynchronously)
-     * List all the charts of accounts matching particular criteria.
+     * [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts (asynchronously)
+     * List all the Charts of Accounts matching particular criteria.
      * @param effectiveAt The effective datetime or cut label at which to list the TimeVariant properties for the Chart Of Accounts. Defaults to the current LUSID              system datetime if not specified. (optional)
-     * @param asAt The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version              of each chart of accounts if not specified. (optional)
+     * @param asAt The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version              of each Chart of Accounts if not specified. (optional)
      * @param page The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
      * @param start When paginating, skip this number of results. (optional)
      * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the ChartOfAccounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
-     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each chart of accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. (optional)
+     * @param filter Expression to filter the results.              For example, to filter on the Chart of Accounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+     * @param propertyKeys A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested charts of accounts </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Charts of Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1259,8 +1259,8 @@ public class ChartOfAccountsApi {
     }
     /**
      * Build call for upsertAccounts
-     * @param scope The scope of the chart of accounts. (required)
-     * @param code The code of the chart of accounts. Together with the scope this uniquely identifies              the chart of accounts. (required)
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
      * @param account A list of accounts to be created or updated. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1268,7 +1268,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly upserted accounts. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The newly upserted Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1348,16 +1348,16 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] UpsertAccounts: Upsert Accounts
-     * Create or update accounts in the chart of accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
-     * @param scope The scope of the chart of accounts. (required)
-     * @param code The code of the chart of accounts. Together with the scope this uniquely identifies              the chart of accounts. (required)
+     * Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
      * @param account A list of accounts to be created or updated. (required)
      * @return AccountsUpsertResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly upserted accounts. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The newly upserted Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1369,16 +1369,16 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] UpsertAccounts: Upsert Accounts
-     * Create or update accounts in the chart of accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
-     * @param scope The scope of the chart of accounts. (required)
-     * @param code The code of the chart of accounts. Together with the scope this uniquely identifies              the chart of accounts. (required)
+     * Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
      * @param account A list of accounts to be created or updated. (required)
      * @return ApiResponse&lt;AccountsUpsertResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly upserted accounts. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The newly upserted Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1391,9 +1391,9 @@ public class ChartOfAccountsApi {
 
     /**
      * [EXPERIMENTAL] UpsertAccounts: Upsert Accounts (asynchronously)
-     * Create or update accounts in the chart of accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
-     * @param scope The scope of the chart of accounts. (required)
-     * @param code The code of the chart of accounts. Together with the scope this uniquely identifies              the chart of accounts. (required)
+     * Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. (required)
      * @param account A list of accounts to be created or updated. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1401,7 +1401,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The newly upserted accounts. </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The newly upserted Accounts. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1416,7 +1416,7 @@ public class ChartOfAccountsApi {
     /**
      * Build call for upsertAccountsProperties
      * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
-     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the chart of accounts. (required)
+     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param accountCode The unique ID of the account to create or update properties for. (required)
      * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Account/Manager/Id\&quot;. (optional)
      * @param _callback Callback for upload/download progress
@@ -1425,7 +1425,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1508,7 +1508,7 @@ public class ChartOfAccountsApi {
      * [EXPERIMENTAL] UpsertAccountsProperties: Upsert accounts properties
      * Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
-     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the chart of accounts. (required)
+     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param accountCode The unique ID of the account to create or update properties for. (required)
      * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Account/Manager/Id\&quot;. (optional)
      * @return AccountProperties
@@ -1516,7 +1516,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1530,7 +1530,7 @@ public class ChartOfAccountsApi {
      * [EXPERIMENTAL] UpsertAccountsProperties: Upsert accounts properties
      * Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
-     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the chart of accounts. (required)
+     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param accountCode The unique ID of the account to create or update properties for. (required)
      * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Account/Manager/Id\&quot;. (optional)
      * @return ApiResponse&lt;AccountProperties&gt;
@@ -1538,7 +1538,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1553,7 +1553,7 @@ public class ChartOfAccountsApi {
      * [EXPERIMENTAL] UpsertAccountsProperties: Upsert accounts properties (asynchronously)
      * Update or insert one or more properties onto a single account. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;Account&#39;.                Upserting a property that exists for an account, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
-     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the chart of accounts. (required)
+     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param accountCode The unique ID of the account to create or update properties for. (required)
      * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Account/Manager/Id\&quot;. (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -1562,7 +1562,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1577,7 +1577,7 @@ public class ChartOfAccountsApi {
     /**
      * Build call for upsertChartOfAccountsProperties
      * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
-     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the chart of accounts. (required)
+     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;ChartOfAccounts/Manager/Id\&quot;. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1585,7 +1585,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1659,17 +1659,17 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert chart of accounts properties
-     * Update or insert one or more properties onto a single chart of accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a chart of accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
+     * Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
-     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the chart of accounts. (required)
+     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;ChartOfAccounts/Manager/Id\&quot;. (optional)
      * @return ChartOfAccountsProperties
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1680,17 +1680,17 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert chart of accounts properties
-     * Update or insert one or more properties onto a single chart of accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a chart of accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
+     * Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
-     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the chart of accounts. (required)
+     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;ChartOfAccounts/Manager/Id\&quot;. (optional)
      * @return ApiResponse&lt;ChartOfAccountsProperties&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1702,10 +1702,10 @@ public class ChartOfAccountsApi {
     }
 
     /**
-     * [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert chart of accounts properties (asynchronously)
-     * Update or insert one or more properties onto a single chart of accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a chart of accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+     * [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties (asynchronously)
+     * Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
      * @param scope The scope of the Chart of Accounts to update or insert the properties onto. (required)
-     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the chart of accounts. (required)
+     * @param code The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param requestBody The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;ChartOfAccounts/Manager/Id\&quot;. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
@@ -1713,7 +1713,7 @@ public class ChartOfAccountsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated or inserted properties </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated or inserted properties. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>

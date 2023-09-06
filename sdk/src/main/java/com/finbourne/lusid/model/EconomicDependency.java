@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EconomicDependency {
   /**
-   * The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, VendorDependency
+   * The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor
    */
   @JsonAdapter(DependencyTypeEnum.Adapter.class)
   public enum DependencyTypeEnum {
@@ -76,7 +76,7 @@ public class EconomicDependency {
     
     QUOTEDEPENDENCY("QuoteDependency"),
     
-    VENDORDEPENDENCY("VendorDependency");
+    VENDOR("Vendor");
 
     private String value;
 
@@ -130,7 +130,7 @@ public class EconomicDependency {
   }
 
    /**
-   * The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, VendorDependency
+   * The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor
    * @return dependencyType
   **/
   @jakarta.annotation.Nonnull

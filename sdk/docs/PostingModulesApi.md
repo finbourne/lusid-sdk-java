@@ -5,7 +5,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**createPostingModule**](PostingModulesApi.md#createPostingModule) | **POST** /api/postingmodule/{scope} | [EXPERIMENTAL] CreatePostingModule: Create a Posting Module |
-| [**deletePostingModule**](PostingModulesApi.md#deletePostingModule) | **DELETE** /api/postingmodule/{scope}/{code} | [EXPERIMENTAL] DeletePostingModule: Delete a PostingModule. |
+| [**deletePostingModule**](PostingModulesApi.md#deletePostingModule) | **DELETE** /api/postingmodule/{scope}/{code} | [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module. |
 | [**listPostingModuleRules**](PostingModulesApi.md#listPostingModuleRules) | **GET** /api/postingmodule/{scope}/{code}/postingrules | [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules |
 | [**listPostingModules**](PostingModulesApi.md#listPostingModules) | **GET** /api/postingmodule | [EXPERIMENTAL] ListPostingModules: List Posting Modules |
 | [**setPostingModuleDetails**](PostingModulesApi.md#setPostingModuleDetails) | **PUT** /api/postingmodule/{scope}/{code} | [EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module |
@@ -79,7 +79,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | The newly created posting module. |  -  |
+| **201** | The newly created Posting Module. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -87,9 +87,9 @@ public class Example {
 # **deletePostingModule**
 > DeletedEntityResponse deletePostingModule(scope, code)
 
-[EXPERIMENTAL] DeletePostingModule: Delete a PostingModule.
+[EXPERIMENTAL] DeletePostingModule: Delete a Posting Module.
 
-Delete the given PostingModule.
+Delete the given Posting Module.
 
 ### Example
 ```java
@@ -111,8 +111,8 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     PostingModulesApi apiInstance = new PostingModulesApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the PostingModule to be deleted.
-    String code = "code_example"; // String | The code of the PostingModule to be deleted. Together with the scope this uniquely identifies the PostingModule.
+    String scope = "scope_example"; // String | The scope of the Posting Module to be deleted.
+    String code = "code_example"; // String | The code of the Posting Module to be deleted. Together with the scope this uniquely identifies the Posting Module.
     try {
       DeletedEntityResponse result = apiInstance.deletePostingModule(scope, code);
       System.out.println(result);
@@ -131,8 +131,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **scope** | **String**| The scope of the PostingModule to be deleted. | |
-| **code** | **String**| The code of the PostingModule to be deleted. Together with the scope this uniquely identifies the PostingModule. | |
+| **scope** | **String**| The scope of the Posting Module to be deleted. | |
+| **code** | **String**| The code of the Posting Module to be deleted. Together with the scope this uniquely identifies the Posting Module. | |
 
 ### Return type
 
@@ -150,7 +150,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The datetime that the PostingModule was deleted |  -  |
+| **200** | The datetime that the Posting Module was deleted. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -267,7 +267,7 @@ public class Example {
     String page = "page_example"; // String | The pagination token to use to continue listing Posting Modules; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
     Integer start = 56; // Integer | When paginating, skip this number of results.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-    String filter = "filter_example"; // String | Expression to filter the results.              For example, to filter on the PostingModule type, specify \"id.Code eq '001'\". For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    String filter = "filter_example"; // String | Expression to filter the results.              For example, to filter on the Posting Module type, specify \"id.Code eq '001'\". For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914.
     try {
       PagedResourceListOfPostingModuleResponse result = apiInstance.listPostingModules(asAt, page, start, limit, filter);
       System.out.println(result);
@@ -290,7 +290,7 @@ public class Example {
 | **page** | **String**| The pagination token to use to continue listing Posting Modules; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 | **start** | **Integer**| When paginating, skip this number of results. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.              For example, to filter on the PostingModule type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **filter** | **String**| Expression to filter the results.              For example, to filter on the Posting Module type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
 
 ### Return type
 
@@ -308,7 +308,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The requested Posting Modules |  -  |
+| **200** | The requested Posting Modules. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -381,7 +381,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The updated posting module |  -  |
+| **200** | The updated Posting Module. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -454,7 +454,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The posting module with updated rules |  -  |
+| **200** | The Posting Module with updated rules. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

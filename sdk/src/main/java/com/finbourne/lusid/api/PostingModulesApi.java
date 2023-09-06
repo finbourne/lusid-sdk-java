@@ -90,7 +90,7 @@ public class PostingModulesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created posting module. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created Posting Module. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -172,7 +172,7 @@ public class PostingModulesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created posting module. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created Posting Module. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -192,7 +192,7 @@ public class PostingModulesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created posting module. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created Posting Module. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -214,7 +214,7 @@ public class PostingModulesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> The newly created posting module. </td><td>  -  </td></tr>
+        <tr><td> 201 </td><td> The newly created Posting Module. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -228,15 +228,15 @@ public class PostingModulesApi {
     }
     /**
      * Build call for deletePostingModule
-     * @param scope The scope of the PostingModule to be deleted. (required)
-     * @param code The code of the PostingModule to be deleted. Together with the scope this uniquely identifies the PostingModule. (required)
+     * @param scope The scope of the Posting Module to be deleted. (required)
+     * @param code The code of the Posting Module to be deleted. Together with the scope this uniquely identifies the Posting Module. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the PostingModule was deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Posting Module was deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -306,16 +306,16 @@ public class PostingModulesApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeletePostingModule: Delete a PostingModule.
-     * Delete the given PostingModule.
-     * @param scope The scope of the PostingModule to be deleted. (required)
-     * @param code The code of the PostingModule to be deleted. Together with the scope this uniquely identifies the PostingModule. (required)
+     * [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module.
+     * Delete the given Posting Module.
+     * @param scope The scope of the Posting Module to be deleted. (required)
+     * @param code The code of the Posting Module to be deleted. Together with the scope this uniquely identifies the Posting Module. (required)
      * @return DeletedEntityResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the PostingModule was deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Posting Module was deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -326,16 +326,16 @@ public class PostingModulesApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeletePostingModule: Delete a PostingModule.
-     * Delete the given PostingModule.
-     * @param scope The scope of the PostingModule to be deleted. (required)
-     * @param code The code of the PostingModule to be deleted. Together with the scope this uniquely identifies the PostingModule. (required)
+     * [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module.
+     * Delete the given Posting Module.
+     * @param scope The scope of the Posting Module to be deleted. (required)
+     * @param code The code of the Posting Module to be deleted. Together with the scope this uniquely identifies the Posting Module. (required)
      * @return ApiResponse&lt;DeletedEntityResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the PostingModule was deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Posting Module was deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -347,17 +347,17 @@ public class PostingModulesApi {
     }
 
     /**
-     * [EXPERIMENTAL] DeletePostingModule: Delete a PostingModule. (asynchronously)
-     * Delete the given PostingModule.
-     * @param scope The scope of the PostingModule to be deleted. (required)
-     * @param code The code of the PostingModule to be deleted. Together with the scope this uniquely identifies the PostingModule. (required)
+     * [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module. (asynchronously)
+     * Delete the given Posting Module.
+     * @param scope The scope of the Posting Module to be deleted. (required)
+     * @param code The code of the Posting Module to be deleted. Together with the scope this uniquely identifies the Posting Module. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The datetime that the PostingModule was deleted </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The datetime that the Posting Module was deleted. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -558,14 +558,14 @@ public class PostingModulesApi {
      * @param page The pagination token to use to continue listing Posting Modules; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
      * @param start When paginating, skip this number of results. (optional)
      * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the PostingModule type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+     * @param filter Expression to filter the results.              For example, to filter on the Posting Module type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Posting Modules </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Posting Modules. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -649,13 +649,13 @@ public class PostingModulesApi {
      * @param page The pagination token to use to continue listing Posting Modules; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
      * @param start When paginating, skip this number of results. (optional)
      * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the PostingModule type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+     * @param filter Expression to filter the results.              For example, to filter on the Posting Module type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
      * @return PagedResourceListOfPostingModuleResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Posting Modules </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Posting Modules. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -672,13 +672,13 @@ public class PostingModulesApi {
      * @param page The pagination token to use to continue listing Posting Modules; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
      * @param start When paginating, skip this number of results. (optional)
      * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the PostingModule type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+     * @param filter Expression to filter the results.              For example, to filter on the Posting Module type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
      * @return ApiResponse&lt;PagedResourceListOfPostingModuleResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Posting Modules </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Posting Modules. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -696,14 +696,14 @@ public class PostingModulesApi {
      * @param page The pagination token to use to continue listing Posting Modules; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
      * @param start When paginating, skip this number of results. (optional)
      * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
-     * @param filter Expression to filter the results.              For example, to filter on the PostingModule type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+     * @param filter Expression to filter the results.              For example, to filter on the Posting Module type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The requested Posting Modules </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The requested Posting Modules. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -726,7 +726,7 @@ public class PostingModulesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated posting module </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -815,7 +815,7 @@ public class PostingModulesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated posting module </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -836,7 +836,7 @@ public class PostingModulesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated posting module </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -859,7 +859,7 @@ public class PostingModulesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The updated posting module </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The updated Posting Module. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -882,7 +882,7 @@ public class PostingModulesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The posting module with updated rules </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -971,7 +971,7 @@ public class PostingModulesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The posting module with updated rules </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -992,7 +992,7 @@ public class PostingModulesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The posting module with updated rules </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
@@ -1015,7 +1015,7 @@ public class PostingModulesApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> The posting module with updated rules </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> The Posting Module with updated rules. </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>

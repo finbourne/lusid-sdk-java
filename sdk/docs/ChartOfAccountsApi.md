@@ -10,10 +10,10 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**getAccount**](ChartOfAccountsApi.md#getAccount) | **GET** /api/chartofaccounts/{scope}/{code}/accounts/{accountCode} | [EXPERIMENTAL] GetAccount: Get Account |
 | [**getChartOfAccounts**](ChartOfAccountsApi.md#getChartOfAccounts) | **GET** /api/chartofaccounts/{scope}/{code} | [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts |
 | [**listAccounts**](ChartOfAccountsApi.md#listAccounts) | **GET** /api/chartofaccounts/{scope}/{code}/accounts | [EXPERIMENTAL] ListAccounts: List Accounts |
-| [**listChartsOfAccounts**](ChartOfAccountsApi.md#listChartsOfAccounts) | **GET** /api/chartofaccounts | [EXPERIMENTAL] ListChartsOfAccounts: List chart of accounts |
+| [**listChartsOfAccounts**](ChartOfAccountsApi.md#listChartsOfAccounts) | **GET** /api/chartofaccounts | [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts |
 | [**upsertAccounts**](ChartOfAccountsApi.md#upsertAccounts) | **POST** /api/chartofaccounts/{scope}/{code}/accounts | [EXPERIMENTAL] UpsertAccounts: Upsert Accounts |
 | [**upsertAccountsProperties**](ChartOfAccountsApi.md#upsertAccountsProperties) | **POST** /api/chartofaccounts/{scope}/{code}/accounts/{accountCode}/properties/$upsert | [EXPERIMENTAL] UpsertAccountsProperties: Upsert accounts properties |
-| [**upsertChartOfAccountsProperties**](ChartOfAccountsApi.md#upsertChartOfAccountsProperties) | **POST** /api/chartofaccounts/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert chart of accounts properties |
+| [**upsertChartOfAccountsProperties**](ChartOfAccountsApi.md#upsertChartOfAccountsProperties) | **POST** /api/chartofaccounts/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties |
 
 
 <a id="createChartOfAccounts"></a>
@@ -22,7 +22,7 @@ All URIs are relative to *https://www.lusid.com/api*
 
 [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts
 
-Create the given chart of accounts.
+Create the given Chart of Accounts.
 
 ### Example
 ```java
@@ -83,7 +83,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **201** | The newly created chart of accounts. |  -  |
+| **201** | The newly created Chart of Accounts. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -93,7 +93,7 @@ public class Example {
 
 [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts
 
-Delete one or more account from the chart of accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
+Delete one or more account from the Chart of Accounts. Soft deletion marks the account as inactive  While the Hard deletion is deleting the account.  The maximum number of accounts that this method can delete per request is 2,000.
 
 ### Example
 ```java
@@ -115,8 +115,8 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the chart of accounts.
-    String code = "code_example"; // String | The code of the chart of accounts. Together with the scope this uniquely identifies              the Chart of Accounts.
+    String scope = "scope_example"; // String | The scope of the Chart of Accounts.
+    String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts.
     List<String> requestBody = ["AccountCode1","AccountCode2"]; // List<String> | The codes of the accounts to delete.
     String deleteMode = "Soft"; // String | The delete mode to use (defaults to 'Soft').
     try {
@@ -137,8 +137,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **scope** | **String**| The scope of the chart of accounts. | |
-| **code** | **String**| The code of the chart of accounts. Together with the scope this uniquely identifies              the Chart of Accounts. | |
+| **scope** | **String**| The scope of the Chart of Accounts. | |
+| **code** | **String**| The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. | |
 | **requestBody** | [**List&lt;String&gt;**](String.md)| The codes of the accounts to delete. | |
 | **deleteMode** | **String**| The delete mode to use (defaults to &#39;Soft&#39;). | [optional] [enum: Soft, Hard] |
 
@@ -158,7 +158,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The datetime that the accounts were deleted. |  -  |
+| **200** | The datetime that the Accounts were deleted. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -168,7 +168,7 @@ public class Example {
 
 [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts
 
-Delete the given chart of accounts.
+Delete the given Chart of Accounts.
 
 ### Example
 ```java
@@ -191,7 +191,7 @@ public class Example {
 
     ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the Chart of Accounts to be deleted.
-    String code = "code_example"; // String | The code of the Chart of Accounts to be deleted.Together with the scope this uniquely identifies the chart of accounts.
+    String code = "code_example"; // String | The code of the Chart of Accounts to be deleted. Together with the scope this uniquely identifies the Chart of Accounts.
     try {
       DeletedEntityResponse result = apiInstance.deleteChartOfAccounts(scope, code);
       System.out.println(result);
@@ -211,7 +211,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Chart of Accounts to be deleted. | |
-| **code** | **String**| The code of the Chart of Accounts to be deleted.Together with the scope this uniquely identifies the chart of accounts. | |
+| **code** | **String**| The code of the Chart of Accounts to be deleted. Together with the scope this uniquely identifies the Chart of Accounts. | |
 
 ### Return type
 
@@ -229,7 +229,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The datetime that the chart of accounts was deleted |  -  |
+| **200** | The datetime that the Chart of Accounts was deleted. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -261,8 +261,8 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the ChartOfAccounts.
-    String code = "code_example"; // String | The code of the ChartOfAccounts. Together with the scope this uniquely identifies the ChartOfAccounts.
+    String scope = "scope_example"; // String | The scope of the Chart of Accounts.
+    String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
     String accountCode = "accountCode_example"; // String | The code of the Account.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the Account properties. Defaults to the current LUSID system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Account definition. Defaults to returning the latest version of the Account definition if not specified.
@@ -285,8 +285,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **scope** | **String**| The scope of the ChartOfAccounts. | |
-| **code** | **String**| The code of the ChartOfAccounts. Together with the scope this uniquely identifies the ChartOfAccounts. | |
+| **scope** | **String**| The scope of the Chart of Accounts. | |
+| **code** | **String**| The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. | |
 | **accountCode** | **String**| The code of the Account. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the Account properties. Defaults to the current LUSID system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Account definition. Defaults to returning the latest version of the Account definition if not specified. | [optional] |
@@ -308,7 +308,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The requested Account definition |  -  |
+| **200** | The requested Account definition. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -318,7 +318,7 @@ public class Example {
 
 [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts
 
-Retrieve the definition of a particular ChartOfAccounts.
+Retrieve the definition of a particular Chart of Accounts.
 
 ### Example
 ```java
@@ -340,11 +340,11 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the ChartOfAccounts.
-    String code = "code_example"; // String | The code of the ChartOfAccounts. Together with the scope this uniquely identifies the ChartOfAccounts.
-    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the ChartOfAccounts properties. Defaults to the current LUSID system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the ChartOfAccounts definition. Defaults to returning the latest version of the ChartOfAccounts definition if not specified.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'ChartOfAccounts' domain to decorate onto the ChartOfAccounts.              These must take the format {domain}/{scope}/{code}, for example 'ChartOfAccounts/Manager/Id'. If not provided will return all the entitled properties for that ChartOfAccounts.
+    String scope = "scope_example"; // String | The scope of the Chart of Accounts.
+    String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
+    String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to retrieve the Chart of Accounts properties. Defaults to the current LUSID system datetime if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Chart of Accounts definition. Defaults to returning the latest version of the Chart of Accounts definition if not specified.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'ChartOfAccounts' domain to decorate onto the Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example 'ChartOfAccounts/Manager/Id'. If not provided will return all the entitled properties for that Chart of Accounts.
     try {
       ChartOfAccounts result = apiInstance.getChartOfAccounts(scope, code, effectiveAt, asAt, propertyKeys);
       System.out.println(result);
@@ -363,11 +363,11 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **scope** | **String**| The scope of the ChartOfAccounts. | |
-| **code** | **String**| The code of the ChartOfAccounts. Together with the scope this uniquely identifies the ChartOfAccounts. | |
-| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the ChartOfAccounts properties. Defaults to the current LUSID system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the ChartOfAccounts definition. Defaults to returning the latest version of the ChartOfAccounts definition if not specified. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the ChartOfAccounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If not provided will return all the entitled properties for that ChartOfAccounts. | [optional] |
+| **scope** | **String**| The scope of the Chart of Accounts. | |
+| **code** | **String**| The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. | |
+| **effectiveAt** | **String**| The effective datetime or cut label at which to retrieve the Chart of Accounts properties. Defaults to the current LUSID system datetime if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Chart of Accounts definition. Defaults to returning the latest version of the Chart of Accounts definition if not specified. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto the Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. If not provided will return all the entitled properties for that Chart of Accounts. | [optional] |
 
 ### Return type
 
@@ -385,7 +385,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The requested ChartOfAccounts definition |  -  |
+| **200** | The requested Chart Of Accounts definition. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -395,7 +395,7 @@ public class Example {
 
 [EXPERIMENTAL] ListAccounts: List Accounts
 
-List the accounts in a chart of accounts
+List the accounts in a Chart of Accounts
 
 ### Example
 ```java
@@ -417,8 +417,8 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the chart of accounts.
-    String code = "code_example"; // String | The code of the chart of accounts. Together with the scope this uniquely identifies              the chart of accounts.
+    String scope = "scope_example"; // String | The scope of the Chart of Accounts.
+    String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts.
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties decorated on Accounts. Defaults to the current LUSID              system datetime if not specified.
     OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the Accounts. Defaults to              returning the latest version if not specified.
     String page = "page_example"; // String | The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
@@ -444,8 +444,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **scope** | **String**| The scope of the chart of accounts. | |
-| **code** | **String**| The code of the chart of accounts. Together with the scope this uniquely identifies              the chart of accounts. | |
+| **scope** | **String**| The scope of the Chart of Accounts. | |
+| **code** | **String**| The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. | |
 | **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties decorated on Accounts. Defaults to the current LUSID              system datetime if not specified. | [optional] |
 | **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the Accounts. Defaults to              returning the latest version if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
@@ -470,7 +470,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The accounts in the given chart of accounts. |  -  |
+| **200** | The Accounts in the given Chart of Accounts. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -478,9 +478,9 @@ public class Example {
 # **listChartsOfAccounts**
 > PagedResourceListOfChartOfAccounts listChartsOfAccounts(effectiveAt, asAt, page, start, limit, filter, propertyKeys)
 
-[EXPERIMENTAL] ListChartsOfAccounts: List chart of accounts
+[EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts
 
-List all the charts of accounts matching particular criteria.
+List all the Charts of Accounts matching particular criteria.
 
 ### Example
 ```java
@@ -503,12 +503,12 @@ public class Example {
 
     ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
     String effectiveAt = "effectiveAt_example"; // String | The effective datetime or cut label at which to list the TimeVariant properties for the Chart Of Accounts. Defaults to the current LUSID              system datetime if not specified.
-    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version              of each chart of accounts if not specified.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version              of each Chart of Accounts if not specified.
     String page = "page_example"; // String | The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
     Integer start = 56; // Integer | When paginating, skip this number of results.
     Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
-    String filter = "filter_example"; // String | Expression to filter the results.              For example, to filter on the ChartOfAccounts type, specify \"id.Code eq '001'\". For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914.
-    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'ChartOfAccounts' domain to decorate onto each chart of accounts.              These must take the format {domain}/{scope}/{code}, for example 'ChartOfAccounts/Manager/Id'.
+    String filter = "filter_example"; // String | Expression to filter the results.              For example, to filter on the Chart of Accounts type, specify \"id.Code eq '001'\". For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    List<String> propertyKeys = Arrays.asList(); // List<String> | A list of property keys from the 'ChartOfAccounts' domain to decorate onto each Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example 'ChartOfAccounts/Manager/Id'.
     try {
       PagedResourceListOfChartOfAccounts result = apiInstance.listChartsOfAccounts(effectiveAt, asAt, page, start, limit, filter, propertyKeys);
       System.out.println(result);
@@ -528,12 +528,12 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **effectiveAt** | **String**| The effective datetime or cut label at which to list the TimeVariant properties for the Chart Of Accounts. Defaults to the current LUSID              system datetime if not specified. | [optional] |
-| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version              of each chart of accounts if not specified. | [optional] |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the charts of accounts. Defaults to returning the latest version              of each Chart of Accounts if not specified. | [optional] |
 | **page** | **String**| The pagination token to use to continue listing charts of accounts; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
 | **start** | **Integer**| When paginating, skip this number of results. | [optional] |
 | **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
-| **filter** | **String**| Expression to filter the results.              For example, to filter on the ChartOfAccounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
-| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each chart of accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. | [optional] |
+| **filter** | **String**| Expression to filter the results.              For example, to filter on the Chart of Accounts type, specify \&quot;id.Code eq &#39;001&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+| **propertyKeys** | [**List&lt;String&gt;**](String.md)| A list of property keys from the &#39;ChartOfAccounts&#39; domain to decorate onto each Chart of Accounts.              These must take the format {domain}/{scope}/{code}, for example &#39;ChartOfAccounts/Manager/Id&#39;. | [optional] |
 
 ### Return type
 
@@ -551,7 +551,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The requested charts of accounts |  -  |
+| **200** | The requested Charts of Accounts. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -561,7 +561,7 @@ public class Example {
 
 [EXPERIMENTAL] UpsertAccounts: Upsert Accounts
 
-Create or update accounts in the chart of accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
+Create or update accounts in the Chart of Accounts. An account will be updated  if it already exists and created if it does not.  The maximum number of accounts that this method can upsert per request is 2,000.
 
 ### Example
 ```java
@@ -583,8 +583,8 @@ public class Example {
     oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
     ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
-    String scope = "scope_example"; // String | The scope of the chart of accounts.
-    String code = "code_example"; // String | The code of the chart of accounts. Together with the scope this uniquely identifies              the chart of accounts.
+    String scope = "scope_example"; // String | The scope of the Chart of Accounts.
+    String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts.
     List<Account> account = Arrays.asList(); // List<Account> | A list of accounts to be created or updated.
     try {
       AccountsUpsertResponse result = apiInstance.upsertAccounts(scope, code, account);
@@ -604,8 +604,8 @@ public class Example {
 
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
-| **scope** | **String**| The scope of the chart of accounts. | |
-| **code** | **String**| The code of the chart of accounts. Together with the scope this uniquely identifies              the chart of accounts. | |
+| **scope** | **String**| The scope of the Chart of Accounts. | |
+| **code** | **String**| The code of the Chart of Accounts. Together with the scope this uniquely identifies              the Chart of Accounts. | |
 | **account** | [**List&lt;Account&gt;**](Account.md)| A list of accounts to be created or updated. | |
 
 ### Return type
@@ -624,7 +624,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The newly upserted accounts. |  -  |
+| **200** | The newly upserted Accounts. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -657,7 +657,7 @@ public class Example {
 
     ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the Chart of Accounts to update or insert the properties onto.
-    String code = "code_example"; // String | The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the chart of accounts.
+    String code = "code_example"; // String | The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts.
     String accountCode = "accountCode_example"; // String | The unique ID of the account to create or update properties for.
     Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"Account/Manager/Id\".
     try {
@@ -679,7 +679,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Chart of Accounts to update or insert the properties onto. | |
-| **code** | **String**| The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the chart of accounts. | |
+| **code** | **String**| The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. | |
 | **accountCode** | **String**| The unique ID of the account to create or update properties for. | |
 | **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;Account/Manager/Id\&quot;. | [optional] |
 
@@ -699,7 +699,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The updated or inserted properties |  -  |
+| **200** | The updated or inserted properties. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -707,9 +707,9 @@ public class Example {
 # **upsertChartOfAccountsProperties**
 > ChartOfAccountsProperties upsertChartOfAccountsProperties(scope, code, requestBody)
 
-[EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert chart of accounts properties
+[EXPERIMENTAL] UpsertChartOfAccountsProperties: Upsert Chart of Accounts properties
 
-Update or insert one or more properties onto a single chart of accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a chart of accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
+Update or insert one or more properties onto a single Chart of Accounts. A property will be updated if it  already exists and inserted if it does not. All properties must be of the domain &#39;ChartOfAccounts&#39;.                Upserting a property that exists for a Chart of Accounts, with a null value, will delete the instance of the property for that group.                Properties have an &lt;i&gt;effectiveFrom&lt;/i&gt; datetime for which the property is valid, and an &lt;i&gt;effectiveUntil&lt;/i&gt;  datetime until which the property is valid. Not supplying an &lt;i&gt;effectiveUntil&lt;/i&gt; datetime results in the property being  valid indefinitely, or until the next &lt;i&gt;effectiveFrom&lt;/i&gt; datetime of the property.
 
 ### Example
 ```java
@@ -732,7 +732,7 @@ public class Example {
 
     ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
     String scope = "scope_example"; // String | The scope of the Chart of Accounts to update or insert the properties onto.
-    String code = "code_example"; // String | The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the chart of accounts.
+    String code = "code_example"; // String | The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts.
     Map<String, Property> requestBody = new HashMap(); // Map<String, Property> | The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \"ChartOfAccounts/Manager/Id\".
     try {
       ChartOfAccountsProperties result = apiInstance.upsertChartOfAccountsProperties(scope, code, requestBody);
@@ -753,7 +753,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **scope** | **String**| The scope of the Chart of Accounts to update or insert the properties onto. | |
-| **code** | **String**| The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the chart of accounts. | |
+| **code** | **String**| The code of the Chart of Accounts to update or insert the properties onto. Together with the scope this uniquely identifies the Chart of Accounts. | |
 | **requestBody** | [**Map&lt;String, Property&gt;**](Property.md)| The properties to be updated or inserted onto the chart of account. Each property in               the request must be keyed by its unique property key. This has the format {domain}/{scope}/{code} e.g. \&quot;ChartOfAccounts/Manager/Id\&quot;. | [optional] |
 
 ### Return type
@@ -772,7 +772,7 @@ public class Example {
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **200** | The updated or inserted properties |  -  |
+| **200** | The updated or inserted properties. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
