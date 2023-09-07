@@ -12,7 +12,7 @@ A list of transactions.
 |**type** | **String** | The type of the transaction e.g. &#39;Buy&#39;, &#39;Sell&#39;. The transaction type should have been pre-configured via the System Configuration API endpoint. |  |
 |**instrumentIdentifiers** | **Map&lt;String, String&gt;** | A set of instrument identifiers that can resolve the transaction to a unique instrument. |  [optional] |
 |**instrumentScope** | **String** | The scope in which the transaction&#39;s instrument lies. |  [optional] |
-|**instrumentUid** | **String** | The unqiue Lusid Instrument Id (LUID) of the instrument that the transaction is in. |  |
+|**instrumentUid** | **String** | The unique Lusid Instrument Id (LUID) of the instrument that the transaction is in. |  |
 |**transactionDate** | **OffsetDateTime** | The date of the transaction. |  |
 |**settlementDate** | **OffsetDateTime** | The settlement date of the transaction. |  |
 |**units** | **java.math.BigDecimal** | The number of units transacted in the associated instrument. |  |

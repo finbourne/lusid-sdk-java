@@ -319,7 +319,7 @@ public class OutputTransaction {
   }
 
    /**
-   * The unqiue Lusid Instrument Id (LUID) of the instrument that the transaction is in.
+   * The unique Lusid Instrument Id (LUID) of the instrument that the transaction is in.
    * @return instrumentUid
   **/
   @jakarta.annotation.Nonnull

@@ -208,7 +208,7 @@ public class InstrumentCashFlow {
   }
 
    /**
-   * The unqiue Lusid Instrument Id (LUID) of the instrument that the holding is in.
+   * The unique Lusid Instrument Id (LUID) of the instrument that the holding is in.
    * @return sourceInstrumentScope
   **/
   @jakarta.annotation.Nonnull
@@ -229,7 +229,7 @@ public class InstrumentCashFlow {
   }
 
    /**
-   * The unqiue Lusid Instrument Id (LUID) of the instrument that the holding is in.
+   * The unique Lusid Instrument Id (LUID) of the instrument that the holding is in.
    * @return sourceInstrumentId
   **/
   @jakarta.annotation.Nonnull

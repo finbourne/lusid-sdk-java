@@ -141,7 +141,7 @@ public class RealisedGainLoss {
   }
 
    /**
-   * The unqiue Lusid Instrument Id (LUID) of the instrument that this gain or loss is associated with.
+   * The unique Lusid Instrument Id (LUID) of the instrument that this gain or loss is associated with.
    * @return instrumentUid
   **/
   @jakarta.annotation.Nonnull

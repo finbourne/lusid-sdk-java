@@ -144,7 +144,7 @@ public class HoldingAdjustment {
   }
 
    /**
-   * The unqiue Lusid Instrument Id (LUID) of the instrument that the holding adjustment is in.
+   * The unique Lusid Instrument Id (LUID) of the instrument that the holding adjustment is in.
    * @return instrumentUid
   **/
   @jakarta.annotation.Nonnull
