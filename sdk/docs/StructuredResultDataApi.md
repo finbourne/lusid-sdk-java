@@ -10,6 +10,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**getDataMap**](StructuredResultDataApi.md#getDataMap) | **POST** /api/unitresults/datamap/{scope}/$get | [EXPERIMENTAL] GetDataMap: Get data map |
 | [**getStructuredResultData**](StructuredResultDataApi.md#getStructuredResultData) | **POST** /api/unitresults/{scope}/$get | [EXPERIMENTAL] GetStructuredResultData: Get structured result data |
 | [**getVirtualDocument**](StructuredResultDataApi.md#getVirtualDocument) | **POST** /api/unitresults/virtualdocument/{scope}/$get | [EXPERIMENTAL] GetVirtualDocument: Get Virtual Documents |
+| [**getVirtualDocumentRows**](StructuredResultDataApi.md#getVirtualDocumentRows) | **GET** /api/unitresults/virtualdocument/{scope}/{code}/{source}/{resultType} | [EARLY ACCESS] GetVirtualDocumentRows: Get Virtual Document Rows |
 | [**upsertResultValue**](StructuredResultDataApi.md#upsertResultValue) | **POST** /api/unitresults/resultvalue/{scope} | [EXPERIMENTAL] UpsertResultValue: Upsert result value |
 | [**upsertStructuredResultData**](StructuredResultDataApi.md#upsertStructuredResultData) | **POST** /api/unitresults/{scope} | [BETA] UpsertStructuredResultData: Upsert structured result data |
 
@@ -451,6 +452,91 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The successfully retrieved virtual documents along with any failures. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="getVirtualDocumentRows"></a>
+# **getVirtualDocumentRows**
+> PagedResourceListOfVirtualRow getVirtualDocumentRows(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter)
+
+[EARLY ACCESS] GetVirtualDocumentRows: Get Virtual Document Rows
+
+Retrieve the rows of the virtual document with the specified identifiers and the given effectiveAt date time.    Get virtual document rows merges multiple StructuredResultData items upserted with UpsertStructuredResultData  for a single StructuredResultDataId.                Since an item of StructuredResultData is always upserted with a StructuredResultDataId, of which  effectiveAt is a part, then merging across the asAt dimension is supported but not merging across the  effectiveAt dimension.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.StructuredResultDataApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    StructuredResultDataApi apiInstance = new StructuredResultDataApi(defaultClient);
+    String scope = "scope_example"; // String | The scope in which to retrieve the virtual document.
+    String code = "code_example"; // String | The code of the virtual document to retrieve.
+    String source = "source_example"; // String | The source of the virtual document to retrieve.
+    String resultType = "resultType_example"; // String | The result type of the virtual document to retrieve.
+    String effectiveAt = "effectiveAt_example"; // String | The effectiveAt datetime at which to retrieve the virtual document.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve the virtual document. Defaults to returning the latest version if not specified.
+    String page = "page_example"; // String | The pagination token to use to continue listing virtual document rows from a previous               call to list virtual document rows. This value is returned from the previous call. If a pagination token is               provided the filter, effectiveAt, and asAt fields must not have changed since the original request.
+    Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many.
+    String filter = "filter_example"; // String | Expression to filter the result set. Read more about filtering results from LUSID here:               https://support.lusid.com/filtering-results-from-lusid.
+    try {
+      PagedResourceListOfVirtualRow result = apiInstance.getVirtualDocumentRows(scope, code, source, resultType, effectiveAt, asAt, page, limit, filter);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling StructuredResultDataApi#getVirtualDocumentRows");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope in which to retrieve the virtual document. | |
+| **code** | **String**| The code of the virtual document to retrieve. | |
+| **source** | **String**| The source of the virtual document to retrieve. | |
+| **resultType** | **String**| The result type of the virtual document to retrieve. | |
+| **effectiveAt** | **String**| The effectiveAt datetime at which to retrieve the virtual document. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve the virtual document. Defaults to returning the latest version if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing virtual document rows from a previous               call to list virtual document rows. This value is returned from the previous call. If a pagination token is               provided the filter, effectiveAt, and asAt fields must not have changed since the original request. | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many. | [optional] |
+| **filter** | **String**| Expression to filter the result set. Read more about filtering results from LUSID here:               https://support.lusid.com/filtering-results-from-lusid. | [optional] |
+
+### Return type
+
+[**PagedResourceListOfVirtualRow**](PagedResourceListOfVirtualRow.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The rows of the virtual document. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
