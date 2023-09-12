@@ -167,7 +167,7 @@ public class UpsertComplianceRuleRequest {
    * Get active
    * @return active
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public Boolean getActive() {
     return active;
   }
@@ -230,7 +230,7 @@ public class UpsertComplianceRuleRequest {
    * Get portfolioGroupId
    * @return portfolioGroupId
   **/
-  @jakarta.annotation.Nullable
+  @jakarta.annotation.Nonnull
   public ResourceId getPortfolioGroupId() {
     return portfolioGroupId;
   }
@@ -384,8 +384,10 @@ public class UpsertComplianceRuleRequest {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("id");
+    openapiRequiredFields.add("active");
     openapiRequiredFields.add("templateId");
     openapiRequiredFields.add("variation");
+    openapiRequiredFields.add("portfolioGroupId");
     openapiRequiredFields.add("parameters");
     openapiRequiredFields.add("properties");
   }
@@ -430,10 +432,8 @@ public class UpsertComplianceRuleRequest {
       if (!jsonObj.get("variation").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `variation` to be a primitive type in the JSON string but got `%s`", jsonObj.get("variation").toString()));
       }
-      // validate the optional field `portfolioGroupId`
-      if (jsonObj.get("portfolioGroupId") != null && !jsonObj.get("portfolioGroupId").isJsonNull()) {
-        ResourceId.validateJsonObject(jsonObj.getAsJsonObject("portfolioGroupId"));
-      }
+      // validate the required field `portfolioGroupId`
+      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("portfolioGroupId"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
