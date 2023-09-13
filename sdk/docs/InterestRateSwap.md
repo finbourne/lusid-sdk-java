@@ -13,7 +13,6 @@ LUSID representation of an Interest Rate Swap, including:      * Vanilla (single
 |**isNonDeliverable** | **Boolean** | Is the contract an IRS of \&quot;Non-Deliverable\&quot; type, meaning a single payment in the settlement currency based on the difference between  the fixed and floating rates. |  [optional] |
 |**legs** | [**List&lt;InstrumentLeg&gt;**](InstrumentLeg.md) | The set of instrument legs that define the swap instrument, these should be FloatingLeg or FixedLeg. |  |
 |**settlementCcy** | **String** | Settlement currency if IRS is non-deliverable. |  [optional] |
-|**upFrontPayment** | [**UpFrontPayment**](UpFrontPayment.md) |  |  [optional] |
 
 
 
