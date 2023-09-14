@@ -37,5 +37,7 @@
 
 * `PORTFOLIOGROUPIDLISTCOMPLIANCEPARAMETER` (value: `"PortfolioGroupIdListComplianceParameter"`)
 
+* `INSTRUMENTLISTCOMPLIANCEPARAMETER` (value: `"InstrumentListComplianceParameter"`)
+
 
 

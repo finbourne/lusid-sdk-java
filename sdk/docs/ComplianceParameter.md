@@ -7,7 +7,7 @@
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**complianceParameterType** | [**ComplianceParameterTypeEnum**](#ComplianceParameterTypeEnum) | The parameter type. The available values are: BoolComplianceParameter, StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter, PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter, PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter, DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter, AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter, PortfolioGroupIdListComplianceParameter |  |
+|**complianceParameterType** | [**ComplianceParameterTypeEnum**](#ComplianceParameterTypeEnum) | The parameter type. The available values are: BoolComplianceParameter, StringComplianceParameter, DecimalComplianceParameter, DateTimeComplianceParameter, PropertyKeyComplianceParameter, AddressKeyComplianceParameter, PortfolioIdComplianceParameter, PortfolioGroupIdComplianceParameter, StringListComplianceParameter, BoolListComplianceParameter, DateTimeListComplianceParameter, DecimalListComplianceParameter, PropertyKeyListComplianceParameter, AddressKeyListComplianceParameter, PortfolioIdListComplianceParameter, PortfolioGroupIdListComplianceParameter, InstrumentListComplianceParameter |  |
 
 
 
@@ -31,6 +31,7 @@
 | ADDRESSKEYLISTCOMPLIANCEPARAMETER | &quot;AddressKeyListComplianceParameter&quot; |
 | PORTFOLIOIDLISTCOMPLIANCEPARAMETER | &quot;PortfolioIdListComplianceParameter&quot; |
 | PORTFOLIOGROUPIDLISTCOMPLIANCEPARAMETER | &quot;PortfolioGroupIdListComplianceParameter&quot; |
+| INSTRUMENTLISTCOMPLIANCEPARAMETER | &quot;InstrumentListComplianceParameter&quot; |
 
 
 

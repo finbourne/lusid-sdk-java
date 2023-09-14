@@ -21,6 +21,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**reconcileHoldings**](ReconciliationsApi.md#reconcileHoldings) | **POST** /api/portfolios/$reconcileholdings | [EARLY ACCESS] ReconcileHoldings: Reconcile portfolio holdings |
 | [**reconcileInline**](ReconciliationsApi.md#reconcileInline) | **POST** /api/portfolios/$reconcileInline | ReconcileInline: Reconcile valuations performed on one or two sets of inline instruments using one or two configuration recipes. |
 | [**reconcileTransactions**](ReconciliationsApi.md#reconcileTransactions) | **POST** /api/portfolios/$reconcileTransactions | [EARLY ACCESS] ReconcileTransactions: Perform a Transactions Reconciliation. |
+| [**reconcileTransactionsV2**](ReconciliationsApi.md#reconcileTransactionsV2) | **POST** /api/portfolios/$reconcileTransactionsV2 | [EXPERIMENTAL] ReconcileTransactionsV2: Perform a Transactions Reconciliation. |
 | [**reconcileValuation**](ReconciliationsApi.md#reconcileValuation) | **POST** /api/portfolios/$reconcileValuation | ReconcileValuation: Reconcile valuations performed on one or two sets of holdings using one or two configuration recipes. |
 | [**updateReconciliation**](ReconciliationsApi.md#updateReconciliation) | **POST** /api/portfolios/$scheduledReconciliations/{scope}/{code} | [EXPERIMENTAL] UpdateReconciliation: Update scheduled reconciliation |
 | [**upsertReconciliationBreak**](ReconciliationsApi.md#upsertReconciliationBreak) | **POST** /api/portfolios/$scheduledReconciliations/{scope}/{code}/runs/{runDate}/{version} | [EXPERIMENTAL] UpsertReconciliationBreak: Upsert a reconciliation break |
@@ -1300,6 +1301,75 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The transaction reconciliation data for the supplied portfolios. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="reconcileTransactionsV2"></a>
+# **reconcileTransactionsV2**
+> ReconciliationResponse reconcileTransactionsV2(transactionReconciliationRequestV2)
+
+[EXPERIMENTAL] ReconcileTransactionsV2: Perform a Transactions Reconciliation.
+
+Evaluates two sets of transactions to determine which transactions from each set likely match  using the rules of a specified mapping.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ReconciliationsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ReconciliationsApi apiInstance = new ReconciliationsApi(defaultClient);
+    TransactionReconciliationRequestV2 transactionReconciliationRequestV2 = new TransactionReconciliationRequestV2(); // TransactionReconciliationRequestV2 | 
+    try {
+      ReconciliationResponse result = apiInstance.reconcileTransactionsV2(transactionReconciliationRequestV2);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ReconciliationsApi#reconcileTransactionsV2");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **transactionReconciliationRequestV2** | [**TransactionReconciliationRequestV2**](TransactionReconciliationRequestV2.md)|  | [optional] |
+
+### Return type
+
+[**ReconciliationResponse**](ReconciliationResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested reconciliation |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
