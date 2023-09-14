@@ -327,7 +327,7 @@ public class InflationLinkedBond extends LusidInstrument {
   }
 
    /**
-   * Number of Good Business Days before the next coupon payment, in which the bond goes ex-dividend.  This is not common in inflation linked bonds but has been seen with (for example) bonds issued by  the Bank of Thailand.
+   * Number of Good Business Days before the next coupon payment, in which the bond goes ex-dividend.
    * @return exDividendDays
   **/
   @jakarta.annotation.Nullable
