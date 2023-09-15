@@ -14,8 +14,8 @@ import java.util.concurrent.TimeUnit;
 public class HttpClientFactory {
 
     /**
-     *  Builds a {@link OkHttpClient} from a {@link ApiConfiguration} to make
-     *  calls to the LUSID API.
+     * Builds a {@link OkHttpClient} from a {@link ApiConfiguration} to make
+     * calls to the LUSID API.
      *
      * @param apiConfiguration configuration to connect to LUSID API
      * @return an client for http calls to LUSID API
@@ -29,17 +29,19 @@ public class HttpClientFactory {
      * calls to the {{application_camel}} API.
      *
      * @param apiConfiguration configuration to connect to LUSID API
-     * @param readTimeout read timeout in seconds
-     * @param writeTimeout write timeout in seconds
+     * @param readTimeout      read timeout in seconds
+     * @param writeTimeout     write timeout in seconds
      * @return n client for http calls to LUSID API
      */
-    public OkHttpClient build(ApiConfiguration apiConfiguration, int readTimeout, int writeTimeout, int connectTimeout) {
+    public OkHttpClient build(ApiConfiguration apiConfiguration, int readTimeout, int writeTimeout,
+            int connectTimeout) {
         final OkHttpClient httpClient;
 
-        //  use a proxy if given
+        // use a proxy if given
         if (apiConfiguration.getProxyAddress() != null) {
 
-            InetSocketAddress proxy = new InetSocketAddress(apiConfiguration.getProxyAddress(), apiConfiguration.getProxyPort());
+            InetSocketAddress proxy = InetSocketAddress.createUnresolved(apiConfiguration.getProxyAddress(),
+                    apiConfiguration.getProxyPort());
 
             httpClient = new OkHttpClient.Builder()
                     .readTimeout(readTimeout, TimeUnit.SECONDS)
@@ -47,14 +49,14 @@ public class HttpClientFactory {
                     .connectTimeout(connectTimeout, TimeUnit.SECONDS)
                     .proxy(new Proxy(Proxy.Type.HTTP, proxy))
                     .proxyAuthenticator((route, response) -> {
-                        String credential = Credentials.basic(apiConfiguration.getProxyUsername(), apiConfiguration.getProxyPassword());
+                        String credential = Credentials.basic(apiConfiguration.getProxyUsername(),
+                                apiConfiguration.getProxyPassword());
                         return response.request().newBuilder()
                                 .header("Proxy-Authorization", credential)
                                 .build();
                     })
                     .build();
-        }
-        else {
+        } else {
             httpClient = new OkHttpClient.Builder()
                     .readTimeout(readTimeout, TimeUnit.SECONDS)
                     .writeTimeout(writeTimeout, TimeUnit.SECONDS)
