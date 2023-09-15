@@ -1399,7 +1399,7 @@ public class TransactionConfigurationApi {
     /**
      * Build call for setTransactionType
      * @param source The source to set the transaction configuration for (required)
-     * @param type One of the transaction configuration alias types to uniquely identify the configuration (required)
+     * @param type One of the transaction configuration alias types to uniquely identify the configuration. If this type does not exist, then a new transaction type is created using the body of the request in the given source, without including this type (required)
      * @param transactionTypeRequest The transaction configuration to set (required)
      * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
      * @param _callback Callback for upload/download progress
@@ -1494,7 +1494,7 @@ public class TransactionConfigurationApi {
      * [EXPERIMENTAL] SetTransactionType: Set a specific transaction type
      * Set a transaction type for the given source and type. If the requested transaction type does not exist, it will be created    WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
      * @param source The source to set the transaction configuration for (required)
-     * @param type One of the transaction configuration alias types to uniquely identify the configuration (required)
+     * @param type One of the transaction configuration alias types to uniquely identify the configuration. If this type does not exist, then a new transaction type is created using the body of the request in the given source, without including this type (required)
      * @param transactionTypeRequest The transaction configuration to set (required)
      * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
      * @return TransactionType
@@ -1516,7 +1516,7 @@ public class TransactionConfigurationApi {
      * [EXPERIMENTAL] SetTransactionType: Set a specific transaction type
      * Set a transaction type for the given source and type. If the requested transaction type does not exist, it will be created    WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
      * @param source The source to set the transaction configuration for (required)
-     * @param type One of the transaction configuration alias types to uniquely identify the configuration (required)
+     * @param type One of the transaction configuration alias types to uniquely identify the configuration. If this type does not exist, then a new transaction type is created using the body of the request in the given source, without including this type (required)
      * @param transactionTypeRequest The transaction configuration to set (required)
      * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
      * @return ApiResponse&lt;TransactionType&gt;
@@ -1539,7 +1539,7 @@ public class TransactionConfigurationApi {
      * [EXPERIMENTAL] SetTransactionType: Set a specific transaction type (asynchronously)
      * Set a transaction type for the given source and type. If the requested transaction type does not exist, it will be created    WARNING! Changing existing transaction types has a material impact on how data, new and old, is processed and aggregated by LUSID, and will affect your whole organisation. Only call this API if you are fully aware of the implications of the change.
      * @param source The source to set the transaction configuration for (required)
-     * @param type One of the transaction configuration alias types to uniquely identify the configuration (required)
+     * @param type One of the transaction configuration alias types to uniquely identify the configuration. If this type does not exist, then a new transaction type is created using the body of the request in the given source, without including this type (required)
      * @param transactionTypeRequest The transaction configuration to set (required)
      * @param scope The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. (optional, default to default)
      * @param _callback The callback to be executed when the API call finishes

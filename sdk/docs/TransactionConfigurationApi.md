@@ -695,7 +695,7 @@ public class Example {
 
     TransactionConfigurationApi apiInstance = new TransactionConfigurationApi(defaultClient);
     String source = "source_example"; // String | The source to set the transaction configuration for
-    String type = "type_example"; // String | One of the transaction configuration alias types to uniquely identify the configuration
+    String type = "type_example"; // String | One of the transaction configuration alias types to uniquely identify the configuration. If this type does not exist, then a new transaction type is created using the body of the request in the given source, without including this type
     TransactionTypeRequest transactionTypeRequest = new TransactionTypeRequest(); // TransactionTypeRequest | The transaction configuration to set
     String scope = "default"; // String | The scope in which the transaction types exists. When not supplied the scope is 'default'.
     try {
@@ -717,7 +717,7 @@ public class Example {
 | Name | Type | Description  | Notes |
 |------------- | ------------- | ------------- | -------------|
 | **source** | **String**| The source to set the transaction configuration for | |
-| **type** | **String**| One of the transaction configuration alias types to uniquely identify the configuration | |
+| **type** | **String**| One of the transaction configuration alias types to uniquely identify the configuration. If this type does not exist, then a new transaction type is created using the body of the request in the given source, without including this type | |
 | **transactionTypeRequest** | [**TransactionTypeRequest**](TransactionTypeRequest.md)| The transaction configuration to set | |
 | **scope** | **String**| The scope in which the transaction types exists. When not supplied the scope is &#39;default&#39;. | [optional] [default to default] |
 
