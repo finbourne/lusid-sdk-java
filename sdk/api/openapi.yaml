@@ -331,7 +331,7 @@ info:
     | <a name="870">870</a>|Compliance run summary already exists.|  |
   termsOfService: https://www.finbourne.com/legal/terms-conditions
   title: LUSID API
-  version: 1.0.463
+  version: 1.0.466
   x-logo:
     url: https://www.lusid.com/app/assets/logo_white.png
     backgroundColor: '#415464'
@@ -68414,7 +68414,8 @@ components:
           type: string
         quoteType:
           description: 'The available values are: Price, Spread, Rate, LogNormalVol,
-            NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor'
+            NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor,
+            InflationAssumption'
           enum:
           - Price
           - Spread
@@ -68428,6 +68429,7 @@ components:
           - Ratio
           - Delta
           - PoolFactor
+          - InflationAssumption
           type: string
         field:
           description: "The conceptual qualification for the field, typically 'bid',\
@@ -68606,7 +68608,8 @@ components:
           type: string
         quoteType:
           description: 'The available values are: Price, Spread, Rate, LogNormalVol,
-            NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor'
+            NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor,
+            InflationAssumption'
           enum:
           - Price
           - Spread
@@ -68620,6 +68623,7 @@ components:
           - Ratio
           - Delta
           - PoolFactor
+          - InflationAssumption
           type: string
         field:
           description: "The conceptual qualification for the field, such as bid, mid,\
@@ -68756,7 +68760,8 @@ components:
       properties:
         quoteType:
           description: 'The available values are: Price, Spread, Rate, LogNormalVol,
-            NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor'
+            NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor,
+            InflationAssumption'
           enum:
           - Price
           - Spread
@@ -68770,6 +68775,7 @@ components:
           - Ratio
           - Delta
           - PoolFactor
+          - InflationAssumption
           type: string
         value:
           description: Numeric value of the quote
@@ -77171,7 +77177,7 @@ components:
           description: 'The type of the quote. This allows for quotes other than prices
             e.g. rates or spreads to be used. The available values are: Price, Spread,
             Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index,
-            Ratio, Delta, PoolFactor'
+            Ratio, Delta, PoolFactor, InflationAssumption'
           enum:
           - Price
           - Spread
@@ -77185,6 +77191,7 @@ components:
           - Ratio
           - Delta
           - PoolFactor
+          - InflationAssumption
           nullable: true
           type: string
         field:
