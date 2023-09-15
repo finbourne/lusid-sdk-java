@@ -136,6 +136,15 @@ public class JSON {
                                 getDiscriminatorValue(readElement, "complianceParameterType"));
                     }
           })
+                .registerTypeSelector(com.finbourne.lusid.model.CalendarDependency.class, new TypeSelector<com.finbourne.lusid.model.CalendarDependency>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.CalendarDependency> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("CalendarDependency", com.finbourne.lusid.model.CalendarDependency.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "dependencyType"));
+                    }
+          })
                 .registerTypeSelector(com.finbourne.lusid.model.CapFloor.class, new TypeSelector<com.finbourne.lusid.model.CapFloor>() {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.CapFloor> getClassForElement(JsonElement readElement) {
@@ -377,6 +386,7 @@ public class JSON {
                     @Override
                     public Class<? extends com.finbourne.lusid.model.EconomicDependency> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("CalendarDependency", com.finbourne.lusid.model.CalendarDependency.class);
                         classByDiscriminatorValue.put("CashDependency", com.finbourne.lusid.model.CashDependency.class);
                         classByDiscriminatorValue.put("DiscountingDependency", com.finbourne.lusid.model.DiscountingDependency.class);
                         classByDiscriminatorValue.put("EquityCurveDependency", com.finbourne.lusid.model.EquityCurveDependency.class);
@@ -385,6 +395,7 @@ public class JSON {
                         classByDiscriminatorValue.put("FxForwardsDependency", com.finbourne.lusid.model.FxForwardsDependency.class);
                         classByDiscriminatorValue.put("FxVolDependency", com.finbourne.lusid.model.FxVolDependency.class);
                         classByDiscriminatorValue.put("IndexProjectionDependency", com.finbourne.lusid.model.IndexProjectionDependency.class);
+                        classByDiscriminatorValue.put("InflationFixingDependency", com.finbourne.lusid.model.InflationFixingDependency.class);
                         classByDiscriminatorValue.put("IrVolDependency", com.finbourne.lusid.model.IrVolDependency.class);
                         classByDiscriminatorValue.put("OpaqueDependency", com.finbourne.lusid.model.OpaqueDependency.class);
                         classByDiscriminatorValue.put("QuoteDependency", com.finbourne.lusid.model.QuoteDependency.class);
@@ -714,6 +725,15 @@ public class JSON {
                     public Class<? extends com.finbourne.lusid.model.IndexProjectionDependency> getClassForElement(JsonElement readElement) {
                         Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
                         classByDiscriminatorValue.put("IndexProjectionDependency", com.finbourne.lusid.model.IndexProjectionDependency.class);
+                        return getClassByDiscriminator(classByDiscriminatorValue,
+                                getDiscriminatorValue(readElement, "dependencyType"));
+                    }
+          })
+                .registerTypeSelector(com.finbourne.lusid.model.InflationFixingDependency.class, new TypeSelector<com.finbourne.lusid.model.InflationFixingDependency>() {
+                    @Override
+                    public Class<? extends com.finbourne.lusid.model.InflationFixingDependency> getClassForElement(JsonElement readElement) {
+                        Map<String, Class> classByDiscriminatorValue = new HashMap<String, Class>();
+                        classByDiscriminatorValue.put("InflationFixingDependency", com.finbourne.lusid.model.InflationFixingDependency.class);
                         return getClassByDiscriminator(classByDiscriminatorValue,
                                 getDiscriminatorValue(readElement, "dependencyType"));
                     }
@@ -1529,6 +1549,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CalculationInfo.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.Calendar.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CalendarDate.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CalendarDependency.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CapFloor.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CashDependency.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.CashDividendEvent.CustomTypeAdapterFactory());
@@ -1747,6 +1768,7 @@ public class JSON {
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.IndexModelOptions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.IndexProjectionDependency.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.IndustryClassifier.CustomTypeAdapterFactory());
+        gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationFixingDependency.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationIndexConventions.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationLinkedBond.CustomTypeAdapterFactory());
         gsonBuilder.registerTypeAdapterFactory(new com.finbourne.lusid.model.InflationSwap.CustomTypeAdapterFactory());

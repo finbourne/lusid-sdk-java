@@ -50,7 +50,7 @@ import com.finbourne.lusid.JSON;
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class EconomicDependency {
   /**
-   * The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor
+   * The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency
    */
   @JsonAdapter(DependencyTypeEnum.Adapter.class)
   public enum DependencyTypeEnum {
@@ -76,7 +76,11 @@ public class EconomicDependency {
     
     QUOTEDEPENDENCY("QuoteDependency"),
     
-    VENDOR("Vendor");
+    VENDOR("Vendor"),
+    
+    CALENDARDEPENDENCY("CalendarDependency"),
+    
+    INFLATIONFIXINGDEPENDENCY("InflationFixingDependency");
 
     private String value;
 
@@ -130,7 +134,7 @@ public class EconomicDependency {
   }
 
    /**
-   * The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor
+   * The available values are: OpaqueDependency, CashDependency, DiscountingDependency, EquityCurveDependency, EquityVolDependency, FxDependency, FxForwardsDependency, FxVolDependency, IndexProjectionDependency, IrVolDependency, QuoteDependency, Vendor, CalendarDependency, InflationFixingDependency
    * @return dependencyType
   **/
   @jakarta.annotation.Nonnull
@@ -211,6 +215,9 @@ public class EconomicDependency {
 
       String discriminatorValue = jsonObj.get("dependencyType").getAsString();
       switch (discriminatorValue) {
+        case "CalendarDependency":
+          CalendarDependency.validateJsonObject(jsonObj);
+          break;
         case "CashDependency":
           CashDependency.validateJsonObject(jsonObj);
           break;
@@ -234,6 +241,9 @@ public class EconomicDependency {
           break;
         case "IndexProjectionDependency":
           IndexProjectionDependency.validateJsonObject(jsonObj);
+          break;
+        case "InflationFixingDependency":
+          InflationFixingDependency.validateJsonObject(jsonObj);
           break;
         case "IrVolDependency":
           IrVolDependency.validateJsonObject(jsonObj);

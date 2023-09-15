@@ -84,6 +84,10 @@ public class TransactionTypeMovement {
   @SerializedName(SERIALIZED_NAME_MOVEMENT_OPTIONS)
   private List<String> movementOptions;
 
+  public static final String SERIALIZED_NAME_SETTLEMENT_DATE_OVERRIDE = "settlementDateOverride";
+  @SerializedName(SERIALIZED_NAME_SETTLEMENT_DATE_OVERRIDE)
+  private String settlementDateOverride;
+
   public TransactionTypeMovement() {
   }
 
@@ -258,6 +262,27 @@ public class TransactionTypeMovement {
   }
 
 
+  public TransactionTypeMovement settlementDateOverride(String settlementDateOverride) {
+    
+    this.settlementDateOverride = settlementDateOverride;
+    return this;
+  }
+
+   /**
+   * Optional property key that must be in the Transaction domain when specified. When the movement is processed and the transaction has this property set to a valid date, then the property value will override the SettlementDate of the transaction.
+   * @return settlementDateOverride
+  **/
+  @jakarta.annotation.Nullable
+  public String getSettlementDateOverride() {
+    return settlementDateOverride;
+  }
+
+
+  public void setSettlementDateOverride(String settlementDateOverride) {
+    this.settlementDateOverride = settlementDateOverride;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -274,7 +299,8 @@ public class TransactionTypeMovement {
         Objects.equals(this.properties, transactionTypeMovement.properties) &&
         Objects.equals(this.mappings, transactionTypeMovement.mappings) &&
         Objects.equals(this.name, transactionTypeMovement.name) &&
-        Objects.equals(this.movementOptions, transactionTypeMovement.movementOptions);
+        Objects.equals(this.movementOptions, transactionTypeMovement.movementOptions) &&
+        Objects.equals(this.settlementDateOverride, transactionTypeMovement.settlementDateOverride);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -283,7 +309,7 @@ public class TransactionTypeMovement {
 
   @Override
   public int hashCode() {
-    return Objects.hash(movementTypes, side, direction, properties, mappings, name, movementOptions);
+    return Objects.hash(movementTypes, side, direction, properties, mappings, name, movementOptions, settlementDateOverride);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -304,6 +330,7 @@ public class TransactionTypeMovement {
     sb.append("    mappings: ").append(toIndentedString(mappings)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    movementOptions: ").append(toIndentedString(movementOptions)).append("\n");
+    sb.append("    settlementDateOverride: ").append(toIndentedString(settlementDateOverride)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -333,6 +360,7 @@ public class TransactionTypeMovement {
     openapiFields.add("mappings");
     openapiFields.add("name");
     openapiFields.add("movementOptions");
+    openapiFields.add("settlementDateOverride");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -394,6 +422,9 @@ public class TransactionTypeMovement {
       // ensure the optional json data is an array if present
       if (jsonObj.get("movementOptions") != null && !jsonObj.get("movementOptions").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `movementOptions` to be an array in the JSON string but got `%s`", jsonObj.get("movementOptions").toString()));
+      }
+      if ((jsonObj.get("settlementDateOverride") != null && !jsonObj.get("settlementDateOverride").isJsonNull()) && !jsonObj.get("settlementDateOverride").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `settlementDateOverride` to be a primitive type in the JSON string but got `%s`", jsonObj.get("settlementDateOverride").toString()));
       }
   }
 

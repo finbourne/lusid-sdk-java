@@ -29,5 +29,9 @@
 
 * `VENDOR` (value: `"Vendor"`)
 
+* `CALENDARDEPENDENCY` (value: `"CalendarDependency"`)
+
+* `INFLATIONFIXINGDEPENDENCY` (value: `"InflationFixingDependency"`)
+
 
 
