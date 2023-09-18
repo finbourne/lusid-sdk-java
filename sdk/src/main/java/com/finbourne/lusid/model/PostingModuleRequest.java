@@ -12,7 +12,6 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.PostingModuleRule;
-import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -58,10 +57,6 @@ public class PostingModuleRequest {
   @SerializedName(SERIALIZED_NAME_CODE)
   private String code;
 
-  public static final String SERIALIZED_NAME_CHART_OF_ACCOUNTS_ID = "chartOfAccountsId";
-  @SerializedName(SERIALIZED_NAME_CHART_OF_ACCOUNTS_ID)
-  private ResourceId chartOfAccountsId;
-
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
   private String displayName;
@@ -95,27 +90,6 @@ public class PostingModuleRequest {
 
   public void setCode(String code) {
     this.code = code;
-  }
-
-
-  public PostingModuleRequest chartOfAccountsId(ResourceId chartOfAccountsId) {
-    
-    this.chartOfAccountsId = chartOfAccountsId;
-    return this;
-  }
-
-   /**
-   * Get chartOfAccountsId
-   * @return chartOfAccountsId
-  **/
-  @jakarta.annotation.Nonnull
-  public ResourceId getChartOfAccountsId() {
-    return chartOfAccountsId;
-  }
-
-
-  public void setChartOfAccountsId(ResourceId chartOfAccountsId) {
-    this.chartOfAccountsId = chartOfAccountsId;
   }
 
 
@@ -201,7 +175,6 @@ public class PostingModuleRequest {
     }
     PostingModuleRequest postingModuleRequest = (PostingModuleRequest) o;
     return Objects.equals(this.code, postingModuleRequest.code) &&
-        Objects.equals(this.chartOfAccountsId, postingModuleRequest.chartOfAccountsId) &&
         Objects.equals(this.displayName, postingModuleRequest.displayName) &&
         Objects.equals(this.description, postingModuleRequest.description) &&
         Objects.equals(this.rules, postingModuleRequest.rules);
@@ -213,7 +186,7 @@ public class PostingModuleRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, chartOfAccountsId, displayName, description, rules);
+    return Objects.hash(code, displayName, description, rules);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -228,7 +201,6 @@ public class PostingModuleRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostingModuleRequest {\n");
     sb.append("    code: ").append(toIndentedString(code)).append("\n");
-    sb.append("    chartOfAccountsId: ").append(toIndentedString(chartOfAccountsId)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    rules: ").append(toIndentedString(rules)).append("\n");
@@ -255,7 +227,6 @@ public class PostingModuleRequest {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("code");
-    openapiFields.add("chartOfAccountsId");
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("rules");
@@ -263,7 +234,6 @@ public class PostingModuleRequest {
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("code");
-    openapiRequiredFields.add("chartOfAccountsId");
     openapiRequiredFields.add("displayName");
   }
 
@@ -297,8 +267,6 @@ public class PostingModuleRequest {
       if (!jsonObj.get("code").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `code` to be a primitive type in the JSON string but got `%s`", jsonObj.get("code").toString()));
       }
-      // validate the required field `chartOfAccountsId`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("chartOfAccountsId"));
       if (!jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }

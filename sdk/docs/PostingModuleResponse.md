@@ -9,7 +9,7 @@ A Posting Module definition
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**href** | **URI** | The specific Uniform Resource Identifier (URI) for this resource at the requested effective and asAt datetime. |  [optional] |
-|**id** | [**ResourceId**](ResourceId.md) |  |  |
+|**postingModuleCode** | **String** | The code of the Posting Module. |  |
 |**chartOfAccountsId** | [**ResourceId**](ResourceId.md) |  |  |
 |**displayName** | **String** | The name to identify the Posting Module by |  |
 |**description** | **String** | The description for the Posting Module |  [optional] |

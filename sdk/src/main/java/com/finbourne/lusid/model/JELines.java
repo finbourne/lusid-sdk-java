@@ -100,9 +100,9 @@ public class JELines {
   @SerializedName(SERIALIZED_NAME_BASE)
   private CurrencyAndAmount base;
 
-  public static final String SERIALIZED_NAME_POSTING_MODULE_ID = "postingModuleId";
-  @SerializedName(SERIALIZED_NAME_POSTING_MODULE_ID)
-  private ResourceId postingModuleId;
+  public static final String SERIALIZED_NAME_POSTING_MODULE_CODE = "postingModuleCode";
+  @SerializedName(SERIALIZED_NAME_POSTING_MODULE_CODE)
+  private String postingModuleCode;
 
   public static final String SERIALIZED_NAME_POSTING_RULE = "postingRule";
   @SerializedName(SERIALIZED_NAME_POSTING_RULE)
@@ -365,24 +365,24 @@ public class JELines {
   }
 
 
-  public JELines postingModuleId(ResourceId postingModuleId) {
+  public JELines postingModuleCode(String postingModuleCode) {
     
-    this.postingModuleId = postingModuleId;
+    this.postingModuleCode = postingModuleCode;
     return this;
   }
 
    /**
-   * Get postingModuleId
-   * @return postingModuleId
+   * The code of the posting module where the posting rules derived the JE Lines.
+   * @return postingModuleCode
   **/
   @jakarta.annotation.Nullable
-  public ResourceId getPostingModuleId() {
-    return postingModuleId;
+  public String getPostingModuleCode() {
+    return postingModuleCode;
   }
 
 
-  public void setPostingModuleId(ResourceId postingModuleId) {
-    this.postingModuleId = postingModuleId;
+  public void setPostingModuleCode(String postingModuleCode) {
+    this.postingModuleCode = postingModuleCode;
   }
 
 
@@ -632,7 +632,7 @@ public class JELines {
         Objects.equals(this.glCode, jeLines.glCode) &&
         Objects.equals(this.local, jeLines.local) &&
         Objects.equals(this.base, jeLines.base) &&
-        Objects.equals(this.postingModuleId, jeLines.postingModuleId) &&
+        Objects.equals(this.postingModuleCode, jeLines.postingModuleCode) &&
         Objects.equals(this.postingRule, jeLines.postingRule) &&
         Objects.equals(this.asAtDate, jeLines.asAtDate) &&
         Objects.equals(this.activitiesDescription, jeLines.activitiesDescription) &&
@@ -651,7 +651,7 @@ public class JELines {
 
   @Override
   public int hashCode() {
-    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, glCode, local, base, postingModuleId, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, links);
+    return Objects.hash(accountingDate, activityDate, portfolioId, instrumentId, instrumentScope, subHoldingKeys, taxLotId, glCode, local, base, postingModuleCode, postingRule, asAtDate, activitiesDescription, sourceType, sourceId, properties, movementName, holdingType, economicBucket, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -675,7 +675,7 @@ public class JELines {
     sb.append("    glCode: ").append(toIndentedString(glCode)).append("\n");
     sb.append("    local: ").append(toIndentedString(local)).append("\n");
     sb.append("    base: ").append(toIndentedString(base)).append("\n");
-    sb.append("    postingModuleId: ").append(toIndentedString(postingModuleId)).append("\n");
+    sb.append("    postingModuleCode: ").append(toIndentedString(postingModuleCode)).append("\n");
     sb.append("    postingRule: ").append(toIndentedString(postingRule)).append("\n");
     sb.append("    asAtDate: ").append(toIndentedString(asAtDate)).append("\n");
     sb.append("    activitiesDescription: ").append(toIndentedString(activitiesDescription)).append("\n");
@@ -718,7 +718,7 @@ public class JELines {
     openapiFields.add("glCode");
     openapiFields.add("local");
     openapiFields.add("base");
-    openapiFields.add("postingModuleId");
+    openapiFields.add("postingModuleCode");
     openapiFields.add("postingRule");
     openapiFields.add("asAtDate");
     openapiFields.add("activitiesDescription");
@@ -795,9 +795,8 @@ public class JELines {
       CurrencyAndAmount.validateJsonObject(jsonObj.getAsJsonObject("local"));
       // validate the required field `base`
       CurrencyAndAmount.validateJsonObject(jsonObj.getAsJsonObject("base"));
-      // validate the optional field `postingModuleId`
-      if (jsonObj.get("postingModuleId") != null && !jsonObj.get("postingModuleId").isJsonNull()) {
-        ResourceId.validateJsonObject(jsonObj.getAsJsonObject("postingModuleId"));
+      if ((jsonObj.get("postingModuleCode") != null && !jsonObj.get("postingModuleCode").isJsonNull()) && !jsonObj.get("postingModuleCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `postingModuleCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("postingModuleCode").toString()));
       }
       if (!jsonObj.get("postingRule").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `postingRule` to be a primitive type in the JSON string but got `%s`", jsonObj.get("postingRule").toString()));

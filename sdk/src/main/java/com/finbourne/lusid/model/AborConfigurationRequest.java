@@ -76,9 +76,9 @@ public class AborConfigurationRequest {
   @SerializedName(SERIALIZED_NAME_CHART_OF_ACCOUNTS_ID)
   private ResourceId chartOfAccountsId;
 
-  public static final String SERIALIZED_NAME_POSTING_MODULE_IDS = "postingModuleIds";
-  @SerializedName(SERIALIZED_NAME_POSTING_MODULE_IDS)
-  private List<ResourceId> postingModuleIds;
+  public static final String SERIALIZED_NAME_POSTING_MODULE_CODES = "postingModuleCodes";
+  @SerializedName(SERIALIZED_NAME_POSTING_MODULE_CODES)
+  private List<String> postingModuleCodes;
 
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
@@ -192,32 +192,32 @@ public class AborConfigurationRequest {
   }
 
 
-  public AborConfigurationRequest postingModuleIds(List<ResourceId> postingModuleIds) {
+  public AborConfigurationRequest postingModuleCodes(List<String> postingModuleCodes) {
     
-    this.postingModuleIds = postingModuleIds;
+    this.postingModuleCodes = postingModuleCodes;
     return this;
   }
 
-  public AborConfigurationRequest addPostingModuleIdsItem(ResourceId postingModuleIdsItem) {
-    if (this.postingModuleIds == null) {
-      this.postingModuleIds = new ArrayList<>();
+  public AborConfigurationRequest addPostingModuleCodesItem(String postingModuleCodesItem) {
+    if (this.postingModuleCodes == null) {
+      this.postingModuleCodes = new ArrayList<>();
     }
-    this.postingModuleIds.add(postingModuleIdsItem);
+    this.postingModuleCodes.add(postingModuleCodesItem);
     return this;
   }
 
    /**
-   * The Posting Modules Ids from where the rules to be applied are retrieved.
-   * @return postingModuleIds
+   * The Posting Modules Codes from where the rules to be applied are retrieved.
+   * @return postingModuleCodes
   **/
   @jakarta.annotation.Nullable
-  public List<ResourceId> getPostingModuleIds() {
-    return postingModuleIds;
+  public List<String> getPostingModuleCodes() {
+    return postingModuleCodes;
   }
 
 
-  public void setPostingModuleIds(List<ResourceId> postingModuleIds) {
-    this.postingModuleIds = postingModuleIds;
+  public void setPostingModuleCodes(List<String> postingModuleCodes) {
+    this.postingModuleCodes = postingModuleCodes;
   }
 
 
@@ -265,7 +265,7 @@ public class AborConfigurationRequest {
         Objects.equals(this.description, aborConfigurationRequest.description) &&
         Objects.equals(this.recipeId, aborConfigurationRequest.recipeId) &&
         Objects.equals(this.chartOfAccountsId, aborConfigurationRequest.chartOfAccountsId) &&
-        Objects.equals(this.postingModuleIds, aborConfigurationRequest.postingModuleIds) &&
+        Objects.equals(this.postingModuleCodes, aborConfigurationRequest.postingModuleCodes) &&
         Objects.equals(this.properties, aborConfigurationRequest.properties);
   }
 
@@ -275,7 +275,7 @@ public class AborConfigurationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(code, displayName, description, recipeId, chartOfAccountsId, postingModuleIds, properties);
+    return Objects.hash(code, displayName, description, recipeId, chartOfAccountsId, postingModuleCodes, properties);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -294,7 +294,7 @@ public class AborConfigurationRequest {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    recipeId: ").append(toIndentedString(recipeId)).append("\n");
     sb.append("    chartOfAccountsId: ").append(toIndentedString(chartOfAccountsId)).append("\n");
-    sb.append("    postingModuleIds: ").append(toIndentedString(postingModuleIds)).append("\n");
+    sb.append("    postingModuleCodes: ").append(toIndentedString(postingModuleCodes)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
@@ -323,7 +323,7 @@ public class AborConfigurationRequest {
     openapiFields.add("description");
     openapiFields.add("recipeId");
     openapiFields.add("chartOfAccountsId");
-    openapiFields.add("postingModuleIds");
+    openapiFields.add("postingModuleCodes");
     openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
@@ -373,19 +373,9 @@ public class AborConfigurationRequest {
       ResourceId.validateJsonObject(jsonObj.getAsJsonObject("recipeId"));
       // validate the required field `chartOfAccountsId`
       ResourceId.validateJsonObject(jsonObj.getAsJsonObject("chartOfAccountsId"));
-      if (jsonObj.get("postingModuleIds") != null && !jsonObj.get("postingModuleIds").isJsonNull()) {
-        JsonArray jsonArraypostingModuleIds = jsonObj.getAsJsonArray("postingModuleIds");
-        if (jsonArraypostingModuleIds != null) {
-          // ensure the json data is an array
-          if (!jsonObj.get("postingModuleIds").isJsonArray()) {
-            throw new IllegalArgumentException(String.format("Expected the field `postingModuleIds` to be an array in the JSON string but got `%s`", jsonObj.get("postingModuleIds").toString()));
-          }
-
-          // validate the optional field `postingModuleIds` (array)
-          for (int i = 0; i < jsonArraypostingModuleIds.size(); i++) {
-            ResourceId.validateJsonObject(jsonArraypostingModuleIds.get(i).getAsJsonObject());
-          };
-        }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("postingModuleCodes") != null && !jsonObj.get("postingModuleCodes").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `postingModuleCodes` to be an array in the JSON string but got `%s`", jsonObj.get("postingModuleCodes").toString()));
       }
   }
 

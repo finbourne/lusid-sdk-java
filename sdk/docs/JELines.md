@@ -18,7 +18,7 @@ An JELines entity.
 |**glCode** | **String** | Code of general ledger the JE lines posting to. |  |
 |**local** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  |
 |**base** | [**CurrencyAndAmount**](CurrencyAndAmount.md) |  |  |
-|**postingModuleId** | [**ResourceId**](ResourceId.md) |  |  [optional] |
+|**postingModuleCode** | **String** | The code of the posting module where the posting rules derived the JE Lines. |  [optional] |
 |**postingRule** | **String** | The rule generating the JELinse. |  |
 |**asAtDate** | **OffsetDateTime** | The corresponding input date and time of the Transaction generating the JELine. |  |
 |**activitiesDescription** | **String** | This would be the description of the business activities where these JE lines are posting for. |  [optional] |

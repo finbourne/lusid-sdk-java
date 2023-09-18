@@ -11,7 +11,6 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
-import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -51,10 +50,6 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PostingModuleDetails {
-  public static final String SERIALIZED_NAME_CHART_OF_ACCOUNTS_ID = "chartOfAccountsId";
-  @SerializedName(SERIALIZED_NAME_CHART_OF_ACCOUNTS_ID)
-  private ResourceId chartOfAccountsId;
-
   public static final String SERIALIZED_NAME_DISPLAY_NAME = "displayName";
   @SerializedName(SERIALIZED_NAME_DISPLAY_NAME)
   private String displayName;
@@ -69,27 +64,6 @@ public class PostingModuleDetails {
 
   public PostingModuleDetails() {
   }
-
-  public PostingModuleDetails chartOfAccountsId(ResourceId chartOfAccountsId) {
-    
-    this.chartOfAccountsId = chartOfAccountsId;
-    return this;
-  }
-
-   /**
-   * Get chartOfAccountsId
-   * @return chartOfAccountsId
-  **/
-  @jakarta.annotation.Nonnull
-  public ResourceId getChartOfAccountsId() {
-    return chartOfAccountsId;
-  }
-
-
-  public void setChartOfAccountsId(ResourceId chartOfAccountsId) {
-    this.chartOfAccountsId = chartOfAccountsId;
-  }
-
 
   public PostingModuleDetails displayName(String displayName) {
     
@@ -164,8 +138,7 @@ public class PostingModuleDetails {
       return false;
     }
     PostingModuleDetails postingModuleDetails = (PostingModuleDetails) o;
-    return Objects.equals(this.chartOfAccountsId, postingModuleDetails.chartOfAccountsId) &&
-        Objects.equals(this.displayName, postingModuleDetails.displayName) &&
+    return Objects.equals(this.displayName, postingModuleDetails.displayName) &&
         Objects.equals(this.description, postingModuleDetails.description) &&
         Objects.equals(this.status, postingModuleDetails.status);
   }
@@ -176,7 +149,7 @@ public class PostingModuleDetails {
 
   @Override
   public int hashCode() {
-    return Objects.hash(chartOfAccountsId, displayName, description, status);
+    return Objects.hash(displayName, description, status);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -190,7 +163,6 @@ public class PostingModuleDetails {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostingModuleDetails {\n");
-    sb.append("    chartOfAccountsId: ").append(toIndentedString(chartOfAccountsId)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
@@ -216,14 +188,12 @@ public class PostingModuleDetails {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
-    openapiFields.add("chartOfAccountsId");
     openapiFields.add("displayName");
     openapiFields.add("description");
     openapiFields.add("status");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("chartOfAccountsId");
     openapiRequiredFields.add("displayName");
     openapiRequiredFields.add("status");
   }
@@ -255,8 +225,6 @@ public class PostingModuleDetails {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
-      // validate the required field `chartOfAccountsId`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("chartOfAccountsId"));
       if (!jsonObj.get("displayName").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `displayName` to be a primitive type in the JSON string but got `%s`", jsonObj.get("displayName").toString()));
       }

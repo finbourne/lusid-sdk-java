@@ -60,9 +60,9 @@ public class PostingModuleResponse {
   @SerializedName(SERIALIZED_NAME_HREF)
   private URI href;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private ResourceId id;
+  public static final String SERIALIZED_NAME_POSTING_MODULE_CODE = "postingModuleCode";
+  @SerializedName(SERIALIZED_NAME_POSTING_MODULE_CODE)
+  private String postingModuleCode;
 
   public static final String SERIALIZED_NAME_CHART_OF_ACCOUNTS_ID = "chartOfAccountsId";
   @SerializedName(SERIALIZED_NAME_CHART_OF_ACCOUNTS_ID)
@@ -116,24 +116,24 @@ public class PostingModuleResponse {
   }
 
 
-  public PostingModuleResponse id(ResourceId id) {
+  public PostingModuleResponse postingModuleCode(String postingModuleCode) {
     
-    this.id = id;
+    this.postingModuleCode = postingModuleCode;
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * The code of the Posting Module.
+   * @return postingModuleCode
   **/
   @jakarta.annotation.Nonnull
-  public ResourceId getId() {
-    return id;
+  public String getPostingModuleCode() {
+    return postingModuleCode;
   }
 
 
-  public void setId(ResourceId id) {
-    this.id = id;
+  public void setPostingModuleCode(String postingModuleCode) {
+    this.postingModuleCode = postingModuleCode;
   }
 
 
@@ -303,7 +303,7 @@ public class PostingModuleResponse {
     }
     PostingModuleResponse postingModuleResponse = (PostingModuleResponse) o;
     return Objects.equals(this.href, postingModuleResponse.href) &&
-        Objects.equals(this.id, postingModuleResponse.id) &&
+        Objects.equals(this.postingModuleCode, postingModuleResponse.postingModuleCode) &&
         Objects.equals(this.chartOfAccountsId, postingModuleResponse.chartOfAccountsId) &&
         Objects.equals(this.displayName, postingModuleResponse.displayName) &&
         Objects.equals(this.description, postingModuleResponse.description) &&
@@ -319,7 +319,7 @@ public class PostingModuleResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, id, chartOfAccountsId, displayName, description, ruleCount, status, version, links);
+    return Objects.hash(href, postingModuleCode, chartOfAccountsId, displayName, description, ruleCount, status, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -334,7 +334,7 @@ public class PostingModuleResponse {
     StringBuilder sb = new StringBuilder();
     sb.append("class PostingModuleResponse {\n");
     sb.append("    href: ").append(toIndentedString(href)).append("\n");
-    sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    postingModuleCode: ").append(toIndentedString(postingModuleCode)).append("\n");
     sb.append("    chartOfAccountsId: ").append(toIndentedString(chartOfAccountsId)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
@@ -365,7 +365,7 @@ public class PostingModuleResponse {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("href");
-    openapiFields.add("id");
+    openapiFields.add("postingModuleCode");
     openapiFields.add("chartOfAccountsId");
     openapiFields.add("displayName");
     openapiFields.add("description");
@@ -376,7 +376,7 @@ public class PostingModuleResponse {
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
-    openapiRequiredFields.add("id");
+    openapiRequiredFields.add("postingModuleCode");
     openapiRequiredFields.add("chartOfAccountsId");
     openapiRequiredFields.add("displayName");
     openapiRequiredFields.add("status");
@@ -412,8 +412,9 @@ public class PostingModuleResponse {
       if ((jsonObj.get("href") != null && !jsonObj.get("href").isJsonNull()) && !jsonObj.get("href").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `href` to be a primitive type in the JSON string but got `%s`", jsonObj.get("href").toString()));
       }
-      // validate the required field `id`
-      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("id"));
+      if (!jsonObj.get("postingModuleCode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `postingModuleCode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("postingModuleCode").toString()));
+      }
       // validate the required field `chartOfAccountsId`
       ResourceId.validateJsonObject(jsonObj.getAsJsonObject("chartOfAccountsId"));
       if (!jsonObj.get("displayName").isJsonPrimitive()) {
