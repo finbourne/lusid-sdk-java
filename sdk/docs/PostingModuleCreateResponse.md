@@ -13,7 +13,7 @@ A Posting Module Create response
 |**chartOfAccountsId** | [**ResourceId**](ResourceId.md) |  |  |
 |**displayName** | **String** | The name to identify the Posting Module by |  |
 |**description** | **String** | The description for the Posting Module |  [optional] |
-|**rules** | [**List&lt;PostingModuleRule&gt;**](PostingModuleRule.md) | The posting rules that apply for the Posting Module |  [optional] |
+|**rules** | [**List&lt;PostingModuleRule&gt;**](PostingModuleRule.md) | The posting rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection. |  [optional] |
 |**status** | **String** | The Posting Module status. Can be Active, Inactive or Deleted. Defaults to Active. |  |
 |**version** | [**Version**](Version.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |

@@ -14,6 +14,7 @@ import java.util.Objects;
 import com.finbourne.lusid.model.AggregateSpec;
 import com.finbourne.lusid.model.MarketDataOverrides;
 import com.finbourne.lusid.model.OrderBySpec;
+import com.finbourne.lusid.model.OrderFlowConfiguration;
 import com.finbourne.lusid.model.PortfolioEntityId;
 import com.finbourne.lusid.model.PropertyFilter;
 import com.finbourne.lusid.model.ResourceId;
@@ -95,6 +96,10 @@ public class ValuationRequest {
   public static final String SERIALIZED_NAME_RETURN_RESULT_AS_EXPANDED_TYPES = "returnResultAsExpandedTypes";
   @SerializedName(SERIALIZED_NAME_RETURN_RESULT_AS_EXPANDED_TYPES)
   private Boolean returnResultAsExpandedTypes;
+
+  public static final String SERIALIZED_NAME_INCLUDE_ORDER_FLOW = "includeOrderFlow";
+  @SerializedName(SERIALIZED_NAME_INCLUDE_ORDER_FLOW)
+  private OrderFlowConfiguration includeOrderFlow;
 
   public static final String SERIALIZED_NAME_PORTFOLIO_ENTITY_IDS = "portfolioEntityIds";
   @SerializedName(SERIALIZED_NAME_PORTFOLIO_ENTITY_IDS)
@@ -332,6 +337,27 @@ public class ValuationRequest {
   }
 
 
+  public ValuationRequest includeOrderFlow(OrderFlowConfiguration includeOrderFlow) {
+    
+    this.includeOrderFlow = includeOrderFlow;
+    return this;
+  }
+
+   /**
+   * Get includeOrderFlow
+   * @return includeOrderFlow
+  **/
+  @jakarta.annotation.Nullable
+  public OrderFlowConfiguration getIncludeOrderFlow() {
+    return includeOrderFlow;
+  }
+
+
+  public void setIncludeOrderFlow(OrderFlowConfiguration includeOrderFlow) {
+    this.includeOrderFlow = includeOrderFlow;
+  }
+
+
   public ValuationRequest portfolioEntityIds(List<PortfolioEntityId> portfolioEntityIds) {
     
     this.portfolioEntityIds = portfolioEntityIds;
@@ -422,6 +448,7 @@ public class ValuationRequest {
         Objects.equals(this.reportCurrency, valuationRequest.reportCurrency) &&
         Objects.equals(this.equipWithSubtotals, valuationRequest.equipWithSubtotals) &&
         Objects.equals(this.returnResultAsExpandedTypes, valuationRequest.returnResultAsExpandedTypes) &&
+        Objects.equals(this.includeOrderFlow, valuationRequest.includeOrderFlow) &&
         Objects.equals(this.portfolioEntityIds, valuationRequest.portfolioEntityIds) &&
         Objects.equals(this.valuationSchedule, valuationRequest.valuationSchedule) &&
         Objects.equals(this.marketDataOverrides, valuationRequest.marketDataOverrides);
@@ -433,7 +460,7 @@ public class ValuationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recipeId, asAt, metrics, groupBy, filters, sort, reportCurrency, equipWithSubtotals, returnResultAsExpandedTypes, portfolioEntityIds, valuationSchedule, marketDataOverrides);
+    return Objects.hash(recipeId, asAt, metrics, groupBy, filters, sort, reportCurrency, equipWithSubtotals, returnResultAsExpandedTypes, includeOrderFlow, portfolioEntityIds, valuationSchedule, marketDataOverrides);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -456,6 +483,7 @@ public class ValuationRequest {
     sb.append("    reportCurrency: ").append(toIndentedString(reportCurrency)).append("\n");
     sb.append("    equipWithSubtotals: ").append(toIndentedString(equipWithSubtotals)).append("\n");
     sb.append("    returnResultAsExpandedTypes: ").append(toIndentedString(returnResultAsExpandedTypes)).append("\n");
+    sb.append("    includeOrderFlow: ").append(toIndentedString(includeOrderFlow)).append("\n");
     sb.append("    portfolioEntityIds: ").append(toIndentedString(portfolioEntityIds)).append("\n");
     sb.append("    valuationSchedule: ").append(toIndentedString(valuationSchedule)).append("\n");
     sb.append("    marketDataOverrides: ").append(toIndentedString(marketDataOverrides)).append("\n");
@@ -490,6 +518,7 @@ public class ValuationRequest {
     openapiFields.add("reportCurrency");
     openapiFields.add("equipWithSubtotals");
     openapiFields.add("returnResultAsExpandedTypes");
+    openapiFields.add("includeOrderFlow");
     openapiFields.add("portfolioEntityIds");
     openapiFields.add("valuationSchedule");
     openapiFields.add("marketDataOverrides");
@@ -575,6 +604,10 @@ public class ValuationRequest {
       }
       if ((jsonObj.get("reportCurrency") != null && !jsonObj.get("reportCurrency").isJsonNull()) && !jsonObj.get("reportCurrency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `reportCurrency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("reportCurrency").toString()));
+      }
+      // validate the optional field `includeOrderFlow`
+      if (jsonObj.get("includeOrderFlow") != null && !jsonObj.get("includeOrderFlow").isJsonNull()) {
+        OrderFlowConfiguration.validateJsonObject(jsonObj.getAsJsonObject("includeOrderFlow"));
       }
       // ensure the json data is an array
       if (!jsonObj.get("portfolioEntityIds").isJsonArray()) {

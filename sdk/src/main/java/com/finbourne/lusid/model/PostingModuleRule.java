@@ -113,7 +113,7 @@ public class PostingModuleRule {
   }
 
    /**
-   * The filter syntax for the rule. See KB for filter syntax https://support.lusid.com/knowledgebase/article/KA-01914/en-us
+   * The filter syntax for the rule. See KB for filter syntax https://support.lusid.com/knowledgebase/article/KA-02140
    * @return ruleFilter
   **/
   @jakarta.annotation.Nonnull

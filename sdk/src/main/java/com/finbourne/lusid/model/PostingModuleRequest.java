@@ -150,7 +150,7 @@ public class PostingModuleRequest {
   }
 
    /**
-   * The posting rules that apply for the Posting Module
+   * The posting rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection.
    * @return rules
   **/
   @jakarta.annotation.Nullable

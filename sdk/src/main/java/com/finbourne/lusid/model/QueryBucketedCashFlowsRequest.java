@@ -107,6 +107,14 @@ public class QueryBucketedCashFlowsRequest {
   @SerializedName(SERIALIZED_NAME_EQUIP_WITH_SUBTOTALS)
   private Boolean equipWithSubtotals;
 
+  public static final String SERIALIZED_NAME_EXCLUDE_UNSETTLED_TRADES = "excludeUnsettledTrades";
+  @SerializedName(SERIALIZED_NAME_EXCLUDE_UNSETTLED_TRADES)
+  private Boolean excludeUnsettledTrades;
+
+  public static final String SERIALIZED_NAME_CASH_FLOW_TYPE = "cashFlowType";
+  @SerializedName(SERIALIZED_NAME_CASH_FLOW_TYPE)
+  private String cashFlowType;
+
   public QueryBucketedCashFlowsRequest() {
   }
 
@@ -138,7 +146,7 @@ public class QueryBucketedCashFlowsRequest {
   }
 
    /**
-   * The start date of the window.
+   * The lower bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.  There is no lower bound if this is not specified.
    * @return windowStart
   **/
   @jakarta.annotation.Nonnull
@@ -159,7 +167,7 @@ public class QueryBucketedCashFlowsRequest {
   }
 
    /**
-   * The end date of the window.
+   * The upper bound effective datetime or cut label (inclusive) from which to retrieve the cashflows.  The upper bound defaults to &#39;today&#39; if it is not specified
    * @return windowEnd
   **/
   @jakarta.annotation.Nonnull
@@ -209,7 +217,7 @@ public class QueryBucketedCashFlowsRequest {
   }
 
    /**
-   * The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows
+   * The valuation (pricing) effective datetime or cut label (inclusive) at which to evaluate the cashflows.  This determines whether cashflows are evaluated in a historic or forward looking context and will, for certain models, affect where data is looked up.  For example, on a swap if the effectiveAt is in the middle of the window, cashflows before it will be historic and resets assumed to exist where if the effectiveAt  is before the start of the range they are forward looking and will be expectations assuming the model supports that.  There is evidently a presumption here about availability of data and that the effectiveAt is realistically on or before the real-world today.
    * @return effectiveAt
   **/
   @jakarta.annotation.Nonnull
@@ -251,7 +259,7 @@ public class QueryBucketedCashFlowsRequest {
   }
 
    /**
-   * When bucketing, there is not a unique way to allocate the bucket points. RoundingMethod Supported string (enumeration) values are: [RoundDown, RoundUp].
+   * When bucketing, there is not a unique way to allocate the bucket points.  RoundingMethod Supported string (enumeration) values are: [RoundDown, RoundUp].
    * @return roundingMethod
   **/
   @jakarta.annotation.Nonnull
@@ -280,7 +288,7 @@ public class QueryBucketedCashFlowsRequest {
   }
 
    /**
-   * A list of dates to perform cashflow bucketing upon. If this is provided, the list of tenors for bucketing should be empty.
+   * A list of dates to perform cashflow bucketing upon.  If this is provided, the list of tenors for bucketing should be empty.
    * @return bucketingDates
   **/
   @jakarta.annotation.Nullable
@@ -309,7 +317,7 @@ public class QueryBucketedCashFlowsRequest {
   }
 
    /**
-   * A list of tenors to perform cashflow bucketing upon. If this is provided, the list of dates for bucketing should be empty.
+   * A list of tenors to perform cashflow bucketing upon.  If this is provided, the list of dates for bucketing should be empty.
    * @return bucketingTenors
   **/
   @jakarta.annotation.Nullable
@@ -359,7 +367,7 @@ public class QueryBucketedCashFlowsRequest {
   }
 
    /**
-   * The set of address keys to use to group the bucketed cash flows.
+   * The set of items by which to perform grouping. This primarily matters when one or more of the metric operators is a mapping  that reduces set size, e.g. sum or proportion. The group-by statement determines the set of keys by which to break the results out.
    * @return groupBy
   **/
   @jakarta.annotation.Nullable
@@ -423,6 +431,48 @@ public class QueryBucketedCashFlowsRequest {
   }
 
 
+  public QueryBucketedCashFlowsRequest excludeUnsettledTrades(Boolean excludeUnsettledTrades) {
+    
+    this.excludeUnsettledTrades = excludeUnsettledTrades;
+    return this;
+  }
+
+   /**
+   * Flag directing the Valuation call to exclude cashflows from unsettled trades.  If absent or set to false, cashflows will returned based on trade date - more specifically, cashflows from any unsettled trades will be included in the results. If set to true, unsettled trades will be excluded from the result set.
+   * @return excludeUnsettledTrades
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getExcludeUnsettledTrades() {
+    return excludeUnsettledTrades;
+  }
+
+
+  public void setExcludeUnsettledTrades(Boolean excludeUnsettledTrades) {
+    this.excludeUnsettledTrades = excludeUnsettledTrades;
+  }
+
+
+  public QueryBucketedCashFlowsRequest cashFlowType(String cashFlowType) {
+    
+    this.cashFlowType = cashFlowType;
+    return this;
+  }
+
+   /**
+   * Indicate the requested cash flow representation InstrumentCashFlows or PortfolioCashFlows (GetCashLadder uses this)  Options: [InstrumentCashFlow, PortfolioCashFlow]
+   * @return cashFlowType
+  **/
+  @jakarta.annotation.Nullable
+  public String getCashFlowType() {
+    return cashFlowType;
+  }
+
+
+  public void setCashFlowType(String cashFlowType) {
+    this.cashFlowType = cashFlowType;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -445,7 +495,9 @@ public class QueryBucketedCashFlowsRequest {
         Objects.equals(this.reportCurrency, queryBucketedCashFlowsRequest.reportCurrency) &&
         Objects.equals(this.groupBy, queryBucketedCashFlowsRequest.groupBy) &&
         Objects.equals(this.addresses, queryBucketedCashFlowsRequest.addresses) &&
-        Objects.equals(this.equipWithSubtotals, queryBucketedCashFlowsRequest.equipWithSubtotals);
+        Objects.equals(this.equipWithSubtotals, queryBucketedCashFlowsRequest.equipWithSubtotals) &&
+        Objects.equals(this.excludeUnsettledTrades, queryBucketedCashFlowsRequest.excludeUnsettledTrades) &&
+        Objects.equals(this.cashFlowType, queryBucketedCashFlowsRequest.cashFlowType);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -454,7 +506,7 @@ public class QueryBucketedCashFlowsRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(asAt, windowStart, windowEnd, portfolioEntityIds, effectiveAt, recipeId, roundingMethod, bucketingDates, bucketingTenors, reportCurrency, groupBy, addresses, equipWithSubtotals);
+    return Objects.hash(asAt, windowStart, windowEnd, portfolioEntityIds, effectiveAt, recipeId, roundingMethod, bucketingDates, bucketingTenors, reportCurrency, groupBy, addresses, equipWithSubtotals, excludeUnsettledTrades, cashFlowType);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -481,6 +533,8 @@ public class QueryBucketedCashFlowsRequest {
     sb.append("    groupBy: ").append(toIndentedString(groupBy)).append("\n");
     sb.append("    addresses: ").append(toIndentedString(addresses)).append("\n");
     sb.append("    equipWithSubtotals: ").append(toIndentedString(equipWithSubtotals)).append("\n");
+    sb.append("    excludeUnsettledTrades: ").append(toIndentedString(excludeUnsettledTrades)).append("\n");
+    sb.append("    cashFlowType: ").append(toIndentedString(cashFlowType)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -516,6 +570,8 @@ public class QueryBucketedCashFlowsRequest {
     openapiFields.add("groupBy");
     openapiFields.add("addresses");
     openapiFields.add("equipWithSubtotals");
+    openapiFields.add("excludeUnsettledTrades");
+    openapiFields.add("cashFlowType");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -588,6 +644,9 @@ public class QueryBucketedCashFlowsRequest {
       // ensure the optional json data is an array if present
       if (jsonObj.get("addresses") != null && !jsonObj.get("addresses").isJsonArray()) {
         throw new IllegalArgumentException(String.format("Expected the field `addresses` to be an array in the JSON string but got `%s`", jsonObj.get("addresses").toString()));
+      }
+      if ((jsonObj.get("cashFlowType") != null && !jsonObj.get("cashFlowType").isJsonNull()) && !jsonObj.get("cashFlowType").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `cashFlowType` to be a primitive type in the JSON string but got `%s`", jsonObj.get("cashFlowType").toString()));
       }
   }
 
