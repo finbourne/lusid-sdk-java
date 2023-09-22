@@ -53,7 +53,7 @@ import java.util.Set;
 import com.finbourne.lusid.JSON;
 
 /**
- * LUSID representation of a Complex Bond.  Including Floating, Callable, Puttable, Sinkable, and Fixed-to-float.
+ * LUSID representation of a Complex Bond.  Including Floating, Fixed-to-float, Sinkable, Callable, Puttable, and Mortgage Backed Securities.
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class ComplexBond extends LusidInstrument {
@@ -72,6 +72,14 @@ public class ComplexBond extends LusidInstrument {
   public static final String SERIALIZED_NAME_ROUNDING_CONVENTIONS = "roundingConventions";
   @SerializedName(SERIALIZED_NAME_ROUNDING_CONVENTIONS)
   private List<RoundingConvention> roundingConventions;
+
+  public static final String SERIALIZED_NAME_ASSET_BACKED = "assetBacked";
+  @SerializedName(SERIALIZED_NAME_ASSET_BACKED)
+  private Boolean assetBacked;
+
+  public static final String SERIALIZED_NAME_ASSET_POOL_IDENTIFIER = "assetPoolIdentifier";
+  @SerializedName(SERIALIZED_NAME_ASSET_POOL_IDENTIFIER)
+  private String assetPoolIdentifier;
 
   public ComplexBond() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -185,6 +193,48 @@ public class ComplexBond extends LusidInstrument {
   }
 
 
+  public ComplexBond assetBacked(Boolean assetBacked) {
+    
+    this.assetBacked = assetBacked;
+    return this;
+  }
+
+   /**
+   * If this flag is set to true, then the outstanding notional and principal repayments will be calculated based  on pool factors in the quote store. Usually AssetBacked bonds also require a RollConvention setting of   within the FlowConventions any given rates schedule (to ensure payment dates always happen on the same day  of the month) and US Agency MBSs with Pay Delay features also require their rates schedules to include an  ExDividendConfiguration to drive the lag between interest accrual and payment.
+   * @return assetBacked
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getAssetBacked() {
+    return assetBacked;
+  }
+
+
+  public void setAssetBacked(Boolean assetBacked) {
+    this.assetBacked = assetBacked;
+  }
+
+
+  public ComplexBond assetPoolIdentifier(String assetPoolIdentifier) {
+    
+    this.assetPoolIdentifier = assetPoolIdentifier;
+    return this;
+  }
+
+   /**
+   * Identifier used to retrieve pool factor information about this bond from the quote store. This is expected to  be the bond&#39;s ISIN as the pricer for asset backed securities will specifically look for an identifier of  ISIN identifier type when searching for pool factor reset values in the quote store.
+   * @return assetPoolIdentifier
+  **/
+  @jakarta.annotation.Nullable
+  public String getAssetPoolIdentifier() {
+    return assetPoolIdentifier;
+  }
+
+
+  public void setAssetPoolIdentifier(String assetPoolIdentifier) {
+    this.assetPoolIdentifier = assetPoolIdentifier;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -199,6 +249,8 @@ public class ComplexBond extends LusidInstrument {
         Objects.equals(this.calculationType, complexBond.calculationType) &&
         Objects.equals(this.schedules, complexBond.schedules) &&
         Objects.equals(this.roundingConventions, complexBond.roundingConventions) &&
+        Objects.equals(this.assetBacked, complexBond.assetBacked) &&
+        Objects.equals(this.assetPoolIdentifier, complexBond.assetPoolIdentifier) &&
         super.equals(o);
   }
 
@@ -208,7 +260,7 @@ public class ComplexBond extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(identifiers, calculationType, schedules, roundingConventions, super.hashCode());
+    return Objects.hash(identifiers, calculationType, schedules, roundingConventions, assetBacked, assetPoolIdentifier, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -227,6 +279,8 @@ public class ComplexBond extends LusidInstrument {
     sb.append("    calculationType: ").append(toIndentedString(calculationType)).append("\n");
     sb.append("    schedules: ").append(toIndentedString(schedules)).append("\n");
     sb.append("    roundingConventions: ").append(toIndentedString(roundingConventions)).append("\n");
+    sb.append("    assetBacked: ").append(toIndentedString(assetBacked)).append("\n");
+    sb.append("    assetPoolIdentifier: ").append(toIndentedString(assetPoolIdentifier)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -254,6 +308,8 @@ public class ComplexBond extends LusidInstrument {
     openapiFields.add("calculationType");
     openapiFields.add("schedules");
     openapiFields.add("roundingConventions");
+    openapiFields.add("assetBacked");
+    openapiFields.add("assetPoolIdentifier");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

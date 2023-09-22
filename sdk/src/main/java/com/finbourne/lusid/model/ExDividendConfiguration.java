@@ -61,6 +61,10 @@ public class ExDividendConfiguration {
   @SerializedName(SERIALIZED_NAME_RETURN_NEGATIVE_ACCRUED)
   private Boolean returnNegativeAccrued;
 
+  public static final String SERIALIZED_NAME_APPLY_THIRTY360_PAY_DELAY = "applyThirty360PayDelay";
+  @SerializedName(SERIALIZED_NAME_APPLY_THIRTY360_PAY_DELAY)
+  private Boolean applyThirty360PayDelay;
+
   public ExDividendConfiguration() {
   }
 
@@ -127,6 +131,27 @@ public class ExDividendConfiguration {
   }
 
 
+  public ExDividendConfiguration applyThirty360PayDelay(Boolean applyThirty360PayDelay) {
+    
+    this.applyThirty360PayDelay = applyThirty360PayDelay;
+    return this;
+  }
+
+   /**
+   * Set this flag to true if the ex-dividend days represent a pay delay from the accrual end date in calendar  days under the 30/360 day count convention. The typical use case for this flag are Mortgage Backed Securities  with pay delay between 1 and 60 days, such as FreddieMac and FannieMae. If this flag is set, the useBusinessDays  setting will be ignored.  Defaults to false if not provided.
+   * @return applyThirty360PayDelay
+  **/
+  @jakarta.annotation.Nullable
+  public Boolean getApplyThirty360PayDelay() {
+    return applyThirty360PayDelay;
+  }
+
+
+  public void setApplyThirty360PayDelay(Boolean applyThirty360PayDelay) {
+    this.applyThirty360PayDelay = applyThirty360PayDelay;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -139,12 +164,13 @@ public class ExDividendConfiguration {
     ExDividendConfiguration exDividendConfiguration = (ExDividendConfiguration) o;
     return Objects.equals(this.useBusinessDays, exDividendConfiguration.useBusinessDays) &&
         Objects.equals(this.exDividendDays, exDividendConfiguration.exDividendDays) &&
-        Objects.equals(this.returnNegativeAccrued, exDividendConfiguration.returnNegativeAccrued);
+        Objects.equals(this.returnNegativeAccrued, exDividendConfiguration.returnNegativeAccrued) &&
+        Objects.equals(this.applyThirty360PayDelay, exDividendConfiguration.applyThirty360PayDelay);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(useBusinessDays, exDividendDays, returnNegativeAccrued);
+    return Objects.hash(useBusinessDays, exDividendDays, returnNegativeAccrued, applyThirty360PayDelay);
   }
 
   @Override
@@ -154,6 +180,7 @@ public class ExDividendConfiguration {
     sb.append("    useBusinessDays: ").append(toIndentedString(useBusinessDays)).append("\n");
     sb.append("    exDividendDays: ").append(toIndentedString(exDividendDays)).append("\n");
     sb.append("    returnNegativeAccrued: ").append(toIndentedString(returnNegativeAccrued)).append("\n");
+    sb.append("    applyThirty360PayDelay: ").append(toIndentedString(applyThirty360PayDelay)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -179,6 +206,7 @@ public class ExDividendConfiguration {
     openapiFields.add("useBusinessDays");
     openapiFields.add("exDividendDays");
     openapiFields.add("returnNegativeAccrued");
+    openapiFields.add("applyThirty360PayDelay");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
