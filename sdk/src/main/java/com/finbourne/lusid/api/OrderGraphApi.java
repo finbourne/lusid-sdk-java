@@ -174,7 +174,7 @@ public class OrderGraphApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities.
+     * [EARLY ACCESS] ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities.
      * Lists all blocks of orders, subject to the filter, along with the IDs of orders, placements, allocations and  executions in the block, the total quantities of each, and a simple text field describing the overall state.
      * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
      * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
@@ -199,7 +199,7 @@ public class OrderGraphApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities.
+     * [EARLY ACCESS] ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities.
      * Lists all blocks of orders, subject to the filter, along with the IDs of orders, placements, allocations and  executions in the block, the total quantities of each, and a simple text field describing the overall state.
      * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
      * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
@@ -225,7 +225,7 @@ public class OrderGraphApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities. (asynchronously)
+     * [EARLY ACCESS] ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities. (asynchronously)
      * Lists all blocks of orders, subject to the filter, along with the IDs of orders, placements, allocations and  executions in the block, the total quantities of each, and a simple text field describing the overall state.
      * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
      * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
@@ -357,7 +357,7 @@ public class OrderGraphApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListOrderGraphPlacementChildren: Lists all placements for the parent placement specified by the scope and code, and builds a summary picture of the state of their associated order entities.
+     * [EARLY ACCESS] ListOrderGraphPlacementChildren: Lists all placements for the parent placement specified by the scope and code, and builds a summary picture of the state of their associated order entities.
      * Lists all child order placements, for the specified parent placement, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
      * @param scope The parent placement&#39;s scope (required)
      * @param code The parent placement&#39;s code (required)
@@ -382,7 +382,7 @@ public class OrderGraphApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListOrderGraphPlacementChildren: Lists all placements for the parent placement specified by the scope and code, and builds a summary picture of the state of their associated order entities.
+     * [EARLY ACCESS] ListOrderGraphPlacementChildren: Lists all placements for the parent placement specified by the scope and code, and builds a summary picture of the state of their associated order entities.
      * Lists all child order placements, for the specified parent placement, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
      * @param scope The parent placement&#39;s scope (required)
      * @param code The parent placement&#39;s code (required)
@@ -408,7 +408,7 @@ public class OrderGraphApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListOrderGraphPlacementChildren: Lists all placements for the parent placement specified by the scope and code, and builds a summary picture of the state of their associated order entities. (asynchronously)
+     * [EARLY ACCESS] ListOrderGraphPlacementChildren: Lists all placements for the parent placement specified by the scope and code, and builds a summary picture of the state of their associated order entities. (asynchronously)
      * Lists all child order placements, for the specified parent placement, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
      * @param scope The parent placement&#39;s scope (required)
      * @param code The parent placement&#39;s code (required)
@@ -531,7 +531,7 @@ public class OrderGraphApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListOrderGraphPlacements: Lists placements that pass the filter provided, and builds a summary picture of the state of their associated order entities.
+     * [EARLY ACCESS] ListOrderGraphPlacements: Lists placements that pass the filter provided, and builds a summary picture of the state of their associated order entities.
      * Lists all order placements, subject to the filter, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
      * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
      * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
@@ -555,7 +555,7 @@ public class OrderGraphApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListOrderGraphPlacements: Lists placements that pass the filter provided, and builds a summary picture of the state of their associated order entities.
+     * [EARLY ACCESS] ListOrderGraphPlacements: Lists placements that pass the filter provided, and builds a summary picture of the state of their associated order entities.
      * Lists all order placements, subject to the filter, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
      * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
      * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)
@@ -580,7 +580,7 @@ public class OrderGraphApi {
     }
 
     /**
-     * [EXPERIMENTAL] ListOrderGraphPlacements: Lists placements that pass the filter provided, and builds a summary picture of the state of their associated order entities. (asynchronously)
+     * [EARLY ACCESS] ListOrderGraphPlacements: Lists placements that pass the filter provided, and builds a summary picture of the state of their associated order entities. (asynchronously)
      * Lists all order placements, subject to the filter, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
      * @param asAt See https://support.lusid.com/knowledgebase/article/KA-01832/ (optional)
      * @param paginationToken See https://support.lusid.com/knowledgebase/article/KA-01915/ (optional)

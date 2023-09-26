@@ -4,16 +4,16 @@ All URIs are relative to *https://www.lusid.com/api*
 
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
-| [**listOrderGraphBlocks**](OrderGraphApi.md#listOrderGraphBlocks) | **GET** /api/ordergraph/blocks | [EXPERIMENTAL] ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities. |
-| [**listOrderGraphPlacementChildren**](OrderGraphApi.md#listOrderGraphPlacementChildren) | **GET** /api/ordergraph/placementchildren/{scope}/{code} | [EXPERIMENTAL] ListOrderGraphPlacementChildren: Lists all placements for the parent placement specified by the scope and code, and builds a summary picture of the state of their associated order entities. |
-| [**listOrderGraphPlacements**](OrderGraphApi.md#listOrderGraphPlacements) | **GET** /api/ordergraph/placements | [EXPERIMENTAL] ListOrderGraphPlacements: Lists placements that pass the filter provided, and builds a summary picture of the state of their associated order entities. |
+| [**listOrderGraphBlocks**](OrderGraphApi.md#listOrderGraphBlocks) | **GET** /api/ordergraph/blocks | [EARLY ACCESS] ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities. |
+| [**listOrderGraphPlacementChildren**](OrderGraphApi.md#listOrderGraphPlacementChildren) | **GET** /api/ordergraph/placementchildren/{scope}/{code} | [EARLY ACCESS] ListOrderGraphPlacementChildren: Lists all placements for the parent placement specified by the scope and code, and builds a summary picture of the state of their associated order entities. |
+| [**listOrderGraphPlacements**](OrderGraphApi.md#listOrderGraphPlacements) | **GET** /api/ordergraph/placements | [EARLY ACCESS] ListOrderGraphPlacements: Lists placements that pass the filter provided, and builds a summary picture of the state of their associated order entities. |
 
 
 <a id="listOrderGraphBlocks"></a>
 # **listOrderGraphBlocks**
 > PagedResourceListOfOrderGraphBlock listOrderGraphBlocks(asAt, paginationToken, sortBy, limit, filter, propertyKeys, useComplianceV2)
 
-[EXPERIMENTAL] ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities.
+[EARLY ACCESS] ListOrderGraphBlocks: Lists blocks that pass the filter provided, and builds a summary picture of the state of their associated order entities.
 
 Lists all blocks of orders, subject to the filter, along with the IDs of orders, placements, allocations and  executions in the block, the total quantities of each, and a simple text field describing the overall state.
 
@@ -94,7 +94,7 @@ public class Example {
 # **listOrderGraphPlacementChildren**
 > PagedResourceListOfOrderGraphPlacement listOrderGraphPlacementChildren(scope, code, asAt, paginationToken, sortBy, limit, propertyKeys)
 
-[EXPERIMENTAL] ListOrderGraphPlacementChildren: Lists all placements for the parent placement specified by the scope and code, and builds a summary picture of the state of their associated order entities.
+[EARLY ACCESS] ListOrderGraphPlacementChildren: Lists all placements for the parent placement specified by the scope and code, and builds a summary picture of the state of their associated order entities.
 
 Lists all child order placements, for the specified parent placement, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
 
@@ -175,7 +175,7 @@ public class Example {
 # **listOrderGraphPlacements**
 > PagedResourceListOfOrderGraphPlacement listOrderGraphPlacements(asAt, paginationToken, sortBy, limit, filter, propertyKeys)
 
-[EXPERIMENTAL] ListOrderGraphPlacements: Lists placements that pass the filter provided, and builds a summary picture of the state of their associated order entities.
+[EARLY ACCESS] ListOrderGraphPlacements: Lists placements that pass the filter provided, and builds a summary picture of the state of their associated order entities.
 
 Lists all order placements, subject to the filter, along with the IDs of the block and order that the  placement is for, each placement&#39;s quantity, the IDs of all allocations and executions in the placement  and the total quantities of those, and a simple text field describing the overall state of the placement.
 

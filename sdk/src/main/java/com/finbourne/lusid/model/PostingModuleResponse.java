@@ -12,6 +12,7 @@ package com.finbourne.lusid.model;
 
 import java.util.Objects;
 import com.finbourne.lusid.model.Link;
+import com.finbourne.lusid.model.PostingModuleRule;
 import com.finbourne.lusid.model.ResourceId;
 import com.finbourne.lusid.model.Version;
 import com.google.gson.TypeAdapter;
@@ -76,9 +77,9 @@ public class PostingModuleResponse {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
-  public static final String SERIALIZED_NAME_RULE_COUNT = "ruleCount";
-  @SerializedName(SERIALIZED_NAME_RULE_COUNT)
-  private Integer ruleCount;
+  public static final String SERIALIZED_NAME_RULES = "rules";
+  @SerializedName(SERIALIZED_NAME_RULES)
+  private List<PostingModuleRule> rules;
 
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
@@ -200,24 +201,32 @@ public class PostingModuleResponse {
   }
 
 
-  public PostingModuleResponse ruleCount(Integer ruleCount) {
+  public PostingModuleResponse rules(List<PostingModuleRule> rules) {
     
-    this.ruleCount = ruleCount;
+    this.rules = rules;
+    return this;
+  }
+
+  public PostingModuleResponse addRulesItem(PostingModuleRule rulesItem) {
+    if (this.rules == null) {
+      this.rules = new ArrayList<>();
+    }
+    this.rules.add(rulesItem);
     return this;
   }
 
    /**
-   * The number of posting rules that apply for the Posting Module
-   * @return ruleCount
+   * The posting rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection.
+   * @return rules
   **/
   @jakarta.annotation.Nullable
-  public Integer getRuleCount() {
-    return ruleCount;
+  public List<PostingModuleRule> getRules() {
+    return rules;
   }
 
 
-  public void setRuleCount(Integer ruleCount) {
-    this.ruleCount = ruleCount;
+  public void setRules(List<PostingModuleRule> rules) {
+    this.rules = rules;
   }
 
 
@@ -307,7 +316,7 @@ public class PostingModuleResponse {
         Objects.equals(this.chartOfAccountsId, postingModuleResponse.chartOfAccountsId) &&
         Objects.equals(this.displayName, postingModuleResponse.displayName) &&
         Objects.equals(this.description, postingModuleResponse.description) &&
-        Objects.equals(this.ruleCount, postingModuleResponse.ruleCount) &&
+        Objects.equals(this.rules, postingModuleResponse.rules) &&
         Objects.equals(this.status, postingModuleResponse.status) &&
         Objects.equals(this.version, postingModuleResponse.version) &&
         Objects.equals(this.links, postingModuleResponse.links);
@@ -319,7 +328,7 @@ public class PostingModuleResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(href, postingModuleCode, chartOfAccountsId, displayName, description, ruleCount, status, version, links);
+    return Objects.hash(href, postingModuleCode, chartOfAccountsId, displayName, description, rules, status, version, links);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -338,7 +347,7 @@ public class PostingModuleResponse {
     sb.append("    chartOfAccountsId: ").append(toIndentedString(chartOfAccountsId)).append("\n");
     sb.append("    displayName: ").append(toIndentedString(displayName)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
-    sb.append("    ruleCount: ").append(toIndentedString(ruleCount)).append("\n");
+    sb.append("    rules: ").append(toIndentedString(rules)).append("\n");
     sb.append("    status: ").append(toIndentedString(status)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    links: ").append(toIndentedString(links)).append("\n");
@@ -369,7 +378,7 @@ public class PostingModuleResponse {
     openapiFields.add("chartOfAccountsId");
     openapiFields.add("displayName");
     openapiFields.add("description");
-    openapiFields.add("ruleCount");
+    openapiFields.add("rules");
     openapiFields.add("status");
     openapiFields.add("version");
     openapiFields.add("links");
@@ -422,6 +431,20 @@ public class PostingModuleResponse {
       }
       if ((jsonObj.get("description") != null && !jsonObj.get("description").isJsonNull()) && !jsonObj.get("description").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `description` to be a primitive type in the JSON string but got `%s`", jsonObj.get("description").toString()));
+      }
+      if (jsonObj.get("rules") != null && !jsonObj.get("rules").isJsonNull()) {
+        JsonArray jsonArrayrules = jsonObj.getAsJsonArray("rules");
+        if (jsonArrayrules != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("rules").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `rules` to be an array in the JSON string but got `%s`", jsonObj.get("rules").toString()));
+          }
+
+          // validate the optional field `rules` (array)
+          for (int i = 0; i < jsonArrayrules.size(); i++) {
+            PostingModuleRule.validateJsonObject(jsonArrayrules.get(i).getAsJsonObject());
+          };
+        }
       }
       if (!jsonObj.get("status").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `status` to be a primitive type in the JSON string but got `%s`", jsonObj.get("status").toString()));

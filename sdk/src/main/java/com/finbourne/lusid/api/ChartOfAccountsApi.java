@@ -39,7 +39,6 @@ import com.finbourne.lusid.model.PagedResourceListOfAccount;
 import com.finbourne.lusid.model.PagedResourceListOfChartOfAccounts;
 import com.finbourne.lusid.model.PagedResourceListOfPostingModuleResponse;
 import com.finbourne.lusid.model.PagedResourceListOfPostingModuleRule;
-import com.finbourne.lusid.model.PostingModuleCreateResponse;
 import com.finbourne.lusid.model.PostingModuleDetails;
 import com.finbourne.lusid.model.PostingModuleRequest;
 import com.finbourne.lusid.model.PostingModuleResponse;
@@ -331,7 +330,7 @@ public class ChartOfAccountsApi {
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param postingModuleRequest The definition of the Posting Module. (required)
-     * @return PostingModuleCreateResponse
+     * @return PostingModuleResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -341,8 +340,8 @@ public class ChartOfAccountsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public PostingModuleCreateResponse createPostingModule(String scope, String code, PostingModuleRequest postingModuleRequest) throws ApiException {
-        ApiResponse<PostingModuleCreateResponse> localVarResp = createPostingModuleWithHttpInfo(scope, code, postingModuleRequest);
+    public PostingModuleResponse createPostingModule(String scope, String code, PostingModuleRequest postingModuleRequest) throws ApiException {
+        ApiResponse<PostingModuleResponse> localVarResp = createPostingModuleWithHttpInfo(scope, code, postingModuleRequest);
         return localVarResp.getData();
     }
 
@@ -352,7 +351,7 @@ public class ChartOfAccountsApi {
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
      * @param postingModuleRequest The definition of the Posting Module. (required)
-     * @return ApiResponse&lt;PostingModuleCreateResponse&gt;
+     * @return ApiResponse&lt;PostingModuleResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -362,9 +361,9 @@ public class ChartOfAccountsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<PostingModuleCreateResponse> createPostingModuleWithHttpInfo(String scope, String code, PostingModuleRequest postingModuleRequest) throws ApiException {
+    public ApiResponse<PostingModuleResponse> createPostingModuleWithHttpInfo(String scope, String code, PostingModuleRequest postingModuleRequest) throws ApiException {
         okhttp3.Call localVarCall = createPostingModuleValidateBeforeCall(scope, code, postingModuleRequest, null);
-        Type localVarReturnType = new TypeToken<PostingModuleCreateResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
@@ -385,10 +384,10 @@ public class ChartOfAccountsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createPostingModuleAsync(String scope, String code, PostingModuleRequest postingModuleRequest, final ApiCallback<PostingModuleCreateResponse> _callback) throws ApiException {
+    public okhttp3.Call createPostingModuleAsync(String scope, String code, PostingModuleRequest postingModuleRequest, final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = createPostingModuleValidateBeforeCall(scope, code, postingModuleRequest, _callback);
-        Type localVarReturnType = new TypeToken<PostingModuleCreateResponse>(){}.getType();
+        Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1193,6 +1192,159 @@ public class ChartOfAccountsApi {
 
         okhttp3.Call localVarCall = getChartOfAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<ChartOfAccounts>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getPostingModule
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param postingModuleCode The code of the Posting Module. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The full definition of the Posting Module. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPostingModuleCall(String scope, String code, String postingModuleCode, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "postingModuleCode" + "}", localVarApiClient.escapeString(postingModuleCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getPostingModuleValidateBeforeCall(String scope, String code, String postingModuleCode, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getPostingModule(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getPostingModule(Async)");
+        }
+
+        // verify the required parameter 'postingModuleCode' is set
+        if (postingModuleCode == null) {
+            throw new ApiException("Missing the required parameter 'postingModuleCode' when calling getPostingModule(Async)");
+        }
+
+        return getPostingModuleCall(scope, code, postingModuleCode, _callback);
+
+    }
+
+    /**
+     * [EXPERIMENTAL] GetPostingModule: Get a Posting Module
+     * Retrieve the definition of a Posting Module complete with its rules.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param postingModuleCode The code of the Posting Module. (required)
+     * @return PostingModuleResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The full definition of the Posting Module. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public PostingModuleResponse getPostingModule(String scope, String code, String postingModuleCode) throws ApiException {
+        ApiResponse<PostingModuleResponse> localVarResp = getPostingModuleWithHttpInfo(scope, code, postingModuleCode);
+        return localVarResp.getData();
+    }
+
+    /**
+     * [EXPERIMENTAL] GetPostingModule: Get a Posting Module
+     * Retrieve the definition of a Posting Module complete with its rules.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param postingModuleCode The code of the Posting Module. (required)
+     * @return ApiResponse&lt;PostingModuleResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The full definition of the Posting Module. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PostingModuleResponse> getPostingModuleWithHttpInfo(String scope, String code, String postingModuleCode) throws ApiException {
+        okhttp3.Call localVarCall = getPostingModuleValidateBeforeCall(scope, code, postingModuleCode, null);
+        Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * [EXPERIMENTAL] GetPostingModule: Get a Posting Module (asynchronously)
+     * Retrieve the definition of a Posting Module complete with its rules.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
+     * @param postingModuleCode The code of the Posting Module. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The full definition of the Posting Module. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getPostingModuleAsync(String scope, String code, String postingModuleCode, final ApiCallback<PostingModuleResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getPostingModuleValidateBeforeCall(scope, code, postingModuleCode, _callback);
+        Type localVarReturnType = new TypeToken<PostingModuleResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

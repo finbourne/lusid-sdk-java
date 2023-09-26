@@ -11,6 +11,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**deletePostingModule**](ChartOfAccountsApi.md#deletePostingModule) | **DELETE** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode} | [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module. |
 | [**getAccount**](ChartOfAccountsApi.md#getAccount) | **GET** /api/chartofaccounts/{scope}/{code}/accounts/{accountCode} | [EXPERIMENTAL] GetAccount: Get Account |
 | [**getChartOfAccounts**](ChartOfAccountsApi.md#getChartOfAccounts) | **GET** /api/chartofaccounts/{scope}/{code} | [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts |
+| [**getPostingModule**](ChartOfAccountsApi.md#getPostingModule) | **GET** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode} | [EXPERIMENTAL] GetPostingModule: Get a Posting Module |
 | [**listAccounts**](ChartOfAccountsApi.md#listAccounts) | **GET** /api/chartofaccounts/{scope}/{code}/accounts | [EXPERIMENTAL] ListAccounts: List Accounts |
 | [**listChartsOfAccounts**](ChartOfAccountsApi.md#listChartsOfAccounts) | **GET** /api/chartofaccounts | [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts |
 | [**listPostingModuleRules**](ChartOfAccountsApi.md#listPostingModuleRules) | **GET** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules | [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules |
@@ -95,7 +96,7 @@ public class Example {
 
 <a id="createPostingModule"></a>
 # **createPostingModule**
-> PostingModuleCreateResponse createPostingModule(scope, code, postingModuleRequest)
+> PostingModuleResponse createPostingModule(scope, code, postingModuleRequest)
 
 [EXPERIMENTAL] CreatePostingModule: Create a Posting Module
 
@@ -125,7 +126,7 @@ public class Example {
     String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
     PostingModuleRequest postingModuleRequest = new PostingModuleRequest(); // PostingModuleRequest | The definition of the Posting Module.
     try {
-      PostingModuleCreateResponse result = apiInstance.createPostingModule(scope, code, postingModuleRequest);
+      PostingModuleResponse result = apiInstance.createPostingModule(scope, code, postingModuleRequest);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling ChartOfAccountsApi#createPostingModule");
@@ -148,7 +149,7 @@ public class Example {
 
 ### Return type
 
-[**PostingModuleCreateResponse**](PostingModuleCreateResponse.md)
+[**PostingModuleResponse**](PostingModuleResponse.md)
 
 ### Authorization
 
@@ -538,6 +539,79 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested Chart Of Accounts definition. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="getPostingModule"></a>
+# **getPostingModule**
+> PostingModuleResponse getPostingModule(scope, code, postingModuleCode)
+
+[EXPERIMENTAL] GetPostingModule: Get a Posting Module
+
+Retrieve the definition of a Posting Module complete with its rules.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ChartOfAccountsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Chart of Accounts.
+    String code = "code_example"; // String | The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts.
+    String postingModuleCode = "postingModuleCode_example"; // String | The code of the Posting Module.
+    try {
+      PostingModuleResponse result = apiInstance.getPostingModule(scope, code, postingModuleCode);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ChartOfAccountsApi#getPostingModule");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Chart of Accounts. | |
+| **code** | **String**| The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. | |
+| **postingModuleCode** | **String**| The code of the Posting Module. | |
+
+### Return type
+
+[**PostingModuleResponse**](PostingModuleResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The full definition of the Posting Module. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

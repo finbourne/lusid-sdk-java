@@ -3512,6 +3512,7 @@ public class PortfolioGroupsApi {
      * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
      * @param page The pagination token to use to continue listing transactions from a previous call to GetTransactions. (optional)
      * @param showCancelledTransactions Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. (optional)
+     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -3523,7 +3524,7 @@ public class PortfolioGroupsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTransactionsForPortfolioGroupCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call getTransactionsForPortfolioGroupCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback _callback) throws ApiException {
         String basePath = null;
         // Operation Servers
         String[] localBasePaths = new String[] {  };
@@ -3582,6 +3583,10 @@ public class PortfolioGroupsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("showCancelledTransactions", showCancelledTransactions));
         }
 
+        if (sortBy != null) {
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "sortBy", sortBy));
+        }
+
         final String[] localVarAccepts = {
             "text/plain",
             "application/json",
@@ -3604,7 +3609,7 @@ public class PortfolioGroupsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call getTransactionsForPortfolioGroupValidateBeforeCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call getTransactionsForPortfolioGroupValidateBeforeCall(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback _callback) throws ApiException {
         // verify the required parameter 'scope' is set
         if (scope == null) {
             throw new ApiException("Missing the required parameter 'scope' when calling getTransactionsForPortfolioGroup(Async)");
@@ -3615,7 +3620,7 @@ public class PortfolioGroupsApi {
             throw new ApiException("Missing the required parameter 'code' when calling getTransactionsForPortfolioGroup(Async)");
         }
 
-        return getTransactionsForPortfolioGroupCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, _callback);
+        return getTransactionsForPortfolioGroupCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, _callback);
 
     }
 
@@ -3632,6 +3637,7 @@ public class PortfolioGroupsApi {
      * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
      * @param page The pagination token to use to continue listing transactions from a previous call to GetTransactions. (optional)
      * @param showCancelledTransactions Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. (optional)
+     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
      * @return VersionedResourceListOfTransaction
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3642,8 +3648,8 @@ public class PortfolioGroupsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public VersionedResourceListOfTransaction getTransactionsForPortfolioGroup(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions) throws ApiException {
-        ApiResponse<VersionedResourceListOfTransaction> localVarResp = getTransactionsForPortfolioGroupWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions);
+    public VersionedResourceListOfTransaction getTransactionsForPortfolioGroup(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy) throws ApiException {
+        ApiResponse<VersionedResourceListOfTransaction> localVarResp = getTransactionsForPortfolioGroupWithHttpInfo(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy);
         return localVarResp.getData();
     }
 
@@ -3660,6 +3666,7 @@ public class PortfolioGroupsApi {
      * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
      * @param page The pagination token to use to continue listing transactions from a previous call to GetTransactions. (optional)
      * @param showCancelledTransactions Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. (optional)
+     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
      * @return ApiResponse&lt;VersionedResourceListOfTransaction&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -3670,8 +3677,8 @@ public class PortfolioGroupsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VersionedResourceListOfTransaction> getTransactionsForPortfolioGroupWithHttpInfo(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions) throws ApiException {
-        okhttp3.Call localVarCall = getTransactionsForPortfolioGroupValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, null);
+    public ApiResponse<VersionedResourceListOfTransaction> getTransactionsForPortfolioGroupWithHttpInfo(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy) throws ApiException {
+        okhttp3.Call localVarCall = getTransactionsForPortfolioGroupValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, null);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTransaction>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -3689,6 +3696,7 @@ public class PortfolioGroupsApi {
      * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
      * @param page The pagination token to use to continue listing transactions from a previous call to GetTransactions. (optional)
      * @param showCancelledTransactions Option to specify whether or not to include cancelled transactions,               including previous versions of transactions which have since been amended.               Defaults to False if not specified. (optional)
+     * @param sortBy A list of field names or properties to sort by, each suffixed by \&quot; ASC\&quot; or \&quot; DESC\&quot; (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -3700,9 +3708,9 @@ public class PortfolioGroupsApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getTransactionsForPortfolioGroupAsync(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, final ApiCallback<VersionedResourceListOfTransaction> _callback) throws ApiException {
+    public okhttp3.Call getTransactionsForPortfolioGroupAsync(String scope, String code, String fromTransactionDate, String toTransactionDate, OffsetDateTime asAt, String filter, List<String> propertyKeys, Integer limit, String page, Boolean showCancelledTransactions, List<String> sortBy, final ApiCallback<VersionedResourceListOfTransaction> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = getTransactionsForPortfolioGroupValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, _callback);
+        okhttp3.Call localVarCall = getTransactionsForPortfolioGroupValidateBeforeCall(scope, code, fromTransactionDate, toTransactionDate, asAt, filter, propertyKeys, limit, page, showCancelledTransactions, sortBy, _callback);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfTransaction>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

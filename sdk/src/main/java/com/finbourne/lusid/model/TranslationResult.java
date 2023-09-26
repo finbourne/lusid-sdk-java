@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.Property;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -18,6 +19,8 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -53,6 +56,10 @@ public class TranslationResult {
   @SerializedName(SERIALIZED_NAME_ENTITY)
   private String entity;
 
+  public static final String SERIALIZED_NAME_PROPERTIES = "properties";
+  @SerializedName(SERIALIZED_NAME_PROPERTIES)
+  private Map<String, Property> properties = new HashMap<>();
+
   public TranslationResult() {
   }
 
@@ -77,6 +84,35 @@ public class TranslationResult {
   }
 
 
+  public TranslationResult properties(Map<String, Property> properties) {
+    
+    this.properties = properties;
+    return this;
+  }
+
+  public TranslationResult putPropertiesItem(String key, Property propertiesItem) {
+    if (this.properties == null) {
+      this.properties = new HashMap<>();
+    }
+    this.properties.put(key, propertiesItem);
+    return this;
+  }
+
+   /**
+   * Any properties the translation script produced.
+   * @return properties
+  **/
+  @jakarta.annotation.Nonnull
+  public Map<String, Property> getProperties() {
+    return properties;
+  }
+
+
+  public void setProperties(Map<String, Property> properties) {
+    this.properties = properties;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -87,12 +123,13 @@ public class TranslationResult {
       return false;
     }
     TranslationResult translationResult = (TranslationResult) o;
-    return Objects.equals(this.entity, translationResult.entity);
+    return Objects.equals(this.entity, translationResult.entity) &&
+        Objects.equals(this.properties, translationResult.properties);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(entity);
+    return Objects.hash(entity, properties);
   }
 
   @Override
@@ -100,6 +137,7 @@ public class TranslationResult {
     StringBuilder sb = new StringBuilder();
     sb.append("class TranslationResult {\n");
     sb.append("    entity: ").append(toIndentedString(entity)).append("\n");
+    sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -123,10 +161,12 @@ public class TranslationResult {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
     openapiFields.add("entity");
+    openapiFields.add("properties");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("entity");
+    openapiRequiredFields.add("properties");
   }
 
  /**
