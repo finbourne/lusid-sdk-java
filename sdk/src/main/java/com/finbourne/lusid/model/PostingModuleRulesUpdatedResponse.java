@@ -90,7 +90,7 @@ public class PostingModuleRulesUpdatedResponse {
   }
 
    /**
-   * The posting rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection.
+   * The Posting Rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection.
    * @return rules
   **/
   @jakarta.annotation.Nullable

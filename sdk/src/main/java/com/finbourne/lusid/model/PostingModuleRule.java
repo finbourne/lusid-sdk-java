@@ -71,7 +71,7 @@ public class PostingModuleRule {
   }
 
    /**
-   * The identifier for the rule
+   * The identifier for the Posting Rule.
    * @return ruleId
   **/
   @jakarta.annotation.Nonnull
@@ -92,7 +92,7 @@ public class PostingModuleRule {
   }
 
    /**
-   * The account to post the Activity credit or debit to
+   * The account to post the Activity credit or debit to.
    * @return account
   **/
   @jakarta.annotation.Nonnull
@@ -113,7 +113,7 @@ public class PostingModuleRule {
   }
 
    /**
-   * The filter syntax for the rule. See KB for filter syntax https://support.lusid.com/knowledgebase/article/KA-02140
+   * The filter syntax for the Posting Rule. See https://support.lusid.com/knowledgebase/article/KA-02140 for more information on filter syntax.
    * @return ruleFilter
   **/
   @jakarta.annotation.Nonnull

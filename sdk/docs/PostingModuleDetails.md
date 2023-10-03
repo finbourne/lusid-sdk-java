@@ -8,8 +8,8 @@ A posting Module request definition
 
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
-|**displayName** | **String** | The name to identify the Posting Module by |  |
-|**description** | **String** | The description for the Posting Module |  [optional] |
+|**displayName** | **String** | The name of the Posting Module. |  |
+|**description** | **String** | A description for the Posting Module. |  [optional] |
 |**status** | **String** | The Posting Module status. Can be Active, Inactive or Deleted. Defaults to Active. |  |
 
 

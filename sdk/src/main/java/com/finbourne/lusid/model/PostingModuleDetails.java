@@ -72,7 +72,7 @@ public class PostingModuleDetails {
   }
 
    /**
-   * The name to identify the Posting Module by
+   * The name of the Posting Module.
    * @return displayName
   **/
   @jakarta.annotation.Nonnull
@@ -93,7 +93,7 @@ public class PostingModuleDetails {
   }
 
    /**
-   * The description for the Posting Module
+   * A description for the Posting Module.
    * @return description
   **/
   @jakarta.annotation.Nullable

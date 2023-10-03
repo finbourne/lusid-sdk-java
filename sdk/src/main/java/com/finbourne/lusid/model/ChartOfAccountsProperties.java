@@ -113,7 +113,7 @@ public class ChartOfAccountsProperties {
   }
 
    /**
-   * The chart of accounts properties. These will be from the &#39;ChartOfAccounts&#39; domain.
+   * The Chart of Accounts properties. These will be from the &#39;ChartOfAccounts&#39; domain.
    * @return properties
   **/
   @jakarta.annotation.Nullable

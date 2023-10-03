@@ -506,7 +506,7 @@ public class JELines {
   }
 
    /**
-   * Properties to add to the Abor.
+   * A set of properties for the Abor.
    * @return properties
   **/
   @jakarta.annotation.Nullable

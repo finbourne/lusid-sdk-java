@@ -108,6 +108,10 @@ public class InlineValuationRequest {
   @SerializedName(SERIALIZED_NAME_MARKET_DATA_OVERRIDES)
   private MarketDataOverrides marketDataOverrides;
 
+  public static final String SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID = "corporateActionSourceId";
+  @SerializedName(SERIALIZED_NAME_CORPORATE_ACTION_SOURCE_ID)
+  private ResourceId corporateActionSourceId;
+
   public InlineValuationRequest() {
   }
 
@@ -403,6 +407,27 @@ public class InlineValuationRequest {
   }
 
 
+  public InlineValuationRequest corporateActionSourceId(ResourceId corporateActionSourceId) {
+    
+    this.corporateActionSourceId = corporateActionSourceId;
+    return this;
+  }
+
+   /**
+   * Get corporateActionSourceId
+   * @return corporateActionSourceId
+  **/
+  @jakarta.annotation.Nullable
+  public ResourceId getCorporateActionSourceId() {
+    return corporateActionSourceId;
+  }
+
+
+  public void setCorporateActionSourceId(ResourceId corporateActionSourceId) {
+    this.corporateActionSourceId = corporateActionSourceId;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -424,7 +449,8 @@ public class InlineValuationRequest {
         Objects.equals(this.returnResultAsExpandedTypes, inlineValuationRequest.returnResultAsExpandedTypes) &&
         Objects.equals(this.valuationSchedule, inlineValuationRequest.valuationSchedule) &&
         Objects.equals(this.instruments, inlineValuationRequest.instruments) &&
-        Objects.equals(this.marketDataOverrides, inlineValuationRequest.marketDataOverrides);
+        Objects.equals(this.marketDataOverrides, inlineValuationRequest.marketDataOverrides) &&
+        Objects.equals(this.corporateActionSourceId, inlineValuationRequest.corporateActionSourceId);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -433,7 +459,7 @@ public class InlineValuationRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recipeId, asAt, metrics, groupBy, filters, sort, reportCurrency, equipWithSubtotals, returnResultAsExpandedTypes, valuationSchedule, instruments, marketDataOverrides);
+    return Objects.hash(recipeId, asAt, metrics, groupBy, filters, sort, reportCurrency, equipWithSubtotals, returnResultAsExpandedTypes, valuationSchedule, instruments, marketDataOverrides, corporateActionSourceId);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -459,6 +485,7 @@ public class InlineValuationRequest {
     sb.append("    valuationSchedule: ").append(toIndentedString(valuationSchedule)).append("\n");
     sb.append("    instruments: ").append(toIndentedString(instruments)).append("\n");
     sb.append("    marketDataOverrides: ").append(toIndentedString(marketDataOverrides)).append("\n");
+    sb.append("    corporateActionSourceId: ").append(toIndentedString(corporateActionSourceId)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -493,6 +520,7 @@ public class InlineValuationRequest {
     openapiFields.add("valuationSchedule");
     openapiFields.add("instruments");
     openapiFields.add("marketDataOverrides");
+    openapiFields.add("corporateActionSourceId");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -593,6 +621,10 @@ public class InlineValuationRequest {
       // validate the optional field `marketDataOverrides`
       if (jsonObj.get("marketDataOverrides") != null && !jsonObj.get("marketDataOverrides").isJsonNull()) {
         MarketDataOverrides.validateJsonObject(jsonObj.getAsJsonObject("marketDataOverrides"));
+      }
+      // validate the optional field `corporateActionSourceId`
+      if (jsonObj.get("corporateActionSourceId") != null && !jsonObj.get("corporateActionSourceId").isJsonNull()) {
+        ResourceId.validateJsonObject(jsonObj.getAsJsonObject("corporateActionSourceId"));
       }
   }
 

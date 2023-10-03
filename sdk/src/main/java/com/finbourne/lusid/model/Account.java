@@ -66,7 +66,7 @@ public class Account {
   private String type;
 
   /**
-   * The account status. Can be Active, Inactive or Deleted. Defaults to Active. The available values are: Active, Inactive, Deleted
+   * The Account status. Can be Active, Inactive or Deleted. Defaults to Active. The available values are: Active, Inactive, Deleted
    */
   @JsonAdapter(StatusEnum.Adapter.class)
   public enum StatusEnum {
@@ -136,7 +136,7 @@ public class Account {
   }
 
    /**
-   * The code given for the account.
+   * The code given for the Account.
    * @return code
   **/
   @jakarta.annotation.Nonnull
@@ -157,7 +157,7 @@ public class Account {
   }
 
    /**
-   * The description for the account.
+   * A description for the Account.
    * @return description
   **/
   @jakarta.annotation.Nullable
@@ -178,7 +178,7 @@ public class Account {
   }
 
    /**
-   * The account type. Can have the values: Asset/Liabilities/Income/Expense/Capital/Revenue.
+   * The Account type. Can have the values: Asset/Liabilities/Income/Expense/Capital/Revenue.
    * @return type
   **/
   @jakarta.annotation.Nonnull
@@ -199,7 +199,7 @@ public class Account {
   }
 
    /**
-   * The account status. Can be Active, Inactive or Deleted. Defaults to Active. The available values are: Active, Inactive, Deleted
+   * The Account status. Can be Active, Inactive or Deleted. Defaults to Active. The available values are: Active, Inactive, Deleted
    * @return status
   **/
   @jakarta.annotation.Nonnull
@@ -220,7 +220,7 @@ public class Account {
   }
 
    /**
-   * This allows users to specify whether this a protected account that prevents direct manual journal adjustment. Can have the values: System/ManualIt will default to “Manual”.
+   * This allows users to specify whether this a protected Account that prevents direct manual journal adjustment. Can have the values: System/ManualIt will default to “Manual”.
    * @return control
   **/
   @jakarta.annotation.Nonnull
@@ -249,7 +249,7 @@ public class Account {
   }
 
    /**
-   * Account properties to add to the account.
+   * A set of properties for the Account.
    * @return properties
   **/
   @jakarta.annotation.Nullable

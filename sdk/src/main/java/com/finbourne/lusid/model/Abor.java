@@ -148,7 +148,7 @@ public class Abor {
   }
 
    /**
-   * The given name for the Abor.
+   * The name of the Abor.
    * @return displayName
   **/
   @jakarta.annotation.Nullable
@@ -198,7 +198,7 @@ public class Abor {
   }
 
    /**
-   * The list with the portfolio ids which are part of the Abor. For now the only supported value is SinglePortfolio.
+   * The list with the portfolio ids which are part of the Abor.
    * @return portfolioIds
   **/
   @jakarta.annotation.Nonnull
@@ -248,7 +248,7 @@ public class Abor {
   }
 
    /**
-   * Properties to add to the Abor.
+   * A set of properties for the Abor.
    * @return properties
   **/
   @jakarta.annotation.Nullable

@@ -139,7 +139,7 @@ public class ChartOfAccounts {
   }
 
    /**
-   * The given name for the chart of account.
+   * The name of the Chart of Account.
    * @return displayName
   **/
   @jakarta.annotation.Nullable
@@ -160,7 +160,7 @@ public class ChartOfAccounts {
   }
 
    /**
-   * The description for the chart of account.
+   * A description of the Chart of Accounts.
    * @return description
   **/
   @jakarta.annotation.Nullable
@@ -189,7 +189,7 @@ public class ChartOfAccounts {
   }
 
    /**
-   * Chart of Accounts properties to add to the chart of account.
+   * A set of properties for the Chart of Accounts.
    * @return properties
   **/
   @jakarta.annotation.Nullable

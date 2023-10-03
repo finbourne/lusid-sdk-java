@@ -16,7 +16,7 @@
 |**effectiveAt** | **OffsetDateTime** | The effective time of the diary entry. |  |
 |**queryAsAt** | **OffsetDateTime** | The query time of the diary entry. Defaults to latest. |  [optional] |
 |**previousEntryTime** | **OffsetDateTime** | The entry time of the previous diary entry. |  [optional] |
-|**properties** | [**Map&lt;String, Property&gt;**](Property.md) | Properties to add to the diary entry. |  [optional] |
+|**properties** | [**Map&lt;String, Property&gt;**](Property.md) | A set of properties for the diary entry. |  [optional] |
 |**version** | [**Version**](Version.md) |  |  [optional] |
 |**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
 

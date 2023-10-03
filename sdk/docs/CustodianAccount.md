@@ -8,7 +8,7 @@
 | Name | Type | Description | Notes |
 |------------ | ------------- | ------------- | -------------|
 |**custodianAccountId** | [**ResourceId**](ResourceId.md) |  |  |
-|**status** | **String** | The account status. Can be Active, Inactive or Deleted. Defaults to Active. |  |
+|**status** | **String** | The Account status. Can be Active, Inactive or Deleted. Defaults to Active. |  |
 |**accountNumber** | **String** | The Custodian Account Number |  |
 |**accountName** | **String** | The identifiable name given to the Custodian Account |  |
 |**accountingMethod** | **String** | The Accounting method to be used |  |

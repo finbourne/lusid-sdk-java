@@ -94,7 +94,7 @@ public class AborConfigurationRequest {
   }
 
    /**
-   * The code given for the AborConfiguration.
+   * The code given for the Abor Configuration.
    * @return code
   **/
   @jakarta.annotation.Nonnull
@@ -115,7 +115,7 @@ public class AborConfigurationRequest {
   }
 
    /**
-   * The given name for the AborConfiguration.
+   * The name of the Abor Configuration.
    * @return displayName
   **/
   @jakarta.annotation.Nullable
@@ -136,7 +136,7 @@ public class AborConfigurationRequest {
   }
 
    /**
-   * The description for the AborConfiguration.
+   * A description for the Abor Configuration.
    * @return description
   **/
   @jakarta.annotation.Nullable
@@ -207,7 +207,7 @@ public class AborConfigurationRequest {
   }
 
    /**
-   * The Posting Modules Codes from where the rules to be applied are retrieved.
+   * The Posting Module Codes from which the rules to be applied are retrieved.
    * @return postingModuleCodes
   **/
   @jakarta.annotation.Nullable
@@ -236,7 +236,7 @@ public class AborConfigurationRequest {
   }
 
    /**
-   * Properties to add to the AborConfiguration.
+   * A set of properties for the Abor Configuration.
    * @return properties
   **/
   @jakarta.annotation.Nullable

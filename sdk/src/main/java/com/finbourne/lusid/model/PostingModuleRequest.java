@@ -100,7 +100,7 @@ public class PostingModuleRequest {
   }
 
    /**
-   * The name to identify the Posting Module by
+   * The name of the Posting Module.
    * @return displayName
   **/
   @jakarta.annotation.Nonnull
@@ -121,7 +121,7 @@ public class PostingModuleRequest {
   }
 
    /**
-   * The description for the Posting Module
+   * A description for the Posting Module.
    * @return description
   **/
   @jakarta.annotation.Nullable
@@ -150,7 +150,7 @@ public class PostingModuleRequest {
   }
 
    /**
-   * The posting rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection.
+   * The Posting Rules that apply for the Posting Module. Rules are evaluated in the order they occur in this collection.
    * @return rules
   **/
   @jakarta.annotation.Nullable

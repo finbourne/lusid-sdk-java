@@ -146,7 +146,7 @@ public class CustodianAccountRequest {
   }
 
    /**
-   * The account status. Can be Active, Inactive or Deleted. Defaults to Active.
+   * The Account status. Can be Active, Inactive or Deleted. Defaults to Active.
    * @return status
   **/
   @jakarta.annotation.Nullable

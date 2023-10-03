@@ -113,7 +113,7 @@ public class AborConfigurationProperties {
   }
 
    /**
-   * The AborConfiguration properties. These will be from the &#39;AborConfiguration&#39; domain.
+   * The Abor Configuration properties. These will be from the &#39;AborConfiguration&#39; domain.
    * @return properties
   **/
   @jakarta.annotation.Nullable

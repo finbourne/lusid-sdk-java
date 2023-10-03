@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.PerpetualProperty;
 import com.finbourne.lusid.model.TransactionTypeAlias;
+import com.finbourne.lusid.model.TransactionTypeCalculation;
 import com.finbourne.lusid.model.TransactionTypeMovement;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
@@ -68,6 +69,10 @@ public class TransactionTypeRequest {
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, PerpetualProperty> properties;
+
+  public static final String SERIALIZED_NAME_CALCULATIONS = "calculations";
+  @SerializedName(SERIALIZED_NAME_CALCULATIONS)
+  private List<TransactionTypeCalculation> calculations;
 
   public TransactionTypeRequest() {
   }
@@ -159,6 +164,35 @@ public class TransactionTypeRequest {
   }
 
 
+  public TransactionTypeRequest calculations(List<TransactionTypeCalculation> calculations) {
+    
+    this.calculations = calculations;
+    return this;
+  }
+
+  public TransactionTypeRequest addCalculationsItem(TransactionTypeCalculation calculationsItem) {
+    if (this.calculations == null) {
+      this.calculations = new ArrayList<>();
+    }
+    this.calculations.add(calculationsItem);
+    return this;
+  }
+
+   /**
+   * Calculations to be performed for the transaction type
+   * @return calculations
+  **/
+  @jakarta.annotation.Nullable
+  public List<TransactionTypeCalculation> getCalculations() {
+    return calculations;
+  }
+
+
+  public void setCalculations(List<TransactionTypeCalculation> calculations) {
+    this.calculations = calculations;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -171,7 +205,8 @@ public class TransactionTypeRequest {
     TransactionTypeRequest transactionTypeRequest = (TransactionTypeRequest) o;
     return Objects.equals(this.aliases, transactionTypeRequest.aliases) &&
         Objects.equals(this.movements, transactionTypeRequest.movements) &&
-        Objects.equals(this.properties, transactionTypeRequest.properties);
+        Objects.equals(this.properties, transactionTypeRequest.properties) &&
+        Objects.equals(this.calculations, transactionTypeRequest.calculations);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -180,7 +215,7 @@ public class TransactionTypeRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(aliases, movements, properties);
+    return Objects.hash(aliases, movements, properties, calculations);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -197,6 +232,7 @@ public class TransactionTypeRequest {
     sb.append("    aliases: ").append(toIndentedString(aliases)).append("\n");
     sb.append("    movements: ").append(toIndentedString(movements)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    calculations: ").append(toIndentedString(calculations)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -222,6 +258,7 @@ public class TransactionTypeRequest {
     openapiFields.add("aliases");
     openapiFields.add("movements");
     openapiFields.add("properties");
+    openapiFields.add("calculations");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -276,6 +313,20 @@ public class TransactionTypeRequest {
       for (int i = 0; i < jsonArraymovements.size(); i++) {
         TransactionTypeMovement.validateJsonObject(jsonArraymovements.get(i).getAsJsonObject());
       };
+      if (jsonObj.get("calculations") != null && !jsonObj.get("calculations").isJsonNull()) {
+        JsonArray jsonArraycalculations = jsonObj.getAsJsonArray("calculations");
+        if (jsonArraycalculations != null) {
+          // ensure the json data is an array
+          if (!jsonObj.get("calculations").isJsonArray()) {
+            throw new IllegalArgumentException(String.format("Expected the field `calculations` to be an array in the JSON string but got `%s`", jsonObj.get("calculations").toString()));
+          }
+
+          // validate the optional field `calculations` (array)
+          for (int i = 0; i < jsonArraycalculations.size(); i++) {
+            TransactionTypeCalculation.validateJsonObject(jsonArraycalculations.get(i).getAsJsonObject());
+          };
+        }
+      }
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {

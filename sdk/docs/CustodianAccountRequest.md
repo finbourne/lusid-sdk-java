@@ -9,7 +9,7 @@
 |------------ | ------------- | ------------- | -------------|
 |**scope** | **String** | The Scope assigned to the Custodian Account, where left blank the parent Portfolio Scope will be used |  [optional] |
 |**code** | **String** | Unique Code representing the Custodian Account |  |
-|**status** | **String** | The account status. Can be Active, Inactive or Deleted. Defaults to Active. |  [optional] |
+|**status** | **String** | The Account status. Can be Active, Inactive or Deleted. Defaults to Active. |  [optional] |
 |**accountNumber** | **String** | The Custodian Account Number |  |
 |**accountName** | **String** | The identifiable name given to the Custodian Account |  |
 |**accountingMethod** | **String** | The Accounting method to be used |  |

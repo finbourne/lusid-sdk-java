@@ -315,7 +315,7 @@ public class DiaryEntry {
   }
 
    /**
-   * Properties to add to the diary entry.
+   * A set of properties for the diary entry.
    * @return properties
   **/
   @jakarta.annotation.Nullable
