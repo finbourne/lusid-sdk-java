@@ -88,6 +88,10 @@ public class AggregatedReturn {
   @SerializedName(SERIALIZED_NAME_COMPOSITE_MEMBERS_WITHOUT_RETURN)
   private List<ResourceId> compositeMembersWithoutReturn;
 
+  public static final String SERIALIZED_NAME_WARNINGS = "warnings";
+  @SerializedName(SERIALIZED_NAME_WARNINGS)
+  private List<String> warnings;
+
   public AggregatedReturn() {
   }
 
@@ -275,6 +279,35 @@ public class AggregatedReturn {
   }
 
 
+  public AggregatedReturn warnings(List<String> warnings) {
+    
+    this.warnings = warnings;
+    return this;
+  }
+
+  public AggregatedReturn addWarningsItem(String warningsItem) {
+    if (this.warnings == null) {
+      this.warnings = new ArrayList<>();
+    }
+    this.warnings.add(warningsItem);
+    return this;
+  }
+
+   /**
+   * List of the warnings about the calculation of the aggregated return.
+   * @return warnings
+  **/
+  @jakarta.annotation.Nullable
+  public List<String> getWarnings() {
+    return warnings;
+  }
+
+
+  public void setWarnings(List<String> warnings) {
+    this.warnings = warnings;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -292,7 +325,8 @@ public class AggregatedReturn {
         Objects.equals(this.metricsValue, aggregatedReturn.metricsValue) &&
         Objects.equals(this.frequency, aggregatedReturn.frequency) &&
         Objects.equals(this.compositeMembers, aggregatedReturn.compositeMembers) &&
-        Objects.equals(this.compositeMembersWithoutReturn, aggregatedReturn.compositeMembersWithoutReturn);
+        Objects.equals(this.compositeMembersWithoutReturn, aggregatedReturn.compositeMembersWithoutReturn) &&
+        Objects.equals(this.warnings, aggregatedReturn.warnings);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -301,7 +335,7 @@ public class AggregatedReturn {
 
   @Override
   public int hashCode() {
-    return Objects.hash(effectiveAt, endOfPeriod, openingMarketValue, closingMarketValue, metricsValue, frequency, compositeMembers, compositeMembersWithoutReturn);
+    return Objects.hash(effectiveAt, endOfPeriod, openingMarketValue, closingMarketValue, metricsValue, frequency, compositeMembers, compositeMembersWithoutReturn, warnings);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -323,6 +357,7 @@ public class AggregatedReturn {
     sb.append("    frequency: ").append(toIndentedString(frequency)).append("\n");
     sb.append("    compositeMembers: ").append(toIndentedString(compositeMembers)).append("\n");
     sb.append("    compositeMembersWithoutReturn: ").append(toIndentedString(compositeMembersWithoutReturn)).append("\n");
+    sb.append("    warnings: ").append(toIndentedString(warnings)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -353,6 +388,7 @@ public class AggregatedReturn {
     openapiFields.add("frequency");
     openapiFields.add("compositeMembers");
     openapiFields.add("compositeMembersWithoutReturn");
+    openapiFields.add("warnings");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -404,6 +440,10 @@ public class AggregatedReturn {
             ResourceId.validateJsonObject(jsonArraycompositeMembersWithoutReturn.get(i).getAsJsonObject());
           };
         }
+      }
+      // ensure the optional json data is an array if present
+      if (jsonObj.get("warnings") != null && !jsonObj.get("warnings").isJsonArray()) {
+        throw new IllegalArgumentException(String.format("Expected the field `warnings` to be an array in the JSON string but got `%s`", jsonObj.get("warnings").toString()));
       }
   }
 

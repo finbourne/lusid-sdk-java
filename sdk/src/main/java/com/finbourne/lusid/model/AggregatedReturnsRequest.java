@@ -90,6 +90,10 @@ public class AggregatedReturnsRequest {
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
+  public static final String SERIALIZED_NAME_RUN_MODE = "runMode";
+  @SerializedName(SERIALIZED_NAME_RUN_MODE)
+  private String runMode;
+
   public AggregatedReturnsRequest() {
   }
 
@@ -306,6 +310,27 @@ public class AggregatedReturnsRequest {
   }
 
 
+  public AggregatedReturnsRequest runMode(String runMode) {
+    
+    this.runMode = runMode;
+    return this;
+  }
+
+   /**
+   * The RunMode the aggregation will calculate metrics for. Defaults to ReturnData.
+   * @return runMode
+  **/
+  @jakarta.annotation.Nullable
+  public String getRunMode() {
+    return runMode;
+  }
+
+
+  public void setRunMode(String runMode) {
+    this.runMode = runMode;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -324,7 +349,8 @@ public class AggregatedReturnsRequest {
         Objects.equals(this.outputFrequency, aggregatedReturnsRequest.outputFrequency) &&
         Objects.equals(this.alternativeInceptionDate, aggregatedReturnsRequest.alternativeInceptionDate) &&
         Objects.equals(this.holidayCalendars, aggregatedReturnsRequest.holidayCalendars) &&
-        Objects.equals(this.currency, aggregatedReturnsRequest.currency);
+        Objects.equals(this.currency, aggregatedReturnsRequest.currency) &&
+        Objects.equals(this.runMode, aggregatedReturnsRequest.runMode);
   }
 
   private static <T> boolean equalsNullable(JsonNullable<T> a, JsonNullable<T> b) {
@@ -333,7 +359,7 @@ public class AggregatedReturnsRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(metrics, returnIds, recipeId, compositeMethod, period, outputFrequency, alternativeInceptionDate, holidayCalendars, currency);
+    return Objects.hash(metrics, returnIds, recipeId, compositeMethod, period, outputFrequency, alternativeInceptionDate, holidayCalendars, currency, runMode);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -356,6 +382,7 @@ public class AggregatedReturnsRequest {
     sb.append("    alternativeInceptionDate: ").append(toIndentedString(alternativeInceptionDate)).append("\n");
     sb.append("    holidayCalendars: ").append(toIndentedString(holidayCalendars)).append("\n");
     sb.append("    currency: ").append(toIndentedString(currency)).append("\n");
+    sb.append("    runMode: ").append(toIndentedString(runMode)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -387,6 +414,7 @@ public class AggregatedReturnsRequest {
     openapiFields.add("alternativeInceptionDate");
     openapiFields.add("holidayCalendars");
     openapiFields.add("currency");
+    openapiFields.add("runMode");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -466,6 +494,9 @@ public class AggregatedReturnsRequest {
       }
       if ((jsonObj.get("currency") != null && !jsonObj.get("currency").isJsonNull()) && !jsonObj.get("currency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `currency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("currency").toString()));
+      }
+      if ((jsonObj.get("runMode") != null && !jsonObj.get("runMode").isJsonNull()) && !jsonObj.get("runMode").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `runMode` to be a primitive type in the JSON string but got `%s`", jsonObj.get("runMode").toString()));
       }
   }
 
