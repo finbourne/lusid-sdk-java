@@ -50,6 +50,10 @@ import com.finbourne.lusid.JSON;
  */
 @jakarta.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class Compounding {
+  public static final String SERIALIZED_NAME_AVERAGING_METHOD = "averagingMethod";
+  @SerializedName(SERIALIZED_NAME_AVERAGING_METHOD)
+  private String averagingMethod;
+
   public static final String SERIALIZED_NAME_CALCULATION_SHIFT_METHOD = "calculationShiftMethod";
   @SerializedName(SERIALIZED_NAME_CALCULATION_SHIFT_METHOD)
   private String calculationShiftMethod;
@@ -72,6 +76,27 @@ public class Compounding {
 
   public Compounding() {
   }
+
+  public Compounding averagingMethod(String averagingMethod) {
+    
+    this.averagingMethod = averagingMethod;
+    return this;
+  }
+
+   /**
+   * Defines whether a weighted or unweighted average is used when calculating the average rate.  It applies only when CompoundingMethod &#x3D; ‘Average‘.    Supported string (enumeration) values are: [Unweighted, Weighted].
+   * @return averagingMethod
+  **/
+  @jakarta.annotation.Nullable
+  public String getAveragingMethod() {
+    return averagingMethod;
+  }
+
+
+  public void setAveragingMethod(String averagingMethod) {
+    this.averagingMethod = averagingMethod;
+  }
+
 
   public Compounding calculationShiftMethod(String calculationShiftMethod) {
     
@@ -167,7 +192,7 @@ public class Compounding {
    * Defines how the computed leg spread is applied to compounded rate.  It applies only when CompoundingMethod &#x3D; ‘Compounded‘.    Supported string (enumeration) values are: [Straight, IsdaCompounding, NoCompounding, SpreadExclusive, IsdaFlatCompounding, Flat, None].
    * @return spreadCompoundingMethod
   **/
-  @jakarta.annotation.Nonnull
+  @jakarta.annotation.Nullable
   public String getSpreadCompoundingMethod() {
     return spreadCompoundingMethod;
   }
@@ -188,7 +213,8 @@ public class Compounding {
       return false;
     }
     Compounding compounding = (Compounding) o;
-    return Objects.equals(this.calculationShiftMethod, compounding.calculationShiftMethod) &&
+    return Objects.equals(this.averagingMethod, compounding.averagingMethod) &&
+        Objects.equals(this.calculationShiftMethod, compounding.calculationShiftMethod) &&
         Objects.equals(this.compoundingMethod, compounding.compoundingMethod) &&
         Objects.equals(this.resetFrequency, compounding.resetFrequency) &&
         Objects.equals(this.shift, compounding.shift) &&
@@ -201,7 +227,7 @@ public class Compounding {
 
   @Override
   public int hashCode() {
-    return Objects.hash(calculationShiftMethod, compoundingMethod, resetFrequency, shift, spreadCompoundingMethod);
+    return Objects.hash(averagingMethod, calculationShiftMethod, compoundingMethod, resetFrequency, shift, spreadCompoundingMethod);
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -215,6 +241,7 @@ public class Compounding {
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class Compounding {\n");
+    sb.append("    averagingMethod: ").append(toIndentedString(averagingMethod)).append("\n");
     sb.append("    calculationShiftMethod: ").append(toIndentedString(calculationShiftMethod)).append("\n");
     sb.append("    compoundingMethod: ").append(toIndentedString(compoundingMethod)).append("\n");
     sb.append("    resetFrequency: ").append(toIndentedString(resetFrequency)).append("\n");
@@ -242,6 +269,7 @@ public class Compounding {
   static {
     // a set of all properties/fields (JSON key names)
     openapiFields = new HashSet<String>();
+    openapiFields.add("averagingMethod");
     openapiFields.add("calculationShiftMethod");
     openapiFields.add("compoundingMethod");
     openapiFields.add("resetFrequency");
@@ -252,7 +280,6 @@ public class Compounding {
     openapiRequiredFields = new HashSet<String>();
     openapiRequiredFields.add("compoundingMethod");
     openapiRequiredFields.add("resetFrequency");
-    openapiRequiredFields.add("spreadCompoundingMethod");
   }
 
  /**
@@ -282,6 +309,9 @@ public class Compounding {
           throw new IllegalArgumentException(String.format("The required field `%s` is not found in the JSON string: %s", requiredField, jsonObj.toString()));
         }
       }
+      if ((jsonObj.get("averagingMethod") != null && !jsonObj.get("averagingMethod").isJsonNull()) && !jsonObj.get("averagingMethod").isJsonPrimitive()) {
+        throw new IllegalArgumentException(String.format("Expected the field `averagingMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("averagingMethod").toString()));
+      }
       if ((jsonObj.get("calculationShiftMethod") != null && !jsonObj.get("calculationShiftMethod").isJsonNull()) && !jsonObj.get("calculationShiftMethod").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `calculationShiftMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("calculationShiftMethod").toString()));
       }
@@ -291,7 +321,7 @@ public class Compounding {
       if (!jsonObj.get("resetFrequency").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `resetFrequency` to be a primitive type in the JSON string but got `%s`", jsonObj.get("resetFrequency").toString()));
       }
-      if (!jsonObj.get("spreadCompoundingMethod").isJsonPrimitive()) {
+      if ((jsonObj.get("spreadCompoundingMethod") != null && !jsonObj.get("spreadCompoundingMethod").isJsonNull()) && !jsonObj.get("spreadCompoundingMethod").isJsonPrimitive()) {
         throw new IllegalArgumentException(String.format("Expected the field `spreadCompoundingMethod` to be a primitive type in the JSON string but got `%s`", jsonObj.get("spreadCompoundingMethod").toString()));
       }
   }

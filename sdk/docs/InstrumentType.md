@@ -73,5 +73,7 @@
 
 * `SIMPLECASHFLOWLOAN` (value: `"SimpleCashFlowLoan"`)
 
+* `TOTALRETURNSWAP` (value: `"TotalReturnSwap"`)
+
 
 

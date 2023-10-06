@@ -317,7 +317,7 @@ public class AggregatedReturnsRequest {
   }
 
    /**
-   * The RunMode the aggregation will calculate metrics for. Defaults to ReturnData.
+   * The dates the AggregatedReturns output will be calculated: ReturnData/WeekDays/AllDays/MonthEnd. Defaults to ReturnData.
    * @return runMode
   **/
   @jakarta.annotation.Nullable
