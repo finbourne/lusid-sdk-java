@@ -31,13 +31,14 @@ import com.finbourne.lusid.model.DeletedEntityResponse;
 import com.finbourne.lusid.model.DiaryEntry;
 import com.finbourne.lusid.model.DiaryEntryRequest;
 import com.finbourne.lusid.model.JELinesQueryParameters;
+import com.finbourne.lusid.model.JournalEntryLinesQueryParameters;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.PagedResourceListOfAbor;
 import com.finbourne.lusid.model.PagedResourceListOfDiaryEntry;
 import com.finbourne.lusid.model.Property;
-import com.finbourne.lusid.model.VersionedResourceListOfJELines;
+import com.finbourne.lusid.model.VersionedResourceListOfJournalEntryLine;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -740,7 +741,7 @@ public class AborApi {
         Object localVarPostBody = jeLinesQueryParameters;
 
         // create path and map variables
-        String localVarPath = "/api/abor/{scope}/{code}/JELines/$query"
+        String localVarPath = "/api/abor/{scope}/{code}/JELines/$query/$deprecated"
             .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
             .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
 
@@ -809,15 +810,15 @@ public class AborApi {
     }
 
     /**
-     * [EXPERIMENTAL] GetJELines: Get the JELines for the given Abor.
-     * Gets the JELines for the given Abor                The JE Lines have been generated from transactions and translated via posting rules
+     * [DEPRECATED] GetJELines: DEPRECATED: please use GetJournalEntryLines instead. Get the JELines for the given Abor.
+     * DEPRECATED: please use GetJournalEntryLines instead. Gets the JELines for the given Abor                The JE Lines have been generated from transactions and translated via posting rules
      * @param scope The scope of the Abor. (required)
      * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
      * @param jeLinesQueryParameters The query parameters used in running the generation of the JELines. (required)
      * @param asAt The asAt datetime at which to retrieve JELines. Defaults to returning the latest version               of each transaction if not specified. (optional)
      * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
      * @param page The pagination token to use to continue listing JELines from a previous call to GetJELines. (optional)
-     * @return VersionedResourceListOfJELines
+     * @return VersionedResourceListOfJournalEntryLine
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -827,21 +828,21 @@ public class AborApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public VersionedResourceListOfJELines getJELines(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page) throws ApiException {
-        ApiResponse<VersionedResourceListOfJELines> localVarResp = getJELinesWithHttpInfo(scope, code, jeLinesQueryParameters, asAt, limit, page);
+    public VersionedResourceListOfJournalEntryLine getJELines(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page) throws ApiException {
+        ApiResponse<VersionedResourceListOfJournalEntryLine> localVarResp = getJELinesWithHttpInfo(scope, code, jeLinesQueryParameters, asAt, limit, page);
         return localVarResp.getData();
     }
 
     /**
-     * [EXPERIMENTAL] GetJELines: Get the JELines for the given Abor.
-     * Gets the JELines for the given Abor                The JE Lines have been generated from transactions and translated via posting rules
+     * [DEPRECATED] GetJELines: DEPRECATED: please use GetJournalEntryLines instead. Get the JELines for the given Abor.
+     * DEPRECATED: please use GetJournalEntryLines instead. Gets the JELines for the given Abor                The JE Lines have been generated from transactions and translated via posting rules
      * @param scope The scope of the Abor. (required)
      * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
      * @param jeLinesQueryParameters The query parameters used in running the generation of the JELines. (required)
      * @param asAt The asAt datetime at which to retrieve JELines. Defaults to returning the latest version               of each transaction if not specified. (optional)
      * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
      * @param page The pagination token to use to continue listing JELines from a previous call to GetJELines. (optional)
-     * @return ApiResponse&lt;VersionedResourceListOfJELines&gt;
+     * @return ApiResponse&lt;VersionedResourceListOfJournalEntryLine&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -851,15 +852,15 @@ public class AborApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<VersionedResourceListOfJELines> getJELinesWithHttpInfo(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page) throws ApiException {
+    public ApiResponse<VersionedResourceListOfJournalEntryLine> getJELinesWithHttpInfo(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page) throws ApiException {
         okhttp3.Call localVarCall = getJELinesValidateBeforeCall(scope, code, jeLinesQueryParameters, asAt, limit, page, null);
-        Type localVarReturnType = new TypeToken<VersionedResourceListOfJELines>(){}.getType();
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfJournalEntryLine>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * [EXPERIMENTAL] GetJELines: Get the JELines for the given Abor. (asynchronously)
-     * Gets the JELines for the given Abor                The JE Lines have been generated from transactions and translated via posting rules
+     * [DEPRECATED] GetJELines: DEPRECATED: please use GetJournalEntryLines instead. Get the JELines for the given Abor. (asynchronously)
+     * DEPRECATED: please use GetJournalEntryLines instead. Gets the JELines for the given Abor                The JE Lines have been generated from transactions and translated via posting rules
      * @param scope The scope of the Abor. (required)
      * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
      * @param jeLinesQueryParameters The query parameters used in running the generation of the JELines. (required)
@@ -877,10 +878,198 @@ public class AborApi {
         <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call getJELinesAsync(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page, final ApiCallback<VersionedResourceListOfJELines> _callback) throws ApiException {
+    public okhttp3.Call getJELinesAsync(String scope, String code, JELinesQueryParameters jeLinesQueryParameters, OffsetDateTime asAt, Integer limit, String page, final ApiCallback<VersionedResourceListOfJournalEntryLine> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = getJELinesValidateBeforeCall(scope, code, jeLinesQueryParameters, asAt, limit, page, _callback);
-        Type localVarReturnType = new TypeToken<VersionedResourceListOfJELines>(){}.getType();
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfJournalEntryLine>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getJournalEntryLines
+     * @param scope The scope of the Abor. (required)
+     * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
+     * @param journalEntryLinesQueryParameters The query parameters used in running the generation of the Journal Entry lines. (required)
+     * @param asAt The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version               of each transaction if not specified. (optional)
+     * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
+     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+     * @param page The pagination token to use to continue listing Journal Entry lines from a previous call to GetJournalEntryLines. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Abor. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getJournalEntryLinesCall(String scope, String code, JournalEntryLinesQueryParameters journalEntryLinesQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = journalEntryLinesQueryParameters;
+
+        // create path and map variables
+        String localVarPath = "/api/abor/{scope}/{code}/journalentrylines/$query"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getJournalEntryLinesValidateBeforeCall(String scope, String code, JournalEntryLinesQueryParameters journalEntryLinesQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getJournalEntryLines(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getJournalEntryLines(Async)");
+        }
+
+        // verify the required parameter 'journalEntryLinesQueryParameters' is set
+        if (journalEntryLinesQueryParameters == null) {
+            throw new ApiException("Missing the required parameter 'journalEntryLinesQueryParameters' when calling getJournalEntryLines(Async)");
+        }
+
+        return getJournalEntryLinesCall(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page, _callback);
+
+    }
+
+    /**
+     * [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor.
+     * Gets the Journal Entry lines for the given Abor                The Journal Entry lines have been generated from transactions and translated via posting rules
+     * @param scope The scope of the Abor. (required)
+     * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
+     * @param journalEntryLinesQueryParameters The query parameters used in running the generation of the Journal Entry lines. (required)
+     * @param asAt The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version               of each transaction if not specified. (optional)
+     * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
+     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+     * @param page The pagination token to use to continue listing Journal Entry lines from a previous call to GetJournalEntryLines. (optional)
+     * @return VersionedResourceListOfJournalEntryLine
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Abor. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public VersionedResourceListOfJournalEntryLine getJournalEntryLines(String scope, String code, JournalEntryLinesQueryParameters journalEntryLinesQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page) throws ApiException {
+        ApiResponse<VersionedResourceListOfJournalEntryLine> localVarResp = getJournalEntryLinesWithHttpInfo(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page);
+        return localVarResp.getData();
+    }
+
+    /**
+     * [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor.
+     * Gets the Journal Entry lines for the given Abor                The Journal Entry lines have been generated from transactions and translated via posting rules
+     * @param scope The scope of the Abor. (required)
+     * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
+     * @param journalEntryLinesQueryParameters The query parameters used in running the generation of the Journal Entry lines. (required)
+     * @param asAt The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version               of each transaction if not specified. (optional)
+     * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
+     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+     * @param page The pagination token to use to continue listing Journal Entry lines from a previous call to GetJournalEntryLines. (optional)
+     * @return ApiResponse&lt;VersionedResourceListOfJournalEntryLine&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Abor. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<VersionedResourceListOfJournalEntryLine> getJournalEntryLinesWithHttpInfo(String scope, String code, JournalEntryLinesQueryParameters journalEntryLinesQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page) throws ApiException {
+        okhttp3.Call localVarCall = getJournalEntryLinesValidateBeforeCall(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page, null);
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfJournalEntryLine>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor. (asynchronously)
+     * Gets the Journal Entry lines for the given Abor                The Journal Entry lines have been generated from transactions and translated via posting rules
+     * @param scope The scope of the Abor. (required)
+     * @param code The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. (required)
+     * @param journalEntryLinesQueryParameters The query parameters used in running the generation of the Journal Entry lines. (required)
+     * @param asAt The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version               of each transaction if not specified. (optional)
+     * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
+     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+     * @param page The pagination token to use to continue listing Journal Entry lines from a previous call to GetJournalEntryLines. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested Journal Entry lines for the specified Abor. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getJournalEntryLinesAsync(String scope, String code, JournalEntryLinesQueryParameters journalEntryLinesQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback<VersionedResourceListOfJournalEntryLine> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getJournalEntryLinesValidateBeforeCall(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page, _callback);
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfJournalEntryLine>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -8,7 +8,8 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**createAbor**](AborApi.md#createAbor) | **POST** /api/abor/{scope} | [EXPERIMENTAL] CreateAbor: Create an Abor. |
 | [**deleteAbor**](AborApi.md#deleteAbor) | **DELETE** /api/abor/{scope}/{code} | [EXPERIMENTAL] DeleteAbor: Delete an Abor. |
 | [**getAbor**](AborApi.md#getAbor) | **GET** /api/abor/{scope}/{code} | [EXPERIMENTAL] GetAbor: Get Abor. |
-| [**getJELines**](AborApi.md#getJELines) | **POST** /api/abor/{scope}/{code}/JELines/$query | [EXPERIMENTAL] GetJELines: Get the JELines for the given Abor. |
+| [**getJELines**](AborApi.md#getJELines) | **POST** /api/abor/{scope}/{code}/JELines/$query/$deprecated | [DEPRECATED] GetJELines: DEPRECATED: please use GetJournalEntryLines instead. Get the JELines for the given Abor. |
+| [**getJournalEntryLines**](AborApi.md#getJournalEntryLines) | **POST** /api/abor/{scope}/{code}/journalentrylines/$query | [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor. |
 | [**listAbors**](AborApi.md#listAbors) | **GET** /api/abor | [EXPERIMENTAL] ListAbors: List Abors. |
 | [**listDiaryEntries**](AborApi.md#listDiaryEntries) | **GET** /api/abor/{scope}/{code}/accountingdiary | [EXPERIMENTAL] ListDiaryEntries: List diary entries. |
 | [**upsertAborProperties**](AborApi.md#upsertAborProperties) | **POST** /api/abor/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertAborProperties: Upsert Abor properties |
@@ -310,11 +311,11 @@ public class Example {
 
 <a id="getJELines"></a>
 # **getJELines**
-> VersionedResourceListOfJELines getJELines(scope, code, jeLinesQueryParameters, asAt, limit, page)
+> VersionedResourceListOfJournalEntryLine getJELines(scope, code, jeLinesQueryParameters, asAt, limit, page)
 
-[EXPERIMENTAL] GetJELines: Get the JELines for the given Abor.
+[DEPRECATED] GetJELines: DEPRECATED: please use GetJournalEntryLines instead. Get the JELines for the given Abor.
 
-Gets the JELines for the given Abor                The JE Lines have been generated from transactions and translated via posting rules
+DEPRECATED: please use GetJournalEntryLines instead. Gets the JELines for the given Abor                The JE Lines have been generated from transactions and translated via posting rules
 
 ### Example
 ```java
@@ -343,7 +344,7 @@ public class Example {
     Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
     String page = "page_example"; // String | The pagination token to use to continue listing JELines from a previous call to GetJELines.
     try {
-      VersionedResourceListOfJELines result = apiInstance.getJELines(scope, code, jeLinesQueryParameters, asAt, limit, page);
+      VersionedResourceListOfJournalEntryLine result = apiInstance.getJELines(scope, code, jeLinesQueryParameters, asAt, limit, page);
       System.out.println(result);
     } catch (ApiException e) {
       System.err.println("Exception when calling AborApi#getJELines");
@@ -369,7 +370,7 @@ public class Example {
 
 ### Return type
 
-[**VersionedResourceListOfJELines**](VersionedResourceListOfJELines.md)
+[**VersionedResourceListOfJournalEntryLine**](VersionedResourceListOfJournalEntryLine.md)
 
 ### Authorization
 
@@ -384,6 +385,87 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested JELines for the specified Abor. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="getJournalEntryLines"></a>
+# **getJournalEntryLines**
+> VersionedResourceListOfJournalEntryLine getJournalEntryLines(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page)
+
+[EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor.
+
+Gets the Journal Entry lines for the given Abor                The Journal Entry lines have been generated from transactions and translated via posting rules
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.AborApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    AborApi apiInstance = new AborApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Abor.
+    String code = "code_example"; // String | The code of the Abor. Together with the scope is creating the unique identifier for the given Abor.
+    JournalEntryLinesQueryParameters journalEntryLinesQueryParameters = new JournalEntryLinesQueryParameters(); // JournalEntryLinesQueryParameters | The query parameters used in running the generation of the Journal Entry lines.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version               of each transaction if not specified.
+    String filter = "filter_example"; // String | \"Expression to filter the result set.\"
+    Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
+    String page = "page_example"; // String | The pagination token to use to continue listing Journal Entry lines from a previous call to GetJournalEntryLines.
+    try {
+      VersionedResourceListOfJournalEntryLine result = apiInstance.getJournalEntryLines(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AborApi#getJournalEntryLines");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Abor. | |
+| **code** | **String**| The code of the Abor. Together with the scope is creating the unique identifier for the given Abor. | |
+| **journalEntryLinesQueryParameters** | [**JournalEntryLinesQueryParameters**](JournalEntryLinesQueryParameters.md)| The query parameters used in running the generation of the Journal Entry lines. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve Journal Entry lines. Defaults to returning the latest version               of each transaction if not specified. | [optional] |
+| **filter** | **String**| \&quot;Expression to filter the result set.\&quot; | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing Journal Entry lines from a previous call to GetJournalEntryLines. | [optional] |
+
+### Return type
+
+[**VersionedResourceListOfJournalEntryLine**](VersionedResourceListOfJournalEntryLine.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested Journal Entry lines for the specified Abor. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
