@@ -65,7 +65,7 @@ public class MarketDataSpecificRule {
   private String dataScope;
 
   /**
-   * The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption
+   * The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice
    */
   @JsonAdapter(QuoteTypeEnum.Adapter.class)
   public enum QuoteTypeEnum {
@@ -93,7 +93,9 @@ public class MarketDataSpecificRule {
     
     POOLFACTOR("PoolFactor"),
     
-    INFLATIONASSUMPTION("InflationAssumption");
+    INFLATIONASSUMPTION("InflationAssumption"),
+    
+    DIRTYPRICE("DirtyPrice");
 
     private String value;
 
@@ -238,7 +240,7 @@ public class MarketDataSpecificRule {
   }
 
    /**
-   * The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption
+   * The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice
    * @return quoteType
   **/
   @jakarta.annotation.Nonnull

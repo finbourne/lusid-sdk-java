@@ -1,0 +1,22 @@
+
+
+# TrialBalance
+
+A TrialBalance entity.
+
+## Properties
+
+| Name | Type | Description | Notes |
+|------------ | ------------- | ------------- | -------------|
+|**generalLedgerAccountCode** | **String** | The Account code that the trial balance results have been grouped against |  |
+|**description** | **String** | The description of the record |  |
+|**levels** | **List&lt;String&gt;** | The levels that have been derived from the specified General Ledger Profile |  |
+|**accountType** | **String** | The account type attributed to the record |  |
+|**opening** | **java.math.BigDecimal** | The opening balance at the start of the period |  |
+|**closing** | **java.math.BigDecimal** | The closing balance at the end of the period |  |
+|**debit** | **java.math.BigDecimal** | All debits that occured in the period |  |
+|**credit** | **java.math.BigDecimal** | All credits that occured in the period |  |
+|**links** | [**List&lt;Link&gt;**](Link.md) |  |  [optional] |
+
+
+

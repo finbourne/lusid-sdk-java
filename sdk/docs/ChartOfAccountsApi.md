@@ -5,17 +5,22 @@ All URIs are relative to *https://www.lusid.com/api*
 | Method | HTTP request | Description |
 |------------- | ------------- | -------------|
 | [**createChartOfAccounts**](ChartOfAccountsApi.md#createChartOfAccounts) | **POST** /api/chartofaccounts/{scope} | [EXPERIMENTAL] CreateChartOfAccounts: Create a Chart of Accounts |
+| [**createGeneralLedgerProfile**](ChartOfAccountsApi.md#createGeneralLedgerProfile) | **POST** /api/chartofaccounts/{scope}/{code}/generalledgerprofile | [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile. |
 | [**createPostingModule**](ChartOfAccountsApi.md#createPostingModule) | **POST** /api/chartofaccounts/{scope}/{code}/postingmodules | [EXPERIMENTAL] CreatePostingModule: Create a Posting Module |
 | [**deleteAccounts**](ChartOfAccountsApi.md#deleteAccounts) | **POST** /api/chartofaccounts/{scope}/{code}/accounts/$delete | [EXPERIMENTAL] DeleteAccounts: Soft or hard delete multiple accounts |
 | [**deleteChartOfAccounts**](ChartOfAccountsApi.md#deleteChartOfAccounts) | **DELETE** /api/chartofaccounts/{scope}/{code} | [EXPERIMENTAL] DeleteChartOfAccounts: Delete a Chart of Accounts |
+| [**deleteGeneralLedgerProfile**](ChartOfAccountsApi.md#deleteGeneralLedgerProfile) | **DELETE** /api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode} | [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile. |
 | [**deletePostingModule**](ChartOfAccountsApi.md#deletePostingModule) | **DELETE** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode} | [EXPERIMENTAL] DeletePostingModule: Delete a Posting Module. |
 | [**getAccount**](ChartOfAccountsApi.md#getAccount) | **GET** /api/chartofaccounts/{scope}/{code}/accounts/{accountCode} | [EXPERIMENTAL] GetAccount: Get Account |
 | [**getChartOfAccounts**](ChartOfAccountsApi.md#getChartOfAccounts) | **GET** /api/chartofaccounts/{scope}/{code} | [EXPERIMENTAL] GetChartOfAccounts: Get ChartOfAccounts |
+| [**getGeneralLedgerProfile**](ChartOfAccountsApi.md#getGeneralLedgerProfile) | **GET** /api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode} | [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile. |
 | [**getPostingModule**](ChartOfAccountsApi.md#getPostingModule) | **GET** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode} | [EXPERIMENTAL] GetPostingModule: Get a Posting Module |
 | [**listAccounts**](ChartOfAccountsApi.md#listAccounts) | **GET** /api/chartofaccounts/{scope}/{code}/accounts | [EXPERIMENTAL] ListAccounts: List Accounts |
 | [**listChartsOfAccounts**](ChartOfAccountsApi.md#listChartsOfAccounts) | **GET** /api/chartofaccounts | [EXPERIMENTAL] ListChartsOfAccounts: List Charts of Accounts |
+| [**listGeneralLedgerProfiles**](ChartOfAccountsApi.md#listGeneralLedgerProfiles) | **GET** /api/chartofaccounts/{scope}/{code}/generalledgerprofile | [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles. |
 | [**listPostingModuleRules**](ChartOfAccountsApi.md#listPostingModuleRules) | **GET** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules | [EXPERIMENTAL] ListPostingModuleRules: List Posting Module Rules |
 | [**listPostingModules**](ChartOfAccountsApi.md#listPostingModules) | **GET** /api/chartofaccounts/{scope}/{code}/postingmodules | [EXPERIMENTAL] ListPostingModules: List Posting Modules |
+| [**setGeneralLedgerProfileMappings**](ChartOfAccountsApi.md#setGeneralLedgerProfileMappings) | **PUT** /api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode}/mappings | [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings. |
 | [**setPostingModuleDetails**](ChartOfAccountsApi.md#setPostingModuleDetails) | **PUT** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode} | [EXPERIMENTAL] SetPostingModuleDetails: Set the details of a Posting Module |
 | [**setPostingModuleRules**](ChartOfAccountsApi.md#setPostingModuleRules) | **PUT** /api/chartofaccounts/{scope}/{code}/postingmodules/{postingModuleCode}/postingrules | [EXPERIMENTAL] SetPostingModuleRules: Set the rules of a Posting Module |
 | [**upsertAccountProperties**](ChartOfAccountsApi.md#upsertAccountProperties) | **POST** /api/chartofaccounts/{scope}/{code}/accounts/{accountCode}/properties/$upsert | [EXPERIMENTAL] UpsertAccountProperties: Upsert account properties |
@@ -91,6 +96,79 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **201** | The newly created Chart of Accounts. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="createGeneralLedgerProfile"></a>
+# **createGeneralLedgerProfile**
+> GeneralLedgerProfileResponse createGeneralLedgerProfile(scope, code, generalLedgerProfileRequest)
+
+[EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile.
+
+Create the given General Ledger profile.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ChartOfAccountsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Chart of Accounts.
+    String code = "code_example"; // String | The code of the Chart of Accounts.
+    GeneralLedgerProfileRequest generalLedgerProfileRequest = new GeneralLedgerProfileRequest(); // GeneralLedgerProfileRequest | The definition of the General Ledger Profile.
+    try {
+      GeneralLedgerProfileResponse result = apiInstance.createGeneralLedgerProfile(scope, code, generalLedgerProfileRequest);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ChartOfAccountsApi#createGeneralLedgerProfile");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Chart of Accounts. | |
+| **code** | **String**| The code of the Chart of Accounts. | |
+| **generalLedgerProfileRequest** | [**GeneralLedgerProfileRequest**](GeneralLedgerProfileRequest.md)| The definition of the General Ledger Profile. | |
+
+### Return type
+
+[**GeneralLedgerProfileResponse**](GeneralLedgerProfileResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **201** | The newly created General Ledger Profile. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -310,6 +388,79 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The datetime that the Chart of Accounts was deleted. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="deleteGeneralLedgerProfile"></a>
+# **deleteGeneralLedgerProfile**
+> DeletedEntityResponse deleteGeneralLedgerProfile(scope, code, generalLedgerProfileCode)
+
+[EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
+
+Delete the given General Ledger Profile.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ChartOfAccountsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Chart of Accounts for the General Ledger Profile.
+    String code = "code_example"; // String | The code of the Chart of Accounts for the General Ledger Profile.
+    String generalLedgerProfileCode = "generalLedgerProfileCode_example"; // String | The Code of the General Ledger Profile.
+    try {
+      DeletedEntityResponse result = apiInstance.deleteGeneralLedgerProfile(scope, code, generalLedgerProfileCode);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ChartOfAccountsApi#deleteGeneralLedgerProfile");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Chart of Accounts for the General Ledger Profile. | |
+| **code** | **String**| The code of the Chart of Accounts for the General Ledger Profile. | |
+| **generalLedgerProfileCode** | **String**| The Code of the General Ledger Profile. | |
+
+### Return type
+
+[**DeletedEntityResponse**](DeletedEntityResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The datetime that the General Ledger Profile was deleted |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -539,6 +690,79 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested Chart Of Accounts definition. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="getGeneralLedgerProfile"></a>
+# **getGeneralLedgerProfile**
+> GeneralLedgerProfileResponse getGeneralLedgerProfile(scope, code, generalLedgerProfileCode)
+
+[EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile.
+
+Get the given General Ledger Profile.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ChartOfAccountsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Chart of Accounts for the General Ledger Profile.
+    String code = "code_example"; // String | The code of the Chart of Accounts for the General Ledger Profile.
+    String generalLedgerProfileCode = "generalLedgerProfileCode_example"; // String | The General Ledger Profile Code of the General Ledger Profile.
+    try {
+      GeneralLedgerProfileResponse result = apiInstance.getGeneralLedgerProfile(scope, code, generalLedgerProfileCode);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ChartOfAccountsApi#getGeneralLedgerProfile");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Chart of Accounts for the General Ledger Profile. | |
+| **code** | **String**| The code of the Chart of Accounts for the General Ledger Profile. | |
+| **generalLedgerProfileCode** | **String**| The General Ledger Profile Code of the General Ledger Profile. | |
+
+### Return type
+
+[**GeneralLedgerProfileResponse**](GeneralLedgerProfileResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested General Ledger Profile entry. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
@@ -781,6 +1005,87 @@ public class Example {
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 
+<a id="listGeneralLedgerProfiles"></a>
+# **listGeneralLedgerProfiles**
+> PagedResourceListOfGeneralLedgerProfileResponse listGeneralLedgerProfiles(scope, code, asAt, start, page, limit, filter)
+
+[EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles.
+
+List all the General Ledger profiles matching particular criteria.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ChartOfAccountsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Chart of Accounts
+    String code = "code_example"; // String | The code of the Chart of Accounts
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to list the General Ledger Profiles. Defaults to returning the latest version of each General Ledger Profile if not specified.
+    Integer start = 56; // Integer | The start of the pager for the list of General Ledger Profiles
+    String page = "page_example"; // String | The pagination token to use to continue listing General Ledger Profiles; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided.
+    Integer limit = 56; // Integer | When paginating, limit the results to this number. Defaults to 100 if not specified.
+    String filter = "filter_example"; // String | Expression to filter the results.              For example, to filter on the General Ledger profiles type, specify \"type eq 'PeriodBoundary'\". For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914.
+    try {
+      PagedResourceListOfGeneralLedgerProfileResponse result = apiInstance.listGeneralLedgerProfiles(scope, code, asAt, start, page, limit, filter);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ChartOfAccountsApi#listGeneralLedgerProfiles");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Chart of Accounts | |
+| **code** | **String**| The code of the Chart of Accounts | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to list the General Ledger Profiles. Defaults to returning the latest version of each General Ledger Profile if not specified. | [optional] |
+| **start** | **Integer**| The start of the pager for the list of General Ledger Profiles | [optional] |
+| **page** | **String**| The pagination token to use to continue listing General Ledger Profiles; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. | [optional] |
+| **limit** | **Integer**| When paginating, limit the results to this number. Defaults to 100 if not specified. | [optional] |
+| **filter** | **String**| Expression to filter the results.              For example, to filter on the General Ledger profiles type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. | [optional] |
+
+### Return type
+
+[**PagedResourceListOfGeneralLedgerProfileResponse**](PagedResourceListOfGeneralLedgerProfileResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested General Ledger Profile entries. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
 <a id="listPostingModuleRules"></a>
 # **listPostingModuleRules**
 > PagedResourceListOfPostingModuleRule listPostingModuleRules(scope, code, postingModuleCode, asAt, page, start, limit, filter)
@@ -942,6 +1247,81 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested Posting Modules. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="setGeneralLedgerProfileMappings"></a>
+# **setGeneralLedgerProfileMappings**
+> GeneralLedgerProfileResponse setGeneralLedgerProfileMappings(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping)
+
+[EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
+
+Update the given General Ledger profile Mappings.
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.ChartOfAccountsApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    ChartOfAccountsApi apiInstance = new ChartOfAccountsApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Chart of Accounts.
+    String code = "code_example"; // String | The code of the Chart of Accounts.
+    String generalLedgerProfileCode = "generalLedgerProfileCode_example"; // String | The code of the General Ledger Profile
+    List<GeneralLedgerProfileMapping> generalLedgerProfileMapping = Arrays.asList(); // List<GeneralLedgerProfileMapping> | The updated General Ledger Profile Mappings, the previous mappings will be wholly replaced with this data. Mappings will be evaluated in the order they are provided.
+    try {
+      GeneralLedgerProfileResponse result = apiInstance.setGeneralLedgerProfileMappings(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling ChartOfAccountsApi#setGeneralLedgerProfileMappings");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Chart of Accounts. | |
+| **code** | **String**| The code of the Chart of Accounts. | |
+| **generalLedgerProfileCode** | **String**| The code of the General Ledger Profile | |
+| **generalLedgerProfileMapping** | [**List&lt;GeneralLedgerProfileMapping&gt;**](GeneralLedgerProfileMapping.md)| The updated General Ledger Profile Mappings, the previous mappings will be wholly replaced with this data. Mappings will be evaluated in the order they are provided. | |
+
+### Return type
+
+[**GeneralLedgerProfileResponse**](GeneralLedgerProfileResponse.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The General Ledger Profile that holds the updated mappings. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

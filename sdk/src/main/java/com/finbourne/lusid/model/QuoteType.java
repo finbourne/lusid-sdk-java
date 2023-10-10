@@ -49,7 +49,9 @@ public enum QuoteType {
   
   POOLFACTOR("PoolFactor"),
   
-  INFLATIONASSUMPTION("InflationAssumption");
+  INFLATIONASSUMPTION("InflationAssumption"),
+  
+  DIRTYPRICE("DirtyPrice");
 
   private String value;
 

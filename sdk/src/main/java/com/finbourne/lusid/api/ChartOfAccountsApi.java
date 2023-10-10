@@ -32,11 +32,15 @@ import com.finbourne.lusid.model.ChartOfAccountsProperties;
 import com.finbourne.lusid.model.ChartOfAccountsRequest;
 import com.finbourne.lusid.model.DeleteAccountsResponse;
 import com.finbourne.lusid.model.DeletedEntityResponse;
+import com.finbourne.lusid.model.GeneralLedgerProfileMapping;
+import com.finbourne.lusid.model.GeneralLedgerProfileRequest;
+import com.finbourne.lusid.model.GeneralLedgerProfileResponse;
 import com.finbourne.lusid.model.LusidProblemDetails;
 import com.finbourne.lusid.model.LusidValidationProblemDetails;
 import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.PagedResourceListOfAccount;
 import com.finbourne.lusid.model.PagedResourceListOfChartOfAccounts;
+import com.finbourne.lusid.model.PagedResourceListOfGeneralLedgerProfileResponse;
 import com.finbourne.lusid.model.PagedResourceListOfPostingModuleResponse;
 import com.finbourne.lusid.model.PagedResourceListOfPostingModuleRule;
 import com.finbourne.lusid.model.PostingModuleDetails;
@@ -232,6 +236,162 @@ public class ChartOfAccountsApi {
 
         okhttp3.Call localVarCall = createChartOfAccountsValidateBeforeCall(scope, chartOfAccountsRequest, _callback);
         Type localVarReturnType = new TypeToken<ChartOfAccounts>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createGeneralLedgerProfile
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. (required)
+     * @param generalLedgerProfileRequest The definition of the General Ledger Profile. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The newly created General Ledger Profile. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createGeneralLedgerProfileCall(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = generalLedgerProfileRequest;
+
+        // create path and map variables
+        String localVarPath = "/api/chartofaccounts/{scope}/{code}/generalledgerprofile"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createGeneralLedgerProfileValidateBeforeCall(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling createGeneralLedgerProfile(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling createGeneralLedgerProfile(Async)");
+        }
+
+        // verify the required parameter 'generalLedgerProfileRequest' is set
+        if (generalLedgerProfileRequest == null) {
+            throw new ApiException("Missing the required parameter 'generalLedgerProfileRequest' when calling createGeneralLedgerProfile(Async)");
+        }
+
+        return createGeneralLedgerProfileCall(scope, code, generalLedgerProfileRequest, _callback);
+
+    }
+
+    /**
+     * [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile.
+     * Create the given General Ledger profile.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. (required)
+     * @param generalLedgerProfileRequest The definition of the General Ledger Profile. (required)
+     * @return GeneralLedgerProfileResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The newly created General Ledger Profile. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public GeneralLedgerProfileResponse createGeneralLedgerProfile(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest) throws ApiException {
+        ApiResponse<GeneralLedgerProfileResponse> localVarResp = createGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile.
+     * Create the given General Ledger profile.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. (required)
+     * @param generalLedgerProfileRequest The definition of the General Ledger Profile. (required)
+     * @return ApiResponse&lt;GeneralLedgerProfileResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The newly created General Ledger Profile. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GeneralLedgerProfileResponse> createGeneralLedgerProfileWithHttpInfo(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest) throws ApiException {
+        okhttp3.Call localVarCall = createGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileRequest, null);
+        Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * [EXPERIMENTAL] CreateGeneralLedgerProfile: Create a General Ledger Profile. (asynchronously)
+     * Create the given General Ledger profile.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. (required)
+     * @param generalLedgerProfileRequest The definition of the General Ledger Profile. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> The newly created General Ledger Profile. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createGeneralLedgerProfileAsync(String scope, String code, GeneralLedgerProfileRequest generalLedgerProfileRequest, final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileRequest, _callback);
+        Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -694,6 +854,159 @@ public class ChartOfAccountsApi {
     public okhttp3.Call deleteChartOfAccountsAsync(String scope, String code, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = deleteChartOfAccountsValidateBeforeCall(scope, code, _callback);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for deleteGeneralLedgerProfile
+     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param generalLedgerProfileCode The Code of the General Ledger Profile. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The datetime that the General Ledger Profile was deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteGeneralLedgerProfileCall(String scope, String code, String generalLedgerProfileCode, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "generalLedgerProfileCode" + "}", localVarApiClient.escapeString(generalLedgerProfileCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call deleteGeneralLedgerProfileValidateBeforeCall(String scope, String code, String generalLedgerProfileCode, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling deleteGeneralLedgerProfile(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling deleteGeneralLedgerProfile(Async)");
+        }
+
+        // verify the required parameter 'generalLedgerProfileCode' is set
+        if (generalLedgerProfileCode == null) {
+            throw new ApiException("Missing the required parameter 'generalLedgerProfileCode' when calling deleteGeneralLedgerProfile(Async)");
+        }
+
+        return deleteGeneralLedgerProfileCall(scope, code, generalLedgerProfileCode, _callback);
+
+    }
+
+    /**
+     * [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
+     * Delete the given General Ledger Profile.
+     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param generalLedgerProfileCode The Code of the General Ledger Profile. (required)
+     * @return DeletedEntityResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The datetime that the General Ledger Profile was deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public DeletedEntityResponse deleteGeneralLedgerProfile(String scope, String code, String generalLedgerProfileCode) throws ApiException {
+        ApiResponse<DeletedEntityResponse> localVarResp = deleteGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode);
+        return localVarResp.getData();
+    }
+
+    /**
+     * [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile.
+     * Delete the given General Ledger Profile.
+     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param generalLedgerProfileCode The Code of the General Ledger Profile. (required)
+     * @return ApiResponse&lt;DeletedEntityResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The datetime that the General Ledger Profile was deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DeletedEntityResponse> deleteGeneralLedgerProfileWithHttpInfo(String scope, String code, String generalLedgerProfileCode) throws ApiException {
+        okhttp3.Call localVarCall = deleteGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, null);
+        Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * [EXPERIMENTAL] DeleteGeneralLedgerProfile: Delete a General Ledger Profile. (asynchronously)
+     * Delete the given General Ledger Profile.
+     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param generalLedgerProfileCode The Code of the General Ledger Profile. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The datetime that the General Ledger Profile was deleted </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call deleteGeneralLedgerProfileAsync(String scope, String code, String generalLedgerProfileCode, final ApiCallback<DeletedEntityResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = deleteGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, _callback);
         Type localVarReturnType = new TypeToken<DeletedEntityResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1192,6 +1505,159 @@ public class ChartOfAccountsApi {
 
         okhttp3.Call localVarCall = getChartOfAccountsValidateBeforeCall(scope, code, effectiveAt, asAt, propertyKeys, _callback);
         Type localVarReturnType = new TypeToken<ChartOfAccounts>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getGeneralLedgerProfile
+     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param generalLedgerProfileCode The General Ledger Profile Code of the General Ledger Profile. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested General Ledger Profile entry. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGeneralLedgerProfileCall(String scope, String code, String generalLedgerProfileCode, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode}"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "generalLedgerProfileCode" + "}", localVarApiClient.escapeString(generalLedgerProfileCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getGeneralLedgerProfileValidateBeforeCall(String scope, String code, String generalLedgerProfileCode, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getGeneralLedgerProfile(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getGeneralLedgerProfile(Async)");
+        }
+
+        // verify the required parameter 'generalLedgerProfileCode' is set
+        if (generalLedgerProfileCode == null) {
+            throw new ApiException("Missing the required parameter 'generalLedgerProfileCode' when calling getGeneralLedgerProfile(Async)");
+        }
+
+        return getGeneralLedgerProfileCall(scope, code, generalLedgerProfileCode, _callback);
+
+    }
+
+    /**
+     * [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile.
+     * Get the given General Ledger Profile.
+     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param generalLedgerProfileCode The General Ledger Profile Code of the General Ledger Profile. (required)
+     * @return GeneralLedgerProfileResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested General Ledger Profile entry. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public GeneralLedgerProfileResponse getGeneralLedgerProfile(String scope, String code, String generalLedgerProfileCode) throws ApiException {
+        ApiResponse<GeneralLedgerProfileResponse> localVarResp = getGeneralLedgerProfileWithHttpInfo(scope, code, generalLedgerProfileCode);
+        return localVarResp.getData();
+    }
+
+    /**
+     * [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile.
+     * Get the given General Ledger Profile.
+     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param generalLedgerProfileCode The General Ledger Profile Code of the General Ledger Profile. (required)
+     * @return ApiResponse&lt;GeneralLedgerProfileResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested General Ledger Profile entry. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GeneralLedgerProfileResponse> getGeneralLedgerProfileWithHttpInfo(String scope, String code, String generalLedgerProfileCode) throws ApiException {
+        okhttp3.Call localVarCall = getGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, null);
+        Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * [EXPERIMENTAL] GetGeneralLedgerProfile: Get a General Ledger Profile. (asynchronously)
+     * Get the given General Ledger Profile.
+     * @param scope The scope of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param code The code of the Chart of Accounts for the General Ledger Profile. (required)
+     * @param generalLedgerProfileCode The General Ledger Profile Code of the General Ledger Profile. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested General Ledger Profile entry. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getGeneralLedgerProfileAsync(String scope, String code, String generalLedgerProfileCode, final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getGeneralLedgerProfileValidateBeforeCall(scope, code, generalLedgerProfileCode, _callback);
+        Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1727,6 +2193,189 @@ public class ChartOfAccountsApi {
         return localVarCall;
     }
     /**
+     * Build call for listGeneralLedgerProfiles
+     * @param scope The scope of the Chart of Accounts (required)
+     * @param code The code of the Chart of Accounts (required)
+     * @param asAt The asAt datetime at which to list the General Ledger Profiles. Defaults to returning the latest version of each General Ledger Profile if not specified. (optional)
+     * @param start The start of the pager for the list of General Ledger Profiles (optional)
+     * @param page The pagination token to use to continue listing General Ledger Profiles; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+     * @param filter Expression to filter the results.              For example, to filter on the General Ledger profiles type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested General Ledger Profile entries. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listGeneralLedgerProfilesCall(String scope, String code, OffsetDateTime asAt, Integer start, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/api/chartofaccounts/{scope}/{code}/generalledgerprofile"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (start != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("start", start));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call listGeneralLedgerProfilesValidateBeforeCall(String scope, String code, OffsetDateTime asAt, Integer start, String page, Integer limit, String filter, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling listGeneralLedgerProfiles(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling listGeneralLedgerProfiles(Async)");
+        }
+
+        return listGeneralLedgerProfilesCall(scope, code, asAt, start, page, limit, filter, _callback);
+
+    }
+
+    /**
+     * [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles.
+     * List all the General Ledger profiles matching particular criteria.
+     * @param scope The scope of the Chart of Accounts (required)
+     * @param code The code of the Chart of Accounts (required)
+     * @param asAt The asAt datetime at which to list the General Ledger Profiles. Defaults to returning the latest version of each General Ledger Profile if not specified. (optional)
+     * @param start The start of the pager for the list of General Ledger Profiles (optional)
+     * @param page The pagination token to use to continue listing General Ledger Profiles; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+     * @param filter Expression to filter the results.              For example, to filter on the General Ledger profiles type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+     * @return PagedResourceListOfGeneralLedgerProfileResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested General Ledger Profile entries. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public PagedResourceListOfGeneralLedgerProfileResponse listGeneralLedgerProfiles(String scope, String code, OffsetDateTime asAt, Integer start, String page, Integer limit, String filter) throws ApiException {
+        ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> localVarResp = listGeneralLedgerProfilesWithHttpInfo(scope, code, asAt, start, page, limit, filter);
+        return localVarResp.getData();
+    }
+
+    /**
+     * [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles.
+     * List all the General Ledger profiles matching particular criteria.
+     * @param scope The scope of the Chart of Accounts (required)
+     * @param code The code of the Chart of Accounts (required)
+     * @param asAt The asAt datetime at which to list the General Ledger Profiles. Defaults to returning the latest version of each General Ledger Profile if not specified. (optional)
+     * @param start The start of the pager for the list of General Ledger Profiles (optional)
+     * @param page The pagination token to use to continue listing General Ledger Profiles; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+     * @param filter Expression to filter the results.              For example, to filter on the General Ledger profiles type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+     * @return ApiResponse&lt;PagedResourceListOfGeneralLedgerProfileResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested General Ledger Profile entries. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<PagedResourceListOfGeneralLedgerProfileResponse> listGeneralLedgerProfilesWithHttpInfo(String scope, String code, OffsetDateTime asAt, Integer start, String page, Integer limit, String filter) throws ApiException {
+        okhttp3.Call localVarCall = listGeneralLedgerProfilesValidateBeforeCall(scope, code, asAt, start, page, limit, filter, null);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfGeneralLedgerProfileResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * [EXPERIMENTAL] ListGeneralLedgerProfiles: List General Ledger Profiles. (asynchronously)
+     * List all the General Ledger profiles matching particular criteria.
+     * @param scope The scope of the Chart of Accounts (required)
+     * @param code The code of the Chart of Accounts (required)
+     * @param asAt The asAt datetime at which to list the General Ledger Profiles. Defaults to returning the latest version of each General Ledger Profile if not specified. (optional)
+     * @param start The start of the pager for the list of General Ledger Profiles (optional)
+     * @param page The pagination token to use to continue listing General Ledger Profiles; this              value is returned from the previous call. If a pagination token is provided, the filter, effectiveAt              and asAt fields must not have changed since the original request. Also, if set, a start value cannot be provided. (optional)
+     * @param limit When paginating, limit the results to this number. Defaults to 100 if not specified. (optional)
+     * @param filter Expression to filter the results.              For example, to filter on the General Ledger profiles type, specify \&quot;type eq &#39;PeriodBoundary&#39;\&quot;. For more information about filtering              results, see https://support.lusid.com/knowledgebase/article/KA-01914. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested General Ledger Profile entries. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listGeneralLedgerProfilesAsync(String scope, String code, OffsetDateTime asAt, Integer start, String page, Integer limit, String filter, final ApiCallback<PagedResourceListOfGeneralLedgerProfileResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = listGeneralLedgerProfilesValidateBeforeCall(scope, code, asAt, start, page, limit, filter, _callback);
+        Type localVarReturnType = new TypeToken<PagedResourceListOfGeneralLedgerProfileResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
      * Build call for listPostingModuleRules
      * @param scope The scope of the Chart of Accounts. (required)
      * @param code The code of the Chart of Accounts. Together with the scope this uniquely identifies the Chart of Accounts. (required)
@@ -2099,6 +2748,172 @@ public class ChartOfAccountsApi {
 
         okhttp3.Call localVarCall = listPostingModulesValidateBeforeCall(scope, code, asAt, page, start, limit, filter, _callback);
         Type localVarReturnType = new TypeToken<PagedResourceListOfPostingModuleResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for setGeneralLedgerProfileMappings
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. (required)
+     * @param generalLedgerProfileCode The code of the General Ledger Profile (required)
+     * @param generalLedgerProfileMapping The updated General Ledger Profile Mappings, the previous mappings will be wholly replaced with this data. Mappings will be evaluated in the order they are provided. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The General Ledger Profile that holds the updated mappings. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call setGeneralLedgerProfileMappingsCall(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = generalLedgerProfileMapping;
+
+        // create path and map variables
+        String localVarPath = "/api/chartofaccounts/{scope}/{code}/generalledgerprofile/{generalLedgerProfileCode}/mappings"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()))
+            .replace("{" + "generalLedgerProfileCode" + "}", localVarApiClient.escapeString(generalLedgerProfileCode.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "PUT", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call setGeneralLedgerProfileMappingsValidateBeforeCall(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling setGeneralLedgerProfileMappings(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling setGeneralLedgerProfileMappings(Async)");
+        }
+
+        // verify the required parameter 'generalLedgerProfileCode' is set
+        if (generalLedgerProfileCode == null) {
+            throw new ApiException("Missing the required parameter 'generalLedgerProfileCode' when calling setGeneralLedgerProfileMappings(Async)");
+        }
+
+        // verify the required parameter 'generalLedgerProfileMapping' is set
+        if (generalLedgerProfileMapping == null) {
+            throw new ApiException("Missing the required parameter 'generalLedgerProfileMapping' when calling setGeneralLedgerProfileMappings(Async)");
+        }
+
+        return setGeneralLedgerProfileMappingsCall(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, _callback);
+
+    }
+
+    /**
+     * [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
+     * Update the given General Ledger profile Mappings.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. (required)
+     * @param generalLedgerProfileCode The code of the General Ledger Profile (required)
+     * @param generalLedgerProfileMapping The updated General Ledger Profile Mappings, the previous mappings will be wholly replaced with this data. Mappings will be evaluated in the order they are provided. (required)
+     * @return GeneralLedgerProfileResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The General Ledger Profile that holds the updated mappings. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public GeneralLedgerProfileResponse setGeneralLedgerProfileMappings(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping) throws ApiException {
+        ApiResponse<GeneralLedgerProfileResponse> localVarResp = setGeneralLedgerProfileMappingsWithHttpInfo(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping);
+        return localVarResp.getData();
+    }
+
+    /**
+     * [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings.
+     * Update the given General Ledger profile Mappings.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. (required)
+     * @param generalLedgerProfileCode The code of the General Ledger Profile (required)
+     * @param generalLedgerProfileMapping The updated General Ledger Profile Mappings, the previous mappings will be wholly replaced with this data. Mappings will be evaluated in the order they are provided. (required)
+     * @return ApiResponse&lt;GeneralLedgerProfileResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The General Ledger Profile that holds the updated mappings. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<GeneralLedgerProfileResponse> setGeneralLedgerProfileMappingsWithHttpInfo(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping) throws ApiException {
+        okhttp3.Call localVarCall = setGeneralLedgerProfileMappingsValidateBeforeCall(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, null);
+        Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * [EXPERIMENTAL] SetGeneralLedgerProfileMappings: Sets the General Ledger Profile Mappings. (asynchronously)
+     * Update the given General Ledger profile Mappings.
+     * @param scope The scope of the Chart of Accounts. (required)
+     * @param code The code of the Chart of Accounts. (required)
+     * @param generalLedgerProfileCode The code of the General Ledger Profile (required)
+     * @param generalLedgerProfileMapping The updated General Ledger Profile Mappings, the previous mappings will be wholly replaced with this data. Mappings will be evaluated in the order they are provided. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The General Ledger Profile that holds the updated mappings. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call setGeneralLedgerProfileMappingsAsync(String scope, String code, String generalLedgerProfileCode, List<GeneralLedgerProfileMapping> generalLedgerProfileMapping, final ApiCallback<GeneralLedgerProfileResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = setGeneralLedgerProfileMappingsValidateBeforeCall(scope, code, generalLedgerProfileCode, generalLedgerProfileMapping, _callback);
+        Type localVarReturnType = new TypeToken<GeneralLedgerProfileResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

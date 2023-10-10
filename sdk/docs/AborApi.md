@@ -10,6 +10,7 @@ All URIs are relative to *https://www.lusid.com/api*
 | [**getAbor**](AborApi.md#getAbor) | **GET** /api/abor/{scope}/{code} | [EXPERIMENTAL] GetAbor: Get Abor. |
 | [**getJELines**](AborApi.md#getJELines) | **POST** /api/abor/{scope}/{code}/JELines/$query/$deprecated | [DEPRECATED] GetJELines: DEPRECATED: please use GetJournalEntryLines instead. Get the JELines for the given Abor. |
 | [**getJournalEntryLines**](AborApi.md#getJournalEntryLines) | **POST** /api/abor/{scope}/{code}/journalentrylines/$query | [EXPERIMENTAL] GetJournalEntryLines: Get the Journal Entry lines for the given Abor. |
+| [**getTrialBalance**](AborApi.md#getTrialBalance) | **POST** /api/abor/{scope}/{code}/trialbalance/$query | [EXPERIMENTAL] GetTrialBalance: Get the Trial balance for the given Abor. |
 | [**listAbors**](AborApi.md#listAbors) | **GET** /api/abor | [EXPERIMENTAL] ListAbors: List Abors. |
 | [**listDiaryEntries**](AborApi.md#listDiaryEntries) | **GET** /api/abor/{scope}/{code}/accountingdiary | [EXPERIMENTAL] ListDiaryEntries: List diary entries. |
 | [**upsertAborProperties**](AborApi.md#upsertAborProperties) | **POST** /api/abor/{scope}/{code}/properties/$upsert | [EXPERIMENTAL] UpsertAborProperties: Upsert Abor properties |
@@ -466,6 +467,87 @@ public class Example {
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 | **200** | The requested Journal Entry lines for the specified Abor. |  -  |
+| **400** | The details of the input related failure |  -  |
+| **0** | Error response |  -  |
+
+<a id="getTrialBalance"></a>
+# **getTrialBalance**
+> VersionedResourceListOfTrialBalance getTrialBalance(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page)
+
+[EXPERIMENTAL] GetTrialBalance: Get the Trial balance for the given Abor.
+
+Gets the Trial balance for the given Abor    The Trial balance has been generated from transactions, translated via posting rules and aggregated based on a General Ledger Profile (where specified)
+
+### Example
+```java
+// Import classes:
+import com.finbourne.lusid.ApiClient;
+import com.finbourne.lusid.ApiException;
+import com.finbourne.lusid.Configuration;
+import com.finbourne.lusid.auth.*;
+import com.finbourne.lusid.models.*;
+import com.finbourne.lusid.api.AborApi;
+
+public class Example {
+  public static void main(String[] args) {
+    ApiClient defaultClient = Configuration.getDefaultApiClient();
+    defaultClient.setBasePath("https://www.lusid.com/api");
+    
+    // Configure OAuth2 access token for authorization: oauth2
+    OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+    oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+    AborApi apiInstance = new AborApi(defaultClient);
+    String scope = "scope_example"; // String | The scope of the Abor.
+    String code = "code_example"; // String | The code of the Abor. Together with the scope is the unique identifier for the given Abor.
+    TrialBalanceQueryParameters trialBalanceQueryParameters = new TrialBalanceQueryParameters(); // TrialBalanceQueryParameters | The query parameters used in running the generation of the Trial Balance.
+    OffsetDateTime asAt = OffsetDateTime.now(); // OffsetDateTime | The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version              of each transaction if not specified.
+    String filter = "filter_example"; // String | \"Expression to filter the result set.\"
+    Integer limit = 56; // Integer | When paginating, limit the number of returned results to this many. Defaults to 100 if not specified.
+    String page = "page_example"; // String | The pagination token to use to continue listing Trial balance from a previous call to Trial balance.
+    try {
+      VersionedResourceListOfTrialBalance result = apiInstance.getTrialBalance(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page);
+      System.out.println(result);
+    } catch (ApiException e) {
+      System.err.println("Exception when calling AborApi#getTrialBalance");
+      System.err.println("Status code: " + e.getCode());
+      System.err.println("Reason: " + e.getResponseBody());
+      System.err.println("Response headers: " + e.getResponseHeaders());
+      e.printStackTrace();
+    }
+  }
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+|------------- | ------------- | ------------- | -------------|
+| **scope** | **String**| The scope of the Abor. | |
+| **code** | **String**| The code of the Abor. Together with the scope is the unique identifier for the given Abor. | |
+| **trialBalanceQueryParameters** | [**TrialBalanceQueryParameters**](TrialBalanceQueryParameters.md)| The query parameters used in running the generation of the Trial Balance. | |
+| **asAt** | **OffsetDateTime**| The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version              of each transaction if not specified. | [optional] |
+| **filter** | **String**| \&quot;Expression to filter the result set.\&quot; | [optional] |
+| **limit** | **Integer**| When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. | [optional] |
+| **page** | **String**| The pagination token to use to continue listing Trial balance from a previous call to Trial balance. | [optional] |
+
+### Return type
+
+[**VersionedResourceListOfTrialBalance**](VersionedResourceListOfTrialBalance.md)
+
+### Authorization
+
+[oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json-patch+json, application/json, text/json, application/*+json
+ - **Accept**: text/plain, application/json, text/json
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **200** | The requested Trial Balance for the specified Abor. |  -  |
 | **400** | The details of the input related failure |  -  |
 | **0** | Error response |  -  |
 

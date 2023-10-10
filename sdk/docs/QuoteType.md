@@ -31,5 +31,7 @@
 
 * `INFLATIONASSUMPTION` (value: `"InflationAssumption"`)
 
+* `DIRTYPRICE` (value: `"DirtyPrice"`)
+
 
 

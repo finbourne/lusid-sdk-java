@@ -38,7 +38,9 @@ import java.time.OffsetDateTime;
 import com.finbourne.lusid.model.PagedResourceListOfAbor;
 import com.finbourne.lusid.model.PagedResourceListOfDiaryEntry;
 import com.finbourne.lusid.model.Property;
+import com.finbourne.lusid.model.TrialBalanceQueryParameters;
 import com.finbourne.lusid.model.VersionedResourceListOfJournalEntryLine;
+import com.finbourne.lusid.model.VersionedResourceListOfTrialBalance;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -1070,6 +1072,194 @@ public class AborApi {
 
         okhttp3.Call localVarCall = getJournalEntryLinesValidateBeforeCall(scope, code, journalEntryLinesQueryParameters, asAt, filter, limit, page, _callback);
         Type localVarReturnType = new TypeToken<VersionedResourceListOfJournalEntryLine>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for getTrialBalance
+     * @param scope The scope of the Abor. (required)
+     * @param code The code of the Abor. Together with the scope is the unique identifier for the given Abor. (required)
+     * @param trialBalanceQueryParameters The query parameters used in running the generation of the Trial Balance. (required)
+     * @param asAt The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version              of each transaction if not specified. (optional)
+     * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
+     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+     * @param page The pagination token to use to continue listing Trial balance from a previous call to Trial balance. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested Trial Balance for the specified Abor. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTrialBalanceCall(String scope, String code, TrialBalanceQueryParameters trialBalanceQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+        String basePath = null;
+        // Operation Servers
+        String[] localBasePaths = new String[] {  };
+
+        // Determine Base Path to Use
+        if (localCustomBaseUrl != null){
+            basePath = localCustomBaseUrl;
+        } else if ( localBasePaths.length > 0 ) {
+            basePath = localBasePaths[localHostIndex];
+        } else {
+            basePath = null;
+        }
+
+        Object localVarPostBody = trialBalanceQueryParameters;
+
+        // create path and map variables
+        String localVarPath = "/api/abor/{scope}/{code}/trialbalance/$query"
+            .replace("{" + "scope" + "}", localVarApiClient.escapeString(scope.toString()))
+            .replace("{" + "code" + "}", localVarApiClient.escapeString(code.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (asAt != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("asAt", asAt));
+        }
+
+        if (filter != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("filter", filter));
+        }
+
+        if (limit != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("limit", limit));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        final String[] localVarAccepts = {
+            "text/plain",
+            "application/json",
+            "text/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json-patch+json",
+            "application/json",
+            "text/json",
+            "application/*+json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        if (localVarContentType != null) {
+            localVarHeaderParams.put("Content-Type", localVarContentType);
+        }
+
+        String[] localVarAuthNames = new String[] { "oauth2" };
+        return localVarApiClient.buildCall(basePath, localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call getTrialBalanceValidateBeforeCall(String scope, String code, TrialBalanceQueryParameters trialBalanceQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback _callback) throws ApiException {
+        // verify the required parameter 'scope' is set
+        if (scope == null) {
+            throw new ApiException("Missing the required parameter 'scope' when calling getTrialBalance(Async)");
+        }
+
+        // verify the required parameter 'code' is set
+        if (code == null) {
+            throw new ApiException("Missing the required parameter 'code' when calling getTrialBalance(Async)");
+        }
+
+        // verify the required parameter 'trialBalanceQueryParameters' is set
+        if (trialBalanceQueryParameters == null) {
+            throw new ApiException("Missing the required parameter 'trialBalanceQueryParameters' when calling getTrialBalance(Async)");
+        }
+
+        return getTrialBalanceCall(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page, _callback);
+
+    }
+
+    /**
+     * [EXPERIMENTAL] GetTrialBalance: Get the Trial balance for the given Abor.
+     * Gets the Trial balance for the given Abor    The Trial balance has been generated from transactions, translated via posting rules and aggregated based on a General Ledger Profile (where specified)
+     * @param scope The scope of the Abor. (required)
+     * @param code The code of the Abor. Together with the scope is the unique identifier for the given Abor. (required)
+     * @param trialBalanceQueryParameters The query parameters used in running the generation of the Trial Balance. (required)
+     * @param asAt The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version              of each transaction if not specified. (optional)
+     * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
+     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+     * @param page The pagination token to use to continue listing Trial balance from a previous call to Trial balance. (optional)
+     * @return VersionedResourceListOfTrialBalance
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested Trial Balance for the specified Abor. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public VersionedResourceListOfTrialBalance getTrialBalance(String scope, String code, TrialBalanceQueryParameters trialBalanceQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page) throws ApiException {
+        ApiResponse<VersionedResourceListOfTrialBalance> localVarResp = getTrialBalanceWithHttpInfo(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page);
+        return localVarResp.getData();
+    }
+
+    /**
+     * [EXPERIMENTAL] GetTrialBalance: Get the Trial balance for the given Abor.
+     * Gets the Trial balance for the given Abor    The Trial balance has been generated from transactions, translated via posting rules and aggregated based on a General Ledger Profile (where specified)
+     * @param scope The scope of the Abor. (required)
+     * @param code The code of the Abor. Together with the scope is the unique identifier for the given Abor. (required)
+     * @param trialBalanceQueryParameters The query parameters used in running the generation of the Trial Balance. (required)
+     * @param asAt The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version              of each transaction if not specified. (optional)
+     * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
+     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+     * @param page The pagination token to use to continue listing Trial balance from a previous call to Trial balance. (optional)
+     * @return ApiResponse&lt;VersionedResourceListOfTrialBalance&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested Trial Balance for the specified Abor. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<VersionedResourceListOfTrialBalance> getTrialBalanceWithHttpInfo(String scope, String code, TrialBalanceQueryParameters trialBalanceQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page) throws ApiException {
+        okhttp3.Call localVarCall = getTrialBalanceValidateBeforeCall(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page, null);
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfTrialBalance>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * [EXPERIMENTAL] GetTrialBalance: Get the Trial balance for the given Abor. (asynchronously)
+     * Gets the Trial balance for the given Abor    The Trial balance has been generated from transactions, translated via posting rules and aggregated based on a General Ledger Profile (where specified)
+     * @param scope The scope of the Abor. (required)
+     * @param code The code of the Abor. Together with the scope is the unique identifier for the given Abor. (required)
+     * @param trialBalanceQueryParameters The query parameters used in running the generation of the Trial Balance. (required)
+     * @param asAt The asAt datetime at which to retrieve trial balance. Defaults to returning the latest version              of each transaction if not specified. (optional)
+     * @param filter \&quot;Expression to filter the result set.\&quot; (optional)
+     * @param limit When paginating, limit the number of returned results to this many. Defaults to 100 if not specified. (optional)
+     * @param page The pagination token to use to continue listing Trial balance from a previous call to Trial balance. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> The requested Trial Balance for the specified Abor. </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> The details of the input related failure </td><td>  -  </td></tr>
+        <tr><td> 0 </td><td> Error response </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call getTrialBalanceAsync(String scope, String code, TrialBalanceQueryParameters trialBalanceQueryParameters, OffsetDateTime asAt, String filter, Integer limit, String page, final ApiCallback<VersionedResourceListOfTrialBalance> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = getTrialBalanceValidateBeforeCall(scope, code, trialBalanceQueryParameters, asAt, filter, limit, page, _callback);
+        Type localVarReturnType = new TypeToken<VersionedResourceListOfTrialBalance>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }

@@ -128,7 +128,7 @@ public class QuoteSeriesId {
   private InstrumentIdTypeEnum instrumentIdType;
 
   /**
-   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption
+   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice
    */
   @JsonAdapter(QuoteTypeEnum.Adapter.class)
   public enum QuoteTypeEnum {
@@ -156,7 +156,9 @@ public class QuoteSeriesId {
     
     POOLFACTOR("PoolFactor"),
     
-    INFLATIONASSUMPTION("InflationAssumption");
+    INFLATIONASSUMPTION("InflationAssumption"),
+    
+    DIRTYPRICE("DirtyPrice");
 
     private String value;
 
@@ -298,7 +300,7 @@ public class QuoteSeriesId {
   }
 
    /**
-   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption
+   * The type of the quote. This allows for quotes other than prices e.g. rates or spreads to be used. The available values are: Price, Spread, Rate, LogNormalVol, NormalVol, ParSpread, IsdaSpread, Upfront, Index, Ratio, Delta, PoolFactor, InflationAssumption, DirtyPrice
    * @return quoteType
   **/
   @jakarta.annotation.Nullable
