@@ -13,6 +13,7 @@ package com.finbourne.lusid.model;
 import java.util.Objects;
 import com.finbourne.lusid.model.ComplianceTemplateParameter;
 import com.finbourne.lusid.model.PerpetualProperty;
+import com.finbourne.lusid.model.ResourceId;
 import com.google.gson.TypeAdapter;
 import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
@@ -70,6 +71,10 @@ public class ComplianceTemplateVariation {
   public static final String SERIALIZED_NAME_PROPERTIES = "properties";
   @SerializedName(SERIALIZED_NAME_PROPERTIES)
   private Map<String, PerpetualProperty> properties = new HashMap<>();
+
+  public static final String SERIALIZED_NAME_ACCEPTED_ADDRESS_KEYS = "acceptedAddressKeys";
+  @SerializedName(SERIALIZED_NAME_ACCEPTED_ADDRESS_KEYS)
+  private ResourceId acceptedAddressKeys;
 
   public ComplianceTemplateVariation() {
   }
@@ -174,6 +179,27 @@ public class ComplianceTemplateVariation {
   }
 
 
+  public ComplianceTemplateVariation acceptedAddressKeys(ResourceId acceptedAddressKeys) {
+    
+    this.acceptedAddressKeys = acceptedAddressKeys;
+    return this;
+  }
+
+   /**
+   * Get acceptedAddressKeys
+   * @return acceptedAddressKeys
+  **/
+  @jakarta.annotation.Nonnull
+  public ResourceId getAcceptedAddressKeys() {
+    return acceptedAddressKeys;
+  }
+
+
+  public void setAcceptedAddressKeys(ResourceId acceptedAddressKeys) {
+    this.acceptedAddressKeys = acceptedAddressKeys;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -187,12 +213,13 @@ public class ComplianceTemplateVariation {
     return Objects.equals(this.label, complianceTemplateVariation.label) &&
         Objects.equals(this.description, complianceTemplateVariation.description) &&
         Objects.equals(this.requiredParameters, complianceTemplateVariation.requiredParameters) &&
-        Objects.equals(this.properties, complianceTemplateVariation.properties);
+        Objects.equals(this.properties, complianceTemplateVariation.properties) &&
+        Objects.equals(this.acceptedAddressKeys, complianceTemplateVariation.acceptedAddressKeys);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(label, description, requiredParameters, properties);
+    return Objects.hash(label, description, requiredParameters, properties, acceptedAddressKeys);
   }
 
   @Override
@@ -203,6 +230,7 @@ public class ComplianceTemplateVariation {
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    requiredParameters: ").append(toIndentedString(requiredParameters)).append("\n");
     sb.append("    properties: ").append(toIndentedString(properties)).append("\n");
+    sb.append("    acceptedAddressKeys: ").append(toIndentedString(acceptedAddressKeys)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -229,6 +257,7 @@ public class ComplianceTemplateVariation {
     openapiFields.add("description");
     openapiFields.add("requiredParameters");
     openapiFields.add("properties");
+    openapiFields.add("acceptedAddressKeys");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();
@@ -236,6 +265,7 @@ public class ComplianceTemplateVariation {
     openapiRequiredFields.add("description");
     openapiRequiredFields.add("requiredParameters");
     openapiRequiredFields.add("properties");
+    openapiRequiredFields.add("acceptedAddressKeys");
   }
 
  /**
@@ -281,6 +311,8 @@ public class ComplianceTemplateVariation {
       for (int i = 0; i < jsonArrayrequiredParameters.size(); i++) {
         ComplianceTemplateParameter.validateJsonObject(jsonArrayrequiredParameters.get(i).getAsJsonObject());
       };
+      // validate the required field `acceptedAddressKeys`
+      ResourceId.validateJsonObject(jsonObj.getAsJsonObject("acceptedAddressKeys"));
   }
 
   public static class CustomTypeAdapterFactory implements TypeAdapterFactory {
