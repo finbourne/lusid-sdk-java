@@ -75,5 +75,7 @@
 
 * `TOTALRETURNSWAP` (value: `"TotalReturnSwap"`)
 
+* `INFLATIONLEG` (value: `"InflationLeg"`)
+
 
 

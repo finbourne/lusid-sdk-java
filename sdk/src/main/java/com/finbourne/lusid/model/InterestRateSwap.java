@@ -11,6 +11,7 @@
 package com.finbourne.lusid.model;
 
 import java.util.Objects;
+import com.finbourne.lusid.model.AdditionalPayment;
 import com.finbourne.lusid.model.InstrumentLeg;
 import com.finbourne.lusid.model.LusidInstrument;
 import com.google.gson.TypeAdapter;
@@ -74,6 +75,10 @@ public class InterestRateSwap extends LusidInstrument {
   public static final String SERIALIZED_NAME_SETTLEMENT_CCY = "settlementCcy";
   @SerializedName(SERIALIZED_NAME_SETTLEMENT_CCY)
   private String settlementCcy;
+
+  public static final String SERIALIZED_NAME_ADDITIONAL_PAYMENTS = "additionalPayments";
+  @SerializedName(SERIALIZED_NAME_ADDITIONAL_PAYMENTS)
+  private List<AdditionalPayment> additionalPayments;
 
   public InterestRateSwap() {
     // this.instrumentType = this.getClass().getSimpleName();
@@ -192,6 +197,35 @@ public class InterestRateSwap extends LusidInstrument {
   }
 
 
+  public InterestRateSwap additionalPayments(List<AdditionalPayment> additionalPayments) {
+    
+    this.additionalPayments = additionalPayments;
+    return this;
+  }
+
+  public InterestRateSwap addAdditionalPaymentsItem(AdditionalPayment additionalPaymentsItem) {
+    if (this.additionalPayments == null) {
+      this.additionalPayments = new ArrayList<>();
+    }
+    this.additionalPayments.add(additionalPaymentsItem);
+    return this;
+  }
+
+   /**
+   * Optional additional payments at a given date e.g. to level off an uneven fixed-floating swap.  The dates must be distinct and either all payments are Pay or all payments are receive
+   * @return additionalPayments
+  **/
+  @jakarta.annotation.Nullable
+  public List<AdditionalPayment> getAdditionalPayments() {
+    return additionalPayments;
+  }
+
+
+  public void setAdditionalPayments(List<AdditionalPayment> additionalPayments) {
+    this.additionalPayments = additionalPayments;
+  }
+
+
 
   @Override
   public boolean equals(Object o) {
@@ -207,6 +241,7 @@ public class InterestRateSwap extends LusidInstrument {
         Objects.equals(this.isNonDeliverable, interestRateSwap.isNonDeliverable) &&
         Objects.equals(this.legs, interestRateSwap.legs) &&
         Objects.equals(this.settlementCcy, interestRateSwap.settlementCcy) &&
+        Objects.equals(this.additionalPayments, interestRateSwap.additionalPayments) &&
         super.equals(o);
   }
 
@@ -216,7 +251,7 @@ public class InterestRateSwap extends LusidInstrument {
 
   @Override
   public int hashCode() {
-    return Objects.hash(startDate, maturityDate, isNonDeliverable, legs, settlementCcy, super.hashCode());
+    return Objects.hash(startDate, maturityDate, isNonDeliverable, legs, settlementCcy, additionalPayments, super.hashCode());
   }
 
   private static <T> int hashCodeNullable(JsonNullable<T> a) {
@@ -236,6 +271,7 @@ public class InterestRateSwap extends LusidInstrument {
     sb.append("    isNonDeliverable: ").append(toIndentedString(isNonDeliverable)).append("\n");
     sb.append("    legs: ").append(toIndentedString(legs)).append("\n");
     sb.append("    settlementCcy: ").append(toIndentedString(settlementCcy)).append("\n");
+    sb.append("    additionalPayments: ").append(toIndentedString(additionalPayments)).append("\n");
     sb.append("}");
     return sb.toString();
   }
@@ -264,6 +300,7 @@ public class InterestRateSwap extends LusidInstrument {
     openapiFields.add("isNonDeliverable");
     openapiFields.add("legs");
     openapiFields.add("settlementCcy");
+    openapiFields.add("additionalPayments");
 
     // a set of required properties/fields (JSON key names)
     openapiRequiredFields = new HashSet<String>();

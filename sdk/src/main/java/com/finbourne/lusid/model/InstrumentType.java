@@ -93,7 +93,9 @@ public enum InstrumentType {
   
   SIMPLECASHFLOWLOAN("SimpleCashFlowLoan"),
   
-  TOTALRETURNSWAP("TotalReturnSwap");
+  TOTALRETURNSWAP("TotalReturnSwap"),
+  
+  INFLATIONLEG("InflationLeg");
 
   private String value;
 
